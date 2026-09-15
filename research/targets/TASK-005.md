@@ -71,6 +71,192 @@ Static Game Data
 
 단, 위 구조는 가설이며 실제 코드 증거로 확인해야 한다.
 
+## 중요 가설: 서버 권한형 가변 Response
+
+가챠/상점/전투 결과처럼 유저 상태를 변경하는 기능은 다음과 같은 서버 권한형 구조일 가능성이 있다.
+
+```text
+GachaRequest
+    ↓
+Server Player State / DB 조회
+    ↓
+가챠 가능 여부 확인
+    ↓
+Server RNG
+    ↓
+등급 결정
+    ↓
+캐릭터/아이템 결정
+    ↓
+중복 여부 및 중복 보상 계산
+    ↓
+재화 차감
+    ↓
+Inventory 갱신
+    ↓
+DB 저장
+    ↓
+GachaResponse
+```
+
+이 구조는 현재 가설이며 실제 게임 코드로 증명해야 한다.
+
+이 경우 오프라인화의 목표는 단순히 `Request 성공` 또는 고정된 `Response`를 반환하는 것이 아니다.
+
+```text
+GachaRequest
+    ↓
+Local Gacha Logic
+    ↓
+Local Player State
+    +
+Gacha Static Data
+    ↓
+RNG / 결과 결정
+    ↓
+중복 및 보상 계산
+    ↓
+재화 차감
+    ↓
+Inventory 갱신
+    ↓
+기존 GachaResponse Object
+    ↓
+기존 Parser / Manager / UI
+```
+
+따라서 가변 Response의 경우 다음을 구분해서 조사한다.
+
+1. 서버에서만 수행되는 계산인가?
+2. 클라이언트에 동일하거나 유사한 계산 로직이 이미 존재하는가?
+3. 클라이언트에 필요한 Static Data가 이미 존재하는가?
+4. 기존 Response Object/Manager가 결과 적용을 담당하는가?
+5. 새로 추가해야 하는 최소 Local Logic은 무엇인가?
+
+새 로직이 필요한 경우에도 우선순위는 다음과 같다.
+
+```text
+기존 로직 재사용
+    ↓
+기존 Data Object / Manager 재사용
+    ↓
+기존 Response Object 재사용
+    ↓
+최소 Local Response Builder 추가
+    ↓
+정말 필요한 경우에만 새로운 계산 로직 추가
+```
+
+복잡한 서버 로직 전체를 처음부터 native/ARM64 assembly로 재작성하는 것은 최후의 수단으로 한다.
+
+## 네트워크 패킷 관찰 자료와 Response 처리 단계
+
+실제 패킷 캡처에서 평문 JSON이 아니라 바이너리 헤더/필드 뒤에 Base64 계열 문자셋으로 보이는 긴 ASCII 데이터가 관찰될 수 있다.
+예시 관찰값에는 `A-Z`, `a-z`, `0-9`, `+`, `/`, `=`가 주로 사용되고 `pAA==` 형태로 종료되는 긴 문자열이 포함되어 있었다.
+
+현재 자료만으로 이를 Base64, 암호문, 압축 데이터 또는 특정 프로토콜이라고 확정하지 않는다.
+
+중요한 것은 패킷 자체를 복제하는 것이 아니라 **Network Receive 이후 실제 Response Object가 만들어지는 경로를 찾는 것**이다.
+
+가능한 구조:
+
+```text
+Network Packet
+    ↓
+Header / Length / Type / Sequence 등
+    ↓
+Decode / Decrypt / Decompress ?
+    ↓
+Deserialize / Parse
+    ↓
+Response Object
+    ↓
+Manager / Data Object
+    ↓
+UI
+```
+
+따라서 실제 조사에서 다음 단계를 증명한다.
+
+### 1. Network Receive 지점
+
+- 어떤 함수가 해당 패킷을 받는가?
+- 수신 버퍼의 타입과 길이는 무엇인가?
+- 공통 네트워크 수신 함수인가, 기능별 함수인가?
+
+### 2. Decode / Decrypt / Decompress 여부
+
+다음 계열 API/함수의 사용 여부를 확인한다.
+
+- Base64 Decode / Encode
+- byte[] ↔ string 변환
+- AES / RSA / DES / XOR 등 암복호화
+- 압축 해제
+- custom decode/decrypt
+
+특정 알고리즘은 이름만으로 확정하지 말고 실제 호출/XREF와 데이터 흐름으로 증명한다.
+
+### 3. Deserialize / Parser
+
+다음 계열을 조사한다.
+
+- JSON
+- protobuf
+- MessagePack
+- custom binary serializer
+- 기타 게임 전용 serialization
+
+Response 데이터가 어떤 타입으로 변환되는지 특정한다.
+
+### 4. Response Object
+
+Decode/Deserialize 직후 만들어지거나 전달되는 실제 타입을 특정한다.
+
+- class/struct
+- 필드
+- constructor/factory
+- callback
+- caller/callee
+
+### 5. Response → Manager → UI
+
+Response Object가 어느 Manager/Data Object로 전달되고 어떤 필드가 UI에 사용되는지 추적한다.
+
+### 패킷 비교 조사
+
+가능하면 동일 기능의 서로 다른 Response를 비교한다.
+
+예:
+
+```text
+Gacha 1회 A
+Gacha 1회 B
+Gacha 1회 C
+```
+
+또는:
+
+```text
+메뉴 진입
+샵 진입
+가챠 진입
+스테이지 진입
+배틀 시작
+배틀 종료
+```
+
+비교 시 다음을 기록한다.
+
+- 공통 바이트 영역
+- 반복되는 ASCII/Base64-like 영역
+- 길이 변화
+- 특정 위치의 변경값
+- sequence/request ID 후보
+- timestamp 후보
+- 결과/재화/인벤토리와 상관되는 변경 영역
+
+단, 패킷 바이트만으로 특정 필드의 의미를 확정하지 않는다. 반드시 Decode/Deserialize 이후 객체 및 코드 흐름과 교차 검증한다.
+
 ## 가장 중요한 조사 질문
 
 ### 1. Request가 무엇인가?
@@ -307,13 +493,17 @@ Static Data가 필요한 것으로 증명
 1. 실제 동작 가능한 기능 중 하나를 선택한다.
 2. 해당 기능의 Request 생성 위치를 찾는다.
 3. 네트워크 전송 지점을 찾는다.
-4. Response 타입과 parser를 찾는다.
-5. Response가 어떤 Data Object/Manager에 저장되는지 추적한다.
-6. UI가 어떤 필드를 읽는지 추적한다.
-7. Response 필드별 입력/의존 데이터를 역추적한다.
-8. Player State와 Static Data를 구분한다.
-9. 기존 Response Object/Manager 재사용 가능성을 판단한다.
-10. Static Data가 필요하지만 위치가 불명확한 경우에만 Unity Asset 분석을 후속 TASK로 만든다.
+4. Response 수신 지점을 찾는다.
+5. Decode/Decrypt/Decompress 여부를 확인한다.
+6. Deserialize/Parser와 Response 타입을 찾는다.
+7. Response가 어떤 Data Object/Manager에 저장되는지 추적한다.
+8. UI가 어떤 필드를 읽는지 추적한다.
+9. Response 필드별 입력/의존 데이터를 역추적한다.
+10. Player State와 Static Data를 구분한다.
+11. 서버 권한형 계산인지, 클라이언트에 기존 계산 로직이 있는지 구분한다.
+12. 기존 Response Object/Manager 재사용 가능성을 판단한다.
+13. 필요한 경우 Local Response Builder/Local Logic의 최소 범위를 정의한다.
+14. Static Data가 필요하지만 위치가 불명확한 경우에만 Unity Asset 분석을 후속 TASK로 만든다.
 
 ## 수정 금지
 
@@ -324,10 +514,36 @@ Static Data가 필요한 것으로 증명
 - 더미 성공값 적용 금지
 - Request/Response 이름만으로 역할 확정 금지
 - Static Data가 AssetBundle에 있다고 추정만 하고 확정하지 않기
+- 패킷 바이트만 보고 암호화/인코딩/필드 의미를 확정하지 않기
 
 ## 결과 파일
 
 `research/reports/TASK-005-result.md`
+
+결과 보고서에는 가능하면 다음 항목을 별도로 기록한다.
+
+```text
+Network Receive
+→ Decode/Decrypt/Decompress
+→ Deserialize
+→ Response Object
+→ Manager/Data Object
+→ UI
+```
+
+그리고 기능별로:
+
+```text
+Request
+Response
+Player State
+Static Data
+Server-only Logic 후보
+Client-existing Logic
+Local Logic 필요 범위
+```
+
+를 구분한다.
 
 ## 종료 기준
 
@@ -341,6 +557,12 @@ Static Data가 필요한 것으로 증명
 `Request + Player State + Static Data → Response`
 
 의 실제 의존성을 특정한다.
+
+추가로 바이너리 Response인 경우 가능하면:
+
+`Network Receive → Decode/Decrypt/Decompress → Deserialize → Response Object`
+
+경로를 특정한다.
 
 ### 부분 성공
 Request/Response 또는 일부 데이터 의존성만 특정했지만 후속 분석에 필요한 함수/XREF/타입이 확보된다.
