@@ -99,7 +99,7 @@ DB 저장
 GachaResponse
 ```
 
-이 구조는 현재 가설이며 실제 게임 코드로 증명해야 한다.
+이 구조는 실제 게임 코드로 증명해야 한다.
 
 이 경우 오프라인화의 목표는 단순히 `Request 성공` 또는 고정된 `Response`를 반환하는 것이 아니다.
 
@@ -149,23 +149,25 @@ Inventory 갱신
 
 복잡한 서버 로직 전체를 처음부터 native/ARM64 assembly로 재작성하는 것은 최후의 수단으로 한다.
 
-## 네트워크 패킷 관찰 자료와 Response 처리 단계
+## 네트워크 패킷과 암호화된 Response 분석
 
-실제 패킷 캡처에서 평문 JSON이 아니라 바이너리 헤더/필드 뒤에 Base64 계열 문자셋으로 보이는 긴 ASCII 데이터가 관찰될 수 있다.
-예시 관찰값에는 `A-Z`, `a-z`, `0-9`, `+`, `/`, `=`가 주로 사용되고 `pAA==` 형태로 종료되는 긴 문자열이 포함되어 있었다.
+실제 패킷에서 평문 JSON이 아니라 바이너리 헤더/필드 뒤에 긴 ASCII 데이터가 관찰되었다.
+관찰된 긴 영역은 `A-Z`, `a-z`, `0-9`, `+`, `/`, `=` 문자로 구성되고 `==`로 끝나는 형태였으며, 추가 확인 결과 **평문 Base64 데이터가 아니라 암호화된 데이터를 Base64 계열 표현으로 전달하는 형태로 판단한다.**
 
-현재 자료만으로 이를 Base64, 암호문, 압축 데이터 또는 특정 프로토콜이라고 확정하지 않는다.
+따라서 이 TASK에서는 해당 문자열을 단순한 Response 본문으로 취급하지 않는다.
 
-중요한 것은 패킷 자체를 복제하는 것이 아니라 **Network Receive 이후 실제 Response Object가 만들어지는 경로를 찾는 것**이다.
-
-가능한 구조:
+핵심 경로는 다음과 같이 잡는다.
 
 ```text
 Network Packet
     ↓
 Header / Length / Type / Sequence 등
     ↓
-Decode / Decrypt / Decompress ?
+Base64 Decode 또는 대응 Decode
+    ↓
+Decrypt / Decompress ?
+    ↓
+평문 Response Payload
     ↓
 Deserialize / Parse
     ↓
@@ -176,15 +178,22 @@ Manager / Data Object
 UI
 ```
 
-따라서 실제 조사에서 다음 단계를 증명한다.
+**중요:** 암호 알고리즘 자체를 먼저 복원하는 것이 목적이 아니다. 기존 클라이언트가 실제로 사용하는 `Decode → Decrypt → Deserialize → Response Object` 경계를 찾는 것이 우선이다.
 
-### 1. Network Receive 지점
+오프라인화에서는 가능하면 네트워크 패킷/암호화 프로토콜을 재현하지 않고, 암호화 이전 또는 Response Object 생성 직전의 기존 데이터 경로를 재사용한다.
 
-- 어떤 함수가 해당 패킷을 받는가?
+## Response 분석을 반드시 수행하는 단계
+
+Response는 패킷 분석과 별도로 하나의 독립적인 조사 단계로 기록한다.
+
+### 단계 A — Network Receive
+
+- 어떤 함수가 패킷을 받는가?
 - 수신 버퍼의 타입과 길이는 무엇인가?
 - 공통 네트워크 수신 함수인가, 기능별 함수인가?
+- 어떤 Request/기능에 대응하는 Response인가?
 
-### 2. Decode / Decrypt / Decompress 여부
+### 단계 B — Decode / Decrypt / Decompress
 
 다음 계열 API/함수의 사용 여부를 확인한다.
 
@@ -194,35 +203,117 @@ UI
 - 압축 해제
 - custom decode/decrypt
 
-특정 알고리즘은 이름만으로 확정하지 말고 실제 호출/XREF와 데이터 흐름으로 증명한다.
+알고리즘 이름만으로 확정하지 말고 실제 호출/XREF와 데이터 흐름으로 확인한다.
 
-### 3. Deserialize / Parser
+### 단계 C — 평문 Response Payload 확인
 
-다음 계열을 조사한다.
+복호화 이후의 데이터를 확보하고 다음을 기록한다.
 
-- JSON
+- payload 타입(byte[]/string 등)
+- 길이
+- JSON/XML인지
+- protobuf/MessagePack인지
+- custom binary인지
+- 사람이 읽을 수 있는 문자열이 존재하는지
+- 반복되는 필드/구조가 있는지
+
+가능하면 **암호화된 패킷과 복호화 직후 payload를 대응시켜** 어느 함수가 경계를 만드는지 특정한다.
+
+### 단계 D — Deserialize / Parser
+
+복호화된 payload가 어떤 Parser/Deserializer를 거치는지 추적한다.
+
+확인 대상:
+- JSON parser
 - protobuf
 - MessagePack
 - custom binary serializer
 - 기타 게임 전용 serialization
 
-Response 데이터가 어떤 타입으로 변환되는지 특정한다.
+그리고 반드시 다음을 특정한다.
 
-### 4. Response Object
+```text
+평문 payload
+    ↓
+Parser / Deserialize 함수
+    ↓
+실제 Response 타입
+```
 
-Decode/Deserialize 직후 만들어지거나 전달되는 실제 타입을 특정한다.
+### 단계 E — 실제 Response Object 분석
 
-- class/struct
-- 필드
+Decode/Decrypt/Deserialize 직후 만들어지거나 전달되는 실제 Response 타입을 특정한다.
+
+기록 항목:
+- class/struct 이름
+- 필드 목록
+- 필드 타입
 - constructor/factory
+- 생성 위치
 - callback
 - caller/callee
+- 성공/실패 상태값
+- 하위 Response/Data Object
 
-### 5. Response → Manager → UI
+특히 **Response 필드가 이후 어떤 Player State 또는 Static Data와 연결되는지** 추적한다.
 
-Response Object가 어느 Manager/Data Object로 전달되고 어떤 필드가 UI에 사용되는지 추적한다.
+### 단계 F — Response → Manager / Data Object → UI
 
-### 패킷 비교 조사
+Response Object가 어느 Manager/Data Object로 전달되는지 추적한다.
+
+```text
+Response Object
+    ↓
+Manager / Data Object
+    ↓
+Player State 갱신
+    ↓
+UI
+```
+
+UI가 실제로 읽는 Response/Data Object 필드까지 연결한다.
+
+이 단계가 끝나야 해당 Response가 오프라인에서 어떤 형태로 공급되어야 하는지 판단한다.
+
+## Response 값 분석 기준
+
+실제 Response를 확보하면 단순히 타입 이름만 기록하지 않는다.
+각 Response 필드에 대해 다음을 조사한다.
+
+| Response 필드 | 생성/파싱 위치 | 값의 출처 | Player State 영향 | Static Data 의존 | UI 사용처 | 서버 권한 여부 |
+|---|---|---|---|---|---|---|
+| 미확인 | 미확인 | 미확인 | 미확인 | 미확인 | 미확인 | 미확인 |
+
+값의 출처는 가능한 한 다음 중 하나로 분류한다.
+
+```text
+Request 직접 반영
+Player State 반영
+Static Data 반영
+Server 계산 결과
+Random/RNG 결과
+Event/Time 상태
+Session 상태
+기타
+```
+
+가변 Response의 경우 특히 다음 흐름을 추적한다.
+
+```text
+Request
+  ↓
+Response 결정 요소
+  ↓
+Response 필드
+  ↓
+Client Data Object
+  ↓
+UI / 다음 Request
+```
+
+이를 통해 단순한 고정 Response인지, Player State와 계산을 필요로 하는 동적 Response인지 구분한다.
+
+## 패킷 비교 조사
 
 가능하면 동일 기능의 서로 다른 Response를 비교한다.
 
@@ -254,8 +345,10 @@ Gacha 1회 C
 - sequence/request ID 후보
 - timestamp 후보
 - 결과/재화/인벤토리와 상관되는 변경 영역
+- 복호화 후 동일하게 유지되는 필드
+- 복호화 후 변경되는 필드
 
-단, 패킷 바이트만으로 특정 필드의 의미를 확정하지 않는다. 반드시 Decode/Deserialize 이후 객체 및 코드 흐름과 교차 검증한다.
+패킷 바이트만으로 특정 필드의 의미를 최종 확정하지 않는다. **복호화/Deserialize 이후 Response Object의 실제 필드와 교차 검증한다.**
 
 ## 가장 중요한 조사 질문
 
@@ -287,11 +380,13 @@ Gacha 1회 C
 
 확인 대상:
 - Response class/struct
+- 암호화/복호화 전후 payload
 - JSON/protobuf/custom binary 등 직렬화 형식
 - deserialize/parser
 - callback
 - 성공/실패 경로
 - Response → Data Object 변환
+- 주요 Response 필드의 실제 값 출처
 
 ### 3. Response를 결정하는 상태는 무엇인가?
 
@@ -495,15 +590,17 @@ Static Data가 필요한 것으로 증명
 3. 네트워크 전송 지점을 찾는다.
 4. Response 수신 지점을 찾는다.
 5. Decode/Decrypt/Decompress 여부를 확인한다.
-6. Deserialize/Parser와 Response 타입을 찾는다.
-7. Response가 어떤 Data Object/Manager에 저장되는지 추적한다.
-8. UI가 어떤 필드를 읽는지 추적한다.
-9. Response 필드별 입력/의존 데이터를 역추적한다.
-10. Player State와 Static Data를 구분한다.
-11. 서버 권한형 계산인지, 클라이언트에 기존 계산 로직이 있는지 구분한다.
-12. 기존 Response Object/Manager 재사용 가능성을 판단한다.
-13. 필요한 경우 Local Response Builder/Local Logic의 최소 범위를 정의한다.
-14. Static Data가 필요하지만 위치가 불명확한 경우에만 Unity Asset 분석을 후속 TASK로 만든다.
+6. **복호화 직후의 평문 Response Payload를 확인한다.**
+7. Deserialize/Parser와 실제 Response 타입을 찾는다.
+8. **Response 필드별 값의 출처와 의미를 역추적한다.**
+9. Response가 어떤 Data Object/Manager에 저장되는지 추적한다.
+10. UI가 어떤 필드를 읽는지 추적한다.
+11. Response 필드별 입력/의존 데이터를 역추적한다.
+12. Player State와 Static Data를 구분한다.
+13. 서버 권한형 계산인지, 클라이언트에 기존 계산 로직이 있는지 구분한다.
+14. 기존 Response Object/Manager 재사용 가능성을 판단한다.
+15. 필요한 경우 Local Response Builder/Local Logic의 최소 범위를 정의한다.
+16. Static Data가 필요하지만 위치가 불명확한 경우에만 Unity Asset 분석을 후속 TASK로 만든다.
 
 ## 수정 금지
 
@@ -514,7 +611,8 @@ Static Data가 필요한 것으로 증명
 - 더미 성공값 적용 금지
 - Request/Response 이름만으로 역할 확정 금지
 - Static Data가 AssetBundle에 있다고 추정만 하고 확정하지 않기
-- 패킷 바이트만 보고 암호화/인코딩/필드 의미를 확정하지 않기
+- 암호화된 패킷의 Base64-like 표현만 보고 평문 구조나 필드 의미를 확정하지 않기
+- 복호화/Deserialize 이후 실제 Response Object를 확인하기 전에는 Response 필드 의미를 최종 확정하지 않기
 
 ## 결과 파일
 
@@ -525,8 +623,10 @@ Static Data가 필요한 것으로 증명
 ```text
 Network Receive
 → Decode/Decrypt/Decompress
+→ 평문 Response Payload
 → Deserialize
 → Response Object
+→ Response Field Analysis
 → Manager/Data Object
 → UI
 ```
@@ -535,7 +635,11 @@ Network Receive
 
 ```text
 Request
-Response
+Encrypted Response / Packet
+Decode / Decrypt
+Plain Response Payload
+Response Type
+Response Fields
 Player State
 Static Data
 Server-only Logic 후보
@@ -550,7 +654,7 @@ Local Logic 필요 범위
 ### 성공
 최소 하나의 기능에 대해 다음을 증명한다.
 
-`Request → Response → Parser → Data Object/Manager → UI`
+`Request → Encrypted Response → Decode/Decrypt → Deserialize → Response → Data Object/Manager → UI`
 
 그리고 가능한 범위에서:
 
@@ -558,11 +662,7 @@ Local Logic 필요 범위
 
 의 실제 의존성을 특정한다.
 
-추가로 바이너리 Response인 경우 가능하면:
-
-`Network Receive → Decode/Decrypt/Decompress → Deserialize → Response Object`
-
-경로를 특정한다.
+또한 주요 Response 필드에 대해 값의 출처와 UI/상태 갱신 경로를 특정한다.
 
 ### 부분 성공
 Request/Response 또는 일부 데이터 의존성만 특정했지만 후속 분석에 필요한 함수/XREF/타입이 확보된다.
