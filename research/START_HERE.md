@@ -14,6 +14,8 @@
 
 KBC 문서별 참고 가이드: `research/REFERENCE_KBC_DOCUMENTS.md`
 
+Protocol/PCAP/Crypto 작업 절차: `research/PROTOCOL_CAPTURE_AND_CRYPTO_WORKFLOW.md`
+
 ## 2. 참고용 King Bug Castle 자료
 
 `참고용-another_app/` 폴더에는 다른 게임인 **King Bug Castle(KBC) Private Server / Reverse Engineering 프로젝트**가 참고용으로 포함되어 있다.
@@ -60,8 +62,6 @@ Codex
  → 실제 화면 및 게임 동작 확인
 ```
 
-상세 규칙: `research/CODEX_PROTOCOL.md`, `research/RUNTIME_PROTOCOL.md`
-
 ## 4. 개발 원칙
 
 ### Client
@@ -106,6 +106,8 @@ Request
 현재 오프라인에서는 로그인 무한 로딩이 최초 확실한 실패 지점이다.
 
 먼저 실제 로그인 Request/Response contract를 증명하고 최소 Local Server로 Main Menu 진입을 만든다.
+
+PCAP을 확보한 경우에는 `PROTOCOL_CAPTURE_AND_CRYPTO_WORKFLOW.md`의 절차에 따라 로그인 flow부터 분석한다. Raw ciphertext 자체를 목표로 하지 않고 `Serialize → Encrypt/Encode → Transport → Receive → Decrypt/Decode → Deserialize` 연결을 증명한다.
 
 ## 6. 이후 진행
 
@@ -161,15 +163,47 @@ Request Creator
  → Persistence Effect
 ```
 
-을 추적한다.
+PCAP을 사용할 때도 이 포맷을 유지한다. 추가로 Transport/TLS, Packet Framing, Integrity/Signature, Application Crypto를 각각 분리 기록한다.
 
-## 9. Codex 작업 규칙
+## 9. Response Contract + Master Data
+
+정상 서버에서 수집한 패킷은 가능한 기능별 Contract로 정규화한다. 모든 raw packet을 GPT에 반복 전달하지 않는다.
+
+```text
+Normal Runtime PCAP
+        +
+Client Static Analysis
+        +
+Local Runtime Verification
+        ↓
+Contract Registry
+        ↓
+Local Server
+```
+
+Response에서 발견되는 `itemId`, `monsterId`, `stageId`, `characterId`, `rewardId` 등은 Master Data 후보로 함께 추출한다.
+
+```text
+Response
+ ├─ itemId ─────→ Item Master
+ ├─ monsterId ──→ Monster Master
+ ├─ stageId ────→ Stage Master
+ └─ characterId → Character Master
+```
+
+각 필드는 `CONFIRMED / PROBABLE / UNKNOWN`으로 관리하며, Client static data를 실제 서버 authoritative state와 동일하다고 단정하지 않는다.
+
+상세 절차: `research/PROTOCOL_CAPTURE_AND_CRYPTO_WORKFLOW.md`
+
+## 10. Codex 작업 규칙
 
 - GPT가 지정한 TASK 외의 새로운 방향을 독자적으로 확정하지 않는다.
 - 조사 단계에서는 수정하지 않는다.
 - 주소/함수 의미를 이름만으로 단정하지 않는다.
 - 증거는 XREF + decompile + assembly + runtime을 함께 기록한다.
 - Local Server 구현 시 실제 확인된 API contract를 우선한다.
+- PCAP은 Protocol/Transport 구조를 확인하는 증거로 사용하고, 암호화 방식은 Client의 Encrypt/Decrypt XREF와 연결해서 확정한다.
+- 암호화를 분석할 때는 무조건 제거하는 방향으로 가지 말고 원본 Client의 crypto/transport를 최대한 재사용할 수 있는지 먼저 확인한다.
 - `참고용-another_app/`은 구조/기술 참고용으로 사용할 수 있으나 게임 고유 데이터는 복사하지 않는다.
 - KBC와 현재 게임의 정보가 충돌하면 현재 게임에서 확인된 증거를 우선한다.
 - KBC Login/CDN 문서는 구현 구조와 workflow 참고용으로 사용하고, endpoint/schema/auth/crypto/asset data는 현재 게임에서 다시 검증한다.
@@ -177,18 +211,19 @@ Request Creator
 - 결과는 `research/reports/TASK-xxx-result.md`에 기록한다.
 - 작업 완료 후 Git에 push하고 GPT의 다음 지시를 기다린다.
 
-## 10. 문서 우선순위
+## 11. 문서 우선순위
 
 1. `START_HERE.md`
 2. `ARCHITECTURE_DIRECTION.md`
 3. `CURRENT_STATE.md`
 4. `REFERENCE_ANOTHER_APP.md`
 5. `REFERENCE_KBC_DOCUMENTS.md`
-6. `CODEX_PROTOCOL.md`
-7. `RUNTIME_PROTOCOL.md`
-8. `OFFLINE_TEST_MATRIX.md`
-9. `DUNGEON_REWARD_AND_GACHA_AUTHORITY.md`
-10. `reports/`
-11. `runtime/`
+6. `PROTOCOL_CAPTURE_AND_CRYPTO_WORKFLOW.md`
+7. `CODEX_PROTOCOL.md`
+8. `RUNTIME_PROTOCOL.md`
+9. `OFFLINE_TEST_MATRIX.md`
+10. `DUNGEON_REWARD_AND_GACHA_AUTHORITY.md`
+11. `reports/`
+12. `runtime/`
 
 오래된 문서의 완전 Client Local화 문구는 현재 방향과 충돌할 경우 참고용으로만 취급한다.
