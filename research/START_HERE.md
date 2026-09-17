@@ -12,11 +12,15 @@
 
 참고 구현: `research/REFERENCE_ANOTHER_APP.md`
 
+KBC 문서별 참고 가이드: `research/REFERENCE_KBC_DOCUMENTS.md`
+
 ## 2. 참고용 King Bug Castle 자료
 
 `참고용-another_app/` 폴더에는 다른 게임인 **King Bug Castle(KBC) Private Server / Reverse Engineering 프로젝트**가 참고용으로 포함되어 있다.
 
 이 자료는 **서버 구축 방식·구조·기술·개발 workflow를 참고하기 위한 것**이다. KBC의 게임 자체 데이터는 현재 대상 게임과 다르므로 그대로 사용하지 않는다.
+
+특히 Login/Auth, CDN/Asset, Runtime/Build, Handover/Workflow 관련 문서는 현재 프로젝트의 Local Private Server 방향을 설계할 때 참고한다. 자세한 문서별 정리는 `research/REFERENCE_KBC_DOCUMENTS.md`를 따른다.
 
 ### 참고 가능
 - Private Server / API Emulation 구조
@@ -41,7 +45,7 @@
 - 바이너리 offset, 함수 주소, hook 대상
 - 기타 KBC에만 존재하는 게임 고유 데이터
 
-**기준:** KBC에서는 "어떻게 만들었는가"를 배우고, 현재 게임에서는 "무엇을 넣어야 하는가"를 실제 분석으로 결정한다. 자세한 규칙은 `research/REFERENCE_ANOTHER_APP.md`를 따른다.
+**기준:** KBC에서는 "어떻게 만들었는가"를 배우고, 현재 게임에서는 "무엇을 넣어야 하는가"를 실제 분석으로 결정한다. 자세한 규칙은 `research/REFERENCE_ANOTHER_APP.md`와 `research/REFERENCE_KBC_DOCUMENTS.md`를 따른다.
 
 ## 3. 역할
 
@@ -168,6 +172,7 @@ Request Creator
 - Local Server 구현 시 실제 확인된 API contract를 우선한다.
 - `참고용-another_app/`은 구조/기술 참고용으로 사용할 수 있으나 게임 고유 데이터는 복사하지 않는다.
 - KBC와 현재 게임의 정보가 충돌하면 현재 게임에서 확인된 증거를 우선한다.
+- KBC Login/CDN 문서는 구현 구조와 workflow 참고용으로 사용하고, endpoint/schema/auth/crypto/asset data는 현재 게임에서 다시 검증한다.
 - 사용자는 ADB/logcat/터미널 작업을 하지 않는다.
 - 결과는 `research/reports/TASK-xxx-result.md`에 기록한다.
 - 작업 완료 후 Git에 push하고 GPT의 다음 지시를 기다린다.
@@ -178,11 +183,12 @@ Request Creator
 2. `ARCHITECTURE_DIRECTION.md`
 3. `CURRENT_STATE.md`
 4. `REFERENCE_ANOTHER_APP.md`
-5. `CODEX_PROTOCOL.md`
-6. `RUNTIME_PROTOCOL.md`
-7. `OFFLINE_TEST_MATRIX.md`
-8. `DUNGEON_REWARD_AND_GACHA_AUTHORITY.md`
-9. `reports/`
-10. `runtime/`
+5. `REFERENCE_KBC_DOCUMENTS.md`
+6. `CODEX_PROTOCOL.md`
+7. `RUNTIME_PROTOCOL.md`
+8. `OFFLINE_TEST_MATRIX.md`
+9. `DUNGEON_REWARD_AND_GACHA_AUTHORITY.md`
+10. `reports/`
+11. `runtime/`
 
 오래된 문서의 완전 Client Local화 문구는 현재 방향과 충돌할 경우 참고용으로만 취급한다.
