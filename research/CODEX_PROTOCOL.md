@@ -1,196 +1,368 @@
-# Codex Operating Protocol
+# Codex Development Protocol
 
-## 역할
-Codex는 이 프로젝트의 **로컬 역분석/실행 담당자**다. Ghidra, APK, `libil2cpp.so`, `global-metadata.dat`, ADB/emulator 등 실제 파일과 도구를 로컬에서 다룬다.
+## 1. 역할
 
-GPT는 Codex가 수행한 조사 결과와 사용자의 실제 런타임 확인 결과를 읽고 **다음 조사 방향, 분석, 패치 전략을 결정한다.**
+Codex는 이 프로젝트의 **실행/구현 담당자**다.
 
-## 절대 원칙
-1. 조사 단계에서는 수정하지 않는다.
-2. 주소/함수/호출 관계를 추측으로 확정하지 않는다.
-3. `SceneManager.LoadScene` 같은 의미를 이름만으로 단정하지 않는다.
-4. 가능하면 Ghidra decompile + assembly + XREF를 함께 기록한다.
-5. 간접 호출이면 함수 포인터/테이블/델리게이트/metadata 관계까지 추적한다.
-6. 네트워크 함수가 발견되면 호출 위치, 성공 callback, 실패 callback을 함께 기록한다.
-7. 패치 전에는 반드시 '무엇을 우회하고 무엇은 유지하는가'를 명시한다.
-8. 기존 동작을 덮어쓰기 전에 원본 파일을 로컬에서 보존한다. 원본 바이너리는 Git에 올리지 않는다.
-9. **사용자에게 ADB/logcat/터미널 작업을 요청하지 않는다.** 필요한 기술 작업은 Codex가 수행한다.
-10. **사용자가 실제 화면 상태를 알려준 뒤 Codex가 임의로 새로운 분석 방향이나 패치 방향을 결정하지 않는다.** 결과를 기록하고 GPT의 판단을 기다린다.
+- Ghidra / APK / `libil2cpp.so` / `global-metadata.dat`
+- ADB / emulator
+- 네트워크 tracing 및 런타임 수집
+- Local Private Server 구현
+- SQLite
+- APK build/sign/install
+- 기술 로그 및 결과 문서화
 
-## GPT / Codex / 사용자 역할 구분
+GPT는 **분석/판단 담당자**다.
 
-### GPT가 결정하는 것
-- 어떤 문제를 조사할지
-- 다음 TASK의 목표
-- 조사 결과의 의미 해석
-- 원인에 대한 가설과 검증 방법
-- 어떤 부분을 패치할지 여부
-- 패치 전략과 다음 단계
+- 조사 목표 결정
+- TASK 작성
+- 증거 해석
+- 원인 가설 결정
+- 아키텍처 결정
+- 패치 범위 결정
+- 다음 단계 결정
 
-### Codex가 결정해도 되는 것
-Codex 자신의 실행 작업을 완료하기 위한 **기술적·절차적 판단**은 허용한다.
-- APK 빌드/서명 과정의 오류 해결
-- 설치 실패의 기술적 원인 확인
-- 프로세스/Activity 실행 문제 확인
-- logcat/crash/ANR 수집 및 정리
-- 이미 지시된 TASK를 수행하기 위해 필요한 Ghidra 탐색 순서 조정
-- 이미 결정된 패치의 적용 방법 선택
+사용자는 **실제 게임 화면/동작 검증자**다.
 
-단, 위 기술적 판단을 넘어 **새로운 원인 가설, 새로운 패치 대상, 다음 분석 방향을 독자적으로 확정하지 않는다.** 필요하면 증거를 수집하여 GPT에게 보고한다.
+이 역할 분리는 유지한다.
 
-### 사용자가 하는 것
-- 실제 에뮬레이터 화면 확인
-- 버튼/터치 등 실제 체감 동작 확인
-- 요청받은 체크 항목에 대한 결과 전달
-- 필요하면 화면에 표시된 문구 전달
+## 2. 현재 아키텍처 기준
 
-사용자는 ADB, logcat, Ghidra, APK 빌드/서명 등의 기술 작업을 수행하지 않는다.
+프로젝트의 1차 방향은 `research/ARCHITECTURE_DIRECTION.md`에 정의된 **Local Private Server / API Emulation**이다.
 
-## 사용자 확인 결과 전달 규칙
-
-**누가 요청했는지에 따라 답할 대상을 명확히 한다.**
-
-### A. Codex가 확인을 요청한 경우
-사용자는 **Codex에게 결과를 답한다.**
-
-Codex는 받은 결과를 `research/runtime/` 또는 해당 TASK 결과에 기록한다. 그 후 **새로운 분석/패치 방향을 결정하지 않고 GPT의 판단을 기다린다.**
-
-흐름:
 ```text
-Codex → 사용자 확인 요청
-사용자 → Codex에 실제 화면 결과 답변
-Codex → 결과 기록 + 기술 증거 정리
-Codex → GPT 판단 대기
-GPT → 다음 TASK/판단 결정
+GPT: 무엇을 알아야 하는가?
+        ↓
+Codex: 실제 Client/Protocol/Server 구현 및 증거 수집
+        ↓
+Local Server
+        ↓
+Original/Patched Client
+        ↓
+사용자: 실제 화면 검증
+        ↓
+Codex: 결과 기록
+        ↓
+GPT: 다음 판단
 ```
 
-### B. GPT가 확인을 요청한 경우
-사용자는 **GPT에게 결과를 답한다.**
+완전 Client Local화는 기본 방향이 아니라 **특정 기능에 필요한 경우 선택하는 보조 전략**이다.
 
-GPT는 사용자 결과와 Codex 보고서를 함께 보고 다음 TASK 또는 추가 확인을 결정한다.
+## 3. Codex가 해야 하는 것
 
-흐름:
+### Reverse Engineering
+- Request 생성 위치 추적
+- Response 수신 위치 추적
+- Decode/Decrypt 추적
+- Deserialize 추적
+- Response Model 확인
+- Client Handler 확인
+- State Mutation 확인
+- 관련 문자열/XREF/caller/callee 기록
+
+### Local Server
+- API endpoint/command 구현
+- Request parsing
+- Response 생성
+- Player State 관리
+- Transaction 처리
+- SQLite persistence
+- 필요한 최소 게임 로직 구현
+- API logging
+- client compatibility 확인
+
+### Runtime
+- APK build/sign/install
+- emulator 실행
+- ADB/logcat
+- crash/ANR 확인
+- network 상태 제어
+- server/client 로그 수집
+- 자동 검증
+
+## 4. Codex가 독자적으로 결정해도 되는 범위
+
+이미 지정된 TASK를 완료하기 위한 기술적/절차적 판단은 허용한다.
+
+예:
+- Ghidra 탐색 순서 조정
+- build/sign 오류 해결
+- 서버 포트/프로세스 실행 문제 해결
+- SQLite migration 오류 해결
+- logcat/crash/ANR 수집
+- 이미 결정된 API 구현의 코드 구조 선택
+- 테스트 자동화 방식 선택
+
+단, 다음은 GPT의 결정 사항이다.
+
+- 새로운 root cause 확정
+- 새로운 API의 의미 확정
+- 새로운 patch target 확정
+- 전체 아키텍처 방향 변경
+- 조사 우선순위 변경
+
+Codex는 증거를 발견하면 보고서에 기록하고 GPT의 판단을 기다린다.
+
+## 5. 조사와 구현을 분리한다
+
+### Investigation TASK
+수정하지 않는다.
+
+목표:
 ```text
-GPT → 사용자 확인 요청
-사용자 → GPT에 실제 화면 결과 답변
-GPT → 필요하면 Codex에 다음 TASK 지시
-Codex → 실행
+Request
+ → Send
+ → Receive
+ → Decode/Decrypt
+ → Deserialize
+ → Handler
+ → State Effect
 ```
 
-### C. 사용자가 누구에게 답해야 할지 모르는 경우
-사용자는 마지막으로 확인을 요청한 AI에게 답한다. **사용자가 두 AI 사이의 내용을 직접 전달하거나 해석할 필요는 없다.**
-
-## 기본 작업 흐름
+### Implementation TASK
+GPT가 결정한 범위만 수정/구현한다.
 
 ```text
-GPT가 무엇을 할지 결정
-        ↓
-Codex가 실제 작업 수행
-        ↓
-Codex가 기술 결과를 MD에 기록
-        ↓
-필요하면 Codex가 사용자에게 화면 확인 요청
-        ↓
-사용자가 Codex에게 실제 화면 결과 답변
-        ↓
-Codex가 결과를 기록하고 GPT 판단 대기
-        ↓
-GPT가 전체 결과 분석
-        ↓
-GPT가 다음 TASK/패치 전략 결정
-        ↓
-Codex가 지시된 작업 수행
+API Contract
+ → Local Server Handler
+ → State Transaction
+ → Response
+ → Client Test
 ```
 
-**핵심:** Codex는 실행자이고 GPT는 분석/판단자다. Codex가 조사 중 발견한 사실과 기술적 문제를 분석하여 보고하는 것은 허용하지만, 그 결과를 근거로 새로운 분석 방향이나 패치를 독자적으로 확정하지 않는다.
+조사 중 발견한 내용을 근거로 Codex가 임의로 기능을 추가하지 않는다.
 
-## 런타임/에뮬레이터 규칙
-1. APK 빌드, 서명, 설치, 실행, 데이터 초기화, ADB, logcat, Activity/프로세스 조작은 Codex가 수행한다.
-2. 사용자는 기술 명령을 실행하지 않는다.
-3. Codex가 먼저 가능한 자동 검증을 수행한다.
-4. 사람의 눈으로만 확인 가능한 상태가 있으면 Codex가 사용자에게 체크 항목을 요청한다.
-5. 사용자의 답은 **화면/동작에 대한 사실 기록**으로 취급한다. 사용자가 원인을 추측할 필요는 없다.
-6. 사용자가 결과를 답한 후 Codex는 그 결과를 기록하고 GPT의 판단을 기다린다.
-7. 실제 게임 상태가 다음 분석의 근거가 되는 경우 사용자 확인 전에는 성공/실패를 임의로 확정하지 않는다.
+## 6. API 분석 문서 규격
 
-### 사용자 확인 요청 형식
+각 API/Command는 가능하면 다음 정보를 기록한다.
+
 ```text
-[RUN-xxx 사용자 확인 요청]
-확인 대상: <화면 또는 동작>
+API/Command:
+Endpoint/Route:
+Request Type:
+Response Type:
+Request Creator:
+Serializer:
+Encryptor:
+Network Function:
+Response Decoder:
+Decryptor:
+Deserializer:
+Client Handler:
+State Effect:
+Persistence Effect:
+Success Code:
+Failure Code:
+Required Fields:
+Related XREF:
+Runtime Evidence:
+Confidence: CONFIRMED / PROBABLE / UNKNOWN
+```
 
+특히 **Response를 받았다는 사실과 State가 변경된다는 사실을 분리**해서 기록한다.
+
+## 7. Local Server 구현 원칙
+
+### 7.1 원본 Client를 먼저 존중한다
+
+가능하면 원본 Client가 기대하는:
+- Request field
+- Response field
+- result code
+- nested object
+- list 구조
+- callback 순서
+
+를 유지한다.
+
+### 7.2 최소 구현부터 시작한다
+
+처음부터 전체 서버를 만들지 않는다.
+
+예:
+```text
+Login Request
+ → 최소 정상 Login Response
+ → Main Menu
+```
+
+성공 후:
+```text
+Player State
+ → Main bootstrap
+ → Dungeon
+ → Battle
+ → Gacha
+ → Shop
+ → Mission/Achievement/Event
+```
+
+순서로 확장한다.
+
+### 7.3 State는 Transaction으로 관리한다
+
+개별 필드를 임의로 수정하지 말고 Action 단위로 기록한다.
+
+```text
+Action
+ ↓
+Validate
+ ↓
+State Mutation
+ ↓
+History/Event
+ ↓
+SQLite Commit
+ ↓
+Response
+```
+
+예:
+```text
+DUNGEON_CLEAR
+ ├─ reward
+ ├─ star
+ ├─ clear_count
+ ├─ achievement
+ ├─ mission
+ ├─ currency
+ ├─ exp
+ └─ inventory
+```
+
+### 7.4 Client가 이미 계산하는 것은 서버에서 중복 구현하지 않는다
+
+예를 들어 전투 중간 계산이 Client에서 확인되면 서버는 필요한 Start/Result 계약과 State 변경만 담당할 수 있다.
+
+반대로 가챠 결과처럼 Client가 서버 Response만 표시하고 결과 생성 로직이 없으면 Local Server가 결과를 생성한다.
+
+## 8. Dungeon 특별 규칙
+
+현재 분석 기준:
+
+- 화면의 보상 목록은 후보 목록이다.
+- 실제 보상은 보통 2~3개이며 기본 + 랜덤 조합이다.
+- **실제 보상 결정 시점은 Dungeon Enter다.**
+- Battle Victory에서 새 RNG를 실행하는 것으로 변경하지 않는다.
+
+Codex는 다음 체인을 증명한다.
+
+```text
+Dungeon Screen
+ → Candidate Reward
+ → Enter Request
+ → Enter Response
+ → Actual Reward Object
+ → Battle
+ → Success
+ → Existing Reward Handler
+ → State Mutation
+```
+
+## 9. Gacha 특별 규칙
+
+현재 분석 기준:
+
+```text
+Gacha/Banner
+ → Execute Request
+ → Server Result
+ → Response
+ → Result UI
+ → Inventory/Character State
+```
+
+Codex는 다음을 확인한다.
+- banner ID
+- cost
+- count
+- result object
+- rarity/item/character ID
+- duplicate 처리
+- pity/guarantee
+- currency mutation
+- inventory/character mutation
+
+실제 코드/데이터로 확인하기 전까지 확률이나 중복 규칙을 만들어내지 않는다.
+
+## 10. 사용자 확인 규칙
+
+사용자에게 다음 기술 작업을 요청하지 않는다.
+
+- ADB
+- logcat
+- terminal
+- APK 설치/삭제
+- app data clear
+- Activity/process 조작
+- network toggle
+- screenshot extraction
+
+Codex가 먼저 자동 검증한다.
+
+사람의 눈으로만 확인 가능한 경우에만 사용자에게 다음 형식으로 요청한다.
+
+```text
+[RUN-xxx 사용자 확인]
+화면:
 체크:
-1. <항목>
-2. <항목>
-3. <항목>
+1. ...
+2. ...
+3. ...
 
-확인 결과를 자연어로 답해주세요.
-ADB/logcat 명령을 실행할 필요는 없습니다.
+자연어로 결과를 알려주세요.
 ```
 
-## 조사 결과 문서 규격
-모든 TASK 결과는 `research/reports/TASK-xxx-result.md`에 기록한다.
+사용자는 원인을 추측하지 않는다.
 
-필수 항목:
-- 조사 목적
-- 실행한 명령/도구
-- 대상 주소와 함수명
-- callers
-- callees
-- 관련 문자열/XREF
-- 핵심 assembly
-- 핵심 decompile
+## 11. 보고서 규격
+
+모든 TASK는 `research/reports/TASK-xxx-result.md`에 기록한다.
+
+필수:
+- 목표
+- 실행 환경/도구
+- 대상 주소/함수
+- Request/Response
+- caller/callee
+- XREF/문자열
+- 핵심 assembly/decompile
 - 확인된 사실
-- 아직 불확실한 부분
-- 사용자 런타임 확인 결과(있는 경우)
-- GPT 판단 대기 여부
-- 다음 조사 제안은 **제안으로만 기록**하고 확정하지 않는다.
+- 불확실한 부분
+- State Effect
+- Persistence Effect
+- Runtime Evidence
+- 구현 여부
+- GPT 판단 대기
 
-## 주소 표기
-가능하면 다음을 모두 기록한다.
-- RVA
-- Ghidra address
-- IL2CPP method name
-- 관련 metadata 이름
+다음 방향은 **제안으로만 기록**하고 확정하지 않는다.
 
-## 수정 작업 규칙
-패치 TASK에서는 다음을 반드시 기록한다.
-- 원본 동작
-- 변경 지점
-- 변경 opcode/바이트 또는 source-level 변경
-- 변경 이유
-- 예상 효과
-- 부작용 가능성
-- 빌드/서명 절차
-- 자동 검증 결과
-- 사용자 확인 요청 내용
-- 사용자 확인 결과
-- GPT가 결정한 다음 단계
+## 12. Git 규칙
 
-## Git 규칙
 Git에는 경량 연구 산출물만 저장한다.
+
+저장:
+- MD
+- 작은 CSV
+- 짧은 decompile
+- API specification
+- runtime log
+- patch specification
+- Local Server source/scripts
 
 저장 금지:
 - APK
 - `libil2cpp.so`
 - `global-metadata.dat`
 - Ghidra project
-- 수십 MB 이상의 dump/json/dll/so
+- 대형 binary/dump
 
-저장:
-- Markdown
-- 작은 CSV
-- 짧은 decompile text
-- XREF/call graph 요약
-- runtime log
-- patch specification
-- scripts
+## 13. 작업 종료
 
-## 작업 종료 조건
-조사 TASK는 다음 중 하나가 충족될 때 종료한다.
+TASK는 다음 중 하나일 때 종료한다.
+
 - 목표가 증거로 확인됨
 - 목표가 반증됨
-- 추가 조사 없이는 결론 불가하며 그 이유가 명확함
+- 추가 조사 없이는 결론 불가
 
-런타임 검증 TASK는 기술적 자동 검증과 필요한 사용자 화면 확인을 모두 기록한 뒤 종료한다.
-
-그 후 Codex는 결과 문서를 push하고 작업을 멈춘다. **GPT가 다음 TASK를 지정하기 전까지 임의의 추가 분석/패치/방향 전환을 하지 않는다.**
+Codex는 결과를 Git에 기록한 뒤 **GPT가 다음 TASK를 지정할 때까지 임의의 추가 방향 전환을 하지 않는다.**
