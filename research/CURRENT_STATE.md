@@ -275,3 +275,24 @@ Local Server 방식으로 진행했을 때 특정 기능이 오히려 복잡해�
 7. `research/runtime/` — 실제 실행 기록
 
 오래된 '완전 Client Local' 설계 문구가 위 문서와 충돌하면 현재 문서의 Local Server 중심 방향을 우선한다.
+
+## 14. 추가 분석 포인트 — 2026-09-18
+
+기존 MD를 기준으로 다음 영역은 추가 증거 확보 가치가 높다.
+
+1. **정적 Data ↔ Response 매핑**
+   - Item/Package/Shop/Draw 계열 ID 연결
+   - 보상 후보 → 실제 보상 → 인벤토리 ID 변환 경로
+2. **시간/이벤트 State**
+   - Daily Reward, Attendance, Mission, Achievement, 기간한정 Event의 시작/종료/수령 조건
+   - 서버 시간과 Client 표시 시간의 경계
+3. **가챠 확장**
+   - DrawRecord / DrawpreviewRecord / ItemPackage / ShopRecord 연결
+   - 상시/한정/특수 Banner 식별
+   - cost/count/pity/duplicate/history 필드 추적
+4. **Bootstrap State**
+   - Login 직후 내려오는 초기 Player/Inventory/Currency/Event/Gacha 데이터와 Main 진입 필수 Response 분리
+5. **공통 State Mutation**
+   - 여러 API에서 반복 호출되는 Currency/Inventory/Progress 갱신 함수 식별 → Local Server Transaction 모델의 기준으로 사용
+
+우선순위는 **Bootstrap → 공통 State Mutation → Reward/Event → Gacha/Shop** 순으로 잡는다.
