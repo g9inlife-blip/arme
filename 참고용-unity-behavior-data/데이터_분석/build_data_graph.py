@@ -35,6 +35,18 @@ def load_json(path: Path) -> Any:
         return json.load(f)
 
 
+def safe_load_json(path: Path, parse_errors: list[dict[str, str]]) -> Any | None:
+    try:
+        return load_json(path)
+    except Exception as exc:
+        parse_errors.append({
+            "file": str(path),
+            "error_type": type(exc).__name__,
+            "error": str(exc),
+        })
+        return None
+
+
 def is_id_key(key: str) -> bool:
     return key.lower() in ID_KEYS
 
@@ -229,7 +241,7 @@ def main():
     for path in json_files:
         rel = json_rel(path, data_root)
         try:
-            data = load_json(path)
+            data = safe_load_json(path, parse_errors)
         except Exception as exc:
             parse_errors.append({"file": rel, "error": repr(exc)})
             continue
