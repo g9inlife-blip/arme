@@ -409,3 +409,25 @@ Runtime:
 User Verification:
 Result: PASS / FAIL / NEED_MORE_INVESTIGATION
 ```
+
+## 17. 추가 분석 체크리스트 — Data/Event 계층
+
+기능별 API 분석과 별도로 **정적 Data와 Player State의 연결**을 확인한다.
+
+```text
+Static Data
+ → ID/Package/Reward Table
+ → Request/Response
+ → Player State Mutation
+ → UI
+```
+
+추가 대상:
+- Daily Reward / Attendance
+- Mission / Achievement
+- 기간한정 Event / Limited Gacha
+- Shop 상품/구매 제한
+- Gacha Banner / Draw / Package / Result
+- 서버 시간/시즌/기간 조건
+
+각 항목은 `Data ID → Response field → State field → 저장 위치`까지 연결되면 분석 완료로 본다.
