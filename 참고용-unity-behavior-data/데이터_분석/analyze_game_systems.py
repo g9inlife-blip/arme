@@ -125,7 +125,7 @@ def load_json(path: Path) -> Any:
 
 
 def collect_name_values(obj: Any, prefix: str = "$", out: list[dict[str, Any]] | None = None):
-    """원본 JSON에서 사람이 읽을 수 있는 명칭 후보만 추출한다."""
+    """주어진 Record 내부에서 사람이 읽을 수 있는 명칭 후보를 추출한다."""
     if out is None:
         out = []
     if isinstance(obj, dict):
@@ -134,16 +134,30 @@ def collect_name_values(obj: Any, prefix: str = "$", out: list[dict[str, Any]] |
             if isinstance(value, str) and value.strip() and any(token in key_l for token in (
                 "name", "title", "display", "label", "desc", "description"
             )):
-                out.append({
-                    "field": f"{prefix}.{key}",
-                    "value": value.strip(),
-                })
+                out.append({"field": f"{prefix}.{key}", "value": value.strip()})
             collect_name_values(value, f"{prefix}.{key}", out)
     elif isinstance(obj, list):
         for i, value in enumerate(obj):
             collect_name_values(value, f"{prefix}[{i}]", out)
     return out
 
+
+def get_json_path(obj: Any, path: str) -> Any:
+    """build_data_graph.py의 $/foo[0]/bar 형태 Record path를 따라간다."""
+    if path == "$":
+        return obj
+    current = obj
+    tokens = re.findall(r"\.([^.\[\]]+)|\[(\d+)\]", path[1:])
+    for key, index in tokens:
+        if index:
+            if not isinstance(current, list):
+                return None
+            current = current[int(index)]
+        else:
+            if not isinstance(current, dict) or key not in current:
+                return None
+            current = current[key]
+    return current
 
 def read_ndjson(path: Path):
     if not path.exists():
@@ -324,28 +338,30 @@ def main():
                 item["structured_multi_id_items"] += count
             apply_evidence(item, row)
 
-    # 후보가 참조하는 원본 파일을 한 번씩만 읽어 명칭을 보강한다.
-    name_cache: dict[str, list[dict[str, Any]]] = {}
+    # 후보가 참조하는 원본 파일을 한 번씩만 읽고, build_data_graph.py가 기록한
+    # 정확한 Record path에서 명칭을 추출한다.
+    json_cache: dict[str, Any] = {}
     name_errors = []
     for item in candidates.values():
         source_file = str(item["source_file"])
         source_path = str(item["path"])
         if not source_file:
             continue
-        if source_file not in name_cache:
+        if source_file not in json_cache:
             source_path_obj = (args.data_root / source_file).resolve()
             try:
-                raw = load_json(source_path_obj)
-                name_cache[source_file] = collect_name_values(raw)
+                json_cache[source_file] = load_json(source_path_obj)
             except Exception as exc:
-                name_cache[source_file] = []
+                json_cache[source_file] = None
                 name_errors.append({
                     "file": source_file,
                     "error": f"{type(exc).__name__}: {exc}",
                 })
-        names = name_cache.get(source_file, [])
-        # Record path와 가장 가까운 명칭을 우선하되, 파일 내 명칭도 최대 30개까지 제공한다.
-        item["name_candidates"] = names[:30]
+        raw = json_cache.get(source_file)
+        record_obj = get_json_path(raw, source_path) if raw is not None else None
+        names = collect_name_values(record_obj) if record_obj is not None else []
+        item["name_candidates"] = names[:50]
+        item["has_human_readable_name"] = bool(names)
 
     inventory = []
     for item in candidates.values():
@@ -387,7 +403,7 @@ def main():
         "top_reference_fields": field_counts.most_common(100),
         "name_enrichment": {
             "data_root": str(args.data_root.resolve()),
-            "source_files_loaded": len(name_cache),
+            "source_files_loaded": len(json_cache),
             "errors": len(name_errors),
         },
         "notes": [
