@@ -119,26 +119,49 @@ def candidate_for_record(path: str, rid: str, obj: dict[str, Any], source_file: 
     }
 
 
-def load_json(path: Path) -> Any:
-    with path.open("r", encoding="utf-8-sig") as f:
-        return json.load(f)
+def collect_name_values(
+    obj: Any,
+    prefix: str = "$",
+    out: list[dict[str, Any]] | None = None,
+    source_file: str = "",
+):
+    """Record 명칭 후보를 추출한다.
 
-
-def collect_name_values(obj: Any, prefix: str = "$", out: list[dict[str, Any]] | None = None):
-    """주어진 Record 내부에서 사람이 읽을 수 있는 명칭 후보를 추출한다."""
+    Word__krRecord.json 계열은 m_name이 아니라 m_cn을 한국어 명칭으로 사용한다.
+    따라서 해당 파일에서는 m_name을 이름 후보로 취급하지 않고 m_cn을 우선/전용으로 추출한다.
+    """
     if out is None:
         out = []
+
+    is_kr_record = bool(re.search(r"__krRecord\.json$", Path(source_file).name, re.I))
+
     if isinstance(obj, dict):
         for key, value in obj.items():
             key_l = str(key).lower()
-            if isinstance(value, str) and value.strip() and any(token in key_l for token in (
-                "name", "title", "display", "label", "desc", "description"
-            )):
-                out.append({"field": f"{prefix}.{key}", "value": value.strip()})
-            collect_name_values(value, f"{prefix}.{key}", out)
+
+            if isinstance(value, str) and value.strip():
+                if is_kr_record:
+                    if key_l == "m_cn":
+                        out.append({
+                            "field": f"{prefix}.{key}",
+                            "value": value.strip(),
+                            "name_source": "m_cn",
+                            "language": "ko",
+                        })
+                elif any(token in key_l for token in (
+                    "name", "title", "display", "label", "desc", "description"
+                )):
+                    out.append({
+                        "field": f"{prefix}.{key}",
+                        "value": value.strip(),
+                        "name_source": key,
+                    })
+
+            collect_name_values(value, f"{prefix}.{key}", out, source_file)
     elif isinstance(obj, list):
         for i, value in enumerate(obj):
-            collect_name_values(value, f"{prefix}[{i}]", out)
+            collect_name_values(value, f"{prefix}[{i}]", out, source_file)
+
     return out
 
 
@@ -158,6 +181,7 @@ def get_json_path(obj: Any, path: str) -> Any:
                 return None
             current = current[key]
     return current
+
 
 def read_ndjson(path: Path):
     if not path.exists():
@@ -215,7 +239,6 @@ def main():
             f"누락 파일: {', '.join(missing)}"
         )
 
-    # 1차 Record 결과를 ID -> 위치로 인덱싱한다.
     records = defaultdict(list)
     record_count = 0
     for row in read_ndjson(work / "records.ndjson"):
@@ -231,9 +254,7 @@ def main():
     def get_candidate(rid, source_file, source_path):
         key = (rid, source_file, source_path)
         if key not in candidates:
-            systems, evidence = classify_text(
-                " ".join([rid, source_file, source_path])
-            ), []
+            systems, evidence = classify_text(" ".join([rid, source_file, source_path])), []
             candidates[key] = {
                 "id": rid,
                 "source_file": source_file,
@@ -255,11 +276,7 @@ def main():
 
     for rows in records.values():
         for row in rows:
-            get_candidate(
-                str(row["id"]),
-                str(row.get("file", "")),
-                str(row.get("path", "")),
-            )
+            get_candidate(str(row["id"]), str(row.get("file", "")), str(row.get("path", "")))
 
     def apply_evidence(item, row):
         field = str(row.get("field", ""))
@@ -279,19 +296,10 @@ def main():
         if field_name:
             field_counts[field_name] += 1
         if systems:
-            item["evidence"].append({
-                "field": field,
-                "systems": systems,
-                "raw_value": row.get("raw_value"),
-            })
+            item["evidence"].append({"field": field, "systems": systems, "raw_value": row.get("raw_value")})
 
-    # 검증된 Reference: 실제 1차 그래프 연결 결과.
     for row in read_ndjson(work / "references.ndjson"):
-        item = get_candidate(
-            str(row.get("source_record_id", "")),
-            str(row.get("source_file", "")),
-            str(row.get("source_path", "")),
-        )
+        item = get_candidate(str(row.get("source_record_id", "")), str(row.get("source_file", "")), str(row.get("source_path", "")))
         item["reference_count"] += 1
         item["validated_reference_count"] += 1
         field_name = str(row.get("field", "")).rsplit(".", 1)[-1]
@@ -302,13 +310,8 @@ def main():
             item["reference_targets"][target] += 1
         apply_evidence(item, row)
 
-    # 미해결 Reference도 후보 판별 근거로 사용하되 연결 성공으로 세지 않는다.
     for row in read_ndjson(work / "unresolved.ndjson"):
-        item = get_candidate(
-            str(row.get("source_record_id", "")),
-            str(row.get("source_file", "")),
-            str(row.get("source_path", "")),
-        )
+        item = get_candidate(str(row.get("source_record_id", "")), str(row.get("source_file", "")), str(row.get("source_path", "")))
         item["reference_count"] += 1
         item["unresolved_reference_count"] += 1
         field_name = str(row.get("field", "")).rsplit(".", 1)[-1]
@@ -316,17 +319,12 @@ def main():
             item["reference_fields"][field_name] += 1
         apply_evidence(item, row)
 
-    # build_data_graph.py가 이미 추출한 구조화 데이터만 사용한다.
     for filename, kind in [
         ("structured_code_values.ndjson", "code"),
         ("structured_multi_ids.ndjson", "multi"),
     ]:
         for row in read_ndjson(work / filename):
-            item = get_candidate(
-                str(row.get("source_record_id", "")),
-                str(row.get("source_file", "")),
-                str(row.get("source_path", "")),
-            )
+            item = get_candidate(str(row.get("source_record_id", "")), str(row.get("source_file", "")), str(row.get("source_path", "")))
             field_name = str(row.get("field", "")).rsplit(".", 1)[-1]
             if field_name:
                 item["structured_fields"][field_name] += 1
@@ -339,8 +337,6 @@ def main():
                 item["structured_multi_id_items"] += count
             apply_evidence(item, row)
 
-    # 후보가 참조하는 원본 파일을 한 번씩만 읽고, build_data_graph.py가 기록한
-    # 정확한 Record path에서 명칭을 추출한다.
     json_cache: dict[str, Any] = {}
     name_errors = []
     for item in candidates.values():
@@ -354,13 +350,10 @@ def main():
                 json_cache[source_file] = load_json(source_path_obj)
             except Exception as exc:
                 json_cache[source_file] = None
-                name_errors.append({
-                    "file": source_file,
-                    "error": f"{type(exc).__name__}: {exc}",
-                })
+                name_errors.append({"file": source_file, "error": f"{type(exc).__name__}: {exc}"})
         raw = json_cache.get(source_file)
         record_obj = get_json_path(raw, source_path) if raw is not None else None
-        names = collect_name_values(record_obj) if record_obj is not None else []
+        names = collect_name_values(record_obj, source_file=source_file) if record_obj is not None else []
         item["name_candidates"] = names[:50]
         item["has_human_readable_name"] = bool(names)
 
@@ -375,10 +368,7 @@ def main():
         })
 
     gacha = [x for x in inventory if "gacha" in x["systems"]]
-    structured = [
-        x for x in inventory
-        if x["structured_code_value_count"] or x["structured_multi_id_count"]
-    ]
+    structured = [x for x in inventory if x["structured_code_value_count"] or x["structured_multi_id_count"]]
 
     with (out_work / "record_system_candidates.ndjson").open("w", encoding="utf-8") as f:
         for row in inventory:
@@ -413,13 +403,11 @@ def main():
             "검증된 Reference와 미해결 Reference를 구분한다.",
             "CODE*VALUE의 두 번째 값은 수량/확률/레벨 등으로 임의 확정하지 않는다.",
             "시스템 분류는 후보 탐색이며 게임 의미를 확정하지 않는다.",
+            "Word__krRecord.json 계열은 m_cn을 한국어 명칭으로 사용한다.",
         ],
     }
 
-    (out / "02_record_type_inventory.json").write_text(
-        json.dumps(summary, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    (out / "02_record_type_inventory.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
 
     lines = [
         "# 게임 시스템 후보 분석",
@@ -457,12 +445,8 @@ def main():
         "",
         "분류 결과는 후보이며 Reference 연결과 반복 구조를 확인한 뒤 의미를 확정한다.",
     ]
-    (out / "name_enrichment_errors.json").write_text(
-        json.dumps(name_errors, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    (out / "name_enrichment_errors.json").write_text(json.dumps(name_errors, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # 사람이 바로 확인할 수 있는 명칭 인덱스도 별도 파일로 저장한다.
     with (out_work / "record_names.ndjson").open("w", encoding="utf-8") as f:
         for item in inventory:
             if item.get("name_candidates"):
@@ -474,9 +458,7 @@ def main():
                     "name_candidates": item["name_candidates"],
                 }, ensure_ascii=False, separators=(",", ":")) + "\n")
 
-    (out / "07_system_candidates.md").write_text(
-        "\n".join(lines) + "\n", encoding="utf-8"
-    )
+    (out / "07_system_candidates.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     print("[완료]")
     print(f"  입력 _work: {work}")
