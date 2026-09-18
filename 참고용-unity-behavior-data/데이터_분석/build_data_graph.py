@@ -217,7 +217,7 @@ def main():
     args = parser.parse_args()
 
     script_dir = Path(__file__).resolve().parent
-    data_root = args.data_root.resolve()
+    data_root = (args.data_root or DEFAULT_DATA_ROOT).resolve()
     output_dir = (args.output or script_dir / "output").resolve()
 
     if not data_root.exists():
