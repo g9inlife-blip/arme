@@ -62,12 +62,35 @@ def decode_obscured_int(value: Any) -> int | None:
     return None
 
 def is_id_key(key: str) -> bool:
-    normalized = key.lower()
-    return normalized in ID_KEYS or normalized.endswith("_id") or normalized.endswith("id")
+    """Record 자체를 식별하는 ID 필드는 정확히 제한한다.
+
+    중요:
+    m_itemPackageId / m_skillId / m_nameId 같은 필드는 Record ID가 아니라
+    다른 Record를 가리키는 Reference일 수 있으므로 여기서는 절대 Record ID로
+    취급하지 않는다.
+    """
+    return str(key).lower() in ID_KEYS
+
+
+# Unity/직렬화 메타데이터는 게임 데이터 간 참조가 아니다.
+REFERENCE_EXCLUDED_KEYS = {
+    "id",
+    "m_id",
+    "_id",
+    "recordid",
+    "record_id",
+    "fileid",
+    "m_fileid",
+    "pathid",
+    "m_pathid",
+}
 
 
 def looks_like_reference_key(key: str) -> bool:
-    return bool(REFERENCE_KEY_RE.search(key))
+    normalized = str(key).lower()
+    if normalized in REFERENCE_EXCLUDED_KEYS:
+        return False
+    return bool(REFERENCE_KEY_RE.search(normalized))
 
 
 def scalar_candidates(value: Any) -> list[str]:
@@ -114,11 +137,51 @@ def iter_records(obj: Any, path: str = "$"):
             yield from iter_records(value, f"{path}[{i}]")
 
 
-def extract_references(record: dict[str, Any], source_file: str, record_path: str):
-    refs = []
+def extract_references(record: dict[str, Any], source_file: str, record_path: str,
+                       record_id: str, max_refs: int = 100_000):
+    """현재 Record 경계 안에서만 Reference 후보를 추출한다.
 
-    def walk(obj: Any, field_path: str):
+    기존 구현은 부모 Record 안에 중첩된 또 다른 Record가 있으면,
+    부모 Record 분석 때 그 자식의 필드까지 다시 훑고, 자식 Record를
+    별도로 분석하면서 동일 Reference가 반복 생성될 수 있었다.
+
+    따라서 중첩 객체가 실제 Record ID를 가지면 그 객체는 별도 Record로
+    처리될 영역으로 보고 현재 walk에서는 내려가지 않는다.
+    """
+
+    refs = []
+    seen = set()
+
+    def append_ref(field_path: str, raw: Any, candidate: str):
+        if len(refs) >= max_refs:
+            raise RuntimeError(
+                f"Reference 폭증 감지: {source_file} / {record_path} "
+                f"(한 Record에서 {max_refs:,}개 초과)"
+            )
+
+        # 동일 Record/필드/후보가 구조상 중복 방문되는 경우를 방지한다.
+        dedupe_key = (field_path, str(candidate), json.dumps(
+            raw, ensure_ascii=False, sort_keys=True, default=str
+        ))
+        if dedupe_key in seen:
+            return
+        seen.add(dedupe_key)
+
+        refs.append({
+            "source_file": source_file,
+            "source_record_id": record_id,
+            "source_path": record_path,
+            "field": field_path,
+            "raw_value": raw,
+            "candidate_id": str(candidate),
+        })
+
+    def walk(obj: Any, field_path: str, is_root: bool = False):
         if isinstance(obj, dict):
+            # 현재 Record 자신이 아닌 중첩 Record는 여기서 다시 분석하지 않는다.
+            if not is_root and find_id_in_record(obj) is not None:
+                return
+
             for key, value in obj.items():
                 key_s = str(key)
                 next_path = f"{field_path}.{key_s}"
@@ -133,14 +196,7 @@ def extract_references(record: dict[str, Any], source_file: str, record_path: st
                                 candidates = [nested_id]
 
                         for candidate in candidates:
-                            refs.append({
-                                "source_file": source_file,
-                                "source_record_id": record.get("m_id", record.get("id")),
-                                "source_path": record_path,
-                                "field": next_path,
-                                "raw_value": raw,
-                                "candidate_id": candidate,
-                            })
+                            append_ref(next_path, raw, candidate)
 
                 walk(value, next_path)
 
@@ -148,7 +204,7 @@ def extract_references(record: dict[str, Any], source_file: str, record_path: st
             for i, child in enumerate(obj):
                 walk(child, f"{field_path}[{i}]")
 
-    walk(record, "$")
+    walk(record, "$", is_root=True)
     return refs
 
 
@@ -237,6 +293,9 @@ def main():
                         help="분석할 데이터 루트. 기본값은 로컬 Unity JSON 경로.")
     parser.add_argument("--output", type=Path, default=None,
                         help="결과 폴더. 기본값은 데이터_분석/output.")
+    parser.add_argument("--max-refs-per-record", type=int, default=100_000,
+                        help="Record 하나에서 허용할 최대 Reference 후보 수. "
+                             "초과하면 데이터 폭증으로 간주하고 중단한다.")
     args = parser.parse_args()
 
     script_dir = Path(__file__).resolve().parent
@@ -342,7 +401,10 @@ def main():
             file_unresolved = 0
 
             for record_path, record, record_id in iter_records(data):
-                for ref in extract_references(record, rel, record_path):
+                for ref in extract_references(
+                    record, rel, record_path, str(record_id),
+                    max_refs=args.max_refs_per_record,
+                ):
                     file_refs += 1
                     matches = id_index.get(str(ref["candidate_id"]), [])
 
@@ -366,7 +428,18 @@ def main():
                         unresolved_count += 1
                         file_unresolved += 1
 
-            print(f"[{index}/{len(json_files)}] {rel} | Ref {file_refs} / OK {file_valid} / 미해결 {file_unresolved}")
+            # 파일 단위 폭증 감시: 정상적인 게임 데이터에서 수백만 Reference가
+            # 한 파일에서 생성되면 즉시 중단해 원본 결과를 보호한다.
+            if file_refs > 2_000_000:
+                raise SystemExit(
+                    f"[중단] Reference 폭증 감지: {rel} -> {file_refs:,}개. "
+                    "extract_references 로직을 확인하세요."
+                )
+
+            print(
+                f"[{index}/{len(json_files)}] {rel} | "
+                f"Ref {file_refs:,} / OK {file_valid:,} / 미해결 {file_unresolved:,}"
+            )
             del data
 
     summary = {
@@ -383,6 +456,12 @@ def main():
         "top_source_files": source_stats.most_common(30),
         "top_target_files": target_stats.most_common(30),
         "top_reference_fields": field_stats.most_common(50),
+        "reference_extraction_rules": {
+            "record_id_keys": sorted(ID_KEYS),
+            "excluded_reference_keys": sorted(REFERENCE_EXCLUDED_KEYS),
+            "max_refs_per_record": args.max_refs_per_record,
+            "nested_record_boundary": True,
+        },
     }
 
     write_json(output_dir / "04_duplicate_ids.json", duplicate_ids)
