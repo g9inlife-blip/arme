@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Unity JSON의 2차 의미 분석기.
+"""build_data_graph.py 1차 결과를 이용한 2차 게임 시스템 후보 분석기.
 
-1차 build_data_graph.py가 만든 ID/Reference 결과와 원본 JSON을 함께 사용해
-게임 시스템 후보를 찾는다. 이 단계에서도 의미를 확정하지 않고 후보/근거를 저장한다.
+입력은 첫 번째 build_data_graph.py의 output/_work이다.
+분석 결과는 원본 데이터와 섞이지 않도록 output/analyze_game_systems/에 저장한다.
+후보 Record가 가리키는 원본 JSON은 명칭(name/title/displayName 등) 보강이 필요할 때만 읽는다.
 """
 
 from __future__ import annotations
@@ -12,6 +13,8 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+
+DEFAULT_DATA_ROOT = Path(r"C:\Users\USER\Documents\GitHub\arme\참고용-unity-behavior-data\MonoBehaviour")
 
 SYSTEM_PATTERNS = {
     "gacha": ["drawrecord", "drawpreviewrecord", "draw", "gacha", "summon", "banner", "probability", "pool"],
@@ -116,6 +119,32 @@ def candidate_for_record(path: str, rid: str, obj: dict[str, Any], source_file: 
     }
 
 
+def load_json(path: Path) -> Any:
+    with path.open("r", encoding="utf-8-sig") as f:
+        return json.load(f)
+
+
+def collect_name_values(obj: Any, prefix: str = "$", out: list[dict[str, Any]] | None = None):
+    """원본 JSON에서 사람이 읽을 수 있는 명칭 후보만 추출한다."""
+    if out is None:
+        out = []
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            key_l = str(key).lower()
+            if isinstance(value, str) and value.strip() and any(token in key_l for token in (
+                "name", "title", "display", "label", "desc", "description"
+            )):
+                out.append({
+                    "field": f"{prefix}.{key}",
+                    "value": value.strip(),
+                })
+            collect_name_values(value, f"{prefix}.{key}", out)
+    elif isinstance(obj, list):
+        for i, value in enumerate(obj):
+            collect_name_values(value, f"{prefix}[{i}]", out)
+    return out
+
+
 def read_ndjson(path: Path):
     if not path.exists():
         raise FileNotFoundError(f"필수 1차 분석 파일이 없습니다: {path}")
@@ -140,12 +169,18 @@ def main():
         default=Path(r"C:\Users\USER\Documents\GitHub\arme\참고용-unity-behavior-data\데이터_분석\output\_work"),
         help="build_data_graph.py가 생성한 첫 번째 _work 결과 경로",
     )
+    ap.add_argument(
+        "--data-root",
+        type=Path,
+        default=DEFAULT_DATA_ROOT,
+        help="명칭 보강에 사용할 원본 JSON 루트. 분석의 기준 데이터는 여전히 --work-dir이다.",
+    )
     ap.add_argument("--output", type=Path, default=None)
     args = ap.parse_args()
 
     script_dir = Path(__file__).resolve().parent
     work = args.work_dir.resolve()
-    out = (args.output or script_dir / "output").resolve()
+    # 원본 output과 섞이지 않도록 2차 분석 전용 하위 폴더에 저장한다.\n    out = (args.output or script_dir / "output" / "analyze_game_systems").resolve()
     out.mkdir(parents=True, exist_ok=True)
     out_work = out / "_work"
     out_work.mkdir(parents=True, exist_ok=True)
@@ -289,6 +324,29 @@ def main():
                 item["structured_multi_id_items"] += count
             apply_evidence(item, row)
 
+    # 후보가 참조하는 원본 파일을 한 번씩만 읽어 명칭을 보강한다.
+    name_cache: dict[str, list[dict[str, Any]]] = {}
+    name_errors = []
+    for item in candidates.values():
+        source_file = str(item["source_file"])
+        source_path = str(item["path"])
+        if not source_file:
+            continue
+        if source_file not in name_cache:
+            source_path_obj = (args.data_root / source_file).resolve()
+            try:
+                raw = load_json(source_path_obj)
+                name_cache[source_file] = collect_name_values(raw)
+            except Exception as exc:
+                name_cache[source_file] = []
+                name_errors.append({
+                    "file": source_file,
+                    "error": f"{type(exc).__name__}: {exc}",
+                })
+        names = name_cache.get(source_file, [])
+        # Record path와 가장 가까운 명칭을 우선하되, 파일 내 명칭도 최대 30개까지 제공한다.
+        item["name_candidates"] = names[:30]
+
     inventory = []
     for item in candidates.values():
         inventory.append({
@@ -327,6 +385,11 @@ def main():
         "structured_candidate_count": len(structured),
         "system_candidate_counts": dict(system_counts.most_common()),
         "top_reference_fields": field_counts.most_common(100),
+        "name_enrichment": {
+            "data_root": str(args.data_root.resolve()),
+            "source_files_loaded": len(name_cache),
+            "errors": len(name_errors),
+        },
         "notes": [
             "원본 JSON은 이 단계에서 다시 읽지 않는다.",
             "build_data_graph.py의 첫 번째 _work 결과만 입력으로 사용한다.",
@@ -377,6 +440,23 @@ def main():
         "",
         "분류 결과는 후보이며 Reference 연결과 반복 구조를 확인한 뒤 의미를 확정한다.",
     ]
+    (out / "name_enrichment_errors.json").write_text(
+        json.dumps(name_errors, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    # 사람이 바로 확인할 수 있는 명칭 인덱스도 별도 파일로 저장한다.
+    with (out_work / "record_names.ndjson").open("w", encoding="utf-8") as f:
+        for item in inventory:
+            if item.get("name_candidates"):
+                f.write(json.dumps({
+                    "id": item["id"],
+                    "source_file": item["source_file"],
+                    "path": item["path"],
+                    "systems": item["systems"],
+                    "name_candidates": item["name_candidates"],
+                }, ensure_ascii=False, separators=(",", ":")) + "\n")
+
     (out / "07_system_candidates.md").write_text(
         "\n".join(lines) + "\n", encoding="utf-8"
     )
