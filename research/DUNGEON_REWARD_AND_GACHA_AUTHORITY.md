@@ -310,3 +310,31 @@ Gacha는 `Gacha Execute`에서 결과를 확정한다.
 10. Runtime 검증
 
 **Local Server 구현은 API contract가 확인된 기능부터 점진적으로 진행한다.**
+
+## 8. 추가 Gacha/Data 분석 포인트 — 2026-09-18
+
+현재 구조에서 다음 연결을 우선 추적한다.
+
+```text
+DrawRecord
+   ↓
+DrawpreviewRecord
+   ↓
+ItemPackage
+   ↓
+ShopRecord / Banner
+   ↓
+Gacha Request
+   ↓
+Result / Currency / Inventory
+```
+
+확인 항목:
+- 동일 ID가 어느 단계에서 유지/변환되는지
+- 상시/한정/특수 Banner 구분 필드
+- Package 내부 실제 Item/Character 목록
+- cost, pull count, pity/guarantee, duplicate 처리 후보 필드
+- 판매기간/시작·종료 시간 및 구매 제한
+- 결과가 저장되는 Player State와 History
+
+추가로 Gacha와 동일한 방식으로 `Daily Reward → Attendance → Mission/Achievement → Event Reward`의 **조건/보상/수령 상태** 연결을 조사한다.
