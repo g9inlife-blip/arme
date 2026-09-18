@@ -47,8 +47,23 @@ def safe_load_json(path: Path, parse_errors: list[dict[str, str]]) -> Any | None
         return None
 
 
+
+
+def decode_obscured_int(value: Any) -> int | None:
+    """Unity ObscuredInt 형태(currentCryptoKey/hiddenValue)를 복원한다."""
+    if not isinstance(value, dict):
+        return None
+    if "hiddenValue" not in value or "currentCryptoKey" not in value:
+        return None
+    hidden = value.get("hiddenValue")
+    key = value.get("currentCryptoKey")
+    if isinstance(hidden, int) and isinstance(key, int):
+        return hidden ^ key
+    return None
+
 def is_id_key(key: str) -> bool:
-    return key.lower() in ID_KEYS
+    normalized = key.lower()
+    return normalized in ID_KEYS or normalized.endswith("_id") or normalized.endswith("id")
 
 
 def looks_like_reference_key(key: str) -> bool:
@@ -58,6 +73,11 @@ def looks_like_reference_key(key: str) -> bool:
 def scalar_candidates(value: Any) -> list[str]:
     if value is None or isinstance(value, bool):
         return []
+
+    decoded = decode_obscured_int(value)
+    if decoded is not None:
+        return [str(decoded)]
+
     if isinstance(value, (int, float)):
         return [str(value)]
     if isinstance(value, str):
@@ -240,10 +260,8 @@ def main():
 
     for path in json_files:
         rel = json_rel(path, data_root)
-        try:
-            data = safe_load_json(path, parse_errors)
-        except Exception as exc:
-            parse_errors.append({"file": rel, "error": repr(exc)})
+        data = safe_load_json(path, parse_errors)
+        if data is None:
             continue
 
         records = list(iter_records(data))
