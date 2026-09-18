@@ -26,7 +26,7 @@ REFERENCE_KEY_RE = re.compile(
 )
 
 MULTI_VALUE_RE = re.compile(
-    r"(?P<id>[A-Za-z0-9_:\\-.]+)\s*[xX*]\s*(?P<count>\d+)"
+    r"(?P<id>[A-Za-z0-9_:.\\-]+)\s*[xX*]\s*(?P<count>\d+)"
 )
 
 
