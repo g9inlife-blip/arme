@@ -196,7 +196,48 @@ Reward / Package / Shop / Draw
 
 단, 실제로 `value`가 수량인지 확률인지 다른 파라미터인지는 해당 필드와 연결 Record를 확인한 뒤 확정한다.
 
-## 9. 폭증 방지 안전장치
+## 9. 파이프 구분 다중 ID 목록
+
+원본 데이터에 다음과 같은 값이 존재할 수 있다.
+
+    45080210|45080211|45080212|45080213
+
+이 구조는 하나의 ID가 아니라 여러 ID를 | 로 나열한 다중 ID 목록으로 처리한다.
+
+예:
+
+    m_itemPackageId = 45080210|45080211|45080212|45080213
+
+는 다음 네 개의 Reference 후보로 분해한다.
+
+    m_itemPackageId -> 45080210
+    m_itemPackageId -> 45080211
+    m_itemPackageId -> 45080212
+    m_itemPackageId -> 45080213
+
+각 후보는 ID inventory와 독립적으로 검증한다.
+원본 문자열과 항목 순서는 structured_multi_ids.ndjson에도 별도로 보존한다.
+
+출력:
+
+    output/_work/structured_multi_ids.ndjson
+
+예상 구조:
+
+    {
+      "raw_value": "45080210|45080211|45080212|45080213",
+      "format": "id_pipe_list",
+      "items": [
+        {"id": "45080210", "index": 0},
+        {"id": "45080211", "index": 1},
+        {"id": "45080212", "index": 2},
+        {"id": "45080213", "index": 3}
+      ]
+    }
+
+CODE*VALUE|CODE*VALUE와는 별개의 형식으로 처리한다. *가 포함된 값은 단순 ID 목록으로 분해하지 않는다.
+
+## 10. 폭증 방지 안전장치
 
 Record 하나에서 기본적으로 100,000 Reference를 초과하면 중단한다.
 
