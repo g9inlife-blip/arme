@@ -50,13 +50,14 @@ def walk(o, path="$"):
             yield from walk(v, f"{path}[{i}]")
 
 def flatten(o, prefix="$"):
+    # obscured ID object ({hiddenValue,currentCryptoKey}) is an atomic value.
+    # Yield it before recursive descent so ID references inside lists/dicts are preserved.
+    if scalar(o) is not None:
+        yield prefix, o
+        return
     if isinstance(o, dict):
         for k, v in o.items():
-            p = f"{prefix}.{k}"
-            if isinstance(v, (str, int, float, bool)):
-                yield p, v
-            else:
-                yield from flatten(v, p)
+            yield from flatten(v, f"{prefix}.{k}")
     elif isinstance(o, list):
         for i, v in enumerate(o):
             yield from flatten(v, f"{prefix}[{i}]")
