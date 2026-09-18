@@ -15,6 +15,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+# 로컬 개발 PC의 Unity 데이터 JSON 기본 경로
+DEFAULT_DATA_ROOT = Path(r"C:\Users\USER\Documents\GitHub\arme\참고용-unity-behavior-data\MonoBehaviour")
+
 ID_KEYS = {"id", "m_id", "_id", "recordid", "record_id"}
 
 REFERENCE_KEY_RE = re.compile(
@@ -202,8 +205,15 @@ def main():
     args = parser.parse_args()
 
     script_dir = Path(__file__).resolve().parent
-    data_root = (args.data_root or script_dir.parent).resolve()
+    data_root = args.data_root.resolve()
     output_dir = (args.output or script_dir / "output").resolve()
+
+    if not data_root.exists():
+        raise SystemExit(
+            "[오류] JSON 데이터 경로를 찾을 수 없습니다:\n"
+            f"{data_root}\n\n"
+            "필요하면 --data-root 옵션으로 경로를 지정하세요."
+        )
     output_dir.mkdir(parents=True, exist_ok=True)
 
     inventory = []
