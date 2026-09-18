@@ -194,7 +194,8 @@ def main():
 
     script_dir = Path(__file__).resolve().parent
     work = args.work_dir.resolve()
-    # 원본 output과 섞이지 않도록 2차 분석 전용 하위 폴더에 저장한다.\n    out = (args.output or script_dir / "output" / "analyze_game_systems").resolve()
+    # 원본 output과 섞이지 않도록 2차 분석 전용 하위 폴더에 저장한다.
+    out = (args.output or script_dir / "output" / "analyze_game_systems").resolve()
     out.mkdir(parents=True, exist_ok=True)
     out_work = out / "_work"
     out_work.mkdir(parents=True, exist_ok=True)
