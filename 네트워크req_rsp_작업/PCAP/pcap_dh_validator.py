@@ -85,7 +85,15 @@ def read_pcap(path: Path):
             "pcapng parser를 별도로 사용해야 합니다."
         )
 
-    # PCAP global header는 7개 필드(IHHIIII)입니다.\n    # 마지막 필드가 network/linktype입니다.\n    _, _, _, _, _, _, network = struct.unpack(endian + "IHHIIII", data[:24])\n    print(f"[PCAP] linktype={network} ({linktype_name(network)}) size={len(data):,} bytes")
+    # PCAP global header는 7개 필드(IHHIIII)입니다.
+    # 마지막 필드가 network/linktype입니다.
+    _, _, _, _, _, _, network = struct.unpack(
+        endian + "IHHIIII", data[:24]
+    )
+    print(
+        f"[PCAP] linktype={network} "
+        f"({linktype_name(network)}) size={len(data):,} bytes"
+    )
 
     offset = 24
     index = 0
