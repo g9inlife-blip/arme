@@ -85,8 +85,7 @@ def read_pcap(path: Path):
             "pcapng parser를 별도로 사용해야 합니다."
         )
 
-    _, _, _, _, _, network = struct.unpack(endian + "IHHIIII", data[:24])
-    if network != 1:
+    # PCAP global header는 7개 필드(IHHIIII)입니다.\n    # 마지막 필드가 network/linktype입니다.\n    _, _, _, _, _, _, network = struct.unpack(endian + "IHHIIII", data[:24])\n    if network != 1:
         raise ValueError(
             f"현재 버전은 Ethernet linktype만 지원합니다. linktype={network}"
         )
