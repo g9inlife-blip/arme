@@ -7,7 +7,7 @@ TCP DH64 handshake 구조를 PCAP에서 1차 검증한다.
 현재 버전:
 - 표준 라이브러리만 사용
 - classic PCAP(libpcap) 파일 직접 읽기
-- Ethernet + IPv4 + TCP payload 추출
+- Ethernet / RAW IPv4 / Linux SLL / Linux SLL2 + IPv4 + TCP payload 추출
 - 기존에 확인된 server handshake 값 검색
 - client handshake 후보 검색
 - private key가 제공되면 public/secret/session key 계산
@@ -85,10 +85,7 @@ def read_pcap(path: Path):
             "pcapng parser를 별도로 사용해야 합니다."
         )
 
-    # PCAP global header는 7개 필드(IHHIIII)입니다.\n    # 마지막 필드가 network/linktype입니다.\n    _, _, _, _, _, _, network = struct.unpack(endian + "IHHIIII", data[:24])\n    if network != 1:
-        raise ValueError(
-            f"현재 버전은 Ethernet linktype만 지원합니다. linktype={network}"
-        )
+    # PCAP global header는 7개 필드(IHHIIII)입니다.\n    # 마지막 필드가 network/linktype입니다.\n    _, _, _, _, _, _, network = struct.unpack(endian + "IHHIIII", data[:24])\n    print(f"[PCAP] linktype={network} ({linktype_name(network)}) size={len(data):,} bytes")
 
     offset = 24
     index = 0
@@ -106,9 +103,40 @@ def read_pcap(path: Path):
         offset += incl_len
         index += 1
 
-        pkt = parse_ethernet_ipv4_tcp(index, frame)
+        pkt = parse_linktype_ipv4_tcp(index, frame, network)
         if pkt:
             yield pkt
+
+
+def linktype_name(network: int) -> str:
+    return {
+        1: "Ethernet",
+        101: "RAW IPv4",
+        113: "Linux SLL",
+        276: "Linux SLL2",
+    }.get(network, "unknown")
+
+
+def parse_linktype_ipv4_tcp(index: int, frame: bytes, network: int):
+    if network == 1:
+        return parse_ethernet_ipv4_tcp(index, frame)
+    if network == 101:
+        return parse_ipv4_tcp(index, frame)
+    if network == 113:
+        if len(frame) < 16:
+            return None
+        proto = u16be(frame[14:16])
+        if proto != 0x0800:
+            return None
+        return parse_ipv4_tcp(index, frame[16:])
+    if network == 276:
+        if len(frame) < 20:
+            return None
+        proto = u16be(frame[0:2])
+        if proto != 0x0800:
+            return None
+        return parse_ipv4_tcp(index, frame[20:])
+    return None
 
 
 def parse_ethernet_ipv4_tcp(index: int, frame: bytes):
@@ -119,7 +147,10 @@ def parse_ethernet_ipv4_tcp(index: int, frame: bytes):
     if eth_type != 0x0800:
         return None
 
-    ip = frame[14:]
+    return parse_ipv4_tcp(index, frame[14:])
+
+
+def parse_ipv4_tcp(index: int, ip: bytes):
     if len(ip) < 20:
         return None
 
@@ -232,6 +263,7 @@ def main():
 
     packets = list(read_pcap(args.pcap))
 
+    print(f"[+] Parsed IPv4/TCP packets: {len(packets)}")
     print(f"[+] TCP packets with payload: {len([p for p in packets if p.payload])}")
 
     server_hits = []
