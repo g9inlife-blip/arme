@@ -46,6 +46,9 @@ class Packet:
     dst_ip: str
     src_port: int
     dst_port: int
+    seq: int
+    ack: int
+    flags: int
     payload: bytes
 
 
@@ -180,6 +183,9 @@ def parse_ipv4_tcp(index: int, ip: bytes):
 
     src_port = u16be(tcp[0:2])
     dst_port = u16be(tcp[2:4])
+    seq = struct.unpack(">I", tcp[4:8])[0]
+    ack = struct.unpack(">I", tcp[8:12])[0]
+    flags = u16be(tcp[12:14]) & 0x01FF
     tcp_hlen = ((tcp[12] >> 4) & 0x0F) * 4
     if tcp_hlen < 20 or len(tcp) < tcp_hlen:
         return None
@@ -190,6 +196,9 @@ def parse_ipv4_tcp(index: int, ip: bytes):
         dst_ip=dst_ip,
         src_port=src_port,
         dst_port=dst_port,
+        seq=seq,
+        ack=ack,
+        flags=flags,
         payload=tcp[tcp_hlen:],
     )
 
@@ -247,6 +256,48 @@ def find_client_candidates(pkt: Packet):
     return hits
 
 
+def reassemble_stream(packets):
+    segments = [p for p in packets if p.payload]
+    if not segments:
+        return []
+    segments.sort(key=lambda p: (p.seq, p.index))
+    chunks = []
+    cur_start = None
+    cur_end = None
+    cur = bytearray()
+    for pkt in segments:
+        start, data, end = pkt.seq, pkt.payload, pkt.seq + len(pkt.payload)
+        if cur_start is None:
+            cur_start, cur_end, cur = start, end, bytearray(data)
+        elif start > cur_end:
+            chunks.append((cur_start, bytes(cur)))
+            cur_start, cur_end, cur = start, end, bytearray(data)
+        elif end > cur_end:
+            overlap = max(0, cur_end - start)
+            cur.extend(data[overlap:])
+            cur_end = end
+    if cur_start is not None:
+        chunks.append((cur_start, bytes(cur)))
+    return chunks
+
+def find_client_handshake_in_stream(stream: bytes):
+    hits = []
+    pos = 0
+    zero8 = b"\x00" * 8
+    while True:
+        pos = stream.find(zero8, pos)
+        if pos < 0 or pos + 24 > len(stream):
+            break
+        pub1 = u64le(stream[pos + 8:pos + 16])
+        pub2 = u64le(stream[pos + 16:pos + 24])
+        if 1 < pub1 < P and 1 < pub2 < P:
+            hits.append((pos, pub1, pub2, len(stream) - pos))
+        pos += 1
+    return hits
+
+def hex_preview(data: bytes, start: int, length: int = 48):
+    return " ".join(f"{b:02x}" for b in data[start:start + length])
+
 def parse_int(s: str) -> int:
     return int(s, 0)
 
@@ -277,21 +328,22 @@ def main():
     server_hits = []
     client_candidates = []
 
-    for pkt in packets:
-        if not pkt.payload:
-            continue
+    target = ("10.215.173.1", 39490, "182.92.62.79", 8000)
+    reverse = (target[2], target[3], target[0], target[1])
+    target_packets = [p for p in packets if (p.src_ip, p.src_port, p.dst_ip, p.dst_port) in (target, reverse)]
 
-        hits = find_server_candidates(
-            pkt,
-            args.server_public1,
-            args.server_public2,
-            args.conv_id,
-        )
-        for hit in hits:
-            server_hits.append((pkt, hit))
+    for pkt in target_packets:
+        if pkt.payload:
+            for hit in find_server_candidates(pkt, args.server_public1, args.server_public2, args.conv_id):
+                server_hits.append((pkt, hit))
 
-        for hit in find_client_candidates(pkt):
-            client_candidates.append((pkt, hit))
+    client_packets = [p for p in target_packets if (p.src_ip, p.src_port, p.dst_ip, p.dst_port) == target]
+    server_packets = [p for p in target_packets if (p.src_ip, p.src_port, p.dst_ip, p.dst_port) == reverse]
+    client_chunks = reassemble_stream(client_packets)
+    server_chunks = reassemble_stream(server_packets)
+    for stream_seq, stream in client_chunks:
+        for hit in find_client_handshake_in_stream(stream):
+            client_candidates.append((stream_seq, stream, hit))
 
     print()
     print("[SERVER HANDSHAKE]")
@@ -308,17 +360,29 @@ def main():
             print(f"  serverPub2  = 0x{p2:016x}")
 
     print()
-    print("[CLIENT HANDSHAKE CANDIDATES]")
+    print("[TCP STREAM REASSEMBLY]")
+    print("  target = 10.215.173.1:39490 <-> 182.92.62.79:8000")
+    print(f"  client payload segments = {len(client_packets)}")
+    print(f"  server payload segments = {len(server_packets)}")
+    print(f"  client contiguous chunks = {len(client_chunks)}")
+    print(f"  server contiguous chunks = {len(server_chunks)}")
+    for seq, stream in client_chunks:
+        print(f"  client stream seq=0x{seq:08x} length={len(stream)}")
+    for seq, stream in server_chunks:
+        print(f"  server stream seq=0x{seq:08x} length={len(stream)}")
+
+    print()
+    print("[CLIENT HANDSHAKE CANDIDATES - REASSEMBLED]")
     if not client_candidates:
         print("  후보를 찾지 못했습니다.")
     else:
-        # 동일 payload 안의 너무 많은 후보를 줄이기 위해 앞쪽 후보부터 출력
-        for pkt, (base, pub1, pub2, remaining) in client_candidates[:50]:
-            print_packet(pkt)
+        for stream_seq, stream, (base, pub1, pub2, remaining) in client_candidates[:50]:
+            print(f"  stream_seq  = 0x{stream_seq:08x}")
             print(f"  offset      = 0x{base:x}")
             print(f"  clientPub1  = 0x{pub1:016x}")
             print(f"  clientPub2  = 0x{pub2:016x}")
             print(f"  remaining   = {remaining}")
+            print(f"  bytes       = {hex_preview(stream, base)}")
 
     if args.private1 is not None or args.private2 is not None:
         if args.private1 is None or args.private2 is None:
@@ -346,8 +410,9 @@ def main():
 
     print()
     print("[NOTE]")
-    print("  현재 버전은 TCP stream reassembly를 하지 않습니다.")
-    print("  handshake가 여러 TCP segment로 분할된 경우 다음 버전에서 재조립을 추가합니다.")
+    print("  TCP stream은 sequence 기준으로 재조립했습니다.")
+    print("  현재 대상 연결은 게임 TCP 5-tuple로 제한했습니다.")
+    print("  sequence gap은 임의의 0으로 채우지 않고 contiguous chunk로 분리합니다.")
 
 
 if __name__ == "__main__":
