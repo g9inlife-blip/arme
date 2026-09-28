@@ -139,3 +139,195 @@ Main Menu까지 가지 못하면 **어느 Response/State/bootstrap 단계에서 
 - 추가 분석 없이는 확인할 수 없는 이유가 명확함
 
 Codex는 결과를 기록하고 GPT의 다음 구현/조사 판단을 기다린다.
+
+
+---
+
+# 2026-09-28 추가 지시 — Game Server Login Contract 확정
+
+현재 TASK-006 결과와 최신 runtime/PCAP/Ghidra 분석을 기준으로, 다음 작업은 **DH64 복호화를 먼저 완료하는 것이 아니라 Game Server Login Request/Response Contract를 최대한 확정하는 것**으로 한다.
+
+## 1. ProtocolGame_SendRequest.Login 분석
+
+대상:
+
+- `ProtocolGame_SendRequest.Login()`
+- RVA: `0xCDE818`
+
+확인:
+
+- 생성하는 `OpInfo`
+- `OpCode` 및 Login opcode 값
+- `SerialNumber`
+- `User` 관련 필드
+- Token 관련 필드
+- 기타 설정 필드
+- serializer
+- encrypt/decode 관련 함수
+- `CSBehaviour.RequestOp()` 연결
+- 실제 Network Send까지 caller/callee
+
+각 필드는 가능하면 decompile/assembly의 실제 assignment 근거를 기록한다.
+
+## 2. CSBehaviour.Response 분석
+
+대상:
+
+- `CSBehaviour.Response(Commands, OpInfo)`
+- RVA: `0x15DCD50`
+
+다음 체인을 추적한다.
+
+```
+Network Receive
+ → framing
+ → decrypt/decode
+ → deserialize
+ → OpInfo
+ → CSBehaviour.Response
+```
+
+확인:
+
+- `Commands.CmdRequest`
+- `Commands.CmdEncrypt`
+- `Commands.CmdCompress`
+- ReturnCode 처리
+- OpCode 분기
+- Login Response 분기
+- `Request.SetResponse()`
+- callback 연결
+
+## 3. DataCenter.ProccessRequestRes 분석
+
+Login Response가 Client State를 어떻게 변경하는지 추적한다.
+
+특히 다음 객체가 실제 Login 처리에서 사용되는지 확인한다.
+
+- User
+- Heros
+- Items
+- Weapons
+- Equiments
+- Mails
+- Chapters
+- Sections
+- Teams
+- Shops
+- Activities
+
+각 항목을 `CONFIRMED / PROBABLE / UNKNOWN`으로 분류한다.
+
+## 4. HTTP Login 연결 확인
+
+다음 함수도 계속 추적한다.
+
+- `ProtocolGame_HttpRequest.V4_POST_Login`
+- `ProtocolGame_HttpRequest.V3_POST_Anon`
+- `ProtocolGame_HttpRequest.Sign`
+
+확인:
+
+- 실제 URL/path
+- parameter dictionary
+- uid
+- pwd
+- type
+- device
+- version
+- retail
+- token
+- sign 대상 및 호출 순서
+
+Sign 알고리즘은 함수명만으로 확정하지 말고 실제 decompile/assembly 근거를 기록한다.
+
+## 5. Runtime 증거 연결
+
+2026-09-28 runtime에서 확인된:
+
+```
+Ali.DoHttpCallBack
+ → NetworkCenter
+ → CSBehaviour.Connect
+ → 182.92.62.79:8000 TCP connection attempt
+```
+
+을 기존 PCAP의 Game Server endpoint와 연결하여, HTTP callback 이후 Game Server Login 단계가 실제 실행되는지 확인한다.
+
+## 6. DH64 분석은 병행하되 Login Contract 분석을 막지 않는다
+
+다음은 별도 경로로 계속 조사한다.
+
+```
+KCPTube.Handshake1
+ → DH64.KeyPair #1/#2
+ → private/public
+```
+
+PCAP에서 확인된:
+
+```
+clientPublic1 = 0x1f594d0100000169
+clientPublic2 = 0xe8986e3637f5aba4
+```
+
+와 runtime KeyPair 결과를 연결한다.
+
+단, private key를 PCAP만으로 역산하지 않는다.
+
+## 7. 조사 단계 제한
+
+이번 작업에서는 다음을 하지 않는다.
+
+- APK 수정
+- libil2cpp 수정
+- 임의 Hook 적용
+- 임의 Login Response 생성
+- Local Server 구현
+- DH private 추측
+- Packet byte만 보고 protobuf/field 의미 확정
+
+이번 단계는 조사와 증거 수집만 수행한다.
+
+## 8. 보고서에 반드시 채울 Contract 표
+
+| 항목 | 결과 | Confidence |
+|---|---|---|
+| HTTP Login endpoint | | |
+| HTTP Request Type | | |
+| HTTP Request fields | | |
+| HTTP Sign | | |
+| HTTP Response Type | | |
+| Game Server endpoint | | |
+| Game Login OpCode | | |
+| Game Login Request fields | | |
+| Game Login Response type | | |
+| Decode/Decrypt | | |
+| Deserialize | | |
+| Response Handler | | |
+| DataCenter State Effect | | |
+| Main Bootstrap dependency | | |
+
+최종적으로 다음 체인 중 어디까지 증명됐는지 명확하게 기록한다.
+
+```
+Login Request
+ ↓
+Game Server Login
+ ↓
+Response
+ ↓
+DataCenter
+ ↓
+Main Bootstrap
+```
+
+## 9. 종료 조건
+
+다음 중 하나면 종료한다.
+
+1. Game Server Login Request/Response Contract가 충분히 확정됨
+2. 특정 Response/State에서 추가 조사가 필요한 지점이 명확해짐
+3. 현재 증거로 더 이상 진행할 수 없는 구체적인 이유가 확인됨
+
+완료 후 `research/reports/TASK-006-result.md`를 업데이트하고 GPT의 다음 판단을 기다린다.
