@@ -224,6 +224,85 @@ OpInfo.Activities
 
 This supports the current Local Server direction: login/main bootstrap likely must provide more than `success=true`; it must populate `OpInfo` state fields used by `DataCenter`.
 
+### 3.7 Runtime bootstrap/TLS evidence
+
+Existing LDPlayer runtime logs establish that the earliest observed failure is before
+`API_Login` and before any game-server handshake.
+
+```text
+Unity: NET ERROR Code: API_Allin1,responseCode: 0 ,error: SSL CA certificate error
+Unity: Curl error 60: Cert verify failed: UNITYTLS_X509VERIFY_FLAG_USER_ERROR1
+Unity: Exception: download GameMainfestURL error:SSL CA certificate error
+```
+
+The string-literal table contains the all-in-one URL:
+
+```text
+https://ac.aliother.com/v3/ain1
+```
+
+The saved environment note records that the Windows path presented an
+`ac.aliother.com` certificate issued by `Somansa Root CA`, while the emulator did
+not trust that issuer. This is evidence of a TLS trust-chain failure on the tested
+runtime path; it is not evidence of a game-protocol failure, an `API_Login` failure,
+or an application-level encryption failure.
+
+An earlier LDPlayer log also contains `OnInjectionDetectorDetected cause: signatures`.
+Its causal relation to packet-capture software or the connection failure is UNKNOWN:
+the preserved logs do not contain a controlled comparison with and without the
+capture application.
+
+### 3.8 Clean bridge-mode runtime baseline (2026-09-28)
+
+Codex connected to the updated LDPlayer instance at `10.131.47.242:5555` and
+started `com.Alioth.JusticeSchool.cn` without launching or configuring any
+packet-capture or proxy tool in this run. The installed package reported
+`versionName=3.1.0`, `versionCode=70`, and `primaryCpuAbi=arm64-v8a`.
+
+The process remained alive, but its relevant Unity log sequence was:
+
+```text
+GameUpdateEnable : True
+OnInjectionDetectorDetected cause: signatures
+GlobalUIManager:OnInjectionDetectorDetected(String)
+```
+
+The detector event occurred approximately 16 ms after `GameUpdateEnable`. No
+`API_Allin1`, `API_Login`, `TCPTube`, TLS, or connection-error log appeared in
+the following approximately 35 seconds of the filtered Unity log.
+
+This confirms that the `signatures` detector event can occur in the baseline
+run without a capture tool being launched by Codex. It does not identify the
+detected signature, prove that capture software is irrelevant in every setup,
+or justify a bypass. The current runtime evidence is insufficient to observe
+the bootstrap request at all before a user login action.
+
+### 3.9 Login-action runtime evidence (2026-09-28)
+
+After the user pressed the login button, Unity emitted a call stack in which an
+HTTP request completion callback immediately entered game-server connection
+setup:
+
+```text
+AliothEngine.AndroidUtils:GetSignatureMD5Hash()
+Alioth.S1.Net.NetworkCenter:.ctor(String, Int32, String)
+CSBehaviour:Connect(String, Int32, String, Boolean)
+Ali:DoHttpCallBack(HttpRequest)
+AliothEngine.Net.HttpRequestManager:OnFinished(HttpRequest)
+AliothEngine.Net.<RequestCoroutine>d__24:MoveNext()
+```
+
+The process socket table then contained a TCP connection attempt to
+`4F3E5CB6:1F40`, which decodes to `182.92.62.79:8000`. Its state was `02`
+(`SYN_SENT`) at observation time. This matches both the existing PCAP game
+server candidate and the static default `gm.aliother.com:8000` port.
+
+Therefore the `signatures` detector event did not prevent this observed login
+action from reaching `CSBehaviour.Connect`. The current unresolved boundary is
+the TCP connection/handshake to port `8000`, not the UI login tap or the
+immediate HTTP completion callback. The exact completed HTTP API and its
+response fields remain UNKNOWN because the Unity log does not name them here.
+
 ## 4. PCAP 1차 Evidence
 
 PCAP summary:
@@ -264,6 +343,9 @@ Asset/CDN SNI candidate: oss01.aliother.com:443
 ```
 
 Plain HTTP strings such as `API_Login` / `API_Allin1` were not visible in raw TCP payloads. This supports TLS for `ac.aliother.com:443` HTTP API traffic, but does not prove the full application protocol.
+
+The PCAP is therefore useful for host/port/flow correlation, but cannot establish
+the HTTP request body or signing contract while TLS remains opaque.
 
 ## 5. Current Contract Draft
 
@@ -313,14 +395,25 @@ Login UI / AutoLogin
 - Meaning of `Commands.CmdEncrypt` and relation to `Crypto.EncryptUnSafe/DecryptUnSafe`.
 - Initial game-server login response fields required for Main.
 - Whether port `8000` uses TCP only, UDP only, or both in normal runtime.
+- Whether a clean, trusted bridge-mode run reaches `API_Login` after `API_Allin1`.
+- Whether the packet-capture application changes the result independently of the
+  existing TLS trust-chain condition.
+- What condition raises `OnInjectionDetectorDetected cause: signatures` before
+  the bootstrap request, and whether it prevents the request from being issued.
+- Why the observed game-server TCP attempt remains `SYN_SENT`, and whether the
+  failure is routing, endpoint reachability, or a later socket-state transition.
 
 ## 8. GPT 판단 대기 후보
 
-Not yet ready for final GPT decision. Codex should first collect at least one of:
+Ready for a narrow GPT decision: the runtime has now shown the post-login
+transition from an HTTP completion callback to `CSBehaviour.Connect`, followed
+by a TCP attempt to the documented port `8000`. Codex should next collect at
+least one of:
 
 1. Ghidra/decompile evidence for `ProtocolGame_HttpRequest.V4_POST_Login`.
 2. Ghidra/decompile evidence for `ProtocolGame_SendRequest.Login`.
-3. Runtime/log evidence showing `API_Login` response success/failure and subsequent `CSBehaviour.Connect`.
+3. A controlled runtime/log comparison of the port `8000` TCP state with capture
+   disabled versus enabled, on the same bridge/network path.
 
 Once those are collected, GPT should decide:
 
@@ -343,4 +436,6 @@ Decompile / disassemble:
 5. DataCenter.ProccessRequestRes
 ```
 
-Then update this report with concrete caller/callee and field assignments.
+Then update this report with concrete caller/callee and field assignments. Before
+any packet-capture retry, record the port `8000` TCP state in a clean baseline;
+otherwise a capture-related conclusion would not be attributable.
