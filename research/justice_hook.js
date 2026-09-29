@@ -200,6 +200,8 @@ function resolveElfExport(modulePath, baseAddr, symbolName) {
 
 let api = null;
 let il2cppBase = null;
+// Token flow correlation: last token passed to SaveLoginToken(arg[1]).
+let lastSavedLoginToken = null;
 
 function initApi() {
     const mod = findModuleBase(LIB_NAME);
@@ -798,6 +800,7 @@ async function main() {
                             else value = args[i + 1];
                         } catch (e) { value = '<read failed: ' + e.message + '>'; }
                         console.log('  arg[' + i + '] ' + type + ': ' + JSON.stringify(trunc(value, 5000)));
+                        if (i === 1 && type.indexOf('System.String') >= 0) lastSavedLoginToken = String(value);
                     }
                     console.log('  [TOKEN_SAVE END]');
                 }
@@ -816,6 +819,9 @@ async function main() {
                     let value = '<null>';
                     try { value = readIl2cppString(retval); } catch (e) { value = '<read failed: ' + e.message + '>'; }
                     console.log('[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> ' + JSON.stringify(trunc(value, 10000)));
+                    if (lastSavedLoginToken !== null && value !== '<null>' && !String(value).startsWith('<')) {
+                        console.log('[TOKEN_COMPARE] get_Token == last SaveLoginToken(arg[1]) : ' + (String(value) === lastSavedLoginToken ? 'MATCH' : 'MISMATCH'));
+                    }
                 }
             });
             hookCount++;
