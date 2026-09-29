@@ -778,6 +778,50 @@ async function main() {
         }
     } catch (e) { console.log(`[!] V3_POST_AllInOne hook failed: ${e.message}`); }
 
+    // Login token flow: compare SaveLoginToken inputs with ProtocolGame_HttpRequest.get_Token().
+    // Static analysis shows OnGetLoginToken -> Response_GetLoginToken -> SaveLoginToken.
+    try {
+        const save = findMethodAnywhereTyped('LoginManager', 'SaveLoginToken', 5, null);
+        if (save) {
+            console.log('[+] Hooking LoginManager.SaveLoginToken(' + save.typeNames.join(', ') + ') @ ' + save.fnPtr);
+            Interceptor.attach(save.fnPtr, {
+                onEnter(args) {
+                    console.log('\\n[TOKEN_SAVE] LoginManager.SaveLoginToken');
+                    for (let i = 0; i < save.typeNames.length; i++) {
+                        const type = save.typeNames[i] || '';
+                        let value = '<unreadable>';
+                        try {
+                            if (type.indexOf('System.String') >= 0) value = readIl2cppString(args[i + 1]);
+                            else if (type.indexOf('Boolean') >= 0) value = args[i + 1].toInt32() !== 0;
+                            else if (type.indexOf('Int32') >= 0) value = args[i + 1].toInt32();
+                            else if (type.indexOf('Int64') >= 0) value = args[i + 1].toString();
+                            else value = args[i + 1];
+                        } catch (e) { value = '<read failed: ' + e.message + '>'; }
+                        console.log('  arg[' + i + '] ' + type + ': ' + JSON.stringify(trunc(value, 5000)));
+                    }
+                    console.log('  [TOKEN_SAVE END]');
+                }
+            });
+            hookCount++;
+        } else console.log('[!] LoginManager.SaveLoginToken not found');
+    } catch (e) { console.log('[!] SaveLoginToken hook failed: ' + e.message); }
+
+    try {
+        const getToken = findMethodAnywhereNoParams('ProtocolGame_HttpRequest', 'get_Token');
+        if (getToken) {
+            console.log('[+] Hooking ProtocolGame_HttpRequest.get_Token() @ ' + getToken.fnPtr);
+            Interceptor.attach(getToken.fnPtr, {
+                onEnter(args) { this.thisPtr = args[0]; },
+                onLeave(retval) {
+                    let value = '<null>';
+                    try { value = readIl2cppString(retval); } catch (e) { value = '<read failed: ' + e.message + '>'; }
+                    console.log('[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> ' + JSON.stringify(trunc(value, 10000)));
+                }
+            });
+            hookCount++;
+        } else console.log('[!] ProtocolGame_HttpRequest.get_Token not found');
+    } catch (e) { console.log('[!] get_Token hook failed: ' + e.message); }
+
     // System.String.Join(string, string[]) — Sign이 MD5에 넘기는 실제 Join 배열 추적용
     try {
         const join = findMethodAnywhereTyped('System.String', 'Join', 2, 'System.String[]');
