@@ -1,7 +1,7 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.5
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.6
  *
- * v4.5: V4_POST_Login → UnityWebRequest 생성/헤더/body → SendWebRequest 실제 전송 추적
+ * v4.6: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -15,6 +15,9 @@
  *  - ProtocolGame_HttpRequest.V3_POST_AllInOne(app_key)
  *  - UnityEngine.Networking.UnityWebRequest constructor / SetRequestHeader / SendWebRequest
  *  - UnityEngine.Networking.UploadHandler.get_data (Send 시 POST body 확인)
+ *  - UnityEngine.Networking.UploadHandlerRaw(byte[]) (실제 POST body 생성 시점)
+ *  - UnityEngine.Networking.UnityWebRequest.set_uploadHandler / set_method
+ *  - AliothEngine.Net.HttpRequest method inventory (body/request 생성 경로 확인)
  *
  * Usage:
  *   frida -U -p <PID> -l justice_hook.js
@@ -544,7 +547,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.5 starting...');
+    console.log('[*] justice_hook v4.6 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -581,6 +584,95 @@ async function main() {
         const sh=findMethodAnywhereExact('UnityEngine.Networking.UnityWebRequest','SetRequestHeader',['System.String','System.String']);
         if(sh){Interceptor.attach(sh.fnPtr,{onEnter(args){if(!loginTraceActive())return;const meta=requestMeta.get(String(args[0]));if(!meta)return;const name=readIl2cppString(args[1]),value=readIl2cppString(args[2]);meta.headers.push({name,value});console.log('[HTTP_HEADER] #'+meta.id+' '+name+': '+trunc(value,2000));}});hookCount++;}else console.log('[!] UnityWebRequest.SetRequestHeader(string,string) not found');
     }catch(e){console.log('[!] SetRequestHeader hook failed: '+e.message);}
+    // v4.6: capture the actual upload payload at UploadHandlerRaw(byte[]) construction.
+    // This is more reliable than UploadHandler.get_data() at Send time.
+    try{
+        const raw=findMethodAnywhereExact('UnityEngine.Networking.UploadHandlerRaw','.ctor',['System.Byte[]']);
+        if(raw){
+            Interceptor.attach(raw.fnPtr,{onEnter(args){
+                if(!loginTraceActive())return;
+                try{
+                    const b=readIl2cppByteArray(args[1],65536);
+                    this.body=b;
+                    console.log('\n[HTTP_UPLOAD] UploadHandlerRaw(byte[])');
+                    console.log('  body_len: '+b.length+(b.truncated?' (truncated)':''));
+                    console.log('  body_utf8: '+JSON.stringify(trunc(b.text,20000)));
+                    console.log('  body_hex: '+trunc(b.hex,4000));
+                }catch(e){console.log('[HTTP_UPLOAD] read failed: '+e.message);}
+            },onLeave(retval){
+                if(!loginTraceActive()||!this.body)return;
+                this.uploadHandler=retval;
+                console.log('  upload_handler: '+retval);
+                console.log('[HTTP_UPLOAD END]\n');
+            }});
+            hookCount++;
+        }else console.log('[!] UploadHandlerRaw(byte[]) not found');
+    }catch(e){console.log('[!] UploadHandlerRaw hook failed: '+e.message);}
+
+    // v4.6: capture when HttpRequest assigns the body/method to UnityWebRequest.
+    try{
+        const su=findMethodAnywhereExact('UnityEngine.Networking.UnityWebRequest','set_uploadHandler',['UnityEngine.Networking.UploadHandler']);
+        if(su){
+            Interceptor.attach(su.fnPtr,{onEnter(args){
+                if(!loginTraceActive())return;
+                const meta=requestMeta.get(String(args[0]));
+                if(!meta)return;
+                const uh=args[1];
+                console.log('[HTTP_UPLOAD_SET] #'+meta.id+' uploadHandler='+uh);
+                try{
+                    if(!uh.isNull()&&uploadGetData){
+                        const b=readIl2cppByteArray(uploadGetData(uh),65536);
+                        console.log('  body_len: '+b.length);
+                        console.log('  body_utf8: '+JSON.stringify(trunc(b.text,20000)));
+                    }
+                }catch(e){console.log('  body read: '+e.message);}
+            }});
+            hookCount++;
+        }else console.log('[!] UnityWebRequest.set_uploadHandler not found');
+    }catch(e){console.log('[!] set_uploadHandler hook failed: '+e.message);}
+
+    try{
+        const sm=findMethodAnywhereExact('UnityEngine.Networking.UnityWebRequest','set_method',['System.String']);
+        if(sm){
+            Interceptor.attach(sm.fnPtr,{onEnter(args){
+                if(!loginTraceActive())return;
+                const meta=requestMeta.get(String(args[0]));
+                if(!meta)return;
+                const method=readIl2cppString(args[1]);
+                meta.methodSetter=method;
+                console.log('[HTTP_METHOD_SET] #'+meta.id+' method='+JSON.stringify(method));
+            }});
+            hookCount++;
+        }else console.log('[!] UnityWebRequest.set_method(string) not found');
+    }catch(e){console.log('[!] set_method hook failed: '+e.message);}
+
+    // v4.6: enumerate AliothEngine.Net.HttpRequest methods so the next run
+    // tells us exactly where request body serialization is implemented.
+    try{
+        const domain=api.domain_get(), cp=Memory.alloc(Process.pointerSize);
+        const assemblies=api.domain_get_assemblies(domain,cp), count=cp.readU32();
+        const ns=Memory.allocUtf8String('AliothEngine.Net'), cn=Memory.allocUtf8String('HttpRequest');
+        let printed=false;
+        for(let ai=0;ai<count;ai++){
+            try{
+                const img=api.assembly_get_image(assemblies.add(ai*Process.pointerSize).readPointer());
+                const klass=api.class_from_name(img,ns,cn); if(klass.isNull())continue;
+                console.log('[HTTPREQUEST] AliothEngine.Net.HttpRequest methods:');
+                const it=Memory.alloc(Process.pointerSize);it.writePointer(ptr(0));
+                while(true){
+                    const m=api.class_get_methods(klass,it);if(m.isNull())break;
+                    const name=api.method_get_name(m).readCString();
+                    const pc=api.method_get_param_count(m), types=[];
+                    for(let pi=0;pi<pc;pi++){try{types.push(api.type_get_name(api.method_get_param(m,pi)).readCString());}catch(e){types.push('?');}}
+                    let ret='?';try{ret=api.type_get_name(api.method_get_return_type(m)).readCString();}catch(e){}
+                    console.log('  '+name+'('+types.join(', ')+') -> '+ret+' @ '+m.readPointer());
+                }
+                printed=true;break;
+            }catch(e){}
+        }
+        if(!printed)console.log('[!] AliothEngine.Net.HttpRequest class not found');
+    }catch(e){console.log('[!] HttpRequest method inventory failed: '+e.message);}
+    
     try{
         const send=findMethodAnywhereNoParams('UnityEngine.Networking.UnityWebRequest','SendWebRequest');
         if(send){Interceptor.attach(send.fnPtr,{onEnter(args){if(!loginTraceActive())return;const meta=requestMeta.get(String(args[0])),snap=describeUnityWebRequest(args[0]);console.log('\n[HTTP_SEND] '+(meta?'UnityWebRequest #'+meta.id:'UnityWebRequest'));console.log('  url: '+JSON.stringify(trunc(snap.url,4000)));console.log('  method: '+JSON.stringify(snap.method));if(meta)console.log('  headers: '+JSON.stringify(meta.headers));if(snap.body){console.log('  body_len: '+snap.body.length+(snap.body.truncated?' (truncated)':''));console.log('  body_utf8: '+JSON.stringify(trunc(snap.body.text,20000)));console.log('  body_hex: '+trunc(snap.body.hex,4000));}else console.log('  body: <none>');console.log('  request_ptr: '+args[0]);console.log('[HTTP_SEND END]\n');}});hookCount++;}else console.log('[!] UnityWebRequest.SendWebRequest() not found');
