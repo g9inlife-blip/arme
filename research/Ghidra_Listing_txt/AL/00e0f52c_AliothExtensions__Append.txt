@@ -1,0 +1,95 @@
+Function: AliothExtensions$$Append @ 00e0f52c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp416 @ 010951ac
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fdf82c
+
+--- Calls IN ---
+  <- BattleConfigExtra$$set_m_speedIndex @ 00ed56d0
+  <- BattleConfigExtra$$set_m_auto @ 00ed52b8
+  <- SysSettingPanelMono$$RegisterCallBack @ 00f72768
+  <- OpenBoxShowPanelMono$$Start @ 00e9db4c
+  <- SoundManager$$Volume @ 00e30488
+  <- DamageDetailsPanelMono$$RefreshDetailsItem @ 00ee1f80
+  <- AliothExtensions$$ShowStar @ 00e183ec
+  <- ItemShowNormalMono$$HideShow @ 00eb179c
+  <- TerrainEvent$$OnPointerBeginDragDelegate @ 016c6364
+  <- EquipItemMono$$ShowStar @ 00eaee10
+  <- GamePlayerInfomation$$get_Store_Reviewed @ 00e374f4
+  <- FUN_00e5f004 @ 00e5f004
+  <- TerrainEvent$$OnPointerEndDelegate @ 016c7324
+  <- ItemShowWeaponMono$$<Play>b__17_1 @ 00eb3c04
+  <- ExploreMainPanelMono$$ShowHalo @ 00efc8d0
+  <- ExploreMainPanelMono$$AddEnemyModelEnd @ 00ef9b88
+  <- TipsSkillMono$$ShowDetail @ 00f13500
+  <- ItemShowNormalMono.<NormalEffStepTwo>d__20$$MoveNext @ 00eb2480
+  <- BaseNode$$ShowStar @ 00dc09f8
+  <- ItemShowNormalMono$$SetItem @ 00eb0ddc
+  <- ExploreMainPanelMono$$RefreshEnemy @ 00ef5098
+  <- ExploreMainPanelMono$$AddSelfModelEnd @ 00efb348
+  <- Ali$$CheckShowReview @ 00e0f0d8
+  <- AISettingPanelMono$$RefreshShow @ 00e4bcd8
+  <- TerrainEvent$$OnPointerDownDelegate @ 016c5904
+  <- ExploreMainPanelMono$$HideHalo @ 00ef8d78
+  <- ExploreMainPanelMono$$ResetLastCache @ 00ef86f8
+  <- SoundManager$$ChangeSoundVolume @ 00e30904
+  <- ExploreMainPanelMono$$RefreshSelfHeroOne @ 00efa058
+  <- TerrainEvent$$ClickValidEnd @ 016c7140
+  <- WeaponPanelMono$$RefreshWeaponInfoBoard @ 00f59c90
+  <- BaseSkillEff$$get_m_skillShow @ 015dcba0
+  <- ItemShowNormalMono.<WaitNextBreak>d__23$$MoveNext @ 00eb28d4
+  <- GamePlayerInfomation$$set_Store_Reviewed @ 00e376cc
+  <- ExploreMainPanelMono$$ExploreFloorSwapLocationBack @ 00efdea8
+  <- ExploreMainPanelMono$$ShowChoose @ 00ef59fc
+  <- ExploreMainPanelMono$$PlayRoleChooseEff @ 00efae18
+  <- SkillItemMono$$ShowDetail @ 00eb4a60
+  <- AliothExtensions$$Append_str @ 00e1208c
+  <- BattleConfigExtra$$get_m_speedIndex @ 00ed5540
+  <- AISettingPanelMono$$Start @ 00e4b03c
+  <- SkillRangeMono$$SetUpRange @ 00eb52e8
+  <- BattleConfigExtra$$get_m_auto @ 00ed511c
+  <- ExploreMainPanelMono$$PlayMoveAni @ 00efc5a0
+  <- HeroInfoPanelMono$$ShowRoleInfo @ 00f247ec
+  <- ReadyMono$$RefreshMyNameStyle @ 00e615a4
+  <- RoleNews$$TriggerSetting @ 00fee50c
+
+--- Listing ---
+00e0f52c  str x22,[sp, #-0x30]!
+00e0f530  stp x21,x20,[sp, #0x10]
+00e0f534  stp x19,x30,[sp, #0x20]
+00e0f538  adrp x22,0x3572000
+00e0f53c  adrp x21,0x3348000
+00e0f540  ldrb w8,[x22, #0x5db]
+00e0f544  ldr x21,[x21, #0x138]
+00e0f548  mov x19,x1
+00e0f54c  mov x20,x0
+00e0f550  tbnz w8,#0x0,0x00e0f568
+00e0f554  adrp x0,0x3348000
+00e0f558  ldr x0,[x0, #0x138]
+00e0f55c  bl 0x00b0789c
+00e0f560  mov w8,#0x1
+00e0f564  strb w8,[x22, #0x5db]
+00e0f568  ldr x0,[x21]
+00e0f56c  ldr w8,[x0, #0xe0]
+00e0f570  cbnz w8,0x00e0f57c
+00e0f574  bl 0x00b0798c
+00e0f578  ldr x0,[x21]
+00e0f57c  ldr x8,[x0, #0xb8]
+00e0f580  ldr x0,[x8, #0x18]
+00e0f584  cbz x0,0x00e0f5a4
+00e0f588  mov x1,x20
+00e0f58c  mov x2,x19
+00e0f590  ldp x19,x30,[sp, #0x20]
+00e0f594  ldp x21,x20,[sp, #0x10]
+00e0f598  mov x3,xzr
+00e0f59c  ldr x22,[sp], #0x30
+00e0f5a0  b 0x010951ac
+00e0f5a4  mov x0,x20
+00e0f5a8  mov x1,x19
+00e0f5ac  ldp x19,x30,[sp, #0x20]
+00e0f5b0  ldp x21,x20,[sp, #0x10]
+00e0f5b4  mov x2,xzr
+00e0f5b8  ldr x22,[sp], #0x30
+00e0f5bc  b 0x01fdf82c

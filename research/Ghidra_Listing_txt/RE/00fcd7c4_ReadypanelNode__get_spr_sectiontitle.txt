@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_spr_sectiontitle @ 00fcd7c4
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono.<RefreshSectiontitleBg>d__48$$MoveNext @ 00e65360
+
+--- Listing ---
+00fcd7c4  stp x21,x20,[sp, #-0x20]!
+00fcd7c8  stp x19,x30,[sp, #0x10]
+00fcd7cc  adrp x20,0x3573000
+00fcd7d0  adrp x21,0x336b000
+00fcd7d4  ldrb w8,[x20, #0xe5b]
+00fcd7d8  ldr x21,[x21, #0xab0]
+00fcd7dc  mov x19,x0
+00fcd7e0  tbnz w8,#0x0,0x00fcd7f8
+00fcd7e4  adrp x0,0x336b000
+00fcd7e8  ldr x0,[x0, #0xab0]
+00fcd7ec  bl 0x00b0789c
+00fcd7f0  mov w8,#0x1
+00fcd7f4  strb w8,[x20, #0xe5b]
+00fcd7f8  ldr x1,[x21]
+00fcd7fc  mov x0,x19
+00fcd800  ldp x19,x30,[sp, #0x10]
+00fcd804  mov x2,xzr
+00fcd808  ldp x21,x20,[sp], #0x20
+00fcd80c  b 0x00dc06f8

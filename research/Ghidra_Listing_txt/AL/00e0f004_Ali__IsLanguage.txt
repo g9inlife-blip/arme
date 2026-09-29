@@ -1,0 +1,67 @@
+Function: Ali$$IsLanguage @ 00e0f004
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Equals @ 01fde08c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_IsLanguage_xlua_st_ @ 0119c790
+  <- ResManager$$GetExcelRecordName @ 00e2b084
+
+--- Listing ---
+00e0f004  stp x21,x20,[sp, #-0x20]!
+00e0f008  stp x19,x30,[sp, #0x10]
+00e0f00c  adrp x21,0x3572000
+00e0f010  adrp x20,0x335f000
+00e0f014  ldrb w8,[x21, #0x5b7]
+00e0f018  ldr x20,[x20, #0x20]
+00e0f01c  mov x19,x0
+00e0f020  tbnz w8,#0x0,0x00e0f050
+00e0f024  adrp x0,0x335f000
+00e0f028  ldr x0,[x0, #0x20]
+00e0f02c  bl 0x00b0789c
+00e0f030  adrp x0,0x3341000
+00e0f034  ldr x0,[x0, #0x638]
+00e0f038  bl 0x00b0789c
+00e0f03c  adrp x0,0x333a000
+00e0f040  ldr x0,[x0, #0xeb0]
+00e0f044  bl 0x00b0789c
+00e0f048  mov w8,#0x1
+00e0f04c  strb w8,[x21, #0x5b7]
+00e0f050  ldr x0,[x20]
+00e0f054  ldr w8,[x0, #0xe0]
+00e0f058  cbnz w8,0x00e0f064
+00e0f05c  bl 0x00b0798c
+00e0f060  ldr x0,[x20]
+00e0f064  ldr x8,[x0, #0xb8]
+00e0f068  ldr x0,[x8, #0x560]
+00e0f06c  cbz x0,0x00e0f084
+00e0f070  mov x1,x19
+00e0f074  ldp x19,x30,[sp, #0x10]
+00e0f078  mov x2,xzr
+00e0f07c  ldp x21,x20,[sp], #0x20
+00e0f080  b 0x01060aac
+00e0f084  cbz x19,0x00e0f0d4
+00e0f088  adrp x8,0x3341000
+00e0f08c  ldr x8,[x8, #0x638]
+00e0f090  mov x0,x19
+00e0f094  mov x2,xzr
+00e0f098  ldr x1,[x8]
+00e0f09c  bl 0x01fde08c
+00e0f0a0  tbz w0,#0x0,0x00e0f0b4
+00e0f0a4  ldp x19,x30,[sp, #0x10]
+00e0f0a8  mov w0,#0x1
+00e0f0ac  ldp x21,x20,[sp], #0x20
+00e0f0b0  ret
+00e0f0b4  adrp x8,0x333a000
+00e0f0b8  ldr x8,[x8, #0xeb0]
+00e0f0bc  mov x0,x19
+00e0f0c0  ldp x19,x30,[sp, #0x10]
+00e0f0c4  mov x2,xzr
+00e0f0c8  ldr x1,[x8]
+00e0f0cc  ldp x21,x20,[sp], #0x20
+00e0f0d0  b 0x01fde08c
+00e0f0d4  bl 0x00b079b0

@@ -1,0 +1,24 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$Resize @ 01ade7d0
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+01ade7d0  str x20,[sp, #-0x20]!
+01ade7d4  stp x19,x30,[sp, #0x10]
+01ade7d8  ldr x8,[x2, #0x20]
+01ade7dc  cmp w1,#0x4
+01ade7e0  mov w9,#0x4
+01ade7e4  csel w20,w1,w9,gt
+01ade7e8  ldr x8,[x8, #0xc0]
+01ade7ec  mov x19,x0
+01ade7f0  add x0,x0,#0x10
+01ade7f4  mov w1,w20
+01ade7f8  ldr x2,[x8, #0xe8]
+01ade7fc  ldr x8,[x2, #0x8]
+01ade800  blr x8
+01ade804  str w20,[x19, #0x18]
+01ade808  ldp x19,x30,[sp, #0x10]
+01ade80c  ldr x20,[sp], #0x20
+01ade810  ret

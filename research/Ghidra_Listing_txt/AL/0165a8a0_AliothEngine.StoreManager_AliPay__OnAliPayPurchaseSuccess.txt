@@ -1,0 +1,68 @@
+Function: AliothEngine.StoreManager_AliPay$$OnAliPayPurchaseSuccess @ 0165a8a0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$GetProductFormRechargeData @ 00e0c24c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp810 @ 010c9b0c
+  -> AliothEngine.IStoreManager$$HandlePurchaseProductSucceeded @ 01659190
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineStoreManager_AliPayWrap$$_m_OnAliPayPurchaseSuccess @ 01162958
+
+--- Listing ---
+0165a8a0  stp x23,x22,[sp, #-0x30]!
+0165a8a4  stp x21,x20,[sp, #0x10]
+0165a8a8  stp x19,x30,[sp, #0x20]
+0165a8ac  adrp x22,0x3577000
+0165a8b0  adrp x23,0x334a000
+0165a8b4  ldrb w8,[x22, #0x860]
+0165a8b8  ldr x23,[x23, #0x9c0]
+0165a8bc  mov x20,x2
+0165a8c0  mov w21,w1
+0165a8c4  mov x19,x0
+0165a8c8  tbnz w8,#0x0,0x0165a8ec
+0165a8cc  adrp x0,0x335f000
+0165a8d0  ldr x0,[x0, #0x20]
+0165a8d4  bl 0x00b0789c
+0165a8d8  adrp x0,0x334a000
+0165a8dc  ldr x0,[x0, #0x9c0]
+0165a8e0  bl 0x00b0789c
+0165a8e4  mov w8,#0x1
+0165a8e8  strb w8,[x22, #0x860]
+0165a8ec  ldr x8,[x23]
+0165a8f0  ldr x8,[x8, #0xb8]
+0165a8f4  ldr x0,[x8, #0x60]
+0165a8f8  cbz x0,0x0165a91c
+0165a8fc  mov x1,x19
+0165a900  mov w2,w21
+0165a904  mov x3,x20
+0165a908  ldp x19,x30,[sp, #0x20]
+0165a90c  ldp x21,x20,[sp, #0x10]
+0165a910  mov x4,xzr
+0165a914  ldp x23,x22,[sp], #0x30
+0165a918  b 0x010c9b0c
+0165a91c  adrp x8,0x335f000
+0165a920  ldr x8,[x8, #0x20]
+0165a924  ldr w20,[x19, #0x60]
+0165a928  ldr x0,[x8]
+0165a92c  ldr w8,[x0, #0xe0]
+0165a930  cbnz w8,0x0165a938
+0165a934  bl 0x00b0798c
+0165a938  mov w0,w20
+0165a93c  mov x1,xzr
+0165a940  bl 0x00e0c24c
+0165a944  cbz x0,0x0165a970
+0165a948  ldr x1,[x19, #0x58]
+0165a94c  mov x20,x0
+0165a950  str x1,[x0, #0x48]!
+0165a954  bl 0x00b07850
+0165a958  mov x0,x19
+0165a95c  mov x1,x20
+0165a960  ldp x19,x30,[sp, #0x20]
+0165a964  ldp x21,x20,[sp, #0x10]
+0165a968  ldp x23,x22,[sp], #0x30
+0165a96c  b 0x01659190
+0165a970  bl 0x00b079b0

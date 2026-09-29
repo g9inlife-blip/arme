@@ -1,0 +1,67 @@
+Function: AliothS1Loading$$.ctor @ 00ecb290
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Singleton<object>$$.ctor @ 01e09dcc
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Events.UnityEvent$$.ctor @ 0250c104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1LoadingWrap$$__CreateInstance @ 0116c7a8
+
+--- Listing ---
+00ecb290  str x22,[sp, #-0x30]!
+00ecb294  stp x21,x20,[sp, #0x10]
+00ecb298  stp x19,x30,[sp, #0x20]
+00ecb29c  adrp x20,0x3572000
+00ecb2a0  adrp x21,0x336d000
+00ecb2a4  ldrb w8,[x20, #0xd6d]
+00ecb2a8  ldr x21,[x21, #0x340]
+00ecb2ac  mov x19,x0
+00ecb2b0  tbnz w8,#0x0,0x00ecb2e0
+00ecb2b4  adrp x0,0x3322000
+00ecb2b8  ldr x0,[x0, #0x6d0]
+00ecb2bc  bl 0x00b0789c
+00ecb2c0  adrp x0,0x3324000
+00ecb2c4  ldr x0,[x0, #0xf10]
+00ecb2c8  bl 0x00b0789c
+00ecb2cc  adrp x0,0x336d000
+00ecb2d0  ldr x0,[x0, #0x340]
+00ecb2d4  bl 0x00b0789c
+00ecb2d8  mov w8,#0x1
+00ecb2dc  strb w8,[x20, #0xd6d]
+00ecb2e0  ldr x0,[x21]
+00ecb2e4  bl 0x00b079a0
+00ecb2e8  cbz x0,0x00ecb35c
+00ecb2ec  adrp x21,0x3324000
+00ecb2f0  adrp x22,0x3322000
+00ecb2f4  ldr x21,[x21, #0xf10]
+00ecb2f8  ldr x22,[x22, #0x6d0]
+00ecb2fc  mov x1,xzr
+00ecb300  mov x20,x0
+00ecb304  bl 0x0250c104
+00ecb308  mov x0,x19
+00ecb30c  str x20,[x0, #0x20]!
+00ecb310  mov x1,x20
+00ecb314  bl 0x00b07850
+00ecb318  ldr x1,[x21]
+00ecb31c  mov x0,x19
+00ecb320  bl 0x01e09dcc
+00ecb324  ldr x8,[x22]
+00ecb328  ldr x8,[x8, #0xb8]
+00ecb32c  ldr x0,[x8, #0x38]
+00ecb330  cbz x0,0x00ecb34c
+00ecb334  mov x1,x19
+00ecb338  ldp x19,x30,[sp, #0x20]
+00ecb33c  ldp x21,x20,[sp, #0x10]
+00ecb340  mov x2,xzr
+00ecb344  ldr x22,[sp], #0x30
+00ecb348  b 0x01060dac
+00ecb34c  ldp x19,x30,[sp, #0x20]
+00ecb350  ldp x21,x20,[sp, #0x10]
+00ecb354  ldr x22,[sp], #0x30
+00ecb358  ret
+00ecb35c  bl 0x00b079b0

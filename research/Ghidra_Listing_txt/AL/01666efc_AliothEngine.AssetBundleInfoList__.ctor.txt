@@ -1,0 +1,81 @@
+Function: AliothEngine.AssetBundleInfoList$$.ctor @ 01666efc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$SetAssetBundleInfo @ 01669d08
+  <- AssetBundles.AssetBundleManager.<GetPackInAssetBundleInfo>d__101$$MoveNext @ 01649068
+
+--- Listing ---
+01666efc  str x22,[sp, #-0x30]!
+01666f00  stp x21,x20,[sp, #0x10]
+01666f04  stp x19,x30,[sp, #0x20]
+01666f08  adrp x21,0x3577000
+01666f0c  adrp x22,0x3353000
+01666f10  adrp x20,0x334f000
+01666f14  ldrb w8,[x21, #0x8ff]
+01666f18  ldr x22,[x22, #0x7b0]
+01666f1c  ldr x20,[x20, #0xf50]
+01666f20  mov x19,x0
+01666f24  tbnz w8,#0x0,0x01666f6c
+01666f28  adrp x0,0x3365000
+01666f2c  ldr x0,[x0, #0xb20]
+01666f30  bl 0x00b0789c
+01666f34  adrp x0,0x3328000
+01666f38  ldr x0,[x0, #0xe78]
+01666f3c  bl 0x00b0789c
+01666f40  adrp x0,0x3324000
+01666f44  ldr x0,[x0, #0x8e0]
+01666f48  bl 0x00b0789c
+01666f4c  adrp x0,0x334f000
+01666f50  ldr x0,[x0, #0xf50]
+01666f54  bl 0x00b0789c
+01666f58  adrp x0,0x3353000
+01666f5c  ldr x0,[x0, #0x7b0]
+01666f60  bl 0x00b0789c
+01666f64  mov w8,#0x1
+01666f68  strb w8,[x21, #0x8ff]
+01666f6c  ldr x1,[x22]
+01666f70  mov x0,x19
+01666f74  str x1,[x0, #0x10]!
+01666f78  bl 0x00b07850
+01666f7c  ldr x0,[x20]
+01666f80  bl 0x00b079a0
+01666f84  cbz x0,0x01666ffc
+01666f88  adrp x8,0x3324000
+01666f8c  ldr x8,[x8, #0x8e0]
+01666f90  adrp x21,0x3328000
+01666f94  mov x20,x0
+01666f98  ldr x1,[x8]
+01666f9c  ldr x21,[x21, #0xe78]
+01666fa0  bl 0x01bffe10
+01666fa4  mov x0,x19
+01666fa8  str x20,[x0, #0x18]!
+01666fac  mov x1,x20
+01666fb0  bl 0x00b07850
+01666fb4  ldr x0,[x21]
+01666fb8  bl 0x00b079a0
+01666fbc  cbz x0,0x01666ffc
+01666fc0  adrp x8,0x3365000
+01666fc4  ldr x8,[x8, #0xb20]
+01666fc8  mov x20,x0
+01666fcc  ldr x1,[x8]
+01666fd0  bl 0x0196dbb0
+01666fd4  mov x0,x19
+01666fd8  str x20,[x0, #0x20]!
+01666fdc  mov x1,x20
+01666fe0  bl 0x00b07850
+01666fe4  mov x0,x19
+01666fe8  ldp x19,x30,[sp, #0x20]
+01666fec  ldp x21,x20,[sp, #0x10]
+01666ff0  mov x1,xzr
+01666ff4  ldr x22,[sp], #0x30
+01666ff8  b 0x02194104
+01666ffc  bl 0x00b079b0

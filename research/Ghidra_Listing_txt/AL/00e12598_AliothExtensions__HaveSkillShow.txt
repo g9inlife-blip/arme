@@ -1,0 +1,116 @@
+Function: AliothExtensions$$HaveSkillShow @ 00e12598
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> RoleNews$$get_m_roleMono @ 00fdf520
+  -> RoleNews$$get_actor @ 00fded3c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp419 @ 010956e4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> RoleNews$$get_fashion @ 00fe1a6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> RoleNews$$get_actorShow @ 00fe1980
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+
+--- Calls IN ---
+  <- SkillEffPlay$$Play @ 014b0e68
+  <- XLua.CSObjectWrap.RoleNewsWrap$$_m_HaveSkillShow @ 01395f8c
+  <- BattleManager.<SpeedLinePlayEnd>d__257$$MoveNext @ 01315d48
+
+--- Listing ---
+00e12598  str x22,[sp, #-0x30]!
+00e1259c  stp x21,x20,[sp, #0x10]
+00e125a0  stp x19,x30,[sp, #0x20]
+00e125a4  adrp x22,0x3572000
+00e125a8  adrp x21,0x3348000
+00e125ac  ldrb w8,[x22, #0x5e4]
+00e125b0  ldr x21,[x21, #0x138]
+00e125b4  mov x19,x1
+00e125b8  mov x20,x0
+00e125bc  tbnz w8,#0x0,0x00e125e0
+00e125c0  adrp x0,0x3348000
+00e125c4  ldr x0,[x0, #0x138]
+00e125c8  bl 0x00b0789c
+00e125cc  adrp x0,0x3321000
+00e125d0  ldr x0,[x0, #0xca8]
+00e125d4  bl 0x00b0789c
+00e125d8  mov w8,#0x1
+00e125dc  strb w8,[x22, #0x5e4]
+00e125e0  ldr x0,[x21]
+00e125e4  ldr w8,[x0, #0xe0]
+00e125e8  cbnz w8,0x00e125f4
+00e125ec  bl 0x00b0798c
+00e125f0  ldr x0,[x21]
+00e125f4  ldr x8,[x0, #0xb8]
+00e125f8  ldr x0,[x8, #0x60]
+00e125fc  cbz x0,0x00e1261c
+00e12600  mov x1,x20
+00e12604  mov x2,x19
+00e12608  ldp x19,x30,[sp, #0x20]
+00e1260c  ldp x21,x20,[sp, #0x10]
+00e12610  mov x3,xzr
+00e12614  ldr x22,[sp], #0x30
+00e12618  b 0x010956e4
+00e1261c  mov x0,x19
+00e12620  mov x1,xzr
+00e12624  str xzr,[x19]
+00e12628  bl 0x00b07850
+00e1262c  cbz x20,0x00e12670
+00e12630  adrp x21,0x3321000
+00e12634  ldr x21,[x21, #0xca8]
+00e12638  mov x0,x20
+00e1263c  mov x1,xzr
+00e12640  bl 0x00fdf520
+00e12644  ldr x8,[x21]
+00e12648  mov x21,x0
+00e1264c  ldr w9,[x8, #0xe0]
+00e12650  cbnz w9,0x00e1265c
+00e12654  mov x0,x8
+00e12658  bl 0x00b0798c
+00e1265c  mov x0,x21
+00e12660  mov x1,xzr
+00e12664  mov x2,xzr
+00e12668  bl 0x024c8180
+00e1266c  tbz w0,#0x0,0x00e12684
+00e12670  mov w0,wzr
+00e12674  ldp x19,x30,[sp, #0x20]
+00e12678  ldp x21,x20,[sp, #0x10]
+00e1267c  ldr x22,[sp], #0x30
+00e12680  ret
+00e12684  mov x0,x20
+00e12688  mov x1,xzr
+00e1268c  bl 0x00fded3c
+00e12690  cbz x0,0x00e12674
+00e12694  mov x0,x20
+00e12698  mov x1,xzr
+00e1269c  bl 0x00fe1980
+00e126a0  cbz x0,0x00e12674
+00e126a4  mov x0,x20
+00e126a8  mov x1,xzr
+00e126ac  bl 0x00fded3c
+00e126b0  cbz x0,0x00e12710
+00e126b4  ldr w8,[x0, #0x74]
+00e126b8  cbnz w8,0x00e12670
+00e126bc  mov x0,x20
+00e126c0  mov x1,xzr
+00e126c4  bl 0x00fe1a6c
+00e126c8  cbz x0,0x00e12674
+00e126cc  mov x0,x20
+00e126d0  mov x1,xzr
+00e126d4  bl 0x00fe1a6c
+00e126d8  mov x1,x0
+00e126dc  str x0,[x19]
+00e126e0  mov x0,x19
+00e126e4  bl 0x00b07850
+00e126e8  ldr x8,[x19]
+00e126ec  cbz x8,0x00e12710
+00e126f0  ldr w9,[x8, #0xd0]
+00e126f4  cbnz w9,0x00e12708
+00e126f8  ldr x0,[x8, #0xe8]
+00e126fc  mov x1,xzr
+00e12700  bl 0x01fdf3a0
+00e12704  tbnz w0,#0x0,0x00e12670
+00e12708  mov w0,#0x1
+00e1270c  b 0x00e12674
+00e12710  bl 0x00b079b0

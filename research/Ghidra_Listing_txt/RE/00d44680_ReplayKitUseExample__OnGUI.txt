@@ -1,0 +1,136 @@
+Function: ReplayKitUseExample$$OnGUI @ 00d44680
+
+--- Calls OUT ---
+  -> BaseIOSFeaturePreview$$UpdateToStartPos @ 00d2bb70
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> SA.Common.Pattern.Singleton<object>$$get_Instance @ 01e09dd4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> UnityEngine.GUI$$Label @ 02511944
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> ISN_ReplayKit$$StopRecording @ 00d230b0
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.GUI$$Button @ 025130fc
+  -> ISN_ReplayKit$$StartRecording @ 00d230a8
+
+--- Calls IN ---
+
+--- Listing ---
+00d44680  sub sp,sp,#0x60
+00d44684  stp d9,d8,[sp, #0x20]
+00d44688  stp x23,x22,[sp, #0x30]
+00d4468c  stp x21,x20,[sp, #0x40]
+00d44690  stp x19,x30,[sp, #0x50]
+00d44694  adrp x20,0x3571000
+00d44698  adrp x21,0x3362000
+00d4469c  ldrb w8,[x20, #0xdb8]
+00d446a0  ldr x21,[x21, #0xe80]
+00d446a4  mov x19,x0
+00d446a8  tbnz w8,#0x0,0x00d446f0
+00d446ac  adrp x0,0x3362000
+00d446b0  ldr x0,[x0, #0xe80]
+00d446b4  bl 0x00b0789c
+00d446b8  adrp x0,0x3342000
+00d446bc  ldr x0,[x0, #0xec0]
+00d446c0  bl 0x00b0789c
+00d446c4  adrp x0,0x333e000
+00d446c8  ldr x0,[x0, #0x738]
+00d446cc  bl 0x00b0789c
+00d446d0  adrp x0,0x3340000
+00d446d4  ldr x0,[x0, #0x940]
+00d446d8  bl 0x00b0789c
+00d446dc  adrp x0,0x330a000
+00d446e0  ldr x0,[x0, #0x928]
+00d446e4  bl 0x00b0789c
+00d446e8  mov w8,#0x1
+00d446ec  strb w8,[x20, #0xdb8]
+00d446f0  adrp x22,0x333e000
+00d446f4  adrp x23,0x3340000
+00d446f8  ldr x22,[x22, #0x738]
+00d446fc  ldr x23,[x23, #0x940]
+00d44700  mov x0,x19
+00d44704  mov x1,xzr
+00d44708  bl 0x00d2bb70
+00d4470c  ldp s8,s9,[x19, #0x28]
+00d44710  mov x0,xzr
+00d44714  bl 0x024d265c
+00d44718  mov w8,#0x42200000
+00d4471c  scvtf s2,w0
+00d44720  add x0,sp,#0x10
+00d44724  fmov s3,w8
+00d44728  mov v0.16B,v9.16B
+00d4472c  mov v1.16B,v8.16B
+00d44730  mov x1,xzr
+00d44734  stp xzr,xzr,[sp, #0x10]
+00d44738  bl 0x024daef0
+00d4473c  ldr x0,[x21]
+00d44740  ldr x20,[x19, #0x18]
+00d44744  ldr w8,[x0, #0xe0]
+00d44748  cbnz w8,0x00d44750
+00d4474c  bl 0x00b0798c
+00d44750  ldp s0,s1,[sp, #0x10]
+00d44754  ldp s2,s3,[sp, #0x18]
+00d44758  ldr x0,[x22]
+00d4475c  adrp x22,0x3342000
+00d44760  ldr x22,[x22, #0xec0]
+00d44764  mov x1,x20
+00d44768  mov x2,xzr
+00d4476c  bl 0x02511944
+00d44770  ldr s1,[x19, #0x40]
+00d44774  ldp s2,s0,[x19, #0x28]
+00d44778  ldp s3,s4,[x19, #0x20]
+00d4477c  mov x0,sp
+00d44780  mov x1,xzr
+00d44784  fadd s1,s2,s1
+00d44788  scvtf s2,s3
+00d4478c  scvtf s3,s4
+00d44790  str s1,[x19, #0x28]
+00d44794  stp xzr,xzr,[sp]
+00d44798  bl 0x024daef0
+00d4479c  ldp s0,s1,[sp]
+00d447a0  ldp s2,s3,[sp, #0x8]
+00d447a4  ldr x0,[x23]
+00d447a8  mov x1,xzr
+00d447ac  bl 0x025130fc
+00d447b0  tbz w0,#0x0,0x00d447cc
+00d447b4  ldr x0,[x22]
+00d447b8  bl 0x01e09dd4
+00d447bc  cbz x0,0x00d44854
+00d447c0  mov w1,#0x1
+00d447c4  mov x2,xzr
+00d447c8  bl 0x00d230a8
+00d447cc  ldp s1,s0,[x19, #0x28]
+00d447d0  ldr s2,[x19, #0x38]
+00d447d4  ldp s3,s4,[x19, #0x20]
+00d447d8  adrp x20,0x330a000
+00d447dc  ldr x20,[x20, #0x928]
+00d447e0  fadd s0,s0,s2
+00d447e4  scvtf s2,s3
+00d447e8  scvtf s3,s4
+00d447ec  add x0,sp,#0x10
+00d447f0  mov x1,xzr
+00d447f4  str s0,[x19, #0x2c]
+00d447f8  stp xzr,xzr,[sp, #0x10]
+00d447fc  bl 0x024daef0
+00d44800  ldr x0,[x21]
+00d44804  ldr w8,[x0, #0xe0]
+00d44808  cbnz w8,0x00d44810
+00d4480c  bl 0x00b0798c
+00d44810  ldp s0,s1,[sp, #0x10]
+00d44814  ldp s2,s3,[sp, #0x18]
+00d44818  ldr x0,[x20]
+00d4481c  mov x1,xzr
+00d44820  bl 0x025130fc
+00d44824  tbz w0,#0x0,0x00d4483c
+00d44828  ldr x0,[x22]
+00d4482c  bl 0x01e09dd4
+00d44830  cbz x0,0x00d44854
+00d44834  mov x1,xzr
+00d44838  bl 0x00d230b0
+00d4483c  ldp x19,x30,[sp, #0x50]
+00d44840  ldp x21,x20,[sp, #0x40]
+00d44844  ldp x23,x22,[sp, #0x30]
+00d44848  ldp d9,d8,[sp, #0x20]
+00d4484c  add sp,sp,#0x60
+00d44850  ret
+00d44854  bl 0x00b079b0

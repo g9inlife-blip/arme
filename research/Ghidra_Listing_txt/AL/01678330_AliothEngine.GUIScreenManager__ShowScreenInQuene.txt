@@ -1,0 +1,163 @@
+Function: AliothEngine.GUIScreenManager$$ShowScreenInQuene @ 01678330
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.GUIScreenDetailInfo$$.ctor @ 0167856c
+  -> AliothEngine.GUIScreenManager$$get_logger @ 01675194
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp318 @ 010883a4
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_ShowScreenInQuene @ 0114b620
+  <- AliothEngine.GUIScreenManager$$ShowScreen2 @ 0167a9c4
+  <- AliothEngine.GUIScreenManagerShow$$ShowScreen @ 0167c46c
+
+--- Listing ---
+01678330  str x24,[sp, #-0x40]!
+01678334  stp x23,x22,[sp, #0x10]
+01678338  stp x21,x20,[sp, #0x20]
+0167833c  stp x19,x30,[sp, #0x30]
+01678340  adrp x23,0x3577000
+01678344  adrp x24,0x337b000
+01678348  ldrb w8,[x23, #0x9dc]
+0167834c  ldr x24,[x24, #0xb98]
+01678350  mov x20,x3
+01678354  mov x19,x2
+01678358  mov x22,x1
+0167835c  mov x21,x0
+01678360  tbnz w8,#0x0,0x016783b4
+01678364  adrp x0,0x3338000
+01678368  ldr x0,[x0, #0xfe8]
+0167836c  bl 0x00b0789c
+01678370  adrp x0,0x337b000
+01678374  ldr x0,[x0, #0xb98]
+01678378  bl 0x00b0789c
+0167837c  adrp x0,0x334a000
+01678380  ldr x0,[x0, #0xc98]
+01678384  bl 0x00b0789c
+01678388  adrp x0,0x330b000
+0167838c  ldr x0,[x0, #0x6e0]
+01678390  bl 0x00b0789c
+01678394  adrp x0,0x3375000
+01678398  ldr x0,[x0, #0xb40]
+0167839c  bl 0x00b0789c
+016783a0  adrp x0,0x331f000
+016783a4  ldr x0,[x0, #0x9f8]
+016783a8  bl 0x00b0789c
+016783ac  mov w8,#0x1
+016783b0  strb w8,[x23, #0x9dc]
+016783b4  ldr x0,[x24]
+016783b8  ldr w8,[x0, #0xe0]
+016783bc  cbnz w8,0x016783c8
+016783c0  bl 0x00b0798c
+016783c4  ldr x0,[x24]
+016783c8  ldr x8,[x0, #0xb8]
+016783cc  ldr x0,[x8, #0x1f8]
+016783d0  cbz x0,0x016783fc
+016783d4  mov x1,x21
+016783d8  mov x2,x22
+016783dc  mov x3,x19
+016783e0  mov x4,x20
+016783e4  ldp x19,x30,[sp, #0x30]
+016783e8  ldp x21,x20,[sp, #0x20]
+016783ec  ldp x23,x22,[sp, #0x10]
+016783f0  mov x5,xzr
+016783f4  ldr x24,[sp], #0x40
+016783f8  b 0x010883a4
+016783fc  adrp x8,0x3338000
+01678400  ldr x8,[x8, #0xfe8]
+01678404  ldr x0,[x8]
+01678408  bl 0x00b079a0
+0167840c  cbz x0,0x01678568
+01678410  mov w1,wzr
+01678414  mov x2,x22
+01678418  mov x3,x19
+0167841c  mov x23,x0
+01678420  bl 0x0167856c
+01678424  mov x0,x23
+01678428  str x20,[x0, #0x30]!
+0167842c  mov x1,x20
+01678430  bl 0x00b07850
+01678434  ldr x0,[x21, #0x58]
+01678438  cbz x0,0x01678568
+0167843c  adrp x9,0x330b000
+01678440  ldr x9,[x9, #0x6e0]
+01678444  ldr w10,[x0, #0x1c]
+01678448  ldr x8,[x0, #0x10]
+0167844c  ldr x9,[x9]
+01678450  add w10,w10,#0x1
+01678454  str w10,[x0, #0x1c]
+01678458  cbz x8,0x01678568
+0167845c  ldrsw x10,[x0, #0x18]
+01678460  ldr w11,[x8, #0x18]
+01678464  cmp w10,w11
+01678468  b.cs 0x0167848c
+0167846c  add w9,w10,#0x1
+01678470  add x8,x8,x10, LSL #0x3
+01678474  str w9,[x0, #0x18]
+01678478  str x23,[x8, #0x20]!
+0167847c  mov x0,x8
+01678480  mov x1,x23
+01678484  bl 0x00b07850
+01678488  b 0x016784a4
+0167848c  ldr x8,[x9, #0x20]
+01678490  mov x1,x23
+01678494  ldr x8,[x8, #0xc0]
+01678498  ldr x2,[x8, #0x58]
+0167849c  ldr x8,[x2, #0x8]
+016784a0  blr x8
+016784a4  ldr x0,[x24]
+016784a8  adrp x20,0x331f000
+016784ac  ldr w8,[x0, #0xe0]
+016784b0  ldr x20,[x20, #0x9f8]
+016784b4  cbnz w8,0x016784bc
+016784b8  bl 0x00b0798c
+016784bc  bl 0x01675194
+016784c0  ldr x8,[x20]
+016784c4  mov x20,x0
+016784c8  mov x1,x19
+016784cc  mov x2,xzr
+016784d0  mov x0,x8
+016784d4  bl 0x01fd2850
+016784d8  cbz x20,0x01678568
+016784dc  adrp x9,0x334a000
+016784e0  adrp x10,0x3375000
+016784e4  ldr x8,[x20]
+016784e8  ldr x9,[x9, #0xc98]
+016784ec  ldr x10,[x10, #0xb40]
+016784f0  mov x19,x0
+016784f4  ldr x1,[x9]
+016784f8  ldrh w9,[x8, #0x12a]
+016784fc  ldr x21,[x10]
+01678500  cbz x9,0x01678524
+01678504  ldr x10,[x8, #0xb0]
+01678508  add x10,x10,#0x8
+0167850c  ldur x11,[x10, #-0x8]
+01678510  cmp x11,x1
+01678514  b.eq 0x01678534
+01678518  subs x9,x9,#0x1
+0167851c  add x10,x10,#0x10
+01678520  b.ne 0x0167850c
+01678524  mov w2,#0x9
+01678528  mov x0,x20
+0167852c  bl 0x00b2ae24
+01678530  b 0x01678544
+01678534  ldr w9,[x10]
+01678538  add w9,w9,#0x9
+0167853c  add x8,x8,w9, SXTW  #0x4
+01678540  add x0,x8,#0x138
+01678544  ldp x4,x3,[x0]
+01678548  mov x0,x20
+0167854c  mov x1,x21
+01678550  mov x2,x19
+01678554  ldp x19,x30,[sp, #0x30]
+01678558  ldp x21,x20,[sp, #0x20]
+0167855c  ldp x23,x22,[sp, #0x10]
+01678560  ldr x24,[sp], #0x40
+01678564  br x4
+01678568  bl 0x00b079b0

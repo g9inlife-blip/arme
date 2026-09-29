@@ -1,0 +1,68 @@
+Function: AliothEngine.Extensions.AudioSourceExtensions$$PlayAudioClip @ 016a9d5c
+
+--- Calls OUT ---
+  -> UnityEngine.AudioSource$$set_volume @ 024bb940
+  -> UnityEngine.AudioSource$$Play @ 024bbbe0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.AudioSource$$set_loop @ 024bc0a8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.AudioSource$$set_clip @ 024bbb58
+
+--- Calls IN ---
+
+--- Listing ---
+016a9d5c  str d8,[sp, #-0x40]!
+016a9d60  stp x23,x22,[sp, #0x10]
+016a9d64  stp x21,x20,[sp, #0x20]
+016a9d68  stp x19,x30,[sp, #0x30]
+016a9d6c  adrp x22,0x3577000
+016a9d70  adrp x23,0x3321000
+016a9d74  ldrb w8,[x22, #0xba9]
+016a9d78  ldr x23,[x23, #0xca8]
+016a9d7c  mov v8.16B,v0.16B
+016a9d80  mov w20,w2
+016a9d84  mov x21,x1
+016a9d88  mov x19,x0
+016a9d8c  tbnz w8,#0x0,0x016a9da4
+016a9d90  adrp x0,0x3321000
+016a9d94  ldr x0,[x0, #0xca8]
+016a9d98  bl 0x00b0789c
+016a9d9c  mov w8,#0x1
+016a9da0  strb w8,[x22, #0xba9]
+016a9da4  ldr x0,[x23]
+016a9da8  ldr w8,[x0, #0xe0]
+016a9dac  cbnz w8,0x016a9db4
+016a9db0  bl 0x00b0798c
+016a9db4  mov x0,x21
+016a9db8  mov x1,xzr
+016a9dbc  mov x2,xzr
+016a9dc0  bl 0x024de30c
+016a9dc4  tbz w0,#0x0,0x016a9e18
+016a9dc8  cbz x19,0x016a9e2c
+016a9dcc  mov x0,x19
+016a9dd0  mov x1,x21
+016a9dd4  mov x2,xzr
+016a9dd8  bl 0x024bbb58
+016a9ddc  and w1,w20,#0x1
+016a9de0  mov x0,x19
+016a9de4  mov x2,xzr
+016a9de8  bl 0x024bc0a8
+016a9dec  mov x0,x19
+016a9df0  mov v0.16B,v8.16B
+016a9df4  mov x1,xzr
+016a9df8  bl 0x024bb940
+016a9dfc  mov x0,x19
+016a9e00  ldp x19,x30,[sp, #0x30]
+016a9e04  ldp x21,x20,[sp, #0x20]
+016a9e08  ldp x23,x22,[sp, #0x10]
+016a9e0c  mov x1,xzr
+016a9e10  ldr d8,[sp], #0x40
+016a9e14  b 0x024bbbe0
+016a9e18  ldp x19,x30,[sp, #0x30]
+016a9e1c  ldp x21,x20,[sp, #0x20]
+016a9e20  ldp x23,x22,[sp, #0x10]
+016a9e24  ldr d8,[sp], #0x40
+016a9e28  ret
+016a9e2c  bl 0x00b079b0

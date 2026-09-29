@@ -1,0 +1,45 @@
+Function: Alioth.S1.Net.KCPTube$$get_logger @ 015addec
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp283 @ 01083dd8
+  -> AliothEngine.LogManager$$get_NetworkLogger @ 0168a4e0
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$set_State @ 015aded8
+  <- Alioth.S1.Net.KCPTube$$Update @ 015af650
+  <- Alioth.S1.Net.KCPTube$$TryRead @ 015b08bc
+  <- Alioth.S1.Net.KCPTube$$Output @ 015b21c4
+  <- Alioth.S1.Net.KCPTube$$Poll @ 015b0094
+
+--- Listing ---
+015addec  stp x21,x20,[sp, #-0x20]!
+015addf0  stp x19,x30,[sp, #0x10]
+015addf4  adrp x21,0x3577000
+015addf8  adrp x20,0x3350000
+015addfc  ldrb w8,[x21, #0x89]
+015ade00  ldr x20,[x20, #0x8c8]
+015ade04  mov x19,x0
+015ade08  tbnz w8,#0x0,0x015ade20
+015ade0c  adrp x0,0x3350000
+015ade10  ldr x0,[x0, #0x8c8]
+015ade14  bl 0x00b0789c
+015ade18  mov w8,#0x1
+015ade1c  strb w8,[x21, #0x89]
+015ade20  ldr x0,[x20]
+015ade24  ldr w8,[x0, #0xe0]
+015ade28  cbnz w8,0x015ade34
+015ade2c  bl 0x00b0798c
+015ade30  ldr x0,[x20]
+015ade34  ldr x8,[x0, #0xb8]
+015ade38  ldr x0,[x8, #0x8]
+015ade3c  cbz x0,0x015ade54
+015ade40  mov x1,x19
+015ade44  ldp x19,x30,[sp, #0x10]
+015ade48  mov x2,xzr
+015ade4c  ldp x21,x20,[sp], #0x20
+015ade50  b 0x01083dd8
+015ade54  ldp x19,x30,[sp, #0x10]
+015ade58  ldp x21,x20,[sp], #0x20
+015ade5c  b 0x0168a4e0

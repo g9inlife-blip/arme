@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.UGUIExtensions$$AsceptRadio @ 016bbac4
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.UGUIExtensions$$UIImageSetNativeAsceptRadio @ 016bbb10
+
+--- Listing ---
+016bbac4  str x20,[sp, #-0x20]!
+016bbac8  stp x19,x30,[sp, #0x10]
+016bbacc  cbz x0,0x016bbb0c
+016bbad0  ldr x8,[x0]
+016bbad4  mov x19,x0
+016bbad8  ldp x9,x1,[x8, #0x178]
+016bbadc  blr x9
+016bbae0  ldr x8,[x19]
+016bbae4  mov w20,w0
+016bbae8  mov x0,x19
+016bbaec  ldp x9,x1,[x8, #0x198]
+016bbaf0  blr x9
+016bbaf4  ldp x19,x30,[sp, #0x10]
+016bbaf8  scvtf s0,w20
+016bbafc  scvtf s1,w0
+016bbb00  fdiv s0,s0,s1
+016bbb04  ldr x20,[sp], #0x20
+016bbb08  ret
+016bbb0c  bl 0x00b079b0

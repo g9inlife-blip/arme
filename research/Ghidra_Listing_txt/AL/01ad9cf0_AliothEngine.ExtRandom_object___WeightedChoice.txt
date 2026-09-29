@@ -1,0 +1,123 @@
+Function: AliothEngine.ExtRandom<object>$$WeightedChoice @ 01ad9cf0
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.ExtRandomTest$$WeightedChoiceTestList @ 01684c2c
+
+--- Listing ---
+01ad9cf0  sub sp,sp,#0x50
+01ad9cf4  stp x25,x24,[sp, #0x10]
+01ad9cf8  stp x23,x22,[sp, #0x20]
+01ad9cfc  stp x21,x20,[sp, #0x30]
+01ad9d00  stp x19,x30,[sp, #0x40]
+01ad9d04  cbz x0,0x01ad9ea4
+01ad9d08  mov x20,x2
+01ad9d0c  mov x21,x1
+01ad9d10  mov x19,x0
+01ad9d14  mov x23,xzr
+01ad9d18  mov w22,wzr
+01ad9d1c  add x24,x1,#0x20
+01ad9d20  ldr x8,[x20, #0x20]
+01ad9d24  ldrh w9,[x8, #0x132]
+01ad9d28  tbnz w9,#0x0,0x01ad9d40
+01ad9d2c  mov x0,x8
+01ad9d30  bl 0x00b2ac40
+01ad9d34  ldr x8,[x20, #0x20]
+01ad9d38  ldrh w9,[x8, #0x132]
+01ad9d3c  b 0x01ad9d44
+01ad9d40  mov x0,x8
+01ad9d44  ldr x10,[x0, #0xc0]
+01ad9d48  ldr x10,[x10, #0x8]
+01ad9d4c  ldr x25,[x10, #0x8]
+01ad9d50  tbnz w9,#0x0,0x01ad9d60
+01ad9d54  mov x0,x8
+01ad9d58  bl 0x00b2ac40
+01ad9d5c  mov x8,x0
+01ad9d60  ldr x8,[x8, #0xc0]
+01ad9d64  mov x0,x19
+01ad9d68  ldr x1,[x8, #0x8]
+01ad9d6c  blr x25
+01ad9d70  cmp x23,w0, SXTW 
+01ad9d74  b.ge 0x01ad9d98
+01ad9d78  cbz x21,0x01ad9ea4
+01ad9d7c  ldr w8,[x21, #0x18]
+01ad9d80  cmp x23,x8
+01ad9d84  b.cs 0x01ad9ea8
+01ad9d88  ldr w8,[x24, x23, LSL #0x2]
+01ad9d8c  add x23,x23,#0x1
+01ad9d90  add w22,w8,w22
+01ad9d94  b 0x01ad9d20
+01ad9d98  mov w0,wzr
+01ad9d9c  mov w1,w22
+01ad9da0  mov x2,xzr
+01ad9da4  bl 0x024d63b0
+01ad9da8  mov w22,w0
+01ad9dac  mov w23,wzr
+01ad9db0  ldr x8,[x20, #0x20]
+01ad9db4  ldrh w9,[x8, #0x132]
+01ad9db8  tbnz w9,#0x0,0x01ad9dd0
+01ad9dbc  mov x0,x8
+01ad9dc0  bl 0x00b2ac40
+01ad9dc4  ldr x8,[x20, #0x20]
+01ad9dc8  ldrh w9,[x8, #0x132]
+01ad9dcc  b 0x01ad9dd4
+01ad9dd0  mov x0,x8
+01ad9dd4  ldr x10,[x0, #0xc0]
+01ad9dd8  ldr x10,[x10, #0x8]
+01ad9ddc  ldr x24,[x10, #0x8]
+01ad9de0  tbnz w9,#0x0,0x01ad9df0
+01ad9de4  mov x0,x8
+01ad9de8  bl 0x00b2ac40
+01ad9dec  mov x8,x0
+01ad9df0  ldr x8,[x8, #0xc0]
+01ad9df4  mov x0,x19
+01ad9df8  ldr x1,[x8, #0x8]
+01ad9dfc  blr x24
+01ad9e00  cmp w23,w0
+01ad9e04  b.ge 0x01ad9e34
+01ad9e08  cbz x21,0x01ad9ea4
+01ad9e0c  ldr w8,[x21, #0x18]
+01ad9e10  cmp w23,w8
+01ad9e14  b.cs 0x01ad9ea8
+01ad9e18  add x8,x21,w23, SXTW  #0x2
+01ad9e1c  ldr w8,[x8, #0x20]
+01ad9e20  subs w22,w22,w8
+01ad9e24  b.lt 0x01ad9e30
+01ad9e28  add w23,w23,#0x1
+01ad9e2c  b 0x01ad9db0
+01ad9e30  mov w22,w23
+01ad9e34  ldr x8,[x20, #0x20]
+01ad9e38  ldrh w9,[x8, #0x132]
+01ad9e3c  tbnz w9,#0x0,0x01ad9e54
+01ad9e40  mov x0,x8
+01ad9e44  bl 0x00b2ac40
+01ad9e48  ldr x8,[x20, #0x20]
+01ad9e4c  ldrh w9,[x8, #0x132]
+01ad9e50  b 0x01ad9e58
+01ad9e54  mov x0,x8
+01ad9e58  ldr x10,[x0, #0xc0]
+01ad9e5c  ldr x10,[x10, #0x10]
+01ad9e60  ldr x3,[x10, #0x8]
+01ad9e64  tbnz w9,#0x0,0x01ad9e7c
+01ad9e68  mov x0,x8
+01ad9e6c  str x3,[sp, #0x8]
+01ad9e70  bl 0x00b2ac40
+01ad9e74  ldr x3,[sp, #0x8]
+01ad9e78  mov x8,x0
+01ad9e7c  ldr x8,[x8, #0xc0]
+01ad9e80  mov x0,x19
+01ad9e84  mov w1,w22
+01ad9e88  ldp x19,x30,[sp, #0x40]
+01ad9e8c  ldr x2,[x8, #0x10]
+01ad9e90  ldp x21,x20,[sp, #0x30]
+01ad9e94  ldp x23,x22,[sp, #0x20]
+01ad9e98  ldp x25,x24,[sp, #0x10]
+01ad9e9c  add sp,sp,#0x50
+01ad9ea0  br x3
+01ad9ea4  bl 0x00b079b0
+01ad9ea8  bl 0x00b079b8

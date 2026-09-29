@@ -1,0 +1,42 @@
+Function: AliothEngine.FPSDisplay$$Update @ 016897c0
+
+--- Calls OUT ---
+  -> UnityEngine.Time$$get_deltaTime @ 024dc048
+  -> UnityEngine.Time$$get_timeScale @ 024dc2f8
+
+--- Calls IN ---
+
+--- Listing ---
+016897c0  stp d9,d8,[sp, #-0x20]!
+016897c4  stp x19,x30,[sp, #0x10]
+016897c8  ldr w8,[x0, #0x18]
+016897cc  ldr s8,[x0, #0x20]
+016897d0  mov x19,x0
+016897d4  add w8,w8,#0x1
+016897d8  str w8,[x0, #0x18]
+016897dc  mov x0,xzr
+016897e0  bl 0x024dc048
+016897e4  ldr s9,[x19, #0x24]
+016897e8  fsub s0,s8,s0
+016897ec  mov x0,xzr
+016897f0  str s0,[x19, #0x20]
+016897f4  bl 0x024dc2f8
+016897f8  mov x0,xzr
+016897fc  mov v8.16B,v0.16B
+01689800  bl 0x024dc048
+01689804  ldr s1,[x19, #0x20]
+01689808  fdiv s0,s8,s0
+0168980c  fadd s0,s9,s0
+01689810  str s0,[x19, #0x24]
+01689814  fcmp s1,#0.0
+01689818  b.hi 0x01689838
+0168981c  ldr s1,[x19, #0x18]
+01689820  ldr w8,[x19, #0x28]
+01689824  str wzr,[x19, #0x18]
+01689828  scvtf s1,s1
+0168982c  fdiv s0,s0,s1
+01689830  stp w8,wzr,[x19, #0x20]
+01689834  str s0,[x19, #0x1c]
+01689838  ldp x19,x30,[sp, #0x10]
+0168983c  ldp d9,d8,[sp], #0x20
+01689840  ret

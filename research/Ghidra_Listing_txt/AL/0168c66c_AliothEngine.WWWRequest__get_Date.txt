@@ -1,0 +1,72 @@
+Function: AliothEngine.WWWRequest$$get_Date @ 0168c66c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Item @ 0196e450
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.WWW$$get_responseHeaders @ 026d88e4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.WWW$$get_isDone @ 026d88a0
+  -> System.DateTime$$Parse @ 02133f9c
+
+--- Calls IN ---
+
+--- Listing ---
+0168c66c  str x20,[sp, #-0x20]!
+0168c670  stp x19,x30,[sp, #0x10]
+0168c674  adrp x20,0x3577000
+0168c678  ldrb w8,[x20, #0xab3]
+0168c67c  mov x19,x0
+0168c680  tbnz w8,#0x0,0x0168c6b0
+0168c684  adrp x0,0x336f000
+0168c688  ldr x0,[x0, #0xdc8]
+0168c68c  bl 0x00b0789c
+0168c690  adrp x0,0x3367000
+0168c694  ldr x0,[x0, #0xef0]
+0168c698  bl 0x00b0789c
+0168c69c  adrp x0,0x330f000
+0168c6a0  ldr x0,[x0, #0xa50]
+0168c6a4  bl 0x00b0789c
+0168c6a8  mov w8,#0x1
+0168c6ac  strb w8,[x20, #0xab3]
+0168c6b0  adrp x20,0x336f000
+0168c6b4  ldr x0,[x19, #0x30]
+0168c6b8  ldr x20,[x20, #0xdc8]
+0168c6bc  cbz x0,0x0168c728
+0168c6c0  mov x1,xzr
+0168c6c4  bl 0x026d88a0
+0168c6c8  tbz w0,#0x0,0x0168c728
+0168c6cc  ldr x0,[x19, #0x30]
+0168c6d0  cbz x0,0x0168c750
+0168c6d4  mov x1,xzr
+0168c6d8  bl 0x026d88e4
+0168c6dc  cbz x0,0x0168c750
+0168c6e0  adrp x8,0x330f000
+0168c6e4  adrp x9,0x3367000
+0168c6e8  ldr x8,[x8, #0xa50]
+0168c6ec  ldr x9,[x9, #0xef0]
+0168c6f0  ldr x1,[x8]
+0168c6f4  ldr x2,[x9]
+0168c6f8  bl 0x0196e450
+0168c6fc  ldr x8,[x20]
+0168c700  mov x19,x0
+0168c704  ldr w9,[x8, #0xe0]
+0168c708  cbnz w9,0x0168c714
+0168c70c  mov x0,x8
+0168c710  bl 0x00b0798c
+0168c714  mov x0,x19
+0168c718  ldp x19,x30,[sp, #0x10]
+0168c71c  mov x1,xzr
+0168c720  ldr x20,[sp], #0x20
+0168c724  b 0x02133f9c
+0168c728  ldr x0,[x20]
+0168c72c  ldr w8,[x0, #0xe0]
+0168c730  cbnz w8,0x0168c73c
+0168c734  bl 0x00b0798c
+0168c738  ldr x0,[x20]
+0168c73c  ldr x8,[x0, #0xb8]
+0168c740  ldp x19,x30,[sp, #0x10]
+0168c744  ldr x0,[x8, #0x10]
+0168c748  ldr x20,[sp], #0x20
+0168c74c  ret
+0168c750  bl 0x00b079b0

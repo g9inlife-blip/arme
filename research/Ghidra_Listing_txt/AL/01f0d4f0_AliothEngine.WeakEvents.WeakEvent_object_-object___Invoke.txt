@@ -1,0 +1,27 @@
+Function: AliothEngine.WeakEvents.WeakEvent<object,-object>$$Invoke @ 01f0d4f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.WeakEvents.WeakEvent$$Invoke @ 0169771c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01f0d4f0  str x20,[sp, #-0x20]!
+01f0d4f4  stp x19,x30,[sp, #0x10]
+01f0d4f8  mov x19,x0
+01f0d4fc  str x1,[x0, #0x30]!
+01f0d500  mov x20,x2
+01f0d504  bl 0x00b07850
+01f0d508  mov x0,x19
+01f0d50c  str x20,[x0, #0x38]!
+01f0d510  mov x1,x20
+01f0d514  bl 0x00b07850
+01f0d518  cbz x19,0x01f0d530
+01f0d51c  mov x0,x19
+01f0d520  ldp x19,x30,[sp, #0x10]
+01f0d524  mov x1,xzr
+01f0d528  ldr x20,[sp], #0x20
+01f0d52c  b 0x0169771c
+01f0d530  bl 0x00b079b0

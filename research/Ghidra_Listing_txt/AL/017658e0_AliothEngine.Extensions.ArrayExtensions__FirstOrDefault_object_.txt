@@ -1,0 +1,21 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$FirstOrDefault<object> @ 017658e0
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017658e0  str x30,[sp, #-0x10]!
+017658e4  cbz x0,0x01765908
+017658e8  ldr x8,[x0, #0x18]
+017658ec  cbz x8,0x017658fc
+017658f0  cbz w8,0x0176590c
+017658f4  ldr x0,[x0, #0x20]
+017658f8  b 0x01765900
+017658fc  mov x0,xzr
+01765900  ldr x30,[sp], #0x10
+01765904  ret
+01765908  bl 0x00b079b0
+0176590c  bl 0x00b079b8

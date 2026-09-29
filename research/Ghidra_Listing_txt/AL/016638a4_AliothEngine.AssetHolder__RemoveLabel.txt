@@ -1,0 +1,56 @@
+Function: AliothEngine.AssetHolder$$RemoveLabel @ 016638a4
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List<object>$$Remove @ 01c02014
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016638a4  str x22,[sp, #-0x30]!
+016638a8  stp x21,x20,[sp, #0x10]
+016638ac  stp x19,x30,[sp, #0x20]
+016638b0  adrp x22,0x3577000
+016638b4  adrp x21,0x3312000
+016638b8  ldrb w8,[x22, #0x8d6]
+016638bc  ldr x21,[x21, #0x428]
+016638c0  mov x19,x1
+016638c4  mov x20,x0
+016638c8  tbnz w8,#0x0,0x016638ec
+016638cc  adrp x0,0x3312000
+016638d0  ldr x0,[x0, #0x428]
+016638d4  bl 0x00b0789c
+016638d8  adrp x0,0x335f000
+016638dc  ldr x0,[x0, #0xcd0]
+016638e0  bl 0x00b0789c
+016638e4  mov w8,#0x1
+016638e8  strb w8,[x22, #0x8d6]
+016638ec  ldr x0,[x21]
+016638f0  ldr w8,[x0, #0xe0]
+016638f4  cbnz w8,0x01663900
+016638f8  bl 0x00b0798c
+016638fc  ldr x0,[x21]
+01663900  ldr x8,[x0, #0xb8]
+01663904  ldr x0,[x8, #0xc0]
+01663908  cbz x0,0x01663928
+0166390c  mov x1,x20
+01663910  mov x2,x19
+01663914  ldp x19,x30,[sp, #0x20]
+01663918  ldp x21,x20,[sp, #0x10]
+0166391c  mov x3,xzr
+01663920  ldr x22,[sp], #0x30
+01663924  b 0x0106125c
+01663928  ldr x0,[x20, #0x40]
+0166392c  cbz x0,0x01663950
+01663930  adrp x8,0x335f000
+01663934  ldr x8,[x8, #0xcd0]
+01663938  mov x1,x19
+0166393c  ldp x19,x30,[sp, #0x20]
+01663940  ldp x21,x20,[sp, #0x10]
+01663944  ldr x2,[x8]
+01663948  ldr x22,[sp], #0x30
+0166394c  b 0x01c02014
+01663950  bl 0x00b079b0

@@ -1,0 +1,32 @@
+Function: AliothEngine.NullHolder$$.ctor @ 016640a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetHolder$$.ctor @ 01663ef4
+
+--- Calls IN ---
+  <- AliothEngine.AssetHolder$$.cctor @ 01664020
+
+--- Listing ---
+016640a4  stp x21,x20,[sp, #-0x20]!
+016640a8  stp x19,x30,[sp, #0x10]
+016640ac  adrp x20,0x3577000
+016640b0  adrp x21,0x3312000
+016640b4  ldrb w8,[x20, #0x8ed]
+016640b8  ldr x21,[x21, #0x428]
+016640bc  mov x19,x0
+016640c0  tbnz w8,#0x0,0x016640d8
+016640c4  adrp x0,0x3312000
+016640c8  ldr x0,[x0, #0x428]
+016640cc  bl 0x00b0789c
+016640d0  mov w8,#0x1
+016640d4  strb w8,[x20, #0x8ed]
+016640d8  ldr x0,[x21]
+016640dc  ldr w8,[x0, #0xe0]
+016640e0  cbnz w8,0x016640e8
+016640e4  bl 0x00b0798c
+016640e8  mov x0,x19
+016640ec  ldp x19,x30,[sp, #0x10]
+016640f0  ldp x21,x20,[sp], #0x20
+016640f4  b 0x01663ef4

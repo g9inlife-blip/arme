@@ -1,0 +1,27 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$IsInvoking @ 016b0724
+
+--- Calls OUT ---
+  -> System.Delegate$$get_Method @ 0219aa08
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.MonoBehaviour$$IsInvoking @ 024e3e3c
+
+--- Calls IN ---
+
+--- Listing ---
+016b0724  stp x19,x30,[sp, #-0x10]!
+016b0728  cbz x1,0x016b0764
+016b072c  mov x19,x0
+016b0730  mov x0,x1
+016b0734  mov x1,xzr
+016b0738  bl 0x0219aa08
+016b073c  cbz x0,0x016b0764
+016b0740  ldr x8,[x0]
+016b0744  ldp x9,x1,[x8, #0x1a8]
+016b0748  blr x9
+016b074c  cbz x19,0x016b0764
+016b0750  mov x1,x0
+016b0754  mov x0,x19
+016b0758  mov x2,xzr
+016b075c  ldp x19,x30,[sp], #0x10
+016b0760  b 0x024e3e3c
+016b0764  bl 0x00b079b0

@@ -1,0 +1,54 @@
+Function: RewardManager$$SET @ 00e2ec2c
+
+--- Calls OUT ---
+  -> RewardManager$$VItemGroup @ 00e2eccc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> RewardManager$$set_PlayItemAni @ 00e2dea0
+  -> RewardManager$$NextBoxListener @ 00e2e714
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp33 @ 0106381c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RewardManagerWrap$$_m_SET @ 01379460
+  <- Ali$$ShowReward @ 00e06a70
+
+--- Listing ---
+00e2ec2c  stp x23,x22,[sp, #-0x30]!
+00e2ec30  stp x21,x20,[sp, #0x10]
+00e2ec34  stp x19,x30,[sp, #0x20]
+00e2ec38  adrp x22,0x3572000
+00e2ec3c  adrp x23,0x331f000
+00e2ec40  ldrb w8,[x22, #0x757]
+00e2ec44  ldr x23,[x23, #0x418]
+00e2ec48  mov w21,w2
+00e2ec4c  mov x20,x1
+00e2ec50  mov x19,x0
+00e2ec54  tbnz w8,#0x0,0x00e2ec6c
+00e2ec58  adrp x0,0x331f000
+00e2ec5c  ldr x0,[x0, #0x418]
+00e2ec60  bl 0x00b0789c
+00e2ec64  mov w8,#0x1
+00e2ec68  strb w8,[x22, #0x757]
+00e2ec6c  ldr x8,[x23]
+00e2ec70  ldr x8,[x8, #0xb8]
+00e2ec74  ldr x0,[x8, #0xa8]
+00e2ec78  cbz x0,0x00e2ec9c
+00e2ec7c  and w3,w21,#0x1
+00e2ec80  mov x1,x19
+00e2ec84  mov x2,x20
+00e2ec88  ldp x19,x30,[sp, #0x20]
+00e2ec8c  ldp x21,x20,[sp, #0x10]
+00e2ec90  mov x4,xzr
+00e2ec94  ldp x23,x22,[sp], #0x30
+00e2ec98  b 0x0106381c
+00e2ec9c  and w1,w21,#0x1
+00e2eca0  mov x0,x19
+00e2eca4  bl 0x00e2dea0
+00e2eca8  mov x0,x19
+00e2ecac  mov x1,x20
+00e2ecb0  bl 0x00e2eccc
+00e2ecb4  mov x0,x19
+00e2ecb8  ldp x19,x30,[sp, #0x20]
+00e2ecbc  ldp x21,x20,[sp, #0x10]
+00e2ecc0  mov x1,xzr
+00e2ecc4  ldp x23,x22,[sp], #0x30
+00e2ecc8  b 0x00e2e714

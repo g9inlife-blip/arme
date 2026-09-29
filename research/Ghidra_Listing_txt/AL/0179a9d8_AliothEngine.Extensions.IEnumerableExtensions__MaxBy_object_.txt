@@ -1,0 +1,62 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions$$MaxBy<object> @ 0179a9d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AITendencySelector$$SelectTarget @ 00ec473c
+  <- SkillTargetInfo$$GetTurnBestDirection @ 0130fb0c
+
+--- Listing ---
+0179a9d8  str x22,[sp, #-0x30]!
+0179a9dc  stp x21,x20,[sp, #0x10]
+0179a9e0  stp x19,x30,[sp, #0x20]
+0179a9e4  ldr x8,[x2, #0x38]
+0179a9e8  mov x19,x2
+0179a9ec  mov x22,x1
+0179a9f0  mov x20,x0
+0179a9f4  ldr x8,[x8]
+0179a9f8  ldrb w9,[x8, #0x132]
+0179a9fc  tbnz w9,#0x0,0x0179aa0c
+0179aa00  mov x0,x8
+0179aa04  bl 0x00b2ac40
+0179aa08  mov x8,x0
+0179aa0c  mov x0,x8
+0179aa10  bl 0x00b079a0
+0179aa14  cbz x0,0x0179aa98
+0179aa18  ldr x8,[x19, #0x38]
+0179aa1c  mov x21,x0
+0179aa20  ldr x1,[x8, #0x8]
+0179aa24  ldr x8,[x1, #0x8]
+0179aa28  blr x8
+0179aa2c  mov x0,x21
+0179aa30  str x22,[x0, #0x10]!
+0179aa34  mov x1,x22
+0179aa38  bl 0x00b07850
+0179aa3c  ldr x8,[x19, #0x38]
+0179aa40  ldr x0,[x8, #0x18]
+0179aa44  ldrb w8,[x0, #0x132]
+0179aa48  tbnz w8,#0x0,0x0179aa50
+0179aa4c  bl 0x00b2ac40
+0179aa50  bl 0x00b079a0
+0179aa54  cbz x0,0x0179aa98
+0179aa58  ldr x8,[x19, #0x38]
+0179aa5c  mov x1,x21
+0179aa60  mov x22,x0
+0179aa64  ldr x3,[x8, #0x20]
+0179aa68  ldr x2,[x8, #0x10]
+0179aa6c  ldr x9,[x3, #0x8]
+0179aa70  blr x9
+0179aa74  ldr x8,[x19, #0x38]
+0179aa78  mov x0,x20
+0179aa7c  ldp x19,x30,[sp, #0x20]
+0179aa80  ldp x21,x20,[sp, #0x10]
+0179aa84  ldr x2,[x8, #0x28]
+0179aa88  mov x1,x22
+0179aa8c  ldr x3,[x2, #0x8]
+0179aa90  ldr x22,[sp], #0x30
+0179aa94  br x3
+0179aa98  bl 0x00b079b0

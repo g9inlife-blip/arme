@@ -1,0 +1,30 @@
+Function: AliothEngine.GameUpdateService.<>c$$<CheckAssets>b__75_2 @ 016819b4
+
+--- Calls OUT ---
+  -> Ali$$RunAssetUpdate @ 00e10234
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016819b4  str x20,[sp, #-0x20]!
+016819b8  stp x19,x30,[sp, #0x10]
+016819bc  adrp x19,0x3577000
+016819c0  adrp x20,0x335f000
+016819c4  ldrb w8,[x19, #0xa4f]
+016819c8  ldr x20,[x20, #0x20]
+016819cc  tbnz w8,#0x0,0x016819e4
+016819d0  adrp x0,0x335f000
+016819d4  ldr x0,[x0, #0x20]
+016819d8  bl 0x00b0789c
+016819dc  mov w8,#0x1
+016819e0  strb w8,[x19, #0xa4f]
+016819e4  ldr x0,[x20]
+016819e8  ldr w8,[x0, #0xe0]
+016819ec  cbnz w8,0x016819f4
+016819f0  bl 0x00b0798c
+016819f4  ldp x19,x30,[sp, #0x10]
+016819f8  mov x0,xzr
+016819fc  ldr x20,[sp], #0x20
+01681a00  b 0x00e10234

@@ -1,0 +1,49 @@
+Function: AliothEngine.Utils.MathUtils$$ReduceDecimals @ 0169a0d4
+
+--- Calls OUT ---
+  -> modf @ 008d41a0
+  -> powf @ 008d3b70
+
+--- Calls IN ---
+
+--- Listing ---
+0169a0d4  stp d9,d8,[sp, #-0x20]!
+0169a0d8  str x30,[sp, #0x10]
+0169a0dc  mov v9.16B,v0.16B
+0169a0e0  fmov s0,0x41200000
+0169a0e4  bl 0x008d3b70
+0169a0e8  fmul s9,s0,s9
+0169a0ec  mov v8.16B,v0.16B
+0169a0f0  fcvt d0,s9
+0169a0f4  add x0,sp,#0x18
+0169a0f8  bl 0x008d41a0
+0169a0fc  fcmp s9,#0.0
+0169a100  b.ge 0x0169a11c
+0169a104  fmov d1,-0x4020000000000000
+0169a108  fcmp d0,d1
+0169a10c  b.ne 0x0169a148
+0169a110  ldr d0,[sp, #0x18]
+0169a114  fmov s1,0xbf800000
+0169a118  b 0x0169a130
+0169a11c  fmov d1,0x3fe0000000000000
+0169a120  fcmp d0,d1
+0169a124  b.ne 0x0169a158
+0169a128  ldr d0,[sp, #0x18]
+0169a12c  fmov s1,0x3f800000
+0169a130  fcvtzs x8,d0
+0169a134  fcvt s0,d0
+0169a138  fadd s1,s0,s1
+0169a13c  tst x8,#0x1
+0169a140  fcsel s0,s0,s1,eq
+0169a144  b 0x0169a164
+0169a148  fmov s0,0xbf000000
+0169a14c  fadd s0,s9,s0
+0169a150  frintp s0,s0
+0169a154  b 0x0169a164
+0169a158  fmov s0,0x3f000000
+0169a15c  fadd s0,s9,s0
+0169a160  frintm s0,s0
+0169a164  ldr x30,[sp, #0x10]
+0169a168  fdiv s0,s0,s8
+0169a16c  ldp d9,d8,[sp], #0x20
+0169a170  ret

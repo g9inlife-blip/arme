@@ -1,0 +1,59 @@
+Function: AliothEngine.Extensions.ColorExtensions$$AsColorTextBlock @ 016ab984
+
+--- Calls OUT ---
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Text.StringBuilder$$Append @ 01fea30c
+
+--- Calls IN ---
+
+--- Listing ---
+016ab984  str d8,[sp, #-0x40]!
+016ab988  stp x23,x22,[sp, #0x10]
+016ab98c  stp x21,x20,[sp, #0x20]
+016ab990  stp x19,x30,[sp, #0x30]
+016ab994  adrp x20,0x3577000
+016ab998  adrp x21,0x3332000
+016ab99c  ldrb w8,[x20, #0xbb7]
+016ab9a0  ldr x21,[x21, #0xaf0]
+016ab9a4  mov w19,w0
+016ab9a8  mov v8.16B,v3.16B
+016ab9ac  tbnz w8,#0x0,0x016ab9c4
+016ab9b0  adrp x0,0x3332000
+016ab9b4  ldr x0,[x0, #0xaf0]
+016ab9b8  bl 0x00b0789c
+016ab9bc  mov w8,#0x1
+016ab9c0  strb w8,[x20, #0xbb7]
+016ab9c4  ldr x0,[x21]
+016ab9c8  bl 0x00b079a0
+016ab9cc  cbz x0,0x016aba3c
+016ab9d0  mov x1,xzr
+016ab9d4  mov x20,x0
+016ab9d8  bl 0x01fe7ee0
+016ab9dc  cmp w19,#0x1
+016ab9e0  b.lt 0x016aba1c
+016ab9e4  scvtf s0,w19
+016ab9e8  mov w21,wzr
+016ab9ec  mov w22,#0x2593
+016ab9f0  fmul s8,s8,s0
+016ab9f4  mov w23,#0x2588
+016ab9f8  scvtf s0,w21
+016ab9fc  fcmp s8,s0
+016aba00  csel w1,w23,w22,gt
+016aba04  mov x0,x20
+016aba08  mov x2,xzr
+016aba0c  bl 0x01fea30c
+016aba10  add w21,w21,#0x1
+016aba14  cmp w19,w21
+016aba18  b.ne 0x016ab9f8
+016aba1c  ldr x8,[x20]
+016aba20  mov x0,x20
+016aba24  ldp x19,x30,[sp, #0x30]
+016aba28  ldp x21,x20,[sp, #0x20]
+016aba2c  ldp x2,x1,[x8, #0x168]
+016aba30  ldp x23,x22,[sp, #0x10]
+016aba34  ldr d8,[sp], #0x40
+016aba38  br x2
+016aba3c  bl 0x00b079b0

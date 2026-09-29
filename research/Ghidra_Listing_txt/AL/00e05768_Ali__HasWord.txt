@@ -1,0 +1,58 @@
+Function: Ali$$HasWord @ 00e05768
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp36 @ 01063e54
+  -> Ali$$GetExcelData<object> @ 01736d60
+
+--- Calls IN ---
+  <- Ali$$TipsError @ 00e0ee8c
+  <- XLua.CSObjectWrap.AliWrap$$_m_HasWord @ 01192ffc
+
+--- Listing ---
+00e05768  str x22,[sp, #-0x30]!
+00e0576c  stp x21,x20,[sp, #0x10]
+00e05770  stp x19,x30,[sp, #0x20]
+00e05774  adrp x22,0x3572000
+00e05778  adrp x21,0x335f000
+00e0577c  ldrb w8,[x22, #0x56c]
+00e05780  ldr x21,[x21, #0x20]
+00e05784  mov w19,w1
+00e05788  mov x20,x0
+00e0578c  tbnz w8,#0x0,0x00e057b0
+00e05790  adrp x0,0x3336000
+00e05794  ldr x0,[x0, #0xe58]
+00e05798  bl 0x00b0789c
+00e0579c  adrp x0,0x335f000
+00e057a0  ldr x0,[x0, #0x20]
+00e057a4  bl 0x00b0789c
+00e057a8  mov w8,#0x1
+00e057ac  strb w8,[x22, #0x56c]
+00e057b0  ldr x0,[x21]
+00e057b4  ldr w8,[x0, #0xe0]
+00e057b8  cbnz w8,0x00e057c4
+00e057bc  bl 0x00b0798c
+00e057c0  ldr x0,[x21]
+00e057c4  ldr x8,[x0, #0xb8]
+00e057c8  ldr x0,[x8, #0x308]
+00e057cc  cbz x0,0x00e057ec
+00e057d0  mov x1,x20
+00e057d4  mov w2,w19
+00e057d8  ldp x19,x30,[sp, #0x20]
+00e057dc  ldp x21,x20,[sp, #0x10]
+00e057e0  mov x3,xzr
+00e057e4  ldr x22,[sp], #0x30
+00e057e8  b 0x01063e54
+00e057ec  adrp x8,0x3336000
+00e057f0  ldr x8,[x8, #0xe58]
+00e057f4  mov x0,x20
+00e057f8  mov w1,w19
+00e057fc  ldr x2,[x8]
+00e05800  bl 0x01736d60
+00e05804  ldp x19,x30,[sp, #0x20]
+00e05808  ldp x21,x20,[sp, #0x10]
+00e0580c  cmp x0,#0x0
+00e05810  cset w0,ne
+00e05814  ldr x22,[sp], #0x30
+00e05818  ret

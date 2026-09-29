@@ -1,0 +1,41 @@
+Function: AliothEngine.GUIScreen$$onGUILayerTypeChanged @ 0167148c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp613 @ 010afde4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- GUIScreenBaseMono$$onGUILayerTypeChanged @ 00f21ac0
+  <- GUIScreenBaseMono$$<>xLuaBaseProxy_onGUILayerTypeChanged @ 00f23564
+
+--- Listing ---
+0167148c  str x22,[sp, #-0x30]!
+01671490  stp x21,x20,[sp, #0x10]
+01671494  stp x19,x30,[sp, #0x20]
+01671498  adrp x21,0x3577000
+0167149c  adrp x22,0x3364000
+016714a0  ldrb w8,[x21, #0x984]
+016714a4  ldr x22,[x22, #0xd28]
+016714a8  mov w19,w1
+016714ac  mov x20,x0
+016714b0  tbnz w8,#0x0,0x016714c8
+016714b4  adrp x0,0x3364000
+016714b8  ldr x0,[x0, #0xd28]
+016714bc  bl 0x00b0789c
+016714c0  mov w8,#0x1
+016714c4  strb w8,[x21, #0x984]
+016714c8  ldr x8,[x22]
+016714cc  ldr x8,[x8, #0xb8]
+016714d0  ldr x0,[x8, #0x98]
+016714d4  cbz x0,0x016714f4
+016714d8  mov x1,x20
+016714dc  mov w2,w19
+016714e0  ldp x19,x30,[sp, #0x20]
+016714e4  ldp x21,x20,[sp, #0x10]
+016714e8  mov x3,xzr
+016714ec  ldr x22,[sp], #0x30
+016714f0  b 0x010afde4
+016714f4  ldp x19,x30,[sp, #0x20]
+016714f8  ldp x21,x20,[sp, #0x10]
+016714fc  ldr x22,[sp], #0x30
+01671500  ret

@@ -1,0 +1,45 @@
+Function: Ali$$get_m_StartTestData @ 00e01040
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp376 @ 0108ffe0
+
+--- Calls IN ---
+  <- Ali$$GotoTutorial @ 00e0e594
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_StartTestData @ 0119edf4
+  <- Ali$$get_isSkipTest @ 00e01358
+  <- BattleManager$$InitTollgate @ 01179bec
+  <- BattleCenter$$PreLoadBattle @ 00ed0ac8
+
+--- Listing ---
+00e01040  stp x21,x20,[sp, #-0x20]!
+00e01044  stp x19,x30,[sp, #0x10]
+00e01048  adrp x21,0x3572000
+00e0104c  adrp x20,0x335f000
+00e01050  ldrb w8,[x21, #0x52c]
+00e01054  ldr x20,[x20, #0x20]
+00e01058  mov x19,x0
+00e0105c  tbnz w8,#0x0,0x00e01074
+00e01060  adrp x0,0x335f000
+00e01064  ldr x0,[x0, #0x20]
+00e01068  bl 0x00b0789c
+00e0106c  mov w8,#0x1
+00e01070  strb w8,[x21, #0x52c]
+00e01074  ldr x0,[x20]
+00e01078  ldr w8,[x0, #0xe0]
+00e0107c  cbnz w8,0x00e01088
+00e01080  bl 0x00b0798c
+00e01084  ldr x0,[x20]
+00e01088  ldr x8,[x0, #0xb8]
+00e0108c  ldr x0,[x8, #0xf8]
+00e01090  cbz x0,0x00e010a8
+00e01094  mov x1,x19
+00e01098  ldp x19,x30,[sp, #0x10]
+00e0109c  mov x2,xzr
+00e010a0  ldp x21,x20,[sp], #0x20
+00e010a4  b 0x0108ffe0
+00e010a8  ldr x0,[x19, #0x58]
+00e010ac  ldp x19,x30,[sp, #0x10]
+00e010b0  ldp x21,x20,[sp], #0x20
+00e010b4  ret

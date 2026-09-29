@@ -1,0 +1,72 @@
+Function: AliothEngine.Extensions.TransformExtensions$$SortAlphabetically @ 016b99a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Func<object,-object>$$.ctor @ 01ae8f80
+  -> AliothEngine.Extensions.TransformExtensions$$Sort @ 016b98a0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b99a4  str x22,[sp, #-0x30]!
+016b99a8  stp x21,x20,[sp, #0x10]
+016b99ac  stp x19,x30,[sp, #0x20]
+016b99b0  adrp x20,0x3577000
+016b99b4  adrp x22,0x330e000
+016b99b8  ldrb w8,[x20, #0xc2d]
+016b99bc  ldr x22,[x22, #0xfa0]
+016b99c0  mov x19,x0
+016b99c4  tbnz w8,#0x0,0x016b99f4
+016b99c8  adrp x0,0x3308000
+016b99cc  ldr x0,[x0, #0x908]
+016b99d0  bl 0x00b0789c
+016b99d4  adrp x0,0x335f000
+016b99d8  ldr x0,[x0, #0x838]
+016b99dc  bl 0x00b0789c
+016b99e0  adrp x0,0x330e000
+016b99e4  ldr x0,[x0, #0xfa0]
+016b99e8  bl 0x00b0789c
+016b99ec  mov w8,#0x1
+016b99f0  strb w8,[x20, #0xc2d]
+016b99f4  ldr x0,[x22]
+016b99f8  ldr w8,[x0, #0xe0]
+016b99fc  cbnz w8,0x016b9a08
+016b9a00  bl 0x00b0798c
+016b9a04  ldr x0,[x22]
+016b9a08  ldr x8,[x0, #0xb8]
+016b9a0c  ldr x20,[x8, #0x8]
+016b9a10  cbnz x20,0x016b9a70
+016b9a14  adrp x20,0x3308000
+016b9a18  ldr w8,[x0, #0xe0]
+016b9a1c  ldr x20,[x20, #0x908]
+016b9a20  cbnz w8,0x016b9a2c
+016b9a24  bl 0x00b0798c
+016b9a28  ldr x0,[x22]
+016b9a2c  ldr x8,[x0, #0xb8]
+016b9a30  ldr x0,[x20]
+016b9a34  ldr x21,[x8]
+016b9a38  bl 0x00b079a0
+016b9a3c  cbz x0,0x016b9a88
+016b9a40  adrp x8,0x335f000
+016b9a44  ldr x8,[x8, #0x838]
+016b9a48  mov x1,x21
+016b9a4c  mov x3,xzr
+016b9a50  mov x20,x0
+016b9a54  ldr x2,[x8]
+016b9a58  bl 0x01ae8f80
+016b9a5c  ldr x8,[x22]
+016b9a60  mov x1,x20
+016b9a64  ldr x0,[x8, #0xb8]
+016b9a68  str x20,[x0, #0x8]!
+016b9a6c  bl 0x00b07850
+016b9a70  mov x0,x19
+016b9a74  mov x1,x20
+016b9a78  ldp x19,x30,[sp, #0x20]
+016b9a7c  ldp x21,x20,[sp, #0x10]
+016b9a80  ldr x22,[sp], #0x30
+016b9a84  b 0x016b98a0
+016b9a88  bl 0x00b079b0

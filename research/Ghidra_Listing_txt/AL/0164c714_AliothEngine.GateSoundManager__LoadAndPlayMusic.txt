@@ -1,0 +1,49 @@
+Function: AliothEngine.GateSoundManager$$LoadAndPlayMusic @ 0164c714
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GateSoundManager$$PlayeMusic @ 0164c690
+
+--- Listing ---
+0164c714  str x22,[sp, #-0x30]!
+0164c718  stp x21,x20,[sp, #0x10]
+0164c71c  stp x19,x30,[sp, #0x20]
+0164c720  adrp x21,0x3577000
+0164c724  adrp x22,0x337b000
+0164c728  ldrb w8,[x21, #0x7c2]
+0164c72c  ldr x22,[x22, #0xbb0]
+0164c730  mov x19,x1
+0164c734  mov x20,x0
+0164c738  tbnz w8,#0x0,0x0164c750
+0164c73c  adrp x0,0x337b000
+0164c740  ldr x0,[x0, #0xbb0]
+0164c744  bl 0x00b0789c
+0164c748  mov w8,#0x1
+0164c74c  strb w8,[x21, #0x7c2]
+0164c750  ldr x0,[x22]
+0164c754  bl 0x00b079a0
+0164c758  cbz x0,0x0164c7a0
+0164c75c  mov x1,xzr
+0164c760  mov x21,x0
+0164c764  bl 0x02194104
+0164c768  mov x0,x21
+0164c76c  str wzr,[x21, #0x10]
+0164c770  str x20,[x0, #0x20]!
+0164c774  mov x1,x20
+0164c778  bl 0x00b07850
+0164c77c  mov x0,x21
+0164c780  str x19,[x0, #0x28]!
+0164c784  mov x1,x19
+0164c788  bl 0x00b07850
+0164c78c  mov x0,x21
+0164c790  ldp x19,x30,[sp, #0x20]
+0164c794  ldp x21,x20,[sp, #0x10]
+0164c798  ldr x22,[sp], #0x30
+0164c79c  ret
+0164c7a0  bl 0x00b079b0

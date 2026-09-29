@@ -1,0 +1,59 @@
+Function: Ali$$get_m_weather @ 00e00d88
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.PlayerPrefs$$GetInt @ 024be5a8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PlayerPrefs$$HasKey @ 024be854
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- BattleManager$$PlayAniEnd @ 0117c534
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_weather @ 0119ea8c
+
+--- Listing ---
+00e00d88  stp x21,x20,[sp, #-0x20]!
+00e00d8c  stp x19,x30,[sp, #0x10]
+00e00d90  adrp x21,0x3572000
+00e00d94  adrp x20,0x335f000
+00e00d98  ldrb w8,[x21, #0x528]
+00e00d9c  ldr x20,[x20, #0x20]
+00e00da0  mov x19,x0
+00e00da4  tbnz w8,#0x0,0x00e00dc8
+00e00da8  adrp x0,0x335f000
+00e00dac  ldr x0,[x0, #0x20]
+00e00db0  bl 0x00b0789c
+00e00db4  adrp x0,0x3310000
+00e00db8  ldr x0,[x0, #0x1c0]
+00e00dbc  bl 0x00b0789c
+00e00dc0  mov w8,#0x1
+00e00dc4  strb w8,[x21, #0x528]
+00e00dc8  ldr x0,[x20]
+00e00dcc  ldr w8,[x0, #0xe0]
+00e00dd0  cbnz w8,0x00e00ddc
+00e00dd4  bl 0x00b0798c
+00e00dd8  ldr x0,[x20]
+00e00ddc  ldr x8,[x0, #0xb8]
+00e00de0  ldr x0,[x8, #0xd8]
+00e00de4  cbz x0,0x00e00dfc
+00e00de8  mov x1,x19
+00e00dec  ldp x19,x30,[sp, #0x10]
+00e00df0  mov x2,xzr
+00e00df4  ldp x21,x20,[sp], #0x20
+00e00df8  b 0x01060aac
+00e00dfc  adrp x19,0x3310000
+00e00e00  ldr x19,[x19, #0x1c0]
+00e00e04  mov x1,xzr
+00e00e08  ldr x0,[x19]
+00e00e0c  bl 0x024be854
+00e00e10  tbz w0,#0x0,0x00e00e2c
+00e00e14  ldr x0,[x19]
+00e00e18  mov x1,xzr
+00e00e1c  bl 0x024be5a8
+00e00e20  cmp w0,#0x1
+00e00e24  cset w0,eq
+00e00e28  b 0x00e00e30
+00e00e2c  mov w0,#0x1
+00e00e30  ldp x19,x30,[sp, #0x10]
+00e00e34  ldp x21,x20,[sp], #0x20
+00e00e38  ret

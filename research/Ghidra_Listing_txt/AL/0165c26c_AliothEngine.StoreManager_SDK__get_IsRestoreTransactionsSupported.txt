@@ -1,0 +1,34 @@
+Function: AliothEngine.StoreManager_SDK$$get_IsRestoreTransactionsSupported @ 0165c26c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+
+--- Listing ---
+0165c26c  stp x21,x20,[sp, #-0x20]!
+0165c270  stp x19,x30,[sp, #0x10]
+0165c274  adrp x20,0x3577000
+0165c278  adrp x21,0x3351000
+0165c27c  ldrb w8,[x20, #0x87a]
+0165c280  ldr x21,[x21, #0xa30]
+0165c284  mov x19,x0
+0165c288  tbnz w8,#0x0,0x0165c2a0
+0165c28c  adrp x0,0x3351000
+0165c290  ldr x0,[x0, #0xa30]
+0165c294  bl 0x00b0789c
+0165c298  mov w8,#0x1
+0165c29c  strb w8,[x20, #0x87a]
+0165c2a0  ldr x8,[x21]
+0165c2a4  ldr x8,[x8, #0xb8]
+0165c2a8  ldr x0,[x8, #0x10]
+0165c2ac  cbz x0,0x0165c2c4
+0165c2b0  mov x1,x19
+0165c2b4  ldp x19,x30,[sp, #0x10]
+0165c2b8  mov x2,xzr
+0165c2bc  ldp x21,x20,[sp], #0x20
+0165c2c0  b 0x01060aac
+0165c2c4  ldp x19,x30,[sp, #0x10]
+0165c2c8  ldp x21,x20,[sp], #0x20
+0165c2cc  ret

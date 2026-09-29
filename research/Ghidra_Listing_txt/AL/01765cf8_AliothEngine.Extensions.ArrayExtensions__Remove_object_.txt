@@ -1,0 +1,81 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$Remove<object> @ 01765cf8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01765cf8  stp x25,x24,[sp, #-0x40]!
+01765cfc  stp x23,x22,[sp, #0x10]
+01765d00  stp x21,x20,[sp, #0x20]
+01765d04  stp x19,x30,[sp, #0x30]
+01765d08  cbz x0,0x01765e08
+01765d0c  ldr x8,[x2, #0x38]
+01765d10  mov x19,x0
+01765d14  mov w21,w1
+01765d18  ldr x0,[x8]
+01765d1c  ldrb w8,[x0, #0x132]
+01765d20  tbnz w8,#0x0,0x01765d28
+01765d24  bl 0x00b2ac40
+01765d28  ldr w8,[x19, #0x18]
+01765d2c  sub w1,w8,#0x1
+01765d30  bl 0x00b078f8
+01765d34  cmp w21,#0x1
+01765d38  mov x20,x0
+01765d3c  b.lt 0x01765d90
+01765d40  mov x22,xzr
+01765d44  mov w23,w21
+01765d48  add x24,x19,#0x20
+01765d4c  add x0,x20,#0x20
+01765d50  ldr w8,[x19, #0x18]
+01765d54  cmp x22,x8
+01765d58  b.cs 0x01765e04
+01765d5c  cbz x20,0x01765e08
+01765d60  ldr w8,[x20, #0x18]
+01765d64  cmp x22,x8
+01765d68  b.cs 0x01765e04
+01765d6c  ldr x1,[x24, x22, LSL #0x3]
+01765d70  mov x25,x0
+01765d74  str x1,[x25], #0x8
+01765d78  bl 0x00b07850
+01765d7c  add x22,x22,#0x1
+01765d80  cmp x23,x22
+01765d84  mov x0,x25
+01765d88  b.ne 0x01765d50
+01765d8c  b 0x01765d94
+01765d90  cbz x20,0x01765e08
+01765d94  ldr x8,[x20, #0x18]
+01765d98  sxtw x21,w21
+01765d9c  cmp x21,w8, SXTW 
+01765da0  b.ge 0x01765dec
+01765da4  add x9,x20,x21, LSL #0x3
+01765da8  add x0,x9,#0x20
+01765dac  ldr w10,[x19, #0x18]
+01765db0  add w9,w21,#0x1
+01765db4  cmp w9,w10
+01765db8  b.cs 0x01765e04
+01765dbc  cmp w21,w8
+01765dc0  b.cs 0x01765e04
+01765dc4  add x8,x19,w9, SXTW  #0x3
+01765dc8  ldr x1,[x8, #0x20]
+01765dcc  mov x22,x0
+01765dd0  str x1,[x22], #0x8
+01765dd4  bl 0x00b07850
+01765dd8  ldr x8,[x20, #0x18]
+01765ddc  add x21,x21,#0x1
+01765de0  mov x0,x22
+01765de4  cmp x21,w8, SXTW 
+01765de8  b.lt 0x01765dac
+01765dec  mov x0,x20
+01765df0  ldp x19,x30,[sp, #0x30]
+01765df4  ldp x21,x20,[sp, #0x20]
+01765df8  ldp x23,x22,[sp, #0x10]
+01765dfc  ldp x25,x24,[sp], #0x40
+01765e00  ret
+01765e04  bl 0x00b079b8
+01765e08  bl 0x00b079b0

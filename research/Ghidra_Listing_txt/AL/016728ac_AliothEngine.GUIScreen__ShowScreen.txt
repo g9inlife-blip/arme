@@ -1,0 +1,72 @@
+Function: AliothEngine.GUIScreen$$ShowScreen @ 016728ac
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreenManager$$ChangeScreenParent @ 01672990
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$GetInstance @ 01e08f7c
+  -> UnityEngine.GameObject$$SetActive @ 024de86c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- CallPanelMono$$ShowActor @ 00ea2064
+
+--- Listing ---
+016728ac  stp x21,x20,[sp, #-0x20]!
+016728b0  stp x19,x30,[sp, #0x10]
+016728b4  adrp x20,0x3577000
+016728b8  adrp x21,0x3364000
+016728bc  ldrb w8,[x20, #0x999]
+016728c0  ldr x21,[x21, #0xd28]
+016728c4  mov x19,x0
+016728c8  tbnz w8,#0x0,0x016728ec
+016728cc  adrp x0,0x3364000
+016728d0  ldr x0,[x0, #0xd28]
+016728d4  bl 0x00b0789c
+016728d8  adrp x0,0x332a000
+016728dc  ldr x0,[x0, #0x678]
+016728e0  bl 0x00b0789c
+016728e4  mov w8,#0x1
+016728e8  strb w8,[x20, #0x999]
+016728ec  ldr x8,[x21]
+016728f0  ldr x8,[x8, #0xb8]
+016728f4  ldr x0,[x8, #0x140]
+016728f8  cbz x0,0x01672910
+016728fc  mov x1,x19
+01672900  ldp x19,x30,[sp, #0x10]
+01672904  mov x2,xzr
+01672908  ldp x21,x20,[sp], #0x20
+0167290c  b 0x01060dac
+01672910  mov x0,x19
+01672914  mov x1,xzr
+01672918  bl 0x024e4ed4
+0167291c  cbz x0,0x0167298c
+01672920  adrp x20,0x332a000
+01672924  ldr x20,[x20, #0x678]
+01672928  mov w1,#0x1
+0167292c  mov x2,xzr
+01672930  bl 0x024de86c
+01672934  ldr x0,[x20]
+01672938  bl 0x01e08f7c
+0167293c  cbz x0,0x0167298c
+01672940  mov x1,x19
+01672944  bl 0x01672990
+01672948  ldr x8,[x19]
+0167294c  mov x0,x19
+01672950  ldr x9,[x8, #0x348]
+01672954  ldr x1,[x8, #0x350]
+01672958  blr x9
+0167295c  ldr x8,[x19, #0x80]
+01672960  cbz x8,0x01672980
+01672964  ldr x3,[x8, #0x18]
+01672968  ldr x0,[x8, #0x40]
+0167296c  ldr x2,[x8, #0x28]
+01672970  mov x1,x19
+01672974  ldp x19,x30,[sp, #0x10]
+01672978  ldp x21,x20,[sp], #0x20
+0167297c  br x3
+01672980  ldp x19,x30,[sp, #0x10]
+01672984  ldp x21,x20,[sp], #0x20
+01672988  ret
+0167298c  bl 0x00b079b0

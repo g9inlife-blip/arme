@@ -1,0 +1,50 @@
+Function: AliothEngine.AssetHolder$$get_error @ 01662540
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.CacheAssetBundleHolder.<Load>d__4$$MoveNext @ 01664508
+  <- AliothEngine.AssetHolder$$OnLoadFailed @ 01662ca4
+  <- AliothEngine.CacheAssetBundleHolder$$LoadImmediate @ 01664298
+  <- AliothEngine.ResourcesAssetHolder$$LoadImmediate @ 0166566c
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass18_0$$<LoadAsset>b__0 @ 0166a0d0
+  <- AliothEngine.ResourcesAssetHolder.<Load>d__2$$MoveNext @ 01665960
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_g_get_error @ 01139ac8
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass24_0$$<LoadAssetBundleInfo>b__0 @ 0166a228
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass25_0$$<LoadAssetBundleManifest>b__0 @ 0166a4cc
+
+--- Listing ---
+01662540  stp x21,x20,[sp, #-0x20]!
+01662544  stp x19,x30,[sp, #0x10]
+01662548  adrp x21,0x3577000
+0166254c  adrp x20,0x3312000
+01662550  ldrb w8,[x21, #0x8c6]
+01662554  ldr x20,[x20, #0x428]
+01662558  mov x19,x0
+0166255c  tbnz w8,#0x0,0x01662574
+01662560  adrp x0,0x3312000
+01662564  ldr x0,[x0, #0x428]
+01662568  bl 0x00b0789c
+0166256c  mov w8,#0x1
+01662570  strb w8,[x21, #0x8c6]
+01662574  ldr x0,[x20]
+01662578  ldr w8,[x0, #0xe0]
+0166257c  cbnz w8,0x01662588
+01662580  bl 0x00b0798c
+01662584  ldr x0,[x20]
+01662588  ldr x8,[x0, #0xb8]
+0166258c  ldr x0,[x8, #0x40]
+01662590  cbz x0,0x016625a8
+01662594  mov x1,x19
+01662598  ldp x19,x30,[sp, #0x10]
+0166259c  mov x2,xzr
+016625a0  ldp x21,x20,[sp], #0x20
+016625a4  b 0x01061abc
+016625a8  ldr x0,[x19, #0x30]
+016625ac  ldp x19,x30,[sp, #0x10]
+016625b0  ldp x21,x20,[sp], #0x20
+016625b4  ret

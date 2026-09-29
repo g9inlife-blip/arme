@@ -1,0 +1,97 @@
+Function: AliothEngine.GameUpdateService.<StartDownLoadAssetBundleMainfest>d__62$$MoveNext @ 01681f8c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.AssetInfoManager$$LoadAssetHostInfo @ 01669bf8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Action<float>$$.ctor @ 0190aa98
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01681f8c  stp x23,x22,[sp, #-0x30]!
+01681f90  stp x21,x20,[sp, #0x10]
+01681f94  stp x19,x30,[sp, #0x20]
+01681f98  adrp x20,0x3577000
+01681f9c  ldrb w8,[x20, #0xa53]
+01681fa0  mov x19,x0
+01681fa4  tbnz w8,#0x0,0x01681fec
+01681fa8  adrp x0,0x331b000
+01681fac  ldr x0,[x0, #0x468]
+01681fb0  bl 0x00b0789c
+01681fb4  adrp x0,0x3377000
+01681fb8  ldr x0,[x0, #0x8f8]
+01681fbc  bl 0x00b0789c
+01681fc0  adrp x0,0x334f000
+01681fc4  ldr x0,[x0, #0xd30]
+01681fc8  bl 0x00b0789c
+01681fcc  adrp x0,0x336c000
+01681fd0  ldr x0,[x0, #0x950]
+01681fd4  bl 0x00b0789c
+01681fd8  adrp x0,0x3310000
+01681fdc  ldr x0,[x0, #0x630]
+01681fe0  bl 0x00b0789c
+01681fe4  mov w8,#0x1
+01681fe8  strb w8,[x20, #0xa53]
+01681fec  ldr w8,[x19, #0x10]
+01681ff0  mov w0,wzr
+01681ff4  cmp w8,#0x1
+01681ff8  b.eq 0x016820b8
+01681ffc  cbnz w8,0x016820c0
+01682000  adrp x8,0x3310000
+01682004  ldr x8,[x8, #0x630]
+01682008  mov w9,#0xffffffff
+0168200c  str w9,[x19, #0x10]
+01682010  adrp x20,0x3377000
+01682014  ldr x0,[x8]
+01682018  ldr x21,[x19, #0x20]
+0168201c  ldr x20,[x20, #0x8f8]
+01682020  bl 0x01e0894c
+01682024  ldr x8,[x20]
+01682028  mov x20,x0
+0168202c  mov x0,x8
+01682030  bl 0x00b079a0
+01682034  cbz x0,0x016820d0
+01682038  adrp x8,0x334f000
+0168203c  ldr x8,[x8, #0xd30]
+01682040  adrp x23,0x331b000
+01682044  mov x1,x21
+01682048  mov x3,xzr
+0168204c  ldr x2,[x8]
+01682050  ldr x23,[x23, #0x468]
+01682054  mov x22,x0
+01682058  bl 0x01909b80
+0168205c  ldr x0,[x23]
+01682060  bl 0x00b079a0
+01682064  cbz x0,0x016820d0
+01682068  adrp x8,0x336c000
+0168206c  ldr x8,[x8, #0x950]
+01682070  mov x1,x21
+01682074  mov x3,xzr
+01682078  mov x23,x0
+0168207c  ldr x2,[x8]
+01682080  bl 0x0190aa98
+01682084  cbz x20,0x016820d0
+01682088  mov x0,x20
+0168208c  mov x1,x22
+01682090  mov x2,x23
+01682094  mov x3,xzr
+01682098  bl 0x01669bf8
+0168209c  mov x1,x0
+016820a0  mov x0,x19
+016820a4  str x1,[x0, #0x18]!
+016820a8  bl 0x00b07850
+016820ac  mov w8,#0x1
+016820b0  mov w0,#0x1
+016820b4  b 0x016820bc
+016820b8  mov w8,#0xffffffff
+016820bc  str w8,[x19, #0x10]
+016820c0  ldp x19,x30,[sp, #0x20]
+016820c4  ldp x21,x20,[sp, #0x10]
+016820c8  ldp x23,x22,[sp], #0x30
+016820cc  ret
+016820d0  bl 0x00b079b0

@@ -1,0 +1,31 @@
+Function: AliothEngine.Extensions.Matrix4x4Extension$$GetRelativeTransformationFrom @ 016afcd4
+
+--- Calls OUT ---
+  -> UnityEngine.Matrix4x4$$op_Multiply @ 024e8150
+
+--- Calls IN ---
+
+--- Listing ---
+016afcd4  sub sp,sp,#0xd0
+016afcd8  stp x19,x30,[sp, #0xc0]
+016afcdc  ldp q1,q0,[x1, #0x20]
+016afce0  ldp q3,q2,[x1]
+016afce4  mov x19,x8
+016afce8  add x8,sp,#0x80
+016afcec  stp q1,q0,[sp, #0x60]
+016afcf0  stp q3,q2,[sp, #0x40]
+016afcf4  ldp q1,q0,[x0, #0x20]
+016afcf8  ldp q3,q2,[x0]
+016afcfc  add x0,sp,#0x40
+016afd00  mov x1,sp
+016afd04  mov x2,xzr
+016afd08  stp q1,q0,[sp, #0x20]
+016afd0c  stp q3,q2,[sp]
+016afd10  bl 0x024e8150
+016afd14  ldp q1,q0,[sp, #0xa0]
+016afd18  ldp q3,q2,[sp, #0x80]
+016afd1c  stp q1,q0,[x19, #0x20]
+016afd20  stp q3,q2,[x19]
+016afd24  ldp x19,x30,[sp, #0xc0]
+016afd28  add sp,sp,#0xd0
+016afd2c  ret

@@ -1,0 +1,69 @@
+Function: AliothEngine.GameUpdateService.<StartGetAssetNeedUpdate>d__58$$MoveNext @ 01681b90
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GameUpdateService$$GetAssetNeedUpdate @ 0167dda0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01681b90  stp x21,x20,[sp, #-0x20]!
+01681b94  stp x19,x30,[sp, #0x10]
+01681b98  adrp x20,0x3577000
+01681b9c  ldrb w8,[x20, #0xa51]
+01681ba0  mov x19,x0
+01681ba4  tbnz w8,#0x0,0x01681bc8
+01681ba8  adrp x0,0x3366000
+01681bac  ldr x0,[x0, #0xba0]
+01681bb0  bl 0x00b0789c
+01681bb4  adrp x0,0x337c000
+01681bb8  ldr x0,[x0, #0xe10]
+01681bbc  bl 0x00b0789c
+01681bc0  mov w8,#0x1
+01681bc4  strb w8,[x20, #0xa51]
+01681bc8  ldr w8,[x19, #0x10]
+01681bcc  mov w0,wzr
+01681bd0  cmp w8,#0x1
+01681bd4  b.eq 0x01681c54
+01681bd8  cbnz w8,0x01681c5c
+01681bdc  adrp x8,0x3366000
+01681be0  ldr x8,[x8, #0xba0]
+01681be4  mov w9,#0xffffffff
+01681be8  str w9,[x19, #0x10]
+01681bec  ldr x20,[x19, #0x20]
+01681bf0  ldr x0,[x8]
+01681bf4  bl 0x00b079a0
+01681bf8  cbz x0,0x01681c68
+01681bfc  adrp x8,0x337c000
+01681c00  ldr x8,[x8, #0xe10]
+01681c04  mov x1,x20
+01681c08  mov x3,xzr
+01681c0c  mov x21,x0
+01681c10  ldr x2,[x8]
+01681c14  bl 0x01909b80
+01681c18  cbz x20,0x01681c68
+01681c1c  mov x0,x20
+01681c20  mov x1,x21
+01681c24  bl 0x0167dda0
+01681c28  mov x1,x0
+01681c2c  mov x0,x20
+01681c30  mov x2,xzr
+01681c34  bl 0x024e4070
+01681c38  mov x1,x0
+01681c3c  mov x0,x19
+01681c40  str x1,[x0, #0x18]!
+01681c44  bl 0x00b07850
+01681c48  mov w8,#0x1
+01681c4c  mov w0,#0x1
+01681c50  b 0x01681c58
+01681c54  mov w8,#0xffffffff
+01681c58  str w8,[x19, #0x10]
+01681c5c  ldp x19,x30,[sp, #0x10]
+01681c60  ldp x21,x20,[sp], #0x20
+01681c64  ret
+01681c68  bl 0x00b079b0

@@ -1,0 +1,26 @@
+Function: AliothEngine.AssetVersionManager$$GetLatestAssetVersion @ 0166f410
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0166f410  str x20,[sp, #-0x20]!
+0166f414  stp x19,x30,[sp, #0x10]
+0166f418  adrp x19,0x3577000
+0166f41c  adrp x20,0x332e000
+0166f420  ldrb w8,[x19, #0x95c]
+0166f424  ldr x20,[x20, #0x690]
+0166f428  tbnz w8,#0x0,0x0166f440
+0166f42c  adrp x0,0x332e000
+0166f430  ldr x0,[x0, #0x690]
+0166f434  bl 0x00b0789c
+0166f438  mov w8,#0x1
+0166f43c  strb w8,[x19, #0x95c]
+0166f440  ldr x8,[x20]
+0166f444  ldp x19,x30,[sp, #0x10]
+0166f448  ldr x8,[x8, #0xb8]
+0166f44c  ldr x0,[x8]
+0166f450  ldr x20,[sp], #0x20
+0166f454  ret

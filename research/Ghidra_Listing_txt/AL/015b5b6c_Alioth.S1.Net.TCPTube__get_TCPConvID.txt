@@ -1,0 +1,38 @@
+Function: Alioth.S1.Net.TCPTube$$get_TCPConvID @ 015b5b6c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp756 @ 010c33e4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1NetTCPTubeWrap$$_g_get_TCPConvID @ 011747e0
+  <- Alioth.S1.Net.TCPTube$$TryOutput @ 015b71b0
+  <- Alioth.S1.Net.TCPTube$$Send @ 015b61c8
+
+--- Listing ---
+015b5b6c  stp x21,x20,[sp, #-0x20]!
+015b5b70  stp x19,x30,[sp, #0x10]
+015b5b74  adrp x20,0x3577000
+015b5b78  adrp x21,0x3317000
+015b5b7c  ldrb w8,[x20, #0xdb]
+015b5b80  ldr x21,[x21, #0x178]
+015b5b84  mov x19,x0
+015b5b88  tbnz w8,#0x0,0x015b5ba0
+015b5b8c  adrp x0,0x3317000
+015b5b90  ldr x0,[x0, #0x178]
+015b5b94  bl 0x00b0789c
+015b5b98  mov w8,#0x1
+015b5b9c  strb w8,[x20, #0xdb]
+015b5ba0  ldr x8,[x21]
+015b5ba4  ldr x8,[x8, #0xb8]
+015b5ba8  ldr x0,[x8, #0x30]
+015b5bac  cbz x0,0x015b5bc4
+015b5bb0  mov x1,x19
+015b5bb4  ldp x19,x30,[sp, #0x10]
+015b5bb8  mov x2,xzr
+015b5bbc  ldp x21,x20,[sp], #0x20
+015b5bc0  b 0x010c33e4
+015b5bc4  ldr x0,[x19, #0x68]
+015b5bc8  ldp x19,x30,[sp, #0x10]
+015b5bcc  ldp x21,x20,[sp], #0x20
+015b5bd0  ret

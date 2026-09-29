@@ -1,0 +1,54 @@
+Function: AliothEngine.Extensions.ColorExtensions$$ToHex @ 016ab4c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$ToString @ 0214dcd8
+  -> AliothEngine.Extensions.ColorExtensions$$ToInt @ 016ab2bc
+
+--- Calls IN ---
+
+--- Listing ---
+016ab4c0  stp d11,d10,[sp, #-0x40]!
+016ab4c4  stp d9,d8,[sp, #0x10]
+016ab4c8  str x20,[sp, #0x20]
+016ab4cc  stp x19,x30,[sp, #0x30]
+016ab4d0  adrp x20,0x3577000
+016ab4d4  adrp x19,0x330b000
+016ab4d8  ldrb w8,[x20, #0xbb3]
+016ab4dc  ldr x19,[x19, #0x690]
+016ab4e0  mov v8.16B,v3.16B
+016ab4e4  mov v9.16B,v2.16B
+016ab4e8  mov v10.16B,v1.16B
+016ab4ec  mov v11.16B,v0.16B
+016ab4f0  tbnz w8,#0x0,0x016ab514
+016ab4f4  adrp x0,0x330b000
+016ab4f8  ldr x0,[x0, #0x690]
+016ab4fc  bl 0x00b0789c
+016ab500  adrp x0,0x3380000
+016ab504  ldr x0,[x0, #0x200]
+016ab508  bl 0x00b0789c
+016ab50c  mov w8,#0x1
+016ab510  strb w8,[x20, #0xbb3]
+016ab514  ldr x0,[x19]
+016ab518  str wzr,[sp, #0x2c]
+016ab51c  adrp x19,0x3380000
+016ab520  ldr w8,[x0, #0xe0]
+016ab524  ldr x19,[x19, #0x200]
+016ab528  cbnz w8,0x016ab530
+016ab52c  bl 0x00b0798c
+016ab530  mov v0.16B,v11.16B
+016ab534  mov v1.16B,v10.16B
+016ab538  mov v2.16B,v9.16B
+016ab53c  mov v3.16B,v8.16B
+016ab540  bl 0x016ab2bc
+016ab544  ldr x1,[x19]
+016ab548  str w0,[sp, #0x2c]
+016ab54c  add x0,sp,#0x2c
+016ab550  mov x2,xzr
+016ab554  bl 0x0214dcd8
+016ab558  ldp x19,x30,[sp, #0x30]
+016ab55c  ldr x20,[sp, #0x20]
+016ab560  ldp d9,d8,[sp, #0x10]
+016ab564  ldp d11,d10,[sp], #0x40
+016ab568  ret

@@ -1,0 +1,31 @@
+Function: AliothEngine.Easing.EasingFunctions$$SinusoidalOut @ 016a5400
+
+--- Calls OUT ---
+  -> sinf @ 008d5810
+
+--- Calls IN ---
+
+--- Listing ---
+016a5400  stp d9,d8,[sp, #-0x20]!
+016a5404  str x30,[sp, #0x10]
+016a5408  adrp x8,0x26db000
+016a540c  ldr s4,[x8, #0x530]
+016a5410  mov v8.16B,v0.16B
+016a5414  fmov s0,0x3f800000
+016a5418  fabd s3,s8,s1
+016a541c  fcmp s8,s1
+016a5420  fneg s1,s3
+016a5424  fmin s0,s2,s0
+016a5428  fcsel s9,s1,s3,gt
+016a542c  fmov s1,0x3f000000
+016a5430  fmul s0,s0,s4
+016a5434  fcmp s2,#0.0
+016a5438  fmul s0,s0,s1
+016a543c  fmov s1,wzr
+016a5440  fcsel s0,s0,s1,pl
+016a5444  bl 0x008d5810
+016a5448  ldr x30,[sp, #0x10]
+016a544c  fmul s0,s9,s0
+016a5450  fadd s0,s0,s8
+016a5454  ldp d9,d8,[sp], #0x20
+016a5458  ret

@@ -1,0 +1,92 @@
+Function: AliothEngine.Utils.SceneViewCamera$$CameraRotate @ 01697edc
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Transform$$RotateAround @ 024f4d38
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$get_right @ 024f3d0c
+
+--- Calls IN ---
+  <- AliothEngine.Utils.SceneViewCamera$$MouseDrag @ 01697d9c
+
+--- Listing ---
+01697edc  str d12,[sp, #-0x40]!
+01697ee0  stp d11,d10,[sp, #0x8]
+01697ee4  stp d9,d8,[sp, #0x18]
+01697ee8  str x20,[sp, #0x28]
+01697eec  stp x19,x30,[sp, #0x30]
+01697ef0  mov x1,xzr
+01697ef4  mov v8.16B,v1.16B
+01697ef8  mov v9.16B,v0.16B
+01697efc  mov x19,x0
+01697f00  bl 0x024e4e98
+01697f04  mov x20,x0
+01697f08  mov x0,x19
+01697f0c  mov x1,xzr
+01697f10  bl 0x024e4e98
+01697f14  cbz x0,0x01698010
+01697f18  mov x1,xzr
+01697f1c  bl 0x024f3684
+01697f20  mov x0,x19
+01697f24  mov x1,xzr
+01697f28  mov v10.16B,v0.16B
+01697f2c  mov v11.16B,v1.16B
+01697f30  mov v12.16B,v2.16B
+01697f34  bl 0x024e4e98
+01697f38  cbz x0,0x01698010
+01697f3c  mov x1,xzr
+01697f40  bl 0x024f3d0c
+01697f44  cbz x20,0x01698010
+01697f48  mov v3.16B,v0.16B
+01697f4c  mov v4.16B,v1.16B
+01697f50  mov v5.16B,v2.16B
+01697f54  mov x0,x20
+01697f58  mov v0.16B,v10.16B
+01697f5c  mov v1.16B,v11.16B
+01697f60  mov v2.16B,v12.16B
+01697f64  mov v6.16B,v9.16B
+01697f68  mov x1,xzr
+01697f6c  bl 0x024f4d38
+01697f70  mov x0,x19
+01697f74  mov x1,xzr
+01697f78  bl 0x024e4e98
+01697f7c  mov x20,x0
+01697f80  mov x0,x19
+01697f84  mov x1,xzr
+01697f88  bl 0x024e4e98
+01697f8c  cbz x0,0x01698010
+01697f90  mov x1,xzr
+01697f94  bl 0x024f3684
+01697f98  adrp x19,0x3570000
+01697f9c  ldrb w8,[x19, #0xffe]
+01697fa0  mov v9.16B,v0.16B
+01697fa4  mov v10.16B,v1.16B
+01697fa8  mov v11.16B,v2.16B
+01697fac  cbnz w8,0x01697fc4
+01697fb0  adrp x0,0x3368000
+01697fb4  ldr x0,[x0, #0x9b8]
+01697fb8  bl 0x00b0789c
+01697fbc  mov w8,#0x1
+01697fc0  strb w8,[x19, #0xffe]
+01697fc4  cbz x20,0x01698010
+01697fc8  adrp x8,0x3368000
+01697fcc  ldr x8,[x8, #0x9b8]
+01697fd0  mov x0,x20
+01697fd4  mov v0.16B,v9.16B
+01697fd8  mov v1.16B,v10.16B
+01697fdc  ldr x8,[x8]
+01697fe0  mov v2.16B,v11.16B
+01697fe4  mov v6.16B,v8.16B
+01697fe8  ldp x19,x30,[sp, #0x30]
+01697fec  ldr x8,[x8, #0xb8]
+01697ff0  ldr x20,[sp, #0x28]
+01697ff4  ldp d9,d8,[sp, #0x18]
+01697ff8  ldp d11,d10,[sp, #0x8]
+01697ffc  ldp s3,s4,[x8, #0x18]
+01698000  ldr s5,[x8, #0x20]
+01698004  mov x1,xzr
+01698008  ldr d12,[sp], #0x40
+0169800c  b 0x024f4d38
+01698010  bl 0x00b079b0

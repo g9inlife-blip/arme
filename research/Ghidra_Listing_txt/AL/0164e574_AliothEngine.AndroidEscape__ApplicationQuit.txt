@@ -1,0 +1,65 @@
+Function: AliothEngine.AndroidEscape$$ApplicationQuit @ 0164e574
+
+--- Calls OUT ---
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Application$$get_platform @ 024f2b84
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$AndroidQuit @ 0164e7d4
+  -> AliothEngine.AndroidUtils$$AndroidFinish @ 0164e654
+  -> UnityEngine.Application$$Quit @ 024f2938
+
+--- Calls IN ---
+  <- AliothEngine.AndroidEscape.PositiveButtonListner.<>c$$<onClick>b__2_0 @ 0164eee0
+
+--- Listing ---
+0164e574  str x20,[sp, #-0x20]!
+0164e578  stp x19,x30,[sp, #0x10]
+0164e57c  adrp x19,0x3577000
+0164e580  adrp x20,0x3336000
+0164e584  ldrb w8,[x19, #0x7da]
+0164e588  ldr x20,[x20, #0xa38]
+0164e58c  tbnz w8,#0x0,0x0164e5bc
+0164e590  adrp x0,0x3336000
+0164e594  ldr x0,[x0, #0xa38]
+0164e598  bl 0x00b0789c
+0164e59c  adrp x0,0x336b000
+0164e5a0  ldr x0,[x0, #0x7d0]
+0164e5a4  bl 0x00b0789c
+0164e5a8  adrp x0,0x334e000
+0164e5ac  ldr x0,[x0, #0xa0]
+0164e5b0  bl 0x00b0789c
+0164e5b4  mov w8,#0x1
+0164e5b8  strb w8,[x19, #0x7da]
+0164e5bc  ldr x8,[x20]
+0164e5c0  ldr x8,[x8, #0xb8]
+0164e5c4  ldr x0,[x8, #0x20]
+0164e5c8  cbz x0,0x0164e5dc
+0164e5cc  ldp x19,x30,[sp, #0x10]
+0164e5d0  mov x1,xzr
+0164e5d4  ldr x20,[sp], #0x20
+0164e5d8  b 0x0105fbf0
+0164e5dc  adrp x8,0x336b000
+0164e5e0  ldr x8,[x8, #0x7d0]
+0164e5e4  adrp x19,0x334e000
+0164e5e8  ldr x0,[x8]
+0164e5ec  ldr w8,[x0, #0xe0]
+0164e5f0  ldr x19,[x19, #0xa0]
+0164e5f4  cbnz w8,0x0164e5fc
+0164e5f8  bl 0x00b0798c
+0164e5fc  ldr x0,[x19]
+0164e600  mov x1,xzr
+0164e604  bl 0x024c0f2c
+0164e608  mov x0,xzr
+0164e60c  bl 0x024f2b84
+0164e610  cmp w0,#0xb
+0164e614  b.ne 0x0164e628
+0164e618  bl 0x0164e654
+0164e61c  ldp x19,x30,[sp, #0x10]
+0164e620  ldr x20,[sp], #0x20
+0164e624  b 0x0164e7d4
+0164e628  ldp x19,x30,[sp, #0x10]
+0164e62c  mov x0,xzr
+0164e630  ldr x20,[sp], #0x20
+0164e634  b 0x024f2938

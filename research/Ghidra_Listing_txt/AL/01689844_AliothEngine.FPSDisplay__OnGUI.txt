@@ -1,0 +1,79 @@
+Function: AliothEngine.FPSDisplay$$OnGUI @ 01689844
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> System.String$$Format @ 01fd0378
+  -> UnityEngine.GUI$$Label @ 02511720
+
+--- Calls IN ---
+
+--- Listing ---
+01689844  sub sp,sp,#0x50
+01689848  stp x23,x22,[sp, #0x20]
+0168984c  stp x21,x20,[sp, #0x30]
+01689850  stp x19,x30,[sp, #0x40]
+01689854  adrp x23,0x3577000
+01689858  adrp x22,0x3332000
+0168985c  adrp x21,0x3347000
+01689860  adrp x20,0x3362000
+01689864  ldrb w8,[x23, #0xa86]
+01689868  ldr x22,[x22, #0x38]
+0168986c  ldr x21,[x21, #0x288]
+01689870  ldr x20,[x20, #0xe80]
+01689874  mov x19,x0
+01689878  tbnz w8,#0x0,0x016898a8
+0168987c  adrp x0,0x3362000
+01689880  ldr x0,[x0, #0xe80]
+01689884  bl 0x00b0789c
+01689888  adrp x0,0x3332000
+0168988c  ldr x0,[x0, #0x38]
+01689890  bl 0x00b0789c
+01689894  adrp x0,0x3347000
+01689898  ldr x0,[x0, #0x288]
+0168989c  bl 0x00b0789c
+016898a0  mov w8,#0x1
+016898a4  strb w8,[x23, #0xa86]
+016898a8  mov w8,#0x42c80000
+016898ac  fmov s0,0x41200000
+016898b0  fmov s3,0x41c80000
+016898b4  add x0,sp,#0x10
+016898b8  fmov s2,w8
+016898bc  mov v1.16B,v0.16B
+016898c0  mov x1,xzr
+016898c4  stp xzr,xzr,[sp, #0x10]
+016898c8  bl 0x024daef0
+016898cc  ldr s0,[x19, #0x1c]
+016898d0  mov w8,#0x7f800000
+016898d4  ldr x0,[x22]
+016898d8  fmov s1,w8
+016898dc  fcvtzs w8,s0
+016898e0  fcmp s0,s1
+016898e4  mov w9,#0x80000000
+016898e8  csel w8,w9,w8,eq
+016898ec  add x1,sp,#0xc
+016898f0  str w8,[sp, #0xc]
+016898f4  bl 0x00b07994
+016898f8  ldr x8,[x21]
+016898fc  mov x1,x0
+01689900  mov x2,xzr
+01689904  mov x0,x8
+01689908  bl 0x01fd0378
+0168990c  ldr x8,[x20]
+01689910  mov x19,x0
+01689914  ldr w9,[x8, #0xe0]
+01689918  cbnz w9,0x01689924
+0168991c  mov x0,x8
+01689920  bl 0x00b0798c
+01689924  ldp s0,s1,[sp, #0x10]
+01689928  ldp s2,s3,[sp, #0x18]
+0168992c  mov x0,x19
+01689930  mov x1,xzr
+01689934  bl 0x02511720
+01689938  ldp x19,x30,[sp, #0x40]
+0168993c  ldp x21,x20,[sp, #0x30]
+01689940  ldp x23,x22,[sp, #0x20]
+01689944  add sp,sp,#0x50
+01689948  ret

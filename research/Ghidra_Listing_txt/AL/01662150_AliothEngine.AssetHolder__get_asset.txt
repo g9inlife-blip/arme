@@ -1,0 +1,73 @@
+Function: AliothEngine.AssetHolder$$get_asset @ 01662150
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp815 @ 010ca5f8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_g_get_asset @ 01139754
+  <- ResManager$$LoadRes @ 00e29078
+  <- ResManager.<>c$$<LoadShader>b__24_0 @ 00e2cbe8
+  <- ResManager$$AssetRelease @ 00e2a998
+  <- SoundManager$$TypePlay @ 00e30adc
+  <- Ali$$<AddChild>b__200_0 @ 00e10da0
+  <- AliothExtensions$$SpriteRendererComplete @ 00e15138
+  <- UINode$$LoadFontComplete @ 00dc4c9c
+  <- NodeManager$$GetSprite @ 0131db9c
+  <- AliothEngine.ResourcesAssetHolder$$Unload @ 016657f8
+  <- AliothEngine.AssetIndexHolder$$Unload @ 01665f7c
+  <- ResManager.<>c__DisplayClass21_0$$<LoadSingleExcel>b__0 @ 00e2c634
+  <- ResManager.<>c__DisplayClass29_0$$<AliothLoadExcel>b__0 @ 00e2d020
+  <- AliothEngine.ResourcesAssetHolder$$LoadImmediate @ 0166566c
+  <- AssetCount$$UnLoadImage @ 00e19f58
+  <- AliothEngine.AssetHolder$$ToString @ 016636cc
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+  <- ResManager$$CheckAssetInvalidRef @ 00e2a56c
+  <- AliothExtensions$$ImageComplete @ 00e15644
+  <- SoundManager$$Play @ 00e21e78
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass14_0$$<LoadDownloadAssetInfo>b__0 @ 01669eb4
+  <- AliothEngine.AssetVersionManager.<>c__DisplayClass38_0$$<DownloadAssetIndex>b__0 @ 016708b4
+  <- VideoPlayerPanelMono$$LoadVideoClipEnd @ 01040d04
+  <- AssetCount$$UseAsset @ 00e19a04
+  <- AliothEngine.CacheAssetBundleHolder.<Load>d__4$$MoveNext @ 01664508
+  <- SoundManager$$<Play>b__29_0 @ 00e31d98
+  <- AliothEngine.ResourcesAssetHolder.<Load>d__2$$MoveNext @ 01665960
+  <- AliothExtensions$$SetTextMeshComplete @ 00e1449c
+  <- LoadEvent$$LoadEnd @ 00e274e4
+  <- ResManager$$<LuaLoading>b__28_0 @ 00e2bbac
+  <- SoundManager$$<Play>b__29_1 @ 00e31eb0
+  <- ResManager.<>c__DisplayClass30_0$$<AliothLoadRes>b__0 @ 00e2d48c
+  <- SG.PoolTools$$InitPool @ 015a93ec
+
+--- Listing ---
+01662150  stp x21,x20,[sp, #-0x20]!
+01662154  stp x19,x30,[sp, #0x10]
+01662158  adrp x21,0x3577000
+0166215c  adrp x20,0x3312000
+01662160  ldrb w8,[x21, #0x8c0]
+01662164  ldr x20,[x20, #0x428]
+01662168  mov x19,x0
+0166216c  tbnz w8,#0x0,0x01662184
+01662170  adrp x0,0x3312000
+01662174  ldr x0,[x0, #0x428]
+01662178  bl 0x00b0789c
+0166217c  mov w8,#0x1
+01662180  strb w8,[x21, #0x8c0]
+01662184  ldr x0,[x20]
+01662188  ldr w8,[x0, #0xe0]
+0166218c  cbnz w8,0x01662198
+01662190  bl 0x00b0798c
+01662194  ldr x0,[x20]
+01662198  ldr x8,[x0, #0xb8]
+0166219c  ldr x0,[x8, #0x10]
+016621a0  cbz x0,0x016621b8
+016621a4  mov x1,x19
+016621a8  ldp x19,x30,[sp, #0x10]
+016621ac  mov x2,xzr
+016621b0  ldp x21,x20,[sp], #0x20
+016621b4  b 0x010ca5f8
+016621b8  ldr x0,[x19, #0x18]
+016621bc  ldp x19,x30,[sp, #0x10]
+016621c0  ldp x21,x20,[sp], #0x20
+016621c4  ret

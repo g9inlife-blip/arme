@@ -1,0 +1,68 @@
+Function: RewardPanelMono$$.ctor @ 0100ede4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> GUIScreenBaseMono$$.ctor @ 00f1c130
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<KeyValuePair<int,-int>>$$.ctor @ 01ba53c4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RewardPanelMonoWrap$$__CreateInstance @ 0137ab20
+
+--- Listing ---
+0100ede4  stp x21,x20,[sp, #-0x20]!
+0100ede8  stp x19,x30,[sp, #0x10]
+0100edec  adrp x21,0x3574000
+0100edf0  adrp x20,0x3347000
+0100edf4  ldrb w8,[x21, #0x462]
+0100edf8  ldr x20,[x20, #0x260]
+0100edfc  mov x19,x0
+0100ee00  tbnz w8,#0x0,0x0100ee30
+0100ee04  adrp x0,0x3366000
+0100ee08  ldr x0,[x0, #0xdf8]
+0100ee0c  bl 0x00b0789c
+0100ee10  adrp x0,0x3347000
+0100ee14  ldr x0,[x0, #0x260]
+0100ee18  bl 0x00b0789c
+0100ee1c  adrp x0,0x3359000
+0100ee20  ldr x0,[x0, #0xdc0]
+0100ee24  bl 0x00b0789c
+0100ee28  mov w8,#0x1
+0100ee2c  strb w8,[x21, #0x462]
+0100ee30  mov w8,#0xa
+0100ee34  str w8,[x19, #0xd0]
+0100ee38  ldr x0,[x20]
+0100ee3c  bl 0x00b079a0
+0100ee40  cbz x0,0x0100eeb4
+0100ee44  adrp x8,0x3366000
+0100ee48  ldr x8,[x8, #0xdf8]
+0100ee4c  adrp x21,0x3359000
+0100ee50  mov x20,x0
+0100ee54  ldr x1,[x8]
+0100ee58  ldr x21,[x21, #0xdc0]
+0100ee5c  bl 0x01ba53c4
+0100ee60  mov x0,x19
+0100ee64  str x20,[x0, #0xd8]!
+0100ee68  mov x1,x20
+0100ee6c  bl 0x00b07850
+0100ee70  mov w8,#0x1
+0100ee74  mov x0,x19
+0100ee78  mov x1,xzr
+0100ee7c  strb w8,[x19, #0xe0]
+0100ee80  bl 0x00f1c130
+0100ee84  ldr x8,[x21]
+0100ee88  ldr x8,[x8, #0xb8]
+0100ee8c  ldr x0,[x8, #0x58]
+0100ee90  cbz x0,0x0100eea8
+0100ee94  mov x1,x19
+0100ee98  ldp x19,x30,[sp, #0x10]
+0100ee9c  mov x2,xzr
+0100eea0  ldp x21,x20,[sp], #0x20
+0100eea4  b 0x01060dac
+0100eea8  ldp x19,x30,[sp, #0x10]
+0100eeac  ldp x21,x20,[sp], #0x20
+0100eeb0  ret
+0100eeb4  bl 0x00b079b0

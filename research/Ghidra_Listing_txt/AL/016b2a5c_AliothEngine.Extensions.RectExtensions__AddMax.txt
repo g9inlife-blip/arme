@@ -1,0 +1,30 @@
+Function: AliothEngine.Extensions.RectExtensions$$AddMax @ 016b2a5c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_max @ 024db034
+  -> UnityEngine.Rect$$get_max @ 024db004
+
+--- Calls IN ---
+
+--- Listing ---
+016b2a5c  sub sp,sp,#0x30
+016b2a60  stp d9,d8,[sp, #0x10]
+016b2a64  str x30,[sp, #0x20]
+016b2a68  mov x0,sp
+016b2a6c  mov x1,xzr
+016b2a70  mov v8.16B,v5.16B
+016b2a74  mov v9.16B,v4.16B
+016b2a78  stp s0,s1,[sp]
+016b2a7c  stp s2,s3,[sp, #0x8]
+016b2a80  bl 0x024db004
+016b2a84  fadd s0,s9,s0
+016b2a88  fadd s1,s8,s1
+016b2a8c  mov x0,sp
+016b2a90  mov x1,xzr
+016b2a94  bl 0x024db034
+016b2a98  ldp s0,s1,[sp]
+016b2a9c  ldp s2,s3,[sp, #0x8]
+016b2aa0  ldr x30,[sp, #0x20]
+016b2aa4  ldp d9,d8,[sp, #0x10]
+016b2aa8  add sp,sp,#0x30
+016b2aac  ret

@@ -1,0 +1,39 @@
+Function: AliothEngine.GameEventSys<Int32Enum>$$GetAction @ 01af2230
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01af2230  sub sp,sp,#0x30
+01af2234  stp x21,x20,[sp, #0x10]
+01af2238  stp x19,x30,[sp, #0x20]
+01af223c  str xzr,[sp, #0x8]
+01af2240  mov x21,x0
+01af2244  ldr x0,[x0, #0x10]
+01af2248  cbz x0,0x01af22a8
+01af224c  ldr x8,[x2, #0x20]
+01af2250  mov x20,x2
+01af2254  add x2,sp,#0x8
+01af2258  mov w19,w1
+01af225c  ldr x8,[x8, #0xc0]
+01af2260  ldr x3,[x8, #0x10]
+01af2264  ldr x8,[x3, #0x8]
+01af2268  blr x8
+01af226c  tbnz w0,#0x0,0x01af2294
+01af2270  ldr x0,[x21, #0x10]
+01af2274  cbz x0,0x01af22a8
+01af2278  ldr x8,[x20, #0x20]
+01af227c  mov w1,w19
+01af2280  mov x2,xzr
+01af2284  ldr x8,[x8, #0xc0]
+01af2288  ldr x3,[x8, #0x18]
+01af228c  ldr x8,[x3, #0x8]
+01af2290  blr x8
+01af2294  ldr x0,[sp, #0x8]
+01af2298  ldp x19,x30,[sp, #0x20]
+01af229c  ldp x21,x20,[sp, #0x10]
+01af22a0  add sp,sp,#0x30
+01af22a4  ret
+01af22a8  bl 0x00b079b0

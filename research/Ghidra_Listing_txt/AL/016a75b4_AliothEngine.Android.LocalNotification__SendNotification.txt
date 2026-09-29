@@ -1,0 +1,72 @@
+Function: AliothEngine.Android.LocalNotification$$SendNotification @ 016a75b4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+  -> AliothEngine.Android.LocalNotification$$SendNotification @ 016a7060
+
+--- Calls IN ---
+  <- AliothEngine.NotificationManager_Android$$DoScheduleLocalNotification @ 0165791c
+
+--- Listing ---
+016a75b4  sub sp,sp,#0x90
+016a75b8  str d8,[sp, #0x30]
+016a75bc  str x28,[sp, #0x38]
+016a75c0  stp x27,x26,[sp, #0x40]
+016a75c4  stp x25,x24,[sp, #0x50]
+016a75c8  stp x23,x22,[sp, #0x60]
+016a75cc  stp x21,x20,[sp, #0x70]
+016a75d0  stp x19,x30,[sp, #0x80]
+016a75d4  adrp x26,0x3577000
+016a75d8  str x1,[sp, #0x28]
+016a75dc  adrp x28,0x3373000
+016a75e0  ldrb w8,[x26, #0xb90]
+016a75e4  ldr x28,[x28, #0x508]
+016a75e8  mov w20,w7
+016a75ec  mov w22,w6
+016a75f0  mov w23,w5
+016a75f4  mov x25,x4
+016a75f8  mov x19,x3
+016a75fc  mov x21,x2
+016a7600  mov w24,w0
+016a7604  tbnz w8,#0x0,0x016a761c
+016a7608  adrp x0,0x3373000
+016a760c  ldr x0,[x0, #0x508]
+016a7610  bl 0x00b0789c
+016a7614  mov w8,#0x1
+016a7618  strb w8,[x26, #0xb90]
+016a761c  ldp x27,x26,[sp, #0x98]
+016a7620  add x0,sp,#0x28
+016a7624  mov x1,xzr
+016a7628  bl 0x02167c88
+016a762c  ldr x0,[x28]
+016a7630  mov v8.16B,v0.16B
+016a7634  ldr w8,[x0, #0xe0]
+016a7638  cbnz w8,0x016a7640
+016a763c  bl 0x00b0798c
+016a7640  mov x10,#0x7ff0000000000000
+016a7644  fcvtzs x8,d8
+016a7648  mov w9,#0x3e8
+016a764c  fmov d0,x10
+016a7650  mul x8,x8,x9
+016a7654  fcmp d8,d0
+016a7658  csel x1,xzr,x8,eq
+016a765c  and x4,x25,#0xffffffff
+016a7660  and w5,w23,#0x1
+016a7664  and w6,w22,#0x1
+016a7668  and w7,w20,#0x1
+016a766c  mov w0,w24
+016a7670  mov x2,x21
+016a7674  mov x3,x19
+016a7678  stp x27,x26,[sp, #0x8]
+016a767c  bl 0x016a7060
+016a7680  ldp x19,x30,[sp, #0x80]
+016a7684  ldp x21,x20,[sp, #0x70]
+016a7688  ldp x23,x22,[sp, #0x60]
+016a768c  ldp x25,x24,[sp, #0x50]
+016a7690  ldp x27,x26,[sp, #0x40]
+016a7694  ldr x28,[sp, #0x38]
+016a7698  ldr d8,[sp, #0x30]
+016a769c  add sp,sp,#0x90
+016a76a0  ret

@@ -1,0 +1,128 @@
+Function: replace @ 00b828e4
+FuncComment: std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >::replace(unsigned long, unsigned long, char const*, unsigned long)
+
+--- Calls OUT ---
+  -> FUN_00a8e2ac @ 00a8e2ac
+  -> memmove @ 008d3fa0
+  -> FUN_00a8f54c @ 00a8f54c
+
+--- Calls IN ---
+  <- replace @ 008d4c80
+
+--- Listing ---
+00b828e4  str x27,[sp, #-0x60]!
+    ; [PLATE] std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >::replace(unsigned long, unsigned long, char const*, unsigned long)
+00b828e8  stp x26,x25,[sp, #0x10]
+00b828ec  stp x24,x23,[sp, #0x20]
+00b828f0  stp x22,x21,[sp, #0x30]
+00b828f4  stp x20,x19,[sp, #0x40]
+00b828f8  stp x29,x30,[sp, #0x50]
+00b828fc  add x29,sp,#0x50
+00b82900  ldrb w8,[x0]
+00b82904  mov x20,x4
+00b82908  mov x23,x3
+00b8290c  mov x19,x0
+00b82910  mov x24,x1
+00b82914  tbnz w8,#0x0,0x00b8292c
+00b82918  lsr x21,x8,#0x1
+00b8291c  subs x9,x21,x24
+00b82920  b.cs 0x00b82938
+00b82924  mov x0,x19
+00b82928  bl 0x00a8f54c
+00b8292c  ldr x21,[x19, #0x8]
+00b82930  subs x9,x21,x24
+00b82934  b.cc 0x00b82924
+00b82938  cmp x9,x2
+00b8293c  csel x22,x9,x2,cc
+00b82940  tbnz w8,#0x0,0x00b8294c
+00b82944  mov w1,#0x16
+00b82948  b 0x00b82958
+00b8294c  ldr x10,[x19]
+00b82950  and x10,x10,#-0x2
+00b82954  sub x1,x10,#0x1
+00b82958  sub x10,x22,x21
+00b8295c  add x10,x10,x1
+00b82960  cmp x10,x20
+00b82964  b.cs 0x00b82994
+00b82968  add x8,x21,x20
+00b8296c  sub x8,x8,x22
+00b82970  sub x2,x8,x1
+00b82974  mov x0,x19
+00b82978  mov x3,x21
+00b8297c  mov x4,x24
+00b82980  mov x5,x22
+00b82984  mov x6,x20
+00b82988  mov x7,x23
+00b8298c  bl 0x00a8e2ac
+00b82990  b 0x00b82a24
+00b82994  tbnz w8,#0x0,0x00b829dc
+00b82998  add x27,x19,#0x1
+00b8299c  cmp x22,x20
+00b829a0  b.eq 0x00b829e8
+00b829a4  subs x25,x9,x22
+00b829a8  b.eq 0x00b829ec
+00b829ac  cmp x22,x20
+00b829b0  add x26,x27,x24
+00b829b4  b.ls 0x00b82a44
+00b829b8  cbz x20,0x00b829cc
+00b829bc  mov x0,x26
+00b829c0  mov x1,x23
+00b829c4  mov x2,x20
+00b829c8  bl 0x008d3fa0
+00b829cc  add x0,x26,x20
+00b829d0  add x1,x26,x22
+00b829d4  mov x2,x25
+00b829d8  b 0x00b829fc
+00b829dc  ldr x27,[x19, #0x10]
+00b829e0  cmp x22,x20
+00b829e4  b.ne 0x00b829a4
+00b829e8  mov x22,x20
+00b829ec  cbz x20,0x00b82a00
+00b829f0  add x0,x27,x24
+00b829f4  mov x1,x23
+00b829f8  mov x2,x20
+00b829fc  bl 0x008d3fa0
+00b82a00  ldrb w9,[x19]
+00b82a04  sub x8,x20,x22
+00b82a08  add x8,x8,x21
+00b82a0c  tbnz w9,#0x0,0x00b82a1c
+00b82a10  lsl w9,w8,#0x1
+00b82a14  strb w9,[x19]
+00b82a18  b 0x00b82a20
+00b82a1c  str x8,[x19, #0x8]
+00b82a20  strb wzr,[x27, x8, LSL ]
+00b82a24  mov x0,x19
+00b82a28  ldp x29,x30,[sp, #0x50]
+00b82a2c  ldp x20,x19,[sp, #0x40]
+00b82a30  ldp x22,x21,[sp, #0x30]
+00b82a34  ldp x24,x23,[sp, #0x20]
+00b82a38  ldp x26,x25,[sp, #0x10]
+00b82a3c  ldr x27,[sp], #0x60
+00b82a40  ret
+00b82a44  cmp x26,x23
+00b82a48  b.cs 0x00b82a94
+00b82a4c  add x8,x27,x21
+00b82a50  cmp x8,x23
+00b82a54  b.ls 0x00b82a94
+00b82a58  add x8,x26,x22
+00b82a5c  cmp x8,x23
+00b82a60  b.ls 0x00b82a8c
+00b82a64  cbz x22,0x00b82a78
+00b82a68  mov x0,x26
+00b82a6c  mov x1,x23
+00b82a70  mov x2,x22
+00b82a74  bl 0x008d3fa0
+00b82a78  add x24,x22,x24
+00b82a7c  add x23,x23,x20
+00b82a80  sub x20,x20,x22
+00b82a84  mov x22,xzr
+00b82a88  b 0x00b82a94
+00b82a8c  sub x8,x20,x22
+00b82a90  add x23,x23,x8
+00b82a94  add x8,x27,x24
+00b82a98  add x0,x8,x20
+00b82a9c  add x1,x8,x22
+00b82aa0  mov x2,x25
+00b82aa4  bl 0x008d3fa0
+00b82aa8  cbnz x20,0x00b829f0
+00b82aac  b 0x00b82a00

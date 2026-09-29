@@ -1,0 +1,52 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$FirstOrDefault<object> @ 01765910
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f34a4
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f30f4
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f32cc
+
+--- Listing ---
+01765910  stp x23,x22,[sp, #-0x30]!
+01765914  stp x21,x20,[sp, #0x10]
+01765918  stp x19,x30,[sp, #0x20]
+0176591c  cbz x0,0x017659a8
+01765920  ldr x8,[x0, #0x18]
+01765924  mov x19,x0
+01765928  cmp w8,#0x1
+0176592c  b.lt 0x0176597c
+01765930  mov x20,x2
+01765934  mov x21,x1
+01765938  mov x22,xzr
+0176593c  and x8,x8,#0xffffffff
+01765940  add x23,x19,#0x20
+01765944  cmp x22,w8, UXTW 
+01765948  b.cs 0x017659ac
+0176594c  cbz x21,0x017659a8
+01765950  ldr x8,[x20, #0x38]
+01765954  ldr x1,[x23, x22, LSL #0x3]
+01765958  mov x0,x21
+0176595c  ldr x2,[x8, #0x8]
+01765960  ldr x8,[x2, #0x8]
+01765964  blr x8
+01765968  tbnz w0,#0x0,0x01765984
+0176596c  ldr w8,[x19, #0x18]
+01765970  add x22,x22,#0x1
+01765974  cmp x22,w8, SXTW 
+01765978  b.lt 0x01765944
+0176597c  mov x0,xzr
+01765980  b 0x01765998
+01765984  ldr w8,[x19, #0x18]
+01765988  cmp w22,w8
+0176598c  b.cs 0x017659ac
+01765990  add x8,x19,#0x20
+01765994  ldr x0,[x8, x22, LSL #0x3]
+01765998  ldp x19,x30,[sp, #0x20]
+0176599c  ldp x21,x20,[sp, #0x10]
+017659a0  ldp x23,x22,[sp], #0x30
+017659a4  ret
+017659a8  bl 0x00b079b0
+017659ac  bl 0x00b079b8

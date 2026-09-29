@@ -1,0 +1,42 @@
+Function: AliothEngine.GUIScreenManager$$get_BackgroundName @ 0167a048
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_g_get_BackgroundName @ 0114fdb0
+  <- AliothEngine.GUIScreenManager$$SetBGSprite_ @ 0167a4a4
+
+--- Listing ---
+0167a048  stp x21,x20,[sp, #-0x20]!
+0167a04c  stp x19,x30,[sp, #0x10]
+0167a050  adrp x21,0x3577000
+0167a054  adrp x20,0x337b000
+0167a058  ldrb w8,[x21, #0x9ee]
+0167a05c  ldr x20,[x20, #0xb98]
+0167a060  mov x19,x0
+0167a064  tbnz w8,#0x0,0x0167a07c
+0167a068  adrp x0,0x337b000
+0167a06c  ldr x0,[x0, #0xb98]
+0167a070  bl 0x00b0789c
+0167a074  mov w8,#0x1
+0167a078  strb w8,[x21, #0x9ee]
+0167a07c  ldr x0,[x20]
+0167a080  ldr w8,[x0, #0xe0]
+0167a084  cbnz w8,0x0167a090
+0167a088  bl 0x00b0798c
+0167a08c  ldr x0,[x20]
+0167a090  ldr x8,[x0, #0xb8]
+0167a094  ldr x0,[x8, #0x288]
+0167a098  cbz x0,0x0167a0b0
+0167a09c  mov x1,x19
+0167a0a0  ldp x19,x30,[sp, #0x10]
+0167a0a4  mov x2,xzr
+0167a0a8  ldp x21,x20,[sp], #0x20
+0167a0ac  b 0x01061abc
+0167a0b0  ldr x0,[x19, #0x70]
+0167a0b4  ldp x19,x30,[sp, #0x10]
+0167a0b8  ldp x21,x20,[sp], #0x20
+0167a0bc  ret

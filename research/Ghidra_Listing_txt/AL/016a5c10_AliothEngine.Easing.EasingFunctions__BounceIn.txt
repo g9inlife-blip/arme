@@ -1,0 +1,31 @@
+Function: AliothEngine.Easing.EasingFunctions$$BounceIn @ 016a5c10
+
+--- Calls OUT ---
+  -> AliothEngine.Easing.EasingFunctions$$BounceOut @ 016a5c6c
+
+--- Calls IN ---
+
+--- Listing ---
+016a5c10  str d10,[sp, #-0x20]!
+016a5c14  stp d9,d8,[sp, #0x8]
+016a5c18  str x30,[sp, #0x18]
+016a5c1c  mov v8.16B,v0.16B
+016a5c20  fmov s9,0x3f800000
+016a5c24  fabd s0,s0,s1
+016a5c28  fcmp s8,s1
+016a5c2c  fmin s1,s2,s9
+016a5c30  fneg s3,s0
+016a5c34  fcsel s10,s3,s0,gt
+016a5c38  fsub s0,s9,s1
+016a5c3c  fcmp s2,#0.0
+016a5c40  fcsel s2,s0,s9,pl
+016a5c44  fmov s0,wzr
+016a5c48  mov v1.16B,v9.16B
+016a5c4c  bl 0x016a5c6c
+016a5c50  fsub s0,s9,s0
+016a5c54  fmul s0,s10,s0
+016a5c58  fadd s0,s0,s8
+016a5c5c  ldr x30,[sp, #0x18]
+016a5c60  ldp d9,d8,[sp, #0x8]
+016a5c64  ldr d10,[sp], #0x20
+016a5c68  ret

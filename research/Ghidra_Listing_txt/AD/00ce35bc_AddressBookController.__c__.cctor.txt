@@ -1,0 +1,40 @@
+Function: AddressBookController.<>c$$.cctor @ 00ce35bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00ce35bc  str x20,[sp, #-0x20]!
+00ce35c0  stp x19,x30,[sp, #0x10]
+00ce35c4  adrp x19,0x3571000
+00ce35c8  adrp x20,0x3331000
+00ce35cc  ldrb w8,[x19, #0x8f5]
+00ce35d0  ldr x20,[x20, #0xa68]
+00ce35d4  tbnz w8,#0x0,0x00ce35ec
+00ce35d8  adrp x0,0x3331000
+00ce35dc  ldr x0,[x0, #0xa68]
+00ce35e0  bl 0x00b0789c
+00ce35e4  mov w8,#0x1
+00ce35e8  strb w8,[x19, #0x8f5]
+00ce35ec  ldr x0,[x20]
+00ce35f0  bl 0x00b079a0
+00ce35f4  cbz x0,0x00ce3628
+00ce35f8  mov x1,xzr
+00ce35fc  mov x19,x0
+00ce3600  bl 0x02194104
+00ce3604  ldr x8,[x20]
+00ce3608  mov x1,x19
+00ce360c  ldr x8,[x8, #0xb8]
+00ce3610  str x19,[x8]
+00ce3614  ldr x8,[x20]
+00ce3618  ldp x19,x30,[sp, #0x10]
+00ce361c  ldr x0,[x8, #0xb8]
+00ce3620  ldr x20,[sp], #0x20
+00ce3624  b 0x00b07850
+00ce3628  bl 0x00b079b0

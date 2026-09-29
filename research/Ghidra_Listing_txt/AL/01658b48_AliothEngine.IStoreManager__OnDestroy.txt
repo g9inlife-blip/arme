@@ -1,0 +1,43 @@
+Function: AliothEngine.IStoreManager$$OnDestroy @ 01658b48
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_BiliBili$$OnDestroy @ 0165ac90
+  <- AliothEngine.StoreManager_WePay$$OnDestroy @ 0165d190
+  <- AliothEngine.StoreManager_SDK$$OnDestroy @ 0165c564
+  <- AliothEngine.StoreManager_ChinaPay$$OnDestroy @ 0165b7f4
+  <- AliothEngine.StoreManager_AliPay$$<>xLuaBaseProxy_OnDestroy @ 0165aa70
+  <- AliothEngine.StoreManager_SDK$$<>xLuaBaseProxy_OnDestroy @ 0165cdf4
+  <- AliothEngine.StoreManager_AliPay$$OnDestroy @ 01659f84
+  <- AliothEngine.StoreManager_ChinaPay$$<>xLuaBaseProxy_OnDestroy @ 0165c0d8
+  <- AliothEngine.StoreManager_WePay$$<>xLuaBaseProxy_OnDestroy @ 0165dc28
+
+--- Listing ---
+01658b48  stp x21,x20,[sp, #-0x20]!
+01658b4c  stp x19,x30,[sp, #0x10]
+01658b50  adrp x20,0x3577000
+01658b54  adrp x21,0x336f000
+01658b58  ldrb w8,[x20, #0x83e]
+01658b5c  ldr x21,[x21, #0x1e8]
+01658b60  mov x19,x0
+01658b64  tbnz w8,#0x0,0x01658b7c
+01658b68  adrp x0,0x336f000
+01658b6c  ldr x0,[x0, #0x1e8]
+01658b70  bl 0x00b0789c
+01658b74  mov w8,#0x1
+01658b78  strb w8,[x20, #0x83e]
+01658b7c  ldr x8,[x21]
+01658b80  ldr x8,[x8, #0xb8]
+01658b84  ldr x0,[x8, #0x30]
+01658b88  cbz x0,0x01658ba0
+01658b8c  mov x1,x19
+01658b90  ldp x19,x30,[sp, #0x10]
+01658b94  mov x2,xzr
+01658b98  ldp x21,x20,[sp], #0x20
+01658b9c  b 0x01060dac
+01658ba0  ldp x19,x30,[sp, #0x10]
+01658ba4  ldp x21,x20,[sp], #0x20
+01658ba8  ret

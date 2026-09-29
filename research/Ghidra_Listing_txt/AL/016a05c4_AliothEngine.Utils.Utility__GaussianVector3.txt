@@ -1,0 +1,29 @@
+Function: AliothEngine.Utils.Utility$$GaussianVector3 @ 016a05c4
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.Utility$$GaussianValue @ 016a04dc
+
+--- Calls IN ---
+
+--- Listing ---
+016a05c4  stp d11,d10,[sp, #-0x30]!
+016a05c8  stp d9,d8,[sp, #0x10]
+016a05cc  str x30,[sp, #0x20]
+016a05d0  mov v8.16B,v1.16B
+016a05d4  mov v9.16B,v0.16B
+016a05d8  bl 0x016a04dc
+016a05dc  mov v10.16B,v0.16B
+016a05e0  mov v0.16B,v9.16B
+016a05e4  mov v1.16B,v8.16B
+016a05e8  bl 0x016a04dc
+016a05ec  mov v11.16B,v0.16B
+016a05f0  mov v0.16B,v9.16B
+016a05f4  mov v1.16B,v8.16B
+016a05f8  bl 0x016a04dc
+016a05fc  ldr x30,[sp, #0x20]
+016a0600  ldp d9,d8,[sp, #0x10]
+016a0604  mov v2.16B,v0.16B
+016a0608  mov v0.16B,v10.16B
+016a060c  mov v1.16B,v11.16B
+016a0610  ldp d11,d10,[sp], #0x30
+016a0614  ret

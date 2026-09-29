@@ -1,0 +1,40 @@
+Function: AliothEngine.DataStructures.MaxStack<object>$$GetEnumerator @ 01d0f55c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$DumpStacks @ 01676090
+
+--- Listing ---
+01d0f55c  sub sp,sp,#0x70
+01d0f560  stp x19,x30,[sp, #0x60]
+01d0f564  ldr x0,[x0, #0x18]
+01d0f568  cbz x0,0x01d0f5cc
+01d0f56c  ldr x8,[x1, #0x20]
+01d0f570  mov x19,x1
+01d0f574  ldr x8,[x8, #0xc0]
+01d0f578  ldr x1,[x8, #0x78]
+01d0f57c  mov x8,sp
+01d0f580  ldr x9,[x1, #0x8]
+01d0f584  blr x9
+01d0f588  ldr x8,[sp, #0x20]
+01d0f58c  ldp q1,q0,[sp]
+01d0f590  str x8,[sp, #0x50]
+01d0f594  stp q1,q0,[sp, #0x30]
+01d0f598  stp q1,q0,[sp]
+01d0f59c  str x8,[sp, #0x20]
+01d0f5a0  ldr x8,[x19, #0x20]
+01d0f5a4  ldr x8,[x8, #0xc0]
+01d0f5a8  ldr x0,[x8, #0x80]
+01d0f5ac  ldrb w8,[x0, #0x132]
+01d0f5b0  tbnz w8,#0x0,0x01d0f5b8
+01d0f5b4  bl 0x00b2ac40
+01d0f5b8  mov x1,sp
+01d0f5bc  bl 0x00b07994
+01d0f5c0  ldp x19,x30,[sp, #0x60]
+01d0f5c4  add sp,sp,#0x70
+01d0f5c8  ret
+01d0f5cc  bl 0x00b079b0

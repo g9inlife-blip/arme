@@ -1,0 +1,95 @@
+Function: AliothEngine.GUIScreenManager$$SetBGMask @ 01679434
+
+--- Calls OUT ---
+  -> UnityEngine.Behaviour$$set_enabled @ 024dd2a4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreenManager$$get_BGMask @ 01679198
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp837 @ 010cd7ec
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_SetBGMask_xlua_st_ @ 0114c850
+  <- GUIScreenBaseMono$$ShowBackgroundAndMask @ 00f22370
+
+--- Listing ---
+01679434  stp d11,d10,[sp, #-0x40]!
+01679438  stp d9,d8,[sp, #0x10]
+0167943c  str x20,[sp, #0x20]
+01679440  stp x19,x30,[sp, #0x30]
+01679444  adrp x20,0x3577000
+01679448  adrp x19,0x337b000
+0167944c  ldrb w8,[x20, #0x9e6]
+01679450  ldr x19,[x19, #0xb98]
+01679454  mov v8.16B,v3.16B
+01679458  mov v9.16B,v2.16B
+0167945c  mov v10.16B,v1.16B
+01679460  mov v11.16B,v0.16B
+01679464  tbnz w8,#0x0,0x01679488
+01679468  adrp x0,0x3336000
+0167946c  ldr x0,[x0, #0xea8]
+01679470  bl 0x00b0789c
+01679474  adrp x0,0x337b000
+01679478  ldr x0,[x0, #0xb98]
+0167947c  bl 0x00b0789c
+01679480  mov w8,#0x1
+01679484  strb w8,[x20, #0x9e6]
+01679488  ldr x0,[x19]
+0167948c  ldr w8,[x0, #0xe0]
+01679490  cbnz w8,0x0167949c
+01679494  bl 0x00b0798c
+01679498  ldr x0,[x19]
+0167949c  ldr x8,[x0, #0xb8]
+016794a0  ldr x8,[x8, #0x248]
+016794a4  cbz x8,0x016794d4
+016794a8  mov v2.16B,v9.16B
+016794ac  mov v3.16B,v8.16B
+016794b0  ldp x19,x30,[sp, #0x30]
+016794b4  ldr x20,[sp, #0x20]
+016794b8  ldp d9,d8,[sp, #0x10]
+016794bc  mov x0,x8
+016794c0  mov v0.16B,v11.16B
+016794c4  mov v1.16B,v10.16B
+016794c8  mov x1,xzr
+016794cc  ldp d11,d10,[sp], #0x40
+016794d0  b 0x010cd7ec
+016794d4  ldr w8,[x0, #0xe0]
+016794d8  cbnz w8,0x016794e0
+016794dc  bl 0x00b0798c
+016794e0  bl 0x01679198
+016794e4  cbz x0,0x0167956c
+016794e8  adrp x20,0x3336000
+016794ec  ldr x20,[x20, #0xea8]
+016794f0  ldr x1,[x20]
+016794f4  bl 0x0176cbf8
+016794f8  cbz x0,0x0167956c
+016794fc  ldr x8,[x0]
+01679500  mov v0.16B,v11.16B
+01679504  mov v1.16B,v10.16B
+01679508  mov v2.16B,v9.16B
+0167950c  ldr x9,[x8, #0x2a8]
+01679510  ldr x1,[x8, #0x2b0]
+01679514  mov v3.16B,v8.16B
+01679518  blr x9
+0167951c  ldr x0,[x19]
+01679520  ldr w8,[x0, #0xe0]
+01679524  cbnz w8,0x0167952c
+01679528  bl 0x00b0798c
+0167952c  bl 0x01679198
+01679530  cbz x0,0x0167956c
+01679534  ldr x1,[x20]
+01679538  bl 0x0176cbf8
+0167953c  cbz x0,0x0167956c
+01679540  fcmp s8,#0.0
+01679544  b.ne 0x01679550
+01679548  mov w1,wzr
+0167954c  b 0x01679554
+01679550  mov w1,#0x1
+01679554  ldp x19,x30,[sp, #0x30]
+01679558  ldr x20,[sp, #0x20]
+0167955c  ldp d9,d8,[sp, #0x10]
+01679560  mov x2,xzr
+01679564  ldp d11,d10,[sp], #0x40
+01679568  b 0x024dd2a4
+0167956c  bl 0x00b079b0

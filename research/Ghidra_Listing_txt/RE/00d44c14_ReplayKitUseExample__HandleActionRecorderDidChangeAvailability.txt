@@ -1,0 +1,90 @@
+Function: ReplayKitUseExample$$HandleActionRecorderDidChangeAvailability @ 00d44c14
+
+--- Calls OUT ---
+  -> System.Boolean$$ToString @ 020d8f78
+  -> ISN_Logger$$Log @ 00d198ec
+  -> ISN_ReplayKit$$add_ActionRecordDiscard @ 00d22e84
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> SA.Common.Pattern.Singleton<object>$$get_Instance @ 01e09dd4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> ISN_ReplayKit$$DiscardRecording @ 00d230b4
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action$$.ctor @ 020d5760
+
+--- Calls IN ---
+
+--- Listing ---
+00d44c14  str x22,[sp, #-0x30]!
+00d44c18  stp x21,x20,[sp, #0x10]
+00d44c1c  stp x19,x30,[sp, #0x20]
+00d44c20  and w9,w1,#0x1
+00d44c24  adrp x22,0x3571000
+00d44c28  strb w9,[sp, #0xc]
+00d44c2c  adrp x21,0x337d000
+00d44c30  adrp x20,0x3348000
+00d44c34  ldrb w8,[x22, #0xdbd]
+00d44c38  ldr x21,[x21, #0x2e0]
+00d44c3c  ldr x20,[x20, #0xcf8]
+00d44c40  mov x19,x0
+00d44c44  tbnz w8,#0x0,0x00d44c8c
+00d44c48  adrp x0,0x3348000
+00d44c4c  ldr x0,[x0, #0xcf8]
+00d44c50  bl 0x00b0789c
+00d44c54  adrp x0,0x3310000
+00d44c58  ldr x0,[x0, #0xa8]
+00d44c5c  bl 0x00b0789c
+00d44c60  adrp x0,0x333d000
+00d44c64  ldr x0,[x0, #0xcf0]
+00d44c68  bl 0x00b0789c
+00d44c6c  adrp x0,0x3342000
+00d44c70  ldr x0,[x0, #0xec0]
+00d44c74  bl 0x00b0789c
+00d44c78  adrp x0,0x337d000
+00d44c7c  ldr x0,[x0, #0x2e0]
+00d44c80  bl 0x00b0789c
+00d44c84  mov w8,#0x1
+00d44c88  strb w8,[x22, #0xdbd]
+00d44c8c  add x0,sp,#0xc
+00d44c90  mov x1,xzr
+00d44c94  bl 0x020d8f78
+00d44c98  ldr x8,[x21]
+00d44c9c  mov x1,x0
+00d44ca0  mov x2,xzr
+00d44ca4  mov x0,x8
+00d44ca8  bl 0x01fd2850
+00d44cac  mov w1,#0x3
+00d44cb0  mov x2,xzr
+00d44cb4  bl 0x00d198ec
+00d44cb8  ldr x0,[x20]
+00d44cbc  bl 0x00b079a0
+00d44cc0  cbz x0,0x00d44d30
+00d44cc4  adrp x8,0x333d000
+00d44cc8  ldr x8,[x8, #0xcf0]
+00d44ccc  adrp x22,0x3310000
+00d44cd0  adrp x21,0x3342000
+00d44cd4  mov x1,x19
+00d44cd8  ldr x2,[x8]
+00d44cdc  ldr x22,[x22, #0xa8]
+00d44ce0  ldr x21,[x21, #0xec0]
+00d44ce4  mov x3,xzr
+00d44ce8  mov x20,x0
+00d44cec  bl 0x020d5760
+00d44cf0  ldr x0,[x22]
+00d44cf4  ldr w8,[x0, #0xe0]
+00d44cf8  cbnz w8,0x00d44d00
+00d44cfc  bl 0x00b0798c
+00d44d00  mov x0,x20
+00d44d04  mov x1,xzr
+00d44d08  bl 0x00d22e84
+00d44d0c  ldr x0,[x21]
+00d44d10  bl 0x01e09dd4
+00d44d14  cbz x0,0x00d44d30
+00d44d18  mov x1,xzr
+00d44d1c  bl 0x00d230b4
+00d44d20  ldp x19,x30,[sp, #0x20]
+00d44d24  ldp x21,x20,[sp, #0x10]
+00d44d28  ldr x22,[sp], #0x30
+00d44d2c  ret
+00d44d30  bl 0x00b079b0

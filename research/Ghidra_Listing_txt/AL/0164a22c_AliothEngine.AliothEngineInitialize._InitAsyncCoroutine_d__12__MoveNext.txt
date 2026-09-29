@@ -1,0 +1,89 @@
+Function: AliothEngine.AliothEngineInitialize.<InitAsyncCoroutine>d__12$$MoveNext @ 0164a22c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> AliothEngine.AssetInfoManager$$InitAssetBundle @ 01669b00
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0164a22c  str x22,[sp, #-0x30]!
+0164a230  stp x21,x20,[sp, #0x10]
+0164a234  stp x19,x30,[sp, #0x20]
+0164a238  adrp x20,0x3577000
+0164a23c  ldrb w8,[x20, #0x7a2]
+0164a240  mov x19,x0
+0164a244  tbnz w8,#0x0,0x0164a274
+0164a248  adrp x0,0x3377000
+0164a24c  ldr x0,[x0, #0x8f8]
+0164a250  bl 0x00b0789c
+0164a254  adrp x0,0x3357000
+0164a258  ldr x0,[x0, #0x8c8]
+0164a25c  bl 0x00b0789c
+0164a260  adrp x0,0x3310000
+0164a264  ldr x0,[x0, #0x630]
+0164a268  bl 0x00b0789c
+0164a26c  mov w8,#0x1
+0164a270  strb w8,[x20, #0x7a2]
+0164a274  ldr w8,[x19, #0x10]
+0164a278  cmp w8,#0x1
+0164a27c  b.eq 0x0164a31c
+0164a280  cbnz w8,0x0164a33c
+0164a284  adrp x8,0x3310000
+0164a288  ldr x8,[x8, #0x630]
+0164a28c  mov w9,#0xffffffff
+0164a290  str w9,[x19, #0x10]
+0164a294  adrp x21,0x3377000
+0164a298  ldr x0,[x8]
+0164a29c  ldr x20,[x19, #0x20]
+0164a2a0  ldr x21,[x21, #0x8f8]
+0164a2a4  bl 0x01e0894c
+0164a2a8  ldr x8,[x21]
+0164a2ac  mov x21,x0
+0164a2b0  mov x0,x8
+0164a2b4  bl 0x00b079a0
+0164a2b8  cbz x0,0x0164a350
+0164a2bc  adrp x8,0x3357000
+0164a2c0  ldr x8,[x8, #0x8c8]
+0164a2c4  mov x1,x20
+0164a2c8  mov x3,xzr
+0164a2cc  mov x22,x0
+0164a2d0  ldr x2,[x8]
+0164a2d4  bl 0x01909b80
+0164a2d8  cbz x21,0x0164a350
+0164a2dc  mov x0,x21
+0164a2e0  mov x1,x22
+0164a2e4  mov x2,xzr
+0164a2e8  bl 0x01669b00
+0164a2ec  cbz x20,0x0164a350
+0164a2f0  mov x1,x0
+0164a2f4  mov x0,x20
+0164a2f8  mov x2,xzr
+0164a2fc  bl 0x024e4070
+0164a300  str x0,[x19, #0x18]!
+0164a304  mov x1,x0
+0164a308  mov x0,x19
+0164a30c  bl 0x00b07850
+0164a310  mov w0,#0x1
+0164a314  stur w0,[x19, #-0x8]
+0164a318  b 0x0164a340
+0164a31c  ldr x8,[x19, #0x28]
+0164a320  mov w9,#0xffffffff
+0164a324  str w9,[x19, #0x10]
+0164a328  cbz x8,0x0164a33c
+0164a32c  ldr x9,[x8, #0x18]
+0164a330  ldr x0,[x8, #0x40]
+0164a334  ldr x1,[x8, #0x28]
+0164a338  blr x9
+0164a33c  mov w0,wzr
+0164a340  ldp x19,x30,[sp, #0x20]
+0164a344  ldp x21,x20,[sp, #0x10]
+0164a348  ldr x22,[sp], #0x30
+0164a34c  ret
+0164a350  bl 0x00b079b0

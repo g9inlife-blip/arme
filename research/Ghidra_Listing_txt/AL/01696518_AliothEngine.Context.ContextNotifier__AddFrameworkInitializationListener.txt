@@ -1,0 +1,123 @@
+Function: AliothEngine.Context.ContextNotifier$$AddFrameworkInitializationListener @ 01696518
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> System.Exception$$.ctor @ 021876ac
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$GetType @ 021948fc
+  -> AliothEngine.DataStructures.WeakReference<object>$$.ctor @ 01f0d700
+
+--- Calls IN ---
+
+--- Listing ---
+01696518  str x22,[sp, #-0x30]!
+0169651c  stp x21,x20,[sp, #0x10]
+01696520  stp x19,x30,[sp, #0x20]
+01696524  adrp x21,0x3577000
+01696528  ldrb w8,[x21, #0xb03]
+0169652c  mov x19,x1
+01696530  mov x20,x0
+01696534  tbnz w8,#0x0,0x01696564
+01696538  adrp x0,0x3350000
+0169653c  ldr x0,[x0, #0xba8]
+01696540  bl 0x00b0789c
+01696544  adrp x0,0x3341000
+01696548  ldr x0,[x0, #0x330]
+0169654c  bl 0x00b0789c
+01696550  adrp x0,0x336d000
+01696554  ldr x0,[x0, #0xac0]
+01696558  bl 0x00b0789c
+0169655c  mov w8,#0x1
+01696560  strb w8,[x21, #0xb03]
+01696564  ldr x20,[x20, #0x18]
+01696568  cbz x20,0x01696614
+0169656c  adrp x8,0x336d000
+01696570  ldr x8,[x8, #0xac0]
+01696574  ldr x0,[x8]
+01696578  bl 0x00b079a0
+0169657c  cbz x0,0x01696618
+01696580  adrp x8,0x3341000
+01696584  ldr x8,[x8, #0x330]
+01696588  adrp x22,0x3350000
+0169658c  mov x1,x19
+01696590  mov x21,x0
+01696594  ldr x2,[x8]
+01696598  ldr x22,[x22, #0xba8]
+0169659c  bl 0x01f0d700
+016965a0  ldr w10,[x20, #0x1c]
+016965a4  ldr x8,[x20, #0x10]
+016965a8  ldr x9,[x22]
+016965ac  add w10,w10,#0x1
+016965b0  str w10,[x20, #0x1c]
+016965b4  cbz x8,0x01696618
+016965b8  ldrsw x10,[x20, #0x18]
+016965bc  ldr w11,[x8, #0x18]
+016965c0  cmp w10,w11
+016965c4  b.cs 0x016965ec
+016965c8  add w9,w10,#0x1
+016965cc  add x0,x8,x10, LSL #0x3
+016965d0  str w9,[x20, #0x18]
+016965d4  str x21,[x0, #0x20]!
+016965d8  mov x1,x21
+016965dc  ldp x19,x30,[sp, #0x20]
+016965e0  ldp x21,x20,[sp, #0x10]
+016965e4  ldr x22,[sp], #0x30
+016965e8  b 0x00b07850
+016965ec  ldr x8,[x9, #0x20]
+016965f0  mov x0,x20
+016965f4  mov x1,x21
+016965f8  ldp x19,x30,[sp, #0x20]
+016965fc  ldr x8,[x8, #0xc0]
+01696600  ldp x21,x20,[sp, #0x10]
+01696604  ldr x2,[x8, #0x58]
+01696608  ldr x3,[x2, #0x8]
+0169660c  ldr x22,[sp], #0x30
+01696610  br x3
+01696614  cbnz x19,0x0169661c
+01696618  bl 0x00b079b0
+0169661c  mov x0,x19
+01696620  mov x1,xzr
+01696624  bl 0x021948fc
+01696628  mov x20,x0
+0169662c  adrp x0,0x3327000
+01696630  ldr x0,[x0, #0x780]
+01696634  bl 0x00b078a0
+01696638  cbnz x20,0x01696648
+0169663c  mov x19,x0
+01696640  mov x1,xzr
+01696644  b 0x0169666c
+01696648  adrp x0,0x3327000
+0169664c  ldr x0,[x0, #0x780]
+01696650  bl 0x00b078a0
+01696654  ldr x8,[x20]
+01696658  mov x19,x0
+0169665c  mov x0,x20
+01696660  ldp x9,x1,[x8, #0x168]
+01696664  blr x9
+01696668  mov x1,x0
+0169666c  mov x0,x19
+01696670  mov x2,xzr
+01696674  bl 0x01fd2850
+01696678  mov x19,x0
+0169667c  adrp x0,0x334a000
+01696680  ldr x0,[x0, #0xbb0]
+01696684  bl 0x00b078a0
+01696688  bl 0x00b079a0
+0169668c  mov x20,x0
+01696690  bl 0x008d74f8
+01696694  mov x0,x20
+01696698  mov x1,x19
+0169669c  mov x2,xzr
+016966a0  bl 0x021876ac
+016966a4  adrp x0,0x330f000
+016966a8  ldr x0,[x0, #0x278]
+016966ac  bl 0x00b078a0
+016966b0  mov x1,x0
+016966b4  mov x0,x20
+016966b8  bl 0x00b07978

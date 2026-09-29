@@ -1,0 +1,59 @@
+Function: AliothEngine.AndroidUtils$$RequestPermission @ 01650dac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> AliothEngine.AndroidUtils$$RequestPermissions @ 01650e58
+
+--- Calls IN ---
+
+--- Listing ---
+01650dac  str x22,[sp, #-0x30]!
+01650db0  stp x21,x20,[sp, #0x10]
+01650db4  stp x19,x30,[sp, #0x20]
+01650db8  adrp x21,0x3577000
+01650dbc  adrp x22,0x3308000
+01650dc0  ldrb w8,[x21, #0x7ef]
+01650dc4  ldr x22,[x22, #0x9a8]
+01650dc8  mov w19,w1
+01650dcc  mov x20,x0
+01650dd0  tbnz w8,#0x0,0x01650de8
+01650dd4  adrp x0,0x3308000
+01650dd8  ldr x0,[x0, #0x9a8]
+01650ddc  bl 0x00b0789c
+01650de0  mov w8,#0x1
+01650de4  strb w8,[x21, #0x7ef]
+01650de8  ldr x0,[x22]
+01650dec  mov w1,#0x1
+01650df0  bl 0x00b078f8
+01650df4  cbz x0,0x01650e44
+01650df8  mov x21,x0
+01650dfc  cbz x20,0x01650e14
+01650e00  ldr x8,[x21]
+01650e04  mov x0,x20
+01650e08  ldr x1,[x8, #0x40]
+01650e0c  bl 0x00b07990
+01650e10  cbz x0,0x01650e4c
+01650e14  ldr w8,[x21, #0x18]
+01650e18  cbz w8,0x01650e48
+01650e1c  mov x0,x21
+01650e20  str x20,[x0, #0x20]!
+01650e24  mov x1,x20
+01650e28  bl 0x00b07850
+01650e2c  mov x0,x21
+01650e30  mov w1,w19
+01650e34  ldp x19,x30,[sp, #0x20]
+01650e38  ldp x21,x20,[sp, #0x10]
+01650e3c  ldr x22,[sp], #0x30
+01650e40  b 0x01650e58
+01650e44  bl 0x00b079b0
+01650e48  bl 0x00b079b8
+01650e4c  bl 0x00b079d4
+01650e50  mov x1,xzr
+01650e54  bl 0x00b07978

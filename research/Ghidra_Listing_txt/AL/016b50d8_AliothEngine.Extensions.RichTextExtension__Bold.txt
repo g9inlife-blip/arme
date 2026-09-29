@@ -1,0 +1,31 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Bold @ 016b50d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fd0378
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RichTextExtension$$MiniBoldLabel @ 016b5d94
+  <- AliothEngine.Extensions.RichTextExtension$$BoldLabel @ 016b5d80
+  <- AliothEngine.Extensions.RichTextExtension$$LargeBoldLabel @ 016b5da8
+
+--- Listing ---
+016b50d8  stp x21,x20,[sp, #-0x20]!
+016b50dc  stp x19,x30,[sp, #0x10]
+016b50e0  adrp x20,0x3577000
+016b50e4  adrp x21,0x3318000
+016b50e8  ldrb w8,[x20, #0xbee]
+016b50ec  ldr x21,[x21, #0x568]
+016b50f0  mov x19,x0
+016b50f4  tbnz w8,#0x0,0x016b510c
+016b50f8  adrp x0,0x3318000
+016b50fc  ldr x0,[x0, #0x568]
+016b5100  bl 0x00b0789c
+016b5104  mov w8,#0x1
+016b5108  strb w8,[x20, #0xbee]
+016b510c  ldr x0,[x21]
+016b5110  mov x1,x19
+016b5114  ldp x19,x30,[sp, #0x10]
+016b5118  mov x2,xzr
+016b511c  ldp x21,x20,[sp], #0x20
+016b5120  b 0x01fd0378

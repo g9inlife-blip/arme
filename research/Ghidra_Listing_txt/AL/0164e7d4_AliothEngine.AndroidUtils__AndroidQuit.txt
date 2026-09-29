@@ -1,0 +1,109 @@
+Function: AliothEngine.AndroidUtils$$AndroidQuit @ 0164e7d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.AndroidJavaClass$$.ctor @ 024aa2ec
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> UnityEngine.AndroidJavaObject$$CallStatic @ 024acfe8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+
+--- Calls IN ---
+  <- AliothEngine.AndroidEscape$$ApplicationQuit @ 0164e574
+  <- AliothEngine.Utils.ApplicationUtils$$ApplicationQuit @ 0169804c
+
+--- Listing ---
+0164e7d4  sub sp,sp,#0x30
+0164e7d8  stp x21,x20,[sp, #0x10]
+0164e7dc  stp x19,x30,[sp, #0x20]
+0164e7e0  adrp x19,0x3577000
+0164e7e4  adrp x20,0x3364000
+0164e7e8  ldrb w8,[x19, #0x7ed]
+0164e7ec  ldr x20,[x20, #0x98]
+0164e7f0  tbnz w8,#0x0,0x0164e838
+0164e7f4  adrp x0,0x3364000
+0164e7f8  ldr x0,[x0, #0x98]
+0164e7fc  bl 0x00b0789c
+0164e800  adrp x0,0x3332000
+0164e804  ldr x0,[x0, #0x38]
+0164e808  bl 0x00b0789c
+0164e80c  adrp x0,0x3370000
+0164e810  ldr x0,[x0, #0x778]
+0164e814  bl 0x00b0789c
+0164e818  adrp x0,0x3310000
+0164e81c  ldr x0,[x0, #0x3f0]
+0164e820  bl 0x00b0789c
+0164e824  adrp x0,0x331c000
+0164e828  ldr x0,[x0, #0x628]
+0164e82c  bl 0x00b0789c
+0164e830  mov w8,#0x1
+0164e834  strb w8,[x19, #0x7ed]
+0164e838  ldr x0,[x20]
+0164e83c  bl 0x00b079a0
+    ; [PRE] try { // try from 0164e83c to 0164e85f has its CatchHandler @ 0164e910
+0164e840  mov x19,x0
+0164e844  cbz x0,0x0164e8f4
+0164e848  adrp x8,0x331c000
+0164e84c  ldr x8,[x8, #0x628]
+0164e850  ldr x1,[x8]
+0164e854  mov x0,x19
+0164e858  mov x2,xzr
+0164e85c  bl 0x024aa2ec
+    ; [POST] } // end try from 0164e83c to 0164e85f
+0164e860  adrp x8,0x3370000
+0164e864  ldr x8,[x8, #0x778]
+0164e868  ldr x0,[x8]
+0164e86c  mov w1,#0x1
+    ; [PRE] try { // try from 0164e86c to 0164e873 has its CatchHandler @ 0164e90c
+0164e870  bl 0x00b078f8
+    ; [POST] } // end try from 0164e86c to 0164e873
+0164e874  adrp x8,0x3332000
+0164e878  ldr x8,[x8, #0x38]
+0164e87c  mov x20,x0
+0164e880  str wzr,[sp, #0xc]
+0164e884  ldr x0,[x8]
+0164e888  add x1,sp,#0xc
+    ; [PRE] try { // try from 0164e888 to 0164e8e3 has its CatchHandler @ 0164e914
+0164e88c  bl 0x00b07994
+0164e890  cbz x20,0x0164e8f8
+0164e894  mov x21,x0
+0164e898  cbz x0,0x0164e8b0
+0164e89c  ldr x8,[x20]
+0164e8a0  ldr x1,[x8, #0x40]
+0164e8a4  mov x0,x21
+0164e8a8  bl 0x00b07990
+0164e8ac  cbz x0,0x0164e900
+0164e8b0  ldr w8,[x20, #0x18]
+0164e8b4  cbz w8,0x0164e8fc
+0164e8b8  mov x0,x20
+0164e8bc  str x21,[x0, #0x20]!
+0164e8c0  mov x1,x21
+0164e8c4  bl 0x00b07850
+0164e8c8  adrp x8,0x3310000
+0164e8cc  ldr x8,[x8, #0x3f0]
+0164e8d0  ldr x1,[x8]
+0164e8d4  mov x0,x19
+0164e8d8  mov x2,x20
+0164e8dc  mov x3,xzr
+0164e8e0  bl 0x024acfe8
+    ; [POST] } // end try from 0164e888 to 0164e8e3
+0164e8e4  ldp x19,x30,[sp, #0x20]
+0164e8e8  ldp x21,x20,[sp, #0x10]
+0164e8ec  add sp,sp,#0x30
+0164e8f0  ret
+0164e8f4  bl 0x00b079b0
+    ; [PRE] try { // try from 0164e8f4 to 0164e8f7 has its CatchHandler @ 0164e910
+    ; [POST] } // end try from 0164e8f4 to 0164e8f7
+0164e8f8  bl 0x00b079b0
+    ; [PRE] try { // try from 0164e8f8 to 0164e90b has its CatchHandler @ 0164e914
+0164e8fc  bl 0x00b079b8
+0164e900  bl 0x00b079d4
+0164e904  mov x1,xzr
+0164e908  bl 0x00b07978
+    ; [POST] } // end try from 0164e8f8 to 0164e90b

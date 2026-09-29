@@ -1,0 +1,50 @@
+Function: Ali$$set_act @ 00e01768
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- Ali$$ReLoadExcel @ 00e02598
+  <- Ali$$Init @ 00e019f8
+
+--- Listing ---
+00e01768  str x22,[sp, #-0x30]!
+00e0176c  stp x21,x20,[sp, #0x10]
+00e01770  stp x19,x30,[sp, #0x20]
+00e01774  adrp x22,0x3572000
+00e01778  adrp x21,0x335f000
+00e0177c  ldrb w8,[x22, #0x53a]
+00e01780  ldr x21,[x21, #0x20]
+00e01784  mov x19,x1
+00e01788  mov x20,x0
+00e0178c  tbnz w8,#0x0,0x00e017a4
+00e01790  adrp x0,0x335f000
+00e01794  ldr x0,[x0, #0x20]
+00e01798  bl 0x00b0789c
+00e0179c  mov w8,#0x1
+00e017a0  strb w8,[x22, #0x53a]
+00e017a4  ldr x0,[x21]
+00e017a8  ldr w8,[x0, #0xe0]
+00e017ac  cbnz w8,0x00e017b8
+00e017b0  bl 0x00b0798c
+00e017b4  ldr x0,[x21]
+00e017b8  ldr x8,[x0, #0xb8]
+00e017bc  ldr x0,[x8, #0x168]
+00e017c0  cbz x0,0x00e017e0
+00e017c4  mov x1,x20
+00e017c8  mov x2,x19
+00e017cc  ldp x19,x30,[sp, #0x20]
+00e017d0  ldp x21,x20,[sp, #0x10]
+00e017d4  mov x3,xzr
+00e017d8  ldr x22,[sp], #0x30
+00e017dc  b 0x0106125c
+00e017e0  str x19,[x20, #0x88]!
+00e017e4  mov x0,x20
+00e017e8  mov x1,x19
+00e017ec  ldp x19,x30,[sp, #0x20]
+00e017f0  ldp x21,x20,[sp, #0x10]
+00e017f4  ldr x22,[sp], #0x30
+00e017f8  b 0x00b07850

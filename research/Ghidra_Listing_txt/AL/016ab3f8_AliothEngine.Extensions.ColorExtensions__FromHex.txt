@@ -1,0 +1,63 @@
+Function: AliothEngine.Extensions.ColorExtensions$$FromHex @ 016ab3f8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Substring @ 01fe0458
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Int32$$TryParse @ 0214e4ac
+  -> System.Globalization.CultureInfo$$get_InvariantCulture @ 02117234
+
+--- Calls IN ---
+
+--- Listing ---
+016ab3f8  str x20,[sp, #-0x20]!
+016ab3fc  stp x19,x30,[sp, #0x10]
+016ab400  adrp x20,0x3577000
+016ab404  ldrb w8,[x20, #0xbb2]
+016ab408  mov x19,x0
+016ab40c  tbnz w8,#0x0,0x016ab430
+016ab410  adrp x0,0x330b000
+016ab414  ldr x0,[x0, #0x690]
+016ab418  bl 0x00b0789c
+016ab41c  adrp x0,0x3360000
+016ab420  ldr x0,[x0, #0x28]
+016ab424  bl 0x00b0789c
+016ab428  mov w8,#0x1
+016ab42c  strb w8,[x20, #0xbb2]
+016ab430  str wzr,[sp, #0xc]
+016ab434  cbz x19,0x016ab4bc
+016ab438  ldr w8,[x19, #0x10]
+016ab43c  adrp x20,0x3360000
+016ab440  ldr x20,[x20, #0x28]
+016ab444  cmp w8,#0x9
+016ab448  b.lt 0x016ab464
+016ab44c  sub w1,w8,#0x8
+016ab450  mov w2,#0x8
+016ab454  mov x0,x19
+016ab458  mov x3,xzr
+016ab45c  bl 0x01fe0458
+016ab460  mov x19,x0
+016ab464  ldr x0,[x20]
+016ab468  ldr w8,[x0, #0xe0]
+016ab46c  cbnz w8,0x016ab474
+016ab470  bl 0x00b0798c
+016ab474  mov x0,xzr
+016ab478  bl 0x02117234
+016ab47c  mov x2,x0
+016ab480  add x3,sp,#0xc
+016ab484  mov w1,#0x203
+016ab488  mov x0,x19
+016ab48c  mov x4,xzr
+016ab490  bl 0x0214e4ac
+016ab494  tbz w0,#0x0,0x016ab4b0
+016ab498  adrp x8,0x330b000
+016ab49c  ldr x8,[x8, #0x690]
+016ab4a0  ldr x0,[x8]
+016ab4a4  ldr w8,[x0, #0xe0]
+016ab4a8  cbnz w8,0x016ab4b0
+016ab4ac  bl 0x00b0798c
+016ab4b0  ldp x19,x30,[sp, #0x10]
+016ab4b4  ldr x20,[sp], #0x20
+016ab4b8  ret
+016ab4bc  bl 0x00b079b0

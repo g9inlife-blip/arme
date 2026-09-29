@@ -1,0 +1,70 @@
+Function: AliothEngine.DataStructures.ThreadSafeDictionary<object,-object>$$Clear @ 01e3b1a8
+
+--- Calls OUT ---
+  -> System.Threading.ReaderWriterLockSlim$$ExitWriteLock @ 0223e094
+  -> System.Threading.ReaderWriterLockSlim$$EnterWriteLock @ 0223d7f0
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e3b1a8  stp x21,x20,[sp, #-0x20]!
+01e3b1ac  stp x19,x30,[sp, #0x10]
+01e3b1b0  mov x19,x0
+01e3b1b4  ldr x0,[x0, #0x18]
+01e3b1b8  cbz x0,0x01e3b26c
+01e3b1bc  mov x21,x1
+01e3b1c0  mov x1,xzr
+01e3b1c4  bl 0x0223d7f0
+01e3b1c8  ldr x20,[x19, #0x10]
+01e3b1cc  cbz x20,0x01e3b270
+01e3b1d0  ldr x8,[x21, #0x20]
+01e3b1d4  ldr x8,[x8, #0xc0]
+01e3b1d8  ldr x1,[x8, #0x18]
+01e3b1dc  ldrb w8,[x1, #0x132]
+01e3b1e0  tbnz w8,#0x0,0x01e3b1f0
+01e3b1e4  mov x0,x1
+    ; [PRE] try { // try from 01e3b1e4 to 01e3b247 has its CatchHandler @ 01e3b27c
+01e3b1e8  bl 0x00b2ac40
+01e3b1ec  mov x1,x0
+01e3b1f0  ldr x8,[x20]
+01e3b1f4  ldrh w9,[x8, #0x12a]
+01e3b1f8  cbz x9,0x01e3b21c
+01e3b1fc  ldr x10,[x8, #0xb0]
+01e3b200  add x10,x10,#0x8
+01e3b204  ldur x11,[x10, #-0x8]
+01e3b208  cmp x11,x1
+01e3b20c  b.eq 0x01e3b22c
+01e3b210  subs x9,x9,#0x1
+01e3b214  add x10,x10,#0x10
+01e3b218  b.ne 0x01e3b204
+01e3b21c  mov w2,#0x3
+01e3b220  mov x0,x20
+01e3b224  bl 0x00b2ae24
+01e3b228  b 0x01e3b23c
+01e3b22c  ldr w9,[x10]
+01e3b230  add w9,w9,#0x3
+01e3b234  add x8,x8,w9, SXTW  #0x4
+01e3b238  add x0,x8,#0x138
+01e3b23c  ldp x8,x1,[x0]
+01e3b240  mov x0,x20
+01e3b244  blr x8
+    ; [POST] } // end try from 01e3b1e4 to 01e3b247
+01e3b248  mov x20,xzr
+01e3b24c  ldr x0,[x19, #0x18]
+01e3b250  cbz x0,0x01e3b26c
+01e3b254  mov x1,xzr
+01e3b258  bl 0x0223e094
+01e3b25c  cbnz x20,0x01e3b274
+01e3b260  ldp x19,x30,[sp, #0x10]
+01e3b264  ldp x21,x20,[sp], #0x20
+01e3b268  ret
+01e3b26c  bl 0x00b079b0
+01e3b270  bl 0x00b079b0
+    ; [PRE] try { // try from 01e3b270 to 01e3b273 has its CatchHandler @ 01e3b27c
+    ; [POST] } // end try from 01e3b270 to 01e3b273
+01e3b274  mov x0,x20
+01e3b278  bl 0x00aaac8c

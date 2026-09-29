@@ -1,0 +1,88 @@
+Function: AliothEngine.CacheAssetBundleHolder$$LoadImmediate @ 01664298
+
+--- Calls OUT ---
+  -> AliothEngine.AssetHolder$$get_error @ 01662540
+  -> AliothEngine.AssetHolder$$OnLoadFailed @ 01662ca4
+  -> AliothEngine.AssetHolder$$set_error @ 016625b8
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> AliothEngine.AssetHolder$$get_logger @ 01662de4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01664298  str x22,[sp, #-0x30]!
+0166429c  stp x21,x20,[sp, #0x10]
+016642a0  stp x19,x30,[sp, #0x20]
+016642a4  adrp x21,0x3577000
+016642a8  adrp x20,0x334d000
+016642ac  ldrb w8,[x21, #0x8e3]
+016642b0  ldr x20,[x20, #0xe40]
+016642b4  mov x19,x0
+016642b8  tbnz w8,#0x0,0x016642e8
+016642bc  adrp x0,0x334a000
+016642c0  ldr x0,[x0, #0xc98]
+016642c4  bl 0x00b0789c
+016642c8  adrp x0,0x334d000
+016642cc  ldr x0,[x0, #0xe40]
+016642d0  bl 0x00b0789c
+016642d4  adrp x0,0x3320000
+016642d8  ldr x0,[x0, #0x920]
+016642dc  bl 0x00b0789c
+016642e0  mov w8,#0x1
+016642e4  strb w8,[x21, #0x8e3]
+016642e8  ldr x1,[x19, #0x60]
+016642ec  ldr x0,[x20]
+016642f0  mov x2,xzr
+016642f4  bl 0x01fd2850
+016642f8  mov x1,x0
+016642fc  mov x0,x19
+01664300  bl 0x016625b8
+01664304  mov x0,x19
+01664308  bl 0x01662de4
+0166430c  mov x20,x0
+01664310  mov x0,x19
+01664314  bl 0x01662540
+01664318  cbz x20,0x016643b8
+0166431c  adrp x9,0x334a000
+01664320  adrp x10,0x3320000
+01664324  ldr x8,[x20]
+01664328  ldr x9,[x9, #0xc98]
+0166432c  ldr x10,[x10, #0x920]
+01664330  mov x21,x0
+01664334  ldr x1,[x9]
+01664338  ldrh w9,[x8, #0x12a]
+0166433c  ldr x22,[x10]
+01664340  cbz x9,0x01664364
+01664344  ldr x10,[x8, #0xb0]
+01664348  add x10,x10,#0x8
+0166434c  ldur x11,[x10, #-0x8]
+01664350  cmp x11,x1
+01664354  b.eq 0x01664374
+01664358  subs x9,x9,#0x1
+0166435c  add x10,x10,#0x10
+01664360  b.ne 0x0166434c
+01664364  mov w2,#0xb
+01664368  mov x0,x20
+0166436c  bl 0x00b2ae24
+01664370  b 0x01664384
+01664374  ldr w9,[x10]
+01664378  add w9,w9,#0xb
+0166437c  add x8,x8,w9, SXTW  #0x4
+01664380  add x0,x8,#0x138
+01664384  ldp x8,x3,[x0]
+01664388  mov x0,x20
+0166438c  mov x1,x22
+01664390  mov x2,x21
+01664394  blr x8
+01664398  mov x0,x19
+0166439c  bl 0x01662540
+016643a0  mov x1,x0
+016643a4  mov x0,x19
+016643a8  ldp x19,x30,[sp, #0x20]
+016643ac  ldp x21,x20,[sp, #0x10]
+016643b0  ldr x22,[sp], #0x30
+016643b4  b 0x01662ca4
+016643b8  bl 0x00b079b0

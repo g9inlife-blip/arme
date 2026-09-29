@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.TransformExtensions$$FlipPostive @ 016bac78
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_localScale @ 024f41b4
+  -> UnityEngine.Transform$$set_localScale @ 024f4254
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016bac78  stp d9,d8,[sp, #-0x20]!
+016bac7c  stp x19,x30,[sp, #0x10]
+016bac80  cbz x0,0x016bacd0
+016bac84  mov x1,xzr
+016bac88  mov x19,x0
+016bac8c  bl 0x024f41b4
+016bac90  mov x0,x19
+016bac94  mov x1,xzr
+016bac98  fabs s8,s0
+016bac9c  bl 0x024f41b4
+016baca0  mov x0,x19
+016baca4  mov x1,xzr
+016baca8  fabs s9,s1
+016bacac  bl 0x024f41b4
+016bacb0  mov x0,x19
+016bacb4  ldp x19,x30,[sp, #0x10]
+016bacb8  fabs s2,s2
+016bacbc  mov v0.16B,v8.16B
+016bacc0  mov v1.16B,v9.16B
+016bacc4  mov x1,xzr
+016bacc8  ldp d9,d8,[sp], #0x20
+016baccc  b 0x024f4254
+016bacd0  bl 0x00b079b0

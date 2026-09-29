@@ -1,0 +1,66 @@
+Function: AliothS1Loading.<CheckLoadingReadyIE>d__11$$MoveNext @ 00ecb364
+
+--- Calls OUT ---
+  -> AliothS1Loading$$CheckLoadComplete @ 00ecb08c
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00ecb364  str x20,[sp, #-0x20]!
+00ecb368  stp x19,x30,[sp, #0x10]
+00ecb36c  adrp x20,0x3572000
+00ecb370  ldrb w8,[x20, #0xd6e]
+00ecb374  mov x19,x0
+00ecb378  tbnz w8,#0x0,0x00ecb390
+00ecb37c  adrp x0,0x335f000
+00ecb380  ldr x0,[x0, #0x20]
+00ecb384  bl 0x00b0789c
+00ecb388  mov w8,#0x1
+00ecb38c  strb w8,[x20, #0xd6e]
+00ecb390  ldr w8,[x19, #0x10]
+00ecb394  adrp x20,0x335f000
+00ecb398  ldr x20,[x20, #0x20]
+00ecb39c  cmp w8,#0x1
+00ecb3a0  b.eq 0x00ecb3e4
+00ecb3a4  cbnz w8,0x00ecb428
+00ecb3a8  mov w8,#0xffffffff
+00ecb3ac  str w8,[x19, #0x10]
+00ecb3b0  ldr x0,[x20]
+00ecb3b4  ldr w8,[x0, #0xe0]
+00ecb3b8  cbnz w8,0x00ecb3c4
+00ecb3bc  bl 0x00b0798c
+00ecb3c0  ldr x0,[x20]
+00ecb3c4  ldr x8,[x0, #0xb8]
+00ecb3c8  ldr x1,[x8, #0x8]
+00ecb3cc  str x1,[x19, #0x18]!
+00ecb3d0  mov x0,x19
+00ecb3d4  bl 0x00b07850
+00ecb3d8  mov w0,#0x1
+00ecb3dc  stur w0,[x19, #-0x8]
+00ecb3e0  b 0x00ecb42c
+00ecb3e4  mov w8,#0xffffffff
+00ecb3e8  str w8,[x19, #0x10]
+00ecb3ec  ldr x0,[x20]
+00ecb3f0  ldr x19,[x19, #0x20]
+00ecb3f4  ldr w8,[x0, #0xe0]
+00ecb3f8  cbnz w8,0x00ecb404
+00ecb3fc  bl 0x00b0798c
+00ecb400  ldr x0,[x20]
+00ecb404  ldr x8,[x0, #0xb8]
+00ecb408  ldr x8,[x8, #0x10]
+00ecb40c  cbz x8,0x00ecb438
+00ecb410  ldr w8,[x8, #0x138]
+00ecb414  cmp w8,#0x0
+00ecb418  b.gt 0x00ecb428
+00ecb41c  cbz x19,0x00ecb438
+00ecb420  mov x0,x19
+00ecb424  bl 0x00ecb08c
+00ecb428  mov w0,wzr
+00ecb42c  ldp x19,x30,[sp, #0x10]
+00ecb430  ldr x20,[sp], #0x20
+00ecb434  ret
+00ecb438  bl 0x00b079b0

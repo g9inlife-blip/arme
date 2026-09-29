@@ -1,0 +1,108 @@
+Function: AliothEngine.FrameSynchr$$PingVariance @ 0164b710
+
+--- Calls OUT ---
+  -> System.Math$$Pow @ 02151674
+  -> System.Collections.Generic.List<uint>$$get_Item @ 01c8fdfc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0164b710  stp d9,d8,[sp, #-0x50]!
+0164b714  str x24,[sp, #0x10]
+0164b718  stp x23,x22,[sp, #0x20]
+0164b71c  stp x21,x20,[sp, #0x30]
+0164b720  stp x19,x30,[sp, #0x40]
+0164b724  adrp x20,0x3577000
+0164b728  ldrb w8,[x20, #0x7b1]
+0164b72c  mov x19,x0
+0164b730  tbnz w8,#0x0,0x0164b760
+0164b734  adrp x0,0x331d000
+0164b738  ldr x0,[x0, #0xe68]
+0164b73c  bl 0x00b0789c
+0164b740  adrp x0,0x337d000
+0164b744  ldr x0,[x0, #0xbc8]
+0164b748  bl 0x00b0789c
+0164b74c  adrp x0,0x332c000
+0164b750  ldr x0,[x0, #0x5a8]
+0164b754  bl 0x00b0789c
+0164b758  mov w8,#0x1
+0164b75c  strb w8,[x20, #0x7b1]
+0164b760  ldr x8,[x19, #0xc0]
+0164b764  str xzr,[x19, #0xf8]
+0164b768  cbz x8,0x0164b874
+0164b76c  ldr w9,[x8, #0x18]
+0164b770  cmp w9,#0x1
+0164b774  b.lt 0x0164b874
+0164b778  adrp x22,0x337d000
+0164b77c  adrp x23,0x332c000
+0164b780  ldr x22,[x22, #0xbc8]
+0164b784  ldr x23,[x23, #0x5a8]
+0164b788  mov w20,wzr
+0164b78c  fmov d8,xzr
+0164b790  ldr x2,[x22]
+0164b794  mov x0,x8
+0164b798  mov w1,w20
+0164b79c  bl 0x01c8fdfc
+0164b7a0  ldr x8,[x19, #0xc0]
+0164b7a4  cbz x8,0x0164b88c
+0164b7a8  ldr w9,[x8, #0x18]
+0164b7ac  add w20,w20,#0x1
+0164b7b0  ucvtf d0,w0
+0164b7b4  fadd d8,d8,d0
+0164b7b8  cmp w20,w9
+0164b7bc  b.lt 0x0164b790
+0164b7c0  scvtf d0,w9
+0164b7c4  mov x10,#0x7ff0000000000000
+0164b7c8  fdiv d0,d8,d0
+0164b7cc  fmov d1,x10
+0164b7d0  mov w24,#0x80000000
+0164b7d4  fcvtzs w10,d0
+0164b7d8  fcmp d0,d1
+0164b7dc  csel w10,w24,w10,eq
+0164b7e0  cmp w9,#0x1
+0164b7e4  str w10,[x19, #0xf8]
+0164b7e8  b.lt 0x0164b850
+0164b7ec  mov w20,wzr
+0164b7f0  fmov d9,xzr
+0164b7f4  fmov d8,0x4000000000000000
+0164b7f8  ldr x2,[x22]
+0164b7fc  mov x0,x8
+0164b800  mov w1,w20
+0164b804  bl 0x01c8fdfc
+0164b808  ldr x8,[x23]
+0164b80c  mov w21,w0
+0164b810  ldr w9,[x8, #0xe0]
+0164b814  cbnz w9,0x0164b820
+0164b818  mov x0,x8
+0164b81c  bl 0x00b0798c
+0164b820  ucvtf d0,w21
+0164b824  mov v1.16B,v8.16B
+0164b828  mov x0,xzr
+0164b82c  bl 0x02151674
+0164b830  ldr x8,[x19, #0xc0]
+0164b834  cbz x8,0x0164b88c
+0164b838  ldr w9,[x8, #0x18]
+0164b83c  add w20,w20,#0x1
+0164b840  fadd d9,d9,d0
+0164b844  cmp w20,w9
+0164b848  b.lt 0x0164b7f8
+0164b84c  b 0x0164b854
+0164b850  fmov d9,xzr
+0164b854  scvtf d0,w9
+0164b858  mov x8,#0x7ff0000000000000
+0164b85c  fdiv d0,d9,d0
+0164b860  fmov d1,x8
+0164b864  fcvtzs w8,d0
+0164b868  fcmp d0,d1
+0164b86c  csel w8,w24,w8,eq
+0164b870  str w8,[x19, #0xfc]
+0164b874  ldp x19,x30,[sp, #0x40]
+0164b878  ldp x21,x20,[sp, #0x30]
+0164b87c  ldp x23,x22,[sp, #0x20]
+0164b880  ldr x24,[sp, #0x10]
+0164b884  ldp d9,d8,[sp], #0x50
+0164b888  ret
+0164b88c  bl 0x00b079b0

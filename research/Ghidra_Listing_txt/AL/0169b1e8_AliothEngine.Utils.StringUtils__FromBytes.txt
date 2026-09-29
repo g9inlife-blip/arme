@@ -1,0 +1,138 @@
+Function: AliothEngine.Utils.StringUtils$$FromBytes @ 0169b1e8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> System.IO.StreamReader$$.ctor @ 020a78a8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.MemoryStream$$.ctor @ 020a3d4c
+
+--- Calls IN ---
+
+--- Listing ---
+0169b1e8  str x24,[sp, #-0x40]!
+0169b1ec  stp x23,x22,[sp, #0x10]
+0169b1f0  stp x21,x20,[sp, #0x20]
+0169b1f4  stp x19,x30,[sp, #0x30]
+0169b1f8  adrp x20,0x3577000
+0169b1fc  adrp x22,0x331b000
+0169b200  adrp x19,0x3368000
+0169b204  ldrb w8,[x20, #0xb33]
+0169b208  ldr x22,[x22, #0x6c8]
+0169b20c  ldr x19,[x19, #0xf58]
+0169b210  mov x21,x0
+0169b214  tbnz w8,#0x0,0x0169b250
+0169b218  adrp x0,0x337d000
+0169b21c  ldr x0,[x0, #0x848]
+0169b220  bl 0x00b0789c
+0169b224  adrp x0,0x3368000
+0169b228  ldr x0,[x0, #0xf58]
+0169b22c  bl 0x00b0789c
+0169b230  adrp x0,0x333e000
+0169b234  ldr x0,[x0, #0x660]
+0169b238  bl 0x00b0789c
+0169b23c  adrp x0,0x331b000
+0169b240  ldr x0,[x0, #0x6c8]
+0169b244  bl 0x00b0789c
+0169b248  mov w8,#0x1
+0169b24c  strb w8,[x20, #0xb33]
+0169b250  ldr x8,[x22]
+0169b254  ldr x0,[x19]
+0169b258  ldr x8,[x8, #0xb8]
+0169b25c  ldr x20,[x8]
+0169b260  bl 0x00b079a0
+0169b264  cbz x0,0x0169b398
+0169b268  adrp x22,0x333e000
+0169b26c  adrp x24,0x337d000
+0169b270  ldr x22,[x22, #0x660]
+0169b274  ldr x24,[x24, #0x848]
+0169b278  mov x1,x21
+0169b27c  mov x2,xzr
+0169b280  mov x19,x0
+0169b284  bl 0x020a3d4c
+0169b288  ldr x0,[x22]
+0169b28c  bl 0x00b079a0
+    ; [PRE] try { // try from 0169b28c to 0169b2ab has its CatchHandler @ 0169b458
+0169b290  mov x21,x0
+0169b294  cbz x0,0x0169b39c
+0169b298  mov w2,#0x1
+0169b29c  mov x0,x21
+0169b2a0  mov x1,x19
+0169b2a4  mov x3,xzr
+0169b2a8  bl 0x020a78a8
+    ; [POST] } // end try from 0169b28c to 0169b2ab
+0169b2ac  ldr x8,[x21]
+0169b2b0  ldp x9,x1,[x8, #0x1f8]
+0169b2b4  mov x0,x21
+    ; [PRE] try { // try from 0169b2b4 to 0169b2bb has its CatchHandler @ 0169b3b0
+0169b2b8  blr x9
+    ; [POST] } // end try from 0169b2b4 to 0169b2bb
+0169b2bc  mov x22,xzr
+0169b2c0  mov x20,x0
+0169b2c4  ldr x8,[x21]
+0169b2c8  ldr x1,[x24]
+0169b2cc  ldrh w9,[x8, #0x12a]
+0169b2d0  cbz x9,0x0169b2f4
+0169b2d4  ldr x10,[x8, #0xb0]
+0169b2d8  add x10,x10,#0x8
+0169b2dc  ldur x11,[x10, #-0x8]
+0169b2e0  cmp x11,x1
+0169b2e4  b.eq 0x0169b304
+0169b2e8  subs x9,x9,#0x1
+0169b2ec  add x10,x10,#0x10
+0169b2f0  b.ne 0x0169b2dc
+0169b2f4  mov x0,x21
+    ; [PRE] try { // try from 0169b2f4 to 0169b31b has its CatchHandler @ 0169b454
+0169b2f8  mov w2,wzr
+0169b2fc  bl 0x00b2ae24
+0169b300  b 0x0169b310
+0169b304  ldrsw x9,[x10]
+0169b308  add x8,x8,x9, LSL #0x4
+0169b30c  add x0,x8,#0x138
+0169b310  ldp x8,x1,[x0]
+0169b314  mov x0,x21
+0169b318  blr x8
+    ; [POST] } // end try from 0169b2f4 to 0169b31b
+0169b31c  cbnz x22,0x0169b3a8
+0169b320  mov x21,xzr
+0169b324  ldr x8,[x19]
+0169b328  ldr x1,[x24]
+0169b32c  ldrh w9,[x8, #0x12a]
+0169b330  cbz x9,0x0169b354
+0169b334  ldr x10,[x8, #0xb0]
+0169b338  add x10,x10,#0x8
+0169b33c  ldur x11,[x10, #-0x8]
+0169b340  cmp x11,x1
+0169b344  b.eq 0x0169b364
+0169b348  subs x9,x9,#0x1
+0169b34c  add x10,x10,#0x10
+0169b350  b.ne 0x0169b33c
+0169b354  mov x0,x19
+0169b358  mov w2,wzr
+0169b35c  bl 0x00b2ae24
+0169b360  b 0x0169b370
+0169b364  ldrsw x9,[x10]
+0169b368  add x8,x8,x9, LSL #0x4
+0169b36c  add x0,x8,#0x138
+0169b370  ldp x8,x1,[x0]
+0169b374  mov x0,x19
+0169b378  blr x8
+0169b37c  cbnz x21,0x0169b3a0
+0169b380  mov x0,x20
+0169b384  ldp x19,x30,[sp, #0x30]
+0169b388  ldp x21,x20,[sp, #0x20]
+0169b38c  ldp x23,x22,[sp, #0x10]
+0169b390  ldr x24,[sp], #0x40
+0169b394  ret
+0169b398  bl 0x00b079b0
+0169b39c  bl 0x00b079b0
+    ; [PRE] try { // try from 0169b39c to 0169b39f has its CatchHandler @ 0169b458
+    ; [POST] } // end try from 0169b39c to 0169b39f
+0169b3a0  mov x0,x21
+0169b3a4  bl 0x00aaac8c
+0169b3a8  mov x0,x22
+    ; [PRE] try { // try from 0169b3a8 to 0169b3af has its CatchHandler @ 0169b454
+0169b3ac  bl 0x00aaac8c
+    ; [POST] } // end try from 0169b3a8 to 0169b3af

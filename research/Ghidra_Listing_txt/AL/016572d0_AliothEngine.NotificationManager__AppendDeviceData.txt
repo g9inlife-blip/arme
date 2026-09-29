@@ -1,0 +1,46 @@
+Function: AliothEngine.NotificationManager$$AppendDeviceData @ 016572d0
+
+--- Calls OUT ---
+  -> AliothEngine.SingletonBehaviour<object>$$get_hasInstance @ 01e088c0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016572d0  stp x21,x20,[sp, #-0x20]!
+016572d4  stp x19,x30,[sp, #0x10]
+016572d8  adrp x20,0x3577000
+016572dc  adrp x21,0x333b000
+016572e0  ldrb w8,[x20, #0x81d]
+016572e4  ldr x21,[x21, #0x378]
+016572e8  mov x19,x0
+016572ec  tbnz w8,#0x0,0x01657310
+016572f0  adrp x0,0x333b000
+016572f4  ldr x0,[x0, #0x378]
+016572f8  bl 0x00b0789c
+016572fc  adrp x0,0x3381000
+01657300  ldr x0,[x0, #0xfa8]
+01657304  bl 0x00b0789c
+01657308  mov w8,#0x1
+0165730c  strb w8,[x20, #0x81d]
+01657310  ldr x0,[x21]
+01657314  bl 0x01e088c0
+01657318  tbz w0,#0x0,0x01657350
+0165731c  adrp x8,0x3381000
+01657320  ldr x8,[x8, #0xfa8]
+01657324  ldr x8,[x8]
+01657328  ldr x8,[x8, #0xb8]
+0165732c  ldr x0,[x8]
+01657330  cbz x0,0x0165735c
+01657334  ldr x8,[x0]
+01657338  mov x1,x19
+0165733c  ldp x19,x30,[sp, #0x10]
+01657340  ldr x3,[x8, #0x208]
+01657344  ldr x2,[x8, #0x210]
+01657348  ldp x21,x20,[sp], #0x20
+0165734c  br x3
+01657350  ldp x19,x30,[sp, #0x10]
+01657354  ldp x21,x20,[sp], #0x20
+01657358  ret
+0165735c  bl 0x00b079b0

@@ -1,0 +1,76 @@
+Function: AliothEngine.Extensions.StringExtensions$$IsUnderDirectory @ 016b6fcc
+
+--- Calls OUT ---
+  -> AliothEngine.PathUtils$$CleanPathSeparators @ 0168e384
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> System.String$$Format @ 01fdf7a4
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b6fcc  sub sp,sp,#0x40
+016b6fd0  stp x23,x22,[sp, #0x10]
+016b6fd4  stp x21,x20,[sp, #0x20]
+016b6fd8  stp x19,x30,[sp, #0x30]
+016b6fdc  adrp x22,0x3577000
+016b6fe0  adrp x21,0x336c000
+016b6fe4  ldrb w8,[x22, #0xc15]
+016b6fe8  ldr x21,[x21, #0x318]
+016b6fec  mov x19,x1
+016b6ff0  mov x20,x0
+016b6ff4  tbnz w8,#0x0,0x016b7024
+016b6ff8  adrp x0,0x3329000
+016b6ffc  ldr x0,[x0, #0xc30]
+016b7000  bl 0x00b0789c
+016b7004  adrp x0,0x336c000
+016b7008  ldr x0,[x0, #0x318]
+016b700c  bl 0x00b0789c
+016b7010  adrp x0,0x3353000
+016b7014  ldr x0,[x0, #0xef8]
+016b7018  bl 0x00b0789c
+016b701c  mov w8,#0x1
+016b7020  strb w8,[x22, #0xc15]
+016b7024  adrp x23,0x3329000
+016b7028  adrp x22,0x3353000
+016b702c  ldr x23,[x23, #0xc30]
+016b7030  ldr x22,[x22, #0xef8]
+016b7034  mov x0,x20
+016b7038  mov x1,xzr
+016b703c  bl 0x0168e384
+016b7040  ldr x8,[x21]
+016b7044  mov x20,x0
+016b7048  ldr w9,[x8, #0xe0]
+016b704c  cbnz w9,0x016b705c
+016b7050  mov x0,x8
+016b7054  bl 0x00b0798c
+016b7058  ldr x8,[x21]
+016b705c  ldr x8,[x8, #0xb8]
+016b7060  ldr x0,[x23]
+016b7064  add x1,sp,#0xc
+016b7068  ldrh w8,[x8, #0xa]
+016b706c  strh w8,[sp, #0xc]
+016b7070  bl 0x00b07994
+016b7074  ldr x8,[x22]
+016b7078  mov x2,x0
+016b707c  mov x1,x19
+016b7080  mov x3,xzr
+016b7084  mov x0,x8
+016b7088  bl 0x01fdf7a4
+016b708c  mov x1,xzr
+016b7090  bl 0x0168e384
+016b7094  cbz x20,0x016b70c0
+016b7098  mov x1,x0
+016b709c  mov x0,x20
+016b70a0  mov x2,xzr
+016b70a4  bl 0x01fe31fc
+016b70a8  ldp x19,x30,[sp, #0x30]
+016b70ac  ldp x21,x20,[sp, #0x20]
+016b70b0  ldp x23,x22,[sp, #0x10]
+016b70b4  and w0,w0,#0x1
+016b70b8  add sp,sp,#0x40
+016b70bc  ret
+016b70c0  bl 0x00b079b0

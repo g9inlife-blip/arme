@@ -1,0 +1,252 @@
+Function: Alioth.S1.Net.NetworkCenter$$TryHandleResponse @ 015b41e0
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List.Enumerator<object>$$Dispose @ 01a070e8
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> Alioth.S1.Net.NetworkCenter$$get_Tubes @ 015b2e84
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.Collections.Generic.Queue<object>$$Dequeue @ 01d96ac0
+  -> Alioth.S1.Net.Request$$SetResponse @ 015b461c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Queue<object>$$Peek @ 01d96b70
+  -> DataCenter$$ProccessRequestRes @ 016e203c
+  -> Alioth.S1.Net.NetworkCenter$$set_LastActivateTime @ 015b2e08
+  -> Alioth.S1.Net.Request$$get_ID @ 015b45b4
+  -> System.Collections.Generic.Queue<object>$$Clear @ 01d96598
+  -> System.Collections.Generic.List<object>$$GetEnumerator @ 01c01338
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> Alioth.S1.Net.NetworkCenter$$set_IsRunning @ 015b2ab0
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter.<Run>d__30$$MoveNext @ 015b4854
+
+--- Listing ---
+015b41e0  sub sp,sp,#0xb0
+015b41e4  stp x28,x27,[sp, #0x50]
+015b41e8  stp x26,x25,[sp, #0x60]
+015b41ec  stp x24,x23,[sp, #0x70]
+015b41f0  stp x22,x21,[sp, #0x80]
+015b41f4  stp x20,x19,[sp, #0x90]
+015b41f8  stp x29,x30,[sp, #0xa0]
+015b41fc  adrp x21,0x3577000
+015b4200  adrp x20,0x330b000
+015b4204  ldrb w8,[x21, #0xb8]
+015b4208  ldr x20,[x20, #0x520]
+015b420c  mov x19,x0
+015b4210  tbnz w8,#0x0,0x015b42b8
+015b4214  adrp x0,0x332e000
+015b4218  ldr x0,[x0, #0x1a8]
+015b421c  bl 0x00b0789c
+015b4220  adrp x0,0x336f000
+015b4224  ldr x0,[x0, #0xdc8]
+015b4228  bl 0x00b0789c
+015b422c  adrp x0,0x333c000
+015b4230  ldr x0,[x0, #0xae0]
+015b4234  bl 0x00b0789c
+015b4238  adrp x0,0x337c000
+015b423c  ldr x0,[x0, #0x800]
+015b4240  bl 0x00b0789c
+015b4244  adrp x0,0x3322000
+015b4248  ldr x0,[x0, #0x8e0]
+015b424c  bl 0x00b0789c
+015b4250  adrp x0,0x330b000
+015b4254  ldr x0,[x0, #0xe00]
+015b4258  bl 0x00b0789c
+015b425c  adrp x0,0x3363000
+015b4260  ldr x0,[x0, #0xbf0]
+015b4264  bl 0x00b0789c
+015b4268  adrp x0,0x330b000
+015b426c  ldr x0,[x0, #0x520]
+015b4270  bl 0x00b0789c
+015b4274  adrp x0,0x3349000
+015b4278  ldr x0,[x0, #0x6c0]
+015b427c  bl 0x00b0789c
+015b4280  adrp x0,0x335e000
+015b4284  ldr x0,[x0, #0x760]
+015b4288  bl 0x00b0789c
+015b428c  adrp x0,0x3316000
+015b4290  ldr x0,[x0, #0x800]
+015b4294  bl 0x00b0789c
+015b4298  adrp x0,0x3366000
+015b429c  ldr x0,[x0, #0x350]
+015b42a0  bl 0x00b0789c
+015b42a4  adrp x0,0x3347000
+015b42a8  ldr x0,[x0, #0x410]
+015b42ac  bl 0x00b0789c
+015b42b0  mov w8,#0x1
+015b42b4  strb w8,[x21, #0xb8]
+015b42b8  ldr x8,[x20]
+015b42bc  str xzr,[sp, #0x48]
+015b42c0  strb wzr,[sp, #0x44]
+015b42c4  stp xzr,xzr,[sp, #0x28]
+015b42c8  str xzr,[sp, #0x20]
+015b42cc  ldr x8,[x8, #0xb8]
+015b42d0  ldr x0,[x8, #0x80]
+015b42d4  cbz x0,0x015b4304
+015b42d8  mov x1,x19
+015b42dc  mov x2,xzr
+015b42e0  bl 0x01060dac
+015b42e4  ldp x29,x30,[sp, #0xa0]
+015b42e8  ldp x20,x19,[sp, #0x90]
+015b42ec  ldp x22,x21,[sp, #0x80]
+015b42f0  ldp x24,x23,[sp, #0x70]
+015b42f4  ldp x26,x25,[sp, #0x60]
+015b42f8  ldp x28,x27,[sp, #0x50]
+015b42fc  add sp,sp,#0xb0
+015b4300  ret
+015b4304  mov x0,x19
+015b4308  str xzr,[sp, #0x48]
+015b430c  strb wzr,[sp, #0x44]
+015b4310  bl 0x015b2e84
+015b4314  cbz x0,0x015b4544
+015b4318  adrp x8,0x3363000
+015b431c  ldr x8,[x8, #0xbf0]
+015b4320  adrp x23,0x337c000
+015b4324  adrp x24,0x330b000
+015b4328  adrp x27,0x332e000
+015b432c  adrp x25,0x3349000
+015b4330  adrp x28,0x3347000
+015b4334  adrp x26,0x3316000
+015b4338  ldr x23,[x23, #0x800]
+015b433c  ldr x24,[x24, #0xe00]
+015b4340  ldr x27,[x27, #0x1a8]
+015b4344  ldr x25,[x25, #0x6c0]
+015b4348  ldr x28,[x28, #0x410]
+015b434c  ldr x26,[x26, #0x800]
+015b4350  ldr x1,[x8]
+015b4354  adrp x29,0x333c000
+015b4358  ldr x29,[x29, #0xae0]
+015b435c  add x8,sp,#0x8
+015b4360  bl 0x01c01338
+015b4364  ldur q0,[sp, #0x8]
+015b4368  ldr x8,[sp, #0x18]
+015b436c  str q0,[sp, #0x20]
+015b4370  str x8,[sp, #0x30]
+015b4374  ldr x1,[x23]
+015b4378  add x0,sp,#0x20
+    ; [PRE] try { // try from 015b4378 to 015b437f has its CatchHandler @ 015b454c
+015b437c  bl 0x01a070ec
+    ; [POST] } // end try from 015b4378 to 015b437f
+015b4380  tbz w0,#0x0,0x015b4400
+015b4384  ldr x20,[sp, #0x30]
+015b4388  cbz x20,0x015b4540
+015b438c  ldr x8,[x20]
+015b4390  ldp x21,x22,[x19, #0x28]
+015b4394  ldr x1,[x24]
+015b4398  ldrh w9,[x8, #0x12a]
+015b439c  cbz x9,0x015b43c0
+015b43a0  ldr x10,[x8, #0xb0]
+015b43a4  add x10,x10,#0x8
+015b43a8  ldur x11,[x10, #-0x8]
+015b43ac  cmp x11,x1
+015b43b0  b.eq 0x015b43d0
+015b43b4  subs x9,x9,#0x1
+015b43b8  add x10,x10,#0x10
+015b43bc  b.ne 0x015b43a8
+015b43c0  mov w2,#0x1
+    ; [PRE] try { // try from 015b43c0 to 015b43fb has its CatchHandler @ 015b4550
+015b43c4  mov x0,x20
+015b43c8  bl 0x00b2ae24
+015b43cc  b 0x015b43e0
+015b43d0  ldr w9,[x10]
+015b43d4  add w9,w9,#0x1
+015b43d8  add x8,x8,w9, SXTW  #0x4
+015b43dc  add x0,x8,#0x138
+015b43e0  ldp x8,x5,[x0]
+015b43e4  add x3,sp,#0x44
+015b43e8  add x4,sp,#0x48
+015b43ec  mov x0,x20
+015b43f0  mov x1,x22
+015b43f4  mov x2,x21
+015b43f8  blr x8
+    ; [POST] } // end try from 015b43c0 to 015b43fb
+015b43fc  tbz w0,#0x0,0x015b4374
+015b4400  ldr x1,[x29]
+015b4404  add x0,sp,#0x20
+015b4408  bl 0x01a070e8
+015b440c  ldr x8,[sp, #0x48]
+015b4410  cbz x8,0x015b42e4
+015b4414  ldrb w20,[sp, #0x44]
+015b4418  cmp w20,#0x5
+015b441c  b.cs 0x015b44ec
+015b4420  ldr x0,[x28]
+015b4424  bl 0x01e0894c
+015b4428  cbz x0,0x015b4544
+015b442c  ldr x1,[sp, #0x48]
+015b4430  mov x2,xzr
+015b4434  bl 0x016e203c
+015b4438  ldr x0,[x19, #0x18]
+015b443c  cbz x0,0x015b4544
+015b4440  ldr w8,[x0, #0x20]
+015b4444  cbz w8,0x015b42e4
+015b4448  ldr x1,[x26]
+015b444c  bl 0x01d96b70
+015b4450  ldr x8,[sp, #0x48]
+015b4454  cbz x8,0x015b4544
+015b4458  mov x20,x0
+015b445c  cbz x0,0x015b4544
+015b4460  ldr w21,[x8, #0x10]
+015b4464  mov x0,x20
+015b4468  bl 0x015b45b4
+015b446c  cmp w21,w0
+015b4470  b.ne 0x015b42e4
+015b4474  ldr x0,[x19, #0x18]
+015b4478  cbz x0,0x015b4544
+015b447c  adrp x8,0x335e000
+015b4480  ldr x8,[x8, #0x760]
+015b4484  ldr x1,[x8]
+015b4488  bl 0x01d96ac0
+015b448c  ldr x1,[sp, #0x48]
+015b4490  mov x0,x20
+015b4494  bl 0x015b461c
+015b4498  ldr x8,[x19, #0x38]
+015b449c  cbz x8,0x015b4544
+015b44a0  ldr x9,[x8, #0x18]
+015b44a4  ldr x0,[x8, #0x40]
+015b44a8  ldr x4,[x8, #0x28]
+015b44ac  ldrb w2,[sp, #0x44]
+015b44b0  mov w1,#0x2
+015b44b4  mov x3,x20
+015b44b8  blr x9
+015b44bc  adrp x8,0x336f000
+015b44c0  ldr x8,[x8, #0xdc8]
+015b44c4  ldr x0,[x8]
+015b44c8  ldr w8,[x0, #0xe0]
+015b44cc  cbnz w8,0x015b44d4
+015b44d0  bl 0x00b0798c
+015b44d4  mov x0,xzr
+015b44d8  bl 0x02133d48
+015b44dc  mov x1,x0
+015b44e0  mov x0,x19
+015b44e4  bl 0x015b2e08
+015b44e8  b 0x015b42e4
+015b44ec  ldr x0,[x27]
+015b44f0  ldr x21,[x19, #0x38]
+015b44f4  add x1,sp,#0x8
+015b44f8  strb w20,[sp, #0x8]
+015b44fc  bl 0x00b07994
+015b4500  cbz x21,0x015b4544
+015b4504  mov x3,x0
+015b4508  ldr x8,[x21, #0x18]
+015b450c  ldr x0,[x21, #0x40]
+015b4510  ldr x4,[x21, #0x28]
+015b4514  mov w1,#0x1
+015b4518  mov w2,w20
+015b451c  blr x8
+015b4520  mov x0,x19
+015b4524  mov w1,wzr
+015b4528  bl 0x015b2ab0
+015b452c  ldr x0,[x19, #0x18]
+015b4530  cbz x0,0x015b4544
+015b4534  ldr x1,[x25]
+015b4538  bl 0x01d96598
+015b453c  b 0x015b42e4
+015b4540  bl 0x00b079b0
+    ; [PRE] try { // try from 015b4540 to 015b4543 has its CatchHandler @ 015b4548
+    ; [POST] } // end try from 015b4540 to 015b4543
+015b4544  bl 0x00b079b0

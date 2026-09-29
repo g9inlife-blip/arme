@@ -1,0 +1,57 @@
+Function: AliothEngine.Easing.EasingFunctions$$ExponentialIn @ 016a54c4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> exp2f @ 008d50f0
+
+--- Calls IN ---
+
+--- Listing ---
+016a54c4  stp d11,d10,[sp, #-0x30]!
+016a54c8  stp d9,d8,[sp, #0x10]
+016a54cc  stp x19,x30,[sp, #0x20]
+016a54d0  mov v8.16B,v0.16B
+016a54d4  fmov s0,0x3f800000
+016a54d8  adrp x19,0x3571000
+016a54dc  fcmp s2,#0.0
+016a54e0  fmov s9,wzr
+016a54e4  fmin s0,s2,s0
+016a54e8  ldrb w8,[x19, #0x198]
+016a54ec  fcsel s11,s0,s9,pl
+016a54f0  fabd s0,s8,s1
+016a54f4  fneg s2,s0
+016a54f8  fcmp s8,s1
+016a54fc  fcsel s10,s2,s0,gt
+016a5500  cbnz w8,0x016a5518
+016a5504  adrp x0,0x3318000
+016a5508  ldr x0,[x0, #0x558]
+016a550c  bl 0x00b0789c
+016a5510  mov w8,#0x1
+016a5514  strb w8,[x19, #0x198]
+016a5518  adrp x8,0x3318000
+016a551c  ldr x8,[x8, #0x558]
+016a5520  adrp x9,0x26db000
+016a5524  ldr s0,[x9, #0x3ec]
+016a5528  fabs s2,s11
+016a552c  ldr x8,[x8]
+016a5530  fmov s3,0x41000000
+016a5534  fmul s0,s2,s0
+016a5538  ldr x8,[x8, #0xb8]
+016a553c  ldr s1,[x8]
+016a5540  fmul s1,s1,s3
+016a5544  fcmp s0,s1
+016a5548  fcsel s0,s0,s1,gt
+016a554c  fcmp s2,s0
+016a5550  b.mi 0x016a556c
+016a5554  fmov s0,0xbf800000
+016a5558  fadd s0,s11,s0
+016a555c  fmov s1,0x41200000
+016a5560  fmul s0,s0,s1
+016a5564  bl 0x008d50f0
+016a5568  mov v9.16B,v0.16B
+016a556c  fmul s0,s10,s9
+016a5570  fadd s0,s0,s8
+016a5574  ldp x19,x30,[sp, #0x20]
+016a5578  ldp d9,d8,[sp, #0x10]
+016a557c  ldp d11,d10,[sp], #0x30
+016a5580  ret

@@ -1,0 +1,73 @@
+Function: ResManager$$GetLoadedAssetHolder @ 00e298c0
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary<object,-object>$$ContainsKey @ 0196e6d8
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Item @ 0196e450
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp465 @ 0109bbd0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- NodeManager$$GetSprite @ 0131db9c
+  <- XLua.CSObjectWrap.ResManagerWrap$$_m_GetLoadedAssetHolder @ 01358128
+  <- PreLoad$$GetAssetHolder @ 00e29784
+  <- PreLoad$$MergePreload @ 00e29ae4
+  <- SG.PoolTools$$InitPool @ 015a93ec
+
+--- Listing ---
+00e298c0  str x22,[sp, #-0x30]!
+00e298c4  stp x21,x20,[sp, #0x10]
+00e298c8  stp x19,x30,[sp, #0x20]
+00e298cc  adrp x21,0x3572000
+00e298d0  adrp x22,0x337e000
+00e298d4  ldrb w8,[x21, #0x723]
+00e298d8  ldr x22,[x22, #0x4c8]
+00e298dc  mov x19,x1
+00e298e0  mov x20,x0
+00e298e4  tbnz w8,#0x0,0x00e29914
+00e298e8  adrp x0,0x3360000
+00e298ec  ldr x0,[x0, #0xe60]
+00e298f0  bl 0x00b0789c
+00e298f4  adrp x0,0x3312000
+00e298f8  ldr x0,[x0, #0xfd0]
+00e298fc  bl 0x00b0789c
+00e29900  adrp x0,0x337e000
+00e29904  ldr x0,[x0, #0x4c8]
+00e29908  bl 0x00b0789c
+00e2990c  mov w8,#0x1
+00e29910  strb w8,[x21, #0x723]
+00e29914  ldr x8,[x22]
+00e29918  ldr x8,[x8, #0xb8]
+00e2991c  ldr x0,[x8, #0x38]
+00e29920  cbz x0,0x00e29940
+00e29924  mov x1,x20
+00e29928  mov x2,x19
+00e2992c  ldp x19,x30,[sp, #0x20]
+00e29930  ldp x21,x20,[sp, #0x10]
+00e29934  mov x3,xzr
+00e29938  ldr x22,[sp], #0x30
+00e2993c  b 0x0109bbd0
+00e29940  ldr x0,[x20, #0x18]
+00e29944  cbz x0,0x00e2999c
+00e29948  adrp x8,0x3360000
+00e2994c  ldr x8,[x8, #0xe60]
+00e29950  mov x1,x19
+00e29954  ldr x2,[x8]
+00e29958  bl 0x0196e6d8
+00e2995c  tbz w0,#0x0,0x00e29988
+00e29960  ldr x0,[x20, #0x18]
+00e29964  cbz x0,0x00e2999c
+00e29968  adrp x8,0x3312000
+00e2996c  ldr x8,[x8, #0xfd0]
+00e29970  mov x1,x19
+00e29974  ldp x19,x30,[sp, #0x20]
+00e29978  ldp x21,x20,[sp, #0x10]
+00e2997c  ldr x2,[x8]
+00e29980  ldr x22,[sp], #0x30
+00e29984  b 0x0196e450
+00e29988  ldp x19,x30,[sp, #0x20]
+00e2998c  ldp x21,x20,[sp, #0x10]
+00e29990  mov x0,xzr
+00e29994  ldr x22,[sp], #0x30
+00e29998  ret
+00e2999c  bl 0x00b079b0

@@ -1,0 +1,76 @@
+Function: AliothEngine.NotificationManager$$DoOnApplicationPause @ 016577dc
+
+--- Calls OUT ---
+  -> System.Boolean$$ToString @ 020d8f78
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Time$$get_realtimeSinceStartup @ 024dc3a8
+  -> System.String$$Concat @ 01fd2850
+  -> AliothEngine.NotificationManager$$LocalLog @ 01657078
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+016577dc  str x22,[sp, #-0x30]!
+016577e0  stp x21,x20,[sp, #0x10]
+016577e4  stp x19,x30,[sp, #0x20]
+016577e8  and w9,w1,#0x1
+016577ec  adrp x22,0x3577000
+016577f0  strb w9,[sp, #0xc]
+016577f4  adrp x21,0x332c000
+016577f8  adrp x20,0x335b000
+016577fc  ldrb w8,[x22, #0x822]
+01657800  ldr x21,[x21, #0x240]
+01657804  ldr x20,[x20, #0x650]
+01657808  mov x19,x0
+0165780c  tbnz w8,#0x0,0x01657830
+01657810  adrp x0,0x335b000
+01657814  ldr x0,[x0, #0x650]
+01657818  bl 0x00b0789c
+0165781c  adrp x0,0x332c000
+01657820  ldr x0,[x0, #0x240]
+01657824  bl 0x00b0789c
+01657828  mov w8,#0x1
+0165782c  strb w8,[x22, #0x822]
+01657830  add x0,sp,#0xc
+01657834  mov x1,xzr
+01657838  bl 0x020d8f78
+0165783c  ldr x8,[x21]
+01657840  mov x1,x0
+01657844  mov x2,xzr
+01657848  mov x0,x8
+0165784c  bl 0x01fd2850
+01657850  ldr x21,[x20]
+01657854  mov x20,x0
+01657858  ldr x8,[x21, #0x38]
+0165785c  ldr x8,[x8]
+01657860  ldrb w9,[x8, #0x132]
+01657864  tbnz w9,#0x0,0x01657874
+01657868  mov x0,x8
+0165786c  bl 0x00b2ac40
+01657870  mov x8,x0
+01657874  ldr w9,[x8, #0xe0]
+01657878  cbnz w9,0x01657884
+0165787c  mov x0,x8
+01657880  bl 0x00b0798c
+01657884  ldr x8,[x21, #0x38]
+01657888  ldr x0,[x8]
+0165788c  ldrb w8,[x0, #0x132]
+01657890  tbnz w8,#0x0,0x01657898
+01657894  bl 0x00b2ac40
+01657898  ldr x8,[x0, #0xb8]
+0165789c  mov x0,x20
+016578a0  ldr x1,[x8]
+016578a4  bl 0x01657078
+016578a8  ldrb w8,[sp, #0xc]
+016578ac  cbz w8,0x016578c4
+016578b0  mov x0,xzr
+016578b4  bl 0x024dc3a8
+016578b8  fmov s1,0x40a00000
+016578bc  fadd s0,s0,s1
+016578c0  str s0,[x19, #0x1c]
+016578c4  ldp x19,x30,[sp, #0x20]
+016578c8  ldp x21,x20,[sp, #0x10]
+016578cc  ldr x22,[sp], #0x30
+016578d0  ret

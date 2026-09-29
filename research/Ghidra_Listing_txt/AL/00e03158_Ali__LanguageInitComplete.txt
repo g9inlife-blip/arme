@@ -1,0 +1,56 @@
+Function: Ali$$LanguageInitComplete @ 00e03158
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_act @ 00e016f0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_LanguageInitComplete @ 01190c54
+
+--- Listing ---
+00e03158  stp x21,x20,[sp, #-0x20]!
+00e0315c  stp x19,x30,[sp, #0x10]
+00e03160  adrp x21,0x3572000
+00e03164  adrp x20,0x335f000
+00e03168  ldrb w8,[x21, #0x557]
+00e0316c  ldr x20,[x20, #0x20]
+00e03170  mov x19,x0
+00e03174  tbnz w8,#0x0,0x00e0318c
+00e03178  adrp x0,0x335f000
+00e0317c  ldr x0,[x0, #0x20]
+00e03180  bl 0x00b0789c
+00e03184  mov w8,#0x1
+00e03188  strb w8,[x21, #0x557]
+00e0318c  ldr x0,[x20]
+00e03190  ldr w8,[x0, #0xe0]
+00e03194  cbnz w8,0x00e031a0
+00e03198  bl 0x00b0798c
+00e0319c  ldr x0,[x20]
+00e031a0  ldr x8,[x0, #0xb8]
+00e031a4  ldr x0,[x8, #0x250]
+00e031a8  cbz x0,0x00e031c0
+00e031ac  mov x1,x19
+00e031b0  ldp x19,x30,[sp, #0x10]
+00e031b4  mov x2,xzr
+00e031b8  ldp x21,x20,[sp], #0x20
+00e031bc  b 0x01060dac
+00e031c0  mov x0,x19
+00e031c4  bl 0x00e016f0
+00e031c8  cbz x0,0x00e031f4
+00e031cc  mov x0,x19
+00e031d0  bl 0x00e016f0
+00e031d4  cbz x0,0x00e03200
+00e031d8  ldr x8,[x0, #0x40]
+00e031dc  ldr x2,[x0, #0x18]
+00e031e0  ldr x1,[x0, #0x28]
+00e031e4  ldp x19,x30,[sp, #0x10]
+00e031e8  mov x0,x8
+00e031ec  ldp x21,x20,[sp], #0x20
+00e031f0  br x2
+00e031f4  ldp x19,x30,[sp, #0x10]
+00e031f8  ldp x21,x20,[sp], #0x20
+00e031fc  ret
+00e03200  bl 0x00b079b0

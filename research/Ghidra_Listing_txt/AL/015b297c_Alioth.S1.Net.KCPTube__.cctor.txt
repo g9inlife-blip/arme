@@ -1,0 +1,35 @@
+Function: Alioth.S1.Net.KCPTube$$.cctor @ 015b297c
+
+--- Calls OUT ---
+  -> System.DateTime$$.ctor @ 02131d08
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+015b297c  str x20,[sp, #-0x20]!
+015b2980  stp x19,x30,[sp, #0x10]
+015b2984  adrp x20,0x3577000
+015b2988  adrp x19,0x3350000
+015b298c  ldrb w8,[x20, #0xa7]
+015b2990  ldr x19,[x19, #0x8c8]
+015b2994  tbnz w8,#0x0,0x015b29ac
+015b2998  adrp x0,0x3350000
+015b299c  ldr x0,[x0, #0x8c8]
+015b29a0  bl 0x00b0789c
+015b29a4  mov w8,#0x1
+015b29a8  strb w8,[x20, #0xa7]
+015b29ac  add x0,sp,#0x8
+015b29b0  mov w1,#0x7b2
+015b29b4  mov w2,#0x1
+015b29b8  mov w3,#0x1
+015b29bc  mov x4,xzr
+015b29c0  str xzr,[sp, #0x8]
+015b29c4  bl 0x02131d08
+015b29c8  ldr x8,[x19]
+015b29cc  ldr x9,[sp, #0x8]
+015b29d0  ldr x8,[x8, #0xb8]
+015b29d4  str x9,[x8]
+015b29d8  ldp x19,x30,[sp, #0x10]
+015b29dc  ldr x20,[sp], #0x20
+015b29e0  ret

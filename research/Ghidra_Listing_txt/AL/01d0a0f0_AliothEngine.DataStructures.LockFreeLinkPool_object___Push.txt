@@ -1,0 +1,40 @@
+Function: AliothEngine.DataStructures.LockFreeLinkPool<object>$$Push @ 01d0a0f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01d0a0f0  str x22,[sp, #-0x30]!
+01d0a0f4  stp x21,x20,[sp, #0x10]
+01d0a0f8  stp x19,x30,[sp, #0x20]
+01d0a0fc  cbz x1,0x01d0a168
+01d0a100  mov x19,x2
+01d0a104  mov x20,x1
+01d0a108  mov x21,x0
+01d0a10c  add x22,x1,#0x10
+01d0a110  str xzr,[x1, #0x18]
+01d0a114  ldr x8,[x21, #0x10]
+01d0a118  cbz x8,0x01d0a168
+01d0a11c  ldr x1,[x8, #0x10]
+01d0a120  mov x0,x22
+01d0a124  str x1,[x22]
+01d0a128  bl 0x00b07850
+01d0a12c  ldr x8,[x21, #0x10]
+01d0a130  cbz x8,0x01d0a168
+01d0a134  ldr x9,[x19, #0x20]
+01d0a138  ldr x1,[x20, #0x10]
+01d0a13c  add x0,x8,#0x10
+01d0a140  mov x2,x20
+01d0a144  ldr x9,[x9, #0xc0]
+01d0a148  ldr x3,[x9, #0x10]
+01d0a14c  ldr x9,[x3, #0x8]
+01d0a150  blr x9
+01d0a154  tbz w0,#0x0,0x01d0a114
+01d0a158  ldp x19,x30,[sp, #0x20]
+01d0a15c  ldp x21,x20,[sp, #0x10]
+01d0a160  ldr x22,[sp], #0x30
+01d0a164  ret
+01d0a168  bl 0x00b079b0

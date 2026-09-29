@@ -1,0 +1,27 @@
+Function: AliothEngine.WWWCacheHelp$$DeleteCache @ 0168c058
+
+--- Calls OUT ---
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> System.IO.File$$Delete @ 020afd48
+  -> AliothEngine.WWWCacheHelp$$UrlToCachePath @ 0168be14
+
+--- Calls IN ---
+  <- AliothEngine.WWWCacheHelp$$HasCache @ 0168bf6c
+
+--- Listing ---
+0168c058  stp x19,x30,[sp, #-0x10]!
+0168c05c  bl 0x0168be14
+0168c060  mov x1,xzr
+0168c064  mov x19,x0
+0168c068  bl 0x020a6ae4
+0168c06c  tbz w0,#0x0,0x0168c0e4
+0168c070  mov x0,x19
+    ; [PRE] try { // try from 0168c070 to 0168c07b has its CatchHandler @ 0168c084
+0168c074  mov x1,xzr
+0168c078  bl 0x020afd48
+    ; [POST] } // end try from 0168c070 to 0168c07b
+0168c07c  mov w0,#0x1
+0168c080  b 0x0168c0e8
+0168c0e4  mov w0,wzr
+0168c0e8  ldp x19,x30,[sp], #0x10
+0168c0ec  ret

@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Italic @ 016b5124
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fd0378
+
+--- Calls IN ---
+
+--- Listing ---
+016b5124  stp x21,x20,[sp, #-0x20]!
+016b5128  stp x19,x30,[sp, #0x10]
+016b512c  adrp x20,0x3577000
+016b5130  adrp x21,0x3368000
+016b5134  ldrb w8,[x20, #0xbef]
+016b5138  ldr x21,[x21, #0xa0]
+016b513c  mov x19,x0
+016b5140  tbnz w8,#0x0,0x016b5158
+016b5144  adrp x0,0x3368000
+016b5148  ldr x0,[x0, #0xa0]
+016b514c  bl 0x00b0789c
+016b5150  mov w8,#0x1
+016b5154  strb w8,[x20, #0xbef]
+016b5158  ldr x0,[x21]
+016b515c  mov x1,x19
+016b5160  ldp x19,x30,[sp, #0x10]
+016b5164  mov x2,xzr
+016b5168  ldp x21,x20,[sp], #0x20
+016b516c  b 0x01fd0378

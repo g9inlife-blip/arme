@@ -1,0 +1,39 @@
+Function: AliothEngine.GUIScreenLoaderS1$$.ctor @ 01693cd8
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenLoaderS1Wrap$$__CreateInstance @ 01147e48
+
+--- Listing ---
+01693cd8  stp x21,x20,[sp, #-0x20]!
+01693cdc  stp x19,x30,[sp, #0x10]
+01693ce0  adrp x21,0x3577000
+01693ce4  adrp x20,0x3380000
+01693ce8  ldrb w8,[x21, #0xae5]
+01693cec  ldr x20,[x20, #0xe98]
+01693cf0  mov x19,x0
+01693cf4  tbnz w8,#0x0,0x01693d0c
+01693cf8  adrp x0,0x3380000
+01693cfc  ldr x0,[x0, #0xe98]
+01693d00  bl 0x00b0789c
+01693d04  mov w8,#0x1
+01693d08  strb w8,[x21, #0xae5]
+01693d0c  mov x0,x19
+01693d10  mov x1,xzr
+01693d14  bl 0x02194104
+01693d18  ldr x8,[x20]
+01693d1c  ldr x8,[x8, #0xb8]
+01693d20  ldr x0,[x8, #0x10]
+01693d24  cbz x0,0x01693d3c
+01693d28  mov x1,x19
+01693d2c  ldp x19,x30,[sp, #0x10]
+01693d30  mov x2,xzr
+01693d34  ldp x21,x20,[sp], #0x20
+01693d38  b 0x01060dac
+01693d3c  ldp x19,x30,[sp, #0x10]
+01693d40  ldp x21,x20,[sp], #0x20
+01693d44  ret

@@ -1,0 +1,62 @@
+Function: AliothEngine.FileUtility$$IsIgnoreFile @ 0168ed00
+
+--- Calls OUT ---
+  -> System.IO.Path$$GetExtension @ 020c2714
+  -> System.String$$op_Equality @ 01fd05b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+
+--- Calls IN ---
+  <- AliothEngine.FileUtility$$CopyDirectoryAllChildren @ 0168e924
+
+--- Listing ---
+0168ed00  str x22,[sp, #-0x30]!
+0168ed04  stp x21,x20,[sp, #0x10]
+0168ed08  stp x19,x30,[sp, #0x20]
+0168ed0c  adrp x21,0x3577000
+0168ed10  ldrb w8,[x21, #0xacd]
+0168ed14  mov x19,x1
+0168ed18  mov x20,x0
+0168ed1c  tbnz w8,#0x0,0x0168ed34
+0168ed20  adrp x0,0x336c000
+0168ed24  ldr x0,[x0, #0x318]
+0168ed28  bl 0x00b0789c
+0168ed2c  mov w8,#0x1
+0168ed30  strb w8,[x21, #0xacd]
+0168ed34  cbz x19,0x0168eda4
+0168ed38  adrp x8,0x336c000
+0168ed3c  ldr x8,[x8, #0x318]
+0168ed40  ldr x0,[x8]
+0168ed44  ldr w8,[x0, #0xe0]
+0168ed48  cbnz w8,0x0168ed50
+0168ed4c  bl 0x00b0798c
+0168ed50  mov x0,x20
+0168ed54  mov x1,xzr
+0168ed58  bl 0x020c2714
+0168ed5c  ldr x8,[x19, #0x18]
+0168ed60  cmp w8,#0x1
+0168ed64  b.lt 0x0168eda4
+0168ed68  mov x20,x0
+0168ed6c  mov x21,xzr
+0168ed70  and x8,x8,#0xffffffff
+0168ed74  add x22,x19,#0x20
+0168ed78  cmp x21,w8, UXTW 
+0168ed7c  b.cs 0x0168edc0
+0168ed80  ldr x1,[x22, x21, LSL #0x3]
+0168ed84  mov x0,x20
+0168ed88  mov x2,xzr
+0168ed8c  bl 0x01fd05b0
+0168ed90  tbnz w0,#0x0,0x0168edb8
+0168ed94  ldr w8,[x19, #0x18]
+0168ed98  add x21,x21,#0x1
+0168ed9c  cmp x21,w8, SXTW 
+0168eda0  b.lt 0x0168ed78
+0168eda4  mov w0,wzr
+0168eda8  ldp x19,x30,[sp, #0x20]
+0168edac  ldp x21,x20,[sp, #0x10]
+0168edb0  ldr x22,[sp], #0x30
+0168edb4  ret
+0168edb8  mov w0,#0x1
+0168edbc  b 0x0168eda8
+0168edc0  bl 0x00b079b8

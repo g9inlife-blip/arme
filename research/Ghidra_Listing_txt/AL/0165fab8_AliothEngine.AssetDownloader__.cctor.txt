@@ -1,0 +1,27 @@
+Function: AliothEngine.AssetDownloader$$.cctor @ 0165fab8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0165fab8  str x20,[sp, #-0x20]!
+0165fabc  stp x19,x30,[sp, #0x10]
+0165fac0  adrp x19,0x3577000
+0165fac4  adrp x20,0x3337000
+0165fac8  ldrb w8,[x19, #0x8a7]
+0165facc  ldr x20,[x20, #0x5c8]
+0165fad0  tbnz w8,#0x0,0x0165fae8
+0165fad4  adrp x0,0x3337000
+0165fad8  ldr x0,[x0, #0x5c8]
+0165fadc  bl 0x00b0789c
+0165fae0  mov w8,#0x1
+0165fae4  strb w8,[x19, #0x8a7]
+0165fae8  ldr x8,[x20]
+0165faec  mov w9,#0x2
+0165faf0  ldr x8,[x8, #0xb8]
+0165faf4  str w9,[x8]
+0165faf8  ldp x19,x30,[sp, #0x10]
+0165fafc  ldr x20,[sp], #0x20
+0165fb00  ret

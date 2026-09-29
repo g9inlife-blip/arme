@@ -1,0 +1,40 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions$$RotateRight<object> @ 0179aeb4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0179aeb4  stp x21,x20,[sp, #-0x20]!
+0179aeb8  stp x19,x30,[sp, #0x10]
+0179aebc  ldr x8,[x1, #0x38]
+0179aec0  mov x20,x1
+0179aec4  mov x19,x0
+0179aec8  ldr x8,[x8]
+0179aecc  ldrb w9,[x8, #0x132]
+0179aed0  tbnz w9,#0x0,0x0179aee0
+0179aed4  mov x0,x8
+0179aed8  bl 0x00b2ac40
+0179aedc  mov x8,x0
+0179aee0  mov x0,x8
+0179aee4  bl 0x00b079a0
+0179aee8  cbz x0,0x0179af24
+0179aeec  ldr x8,[x20, #0x38]
+0179aef0  mov w1,#0xfffffffe
+0179aef4  mov x21,x0
+0179aef8  ldr x2,[x8, #0x8]
+0179aefc  ldr x8,[x2, #0x8]
+0179af00  blr x8
+0179af04  mov x0,x21
+0179af08  str x19,[x0, #0x30]!
+0179af0c  mov x1,x19
+0179af10  bl 0x00b07850
+0179af14  ldp x19,x30,[sp, #0x10]
+0179af18  mov x0,x21
+0179af1c  ldp x21,x20,[sp], #0x20
+0179af20  ret
+0179af24  bl 0x00b079b0

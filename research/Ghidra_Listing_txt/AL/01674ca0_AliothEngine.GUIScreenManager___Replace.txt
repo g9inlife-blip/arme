@@ -1,0 +1,53 @@
+Function: AliothEngine.GUIScreenManager$$_Replace @ 01674ca0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> AliothEngine.GUIScreenManager$$_PopScreen @ 01674368
+  -> AliothEngine.GUIScreenManager$$_PushScreen @ 01673d28
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$Replace @ 01674c04
+  <- AliothEngine.GUIScreenManager.<_FlushOperation>d__33$$MoveNext @ 0167b798
+
+--- Listing ---
+01674ca0  str x22,[sp, #-0x30]!
+01674ca4  stp x21,x20,[sp, #0x10]
+01674ca8  stp x19,x30,[sp, #0x20]
+01674cac  adrp x22,0x3577000
+01674cb0  adrp x21,0x337b000
+01674cb4  ldrb w8,[x22, #0x9b7]
+01674cb8  ldr x21,[x21, #0xb98]
+01674cbc  mov x19,x1
+01674cc0  mov x20,x0
+01674cc4  tbnz w8,#0x0,0x01674cdc
+01674cc8  adrp x0,0x337b000
+01674ccc  ldr x0,[x0, #0xb98]
+01674cd0  bl 0x00b0789c
+01674cd4  mov w8,#0x1
+01674cd8  strb w8,[x22, #0x9b7]
+01674cdc  ldr x0,[x21]
+01674ce0  ldr w8,[x0, #0xe0]
+01674ce4  cbnz w8,0x01674cf0
+01674ce8  bl 0x00b0798c
+01674cec  ldr x0,[x21]
+01674cf0  ldr x8,[x0, #0xb8]
+01674cf4  ldr x0,[x8, #0xd0]
+01674cf8  cbz x0,0x01674d18
+01674cfc  mov x1,x20
+01674d00  mov x2,x19
+01674d04  ldp x19,x30,[sp, #0x20]
+01674d08  ldp x21,x20,[sp, #0x10]
+01674d0c  mov x3,xzr
+01674d10  ldr x22,[sp], #0x30
+01674d14  b 0x0106125c
+01674d18  mov x0,x20
+01674d1c  mov w1,wzr
+01674d20  bl 0x01674368
+01674d24  mov x0,x20
+01674d28  mov x1,x19
+01674d2c  ldp x19,x30,[sp, #0x20]
+01674d30  ldp x21,x20,[sp, #0x10]
+01674d34  ldr x22,[sp], #0x30
+01674d38  b 0x01673d28

@@ -1,0 +1,79 @@
+Function: ReadyMono$$get_PreloadAssets @ 00e5cfa4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp151 @ 010729c4
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+
+--- Calls IN ---
+
+--- Listing ---
+00e5cfa4  stp x21,x20,[sp, #-0x20]!
+00e5cfa8  stp x19,x30,[sp, #0x10]
+00e5cfac  adrp x20,0x3572000
+00e5cfb0  adrp x21,0x333c000
+00e5cfb4  ldrb w8,[x20, #0x958]
+00e5cfb8  ldr x21,[x21, #0x628]
+00e5cfbc  mov x19,x0
+00e5cfc0  tbnz w8,#0x0,0x00e5cff0
+00e5cfc4  adrp x0,0x333c000
+00e5cfc8  ldr x0,[x0, #0x628]
+00e5cfcc  bl 0x00b0789c
+00e5cfd0  adrp x0,0x3308000
+00e5cfd4  ldr x0,[x0, #0x9a8]
+00e5cfd8  bl 0x00b0789c
+00e5cfdc  adrp x0,0x3315000
+00e5cfe0  ldr x0,[x0, #0xde8]
+00e5cfe4  bl 0x00b0789c
+00e5cfe8  mov w8,#0x1
+00e5cfec  strb w8,[x20, #0x958]
+00e5cff0  ldr x8,[x21]
+00e5cff4  ldr x8,[x8, #0xb8]
+00e5cff8  ldr x0,[x8, #0x20]
+00e5cffc  cbz x0,0x00e5d014
+00e5d000  mov x1,x19
+00e5d004  ldp x19,x30,[sp, #0x10]
+00e5d008  mov x2,xzr
+00e5d00c  ldp x21,x20,[sp], #0x20
+00e5d010  b 0x010729c4
+00e5d014  adrp x8,0x3308000
+00e5d018  ldr x8,[x8, #0x9a8]
+00e5d01c  mov w1,#0x1
+00e5d020  ldr x0,[x8]
+00e5d024  bl 0x00b078f8
+00e5d028  cbz x0,0x00e5d08c
+00e5d02c  adrp x20,0x3315000
+00e5d030  ldr x20,[x20, #0xde8]
+00e5d034  mov x19,x0
+00e5d038  ldr x1,[x20]
+00e5d03c  cbz x1,0x00e5d064
+00e5d040  ldr x8,[x19]
+00e5d044  mov x0,x1
+00e5d048  ldr x8,[x8, #0x40]
+00e5d04c  mov x1,x8
+00e5d050  bl 0x00b07990
+00e5d054  cbz x0,0x00e5d094
+00e5d058  ldr x8,[x20]
+00e5d05c  mov x1,x8
+00e5d060  b 0x00e5d068
+00e5d064  mov x8,xzr
+00e5d068  ldr w9,[x19, #0x18]
+00e5d06c  cbz w9,0x00e5d090
+00e5d070  mov x0,x19
+00e5d074  str x8,[x0, #0x20]!
+00e5d078  bl 0x00b07850
+00e5d07c  mov x0,x19
+00e5d080  ldp x19,x30,[sp, #0x10]
+00e5d084  ldp x21,x20,[sp], #0x20
+00e5d088  ret
+00e5d08c  bl 0x00b079b0
+00e5d090  bl 0x00b079b8
+00e5d094  bl 0x00b079d4
+00e5d098  mov x1,xzr
+00e5d09c  bl 0x00b07978

@@ -1,0 +1,203 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$GetComponentInChildrenAlways<object> @ 017a7a70
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00aaac8c @ 00aaac8c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> AliothEngine.Extensions.TransformExtensions$$SelfAndAllChildren @ 016b97e8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017a7a70  stp x25,x24,[sp, #-0x40]!
+017a7a74  stp x23,x22,[sp, #0x10]
+017a7a78  stp x21,x20,[sp, #0x20]
+017a7a7c  stp x19,x30,[sp, #0x30]
+017a7a80  adrp x21,0x3578000
+017a7a84  ldrb w8,[x21, #0x19a]
+017a7a88  mov x20,x1
+017a7a8c  mov x19,x0
+017a7a90  tbnz w8,#0x0,0x017a7ad8
+017a7a94  adrp x0,0x337d000
+017a7a98  ldr x0,[x0, #0x848]
+017a7a9c  bl 0x00b0789c
+017a7aa0  adrp x0,0x3309000
+017a7aa4  ldr x0,[x0, #0x920]
+017a7aa8  bl 0x00b0789c
+017a7aac  adrp x0,0x3351000
+017a7ab0  ldr x0,[x0, #0xe18]
+017a7ab4  bl 0x00b0789c
+017a7ab8  adrp x0,0x3364000
+017a7abc  ldr x0,[x0, #0xeb0]
+017a7ac0  bl 0x00b0789c
+017a7ac4  adrp x0,0x3321000
+017a7ac8  ldr x0,[x0, #0xca8]
+017a7acc  bl 0x00b0789c
+017a7ad0  mov w8,#0x1
+017a7ad4  strb w8,[x21, #0x19a]
+017a7ad8  cbz x19,0x017a7d18
+017a7adc  mov x0,x19
+017a7ae0  mov x1,xzr
+017a7ae4  bl 0x024e4e98
+017a7ae8  mov x1,xzr
+017a7aec  bl 0x016b97e8
+017a7af0  cbz x0,0x017a7d18
+017a7af4  adrp x10,0x3309000
+017a7af8  ldr x8,[x0]
+017a7afc  ldr x10,[x10, #0x920]
+017a7b00  mov x19,x0
+017a7b04  ldrh w9,[x8, #0x12a]
+017a7b08  ldr x1,[x10]
+017a7b0c  cbz x9,0x017a7b30
+017a7b10  ldr x10,[x8, #0xb0]
+017a7b14  add x10,x10,#0x8
+017a7b18  ldur x11,[x10, #-0x8]
+017a7b1c  cmp x11,x1
+017a7b20  b.eq 0x017a7b40
+017a7b24  subs x9,x9,#0x1
+017a7b28  add x10,x10,#0x10
+017a7b2c  b.ne 0x017a7b18
+017a7b30  mov x0,x19
+017a7b34  mov w2,wzr
+017a7b38  bl 0x00b2ae24
+017a7b3c  b 0x017a7b4c
+017a7b40  ldrsw x9,[x10]
+017a7b44  add x8,x8,x9, LSL #0x4
+017a7b48  add x0,x8,#0x138
+017a7b4c  ldp x8,x1,[x0]
+017a7b50  adrp x22,0x337d000
+017a7b54  ldr x22,[x22, #0x848]
+017a7b58  mov x0,x19
+017a7b5c  blr x8
+017a7b60  mov x19,x0
+017a7b64  cbz x0,0x017a7d1c
+017a7b68  adrp x23,0x3364000
+017a7b6c  adrp x24,0x3351000
+017a7b70  adrp x25,0x3321000
+017a7b74  ldr x23,[x23, #0xeb0]
+017a7b78  ldr x24,[x24, #0xe18]
+017a7b7c  ldr x25,[x25, #0xca8]
+017a7b80  ldr x8,[x19]
+017a7b84  ldr x1,[x23]
+017a7b88  ldrh w9,[x8, #0x12a]
+017a7b8c  cbz x9,0x017a7bb0
+017a7b90  ldr x10,[x8, #0xb0]
+017a7b94  add x10,x10,#0x8
+017a7b98  ldur x11,[x10, #-0x8]
+017a7b9c  cmp x11,x1
+017a7ba0  b.eq 0x017a7bc0
+017a7ba4  subs x9,x9,#0x1
+017a7ba8  add x10,x10,#0x10
+017a7bac  b.ne 0x017a7b98
+017a7bb0  mov x0,x19
+    ; [PRE] try { // try from 017a7bb0 to 017a7bd7 has its CatchHandler @ 017a7d40
+017a7bb4  mov w2,wzr
+017a7bb8  bl 0x00b2ae24
+017a7bbc  b 0x017a7bcc
+017a7bc0  ldrsw x9,[x10]
+017a7bc4  add x8,x8,x9, LSL #0x4
+017a7bc8  add x0,x8,#0x138
+017a7bcc  ldp x8,x1,[x0]
+017a7bd0  mov x0,x19
+017a7bd4  blr x8
+    ; [POST] } // end try from 017a7bb0 to 017a7bd7
+017a7bd8  tbz w0,#0x0,0x017a7c80
+017a7bdc  ldr x8,[x19]
+017a7be0  ldr x1,[x24]
+017a7be4  ldrh w9,[x8, #0x12a]
+017a7be8  cbz x9,0x017a7c0c
+017a7bec  ldr x10,[x8, #0xb0]
+017a7bf0  add x10,x10,#0x8
+017a7bf4  ldur x11,[x10, #-0x8]
+017a7bf8  cmp x11,x1
+017a7bfc  b.eq 0x017a7c1c
+017a7c00  subs x9,x9,#0x1
+017a7c04  add x10,x10,#0x10
+017a7c08  b.ne 0x017a7bf4
+017a7c0c  mov x0,x19
+    ; [PRE] try { // try from 017a7c0c to 017a7c33 has its CatchHandler @ 017a7d3c
+017a7c10  mov w2,wzr
+017a7c14  bl 0x00b2ae24
+017a7c18  b 0x017a7c28
+017a7c1c  ldrsw x9,[x10]
+017a7c20  add x8,x8,x9, LSL #0x4
+017a7c24  add x0,x8,#0x138
+017a7c28  ldp x8,x1,[x0]
+017a7c2c  mov x0,x19
+017a7c30  blr x8
+    ; [POST] } // end try from 017a7c0c to 017a7c33
+017a7c34  cbz x0,0x017a7d14
+017a7c38  ldr x8,[x20, #0x38]
+017a7c3c  ldr x1,[x8]
+017a7c40  ldr x8,[x1, #0x8]
+017a7c44  blr x8
+    ; [PRE] try { // try from 017a7c44 to 017a7c47 has its CatchHandler @ 017a7d38
+    ; [POST] } // end try from 017a7c44 to 017a7c47
+017a7c48  mov x21,x0
+017a7c4c  ldr x0,[x25]
+017a7c50  ldr w8,[x0, #0xe0]
+017a7c54  cbnz w8,0x017a7c5c
+017a7c58  bl 0x00b0798c
+    ; [PRE] try { // try from 017a7c58 to 017a7c5b has its CatchHandler @ 017a7d30
+    ; [POST] } // end try from 017a7c58 to 017a7c5b
+017a7c5c  mov x0,x21
+    ; [PRE] try { // try from 017a7c5c to 017a7c6b has its CatchHandler @ 017a7d34
+017a7c60  mov x1,xzr
+017a7c64  mov x2,xzr
+017a7c68  bl 0x024de30c
+    ; [POST] } // end try from 017a7c5c to 017a7c6b
+017a7c6c  tbz w0,#0x0,0x017a7b80
+017a7c70  mov x20,xzr
+017a7c74  mov w23,#0x4
+017a7c78  cbnz x19,0x017a7c90
+017a7c7c  b 0x017a7ce8
+017a7c80  mov x20,xzr
+017a7c84  mov x21,xzr
+017a7c88  mov w23,#0x5
+017a7c8c  cbz x19,0x017a7ce8
+017a7c90  ldr x8,[x19]
+017a7c94  ldr x1,[x22]
+017a7c98  ldrh w9,[x8, #0x12a]
+017a7c9c  cbz x9,0x017a7cc0
+017a7ca0  ldr x10,[x8, #0xb0]
+017a7ca4  add x10,x10,#0x8
+017a7ca8  ldur x11,[x10, #-0x8]
+017a7cac  cmp x11,x1
+017a7cb0  b.eq 0x017a7cd0
+017a7cb4  subs x9,x9,#0x1
+017a7cb8  add x10,x10,#0x10
+017a7cbc  b.ne 0x017a7ca8
+017a7cc0  mov x0,x19
+017a7cc4  mov w2,wzr
+017a7cc8  bl 0x00b2ae24
+017a7ccc  b 0x017a7cdc
+017a7cd0  ldrsw x9,[x10]
+017a7cd4  add x8,x8,x9, LSL #0x4
+017a7cd8  add x0,x8,#0x138
+017a7cdc  ldp x8,x1,[x0]
+017a7ce0  mov x0,x19
+017a7ce4  blr x8
+017a7ce8  cbnz x20,0x017a7d20
+017a7cec  cmp w23,#0x5
+017a7cf0  b.eq 0x017a7cf8
+017a7cf4  cbnz w23,0x017a7cfc
+017a7cf8  mov x21,xzr
+017a7cfc  mov x0,x21
+017a7d00  ldp x19,x30,[sp, #0x30]
+017a7d04  ldp x21,x20,[sp, #0x20]
+017a7d08  ldp x23,x22,[sp, #0x10]
+017a7d0c  ldp x25,x24,[sp], #0x40
+017a7d10  ret
+017a7d14  bl 0x00b079b0
+    ; [PRE] try { // try from 017a7d14 to 017a7d17 has its CatchHandler @ 017a7d2c
+    ; [POST] } // end try from 017a7d14 to 017a7d17
+017a7d18  bl 0x00b079b0
+017a7d1c  bl 0x00b079b0
+    ; [PRE] try { // try from 017a7d1c to 017a7d1f has its CatchHandler @ 017a7d28
+    ; [POST] } // end try from 017a7d1c to 017a7d1f
+017a7d20  mov x0,x20
+017a7d24  bl 0x00aaac8c

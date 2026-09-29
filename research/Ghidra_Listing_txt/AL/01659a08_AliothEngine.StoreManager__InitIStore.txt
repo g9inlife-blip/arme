@@ -1,0 +1,44 @@
+Function: AliothEngine.StoreManager$$InitIStore @ 01659a08
+
+--- Calls OUT ---
+  -> AliothEngine.StoreManager$$MakeIStore<object> @ 017d29c8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp808 @ 010c96a8
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineStoreManagerWrap$$_m_InitIStore @ 01160e6c
+  <- AliothEngine.StoreManager$$Awake @ 01659970
+
+--- Listing ---
+01659a08  stp x21,x20,[sp, #-0x20]!
+01659a0c  stp x19,x30,[sp, #0x10]
+01659a10  adrp x20,0x3577000
+01659a14  adrp x21,0x3334000
+01659a18  ldrb w8,[x20, #0x852]
+01659a1c  ldr x21,[x21, #0x178]
+01659a20  mov x19,x0
+01659a24  tbnz w8,#0x0,0x01659a48
+01659a28  adrp x0,0x3342000
+01659a2c  ldr x0,[x0, #0x188]
+01659a30  bl 0x00b0789c
+01659a34  adrp x0,0x3334000
+01659a38  ldr x0,[x0, #0x178]
+01659a3c  bl 0x00b0789c
+01659a40  mov w8,#0x1
+01659a44  strb w8,[x20, #0x852]
+01659a48  ldr x8,[x21]
+01659a4c  ldr x8,[x8, #0xb8]
+01659a50  ldr x0,[x8, #0x18]
+01659a54  cbz x0,0x01659a6c
+01659a58  mov x1,x19
+01659a5c  ldp x19,x30,[sp, #0x10]
+01659a60  mov x2,xzr
+01659a64  ldp x21,x20,[sp], #0x20
+01659a68  b 0x010c96a8
+01659a6c  adrp x8,0x3342000
+01659a70  ldr x8,[x8, #0x188]
+01659a74  mov x0,x19
+01659a78  ldp x19,x30,[sp, #0x10]
+01659a7c  ldr x1,[x8]
+01659a80  ldp x21,x20,[sp], #0x20
+01659a84  b 0x017d29c8

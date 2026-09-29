@@ -1,0 +1,89 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$ParseArray @ 016a2040
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.MiniJSON.Json.Parser$$get_NextToken @ 016a1c1c
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseByToken @ 016a2168
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json.Parser$$ParseByToken @ 016a2168
+
+--- Listing ---
+016a2040  stp x21,x20,[sp, #-0x20]!
+016a2044  stp x19,x30,[sp, #0x10]
+016a2048  adrp x20,0x3577000
+016a204c  adrp x21,0x3319000
+016a2050  ldrb w8,[x20, #0xb6c]
+016a2054  ldr x21,[x21, #0xc58]
+016a2058  mov x19,x0
+016a205c  tbnz w8,#0x0,0x016a208c
+016a2060  adrp x0,0x333d000
+016a2064  ldr x0,[x0, #0x3b0]
+016a2068  bl 0x00b0789c
+016a206c  adrp x0,0x334e000
+016a2070  ldr x0,[x0, #0x470]
+016a2074  bl 0x00b0789c
+016a2078  adrp x0,0x3319000
+016a207c  ldr x0,[x0, #0xc58]
+016a2080  bl 0x00b0789c
+016a2084  mov w8,#0x1
+016a2088  strb w8,[x20, #0xb6c]
+016a208c  ldr x0,[x21]
+016a2090  bl 0x00b079a0
+016a2094  cbz x0,0x016a2164
+016a2098  adrp x8,0x334e000
+016a209c  ldr x8,[x8, #0x470]
+016a20a0  mov x20,x0
+016a20a4  ldr x1,[x8]
+016a20a8  bl 0x01bffe10
+016a20ac  ldr x0,[x19, #0x10]
+016a20b0  cbz x0,0x016a2164
+016a20b4  ldr x8,[x0]
+016a20b8  adrp x21,0x333d000
+016a20bc  ldp x9,x1,[x8, #0x1d8]
+016a20c0  ldr x21,[x21, #0x3b0]
+016a20c4  blr x9
+016a20c8  mov x0,x19
+016a20cc  bl 0x016a1c1c
+016a20d0  cmp w0,#0x6
+016a20d4  b.eq 0x016a20c8
+016a20d8  mov w1,w0
+016a20dc  cbz w0,0x016a2150
+016a20e0  cmp w1,#0x4
+016a20e4  b.eq 0x016a2154
+016a20e8  mov x0,x19
+016a20ec  bl 0x016a2168
+016a20f0  ldr w10,[x20, #0x1c]
+016a20f4  ldr x8,[x20, #0x10]
+016a20f8  ldr x9,[x21]
+016a20fc  add w10,w10,#0x1
+016a2100  str w10,[x20, #0x1c]
+016a2104  cbz x8,0x016a2164
+016a2108  ldrsw x10,[x20, #0x18]
+016a210c  ldr w11,[x8, #0x18]
+016a2110  mov x1,x0
+016a2114  cmp w10,w11
+016a2118  b.cs 0x016a2134
+016a211c  add w9,w10,#0x1
+016a2120  add x0,x8,x10, LSL #0x3
+016a2124  str w9,[x20, #0x18]
+016a2128  str x1,[x0, #0x20]!
+016a212c  bl 0x00b07850
+016a2130  b 0x016a20c8
+016a2134  ldr x8,[x9, #0x20]
+016a2138  mov x0,x20
+016a213c  ldr x8,[x8, #0xc0]
+016a2140  ldr x2,[x8, #0x58]
+016a2144  ldr x8,[x2, #0x8]
+016a2148  blr x8
+016a214c  b 0x016a20c8
+016a2150  mov x20,xzr
+016a2154  ldp x19,x30,[sp, #0x10]
+016a2158  mov x0,x20
+016a215c  ldp x21,x20,[sp], #0x20
+016a2160  ret
+016a2164  bl 0x00b079b0

@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$Remove<object> @ 01765e0c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+
+--- Calls IN ---
+
+--- Listing ---
+01765e0c  str x20,[sp, #-0x20]!
+01765e10  stp x19,x30,[sp, #0x10]
+01765e14  ldr x8,[x2, #0x38]
+01765e18  mov x20,x2
+01765e1c  mov x19,x0
+01765e20  ldr x0,[x0]
+01765e24  ldr x2,[x8]
+01765e28  ldr x8,[x2, #0x8]
+01765e2c  blr x8
+01765e30  tbnz w0,#0x1f,0x01765e40
+01765e34  ldp x19,x30,[sp, #0x10]
+01765e38  ldr x20,[sp], #0x20
+01765e3c  ret
+01765e40  ldr x8,[x20, #0x38]
+01765e44  mov w1,w0
+01765e48  ldr x0,[x19]
+01765e4c  ldr x2,[x8, #0x8]
+01765e50  ldr x8,[x2, #0x8]
+01765e54  blr x8
+01765e58  str x0,[x19]
+01765e5c  mov x1,x0
+01765e60  mov x0,x19
+01765e64  ldp x19,x30,[sp, #0x10]
+01765e68  ldr x20,[sp], #0x20
+01765e6c  b 0x00b07850

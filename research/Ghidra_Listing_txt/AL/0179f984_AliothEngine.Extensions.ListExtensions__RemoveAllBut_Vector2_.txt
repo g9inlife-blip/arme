@@ -1,0 +1,62 @@
+Function: AliothEngine.Extensions.ListExtensions$$RemoveAllBut<Vector2> @ 0179f984
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- RoleNewsExt$$GetOutMovableIndexs @ 0130df28
+
+--- Listing ---
+0179f984  str x22,[sp, #-0x30]!
+0179f988  stp x21,x20,[sp, #0x10]
+0179f98c  stp x19,x30,[sp, #0x20]
+0179f990  ldr x8,[x2, #0x38]
+0179f994  mov x19,x2
+0179f998  mov x22,x1
+0179f99c  mov x20,x0
+0179f9a0  ldr x8,[x8]
+0179f9a4  ldrb w9,[x8, #0x132]
+0179f9a8  tbnz w9,#0x0,0x0179f9b8
+0179f9ac  mov x0,x8
+0179f9b0  bl 0x00b2ac40
+0179f9b4  mov x8,x0
+0179f9b8  mov x0,x8
+0179f9bc  bl 0x00b079a0
+0179f9c0  cbz x0,0x0179fa48
+0179f9c4  ldr x8,[x19, #0x38]
+0179f9c8  mov x21,x0
+0179f9cc  ldr x1,[x8, #0x8]
+0179f9d0  ldr x8,[x1, #0x8]
+0179f9d4  blr x8
+0179f9d8  mov x0,x21
+0179f9dc  str x22,[x0, #0x10]!
+0179f9e0  mov x1,x22
+0179f9e4  bl 0x00b07850
+0179f9e8  ldr x8,[x19, #0x38]
+0179f9ec  ldr x0,[x8, #0x18]
+0179f9f0  ldrb w8,[x0, #0x132]
+0179f9f4  tbnz w8,#0x0,0x0179f9fc
+0179f9f8  bl 0x00b2ac40
+0179f9fc  bl 0x00b079a0
+0179fa00  cbz x0,0x0179fa48
+0179fa04  ldr x8,[x19, #0x38]
+0179fa08  mov x1,x21
+0179fa0c  mov x22,x0
+0179fa10  ldr x3,[x8, #0x20]
+0179fa14  ldr x2,[x8, #0x10]
+0179fa18  ldr x9,[x3, #0x8]
+0179fa1c  blr x9
+0179fa20  cbz x20,0x0179fa48
+0179fa24  ldr x8,[x19, #0x38]
+0179fa28  mov x0,x20
+0179fa2c  ldp x19,x30,[sp, #0x20]
+0179fa30  ldp x21,x20,[sp, #0x10]
+0179fa34  ldr x2,[x8, #0x30]
+0179fa38  mov x1,x22
+0179fa3c  ldr x3,[x2, #0x8]
+0179fa40  ldr x22,[sp], #0x30
+0179fa44  br x3
+0179fa48  bl 0x00b079b0

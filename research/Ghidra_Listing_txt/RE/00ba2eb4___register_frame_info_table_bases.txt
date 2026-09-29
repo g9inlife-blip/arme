@@ -1,0 +1,47 @@
+Function: __register_frame_info_table_bases @ 00ba2eb4
+
+--- Calls OUT ---
+  -> pthread_mutex_unlock @ 008d4a20
+  -> pthread_mutex_lock @ 008d3d40
+
+--- Calls IN ---
+  <- __register_frame_info_table_bases @ 008d5050
+
+--- Listing ---
+00ba2eb4  stp x29,x30,[sp, #-0x30]!
+00ba2eb8  mov x4,#-0x1
+00ba2ebc  mov x29,sp
+00ba2ec0  stp x19,x20,[sp, #0x10]
+00ba2ec4  str xzr,[x1, #0x20]
+00ba2ec8  adrp x19,0x3586000
+00ba2ecc  str x0,[x1, #0x18]
+00ba2ed0  mov w0,#0x2
+00ba2ed4  strb w0,[x1, #0x20]
+00ba2ed8  str x2,[x1, #0x8]
+00ba2edc  adrp x2,0x336f000
+00ba2ee0  ldrh w0,[x1, #0x20]
+00ba2ee4  mov x20,x2
+00ba2ee8  str x4,[x1]
+00ba2eec  orr w0,w0,#0x7f8
+00ba2ef0  str x3,[x1, #0x10]
+00ba2ef4  strh w0,[x1, #0x20]
+00ba2ef8  ldr x0,[x2, #0xf28]
+00ba2efc  cbz x0,0x00ba2f14
+00ba2f00  add x0,x19,#0x38
+00ba2f04  str x1,[x29, #0x28]
+00ba2f08  add x0,x0,#0x1a0
+00ba2f0c  bl 0x008d3d40
+00ba2f10  ldr x1,[x29, #0x28]
+00ba2f14  add x0,x19,#0x38
+00ba2f18  ldr x2,[x0, #0x1c8]
+00ba2f1c  str x2,[x1, #0x28]
+00ba2f20  str x1,[x0, #0x1c8]
+00ba2f24  ldr x20,[x20, #0xf28]
+00ba2f28  cbz x20,0x00ba2f3c
+00ba2f2c  ldp x19,x20,[sp, #0x10]
+00ba2f30  ldp x29,x30,[sp], #0x30
+00ba2f34  add x0,x0,#0x1a0
+00ba2f38  b 0x008d4a20
+00ba2f3c  ldp x19,x20,[sp, #0x10]
+00ba2f40  ldp x29,x30,[sp], #0x30
+00ba2f44  ret

@@ -1,0 +1,124 @@
+Function: ReadyMono$$RefreshEnemyNameStyle @ 00e61c04
+
+--- Calls OUT ---
+  -> AliothExtensions$$SetActiveCheck @ 00e13880
+  -> BaseData$$get_NameByWord @ 00df3614
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp91 @ 0106aaa8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> EnemynamestyleNode$$get_lbl_enemyName @ 00fb0278
+  -> AliothExtensions$$SetTextExt @ 00e13af0
+  -> UINode$$get_Text @ 00dc47dc
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> FUN_00b079b0 @ 00b079b0
+  -> ReadyMono$$GetEnemyNameStyle @ 00e5d548
+
+--- Calls IN ---
+  <- FUN_00e5f004 @ 00e5f004
+
+--- Listing ---
+00e61c04  stp x23,x22,[sp, #-0x30]!
+00e61c08  stp x21,x20,[sp, #0x10]
+00e61c0c  stp x19,x30,[sp, #0x20]
+00e61c10  adrp x22,0x3572000
+00e61c14  adrp x23,0x333c000
+00e61c18  ldrb w8,[x22, #0x96f]
+00e61c1c  ldr x23,[x23, #0x628]
+00e61c20  mov w19,w2
+00e61c24  mov w20,w1
+00e61c28  mov x21,x0
+00e61c2c  tbnz w8,#0x0,0x00e61c68
+00e61c30  adrp x0,0x3361000
+00e61c34  ldr x0,[x0, #0x210]
+00e61c38  bl 0x00b0789c
+00e61c3c  adrp x0,0x335f000
+00e61c40  ldr x0,[x0, #0x20]
+00e61c44  bl 0x00b0789c
+00e61c48  adrp x0,0x3348000
+00e61c4c  ldr x0,[x0, #0x138]
+00e61c50  bl 0x00b0789c
+00e61c54  adrp x0,0x333c000
+00e61c58  ldr x0,[x0, #0x628]
+00e61c5c  bl 0x00b0789c
+00e61c60  mov w8,#0x1
+00e61c64  strb w8,[x22, #0x96f]
+00e61c68  ldr x8,[x23]
+00e61c6c  ldr x8,[x8, #0xb8]
+00e61c70  ldr x0,[x8, #0xd8]
+00e61c74  cbz x0,0x00e61c98
+00e61c78  mov x1,x21
+00e61c7c  mov w2,w20
+00e61c80  mov w3,w19
+00e61c84  ldp x19,x30,[sp, #0x20]
+00e61c88  ldp x21,x20,[sp, #0x10]
+00e61c8c  mov x4,xzr
+00e61c90  ldp x23,x22,[sp], #0x30
+00e61c94  b 0x0106aaa8
+00e61c98  mov x0,x21
+00e61c9c  mov w1,w20
+00e61ca0  bl 0x00e5d548
+00e61ca4  cbz x0,0x00e61da0
+00e61ca8  adrp x22,0x3348000
+00e61cac  ldr x22,[x22, #0x138]
+00e61cb0  mov x1,xzr
+00e61cb4  mov x20,x0
+00e61cb8  bl 0x024e4ed4
+00e61cbc  ldr x8,[x22]
+00e61cc0  mov x21,x0
+00e61cc4  ldr w9,[x8, #0xe0]
+00e61cc8  cbnz w9,0x00e61cd4
+00e61ccc  mov x0,x8
+00e61cd0  bl 0x00b0798c
+00e61cd4  cmp w19,#0x0
+00e61cd8  cset w1,gt
+00e61cdc  mov x0,x21
+00e61ce0  mov x2,xzr
+00e61ce4  bl 0x00e13880
+00e61ce8  cmp w19,#0x1
+00e61cec  b.lt 0x00e61d90
+00e61cf0  adrp x21,0x335f000
+00e61cf4  ldr x21,[x21, #0x20]
+00e61cf8  ldr x0,[x21]
+00e61cfc  ldr w8,[x0, #0xe0]
+00e61d00  cbnz w8,0x00e61d0c
+00e61d04  bl 0x00b0798c
+00e61d08  ldr x0,[x21]
+00e61d0c  ldr x8,[x0, #0xb8]
+00e61d10  ldr x0,[x8, #0x10]
+00e61d14  cbz x0,0x00e61da0
+00e61d18  adrp x8,0x3361000
+00e61d1c  ldr x8,[x8, #0x210]
+00e61d20  mov w1,w19
+00e61d24  ldr x2,[x8]
+00e61d28  bl 0x01736d60
+00e61d2c  mov x19,x0
+00e61d30  mov x0,x20
+00e61d34  mov x1,xzr
+00e61d38  bl 0x00fb0278
+00e61d3c  cbz x0,0x00e61da0
+00e61d40  mov x1,xzr
+00e61d44  bl 0x00dc47dc
+00e61d48  cbz x19,0x00e61da0
+00e61d4c  mov x20,x0
+00e61d50  mov x0,x19
+00e61d54  mov x1,xzr
+00e61d58  bl 0x00df3614
+00e61d5c  ldr x8,[x22]
+00e61d60  mov x19,x0
+00e61d64  ldr w9,[x8, #0xe0]
+00e61d68  cbnz w9,0x00e61d74
+00e61d6c  mov x0,x8
+00e61d70  bl 0x00b0798c
+00e61d74  mov x0,x20
+00e61d78  mov x1,x19
+00e61d7c  ldp x19,x30,[sp, #0x20]
+00e61d80  ldp x21,x20,[sp, #0x10]
+00e61d84  mov x2,xzr
+00e61d88  ldp x23,x22,[sp], #0x30
+00e61d8c  b 0x00e13af0
+00e61d90  ldp x19,x30,[sp, #0x20]
+00e61d94  ldp x21,x20,[sp, #0x10]
+00e61d98  ldp x23,x22,[sp], #0x30
+00e61d9c  ret
+00e61da0  bl 0x00b079b0

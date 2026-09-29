@@ -1,0 +1,108 @@
+Function: AliothEngine.ParseUtility$$TryParse<object,-object> @ 017b24f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> System.ComponentModel.TypeConverter$$ConvertFrom @ 023060fc
+  -> System.ComponentModel.TypeDescriptor$$GetConverter @ 0230c078
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017b24f4  stp x23,x22,[sp, #-0x30]!
+017b24f8  stp x21,x20,[sp, #0x10]
+017b24fc  stp x19,x30,[sp, #0x20]
+017b2500  adrp x23,0x3578000
+017b2504  adrp x22,0x3347000
+017b2508  ldrb w8,[x23, #0x1f4]
+017b250c  ldr x22,[x22, #0xd68]
+017b2510  mov x20,x2
+017b2514  mov x19,x1
+017b2518  mov x21,x0
+017b251c  tbnz w8,#0x0,0x017b2540
+017b2520  adrp x0,0x3344000
+017b2524  ldr x0,[x0, #0x208]
+017b2528  bl 0x00b0789c
+017b252c  adrp x0,0x3347000
+017b2530  ldr x0,[x0, #0xd68]
+017b2534  bl 0x00b0789c
+017b2538  mov w8,#0x1
+017b253c  strb w8,[x23, #0x1f4]
+017b2540  ldr x0,[x22]
+017b2544  ldr x8,[x20, #0x38]
+017b2548  ldr w9,[x0, #0xe0]
+017b254c  ldr x22,[x8]
+017b2550  cbnz w9,0x017b2558
+017b2554  bl 0x00b0798c
+    ; [PRE] try { // try from 017b2554 to 017b2557 has its CatchHandler @ 017b2644
+    ; [POST] } // end try from 017b2554 to 017b2557
+017b2558  mov x0,x22
+    ; [PRE] try { // try from 017b2558 to 017b257f has its CatchHandler @ 017b264c
+017b255c  mov x1,xzr
+017b2560  bl 0x0215f900
+017b2564  adrp x8,0x3344000
+017b2568  ldr x8,[x8, #0x208]
+017b256c  mov x22,x0
+017b2570  ldr x0,[x8]
+017b2574  ldr w8,[x0, #0xe0]
+017b2578  cbnz w8,0x017b2580
+017b257c  bl 0x00b0798c
+    ; [POST] } // end try from 017b2558 to 017b257f
+017b2580  mov x0,x22
+    ; [PRE] try { // try from 017b2580 to 017b258b has its CatchHandler @ 017b2648
+017b2584  mov x1,xzr
+017b2588  bl 0x0230c078
+    ; [POST] } // end try from 017b2580 to 017b258b
+017b258c  cbz x0,0x017b2634
+017b2590  mov x1,x21
+    ; [PRE] try { // try from 017b2590 to 017b262f has its CatchHandler @ 017b2650
+017b2594  mov x2,xzr
+017b2598  bl 0x023060fc
+017b259c  ldr x8,[x20, #0x38]
+017b25a0  mov x21,x0
+017b25a4  ldr x22,[x8, #0x10]
+017b25a8  ldrb w8,[x22, #0x132]
+017b25ac  tbnz w8,#0x0,0x017b25bc
+017b25b0  mov x0,x22
+017b25b4  bl 0x00b2ac40
+017b25b8  mov x22,x0
+017b25bc  cbz x21,0x017b25dc
+017b25c0  mov x0,x21
+017b25c4  mov x1,x22
+017b25c8  bl 0x00b07990
+017b25cc  cbnz x0,0x017b25e0
+017b25d0  mov x0,x21
+017b25d4  mov x1,x22
+017b25d8  bl 0x00b07c6c
+017b25dc  mov x0,xzr
+017b25e0  str x0,[x19]
+017b25e4  ldr x8,[x20, #0x38]
+017b25e8  ldr x20,[x8, #0x10]
+017b25ec  ldrb w8,[x20, #0x132]
+017b25f0  tbnz w8,#0x0,0x017b2600
+017b25f4  mov x0,x20
+017b25f8  bl 0x00b2ac40
+017b25fc  mov x20,x0
+017b2600  cbz x21,0x017b2624
+017b2604  mov x0,x21
+017b2608  mov x1,x20
+017b260c  bl 0x00b07990
+017b2610  mov x1,x0
+017b2614  cbnz x1,0x017b2628
+017b2618  mov x0,x21
+017b261c  mov x1,x20
+017b2620  bl 0x00b07c6c
+017b2624  mov x1,xzr
+017b2628  mov x0,x19
+017b262c  bl 0x00b07850
+    ; [POST] } // end try from 017b2590 to 017b262f
+017b2630  mov w0,#0x1
+017b2634  ldp x19,x30,[sp, #0x20]
+017b2638  ldp x21,x20,[sp, #0x10]
+017b263c  ldp x23,x22,[sp], #0x30
+017b2640  ret

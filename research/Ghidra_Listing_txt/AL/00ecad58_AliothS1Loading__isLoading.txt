@@ -1,0 +1,58 @@
+Function: AliothS1Loading$$isLoading @ 00ecad58
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1LoadingWrap$$_m_isLoading @ 0116c960
+
+--- Listing ---
+00ecad58  stp x21,x20,[sp, #-0x20]!
+00ecad5c  stp x19,x30,[sp, #0x10]
+00ecad60  adrp x20,0x3572000
+00ecad64  adrp x21,0x3322000
+00ecad68  ldrb w8,[x20, #0xd67]
+00ecad6c  ldr x21,[x21, #0x6d0]
+00ecad70  mov x19,x0
+00ecad74  tbnz w8,#0x0,0x00ecad98
+00ecad78  adrp x0,0x335f000
+00ecad7c  ldr x0,[x0, #0x20]
+00ecad80  bl 0x00b0789c
+00ecad84  adrp x0,0x3322000
+00ecad88  ldr x0,[x0, #0x6d0]
+00ecad8c  bl 0x00b0789c
+00ecad90  mov w8,#0x1
+00ecad94  strb w8,[x20, #0xd67]
+00ecad98  ldr x8,[x21]
+00ecad9c  ldr x8,[x8, #0xb8]
+00ecada0  ldr x0,[x8, #0x8]
+00ecada4  cbz x0,0x00ecadbc
+00ecada8  mov x1,x19
+00ecadac  ldp x19,x30,[sp, #0x10]
+00ecadb0  mov x2,xzr
+00ecadb4  ldp x21,x20,[sp], #0x20
+00ecadb8  b 0x01060aac
+00ecadbc  ldrb w8,[x19, #0x28]
+00ecadc0  cbz w8,0x00ecadcc
+00ecadc4  mov w0,#0x1
+00ecadc8  b 0x00ecae00
+00ecadcc  adrp x19,0x335f000
+00ecadd0  ldr x19,[x19, #0x20]
+00ecadd4  ldr x0,[x19]
+00ecadd8  ldr w8,[x0, #0xe0]
+00ecaddc  cbnz w8,0x00ecade8
+00ecade0  bl 0x00b0798c
+00ecade4  ldr x0,[x19]
+00ecade8  ldr x8,[x0, #0xb8]
+00ecadec  ldr x8,[x8, #0x10]
+00ecadf0  cbz x8,0x00ecae0c
+00ecadf4  ldr w8,[x8, #0x138]
+00ecadf8  cmp w8,#0x0
+00ecadfc  cset w0,eq
+00ecae00  ldp x19,x30,[sp, #0x10]
+00ecae04  ldp x21,x20,[sp], #0x20
+00ecae08  ret
+00ecae0c  bl 0x00b079b0

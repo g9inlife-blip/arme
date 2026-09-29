@@ -1,0 +1,28 @@
+Function: ReadypanelNode$$get_spr_star_3 @ 00fcd5b0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fcd5b0  stp x21,x20,[sp, #-0x20]!
+00fcd5b4  stp x19,x30,[sp, #0x10]
+00fcd5b8  adrp x20,0x3573000
+00fcd5bc  adrp x21,0x3369000
+00fcd5c0  ldrb w8,[x20, #0xe54]
+00fcd5c4  ldr x21,[x21, #0xda8]
+00fcd5c8  mov x19,x0
+00fcd5cc  tbnz w8,#0x0,0x00fcd5e4
+00fcd5d0  adrp x0,0x3369000
+00fcd5d4  ldr x0,[x0, #0xda8]
+00fcd5d8  bl 0x00b0789c
+00fcd5dc  mov w8,#0x1
+00fcd5e0  strb w8,[x20, #0xe54]
+00fcd5e4  ldr x1,[x21]
+00fcd5e8  mov x0,x19
+00fcd5ec  ldp x19,x30,[sp, #0x10]
+00fcd5f0  mov x2,xzr
+00fcd5f4  ldp x21,x20,[sp], #0x20
+00fcd5f8  b 0x00dc06f8

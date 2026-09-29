@@ -1,0 +1,40 @@
+Function: Response_GetLoginToken$$.ctor @ 00ddddd0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_GetLoginTokenWrap$$__CreateInstance @ 0136d1bc
+  <- Response_QUICKSDK_Login$$.ctor @ 00dde224
+
+--- Listing ---
+00ddddd0  stp x21,x20,[sp, #-0x20]!
+00ddddd4  stp x19,x30,[sp, #0x10]
+00ddddd8  adrp x21,0x3572000
+00dddddc  adrp x20,0x3375000
+00dddde0  ldrb w8,[x21, #0x2df]
+00dddde4  ldr x20,[x20, #0xaa0]
+00dddde8  mov x19,x0
+00ddddec  tbnz w8,#0x0,0x00ddde04
+00ddddf0  adrp x0,0x3375000
+00ddddf4  ldr x0,[x0, #0xaa0]
+00ddddf8  bl 0x00b0789c
+00ddddfc  mov w8,#0x1
+00ddde00  strb w8,[x21, #0x2df]
+00ddde04  mov x0,x19
+00ddde08  mov x1,xzr
+00ddde0c  bl 0x02194104
+00ddde10  ldr x8,[x20]
+00ddde14  ldr x8,[x8, #0xb8]
+00ddde18  ldr x0,[x8]
+00ddde1c  cbz x0,0x00ddde34
+00ddde20  mov x1,x19
+00ddde24  ldp x19,x30,[sp, #0x10]
+00ddde28  mov x2,xzr
+00ddde2c  ldp x21,x20,[sp], #0x20
+00ddde30  b 0x01060dac
+00ddde34  ldp x19,x30,[sp, #0x10]
+00ddde38  ldp x21,x20,[sp], #0x20
+00ddde3c  ret

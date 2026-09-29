@@ -1,0 +1,31 @@
+Function: AliothEngine.Extensions.StringExtensions$$StripPrefix @ 016b7d48
+
+--- Calls OUT ---
+  -> System.String$$Substring @ 01fe29c0
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$StartsWith @ 01fde68c
+
+--- Calls IN ---
+  <- WebUIMono$$WebviewMsgCallback @ 01050438
+
+--- Listing ---
+016b7d48  str x20,[sp, #-0x20]!
+016b7d4c  stp x19,x30,[sp, #0x10]
+016b7d50  cbz x0,0x016b7d94
+016b7d54  mov x2,xzr
+016b7d58  mov x20,x1
+016b7d5c  mov x19,x0
+016b7d60  bl 0x01fde68c
+016b7d64  tbz w0,#0x0,0x016b7d84
+016b7d68  cbz x20,0x016b7d94
+016b7d6c  ldr w1,[x20, #0x10]
+016b7d70  mov x0,x19
+016b7d74  ldp x19,x30,[sp, #0x10]
+016b7d78  mov x2,xzr
+016b7d7c  ldr x20,[sp], #0x20
+016b7d80  b 0x01fe29c0
+016b7d84  mov x0,x19
+016b7d88  ldp x19,x30,[sp, #0x10]
+016b7d8c  ldr x20,[sp], #0x20
+016b7d90  ret
+016b7d94  bl 0x00b079b0

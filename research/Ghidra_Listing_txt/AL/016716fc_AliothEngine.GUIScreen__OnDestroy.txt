@@ -1,0 +1,45 @@
+Function: AliothEngine.GUIScreen$$OnDestroy @ 016716fc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> BaseMono$$OnDestroy @ 00e1d958
+  -> UnityEngine.MonoBehaviour$$StopAllCoroutines @ 024e446c
+
+--- Calls IN ---
+  <- GUIScreenBaseMono$$<>xLuaBaseProxy_OnDestroy @ 00f23574
+  <- GUIScreenBaseMono$$OnDestroy @ 00f21dc0
+
+--- Listing ---
+016716fc  stp x21,x20,[sp, #-0x20]!
+01671700  stp x19,x30,[sp, #0x10]
+01671704  adrp x20,0x3577000
+01671708  adrp x21,0x3364000
+0167170c  ldrb w8,[x20, #0x989]
+01671710  ldr x21,[x21, #0xd28]
+01671714  mov x19,x0
+01671718  tbnz w8,#0x0,0x01671730
+0167171c  adrp x0,0x3364000
+01671720  ldr x0,[x0, #0xd28]
+01671724  bl 0x00b0789c
+01671728  mov w8,#0x1
+0167172c  strb w8,[x20, #0x989]
+01671730  ldr x8,[x21]
+01671734  ldr x8,[x8, #0xb8]
+01671738  ldr x0,[x8, #0xc0]
+0167173c  cbz x0,0x01671754
+01671740  mov x1,x19
+01671744  ldp x19,x30,[sp, #0x10]
+01671748  mov x2,xzr
+0167174c  ldp x21,x20,[sp], #0x20
+01671750  b 0x01060dac
+01671754  mov x0,x19
+01671758  mov x1,xzr
+0167175c  bl 0x024e446c
+01671760  mov w8,#0x9
+01671764  str w8,[x19, #0x4c]
+01671768  mov x0,x19
+0167176c  ldp x19,x30,[sp, #0x10]
+01671770  mov x1,xzr
+01671774  ldp x21,x20,[sp], #0x20
+01671778  b 0x00e1d958

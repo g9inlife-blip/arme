@@ -1,0 +1,36 @@
+Function: AliothEngine.DataStructures.ObservedValue<object>$$set_Value @ 01d54dc8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01d54dc8  stp x21,x20,[sp, #-0x20]!
+01d54dcc  stp x19,x30,[sp, #0x10]
+01d54dd0  mov x20,x0
+01d54dd4  mov x19,x0
+01d54dd8  ldr x0,[x20, #0x10]!
+01d54ddc  cbz x0,0x01d54e30
+01d54de0  ldr x8,[x0]
+01d54de4  mov x21,x1
+01d54de8  ldp x9,x2,[x8, #0x138]
+01d54dec  blr x9
+01d54df0  tbnz w0,#0x0,0x01d54e24
+01d54df4  mov x0,x20
+01d54df8  mov x1,x21
+01d54dfc  str x21,[x19, #0x10]
+01d54e00  bl 0x00b07850
+01d54e04  ldr x8,[x19, #0x18]
+01d54e08  cbz x8,0x01d54e24
+01d54e0c  ldr x2,[x8, #0x18]
+01d54e10  ldr x0,[x8, #0x40]
+01d54e14  ldr x1,[x8, #0x28]
+01d54e18  ldp x19,x30,[sp, #0x10]
+01d54e1c  ldp x21,x20,[sp], #0x20
+01d54e20  br x2
+01d54e24  ldp x19,x30,[sp, #0x10]
+01d54e28  ldp x21,x20,[sp], #0x20
+01d54e2c  ret
+01d54e30  bl 0x00b079b0

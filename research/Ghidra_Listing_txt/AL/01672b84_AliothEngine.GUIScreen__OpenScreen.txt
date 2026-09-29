@@ -1,0 +1,57 @@
+Function: AliothEngine.GUIScreen$$OpenScreen @ 01672b84
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreen$$OpenTransition @ 01672c2c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_m_OpenScreen @ 01154f68
+  <- AliothEngine.GUIScreenManager$$_PushScreen @ 01673d28
+
+--- Listing ---
+01672b84  stp x21,x20,[sp, #-0x20]!
+01672b88  stp x19,x30,[sp, #0x10]
+01672b8c  adrp x20,0x3577000
+01672b90  adrp x21,0x3364000
+01672b94  ldrb w8,[x20, #0x99e]
+01672b98  ldr x21,[x21, #0xd28]
+01672b9c  mov x19,x0
+01672ba0  tbnz w8,#0x0,0x01672bc4
+01672ba4  adrp x0,0x3364000
+01672ba8  ldr x0,[x0, #0xd28]
+01672bac  bl 0x00b0789c
+01672bb0  adrp x0,0x3332000
+01672bb4  ldr x0,[x0, #0x960]
+01672bb8  bl 0x00b0789c
+01672bbc  mov w8,#0x1
+01672bc0  strb w8,[x20, #0x99e]
+01672bc4  ldr x8,[x21]
+01672bc8  ldr x8,[x8, #0xb8]
+01672bcc  ldr x0,[x8, #0x168]
+01672bd0  cbz x0,0x01672be8
+01672bd4  mov x1,x19
+01672bd8  ldp x19,x30,[sp, #0x10]
+01672bdc  mov x2,xzr
+01672be0  ldp x21,x20,[sp], #0x20
+01672be4  b 0x01060dac
+01672be8  adrp x8,0x3332000
+01672bec  ldr x8,[x8, #0x960]
+01672bf0  mov w9,#0x3
+01672bf4  str w9,[x19, #0x4c]
+01672bf8  ldr x0,[x8]
+01672bfc  bl 0x01e0894c
+01672c00  mov x20,x0
+01672c04  mov x0,x19
+01672c08  bl 0x01672c2c
+01672c0c  cbz x20,0x01672c28
+01672c10  ldp x19,x30,[sp, #0x10]
+01672c14  mov x1,x0
+01672c18  mov x0,x20
+01672c1c  mov x2,xzr
+01672c20  ldp x21,x20,[sp], #0x20
+01672c24  b 0x024e4070
+01672c28  bl 0x00b079b0

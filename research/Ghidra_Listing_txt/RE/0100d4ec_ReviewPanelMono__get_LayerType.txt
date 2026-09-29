@@ -1,0 +1,35 @@
+Function: ReviewPanelMono$$get_LayerType @ 0100d4ec
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp491 @ 0109f3ac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0100d4ec  stp x21,x20,[sp, #-0x20]!
+0100d4f0  stp x19,x30,[sp, #0x10]
+0100d4f4  adrp x20,0x3574000
+0100d4f8  adrp x21,0x3380000
+0100d4fc  ldrb w8,[x20, #0x451]
+0100d500  ldr x21,[x21, #0xa78]
+0100d504  mov x19,x0
+0100d508  tbnz w8,#0x0,0x0100d520
+0100d50c  adrp x0,0x3380000
+0100d510  ldr x0,[x0, #0xa78]
+0100d514  bl 0x00b0789c
+0100d518  mov w8,#0x1
+0100d51c  strb w8,[x20, #0x451]
+0100d520  ldr x8,[x21]
+0100d524  ldr x8,[x8, #0xb8]
+0100d528  ldr x0,[x8, #0x8]
+0100d52c  cbz x0,0x0100d544
+0100d530  mov x1,x19
+0100d534  ldp x19,x30,[sp, #0x10]
+0100d538  mov x2,xzr
+0100d53c  ldp x21,x20,[sp], #0x20
+0100d540  b 0x0109f3ac
+0100d544  ldp x19,x30,[sp, #0x10]
+0100d548  mov w0,#0x3
+0100d54c  ldp x21,x20,[sp], #0x20
+0100d550  ret

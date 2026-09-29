@@ -1,0 +1,78 @@
+Function: AliothEngine.FileUtility$$DirSearch @ 0168efec
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.FileUtility$$DirSearch @ 0168efec
+  -> System.IO.DirectoryInfo$$GetDirectories @ 020af4b8
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.IO.DirectoryInfo$$GetFiles @ 020af1e4
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Linq.Enumerable$$ToList<object> @ 0178daf8
+  -> System.Collections.Generic.List<object>$$AddRange @ 01c0086c
+
+--- Calls IN ---
+  <- AliothEngine.FileUtility$$DirSearch @ 0168efec
+
+--- Listing ---
+0168efec  str x24,[sp, #-0x40]!
+0168eff0  stp x23,x22,[sp, #0x10]
+0168eff4  stp x21,x20,[sp, #0x20]
+0168eff8  stp x19,x30,[sp, #0x30]
+0168effc  adrp x20,0x3577000
+0168f000  ldrb w8,[x20, #0xad0]
+0168f004  mov x19,x1
+0168f008  mov x21,x0
+0168f00c  tbnz w8,#0x0,0x0168f030
+0168f010  adrp x0,0x337c000
+0168f014  ldr x0,[x0, #0x408]
+0168f018  bl 0x00b0789c
+0168f01c  adrp x0,0x336c000
+0168f020  ldr x0,[x0, #0x40]
+0168f024  bl 0x00b0789c
+0168f028  mov w8,#0x1
+0168f02c  strb w8,[x20, #0xad0]
+0168f030  cbz x21,0x0168f0e0
+0168f034  adrp x20,0x337c000
+0168f038  ldr x20,[x20, #0x408]
+0168f03c  mov x0,x21
+0168f040  mov x1,x19
+0168f044  mov x2,xzr
+0168f048  bl 0x020af1e4
+0168f04c  ldr x1,[x20]
+0168f050  bl 0x0178daf8
+0168f054  mov x20,x0
+0168f058  mov x0,x21
+0168f05c  mov x1,xzr
+0168f060  bl 0x020af4b8
+0168f064  cbz x0,0x0168f0e0
+0168f068  ldr x8,[x0, #0x18]
+0168f06c  mov x21,x0
+0168f070  cmp w8,#0x1
+0168f074  b.lt 0x0168f0c4
+0168f078  adrp x23,0x336c000
+0168f07c  ldr x23,[x23, #0x40]
+0168f080  mov x22,xzr
+0168f084  and x8,x8,#0xffffffff
+0168f088  add x24,x21,#0x20
+0168f08c  cmp x22,w8, UXTW 
+0168f090  b.cs 0x0168f0dc
+0168f094  ldr x0,[x24, x22, LSL #0x3]
+0168f098  mov x1,x19
+0168f09c  bl 0x0168efec
+0168f0a0  cbz x20,0x0168f0e0
+0168f0a4  ldr x2,[x23]
+0168f0a8  mov x1,x0
+0168f0ac  mov x0,x20
+0168f0b0  bl 0x01c0086c
+0168f0b4  ldr w8,[x21, #0x18]
+0168f0b8  add x22,x22,#0x1
+0168f0bc  cmp x22,w8, SXTW 
+0168f0c0  b.lt 0x0168f08c
+0168f0c4  mov x0,x20
+0168f0c8  ldp x19,x30,[sp, #0x30]
+0168f0cc  ldp x21,x20,[sp, #0x20]
+0168f0d0  ldp x23,x22,[sp, #0x10]
+0168f0d4  ldr x24,[sp], #0x40
+0168f0d8  ret
+0168f0dc  bl 0x00b079b8
+0168f0e0  bl 0x00b079b0

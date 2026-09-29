@@ -1,0 +1,30 @@
+Function: AliothEngine.GameEventSysTest$$EventManger @ 0164bf6c
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.GameEventSysTest$$AddEvent @ 0164bbf4
+  <- AliothEngine.GameEventSysTest$$RmvEvent @ 0164bdf4
+  <- AliothEngine.GameEventSysTest$$Update @ 0164bf28
+  <- AliothEngine.GameEventSysTest$$PostEvent @ 0164bfac
+  <- AliothEngine.GameEventSysTest$$SendEvent @ 0164bd2c
+
+--- Listing ---
+0164bf6c  str x20,[sp, #-0x20]!
+0164bf70  stp x19,x30,[sp, #0x10]
+0164bf74  adrp x19,0x3577000
+0164bf78  adrp x20,0x3314000
+0164bf7c  ldrb w8,[x19, #0x7b5]
+0164bf80  ldr x20,[x20, #0x3d8]
+0164bf84  tbnz w8,#0x0,0x0164bf9c
+0164bf88  adrp x0,0x3314000
+0164bf8c  ldr x0,[x0, #0x3d8]
+0164bf90  bl 0x00b0789c
+0164bf94  mov w8,#0x1
+0164bf98  strb w8,[x19, #0x7b5]
+0164bf9c  ldr x0,[x20]
+0164bfa0  ldp x19,x30,[sp, #0x10]
+0164bfa4  ldr x20,[sp], #0x20
+0164bfa8  b 0x01e09a6c

@@ -1,0 +1,20 @@
+Function: AliothEngine.Extensions.ComponentExtensions$$EnsureComponentExists<object> @ 0176d218
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0176d218  stp x19,x30,[sp, #-0x10]!
+0176d21c  cbz x0,0x0176d240
+0176d220  mov x19,x1
+0176d224  mov x1,xzr
+0176d228  bl 0x024e4ed4
+0176d22c  ldr x8,[x19, #0x38]
+0176d230  ldr x1,[x8]
+0176d234  ldr x2,[x1, #0x8]
+0176d238  ldp x19,x30,[sp], #0x10
+0176d23c  br x2
+0176d240  bl 0x00b079b0

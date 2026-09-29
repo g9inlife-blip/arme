@@ -1,0 +1,71 @@
+Function: Ali$$GetRandomLoadingGameTips @ 00e09088
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Int32$$Parse @ 0214df74
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp39 @ 010642ac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetRandomLoadingGameTips_xlua_st_ @ 01197194
+
+--- Listing ---
+00e09088  str x20,[sp, #-0x20]!
+00e0908c  stp x19,x30,[sp, #0x10]
+00e09090  adrp x20,0x3572000
+00e09094  adrp x19,0x335f000
+00e09098  ldrb w8,[x20, #0x584]
+00e0909c  ldr x19,[x19, #0x20]
+00e090a0  tbnz w8,#0x0,0x00e090c4
+00e090a4  adrp x0,0x330d000
+00e090a8  ldr x0,[x0, #0x6f0]
+00e090ac  bl 0x00b0789c
+00e090b0  adrp x0,0x335f000
+00e090b4  ldr x0,[x0, #0x20]
+00e090b8  bl 0x00b0789c
+00e090bc  mov w8,#0x1
+00e090c0  strb w8,[x20, #0x584]
+00e090c4  ldr x0,[x19]
+00e090c8  ldr w8,[x0, #0xe0]
+00e090cc  cbnz w8,0x00e090d8
+00e090d0  bl 0x00b0798c
+00e090d4  ldr x0,[x19]
+00e090d8  ldr x9,[x0, #0xb8]
+00e090dc  ldr x8,[x9, #0x3c8]
+00e090e0  cbz x8,0x00e090f8
+00e090e4  ldp x19,x30,[sp, #0x10]
+00e090e8  mov x0,x8
+00e090ec  mov x1,xzr
+00e090f0  ldr x20,[sp], #0x20
+00e090f4  b 0x010642ac
+00e090f8  ldr w8,[x0, #0xe0]
+00e090fc  cbnz w8,0x00e0910c
+00e09100  bl 0x00b0798c
+00e09104  ldr x8,[x19]
+00e09108  ldr x9,[x8, #0xb8]
+00e0910c  ldr x0,[x9, #0x10]
+00e09110  cbz x0,0x00e09164
+00e09114  adrp x8,0x330d000
+00e09118  ldr x8,[x8, #0x6f0]
+00e0911c  mov w1,#0x2690
+00e09120  movk w1,#0x5a8, LSL #16
+00e09124  ldr x2,[x8]
+00e09128  bl 0x01736d60
+00e0912c  cbz x0,0x00e09164
+00e09130  ldr x0,[x0, #0x80]
+00e09134  mov x1,xzr
+00e09138  bl 0x0214df74
+00e0913c  mov w1,w0
+00e09140  mov w0,wzr
+00e09144  mov x2,xzr
+00e09148  bl 0x024d63b0
+00e0914c  ldp x19,x30,[sp, #0x10]
+00e09150  mov w8,#0xce80
+00e09154  movk w8,#0x4ca, LSL #16
+00e09158  add w0,w0,w8
+00e0915c  ldr x20,[sp], #0x20
+00e09160  ret
+00e09164  bl 0x00b079b0

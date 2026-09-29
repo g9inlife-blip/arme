@@ -1,0 +1,38 @@
+Function: AliothEngine.Extensions.TransformExtensions$$ResetScale @ 016baa78
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Transform$$set_localScale @ 024f4254
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate<object> @ 017a8244
+  <- AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate @ 016b04a0
+  <- AliothEngine.Extensions.TransformExtensions$$Reset @ 016baf20
+  <- AliothEngine.Extensions.TransformExtensions$$ResetLocal @ 016baf00
+
+--- Listing ---
+016baa78  str x20,[sp, #-0x20]!
+016baa7c  stp x19,x30,[sp, #0x10]
+016baa80  adrp x20,0x3570000
+016baa84  ldrb w8,[x20, #0xf0e]
+016baa88  mov x19,x0
+016baa8c  cbnz w8,0x016baaa4
+016baa90  adrp x0,0x3368000
+016baa94  ldr x0,[x0, #0x9b8]
+016baa98  bl 0x00b0789c
+016baa9c  mov w8,#0x1
+016baaa0  strb w8,[x20, #0xf0e]
+016baaa4  cbz x19,0x016baad4
+016baaa8  adrp x8,0x3368000
+016baaac  ldr x8,[x8, #0x9b8]
+016baab0  mov x0,x19
+016baab4  ldp x19,x30,[sp, #0x10]
+016baab8  mov x1,xzr
+016baabc  ldr x8,[x8]
+016baac0  ldr x8,[x8, #0xb8]
+016baac4  ldp s0,s1,[x8, #0xc]
+016baac8  ldr s2,[x8, #0x14]
+016baacc  ldr x20,[sp], #0x20
+016baad0  b 0x024f4254
+016baad4  bl 0x00b079b0

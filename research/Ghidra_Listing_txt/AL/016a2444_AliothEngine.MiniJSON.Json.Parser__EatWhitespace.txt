@@ -1,0 +1,54 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$EatWhitespace @ 016a2444
+
+--- Calls OUT ---
+  -> AliothEngine.MiniJSON.Json.Parser$$get_PeekChar @ 016a24e8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Char$$IsWhiteSpace @ 020d9818
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json.Parser$$get_NextToken @ 016a1c1c
+
+--- Listing ---
+016a2444  stp x21,x20,[sp, #-0x20]!
+016a2448  stp x19,x30,[sp, #0x10]
+016a244c  adrp x20,0x3577000
+016a2450  adrp x21,0x3329000
+016a2454  ldrb w8,[x20, #0xb71]
+016a2458  ldr x21,[x21, #0xc30]
+016a245c  mov x19,x0
+016a2460  tbnz w8,#0x0,0x016a2478
+016a2464  adrp x0,0x3329000
+016a2468  ldr x0,[x0, #0xc30]
+016a246c  bl 0x00b0789c
+016a2470  mov w8,#0x1
+016a2474  strb w8,[x20, #0xb71]
+016a2478  mov x0,x19
+016a247c  bl 0x016a24e8
+016a2480  ldr x8,[x21]
+016a2484  mov w20,w0
+016a2488  ldr w9,[x8, #0xe0]
+016a248c  cbnz w9,0x016a2498
+016a2490  mov x0,x8
+016a2494  bl 0x00b0798c
+016a2498  mov w0,w20
+016a249c  mov x1,xzr
+016a24a0  bl 0x020d9818
+016a24a4  tbz w0,#0x0,0x016a24d8
+016a24a8  ldr x0,[x19, #0x10]
+016a24ac  cbz x0,0x016a24e4
+016a24b0  ldr x8,[x0]
+016a24b4  ldp x9,x1,[x8, #0x1d8]
+016a24b8  blr x9
+016a24bc  ldr x0,[x19, #0x10]
+016a24c0  cbz x0,0x016a24e4
+016a24c4  ldr x8,[x0]
+016a24c8  ldp x9,x1,[x8, #0x1c8]
+016a24cc  blr x9
+016a24d0  cmn w0,#0x1
+016a24d4  b.ne 0x016a2478
+016a24d8  ldp x19,x30,[sp, #0x10]
+016a24dc  ldp x21,x20,[sp], #0x20
+016a24e0  ret
+016a24e4  bl 0x00b079b0

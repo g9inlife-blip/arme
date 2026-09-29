@@ -1,0 +1,78 @@
+Function: AliothEngine.SafeEvent$$SafeRaise<object> @ 017ce250
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017ce250  stp x27,x26,[sp, #-0x50]!
+017ce254  stp x25,x24,[sp, #0x10]
+017ce258  stp x23,x22,[sp, #0x20]
+017ce25c  stp x21,x20,[sp, #0x30]
+017ce260  stp x19,x30,[sp, #0x40]
+017ce264  cbz x0,0x017ce380
+017ce268  ldr x8,[x0]
+017ce26c  mov x20,x1
+017ce270  mov x19,x2
+017ce274  mov x21,x0
+017ce278  ldp x9,x1,[x8, #0x1d8]
+017ce27c  blr x9
+017ce280  cbz x0,0x017ce398
+017ce284  ldr x8,[x0, #0x18]
+017ce288  cmp w8,#0x1
+017ce28c  b.lt 0x017ce380
+017ce290  adrp x22,0x334a000
+017ce294  adrp x23,0x3319000
+017ce298  ldr x22,[x22, #0xbb0]
+017ce29c  ldr x23,[x23, #0x10]
+017ce2a0  mov x26,xzr
+017ce2a4  and x27,x8,#0xffffffff
+017ce2a8  ldr x8,[x21]
+017ce2ac  mov x0,x21
+017ce2b0  ldp x9,x1,[x8, #0x1d8]
+017ce2b4  blr x9
+017ce2b8  cbz x0,0x017ce398
+017ce2bc  ldr w8,[x0, #0x18]
+017ce2c0  cmp x26,x8
+017ce2c4  b.cs 0x017ce39c
+017ce2c8  ldr x8,[x19, #0x38]
+017ce2cc  ldr x24,[x8]
+017ce2d0  add x8,x0,x26, LSL #0x3
+017ce2d4  ldr x25,[x8, #0x20]
+017ce2d8  ldrb w9,[x24, #0x132]
+017ce2dc  tbnz w9,#0x0,0x017ce2ec
+017ce2e0  mov x0,x24
+017ce2e4  bl 0x00b2ac40
+017ce2e8  mov x24,x0
+017ce2ec  cbz x25,0x017ce314
+017ce2f0  mov x0,x25
+017ce2f4  mov x1,x24
+017ce2f8  bl 0x00b07990
+017ce2fc  cbz x0,0x017ce3a0
+017ce300  ldr x8,[x19, #0x38]
+017ce304  ldr x2,[x8, #0x8]
+017ce308  ldr x8,[x2, #0x8]
+017ce30c  mov x1,x20
+    ; [PRE] try { // try from 017ce30c to 017ce313 has its CatchHandler @ 017ce324
+017ce310  blr x8
+    ; [POST] } // end try from 017ce30c to 017ce313
+017ce314  add x26,x26,#0x1
+017ce318  cmp x27,x26
+017ce31c  b.ne 0x017ce2a8
+017ce320  b 0x017ce380
+017ce380  ldp x19,x30,[sp, #0x40]
+017ce384  ldp x21,x20,[sp, #0x30]
+017ce388  ldp x23,x22,[sp, #0x20]
+017ce38c  ldp x25,x24,[sp, #0x10]
+017ce390  ldp x27,x26,[sp], #0x50
+017ce394  ret
+017ce398  bl 0x00b079b0
+017ce39c  bl 0x00b079b8
+017ce3a0  mov x0,x25
+017ce3a4  mov x1,x24
+017ce3a8  bl 0x00b07c6c

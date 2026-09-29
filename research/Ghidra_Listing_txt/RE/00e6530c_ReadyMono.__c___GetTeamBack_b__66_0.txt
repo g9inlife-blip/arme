@@ -1,0 +1,19 @@
+Function: ReadyMono.<>c$$<GetTeamBack>b__66_0 @ 00e6530c
+
+--- Calls OUT ---
+  -> HeroInfo$$get_State @ 016df754
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e6530c  str x30,[sp, #-0x10]!
+00e65310  cbz x1,0x00e65330
+00e65314  mov x0,x1
+00e65318  mov x1,xzr
+00e6531c  bl 0x016df754
+00e65320  cmp w0,#0x1
+00e65324  cset w0,eq
+00e65328  ldr x30,[sp], #0x10
+00e6532c  ret
+00e65330  bl 0x00b079b0

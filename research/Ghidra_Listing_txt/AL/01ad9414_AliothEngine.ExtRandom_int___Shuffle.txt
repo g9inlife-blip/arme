@@ -1,0 +1,145 @@
+Function: AliothEngine.ExtRandom<int>$$Shuffle @ 01ad9414
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List<int>$$get_Item @ 01bedb8c
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<int>$$.ctor @ 01bed68c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.Collections.Generic.List<int>$$Remove @ 01bef87c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01ad9414  stp x25,x24,[sp, #-0x40]!
+01ad9418  stp x23,x22,[sp, #0x10]
+01ad941c  stp x21,x20,[sp, #0x20]
+01ad9420  stp x19,x30,[sp, #0x30]
+01ad9424  adrp x21,0x3578000
+01ad9428  ldrb w8,[x21, #0x9d1]
+01ad942c  mov x20,x1
+01ad9430  mov x19,x0
+01ad9434  tbnz w8,#0x0,0x01ad9488
+01ad9438  adrp x0,0x3373000
+01ad943c  ldr x0,[x0, #0x9c8]
+01ad9440  bl 0x00b0789c
+01ad9444  adrp x0,0x3319000
+01ad9448  ldr x0,[x0, #0xe88]
+01ad944c  bl 0x00b0789c
+01ad9450  adrp x0,0x334f000
+01ad9454  ldr x0,[x0, #0xb8]
+01ad9458  bl 0x00b0789c
+01ad945c  adrp x0,0x3313000
+01ad9460  ldr x0,[x0, #0x988]
+01ad9464  bl 0x00b0789c
+01ad9468  adrp x0,0x3333000
+01ad946c  ldr x0,[x0, #0x1a0]
+01ad9470  bl 0x00b0789c
+01ad9474  adrp x0,0x3322000
+01ad9478  ldr x0,[x0, #0xf78]
+01ad947c  bl 0x00b0789c
+01ad9480  mov w8,#0x1
+01ad9484  strb w8,[x21, #0x9d1]
+01ad9488  cbz x19,0x01ad960c
+01ad948c  ldr x0,[x20, #0x20]
+01ad9490  ldrb w8,[x0, #0x132]
+01ad9494  tbnz w8,#0x0,0x01ad949c
+01ad9498  bl 0x00b2ac40
+01ad949c  ldr x8,[x0, #0xc0]
+01ad94a0  adrp x20,0x3322000
+01ad94a4  ldr x0,[x8, #0x18]
+01ad94a8  ldrb w8,[x0, #0x132]
+01ad94ac  ldr x20,[x20, #0xf78]
+01ad94b0  tbnz w8,#0x0,0x01ad94b8
+01ad94b4  bl 0x00b2ac40
+01ad94b8  ldr w1,[x19, #0x18]
+01ad94bc  bl 0x00b078f8
+01ad94c0  ldr x8,[x20]
+01ad94c4  mov x20,x0
+01ad94c8  mov x0,x8
+01ad94cc  bl 0x00b079a0
+01ad94d0  cbz x0,0x01ad960c
+01ad94d4  adrp x8,0x334f000
+01ad94d8  ldr x8,[x8, #0xb8]
+01ad94dc  mov w1,wzr
+01ad94e0  mov x21,x0
+01ad94e4  ldr x2,[x8]
+01ad94e8  bl 0x01bed68c
+01ad94ec  ldr x8,[x19, #0x18]
+01ad94f0  cmp w8,#0x1
+01ad94f4  b.lt 0x01ad95f4
+01ad94f8  adrp x25,0x3373000
+01ad94fc  adrp x23,0x3333000
+01ad9500  adrp x24,0x3319000
+01ad9504  ldr x25,[x25, #0x9c8]
+01ad9508  ldr x23,[x23, #0x1a0]
+01ad950c  ldr x24,[x24, #0xe88]
+01ad9510  mov w22,wzr
+01ad9514  ldr w11,[x21, #0x1c]
+01ad9518  ldr x9,[x21, #0x10]
+01ad951c  ldr x10,[x25]
+01ad9520  add w11,w11,#0x1
+01ad9524  str w11,[x21, #0x1c]
+01ad9528  cbz x9,0x01ad960c
+01ad952c  ldrsw x11,[x21, #0x18]
+01ad9530  ldr w12,[x9, #0x18]
+01ad9534  cmp w11,w12
+01ad9538  b.cs 0x01ad9550
+01ad953c  add w10,w11,#0x1
+01ad9540  add x9,x9,x11, LSL #0x2
+01ad9544  str w10,[x21, #0x18]
+01ad9548  str w22,[x9, #0x20]
+01ad954c  b 0x01ad9570
+01ad9550  ldr x8,[x10, #0x20]
+01ad9554  mov x0,x21
+01ad9558  mov w1,w22
+01ad955c  ldr x8,[x8, #0xc0]
+01ad9560  ldr x2,[x8, #0x58]
+01ad9564  ldr x8,[x2, #0x8]
+01ad9568  blr x8
+01ad956c  ldr x8,[x19, #0x18]
+01ad9570  add w22,w22,#0x1
+01ad9574  cmp w22,w8
+01ad9578  b.lt 0x01ad9514
+01ad957c  cmp w8,#0x1
+01ad9580  b.lt 0x01ad95f4
+01ad9584  mov x22,xzr
+01ad9588  add x25,x20,#0x20
+01ad958c  ldr w1,[x21, #0x18]
+01ad9590  mov w0,wzr
+01ad9594  mov x2,xzr
+01ad9598  bl 0x024d63b0
+01ad959c  ldr x2,[x23]
+01ad95a0  mov w1,w0
+01ad95a4  mov x0,x21
+01ad95a8  bl 0x01bedb8c
+01ad95ac  ldr w8,[x19, #0x18]
+01ad95b0  cmp w0,w8
+01ad95b4  b.cs 0x01ad9610
+01ad95b8  cbz x20,0x01ad960c
+01ad95bc  ldr w8,[x20, #0x18]
+01ad95c0  cmp x22,x8
+01ad95c4  b.cs 0x01ad9610
+01ad95c8  add x8,x19,w0, SXTW  #0x2
+01ad95cc  ldr w8,[x8, #0x20]
+01ad95d0  mov w1,w0
+01ad95d4  mov x0,x21
+01ad95d8  str w8,[x25, x22, LSL #0x2]
+01ad95dc  ldr x2,[x24]
+01ad95e0  bl 0x01bef87c
+01ad95e4  ldrsw x8,[x19, #0x18]
+01ad95e8  add x22,x22,#0x1
+01ad95ec  cmp x22,x8
+01ad95f0  b.lt 0x01ad958c
+01ad95f4  mov x0,x20
+01ad95f8  ldp x19,x30,[sp, #0x30]
+01ad95fc  ldp x21,x20,[sp, #0x20]
+01ad9600  ldp x23,x22,[sp, #0x10]
+01ad9604  ldp x25,x24,[sp], #0x40
+01ad9608  ret
+01ad960c  bl 0x00b079b0
+01ad9610  bl 0x00b079b8

@@ -1,0 +1,27 @@
+Function: AliothEngine.AndroidUtils$$isExternalStorageRead @ 01652130
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Android.Permission$$HasUserAuthorizedPermission @ 024b4378
+
+--- Calls IN ---
+  <- AndroidFix.<ShowAndroidPermissionRequestIE>d__26$$MoveNext @ 00ecc2bc
+
+--- Listing ---
+01652130  str x20,[sp, #-0x20]!
+01652134  stp x19,x30,[sp, #0x10]
+01652138  adrp x19,0x3577000
+0165213c  adrp x20,0x3339000
+01652140  ldrb w8,[x19, #0x7f7]
+01652144  ldr x20,[x20, #0x938]
+01652148  tbnz w8,#0x0,0x01652160
+0165214c  adrp x0,0x3339000
+01652150  ldr x0,[x0, #0x938]
+01652154  bl 0x00b0789c
+01652158  mov w8,#0x1
+0165215c  strb w8,[x19, #0x7f7]
+01652160  ldr x0,[x20]
+01652164  ldp x19,x30,[sp, #0x10]
+01652168  mov x1,xzr
+0165216c  ldr x20,[sp], #0x20
+01652170  b 0x024b4378

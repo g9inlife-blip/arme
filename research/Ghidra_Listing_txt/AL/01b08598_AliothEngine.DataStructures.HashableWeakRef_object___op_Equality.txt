@@ -1,0 +1,90 @@
+Function: AliothEngine.DataStructures.HashableWeakRef<object>$$op_Equality @ 01b08598
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01b08598  stp x23,x22,[sp, #-0x30]!
+01b0859c  stp x21,x20,[sp, #0x10]
+01b085a0  stp x19,x30,[sp, #0x20]
+01b085a4  cbz x0,0x01b086c4
+01b085a8  mov x20,x1
+01b085ac  cbz x1,0x01b086c4
+01b085b0  ldr w8,[x0, #0x10]
+01b085b4  ldr w9,[x20, #0x10]
+01b085b8  cmp w8,w9
+01b085bc  b.ne 0x01b086b0
+01b085c0  ldr x0,[x0, #0x18]
+01b085c4  cbz x0,0x01b086c4
+01b085c8  ldr x8,[x0]
+01b085cc  mov x19,x2
+01b085d0  ldp x9,x1,[x8, #0x198]
+01b085d4  blr x9
+01b085d8  ldr x8,[x19, #0x20]
+01b085dc  mov x22,x0
+01b085e0  ldrb w9,[x8, #0x132]
+01b085e4  tbnz w9,#0x0,0x01b085f4
+01b085e8  mov x0,x8
+01b085ec  bl 0x00b2ac40
+01b085f0  mov x8,x0
+01b085f4  ldr x8,[x8, #0xc0]
+01b085f8  ldr x23,[x8]
+01b085fc  ldrb w8,[x23, #0x132]
+01b08600  tbnz w8,#0x0,0x01b08610
+01b08604  mov x0,x23
+01b08608  bl 0x00b2ac40
+01b0860c  mov x23,x0
+01b08610  cbz x22,0x01b08634
+01b08614  mov x0,x22
+01b08618  mov x1,x23
+01b0861c  bl 0x00b07990
+01b08620  mov x21,x0
+01b08624  cbnz x0,0x01b08638
+01b08628  mov x0,x22
+01b0862c  mov x1,x23
+01b08630  bl 0x00b07c6c
+01b08634  mov x21,xzr
+01b08638  ldr x0,[x20, #0x18]
+01b0863c  cbz x0,0x01b086c4
+01b08640  ldr x8,[x0]
+01b08644  ldp x9,x1,[x8, #0x198]
+01b08648  blr x9
+01b0864c  ldr x8,[x19, #0x20]
+01b08650  mov x19,x0
+01b08654  ldrb w9,[x8, #0x132]
+01b08658  tbnz w9,#0x0,0x01b08668
+01b0865c  mov x0,x8
+01b08660  bl 0x00b2ac40
+01b08664  mov x8,x0
+01b08668  ldr x8,[x8, #0xc0]
+01b0866c  ldr x20,[x8]
+01b08670  ldrb w8,[x20, #0x132]
+01b08674  tbnz w8,#0x0,0x01b08684
+01b08678  mov x0,x20
+01b0867c  bl 0x00b2ac40
+01b08680  mov x20,x0
+01b08684  cbz x19,0x01b086a8
+01b08688  mov x0,x19
+01b0868c  mov x1,x20
+01b08690  bl 0x00b07990
+01b08694  cbz x0,0x01b086c8
+01b08698  cbz x21,0x01b086b0
+01b0869c  cmp x21,x0
+01b086a0  cset w0,eq
+01b086a4  b 0x01b086b4
+01b086a8  mov x0,xzr
+01b086ac  cbnz x21,0x01b0869c
+01b086b0  mov w0,wzr
+01b086b4  ldp x19,x30,[sp, #0x20]
+01b086b8  ldp x21,x20,[sp, #0x10]
+01b086bc  ldp x23,x22,[sp], #0x30
+01b086c0  ret
+01b086c4  bl 0x00b079b0
+01b086c8  mov x0,x19
+01b086cc  mov x1,x20
+01b086d0  bl 0x00b07c6c

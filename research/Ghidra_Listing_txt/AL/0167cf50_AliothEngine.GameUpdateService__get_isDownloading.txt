@@ -1,0 +1,53 @@
+Function: AliothEngine.GameUpdateService$$get_isDownloading @ 0167cf50
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp40 @ 010643f0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- GameUpdatePanelMono$$OnUpdate @ 0103ec78
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_g_get_isDownloading @ 0114259c
+
+--- Listing ---
+0167cf50  str x20,[sp, #-0x20]!
+0167cf54  stp x19,x30,[sp, #0x10]
+0167cf58  adrp x19,0x3577000
+0167cf5c  adrp x20,0x3352000
+0167cf60  ldrb w8,[x19, #0xa13]
+0167cf64  ldr x20,[x20, #0x2a8]
+0167cf68  tbnz w8,#0x0,0x0167cf98
+0167cf6c  adrp x0,0x3352000
+0167cf70  ldr x0,[x0, #0x2a8]
+0167cf74  bl 0x00b0789c
+0167cf78  adrp x0,0x3362000
+0167cf7c  ldr x0,[x0, #0xf28]
+0167cf80  bl 0x00b0789c
+0167cf84  adrp x0,0x334d000
+0167cf88  ldr x0,[x0, #0x608]
+0167cf8c  bl 0x00b0789c
+0167cf90  mov w8,#0x1
+0167cf94  strb w8,[x19, #0xa13]
+0167cf98  ldr x8,[x20]
+0167cf9c  ldr x8,[x8, #0xb8]
+0167cfa0  ldr x0,[x8, #0x10]
+0167cfa4  cbz x0,0x0167cfb8
+0167cfa8  ldp x19,x30,[sp, #0x10]
+0167cfac  mov x1,xzr
+0167cfb0  ldr x20,[sp], #0x20
+0167cfb4  b 0x010643f0
+0167cfb8  adrp x8,0x334d000
+0167cfbc  ldr x8,[x8, #0x608]
+0167cfc0  ldr x0,[x8]
+0167cfc4  bl 0x01e0894c
+0167cfc8  cbz x0,0x0167cfec
+0167cfcc  ldr x8,[x0, #0x20]
+0167cfd0  cbz x8,0x0167cfec
+0167cfd4  ldr w8,[x8, #0x18]
+0167cfd8  ldp x19,x30,[sp, #0x10]
+0167cfdc  cmp w8,#0x0
+0167cfe0  cset w0,gt
+0167cfe4  ldr x20,[sp], #0x20
+0167cfe8  ret
+0167cfec  bl 0x00b079b0

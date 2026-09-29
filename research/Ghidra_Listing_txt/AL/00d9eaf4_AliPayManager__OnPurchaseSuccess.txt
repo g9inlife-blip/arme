@@ -1,0 +1,28 @@
+Function: AliPayManager$$OnPurchaseSuccess @ 00d9eaf4
+
+--- Calls OUT ---
+  -> AliPayManager$$TryParse @ 00d9eb40
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00d9eaf4  str x20,[sp, #-0x20]!
+00d9eaf8  stp x19,x30,[sp, #0x10]
+00d9eafc  mov w8,#0xffffffff
+00d9eb00  add x2,sp,#0xc
+00d9eb04  mov x19,x1
+00d9eb08  mov x20,x0
+00d9eb0c  str w8,[sp, #0xc]
+00d9eb10  bl 0x00d9eb40
+00d9eb14  ldr x8,[x20, #0x20]
+00d9eb18  cbz x8,0x00d9eb3c
+00d9eb1c  ldr w1,[sp, #0xc]
+00d9eb20  ldr x4,[x8, #0x18]
+00d9eb24  ldr x0,[x8, #0x40]
+00d9eb28  ldr x3,[x8, #0x28]
+00d9eb2c  mov x2,x19
+00d9eb30  ldp x19,x30,[sp, #0x10]
+00d9eb34  ldr x20,[sp], #0x20
+00d9eb38  br x4
+00d9eb3c  bl 0x00b079b0

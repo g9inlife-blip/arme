@@ -1,0 +1,39 @@
+Function: Alioth.S1.Net.NetworkCenter$$get_Tubes @ 015b2e84
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp752 @ 010c2c90
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter.<Run>d__30$$MoveNext @ 015b4854
+  <- Alioth.S1.Net.NetworkCenter$$TryHandleResponse @ 015b41e0
+  <- Alioth.S1.Net.NetworkCenter$$TrySendRequest @ 015b3df8
+  <- Alioth.S1.Net.NetworkCenter$$.ctor @ 015b2f70
+
+--- Listing ---
+015b2e84  stp x21,x20,[sp, #-0x20]!
+015b2e88  stp x19,x30,[sp, #0x10]
+015b2e8c  adrp x20,0x3577000
+015b2e90  adrp x21,0x330b000
+015b2e94  ldrb w8,[x20, #0xb0]
+015b2e98  ldr x21,[x21, #0x520]
+015b2e9c  mov x19,x0
+015b2ea0  tbnz w8,#0x0,0x015b2eb8
+015b2ea4  adrp x0,0x330b000
+015b2ea8  ldr x0,[x0, #0x520]
+015b2eac  bl 0x00b0789c
+015b2eb0  mov w8,#0x1
+015b2eb4  strb w8,[x20, #0xb0]
+015b2eb8  ldr x8,[x21]
+015b2ebc  ldr x8,[x8, #0xb8]
+015b2ec0  ldr x0,[x8, #0x40]
+015b2ec4  cbz x0,0x015b2edc
+015b2ec8  mov x1,x19
+015b2ecc  ldp x19,x30,[sp, #0x10]
+015b2ed0  mov x2,xzr
+015b2ed4  ldp x21,x20,[sp], #0x20
+015b2ed8  b 0x010c2c90
+015b2edc  ldr x0,[x19, #0x50]
+015b2ee0  ldp x19,x30,[sp, #0x10]
+015b2ee4  ldp x21,x20,[sp], #0x20
+015b2ee8  ret

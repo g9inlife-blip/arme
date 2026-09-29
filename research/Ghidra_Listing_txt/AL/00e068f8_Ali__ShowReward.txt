@@ -1,0 +1,81 @@
+Function: Ali$$ShowReward @ 00e068f8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Net.Request$$get_Res @ 015b4f10
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$ShowReward @ 00e069a8
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp33 @ 0106381c
+
+--- Calls IN ---
+  <- ActiveShowPanelMono$$SignInBack @ 0101a4d4
+  <- CheckInMono$$GetTotalBack @ 00eacef0
+  <- ChapBoxMono$$GetRewardBoxBack @ 00e5714c
+  <- BoxShopMonoNew$$OnShoppingCallback @ 00e9a1ec
+  <- WeaponPanelMono$$WeaponForgeBack @ 00f593f4
+  <- TrainingCampPanelMono$$QuestGetRewardBack @ 0103bd3c
+  <- TaskHeadActivityMono$$GetActivitySubRewardBack @ 0102fc8c
+  <- GlobalUIManager$$NotifyChargeSuccess @ 00f1da04
+  <- TipsNormalPanelMono$$OnOpenBox @ 00f12c3c
+  <- MailMono$$GetRewardBack @ 00f9cb40
+  <- BoxShopMonoNew$$DestroyKeyCallback @ 00e9a128
+  <- DevAniPlayPanelMono$$OnClickClose @ 00ebdb54
+  <- ShopNewPanelMono$$OnShoppingCallback @ 0102ac50
+  <- WeaponUpgradePanelMono$$OnUpgradeResetCallback @ 00f61aec
+  <- EquipDevMono$$EquipForgeBack @ 00ed8a5c
+  <- TaoFaPanelMono$$GetCrusadeAwardBack @ 0103633c
+  <- SplitModelPanelMono$$SplitEquipBack @ 01048b2c
+  <- StiMarkDevPanelMono$$EquipForgeBack @ 00edf044
+  <- TaoFaPanelMono$$NetGetQuestReward @ 01038118
+  <- WareHousePanelMono$$StigmataSplitBack @ 0104c0a4
+  <- XLua.CSObjectWrap.AliWrap$$_m_ShowReward @ 0119482c
+  <- TaskNewPanelMono$$NetGetQuestReward @ 00f7d01c
+  <- ActiveShowPanelMono$$NetGetQuestReward @ 010207fc
+  <- SupportPanelMono$$SpaceBaseGetRewardBack @ 00f060e4
+
+--- Listing ---
+00e068f8  stp x23,x22,[sp, #-0x30]!
+00e068fc  stp x21,x20,[sp, #0x10]
+00e06900  stp x19,x30,[sp, #0x20]
+00e06904  adrp x23,0x3572000
+00e06908  adrp x22,0x335f000
+00e0690c  ldrb w8,[x23, #0x574]
+00e06910  ldr x22,[x22, #0x20]
+00e06914  mov w20,w2
+00e06918  mov x21,x1
+00e0691c  mov x19,x0
+00e06920  tbnz w8,#0x0,0x00e06938
+00e06924  adrp x0,0x335f000
+00e06928  ldr x0,[x0, #0x20]
+00e0692c  bl 0x00b0789c
+00e06930  mov w8,#0x1
+00e06934  strb w8,[x23, #0x574]
+00e06938  ldr x0,[x22]
+00e0693c  ldr w8,[x0, #0xe0]
+00e06940  cbnz w8,0x00e0694c
+00e06944  bl 0x00b0798c
+00e06948  ldr x0,[x22]
+00e0694c  ldr x8,[x0, #0xb8]
+00e06950  ldr x0,[x8, #0x348]
+00e06954  cbz x0,0x00e06978
+00e06958  and w3,w20,#0x1
+00e0695c  mov x1,x19
+00e06960  mov x2,x21
+00e06964  ldp x19,x30,[sp, #0x20]
+00e06968  ldp x21,x20,[sp, #0x10]
+00e0696c  mov x4,xzr
+00e06970  ldp x23,x22,[sp], #0x30
+00e06974  b 0x0106381c
+00e06978  cbz x21,0x00e069a4
+00e0697c  mov x0,x21
+00e06980  mov x1,xzr
+00e06984  bl 0x015b4f10
+00e06988  and w2,w20,#0x1
+00e0698c  mov x1,x0
+00e06990  mov x0,x19
+00e06994  ldp x19,x30,[sp, #0x20]
+00e06998  ldp x21,x20,[sp, #0x10]
+00e0699c  ldp x23,x22,[sp], #0x30
+00e069a0  b 0x00e069a8
+00e069a4  bl 0x00b079b0

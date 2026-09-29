@@ -1,0 +1,59 @@
+Function: AliothEngine.RateReview$$IOS_TuiGuang @ 016583d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp479 @ 0109dbdc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$TargetRetailConfirm @ 00e003f0
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.RateReview$$set_TuiGuangType @ 01658308
+
+--- Calls IN ---
+  <- GlobalUIManager$$NotifyChargeSuccess @ 00f1da04
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- XLua.CSObjectWrap.AliothEngineRateReviewWrap$$_m_IOS_TuiGuang_xlua_st_ @ 011606b8
+
+--- Listing ---
+016583d4  stp x21,x20,[sp, #-0x20]!
+016583d8  stp x19,x30,[sp, #0x10]
+016583dc  adrp x20,0x3577000
+016583e0  adrp x21,0x3359000
+016583e4  ldrb w8,[x20, #0x831]
+016583e8  ldr x21,[x21, #0xfb8]
+016583ec  mov w19,w0
+016583f0  tbnz w8,#0x0,0x01658414
+016583f4  adrp x0,0x335f000
+016583f8  ldr x0,[x0, #0x20]
+016583fc  bl 0x00b0789c
+01658400  adrp x0,0x3359000
+01658404  ldr x0,[x0, #0xfb8]
+01658408  bl 0x00b0789c
+0165840c  mov w8,#0x1
+01658410  strb w8,[x20, #0x831]
+01658414  ldr x8,[x21]
+01658418  ldr x8,[x8, #0xb8]
+0165841c  ldr x0,[x8, #0x20]
+01658420  cbz x0,0x01658438
+01658424  mov w1,w19
+01658428  ldp x19,x30,[sp, #0x10]
+0165842c  mov x2,xzr
+01658430  ldp x21,x20,[sp], #0x20
+01658434  b 0x0109dbdc
+01658438  adrp x20,0x335f000
+0165843c  ldr x20,[x20, #0x20]
+01658440  mov w0,w19
+01658444  bl 0x01658308
+01658448  ldr x0,[x20]
+0165844c  ldr w8,[x0, #0xe0]
+01658450  cbnz w8,0x0165845c
+01658454  bl 0x00b0798c
+01658458  ldr x0,[x20]
+0165845c  ldr x8,[x0, #0xb8]
+01658460  ldr x0,[x8, #0x10]
+01658464  cbz x0,0x0165847c
+01658468  ldp x19,x30,[sp, #0x10]
+0165846c  mov w1,#0x3e9
+01658470  mov x2,xzr
+01658474  ldp x21,x20,[sp], #0x20
+01658478  b 0x00e003f0
+0165847c  bl 0x00b079b0

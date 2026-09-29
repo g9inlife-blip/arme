@@ -1,0 +1,30 @@
+Function: AliothEngine.Utils.Crc32$$.ctor @ 01699834
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.Crc32$$InitializeTable @ 0169987c
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Security.Cryptography.HashAlgorithm$$.ctor @ 0200a154
+
+--- Calls IN ---
+  <- AliothEngine.Utils.VerifierUtils$$GetCrc32 @ 016a0a0c
+  <- AliothEngine.Utils.VerifierUtils$$GetCrc32 @ 016a0c24
+
+--- Listing ---
+01699834  str x20,[sp, #-0x20]!
+01699838  stp x19,x30,[sp, #0x10]
+0169983c  mov x1,xzr
+01699840  mov x19,x0
+01699844  bl 0x0200a154
+01699848  mov w0,#0x8320
+0169984c  mov w20,#0xffffffff
+01699850  movk w0,#0xedb8, LSL #16
+01699854  str w20,[x19, #0x24]
+01699858  bl 0x0169987c
+0169985c  str x0,[x19, #0x28]!
+01699860  mov x1,x0
+01699864  mov x0,x19
+01699868  bl 0x00b07850
+0169986c  str w20,[x19, #0x8]
+01699870  ldp x19,x30,[sp, #0x10]
+01699874  ldr x20,[sp], #0x20
+01699878  ret

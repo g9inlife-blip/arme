@@ -1,0 +1,59 @@
+Function: AliothEngine.FileUtility$$DeleteFiles @ 0168e810
+
+--- Calls OUT ---
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.File$$Delete @ 020afd48
+  -> System.IO.Directory$$Exists @ 020ae0e8
+  -> System.String$$Concat @ 01fdebb8
+
+--- Calls IN ---
+
+--- Listing ---
+0168e810  stp x21,x20,[sp, #-0x20]!
+0168e814  stp x19,x30,[sp, #0x10]
+0168e818  adrp x21,0x3577000
+0168e81c  ldrb w8,[x21, #0xacb]
+0168e820  mov x19,x1
+0168e824  mov x20,x0
+0168e828  tbnz w8,#0x0,0x0168e840
+0168e82c  adrp x0,0x334a000
+0168e830  ldr x0,[x0, #0xa0]
+0168e834  bl 0x00b0789c
+0168e838  mov w8,#0x1
+0168e83c  strb w8,[x21, #0xacb]
+0168e840  mov x0,x20
+    ; [PRE] try { // try from 0168e840 to 0168e84b has its CatchHandler @ 0168e8a8
+0168e844  mov x1,xzr
+0168e848  bl 0x020ae0e8
+    ; [POST] } // end try from 0168e840 to 0168e84b
+0168e84c  tbz w0,#0x0,0x0168e8e0
+0168e850  adrp x21,0x334a000
+0168e854  ldr x21,[x21, #0xa0]
+0168e858  ldr x1,[x21]
+0168e85c  mov x0,x20
+    ; [PRE] try { // try from 0168e85c to 0168e86b has its CatchHandler @ 0168e8a4
+0168e860  mov x2,x19
+0168e864  mov x3,xzr
+0168e868  bl 0x01fdebb8
+    ; [POST] } // end try from 0168e85c to 0168e86b
+0168e86c  mov x1,xzr
+    ; [PRE] try { // try from 0168e86c to 0168e873 has its CatchHandler @ 0168e8a0
+0168e870  bl 0x020a6ae4
+    ; [POST] } // end try from 0168e86c to 0168e873
+0168e874  tbz w0,#0x0,0x0168e8e0
+0168e878  ldr x1,[x21]
+0168e87c  mov x0,x20
+    ; [PRE] try { // try from 0168e87c to 0168e893 has its CatchHandler @ 0168e89c
+0168e880  mov x2,x19
+0168e884  mov x3,xzr
+0168e888  bl 0x01fdebb8
+0168e88c  mov x1,xzr
+0168e890  bl 0x020afd48
+    ; [POST] } // end try from 0168e87c to 0168e893
+0168e894  mov w0,#0x1
+0168e898  b 0x0168e8e4
+0168e8e0  mov w0,wzr
+0168e8e4  ldp x19,x30,[sp, #0x10]
+0168e8e8  ldp x21,x20,[sp], #0x20
+0168e8ec  ret

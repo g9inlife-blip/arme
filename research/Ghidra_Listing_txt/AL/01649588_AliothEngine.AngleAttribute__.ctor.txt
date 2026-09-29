@@ -1,0 +1,46 @@
+Function: AliothEngine.AngleAttribute$$.ctor @ 01649588
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PropertyAttribute$$.ctor @ 024dbdd8
+
+--- Calls IN ---
+
+--- Listing ---
+01649588  stp x21,x20,[sp, #-0x20]!
+0164958c  stp x19,x30,[sp, #0x10]
+01649590  adrp x21,0x3577000
+01649594  adrp x20,0x331b000
+01649598  ldrb w8,[x21, #0x796]
+0164959c  ldr x20,[x20, #0x6c8]
+016495a0  mov x19,x0
+016495a4  tbnz w8,#0x0,0x016495bc
+016495a8  adrp x0,0x331b000
+016495ac  ldr x0,[x0, #0x6c8]
+016495b0  bl 0x00b0789c
+016495b4  mov w8,#0x1
+016495b8  strb w8,[x21, #0x796]
+016495bc  fmov v0.2S,#0xbf800000
+016495c0  stur d0,[x19, #0x14]
+016495c4  ldr x8,[x20]
+016495c8  mov x0,x19
+016495cc  ldr x8,[x8, #0xb8]
+016495d0  ldr x1,[x8]
+016495d4  str x1,[x0, #0x20]!
+016495d8  bl 0x00b07850
+016495dc  adrp x8,0x26dc000
+016495e0  adrp x9,0x26dc000
+016495e4  ldr q0,[x8, #0xf70]
+016495e8  ldr q1,[x9, #0xf80]
+016495ec  mov w10,#0x1
+016495f0  mov w8,#0x42000000
+016495f4  strb w10,[x19, #0x48]
+016495f8  stur q0,[x19, #0x28]
+016495fc  stur q1,[x19, #0x38]
+01649600  str w8,[x19, #0x4c]
+01649604  mov x0,x19
+01649608  ldp x19,x30,[sp, #0x10]
+0164960c  mov x1,xzr
+01649610  ldp x21,x20,[sp], #0x20
+01649614  b 0x024dbdd8

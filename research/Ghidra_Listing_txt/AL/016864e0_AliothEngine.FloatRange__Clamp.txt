@@ -1,0 +1,13 @@
+Function: AliothEngine.FloatRange$$Clamp @ 016864e0
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016864e0  ldp s2,s1,[x0, #0x10]
+016864e4  fcmp s1,s0
+016864e8  fcsel s1,s1,s0,mi
+016864ec  fcmp s2,s0
+016864f0  fcsel s0,s1,s2,le
+016864f4  ret

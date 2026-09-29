@@ -1,0 +1,49 @@
+Function: Ali$$CheckFrameRate @ 00e0210c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Application$$set_targetFrameRate @ 024f2b0c
+  -> GamePlayerInfomation$$get_HighFrameRate_Enable @ 00e373a0
+
+--- Calls IN ---
+  <- SysSettingPanelMono$$OnClick4 @ 00f77ddc
+  <- Main$$Init @ 00e39cc0
+  <- Ali$$Init @ 00e019f8
+  <- XLua.CSObjectWrap.AliWrap$$_m_CheckFrameRate_xlua_st_ @ 01196cd4
+
+--- Listing ---
+00e0210c  str x20,[sp, #-0x20]!
+00e02110  stp x19,x30,[sp, #0x10]
+00e02114  adrp x20,0x3572000
+00e02118  adrp x19,0x335f000
+00e0211c  ldrb w8,[x20, #0x580]
+00e02120  ldr x19,[x19, #0x20]
+00e02124  tbnz w8,#0x0,0x00e0213c
+00e02128  adrp x0,0x335f000
+00e0212c  ldr x0,[x0, #0x20]
+00e02130  bl 0x00b0789c
+00e02134  mov w8,#0x1
+00e02138  strb w8,[x20, #0x580]
+00e0213c  ldr x0,[x19]
+00e02140  ldr w8,[x0, #0xe0]
+00e02144  cbnz w8,0x00e02150
+00e02148  bl 0x00b0798c
+00e0214c  ldr x0,[x19]
+00e02150  ldr x8,[x0, #0xb8]
+00e02154  ldr x0,[x8, #0x3a8]
+00e02158  cbz x0,0x00e0216c
+00e0215c  ldp x19,x30,[sp, #0x10]
+00e02160  mov x1,xzr
+00e02164  ldr x20,[sp], #0x20
+00e02168  b 0x0105fbf0
+00e0216c  bl 0x00e373a0
+00e02170  ldp x19,x30,[sp, #0x10]
+00e02174  tst w0,#0x1
+00e02178  mov w8,#0x1e
+00e0217c  mov w9,#0x3c
+00e02180  csel w0,w9,w8,ne
+00e02184  mov x1,xzr
+00e02188  ldr x20,[sp], #0x20
+00e0218c  b 0x024f2b0c

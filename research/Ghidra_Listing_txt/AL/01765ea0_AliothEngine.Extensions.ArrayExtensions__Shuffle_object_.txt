@@ -1,0 +1,59 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$Shuffle<object> @ 01765ea0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01765ea0  str x24,[sp, #-0x40]!
+01765ea4  stp x23,x22,[sp, #0x10]
+01765ea8  stp x21,x20,[sp, #0x20]
+01765eac  stp x19,x30,[sp, #0x30]
+01765eb0  cbz x0,0x01765f5c
+01765eb4  ldr w20,[x0, #0x18]
+01765eb8  mov x19,x0
+01765ebc  sub w8,w20,#0x1
+01765ec0  cmp w8,#0x1
+01765ec4  b.lt 0x01765f44
+01765ec8  sxtw x22,w8
+01765ecc  add x23,x19,#0x20
+01765ed0  sbfiz x24,x8,#0x3,#0x20
+01765ed4  mov w0,wzr
+01765ed8  mov w1,w20
+01765edc  mov x2,xzr
+01765ee0  bl 0x024d63b0
+01765ee4  ldr x8,[x19, #0x18]
+01765ee8  cmp w0,w8
+01765eec  b.cs 0x01765f58
+01765ef0  add x0,x19,w0, SXTW  #0x3
+01765ef4  ldr x21,[x0, #0x20]!
+01765ef8  and x8,x8,#0xffffffff
+01765efc  cmp x22,x8
+01765f00  b.cs 0x01765f58
+01765f04  ldr x1,[x23, x22, LSL #0x3]
+01765f08  str x1,[x0]
+01765f0c  bl 0x00b07850
+01765f10  ldr w8,[x19, #0x18]
+01765f14  cmp x22,x8
+01765f18  b.cs 0x01765f58
+01765f1c  add x0,x23,x24
+01765f20  mov x1,x21
+01765f24  str x21,[x23, x22, LSL #0x3]
+01765f28  bl 0x00b07850
+01765f2c  sub w8,w20,#0x2
+01765f30  sub x22,x22,#0x1
+01765f34  sub w20,w20,#0x1
+01765f38  cmp w8,#0x0
+01765f3c  sub x24,x24,#0x8
+01765f40  b.gt 0x01765ed4
+01765f44  ldp x19,x30,[sp, #0x30]
+01765f48  ldp x21,x20,[sp, #0x20]
+01765f4c  ldp x23,x22,[sp, #0x10]
+01765f50  ldr x24,[sp], #0x40
+01765f54  ret
+01765f58  bl 0x00b079b8
+01765f5c  bl 0x00b079b0

@@ -1,0 +1,38 @@
+Function: AliothEngine.GUIScreen$$get_IsTransitioning @ 01670f70
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_g_get_IsTransitioning @ 01155b24
+  <- AliothEngine.GUIScreenManager.<_FlushOperation>d__33$$MoveNext @ 0167b798
+  <- AliothEngine.GUIScreen$$Update @ 0167158c
+
+--- Listing ---
+01670f70  stp x21,x20,[sp, #-0x20]!
+01670f74  stp x19,x30,[sp, #0x10]
+01670f78  adrp x20,0x3577000
+01670f7c  adrp x21,0x3364000
+01670f80  ldrb w8,[x20, #0x978]
+01670f84  ldr x21,[x21, #0xd28]
+01670f88  mov x19,x0
+01670f8c  tbnz w8,#0x0,0x01670fa4
+01670f90  adrp x0,0x3364000
+01670f94  ldr x0,[x0, #0xd28]
+01670f98  bl 0x00b0789c
+01670f9c  mov w8,#0x1
+01670fa0  strb w8,[x20, #0x978]
+01670fa4  ldr x8,[x21]
+01670fa8  ldr x8,[x8, #0xb8]
+01670fac  ldr x0,[x8, #0x38]
+01670fb0  cbz x0,0x01670fc8
+01670fb4  mov x1,x19
+01670fb8  ldp x19,x30,[sp, #0x10]
+01670fbc  mov x2,xzr
+01670fc0  ldp x21,x20,[sp], #0x20
+01670fc4  b 0x01060aac
+01670fc8  ldrb w0,[x19, #0x48]
+01670fcc  ldp x19,x30,[sp, #0x10]
+01670fd0  ldp x21,x20,[sp], #0x20
+01670fd4  ret

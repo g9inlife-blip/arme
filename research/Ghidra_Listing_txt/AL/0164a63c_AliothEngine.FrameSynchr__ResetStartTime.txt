@@ -1,0 +1,48 @@
+Function: AliothEngine.FrameSynchr$$ResetStartTime @ 0164a63c
+
+--- Calls OUT ---
+  -> UnityEngine.Time$$get_deltaTime @ 024dc048
+  -> UnityEngine.Time$$get_time @ 024dbfa8
+  -> UnityEngine.Time$$get_realtimeSinceStartup @ 024dc3a8
+
+--- Calls IN ---
+  <- AliothEngine.FrameSynchr$$set_FrameSpeed @ 0164a610
+  <- AliothEngine.FrameSynchr$$SwitchSynchrLocal @ 0164a968
+
+--- Listing ---
+0164a63c  stp d9,d8,[sp, #-0x20]!
+0164a640  stp x19,x30,[sp, #0x10]
+0164a644  ldrb w8,[x0, #0x10]
+0164a648  mov x19,x0
+0164a64c  cbz w8,0x0164a688
+0164a650  mov x0,xzr
+0164a654  bl 0x024dc3a8
+0164a658  ldr d2,[x19, #0x110]
+0164a65c  ldr b1,[x19, #0x40]
+0164a660  adrp x8,0x26dc000
+0164a664  ldr s3,[x8, #0xbfc]
+0164a668  ucvtf d2,d2
+0164a66c  ucvtf s1,s1
+0164a670  fcvt s2,d2
+0164a674  fmul s0,s0,s1
+0164a678  fmul s2,s2,s3
+0164a67c  fadd s0,s0,s2
+0164a680  fdiv s0,s0,s1
+0164a684  b 0x0164a6bc
+0164a688  mov x0,xzr
+0164a68c  bl 0x024dbfa8
+0164a690  ldr d9,[x19, #0x110]
+0164a694  mov x0,xzr
+0164a698  mov v8.16B,v0.16B
+0164a69c  bl 0x024dc048
+0164a6a0  adrp x8,0x26dc000
+0164a6a4  ldr s1,[x8, #0xbfc]
+0164a6a8  ucvtf d2,d9
+0164a6ac  fcvt s2,d2
+0164a6b0  fmul s1,s2,s1
+0164a6b4  fadd s1,s8,s1
+0164a6b8  fadd s0,s0,s1
+0164a6bc  str s0,[x19, #0x118]
+0164a6c0  ldp x19,x30,[sp, #0x10]
+0164a6c4  ldp d9,d8,[sp], #0x20
+0164a6c8  ret

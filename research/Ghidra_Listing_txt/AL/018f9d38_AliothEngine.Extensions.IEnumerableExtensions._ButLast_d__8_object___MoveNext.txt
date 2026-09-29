@@ -1,0 +1,194 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<ButLast>d__8<object>$$MoveNext @ 018f9d38
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018f9d38  sub sp,sp,#0x50
+018f9d3c  stp x21,x20,[sp, #0x30]
+018f9d40  stp x19,x30,[sp, #0x40]
+018f9d44  adrp x19,0x3578000
+018f9d48  ldrb w8,[x19, #0x5d9]
+018f9d4c  mov x21,x1
+018f9d50  mov x20,x0
+018f9d54  stp x1,x0,[sp, #0x20]
+018f9d58  tbnz w8,#0x0,0x018f9d70
+018f9d5c  adrp x0,0x3364000
+018f9d60  ldr x0,[x0, #0xeb0]
+018f9d64  bl 0x00b0789c
+018f9d68  mov w8,#0x1
+018f9d6c  strb w8,[x19, #0x5d9]
+018f9d70  add x8,sp,#0x20
+018f9d74  add x9,sp,#0x28
+018f9d78  str x9,[sp, #0x18]
+018f9d7c  stp xzr,x8,[sp, #0x8]
+018f9d80  ldr w8,[x20, #0x10]
+018f9d84  cmp w8,#0x1
+018f9d88  b.eq 0x018f9e04
+018f9d8c  cbnz w8,0x018f9e58
+018f9d90  ldr x19,[x20, #0x28]
+018f9d94  mov w8,#0xffffffff
+018f9d98  str w8,[x20, #0x10]
+018f9d9c  mov w8,#0x1
+018f9da0  strb w8,[x20, #0x38]
+018f9da4  cbz x19,0x018f9e4c
+018f9da8  ldr x8,[x21, #0x20]
+018f9dac  ldr x8,[x8, #0xc0]
+018f9db0  ldr x1,[x8, #0x8]
+018f9db4  ldrb w8,[x1, #0x132]
+018f9db8  tbnz w8,#0x0,0x018f9dc8
+018f9dbc  mov x0,x1
+    ; [PRE] try { // try from 018f9dbc to 018f9e37 has its CatchHandler @ 018f9e54
+018f9dc0  bl 0x00b2ac40
+018f9dc4  mov x1,x0
+018f9dc8  ldr x8,[x19]
+018f9dcc  ldrh w9,[x8, #0x12a]
+018f9dd0  cbz x9,0x018f9df4
+018f9dd4  ldr x10,[x8, #0xb0]
+018f9dd8  add x10,x10,#0x8
+018f9ddc  ldur x11,[x10, #-0x8]
+018f9de0  cmp x11,x1
+018f9de4  b.eq 0x018f9e10
+018f9de8  subs x9,x9,#0x1
+018f9dec  add x10,x10,#0x10
+018f9df0  b.ne 0x018f9ddc
+018f9df4  mov x0,x19
+018f9df8  mov w2,wzr
+018f9dfc  bl 0x00b2ae24
+018f9e00  b 0x018f9e1c
+018f9e04  mov w8,#0xfffffffd
+018f9e08  str w8,[x20, #0x10]
+018f9e0c  b 0x018f9f04
+018f9e10  ldrsw x9,[x10]
+018f9e14  add x8,x8,x9, LSL #0x4
+018f9e18  add x0,x8,#0x138
+018f9e1c  ldp x8,x1,[x0]
+018f9e20  mov x0,x19
+018f9e24  blr x8
+018f9e28  mov x1,x0
+018f9e2c  ldr x0,[sp, #0x28]
+018f9e30  str x1,[x0, #0x40]!
+018f9e34  bl 0x00b07850
+    ; [POST] } // end try from 018f9dbc to 018f9e37
+018f9e38  ldr x20,[sp, #0x28]
+018f9e3c  mov w8,#0xfffffffd
+018f9e40  mov x19,xzr
+018f9e44  str w8,[x20, #0x10]
+018f9e48  b 0x018f9f0c
+018f9e4c  bl 0x00b079b0
+    ; [PRE] try { // try from 018f9e4c to 018f9e4f has its CatchHandler @ 018f9e50
+    ; [POST] } // end try from 018f9e4c to 018f9e4f
+018f9e58  mov w0,wzr
+018f9e5c  b 0x018f9fc0
+018f9e60  ldr x8,[sp, #0x28]
+018f9e64  ldr x20,[x8, #0x40]
+018f9e68  cbz x20,0x018f9fd4
+018f9e6c  ldr x8,[sp, #0x20]
+018f9e70  ldr x8,[x8, #0x20]
+018f9e74  ldr x8,[x8, #0xc0]
+018f9e78  ldr x1,[x8, #0x18]
+018f9e7c  ldrb w8,[x1, #0x132]
+018f9e80  tbnz w8,#0x0,0x018f9e90
+018f9e84  mov x0,x1
+    ; [PRE] try { // try from 018f9e84 to 018f9ef3 has its CatchHandler @ 018f9fec
+018f9e88  bl 0x00b2ac40
+018f9e8c  mov x1,x0
+018f9e90  ldr x8,[x20]
+018f9e94  ldrh w9,[x8, #0x12a]
+018f9e98  cbz x9,0x018f9ebc
+018f9e9c  ldr x10,[x8, #0xb0]
+018f9ea0  add x10,x10,#0x8
+018f9ea4  ldur x11,[x10, #-0x8]
+018f9ea8  cmp x11,x1
+018f9eac  b.eq 0x018f9ecc
+018f9eb0  subs x9,x9,#0x1
+018f9eb4  add x10,x10,#0x10
+018f9eb8  b.ne 0x018f9ea4
+018f9ebc  mov x0,x20
+018f9ec0  mov w2,wzr
+018f9ec4  bl 0x00b2ae24
+018f9ec8  b 0x018f9ed8
+018f9ecc  ldrsw x9,[x10]
+018f9ed0  add x8,x8,x9, LSL #0x4
+018f9ed4  add x0,x8,#0x138
+018f9ed8  ldp x8,x1,[x0]
+018f9edc  mov x0,x20
+018f9ee0  blr x8
+018f9ee4  mov x1,x0
+018f9ee8  ldr x0,[sp, #0x28]
+018f9eec  str x1,[x0, #0x48]!
+018f9ef0  bl 0x00b07850
+    ; [POST] } // end try from 018f9e84 to 018f9ef3
+018f9ef4  ldr x20,[sp, #0x28]
+018f9ef8  ldrb w8,[x20, #0x38]
+018f9efc  cbz w8,0x018f9fa4
+018f9f00  strb wzr,[x20, #0x38]
+018f9f04  ldr x19,[x20, #0x48]
+018f9f08  str xzr,[x20, #0x48]
+018f9f0c  ldr x20,[x20, #0x40]
+018f9f10  cbz x20,0x018f9fd0
+018f9f14  adrp x10,0x3364000
+018f9f18  ldr x8,[x20]
+018f9f1c  ldr x10,[x10, #0xeb0]
+018f9f20  ldrh w9,[x8, #0x12a]
+018f9f24  ldr x1,[x10]
+018f9f28  cbz x9,0x018f9f4c
+018f9f2c  ldr x10,[x8, #0xb0]
+018f9f30  add x10,x10,#0x8
+018f9f34  ldur x11,[x10, #-0x8]
+018f9f38  cmp x11,x1
+018f9f3c  b.eq 0x018f9f5c
+018f9f40  subs x9,x9,#0x1
+018f9f44  add x10,x10,#0x10
+018f9f48  b.ne 0x018f9f34
+018f9f4c  mov x0,x20
+    ; [PRE] try { // try from 018f9f4c to 018f9f73 has its CatchHandler @ 018f9fe8
+018f9f50  mov w2,wzr
+018f9f54  bl 0x00b2ae24
+018f9f58  b 0x018f9f68
+018f9f5c  ldrsw x9,[x10]
+018f9f60  add x8,x8,x9, LSL #0x4
+018f9f64  add x0,x8,#0x138
+018f9f68  ldp x8,x1,[x0]
+018f9f6c  mov x0,x20
+018f9f70  blr x8
+    ; [POST] } // end try from 018f9f4c to 018f9f73
+018f9f74  tbnz w0,#0x0,0x018f9e60
+018f9f78  ldp x8,x0,[sp, #0x20]
+018f9f7c  ldr x8,[x8, #0x20]
+018f9f80  ldr x8,[x8, #0xc0]
+018f9f84  ldr x1,[x8]
+018f9f88  ldr x8,[x1, #0x8]
+018f9f8c  blr x8
+    ; [PRE] try { // try from 018f9f8c to 018f9f9f has its CatchHandler @ 018f9fe4
+018f9f90  ldr x0,[sp, #0x28]
+018f9f94  str xzr,[x0, #0x40]!
+018f9f98  mov x1,xzr
+018f9f9c  bl 0x00b07850
+    ; [POST] } // end try from 018f9f8c to 018f9f9f
+018f9fa0  b 0x018f9e58
+018f9fa4  str x19,[x20, #0x18]!
+018f9fa8  mov x0,x20
+    ; [PRE] try { // try from 018f9fa8 to 018f9fb3 has its CatchHandler @ 018f9fe0
+018f9fac  mov x1,x19
+018f9fb0  bl 0x00b07850
+    ; [POST] } // end try from 018f9fa8 to 018f9fb3
+018f9fb4  ldr x8,[sp, #0x28]
+018f9fb8  mov w0,#0x1
+018f9fbc  str w0,[x8, #0x10]
+018f9fc0  ldp x19,x30,[sp, #0x40]
+018f9fc4  ldp x21,x20,[sp, #0x30]
+018f9fc8  add sp,sp,#0x50
+018f9fcc  ret
+018f9fd0  bl 0x00b079b0
+    ; [PRE] try { // try from 018f9fd0 to 018f9fd3 has its CatchHandler @ 018f9fdc
+    ; [POST] } // end try from 018f9fd0 to 018f9fd3
+018f9fd4  bl 0x00b079b0
+    ; [PRE] try { // try from 018f9fd4 to 018f9fd7 has its CatchHandler @ 018f9fd8
+    ; [POST] } // end try from 018f9fd4 to 018f9fd7

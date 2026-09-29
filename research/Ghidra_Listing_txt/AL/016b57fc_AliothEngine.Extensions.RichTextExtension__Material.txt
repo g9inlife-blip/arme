@@ -1,0 +1,46 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Material @ 016b57fc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fdf7a4
+  -> thunk_FUN_00ace368 @ 00b07994
+
+--- Calls IN ---
+
+--- Listing ---
+016b57fc  sub sp,sp,#0x40
+016b5800  stp x23,x22,[sp, #0x10]
+016b5804  stp x21,x20,[sp, #0x20]
+016b5808  stp x19,x30,[sp, #0x30]
+016b580c  adrp x23,0x3577000
+016b5810  adrp x22,0x3332000
+016b5814  adrp x21,0x335f000
+016b5818  ldrb w8,[x23, #0xc07]
+016b581c  ldr x22,[x22, #0x38]
+016b5820  ldr x21,[x21, #0x2e8]
+016b5824  mov w20,w1
+016b5828  mov x19,x0
+016b582c  tbnz w8,#0x0,0x016b5850
+016b5830  adrp x0,0x3332000
+016b5834  ldr x0,[x0, #0x38]
+016b5838  bl 0x00b0789c
+016b583c  adrp x0,0x335f000
+016b5840  ldr x0,[x0, #0x2e8]
+016b5844  bl 0x00b0789c
+016b5848  mov w8,#0x1
+016b584c  strb w8,[x23, #0xc07]
+016b5850  ldr x0,[x22]
+016b5854  add x1,sp,#0xc
+016b5858  str w20,[sp, #0xc]
+016b585c  bl 0x00b07994
+016b5860  ldr x8,[x21]
+016b5864  mov x1,x0
+016b5868  mov x2,x19
+016b586c  mov x3,xzr
+016b5870  mov x0,x8
+016b5874  bl 0x01fdf7a4
+016b5878  ldp x19,x30,[sp, #0x30]
+016b587c  ldp x21,x20,[sp, #0x20]
+016b5880  ldp x23,x22,[sp, #0x10]
+016b5884  add sp,sp,#0x40
+016b5888  ret

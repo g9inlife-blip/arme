@@ -1,0 +1,43 @@
+Function: AliothEngine.Utils.TransformUtils$$SendMessageRecursively @ 0169cf88
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> UnityEngine.Component$$SendMessage @ 024e56f8
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> AliothEngine.Utils.TransformUtils$$SendMessageRecursively @ 0169cf88
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.TransformUtils$$SendMessageRecursively @ 0169cf88
+
+--- Listing ---
+0169cf88  stp x21,x20,[sp, #-0x20]!
+0169cf8c  stp x19,x30,[sp, #0x10]
+0169cf90  cbz x0,0x0169cffc
+0169cf94  mov w2,#0x1
+0169cf98  mov x3,xzr
+0169cf9c  mov x19,x1
+0169cfa0  mov x20,x0
+0169cfa4  bl 0x024e56f8
+0169cfa8  mov x0,x20
+0169cfac  mov x1,xzr
+0169cfb0  bl 0x024f5578
+0169cfb4  cmp w0,#0x1
+0169cfb8  b.lt 0x0169cff0
+0169cfbc  mov w21,wzr
+0169cfc0  mov x0,x20
+0169cfc4  mov w1,w21
+0169cfc8  mov x2,xzr
+0169cfcc  bl 0x024f5bec
+0169cfd0  mov x1,x19
+0169cfd4  bl 0x0169cf88
+0169cfd8  mov x0,x20
+0169cfdc  mov x1,xzr
+0169cfe0  add w21,w21,#0x1
+0169cfe4  bl 0x024f5578
+0169cfe8  cmp w21,w0
+0169cfec  b.lt 0x0169cfc0
+0169cff0  ldp x19,x30,[sp, #0x10]
+0169cff4  ldp x21,x20,[sp], #0x20
+0169cff8  ret
+0169cffc  bl 0x00b079b0

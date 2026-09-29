@@ -1,0 +1,102 @@
+Function: ResManager$$DisposeLua @ 00e2b6c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.LuaEnv$$Dispose @ 010efa7c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$set_luaenv @ 00dff65c
+  -> Ali$$get_luaenv @ 00dff5e4
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.LuaBase$$Dispose @ 010ed350
+
+--- Calls IN ---
+  <- ResManager$$OnDestroy @ 00e2b9bc
+  <- XLua.CSObjectWrap.ResManagerWrap$$_m_DisposeLua @ 0135979c
+  <- ResManager.<LoadExcel>d__23$$MoveNext @ 00e2c9a4
+
+--- Listing ---
+00e2b6c0  stp x21,x20,[sp, #-0x20]!
+00e2b6c4  stp x19,x30,[sp, #0x10]
+00e2b6c8  adrp x20,0x3572000
+00e2b6cc  adrp x21,0x337e000
+00e2b6d0  ldrb w8,[x20, #0x72f]
+00e2b6d4  ldr x21,[x21, #0x4c8]
+00e2b6d8  mov x19,x0
+00e2b6dc  tbnz w8,#0x0,0x00e2b700
+00e2b6e0  adrp x0,0x335f000
+00e2b6e4  ldr x0,[x0, #0x20]
+00e2b6e8  bl 0x00b0789c
+00e2b6ec  adrp x0,0x337e000
+00e2b6f0  ldr x0,[x0, #0x4c8]
+00e2b6f4  bl 0x00b0789c
+00e2b6f8  mov w8,#0x1
+00e2b6fc  strb w8,[x20, #0x72f]
+00e2b700  ldr x8,[x21]
+00e2b704  ldr x8,[x8, #0xb8]
+00e2b708  ldr x0,[x8, #0x98]
+00e2b70c  cbz x0,0x00e2b724
+00e2b710  mov x1,x19
+00e2b714  ldp x19,x30,[sp, #0x10]
+00e2b718  mov x2,xzr
+00e2b71c  ldp x21,x20,[sp], #0x20
+00e2b720  b 0x01060dac
+00e2b724  mov x20,x19
+00e2b728  ldr x8,[x20, #0x40]!
+00e2b72c  cbz x8,0x00e2b750
+00e2b730  ldr x9,[x8, #0x18]
+00e2b734  ldr x0,[x8, #0x40]
+00e2b738  ldr x1,[x8, #0x28]
+00e2b73c  blr x9
+00e2b740  mov x0,x20
+00e2b744  mov x1,xzr
+00e2b748  str xzr,[x20]
+00e2b74c  bl 0x00b07850
+00e2b750  adrp x20,0x335f000
+00e2b754  ldr x0,[x19, #0x48]!
+00e2b758  ldr x20,[x20, #0x20]
+00e2b75c  cbz x0,0x00e2b778
+00e2b760  mov x1,xzr
+00e2b764  bl 0x010ed350
+00e2b768  mov x0,x19
+00e2b76c  mov x1,xzr
+00e2b770  str xzr,[x19]
+00e2b774  bl 0x00b07850
+00e2b778  ldr x0,[x20]
+00e2b77c  ldr w8,[x0, #0xe0]
+00e2b780  cbnz w8,0x00e2b78c
+00e2b784  bl 0x00b0798c
+00e2b788  ldr x0,[x20]
+00e2b78c  ldr x8,[x0, #0xb8]
+00e2b790  ldr x0,[x8, #0x10]
+00e2b794  cbz x0,0x00e2b808
+00e2b798  mov x1,xzr
+00e2b79c  bl 0x00dff5e4
+00e2b7a0  cbz x0,0x00e2b7fc
+00e2b7a4  ldr x0,[x20]
+00e2b7a8  ldr w8,[x0, #0xe0]
+00e2b7ac  cbnz w8,0x00e2b7b8
+00e2b7b0  bl 0x00b0798c
+00e2b7b4  ldr x0,[x20]
+00e2b7b8  ldr x8,[x0, #0xb8]
+00e2b7bc  ldr x0,[x8, #0x10]
+00e2b7c0  cbz x0,0x00e2b808
+00e2b7c4  mov x1,xzr
+00e2b7c8  bl 0x00dff5e4
+00e2b7cc  cbz x0,0x00e2b808
+00e2b7d0  mov x1,xzr
+00e2b7d4  bl 0x010efa7c
+00e2b7d8  ldr x8,[x20]
+00e2b7dc  ldr x8,[x8, #0xb8]
+00e2b7e0  ldr x0,[x8, #0x10]
+00e2b7e4  cbz x0,0x00e2b808
+00e2b7e8  ldp x19,x30,[sp, #0x10]
+00e2b7ec  mov x1,xzr
+00e2b7f0  mov x2,xzr
+00e2b7f4  ldp x21,x20,[sp], #0x20
+00e2b7f8  b 0x00dff65c
+00e2b7fc  ldp x19,x30,[sp, #0x10]
+00e2b800  ldp x21,x20,[sp], #0x20
+00e2b804  ret
+00e2b808  bl 0x00b079b0

@@ -1,0 +1,25 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$GetHeight @ 016b43d8
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.RectTransform$$get_rect @ 024f6150
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b43d8  sub sp,sp,#0x20
+016b43dc  stp xzr,x30,[sp, #0x8]
+016b43e0  str xzr,[sp]
+016b43e4  cbz x0,0x016b4410
+016b43e8  mov x1,xzr
+016b43ec  bl 0x024f6150
+016b43f0  mov x0,sp
+016b43f4  mov x1,xzr
+016b43f8  stp s0,s1,[sp]
+016b43fc  stp s2,s3,[sp, #0x8]
+016b4400  bl 0x024db078
+016b4404  ldr x30,[sp, #0x10]
+016b4408  add sp,sp,#0x20
+016b440c  ret
+016b4410  bl 0x00b079b0

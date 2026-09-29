@@ -1,0 +1,40 @@
+Function: AliothEngine.StoreManager_WePay$$CanPurchaseProduct @ 0165d574
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0165d574  str x22,[sp, #-0x30]!
+0165d578  stp x21,x20,[sp, #0x10]
+0165d57c  stp x19,x30,[sp, #0x20]
+0165d580  adrp x21,0x3577000
+0165d584  adrp x22,0x3355000
+0165d588  ldrb w8,[x21, #0x88f]
+0165d58c  ldr x22,[x22, #0xd20]
+0165d590  mov x19,x1
+0165d594  mov x20,x0
+0165d598  tbnz w8,#0x0,0x0165d5b0
+0165d59c  adrp x0,0x3355000
+0165d5a0  ldr x0,[x0, #0xd20]
+0165d5a4  bl 0x00b0789c
+0165d5a8  mov w8,#0x1
+0165d5ac  strb w8,[x21, #0x88f]
+0165d5b0  ldr x8,[x22]
+0165d5b4  ldr x8,[x8, #0xb8]
+0165d5b8  ldr x0,[x8, #0x40]
+0165d5bc  cbz x0,0x0165d5dc
+0165d5c0  mov x1,x20
+0165d5c4  mov x2,x19
+0165d5c8  ldp x19,x30,[sp, #0x20]
+0165d5cc  ldp x21,x20,[sp, #0x10]
+0165d5d0  mov x3,xzr
+0165d5d4  ldr x22,[sp], #0x30
+0165d5d8  b 0x01065a14
+0165d5dc  ldp x19,x30,[sp, #0x20]
+0165d5e0  ldp x21,x20,[sp, #0x10]
+0165d5e4  mov w0,#0x1
+0165d5e8  ldr x22,[sp], #0x30
+0165d5ec  ret

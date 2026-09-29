@@ -1,0 +1,73 @@
+Function: Ali.<>c$$<GotoTutorial>b__276_0 @ 00e11930
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e11930  str x22,[sp, #-0x30]!
+00e11934  stp x21,x20,[sp, #0x10]
+00e11938  stp x19,x30,[sp, #0x20]
+00e1193c  adrp x20,0x3572000
+00e11940  adrp x22,0x336d000
+00e11944  ldrb w8,[x20, #0x5d2]
+00e11948  ldr x22,[x22, #0x4b8]
+00e1194c  mov x19,x1
+00e11950  tbnz w8,#0x0,0x00e11980
+00e11954  adrp x0,0x334a000
+00e11958  ldr x0,[x0, #0xf38]
+00e1195c  bl 0x00b0789c
+00e11960  adrp x0,0x3334000
+00e11964  ldr x0,[x0, #0x840]
+00e11968  bl 0x00b0789c
+00e1196c  adrp x0,0x336d000
+00e11970  ldr x0,[x0, #0x4b8]
+00e11974  bl 0x00b0789c
+00e11978  mov w8,#0x1
+00e1197c  strb w8,[x20, #0x5d2]
+00e11980  ldr x0,[x22]
+00e11984  ldr w8,[x0, #0xe0]
+00e11988  cbnz w8,0x00e11994
+00e1198c  bl 0x00b0798c
+00e11990  ldr x0,[x22]
+00e11994  ldr x8,[x0, #0xb8]
+00e11998  ldr x20,[x8, #0x88]
+00e1199c  cbnz x20,0x00e119fc
+00e119a0  adrp x20,0x334a000
+00e119a4  ldr w8,[x0, #0xe0]
+00e119a8  ldr x20,[x20, #0xf38]
+00e119ac  cbnz w8,0x00e119b8
+00e119b0  bl 0x00b0798c
+00e119b4  ldr x0,[x22]
+00e119b8  ldr x8,[x0, #0xb8]
+00e119bc  ldr x0,[x20]
+00e119c0  ldr x21,[x8]
+00e119c4  bl 0x00b079a0
+00e119c8  cbz x0,0x00e11a1c
+00e119cc  adrp x8,0x3334000
+00e119d0  ldr x8,[x8, #0x840]
+00e119d4  mov x1,x21
+00e119d8  mov x3,xzr
+00e119dc  mov x20,x0
+00e119e0  ldr x2,[x8]
+00e119e4  bl 0x01909b80
+00e119e8  ldr x8,[x22]
+00e119ec  mov x1,x20
+00e119f0  ldr x0,[x8, #0xb8]
+00e119f4  str x20,[x0, #0x88]!
+00e119f8  bl 0x00b07850
+00e119fc  cbz x19,0x00e11a1c
+00e11a00  str x20,[x19, #0x60]!
+00e11a04  mov x0,x19
+00e11a08  mov x1,x20
+00e11a0c  ldp x19,x30,[sp, #0x20]
+00e11a10  ldp x21,x20,[sp, #0x10]
+00e11a14  ldr x22,[sp], #0x30
+00e11a18  b 0x00b07850
+00e11a1c  bl 0x00b079b0

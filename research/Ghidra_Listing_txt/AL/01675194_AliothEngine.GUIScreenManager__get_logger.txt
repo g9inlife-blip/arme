@@ -1,0 +1,50 @@
+Function: AliothEngine.GUIScreenManager$$get_logger @ 01675194
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.LogManager$$get_UILogger @ 0168a490
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp805 @ 010c8ff0
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_ShowScreen @ 0167a6fc
+  <- AliothEngine.GUIScreenManager$$DumpStacks @ 01676090
+  <- AliothEngine.GUIScreenManager.<>c__DisplayClass33_0$$<_FlushOperation>b__0 @ 0167b620
+  <- AliothEngine.GUIScreenManager$$PopScreenInQuene @ 01678a70
+  <- AliothEngine.GUIScreenManager$$PushScreenInQuene @ 016785c0
+  <- AliothEngine.GUIScreenManager$$CloseScreen @ 0167ac14
+  <- AliothEngine.GUIScreenManager$$_PopScreen @ 01674368
+  <- AliothEngine.GUIScreenManager$$ShowScreenInQuene @ 01678330
+  <- AliothEngine.GUIScreenManager$$_PopScreen @ 016745c0
+  <- AliothEngine.GUIScreenManager$$_PushScreen @ 01673d28
+  <- AliothEngine.GUIScreenManager$$ReplaceInQuene @ 01678cf4
+  <- AliothEngine.GUIScreenManager$$PopScreenInQuene @ 01678824
+
+--- Listing ---
+01675194  str x20,[sp, #-0x20]!
+01675198  stp x19,x30,[sp, #0x10]
+0167519c  adrp x20,0x3577000
+016751a0  adrp x19,0x337b000
+016751a4  ldrb w8,[x20, #0x9be]
+016751a8  ldr x19,[x19, #0xb98]
+016751ac  tbnz w8,#0x0,0x016751c4
+016751b0  adrp x0,0x337b000
+016751b4  ldr x0,[x0, #0xb98]
+016751b8  bl 0x00b0789c
+016751bc  mov w8,#0x1
+016751c0  strb w8,[x20, #0x9be]
+016751c4  ldr x0,[x19]
+016751c8  ldr w8,[x0, #0xe0]
+016751cc  cbnz w8,0x016751d8
+016751d0  bl 0x00b0798c
+016751d4  ldr x0,[x19]
+016751d8  ldr x8,[x0, #0xb8]
+016751dc  ldr x0,[x8, #0x108]
+016751e0  cbz x0,0x016751f4
+016751e4  ldp x19,x30,[sp, #0x10]
+016751e8  mov x1,xzr
+016751ec  ldr x20,[sp], #0x20
+016751f0  b 0x010c8ff0
+016751f4  ldp x19,x30,[sp, #0x10]
+016751f8  ldr x20,[sp], #0x20
+016751fc  b 0x0168a490

@@ -1,0 +1,65 @@
+Function: recursive_mutex @ 00b813ac
+FuncComment: std::__ndk1::recursive_mutex::recursive_mutex()
+
+--- Calls OUT ---
+  -> pthread_mutex_init @ 008d5c10
+  -> __throw_system_error @ 008d5980
+  -> pthread_mutex_destroy @ 008d4f10
+  -> pthread_mutexattr_settype @ 008d5870
+  -> pthread_mutexattr_destroy @ 008d5ca0
+  -> __stack_chk_fail @ 008d4c50
+  -> pthread_mutexattr_init @ 008d44b0
+
+--- Calls IN ---
+
+--- Listing ---
+00b813ac  sub sp,sp,#0x50
+    ; [PLATE] std::__ndk1::recursive_mutex::recursive_mutex()
+00b813b0  str x21,[sp, #0x20]
+00b813b4  stp x20,x19,[sp, #0x30]
+00b813b8  stp x29,x30,[sp, #0x40]
+00b813bc  add x29,sp,#0x40
+00b813c0  mrs x21,tpidr_el0
+00b813c4  ldr x8,[x21, #0x28]
+00b813c8  mov x19,x0
+00b813cc  add x0,sp,#0x10
+00b813d0  str x8,[sp, #0x18]
+00b813d4  bl 0x008d44b0
+00b813d8  cbnz w0,0x00b81430
+00b813dc  add x0,sp,#0x10
+00b813e0  mov w1,#0x1
+00b813e4  bl 0x008d5870
+00b813e8  cbnz w0,0x00b81438
+00b813ec  add x1,sp,#0x10
+00b813f0  mov x0,x19
+00b813f4  bl 0x008d5c10
+00b813f8  mov w20,w0
+00b813fc  add x0,sp,#0x10
+00b81400  bl 0x008d5ca0
+00b81404  cbnz w20,0x00b81448
+00b81408  cbnz w0,0x00b81450
+00b8140c  ldr x8,[x21, #0x28]
+00b81410  ldr x9,[sp, #0x18]
+00b81414  cmp x8,x9
+00b81418  b.ne 0x00b8146c
+00b8141c  ldp x29,x30,[sp, #0x40]
+00b81420  ldp x20,x19,[sp, #0x30]
+00b81424  ldr x21,[sp, #0x20]
+00b81428  add sp,sp,#0x50
+00b8142c  ret
+00b81430  str w0,[sp, #0xc]
+00b81434  b 0x00b8145c
+00b81438  str w0,[sp, #0xc]
+00b8143c  add x0,sp,#0x10
+00b81440  bl 0x008d5ca0
+00b81444  b 0x00b8145c
+00b81448  str w20,[sp, #0xc]
+00b8144c  b 0x00b8145c
+00b81450  str w0,[sp, #0xc]
+00b81454  mov x0,x19
+00b81458  bl 0x008d4f10
+00b8145c  ldr w0,[sp, #0xc]
+00b81460  adrp x1,0x2a0a000
+00b81464  add x1,x1,#0x18b
+00b81468  bl 0x008d5980
+00b8146c  bl 0x008d4c50

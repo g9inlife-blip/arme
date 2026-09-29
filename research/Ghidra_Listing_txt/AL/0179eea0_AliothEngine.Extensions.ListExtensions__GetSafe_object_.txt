@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.ListExtensions$$GetSafe<object> @ 0179eea0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0179eea0  stp x21,x20,[sp, #-0x20]!
+0179eea4  stp x19,x30,[sp, #0x10]
+0179eea8  ldr x8,[x2, #0x38]
+0179eeac  mov x21,x2
+0179eeb0  mov w19,w1
+0179eeb4  add w1,w1,#0x1
+0179eeb8  ldr x2,[x8]
+0179eebc  mov x20,x0
+0179eec0  ldr x8,[x2, #0x8]
+0179eec4  blr x8
+0179eec8  cbz x20,0x0179eeec
+0179eecc  ldr x8,[x21, #0x38]
+0179eed0  mov w1,w19
+0179eed4  ldp x19,x30,[sp, #0x10]
+0179eed8  mov x0,x20
+0179eedc  ldr x2,[x8, #0x10]
+0179eee0  ldr x3,[x2, #0x8]
+0179eee4  ldp x21,x20,[sp], #0x20
+0179eee8  br x3
+0179eeec  bl 0x00b079b0

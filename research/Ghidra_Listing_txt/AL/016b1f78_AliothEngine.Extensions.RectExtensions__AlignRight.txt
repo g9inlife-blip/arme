@@ -1,0 +1,39 @@
+Function: AliothEngine.Extensions.RectExtensions$$AlignRight @ 016b1f78
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_width @ 024db070
+  -> UnityEngine.Rect$$get_x @ 024daf34
+  -> UnityEngine.Rect$$set_x @ 024daf3c
+  -> UnityEngine.Rect$$get_width @ 024db068
+
+--- Calls IN ---
+
+--- Listing ---
+016b1f78  sub sp,sp,#0x30
+016b1f7c  stp d9,d8,[sp, #0x10]
+016b1f80  str x30,[sp, #0x20]
+016b1f84  mov x0,sp
+016b1f88  mov x1,xzr
+016b1f8c  mov v8.16B,v4.16B
+016b1f90  stp s0,s1,[sp]
+016b1f94  stp s2,s3,[sp, #0x8]
+016b1f98  bl 0x024daf34
+016b1f9c  mov x0,sp
+016b1fa0  mov x1,xzr
+016b1fa4  mov v9.16B,v0.16B
+016b1fa8  bl 0x024db068
+016b1fac  fadd s0,s9,s0
+016b1fb0  fsub s0,s0,s8
+016b1fb4  mov x0,sp
+016b1fb8  mov x1,xzr
+016b1fbc  bl 0x024daf3c
+016b1fc0  mov x0,sp
+016b1fc4  mov v0.16B,v8.16B
+016b1fc8  mov x1,xzr
+016b1fcc  bl 0x024db070
+016b1fd0  ldp s0,s1,[sp]
+016b1fd4  ldp s2,s3,[sp, #0x8]
+016b1fd8  ldr x30,[sp, #0x20]
+016b1fdc  ldp d9,d8,[sp, #0x10]
+016b1fe0  add sp,sp,#0x30
+016b1fe4  ret

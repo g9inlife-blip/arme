@@ -1,0 +1,40 @@
+Function: ReadOnlyDictionary<object,-object>$$ReadOnlyException @ 01dfa1cc
+
+--- Calls OUT ---
+  -> System.NotSupportedException$$.ctor @ 02152604
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01dfa1cc  str x20,[sp, #-0x20]!
+01dfa1d0  stp x19,x30,[sp, #0x10]
+01dfa1d4  adrp x19,0x3578000
+01dfa1d8  adrp x20,0x335a000
+01dfa1dc  ldrb w8,[x19, #0xe42]
+01dfa1e0  ldr x20,[x20, #0xb88]
+01dfa1e4  tbnz w8,#0x0,0x01dfa208
+01dfa1e8  adrp x0,0x335a000
+01dfa1ec  ldr x0,[x0, #0xb88]
+01dfa1f0  bl 0x00b0789c
+01dfa1f4  adrp x0,0x337d000
+01dfa1f8  ldr x0,[x0, #0xdf0]
+01dfa1fc  bl 0x00b0789c
+01dfa200  mov w8,#0x1
+01dfa204  strb w8,[x19, #0xe42]
+01dfa208  ldr x0,[x20]
+01dfa20c  bl 0x00b079a0
+01dfa210  cbz x0,0x01dfa23c
+01dfa214  adrp x8,0x337d000
+01dfa218  ldr x8,[x8, #0xdf0]
+01dfa21c  mov x2,xzr
+01dfa220  mov x19,x0
+01dfa224  ldr x1,[x8]
+01dfa228  bl 0x02152604
+01dfa22c  mov x0,x19
+01dfa230  ldp x19,x30,[sp, #0x10]
+01dfa234  ldr x20,[sp], #0x20
+01dfa238  ret
+01dfa23c  bl 0x00b079b0

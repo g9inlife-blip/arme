@@ -1,0 +1,34 @@
+Function: AliothEngine.DataStructures.BetterQueue<object>$$Dequeue @ 01f416cc
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader$$TryDequeue @ 0165e778
+  <- AliothEngine.AssetLoader$$TryDequeue @ 0166bde4
+
+--- Listing ---
+01f416cc  str x20,[sp, #-0x20]!
+01f416d0  stp x19,x30,[sp, #0x10]
+01f416d4  cbz x0,0x01f41728
+01f416d8  ldr x8,[x1, #0x20]
+01f416dc  mov x20,x1
+01f416e0  mov w1,wzr
+01f416e4  mov x19,x0
+01f416e8  ldr x8,[x8, #0xc0]
+01f416ec  ldr x2,[x8]
+01f416f0  ldr x8,[x2, #0x8]
+01f416f4  blr x8
+01f416f8  ldr x8,[x20, #0x20]
+01f416fc  mov x20,x0
+01f41700  mov x0,x19
+01f41704  mov w1,wzr
+01f41708  ldr x8,[x8, #0xc0]
+01f4170c  ldr x2,[x8, #0x8]
+01f41710  ldr x8,[x2, #0x8]
+01f41714  blr x8
+01f41718  ldp x19,x30,[sp, #0x10]
+01f4171c  mov x0,x20
+01f41720  ldr x20,[sp], #0x20
+01f41724  ret
+01f41728  bl 0x00b079b0

@@ -1,0 +1,163 @@
+Function: AliothEngine.Scheduler.<ForEachTaskNonLinear>d__19<object>$$MoveNext @ 018fca54
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.WaitForSeconds$$.ctor @ 024dd340
+  -> UnityEngine.AnimationCurve$$Evaluate @ 024beb58
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018fca54  stp d9,d8,[sp, #-0x40]!
+018fca58  str x22,[sp, #0x10]
+018fca5c  stp x21,x20,[sp, #0x20]
+018fca60  stp x19,x30,[sp, #0x30]
+018fca64  adrp x21,0x3578000
+018fca68  ldrb w8,[x21, #0x5e9]
+018fca6c  mov x20,x1
+018fca70  mov x19,x0
+018fca74  tbnz w8,#0x0,0x018fca8c
+018fca78  adrp x0,0x3380000
+018fca7c  ldr x0,[x0, #0xea8]
+018fca80  bl 0x00b0789c
+018fca84  mov w8,#0x1
+018fca88  strb w8,[x21, #0x5e9]
+018fca8c  ldr w8,[x19, #0x10]
+018fca90  cmp w8,#0x1
+018fca94  b.eq 0x018fcb0c
+018fca98  cbnz w8,0x018fcc48
+018fca9c  ldr x21,[x19, #0x20]
+018fcaa0  mov w8,#0xffffffff
+018fcaa4  str w8,[x19, #0x10]
+018fcaa8  str wzr,[x19, #0x48]
+018fcaac  cbz x21,0x018fcca0
+018fcab0  ldr x8,[x20, #0x20]
+018fcab4  ldr x8,[x8, #0xc0]
+018fcab8  ldr x1,[x8]
+018fcabc  ldrb w8,[x1, #0x132]
+018fcac0  tbnz w8,#0x0,0x018fcad0
+018fcac4  mov x0,x1
+018fcac8  bl 0x00b2ac40
+018fcacc  mov x1,x0
+018fcad0  ldr x8,[x21]
+018fcad4  ldrh w9,[x8, #0x12a]
+018fcad8  cbz x9,0x018fcafc
+018fcadc  ldr x10,[x8, #0xb0]
+018fcae0  add x10,x10,#0x8
+018fcae4  ldur x11,[x10, #-0x8]
+018fcae8  cmp x11,x1
+018fcaec  b.eq 0x018fcb1c
+018fcaf0  subs x9,x9,#0x1
+018fcaf4  add x10,x10,#0x10
+018fcaf8  b.ne 0x018fcae4
+018fcafc  mov x0,x21
+018fcb00  mov w2,wzr
+018fcb04  bl 0x00b2ae24
+018fcb08  b 0x018fcb28
+018fcb0c  ldp w8,w0,[x19, #0x48]
+018fcb10  mov w9,#0xffffffff
+018fcb14  str w9,[x19, #0x10]
+018fcb18  b 0x018fcc20
+018fcb1c  ldrsw x9,[x10]
+018fcb20  add x8,x8,x9, LSL #0x4
+018fcb24  add x0,x8,#0x138
+018fcb28  ldp x8,x1,[x0]
+018fcb2c  mov x0,x21
+018fcb30  blr x8
+018fcb34  ldr w21,[x19, #0x48]
+018fcb38  str w0,[x19, #0x4c]
+018fcb3c  b 0x018fcc28
+018fcb40  ldr x22,[x19, #0x20]
+018fcb44  cbz x22,0x018fcca0
+018fcb48  ldr x8,[x20, #0x20]
+018fcb4c  ldr x8,[x8, #0xc0]
+018fcb50  ldr x1,[x8, #0x10]
+018fcb54  ldrb w8,[x1, #0x132]
+018fcb58  tbnz w8,#0x0,0x018fcb68
+018fcb5c  mov x0,x1
+018fcb60  bl 0x00b2ac40
+018fcb64  mov x1,x0
+018fcb68  ldr x8,[x22]
+018fcb6c  ldrh w9,[x8, #0x12a]
+018fcb70  cbz x9,0x018fcb94
+018fcb74  ldr x10,[x8, #0xb0]
+018fcb78  add x10,x10,#0x8
+018fcb7c  ldur x11,[x10, #-0x8]
+018fcb80  cmp x11,x1
+018fcb84  b.eq 0x018fcba4
+018fcb88  subs x9,x9,#0x1
+018fcb8c  add x10,x10,#0x10
+018fcb90  b.ne 0x018fcb7c
+018fcb94  mov x0,x22
+018fcb98  mov w2,wzr
+018fcb9c  bl 0x00b2ae24
+018fcba0  b 0x018fcbb0
+018fcba4  ldrsw x9,[x10]
+018fcba8  add x8,x8,x9, LSL #0x4
+018fcbac  add x0,x8,#0x138
+018fcbb0  ldp x8,x2,[x0]
+018fcbb4  mov x0,x22
+018fcbb8  mov w1,w21
+018fcbbc  blr x8
+018fcbc0  ldr x8,[x19, #0x28]
+018fcbc4  cbz x8,0x018fcca0
+018fcbc8  ldp s0,s1,[x19, #0x48]
+018fcbcc  mov x21,x0
+018fcbd0  mov x0,x8
+018fcbd4  mov x1,xzr
+018fcbd8  scvtf s0,s0
+018fcbdc  scvtf s1,s1
+018fcbe0  fdiv s0,s0,s1
+018fcbe4  bl 0x024beb58
+018fcbe8  ldr x0,[x19, #0x38]
+018fcbec  cbz x0,0x018fcca0
+018fcbf0  ldr x8,[x20, #0x20]
+018fcbf4  ldr s9,[x19, #0x30]
+018fcbf8  mov x1,x21
+018fcbfc  mov v8.16B,v0.16B
+018fcc00  ldr x8,[x8, #0xc0]
+018fcc04  ldr x2,[x8, #0x28]
+018fcc08  ldr x8,[x2, #0x8]
+018fcc0c  blr x8
+018fcc10  ldp w8,w0,[x19, #0x48]
+018fcc14  sub w9,w0,#0x1
+018fcc18  cmp w8,w9
+018fcc1c  b.lt 0x018fcc50
+018fcc20  add w21,w8,#0x1
+018fcc24  str w21,[x19, #0x48]
+018fcc28  cmp w21,w0
+018fcc2c  b.lt 0x018fcb40
+018fcc30  ldr x8,[x19, #0x40]
+018fcc34  cbz x8,0x018fcc48
+018fcc38  ldr x9,[x8, #0x18]
+018fcc3c  ldr x0,[x8, #0x40]
+018fcc40  ldr x1,[x8, #0x28]
+018fcc44  blr x9
+018fcc48  mov w0,wzr
+018fcc4c  b 0x018fcc8c
+018fcc50  adrp x8,0x3380000
+018fcc54  ldr x8,[x8, #0xea8]
+018fcc58  ldr x0,[x8]
+018fcc5c  bl 0x00b079a0
+018fcc60  cbz x0,0x018fcca0
+018fcc64  fmul s0,s8,s9
+018fcc68  mov x1,xzr
+018fcc6c  mov x20,x0
+018fcc70  bl 0x024dd340
+018fcc74  str x20,[x19, #0x18]!
+018fcc78  mov x0,x19
+018fcc7c  mov x1,x20
+018fcc80  bl 0x00b07850
+018fcc84  mov w0,#0x1
+018fcc88  stur w0,[x19, #-0x8]
+018fcc8c  ldp x19,x30,[sp, #0x30]
+018fcc90  ldp x21,x20,[sp, #0x20]
+018fcc94  ldr x22,[sp, #0x10]
+018fcc98  ldp d9,d8,[sp], #0x40
+018fcc9c  ret
+018fcca0  bl 0x00b079b0

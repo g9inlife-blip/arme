@@ -1,0 +1,103 @@
+Function: CryptoPrefs$$GetHash @ 00dc5ef0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> System.Security.Cryptography.HashAlgorithm$$ComputeHash @ 0200a324
+  -> System.Text.Encoding$$get_UTF8 @ 01ff8ca0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Byte$$ToString @ 020db3dc
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Security.Cryptography.MD5CryptoServiceProvider$$.ctor @ 0201e478
+  -> System.Text.StringBuilder$$Append @ 01fe9960
+
+--- Calls IN ---
+  <- CryptoPrefs$$DeleteKey @ 00dc6854
+  <- CryptoPrefs$$GetString @ 00dc631c
+  <- CryptoPrefs$$HasKey @ 00dc67f8
+  <- CryptoPrefs$$SetInt @ 00dc5e68
+  <- CryptoPrefs$$SetString @ 00dc650c
+  <- CryptoPrefs$$SetFloat @ 00dc63ec
+
+--- Listing ---
+00dc5ef0  stp x23,x22,[sp, #-0x30]!
+00dc5ef4  stp x21,x20,[sp, #0x10]
+00dc5ef8  stp x19,x30,[sp, #0x20]
+00dc5efc  adrp x20,0x3572000
+00dc5f00  adrp x21,0x3374000
+00dc5f04  ldrb w8,[x20, #0x1b9]
+00dc5f08  ldr x21,[x21, #0xad8]
+00dc5f0c  mov x19,x0
+00dc5f10  tbnz w8,#0x0,0x00dc5f40
+00dc5f14  adrp x0,0x3374000
+00dc5f18  ldr x0,[x0, #0xad8]
+00dc5f1c  bl 0x00b0789c
+00dc5f20  adrp x0,0x3332000
+00dc5f24  ldr x0,[x0, #0xaf0]
+00dc5f28  bl 0x00b0789c
+00dc5f2c  adrp x0,0x3367000
+00dc5f30  ldr x0,[x0, #0x4b8]
+00dc5f34  bl 0x00b0789c
+00dc5f38  mov w8,#0x1
+00dc5f3c  strb w8,[x20, #0x1b9]
+00dc5f40  ldr x0,[x21]
+00dc5f44  bl 0x00b079a0
+00dc5f48  cbz x0,0x00dc602c
+00dc5f4c  mov x1,xzr
+00dc5f50  mov x20,x0
+00dc5f54  bl 0x0201e478
+00dc5f58  mov x0,xzr
+00dc5f5c  bl 0x01ff8ca0
+00dc5f60  cbz x0,0x00dc602c
+00dc5f64  ldr x8,[x0]
+00dc5f68  adrp x21,0x3332000
+00dc5f6c  mov x1,x19
+00dc5f70  ldr x9,[x8, #0x268]
+00dc5f74  ldr x2,[x8, #0x270]
+00dc5f78  ldr x21,[x21, #0xaf0]
+00dc5f7c  blr x9
+00dc5f80  mov x1,x0
+00dc5f84  mov x0,x20
+00dc5f88  mov x2,xzr
+00dc5f8c  bl 0x0200a324
+00dc5f90  ldr x8,[x21]
+00dc5f94  mov x19,x0
+00dc5f98  mov x0,x8
+00dc5f9c  bl 0x00b079a0
+00dc5fa0  cbz x0,0x00dc602c
+00dc5fa4  mov x1,xzr
+00dc5fa8  mov x20,x0
+00dc5fac  bl 0x01fe7ee0
+00dc5fb0  cbz x19,0x00dc602c
+00dc5fb4  ldr x8,[x19, #0x18]
+00dc5fb8  cmp w8,#0x1
+00dc5fbc  b.lt 0x00dc600c
+00dc5fc0  adrp x22,0x3367000
+00dc5fc4  ldr x22,[x22, #0x4b8]
+00dc5fc8  mov x21,xzr
+00dc5fcc  and x8,x8,#0xffffffff
+00dc5fd0  add x23,x19,#0x20
+00dc5fd4  cmp x21,w8, UXTW 
+00dc5fd8  b.cs 0x00dc6028
+00dc5fdc  ldr x1,[x22]
+00dc5fe0  add x0,x23,x21
+00dc5fe4  mov x2,xzr
+00dc5fe8  bl 0x020db3dc
+00dc5fec  mov x1,x0
+00dc5ff0  mov x0,x20
+00dc5ff4  mov x2,xzr
+00dc5ff8  bl 0x01fe9960
+00dc5ffc  ldr w8,[x19, #0x18]
+00dc6000  add x21,x21,#0x1
+00dc6004  cmp x21,w8, SXTW 
+00dc6008  b.lt 0x00dc5fd4
+00dc600c  ldr x8,[x20]
+00dc6010  mov x0,x20
+00dc6014  ldp x19,x30,[sp, #0x20]
+00dc6018  ldp x21,x20,[sp, #0x10]
+00dc601c  ldp x2,x1,[x8, #0x168]
+00dc6020  ldp x23,x22,[sp], #0x30
+00dc6024  br x2
+00dc6028  bl 0x00b079b8
+00dc602c  bl 0x00b079b0

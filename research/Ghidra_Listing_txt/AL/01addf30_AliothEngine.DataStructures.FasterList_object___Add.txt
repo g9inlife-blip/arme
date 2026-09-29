@@ -1,0 +1,49 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$Add @ 01addf30
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- NetFXCoreWrappers$$FindWritablePropertiesWithCustomAttribute @ 00dbcca0
+  <- AliothEngine.WeakEvents.WeakEvent<object,-object>$$Add @ 01f0d3cc
+  <- AliothEngine.WeakEvents.WeakEvent$$Add @ 0169749c
+  <- AliothEngine.WeakEvents.WeakEvent<object,-object>$$op_Addition @ 01f0d1d4
+  <- AliothEngine.WeakEvents.WeakEvent<object>$$Add @ 01f0cf88
+
+--- Listing ---
+01addf30  str x20,[sp, #-0x20]!
+01addf34  stp x19,x30,[sp, #0x10]
+01addf38  ldr x8,[x0, #0x10]
+01addf3c  cbz x8,0x01addf84
+01addf40  ldr w9,[x0, #0x18]
+01addf44  ldr w10,[x8, #0x18]
+01addf48  mov x20,x0
+01addf4c  mov x19,x1
+01addf50  cmp w9,w10
+01addf54  b.ne 0x01addf88
+01addf58  ldr x8,[x2, #0x20]
+01addf5c  mov x0,x20
+01addf60  ldr x8,[x8, #0xc0]
+01addf64  ldr x1,[x8, #0x38]
+01addf68  ldr x8,[x1, #0x8]
+01addf6c  blr x8
+01addf70  ldr w9,[x20, #0x18]
+01addf74  ldr x8,[x20, #0x10]
+01addf78  add w10,w9,#0x1
+01addf7c  str w10,[x20, #0x18]
+01addf80  cbnz x8,0x01addf90
+01addf84  bl 0x00b079b0
+01addf88  add w10,w9,#0x1
+01addf8c  str w10,[x20, #0x18]
+01addf90  ldr w10,[x8, #0x18]
+01addf94  cmp w9,w10
+01addf98  b.cs 0x01addfb4
+01addf9c  add x0,x8,w9, SXTW  #0x3
+01addfa0  str x19,[x0, #0x20]!
+01addfa4  mov x1,x19
+01addfa8  ldp x19,x30,[sp, #0x10]
+01addfac  ldr x20,[sp], #0x20
+01addfb0  b 0x00b07850
+01addfb4  bl 0x00b079b8

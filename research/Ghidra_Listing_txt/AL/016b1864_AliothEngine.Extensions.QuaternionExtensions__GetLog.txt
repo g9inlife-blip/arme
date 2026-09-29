@@ -1,0 +1,44 @@
+Function: AliothEngine.Extensions.QuaternionExtensions$$GetLog @ 016b1864
+
+--- Calls OUT ---
+  -> atan2f @ 008d5240
+
+--- Calls IN ---
+
+--- Listing ---
+016b1864  stp d11,d10,[sp, #-0x30]!
+016b1868  stp d9,d8,[sp, #0x10]
+016b186c  str x30,[sp, #0x20]
+016b1870  fmul s4,s0,s0
+016b1874  fmul s5,s1,s1
+016b1878  fadd s4,s4,s5
+016b187c  fmul s5,s2,s2
+016b1880  fadd s4,s5,s4
+016b1884  fmul s5,s3,s3
+016b1888  fadd s4,s5,s4
+016b188c  fsqrt s4,s4
+016b1890  fdiv s9,s0,s4
+016b1894  fdiv s10,s1,s4
+016b1898  fdiv s11,s2,s4
+016b189c  fmul s0,s9,s9
+016b18a0  fmul s2,s10,s10
+016b18a4  fdiv s1,s3,s4
+016b18a8  fadd s0,s0,s2
+016b18ac  fmul s2,s11,s11
+016b18b0  fadd s0,s2,s0
+016b18b4  fmul s2,s1,s1
+016b18b8  fadd s0,s2,s0
+016b18bc  fsqrt s8,s0
+016b18c0  mov v0.16B,v8.16B
+016b18c4  bl 0x008d5240
+016b18c8  fdiv s0,s0,s8
+016b18cc  fmul s1,s9,s0
+016b18d0  ldr x30,[sp, #0x20]
+016b18d4  ldp d9,d8,[sp, #0x10]
+016b18d8  fmul s2,s10,s0
+016b18dc  fmul s3,s11,s0
+016b18e0  fabs s0,s1
+016b18e4  fabs s1,s2
+016b18e8  fabs s2,s3
+016b18ec  ldp d11,d10,[sp], #0x30
+016b18f0  ret

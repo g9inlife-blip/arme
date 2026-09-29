@@ -1,0 +1,48 @@
+Function: AliothEngine.GUIScreenManager$$Init @ 01675e34
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreenManager$$_InitSubCanvas @ 0167730c
+  -> AliothEngine.GUIScreenManager$$_InitEmptyOverlay @ 01677590
+  -> AliothEngine.GUIScreenManager$$_InitRoot @ 01677154
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$Awake @ 01675ce8
+
+--- Listing ---
+01675e34  stp x21,x20,[sp, #-0x20]!
+01675e38  stp x19,x30,[sp, #0x10]
+01675e3c  adrp x21,0x3577000
+01675e40  adrp x20,0x337b000
+01675e44  ldrb w8,[x21, #0x9ca]
+01675e48  ldr x20,[x20, #0xb98]
+01675e4c  mov x19,x0
+01675e50  tbnz w8,#0x0,0x01675e68
+01675e54  adrp x0,0x337b000
+01675e58  ldr x0,[x0, #0xb98]
+01675e5c  bl 0x00b0789c
+01675e60  mov w8,#0x1
+01675e64  strb w8,[x21, #0x9ca]
+01675e68  ldr x0,[x20]
+01675e6c  ldr w8,[x0, #0xe0]
+01675e70  cbnz w8,0x01675e7c
+01675e74  bl 0x00b0798c
+01675e78  ldr x0,[x20]
+01675e7c  ldr x8,[x0, #0xb8]
+01675e80  ldr x0,[x8, #0x168]
+01675e84  cbz x0,0x01675e9c
+01675e88  mov x1,x19
+01675e8c  ldp x19,x30,[sp, #0x10]
+01675e90  mov x2,xzr
+01675e94  ldp x21,x20,[sp], #0x20
+01675e98  b 0x01060dac
+01675e9c  mov x0,x19
+01675ea0  bl 0x01677154
+01675ea4  mov x0,x19
+01675ea8  bl 0x0167730c
+01675eac  mov x0,x19
+01675eb0  ldp x19,x30,[sp, #0x10]
+01675eb4  ldp x21,x20,[sp], #0x20
+01675eb8  b 0x01677590

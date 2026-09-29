@@ -1,0 +1,19 @@
+Function: AliothEngine.Utils.Utility$$Exponential01 @ 0169d964
+
+--- Calls OUT ---
+  -> exp2f @ 008d50f0
+
+--- Calls IN ---
+
+--- Listing ---
+0169d964  str x30,[sp, #-0x10]!
+0169d968  fmov s1,0x3f800000
+0169d96c  fcmp s0,#0.0
+0169d970  fmin s0,s0,s1
+0169d974  fmov s1,wzr
+0169d978  fcsel s0,s0,s1,pl
+0169d97c  bl 0x008d50f0
+0169d980  fmov s1,0xbf800000
+0169d984  fadd s0,s0,s1
+0169d988  ldr x30,[sp], #0x10
+0169d98c  ret

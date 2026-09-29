@@ -1,0 +1,39 @@
+Function: AliothEngine.Utils.CustomPersistentDataPath$$SaveData @ 01699450
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.CustomPersistentDataPath$$GetPersistentFile @ 016992dc
+  -> AliothEngine.Utils.CustomPersistentDataPath$$SaveData @ 01699594
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.IO.File$$WriteAllBytes @ 020b0d44
+
+--- Calls IN ---
+
+--- Listing ---
+01699450  stp x23,x22,[sp, #-0x30]!
+01699454  stp x21,x20,[sp, #0x10]
+01699458  stp x19,x30,[sp, #0x20]
+0169945c  mov x19,x1
+01699460  mov x20,x0
+01699464  bl 0x016992dc
+01699468  mov x1,xzr
+0169946c  mov x21,x0
+01699470  bl 0x01fdf3a0
+01699474  tbz w0,#0x0,0x01699494
+01699478  mov x0,x20
+0169947c  mov x1,x19
+01699480  ldp x19,x30,[sp, #0x20]
+01699484  ldp x21,x20,[sp, #0x10]
+01699488  mov w2,wzr
+0169948c  ldp x23,x22,[sp], #0x30
+01699490  b 0x01699594
+01699494  mov x0,x21
+    ; [PRE] try { // try from 01699494 to 016994a3 has its CatchHandler @ 016994b8
+01699498  mov x1,x19
+0169949c  mov x2,xzr
+016994a0  bl 0x020b0d44
+    ; [POST] } // end try from 01699494 to 016994a3
+016994a4  ldp x19,x30,[sp, #0x20]
+016994a8  ldp x21,x20,[sp, #0x10]
+016994ac  mov w0,#0x1
+016994b0  ldp x23,x22,[sp], #0x30
+016994b4  ret

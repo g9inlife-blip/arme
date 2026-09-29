@@ -1,0 +1,61 @@
+Function: AliothEngine.Extensions.GameObjectExtensions.<GetChildren>d__27$$MoveNext @ 016ae15c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ae15c  stp x21,x20,[sp, #-0x20]!
+016ae160  stp x19,x30,[sp, #0x10]
+016ae164  ldr w8,[x0, #0x10]
+016ae168  mov x19,x0
+016ae16c  cmp w8,#0x1
+016ae170  b.eq 0x016ae1b0
+016ae174  cbnz w8,0x016ae20c
+016ae178  ldr x0,[x19, #0x28]
+016ae17c  mov w8,#0xffffffff
+016ae180  str w8,[x19, #0x10]
+016ae184  cbz x0,0x016ae21c
+016ae188  mov x1,xzr
+016ae18c  bl 0x024de730
+016ae190  mov x20,x19
+016ae194  str x0,[x20, #0x38]!
+016ae198  mov x1,x0
+016ae19c  mov x0,x20
+016ae1a0  bl 0x00b07850
+016ae1a4  mov w21,wzr
+016ae1a8  str wzr,[x20, #0x8]
+016ae1ac  b 0x016ae1c4
+016ae1b0  ldr w8,[x19, #0x40]
+016ae1b4  mov w9,#0xffffffff
+016ae1b8  str w9,[x19, #0x10]
+016ae1bc  add w21,w8,#0x1
+016ae1c0  str w21,[x19, #0x40]
+016ae1c4  ldr x0,[x19, #0x38]
+016ae1c8  cbz x0,0x016ae21c
+016ae1cc  mov x1,xzr
+016ae1d0  bl 0x024f5578
+016ae1d4  cmp w21,w0
+016ae1d8  b.ge 0x016ae20c
+016ae1dc  ldr x0,[x19, #0x38]
+016ae1e0  cbz x0,0x016ae21c
+016ae1e4  ldr w1,[x19, #0x40]
+016ae1e8  mov x2,xzr
+016ae1ec  bl 0x024f5bec
+016ae1f0  str x0,[x19, #0x18]!
+016ae1f4  mov x1,x0
+016ae1f8  mov x0,x19
+016ae1fc  bl 0x00b07850
+016ae200  mov w0,#0x1
+016ae204  stur w0,[x19, #-0x8]
+016ae208  b 0x016ae210
+016ae20c  mov w0,wzr
+016ae210  ldp x19,x30,[sp, #0x10]
+016ae214  ldp x21,x20,[sp], #0x20
+016ae218  ret
+016ae21c  bl 0x00b079b0

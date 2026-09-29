@@ -1,0 +1,101 @@
+Function: AliothEngine.Utils.Utility$$ReadArray @ 016a007c
+
+--- Calls OUT ---
+  -> System.String$$Split @ 01fe0d68
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Utils.Utility$$FilterValueField @ 0169fcfc
+  -> System.String$$Substring @ 01fe0458
+  -> System.String$$Substring @ 01fe29c0
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Utils.Utility$$ParseFloat @ 0169fff0
+  -> System.String$$StartsWith @ 01fde68c
+  -> System.String$$EndsWith @ 01fddcec
+
+--- Calls IN ---
+
+--- Listing ---
+016a007c  stp x23,x22,[sp, #-0x30]!
+016a0080  stp x21,x20,[sp, #0x10]
+016a0084  stp x19,x30,[sp, #0x20]
+016a0088  adrp x20,0x3577000
+016a008c  ldrb w8,[x20, #0xb57]
+016a0090  mov x19,x0
+016a0094  tbnz w8,#0x0,0x016a00b8
+016a0098  adrp x0,0x3338000
+016a009c  ldr x0,[x0, #0x780]
+016a00a0  bl 0x00b0789c
+016a00a4  adrp x0,0x3370000
+016a00a8  ldr x0,[x0, #0xe68]
+016a00ac  bl 0x00b0789c
+016a00b0  mov w8,#0x1
+016a00b4  strb w8,[x20, #0xb57]
+016a00b8  mov x0,x19
+016a00bc  bl 0x0169fcfc
+016a00c0  cbz x0,0x016a01c4
+016a00c4  adrp x20,0x3370000
+016a00c8  ldr x20,[x20, #0xe68]
+016a00cc  mov x2,xzr
+016a00d0  mov x19,x0
+016a00d4  ldr x1,[x20]
+016a00d8  bl 0x01fde68c
+016a00dc  tbz w0,#0x0,0x016a00f8
+016a00e0  mov w1,#0x1
+016a00e4  mov x0,x19
+016a00e8  mov x2,xzr
+016a00ec  bl 0x01fe29c0
+016a00f0  mov x19,x0
+016a00f4  cbz x0,0x016a01c4
+016a00f8  ldr x1,[x20]
+016a00fc  mov x0,x19
+016a0100  mov x2,xzr
+016a0104  bl 0x01fddcec
+016a0108  tbz w0,#0x0,0x016a012c
+016a010c  ldr w8,[x19, #0x10]
+016a0110  mov x0,x19
+016a0114  mov w1,wzr
+016a0118  mov x3,xzr
+016a011c  sub w2,w8,#0x1
+016a0120  bl 0x01fe0458
+016a0124  mov x19,x0
+016a0128  cbz x0,0x016a01c4
+016a012c  mov w1,#0x20
+016a0130  mov x0,x19
+016a0134  mov w2,wzr
+016a0138  mov x3,xzr
+016a013c  bl 0x01fe0d68
+016a0140  cbz x0,0x016a01c4
+016a0144  adrp x8,0x3338000
+016a0148  ldr x8,[x8, #0x780]
+016a014c  mov x19,x0
+016a0150  ldr w1,[x19, #0x18]
+016a0154  ldr x0,[x8]
+016a0158  bl 0x00b078f8
+016a015c  cbz x0,0x016a01c4
+016a0160  ldr w8,[x0, #0x18]
+016a0164  mov x20,x0
+016a0168  cmp w8,#0x1
+016a016c  b.lt 0x016a01ac
+016a0170  mov x21,xzr
+016a0174  add x22,x19,#0x20
+016a0178  add x23,x20,#0x20
+016a017c  ldr w8,[x19, #0x18]
+016a0180  cmp x21,x8
+016a0184  b.cs 0x016a01c0
+016a0188  ldr x0,[x22, x21, LSL #0x3]
+016a018c  bl 0x0169fff0
+016a0190  ldr w8,[x20, #0x18]
+016a0194  cmp x21,x8
+016a0198  b.cs 0x016a01c0
+016a019c  str s0,[x23,x21, lsl #2]
+016a01a0  add x21,x21,#0x1
+016a01a4  cmp x21,w8, SXTW 
+016a01a8  b.lt 0x016a017c
+016a01ac  mov x0,x20
+016a01b0  ldp x19,x30,[sp, #0x20]
+016a01b4  ldp x21,x20,[sp, #0x10]
+016a01b8  ldp x23,x22,[sp], #0x30
+016a01bc  ret
+016a01c0  bl 0x00b079b8
+016a01c4  bl 0x00b079b0

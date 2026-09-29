@@ -1,0 +1,79 @@
+Function: ResManager$$ClearAll @ 00e2a474
+
+--- Calls OUT ---
+  -> ResManager$$set_m_preLoad @ 00e29fec
+  -> System.Collections.Generic.Dictionary<object,-object>$$Clear @ 0196e66c
+  -> PreLoad$$Unload @ 00e2955c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> ResManager$$get_m_preLoad @ 00e29f84
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<object,-int>$$Clear @ 01968760
+
+--- Calls IN ---
+  <- Ali$$ClearAllAsset @ 00e0a560
+  <- XLua.CSObjectWrap.ResManagerWrap$$_m_ClearAll @ 01357df0
+
+--- Listing ---
+00e2a474  stp x21,x20,[sp, #-0x20]!
+00e2a478  stp x19,x30,[sp, #0x10]
+00e2a47c  adrp x20,0x3572000
+00e2a480  adrp x21,0x337e000
+00e2a484  ldrb w8,[x20, #0x721]
+00e2a488  ldr x21,[x21, #0x4c8]
+00e2a48c  mov x19,x0
+00e2a490  tbnz w8,#0x0,0x00e2a4cc
+00e2a494  adrp x0,0x3355000
+00e2a498  ldr x0,[x0, #0x9d8]
+00e2a49c  bl 0x00b0789c
+00e2a4a0  adrp x0,0x330d000
+00e2a4a4  ldr x0,[x0, #0x7d8]
+00e2a4a8  bl 0x00b0789c
+00e2a4ac  adrp x0,0x3338000
+00e2a4b0  ldr x0,[x0, #0x9c8]
+00e2a4b4  bl 0x00b0789c
+00e2a4b8  adrp x0,0x337e000
+00e2a4bc  ldr x0,[x0, #0x4c8]
+00e2a4c0  bl 0x00b0789c
+00e2a4c4  mov w8,#0x1
+00e2a4c8  strb w8,[x20, #0x721]
+00e2a4cc  ldr x8,[x21]
+00e2a4d0  ldr x8,[x8, #0xb8]
+00e2a4d4  ldr x0,[x8, #0x28]
+00e2a4d8  cbz x0,0x00e2a4f0
+00e2a4dc  mov x1,x19
+00e2a4e0  ldp x19,x30,[sp, #0x10]
+00e2a4e4  mov x2,xzr
+00e2a4e8  ldp x21,x20,[sp], #0x20
+00e2a4ec  b 0x01060dac
+00e2a4f0  mov x0,x19
+00e2a4f4  bl 0x00e29f84
+00e2a4f8  cbz x0,0x00e2a518
+00e2a4fc  mov x0,x19
+00e2a500  bl 0x00e29f84
+00e2a504  cbz x0,0x00e2a568
+00e2a508  bl 0x00e2955c
+00e2a50c  mov x0,x19
+00e2a510  mov x1,xzr
+00e2a514  bl 0x00e29fec
+00e2a518  ldr x0,[x19, #0x18]
+00e2a51c  cbz x0,0x00e2a568
+00e2a520  adrp x8,0x3355000
+00e2a524  ldr x8,[x8, #0x9d8]
+00e2a528  ldr x1,[x8]
+00e2a52c  bl 0x0196e66c
+00e2a530  ldr x0,[x19, #0x20]
+00e2a534  cbz x0,0x00e2a568
+00e2a538  adrp x8,0x3338000
+00e2a53c  ldr x8,[x8, #0x9c8]
+00e2a540  ldr x1,[x8]
+00e2a544  bl 0x0196e66c
+00e2a548  ldr x0,[x19, #0x30]
+00e2a54c  cbz x0,0x00e2a568
+00e2a550  adrp x8,0x330d000
+00e2a554  ldr x8,[x8, #0x7d8]
+00e2a558  ldp x19,x30,[sp, #0x10]
+00e2a55c  ldr x1,[x8]
+00e2a560  ldp x21,x20,[sp], #0x20
+00e2a564  b 0x01968760
+00e2a568  bl 0x00b079b0

@@ -1,0 +1,33 @@
+Function: AliothEngine.Vector3Range$$GetRandomValue @ 01686744
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d6370
+
+--- Calls IN ---
+
+--- Listing ---
+01686744  stp d9,d8,[sp, #-0x20]!
+01686748  stp x19,x30,[sp, #0x10]
+0168674c  ldr s0,[x0, #0x10]
+01686750  ldr s1,[x0, #0x1c]
+01686754  mov x19,x0
+01686758  mov x0,xzr
+0168675c  bl 0x024d6370
+01686760  ldr s2,[x19, #0x14]
+01686764  ldr s1,[x19, #0x20]
+01686768  mov v8.16B,v0.16B
+0168676c  mov x0,xzr
+01686770  mov v0.16B,v2.16B
+01686774  bl 0x024d6370
+01686778  ldr s2,[x19, #0x18]
+0168677c  ldr s1,[x19, #0x24]
+01686780  mov v9.16B,v0.16B
+01686784  mov x0,xzr
+01686788  mov v0.16B,v2.16B
+0168678c  bl 0x024d6370
+01686790  ldp x19,x30,[sp, #0x10]
+01686794  mov v2.16B,v0.16B
+01686798  mov v0.16B,v8.16B
+0168679c  mov v1.16B,v9.16B
+016867a0  ldp d9,d8,[sp], #0x20
+016867a4  ret

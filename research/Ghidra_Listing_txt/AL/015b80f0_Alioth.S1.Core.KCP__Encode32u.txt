@@ -1,0 +1,74 @@
+Function: Alioth.S1.Core.KCP$$Encode32u @ 015b80f0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp762 @ 010c3dec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$EncodeSegment @ 015b8774
+
+--- Listing ---
+015b80f0  stp x23,x22,[sp, #-0x30]!
+015b80f4  stp x21,x20,[sp, #0x10]
+015b80f8  stp x19,x30,[sp, #0x20]
+015b80fc  adrp x22,0x3577000
+015b8100  adrp x23,0x333d000
+015b8104  ldrb w8,[x22, #0xfb]
+015b8108  ldr x23,[x23, #0xfc0]
+015b810c  mov w19,w2
+015b8110  mov w21,w1
+015b8114  mov x20,x0
+015b8118  tbnz w8,#0x0,0x015b8130
+015b811c  adrp x0,0x333d000
+015b8120  ldr x0,[x0, #0xfc0]
+015b8124  bl 0x00b0789c
+015b8128  mov w8,#0x1
+015b812c  strb w8,[x22, #0xfb]
+015b8130  ldr x8,[x23]
+015b8134  ldr x8,[x8, #0xb8]
+015b8138  ldr x0,[x8, #0x20]
+015b813c  cbz x0,0x015b8160
+015b8140  mov x1,x20
+015b8144  mov w2,w21
+015b8148  mov w3,w19
+015b814c  ldp x19,x30,[sp, #0x20]
+015b8150  ldp x21,x20,[sp, #0x10]
+015b8154  mov x4,xzr
+015b8158  ldp x23,x22,[sp], #0x30
+015b815c  b 0x010c3dec
+015b8160  cbz x20,0x015b81e4
+015b8164  ldr w8,[x20, #0x18]
+015b8168  cmp w8,w21
+015b816c  b.ls 0x015b81e0
+015b8170  add x8,x20,w21, SXTW 
+015b8174  strb w19,[x8, #0x20]
+015b8178  ldr w9,[x20, #0x18]
+015b817c  add w8,w21,#0x1
+015b8180  cmp w8,w9
+015b8184  b.cs 0x015b81e0
+015b8188  lsr w9,w19,#0x8
+015b818c  add x8,x20,w8, SXTW 
+015b8190  strb w9,[x8, #0x20]
+015b8194  ldr w9,[x20, #0x18]
+015b8198  add w8,w21,#0x2
+015b819c  cmp w8,w9
+015b81a0  b.cs 0x015b81e0
+015b81a4  lsr w9,w19,#0x10
+015b81a8  add x8,x20,w8, SXTW 
+015b81ac  strb w9,[x8, #0x20]
+015b81b0  ldr w9,[x20, #0x18]
+015b81b4  add w8,w21,#0x3
+015b81b8  cmp w8,w9
+015b81bc  b.cs 0x015b81e0
+015b81c0  lsr w9,w19,#0x18
+015b81c4  add x8,x20,w8, SXTW 
+015b81c8  strb w9,[x8, #0x20]
+015b81cc  ldp x19,x30,[sp, #0x20]
+015b81d0  ldp x21,x20,[sp, #0x10]
+015b81d4  mov w0,#0x4
+015b81d8  ldp x23,x22,[sp], #0x30
+015b81dc  ret
+015b81e0  bl 0x00b079b8
+015b81e4  bl 0x00b079b0

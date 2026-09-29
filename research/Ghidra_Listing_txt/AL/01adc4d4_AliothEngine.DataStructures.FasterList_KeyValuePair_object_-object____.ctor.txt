@@ -1,0 +1,33 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$.ctor @ 01adc4d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Object$$.ctor @ 02194104
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01adc4d4  stp x21,x20,[sp, #-0x20]!
+01adc4d8  stp x19,x30,[sp, #0x10]
+01adc4dc  mov w20,w1
+01adc4e0  mov x1,xzr
+01adc4e4  mov x21,x2
+01adc4e8  mov x19,x0
+01adc4ec  bl 0x02194104
+01adc4f0  str wzr,[x19, #0x18]
+01adc4f4  ldr x8,[x21, #0x20]
+01adc4f8  ldr x8,[x8, #0xc0]
+01adc4fc  ldr x0,[x8]
+01adc500  ldrb w8,[x0, #0x132]
+01adc504  tbnz w8,#0x0,0x01adc50c
+01adc508  bl 0x00b2ac40
+01adc50c  mov w1,w20
+01adc510  bl 0x00b078f8
+01adc514  str x0,[x19, #0x10]!
+01adc518  mov x1,x0
+01adc51c  mov x0,x19
+01adc520  ldp x19,x30,[sp, #0x10]
+01adc524  ldp x21,x20,[sp], #0x20
+01adc528  b 0x00b07850

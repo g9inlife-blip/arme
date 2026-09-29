@@ -1,0 +1,36 @@
+Function: AliothEngine.Extensions.ActionExtensions$$SafeInvoke @ 016a9934
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Delegate$$DynamicInvoke @ 0219be1c
+
+--- Calls IN ---
+
+--- Listing ---
+016a9934  str x20,[sp, #-0x20]!
+016a9938  stp x19,x30,[sp, #0x10]
+016a993c  adrp x20,0x3577000
+016a9940  ldrb w8,[x20, #0xba5]
+016a9944  mov x19,x0
+016a9948  tbnz w8,#0x0,0x016a9960
+016a994c  adrp x0,0x3370000
+016a9950  ldr x0,[x0, #0x778]
+016a9954  bl 0x00b0789c
+016a9958  mov w8,#0x1
+016a995c  strb w8,[x20, #0xba5]
+016a9960  cbz x19,0x016a9990
+016a9964  adrp x8,0x3370000
+016a9968  ldr x8,[x8, #0x778]
+016a996c  mov w1,wzr
+016a9970  ldr x0,[x8]
+016a9974  bl 0x00b078f8
+016a9978  mov x1,x0
+016a997c  mov x0,x19
+016a9980  ldp x19,x30,[sp, #0x10]
+016a9984  mov x2,xzr
+016a9988  ldr x20,[sp], #0x20
+016a998c  b 0x0219be1c
+016a9990  ldp x19,x30,[sp, #0x10]
+016a9994  ldr x20,[sp], #0x20
+016a9998  ret

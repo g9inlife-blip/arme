@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.DictionaryExtensions$$FirstOrDefault<int,-int> @ 01776e30
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary.Enumerator<int,-int>$$MoveNext @ 01a3efbc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- StiMarkDevPanelMono$$RefreshEquipDevItem @ 00edfc50
+  <- StiMarkDevPanelMono$$OnClickDev @ 00ee0524
+
+--- Listing ---
+01776e30  sub sp,sp,#0x50
+01776e34  stp x19,x30,[sp, #0x40]
+01776e38  movi v0.2D,#0x0
+01776e3c  stp q0,q0,[sp, #0x20]
+01776e40  cbz x0,0x01776e8c
+01776e44  ldr x8,[x1, #0x38]
+01776e48  mov x19,x1
+01776e4c  ldr x1,[x8, #0x8]
+01776e50  mov x8,sp
+01776e54  ldr x9,[x1, #0x8]
+01776e58  blr x9
+01776e5c  ldp q0,q1,[sp]
+01776e60  add x0,sp,#0x20
+01776e64  stp q0,q1,[sp, #0x20]
+01776e68  ldr x8,[x19, #0x38]
+01776e6c  ldr x1,[x8, #0x10]
+01776e70  bl 0x01a3efbc
+01776e74  ldr x8,[sp, #0x30]
+01776e78  ldp x19,x30,[sp, #0x40]
+01776e7c  tst w0,#0x1
+01776e80  csel x0,x8,xzr,ne
+01776e84  add sp,sp,#0x50
+01776e88  ret
+01776e8c  bl 0x00b079b0

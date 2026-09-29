@@ -1,0 +1,186 @@
+Function: AliothEngine.GUIScreenManager$$_InitSubCanvas @ 0167730c
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreenManager$$get_RootCanvas @ 016767b0
+  -> System.Collections.Generic.Dictionary<Int32Enum,-object>$$get_Count @ 0193fbf4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> System.Collections.Generic.Dictionary<Int32Enum,-object>$$Add @ 0193fec8
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreenManager$$CreateSubCanvasForRoot @ 01676c18
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> AliothEngine.Extensions.ReparentingExtensions$$Reparent @ 016b4c14
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> System.Enum$$ToString @ 02186100
+  -> FUN_00b079b8 @ 00b079b8
+  -> AliothEngine.GUIScreenManager$$GetLayerSortingOrder @ 01670dd4
+  -> System.Enum$$GetValues @ 02184748
+  -> UnityEngine.Object$$set_name @ 024df584
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$Init @ 01675e34
+
+--- Listing ---
+0167730c  sub sp,sp,#0x80
+01677310  stp x28,x27,[sp, #0x20]
+01677314  stp x26,x25,[sp, #0x30]
+01677318  stp x24,x23,[sp, #0x40]
+0167731c  stp x22,x21,[sp, #0x50]
+01677320  stp x20,x19,[sp, #0x60]
+01677324  stp x29,x30,[sp, #0x70]
+01677328  adrp x20,0x3577000
+0167732c  adrp x24,0x337b000
+01677330  ldrb w8,[x20, #0x9cc]
+01677334  ldr x24,[x24, #0xb98]
+01677338  mov x19,x0
+0167733c  tbnz w8,#0x0,0x016773a8
+01677340  adrp x0,0x333d000
+01677344  ldr x0,[x0, #0xa30]
+01677348  bl 0x00b0789c
+0167734c  adrp x0,0x333b000
+01677350  ldr x0,[x0, #0xc30]
+01677354  bl 0x00b0789c
+01677358  adrp x0,0x3358000
+0167735c  ldr x0,[x0, #0xa10]
+01677360  bl 0x00b0789c
+01677364  adrp x0,0x3343000
+01677368  ldr x0,[x0, #0xa8]
+0167736c  bl 0x00b0789c
+01677370  adrp x0,0x3357000
+01677374  ldr x0,[x0, #0x820]
+01677378  bl 0x00b0789c
+0167737c  adrp x0,0x3362000
+01677380  ldr x0,[x0, #0xc98]
+01677384  bl 0x00b0789c
+01677388  adrp x0,0x337b000
+0167738c  ldr x0,[x0, #0xb98]
+01677390  bl 0x00b0789c
+01677394  adrp x0,0x3347000
+01677398  ldr x0,[x0, #0xd68]
+0167739c  bl 0x00b0789c
+016773a0  mov w8,#0x1
+016773a4  strb w8,[x20, #0x9cc]
+016773a8  ldr x0,[x24]
+016773ac  ldr w8,[x0, #0xe0]
+016773b0  cbnz w8,0x016773bc
+016773b4  bl 0x00b0798c
+016773b8  ldr x0,[x24]
+016773bc  ldr x8,[x0, #0xb8]
+016773c0  ldr x0,[x8, #0x178]
+016773c4  cbz x0,0x016773f0
+016773c8  mov x1,x19
+016773cc  ldp x29,x30,[sp, #0x70]
+016773d0  ldp x20,x19,[sp, #0x60]
+016773d4  ldp x22,x21,[sp, #0x50]
+016773d8  ldp x24,x23,[sp, #0x40]
+016773dc  ldp x26,x25,[sp, #0x30]
+016773e0  ldp x28,x27,[sp, #0x20]
+016773e4  mov x2,xzr
+016773e8  add sp,sp,#0x80
+016773ec  b 0x01060dac
+016773f0  ldr x0,[x19, #0x28]
+016773f4  cbz x0,0x01677588
+016773f8  adrp x8,0x333b000
+016773fc  ldr x8,[x8, #0xc30]
+01677400  ldr x1,[x8]
+01677404  bl 0x0193fbf4
+01677408  cbnz w0,0x01677568
+0167740c  adrp x8,0x3347000
+01677410  ldr x8,[x8, #0xd68]
+01677414  adrp x22,0x3358000
+01677418  ldr x0,[x8]
+0167741c  adrp x8,0x3357000
+01677420  ldr x8,[x8, #0x820]
+01677424  ldr w9,[x0, #0xe0]
+01677428  ldr x20,[x8]
+0167742c  ldr x22,[x22, #0xa10]
+01677430  cbnz w9,0x01677438
+01677434  bl 0x00b0798c
+01677438  adrp x21,0x3343000
+0167743c  ldr x21,[x21, #0xa8]
+01677440  mov x0,x20
+01677444  mov x1,xzr
+01677448  bl 0x0215f900
+0167744c  ldr x8,[x22]
+01677450  mov x20,x0
+01677454  ldr w9,[x8, #0xe0]
+01677458  cbnz w9,0x01677464
+0167745c  mov x0,x8
+01677460  bl 0x00b0798c
+01677464  mov x0,x20
+01677468  mov x1,xzr
+0167746c  bl 0x02184748
+01677470  ldr x1,[x21]
+01677474  bl 0x00b07990
+01677478  cbz x0,0x01677588
+0167747c  ldr x8,[x0, #0x18]
+01677480  mov x20,x0
+01677484  cmp w8,#0x1
+01677488  b.lt 0x01677568
+0167748c  adrp x26,0x3362000
+01677490  adrp x27,0x333d000
+01677494  ldr x26,[x26, #0xc98]
+01677498  ldr x27,[x27, #0xa30]
+0167749c  mov x25,xzr
+016774a0  and x8,x8,#0xffffffff
+016774a4  add x28,x20,#0x20
+016774a8  mov x29,#-0x1
+016774ac  cmp x25,w8, UXTW 
+016774b0  b.cs 0x0167758c
+016774b4  ldr x8,[x26]
+016774b8  ldr w21,[x28, x25, LSL #0x2]
+016774bc  add x0,sp,#0x8
+016774c0  mov x1,xzr
+016774c4  stp x8,x29,[sp, #0x8]
+016774c8  str w21,[sp, #0x18]
+016774cc  bl 0x02186100
+016774d0  ldr x8,[x24]
+016774d4  mov x22,x0
+016774d8  ldr w9,[x8, #0xe0]
+016774dc  cbnz w9,0x016774e8
+016774e0  mov x0,x8
+016774e4  bl 0x00b0798c
+016774e8  bl 0x016767b0
+016774ec  mov x23,x0
+016774f0  mov w0,w21
+016774f4  bl 0x01670dd4
+016774f8  mov w1,w0
+016774fc  mov x0,x23
+01677500  bl 0x01676c18
+01677504  cbz x0,0x01677588
+01677508  mov x1,x22
+0167750c  mov x2,xzr
+01677510  mov x23,x0
+01677514  bl 0x024df584
+01677518  bl 0x016767b0
+0167751c  mov x1,x0
+01677520  mov w2,#0x2
+01677524  mov x0,x23
+01677528  mov x3,xzr
+0167752c  bl 0x016b4c14
+01677530  ldr x22,[x19, #0x28]
+01677534  mov x0,x23
+01677538  mov x1,xzr
+0167753c  bl 0x024e4e98
+01677540  cbz x22,0x01677588
+01677544  ldr x3,[x27]
+01677548  mov x2,x0
+0167754c  mov x0,x22
+01677550  mov w1,w21
+01677554  bl 0x0193fec8
+01677558  ldr w8,[x20, #0x18]
+0167755c  add x25,x25,#0x1
+01677560  cmp x25,w8, SXTW 
+01677564  b.lt 0x016774ac
+01677568  ldp x29,x30,[sp, #0x70]
+0167756c  ldp x20,x19,[sp, #0x60]
+01677570  ldp x22,x21,[sp, #0x50]
+01677574  ldp x24,x23,[sp, #0x40]
+01677578  ldp x26,x25,[sp, #0x30]
+0167757c  ldp x28,x27,[sp, #0x20]
+01677580  add sp,sp,#0x80
+01677584  ret
+01677588  bl 0x00b079b0
+0167758c  bl 0x00b079b8

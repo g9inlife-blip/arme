@@ -1,0 +1,84 @@
+Function: AliothEngine.Extensions.UGUIExtensions$$UIImageSetNativeAsceptRadio @ 016bbb10
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.UGUIExtensions$$AsceptRadio @ 016bbac4
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.UI.AspectRatioFitter$$set_aspectRatio @ 025910f8
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+  <- HomePanelMono$$<ChangePicture>b__71_1 @ 00f70298
+  <- HeroDetailPanelMono$$<ShowDetail>b__10_0 @ 00f3a230
+  <- CVHeroDetailPanelMono$$<ShowDetail>b__13_0 @ 00f30cb8
+  <- SkillPoseMono$$SkillPoseSet @ 00e9239c
+  <- RoleLvUpPanelMono$$<Init>b__30_0 @ 00e90ca0
+
+--- Listing ---
+016bbb10  stp x21,x20,[sp, #-0x20]!
+016bbb14  stp x19,x30,[sp, #0x10]
+016bbb18  adrp x20,0x3577000
+016bbb1c  ldrb w8,[x20, #0xc38]
+016bbb20  mov x19,x0
+016bbb24  tbnz w8,#0x0,0x016bbb48
+016bbb28  adrp x0,0x334f000
+016bbb2c  ldr x0,[x0, #0x6b0]
+016bbb30  bl 0x00b0789c
+016bbb34  adrp x0,0x3321000
+016bbb38  ldr x0,[x0, #0xca8]
+016bbb3c  bl 0x00b0789c
+016bbb40  mov w8,#0x1
+016bbb44  strb w8,[x20, #0xc38]
+016bbb48  cbz x19,0x016bbc10
+016bbb4c  adrp x8,0x334f000
+016bbb50  ldr x8,[x8, #0x6b0]
+016bbb54  adrp x21,0x3321000
+016bbb58  mov x0,x19
+016bbb5c  ldr x1,[x8]
+016bbb60  ldr x21,[x21, #0xca8]
+016bbb64  bl 0x0176cbf8
+016bbb68  ldr x8,[x21]
+016bbb6c  mov x20,x0
+016bbb70  ldr w9,[x8, #0xe0]
+016bbb74  cbnz w9,0x016bbb80
+016bbb78  mov x0,x8
+016bbb7c  bl 0x00b0798c
+016bbb80  mov x0,x20
+016bbb84  mov x1,xzr
+016bbb88  mov x2,xzr
+016bbb8c  bl 0x024de30c
+016bbb90  tbz w0,#0x0,0x016bbc04
+016bbb94  ldr x8,[x19]
+016bbb98  mov x0,x19
+016bbb9c  ldr x9,[x8, #0x368]
+016bbba0  ldr x1,[x8, #0x370]
+016bbba4  blr x9
+016bbba8  ldr x8,[x21]
+016bbbac  mov x21,x0
+016bbbb0  ldr w9,[x8, #0xe0]
+016bbbb4  cbnz w9,0x016bbbc0
+016bbbb8  mov x0,x8
+016bbbbc  bl 0x00b0798c
+016bbbc0  mov x0,x21
+016bbbc4  mov x1,xzr
+016bbbc8  mov x2,xzr
+016bbbcc  bl 0x024de30c
+016bbbd0  tbz w0,#0x0,0x016bbc04
+016bbbd4  ldr x8,[x19]
+016bbbd8  mov x0,x19
+016bbbdc  ldr x9,[x8, #0x368]
+016bbbe0  ldr x1,[x8, #0x370]
+016bbbe4  blr x9
+016bbbe8  bl 0x016bbac4
+016bbbec  cbz x20,0x016bbc10
+016bbbf0  ldp x19,x30,[sp, #0x10]
+016bbbf4  mov x0,x20
+016bbbf8  mov x1,xzr
+016bbbfc  ldp x21,x20,[sp], #0x20
+016bbc00  b 0x025910f8
+016bbc04  ldp x19,x30,[sp, #0x10]
+016bbc08  ldp x21,x20,[sp], #0x20
+016bbc0c  ret
+016bbc10  bl 0x00b079b0

@@ -1,0 +1,39 @@
+Function: AliothEngine.Utils.VerifierUtils$$.cctor @ 016a0f70
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+
+--- Listing ---
+016a0f70  stp x21,x20,[sp, #-0x20]!
+016a0f74  stp x19,x30,[sp, #0x10]
+016a0f78  adrp x20,0x3577000
+016a0f7c  adrp x21,0x334f000
+016a0f80  adrp x19,0x3321000
+016a0f84  ldrb w8,[x20, #0xb60]
+016a0f88  ldr x21,[x21, #0x28]
+016a0f8c  ldr x19,[x19, #0x880]
+016a0f90  tbnz w8,#0x0,0x016a0fb4
+016a0f94  adrp x0,0x334f000
+016a0f98  ldr x0,[x0, #0x28]
+016a0f9c  bl 0x00b0789c
+016a0fa0  adrp x0,0x3321000
+016a0fa4  ldr x0,[x0, #0x880]
+016a0fa8  bl 0x00b0789c
+016a0fac  mov w8,#0x1
+016a0fb0  strb w8,[x20, #0xb60]
+016a0fb4  ldr x0,[x21]
+016a0fb8  mov w1,#0x4
+016a0fbc  bl 0x00b078f8
+016a0fc0  ldr x8,[x19]
+016a0fc4  mov x1,x0
+016a0fc8  ldr x8,[x8, #0xb8]
+016a0fcc  str x0,[x8]
+016a0fd0  ldr x8,[x19]
+016a0fd4  ldp x19,x30,[sp, #0x10]
+016a0fd8  ldr x0,[x8, #0xb8]
+016a0fdc  ldp x21,x20,[sp], #0x20
+016a0fe0  b 0x00b07850

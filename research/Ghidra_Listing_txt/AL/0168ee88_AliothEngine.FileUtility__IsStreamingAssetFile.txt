@@ -1,0 +1,42 @@
+Function: AliothEngine.FileUtility$$IsStreamingAssetFile @ 0168ee88
+
+--- Calls OUT ---
+  -> AliothEngine.PathUtils$$CleanPathSeparators @ 0168e384
+  -> System.IO.Path$$GetFullPath @ 020b1410
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.PathUtils$$IsUnderDirectory @ 0168eefc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Application$$get_streamingAssetsPath @ 024f2a08
+
+--- Calls IN ---
+
+--- Listing ---
+0168ee88  stp x21,x20,[sp, #-0x20]!
+0168ee8c  stp x19,x30,[sp, #0x10]
+0168ee90  adrp x20,0x3577000
+0168ee94  adrp x21,0x336c000
+0168ee98  ldrb w8,[x20, #0xacf]
+0168ee9c  ldr x21,[x21, #0x318]
+0168eea0  mov x19,x0
+0168eea4  tbnz w8,#0x0,0x0168eebc
+0168eea8  adrp x0,0x336c000
+0168eeac  ldr x0,[x0, #0x318]
+0168eeb0  bl 0x00b0789c
+0168eeb4  mov w8,#0x1
+0168eeb8  strb w8,[x20, #0xacf]
+0168eebc  ldr x0,[x21]
+0168eec0  ldr w8,[x0, #0xe0]
+0168eec4  cbnz w8,0x0168eecc
+0168eec8  bl 0x00b0798c
+0168eecc  mov x0,x19
+0168eed0  mov x1,xzr
+0168eed4  bl 0x020b1410
+0168eed8  bl 0x0168e384
+0168eedc  mov x19,x0
+0168eee0  mov x0,xzr
+0168eee4  bl 0x024f2a08
+0168eee8  mov x1,x0
+0168eeec  mov x0,x19
+0168eef0  ldp x19,x30,[sp, #0x10]
+0168eef4  ldp x21,x20,[sp], #0x20
+0168eef8  b 0x0168eefc

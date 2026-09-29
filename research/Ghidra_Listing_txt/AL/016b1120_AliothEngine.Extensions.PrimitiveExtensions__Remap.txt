@@ -1,0 +1,18 @@
+Function: AliothEngine.Extensions.PrimitiveExtensions$$Remap @ 016b1120
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016b1120  fsub s0,s0,s1
+016b1124  fsub s1,s2,s1
+016b1128  fsub s2,s4,s3
+016b112c  fdiv s0,s0,s1
+016b1130  fmul s0,s0,s2
+016b1134  fadd s0,s0,s3
+016b1138  fcmp s0,s4
+016b113c  fcsel s1,s4,s0,gt
+016b1140  fcmp s0,s3
+016b1144  fcsel s0,s1,s3,pl
+016b1148  ret

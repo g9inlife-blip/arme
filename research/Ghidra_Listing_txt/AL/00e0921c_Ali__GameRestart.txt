@@ -1,0 +1,80 @@
+Function: Ali$$GameRestart @ 00e0921c
+
+--- Calls OUT ---
+  -> CSBehaviour$$Disconnect @ 016dc628
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> DataCenter$$ClearAll @ 016e6a98
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$set_m_resetDataCache @ 00dffdf0
+  -> AliothEngine.SingletonBehaviour<object>$$GetInstance @ 01e08f7c
+  -> FUN_00b079b0 @ 00b079b0
+  -> EntryPoint$$GotoEntryScene @ 00dff26c
+
+--- Calls IN ---
+  <- Ali$$RunAssetUpdate @ 00e10234
+  <- Ali$$GameLogout @ 00e09168
+  <- CVPanelMono$$OnClickOK @ 00f829bc
+  <- PolicyAgreePanelMono$$OnClickRestart @ 00f959ac
+  <- XLua.CSObjectWrap.AliWrap$$_m_GameRestart_xlua_st_ @ 0119749c
+  <- LanguagePanelMono$$OnClickOK @ 00f83c74
+
+--- Listing ---
+00e0921c  str x20,[sp, #-0x20]!
+00e09220  stp x19,x30,[sp, #0x10]
+00e09224  adrp x20,0x3572000
+00e09228  adrp x19,0x335f000
+00e0922c  ldrb w8,[x20, #0x586]
+00e09230  ldr x19,[x19, #0x20]
+00e09234  tbnz w8,#0x0,0x00e09264
+00e09238  adrp x0,0x335f000
+00e0923c  ldr x0,[x0, #0x20]
+00e09240  bl 0x00b0789c
+00e09244  adrp x0,0x3357000
+00e09248  ldr x0,[x0, #0xc30]
+00e0924c  bl 0x00b0789c
+00e09250  adrp x0,0x334f000
+00e09254  ldr x0,[x0, #0x780]
+00e09258  bl 0x00b0789c
+00e0925c  mov w8,#0x1
+00e09260  strb w8,[x20, #0x586]
+00e09264  ldr x0,[x19]
+00e09268  ldr w8,[x0, #0xe0]
+00e0926c  cbnz w8,0x00e09278
+00e09270  bl 0x00b0798c
+00e09274  ldr x0,[x19]
+00e09278  ldr x9,[x0, #0xb8]
+00e0927c  ldr x8,[x9, #0x3d8]
+00e09280  cbz x8,0x00e09298
+00e09284  ldp x19,x30,[sp, #0x10]
+00e09288  mov x0,x8
+00e0928c  mov x1,xzr
+00e09290  ldr x20,[sp], #0x20
+00e09294  b 0x0105fbf0
+00e09298  ldr w8,[x0, #0xe0]
+00e0929c  cbnz w8,0x00e092ac
+00e092a0  bl 0x00b0798c
+00e092a4  ldr x8,[x19]
+00e092a8  ldr x9,[x8, #0xb8]
+00e092ac  ldr x0,[x9, #0x10]
+00e092b0  cbz x0,0x00e09300
+00e092b4  adrp x19,0x334f000
+00e092b8  ldr x19,[x19, #0x780]
+00e092bc  mov w1,#0x1
+00e092c0  bl 0x00dffdf0
+00e092c4  ldr x0,[x19]
+00e092c8  bl 0x01e08f7c
+00e092cc  cbz x0,0x00e09300
+00e092d0  adrp x19,0x3357000
+00e092d4  ldr x19,[x19, #0xc30]
+00e092d8  mov x1,xzr
+00e092dc  bl 0x016dc628
+00e092e0  ldr x0,[x19]
+00e092e4  bl 0x01e08f7c
+00e092e8  cbz x0,0x00e09300
+00e092ec  mov x1,xzr
+00e092f0  bl 0x016e6a98
+00e092f4  ldp x19,x30,[sp, #0x10]
+00e092f8  ldr x20,[sp], #0x20
+00e092fc  b 0x00dff26c
+00e09300  bl 0x00b079b0

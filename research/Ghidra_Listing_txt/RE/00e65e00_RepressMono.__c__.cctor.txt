@@ -1,0 +1,40 @@
+Function: RepressMono.<>c$$.cctor @ 00e65e00
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00e65e00  str x20,[sp, #-0x20]!
+00e65e04  stp x19,x30,[sp, #0x10]
+00e65e08  adrp x19,0x3572000
+00e65e0c  adrp x20,0x3318000
+00e65e10  ldrb w8,[x19, #0x98a]
+00e65e14  ldr x20,[x20, #0xec8]
+00e65e18  tbnz w8,#0x0,0x00e65e30
+00e65e1c  adrp x0,0x3318000
+00e65e20  ldr x0,[x0, #0xec8]
+00e65e24  bl 0x00b0789c
+00e65e28  mov w8,#0x1
+00e65e2c  strb w8,[x19, #0x98a]
+00e65e30  ldr x0,[x20]
+00e65e34  bl 0x00b079a0
+00e65e38  cbz x0,0x00e65e6c
+00e65e3c  mov x1,xzr
+00e65e40  mov x19,x0
+00e65e44  bl 0x02194104
+00e65e48  ldr x8,[x20]
+00e65e4c  mov x1,x19
+00e65e50  ldr x8,[x8, #0xb8]
+00e65e54  str x19,[x8]
+00e65e58  ldr x8,[x20]
+00e65e5c  ldp x19,x30,[sp, #0x10]
+00e65e60  ldr x0,[x8, #0xb8]
+00e65e64  ldr x20,[sp], #0x20
+00e65e68  b 0x00b07850
+00e65e6c  bl 0x00b079b0

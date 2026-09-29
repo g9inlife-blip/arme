@@ -1,0 +1,49 @@
+Function: Ali$$get_AliothKing @ 00e015e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp8 @ 0106088c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AssetCount$$UnLoad @ 00e19d78
+  <- GUIScreenBaseMono$$UIGuideCheck @ 00f21088
+  <- RoleMono$$OnDestroy @ 014ab828
+  <- SoundManager$$get_m_audioLive @ 00e2fb80
+  <- ResManager$$Start @ 00e2a070
+  <- Ali$$Init @ 00e019f8
+  <- ResManager$$AssetRelease @ 00e2a998
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_AliothKing @ 0119f844
+  <- Ali$$get_m_extensions @ 00e02640
+
+--- Listing ---
+00e015e4  stp x21,x20,[sp, #-0x20]!
+00e015e8  stp x19,x30,[sp, #0x10]
+00e015ec  adrp x21,0x3572000
+00e015f0  adrp x20,0x335f000
+00e015f4  ldrb w8,[x21, #0x537]
+00e015f8  ldr x20,[x20, #0x20]
+00e015fc  mov x19,x0
+00e01600  tbnz w8,#0x0,0x00e01618
+00e01604  adrp x0,0x335f000
+00e01608  ldr x0,[x0, #0x20]
+00e0160c  bl 0x00b0789c
+00e01610  mov w8,#0x1
+00e01614  strb w8,[x21, #0x537]
+00e01618  ldr x0,[x20]
+00e0161c  ldr w8,[x0, #0xe0]
+00e01620  cbnz w8,0x00e0162c
+00e01624  bl 0x00b0798c
+00e01628  ldr x0,[x20]
+00e0162c  ldr x8,[x0, #0xb8]
+00e01630  ldr x0,[x8, #0x150]
+00e01634  cbz x0,0x00e0164c
+00e01638  mov x1,x19
+00e0163c  ldp x19,x30,[sp, #0x10]
+00e01640  mov x2,xzr
+00e01644  ldp x21,x20,[sp], #0x20
+00e01648  b 0x0106088c
+00e0164c  ldr x0,[x19, #0x80]
+00e01650  ldp x19,x30,[sp, #0x10]
+00e01654  ldp x21,x20,[sp], #0x20
+00e01658  ret

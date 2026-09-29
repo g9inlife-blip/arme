@@ -1,0 +1,41 @@
+Function: Ali$$get_GateID @ 00e02e2c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_GateID @ 011a0d44
+
+--- Listing ---
+00e02e2c  stp x21,x20,[sp, #-0x20]!
+00e02e30  stp x19,x30,[sp, #0x10]
+00e02e34  adrp x21,0x3572000
+00e02e38  adrp x20,0x335f000
+00e02e3c  ldrb w8,[x21, #0x553]
+00e02e40  ldr x20,[x20, #0x20]
+00e02e44  mov x19,x0
+00e02e48  tbnz w8,#0x0,0x00e02e60
+00e02e4c  adrp x0,0x335f000
+00e02e50  ldr x0,[x0, #0x20]
+00e02e54  bl 0x00b0789c
+00e02e58  mov w8,#0x1
+00e02e5c  strb w8,[x21, #0x553]
+00e02e60  ldr x0,[x20]
+00e02e64  ldr w8,[x0, #0xe0]
+00e02e68  cbnz w8,0x00e02e74
+00e02e6c  bl 0x00b0798c
+00e02e70  ldr x0,[x20]
+00e02e74  ldr x8,[x0, #0xb8]
+00e02e78  ldr x0,[x8, #0x230]
+00e02e7c  cbz x0,0x00e02e94
+00e02e80  mov x1,x19
+00e02e84  ldp x19,x30,[sp, #0x10]
+00e02e88  mov x2,xzr
+00e02e8c  ldp x21,x20,[sp], #0x20
+00e02e90  b 0x01060c2c
+00e02e94  ldr w0,[x19, #0x100]
+00e02e98  ldp x19,x30,[sp, #0x10]
+00e02e9c  ldp x21,x20,[sp], #0x20
+00e02ea0  ret

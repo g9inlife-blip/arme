@@ -1,0 +1,99 @@
+Function: AliothEngine.GUIScreen$$OnRegainedTop @ 0167255c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreen$$get_logger @ 01671a94
+
+--- Calls IN ---
+  <- GUIScreenBaseMono$$<>xLuaBaseProxy_OnRegainedTop @ 00f2353c
+  <- GUIScreenBaseMono$$OnRegainedTop @ 00f208fc
+
+--- Listing ---
+0167255c  str x22,[sp, #-0x30]!
+01672560  stp x21,x20,[sp, #0x10]
+01672564  stp x19,x30,[sp, #0x20]
+01672568  adrp x19,0x3577000
+0167256c  adrp x20,0x3364000
+01672570  ldrb w8,[x19, #0x996]
+01672574  ldr x20,[x20, #0xd28]
+01672578  mov x21,x0
+0167257c  tbnz w8,#0x0,0x016725b8
+01672580  adrp x0,0x3364000
+01672584  ldr x0,[x0, #0xd28]
+01672588  bl 0x00b0789c
+0167258c  adrp x0,0x334a000
+01672590  ldr x0,[x0, #0xc98]
+01672594  bl 0x00b0789c
+01672598  adrp x0,0x331f000
+0167259c  ldr x0,[x0, #0xf20]
+016725a0  bl 0x00b0789c
+016725a4  adrp x0,0x3331000
+016725a8  ldr x0,[x0, #0xa28]
+016725ac  bl 0x00b0789c
+016725b0  mov w8,#0x1
+016725b4  strb w8,[x19, #0x996]
+016725b8  ldr x8,[x20]
+016725bc  ldr x8,[x8, #0xb8]
+016725c0  ldr x0,[x8, #0x128]
+016725c4  cbz x0,0x016725e0
+016725c8  mov x1,x21
+016725cc  ldp x19,x30,[sp, #0x20]
+016725d0  ldp x21,x20,[sp, #0x10]
+016725d4  mov x2,xzr
+016725d8  ldr x22,[sp], #0x30
+016725dc  b 0x01060dac
+016725e0  adrp x19,0x331f000
+016725e4  adrp x22,0x3331000
+016725e8  ldr x19,[x19, #0xf20]
+016725ec  ldr x22,[x22, #0xa28]
+016725f0  mov x0,x21
+016725f4  bl 0x01671a94
+016725f8  ldr x19,[x19]
+016725fc  mov x20,x0
+01672600  cbz x21,0x01672618
+01672604  ldr x8,[x21]
+01672608  mov x0,x21
+0167260c  ldp x9,x1,[x8, #0x168]
+01672610  blr x9
+01672614  b 0x0167261c
+01672618  mov x0,xzr
+0167261c  ldr x1,[x22]
+01672620  mov x2,xzr
+01672624  bl 0x01fd2850
+01672628  cbz x20,0x016726a8
+0167262c  adrp x10,0x334a000
+01672630  ldr x8,[x20]
+01672634  ldr x10,[x10, #0xc98]
+01672638  mov x21,x0
+0167263c  ldrh w9,[x8, #0x12a]
+01672640  ldr x1,[x10]
+01672644  cbz x9,0x01672668
+01672648  ldr x10,[x8, #0xb0]
+0167264c  add x10,x10,#0x8
+01672650  ldur x11,[x10, #-0x8]
+01672654  cmp x11,x1
+01672658  b.eq 0x01672678
+0167265c  subs x9,x9,#0x1
+01672660  add x10,x10,#0x10
+01672664  b.ne 0x01672650
+01672668  mov w2,#0x9
+0167266c  mov x0,x20
+01672670  bl 0x00b2ae24
+01672674  b 0x01672688
+01672678  ldr w9,[x10]
+0167267c  add w9,w9,#0x9
+01672680  add x8,x8,w9, SXTW  #0x4
+01672684  add x0,x8,#0x138
+01672688  ldp x4,x3,[x0]
+0167268c  mov x0,x20
+01672690  mov x1,x19
+01672694  mov x2,x21
+01672698  ldp x19,x30,[sp, #0x20]
+0167269c  ldp x21,x20,[sp, #0x10]
+016726a0  ldr x22,[sp], #0x30
+016726a4  br x4
+016726a8  bl 0x00b079b0

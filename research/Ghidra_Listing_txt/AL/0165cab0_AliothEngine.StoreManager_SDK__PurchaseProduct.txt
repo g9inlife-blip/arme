@@ -1,0 +1,56 @@
+Function: AliothEngine.StoreManager_SDK$$PurchaseProduct @ 0165cab0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+  -> SDKManager$$Charge @ 00dec4f0
+
+--- Calls IN ---
+
+--- Listing ---
+0165cab0  stp x23,x22,[sp, #-0x30]!
+0165cab4  stp x21,x20,[sp, #0x10]
+0165cab8  stp x19,x30,[sp, #0x20]
+0165cabc  adrp x22,0x3577000
+0165cac0  adrp x23,0x3351000
+0165cac4  ldrb w8,[x22, #0x882]
+0165cac8  ldr x23,[x23, #0xa30]
+0165cacc  mov x19,x2
+0165cad0  mov x20,x1
+0165cad4  mov x21,x0
+0165cad8  tbnz w8,#0x0,0x0165cafc
+0165cadc  adrp x0,0x334a000
+0165cae0  ldr x0,[x0, #0x550]
+0165cae4  bl 0x00b0789c
+0165cae8  adrp x0,0x3351000
+0165caec  ldr x0,[x0, #0xa30]
+0165caf0  bl 0x00b0789c
+0165caf4  mov w8,#0x1
+0165caf8  strb w8,[x22, #0x882]
+0165cafc  ldr x8,[x23]
+0165cb00  ldr x8,[x8, #0xb8]
+0165cb04  ldr x0,[x8, #0x50]
+0165cb08  cbz x0,0x0165cb2c
+0165cb0c  mov x1,x21
+0165cb10  mov x2,x20
+0165cb14  mov x3,x19
+0165cb18  ldp x19,x30,[sp, #0x20]
+0165cb1c  ldp x21,x20,[sp, #0x10]
+0165cb20  mov x4,xzr
+0165cb24  ldp x23,x22,[sp], #0x30
+0165cb28  b 0x010670b0
+0165cb2c  adrp x8,0x334a000
+0165cb30  ldr x8,[x8, #0x550]
+0165cb34  ldr x0,[x8]
+0165cb38  bl 0x01e0894c
+0165cb3c  cbz x0,0x0165cb5c
+0165cb40  mov x1,x20
+0165cb44  mov x2,x19
+0165cb48  ldp x19,x30,[sp, #0x20]
+0165cb4c  ldp x21,x20,[sp, #0x10]
+0165cb50  mov x3,xzr
+0165cb54  ldp x23,x22,[sp], #0x30
+0165cb58  b 0x00dec4f0
+0165cb5c  bl 0x00b079b0

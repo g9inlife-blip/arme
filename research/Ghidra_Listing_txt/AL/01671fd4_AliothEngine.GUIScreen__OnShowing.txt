@@ -1,0 +1,104 @@
+Function: AliothEngine.GUIScreen$$OnShowing @ 01671fd4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreen$$set_m_isShow @ 01670cac
+  -> AliothEngine.GUIScreen$$get_logger @ 01671a94
+
+--- Calls IN ---
+  <- GUIScreenBaseMono$$OnShowing @ 00f215fc
+  <- GUIScreenBaseMono$$<>xLuaBaseProxy_OnShowing @ 00f23554
+
+--- Listing ---
+01671fd4  str x22,[sp, #-0x30]!
+01671fd8  stp x21,x20,[sp, #0x10]
+01671fdc  stp x19,x30,[sp, #0x20]
+01671fe0  adrp x20,0x3577000
+01671fe4  adrp x21,0x3364000
+01671fe8  ldrb w8,[x20, #0x992]
+01671fec  ldr x21,[x21, #0xd28]
+01671ff0  mov x19,x0
+01671ff4  tbnz w8,#0x0,0x01672030
+01671ff8  adrp x0,0x3364000
+01671ffc  ldr x0,[x0, #0xd28]
+01672000  bl 0x00b0789c
+01672004  adrp x0,0x334a000
+01672008  ldr x0,[x0, #0xc98]
+0167200c  bl 0x00b0789c
+01672010  adrp x0,0x331f000
+01672014  ldr x0,[x0, #0xf20]
+01672018  bl 0x00b0789c
+0167201c  adrp x0,0x336f000
+01672020  ldr x0,[x0, #0xb48]
+01672024  bl 0x00b0789c
+01672028  mov w8,#0x1
+0167202c  strb w8,[x20, #0x992]
+01672030  ldr x8,[x21]
+01672034  ldr x8,[x8, #0xb8]
+01672038  ldr x0,[x8, #0x108]
+0167203c  cbz x0,0x01672058
+01672040  mov x1,x19
+01672044  ldp x19,x30,[sp, #0x20]
+01672048  ldp x21,x20,[sp, #0x10]
+0167204c  mov x2,xzr
+01672050  ldr x22,[sp], #0x30
+01672054  b 0x01060dac
+01672058  adrp x21,0x336f000
+0167205c  ldr x21,[x21, #0xb48]
+01672060  mov x0,x19
+01672064  bl 0x01671a94
+01672068  mov x20,x0
+0167206c  mov x0,x19
+01672070  mov x1,xzr
+01672074  bl 0x024c9a1c
+01672078  ldr x8,[x21]
+0167207c  mov x1,x0
+01672080  mov x2,xzr
+01672084  mov x0,x8
+01672088  bl 0x01fd2850
+0167208c  cbz x20,0x0167212c
+01672090  adrp x9,0x334a000
+01672094  adrp x10,0x331f000
+01672098  ldr x8,[x20]
+0167209c  ldr x9,[x9, #0xc98]
+016720a0  ldr x10,[x10, #0xf20]
+016720a4  mov x21,x0
+016720a8  ldr x1,[x9]
+016720ac  ldrh w9,[x8, #0x12a]
+016720b0  ldr x22,[x10]
+016720b4  cbz x9,0x016720d8
+016720b8  ldr x10,[x8, #0xb0]
+016720bc  add x10,x10,#0x8
+016720c0  ldur x11,[x10, #-0x8]
+016720c4  cmp x11,x1
+016720c8  b.eq 0x016720e8
+016720cc  subs x9,x9,#0x1
+016720d0  add x10,x10,#0x10
+016720d4  b.ne 0x016720c0
+016720d8  mov w2,#0x9
+016720dc  mov x0,x20
+016720e0  bl 0x00b2ae24
+016720e4  b 0x016720f8
+016720e8  ldr w9,[x10]
+016720ec  add w9,w9,#0x9
+016720f0  add x8,x8,w9, SXTW  #0x4
+016720f4  add x0,x8,#0x138
+016720f8  ldp x8,x3,[x0]
+016720fc  mov x0,x20
+01672100  mov x1,x22
+01672104  mov x2,x21
+01672108  blr x8
+0167210c  mov w8,#0x3
+01672110  str w8,[x19, #0x4c]
+01672114  mov x0,x19
+01672118  ldp x19,x30,[sp, #0x20]
+0167211c  ldp x21,x20,[sp, #0x10]
+01672120  mov w1,#0x1
+01672124  ldr x22,[sp], #0x30
+01672128  b 0x01670cac
+0167212c  bl 0x00b079b0

@@ -1,0 +1,67 @@
+Function: AliothEngine.Extensions.RectExtensions$$AlignCenter @ 016b1ea8
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Rect$$set_width @ 024db070
+  -> UnityEngine.Rect$$get_x @ 024daf34
+  -> UnityEngine.Rect$$set_height @ 024db080
+  -> UnityEngine.Rect$$set_x @ 024daf3c
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$set_y @ 024daf4c
+  -> UnityEngine.Rect$$get_width @ 024db068
+
+--- Calls IN ---
+
+--- Listing ---
+016b1ea8  sub sp,sp,#0x40
+016b1eac  stp d11,d10,[sp, #0x10]
+016b1eb0  stp d9,d8,[sp, #0x20]
+016b1eb4  str x30,[sp, #0x30]
+016b1eb8  mov x0,sp
+016b1ebc  mov x1,xzr
+016b1ec0  mov v8.16B,v5.16B
+016b1ec4  mov v9.16B,v4.16B
+016b1ec8  stp s0,s1,[sp]
+016b1ecc  stp s2,s3,[sp, #0x8]
+016b1ed0  bl 0x024daf34
+016b1ed4  mov x0,sp
+016b1ed8  mov x1,xzr
+016b1edc  mov v10.16B,v0.16B
+016b1ee0  bl 0x024db068
+016b1ee4  fmov s11,0x3f000000
+016b1ee8  fmul s0,s0,s11
+016b1eec  fadd s0,s10,s0
+016b1ef0  fmul s1,s9,s11
+016b1ef4  fsub s0,s0,s1
+016b1ef8  mov x0,sp
+016b1efc  mov x1,xzr
+016b1f00  bl 0x024daf3c
+016b1f04  mov x0,sp
+016b1f08  mov x1,xzr
+016b1f0c  bl 0x024daf44
+016b1f10  mov x0,sp
+016b1f14  mov x1,xzr
+016b1f18  mov v10.16B,v0.16B
+016b1f1c  bl 0x024db078
+016b1f20  fmul s0,s0,s11
+016b1f24  fadd s0,s10,s0
+016b1f28  fmul s1,s8,s11
+016b1f2c  fsub s0,s0,s1
+016b1f30  mov x0,sp
+016b1f34  mov x1,xzr
+016b1f38  bl 0x024daf4c
+016b1f3c  mov x0,sp
+016b1f40  mov v0.16B,v9.16B
+016b1f44  mov x1,xzr
+016b1f48  bl 0x024db070
+016b1f4c  mov x0,sp
+016b1f50  mov v0.16B,v8.16B
+016b1f54  mov x1,xzr
+016b1f58  bl 0x024db080
+016b1f5c  ldp s0,s1,[sp]
+016b1f60  ldp s2,s3,[sp, #0x8]
+016b1f64  ldr x30,[sp, #0x30]
+016b1f68  ldp d9,d8,[sp, #0x20]
+016b1f6c  ldp d11,d10,[sp, #0x10]
+016b1f70  add sp,sp,#0x40
+016b1f74  ret

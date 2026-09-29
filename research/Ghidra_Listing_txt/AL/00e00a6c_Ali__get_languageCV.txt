@@ -1,0 +1,45 @@
+Function: Ali$$get_languageCV @ 00e00a6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp372 @ 0108f7f0
+
+--- Calls IN ---
+  <- CVPanelMono$$Awake @ 00f81d44
+  <- CVPanelMono$$OnClickOK @ 00f829bc
+  <- ResManager$$GetExcelRecordName @ 00e2b084
+  <- Ali$$InitGetValidLanguagesCV @ 00e0fa74
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_languageCV @ 0119e51c
+
+--- Listing ---
+00e00a6c  stp x21,x20,[sp, #-0x20]!
+00e00a70  stp x19,x30,[sp, #0x10]
+00e00a74  adrp x21,0x3572000
+00e00a78  adrp x20,0x335f000
+00e00a7c  ldrb w8,[x21, #0x522]
+00e00a80  ldr x20,[x20, #0x20]
+00e00a84  mov x19,x0
+00e00a88  tbnz w8,#0x0,0x00e00aa0
+00e00a8c  adrp x0,0x335f000
+00e00a90  ldr x0,[x0, #0x20]
+00e00a94  bl 0x00b0789c
+00e00a98  mov w8,#0x1
+00e00a9c  strb w8,[x21, #0x522]
+00e00aa0  ldr x0,[x20]
+00e00aa4  ldr w8,[x0, #0xe0]
+00e00aa8  cbnz w8,0x00e00ab4
+00e00aac  bl 0x00b0798c
+00e00ab0  ldr x0,[x20]
+00e00ab4  ldr x8,[x0, #0xb8]
+00e00ab8  ldr x0,[x8, #0xa8]
+00e00abc  cbz x0,0x00e00ad4
+00e00ac0  mov x1,x19
+00e00ac4  ldp x19,x30,[sp, #0x10]
+00e00ac8  mov x2,xzr
+00e00acc  ldp x21,x20,[sp], #0x20
+00e00ad0  b 0x0108f7f0
+00e00ad4  ldr w0,[x19, #0x34]
+00e00ad8  ldp x19,x30,[sp, #0x10]
+00e00adc  ldp x21,x20,[sp], #0x20
+00e00ae0  ret

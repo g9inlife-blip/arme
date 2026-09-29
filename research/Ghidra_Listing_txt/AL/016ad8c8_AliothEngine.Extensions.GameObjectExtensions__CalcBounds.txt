@@ -1,0 +1,32 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$CalcBounds @ 016ad8c8
+
+--- Calls OUT ---
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> AliothEngine.Extensions.GameObjectExtensions$$CalcBounds @ 016ad920
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ad8c8  sub sp,sp,#0x40
+016ad8cc  stp x21,x20,[sp, #0x20]
+016ad8d0  stp x19,x30,[sp, #0x30]
+016ad8d4  cbz x0,0x016ad91c
+016ad8d8  mov w21,w1
+016ad8dc  mov x1,xzr
+016ad8e0  mov x20,x2
+016ad8e4  mov x19,x8
+016ad8e8  bl 0x024de730
+016ad8ec  and w1,w21,#0x1
+016ad8f0  mov x8,sp
+016ad8f4  mov x2,x20
+016ad8f8  bl 0x016ad920
+016ad8fc  ldur q0,[sp, #0xc]
+016ad900  ldr q1,[sp]
+016ad904  ldp x21,x20,[sp, #0x20]
+016ad908  stur q0,[x19, #0xc]
+016ad90c  str q1,[x19]
+016ad910  ldp x19,x30,[sp, #0x30]
+016ad914  add sp,sp,#0x40
+016ad918  ret
+016ad91c  bl 0x00b079b0

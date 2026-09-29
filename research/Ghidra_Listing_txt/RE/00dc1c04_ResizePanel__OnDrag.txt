@@ -1,0 +1,92 @@
+Function: ResizePanel$$OnDrag @ 00dc1c04
+
+--- Calls OUT ---
+  -> UnityEngine.RectTransform$$set_sizeDelta @ 024f65d0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> UnityEngine.RectTransformUtility$$ScreenPointToLocalPointInRectangle @ 026cf2cc
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.EventSystems.PointerEventData$$get_pressEventCamera @ 025b45d4
+
+--- Calls IN ---
+
+--- Listing ---
+00dc1c04  stp d9,d8,[sp, #-0x40]!
+00dc1c08  str x22,[sp, #0x10]
+00dc1c0c  stp x21,x20,[sp, #0x20]
+00dc1c10  stp x19,x30,[sp, #0x30]
+00dc1c14  adrp x22,0x3572000
+00dc1c18  adrp x21,0x3321000
+00dc1c1c  ldrb w8,[x22, #0x17b]
+00dc1c20  ldr x21,[x21, #0xca8]
+00dc1c24  mov x20,x1
+00dc1c28  mov x19,x0
+00dc1c2c  tbnz w8,#0x0,0x00dc1c50
+00dc1c30  adrp x0,0x3321000
+00dc1c34  ldr x0,[x0, #0xca8]
+00dc1c38  bl 0x00b0789c
+00dc1c3c  adrp x0,0x3360000
+00dc1c40  ldr x0,[x0, #0x720]
+00dc1c44  bl 0x00b0789c
+00dc1c48  mov w8,#0x1
+00dc1c4c  strb w8,[x22, #0x17b]
+00dc1c50  ldr x0,[x21]
+00dc1c54  str xzr,[sp, #0x18]
+00dc1c58  ldr x21,[x19, #0x28]
+00dc1c5c  ldr w8,[x0, #0xe0]
+00dc1c60  cbnz w8,0x00dc1c68
+00dc1c64  bl 0x00b0798c
+00dc1c68  mov x0,x21
+00dc1c6c  mov x1,xzr
+00dc1c70  mov x2,xzr
+00dc1c74  bl 0x024c8180
+00dc1c78  tbnz w0,#0x0,0x00dc1d24
+00dc1c7c  cbz x20,0x00dc1d38
+00dc1c80  adrp x22,0x3360000
+00dc1c84  ldr x21,[x19, #0x28]
+00dc1c88  ldp s8,s9,[x20, #0xf0]
+00dc1c8c  ldr x22,[x22, #0x720]
+00dc1c90  mov x0,x20
+00dc1c94  mov x1,xzr
+00dc1c98  bl 0x025b45d4
+00dc1c9c  ldr x8,[x22]
+00dc1ca0  mov x20,x0
+00dc1ca4  ldr w9,[x8, #0xe0]
+00dc1ca8  cbnz w9,0x00dc1cb4
+00dc1cac  mov x0,x8
+00dc1cb0  bl 0x00b0798c
+00dc1cb4  add x2,sp,#0x18
+00dc1cb8  mov x0,x21
+00dc1cbc  mov v0.16B,v8.16B
+00dc1cc0  mov v1.16B,v9.16B
+00dc1cc4  mov x1,x20
+00dc1cc8  mov x3,xzr
+00dc1ccc  bl 0x026cf2cc
+00dc1cd0  ldr x0,[x19, #0x28]
+00dc1cd4  cbz x0,0x00dc1d38
+00dc1cd8  ldp s1,s0,[sp, #0x18]
+00dc1cdc  ldp s2,s3,[x19, #0x30]
+00dc1ce0  ldp s4,s5,[x19, #0x38]
+00dc1ce4  mov x1,xzr
+00dc1ce8  fsub s1,s1,s2
+00dc1cec  ldp s2,s6,[x19, #0x20]
+00dc1cf0  fsub s0,s0,s3
+00dc1cf4  fadd s3,s1,s4
+00dc1cf8  ldp s4,s1,[x19, #0x18]
+00dc1cfc  fsub s0,s5,s0
+00dc1d00  fcmp s0,s6
+00dc1d04  fcsel s5,s6,s0,gt
+00dc1d08  fcmp s0,s1
+00dc1d0c  fcsel s1,s5,s1,pl
+00dc1d10  fcmp s3,s2
+00dc1d14  fcsel s0,s2,s3,gt
+00dc1d18  fcmp s3,s4
+00dc1d1c  fcsel s0,s0,s4,pl
+00dc1d20  bl 0x024f65d0
+00dc1d24  ldp x19,x30,[sp, #0x30]
+00dc1d28  ldp x21,x20,[sp, #0x20]
+00dc1d2c  ldr x22,[sp, #0x10]
+00dc1d30  ldp d9,d8,[sp], #0x40
+00dc1d34  ret
+00dc1d38  bl 0x00b079b0

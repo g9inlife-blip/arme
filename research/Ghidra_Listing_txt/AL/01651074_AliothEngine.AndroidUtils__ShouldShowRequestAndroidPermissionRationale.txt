@@ -1,0 +1,82 @@
+Function: AliothEngine.AndroidUtils$$ShouldShowRequestAndroidPermissionRationale @ 01651074
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> UnityEngine.AndroidJavaObject$$Call<bool> @ 0173789c
+
+--- Calls IN ---
+
+--- Listing ---
+01651074  stp x21,x20,[sp, #-0x20]!
+01651078  stp x19,x30,[sp, #0x10]
+0165107c  adrp x20,0x3577000
+01651080  ldrb w8,[x20, #0x7f1]
+01651084  mov x19,x0
+01651088  tbnz w8,#0x0,0x016510b8
+0165108c  adrp x0,0x332a000
+01651090  ldr x0,[x0, #0x80]
+01651094  bl 0x00b0789c
+01651098  adrp x0,0x3370000
+0165109c  ldr x0,[x0, #0x778]
+016510a0  bl 0x00b0789c
+016510a4  adrp x0,0x3337000
+016510a8  ldr x0,[x0, #0x458]
+016510ac  bl 0x00b0789c
+016510b0  mov w8,#0x1
+016510b4  strb w8,[x20, #0x7f1]
+016510b8  bl 0x0164f628
+016510bc  cbz x0,0x01651134
+016510c0  adrp x8,0x3370000
+016510c4  ldr x8,[x8, #0x778]
+016510c8  mov x20,x0
+016510cc  ldr x0,[x8]
+016510d0  mov w1,#0x1
+    ; [PRE] try { // try from 016510d0 to 016510d7 has its CatchHandler @ 0165115c
+016510d4  bl 0x00b078f8
+    ; [POST] } // end try from 016510d0 to 016510d7
+016510d8  mov x21,x0
+016510dc  cbz x0,0x01651144
+016510e0  cbz x19,0x016510f8
+016510e4  ldr x8,[x21]
+016510e8  ldr x1,[x8, #0x40]
+016510ec  mov x0,x19
+    ; [PRE] try { // try from 016510ec to 0165110f has its CatchHandler @ 01651160
+016510f0  bl 0x00b07990
+016510f4  cbz x0,0x0165114c
+016510f8  ldr w8,[x21, #0x18]
+016510fc  cbz w8,0x01651148
+01651100  mov x0,x21
+01651104  str x19,[x0, #0x20]!
+01651108  mov x1,x19
+0165110c  bl 0x00b07850
+    ; [POST] } // end try from 016510ec to 0165110f
+01651110  adrp x8,0x3337000
+01651114  ldr x8,[x8, #0x458]
+01651118  adrp x9,0x332a000
+0165111c  ldr x9,[x9, #0x80]
+01651120  ldr x1,[x8]
+01651124  ldr x3,[x9]
+01651128  mov x0,x20
+    ; [PRE] try { // try from 01651128 to 01651133 has its CatchHandler @ 01651158
+0165112c  mov x2,x21
+01651130  bl 0x0173789c
+    ; [POST] } // end try from 01651128 to 01651133
+01651134  ldp x19,x30,[sp, #0x10]
+01651138  and w0,w0,#0x1
+0165113c  ldp x21,x20,[sp], #0x20
+01651140  ret
+01651144  bl 0x00b079b0
+    ; [PRE] try { // try from 01651144 to 01651157 has its CatchHandler @ 01651160
+01651148  bl 0x00b079b8
+0165114c  bl 0x00b079d4
+01651150  mov x1,xzr
+01651154  bl 0x00b07978
+    ; [POST] } // end try from 01651144 to 01651157

@@ -1,0 +1,32 @@
+Function: AliothEngine.Utils.DateTimeUtils$$ConvertFromUnixTimestamp @ 01699cec
+
+--- Calls OUT ---
+  -> System.DateTime$$.ctor @ 021323ac
+  -> System.DateTime$$AddSeconds @ 02133150
+
+--- Calls IN ---
+
+--- Listing ---
+01699cec  sub sp,sp,#0x30
+01699cf0  stp x19,x30,[sp, #0x20]
+01699cf4  mov x19,x0
+01699cf8  mov w8,#0x1
+01699cfc  add x0,sp,#0x18
+01699d00  mov w1,#0x7b2
+01699d04  mov w2,#0x1
+01699d08  mov w3,#0x1
+01699d0c  mov w4,wzr
+01699d10  mov w5,wzr
+01699d14  mov w6,wzr
+01699d18  mov w7,wzr
+01699d1c  str xzr,[sp, #0x18]
+01699d20  str xzr,[sp, #0x8]
+01699d24  str w8,[sp]
+01699d28  bl 0x021323ac
+01699d2c  scvtf d0,x19
+01699d30  add x0,sp,#0x18
+01699d34  mov x1,xzr
+01699d38  bl 0x02133150
+01699d3c  ldp x19,x30,[sp, #0x20]
+01699d40  add sp,sp,#0x30
+01699d44  ret

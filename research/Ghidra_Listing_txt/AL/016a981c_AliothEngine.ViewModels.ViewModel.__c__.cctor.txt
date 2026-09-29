@@ -1,0 +1,40 @@
+Function: AliothEngine.ViewModels.ViewModel.<>c$$.cctor @ 016a981c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016a981c  str x20,[sp, #-0x20]!
+016a9820  stp x19,x30,[sp, #0x10]
+016a9824  adrp x19,0x3577000
+016a9828  adrp x20,0x3376000
+016a982c  ldrb w8,[x19, #0xba3]
+016a9830  ldr x20,[x20, #0x960]
+016a9834  tbnz w8,#0x0,0x016a984c
+016a9838  adrp x0,0x3376000
+016a983c  ldr x0,[x0, #0x960]
+016a9840  bl 0x00b0789c
+016a9844  mov w8,#0x1
+016a9848  strb w8,[x19, #0xba3]
+016a984c  ldr x0,[x20]
+016a9850  bl 0x00b079a0
+016a9854  cbz x0,0x016a9888
+016a9858  mov x1,xzr
+016a985c  mov x19,x0
+016a9860  bl 0x02194104
+016a9864  ldr x8,[x20]
+016a9868  mov x1,x19
+016a986c  ldr x8,[x8, #0xb8]
+016a9870  str x19,[x8]
+016a9874  ldr x8,[x20]
+016a9878  ldp x19,x30,[sp, #0x10]
+016a987c  ldr x0,[x8, #0xb8]
+016a9880  ldr x20,[sp], #0x20
+016a9884  b 0x00b07850
+016a9888  bl 0x00b079b0

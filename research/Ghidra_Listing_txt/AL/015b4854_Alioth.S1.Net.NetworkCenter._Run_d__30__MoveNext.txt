@@ -1,0 +1,142 @@
+Function: Alioth.S1.Net.NetworkCenter.<Run>d__30$$MoveNext @ 015b4854
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List.Enumerator<object>$$Dispose @ 01a070e8
+  -> Alioth.S1.Net.NetworkCenter$$TryHandleResponse @ 015b41e0
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> Alioth.S1.Net.NetworkCenter$$get_Tubes @ 015b2e84
+  -> FUN_00b079b0 @ 00b079b0
+  -> Alioth.S1.Net.NetworkCenter$$TryPing @ 015b46d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.List<object>$$GetEnumerator @ 01c01338
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Net.NetworkCenter$$TrySendRequest @ 015b3df8
+  -> Alioth.S1.Net.NetworkCenter$$get_IsRunning @ 015b2a48
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> Alioth.S1.Net.NetworkCenter$$set_IsRunning @ 015b2ab0
+
+--- Calls IN ---
+
+--- Listing ---
+015b4854  sub sp,sp,#0x60
+015b4858  str x24,[sp, #0x20]
+015b485c  stp x23,x22,[sp, #0x30]
+015b4860  stp x21,x20,[sp, #0x40]
+015b4864  stp x19,x30,[sp, #0x50]
+015b4868  adrp x20,0x3577000
+015b486c  ldrb w8,[x20, #0xbb]
+015b4870  mov x19,x0
+015b4874  tbnz w8,#0x0,0x015b48bc
+015b4878  adrp x0,0x333c000
+015b487c  ldr x0,[x0, #0xae0]
+015b4880  bl 0x00b0789c
+015b4884  adrp x0,0x337c000
+015b4888  ldr x0,[x0, #0x800]
+015b488c  bl 0x00b0789c
+015b4890  adrp x0,0x3322000
+015b4894  ldr x0,[x0, #0x8e0]
+015b4898  bl 0x00b0789c
+015b489c  adrp x0,0x330b000
+015b48a0  ldr x0,[x0, #0xe00]
+015b48a4  bl 0x00b0789c
+015b48a8  adrp x0,0x3363000
+015b48ac  ldr x0,[x0, #0xbf0]
+015b48b0  bl 0x00b0789c
+015b48b4  mov w8,#0x1
+015b48b8  strb w8,[x20, #0xbb]
+015b48bc  stp xzr,xzr,[sp, #0x10]
+015b48c0  str xzr,[sp, #0x8]
+015b48c4  ldr w8,[x19, #0x10]
+015b48c8  ldr x20,[x19, #0x20]
+015b48cc  cmp w8,#0x1
+015b48d0  b.eq 0x015b48f4
+015b48d4  cbnz w8,0x015b49bc
+015b48d8  mov w8,#0xffffffff
+015b48dc  str w8,[x19, #0x10]
+015b48e0  cbz x20,0x015b4a20
+015b48e4  mov w1,#0x1
+015b48e8  mov x0,x20
+015b48ec  bl 0x015b2ab0
+015b48f0  b 0x015b4900
+015b48f4  mov w8,#0xffffffff
+015b48f8  str w8,[x19, #0x10]
+015b48fc  cbz x20,0x015b4a20
+015b4900  mov x0,x20
+015b4904  bl 0x015b2a48
+015b4908  tbz w0,#0x0,0x015b49bc
+015b490c  mov x0,x20
+015b4910  bl 0x015b2e84
+015b4914  cbz x0,0x015b4a20
+015b4918  adrp x8,0x3363000
+015b491c  ldr x8,[x8, #0xbf0]
+015b4920  adrp x23,0x337c000
+015b4924  adrp x24,0x330b000
+015b4928  adrp x22,0x333c000
+015b492c  ldr x1,[x8]
+015b4930  ldr x23,[x23, #0x800]
+015b4934  ldr x24,[x24, #0xe00]
+015b4938  ldr x22,[x22, #0xae0]
+015b493c  add x8,sp,#0x8
+015b4940  bl 0x01c01338
+015b4944  ldr x1,[x23]
+015b4948  add x0,sp,#0x8
+    ; [PRE] try { // try from 015b4948 to 015b494f has its CatchHandler @ 015b4a28
+015b494c  bl 0x01a070ec
+    ; [POST] } // end try from 015b4948 to 015b494f
+015b4950  tbz w0,#0x0,0x015b49c4
+015b4954  ldr x21,[sp, #0x18]
+015b4958  cbz x21,0x015b4a18
+015b495c  ldr x8,[x21]
+015b4960  ldr x1,[x24]
+015b4964  ldrh w9,[x8, #0x12a]
+015b4968  cbz x9,0x015b498c
+015b496c  ldr x10,[x8, #0xb0]
+015b4970  add x10,x10,#0x8
+015b4974  ldur x11,[x10, #-0x8]
+015b4978  cmp x11,x1
+015b497c  b.eq 0x015b499c
+015b4980  subs x9,x9,#0x1
+015b4984  add x10,x10,#0x10
+015b4988  b.ne 0x015b4974
+015b498c  mov w2,#0x2
+    ; [PRE] try { // try from 015b498c to 015b49b7 has its CatchHandler @ 015b4a2c
+015b4990  mov x0,x21
+015b4994  bl 0x00b2ae24
+015b4998  b 0x015b49ac
+015b499c  ldr w9,[x10]
+015b49a0  add w9,w9,#0x2
+015b49a4  add x8,x8,w9, SXTW  #0x4
+015b49a8  add x0,x8,#0x138
+015b49ac  ldp x8,x1,[x0]
+015b49b0  mov x0,x21
+015b49b4  blr x8
+    ; [POST] } // end try from 015b498c to 015b49b7
+015b49b8  b 0x015b4944
+015b49bc  mov w0,wzr
+015b49c0  b 0x015b4a00
+015b49c4  ldr x1,[x22]
+015b49c8  add x0,sp,#0x8
+015b49cc  bl 0x01a070e8
+015b49d0  mov x0,x20
+015b49d4  bl 0x015b3df8
+015b49d8  mov x0,x20
+015b49dc  bl 0x015b41e0
+015b49e0  mov x0,x20
+015b49e4  bl 0x015b46d4
+015b49e8  str xzr,[x19, #0x18]!
+015b49ec  mov x0,x19
+015b49f0  mov x1,xzr
+015b49f4  bl 0x00b07850
+015b49f8  mov w0,#0x1
+015b49fc  stur w0,[x19, #-0x8]
+015b4a00  ldp x19,x30,[sp, #0x50]
+015b4a04  ldp x21,x20,[sp, #0x40]
+015b4a08  ldp x23,x22,[sp, #0x30]
+015b4a0c  ldr x24,[sp, #0x20]
+015b4a10  add sp,sp,#0x60
+015b4a14  ret
+015b4a18  mov x23,x22
+    ; [PRE] try { // try from 015b4a18 to 015b4a1f has its CatchHandler @ 015b4a24
+015b4a1c  bl 0x00b079b0
+    ; [POST] } // end try from 015b4a18 to 015b4a1f
+015b4a20  bl 0x00b079b0

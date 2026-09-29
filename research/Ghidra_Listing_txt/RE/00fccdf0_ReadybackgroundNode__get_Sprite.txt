@@ -1,0 +1,28 @@
+Function: ReadybackgroundNode$$get_Sprite @ 00fccdf0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fccdf0  stp x21,x20,[sp, #-0x20]!
+00fccdf4  stp x19,x30,[sp, #0x10]
+00fccdf8  adrp x20,0x3573000
+00fccdfc  adrp x21,0x3333000
+00fcce00  ldrb w8,[x20, #0xe3a]
+00fcce04  ldr x21,[x21]
+00fcce08  mov x19,x0
+00fcce0c  tbnz w8,#0x0,0x00fcce24
+00fcce10  adrp x0,0x3333000
+00fcce14  ldr x0,[x0]
+00fcce18  bl 0x00b0789c
+00fcce1c  mov w8,#0x1
+00fcce20  strb w8,[x20, #0xe3a]
+00fcce24  ldr x1,[x21]
+00fcce28  mov x0,x19
+00fcce2c  ldp x19,x30,[sp, #0x10]
+00fcce30  mov x2,xzr
+00fcce34  ldp x21,x20,[sp], #0x20
+00fcce38  b 0x00dc06f8

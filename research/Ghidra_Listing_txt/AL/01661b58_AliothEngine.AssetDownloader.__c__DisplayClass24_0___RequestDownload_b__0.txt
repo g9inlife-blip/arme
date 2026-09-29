@@ -1,0 +1,29 @@
+Function: AliothEngine.AssetDownloader.<>c__DisplayClass24_0$$<RequestDownload>b__0 @ 01661b58
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01661b58  str x30,[sp, #-0x10]!
+01661b5c  ldr w9,[x0, #0x14]
+01661b60  ldrb w8,[x0, #0x10]
+01661b64  sub w9,w9,#0x1
+01661b68  and w8,w1,w8
+01661b6c  cmp w9,#0x0
+01661b70  strb w8,[x0, #0x10]
+01661b74  str w9,[x0, #0x14]
+01661b78  b.le 0x01661b84
+01661b7c  ldr x30,[sp], #0x10
+01661b80  ret
+01661b84  ldr x9,[x0, #0x18]
+01661b88  cbz x9,0x01661ba8
+01661b8c  ldr x3,[x9, #0x18]
+01661b90  ldr x0,[x9, #0x40]
+01661b94  ldr x2,[x9, #0x28]
+01661b98  tst w8,#0xff
+01661b9c  cset w1,ne
+01661ba0  ldr x30,[sp], #0x10
+01661ba4  br x3
+01661ba8  bl 0x00b079b0

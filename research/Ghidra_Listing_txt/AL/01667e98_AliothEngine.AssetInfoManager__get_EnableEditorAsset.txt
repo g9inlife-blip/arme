@@ -1,0 +1,45 @@
+Function: AliothEngine.AssetInfoManager$$get_EnableEditorAsset @ 01667e98
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp40 @ 010643f0
+  -> UnityEngine.PlayerPrefs$$GetInt @ 024be564
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_g_get_EnableEditorAsset @ 0113d290
+
+--- Listing ---
+01667e98  str x20,[sp, #-0x20]!
+01667e9c  stp x19,x30,[sp, #0x10]
+01667ea0  adrp x19,0x3577000
+01667ea4  adrp x20,0x334f000
+01667ea8  ldrb w8,[x19, #0x908]
+01667eac  ldr x20,[x20, #0xaf8]
+01667eb0  tbnz w8,#0x0,0x01667ed4
+01667eb4  adrp x0,0x334f000
+01667eb8  ldr x0,[x0, #0xaf8]
+01667ebc  bl 0x00b0789c
+01667ec0  adrp x0,0x3329000
+01667ec4  ldr x0,[x0, #0x178]
+01667ec8  bl 0x00b0789c
+01667ecc  mov w8,#0x1
+01667ed0  strb w8,[x19, #0x908]
+01667ed4  ldr x8,[x20]
+01667ed8  ldr x8,[x8, #0xb8]
+01667edc  ldr x0,[x8, #0x10]
+01667ee0  cbz x0,0x01667ef4
+01667ee4  ldp x19,x30,[sp, #0x10]
+01667ee8  mov x1,xzr
+01667eec  ldr x20,[sp], #0x20
+01667ef0  b 0x010643f0
+01667ef4  adrp x8,0x3329000
+01667ef8  ldr x8,[x8, #0x178]
+01667efc  mov w1,#0x1
+01667f00  mov x2,xzr
+01667f04  ldr x0,[x8]
+01667f08  bl 0x024be564
+01667f0c  ldp x19,x30,[sp, #0x10]
+01667f10  cmp w0,#0x1
+01667f14  cset w0,eq
+01667f18  ldr x20,[sp], #0x20
+01667f1c  ret

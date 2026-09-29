@@ -1,0 +1,22 @@
+Function: AliothEngine.GameUpdateService.<StartPackUpdate>d__61$$MoveNext @ 01681f04
+
+--- Calls OUT ---
+  -> AliothEngine.GameUpdateService$$_OnPackUpdate @ 0167e944
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01681f04  str x30,[sp, #-0x10]!
+01681f08  ldr w8,[x0, #0x10]
+01681f0c  cbnz w8,0x01681f28
+01681f10  ldr x8,[x0, #0x20]
+01681f14  mov w9,#0xffffffff
+01681f18  str w9,[x0, #0x10]
+01681f1c  cbz x8,0x01681f34
+01681f20  mov x0,x8
+01681f24  bl 0x0167e944
+01681f28  mov w0,wzr
+01681f2c  ldr x30,[sp], #0x10
+01681f30  ret
+01681f34  bl 0x00b079b0

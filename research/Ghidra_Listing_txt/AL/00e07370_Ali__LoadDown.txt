@@ -1,0 +1,51 @@
+Function: Ali$$LoadDown @ 00e07370
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.ActionExtensions$$SafeInvoke @ 016a999c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_LoadDown @ 0119699c
+  <- LoadEvent$$LoadEnd @ 00e274e4
+
+--- Listing ---
+00e07370  stp x21,x20,[sp, #-0x20]!
+00e07374  stp x19,x30,[sp, #0x10]
+00e07378  adrp x21,0x3572000
+00e0737c  adrp x20,0x335f000
+00e07380  ldrb w8,[x21, #0x57e]
+00e07384  ldr x20,[x20, #0x20]
+00e07388  mov x19,x0
+00e0738c  tbnz w8,#0x0,0x00e073a4
+00e07390  adrp x0,0x335f000
+00e07394  ldr x0,[x0, #0x20]
+00e07398  bl 0x00b0789c
+00e0739c  mov w8,#0x1
+00e073a0  strb w8,[x21, #0x57e]
+00e073a4  ldr x0,[x20]
+00e073a8  ldr w8,[x0, #0xe0]
+00e073ac  cbnz w8,0x00e073b8
+00e073b0  bl 0x00b0798c
+00e073b4  ldr x0,[x20]
+00e073b8  ldr x8,[x0, #0xb8]
+00e073bc  ldr x0,[x8, #0x398]
+00e073c0  cbz x0,0x00e073d8
+00e073c4  mov x1,x19
+00e073c8  ldp x19,x30,[sp, #0x10]
+00e073cc  mov x2,xzr
+00e073d0  ldp x21,x20,[sp], #0x20
+00e073d4  b 0x01060dac
+00e073d8  ldr w8,[x19, #0x138]
+00e073dc  subs w8,w8,#0x1
+00e073e0  str w8,[x19, #0x138]
+00e073e4  b.eq 0x00e073f4
+00e073e8  ldp x19,x30,[sp, #0x10]
+00e073ec  ldp x21,x20,[sp], #0x20
+00e073f0  ret
+00e073f4  ldr x0,[x19, #0x130]
+00e073f8  ldp x19,x30,[sp, #0x10]
+00e073fc  mov x1,xzr
+00e07400  ldp x21,x20,[sp], #0x20
+00e07404  b 0x016a999c

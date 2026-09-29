@@ -1,0 +1,124 @@
+Function: AliothEngine.Utils.Utility$$GUIButton @ 0169f888
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.Utility$$SetGUIColor @ 0169f728
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.GUIStyle$$.ctor @ 0252e17c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GUIStyle$$get_normal @ 025295b4
+  -> UnityEngine.GUILayout$$Button @ 0252608c
+  -> UnityEngine.GUIStyle$$set_alignment @ 0252d2a8
+  -> UnityEngine.GUIStyle$$op_Implicit @ 0252eeb4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.GUIStyleState$$set_textColor @ 02529628
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0169f888  stp d15,d14,[sp, #-0x60]!
+0169f88c  stp d13,d12,[sp, #0x10]
+0169f890  stp d11,d10,[sp, #0x20]
+0169f894  stp d9,d8,[sp, #0x30]
+0169f898  stp x21,x20,[sp, #0x40]
+0169f89c  stp x19,x30,[sp, #0x50]
+0169f8a0  adrp x21,0x3577000
+0169f8a4  adrp x20,0x3330000
+0169f8a8  ldrb w8,[x21, #0xb55]
+0169f8ac  ldr x20,[x20, #0xba0]
+0169f8b0  mov v12.16B,v7.16B
+0169f8b4  mov v13.16B,v6.16B
+0169f8b8  mov v14.16B,v5.16B
+0169f8bc  mov v15.16B,v4.16B
+0169f8c0  mov v8.16B,v3.16B
+0169f8c4  mov v9.16B,v2.16B
+0169f8c8  mov v10.16B,v1.16B
+0169f8cc  mov v11.16B,v0.16B
+0169f8d0  mov x19,x0
+0169f8d4  tbnz w8,#0x0,0x0169f904
+0169f8d8  adrp x0,0x3319000
+0169f8dc  ldr x0,[x0, #0x790]
+0169f8e0  bl 0x00b0789c
+0169f8e4  adrp x0,0x3330000
+0169f8e8  ldr x0,[x0, #0xba0]
+0169f8ec  bl 0x00b0789c
+0169f8f0  adrp x0,0x333b000
+0169f8f4  ldr x0,[x0, #0xbb0]
+0169f8f8  bl 0x00b0789c
+0169f8fc  mov w8,#0x1
+0169f900  strb w8,[x21, #0xb55]
+0169f904  ldr x0,[x20]
+0169f908  adrp x21,0x333b000
+0169f90c  ldr w8,[x0, #0xe0]
+0169f910  ldr x21,[x21, #0xbb0]
+0169f914  cbnz w8,0x0169f91c
+0169f918  bl 0x00b0798c
+0169f91c  ldr x0,[x21]
+0169f920  mov x1,xzr
+0169f924  bl 0x0252eeb4
+0169f928  ldr x8,[x20]
+0169f92c  mov x21,x0
+0169f930  mov x0,x8
+0169f934  bl 0x00b079a0
+0169f938  cbz x0,0x0169fa28
+0169f93c  mov x1,x21
+0169f940  mov x2,xzr
+0169f944  mov x20,x0
+0169f948  bl 0x0252e17c
+0169f94c  mov x0,x20
+0169f950  mov x1,xzr
+0169f954  bl 0x025295b4
+0169f958  cbz x0,0x0169fa28
+0169f95c  adrp x21,0x3319000
+0169f960  ldr x21,[x21, #0x790]
+0169f964  mov v0.16B,v15.16B
+0169f968  mov v1.16B,v14.16B
+0169f96c  mov v2.16B,v13.16B
+0169f970  mov v3.16B,v12.16B
+0169f974  mov x1,xzr
+0169f978  bl 0x02529628
+0169f97c  mov w1,#0x4
+0169f980  mov x0,x20
+0169f984  mov x2,xzr
+0169f988  bl 0x0252d2a8
+0169f98c  mov v0.16B,v11.16B
+0169f990  mov v1.16B,v10.16B
+0169f994  mov v2.16B,v9.16B
+0169f998  mov v3.16B,v8.16B
+0169f99c  bl 0x0169f728
+0169f9a0  ldr x21,[x21]
+0169f9a4  ldr x8,[x21, #0x38]
+0169f9a8  ldr x0,[x8]
+0169f9ac  ldrb w8,[x0, #0x132]
+0169f9b0  tbnz w8,#0x0,0x0169f9b8
+0169f9b4  bl 0x00b2ac40
+0169f9b8  ldr w8,[x0, #0xe0]
+0169f9bc  cbnz w8,0x0169f9c4
+0169f9c0  bl 0x00b0798c
+0169f9c4  ldr x8,[x21, #0x38]
+0169f9c8  ldr x0,[x8]
+0169f9cc  ldrb w8,[x0, #0x132]
+0169f9d0  tbnz w8,#0x0,0x0169f9d8
+0169f9d4  bl 0x00b2ac40
+0169f9d8  ldr x8,[x0, #0xb8]
+0169f9dc  mov x0,x19
+0169f9e0  mov x1,x20
+0169f9e4  mov x3,xzr
+0169f9e8  ldr x2,[x8]
+0169f9ec  bl 0x0252608c
+0169f9f0  fmov s0,0x3f800000
+0169f9f4  mov v1.16B,v0.16B
+0169f9f8  mov v2.16B,v0.16B
+0169f9fc  mov v3.16B,v0.16B
+0169fa00  mov w19,w0
+0169fa04  bl 0x0169f728
+0169fa08  and w0,w19,#0x1
+0169fa0c  ldp x19,x30,[sp, #0x50]
+0169fa10  ldp x21,x20,[sp, #0x40]
+0169fa14  ldp d9,d8,[sp, #0x30]
+0169fa18  ldp d11,d10,[sp, #0x20]
+0169fa1c  ldp d13,d12,[sp, #0x10]
+0169fa20  ldp d15,d14,[sp], #0x60
+0169fa24  ret
+0169fa28  bl 0x00b079b0

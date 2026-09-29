@@ -1,0 +1,47 @@
+Function: AliothEngine.Utils.TransformUtils$$SetHideFlagsRecursively @ 0169cd48
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> UnityEngine.Object$$set_hideFlags @ 024e013c
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> AliothEngine.Utils.TransformUtils$$SetHideFlagsRecursively @ 0169cd48
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.TransformUtils$$SetHideFlagsRecursively @ 0169cd48
+
+--- Listing ---
+0169cd48  stp x21,x20,[sp, #-0x20]!
+0169cd4c  stp x19,x30,[sp, #0x10]
+0169cd50  cbz x0,0x0169cdc8
+0169cd54  mov w19,w1
+0169cd58  mov x1,xzr
+0169cd5c  mov x20,x0
+0169cd60  bl 0x024e4ed4
+0169cd64  cbz x0,0x0169cdc8
+0169cd68  mov w1,w19
+0169cd6c  mov x2,xzr
+0169cd70  bl 0x024e013c
+0169cd74  mov x0,x20
+0169cd78  mov x1,xzr
+0169cd7c  bl 0x024f5578
+0169cd80  cmp w0,#0x1
+0169cd84  b.lt 0x0169cdbc
+0169cd88  mov w21,wzr
+0169cd8c  mov x0,x20
+0169cd90  mov w1,w21
+0169cd94  mov x2,xzr
+0169cd98  bl 0x024f5bec
+0169cd9c  mov w1,w19
+0169cda0  bl 0x0169cd48
+0169cda4  mov x0,x20
+0169cda8  mov x1,xzr
+0169cdac  add w21,w21,#0x1
+0169cdb0  bl 0x024f5578
+0169cdb4  cmp w21,w0
+0169cdb8  b.lt 0x0169cd8c
+0169cdbc  ldp x19,x30,[sp, #0x10]
+0169cdc0  ldp x21,x20,[sp], #0x20
+0169cdc4  ret
+0169cdc8  bl 0x00b079b0

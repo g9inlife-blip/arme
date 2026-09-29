@@ -1,0 +1,29 @@
+Function: AliothEngine.Extensions.LayerMaskExtensions$$AddToMask @ 016aea20
+
+--- Calls OUT ---
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b74
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b78
+  -> AliothEngine.Extensions.LayerMaskExtensions$$NamesToMask @ 016ae8ac
+
+--- Calls IN ---
+
+--- Listing ---
+016aea20  str x20,[sp, #-0x20]!
+016aea24  stp x19,x30,[sp, #0x10]
+016aea28  mov x19,x1
+016aea2c  and x0,x0,#0xffffffff
+016aea30  mov x1,xzr
+016aea34  bl 0x024e0b74
+016aea38  mov w20,w0
+016aea3c  mov x0,x19
+016aea40  bl 0x016ae8ac
+016aea44  and x0,x0,#0xffffffff
+016aea48  mov x1,xzr
+016aea4c  bl 0x024e0b74
+016aea50  orr w0,w0,w20
+016aea54  mov x1,xzr
+016aea58  bl 0x024e0b78
+016aea5c  ldp x19,x30,[sp, #0x10]
+016aea60  and x0,x0,#0xffffffff
+016aea64  ldr x20,[sp], #0x20
+016aea68  ret

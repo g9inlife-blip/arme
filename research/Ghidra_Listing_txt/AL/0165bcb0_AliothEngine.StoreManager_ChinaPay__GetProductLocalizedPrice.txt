@@ -1,0 +1,47 @@
+Function: AliothEngine.StoreManager_ChinaPay$$GetProductLocalizedPrice @ 0165bcb0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp409 @ 01094518
+
+--- Calls IN ---
+
+--- Listing ---
+0165bcb0  stp x23,x22,[sp, #-0x30]!
+0165bcb4  stp x21,x20,[sp, #0x10]
+0165bcb8  stp x19,x30,[sp, #0x20]
+0165bcbc  adrp x22,0x3577000
+0165bcc0  adrp x23,0x333d000
+0165bcc4  ldrb w8,[x22, #0x870]
+0165bcc8  ldr x23,[x23, #0xe50]
+0165bccc  mov x19,x2
+0165bcd0  mov x20,x1
+0165bcd4  mov x21,x0
+0165bcd8  tbnz w8,#0x0,0x0165bcf0
+0165bcdc  adrp x0,0x333d000
+0165bce0  ldr x0,[x0, #0xe50]
+0165bce4  bl 0x00b0789c
+0165bce8  mov w8,#0x1
+0165bcec  strb w8,[x22, #0x870]
+0165bcf0  ldr x8,[x23]
+0165bcf4  ldr x8,[x8, #0xb8]
+0165bcf8  ldr x0,[x8, #0x40]
+0165bcfc  cbz x0,0x0165bd20
+0165bd00  mov x1,x21
+0165bd04  mov x2,x20
+0165bd08  mov x3,x19
+0165bd0c  ldp x19,x30,[sp, #0x20]
+0165bd10  ldp x21,x20,[sp, #0x10]
+0165bd14  mov x4,xzr
+0165bd18  ldp x23,x22,[sp], #0x30
+0165bd1c  b 0x01094518
+0165bd20  mov x0,x19
+0165bd24  mov x1,xzr
+0165bd28  str xzr,[x19]
+0165bd2c  bl 0x00b07850
+0165bd30  ldp x19,x30,[sp, #0x20]
+0165bd34  ldp x21,x20,[sp, #0x10]
+0165bd38  mov w0,wzr
+0165bd3c  ldp x23,x22,[sp], #0x30
+0165bd40  ret

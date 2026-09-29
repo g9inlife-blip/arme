@@ -1,0 +1,140 @@
+Function: AliothExtensions$$GetSelfChild @ 00e15f34
+
+--- Calls OUT ---
+  -> System.String$$Concat @ 01fdf3bc
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> UnityEngine.GameObject$$GetComponentsInChildren<object> @ 0179526c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp426 @ 010966a8
+  -> System.String$$Equals @ 01fde08c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.UnityEngineGameObjectWrap$$_m_GetSelfChild @ 014771ec
+  <- BaseMono$$SetItemObject @ 00e1f72c
+  <- AliothExtensions$$GetSelfChildComponent<object> @ 017375d4
+  <- BattleEditorStartMono$$InitTerrainItem @ 016cf5e0
+  <- NoviceGuidePanelMono.<HighLightShow>d__39$$MoveNext @ 01007f98
+  <- NodeManager$$Init @ 0131e350
+  <- AliothExtensions$$GetSelfChildComponent<object> @ 017374bc
+
+--- Listing ---
+00e15f34  str x24,[sp, #-0x40]!
+00e15f38  stp x23,x22,[sp, #0x10]
+00e15f3c  stp x21,x20,[sp, #0x20]
+00e15f40  stp x19,x30,[sp, #0x30]
+00e15f44  adrp x23,0x3572000
+00e15f48  adrp x22,0x3348000
+00e15f4c  ldrb w8,[x23, #0x5fd]
+00e15f50  ldr x22,[x22, #0x138]
+00e15f54  mov w21,w2
+00e15f58  mov x19,x1
+00e15f5c  mov x20,x0
+00e15f60  tbnz w8,#0x0,0x00e15fa8
+00e15f64  adrp x0,0x3348000
+00e15f68  ldr x0,[x0, #0x138]
+00e15f6c  bl 0x00b0789c
+00e15f70  adrp x0,0x336b000
+00e15f74  ldr x0,[x0, #0x7d0]
+00e15f78  bl 0x00b0789c
+00e15f7c  adrp x0,0x3347000
+00e15f80  ldr x0,[x0, #0x70]
+00e15f84  bl 0x00b0789c
+00e15f88  adrp x0,0x3349000
+00e15f8c  ldr x0,[x0, #0xb10]
+00e15f90  bl 0x00b0789c
+00e15f94  adrp x0,0x3320000
+00e15f98  ldr x0,[x0, #0x8a8]
+00e15f9c  bl 0x00b0789c
+00e15fa0  mov w8,#0x1
+00e15fa4  strb w8,[x23, #0x5fd]
+00e15fa8  ldr x0,[x22]
+00e15fac  ldr w8,[x0, #0xe0]
+00e15fb0  cbnz w8,0x00e15fbc
+00e15fb4  bl 0x00b0798c
+00e15fb8  ldr x0,[x22]
+00e15fbc  ldr x8,[x0, #0xb8]
+00e15fc0  ldr x0,[x8, #0x130]
+00e15fc4  cbz x0,0x00e15fec
+00e15fc8  and w3,w21,#0x1
+00e15fcc  mov x1,x20
+00e15fd0  mov x2,x19
+00e15fd4  ldp x19,x30,[sp, #0x30]
+00e15fd8  ldp x21,x20,[sp, #0x20]
+00e15fdc  ldp x23,x22,[sp, #0x10]
+00e15fe0  mov x4,xzr
+00e15fe4  ldr x24,[sp], #0x40
+00e15fe8  b 0x010966a8
+00e15fec  cbz x20,0x00e160f8
+00e15ff0  adrp x8,0x3347000
+00e15ff4  ldr x8,[x8, #0x70]
+00e15ff8  mov w1,#0x1
+00e15ffc  mov x0,x20
+00e16000  ldr x2,[x8]
+00e16004  bl 0x0179526c
+00e16008  cbz x0,0x00e160f8
+00e1600c  ldr w8,[x0, #0x18]
+00e16010  mov x22,x0
+00e16014  cmp w8,#0x1
+00e16018  b.lt 0x00e16064
+00e1601c  mov w24,wzr
+00e16020  cmp w24,w8
+00e16024  b.cs 0x00e160fc
+00e16028  add x8,x22,w24, SXTW  #0x3
+00e1602c  ldr x23,[x8, #0x20]
+00e16030  cbz x23,0x00e160f8
+00e16034  mov x0,x23
+00e16038  mov x1,xzr
+00e1603c  bl 0x024c9a1c
+00e16040  cbz x0,0x00e160f8
+00e16044  mov x1,x19
+00e16048  mov x2,xzr
+00e1604c  bl 0x01fde08c
+00e16050  tbnz w0,#0x0,0x00e160dc
+00e16054  ldr w8,[x22, #0x18]
+00e16058  add w24,w24,#0x1
+00e1605c  cmp w24,w8
+00e16060  b.lt 0x00e16020
+00e16064  tbz w21,#0x0,0x00e160c4
+00e16068  adrp x21,0x3349000
+00e1606c  adrp x22,0x3320000
+00e16070  adrp x23,0x336b000
+00e16074  ldr x21,[x21, #0xb10]
+00e16078  ldr x22,[x22, #0x8a8]
+00e1607c  ldr x23,[x23, #0x7d0]
+00e16080  mov x0,x20
+00e16084  mov x1,xzr
+00e16088  bl 0x024c9a1c
+00e1608c  ldr x1,[x21]
+00e16090  ldr x3,[x22]
+00e16094  mov x2,x19
+00e16098  mov x4,xzr
+00e1609c  bl 0x01fdf3bc
+00e160a0  ldr x8,[x23]
+00e160a4  mov x19,x0
+00e160a8  ldr w9,[x8, #0xe0]
+00e160ac  cbnz w9,0x00e160b8
+00e160b0  mov x0,x8
+00e160b4  bl 0x00b0798c
+00e160b8  mov x0,x19
+00e160bc  mov x1,xzr
+00e160c0  bl 0x024c0830
+00e160c4  ldp x19,x30,[sp, #0x30]
+00e160c8  ldp x21,x20,[sp, #0x20]
+00e160cc  ldp x23,x22,[sp, #0x10]
+00e160d0  mov x0,xzr
+00e160d4  ldr x24,[sp], #0x40
+00e160d8  ret
+00e160dc  mov x0,x23
+00e160e0  ldp x19,x30,[sp, #0x30]
+00e160e4  ldp x21,x20,[sp, #0x20]
+00e160e8  ldp x23,x22,[sp, #0x10]
+00e160ec  mov x1,xzr
+00e160f0  ldr x24,[sp], #0x40
+00e160f4  b 0x024e4ed4
+00e160f8  bl 0x00b079b0
+00e160fc  bl 0x00b079b8

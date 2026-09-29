@@ -1,0 +1,73 @@
+Function: AliothEngine.GameUpdateService$$isAssetNeedUpdate_OnlyCheckVerion @ 0167f218
+
+--- Calls OUT ---
+  -> AliothEngine.GameUpdateService$$get_remoteAssetVersion @ 0167d5a4
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> System.Version$$.ctor @ 02170230
+  -> System.Version$$op_GreaterThan @ 02171128
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetVersionManager$$get_AssetVersionSaved @ 0166f050
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_m_isAssetNeedUpdate_OnlyCheckVerion @ 01141ecc
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- Ali$$CheckGameNeedUpdate @ 00e102b0
+
+--- Listing ---
+0167f218  stp x21,x20,[sp, #-0x20]!
+0167f21c  stp x19,x30,[sp, #0x10]
+0167f220  adrp x20,0x3577000
+0167f224  adrp x21,0x3352000
+0167f228  ldrb w8,[x20, #0xa3c]
+0167f22c  ldr x21,[x21, #0x2a8]
+0167f230  mov x19,x0
+0167f234  tbnz w8,#0x0,0x0167f264
+0167f238  adrp x0,0x3352000
+0167f23c  ldr x0,[x0, #0x2a8]
+0167f240  bl 0x00b0789c
+0167f244  adrp x0,0x334d000
+0167f248  ldr x0,[x0, #0x608]
+0167f24c  bl 0x00b0789c
+0167f250  adrp x0,0x330a000
+0167f254  ldr x0,[x0, #0x888]
+0167f258  bl 0x00b0789c
+0167f25c  mov w8,#0x1
+0167f260  strb w8,[x20, #0xa3c]
+0167f264  ldr x8,[x21]
+0167f268  ldr x8,[x8, #0xb8]
+0167f26c  ldr x0,[x8, #0x158]
+0167f270  cbz x0,0x0167f288
+0167f274  mov x1,x19
+0167f278  ldp x19,x30,[sp, #0x10]
+0167f27c  mov x2,xzr
+0167f280  ldp x21,x20,[sp], #0x20
+0167f284  b 0x01060aac
+0167f288  adrp x8,0x334d000
+0167f28c  ldr x8,[x8, #0x608]
+0167f290  ldr x0,[x8]
+0167f294  bl 0x01e0894c
+0167f298  cbz x0,0x0167f2ec
+0167f29c  adrp x20,0x330a000
+0167f2a0  ldr x20,[x20, #0x888]
+0167f2a4  bl 0x0167d5a4
+0167f2a8  mov x19,x0
+0167f2ac  bl 0x0166f050
+0167f2b0  ldr x8,[x20]
+0167f2b4  mov x21,x0
+0167f2b8  mov x0,x8
+0167f2bc  bl 0x00b079a0
+0167f2c0  cbz x0,0x0167f2ec
+0167f2c4  mov x1,x21
+0167f2c8  mov x2,xzr
+0167f2cc  mov x20,x0
+0167f2d0  bl 0x02170230
+0167f2d4  mov x0,x19
+0167f2d8  ldp x19,x30,[sp, #0x10]
+0167f2dc  mov x1,x20
+0167f2e0  mov x2,xzr
+0167f2e4  ldp x21,x20,[sp], #0x20
+0167f2e8  b 0x02171128
+0167f2ec  bl 0x00b079b0

@@ -1,0 +1,46 @@
+Function: AliothEngine.StoreManager_ChinaPay$$_OnPurchaseProductFailed @ 0165bf5c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp63 @ 01067254
+  -> AliothEngine.IStoreManager$$HandlePurchaseProductFailed @ 016592bc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineStoreManager_ChinaPayWrap$$_m__OnPurchaseProductFailed @ 01164bf4
+
+--- Listing ---
+0165bf5c  stp x23,x22,[sp, #-0x30]!
+0165bf60  stp x21,x20,[sp, #0x10]
+0165bf64  stp x19,x30,[sp, #0x20]
+0165bf68  adrp x22,0x3577000
+0165bf6c  adrp x23,0x333d000
+0165bf70  ldrb w8,[x22, #0x874]
+0165bf74  ldr x23,[x23, #0xe50]
+0165bf78  mov x19,x2
+0165bf7c  mov w20,w1
+0165bf80  mov x21,x0
+0165bf84  tbnz w8,#0x0,0x0165bf9c
+0165bf88  adrp x0,0x333d000
+0165bf8c  ldr x0,[x0, #0xe50]
+0165bf90  bl 0x00b0789c
+0165bf94  mov w8,#0x1
+0165bf98  strb w8,[x22, #0x874]
+0165bf9c  ldr x8,[x23]
+0165bfa0  ldr x8,[x8, #0xb8]
+0165bfa4  ldr x0,[x8, #0x60]
+0165bfa8  cbz x0,0x0165bfcc
+0165bfac  mov x1,x21
+0165bfb0  mov w2,w20
+0165bfb4  mov x3,x19
+0165bfb8  ldp x19,x30,[sp, #0x20]
+0165bfbc  ldp x21,x20,[sp, #0x10]
+0165bfc0  mov x4,xzr
+0165bfc4  ldp x23,x22,[sp], #0x30
+0165bfc8  b 0x01067254
+0165bfcc  mov x0,x21
+0165bfd0  mov w1,w20
+0165bfd4  mov x2,x19
+0165bfd8  ldp x19,x30,[sp, #0x20]
+0165bfdc  ldp x21,x20,[sp, #0x10]
+0165bfe0  ldp x23,x22,[sp], #0x30
+0165bfe4  b 0x016592bc

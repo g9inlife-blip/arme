@@ -1,0 +1,22 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$ToggleEnabled @ 016b08d8
+
+--- Calls OUT ---
+  -> UnityEngine.Behaviour$$set_enabled @ 024dd2a4
+  -> UnityEngine.Behaviour$$get_enabled @ 024dd268
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b08d8  stp x19,x30,[sp, #-0x10]!
+016b08dc  cbz x0,0x016b0904
+016b08e0  mov x1,xzr
+016b08e4  mov x19,x0
+016b08e8  bl 0x024dd268
+016b08ec  mvn w8,w0
+016b08f0  and w1,w8,#0x1
+016b08f4  mov x0,x19
+016b08f8  mov x2,xzr
+016b08fc  ldp x19,x30,[sp], #0x10
+016b0900  b 0x024dd2a4
+016b0904  bl 0x00b079b0

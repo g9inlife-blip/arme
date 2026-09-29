@@ -1,0 +1,18 @@
+Function: AliothEngine.AssetFileInfo$$CompareTo @ 016671d4
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$CompareTo @ 01fddce4
+
+--- Calls IN ---
+
+--- Listing ---
+016671d4  str x30,[sp, #-0x10]!
+016671d8  cbz x1,0x016671f4
+016671dc  ldr x0,[x0, #0x30]
+016671e0  cbz x0,0x016671f4
+016671e4  ldr x1,[x1, #0x30]
+016671e8  mov x2,xzr
+016671ec  ldr x30,[sp], #0x10
+016671f0  b 0x01fddce4
+016671f4  bl 0x00b079b0

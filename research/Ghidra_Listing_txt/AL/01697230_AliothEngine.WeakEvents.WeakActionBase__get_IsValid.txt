@@ -1,0 +1,30 @@
+Function: AliothEngine.WeakEvents.WeakActionBase$$get_IsValid @ 01697230
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_IsValid @ 01f0d638
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01697230  str x20,[sp, #-0x20]!
+01697234  stp x19,x30,[sp, #0x10]
+01697238  adrp x20,0x3577000
+0169723c  ldrb w8,[x20, #0xb0a]
+01697240  mov x19,x0
+01697244  tbnz w8,#0x0,0x0169725c
+01697248  adrp x0,0x3330000
+0169724c  ldr x0,[x0, #0xf00]
+01697250  bl 0x00b0789c
+01697254  mov w8,#0x1
+01697258  strb w8,[x20, #0xb0a]
+0169725c  ldr x0,[x19, #0x10]
+01697260  cbz x0,0x0169727c
+01697264  adrp x8,0x3330000
+01697268  ldr x8,[x8, #0xf00]
+0169726c  ldp x19,x30,[sp, #0x10]
+01697270  ldr x1,[x8]
+01697274  ldr x20,[sp], #0x20
+01697278  b 0x01f0d638
+0169727c  bl 0x00b079b0

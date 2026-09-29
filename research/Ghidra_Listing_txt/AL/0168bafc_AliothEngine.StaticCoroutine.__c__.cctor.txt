@@ -1,0 +1,40 @@
+Function: AliothEngine.StaticCoroutine.<>c$$.cctor @ 0168bafc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0168bafc  str x20,[sp, #-0x20]!
+0168bb00  stp x19,x30,[sp, #0x10]
+0168bb04  adrp x19,0x3577000
+0168bb08  adrp x20,0x331d000
+0168bb0c  ldrb w8,[x19, #0xaa8]
+0168bb10  ldr x20,[x20, #0xbf0]
+0168bb14  tbnz w8,#0x0,0x0168bb2c
+0168bb18  adrp x0,0x331d000
+0168bb1c  ldr x0,[x0, #0xbf0]
+0168bb20  bl 0x00b0789c
+0168bb24  mov w8,#0x1
+0168bb28  strb w8,[x19, #0xaa8]
+0168bb2c  ldr x0,[x20]
+0168bb30  bl 0x00b079a0
+0168bb34  cbz x0,0x0168bb68
+0168bb38  mov x1,xzr
+0168bb3c  mov x19,x0
+0168bb40  bl 0x02194104
+0168bb44  ldr x8,[x20]
+0168bb48  mov x1,x19
+0168bb4c  ldr x8,[x8, #0xb8]
+0168bb50  str x19,[x8]
+0168bb54  ldr x8,[x20]
+0168bb58  ldp x19,x30,[sp, #0x10]
+0168bb5c  ldr x0,[x8, #0xb8]
+0168bb60  ldr x20,[sp], #0x20
+0168bb64  b 0x00b07850
+0168bb68  bl 0x00b079b0

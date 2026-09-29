@@ -1,0 +1,32 @@
+Function: AliothEngine.AssetLocation$$get_isCached @ 0166c030
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetDownloader$$IsCached @ 0165e394
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$HasValidCache @ 0166bd3c
+
+--- Listing ---
+0166c030  stp x21,x20,[sp, #-0x20]!
+0166c034  stp x19,x30,[sp, #0x10]
+0166c038  adrp x20,0x3577000
+0166c03c  adrp x21,0x3337000
+0166c040  ldrb w8,[x20, #0x949]
+0166c044  ldr x21,[x21, #0x5c8]
+0166c048  mov x19,x0
+0166c04c  tbnz w8,#0x0,0x0166c064
+0166c050  adrp x0,0x3337000
+0166c054  ldr x0,[x0, #0x5c8]
+0166c058  bl 0x00b0789c
+0166c05c  mov w8,#0x1
+0166c060  strb w8,[x20, #0x949]
+0166c064  ldr x0,[x21]
+0166c068  ldr w8,[x0, #0xe0]
+0166c06c  cbnz w8,0x0166c074
+0166c070  bl 0x00b0798c
+0166c074  mov x0,x19
+0166c078  ldp x19,x30,[sp, #0x10]
+0166c07c  ldp x21,x20,[sp], #0x20
+0166c080  b 0x0165e394

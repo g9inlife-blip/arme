@@ -1,0 +1,80 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$GetWorldRect @ 016b3ee8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.RectTransform$$GetWorldCorners @ 024f6bf4
+
+--- Calls IN ---
+
+--- Listing ---
+016b3ee8  sub sp,sp,#0x50
+016b3eec  str d10,[sp, #0x10]
+016b3ef0  stp d9,d8,[sp, #0x20]
+016b3ef4  stp x21,x20,[sp, #0x30]
+016b3ef8  stp x19,x30,[sp, #0x40]
+016b3efc  adrp x19,0x3577000
+016b3f00  adrp x21,0x3365000
+016b3f04  ldrb w8,[x19, #0xbe6]
+016b3f08  ldr x21,[x21, #0x98]
+016b3f0c  mov x20,x0
+016b3f10  tbnz w8,#0x0,0x016b3f34
+016b3f14  adrp x0,0x332c000
+016b3f18  ldr x0,[x0, #0x5a8]
+016b3f1c  bl 0x00b0789c
+016b3f20  adrp x0,0x3365000
+016b3f24  ldr x0,[x0, #0x98]
+016b3f28  bl 0x00b0789c
+016b3f2c  mov w8,#0x1
+016b3f30  strb w8,[x19, #0xbe6]
+016b3f34  ldr x0,[x21]
+016b3f38  mov w1,#0x4
+016b3f3c  bl 0x00b078f8
+016b3f40  cbz x20,0x016b3fec
+016b3f44  mov x19,x0
+016b3f48  mov x0,x20
+016b3f4c  mov x1,x19
+016b3f50  mov x2,xzr
+016b3f54  bl 0x024f6bf4
+016b3f58  cbz x19,0x016b3fec
+016b3f5c  ldr x8,[x19, #0x18]
+016b3f60  cmp w8,#0x1
+016b3f64  b.ls 0x016b3fe8
+016b3f68  cmp w8,#0x2
+016b3f6c  b.eq 0x016b3fe8
+016b3f70  adrp x9,0x332c000
+016b3f74  ldr x9,[x9, #0x5a8]
+016b3f78  ldp s9,s8,[x19, #0x2c]
+016b3f7c  ldr s10,[x19, #0x38]
+016b3f80  ldr x0,[x9]
+016b3f84  ldr w9,[x0, #0xe0]
+016b3f88  cbnz w9,0x016b3f94
+016b3f8c  bl 0x00b0798c
+016b3f90  ldr x8,[x19, #0x18]
+016b3f94  cmp w8,#0x1
+016b3f98  b.eq 0x016b3fe8
+016b3f9c  cbz w8,0x016b3fe8
+016b3fa0  ldr s0,[x19, #0x24]
+016b3fa4  ldr s1,[x19, #0x30]
+016b3fa8  fabd s2,s10,s9
+016b3fac  mov x0,sp
+016b3fb0  mov x1,xzr
+016b3fb4  fabd s3,s0,s1
+016b3fb8  mov v0.16B,v9.16B
+016b3fbc  mov v1.16B,v8.16B
+016b3fc0  stp xzr,xzr,[sp]
+016b3fc4  bl 0x024daef0
+016b3fc8  ldp s0,s1,[sp]
+016b3fcc  ldp s2,s3,[sp, #0x8]
+016b3fd0  ldp x19,x30,[sp, #0x40]
+016b3fd4  ldp x21,x20,[sp, #0x30]
+016b3fd8  ldp d9,d8,[sp, #0x20]
+016b3fdc  ldr d10,[sp, #0x10]
+016b3fe0  add sp,sp,#0x50
+016b3fe4  ret
+016b3fe8  bl 0x00b079b8
+016b3fec  bl 0x00b079b0

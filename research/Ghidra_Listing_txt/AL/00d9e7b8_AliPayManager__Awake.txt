@@ -1,0 +1,43 @@
+Function: AliPayManager$$Awake @ 00d9e7b8
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$Awake @ 01e090dc
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Object$$set_name @ 024df584
+
+--- Calls IN ---
+
+--- Listing ---
+00d9e7b8  stp x21,x20,[sp, #-0x20]!
+00d9e7bc  stp x19,x30,[sp, #0x10]
+00d9e7c0  adrp x20,0x3572000
+00d9e7c4  adrp x21,0x331d000
+00d9e7c8  ldrb w8,[x20, #0x2d]
+00d9e7cc  ldr x21,[x21, #0xcd8]
+00d9e7d0  mov x19,x0
+00d9e7d4  tbnz w8,#0x0,0x00d9e7f8
+00d9e7d8  adrp x0,0x331d000
+00d9e7dc  ldr x0,[x0, #0xcd8]
+00d9e7e0  bl 0x00b0789c
+00d9e7e4  adrp x0,0x334d000
+00d9e7e8  ldr x0,[x0, #0x4d0]
+00d9e7ec  bl 0x00b0789c
+00d9e7f0  mov w8,#0x1
+00d9e7f4  strb w8,[x20, #0x2d]
+00d9e7f8  ldr x1,[x21]
+00d9e7fc  mov x0,x19
+00d9e800  bl 0x01e090dc
+00d9e804  mov x0,x19
+00d9e808  mov x1,xzr
+00d9e80c  bl 0x024e4ed4
+00d9e810  cbz x0,0x00d9e830
+00d9e814  adrp x8,0x334d000
+00d9e818  ldr x8,[x8, #0x4d0]
+00d9e81c  ldp x19,x30,[sp, #0x10]
+00d9e820  mov x2,xzr
+00d9e824  ldr x1,[x8]
+00d9e828  ldp x21,x20,[sp], #0x20
+00d9e82c  b 0x024df584
+00d9e830  bl 0x00b079b0

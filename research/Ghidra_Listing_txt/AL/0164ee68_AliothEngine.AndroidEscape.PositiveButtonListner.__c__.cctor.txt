@@ -1,0 +1,40 @@
+Function: AliothEngine.AndroidEscape.PositiveButtonListner.<>c$$.cctor @ 0164ee68
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0164ee68  str x20,[sp, #-0x20]!
+0164ee6c  stp x19,x30,[sp, #0x10]
+0164ee70  adrp x19,0x3577000
+0164ee74  adrp x20,0x3372000
+0164ee78  ldrb w8,[x19, #0x7df]
+0164ee7c  ldr x20,[x20, #0x370]
+0164ee80  tbnz w8,#0x0,0x0164ee98
+0164ee84  adrp x0,0x3372000
+0164ee88  ldr x0,[x0, #0x370]
+0164ee8c  bl 0x00b0789c
+0164ee90  mov w8,#0x1
+0164ee94  strb w8,[x19, #0x7df]
+0164ee98  ldr x0,[x20]
+0164ee9c  bl 0x00b079a0
+0164eea0  cbz x0,0x0164eed4
+0164eea4  mov x1,xzr
+0164eea8  mov x19,x0
+0164eeac  bl 0x02194104
+0164eeb0  ldr x8,[x20]
+0164eeb4  mov x1,x19
+0164eeb8  ldr x8,[x8, #0xb8]
+0164eebc  str x19,[x8]
+0164eec0  ldr x8,[x20]
+0164eec4  ldp x19,x30,[sp, #0x10]
+0164eec8  ldr x0,[x8, #0xb8]
+0164eecc  ldr x20,[sp], #0x20
+0164eed0  b 0x00b07850
+0164eed4  bl 0x00b079b0

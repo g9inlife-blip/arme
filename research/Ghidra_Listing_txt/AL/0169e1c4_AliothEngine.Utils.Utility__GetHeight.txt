@@ -1,0 +1,96 @@
+Function: AliothEngine.Utils.Utility$$GetHeight @ 0169e1c4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b74
+  -> UnityEngine.RaycastHit$$get_point @ 0253a9dc
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.Physics$$RaycastAll @ 02539db0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$ProjectGround @ 0169e194
+
+--- Listing ---
+0169e1c4  sub sp,sp,#0x80
+0169e1c8  stp d13,d12,[sp, #0x30]
+0169e1cc  stp d11,d10,[sp, #0x40]
+0169e1d0  stp d9,d8,[sp, #0x50]
+0169e1d4  stp x21,x20,[sp, #0x60]
+0169e1d8  stp x19,x30,[sp, #0x70]
+0169e1dc  adrp x20,0x3576000
+0169e1e0  ldrb w8,[x20, #0x982]
+0169e1e4  mov x19,x0
+0169e1e8  mov v9.16B,v2.16B
+0169e1ec  mov v8.16B,v1.16B
+0169e1f0  mov v10.16B,v0.16B
+0169e1f4  movi v0.2D,#0x0
+0169e1f8  stur q0,[sp, #0x1c]
+0169e1fc  stp q0,q0,[sp]
+0169e200  cbnz w8,0x0169e218
+0169e204  adrp x0,0x3368000
+0169e208  ldr x0,[x0, #0x9b8]
+0169e20c  bl 0x00b0789c
+0169e210  mov w8,#0x1
+0169e214  strb w8,[x20, #0x982]
+0169e218  adrp x8,0x3368000
+0169e21c  ldr x8,[x8, #0x9b8]
+0169e220  and x0,x19,#0xffffffff
+0169e224  mov x1,xzr
+0169e228  ldr x8,[x8]
+0169e22c  ldr x8,[x8, #0xb8]
+0169e230  ldp s11,s12,[x8, #0x24]
+0169e234  ldr s13,[x8, #0x2c]
+0169e238  bl 0x024e0b74
+0169e23c  mov w8,#0x447a0000
+0169e240  mov w9,#0x7f800000
+0169e244  fmov s1,w8
+0169e248  fmov s6,w9
+0169e24c  mov v0.16B,v10.16B
+0169e250  mov v2.16B,v9.16B
+0169e254  mov v3.16B,v11.16B
+0169e258  mov v4.16B,v12.16B
+0169e25c  mov v5.16B,v13.16B
+0169e260  mov x1,xzr
+0169e264  bl 0x02539db0
+0169e268  cbz x0,0x0169e308
+0169e26c  ldr x8,[x0, #0x18]
+0169e270  mov x19,x0
+0169e274  cbz x8,0x0169e2e4
+0169e278  cmp w8,#0x1
+0169e27c  b.lt 0x0169e2dc
+0169e280  mov w9,#0xff7fffff
+0169e284  mov x20,xzr
+0169e288  add x21,x19,#0x20
+0169e28c  fmov s8,w9
+0169e290  cmp x20,w8, UXTW 
+0169e294  b.cs 0x0169e304
+0169e298  ldr w8,[x21, #0x28]
+0169e29c  ldr x9,[x21, #0x20]
+0169e2a0  ldp q1,q0,[x21]
+0169e2a4  mov x0,sp
+0169e2a8  mov x1,xzr
+0169e2ac  str w8,[sp, #0x28]
+0169e2b0  str x9,[sp, #0x20]
+0169e2b4  stp q1,q0,[sp]
+0169e2b8  bl 0x0253a9dc
+0169e2bc  ldr w8,[x19, #0x18]
+0169e2c0  fcmp s1,s8
+0169e2c4  add x20,x20,#0x1
+0169e2c8  fcsel s8,s1,s8,gt
+0169e2cc  cmp x20,w8, SXTW 
+0169e2d0  add x21,x21,#0x2c
+0169e2d4  b.lt 0x0169e290
+0169e2d8  b 0x0169e2e4
+0169e2dc  mov w8,#0xff7fffff
+0169e2e0  fmov s8,w8
+0169e2e4  mov v0.16B,v8.16B
+0169e2e8  ldp x19,x30,[sp, #0x70]
+0169e2ec  ldp x21,x20,[sp, #0x60]
+0169e2f0  ldp d9,d8,[sp, #0x50]
+0169e2f4  ldp d11,d10,[sp, #0x40]
+0169e2f8  ldp d13,d12,[sp, #0x30]
+0169e2fc  add sp,sp,#0x80
+0169e300  ret
+0169e304  bl 0x00b079b8
+0169e308  bl 0x00b079b0

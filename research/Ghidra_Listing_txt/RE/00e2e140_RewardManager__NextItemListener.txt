@@ -1,0 +1,73 @@
+Function: RewardManager$$NextItemListener @ 00e2e140
+
+--- Calls OUT ---
+  -> RewardManager$$CloseBoxAudio @ 00e2e224
+  -> RewardManager$$ShowItem @ 00e2e2f4
+  -> RewardManager$$set_Skip @ 00e2ddb8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> thunk_FUN_00ace8b4 @ 00b07998
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e2e140  str x22,[sp, #-0x30]!
+00e2e144  stp x21,x20,[sp, #0x10]
+00e2e148  stp x19,x30,[sp, #0x20]
+00e2e14c  adrp x21,0x3572000
+00e2e150  adrp x22,0x331f000
+00e2e154  ldrb w8,[x21, #0x755]
+00e2e158  ldr x22,[x22, #0x418]
+00e2e15c  mov x20,x1
+00e2e160  mov x19,x0
+00e2e164  tbnz w8,#0x0,0x00e2e188
+00e2e168  adrp x0,0x337c000
+00e2e16c  ldr x0,[x0, #0xf70]
+00e2e170  bl 0x00b0789c
+00e2e174  adrp x0,0x331f000
+00e2e178  ldr x0,[x0, #0x418]
+00e2e17c  bl 0x00b0789c
+00e2e180  mov w8,#0x1
+00e2e184  strb w8,[x21, #0x755]
+00e2e188  ldr x8,[x22]
+00e2e18c  ldr x8,[x8, #0xb8]
+00e2e190  ldr x0,[x8, #0x98]
+00e2e194  cbz x0,0x00e2e1b4
+00e2e198  mov x1,x19
+00e2e19c  mov x2,x20
+00e2e1a0  ldp x19,x30,[sp, #0x20]
+00e2e1a4  ldp x21,x20,[sp, #0x10]
+00e2e1a8  mov x3,xzr
+00e2e1ac  ldr x22,[sp], #0x30
+00e2e1b0  b 0x0106125c
+00e2e1b4  mov x0,x19
+00e2e1b8  bl 0x00e2e224
+00e2e1bc  cbz x20,0x00e2e204
+00e2e1c0  ldr x8,[x20, #0x18]
+00e2e1c4  cbz x8,0x00e2e204
+00e2e1c8  cbz w8,0x00e2e218
+00e2e1cc  ldr x0,[x20, #0x20]
+00e2e1d0  cbz x0,0x00e2e21c
+00e2e1d4  adrp x8,0x337c000
+00e2e1d8  ldr x8,[x8, #0xf70]
+00e2e1dc  ldr x9,[x0]
+00e2e1e0  ldr x1,[x8]
+00e2e1e4  ldr x8,[x9, #0x40]
+00e2e1e8  ldr x9,[x1, #0x40]
+00e2e1ec  cmp x8,x9
+00e2e1f0  b.ne 0x00e2e220
+00e2e1f4  bl 0x00b07998
+00e2e1f8  ldrb w1,[x0]
+00e2e1fc  mov x0,x19
+00e2e200  bl 0x00e2ddb8
+00e2e204  mov x0,x19
+00e2e208  ldp x19,x30,[sp, #0x20]
+00e2e20c  ldp x21,x20,[sp, #0x10]
+00e2e210  ldr x22,[sp], #0x30
+00e2e214  b 0x00e2e2f4
+00e2e218  bl 0x00b079b8
+00e2e21c  bl 0x00b079b0
+00e2e220  bl 0x00b07c6c

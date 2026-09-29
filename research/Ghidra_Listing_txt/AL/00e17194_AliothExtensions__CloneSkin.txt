@@ -1,0 +1,127 @@
+Function: AliothExtensions$$CloneSkin @ 00e17194
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary.Enumerator<Skin.AttachmentKeyTuple,-object>$$Dispose @ 01a59050
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp431 @ 01097340
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<Skin.AttachmentKeyTuple,-object>$$GetEnumerator @ 019b1b84
+  -> System.Collections.Generic.Dictionary.Enumerator<Skin.AttachmentKeyTuple,-object>$$MoveNext @ 01a58f1c
+  -> System.String$$Concat @ 01fd2850
+  -> Spine.Skin$$AddAttachment @ 00d77f54
+  -> FUN_00b079b0 @ 00b079b0
+  -> Spine.Skin$$.ctor @ 00d77200
+
+--- Calls IN ---
+  <- SpineExtensions$$SetSkinMergeOld @ 00dbc518
+
+--- Listing ---
+00e17194  sub sp,sp,#0x60
+00e17198  stp x21,x20,[sp, #0x40]
+00e1719c  stp x19,x30,[sp, #0x50]
+00e171a0  adrp x21,0x3572000
+00e171a4  adrp x19,0x3348000
+00e171a8  ldrb w8,[x21, #0x608]
+00e171ac  ldr x19,[x19, #0x138]
+00e171b0  mov x20,x0
+00e171b4  tbnz w8,#0x0,0x00e1722c
+00e171b8  adrp x0,0x3348000
+00e171bc  ldr x0,[x0, #0x138]
+00e171c0  bl 0x00b0789c
+00e171c4  adrp x0,0x3349000
+00e171c8  ldr x0,[x0, #0xaf8]
+00e171cc  bl 0x00b0789c
+00e171d0  adrp x0,0x3357000
+00e171d4  ldr x0,[x0, #0x6c0]
+00e171d8  bl 0x00b0789c
+00e171dc  adrp x0,0x3336000
+00e171e0  ldr x0,[x0, #0x728]
+00e171e4  bl 0x00b0789c
+00e171e8  adrp x0,0x3369000
+00e171ec  ldr x0,[x0, #0x338]
+00e171f0  bl 0x00b0789c
+00e171f4  adrp x0,0x3351000
+00e171f8  ldr x0,[x0, #0x48]
+00e171fc  bl 0x00b0789c
+00e17200  adrp x0,0x330b000
+00e17204  ldr x0,[x0, #0xb98]
+00e17208  bl 0x00b0789c
+00e1720c  adrp x0,0x3343000
+00e17210  ldr x0,[x0, #0xf0]
+00e17214  bl 0x00b0789c
+00e17218  adrp x0,0x3326000
+00e1721c  ldr x0,[x0, #0x2d8]
+00e17220  bl 0x00b0789c
+00e17224  mov w8,#0x1
+00e17228  strb w8,[x21, #0x608]
+00e1722c  ldr x0,[x19]
+00e17230  movi v0.2D,#0x0
+00e17234  str xzr,[sp, #0x30]
+00e17238  stp q0,q0,[sp, #0x10]
+00e1723c  str q0,[sp]
+00e17240  ldr w8,[x0, #0xe0]
+00e17244  cbnz w8,0x00e17250
+00e17248  bl 0x00b0798c
+00e1724c  ldr x0,[x19]
+00e17250  ldr x8,[x0, #0xb8]
+00e17254  ldr x0,[x8, #0x1a0]
+00e17258  cbz x0,0x00e17270
+00e1725c  mov x1,x20
+00e17260  mov x2,xzr
+00e17264  bl 0x01097340
+00e17268  mov x19,x0
+00e1726c  b 0x00e1731c
+00e17270  cbz x20,0x00e17330
+00e17274  adrp x8,0x3326000
+00e17278  ldr x8,[x8, #0x2d8]
+00e1727c  ldr x0,[x20, #0x10]
+00e17280  adrp x19,0x3343000
+00e17284  mov x2,xzr
+00e17288  ldr x1,[x8]
+00e1728c  ldr x19,[x19, #0xf0]
+00e17290  bl 0x01fd2850
+00e17294  ldr x8,[x19]
+00e17298  mov x21,x0
+00e1729c  mov x0,x8
+00e172a0  bl 0x00b079a0
+00e172a4  cbz x0,0x00e17330
+00e172a8  mov x1,x21
+00e172ac  mov x2,xzr
+00e172b0  mov x19,x0
+00e172b4  bl 0x00d77200
+00e172b8  ldr x0,[x20, #0x18]
+00e172bc  cbz x0,0x00e17330
+00e172c0  adrp x8,0x3349000
+00e172c4  ldr x8,[x8, #0xaf8]
+00e172c8  adrp x21,0x3336000
+00e172cc  adrp x20,0x3357000
+00e172d0  ldr x1,[x8]
+00e172d4  ldr x21,[x21, #0x728]
+00e172d8  ldr x20,[x20, #0x6c0]
+00e172dc  mov x8,sp
+00e172e0  bl 0x019b1b84
+00e172e4  ldr x1,[x21]
+00e172e8  mov x0,sp
+    ; [PRE] try { // try from 00e172e8 to 00e172ef has its CatchHandler @ 00e17338
+00e172ec  bl 0x01a58f1c
+    ; [POST] } // end try from 00e172e8 to 00e172ef
+00e172f0  tbz w0,#0x0,0x00e17310
+00e172f4  ldr w1,[sp, #0x10]
+00e172f8  ldr x3,[sp, #0x28]
+00e172fc  ldr x2,[sp, #0x18]
+00e17300  mov x0,x19
+    ; [PRE] try { // try from 00e17300 to 00e1730b has its CatchHandler @ 00e17334
+00e17304  mov x4,xzr
+00e17308  bl 0x00d77f54
+    ; [POST] } // end try from 00e17300 to 00e1730b
+00e1730c  b 0x00e172e4
+00e17310  ldr x1,[x20]
+00e17314  mov x0,sp
+00e17318  bl 0x01a59050
+00e1731c  mov x0,x19
+00e17320  ldp x19,x30,[sp, #0x50]
+00e17324  ldp x21,x20,[sp, #0x40]
+00e17328  add sp,sp,#0x60
+00e1732c  ret
+00e17330  bl 0x00b079b0

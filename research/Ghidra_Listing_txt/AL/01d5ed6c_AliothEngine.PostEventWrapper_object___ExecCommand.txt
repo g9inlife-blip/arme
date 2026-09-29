@@ -1,0 +1,46 @@
+Function: AliothEngine.PostEventWrapper<object>$$ExecCommand @ 01d5ed6c
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_009989c8 @ 009989c8
+
+--- Listing ---
+01d5ed6c  sub sp,sp,#0x30
+01d5ed70  stp x21,x20,[sp, #0x10]
+01d5ed74  stp x19,x30,[sp, #0x20]
+01d5ed78  ldr x20,[x0, #0x10]
+01d5ed7c  cbz x20,0x01d5eda8
+01d5ed80  ldr x8,[x1, #0x20]
+01d5ed84  mov x19,x0
+01d5ed88  mov x21,x1
+01d5ed8c  ldrh w9,[x8, #0x132]
+01d5ed90  tbnz w9,#0x0,0x01d5edb8
+01d5ed94  mov x0,x8
+01d5ed98  bl 0x00b2ac40
+01d5ed9c  ldr x8,[x21, #0x20]
+01d5eda0  ldrh w9,[x8, #0x132]
+01d5eda4  b 0x01d5edbc
+01d5eda8  ldp x19,x30,[sp, #0x20]
+01d5edac  ldp x21,x20,[sp, #0x10]
+01d5edb0  add sp,sp,#0x30
+01d5edb4  ret
+01d5edb8  mov x0,x8
+01d5edbc  ldr x10,[x0, #0xc0]
+01d5edc0  ldr x10,[x10, #0x8]
+01d5edc4  ldr x3,[x10, #0x8]
+01d5edc8  tbnz w9,#0x0,0x01d5ede0
+01d5edcc  mov x0,x8
+01d5edd0  str x3,[sp, #0x8]
+01d5edd4  bl 0x00b2ac40
+01d5edd8  ldr x3,[sp, #0x8]
+01d5eddc  mov x8,x0
+01d5ede0  ldr x8,[x8, #0xc0]
+01d5ede4  mov x0,x20
+01d5ede8  mov x1,x19
+01d5edec  ldp x19,x30,[sp, #0x20]
+01d5edf0  ldr x2,[x8, #0x8]
+01d5edf4  ldp x21,x20,[sp, #0x10]
+01d5edf8  add sp,sp,#0x30
+01d5edfc  br x3

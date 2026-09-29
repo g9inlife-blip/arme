@@ -1,0 +1,18 @@
+Function: AliothEngine.DataStructures.CircularBufferIndexer<object,-object>$$IsFull @ 01f49b04
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01f49b04  str x30,[sp, #-0x10]!
+01f49b08  ldr x8,[x0, #0x18]
+01f49b0c  cbz x8,0x01f49b28
+01f49b10  ldr w9,[x0, #0x28]
+01f49b14  ldr w8,[x8, #0x18]
+01f49b18  cmp w9,w8
+01f49b1c  cset w0,eq
+01f49b20  ldr x30,[sp], #0x10
+01f49b24  ret
+01f49b28  bl 0x00b079b0

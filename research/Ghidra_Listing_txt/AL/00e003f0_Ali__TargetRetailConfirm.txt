@@ -1,0 +1,69 @@
+Function: Ali$$TargetRetailConfirm @ 00e003f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp371 @ 0108f610
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.SingletonScriptableObject<object>$$get_Instance @ 01e09560
+
+--- Calls IN ---
+  <- ZhuxiaoPanelMono$$OnClickOK_1 @ 00f99394
+  <- ShopNewPanelMono$$StoreBtnManager @ 0102a42c
+  <- XLua.CSObjectWrap.AliWrap$$_m_TargetRetailConfirm @ 011902f0
+  <- GlobalUIManager$$Idfa_IosBack @ 00f1fad4
+  <- HeroDetailPanelMono$$ShowDetail @ 00f39354
+  <- AliothEngine.RateReview$$IOS_TuiGuang @ 016583d4
+  <- LoginGateMono$$Start @ 00f90038
+  <- GlobalUIManager$$NotifyChargeSuccess @ 00f1da04
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- BoxShopMonoNew$$RegisterCallBack @ 00e96aa8
+  <- ReviewPanelMono$$Awake @ 0100d554
+
+--- Listing ---
+00e003f0  str x22,[sp, #-0x30]!
+00e003f4  stp x21,x20,[sp, #0x10]
+00e003f8  stp x19,x30,[sp, #0x20]
+00e003fc  adrp x22,0x3572000
+00e00400  adrp x21,0x335f000
+00e00404  ldrb w8,[x22, #0x518]
+00e00408  ldr x21,[x21, #0x20]
+00e0040c  mov w19,w1
+00e00410  mov x20,x0
+00e00414  tbnz w8,#0x0,0x00e00438
+00e00418  adrp x0,0x335f000
+00e0041c  ldr x0,[x0, #0x20]
+00e00420  bl 0x00b0789c
+00e00424  adrp x0,0x333f000
+00e00428  ldr x0,[x0, #0x50]
+00e0042c  bl 0x00b0789c
+00e00430  mov w8,#0x1
+00e00434  strb w8,[x22, #0x518]
+00e00438  ldr x0,[x21]
+00e0043c  ldr w8,[x0, #0xe0]
+00e00440  cbnz w8,0x00e0044c
+00e00444  bl 0x00b0798c
+00e00448  ldr x0,[x21]
+00e0044c  ldr x8,[x0, #0xb8]
+00e00450  ldr x0,[x8, #0x58]
+00e00454  cbz x0,0x00e00474
+00e00458  mov x1,x20
+00e0045c  mov w2,w19
+00e00460  ldp x19,x30,[sp, #0x20]
+00e00464  ldp x21,x20,[sp, #0x10]
+00e00468  mov x3,xzr
+00e0046c  ldr x22,[sp], #0x30
+00e00470  b 0x0108f610
+00e00474  adrp x8,0x333f000
+00e00478  ldr x8,[x8, #0x50]
+00e0047c  ldr x0,[x8]
+00e00480  bl 0x01e09560
+00e00484  cbz x0,0x00e004a4
+00e00488  ldr w8,[x0, #0x18]
+00e0048c  ldp x21,x20,[sp, #0x10]
+00e00490  cmp w8,w19
+00e00494  ldp x19,x30,[sp, #0x20]
+00e00498  cset w0,eq
+00e0049c  ldr x22,[sp], #0x30
+00e004a0  ret
+00e004a4  bl 0x00b079b0

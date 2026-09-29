@@ -1,0 +1,38 @@
+Function: AliothEngine.Extensions.AppDomainExtension.<>c__2<object>$$<GetInstancesOf>b__2_0 @ 018ee5e0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Activator$$CreateInstance @ 0217b24c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018ee5e0  str x20,[sp, #-0x20]!
+018ee5e4  stp x19,x30,[sp, #0x10]
+018ee5e8  mov x0,x1
+018ee5ec  mov x1,xzr
+018ee5f0  mov x19,x2
+018ee5f4  bl 0x0217b24c
+018ee5f8  ldr x8,[x19, #0x20]
+018ee5fc  mov x20,x0
+018ee600  ldr x8,[x8, #0xc0]
+018ee604  ldr x19,[x8, #0x18]
+018ee608  ldrb w8,[x19, #0x132]
+018ee60c  tbnz w8,#0x0,0x018ee61c
+018ee610  mov x0,x19
+018ee614  bl 0x00b2ac40
+018ee618  mov x19,x0
+018ee61c  cbz x20,0x018ee63c
+018ee620  mov x0,x20
+018ee624  mov x1,x19
+018ee628  bl 0x00b07990
+018ee62c  cbnz x0,0x018ee640
+018ee630  mov x0,x20
+018ee634  mov x1,x19
+018ee638  bl 0x00b07c6c
+018ee63c  mov x0,xzr
+018ee640  ldp x19,x30,[sp, #0x10]
+018ee644  ldr x20,[sp], #0x20
+018ee648  ret

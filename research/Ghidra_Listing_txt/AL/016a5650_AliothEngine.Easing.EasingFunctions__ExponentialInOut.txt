@@ -1,0 +1,80 @@
+Function: AliothEngine.Easing.EasingFunctions$$ExponentialInOut @ 016a5650
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> exp2f @ 008d50f0
+
+--- Calls IN ---
+
+--- Listing ---
+016a5650  stp d11,d10,[sp, #-0x30]!
+016a5654  stp d9,d8,[sp, #0x10]
+016a5658  stp x19,x30,[sp, #0x20]
+016a565c  fmov s10,0x3f800000
+016a5660  adrp x19,0x3571000
+016a5664  mov v8.16B,v0.16B
+016a5668  fcmp s2,#0.0
+016a566c  fmov s0,wzr
+016a5670  fmin s2,s2,s10
+016a5674  ldrb w8,[x19, #0x198]
+016a5678  fcsel s11,s2,s0,pl
+016a567c  fabd s0,s8,s1
+016a5680  fneg s2,s0
+016a5684  fcmp s8,s1
+016a5688  fcsel s9,s2,s0,gt
+016a568c  cbnz w8,0x016a56a4
+016a5690  adrp x0,0x3318000
+016a5694  ldr x0,[x0, #0x558]
+016a5698  bl 0x00b0789c
+016a569c  mov w8,#0x1
+016a56a0  strb w8,[x19, #0x198]
+016a56a4  adrp x8,0x3318000
+016a56a8  ldr x8,[x8, #0x558]
+016a56ac  adrp x9,0x26db000
+016a56b0  ldr s1,[x9, #0x3ec]
+016a56b4  fabs s3,s11
+016a56b8  ldr x8,[x8]
+016a56bc  fmov s2,0x41000000
+016a56c0  fmul s4,s3,s1
+016a56c4  ldr x8,[x8, #0xb8]
+016a56c8  ldr s0,[x8]
+016a56cc  fmul s2,s0,s2
+016a56d0  fcmp s4,s2
+016a56d4  fcsel s0,s4,s2,gt
+016a56d8  fcmp s3,s0
+016a56dc  b.mi 0x016a5758
+016a56e0  fmax s3,s3,s10
+016a56e4  fmov s0,0xbf800000
+016a56e8  fmul s1,s3,s1
+016a56ec  fadd s4,s11,s0
+016a56f0  fcmp s1,s2
+016a56f4  fabs s3,s4
+016a56f8  fcsel s1,s1,s2,gt
+016a56fc  fcmp s3,s1
+016a5700  b.pl 0x016a570c
+016a5704  fadd s8,s9,s8
+016a5708  b 0x016a5758
+016a570c  fadd s1,s11,s11
+016a5710  fcmp s1,s10
+016a5714  fadd s0,s1,s0
+016a5718  b.pl 0x016a5734
+016a571c  fmov s1,0x41200000
+016a5720  fmul s0,s0,s1
+016a5724  bl 0x008d50f0
+016a5728  fmov s1,0x3f000000
+016a572c  fmul s1,s9,s1
+016a5730  b 0x016a5750
+016a5734  fmov s1,0xc1200000
+016a5738  fmul s0,s0,s1
+016a573c  bl 0x008d50f0
+016a5740  fmov s1,0x3f000000
+016a5744  fmov s2,0x40000000
+016a5748  fmul s1,s9,s1
+016a574c  fsub s0,s2,s0
+016a5750  fmul s0,s1,s0
+016a5754  fadd s8,s0,s8
+016a5758  mov v0.16B,v8.16B
+016a575c  ldp x19,x30,[sp, #0x20]
+016a5760  ldp d9,d8,[sp, #0x10]
+016a5764  ldp d11,d10,[sp], #0x30
+016a5768  ret

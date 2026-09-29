@@ -1,0 +1,48 @@
+Function: ReadOnlyDictionary<object,-object>$$get_Item @ 01df9ddc
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01df9ddc  str x20,[sp, #-0x20]!
+01df9de0  stp x19,x30,[sp, #0x10]
+01df9de4  ldr x20,[x0, #0x10]
+01df9de8  cbz x20,0x01df9e70
+01df9dec  ldr x8,[x2, #0x20]
+01df9df0  mov x19,x1
+01df9df4  ldr x8,[x8, #0xc0]
+01df9df8  ldr x1,[x8, #0x10]
+01df9dfc  ldrb w8,[x1, #0x132]
+01df9e00  tbnz w8,#0x0,0x01df9e10
+01df9e04  mov x0,x1
+01df9e08  bl 0x00b2ac40
+01df9e0c  mov x1,x0
+01df9e10  ldr x8,[x20]
+01df9e14  ldrh w9,[x8, #0x12a]
+01df9e18  cbz x9,0x01df9e3c
+01df9e1c  ldr x10,[x8, #0xb0]
+01df9e20  add x10,x10,#0x8
+01df9e24  ldur x11,[x10, #-0x8]
+01df9e28  cmp x11,x1
+01df9e2c  b.eq 0x01df9e4c
+01df9e30  subs x9,x9,#0x1
+01df9e34  add x10,x10,#0x10
+01df9e38  b.ne 0x01df9e24
+01df9e3c  mov x0,x20
+01df9e40  mov w2,wzr
+01df9e44  bl 0x00b2ae24
+01df9e48  b 0x01df9e58
+01df9e4c  ldrsw x9,[x10]
+01df9e50  add x8,x8,x9, LSL #0x4
+01df9e54  add x0,x8,#0x138
+01df9e58  ldp x3,x2,[x0]
+01df9e5c  mov x1,x19
+01df9e60  ldp x19,x30,[sp, #0x10]
+01df9e64  mov x0,x20
+01df9e68  ldr x20,[sp], #0x20
+01df9e6c  br x3
+01df9e70  bl 0x00b079b0

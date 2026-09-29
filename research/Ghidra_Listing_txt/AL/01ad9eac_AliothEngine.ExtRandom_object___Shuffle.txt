@@ -1,0 +1,154 @@
+Function: AliothEngine.ExtRandom<object>$$Shuffle @ 01ad9eac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.List<int>$$get_Item @ 01bedb8c
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<int>$$.ctor @ 01bed68c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.Collections.Generic.List<int>$$Remove @ 01bef87c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.ExtRandomTest$$ShuffleTestArray @ 016855a4
+
+--- Listing ---
+01ad9eac  stp x27,x26,[sp, #-0x50]!
+01ad9eb0  stp x25,x24,[sp, #0x10]
+01ad9eb4  stp x23,x22,[sp, #0x20]
+01ad9eb8  stp x21,x20,[sp, #0x30]
+01ad9ebc  stp x19,x30,[sp, #0x40]
+01ad9ec0  adrp x21,0x3578000
+01ad9ec4  ldrb w8,[x21, #0x9d3]
+01ad9ec8  mov x20,x1
+01ad9ecc  mov x19,x0
+01ad9ed0  tbnz w8,#0x0,0x01ad9f24
+01ad9ed4  adrp x0,0x3373000
+01ad9ed8  ldr x0,[x0, #0x9c8]
+01ad9edc  bl 0x00b0789c
+01ad9ee0  adrp x0,0x3319000
+01ad9ee4  ldr x0,[x0, #0xe88]
+01ad9ee8  bl 0x00b0789c
+01ad9eec  adrp x0,0x334f000
+01ad9ef0  ldr x0,[x0, #0xb8]
+01ad9ef4  bl 0x00b0789c
+01ad9ef8  adrp x0,0x3313000
+01ad9efc  ldr x0,[x0, #0x988]
+01ad9f00  bl 0x00b0789c
+01ad9f04  adrp x0,0x3333000
+01ad9f08  ldr x0,[x0, #0x1a0]
+01ad9f0c  bl 0x00b0789c
+01ad9f10  adrp x0,0x3322000
+01ad9f14  ldr x0,[x0, #0xf78]
+01ad9f18  bl 0x00b0789c
+01ad9f1c  mov w8,#0x1
+01ad9f20  strb w8,[x21, #0x9d3]
+01ad9f24  cbz x19,0x01ada0c0
+01ad9f28  ldr x0,[x20, #0x20]
+01ad9f2c  ldrb w8,[x0, #0x132]
+01ad9f30  tbnz w8,#0x0,0x01ad9f38
+01ad9f34  bl 0x00b2ac40
+01ad9f38  ldr x8,[x0, #0xc0]
+01ad9f3c  adrp x20,0x3322000
+01ad9f40  ldr x0,[x8, #0x18]
+01ad9f44  ldrb w8,[x0, #0x132]
+01ad9f48  ldr x20,[x20, #0xf78]
+01ad9f4c  tbnz w8,#0x0,0x01ad9f54
+01ad9f50  bl 0x00b2ac40
+01ad9f54  ldr w1,[x19, #0x18]
+01ad9f58  bl 0x00b078f8
+01ad9f5c  ldr x8,[x20]
+01ad9f60  mov x20,x0
+01ad9f64  mov x0,x8
+01ad9f68  bl 0x00b079a0
+01ad9f6c  cbz x0,0x01ada0c0
+01ad9f70  adrp x8,0x334f000
+01ad9f74  ldr x8,[x8, #0xb8]
+01ad9f78  mov w1,wzr
+01ad9f7c  mov x21,x0
+01ad9f80  ldr x2,[x8]
+01ad9f84  bl 0x01bed68c
+01ad9f88  ldr x8,[x19, #0x18]
+01ad9f8c  cmp w8,#0x1
+01ad9f90  b.lt 0x01ada0a4
+01ad9f94  adrp x23,0x3373000
+01ad9f98  adrp x24,0x3333000
+01ad9f9c  adrp x25,0x3319000
+01ad9fa0  ldr x23,[x23, #0x9c8]
+01ad9fa4  ldr x24,[x24, #0x1a0]
+01ad9fa8  ldr x25,[x25, #0xe88]
+01ad9fac  mov w22,wzr
+01ad9fb0  ldr w11,[x21, #0x1c]
+01ad9fb4  ldr x9,[x21, #0x10]
+01ad9fb8  ldr x10,[x23]
+01ad9fbc  add w11,w11,#0x1
+01ad9fc0  str w11,[x21, #0x1c]
+01ad9fc4  cbz x9,0x01ada0c0
+01ad9fc8  ldrsw x11,[x21, #0x18]
+01ad9fcc  ldr w12,[x9, #0x18]
+01ad9fd0  cmp w11,w12
+01ad9fd4  b.cs 0x01ad9fec
+01ad9fd8  add w10,w11,#0x1
+01ad9fdc  add x9,x9,x11, LSL #0x2
+01ad9fe0  str w10,[x21, #0x18]
+01ad9fe4  str w22,[x9, #0x20]
+01ad9fe8  b 0x01ada00c
+01ad9fec  ldr x8,[x10, #0x20]
+01ad9ff0  mov x0,x21
+01ad9ff4  mov w1,w22
+01ad9ff8  ldr x8,[x8, #0xc0]
+01ad9ffc  ldr x2,[x8, #0x58]
+01ada000  ldr x8,[x2, #0x8]
+01ada004  blr x8
+01ada008  ldr x8,[x19, #0x18]
+01ada00c  add w22,w22,#0x1
+01ada010  cmp w22,w8
+01ada014  b.lt 0x01ad9fb0
+01ada018  cmp w8,#0x1
+01ada01c  b.lt 0x01ada0a4
+01ada020  mov x26,xzr
+01ada024  add x22,x20,#0x20
+01ada028  ldr w1,[x21, #0x18]
+01ada02c  mov w0,wzr
+01ada030  mov x2,xzr
+01ada034  bl 0x024d63b0
+01ada038  ldr x2,[x24]
+01ada03c  mov w1,w0
+01ada040  mov x0,x21
+01ada044  bl 0x01bedb8c
+01ada048  ldr w8,[x19, #0x18]
+01ada04c  cmp w0,w8
+01ada050  b.cs 0x01ada0c4
+01ada054  cbz x20,0x01ada0c0
+01ada058  ldr w8,[x20, #0x18]
+01ada05c  cmp x26,x8
+01ada060  b.cs 0x01ada0c4
+01ada064  add x8,x19,w0, SXTW  #0x3
+01ada068  ldr x1,[x8, #0x20]
+01ada06c  mov w23,w0
+01ada070  mov x27,x22
+01ada074  mov x0,x22
+01ada078  str x1,[x27], #0x8
+01ada07c  bl 0x00b07850
+01ada080  ldr x2,[x25]
+01ada084  mov x0,x21
+01ada088  mov w1,w23
+01ada08c  bl 0x01bef87c
+01ada090  ldrsw x8,[x19, #0x18]
+01ada094  add x26,x26,#0x1
+01ada098  mov x22,x27
+01ada09c  cmp x26,x8
+01ada0a0  b.lt 0x01ada028
+01ada0a4  mov x0,x20
+01ada0a8  ldp x19,x30,[sp, #0x40]
+01ada0ac  ldp x21,x20,[sp, #0x30]
+01ada0b0  ldp x23,x22,[sp, #0x20]
+01ada0b4  ldp x25,x24,[sp, #0x10]
+01ada0b8  ldp x27,x26,[sp], #0x50
+01ada0bc  ret
+01ada0c0  bl 0x00b079b0
+01ada0c4  bl 0x00b079b8

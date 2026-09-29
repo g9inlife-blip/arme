@@ -1,0 +1,51 @@
+Function: RewardPanelMono$$WaitPlay @ 0100ed44
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+
+--- Calls IN ---
+  <- RewardPanelMono$$<PlayMove>b__20_0 @ 0100eeb8
+  <- RewardPanelMono.<PlayMove>d__20$$MoveNext @ 0100eedc
+
+--- Listing ---
+0100ed44  str x22,[sp, #-0x30]!
+0100ed48  stp x21,x20,[sp, #0x10]
+0100ed4c  stp x19,x30,[sp, #0x20]
+0100ed50  adrp x21,0x3574000
+0100ed54  adrp x22,0x3359000
+0100ed58  ldrb w8,[x21, #0x461]
+0100ed5c  ldr x22,[x22, #0xdc0]
+0100ed60  mov w20,w1
+0100ed64  mov x19,x0
+0100ed68  tbnz w8,#0x0,0x0100ed80
+0100ed6c  adrp x0,0x3359000
+0100ed70  ldr x0,[x0, #0xdc0]
+0100ed74  bl 0x00b0789c
+0100ed78  mov w8,#0x1
+0100ed7c  strb w8,[x21, #0x461]
+0100ed80  ldr x8,[x22]
+0100ed84  ldr x8,[x8, #0xb8]
+0100ed88  ldr x0,[x8, #0x50]
+0100ed8c  cbz x0,0x0100edac
+0100ed90  mov x1,x19
+0100ed94  mov w2,w20
+0100ed98  ldp x19,x30,[sp, #0x20]
+0100ed9c  ldp x21,x20,[sp, #0x10]
+0100eda0  mov x3,xzr
+0100eda4  ldr x22,[sp], #0x30
+0100eda8  b 0x0106155c
+0100edac  cmp w20,#0x1
+0100edb0  b.lt 0x0100edbc
+0100edb4  str w20,[x19, #0xf0]
+0100edb8  b 0x0100edd4
+0100edbc  ldr w8,[x19, #0xf0]
+0100edc0  subs w8,w8,#0x1
+0100edc4  str w8,[x19, #0xf0]
+0100edc8  b.ne 0x0100edd4
+0100edcc  mov w8,#0x2
+0100edd0  str w8,[x19, #0xd4]
+0100edd4  ldp x19,x30,[sp, #0x20]
+0100edd8  ldp x21,x20,[sp, #0x10]
+0100eddc  ldr x22,[sp], #0x30
+0100ede0  ret

@@ -1,0 +1,105 @@
+Function: RewardManager$$.ctor @ 00e2f628
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> BaseMono$$.ctor @ 00e1c6b4
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> System.Collections.Generic.Dictionary<int,-object>$$.ctor @ 0192d268
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.List<int>$$.ctor @ 01bed61c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RewardManagerWrap$$__CreateInstance @ 013792a8
+
+--- Listing ---
+00e2f628  stp x21,x20,[sp, #-0x20]!
+00e2f62c  stp x19,x30,[sp, #0x10]
+00e2f630  adrp x20,0x3572000
+00e2f634  adrp x21,0x3372000
+00e2f638  ldrb w8,[x20, #0x75e]
+00e2f63c  ldr x21,[x21, #0xbc8]
+00e2f640  mov x19,x0
+00e2f644  tbnz w8,#0x0,0x00e2f6a4
+00e2f648  adrp x0,0x3336000
+00e2f64c  ldr x0,[x0, #0x868]
+00e2f650  bl 0x00b0789c
+00e2f654  adrp x0,0x3372000
+00e2f658  ldr x0,[x0, #0xbc8]
+00e2f65c  bl 0x00b0789c
+00e2f660  adrp x0,0x3373000
+00e2f664  ldr x0,[x0, #0xbe0]
+00e2f668  bl 0x00b0789c
+00e2f66c  adrp x0,0x3314000
+00e2f670  ldr x0,[x0, #0x2d0]
+00e2f674  bl 0x00b0789c
+00e2f678  adrp x0,0x3322000
+00e2f67c  ldr x0,[x0, #0xf78]
+00e2f680  bl 0x00b0789c
+00e2f684  adrp x0,0x3316000
+00e2f688  ldr x0,[x0, #0xff8]
+00e2f68c  bl 0x00b0789c
+00e2f690  adrp x0,0x331f000
+00e2f694  ldr x0,[x0, #0x418]
+00e2f698  bl 0x00b0789c
+00e2f69c  mov w8,#0x1
+00e2f6a0  strb w8,[x20, #0x75e]
+00e2f6a4  ldr x0,[x21]
+00e2f6a8  bl 0x00b079a0
+00e2f6ac  cbz x0,0x00e2f784
+00e2f6b0  adrp x8,0x3336000
+00e2f6b4  ldr x8,[x8, #0x868]
+00e2f6b8  adrp x21,0x3322000
+00e2f6bc  mov x20,x0
+00e2f6c0  ldr x1,[x8]
+00e2f6c4  ldr x21,[x21, #0xf78]
+00e2f6c8  bl 0x0192d268
+00e2f6cc  mov x0,x19
+00e2f6d0  str x20,[x0, #0x38]!
+00e2f6d4  mov x1,x20
+00e2f6d8  bl 0x00b07850
+00e2f6dc  ldr x0,[x21]
+00e2f6e0  bl 0x00b079a0
+00e2f6e4  cbz x0,0x00e2f784
+00e2f6e8  adrp x8,0x3314000
+00e2f6ec  ldr x8,[x8, #0x2d0]
+00e2f6f0  adrp x21,0x3316000
+00e2f6f4  mov x20,x0
+00e2f6f8  ldr x1,[x8]
+00e2f6fc  ldr x21,[x21, #0xff8]
+00e2f700  bl 0x01bed61c
+00e2f704  mov x0,x19
+00e2f708  str x20,[x0, #0x40]!
+00e2f70c  mov x1,x20
+00e2f710  bl 0x00b07850
+00e2f714  ldr x0,[x21]
+00e2f718  bl 0x00b079a0
+00e2f71c  cbz x0,0x00e2f784
+00e2f720  adrp x8,0x3373000
+00e2f724  ldr x8,[x8, #0xbe0]
+00e2f728  adrp x21,0x331f000
+00e2f72c  mov x20,x0
+00e2f730  ldr x1,[x8]
+00e2f734  ldr x21,[x21, #0x418]
+00e2f738  bl 0x01bffe10
+00e2f73c  mov x0,x19
+00e2f740  str x20,[x0, #0x48]!
+00e2f744  mov x1,x20
+00e2f748  bl 0x00b07850
+00e2f74c  mov x0,x19
+00e2f750  bl 0x00e1c6b4
+00e2f754  ldr x8,[x21]
+00e2f758  ldr x8,[x8, #0xb8]
+00e2f75c  ldr x0,[x8, #0xe0]
+00e2f760  cbz x0,0x00e2f778
+00e2f764  mov x1,x19
+00e2f768  ldp x19,x30,[sp, #0x10]
+00e2f76c  mov x2,xzr
+00e2f770  ldp x21,x20,[sp], #0x20
+00e2f774  b 0x01060dac
+00e2f778  ldp x19,x30,[sp, #0x10]
+00e2f77c  ldp x21,x20,[sp], #0x20
+00e2f780  ret
+00e2f784  bl 0x00b079b0

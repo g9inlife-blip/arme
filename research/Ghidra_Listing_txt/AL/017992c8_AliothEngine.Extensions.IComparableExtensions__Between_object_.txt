@@ -1,0 +1,86 @@
+Function: AliothEngine.Extensions.IComparableExtensions$$Between<object> @ 017992c8
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017992c8  str x22,[sp, #-0x30]!
+017992cc  stp x21,x20,[sp, #0x10]
+017992d0  stp x19,x30,[sp, #0x20]
+017992d4  cbz x0,0x017993f4
+017992d8  ldr x8,[x3, #0x38]
+017992dc  mov x22,x1
+017992e0  mov x21,x3
+017992e4  mov x19,x2
+017992e8  ldr x1,[x8, #0x8]
+017992ec  mov x20,x0
+017992f0  ldrb w8,[x1, #0x132]
+017992f4  tbnz w8,#0x0,0x01799304
+017992f8  mov x0,x1
+017992fc  bl 0x00b2ac40
+01799300  mov x1,x0
+01799304  ldr x8,[x20]
+01799308  ldrh w9,[x8, #0x12a]
+0179930c  cbz x9,0x01799330
+01799310  ldr x10,[x8, #0xb0]
+01799314  add x10,x10,#0x8
+01799318  ldur x11,[x10, #-0x8]
+0179931c  cmp x11,x1
+01799320  b.eq 0x01799340
+01799324  subs x9,x9,#0x1
+01799328  add x10,x10,#0x10
+0179932c  b.ne 0x01799318
+01799330  mov x0,x20
+01799334  mov w2,wzr
+01799338  bl 0x00b2ae24
+0179933c  b 0x0179934c
+01799340  ldrsw x9,[x10]
+01799344  add x8,x8,x9, LSL #0x4
+01799348  add x0,x8,#0x138
+0179934c  ldp x8,x2,[x0]
+01799350  mov x0,x20
+01799354  mov x1,x22
+01799358  blr x8
+0179935c  tbnz w0,#0x1f,0x017993b8
+01799360  ldr x8,[x21, #0x38]
+01799364  ldr x1,[x8, #0x8]
+01799368  ldrb w8,[x1, #0x132]
+0179936c  tbnz w8,#0x0,0x0179937c
+01799370  mov x0,x1
+01799374  bl 0x00b2ac40
+01799378  mov x1,x0
+0179937c  ldr x8,[x20]
+01799380  ldrh w9,[x8, #0x12a]
+01799384  cbz x9,0x017993a8
+01799388  ldr x10,[x8, #0xb0]
+0179938c  add x10,x10,#0x8
+01799390  ldur x11,[x10, #-0x8]
+01799394  cmp x11,x1
+01799398  b.eq 0x017993c0
+0179939c  subs x9,x9,#0x1
+017993a0  add x10,x10,#0x10
+017993a4  b.ne 0x01799390
+017993a8  mov x0,x20
+017993ac  mov w2,wzr
+017993b0  bl 0x00b2ae24
+017993b4  b 0x017993cc
+017993b8  mov w0,wzr
+017993bc  b 0x017993e4
+017993c0  ldrsw x9,[x10]
+017993c4  add x8,x8,x9, LSL #0x4
+017993c8  add x0,x8,#0x138
+017993cc  ldp x8,x2,[x0]
+017993d0  mov x0,x20
+017993d4  mov x1,x19
+017993d8  blr x8
+017993dc  cmp w0,#0x1
+017993e0  cset w0,lt
+017993e4  ldp x19,x30,[sp, #0x20]
+017993e8  ldp x21,x20,[sp, #0x10]
+017993ec  ldr x22,[sp], #0x30
+017993f0  ret
+017993f4  bl 0x00b079b0

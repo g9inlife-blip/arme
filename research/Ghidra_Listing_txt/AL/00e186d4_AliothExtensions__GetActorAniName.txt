@@ -1,0 +1,98 @@
+Function: AliothExtensions$$GetActorAniName @ 00e186d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothExtensions$$GetAniName @ 00e1880c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp432 @ 0109757c
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- ReadyMono$$AddSelfModelEnd @ 00e61da4
+  <- XLua.CSObjectWrap.AliothExtensionsWrap$$_m_GetActorAniName_xlua_st_ @ 0116b8d8
+  <- ReadyMono$$AddMyModel @ 00e61120
+  <- ExamPanelMono$$<InitItem>b__41_0 @ 00eea5e0
+  <- ReadyMono$$AddEnemyModelEnd @ 00e631fc
+  <- LineUpPanelMono$$SpineRoleComplete @ 00f8d01c
+  <- ExploreMainPanelMono$$RefreshSelfHeroOne @ 00efa058
+
+--- Listing ---
+00e186d4  str x22,[sp, #-0x30]!
+00e186d8  stp x21,x20,[sp, #0x10]
+00e186dc  stp x19,x30,[sp, #0x20]
+00e186e0  adrp x22,0x3572000
+00e186e4  adrp x21,0x3348000
+00e186e8  ldrb w8,[x22, #0x611]
+00e186ec  ldr x21,[x21, #0x138]
+00e186f0  mov w19,w1
+00e186f4  mov w20,w0
+00e186f8  tbnz w8,#0x0,0x00e18734
+00e186fc  adrp x0,0x3361000
+00e18700  ldr x0,[x0, #0x210]
+00e18704  bl 0x00b0789c
+00e18708  adrp x0,0x3328000
+00e1870c  ldr x0,[x0, #0xc10]
+00e18710  bl 0x00b0789c
+00e18714  adrp x0,0x335f000
+00e18718  ldr x0,[x0, #0x20]
+00e1871c  bl 0x00b0789c
+00e18720  adrp x0,0x3348000
+00e18724  ldr x0,[x0, #0x138]
+00e18728  bl 0x00b0789c
+00e1872c  mov w8,#0x1
+00e18730  strb w8,[x22, #0x611]
+00e18734  ldr x0,[x21]
+00e18738  ldr w8,[x0, #0xe0]
+00e1873c  cbnz w8,0x00e18748
+00e18740  bl 0x00b0798c
+00e18744  ldr x0,[x21]
+00e18748  ldr x8,[x0, #0xb8]
+00e1874c  ldr x0,[x8, #0x1e8]
+00e18750  cbz x0,0x00e18770
+00e18754  mov w1,w20
+00e18758  mov w2,w19
+00e1875c  ldp x19,x30,[sp, #0x20]
+00e18760  ldp x21,x20,[sp, #0x10]
+00e18764  mov x3,xzr
+00e18768  ldr x22,[sp], #0x30
+00e1876c  b 0x0109757c
+00e18770  adrp x22,0x335f000
+00e18774  ldr x22,[x22, #0x20]
+00e18778  ldr x0,[x22]
+00e1877c  ldr w8,[x0, #0xe0]
+00e18780  cbnz w8,0x00e1878c
+00e18784  bl 0x00b0798c
+00e18788  ldr x0,[x22]
+00e1878c  ldr x8,[x0, #0xb8]
+00e18790  ldr x0,[x8, #0x10]
+00e18794  cbz x0,0x00e18808
+00e18798  adrp x8,0x3361000
+00e1879c  ldr x8,[x8, #0x210]
+00e187a0  mov w1,w20
+00e187a4  ldr x2,[x8]
+00e187a8  bl 0x01736d60
+00e187ac  cbz x0,0x00e18808
+00e187b0  ldr x8,[x22]
+00e187b4  ldr x8,[x8, #0xb8]
+00e187b8  ldr x8,[x8, #0x10]
+00e187bc  cbz x8,0x00e18808
+00e187c0  adrp x9,0x3328000
+00e187c4  ldr x9,[x9, #0xc10]
+00e187c8  ldr w1,[x0, #0xf8]
+00e187cc  mov x0,x8
+00e187d0  ldr x2,[x9]
+00e187d4  bl 0x01736d60
+00e187d8  ldr x8,[x21]
+00e187dc  mov x20,x0
+00e187e0  ldr w9,[x8, #0xe0]
+00e187e4  cbnz w9,0x00e187f0
+00e187e8  mov x0,x8
+00e187ec  bl 0x00b0798c
+00e187f0  mov x0,x20
+00e187f4  mov w1,w19
+00e187f8  ldp x19,x30,[sp, #0x20]
+00e187fc  ldp x21,x20,[sp, #0x10]
+00e18800  ldr x22,[sp], #0x30
+00e18804  b 0x00e1880c
+00e18808  bl 0x00b079b0

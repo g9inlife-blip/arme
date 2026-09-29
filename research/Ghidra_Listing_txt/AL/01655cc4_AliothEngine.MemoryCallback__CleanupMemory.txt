@@ -1,0 +1,46 @@
+Function: AliothEngine.MemoryCallback$$CleanupMemory @ 01655cc4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Utils.MemoryUtils$$AssetCleanupMemory @ 0169a1dc
+
+--- Calls IN ---
+  <- AliothEngine.MemoryCallback$$OnReceiveMemoryWarning @ 016561a8
+  <- XLua.CSObjectWrap.AliothEngineMemoryCallbackWrap$$_m_CleanupMemory @ 0115fa5c
+  <- AliothEngine.MemoryCallback$$MemorySafeCheck @ 016565e4
+  <- AliothEngine.MemoryCallback$$OnApplicationPause @ 01655c24
+  <- GoToBattleMono.<>c$$<CreateBattleBack>b__19_1 @ 00e5c6f0
+  <- AliothEngine.MemoryCallback$$OnLowMemory @ 01656290
+
+--- Listing ---
+01655cc4  stp x21,x20,[sp, #-0x20]!
+01655cc8  stp x19,x30,[sp, #0x10]
+01655ccc  adrp x21,0x3577000
+01655cd0  adrp x20,0x330c000
+01655cd4  ldrb w8,[x21, #0x80e]
+01655cd8  ldr x20,[x20, #0x9b8]
+01655cdc  mov x19,x0
+01655ce0  tbnz w8,#0x0,0x01655cf8
+01655ce4  adrp x0,0x330c000
+01655ce8  ldr x0,[x0, #0x9b8]
+01655cec  bl 0x00b0789c
+01655cf0  mov w8,#0x1
+01655cf4  strb w8,[x21, #0x80e]
+01655cf8  ldr x0,[x20]
+01655cfc  ldr w8,[x0, #0xe0]
+01655d00  cbnz w8,0x01655d0c
+01655d04  bl 0x00b0798c
+01655d08  ldr x0,[x20]
+01655d0c  ldr x8,[x0, #0xb8]
+01655d10  ldr x0,[x8, #0x48]
+01655d14  cbz x0,0x01655d2c
+01655d18  mov x1,x19
+01655d1c  ldp x19,x30,[sp, #0x10]
+01655d20  mov x2,xzr
+01655d24  ldp x21,x20,[sp], #0x20
+01655d28  b 0x01060dac
+01655d2c  ldp x19,x30,[sp, #0x10]
+01655d30  ldp x21,x20,[sp], #0x20
+01655d34  b 0x0169a1dc

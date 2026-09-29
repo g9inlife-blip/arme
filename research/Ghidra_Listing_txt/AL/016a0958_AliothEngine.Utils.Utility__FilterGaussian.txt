@@ -1,0 +1,55 @@
+Function: AliothEngine.Utils.Utility$$FilterGaussian @ 016a0958
+
+--- Calls OUT ---
+  -> expf @ 008d4510
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$PhaseAverage @ 016a0668
+
+--- Listing ---
+016a0958  stp d11,d10,[sp, #-0x40]!
+016a095c  stp d9,d8,[sp, #0x10]
+016a0960  stp x21,x20,[sp, #0x20]
+016a0964  stp x19,x30,[sp, #0x30]
+016a0968  cbz x0,0x016a0a08
+016a096c  ldr x8,[x0, #0x18]
+016a0970  cbz x8,0x016a09e0
+016a0974  cmp w8,#0x1
+016a0978  b.lt 0x016a09e8
+016a097c  scvtf s0,w8
+016a0980  fmov s1,0xbf800000
+016a0984  fmov s2,0x3f000000
+016a0988  fadd s0,s0,s1
+016a098c  fmul s10,s0,s2
+016a0990  fmul s0,s10,s2
+016a0994  mov x19,xzr
+016a0998  and x20,x8,#0xffffffff
+016a099c  add x21,x0,#0x20
+016a09a0  fmov s8,wzr
+016a09a4  fmul s11,s0,s0
+016a09a8  fmov s9,wzr
+016a09ac  scvtf s0,w19
+016a09b0  fsub s0,s0,s10
+016a09b4  fnmul s0,s0,s0
+016a09b8  fdiv s0,s0,s11
+016a09bc  bl 0x008d4510
+016a09c0  ldr s1,[x21,x19, lsl #2]
+016a09c4  add x19,x19,#0x1
+016a09c8  cmp x20,x19
+016a09cc  fadd s8,s8,s0
+016a09d0  fmul s1,s0,s1
+016a09d4  fadd s9,s9,s1
+016a09d8  b.ne 0x016a09ac
+016a09dc  b 0x016a09f0
+016a09e0  fmov s0,wzr
+016a09e4  b 0x016a09f4
+016a09e8  fmov s9,wzr
+016a09ec  fmov s8,wzr
+016a09f0  fdiv s0,s9,s8
+016a09f4  ldp x19,x30,[sp, #0x30]
+016a09f8  ldp x21,x20,[sp, #0x20]
+016a09fc  ldp d9,d8,[sp, #0x10]
+016a0a00  ldp d11,d10,[sp], #0x40
+016a0a04  ret
+016a0a08  bl 0x00b079b0

@@ -1,0 +1,52 @@
+Function: AliothEngine.GUIScreenManager$$SetGUIBlackMask @ 01679fb0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$SetActive @ 024de86c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreenManager$$get_BlackMask @ 016792f0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp404 @ 01093d3c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_SetGUIBlackMask_xlua_st_ @ 0114d57c
+
+--- Listing ---
+01679fb0  stp x21,x20,[sp, #-0x20]!
+01679fb4  stp x19,x30,[sp, #0x10]
+01679fb8  adrp x21,0x3577000
+01679fbc  adrp x20,0x337b000
+01679fc0  ldrb w8,[x21, #0x9ed]
+01679fc4  ldr x20,[x20, #0xb98]
+01679fc8  mov w19,w0
+01679fcc  tbnz w8,#0x0,0x01679fe4
+01679fd0  adrp x0,0x337b000
+01679fd4  ldr x0,[x0, #0xb98]
+01679fd8  bl 0x00b0789c
+01679fdc  mov w8,#0x1
+01679fe0  strb w8,[x21, #0x9ed]
+01679fe4  ldr x0,[x20]
+01679fe8  ldr w8,[x0, #0xe0]
+01679fec  cbnz w8,0x01679ff8
+01679ff0  bl 0x00b0798c
+01679ff4  ldr x0,[x20]
+01679ff8  ldr x8,[x0, #0xb8]
+01679ffc  ldr x8,[x8, #0x280]
+0167a000  cbz x8,0x0167a01c
+0167a004  and w1,w19,#0x1
+0167a008  ldp x19,x30,[sp, #0x10]
+0167a00c  mov x0,x8
+0167a010  mov x2,xzr
+0167a014  ldp x21,x20,[sp], #0x20
+0167a018  b 0x01093d3c
+0167a01c  ldr w8,[x0, #0xe0]
+0167a020  cbnz w8,0x0167a028
+0167a024  bl 0x00b0798c
+0167a028  bl 0x016792f0
+0167a02c  cbz x0,0x0167a044
+0167a030  and w1,w19,#0x1
+0167a034  ldp x19,x30,[sp, #0x10]
+0167a038  mov x2,xzr
+0167a03c  ldp x21,x20,[sp], #0x20
+0167a040  b 0x024de86c
+0167a044  bl 0x00b079b0

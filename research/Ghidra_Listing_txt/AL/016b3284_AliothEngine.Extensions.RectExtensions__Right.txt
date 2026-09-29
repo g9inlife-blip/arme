@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.RectExtensions$$Right @ 016b3284
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_xMin @ 024dafa0
+  -> UnityEngine.Rect$$set_xMin @ 024dafcc
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RectExtensions$$Right @ 016b333c
+  <- AliothEngine.Extensions.RectExtensions$$Left @ 016b32e0
+
+--- Listing ---
+016b3284  sub sp,sp,#0x20
+016b3288  str d8,[sp, #0x10]
+016b328c  str x30,[sp, #0x18]
+016b3290  mov v8.16B,v4.16B
+016b3294  fcmp s4,#0.0
+016b3298  mov x0,sp
+016b329c  mov x1,xzr
+016b32a0  stp s0,s1,[sp]
+016b32a4  stp s2,s3,[sp, #0x8]
+016b32a8  b.le 0x016b32b4
+016b32ac  bl 0x024db014
+016b32b0  b 0x016b32b8
+016b32b4  bl 0x024dafa0
+016b32b8  fsub s0,s0,s8
+016b32bc  mov x0,sp
+016b32c0  mov x1,xzr
+016b32c4  bl 0x024dafcc
+016b32c8  ldp s0,s1,[sp]
+016b32cc  ldp s2,s3,[sp, #0x8]
+016b32d0  ldr x30,[sp, #0x18]
+016b32d4  ldr d8,[sp, #0x10]
+016b32d8  add sp,sp,#0x20
+016b32dc  ret

@@ -1,0 +1,40 @@
+Function: Alioth.S1.Common.Extends$$ToLE @ 015aa3d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+015aa3d4  stp x21,x20,[sp, #-0x20]!
+015aa3d8  stp x19,x30,[sp, #0x10]
+015aa3dc  adrp x20,0x3577000
+015aa3e0  adrp x21,0x334f000
+015aa3e4  ldrb w8,[x20, #0x7b]
+015aa3e8  ldr x21,[x21, #0x28]
+015aa3ec  mov w19,w0
+015aa3f0  tbnz w8,#0x0,0x015aa408
+015aa3f4  adrp x0,0x334f000
+015aa3f8  ldr x0,[x0, #0x28]
+015aa3fc  bl 0x00b0789c
+015aa400  mov w8,#0x1
+015aa404  strb w8,[x20, #0x7b]
+015aa408  ldr x0,[x21]
+015aa40c  mov w1,#0x2
+015aa410  bl 0x00b078f8
+015aa414  cbz x0,0x015aa444
+015aa418  ldr w8,[x0, #0x18]
+015aa41c  cbz w8,0x015aa440
+015aa420  cmp w8,#0x1
+015aa424  strb w19,[x0, #0x20]
+015aa428  b.eq 0x015aa440
+015aa42c  lsr w8,w19,#0x8
+015aa430  strb w8,[x0, #0x21]
+015aa434  ldp x19,x30,[sp, #0x10]
+015aa438  ldp x21,x20,[sp], #0x20
+015aa43c  ret
+015aa440  bl 0x00b079b8
+015aa444  bl 0x00b079b0

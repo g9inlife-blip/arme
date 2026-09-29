@@ -1,0 +1,39 @@
+Function: AliothEngine.AssetLoader$$LoadFromQueue @ 0166b4b4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetLoader$$TryDequeue @ 0166bde4
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$Update @ 0166b3c4
+
+--- Listing ---
+0166b4b4  stp x21,x20,[sp, #-0x20]!
+0166b4b8  stp x19,x30,[sp, #0x10]
+0166b4bc  adrp x20,0x3577000
+0166b4c0  adrp x21,0x331c000
+0166b4c4  ldrb w8,[x20, #0x935]
+0166b4c8  ldr x21,[x21, #0xda8]
+0166b4cc  mov x19,x0
+0166b4d0  tbnz w8,#0x0,0x0166b4e8
+0166b4d4  adrp x0,0x331c000
+0166b4d8  ldr x0,[x0, #0xda8]
+0166b4dc  bl 0x00b0789c
+0166b4e0  mov w8,#0x1
+0166b4e4  strb w8,[x20, #0x935]
+0166b4e8  ldr x8,[x21]
+0166b4ec  ldr x8,[x8, #0xb8]
+0166b4f0  ldr x0,[x8, #0x70]
+0166b4f4  cbz x0,0x0166b50c
+0166b4f8  mov x1,x19
+0166b4fc  ldp x19,x30,[sp, #0x10]
+0166b500  mov x2,xzr
+0166b504  ldp x21,x20,[sp], #0x20
+0166b508  b 0x01060dac
+0166b50c  mov x0,x19
+0166b510  bl 0x0166bde4
+0166b514  tbnz w0,#0x0,0x0166b50c
+0166b518  ldp x19,x30,[sp, #0x10]
+0166b51c  ldp x21,x20,[sp], #0x20
+0166b520  ret

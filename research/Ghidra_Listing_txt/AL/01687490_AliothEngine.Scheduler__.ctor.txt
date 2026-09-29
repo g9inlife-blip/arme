@@ -1,0 +1,27 @@
+Function: AliothEngine.Scheduler$$.ctor @ 01687490
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+
+--- Listing ---
+01687490  stp x21,x20,[sp, #-0x20]!
+01687494  stp x19,x30,[sp, #0x10]
+01687498  adrp x20,0x3577000
+0168749c  adrp x21,0x335e000
+016874a0  ldrb w8,[x20, #0xa74]
+016874a4  ldr x21,[x21, #0x1e8]
+016874a8  mov x19,x0
+016874ac  tbnz w8,#0x0,0x016874c4
+016874b0  adrp x0,0x335e000
+016874b4  ldr x0,[x0, #0x1e8]
+016874b8  bl 0x00b0789c
+016874bc  mov w8,#0x1
+016874c0  strb w8,[x20, #0xa74]
+016874c4  ldr x1,[x21]
+016874c8  mov x0,x19
+016874cc  ldp x19,x30,[sp, #0x10]
+016874d0  ldp x21,x20,[sp], #0x20
+016874d4  b 0x01e09460

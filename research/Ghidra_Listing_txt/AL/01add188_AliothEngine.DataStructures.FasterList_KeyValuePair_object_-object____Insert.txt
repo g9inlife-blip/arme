@@ -1,0 +1,58 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$Insert @ 01add188
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Array$$Copy @ 02173e94
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01add188  str x22,[sp, #-0x30]!
+01add18c  stp x21,x20,[sp, #0x10]
+01add190  stp x19,x30,[sp, #0x20]
+01add194  mov x19,x0
+01add198  ldr x0,[x0, #0x10]
+01add19c  cbz x0,0x01add23c
+01add1a0  ldr w8,[x19, #0x18]
+01add1a4  ldr w9,[x0, #0x18]
+01add1a8  mov x20,x3
+01add1ac  mov x21,x2
+01add1b0  mov w22,w1
+01add1b4  cmp w8,w9
+01add1b8  b.ne 0x01add1dc
+01add1bc  ldr x8,[x4, #0x20]
+01add1c0  mov x0,x19
+01add1c4  ldr x8,[x8, #0xc0]
+01add1c8  ldr x1,[x8, #0x38]
+01add1cc  ldr x8,[x1, #0x8]
+01add1d0  blr x8
+01add1d4  ldr x0,[x19, #0x10]
+01add1d8  ldr w8,[x19, #0x18]
+01add1dc  add w3,w22,#0x1
+01add1e0  sub w4,w8,w22
+01add1e4  mov w1,w22
+01add1e8  mov x2,x0
+01add1ec  mov x5,xzr
+01add1f0  bl 0x02173e94
+01add1f4  ldr x8,[x19, #0x10]
+01add1f8  cbz x8,0x01add23c
+01add1fc  ldr w9,[x8, #0x18]
+01add200  cmp w9,w22
+01add204  b.ls 0x01add240
+01add208  sxtw x9,w22
+01add20c  add x0,x8,x9, LSL #0x4
+01add210  str x21,[x0, #0x20]!
+01add214  mov x1,xzr
+01add218  str x20,[x0, #0x8]
+01add21c  bl 0x00b07850
+01add220  ldr w8,[x19, #0x18]
+01add224  add w8,w8,#0x1
+01add228  str w8,[x19, #0x18]
+01add22c  ldp x19,x30,[sp, #0x20]
+01add230  ldp x21,x20,[sp, #0x10]
+01add234  ldr x22,[sp], #0x30
+01add238  ret
+01add23c  bl 0x00b079b0
+01add240  bl 0x00b079b8

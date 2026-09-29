@@ -1,0 +1,78 @@
+Function: AliothEngine.PathUtils$$GetRelativeAssetPathFromFullPath @ 01690d94
+
+--- Calls OUT ---
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> AliothEngine.PathUtils$$CleanPathSeparators @ 0168e384
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> System.String$$Contains @ 01fe31fc
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Application$$get_dataPath @ 024f29e0
+
+--- Calls IN ---
+  <- AliothEngine.AssetFileInfo$$.ctor @ 01667058
+
+--- Listing ---
+01690d94  str x20,[sp, #-0x20]!
+01690d98  stp x19,x30,[sp, #0x10]
+01690d9c  adrp x20,0x3577000
+01690da0  ldrb w8,[x20, #0xade]
+01690da4  mov x19,x0
+01690da8  tbnz w8,#0x0,0x01690dd8
+01690dac  adrp x0,0x336b000
+01690db0  ldr x0,[x0, #0x7d0]
+01690db4  bl 0x00b0789c
+01690db8  adrp x0,0x331c000
+01690dbc  ldr x0,[x0, #0x630]
+01690dc0  bl 0x00b0789c
+01690dc4  adrp x0,0x3333000
+01690dc8  ldr x0,[x0, #0x4e8]
+01690dcc  bl 0x00b0789c
+01690dd0  mov w8,#0x1
+01690dd4  strb w8,[x20, #0xade]
+01690dd8  mov x0,x19
+01690ddc  bl 0x0168e384
+01690de0  mov x19,x0
+01690de4  mov x0,xzr
+01690de8  bl 0x024f29e0
+01690dec  cbz x19,0x01690e84
+01690df0  mov x1,x0
+01690df4  mov x0,x19
+01690df8  mov x2,xzr
+01690dfc  bl 0x01fe31fc
+01690e00  tbz w0,#0x0,0x01690e30
+01690e04  adrp x20,0x331c000
+01690e08  ldr x20,[x20, #0x630]
+01690e0c  mov x0,xzr
+01690e10  bl 0x024f29e0
+01690e14  ldr x2,[x20]
+01690e18  mov x1,x0
+01690e1c  mov x0,x19
+01690e20  ldp x19,x30,[sp, #0x10]
+01690e24  mov x3,xzr
+01690e28  ldr x20,[sp], #0x20
+01690e2c  b 0x01fe06d8
+01690e30  adrp x8,0x3333000
+01690e34  ldr x8,[x8, #0x4e8]
+01690e38  adrp x20,0x336b000
+01690e3c  mov x1,x19
+01690e40  mov x2,xzr
+01690e44  ldr x0,[x8]
+01690e48  ldr x20,[x20, #0x7d0]
+01690e4c  bl 0x01fd2850
+01690e50  ldr x8,[x20]
+01690e54  mov x19,x0
+01690e58  ldr w9,[x8, #0xe0]
+01690e5c  cbnz w9,0x01690e68
+01690e60  mov x0,x8
+01690e64  bl 0x00b0798c
+01690e68  mov x0,x19
+01690e6c  mov x1,xzr
+01690e70  bl 0x024c0f2c
+01690e74  ldp x19,x30,[sp, #0x10]
+01690e78  mov x0,xzr
+01690e7c  ldr x20,[sp], #0x20
+01690e80  ret
+01690e84  bl 0x00b079b0

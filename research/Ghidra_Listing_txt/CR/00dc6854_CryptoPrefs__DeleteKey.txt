@@ -1,0 +1,34 @@
+Function: CryptoPrefs$$DeleteKey @ 00dc6854
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$DeleteKey @ 024be890
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> CryptoPrefs$$GetHash @ 00dc5ef0
+
+--- Calls IN ---
+
+--- Listing ---
+00dc6854  stp x21,x20,[sp, #-0x20]!
+00dc6858  stp x19,x30,[sp, #0x10]
+00dc685c  adrp x20,0x3572000
+00dc6860  adrp x21,0x3341000
+00dc6864  ldrb w8,[x20, #0x1b6]
+00dc6868  ldr x21,[x21, #0x490]
+00dc686c  mov x19,x0
+00dc6870  tbnz w8,#0x0,0x00dc6888
+00dc6874  adrp x0,0x3341000
+00dc6878  ldr x0,[x0, #0x490]
+00dc687c  bl 0x00b0789c
+00dc6880  mov w8,#0x1
+00dc6884  strb w8,[x20, #0x1b6]
+00dc6888  ldr x0,[x21]
+00dc688c  ldr w8,[x0, #0xe0]
+00dc6890  cbnz w8,0x00dc6898
+00dc6894  bl 0x00b0798c
+00dc6898  mov x0,x19
+00dc689c  bl 0x00dc5ef0
+00dc68a0  ldp x19,x30,[sp, #0x10]
+00dc68a4  mov x1,xzr
+00dc68a8  ldp x21,x20,[sp], #0x20
+00dc68ac  b 0x024be890

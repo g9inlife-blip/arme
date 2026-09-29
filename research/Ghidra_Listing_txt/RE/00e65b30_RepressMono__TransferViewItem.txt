@@ -1,0 +1,55 @@
+Function: RepressMono$$TransferViewItem @ 00e65b30
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RepressMonoWrap$$_m_TransferViewItem @ 01357548
+
+--- Listing ---
+00e65b30  stp x23,x22,[sp, #-0x30]!
+00e65b34  stp x21,x20,[sp, #0x10]
+00e65b38  stp x19,x30,[sp, #0x20]
+00e65b3c  adrp x22,0x3572000
+00e65b40  adrp x23,0x3378000
+00e65b44  ldrb w8,[x22, #0x987]
+00e65b48  ldr x23,[x23, #0xb90]
+00e65b4c  mov x21,x2
+00e65b50  mov x19,x1
+00e65b54  mov x20,x0
+00e65b58  tbnz w8,#0x0,0x00e65b70
+00e65b5c  adrp x0,0x3378000
+00e65b60  ldr x0,[x0, #0xb90]
+00e65b64  bl 0x00b0789c
+00e65b68  mov w8,#0x1
+00e65b6c  strb w8,[x22, #0x987]
+00e65b70  ldr x8,[x23]
+00e65b74  ldr x8,[x8, #0xb8]
+00e65b78  ldr x0,[x8, #0x10]
+00e65b7c  cbz x0,0x00e65ba0
+00e65b80  mov x1,x20
+00e65b84  mov x2,x19
+00e65b88  mov x3,x21
+00e65b8c  ldp x19,x30,[sp, #0x20]
+00e65b90  ldp x21,x20,[sp, #0x10]
+00e65b94  mov x4,xzr
+00e65b98  ldp x23,x22,[sp], #0x30
+00e65b9c  b 0x010670b0
+00e65ba0  mov x0,x20
+00e65ba4  str x21,[x0, #0x58]!
+00e65ba8  mov x1,x21
+00e65bac  bl 0x00b07850
+00e65bb0  cbz x19,0x00e65bd0
+00e65bb4  str x19,[x20, #0x60]!
+00e65bb8  mov x0,x20
+00e65bbc  mov x1,x19
+00e65bc0  ldp x19,x30,[sp, #0x20]
+00e65bc4  ldp x21,x20,[sp, #0x10]
+00e65bc8  ldp x23,x22,[sp], #0x30
+00e65bcc  b 0x00b07850
+00e65bd0  ldp x19,x30,[sp, #0x20]
+00e65bd4  ldp x21,x20,[sp, #0x10]
+00e65bd8  ldp x23,x22,[sp], #0x30
+00e65bdc  ret

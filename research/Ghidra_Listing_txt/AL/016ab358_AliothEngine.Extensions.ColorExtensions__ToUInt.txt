@@ -1,0 +1,47 @@
+Function: AliothEngine.Extensions.ColorExtensions$$ToUInt @ 016ab358
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016ab358  fmov s4,0x3f800000
+016ab35c  mov w8,#0x437f0000
+016ab360  fcmp s0,#0.0
+016ab364  fmin s0,s0,s4
+016ab368  fmov s5,w8
+016ab36c  fmin s6,s1,s4
+016ab370  fmin s7,s2,s4
+016ab374  fmin s4,s3,s4
+016ab378  fmul s0,s0,s5
+016ab37c  fmul s6,s6,s5
+016ab380  fmul s7,s7,s5
+016ab384  fmul s4,s4,s5
+016ab388  fmov s5,wzr
+016ab38c  fcsel s0,s0,s5,pl
+016ab390  fcvtzs w8,s0
+016ab394  fcvtzu w9,s0
+016ab398  fcmp s0,#0.0
+016ab39c  csel w8,w8,w9,mi
+016ab3a0  fcmp s1,#0.0
+016ab3a4  fcsel s0,s6,s5,pl
+016ab3a8  fcvtzs w9,s0
+016ab3ac  fcvtzu w10,s0
+016ab3b0  fcmp s0,#0.0
+016ab3b4  csel w9,w9,w10,mi
+016ab3b8  fcmp s2,#0.0
+016ab3bc  fcsel s0,s7,s5,pl
+016ab3c0  fcvtzs w10,s0
+016ab3c4  fcvtzu w11,s0
+016ab3c8  fcmp s0,#0.0
+016ab3cc  csel w10,w10,w11,mi
+016ab3d0  fcmp s3,#0.0
+016ab3d4  fcsel s0,s4,s5,pl
+016ab3d8  fcvtzs w11,s0
+016ab3dc  fcvtzu w12,s0
+016ab3e0  fcmp s0,#0.0
+016ab3e4  csel w11,w11,w12,mi
+016ab3e8  orr w8,w8,w10, LSL #0x10
+016ab3ec  orr w8,w8,w11, LSL #0x18
+016ab3f0  orr w0,w8,w9, LSL #0x8
+016ab3f4  ret

@@ -1,0 +1,99 @@
+Function: AliothEngine.AssetHolder$$OnLoadFailed @ 01662ca4
+
+--- Calls OUT ---
+  -> AliothEngine.AssetHolder$$get_error @ 01662540
+  -> AliothEngine.AssetHolder$$set_error @ 016625b8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> AliothEngine.AssetHolder$$get_logger @ 01662de4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.CacheAssetBundleHolder.<Load>d__4$$MoveNext @ 01664508
+  <- AliothEngine.CacheAssetBundleHolder$$LoadImmediate @ 01664298
+  <- AliothEngine.ResourcesAssetHolder$$LoadImmediate @ 0166566c
+  <- AliothEngine.ResourcesAssetHolder.<Load>d__2$$MoveNext @ 01665960
+
+--- Listing ---
+01662ca4  str x22,[sp, #-0x30]!
+01662ca8  stp x21,x20,[sp, #0x10]
+01662cac  stp x19,x30,[sp, #0x20]
+01662cb0  adrp x22,0x3577000
+01662cb4  adrp x21,0x3312000
+01662cb8  ldrb w8,[x22, #0x8cc]
+01662cbc  ldr x21,[x21, #0x428]
+01662cc0  mov x19,x1
+01662cc4  mov x20,x0
+01662cc8  tbnz w8,#0x0,0x01662cf8
+01662ccc  adrp x0,0x3312000
+01662cd0  ldr x0,[x0, #0x428]
+01662cd4  bl 0x00b0789c
+01662cd8  adrp x0,0x334a000
+01662cdc  ldr x0,[x0, #0xc98]
+01662ce0  bl 0x00b0789c
+01662ce4  adrp x0,0x3320000
+01662ce8  ldr x0,[x0, #0x920]
+01662cec  bl 0x00b0789c
+01662cf0  mov w8,#0x1
+01662cf4  strb w8,[x22, #0x8cc]
+01662cf8  ldr x0,[x21]
+01662cfc  ldr w8,[x0, #0xe0]
+01662d00  cbnz w8,0x01662d0c
+01662d04  bl 0x00b0798c
+01662d08  ldr x0,[x21]
+01662d0c  ldr x8,[x0, #0xb8]
+01662d10  ldr x0,[x8, #0x70]
+01662d14  cbz x0,0x01662d34
+01662d18  mov x1,x20
+01662d1c  mov x2,x19
+01662d20  ldp x19,x30,[sp, #0x20]
+01662d24  ldp x21,x20,[sp, #0x10]
+01662d28  mov x3,xzr
+01662d2c  ldr x22,[sp], #0x30
+01662d30  b 0x0106125c
+01662d34  mov x0,x20
+01662d38  mov x1,x19
+01662d3c  bl 0x016625b8
+01662d40  mov x0,x20
+01662d44  bl 0x01662de4
+01662d48  mov x19,x0
+01662d4c  mov x0,x20
+01662d50  bl 0x01662540
+01662d54  cbz x19,0x01662de0
+01662d58  adrp x9,0x334a000
+01662d5c  adrp x10,0x3320000
+01662d60  ldr x8,[x19]
+01662d64  ldr x9,[x9, #0xc98]
+01662d68  ldr x10,[x10, #0x920]
+01662d6c  mov x20,x0
+01662d70  ldr x1,[x9]
+01662d74  ldrh w9,[x8, #0x12a]
+01662d78  ldr x21,[x10]
+01662d7c  cbz x9,0x01662da0
+01662d80  ldr x10,[x8, #0xb0]
+01662d84  add x10,x10,#0x8
+01662d88  ldur x11,[x10, #-0x8]
+01662d8c  cmp x11,x1
+01662d90  b.eq 0x01662db0
+01662d94  subs x9,x9,#0x1
+01662d98  add x10,x10,#0x10
+01662d9c  b.ne 0x01662d88
+01662da0  mov w2,#0xb
+01662da4  mov x0,x19
+01662da8  bl 0x00b2ae24
+01662dac  b 0x01662dc0
+01662db0  ldr w9,[x10]
+01662db4  add w9,w9,#0xb
+01662db8  add x8,x8,w9, SXTW  #0x4
+01662dbc  add x0,x8,#0x138
+01662dc0  ldp x4,x3,[x0]
+01662dc4  mov x0,x19
+01662dc8  mov x1,x21
+01662dcc  mov x2,x20
+01662dd0  ldp x19,x30,[sp, #0x20]
+01662dd4  ldp x21,x20,[sp, #0x10]
+01662dd8  ldr x22,[sp], #0x30
+01662ddc  br x4
+01662de0  bl 0x00b079b0

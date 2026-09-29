@@ -1,0 +1,84 @@
+Function: Ali$$get_resManager @ 00e02500
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp380 @ 010908d0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- RoleMono$$OnDestroy @ 014ab828
+  <- RoleNews$$GetTriggerSkill @ 00fea768
+  <- AliothEngine.AssetLoader$$UnloadUnusedAssets @ 0166c6a0
+  <- AliothEngine.Utils.MemoryUtils$$AssetCleanupMemory @ 0169a1dc
+  <- AliothExtensions$$SetSprite @ 00e14c70
+  <- AliothEngine.AssetHolder$$RefUp @ 01663a60
+  <- NodeManager$$GetSprite @ 0131db9c
+  <- Ali$$ReLoadExcel @ 00e02598
+  <- AliothExtensions$$SetTextExt @ 00e14168
+  <- PreLoad$$GetAssetHolder @ 00e29784
+  <- Ali$$Init @ 00e019f8
+  <- LoadEvent$$ParamSet @ 00e27018
+  <- AssetCount$$UnLoad @ 00e19d78
+  <- Ali$$ClearAllAsset @ 00e0a560
+  <- SoundManager$$Play @ 00e21e78
+  <- ExploreMainPanelMono$$AddSelfModelEnd @ 00efb348
+  <- ExploreMainPanelMono$$RefreshSelfHeroOne @ 00efa058
+  <- PreLoad$$StartPerLoad @ 00e28c98
+  <- Ali$$ExcelDataInitComplete @ 00e03204
+  <- AliothExtensions$$SetSprite @ 00e14854
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_resManager @ 0119fd84
+  <- Ali$$AddChild @ 00e05d88
+  <- RoleMono$$PerLoadRes @ 0149fb84
+  <- GUIScreenBaseMono$$<Preload>b__30_0 @ 00f233c0
+  <- AliothEngine.MemoryCallback$$MemorySafeCheck @ 016565e4
+  <- VideoPlayerPanelMono$$ReadyPlay @ 01040aac
+  <- AliothExtensions$$SetTextExt @ 00e13af0
+  <- BaseMono$$StartCoroutineSafeExt @ 00e1dc4c
+  <- PartNews$$PerLoad @ 01320b48
+  <- LoadEvent$$get_isFinal @ 00e2783c
+  <- PreLoad$$MergePreload @ 00e29ae4
+  <- AliothEngine.AssetHolder$$RefDown @ 01663be8
+  <- SG.PoolTools$$InitPool @ 015a93ec
+  <- UINode$$Multilingual @ 00dc4174
+
+--- Listing ---
+00e02500  stp x21,x20,[sp, #-0x20]!
+00e02504  stp x19,x30,[sp, #0x10]
+00e02508  adrp x21,0x3572000
+00e0250c  adrp x20,0x335f000
+00e02510  ldrb w8,[x21, #0x541]
+00e02514  ldr x20,[x20, #0x20]
+00e02518  mov x19,x0
+00e0251c  tbnz w8,#0x0,0x00e02540
+00e02520  adrp x0,0x335f000
+00e02524  ldr x0,[x0, #0x20]
+00e02528  bl 0x00b0789c
+00e0252c  adrp x0,0x3380000
+00e02530  ldr x0,[x0, #0xa98]
+00e02534  bl 0x00b0789c
+00e02538  mov w8,#0x1
+00e0253c  strb w8,[x21, #0x541]
+00e02540  ldr x0,[x20]
+00e02544  ldr w8,[x0, #0xe0]
+00e02548  cbnz w8,0x00e02554
+00e0254c  bl 0x00b0798c
+00e02550  ldr x0,[x20]
+00e02554  ldr x8,[x0, #0xb8]
+00e02558  ldr x0,[x8, #0x1a0]
+00e0255c  cbz x0,0x00e02574
+00e02560  mov x1,x19
+00e02564  ldp x19,x30,[sp, #0x10]
+00e02568  mov x2,xzr
+00e0256c  ldp x21,x20,[sp], #0x20
+00e02570  b 0x010908d0
+00e02574  ldr x0,[x19, #0xb8]
+00e02578  cbz x0,0x00e02594
+00e0257c  adrp x8,0x3380000
+00e02580  ldr x8,[x8, #0xa98]
+00e02584  ldp x19,x30,[sp, #0x10]
+00e02588  ldr x1,[x8]
+00e0258c  ldp x21,x20,[sp], #0x20
+00e02590  b 0x01f0d67c
+00e02594  bl 0x00b079b0

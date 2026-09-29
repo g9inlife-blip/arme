@@ -1,0 +1,28 @@
+Function: ResolvemorepanelNode$$get_mask @ 00fce4a0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fce4a0  stp x21,x20,[sp, #-0x20]!
+00fce4a4  stp x19,x30,[sp, #0x10]
+00fce4a8  adrp x20,0x3573000
+00fce4ac  adrp x21,0x337b000
+00fce4b0  ldrb w8,[x20, #0xe86]
+00fce4b4  ldr x21,[x21, #0x2b8]
+00fce4b8  mov x19,x0
+00fce4bc  tbnz w8,#0x0,0x00fce4d4
+00fce4c0  adrp x0,0x337b000
+00fce4c4  ldr x0,[x0, #0x2b8]
+00fce4c8  bl 0x00b0789c
+00fce4cc  mov w8,#0x1
+00fce4d0  strb w8,[x20, #0xe86]
+00fce4d4  ldr x1,[x21]
+00fce4d8  mov x0,x19
+00fce4dc  ldp x19,x30,[sp, #0x10]
+00fce4e0  mov x2,xzr
+00fce4e4  ldp x21,x20,[sp], #0x20
+00fce4e8  b 0x00dc06f8

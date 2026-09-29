@@ -1,0 +1,57 @@
+Function: AliothEngine.GUIScreen$$CloseTransition @ 01672da8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreen$$CloseScreen @ 01672d00
+
+--- Listing ---
+01672da8  stp x21,x20,[sp, #-0x20]!
+01672dac  stp x19,x30,[sp, #0x10]
+01672db0  adrp x20,0x3577000
+01672db4  adrp x21,0x3364000
+01672db8  ldrb w8,[x20, #0x9a1]
+01672dbc  ldr x21,[x21, #0xd28]
+01672dc0  mov x19,x0
+01672dc4  tbnz w8,#0x0,0x01672de8
+01672dc8  adrp x0,0x3364000
+01672dcc  ldr x0,[x0, #0xd28]
+01672dd0  bl 0x00b0789c
+01672dd4  adrp x0,0x332e000
+01672dd8  ldr x0,[x0, #0xad8]
+01672ddc  bl 0x00b0789c
+01672de0  mov w8,#0x1
+01672de4  strb w8,[x20, #0x9a1]
+01672de8  ldr x8,[x21]
+01672dec  ldr x8,[x8, #0xb8]
+01672df0  ldr x0,[x8, #0x180]
+01672df4  cbz x0,0x01672e0c
+01672df8  mov x1,x19
+01672dfc  ldp x19,x30,[sp, #0x10]
+01672e00  mov x2,xzr
+01672e04  ldp x21,x20,[sp], #0x20
+01672e08  b 0x01066218
+01672e0c  adrp x8,0x332e000
+01672e10  ldr x8,[x8, #0xad8]
+01672e14  ldr x0,[x8]
+01672e18  bl 0x00b079a0
+01672e1c  cbz x0,0x01672e50
+01672e20  mov x1,xzr
+01672e24  mov x20,x0
+01672e28  bl 0x02194104
+01672e2c  mov x0,x20
+01672e30  str wzr,[x20, #0x10]
+01672e34  str x19,[x0, #0x20]!
+01672e38  mov x1,x19
+01672e3c  bl 0x00b07850
+01672e40  ldp x19,x30,[sp, #0x10]
+01672e44  mov x0,x20
+01672e48  ldp x21,x20,[sp], #0x20
+01672e4c  ret
+01672e50  bl 0x00b079b0

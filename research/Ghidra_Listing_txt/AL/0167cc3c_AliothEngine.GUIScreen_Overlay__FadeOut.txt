@@ -1,0 +1,120 @@
+Function: AliothEngine.GUIScreen_Overlay$$FadeOut @ 0167cc3c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> DG.Tweening.DOTween$$To @ 016f2cd8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> DG.Tweening.TweenSettingsExtensions$$SetEase<object> @ 017e4bf4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.CanvasGroup$$get_alpha @ 026d14bc
+  -> DG.Tweening.TweenExtensions$$Kill @ 016f6c7c
+  -> DG.Tweening.Core.DOGetter<float>$$.ctor @ 01f8aca0
+  -> DG.Tweening.Core.DOSetter<float>$$.ctor @ 01f8bf90
+
+--- Calls IN ---
+
+--- Listing ---
+0167cc3c  str d8,[sp, #-0x40]!
+0167cc40  str x24,[sp, #0x8]
+0167cc44  stp x23,x22,[sp, #0x10]
+0167cc48  stp x21,x20,[sp, #0x20]
+0167cc4c  stp x19,x30,[sp, #0x30]
+0167cc50  adrp x20,0x3577000
+0167cc54  ldrb w8,[x20, #0xa10]
+0167cc58  mov x19,x0
+0167cc5c  tbnz w8,#0x0,0x0167ccb0
+0167cc60  adrp x0,0x3350000
+0167cc64  ldr x0,[x0, #0x828]
+0167cc68  bl 0x00b0789c
+0167cc6c  adrp x0,0x3365000
+0167cc70  ldr x0,[x0, #0xe0]
+0167cc74  bl 0x00b0789c
+0167cc78  adrp x0,0x333c000
+0167cc7c  ldr x0,[x0, #0x680]
+0167cc80  bl 0x00b0789c
+0167cc84  adrp x0,0x332f000
+0167cc88  ldr x0,[x0, #0xe58]
+0167cc8c  bl 0x00b0789c
+0167cc90  adrp x0,0x3367000
+0167cc94  ldr x0,[x0, #0x208]
+0167cc98  bl 0x00b0789c
+0167cc9c  adrp x0,0x333a000
+0167cca0  ldr x0,[x0, #0xb98]
+0167cca4  bl 0x00b0789c
+0167cca8  mov w8,#0x1
+0167ccac  strb w8,[x20, #0xa10]
+0167ccb0  ldr s0,[x19, #0xa0]
+0167ccb4  fcmp s0,#0.0
+0167ccb8  b.eq 0x0167cdb8
+0167ccbc  ldr x0,[x19, #0x90]
+0167ccc0  cbz x0,0x0167cdd0
+0167ccc4  mov x1,xzr
+0167ccc8  bl 0x026d14bc
+0167cccc  fcmp s0,#0.0
+0167ccd0  b.eq 0x0167cdb8
+0167ccd4  mov x20,x19
+0167ccd8  ldr x0,[x20, #0x98]!
+0167ccdc  adrp x21,0x3350000
+0167cce0  ldr x21,[x21, #0x828]
+0167cce4  mov w1,wzr
+0167cce8  mov x2,xzr
+0167ccec  str wzr,[x20, #0x8]
+0167ccf0  bl 0x016f6c7c
+0167ccf4  ldr x0,[x21]
+0167ccf8  bl 0x00b079a0
+0167ccfc  cbz x0,0x0167cdd0
+0167cd00  adrp x8,0x332f000
+0167cd04  ldr x8,[x8, #0xe58]
+0167cd08  adrp x22,0x3365000
+0167cd0c  mov x1,x19
+0167cd10  mov x3,xzr
+0167cd14  ldr x2,[x8]
+0167cd18  ldr x22,[x22, #0xe0]
+0167cd1c  mov x21,x0
+0167cd20  bl 0x01f8aca0
+0167cd24  ldr x0,[x22]
+0167cd28  bl 0x00b079a0
+0167cd2c  cbz x0,0x0167cdd0
+0167cd30  adrp x8,0x3367000
+0167cd34  ldr x8,[x8, #0x208]
+0167cd38  adrp x24,0x333c000
+0167cd3c  adrp x23,0x333a000
+0167cd40  mov x1,x19
+0167cd44  ldr x2,[x8]
+0167cd48  ldr x24,[x24, #0x680]
+0167cd4c  ldr x23,[x23, #0xb98]
+0167cd50  mov x3,xzr
+0167cd54  mov x22,x0
+0167cd58  bl 0x01f8bf90
+0167cd5c  ldr x0,[x24]
+0167cd60  ldr s8,[x19, #0xa0]
+0167cd64  ldr w8,[x0, #0xe0]
+0167cd68  cbnz w8,0x0167cd70
+0167cd6c  bl 0x00b0798c
+0167cd70  fmov s1,0x3f000000
+0167cd74  mov x0,x21
+0167cd78  mov x1,x22
+0167cd7c  mov v0.16B,v8.16B
+0167cd80  mov x2,xzr
+0167cd84  bl 0x016f2cd8
+0167cd88  ldr x2,[x23]
+0167cd8c  mov w1,#0x1
+0167cd90  bl 0x017e4bf4
+0167cd94  str x0,[x20]
+0167cd98  mov x1,x0
+0167cd9c  mov x0,x20
+0167cda0  ldp x19,x30,[sp, #0x30]
+0167cda4  ldp x21,x20,[sp, #0x20]
+0167cda8  ldp x23,x22,[sp, #0x10]
+0167cdac  ldr x24,[sp, #0x8]
+0167cdb0  ldr d8,[sp], #0x40
+0167cdb4  b 0x00b07850
+0167cdb8  ldp x19,x30,[sp, #0x30]
+0167cdbc  ldp x21,x20,[sp, #0x20]
+0167cdc0  ldp x23,x22,[sp, #0x10]
+0167cdc4  ldr x24,[sp, #0x8]
+0167cdc8  ldr d8,[sp], #0x40
+0167cdcc  ret
+0167cdd0  bl 0x00b079b0

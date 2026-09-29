@@ -1,0 +1,56 @@
+Function: Ali.<>c$$<InitGetValidLanguages>b__282_0 @ 00e11a88
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> BaseData$$get_id @ 00df3164
+  -> Ali$$VersionOpen @ 00e001d0
+
+--- Calls IN ---
+
+--- Listing ---
+00e11a88  str x20,[sp, #-0x20]!
+00e11a8c  stp x19,x30,[sp, #0x10]
+00e11a90  adrp x20,0x3572000
+00e11a94  ldrb w8,[x20, #0x5d4]
+00e11a98  mov x19,x1
+00e11a9c  tbnz w8,#0x0,0x00e11ab4
+00e11aa0  adrp x0,0x335f000
+00e11aa4  ldr x0,[x0, #0x20]
+00e11aa8  bl 0x00b0789c
+00e11aac  mov w8,#0x1
+00e11ab0  strb w8,[x20, #0x5d4]
+00e11ab4  cbz x19,0x00e11b34
+00e11ab8  mov w20,#0x283f
+00e11abc  mov x0,x19
+00e11ac0  mov x1,xzr
+00e11ac4  movk w20,#0x59c, LSL #16
+00e11ac8  bl 0x00df3164
+00e11acc  cmp w0,w20
+00e11ad0  b.le 0x00e11b24
+00e11ad4  mov x0,x19
+00e11ad8  mov x1,xzr
+00e11adc  bl 0x00df3164
+00e11ae0  add w8,w20,#0x3ea
+00e11ae4  cmp w0,w8
+00e11ae8  b.ge 0x00e11b24
+00e11aec  adrp x20,0x335f000
+00e11af0  ldr x20,[x20, #0x20]
+00e11af4  ldr x0,[x20]
+00e11af8  ldr w8,[x0, #0xe0]
+00e11afc  cbnz w8,0x00e11b08
+00e11b00  bl 0x00b0798c
+00e11b04  ldr x0,[x20]
+00e11b08  ldr x8,[x0, #0xb8]
+00e11b0c  ldr x0,[x8, #0x10]
+00e11b10  cbz x0,0x00e11b34
+00e11b14  ldr x1,[x19, #0x90]
+00e11b18  ldp x19,x30,[sp, #0x10]
+00e11b1c  ldr x20,[sp], #0x20
+00e11b20  b 0x00e001d0
+00e11b24  ldp x19,x30,[sp, #0x10]
+00e11b28  mov w0,wzr
+00e11b2c  ldr x20,[sp], #0x20
+00e11b30  ret
+00e11b34  bl 0x00b079b0

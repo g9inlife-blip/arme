@@ -1,0 +1,59 @@
+Function: AliothEngine.Easing.EasingFunctions$$AnimationCurveFunction @ 016a64d0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Func<float,-float,-float,-float>$$.ctor @ 01af0688
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016a64d0  stp x21,x20,[sp, #-0x20]!
+016a64d4  stp x19,x30,[sp, #0x10]
+016a64d8  adrp x20,0x3577000
+016a64dc  adrp x21,0x3335000
+016a64e0  ldrb w8,[x20, #0xb8a]
+016a64e4  ldr x21,[x21, #0x560]
+016a64e8  mov x19,x0
+016a64ec  tbnz w8,#0x0,0x016a651c
+016a64f0  adrp x0,0x331e000
+016a64f4  ldr x0,[x0, #0x438]
+016a64f8  bl 0x00b0789c
+016a64fc  adrp x0,0x3355000
+016a6500  ldr x0,[x0, #0x820]
+016a6504  bl 0x00b0789c
+016a6508  adrp x0,0x3335000
+016a650c  ldr x0,[x0, #0x560]
+016a6510  bl 0x00b0789c
+016a6514  mov w8,#0x1
+016a6518  strb w8,[x20, #0xb8a]
+016a651c  ldr x0,[x21]
+016a6520  bl 0x00b079a0
+016a6524  cbz x0,0x016a6584
+016a6528  adrp x21,0x331e000
+016a652c  ldr x21,[x21, #0x438]
+016a6530  mov x1,xzr
+016a6534  mov x20,x0
+016a6538  bl 0x02194104
+016a653c  mov x0,x20
+016a6540  str x19,[x0, #0x10]!
+016a6544  mov x1,x19
+016a6548  bl 0x00b07850
+016a654c  ldr x0,[x21]
+016a6550  bl 0x00b079a0
+016a6554  cbz x0,0x016a6584
+016a6558  adrp x8,0x3355000
+016a655c  ldr x8,[x8, #0x820]
+016a6560  mov x1,x20
+016a6564  mov x3,xzr
+016a6568  mov x19,x0
+016a656c  ldr x2,[x8]
+016a6570  bl 0x01af0688
+016a6574  mov x0,x19
+016a6578  ldp x19,x30,[sp, #0x10]
+016a657c  ldp x21,x20,[sp], #0x20
+016a6580  ret
+016a6584  bl 0x00b079b0

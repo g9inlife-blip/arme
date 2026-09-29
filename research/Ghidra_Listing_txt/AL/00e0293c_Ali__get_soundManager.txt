@@ -1,0 +1,83 @@
+Function: Ali$$get_soundManager @ 00e0293c
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp383 @ 01090f84
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- RewardManager$$CloseBoxAudio @ 00e2e224
+  <- ExamLoadingPanelMono.<>c$$<StartLoading>b__19_1 @ 00ee6e58
+  <- SysSettingPanelMono$$RegisterCallBack @ 00f72768
+  <- GoToBattleMono.<>c$$<CreateBattle4ExploreFloorBack>b__24_1 @ 00e5caa4
+  <- BattleManager$$PlayAniEnd @ 0117c534
+  <- BattleEndWinPanelMono$$Close @ 00e754a0
+  <- UIEventListener$$OnPointerClick @ 00e34c48
+  <- GoToBattleMono.<>c$$<CreateBattleBack>b__19_1 @ 00e5c6f0
+  <- UnPackPanelMono$$OnClickFinger @ 00ea780c
+  <- BaseSkillEff$$UpdataEvent @ 015d8f24
+  <- YingyuanCVMono$$OnClickPlaySound @ 01052c10
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_soundManager @ 011a02c4
+  <- UnPackPanelMono$$OnClickSkip @ 00ea7634
+  <- UnPackPanelMono$$OnOpened @ 00ea7434
+  <- BaseBuff$$Execute @ 015df498
+  <- Ali$$ClearAllAsset @ 00e0a560
+  <- BattleManager$$CutscenesEnd @ 0117e8dc
+  <- VideoPlayerPanelMono$$Exit @ 01040ecc
+  <- BattleManager$$BattleStartGoon @ 0117d97c
+  <- SysSettingPanelMono$$OnValueChanged80250010 @ 00f74324
+  <- BaseMono$$SoundPlay @ 00e21d40
+  <- DialogMono$$Close @ 00eb9348
+  <- BaseSkillEff$$HitEffPlay @ 015ebbc4
+  <- BattleEndFailPanelMono$$Close @ 00e6bc30
+  <- OpeningCutScene$$Start @ 00e3a300
+  <- SysSettingPanelMono$$OnValueChanged80250011 @ 00f7441c
+  <- VideoPlayerPanelMono$$LoadVideoClipEnd @ 01040d04
+  <- DialogMono$$PlayDialog @ 00eb81a8
+  <- BattleManager$$PlaySkillShowGoon @ 0118a958
+  <- BattleManager$$TestEnd @ 01183f50
+  <- NoviceGuidePanelMono$$GuideSkip @ 0100574c
+  <- NoviceGuidePanelMono$$NextGuide @ 01005bc0
+  <- BattleManager$$FinishCS @ 01189674
+
+--- Listing ---
+00e0293c  stp x21,x20,[sp, #-0x20]!
+00e02940  stp x19,x30,[sp, #0x10]
+00e02944  adrp x21,0x3572000
+00e02948  adrp x20,0x335f000
+00e0294c  ldrb w8,[x21, #0x547]
+00e02950  ldr x20,[x20, #0x20]
+00e02954  mov x19,x0
+00e02958  tbnz w8,#0x0,0x00e0297c
+00e0295c  adrp x0,0x335f000
+00e02960  ldr x0,[x0, #0x20]
+00e02964  bl 0x00b0789c
+00e02968  adrp x0,0x335a000
+00e0296c  ldr x0,[x0, #0x4a8]
+00e02970  bl 0x00b0789c
+00e02974  mov w8,#0x1
+00e02978  strb w8,[x21, #0x547]
+00e0297c  ldr x0,[x20]
+00e02980  ldr w8,[x0, #0xe0]
+00e02984  cbnz w8,0x00e02990
+00e02988  bl 0x00b0798c
+00e0298c  ldr x0,[x20]
+00e02990  ldr x8,[x0, #0xb8]
+00e02994  ldr x0,[x8, #0x1d0]
+00e02998  cbz x0,0x00e029b0
+00e0299c  mov x1,x19
+00e029a0  ldp x19,x30,[sp, #0x10]
+00e029a4  mov x2,xzr
+00e029a8  ldp x21,x20,[sp], #0x20
+00e029ac  b 0x01090f84
+00e029b0  ldr x0,[x19, #0xd0]
+00e029b4  cbz x0,0x00e029d0
+00e029b8  adrp x8,0x335a000
+00e029bc  ldr x8,[x8, #0x4a8]
+00e029c0  ldp x19,x30,[sp, #0x10]
+00e029c4  ldr x1,[x8]
+00e029c8  ldp x21,x20,[sp], #0x20
+00e029cc  b 0x01f0d67c
+00e029d0  bl 0x00b079b0

@@ -1,0 +1,104 @@
+Function: AliothEngine.Extensions.CameraExtensions$$GetProjectionExtents @ 016aa270
+
+--- Calls OUT ---
+  -> UnityEngine.Matrix4x4$$MultiplyPoint3x4 @ 024e84c4
+  -> UnityEngine.Camera$$GetStereoProjectionMatrix @ 024d85f4
+  -> UnityEngine.Camera$$get_pixelHeight @ 024d7af0
+  -> UnityEngine.Camera$$get_pixelWidth @ 024d7ab4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Matrix4x4$$Inverse @ 024e8ecc
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.CameraExtensions$$GetProjectionExtents @ 016aa264
+
+--- Listing ---
+016aa270  sub sp,sp,#0x140
+016aa274  str d10,[sp, #0x100]
+016aa278  stp d9,d8,[sp, #0x110]
+016aa27c  stp x28,x20,[sp, #0x120]
+016aa280  stp x19,x30,[sp, #0x130]
+016aa284  str d0,[sp, #0x30]
+016aa288  movi v0.2D,#0x0
+016aa28c  str d1,[sp, #0x20]
+016aa290  stp q0,q0,[sp, #0xe0]
+016aa294  stp q0,q0,[sp, #0xc0]
+016aa298  cbz x0,0x016aa3d4
+016aa29c  add x8,sp,#0x80
+016aa2a0  mov x2,xzr
+016aa2a4  mov x19,x0
+016aa2a8  bl 0x024d85f4
+016aa2ac  ldp q2,q0,[sp, #0x90]
+016aa2b0  ldr q1,[sp, #0x80]
+016aa2b4  ldr q3,[sp, #0xb0]
+016aa2b8  add x8,sp,#0x80
+016aa2bc  add x0,sp,#0x40
+016aa2c0  mov x1,xzr
+016aa2c4  stp q2,q0,[sp, #0x50]
+016aa2c8  str q1,[sp, #0x40]
+016aa2cc  str q3,[sp, #0x70]
+016aa2d0  bl 0x024e8ecc
+016aa2d4  ldp q2,q0,[sp, #0x90]
+016aa2d8  adrp x8,0x26dd000
+016aa2dc  ldr q1,[sp, #0x80]
+016aa2e0  ldr s8,[x8, #0x88]
+016aa2e4  ldr q3,[sp, #0xb0]
+016aa2e8  stp q2,q0,[sp, #0xd0]
+016aa2ec  fmov s0,0xbf800000
+016aa2f0  str q1,[sp, #0xc0]
+016aa2f4  add x0,sp,#0xc0
+016aa2f8  mov v1.16B,v0.16B
+016aa2fc  mov v2.16B,v8.16B
+016aa300  mov x1,xzr
+016aa304  str q3,[sp, #0xf0]
+016aa308  bl 0x024e84c4
+016aa30c  str d0,[sp, #0x10]
+016aa310  fmov s0,0x3f800000
+016aa314  str d1,[sp]
+016aa318  mov v9.16B,v2.16B
+016aa31c  add x0,sp,#0xc0
+016aa320  mov v1.16B,v0.16B
+016aa324  mov v2.16B,v8.16B
+016aa328  mov x1,xzr
+016aa32c  bl 0x024e84c4
+016aa330  ldp q5,q4,[sp]
+016aa334  fneg s3,s9
+016aa338  fneg s2,s2
+016aa33c  dup v3.2S,v3.S[0x0]
+016aa340  mov v4.S[0x1],v5.S[0x0]
+016aa344  mov v0.S[0x1],v1.S[0x0]
+016aa348  dup v1.2S,v2.S[0x0]
+016aa34c  fdiv v8.2S,v4.2S,v3.2S
+016aa350  fdiv v9.2S,v0.2S,v1.2S
+016aa354  fsub v0.2S,v9.2S,v8.2S
+016aa358  movi v10.2S,#0x3f, LSL #24
+016aa35c  fmul v0.2S,v0.2S,v10.2S
+016aa360  mov x0,x19
+016aa364  mov x1,xzr
+016aa368  str q0,[sp, #0x10]
+016aa36c  bl 0x024d7ab4
+016aa370  mov w20,w0
+016aa374  mov x0,x19
+016aa378  mov x1,xzr
+016aa37c  bl 0x024d7af0
+016aa380  ldp q3,q2,[sp, #0x20]
+016aa384  fmov s0,w20
+016aa388  mov v0.S[0x1],w0
+016aa38c  scvtf v0.2S,v0.2S
+016aa390  mov v2.S[0x1],v3.S[0x0]
+016aa394  ldr q3,[sp, #0x10]
+016aa398  fadd v1.2S,v8.2S,v9.2S
+016aa39c  fmul v0.2S,v0.2S,v10.2S
+016aa3a0  fmul v1.2S,v1.2S,v10.2S
+016aa3a4  fdiv v0.2S,v3.2S,v0.2S
+016aa3a8  ldp x19,x30,[sp, #0x130]
+016aa3ac  ldp x28,x20,[sp, #0x120]
+016aa3b0  ldp d9,d8,[sp, #0x110]
+016aa3b4  ldr d10,[sp, #0x100]
+016aa3b8  fmul v0.2S,v0.2S,v2.2S
+016aa3bc  fadd v2.2S,v1.2S,v0.2S
+016aa3c0  mov v0.16B,v3.16B
+016aa3c4  dup s1,v3.S[0x1]
+016aa3c8  dup s3,v2.S[0x1]
+016aa3cc  add sp,sp,#0x140
+016aa3d0  ret
+016aa3d4  bl 0x00b079b0

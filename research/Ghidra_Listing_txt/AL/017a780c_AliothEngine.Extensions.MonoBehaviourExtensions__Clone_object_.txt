@@ -1,0 +1,52 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Clone<object> @ 017a780c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017a780c  str x22,[sp, #-0x30]!
+017a7810  stp x21,x20,[sp, #0x10]
+017a7814  stp x19,x30,[sp, #0x20]
+017a7818  ldr x8,[x2, #0x38]
+017a781c  mov x19,x2
+017a7820  mov w20,w1
+017a7824  mov x21,x0
+017a7828  ldr x8,[x8]
+017a782c  ldrb w9,[x8, #0x132]
+017a7830  tbnz w9,#0x0,0x017a7840
+017a7834  mov x0,x8
+017a7838  bl 0x00b2ac40
+017a783c  mov x8,x0
+017a7840  mov x0,x8
+017a7844  bl 0x00b079a0
+017a7848  cbz x0,0x017a78b0
+017a784c  ldr x8,[x19, #0x38]
+017a7850  mov x22,x0
+017a7854  ldr x1,[x8, #0x8]
+017a7858  ldr x8,[x1, #0x8]
+017a785c  blr x8
+017a7860  cmp w20,#0x1
+017a7864  b.lt 0x017a789c
+017a7868  ldr x8,[x19, #0x38]
+017a786c  mov x0,x21
+017a7870  ldr x1,[x8, #0x10]
+017a7874  ldr x8,[x1, #0x8]
+017a7878  blr x8
+017a787c  ldr x8,[x19, #0x38]
+017a7880  mov x1,x0
+017a7884  mov x0,x22
+017a7888  ldr x2,[x8, #0x18]
+017a788c  ldr x8,[x2, #0x8]
+017a7890  blr x8
+017a7894  subs w20,w20,#0x1
+017a7898  b.ne 0x017a7868
+017a789c  ldp x19,x30,[sp, #0x20]
+017a78a0  ldp x21,x20,[sp, #0x10]
+017a78a4  mov x0,x22
+017a78a8  ldr x22,[sp], #0x30
+017a78ac  ret
+017a78b0  bl 0x00b079b0

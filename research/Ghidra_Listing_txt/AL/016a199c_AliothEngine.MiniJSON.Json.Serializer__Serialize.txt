@@ -1,0 +1,42 @@
+Function: AliothEngine.MiniJSON.Json.Serializer$$Serialize @ 016a199c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.MiniJSON.Json.Serializer$$.ctor @ 016a2560
+  -> AliothEngine.MiniJSON.Json.Serializer$$SerializeValue @ 016a25d4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json$$Serialize @ 016a1998
+
+--- Listing ---
+016a199c  stp x21,x20,[sp, #-0x20]!
+016a19a0  stp x19,x30,[sp, #0x10]
+016a19a4  adrp x20,0x3577000
+016a19a8  adrp x21,0x3372000
+016a19ac  ldrb w8,[x20, #0xb77]
+016a19b0  ldr x21,[x21, #0x160]
+016a19b4  mov x19,x0
+016a19b8  tbnz w8,#0x0,0x016a19d0
+016a19bc  adrp x0,0x3372000
+016a19c0  ldr x0,[x0, #0x160]
+016a19c4  bl 0x00b0789c
+016a19c8  mov w8,#0x1
+016a19cc  strb w8,[x20, #0xb77]
+016a19d0  ldr x0,[x21]
+016a19d4  bl 0x00b079a0
+016a19d8  cbz x0,0x016a1a0c
+016a19dc  mov x20,x0
+016a19e0  bl 0x016a2560
+016a19e4  mov x0,x20
+016a19e8  mov x1,x19
+016a19ec  bl 0x016a25d4
+016a19f0  ldr x0,[x20, #0x10]
+016a19f4  cbz x0,0x016a1a0c
+016a19f8  ldr x8,[x0]
+016a19fc  ldp x19,x30,[sp, #0x10]
+016a1a00  ldp x2,x1,[x8, #0x168]
+016a1a04  ldp x21,x20,[sp], #0x20
+016a1a08  br x2
+016a1a0c  bl 0x00b079b0

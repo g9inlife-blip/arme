@@ -1,0 +1,119 @@
+Function: AliothEngine.Encrypt$$DeTripleDESC @ 0168911c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Convert$$FromBase64String @ 020e4acc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.Encrypt$$MD5Hash @ 016892b8
+  -> System.Text.Encoding$$get_UTF8 @ 01ff8ca0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Security.Cryptography.TripleDESCryptoServiceProvider$$.ctor @ 0201b298
+
+--- Calls IN ---
+
+--- Listing ---
+0168911c  str x22,[sp, #-0x30]!
+01689120  stp x21,x20,[sp, #0x10]
+01689124  stp x19,x30,[sp, #0x20]
+01689128  adrp x22,0x3577000
+0168912c  adrp x21,0x3362000
+01689130  ldrb w8,[x22, #0xa81]
+01689134  ldr x21,[x21, #0xe28]
+01689138  mov x19,x1
+0168913c  mov x20,x0
+01689140  tbnz w8,#0x0,0x01689170
+01689144  adrp x0,0x3362000
+01689148  ldr x0,[x0, #0xe28]
+0168914c  bl 0x00b0789c
+01689150  adrp x0,0x3325000
+01689154  ldr x0,[x0, #0x7a8]
+01689158  bl 0x00b0789c
+0168915c  adrp x0,0x333b000
+01689160  ldr x0,[x0, #0x210]
+01689164  bl 0x00b0789c
+01689168  mov w8,#0x1
+0168916c  strb w8,[x22, #0xa81]
+01689170  adrp x22,0x333b000
+01689174  ldr x22,[x22, #0x210]
+01689178  mov x0,x20
+0168917c  bl 0x016892b8
+01689180  ldr x8,[x21]
+01689184  mov x20,x0
+01689188  ldr w9,[x8, #0xe0]
+0168918c  cbnz w9,0x01689198
+01689190  mov x0,x8
+01689194  bl 0x00b0798c
+01689198  mov x0,x19
+0168919c  mov x1,xzr
+016891a0  bl 0x020e4acc
+016891a4  ldr x8,[x22]
+016891a8  mov x19,x0
+016891ac  mov x0,x8
+016891b0  bl 0x00b079a0
+016891b4  cbz x0,0x016892b4
+016891b8  mov x1,xzr
+016891bc  mov x21,x0
+016891c0  bl 0x0201b298
+016891c4  ldr x8,[x21]
+016891c8  mov x0,x21
+016891cc  mov x1,x20
+016891d0  ldp x9,x2,[x8, #0x1f8]
+016891d4  blr x9
+016891d8  ldr x8,[x21]
+016891dc  mov w1,#0x2
+016891e0  mov x0,x21
+016891e4  ldr x9,[x8, #0x248]
+016891e8  ldr x2,[x8, #0x250]
+016891ec  blr x9
+016891f0  ldr x8,[x21]
+016891f4  mov x0,x21
+016891f8  ldr x9,[x8, #0x298]
+016891fc  ldr x1,[x8, #0x2a0]
+01689200  blr x9
+01689204  cbz x19,0x016892b4
+01689208  mov x20,x0
+0168920c  cbz x0,0x016892b4
+01689210  adrp x9,0x3325000
+01689214  ldr x8,[x20]
+01689218  ldr x9,[x9, #0x7a8]
+0168921c  ldr w21,[x19, #0x18]
+01689220  ldr x1,[x9]
+01689224  ldrh w9,[x8, #0x12a]
+01689228  cbz x9,0x0168924c
+0168922c  ldr x10,[x8, #0xb0]
+01689230  add x10,x10,#0x8
+01689234  ldur x11,[x10, #-0x8]
+01689238  cmp x11,x1
+0168923c  b.eq 0x0168925c
+01689240  subs x9,x9,#0x1
+01689244  add x10,x10,#0x10
+01689248  b.ne 0x01689234
+0168924c  mov w2,#0x4
+01689250  mov x0,x20
+01689254  bl 0x00b2ae24
+01689258  b 0x0168926c
+0168925c  ldr w9,[x10]
+01689260  add w9,w9,#0x4
+01689264  add x8,x8,w9, SXTW  #0x4
+01689268  add x0,x8,#0x138
+0168926c  ldp x8,x4,[x0]
+01689270  mov x0,x20
+01689274  mov x1,x19
+01689278  mov w2,wzr
+0168927c  mov w3,w21
+01689280  blr x8
+01689284  mov x19,x0
+01689288  mov x0,xzr
+0168928c  bl 0x01ff8ca0
+01689290  cbz x0,0x016892b4
+01689294  ldr x8,[x0]
+01689298  mov x1,x19
+0168929c  ldp x19,x30,[sp, #0x20]
+016892a0  ldp x21,x20,[sp, #0x10]
+016892a4  ldr x3,[x8, #0x378]
+016892a8  ldr x2,[x8, #0x380]
+016892ac  ldr x22,[sp], #0x30
+016892b0  br x3
+016892b4  bl 0x00b079b0

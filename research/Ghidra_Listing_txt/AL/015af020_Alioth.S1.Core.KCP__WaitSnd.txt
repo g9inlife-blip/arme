@@ -1,0 +1,56 @@
+Function: Alioth.S1.Core.KCP$$WaitSnd @ 015af020
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+  -> Alioth.S1.Core.Array<object>$$get_Length @ 01d9337c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1CoreKCPWrap$$_m_WaitSnd @ 0116e1b4
+  <- Alioth.S1.Net.KCPTube$$Update @ 015af650
+  <- Alioth.S1.Net.KCPTube$$Send @ 015aeddc
+
+--- Listing ---
+015af020  stp x21,x20,[sp, #-0x20]!
+015af024  stp x19,x30,[sp, #0x10]
+015af028  adrp x20,0x3577000
+015af02c  adrp x21,0x333d000
+015af030  ldrb w8,[x20, #0x10b]
+015af034  ldr x21,[x21, #0xfc0]
+015af038  mov x19,x0
+015af03c  tbnz w8,#0x0,0x015af060
+015af040  adrp x0,0x331e000
+015af044  ldr x0,[x0, #0xfe8]
+015af048  bl 0x00b0789c
+015af04c  adrp x0,0x333d000
+015af050  ldr x0,[x0, #0xfc0]
+015af054  bl 0x00b0789c
+015af058  mov w8,#0x1
+015af05c  strb w8,[x20, #0x10b]
+015af060  ldr x8,[x21]
+015af064  ldr x8,[x8, #0xb8]
+015af068  ldr x0,[x8, #0xa0]
+015af06c  cbz x0,0x015af084
+015af070  mov x1,x19
+015af074  ldp x19,x30,[sp, #0x10]
+015af078  mov x2,xzr
+015af07c  ldp x21,x20,[sp], #0x20
+015af080  b 0x01060c2c
+015af084  ldr x0,[x19, #0x80]
+015af088  cbz x0,0x015af0c4
+015af08c  adrp x20,0x331e000
+015af090  ldr x20,[x20, #0xfe8]
+015af094  ldr x1,[x20]
+015af098  bl 0x01d9337c
+015af09c  ldr x8,[x19, #0x78]
+015af0a0  cbz x8,0x015af0c4
+015af0a4  ldr x1,[x20]
+015af0a8  mov w19,w0
+015af0ac  mov x0,x8
+015af0b0  bl 0x01d9337c
+015af0b4  add w0,w0,w19
+015af0b8  ldp x19,x30,[sp, #0x10]
+015af0bc  ldp x21,x20,[sp], #0x20
+015af0c0  ret
+015af0c4  bl 0x00b079b0

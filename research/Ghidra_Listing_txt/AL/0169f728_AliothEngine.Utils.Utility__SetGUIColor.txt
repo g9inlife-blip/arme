@@ -1,0 +1,45 @@
+Function: AliothEngine.Utils.Utility$$SetGUIColor @ 0169f728
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.GUI$$set_backgroundColor @ 02519034
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$GUIButton @ 0169f888
+  <- AliothEngine.Utils.Utility$$ResetGUIColor @ 0169f7a8
+  <- AliothEngine.Utils.Utility$$GUIButton @ 0169fa2c
+
+--- Listing ---
+0169f728  stp d11,d10,[sp, #-0x40]!
+0169f72c  stp d9,d8,[sp, #0x10]
+0169f730  str x20,[sp, #0x20]
+0169f734  stp x19,x30,[sp, #0x30]
+0169f738  adrp x20,0x3577000
+0169f73c  adrp x19,0x3362000
+0169f740  ldrb w8,[x20, #0xb53]
+0169f744  ldr x19,[x19, #0xe80]
+0169f748  mov v8.16B,v3.16B
+0169f74c  mov v9.16B,v2.16B
+0169f750  mov v10.16B,v1.16B
+0169f754  mov v11.16B,v0.16B
+0169f758  tbnz w8,#0x0,0x0169f770
+0169f75c  adrp x0,0x3362000
+0169f760  ldr x0,[x0, #0xe80]
+0169f764  bl 0x00b0789c
+0169f768  mov w8,#0x1
+0169f76c  strb w8,[x20, #0xb53]
+0169f770  ldr x0,[x19]
+0169f774  ldr w8,[x0, #0xe0]
+0169f778  cbnz w8,0x0169f780
+0169f77c  bl 0x00b0798c
+0169f780  mov v2.16B,v9.16B
+0169f784  mov v3.16B,v8.16B
+0169f788  ldp x19,x30,[sp, #0x30]
+0169f78c  ldr x20,[sp, #0x20]
+0169f790  ldp d9,d8,[sp, #0x10]
+0169f794  mov v0.16B,v11.16B
+0169f798  mov v1.16B,v10.16B
+0169f79c  mov x0,xzr
+0169f7a0  ldp d11,d10,[sp], #0x40
+0169f7a4  b 0x02519034

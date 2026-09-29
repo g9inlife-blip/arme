@@ -1,0 +1,27 @@
+Function: AliothEngine.DebugManager$$.ctor @ 01670b14
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+
+--- Listing ---
+01670b14  stp x21,x20,[sp, #-0x20]!
+01670b18  stp x19,x30,[sp, #0x10]
+01670b1c  adrp x20,0x3577000
+01670b20  adrp x21,0x332b000
+01670b24  ldrb w8,[x20, #0x970]
+01670b28  ldr x21,[x21, #0x778]
+01670b2c  mov x19,x0
+01670b30  tbnz w8,#0x0,0x01670b48
+01670b34  adrp x0,0x332b000
+01670b38  ldr x0,[x0, #0x778]
+01670b3c  bl 0x00b0789c
+01670b40  mov w8,#0x1
+01670b44  strb w8,[x20, #0x970]
+01670b48  ldr x1,[x21]
+01670b4c  mov x0,x19
+01670b50  ldp x19,x30,[sp, #0x10]
+01670b54  ldp x21,x20,[sp], #0x20
+01670b58  b 0x01e09460

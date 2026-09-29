@@ -1,0 +1,150 @@
+Function: AliothEngine.Extensions.ListExtensions$$FindByType<object> @ 0179e920
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.Type$$op_Equality @ 02168d68
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$GetType @ 021948fc
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0179e920  stp x25,x24,[sp, #-0x40]!
+0179e924  stp x23,x22,[sp, #0x10]
+0179e928  stp x21,x20,[sp, #0x20]
+0179e92c  stp x19,x30,[sp, #0x30]
+0179e930  adrp x22,0x3578000
+0179e934  ldrb w8,[x22, #0x178]
+0179e938  mov x20,x2
+0179e93c  mov x21,x1
+0179e940  mov x19,x0
+0179e944  tbnz w8,#0x0,0x0179e95c
+0179e948  adrp x0,0x3347000
+0179e94c  ldr x0,[x0, #0xd68]
+0179e950  bl 0x00b0789c
+0179e954  mov w8,#0x1
+0179e958  strb w8,[x22, #0x178]
+0179e95c  cbz x19,0x0179eb3c
+0179e960  ldr x8,[x20, #0x38]
+0179e964  ldr x1,[x8]
+0179e968  ldrb w8,[x1, #0x132]
+0179e96c  tbnz w8,#0x0,0x0179e97c
+0179e970  mov x0,x1
+0179e974  bl 0x00b2ac40
+0179e978  mov x1,x0
+0179e97c  ldr x8,[x19]
+0179e980  ldrh w9,[x8, #0x12a]
+0179e984  cbz x9,0x0179e9a8
+0179e988  ldr x10,[x8, #0xb0]
+0179e98c  add x10,x10,#0x8
+0179e990  ldur x11,[x10, #-0x8]
+0179e994  cmp x11,x1
+0179e998  b.eq 0x0179e9b8
+0179e99c  subs x9,x9,#0x1
+0179e9a0  add x10,x10,#0x10
+0179e9a4  b.ne 0x0179e990
+0179e9a8  mov x0,x19
+0179e9ac  mov w2,wzr
+0179e9b0  bl 0x00b2ae24
+0179e9b4  b 0x0179e9c4
+0179e9b8  ldrsw x9,[x10]
+0179e9bc  add x8,x8,x9, LSL #0x4
+0179e9c0  add x0,x8,#0x138
+0179e9c4  ldp x8,x1,[x0]
+0179e9c8  mov x0,x19
+0179e9cc  blr x8
+0179e9d0  cmp w0,#0x1
+0179e9d4  b.lt 0x0179eaa0
+0179e9d8  adrp x25,0x3347000
+0179e9dc  ldr x25,[x25, #0xd68]
+0179e9e0  mov w23,w0
+0179e9e4  mov w22,wzr
+0179e9e8  ldr x8,[x20, #0x38]
+0179e9ec  ldr x1,[x8, #0x10]
+0179e9f0  ldrb w8,[x1, #0x132]
+0179e9f4  tbnz w8,#0x0,0x0179ea04
+0179e9f8  mov x0,x1
+0179e9fc  bl 0x00b2ac40
+0179ea00  mov x1,x0
+0179ea04  ldr x8,[x19]
+0179ea08  ldrh w9,[x8, #0x12a]
+0179ea0c  cbz x9,0x0179ea30
+0179ea10  ldr x10,[x8, #0xb0]
+0179ea14  add x10,x10,#0x8
+0179ea18  ldur x11,[x10, #-0x8]
+0179ea1c  cmp x11,x1
+0179ea20  b.eq 0x0179ea40
+0179ea24  subs x9,x9,#0x1
+0179ea28  add x10,x10,#0x10
+0179ea2c  b.ne 0x0179ea18
+0179ea30  mov x0,x19
+0179ea34  mov w2,wzr
+0179ea38  bl 0x00b2ae24
+0179ea3c  b 0x0179ea4c
+0179ea40  ldrsw x9,[x10]
+0179ea44  add x8,x8,x9, LSL #0x4
+0179ea48  add x0,x8,#0x138
+0179ea4c  ldp x8,x2,[x0]
+0179ea50  mov x0,x19
+0179ea54  mov w1,w22
+0179ea58  blr x8
+0179ea5c  cbz x0,0x0179eb3c
+0179ea60  mov x1,xzr
+0179ea64  bl 0x021948fc
+0179ea68  ldr x8,[x25]
+0179ea6c  mov x24,x0
+0179ea70  ldr w9,[x8, #0xe0]
+0179ea74  cbnz w9,0x0179ea80
+0179ea78  mov x0,x8
+0179ea7c  bl 0x00b0798c
+0179ea80  mov x0,x24
+0179ea84  mov x1,x21
+0179ea88  mov x2,xzr
+0179ea8c  bl 0x02168d68
+0179ea90  tbnz w0,#0x0,0x0179eab8
+0179ea94  add w22,w22,#0x1
+0179ea98  cmp w22,w23
+0179ea9c  b.ne 0x0179e9e8
+0179eaa0  ldp x19,x30,[sp, #0x30]
+0179eaa4  ldp x21,x20,[sp, #0x20]
+0179eaa8  ldp x23,x22,[sp, #0x10]
+0179eaac  mov x0,xzr
+0179eab0  ldp x25,x24,[sp], #0x40
+0179eab4  ret
+0179eab8  ldr x8,[x20, #0x38]
+0179eabc  ldr x1,[x8, #0x10]
+0179eac0  ldrb w8,[x1, #0x132]
+0179eac4  tbnz w8,#0x0,0x0179ead4
+0179eac8  mov x0,x1
+0179eacc  bl 0x00b2ac40
+0179ead0  mov x1,x0
+0179ead4  ldr x8,[x19]
+0179ead8  ldrh w9,[x8, #0x12a]
+0179eadc  cbz x9,0x0179eb00
+0179eae0  ldr x10,[x8, #0xb0]
+0179eae4  add x10,x10,#0x8
+0179eae8  ldur x11,[x10, #-0x8]
+0179eaec  cmp x11,x1
+0179eaf0  b.eq 0x0179eb10
+0179eaf4  subs x9,x9,#0x1
+0179eaf8  add x10,x10,#0x10
+0179eafc  b.ne 0x0179eae8
+0179eb00  mov x0,x19
+0179eb04  mov w2,wzr
+0179eb08  bl 0x00b2ae24
+0179eb0c  b 0x0179eb1c
+0179eb10  ldrsw x9,[x10]
+0179eb14  add x8,x8,x9, LSL #0x4
+0179eb18  add x0,x8,#0x138
+0179eb1c  ldp x3,x2,[x0]
+0179eb20  mov x0,x19
+0179eb24  mov w1,w22
+0179eb28  ldp x19,x30,[sp, #0x30]
+0179eb2c  ldp x21,x20,[sp, #0x20]
+0179eb30  ldp x23,x22,[sp, #0x10]
+0179eb34  ldp x25,x24,[sp], #0x40
+0179eb38  br x3
+0179eb3c  bl 0x00b079b0

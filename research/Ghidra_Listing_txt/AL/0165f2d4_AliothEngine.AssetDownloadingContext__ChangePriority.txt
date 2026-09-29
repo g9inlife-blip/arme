@@ -1,0 +1,49 @@
+Function: AliothEngine.AssetDownloadingContext$$ChangePriority @ 0165f2d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetDownloadingContext$$set_priority @ 01661e74
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetDownloadingContextWrap$$_m_ChangePriority @ 01136160
+  <- AliothEngine.AssetDownloader$$RequestDownload @ 0165ea9c
+
+--- Listing ---
+0165f2d4  str x22,[sp, #-0x30]!
+0165f2d8  stp x21,x20,[sp, #0x10]
+0165f2dc  stp x19,x30,[sp, #0x20]
+0165f2e0  adrp x22,0x3577000
+0165f2e4  adrp x21,0x3346000
+0165f2e8  ldrb w8,[x22, #0x8b1]
+0165f2ec  ldr x21,[x21, #0x960]
+0165f2f0  mov w19,w1
+0165f2f4  mov x20,x0
+0165f2f8  tbnz w8,#0x0,0x0165f310
+0165f2fc  adrp x0,0x3346000
+0165f300  ldr x0,[x0, #0x960]
+0165f304  bl 0x00b0789c
+0165f308  mov w8,#0x1
+0165f30c  strb w8,[x22, #0x8b1]
+0165f310  ldr x0,[x21]
+0165f314  ldr w8,[x0, #0xe0]
+0165f318  cbnz w8,0x0165f324
+0165f31c  bl 0x00b0798c
+0165f320  ldr x0,[x21]
+0165f324  ldr x8,[x0, #0xb8]
+0165f328  ldr x0,[x8, #0x28]
+0165f32c  cbz x0,0x0165f34c
+0165f330  mov x1,x20
+0165f334  mov w2,w19
+0165f338  ldp x19,x30,[sp, #0x20]
+0165f33c  ldp x21,x20,[sp, #0x10]
+0165f340  mov x3,xzr
+0165f344  ldr x22,[sp], #0x30
+0165f348  b 0x0106155c
+0165f34c  mov x0,x20
+0165f350  mov w1,w19
+0165f354  ldp x19,x30,[sp, #0x20]
+0165f358  ldp x21,x20,[sp, #0x10]
+0165f35c  ldr x22,[sp], #0x30
+0165f360  b 0x01661e74

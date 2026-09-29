@@ -1,0 +1,74 @@
+Function: AliothEngine.Extensions.Matrix4x4Extension$$GetUp @ 016afad4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Matrix4x4$$get_Item @ 024e7a78
+
+--- Calls IN ---
+
+--- Listing ---
+016afad4  str d10,[sp, #-0x30]!
+016afad8  stp d9,d8,[sp, #0x10]
+016afadc  stp x19,x30,[sp, #0x20]
+016afae0  mov w1,#0x4
+016afae4  mov x2,xzr
+016afae8  mov x19,x0
+016afaec  bl 0x024e7a78
+016afaf0  mov w1,#0x5
+016afaf4  mov x0,x19
+016afaf8  mov x2,xzr
+016afafc  mov v8.16B,v0.16B
+016afb00  bl 0x024e7a78
+016afb04  mov w1,#0x6
+016afb08  mov x0,x19
+016afb0c  mov x2,xzr
+016afb10  mov v9.16B,v0.16B
+016afb14  bl 0x024e7a78
+016afb18  adrp x19,0x3570000
+016afb1c  ldrb w8,[x19, #0xf11]
+016afb20  mov v10.16B,v0.16B
+016afb24  cbnz w8,0x016afb3c
+016afb28  adrp x0,0x332c000
+016afb2c  ldr x0,[x0, #0x5a8]
+016afb30  bl 0x00b0789c
+016afb34  mov w8,#0x1
+016afb38  strb w8,[x19, #0xf11]
+016afb3c  adrp x8,0x332c000
+016afb40  ldr x8,[x8, #0x5a8]
+016afb44  ldr x0,[x8]
+016afb48  ldr w8,[x0, #0xe0]
+016afb4c  cbnz w8,0x016afb54
+016afb50  bl 0x00b0798c
+016afb54  fmul s0,s8,s8
+016afb58  fmul s1,s9,s9
+016afb5c  adrp x8,0x26db000
+016afb60  fadd s0,s0,s1
+016afb64  ldr s1,[x8, #0x148]
+016afb68  fmul s2,s10,s10
+016afb6c  fadd s0,s2,s0
+016afb70  fsqrt s2,s0
+016afb74  fcmp s2,s1
+016afb78  b.le 0x016afb8c
+016afb7c  fdiv s0,s8,s2
+016afb80  fdiv s1,s9,s2
+016afb84  fdiv s2,s10,s2
+016afb88  b 0x016afbc4
+016afb8c  adrp x19,0x3570000
+016afb90  ldrb w8,[x19, #0xf0c]
+016afb94  cbnz w8,0x016afbac
+016afb98  adrp x0,0x3368000
+016afb9c  ldr x0,[x0, #0x9b8]
+016afba0  bl 0x00b0789c
+016afba4  mov w8,#0x1
+016afba8  strb w8,[x19, #0xf0c]
+016afbac  adrp x8,0x3368000
+016afbb0  ldr x8,[x8, #0x9b8]
+016afbb4  ldr x8,[x8]
+016afbb8  ldr x8,[x8, #0xb8]
+016afbbc  ldp s0,s1,[x8]
+016afbc0  ldr s2,[x8, #0x8]
+016afbc4  ldp x19,x30,[sp, #0x20]
+016afbc8  ldp d9,d8,[sp, #0x10]
+016afbcc  ldr d10,[sp], #0x30
+016afbd0  ret

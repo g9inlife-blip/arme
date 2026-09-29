@@ -1,0 +1,38 @@
+Function: ReadyMono$$get_l_camera @ 00e5d10c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp69 @ 01067df4
+
+--- Calls IN ---
+  <- ReadyMono$$GetMyName @ 00e5d1f8
+  <- ReadyMono$$InitReady @ 00e5dec0
+  <- ReadyMono$$GetEnemyNameStyle @ 00e5d548
+
+--- Listing ---
+00e5d10c  stp x21,x20,[sp, #-0x20]!
+00e5d110  stp x19,x30,[sp, #0x10]
+00e5d114  adrp x20,0x3572000
+00e5d118  adrp x21,0x333c000
+00e5d11c  ldrb w8,[x20, #0x95a]
+00e5d120  ldr x21,[x21, #0x628]
+00e5d124  mov x19,x0
+00e5d128  tbnz w8,#0x0,0x00e5d140
+00e5d12c  adrp x0,0x333c000
+00e5d130  ldr x0,[x0, #0x628]
+00e5d134  bl 0x00b0789c
+00e5d138  mov w8,#0x1
+00e5d13c  strb w8,[x20, #0x95a]
+00e5d140  ldr x8,[x21]
+00e5d144  ldr x8,[x8, #0xb8]
+00e5d148  ldr x0,[x8, #0x30]
+00e5d14c  cbz x0,0x00e5d164
+00e5d150  mov x1,x19
+00e5d154  ldp x19,x30,[sp, #0x10]
+00e5d158  mov x2,xzr
+00e5d15c  ldp x21,x20,[sp], #0x20
+00e5d160  b 0x01067df4
+00e5d164  ldr x0,[x19, #0xd8]
+00e5d168  ldp x19,x30,[sp, #0x10]
+00e5d16c  ldp x21,x20,[sp], #0x20
+00e5d170  ret

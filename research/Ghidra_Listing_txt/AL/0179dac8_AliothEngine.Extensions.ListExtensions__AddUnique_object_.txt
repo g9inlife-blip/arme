@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.ListExtensions$$AddUnique<object> @ 0179dac8
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- PositionTarget$$get_AllRoleTargetList @ 00fdb174
+  <- PositionTargetHelper$$GetUniqueRoles @ 00fdb8a0
+
+--- Listing ---
+0179dac8  stp x21,x20,[sp, #-0x20]!
+0179dacc  stp x19,x30,[sp, #0x10]
+0179dad0  cbz x0,0x0179db20
+0179dad4  ldr x8,[x2, #0x38]
+0179dad8  mov x21,x2
+0179dadc  mov x19,x1
+0179dae0  mov x20,x0
+0179dae4  ldr x2,[x8, #0x8]
+0179dae8  ldr x8,[x2, #0x8]
+0179daec  blr x8
+0179daf0  tbz w0,#0x0,0x0179db00
+0179daf4  ldp x19,x30,[sp, #0x10]
+0179daf8  ldp x21,x20,[sp], #0x20
+0179dafc  ret
+0179db00  ldr x8,[x21, #0x38]
+0179db04  mov x1,x19
+0179db08  ldp x19,x30,[sp, #0x10]
+0179db0c  mov x0,x20
+0179db10  ldr x2,[x8, #0x10]
+0179db14  ldr x3,[x2, #0x8]
+0179db18  ldp x21,x20,[sp], #0x20
+0179db1c  br x3
+0179db20  bl 0x00b079b0

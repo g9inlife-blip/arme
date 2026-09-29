@@ -1,0 +1,90 @@
+Function: ReadyMono.<RefreshSectiontitleBg>d__48$$MoveNext @ 00e65360
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> ReadypanelNode$$get_lbl_sectiontitle @ 00fcd810
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.RectTransform$$set_sizeDelta @ 024f65d0
+  -> UINode$$get_RectTransform @ 00dc477c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.RectTransform$$get_sizeDelta @ 024f6540
+  -> ReadyMono$$get_m_node @ 00e5cc94
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.WaitForEndOfFrame$$.ctor @ 024dd328
+  -> ReadypanelNode$$get_spr_sectiontitle @ 00fcd7c4
+
+--- Calls IN ---
+
+--- Listing ---
+00e65360  str x20,[sp, #-0x20]!
+00e65364  stp x19,x30,[sp, #0x10]
+00e65368  adrp x20,0x3572000
+00e6536c  ldrb w8,[x20, #0x984]
+00e65370  mov x19,x0
+00e65374  tbnz w8,#0x0,0x00e6538c
+00e65378  adrp x0,0x3345000
+00e6537c  ldr x0,[x0, #0x228]
+00e65380  bl 0x00b0789c
+00e65384  mov w8,#0x1
+00e65388  strb w8,[x20, #0x984]
+00e6538c  ldr w8,[x19, #0x10]
+00e65390  cmp w8,#0x1
+00e65394  b.eq 0x00e653e0
+00e65398  cbnz w8,0x00e6546c
+00e6539c  adrp x8,0x3345000
+00e653a0  ldr x8,[x8, #0x228]
+00e653a4  mov w9,#0xffffffff
+00e653a8  str w9,[x19, #0x10]
+00e653ac  ldr x0,[x8]
+00e653b0  bl 0x00b079a0
+00e653b4  cbz x0,0x00e6547c
+00e653b8  mov x1,xzr
+00e653bc  mov x20,x0
+00e653c0  bl 0x024dd328
+00e653c4  str x20,[x19, #0x18]!
+00e653c8  mov x0,x19
+00e653cc  mov x1,x20
+00e653d0  bl 0x00b07850
+00e653d4  mov w0,#0x1
+00e653d8  stur w0,[x19, #-0x8]
+00e653dc  b 0x00e65470
+00e653e0  ldr x20,[x19, #0x20]
+00e653e4  mov w8,#0xffffffff
+00e653e8  str w8,[x19, #0x10]
+00e653ec  cbz x20,0x00e6547c
+00e653f0  mov x0,x20
+00e653f4  mov x1,xzr
+00e653f8  bl 0x00e5cc94
+00e653fc  cbz x0,0x00e6547c
+00e65400  mov x1,xzr
+00e65404  bl 0x00fcd7c4
+00e65408  cbz x0,0x00e6547c
+00e6540c  mov x1,xzr
+00e65410  bl 0x00dc477c
+00e65414  mov x19,x0
+00e65418  mov x0,x20
+00e6541c  mov x1,xzr
+00e65420  bl 0x00e5cc94
+00e65424  cbz x0,0x00e6547c
+00e65428  mov x1,xzr
+00e6542c  bl 0x00fcd810
+00e65430  cbz x0,0x00e6547c
+00e65434  mov x1,xzr
+00e65438  bl 0x00dc477c
+00e6543c  cbz x0,0x00e6547c
+00e65440  mov x1,xzr
+00e65444  bl 0x024f6540
+00e65448  cbz x19,0x00e6547c
+00e6544c  mov w8,#0x428c0000
+00e65450  fmov s1,w8
+00e65454  mov w8,#0x42980000
+00e65458  fadd s0,s0,s1
+00e6545c  fmov s1,w8
+00e65460  mov x0,x19
+00e65464  mov x1,xzr
+00e65468  bl 0x024f65d0
+00e6546c  mov w0,wzr
+00e65470  ldp x19,x30,[sp, #0x10]
+00e65474  ldr x20,[sp], #0x20
+00e65478  ret
+00e6547c  bl 0x00b079b0

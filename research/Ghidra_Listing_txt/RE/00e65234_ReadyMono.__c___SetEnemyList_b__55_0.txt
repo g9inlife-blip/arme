@@ -1,0 +1,65 @@
+Function: ReadyMono.<>c$$<SetEnemyList>b__55_0 @ 00e65234
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e65234  stp x21,x20,[sp, #-0x20]!
+00e65238  stp x19,x30,[sp, #0x10]
+00e6523c  adrp x21,0x3572000
+00e65240  adrp x20,0x335f000
+00e65244  ldrb w8,[x21, #0x983]
+00e65248  ldr x20,[x20, #0x20]
+00e6524c  mov w19,w1
+00e65250  tbnz w8,#0x0,0x00e65274
+00e65254  adrp x0,0x3361000
+00e65258  ldr x0,[x0, #0x210]
+00e6525c  bl 0x00b0789c
+00e65260  adrp x0,0x335f000
+00e65264  ldr x0,[x0, #0x20]
+00e65268  bl 0x00b0789c
+00e6526c  mov w8,#0x1
+00e65270  strb w8,[x21, #0x983]
+00e65274  ldr x0,[x20]
+00e65278  ldr w8,[x0, #0xe0]
+00e6527c  cbnz w8,0x00e65288
+00e65280  bl 0x00b0798c
+00e65284  ldr x0,[x20]
+00e65288  ldr x8,[x0, #0xb8]
+00e6528c  ldr x0,[x8, #0x10]
+00e65290  cbz x0,0x00e65308
+00e65294  adrp x21,0x3361000
+00e65298  ldr x21,[x21, #0x210]
+00e6529c  mov w1,w19
+00e652a0  ldr x2,[x21]
+00e652a4  bl 0x01736d60
+00e652a8  cbz x0,0x00e65308
+00e652ac  ldr w8,[x0, #0x74]
+00e652b0  cmp w8,#0x2
+00e652b4  b.eq 0x00e652f4
+00e652b8  ldr x0,[x20]
+00e652bc  ldr w8,[x0, #0xe0]
+00e652c0  cbnz w8,0x00e652cc
+00e652c4  bl 0x00b0798c
+00e652c8  ldr x0,[x20]
+00e652cc  ldr x8,[x0, #0xb8]
+00e652d0  ldr x0,[x8, #0x10]
+00e652d4  cbz x0,0x00e65308
+00e652d8  ldr x2,[x21]
+00e652dc  mov w1,w19
+00e652e0  bl 0x01736d60
+00e652e4  cbz x0,0x00e65308
+00e652e8  ldr w8,[x0, #0x74]
+00e652ec  cmp w8,#0x3
+00e652f0  b.ne 0x00e652f8
+00e652f4  mov w19,#0xffffffff
+00e652f8  mov w0,w19
+00e652fc  ldp x19,x30,[sp, #0x10]
+00e65300  ldp x21,x20,[sp], #0x20
+00e65304  ret
+00e65308  bl 0x00b079b0

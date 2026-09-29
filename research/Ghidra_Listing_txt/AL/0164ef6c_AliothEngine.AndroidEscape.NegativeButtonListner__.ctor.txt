@@ -1,0 +1,65 @@
+Function: AliothEngine.AndroidEscape.NegativeButtonListner$$.ctor @ 0164ef6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.AndroidJavaProxy$$.ctor @ 024aa24c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+  <- AliothEngine.AndroidEscape.<>c__DisplayClass9_0$$<ShowAlert>b__0 @ 0164f0f4
+
+--- Listing ---
+0164ef6c  str x22,[sp, #-0x30]!
+0164ef70  stp x21,x20,[sp, #0x10]
+0164ef74  stp x19,x30,[sp, #0x20]
+0164ef78  adrp x22,0x3577000
+0164ef7c  adrp x21,0x3317000
+0164ef80  ldrb w8,[x22, #0x7e1]
+0164ef84  ldr x21,[x21, #0xa78]
+0164ef88  mov x19,x1
+0164ef8c  mov x20,x0
+0164ef90  tbnz w8,#0x0,0x0164efcc
+0164ef94  adrp x0,0x3317000
+0164ef98  ldr x0,[x0, #0xa78]
+0164ef9c  bl 0x00b0789c
+0164efa0  adrp x0,0x336b000
+0164efa4  ldr x0,[x0, #0x7d0]
+0164efa8  bl 0x00b0789c
+0164efac  adrp x0,0x3315000
+0164efb0  ldr x0,[x0, #0x6d0]
+0164efb4  bl 0x00b0789c
+0164efb8  adrp x0,0x333e000
+0164efbc  ldr x0,[x0, #0x50]
+0164efc0  bl 0x00b0789c
+0164efc4  mov w8,#0x1
+0164efc8  strb w8,[x22, #0x7e1]
+0164efcc  ldr x0,[x21]
+0164efd0  adrp x22,0x3315000
+0164efd4  adrp x21,0x336b000
+0164efd8  ldr w8,[x0, #0xe0]
+0164efdc  ldr x22,[x22, #0x6d0]
+0164efe0  ldr x21,[x21, #0x7d0]
+0164efe4  cbnz w8,0x0164efec
+0164efe8  bl 0x00b0798c
+0164efec  ldr x1,[x22]
+0164eff0  adrp x22,0x333e000
+0164eff4  ldr x22,[x22, #0x50]
+0164eff8  mov x0,x20
+0164effc  mov x2,xzr
+0164f000  bl 0x024aa24c
+0164f004  ldr x0,[x21]
+0164f008  ldr w8,[x0, #0xe0]
+0164f00c  cbnz w8,0x0164f014
+0164f010  bl 0x00b0798c
+0164f014  ldr x0,[x22]
+0164f018  mov x1,xzr
+0164f01c  bl 0x024c0104
+0164f020  str x19,[x20, #0x20]!
+0164f024  mov x0,x20
+0164f028  mov x1,x19
+0164f02c  ldp x19,x30,[sp, #0x20]
+0164f030  ldp x21,x20,[sp, #0x10]
+0164f034  ldr x22,[sp], #0x30
+0164f038  b 0x00b07850

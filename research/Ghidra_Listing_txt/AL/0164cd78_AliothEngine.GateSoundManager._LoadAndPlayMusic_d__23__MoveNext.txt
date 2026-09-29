@@ -1,0 +1,53 @@
+Function: AliothEngine.GateSoundManager.<LoadAndPlayMusic>d__23$$MoveNext @ 0164cd78
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.String$$op_Equality @ 01fd05b0
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.AudioSource$$get_isPlaying @ 024bbd64
+
+--- Calls IN ---
+
+--- Listing ---
+0164cd78  str x20,[sp, #-0x20]!
+0164cd7c  stp x19,x30,[sp, #0x10]
+0164cd80  ldr w8,[x0, #0x10]
+0164cd84  ldr x20,[x0, #0x20]
+0164cd88  mov x19,x0
+0164cd8c  cmp w8,#0x1
+0164cd90  b.eq 0x0164cdac
+0164cd94  cbnz w8,0x0164ce0c
+0164cd98  mov w8,#0xffffffff
+0164cd9c  str w8,[x19, #0x10]
+0164cda0  cbz x20,0x0164ce1c
+0164cda4  strb wzr,[x20, #0x38]
+0164cda8  b 0x0164cdb8
+0164cdac  mov w8,#0xffffffff
+0164cdb0  str w8,[x19, #0x10]
+0164cdb4  cbz x20,0x0164ce1c
+0164cdb8  ldr x0,[x20, #0x28]
+0164cdbc  cbz x0,0x0164ce1c
+0164cdc0  mov x1,xzr
+0164cdc4  bl 0x024bbd64
+0164cdc8  tbz w0,#0x0,0x0164cdfc
+0164cdcc  ldr x0,[x20, #0x58]
+0164cdd0  ldr x1,[x19, #0x28]
+0164cdd4  mov x2,xzr
+0164cdd8  bl 0x01fd05b0
+0164cddc  tbz w0,#0x0,0x0164cdfc
+0164cde0  str xzr,[x19, #0x18]!
+0164cde4  mov x0,x19
+0164cde8  mov x1,xzr
+0164cdec  bl 0x00b07850
+0164cdf0  mov w0,#0x1
+0164cdf4  stur w0,[x19, #-0x8]
+0164cdf8  b 0x0164ce10
+0164cdfc  ldr x0,[x20, #0x58]
+0164ce00  ldr x1,[x19, #0x28]
+0164ce04  mov x2,xzr
+0164ce08  bl 0x01fd05b0
+0164ce0c  mov w0,wzr
+0164ce10  ldp x19,x30,[sp, #0x10]
+0164ce14  ldr x20,[sp], #0x20
+0164ce18  ret
+0164ce1c  bl 0x00b079b0

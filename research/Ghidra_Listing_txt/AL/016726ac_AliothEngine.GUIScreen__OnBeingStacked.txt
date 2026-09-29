@@ -1,0 +1,97 @@
+Function: AliothEngine.GUIScreen$$OnBeingStacked @ 016726ac
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreen$$get_logger @ 01671a94
+
+--- Calls IN ---
+
+--- Listing ---
+016726ac  str x22,[sp, #-0x30]!
+016726b0  stp x21,x20,[sp, #0x10]
+016726b4  stp x19,x30,[sp, #0x20]
+016726b8  adrp x19,0x3577000
+016726bc  adrp x20,0x3364000
+016726c0  ldrb w8,[x19, #0x997]
+016726c4  ldr x20,[x20, #0xd28]
+016726c8  mov x21,x0
+016726cc  tbnz w8,#0x0,0x01672708
+016726d0  adrp x0,0x3364000
+016726d4  ldr x0,[x0, #0xd28]
+016726d8  bl 0x00b0789c
+016726dc  adrp x0,0x334a000
+016726e0  ldr x0,[x0, #0xc98]
+016726e4  bl 0x00b0789c
+016726e8  adrp x0,0x331f000
+016726ec  ldr x0,[x0, #0xf20]
+016726f0  bl 0x00b0789c
+016726f4  adrp x0,0x3363000
+016726f8  ldr x0,[x0, #0xc98]
+016726fc  bl 0x00b0789c
+01672700  mov w8,#0x1
+01672704  strb w8,[x19, #0x997]
+01672708  ldr x8,[x20]
+0167270c  ldr x8,[x8, #0xb8]
+01672710  ldr x0,[x8, #0x130]
+01672714  cbz x0,0x01672730
+01672718  mov x1,x21
+0167271c  ldp x19,x30,[sp, #0x20]
+01672720  ldp x21,x20,[sp, #0x10]
+01672724  mov x2,xzr
+01672728  ldr x22,[sp], #0x30
+0167272c  b 0x01060dac
+01672730  adrp x19,0x331f000
+01672734  adrp x22,0x3363000
+01672738  ldr x19,[x19, #0xf20]
+0167273c  ldr x22,[x22, #0xc98]
+01672740  mov x0,x21
+01672744  bl 0x01671a94
+01672748  ldr x19,[x19]
+0167274c  mov x20,x0
+01672750  cbz x21,0x01672768
+01672754  ldr x8,[x21]
+01672758  mov x0,x21
+0167275c  ldp x9,x1,[x8, #0x168]
+01672760  blr x9
+01672764  b 0x0167276c
+01672768  mov x0,xzr
+0167276c  ldr x1,[x22]
+01672770  mov x2,xzr
+01672774  bl 0x01fd2850
+01672778  cbz x20,0x016727f8
+0167277c  adrp x10,0x334a000
+01672780  ldr x8,[x20]
+01672784  ldr x10,[x10, #0xc98]
+01672788  mov x21,x0
+0167278c  ldrh w9,[x8, #0x12a]
+01672790  ldr x1,[x10]
+01672794  cbz x9,0x016727b8
+01672798  ldr x10,[x8, #0xb0]
+0167279c  add x10,x10,#0x8
+016727a0  ldur x11,[x10, #-0x8]
+016727a4  cmp x11,x1
+016727a8  b.eq 0x016727c8
+016727ac  subs x9,x9,#0x1
+016727b0  add x10,x10,#0x10
+016727b4  b.ne 0x016727a0
+016727b8  mov w2,#0x9
+016727bc  mov x0,x20
+016727c0  bl 0x00b2ae24
+016727c4  b 0x016727d8
+016727c8  ldr w9,[x10]
+016727cc  add w9,w9,#0x9
+016727d0  add x8,x8,w9, SXTW  #0x4
+016727d4  add x0,x8,#0x138
+016727d8  ldp x4,x3,[x0]
+016727dc  mov x0,x20
+016727e0  mov x1,x19
+016727e4  mov x2,x21
+016727e8  ldp x19,x30,[sp, #0x20]
+016727ec  ldp x21,x20,[sp, #0x10]
+016727f0  ldr x22,[sp], #0x30
+016727f4  br x4
+016727f8  bl 0x00b079b0

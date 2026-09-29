@@ -1,0 +1,81 @@
+Function: AliothEngine.Extensions.TransformExtensions$$Sort @ 016b98a0
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.TransformExtensions$$GetChildren @ 016b96b8
+  -> System.Linq.Enumerable$$Count<object> @ 0177df1c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Transform$$SetSiblingIndex @ 024f5668
+  -> System.Linq.Enumerable$$OrderBy<object,-object> @ 017851d8
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Linq.Enumerable$$ToList<object> @ 0178daf8
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$SortAlphabetically @ 016b99a4
+
+--- Listing ---
+016b98a0  str x24,[sp, #-0x40]!
+016b98a4  stp x23,x22,[sp, #0x10]
+016b98a8  stp x21,x20,[sp, #0x20]
+016b98ac  stp x19,x30,[sp, #0x30]
+016b98b0  adrp x24,0x3577000
+016b98b4  adrp x23,0x3320000
+016b98b8  adrp x22,0x3329000
+016b98bc  adrp x21,0x3380000
+016b98c0  ldrb w8,[x24, #0xc2c]
+016b98c4  ldr x23,[x23, #0x2f0]
+016b98c8  ldr x22,[x22, #0xd18]
+016b98cc  ldr x21,[x21, #0xc78]
+016b98d0  mov x19,x1
+016b98d4  mov x20,x0
+016b98d8  tbnz w8,#0x0,0x016b9914
+016b98dc  adrp x0,0x3380000
+016b98e0  ldr x0,[x0, #0xc78]
+016b98e4  bl 0x00b0789c
+016b98e8  adrp x0,0x3320000
+016b98ec  ldr x0,[x0, #0x2f0]
+016b98f0  bl 0x00b0789c
+016b98f4  adrp x0,0x3329000
+016b98f8  ldr x0,[x0, #0xd18]
+016b98fc  bl 0x00b0789c
+016b9900  adrp x0,0x3311000
+016b9904  ldr x0,[x0, #0x338]
+016b9908  bl 0x00b0789c
+016b990c  mov w8,#0x1
+016b9910  strb w8,[x24, #0xc2c]
+016b9914  mov x0,x20
+016b9918  bl 0x016b96b8
+016b991c  ldr x2,[x23]
+016b9920  mov x1,x19
+016b9924  bl 0x017851d8
+016b9928  ldr x1,[x22]
+016b992c  bl 0x0178daf8
+016b9930  ldr x1,[x21]
+016b9934  mov x19,x0
+016b9938  bl 0x0177df1c
+016b993c  cmp w0,#0x1
+016b9940  b.lt 0x016b998c
+016b9944  cbz x19,0x016b99a0
+016b9948  adrp x22,0x3311000
+016b994c  ldr x22,[x22, #0x338]
+016b9950  mov w20,wzr
+016b9954  ldr x2,[x22]
+016b9958  mov x0,x19
+016b995c  mov w1,w20
+016b9960  bl 0x01c00380
+016b9964  cbz x0,0x016b99a0
+016b9968  mov w1,w20
+016b996c  mov x2,xzr
+016b9970  bl 0x024f5668
+016b9974  ldr x1,[x21]
+016b9978  mov x0,x19
+016b997c  add w20,w20,#0x1
+016b9980  bl 0x0177df1c
+016b9984  cmp w20,w0
+016b9988  b.lt 0x016b9954
+016b998c  ldp x19,x30,[sp, #0x30]
+016b9990  ldp x21,x20,[sp, #0x20]
+016b9994  ldp x23,x22,[sp, #0x10]
+016b9998  ldr x24,[sp], #0x40
+016b999c  ret
+016b99a0  bl 0x00b079b0

@@ -1,0 +1,60 @@
+Function: AliothEngine.AssetLocation$$EditorAsset @ 0166debc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.AssetLocation$$.ctor @ 0166dbe0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.Path$$GetFileName @ 020b1478
+
+--- Calls IN ---
+
+--- Listing ---
+0166debc  stp x23,x22,[sp, #-0x30]!
+0166dec0  stp x21,x20,[sp, #0x10]
+0166dec4  stp x19,x30,[sp, #0x20]
+0166dec8  adrp x23,0x3577000
+0166decc  adrp x22,0x336c000
+0166ded0  ldrb w8,[x23, #0x956]
+0166ded4  ldr x22,[x22, #0x318]
+0166ded8  mov w19,w2
+0166dedc  mov x20,x1
+0166dee0  mov x21,x0
+0166dee4  tbnz w8,#0x0,0x0166df08
+0166dee8  adrp x0,0x3347000
+0166deec  ldr x0,[x0, #0xc28]
+0166def0  bl 0x00b0789c
+0166def4  adrp x0,0x336c000
+0166def8  ldr x0,[x0, #0x318]
+0166defc  bl 0x00b0789c
+0166df00  mov w8,#0x1
+0166df04  strb w8,[x23, #0x956]
+0166df08  ldr x0,[x22]
+0166df0c  adrp x22,0x3347000
+0166df10  ldr w8,[x0, #0xe0]
+0166df14  ldr x22,[x22, #0xc28]
+0166df18  cbnz w8,0x0166df20
+0166df1c  bl 0x00b0798c
+0166df20  mov x0,x21
+0166df24  mov x1,xzr
+0166df28  bl 0x020b1478
+0166df2c  ldr x8,[x22]
+0166df30  mov x23,x0
+0166df34  mov x0,x8
+0166df38  bl 0x00b079a0
+0166df3c  cbz x0,0x0166df74
+0166df40  mov w1,wzr
+0166df44  mov x2,x21
+0166df48  mov x3,x23
+0166df4c  mov x4,x21
+0166df50  mov x5,x20
+0166df54  mov w6,w19
+0166df58  mov x22,x0
+0166df5c  bl 0x0166dbe0
+0166df60  ldp x19,x30,[sp, #0x20]
+0166df64  ldp x21,x20,[sp, #0x10]
+0166df68  mov x0,x22
+0166df6c  ldp x23,x22,[sp], #0x30
+0166df70  ret
+0166df74  bl 0x00b079b0

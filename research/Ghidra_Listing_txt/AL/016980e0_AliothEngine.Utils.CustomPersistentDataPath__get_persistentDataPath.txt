@@ -1,0 +1,27 @@
+Function: AliothEngine.Utils.CustomPersistentDataPath$$get_persistentDataPath @ 016980e0
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.CustomPersistentDataPath$$get_persistentDataPaths @ 01698120
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.PlatformTools$$get_persistentDataPath @ 0165803c
+
+--- Listing ---
+016980e0  str x30,[sp, #-0x10]!
+016980e4  bl 0x01698120
+016980e8  cbz x0,0x01698118
+016980ec  ldr x8,[x0, #0x18]
+016980f0  cbz x8,0x0169810c
+016980f4  bl 0x01698120
+016980f8  cbz x0,0x01698118
+016980fc  ldr w8,[x0, #0x18]
+01698100  cbz w8,0x0169811c
+01698104  ldr x0,[x0, #0x20]
+01698108  b 0x01698110
+0169810c  mov x0,xzr
+01698110  ldr x30,[sp], #0x10
+01698114  ret
+01698118  bl 0x00b079b0
+0169811c  bl 0x00b079b8

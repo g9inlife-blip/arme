@@ -1,0 +1,79 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate<object> @ 017a8244
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$set_localPosition @ 024f385c
+  -> AliothEngine.Extensions.TransformExtensions$$ResetScale @ 016baa78
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.Transform$$set_localRotation @ 024f3cb8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_parent @ 024f4364
+
+--- Calls IN ---
+
+--- Listing ---
+017a8244  str d14,[sp, #-0x60]!
+017a8248  stp d13,d12,[sp, #0x10]
+017a824c  stp d11,d10,[sp, #0x20]
+017a8250  stp d9,d8,[sp, #0x30]
+017a8254  stp x21,x20,[sp, #0x40]
+017a8258  stp x19,x30,[sp, #0x50]
+017a825c  ldr x8,[x2, #0x38]
+017a8260  mov x20,x1
+017a8264  mov v8.16B,v6.16B
+017a8268  mov v9.16B,v5.16B
+017a826c  ldr x1,[x8]
+017a8270  mov v10.16B,v4.16B
+017a8274  mov v11.16B,v3.16B
+017a8278  mov v12.16B,v2.16B
+017a827c  ldr x8,[x1, #0x8]
+017a8280  mov v13.16B,v1.16B
+017a8284  mov v14.16B,v0.16B
+017a8288  blr x8
+017a828c  cbz x0,0x017a8344
+017a8290  mov x1,xzr
+017a8294  mov x19,x0
+017a8298  bl 0x024e4e98
+017a829c  cbz x20,0x017a8344
+017a82a0  mov x21,x0
+017a82a4  mov x0,x20
+017a82a8  mov x1,xzr
+017a82ac  bl 0x024de730
+017a82b0  cbz x21,0x017a8344
+017a82b4  mov x1,x0
+017a82b8  mov x0,x21
+017a82bc  mov x2,xzr
+017a82c0  bl 0x024f4364
+017a82c4  mov x0,x19
+017a82c8  mov x1,xzr
+017a82cc  bl 0x024e4e98
+017a82d0  cbz x0,0x017a8344
+017a82d4  mov v0.16B,v14.16B
+017a82d8  mov v1.16B,v13.16B
+017a82dc  mov v2.16B,v12.16B
+017a82e0  mov x1,xzr
+017a82e4  bl 0x024f385c
+017a82e8  mov x0,x19
+017a82ec  mov x1,xzr
+017a82f0  bl 0x024e4e98
+017a82f4  cbz x0,0x017a8344
+017a82f8  mov v0.16B,v11.16B
+017a82fc  mov v1.16B,v10.16B
+017a8300  mov v2.16B,v9.16B
+017a8304  mov v3.16B,v8.16B
+017a8308  mov x1,xzr
+017a830c  bl 0x024f3cb8
+017a8310  mov x0,x19
+017a8314  mov x1,xzr
+017a8318  bl 0x024e4e98
+017a831c  mov x1,xzr
+017a8320  bl 0x016baa78
+017a8324  mov x0,x19
+017a8328  ldp x19,x30,[sp, #0x50]
+017a832c  ldp x21,x20,[sp, #0x40]
+017a8330  ldp d9,d8,[sp, #0x30]
+017a8334  ldp d11,d10,[sp, #0x20]
+017a8338  ldp d13,d12,[sp, #0x10]
+017a833c  ldr d14,[sp], #0x60
+017a8340  ret
+017a8344  bl 0x00b079b0

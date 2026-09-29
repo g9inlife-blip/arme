@@ -1,0 +1,28 @@
+Function: RefundtreatypanelNode$$get_panel @ 00fce198
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fce198  stp x21,x20,[sp, #-0x20]!
+00fce19c  stp x19,x30,[sp, #0x10]
+00fce1a0  adrp x20,0x3573000
+00fce1a4  adrp x21,0x335a000
+00fce1a8  ldrb w8,[x20, #0xe7c]
+00fce1ac  ldr x21,[x21, #0xa58]
+00fce1b0  mov x19,x0
+00fce1b4  tbnz w8,#0x0,0x00fce1cc
+00fce1b8  adrp x0,0x335a000
+00fce1bc  ldr x0,[x0, #0xa58]
+00fce1c0  bl 0x00b0789c
+00fce1c4  mov w8,#0x1
+00fce1c8  strb w8,[x20, #0xe7c]
+00fce1cc  ldr x1,[x21]
+00fce1d0  mov x0,x19
+00fce1d4  ldp x19,x30,[sp, #0x10]
+00fce1d8  mov x2,xzr
+00fce1dc  ldp x21,x20,[sp], #0x20
+00fce1e0  b 0x00dc06f8

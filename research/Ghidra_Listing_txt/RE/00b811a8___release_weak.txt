@@ -1,0 +1,21 @@
+Function: __release_weak @ 00b811a8
+FuncComment: std::__ndk1::__shared_weak_count::__release_weak()
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+00b811a8  add x8,x0,#0x10
+    ; [PLATE] std::__ndk1::__shared_weak_count::__release_weak()
+00b811ac  ldar x9,[x8]
+00b811b0  cbz x9,0x00b811cc
+00b811b4  ldaxr x9,[x8]
+00b811b8  sub x10,x9,#0x1
+00b811bc  stlxr w11,x10,[x8]
+00b811c0  cbnz w11,0x00b811b4
+00b811c4  cbz x9,0x00b811cc
+00b811c8  ret
+00b811cc  ldr x8,[x0]
+00b811d0  ldr x1,[x8, #0x20]
+00b811d4  br x1

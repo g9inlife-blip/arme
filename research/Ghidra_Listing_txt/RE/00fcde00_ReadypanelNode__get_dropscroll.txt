@@ -1,0 +1,28 @@
+Function: ReadypanelNode$$get_dropscroll @ 00fcde00
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fcde00  stp x21,x20,[sp, #-0x20]!
+00fcde04  stp x19,x30,[sp, #0x10]
+00fcde08  adrp x20,0x3573000
+00fcde0c  adrp x21,0x3359000
+00fcde10  ldrb w8,[x20, #0xe70]
+00fcde14  ldr x21,[x21, #0x7a0]
+00fcde18  mov x19,x0
+00fcde1c  tbnz w8,#0x0,0x00fcde34
+00fcde20  adrp x0,0x3359000
+00fcde24  ldr x0,[x0, #0x7a0]
+00fcde28  bl 0x00b0789c
+00fcde2c  mov w8,#0x1
+00fcde30  strb w8,[x20, #0xe70]
+00fcde34  ldr x1,[x21]
+00fcde38  mov x0,x19
+00fcde3c  ldp x19,x30,[sp, #0x10]
+00fcde40  mov x2,xzr
+00fcde44  ldp x21,x20,[sp], #0x20
+00fcde48  b 0x00dc06f8

@@ -1,0 +1,534 @@
+Function: AliothEngine.FileUtility$$SynchronizeDirectory @ 016901cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.IO.DirectoryInfo$$.ctor @ 020adebc
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.Directory$$Delete @ 020aeb88
+  -> System.DateTime$$op_GreaterThan @ 0213572c
+  -> System.Collections.Generic.HashSet<object>$$GetEnumerator @ 01b02778
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.IO.FileInfo$$.ctor @ 020b12c4
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.Directory$$CreateDirectory @ 020adf44
+  -> System.Func<object,-object>$$.ctor @ 01ae8f80
+  -> System.Linq.Enumerable$$ToHashSet<object> @ 0178d700
+  -> System.IO.FileSystemInfo$$get_LastWriteTime @ 020b461c
+  -> System.Collections.Generic.HashSet<object>$$Contains @ 01b022cc
+  -> System.IO.FileInfo$$CopyTo @ 020b1cf0
+  -> System.String$$op_Equality @ 01fd05b0
+  -> System.IO.FileInfo$$CopyTo @ 020b1cf8
+  -> AliothEngine.FileUtility$$SynchronizeDirectory @ 016901cc
+  -> System.Linq.Enumerable$$Select<object,-object> @ 0178839c
+  -> System.IO.File$$Delete @ 020afd48
+  -> System.IO.DirectoryInfo$$GetFiles @ 020af09c
+  -> System.Collections.Generic.HashSet.Enumerator<object>$$Dispose @ 01a06aa8
+  -> System.Collections.Generic.HashSet<object>$$Remove @ 01b024b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.IO.DirectoryInfo$$GetDirectories @ 020af4b8
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.Collections.Generic.HashSet.Enumerator<object>$$MoveNext @ 01a06aac
+
+--- Calls IN ---
+  <- AliothEngine.FileUtility$$SynchronizeDirectory_IgoreMeta @ 0168f8ec
+  <- AliothEngine.FileUtility$$SynchronizeDirectory @ 016901cc
+  <- AliothEngine.FileUtility$$SynchronizeDirectory @ 01690a48
+
+--- Listing ---
+016901cc  sub sp,sp,#0xa0
+016901d0  stp x28,x27,[sp, #0x40]
+016901d4  stp x26,x25,[sp, #0x50]
+016901d8  stp x24,x23,[sp, #0x60]
+016901dc  stp x22,x21,[sp, #0x70]
+016901e0  stp x20,x19,[sp, #0x80]
+016901e4  stp x29,x30,[sp, #0x90]
+016901e8  adrp x20,0x3577000
+016901ec  ldrb w8,[x20, #0xad8]
+016901f0  mov x19,x1
+016901f4  mov x24,x0
+016901f8  tbnz w8,#0x0,0x016902dc
+016901fc  adrp x0,0x336f000
+01690200  ldr x0,[x0, #0xdc8]
+01690204  bl 0x00b0789c
+01690208  adrp x0,0x336c000
+0169020c  ldr x0,[x0, #0x858]
+01690210  bl 0x00b0789c
+01690214  adrp x0,0x3340000
+01690218  ldr x0,[x0, #0x8c0]
+0169021c  bl 0x00b0789c
+01690220  adrp x0,0x3373000
+01690224  ldr x0,[x0, #0x458]
+01690228  bl 0x00b0789c
+0169022c  adrp x0,0x3317000
+01690230  ldr x0,[x0, #0xea8]
+01690234  bl 0x00b0789c
+01690238  adrp x0,0x3358000
+0169023c  ldr x0,[x0, #0xfe8]
+01690240  bl 0x00b0789c
+01690244  adrp x0,0x3312000
+01690248  ldr x0,[x0, #0x3b8]
+0169024c  bl 0x00b0789c
+01690250  adrp x0,0x3375000
+01690254  ldr x0,[x0, #0x498]
+01690258  bl 0x00b0789c
+0169025c  adrp x0,0x3319000
+01690260  ldr x0,[x0, #0xee8]
+01690264  bl 0x00b0789c
+01690268  adrp x0,0x3336000
+0169026c  ldr x0,[x0, #0x750]
+01690270  bl 0x00b0789c
+01690274  adrp x0,0x3352000
+01690278  ldr x0,[x0, #0xe48]
+0169027c  bl 0x00b0789c
+01690280  adrp x0,0x330e000
+01690284  ldr x0,[x0, #0x4a0]
+01690288  bl 0x00b0789c
+0169028c  adrp x0,0x3334000
+01690290  ldr x0,[x0, #0xe18]
+01690294  bl 0x00b0789c
+01690298  adrp x0,0x3339000
+0169029c  ldr x0,[x0, #0x388]
+016902a0  bl 0x00b0789c
+016902a4  adrp x0,0x336c000
+016902a8  ldr x0,[x0, #0x318]
+016902ac  bl 0x00b0789c
+016902b0  adrp x0,0x3366000
+016902b4  ldr x0,[x0, #0x3c8]
+016902b8  bl 0x00b0789c
+016902bc  adrp x0,0x3356000
+016902c0  ldr x0,[x0, #0x848]
+016902c4  bl 0x00b0789c
+016902c8  adrp x0,0x3379000
+016902cc  ldr x0,[x0, #0x820]
+016902d0  bl 0x00b0789c
+016902d4  mov w8,#0x1
+016902d8  strb w8,[x20, #0xad8]
+016902dc  stp xzr,xzr,[sp, #0x28]
+016902e0  str xzr,[sp, #0x20]
+016902e4  cbz x24,0x01690944
+016902e8  ldr x8,[x24]
+016902ec  mov x0,x24
+016902f0  ldp x9,x1,[x8, #0x1b8]
+016902f4  blr x9
+016902f8  cbz x19,0x01690944
+016902fc  ldr x8,[x19]
+01690300  mov x21,x0
+01690304  mov x0,x19
+01690308  ldp x9,x1,[x8, #0x1b8]
+0169030c  blr x9
+01690310  mov x1,x0
+01690314  mov x0,x21
+01690318  mov x2,xzr
+0169031c  bl 0x01fd05b0
+01690320  tbnz w0,#0x0,0x01690924
+01690324  ldr x8,[x24]
+01690328  mov x0,x24
+0169032c  ldp x9,x1,[x8, #0x1d8]
+01690330  blr x9
+01690334  tbz w0,#0x0,0x01690924
+01690338  ldr x8,[x19]
+0169033c  adrp x25,0x3379000
+01690340  mov x0,x19
+01690344  ldp x9,x1,[x8, #0x1d8]
+01690348  ldr x25,[x25, #0x820]
+0169034c  blr x9
+01690350  tbnz w0,#0x0,0x0169036c
+01690354  ldr x8,[x19]
+01690358  mov x0,x19
+0169035c  ldp x9,x1,[x8, #0x1b8]
+01690360  blr x9
+01690364  mov x1,xzr
+01690368  bl 0x020adf44
+0169036c  mov x0,x19
+01690370  mov x1,xzr
+01690374  bl 0x020af09c
+01690378  ldr x8,[x25]
+0169037c  mov x21,x0
+01690380  ldr w9,[x8, #0xe0]
+01690384  cbnz w9,0x01690394
+01690388  mov x0,x8
+0169038c  bl 0x00b0798c
+01690390  ldr x8,[x25]
+01690394  ldr x9,[x8, #0xb8]
+01690398  ldr x22,[x9, #0x18]
+0169039c  cbnz x22,0x01690400
+016903a0  adrp x20,0x3336000
+016903a4  ldr w9,[x8, #0xe0]
+016903a8  ldr x20,[x20, #0x750]
+016903ac  cbnz w9,0x016903bc
+016903b0  mov x0,x8
+016903b4  bl 0x00b0798c
+016903b8  ldr x8,[x25]
+016903bc  ldr x8,[x8, #0xb8]
+016903c0  ldr x0,[x20]
+016903c4  ldr x23,[x8]
+016903c8  bl 0x00b079a0
+016903cc  cbz x0,0x01690944
+016903d0  adrp x8,0x3366000
+016903d4  ldr x8,[x8, #0x3c8]
+016903d8  mov x1,x23
+016903dc  mov x3,xzr
+016903e0  mov x22,x0
+016903e4  ldr x2,[x8]
+016903e8  bl 0x01ae8f80
+016903ec  ldr x8,[x25]
+016903f0  mov x1,x22
+016903f4  ldr x0,[x8, #0xb8]
+016903f8  str x22,[x0, #0x18]!
+016903fc  bl 0x00b07850
+01690400  adrp x8,0x3373000
+01690404  ldr x8,[x8, #0x458]
+01690408  adrp x20,0x3317000
+0169040c  mov x0,x21
+01690410  mov x1,x22
+01690414  ldr x2,[x8]
+01690418  ldr x20,[x20, #0xea8]
+0169041c  bl 0x0178839c
+01690420  ldr x1,[x20]
+01690424  bl 0x0178d700
+01690428  mov x21,x0
+0169042c  mov x0,x24
+01690430  mov x1,xzr
+01690434  str x24,[sp]
+01690438  bl 0x020af09c
+0169043c  cbz x0,0x01690944
+01690440  ldr w8,[x0, #0x18]
+01690444  adrp x27,0x336c000
+01690448  adrp x28,0x330e000
+0169044c  ldr x27,[x27, #0x318]
+01690450  ldr x28,[x28, #0x4a0]
+01690454  mov x22,x0
+01690458  cmp w8,#0x1
+0169045c  b.lt 0x016905fc
+01690460  adrp x20,0x3319000
+01690464  ldr x20,[x20, #0xee8]
+01690468  mov w29,wzr
+0169046c  cmp w29,w8
+01690470  b.cs 0x01690948
+01690474  add x8,x22,w29, SXTW  #0x3
+01690478  ldr x23,[x8, #0x20]
+0169047c  cbz x23,0x01690944
+01690480  ldr x8,[x23]
+01690484  mov x0,x23
+01690488  ldp x9,x1,[x8, #0x1c8]
+0169048c  blr x9
+01690490  cbz x21,0x01690944
+01690494  ldr x2,[x28]
+01690498  mov x1,x0
+0169049c  mov x0,x21
+016904a0  bl 0x01b022cc
+016904a4  tbz w0,#0x0,0x016904d0
+016904a8  ldr x8,[x23]
+016904ac  mov x0,x23
+016904b0  ldp x9,x1,[x8, #0x1c8]
+016904b4  blr x9
+016904b8  adrp x8,0x3339000
+016904bc  ldr x8,[x8, #0x388]
+016904c0  mov x1,x0
+016904c4  mov x0,x21
+016904c8  ldr x2,[x8]
+016904cc  bl 0x01b024b0
+016904d0  ldr x8,[x19]
+016904d4  mov x0,x19
+016904d8  ldp x9,x1,[x8, #0x1b8]
+016904dc  blr x9
+016904e0  ldr x8,[x23]
+016904e4  mov x24,x0
+016904e8  mov x0,x23
+016904ec  ldp x9,x1,[x8, #0x1c8]
+016904f0  blr x9
+016904f4  ldr x8,[x27]
+016904f8  mov x25,x0
+016904fc  ldr w9,[x8, #0xe0]
+01690500  cbnz w9,0x0169050c
+01690504  mov x0,x8
+01690508  bl 0x00b0798c
+0169050c  mov x0,x24
+01690510  mov x1,x25
+01690514  mov x2,xzr
+01690518  bl 0x020b2e1c
+0169051c  ldr x8,[x20]
+01690520  mov x25,x0
+01690524  mov x0,x8
+01690528  bl 0x00b079a0
+0169052c  cbz x0,0x01690944
+01690530  mov x1,x25
+01690534  mov x2,xzr
+01690538  mov x24,x0
+0169053c  bl 0x020b12c4
+01690540  ldr x8,[x24]
+01690544  mov x0,x24
+01690548  ldp x9,x1,[x8, #0x1d8]
+0169054c  blr x9
+01690550  tbz w0,#0x0,0x016905cc
+01690554  mov x0,x23
+01690558  mov x1,xzr
+0169055c  bl 0x020b461c
+01690560  mov x25,x0
+01690564  mov x0,x24
+01690568  mov x1,xzr
+0169056c  bl 0x020b461c
+01690570  adrp x8,0x336f000
+01690574  ldr x8,[x8, #0xdc8]
+01690578  mov x26,x0
+0169057c  ldr x8,[x8]
+01690580  ldr w9,[x8, #0xe0]
+01690584  cbnz w9,0x01690590
+01690588  mov x0,x8
+0169058c  bl 0x00b0798c
+01690590  mov x0,x25
+01690594  mov x1,x26
+01690598  mov x2,xzr
+0169059c  bl 0x0213572c
+016905a0  tbz w0,#0x0,0x016905ec
+016905a4  ldr x8,[x24]
+016905a8  mov x0,x24
+016905ac  ldp x9,x1,[x8, #0x1b8]
+016905b0  blr x9
+016905b4  mov x1,x0
+016905b8  mov w2,#0x1
+016905bc  mov x0,x23
+016905c0  mov x3,xzr
+016905c4  bl 0x020b1cf8
+016905c8  b 0x016905ec
+016905cc  ldr x8,[x24]
+016905d0  mov x0,x24
+016905d4  ldp x9,x1,[x8, #0x1b8]
+016905d8  blr x9
+016905dc  mov x1,x0
+016905e0  mov x0,x23
+016905e4  mov x2,xzr
+016905e8  bl 0x020b1cf0
+016905ec  ldr w8,[x22, #0x18]
+016905f0  add w29,w29,#0x1
+016905f4  cmp w29,w8
+016905f8  b.lt 0x0169046c
+016905fc  cbz x21,0x01690944
+01690600  adrp x8,0x3334000
+01690604  ldr x8,[x8, #0xe18]
+01690608  adrp x26,0x3312000
+0169060c  adrp x24,0x3340000
+01690610  ldr x26,[x26, #0x3b8]
+01690614  ldr x24,[x24, #0x8c0]
+01690618  ldr x1,[x8]
+0169061c  adrp x25,0x336c000
+01690620  adrp x20,0x3352000
+01690624  adrp x23,0x3356000
+01690628  ldr x25,[x25, #0x858]
+0169062c  ldr x20,[x20, #0xe48]
+01690630  ldr x23,[x23, #0x848]
+01690634  add x8,sp,#0x8
+01690638  mov x0,x21
+0169063c  bl 0x01b02778
+01690640  ldur q0,[sp, #0x8]
+01690644  ldr x8,[sp, #0x18]
+01690648  adrp x29,0x3379000
+0169064c  str q0,[sp, #0x20]
+01690650  str x8,[sp, #0x30]
+01690654  ldr x29,[x29, #0x820]
+01690658  ldr x1,[x26]
+0169065c  add x0,sp,#0x20
+    ; [PRE] try { // try from 0169065c to 01690663 has its CatchHandler @ 01690960
+01690660  bl 0x01a06aac
+    ; [POST] } // end try from 0169065c to 01690663
+01690664  tbz w0,#0x0,0x016906ac
+01690668  ldr x8,[x19]
+0169066c  ldr x21,[sp, #0x30]
+01690670  ldp x9,x1,[x8, #0x1b8]
+01690674  mov x0,x19
+    ; [PRE] try { // try from 01690674 to 0169067b has its CatchHandler @ 01690958
+01690678  blr x9
+    ; [POST] } // end try from 01690674 to 0169067b
+0169067c  mov x22,x0
+01690680  ldr x0,[x27]
+01690684  ldr w8,[x0, #0xe0]
+01690688  cbnz w8,0x01690690
+0169068c  bl 0x00b0798c
+    ; [PRE] try { // try from 0169068c to 0169068f has its CatchHandler @ 01690950
+    ; [POST] } // end try from 0169068c to 0169068f
+01690690  mov x0,x22
+    ; [PRE] try { // try from 01690690 to 016906a7 has its CatchHandler @ 016909cc
+01690694  mov x1,x21
+01690698  mov x2,xzr
+0169069c  bl 0x020b2e1c
+016906a0  mov x1,xzr
+016906a4  bl 0x020afd48
+    ; [POST] } // end try from 01690690 to 016906a7
+016906a8  b 0x01690658
+016906ac  adrp x8,0x3358000
+016906b0  ldr x8,[x8, #0xfe8]
+016906b4  add x0,sp,#0x20
+016906b8  ldr x1,[x8]
+016906bc  bl 0x01a06aa8
+016906c0  mov x0,x19
+016906c4  mov x1,xzr
+016906c8  bl 0x020af4b8
+016906cc  ldr x8,[x29]
+016906d0  mov x21,x0
+016906d4  ldr w9,[x8, #0xe0]
+016906d8  cbnz w9,0x016906e8
+016906dc  mov x0,x8
+016906e0  bl 0x00b0798c
+016906e4  ldr x8,[x29]
+016906e8  ldr x9,[x8, #0xb8]
+016906ec  ldr x22,[x9, #0x20]
+016906f0  cbnz x22,0x01690754
+016906f4  ldr w9,[x8, #0xe0]
+016906f8  mov x22,x20
+016906fc  cbz w9,0x01690708
+01690700  mov x20,x23
+01690704  b 0x01690718
+01690708  mov x0,x8
+0169070c  mov x20,x23
+01690710  bl 0x00b0798c
+01690714  ldr x8,[x29]
+01690718  ldr x8,[x8, #0xb8]
+0169071c  ldr x0,[x22]
+01690720  ldr x23,[x8]
+01690724  bl 0x00b079a0
+01690728  cbz x0,0x01690944
+0169072c  ldr x2,[x20]
+01690730  mov x1,x23
+01690734  mov x3,xzr
+01690738  mov x22,x0
+0169073c  bl 0x01ae8f80
+01690740  ldr x8,[x29]
+01690744  mov x1,x22
+01690748  ldr x0,[x8, #0xb8]
+0169074c  str x22,[x0, #0x20]!
+01690750  bl 0x00b07850
+01690754  ldr x2,[x24]
+01690758  mov x0,x21
+0169075c  mov x1,x22
+01690760  bl 0x0178839c
+01690764  adrp x8,0x3317000
+01690768  ldr x8,[x8, #0xea8]
+0169076c  ldr x1,[x8]
+01690770  bl 0x0178d700
+01690774  mov x21,x0
+01690778  ldr x0,[sp]
+0169077c  mov x1,xzr
+01690780  bl 0x020af4b8
+01690784  cbz x0,0x01690944
+01690788  ldr w8,[x0, #0x18]
+0169078c  mov x20,x0
+01690790  cmp w8,#0x1
+01690794  b.lt 0x0169088c
+01690798  mov w29,wzr
+0169079c  cmp w29,w8
+016907a0  b.cs 0x01690948
+016907a4  add x8,x20,w29, SXTW  #0x3
+016907a8  ldr x22,[x8, #0x20]
+016907ac  cbz x22,0x01690944
+016907b0  ldr x8,[x22]
+016907b4  mov x0,x22
+016907b8  ldp x9,x1,[x8, #0x1c8]
+016907bc  blr x9
+016907c0  cbz x21,0x01690944
+016907c4  ldr x2,[x28]
+016907c8  mov x1,x0
+016907cc  mov x0,x21
+016907d0  bl 0x01b022cc
+016907d4  tbz w0,#0x0,0x01690800
+016907d8  ldr x8,[x22]
+016907dc  mov x0,x22
+016907e0  ldp x9,x1,[x8, #0x1c8]
+016907e4  blr x9
+016907e8  adrp x8,0x3339000
+016907ec  ldr x8,[x8, #0x388]
+016907f0  mov x1,x0
+016907f4  mov x0,x21
+016907f8  ldr x2,[x8]
+016907fc  bl 0x01b024b0
+01690800  ldr x8,[x19]
+01690804  mov x0,x19
+01690808  ldp x9,x1,[x8, #0x1b8]
+0169080c  blr x9
+01690810  ldr x8,[x22]
+01690814  mov x23,x0
+01690818  mov x0,x22
+0169081c  ldp x9,x1,[x8, #0x1c8]
+01690820  blr x9
+01690824  ldr x8,[x27]
+01690828  mov x24,x0
+0169082c  ldr w9,[x8, #0xe0]
+01690830  cbnz w9,0x0169083c
+01690834  mov x0,x8
+01690838  bl 0x00b0798c
+0169083c  mov x0,x23
+01690840  mov x1,x24
+01690844  mov x2,xzr
+01690848  bl 0x020b2e1c
+0169084c  ldr x8,[x25]
+01690850  mov x24,x0
+01690854  mov x0,x8
+01690858  bl 0x00b079a0
+0169085c  cbz x0,0x01690944
+01690860  mov x1,x24
+01690864  mov x2,xzr
+01690868  mov x23,x0
+0169086c  bl 0x020adebc
+01690870  mov x0,x22
+01690874  mov x1,x23
+01690878  bl 0x016901cc
+0169087c  ldr w8,[x20, #0x18]
+01690880  add w29,w29,#0x1
+01690884  cmp w29,w8
+01690888  b.lt 0x0169079c
+0169088c  cbz x21,0x01690944
+01690890  adrp x8,0x3334000
+01690894  ldr x8,[x8, #0xe18]
+01690898  mov x0,x21
+0169089c  ldr x1,[x8]
+016908a0  add x8,sp,#0x8
+016908a4  bl 0x01b02778
+016908a8  ldur q0,[sp, #0x8]
+016908ac  ldr x8,[sp, #0x18]
+016908b0  str q0,[sp, #0x20]
+016908b4  str x8,[sp, #0x30]
+016908b8  ldr x1,[x26]
+016908bc  add x0,sp,#0x20
+    ; [PRE] try { // try from 016908bc to 016908c3 has its CatchHandler @ 0169095c
+016908c0  bl 0x01a06aac
+    ; [POST] } // end try from 016908bc to 016908c3
+016908c4  tbz w0,#0x0,0x01690910
+016908c8  ldr x8,[x19]
+016908cc  ldr x20,[sp, #0x30]
+016908d0  ldp x9,x1,[x8, #0x1b8]
+016908d4  mov x0,x19
+    ; [PRE] try { // try from 016908d4 to 016908db has its CatchHandler @ 01690954
+016908d8  blr x9
+    ; [POST] } // end try from 016908d4 to 016908db
+016908dc  mov x21,x0
+016908e0  ldr x0,[x27]
+016908e4  ldr w8,[x0, #0xe0]
+016908e8  cbnz w8,0x016908f0
+016908ec  bl 0x00b0798c
+    ; [PRE] try { // try from 016908ec to 016908ef has its CatchHandler @ 0169094c
+    ; [POST] } // end try from 016908ec to 016908ef
+016908f0  mov x0,x21
+    ; [PRE] try { // try from 016908f0 to 0169090b has its CatchHandler @ 01690964
+016908f4  mov x1,x20
+016908f8  mov x2,xzr
+016908fc  bl 0x020b2e1c
+01690900  mov w1,#0x1
+01690904  mov x2,xzr
+01690908  bl 0x020aeb88
+    ; [POST] } // end try from 016908f0 to 0169090b
+0169090c  b 0x016908b8
+01690910  adrp x8,0x3358000
+01690914  ldr x8,[x8, #0xfe8]
+01690918  add x0,sp,#0x20
+0169091c  ldr x1,[x8]
+01690920  bl 0x01a06aa8
+01690924  ldp x29,x30,[sp, #0x90]
+01690928  ldp x20,x19,[sp, #0x80]
+0169092c  ldp x22,x21,[sp, #0x70]
+01690930  ldp x24,x23,[sp, #0x60]
+01690934  ldp x26,x25,[sp, #0x50]
+01690938  ldp x28,x27,[sp, #0x40]
+0169093c  add sp,sp,#0xa0
+01690940  ret
+01690944  bl 0x00b079b0
+01690948  bl 0x00b079b8

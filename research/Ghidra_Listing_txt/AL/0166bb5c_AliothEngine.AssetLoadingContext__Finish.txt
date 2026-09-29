@@ -1,0 +1,74 @@
+Function: AliothEngine.AssetLoadingContext$$Finish @ 0166bb5c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.AssetLoadingContext$$InvokeFinish @ 0166d7ac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetHolder$$Acquire @ 01662ecc
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetHolder$$Release @ 01662f60
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$LoadAsset @ 0166847c
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+
+--- Listing ---
+0166bb5c  str x22,[sp, #-0x30]!
+0166bb60  stp x21,x20,[sp, #0x10]
+0166bb64  stp x19,x30,[sp, #0x20]
+0166bb68  adrp x21,0x3577000
+0166bb6c  ldrb w8,[x21, #0x942]
+0166bb70  mov x20,x1
+0166bb74  mov x19,x0
+0166bb78  tbnz w8,#0x0,0x0166bb9c
+0166bb7c  adrp x0,0x3312000
+0166bb80  ldr x0,[x0, #0x428]
+0166bb84  bl 0x00b0789c
+0166bb88  adrp x0,0x3322000
+0166bb8c  ldr x0,[x0, #0xe20]
+0166bb90  bl 0x00b0789c
+0166bb94  mov w8,#0x1
+0166bb98  strb w8,[x21, #0x942]
+0166bb9c  mov w8,#0x3f800000
+0166bba0  str w8,[x19, #0x20]
+0166bba4  cbz x20,0x0166bc08
+0166bba8  ldr w8,[x19, #0x24]
+0166bbac  cmp w8,#0x1
+0166bbb0  b.lt 0x0166bbf0
+0166bbb4  adrp x22,0x3322000
+0166bbb8  ldr x22,[x22, #0xe20]
+0166bbbc  mov w21,wzr
+0166bbc0  ldr x0,[x19, #0x10]
+0166bbc4  cbz x0,0x0166bc40
+0166bbc8  ldr x2,[x22]
+0166bbcc  mov w1,w21
+0166bbd0  bl 0x01c00380
+0166bbd4  mov x1,x0
+0166bbd8  mov x0,x20
+0166bbdc  bl 0x01662ecc
+0166bbe0  ldr w8,[x19, #0x24]
+0166bbe4  add w21,w21,#0x1
+0166bbe8  cmp w21,w8
+0166bbec  b.lt 0x0166bbc0
+0166bbf0  ldr x1,[x19, #0x30]
+0166bbf4  mov x0,x20
+0166bbf8  bl 0x01662f60
+0166bbfc  mov x0,x19
+0166bc00  mov x1,x20
+0166bc04  b 0x0166bc30
+0166bc08  adrp x20,0x3312000
+0166bc0c  ldr x20,[x20, #0x428]
+0166bc10  ldr x0,[x20]
+0166bc14  ldr w8,[x0, #0xe0]
+0166bc18  cbnz w8,0x0166bc24
+0166bc1c  bl 0x00b0798c
+0166bc20  ldr x0,[x20]
+0166bc24  ldr x8,[x0, #0xb8]
+0166bc28  mov x0,x19
+0166bc2c  ldr x1,[x8, #0x8]
+0166bc30  ldp x19,x30,[sp, #0x20]
+0166bc34  ldp x21,x20,[sp, #0x10]
+0166bc38  ldr x22,[sp], #0x30
+0166bc3c  b 0x0166d7ac
+0166bc40  bl 0x00b079b0

@@ -1,0 +1,27 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Blue @ 016b525c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.RichTextExtension$$Color @ 016b5170
+
+--- Calls IN ---
+
+--- Listing ---
+016b525c  stp x21,x20,[sp, #-0x20]!
+016b5260  stp x19,x30,[sp, #0x10]
+016b5264  adrp x20,0x3577000
+016b5268  adrp x21,0x3319000
+016b526c  ldrb w8,[x20, #0xbf3]
+016b5270  ldr x21,[x21, #0x658]
+016b5274  mov x19,x0
+016b5278  tbnz w8,#0x0,0x016b5290
+016b527c  adrp x0,0x3319000
+016b5280  ldr x0,[x0, #0x658]
+016b5284  bl 0x00b0789c
+016b5288  mov w8,#0x1
+016b528c  strb w8,[x20, #0xbf3]
+016b5290  ldr x1,[x21]
+016b5294  mov x0,x19
+016b5298  ldp x19,x30,[sp, #0x10]
+016b529c  ldp x21,x20,[sp], #0x20
+016b52a0  b 0x016b5170

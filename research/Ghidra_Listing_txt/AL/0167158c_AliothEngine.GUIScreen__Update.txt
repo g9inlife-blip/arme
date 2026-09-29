@@ -1,0 +1,65 @@
+Function: AliothEngine.GUIScreen$$Update @ 0167158c
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreen$$get_IsOpen @ 01670e50
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreen$$get_IsTransitioning @ 01670f70
+
+--- Calls IN ---
+  <- BoxShopMonoNew$$Update @ 00e9753c
+  <- BoxShopMonoNew$$<>xLuaBaseProxy_Update @ 00e9a668
+  <- WaitPanelMono$$<>xLuaBaseProxy_Update @ 0104304c
+  <- SysSettingPanelMono$$<>xLuaBaseProxy_Update @ 00f7967c
+  <- BuyEnergyMono$$<>xLuaBaseProxy_Update @ 0100d2e0
+  <- MenuPanelMono$$Update @ 00f9e0bc
+  <- HomePanelMono$$Update @ 00f6b8f0
+  <- BuyEnergyMono$$Update @ 0100c910
+  <- SysSettingPanelMono$$Update @ 00f78db0
+  <- HomePanelMono$$<>xLuaBaseProxy_Update @ 00f703d8
+  <- WaitPanelMono$$Update @ 01042098
+  <- MenuPanelMono$$<>xLuaBaseProxy_Update @ 00fa0704
+
+--- Listing ---
+0167158c  stp x21,x20,[sp, #-0x20]!
+01671590  stp x19,x30,[sp, #0x10]
+01671594  adrp x20,0x3577000
+01671598  adrp x21,0x3364000
+0167159c  ldrb w8,[x20, #0x986]
+016715a0  ldr x21,[x21, #0xd28]
+016715a4  mov x19,x0
+016715a8  tbnz w8,#0x0,0x016715c0
+016715ac  adrp x0,0x3364000
+016715b0  ldr x0,[x0, #0xd28]
+016715b4  bl 0x00b0789c
+016715b8  mov w8,#0x1
+016715bc  strb w8,[x20, #0x986]
+016715c0  ldr x8,[x21]
+016715c4  ldr x8,[x8, #0xb8]
+016715c8  ldr x0,[x8, #0xa8]
+016715cc  cbz x0,0x016715e4
+016715d0  mov x1,x19
+016715d4  ldp x19,x30,[sp, #0x10]
+016715d8  mov x2,xzr
+016715dc  ldp x21,x20,[sp], #0x20
+016715e0  b 0x01060dac
+016715e4  mov x0,x19
+016715e8  bl 0x01670e50
+016715ec  tbz w0,#0x0,0x01671600
+016715f0  ldr x8,[x19]
+016715f4  ldr x2,[x8, #0x2c8]
+016715f8  ldr x1,[x8, #0x2d0]
+016715fc  b 0x01671618
+01671600  mov x0,x19
+01671604  bl 0x01670f70
+01671608  tbz w0,#0x0,0x01671628
+0167160c  ldr x8,[x19]
+01671610  ldr x2,[x8, #0x338]
+01671614  ldr x1,[x8, #0x340]
+01671618  mov x0,x19
+0167161c  ldp x19,x30,[sp, #0x10]
+01671620  ldp x21,x20,[sp], #0x20
+01671624  br x2
+01671628  ldp x19,x30,[sp, #0x10]
+0167162c  ldp x21,x20,[sp], #0x20
+01671630  ret

@@ -1,0 +1,120 @@
+Function: Alioth.S1.Net.KCPTube$$set_State @ 015aded8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.String$$Format @ 01fdf7a4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> Alioth.S1.Net.KCPTube$$get_logger @ 015addec
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$Update @ 015af650
+  <- Alioth.S1.Net.KCPTube$$Send @ 015aeddc
+  <- Alioth.S1.Net.KCPTube$$TryRead @ 015b08bc
+  <- Alioth.S1.Net.KCPTube$$Output @ 015b21c4
+  <- Alioth.S1.Net.KCPTube$$Handshake2 @ 015b1f68
+  <- Alioth.S1.Net.KCPTube$$Poll @ 015b0094
+
+--- Listing ---
+015aded8  str x24,[sp, #-0x40]!
+015adedc  stp x23,x22,[sp, #0x10]
+015adee0  stp x21,x20,[sp, #0x20]
+015adee4  stp x19,x30,[sp, #0x30]
+015adee8  adrp x22,0x3577000
+015adeec  adrp x21,0x3350000
+015adef0  ldrb w8,[x22, #0x8b]
+015adef4  ldr x21,[x21, #0x8c8]
+015adef8  mov w19,w1
+015adefc  mov x20,x0
+015adf00  tbnz w8,#0x0,0x015adf3c
+015adf04  adrp x0,0x334a000
+015adf08  ldr x0,[x0, #0xc98]
+015adf0c  bl 0x00b0789c
+015adf10  adrp x0,0x3332000
+015adf14  ldr x0,[x0, #0x38]
+015adf18  bl 0x00b0789c
+015adf1c  adrp x0,0x3350000
+015adf20  ldr x0,[x0, #0x8c8]
+015adf24  bl 0x00b0789c
+015adf28  adrp x0,0x3331000
+015adf2c  ldr x0,[x0, #0xea8]
+015adf30  bl 0x00b0789c
+015adf34  mov w8,#0x1
+015adf38  strb w8,[x22, #0x8b]
+015adf3c  ldr x0,[x21]
+015adf40  ldr w8,[x0, #0xe0]
+015adf44  cbnz w8,0x015adf50
+015adf48  bl 0x00b0798c
+015adf4c  ldr x0,[x21]
+015adf50  ldr x8,[x0, #0xb8]
+015adf54  ldr x0,[x8, #0x18]
+015adf58  cbz x0,0x015adf7c
+015adf5c  mov x1,x20
+015adf60  mov w2,w19
+015adf64  ldp x19,x30,[sp, #0x30]
+015adf68  ldp x21,x20,[sp, #0x20]
+015adf6c  ldp x23,x22,[sp, #0x10]
+015adf70  mov x3,xzr
+015adf74  ldr x24,[sp], #0x40
+015adf78  b 0x0106155c
+015adf7c  adrp x23,0x3332000
+015adf80  adrp x24,0x3331000
+015adf84  ldr x23,[x23, #0x38]
+015adf88  ldr x24,[x24, #0xea8]
+015adf8c  mov x0,x20
+015adf90  bl 0x015addec
+015adf94  mov x21,x0
+015adf98  ldr w8,[x20, #0x10]
+015adf9c  ldr x0,[x23]
+015adfa0  add x1,sp,#0xc
+015adfa4  str w8,[sp, #0xc]
+015adfa8  bl 0x00b07994
+015adfac  mov x22,x0
+015adfb0  ldr x0,[x23]
+015adfb4  add x1,sp,#0x8
+015adfb8  str w19,[sp, #0x8]
+015adfbc  bl 0x00b07994
+015adfc0  ldr x8,[x24]
+015adfc4  mov x2,x0
+015adfc8  mov x1,x22
+015adfcc  mov x3,xzr
+015adfd0  mov x0,x8
+015adfd4  bl 0x01fdf7a4
+015adfd8  cbz x21,0x015ae060
+015adfdc  adrp x10,0x334a000
+015adfe0  ldr x8,[x21]
+015adfe4  ldr x10,[x10, #0xc98]
+015adfe8  mov x22,x0
+015adfec  ldrh w9,[x8, #0x12a]
+015adff0  ldr x1,[x10]
+015adff4  cbz x9,0x015ae018
+015adff8  ldr x10,[x8, #0xb0]
+015adffc  add x10,x10,#0x8
+015ae000  ldur x11,[x10, #-0x8]
+015ae004  cmp x11,x1
+015ae008  b.eq 0x015ae028
+015ae00c  subs x9,x9,#0x1
+015ae010  add x10,x10,#0x10
+015ae014  b.ne 0x015ae000
+015ae018  mov w2,#0x8
+015ae01c  mov x0,x21
+015ae020  bl 0x00b2ae24
+015ae024  b 0x015ae038
+015ae028  ldr w9,[x10]
+015ae02c  add w9,w9,#0x8
+015ae030  add x8,x8,w9, SXTW  #0x4
+015ae034  add x0,x8,#0x138
+015ae038  ldp x8,x2,[x0]
+015ae03c  mov x0,x21
+015ae040  mov x1,x22
+015ae044  blr x8
+015ae048  str w19,[x20, #0x10]
+015ae04c  ldp x19,x30,[sp, #0x30]
+015ae050  ldp x21,x20,[sp, #0x20]
+015ae054  ldp x23,x22,[sp, #0x10]
+015ae058  ldr x24,[sp], #0x40
+015ae05c  ret
+015ae060  bl 0x00b079b0

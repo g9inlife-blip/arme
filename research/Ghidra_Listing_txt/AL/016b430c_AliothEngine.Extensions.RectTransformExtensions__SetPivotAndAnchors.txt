@@ -1,0 +1,32 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$SetPivotAndAnchors @ 016b430c
+
+--- Calls OUT ---
+  -> UnityEngine.RectTransform$$set_pivot @ 024f66ec
+  -> UnityEngine.RectTransform$$set_anchorMax @ 024f6398
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.RectTransform$$set_anchorMin @ 024f627c
+
+--- Calls IN ---
+
+--- Listing ---
+016b430c  stp d9,d8,[sp, #-0x20]!
+016b4310  stp x19,x30,[sp, #0x10]
+016b4314  cbz x0,0x016b435c
+016b4318  mov x1,xzr
+016b431c  mov v8.16B,v1.16B
+016b4320  mov v9.16B,v0.16B
+016b4324  mov x19,x0
+016b4328  bl 0x024f66ec
+016b432c  mov x0,x19
+016b4330  mov v0.16B,v9.16B
+016b4334  mov v1.16B,v8.16B
+016b4338  mov x1,xzr
+016b433c  bl 0x024f627c
+016b4340  mov x0,x19
+016b4344  ldp x19,x30,[sp, #0x10]
+016b4348  mov v0.16B,v9.16B
+016b434c  mov v1.16B,v8.16B
+016b4350  mov x1,xzr
+016b4354  ldp d9,d8,[sp], #0x20
+016b4358  b 0x024f6398
+016b435c  bl 0x00b079b0

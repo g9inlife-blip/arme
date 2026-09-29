@@ -1,0 +1,38 @@
+Function: AliothEngine.Extensions.PrimitiveExtensions$$IsValidIPv6Address @ 016b132c
+
+--- Calls OUT ---
+  -> System.Text.RegularExpressions.Regex$$IsMatch @ 023269f4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016b132c  stp x21,x20,[sp, #-0x20]!
+016b1330  stp x19,x30,[sp, #0x10]
+016b1334  adrp x21,0x3577000
+016b1338  adrp x20,0x3367000
+016b133c  ldrb w8,[x21, #0xbe1]
+016b1340  ldr x20,[x20, #0x250]
+016b1344  mov x19,x0
+016b1348  tbnz w8,#0x0,0x016b136c
+016b134c  adrp x0,0x3367000
+016b1350  ldr x0,[x0, #0x250]
+016b1354  bl 0x00b0789c
+016b1358  adrp x0,0x334f000
+016b135c  ldr x0,[x0, #0x968]
+016b1360  bl 0x00b0789c
+016b1364  mov w8,#0x1
+016b1368  strb w8,[x21, #0xbe1]
+016b136c  ldr x0,[x20]
+016b1370  adrp x20,0x334f000
+016b1374  ldr w8,[x0, #0xe0]
+016b1378  ldr x20,[x20, #0x968]
+016b137c  cbnz w8,0x016b1384
+016b1380  bl 0x00b0798c
+016b1384  ldr x1,[x20]
+016b1388  mov x0,x19
+016b138c  ldp x19,x30,[sp, #0x10]
+016b1390  mov x2,xzr
+016b1394  ldp x21,x20,[sp], #0x20
+016b1398  b 0x023269f4

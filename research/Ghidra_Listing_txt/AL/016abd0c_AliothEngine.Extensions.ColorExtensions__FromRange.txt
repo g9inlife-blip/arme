@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.ColorExtensions$$FromRange @ 016abd0c
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016abd0c  ldr s16,[sp]
+016abd10  fmov s17,0x3f800000
+016abd14  fsub s4,s4,s0
+016abd18  fsub s5,s5,s1
+016abd1c  fmin s17,s16,s17
+016abd20  fcmp s16,#0.0
+016abd24  fmov s16,wzr
+016abd28  fsub s6,s6,s2
+016abd2c  fsub s7,s7,s3
+016abd30  fcsel s16,s17,s16,pl
+016abd34  fmul s4,s4,s16
+016abd38  fmul s5,s5,s16
+016abd3c  fmul s6,s6,s16
+016abd40  fmul s7,s7,s16
+016abd44  fadd s0,s0,s4
+016abd48  fadd s1,s1,s5
+016abd4c  fadd s2,s2,s6
+016abd50  fadd s3,s3,s7
+016abd54  ret

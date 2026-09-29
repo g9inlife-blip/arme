@@ -1,0 +1,129 @@
+Function: AliothEngine.Extensions.ListExtensions$$FindByName<object> @ 0179e750
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$GetScreenFromName @ 016737dc
+
+--- Listing ---
+0179e750  stp x23,x22,[sp, #-0x30]!
+0179e754  stp x21,x20,[sp, #0x10]
+0179e758  stp x19,x30,[sp, #0x20]
+0179e75c  cbz x0,0x0179e91c
+0179e760  ldr x8,[x2, #0x38]
+0179e764  mov x21,x1
+0179e768  mov x20,x2
+0179e76c  mov x19,x0
+0179e770  ldr x1,[x8]
+0179e774  ldrb w8,[x1, #0x132]
+0179e778  tbnz w8,#0x0,0x0179e788
+0179e77c  mov x0,x1
+0179e780  bl 0x00b2ac40
+0179e784  mov x1,x0
+0179e788  ldr x8,[x19]
+0179e78c  ldrh w9,[x8, #0x12a]
+0179e790  cbz x9,0x0179e7b4
+0179e794  ldr x10,[x8, #0xb0]
+0179e798  add x10,x10,#0x8
+0179e79c  ldur x11,[x10, #-0x8]
+0179e7a0  cmp x11,x1
+0179e7a4  b.eq 0x0179e7c4
+0179e7a8  subs x9,x9,#0x1
+0179e7ac  add x10,x10,#0x10
+0179e7b0  b.ne 0x0179e79c
+0179e7b4  mov x0,x19
+0179e7b8  mov w2,wzr
+0179e7bc  bl 0x00b2ae24
+0179e7c0  b 0x0179e7d0
+0179e7c4  ldrsw x9,[x10]
+0179e7c8  add x8,x8,x9, LSL #0x4
+0179e7cc  add x0,x8,#0x138
+0179e7d0  ldp x8,x1,[x0]
+0179e7d4  mov x0,x19
+0179e7d8  blr x8
+0179e7dc  cmp w0,#0x1
+0179e7e0  b.lt 0x0179e888
+0179e7e4  mov w23,w0
+0179e7e8  mov w22,wzr
+0179e7ec  ldr x8,[x20, #0x38]
+0179e7f0  ldr x1,[x8, #0x10]
+0179e7f4  ldrb w8,[x1, #0x132]
+0179e7f8  tbnz w8,#0x0,0x0179e808
+0179e7fc  mov x0,x1
+0179e800  bl 0x00b2ac40
+0179e804  mov x1,x0
+0179e808  ldr x8,[x19]
+0179e80c  ldrh w9,[x8, #0x12a]
+0179e810  cbz x9,0x0179e834
+0179e814  ldr x10,[x8, #0xb0]
+0179e818  add x10,x10,#0x8
+0179e81c  ldur x11,[x10, #-0x8]
+0179e820  cmp x11,x1
+0179e824  b.eq 0x0179e844
+0179e828  subs x9,x9,#0x1
+0179e82c  add x10,x10,#0x10
+0179e830  b.ne 0x0179e81c
+0179e834  mov x0,x19
+0179e838  mov w2,wzr
+0179e83c  bl 0x00b2ae24
+0179e840  b 0x0179e850
+0179e844  ldrsw x9,[x10]
+0179e848  add x8,x8,x9, LSL #0x4
+0179e84c  add x0,x8,#0x138
+0179e850  ldp x8,x2,[x0]
+0179e854  mov x0,x19
+0179e858  mov w1,w22
+0179e85c  blr x8
+0179e860  cbz x0,0x0179e91c
+0179e864  mov x1,xzr
+0179e868  bl 0x024c9a1c
+0179e86c  mov x1,x21
+0179e870  mov x2,xzr
+0179e874  bl 0x01fd05b0
+0179e878  tbnz w0,#0x0,0x0179e89c
+0179e87c  add w22,w22,#0x1
+0179e880  cmp w22,w23
+0179e884  b.ne 0x0179e7ec
+0179e888  ldp x19,x30,[sp, #0x20]
+0179e88c  ldp x21,x20,[sp, #0x10]
+0179e890  mov x0,xzr
+0179e894  ldp x23,x22,[sp], #0x30
+0179e898  ret
+0179e89c  ldr x8,[x20, #0x38]
+0179e8a0  ldr x1,[x8, #0x10]
+0179e8a4  ldrb w8,[x1, #0x132]
+0179e8a8  tbnz w8,#0x0,0x0179e8b8
+0179e8ac  mov x0,x1
+0179e8b0  bl 0x00b2ac40
+0179e8b4  mov x1,x0
+0179e8b8  ldr x8,[x19]
+0179e8bc  ldrh w9,[x8, #0x12a]
+0179e8c0  cbz x9,0x0179e8e4
+0179e8c4  ldr x10,[x8, #0xb0]
+0179e8c8  add x10,x10,#0x8
+0179e8cc  ldur x11,[x10, #-0x8]
+0179e8d0  cmp x11,x1
+0179e8d4  b.eq 0x0179e8f4
+0179e8d8  subs x9,x9,#0x1
+0179e8dc  add x10,x10,#0x10
+0179e8e0  b.ne 0x0179e8cc
+0179e8e4  mov x0,x19
+0179e8e8  mov w2,wzr
+0179e8ec  bl 0x00b2ae24
+0179e8f0  b 0x0179e900
+0179e8f4  ldrsw x9,[x10]
+0179e8f8  add x8,x8,x9, LSL #0x4
+0179e8fc  add x0,x8,#0x138
+0179e900  ldp x3,x2,[x0]
+0179e904  mov x0,x19
+0179e908  ldp x19,x30,[sp, #0x20]
+0179e90c  ldp x21,x20,[sp, #0x10]
+0179e910  mov w1,w22
+0179e914  ldp x23,x22,[sp], #0x30
+0179e918  br x3
+0179e91c  bl 0x00b079b0

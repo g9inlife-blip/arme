@@ -1,0 +1,73 @@
+Function: AliothEngine.AssetVersionManager$$.ctor @ 01670720
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Singleton<object>$$.ctor @ 01e09dcc
+
+--- Calls IN ---
+
+--- Listing ---
+01670720  stp x21,x20,[sp, #-0x20]!
+01670724  stp x19,x30,[sp, #0x10]
+01670728  adrp x20,0x3577000
+0167072c  adrp x21,0x3321000
+01670730  ldrb w8,[x20, #0x96d]
+01670734  ldr x21,[x21, #0xe00]
+01670738  mov x19,x0
+0167073c  tbnz w8,#0x0,0x01670784
+01670740  adrp x0,0x3381000
+01670744  ldr x0,[x0, #0xeb0]
+01670748  bl 0x00b0789c
+0167074c  adrp x0,0x3340000
+01670750  ldr x0,[x0, #0xf20]
+01670754  bl 0x00b0789c
+01670758  adrp x0,0x3329000
+0167075c  ldr x0,[x0, #0x880]
+01670760  bl 0x00b0789c
+01670764  adrp x0,0x3321000
+01670768  ldr x0,[x0, #0xe00]
+0167076c  bl 0x00b0789c
+01670770  adrp x0,0x332c000
+01670774  ldr x0,[x0, #0x158]
+01670778  bl 0x00b0789c
+0167077c  mov w8,#0x1
+01670780  strb w8,[x20, #0x96d]
+01670784  ldr x0,[x21]
+01670788  bl 0x00b079a0
+0167078c  cbz x0,0x01670808
+01670790  adrp x8,0x3329000
+01670794  ldr x8,[x8, #0x880]
+01670798  adrp x21,0x3340000
+0167079c  mov x20,x0
+016707a0  ldr x1,[x8]
+016707a4  ldr x21,[x21, #0xf20]
+016707a8  bl 0x01bffe10
+016707ac  mov x0,x19
+016707b0  str x20,[x0, #0x18]!
+016707b4  mov x1,x20
+016707b8  bl 0x00b07850
+016707bc  ldr x0,[x21]
+016707c0  bl 0x00b079a0
+016707c4  cbz x0,0x01670808
+016707c8  adrp x8,0x3381000
+016707cc  ldr x8,[x8, #0xeb0]
+016707d0  adrp x21,0x332c000
+016707d4  mov x20,x0
+016707d8  ldr x1,[x8]
+016707dc  ldr x21,[x21, #0x158]
+016707e0  bl 0x0196dbb0
+016707e4  mov x0,x19
+016707e8  str x20,[x0, #0x20]!
+016707ec  mov x1,x20
+016707f0  bl 0x00b07850
+016707f4  ldr x1,[x21]
+016707f8  mov x0,x19
+016707fc  ldp x19,x30,[sp, #0x10]
+01670800  ldp x21,x20,[sp], #0x20
+01670804  b 0x01e09dcc
+01670808  bl 0x00b079b0

@@ -1,0 +1,36 @@
+Function: Alioth.S1.Net.NetworkCenter$$get_logger @ 015b29e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp283 @ 01083dd8
+  -> AliothEngine.LogManager$$get_NetworkLogger @ 0168a4e0
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter$$Send @ 015b3764
+
+--- Listing ---
+015b29e4  stp x21,x20,[sp, #-0x20]!
+015b29e8  stp x19,x30,[sp, #0x10]
+015b29ec  adrp x20,0x3577000
+015b29f0  adrp x21,0x330b000
+015b29f4  ldrb w8,[x20, #0xa8]
+015b29f8  ldr x21,[x21, #0x520]
+015b29fc  mov x19,x0
+015b2a00  tbnz w8,#0x0,0x015b2a18
+015b2a04  adrp x0,0x330b000
+015b2a08  ldr x0,[x0, #0x520]
+015b2a0c  bl 0x00b0789c
+015b2a10  mov w8,#0x1
+015b2a14  strb w8,[x20, #0xa8]
+015b2a18  ldr x8,[x21]
+015b2a1c  ldr x8,[x8, #0xb8]
+015b2a20  ldr x0,[x8]
+015b2a24  cbz x0,0x015b2a3c
+015b2a28  mov x1,x19
+015b2a2c  ldp x19,x30,[sp, #0x10]
+015b2a30  mov x2,xzr
+015b2a34  ldp x21,x20,[sp], #0x20
+015b2a38  b 0x01083dd8
+015b2a3c  ldp x19,x30,[sp, #0x10]
+015b2a40  ldp x21,x20,[sp], #0x20
+015b2a44  b 0x0168a4e0

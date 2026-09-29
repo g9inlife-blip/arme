@@ -1,0 +1,55 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.ValueCollection<object,-object>$$CopyTo @ 01e7fbec
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_009a5654 @ 009a5654
+
+--- Listing ---
+01e7fbec  stp x21,x20,[sp, #-0x20]!
+01e7fbf0  stp x19,x30,[sp, #0x10]
+01e7fbf4  ldr x21,[x0]
+01e7fbf8  cbz x21,0x01e7fc98
+01e7fbfc  ldr x0,[x3, #0x20]
+01e7fc00  mov w19,w2
+01e7fc04  mov x20,x1
+01e7fc08  ldrb w8,[x0, #0x132]
+01e7fc0c  tbnz w8,#0x0,0x01e7fc14
+01e7fc10  bl 0x00b2ac40
+01e7fc14  ldr x8,[x0, #0xc0]
+01e7fc18  ldr x1,[x8]
+01e7fc1c  ldrb w8,[x1, #0x132]
+01e7fc20  tbnz w8,#0x0,0x01e7fc30
+01e7fc24  mov x0,x1
+01e7fc28  bl 0x00b2ac40
+01e7fc2c  mov x1,x0
+01e7fc30  ldr x8,[x21]
+01e7fc34  ldrh w9,[x8, #0x12a]
+01e7fc38  cbz x9,0x01e7fc5c
+01e7fc3c  ldr x10,[x8, #0xb0]
+01e7fc40  add x10,x10,#0x8
+01e7fc44  ldur x11,[x10, #-0x8]
+01e7fc48  cmp x11,x1
+01e7fc4c  b.eq 0x01e7fc6c
+01e7fc50  subs x9,x9,#0x1
+01e7fc54  add x10,x10,#0x10
+01e7fc58  b.ne 0x01e7fc44
+01e7fc5c  mov w2,#0x5
+01e7fc60  mov x0,x21
+01e7fc64  bl 0x00b2ae24
+01e7fc68  b 0x01e7fc7c
+01e7fc6c  ldr w9,[x10]
+01e7fc70  add w9,w9,#0x5
+01e7fc74  add x8,x8,w9, SXTW  #0x4
+01e7fc78  add x0,x8,#0x138
+01e7fc7c  ldp x4,x3,[x0]
+01e7fc80  mov w2,w19
+01e7fc84  ldp x19,x30,[sp, #0x10]
+01e7fc88  mov x0,x21
+01e7fc8c  mov x1,x20
+01e7fc90  ldp x21,x20,[sp], #0x20
+01e7fc94  br x4
+01e7fc98  bl 0x00b079b0

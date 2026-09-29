@@ -1,0 +1,61 @@
+Function: AliothEngine.Extensions.PrimitiveExtensions$$MapRange @ 016b1168
+
+--- Calls OUT ---
+  -> modf @ 008d41a0
+
+--- Calls IN ---
+
+--- Listing ---
+016b1168  sub sp,sp,#0x20
+016b116c  str d8,[sp, #0x10]
+016b1170  str x30,[sp, #0x18]
+016b1174  sub w8,w0,w1
+016b1178  scvtf s0,w2
+016b117c  scvtf s1,w1
+016b1180  sub w9,w4,w3
+016b1184  scvtf s2,w8
+016b1188  fsub s0,s0,s1
+016b118c  scvtf s1,w9
+016b1190  fdiv s0,s2,s0
+016b1194  fmul s0,s0,s1
+016b1198  scvtf s1,w3
+016b119c  fadd s8,s0,s1
+016b11a0  fcvt d0,s8
+016b11a4  add x0,sp,#0x8
+016b11a8  bl 0x008d41a0
+016b11ac  fcmp s8,#0.0
+016b11b0  b.ge 0x016b11cc
+016b11b4  fmov d1,-0x4020000000000000
+016b11b8  fcmp d0,d1
+016b11bc  b.ne 0x016b11f8
+016b11c0  ldr d0,[sp, #0x8]
+016b11c4  fmov s1,0xbf800000
+016b11c8  b 0x016b11e0
+016b11cc  fmov d1,0x3fe0000000000000
+016b11d0  fcmp d0,d1
+016b11d4  b.ne 0x016b1208
+016b11d8  ldr d0,[sp, #0x8]
+016b11dc  fmov s1,0x3f800000
+016b11e0  fcvtzs x8,d0
+016b11e4  fcvt s0,d0
+016b11e8  fadd s1,s0,s1
+016b11ec  tst x8,#0x1
+016b11f0  fcsel s0,s0,s1,eq
+016b11f4  b 0x016b1214
+016b11f8  fmov s0,0xbf000000
+016b11fc  fadd s0,s8,s0
+016b1200  frintp s0,s0
+016b1204  b 0x016b1214
+016b1208  fmov s0,0x3f000000
+016b120c  fadd s0,s8,s0
+016b1210  frintm s0,s0
+016b1214  mov w8,#0x7f800000
+016b1218  ldr x30,[sp, #0x18]
+016b121c  ldr d8,[sp, #0x10]
+016b1220  fmov s1,w8
+016b1224  fcvtzs w9,s0
+016b1228  fcmp s0,s1
+016b122c  mov w8,#0x80000000
+016b1230  csel w0,w8,w9,eq
+016b1234  add sp,sp,#0x20
+016b1238  ret

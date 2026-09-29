@@ -1,0 +1,62 @@
+Function: AliothEngine.SingletonBehaviour<object>$$GetInstance @ 01e08f7c
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- LoginManager$$LoginGameServer @ 00dd6910
+  <- AliothEngine.StoreManager_WePay$$get_IsBillingSupported @ 0165cdfc
+  <- AliothEngine.StoreManager_WePay$$Awake @ 0165cf50
+  <- AliothEngine.AliothEngineInitialize$$InitSingleton @ 01649c30
+  <- AliothEngine.StoreManager_AliPay$$Awake @ 01659d44
+  <- Main$$Init @ 00e39cc0
+  <- GameUpdatePanelMono$$OnDestroy @ 0103e7f0
+  <- Ali$$GameRestart @ 00e0921c
+  <- GUIScreenBaseMono$$get_MenuPanel @ 00f20574
+  <- AliothEngine.AssetInfoManager$$LoadAssetBundleManifest @ 01669868
+  <- CSBehaviour$$UnRegisterRequestCallBack @ 016dd978
+  <- Ali$$Init @ 00e019f8
+  <- Ali$$Finalize @ 00e00034
+  <- AliothEngine.StoreManager_ChinaPay$$Awake @ 0165b460
+  <- AliothEngine.AssetInfoManager$$LoadAsset @ 016690c0
+  <- AliothEngine.AssetInfoManager$$LoadAssetBundleInfo @ 016695bc
+  <- AliothEngine.AssetInfoManager$$LoadDownloadAssetInfo @ 01668260
+  <- SDKManager$$ReConnect @ 00dec21c
+  <- AliothEngine.StoreManager_AliPay$$LoadStore @ 0165a1c4
+  <- CSBehaviour$$RegisterRequestCallBack @ 016dd854
+  <- Ali$$InitExitUI @ 00e0ff00
+  <- GlobalUIManager$$InitExitUI @ 00f1f78c
+  <- DataCenter$$ClearAll @ 016e6a98
+  <- SDKHandler_QuickSDK$$Init @ 00de6360
+  <- AliothEngine.StoreManager_BiliBili$$Awake @ 0165aa90
+  <- EntranceScript$$Awake @ 00ebbd40
+  <- AliothEngine.StoreManager_WePay$$LoadStore @ 0165d3d0
+  <- AliothEngine.GUIScreen$$ShowScreen @ 016728ac
+
+--- Listing ---
+01e08f7c  sub sp,sp,#0x20
+01e08f80  stp x19,x30,[sp, #0x10]
+01e08f84  ldr x8,[x0, #0x20]
+01e08f88  ldrh w9,[x8, #0x132]
+01e08f8c  tbnz w9,#0x0,0x01e08fa8
+01e08f90  mov x19,x0
+01e08f94  mov x0,x8
+01e08f98  bl 0x00b2ac40
+01e08f9c  ldr x8,[x19, #0x20]
+01e08fa0  ldrh w9,[x8, #0x132]
+01e08fa4  b 0x01e08fac
+01e08fa8  mov x0,x8
+01e08fac  ldr x10,[x0, #0xc0]
+01e08fb0  ldr x10,[x10, #0x20]
+01e08fb4  ldr x1,[x10, #0x8]
+01e08fb8  tbnz w9,#0x0,0x01e08fd0
+01e08fbc  mov x0,x8
+01e08fc0  str x1,[sp, #0x8]
+01e08fc4  bl 0x00b2ac40
+01e08fc8  ldr x1,[sp, #0x8]
+01e08fcc  mov x8,x0
+01e08fd0  ldr x8,[x8, #0xc0]
+01e08fd4  ldp x19,x30,[sp, #0x10]
+01e08fd8  ldr x0,[x8, #0x20]
+01e08fdc  add sp,sp,#0x20
+01e08fe0  br x1

@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.AppDomainExtension.<>c$$<GetAllTypes>b__0_0 @ 016a9d00
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$op_Inequality @ 02169bb4
+
+--- Calls IN ---
+
+--- Listing ---
+016a9d00  stp x21,x20,[sp, #-0x20]!
+016a9d04  stp x19,x30,[sp, #0x10]
+016a9d08  adrp x20,0x3577000
+016a9d0c  adrp x21,0x3347000
+016a9d10  ldrb w8,[x20, #0xba8]
+016a9d14  ldr x21,[x21, #0xd68]
+016a9d18  mov x19,x1
+016a9d1c  tbnz w8,#0x0,0x016a9d34
+016a9d20  adrp x0,0x3347000
+016a9d24  ldr x0,[x0, #0xd68]
+016a9d28  bl 0x00b0789c
+016a9d2c  mov w8,#0x1
+016a9d30  strb w8,[x20, #0xba8]
+016a9d34  ldr x0,[x21]
+016a9d38  ldr w8,[x0, #0xe0]
+016a9d3c  cbnz w8,0x016a9d44
+016a9d40  bl 0x00b0798c
+016a9d44  mov x0,x19
+016a9d48  ldp x19,x30,[sp, #0x10]
+016a9d4c  mov x1,xzr
+016a9d50  mov x2,xzr
+016a9d54  ldp x21,x20,[sp], #0x20
+016a9d58  b 0x02169bb4

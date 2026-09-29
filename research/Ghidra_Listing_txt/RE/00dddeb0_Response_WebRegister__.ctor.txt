@@ -1,0 +1,39 @@
+Function: Response_WebRegister$$.ctor @ 00dddeb0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Response_WebBase$$.ctor @ 00ddde40
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_WebRegisterWrap$$__CreateInstance @ 01374b98
+  <- Response_WebBinding$$.ctor @ 00dddf1c
+
+--- Listing ---
+00dddeb0  stp x21,x20,[sp, #-0x20]!
+00dddeb4  stp x19,x30,[sp, #0x10]
+00dddeb8  adrp x21,0x3572000
+00dddebc  adrp x20,0x3358000
+00dddec0  ldrb w8,[x21, #0x2e1]
+00dddec4  ldr x20,[x20, #0xc18]
+00dddec8  mov x19,x0
+00dddecc  tbnz w8,#0x0,0x00dddee4
+00ddded0  adrp x0,0x3358000
+00ddded4  ldr x0,[x0, #0xc18]
+00ddded8  bl 0x00b0789c
+00dddedc  mov w8,#0x1
+00dddee0  strb w8,[x21, #0x2e1]
+00dddee4  mov x0,x19
+00dddee8  bl 0x00ddde40
+00dddeec  ldr x8,[x20]
+00dddef0  ldr x8,[x8, #0xb8]
+00dddef4  ldr x0,[x8]
+00dddef8  cbz x0,0x00dddf10
+00dddefc  mov x1,x19
+00dddf00  ldp x19,x30,[sp, #0x10]
+00dddf04  mov x2,xzr
+00dddf08  ldp x21,x20,[sp], #0x20
+00dddf0c  b 0x01060dac
+00dddf10  ldp x19,x30,[sp, #0x10]
+00dddf14  ldp x21,x20,[sp], #0x20
+00dddf18  ret

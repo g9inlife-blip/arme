@@ -1,0 +1,57 @@
+Function: AliothEngine.GUIScreenManager$$PeekLastPushScreen @ 01677864
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.DataStructures.MaxStack<object>$$Peek @ 01d0f368
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_PeekLastPushScreen @ 0114ac40
+
+--- Listing ---
+01677864  stp x21,x20,[sp, #-0x20]!
+01677868  stp x19,x30,[sp, #0x10]
+0167786c  adrp x21,0x3577000
+01677870  adrp x20,0x337b000
+01677874  ldrb w8,[x21, #0x9ce]
+01677878  ldr x20,[x20, #0xb98]
+0167787c  mov x19,x0
+01677880  tbnz w8,#0x0,0x016778a4
+01677884  adrp x0,0x337b000
+01677888  ldr x0,[x0, #0xb98]
+0167788c  bl 0x00b0789c
+01677890  adrp x0,0x333e000
+01677894  ldr x0,[x0, #0xe30]
+01677898  bl 0x00b0789c
+0167789c  mov w8,#0x1
+016778a0  strb w8,[x21, #0x9ce]
+016778a4  ldr x0,[x20]
+016778a8  ldr w8,[x0, #0xe0]
+016778ac  cbnz w8,0x016778b8
+016778b0  bl 0x00b0798c
+016778b4  ldr x0,[x20]
+016778b8  ldr x9,[x0, #0xb8]
+016778bc  ldr x8,[x9, #0x188]
+016778c0  cbz x8,0x016778dc
+016778c4  mov x1,x19
+016778c8  ldp x19,x30,[sp, #0x10]
+016778cc  mov x0,x8
+016778d0  mov x2,xzr
+016778d4  ldp x21,x20,[sp], #0x20
+016778d8  b 0x01061abc
+016778dc  ldr w8,[x0, #0xe0]
+016778e0  cbnz w8,0x016778f0
+016778e4  bl 0x00b0798c
+016778e8  ldr x8,[x20]
+016778ec  ldr x9,[x8, #0xb8]
+016778f0  ldr x0,[x9, #0x18]
+016778f4  cbz x0,0x01677910
+016778f8  adrp x8,0x333e000
+016778fc  ldr x8,[x8, #0xe30]
+01677900  ldp x19,x30,[sp, #0x10]
+01677904  ldr x1,[x8]
+01677908  ldp x21,x20,[sp], #0x20
+0167790c  b 0x01d0f368
+01677910  bl 0x00b079b0

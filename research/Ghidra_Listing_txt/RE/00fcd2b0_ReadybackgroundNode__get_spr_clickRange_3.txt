@@ -1,0 +1,28 @@
+Function: ReadybackgroundNode$$get_spr_clickRange_3 @ 00fcd2b0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fcd2b0  stp x21,x20,[sp, #-0x20]!
+00fcd2b4  stp x19,x30,[sp, #0x10]
+00fcd2b8  adrp x20,0x3573000
+00fcd2bc  adrp x21,0x3351000
+00fcd2c0  ldrb w8,[x20, #0xe4a]
+00fcd2c4  ldr x21,[x21, #0x5e0]
+00fcd2c8  mov x19,x0
+00fcd2cc  tbnz w8,#0x0,0x00fcd2e4
+00fcd2d0  adrp x0,0x3351000
+00fcd2d4  ldr x0,[x0, #0x5e0]
+00fcd2d8  bl 0x00b0789c
+00fcd2dc  mov w8,#0x1
+00fcd2e0  strb w8,[x20, #0xe4a]
+00fcd2e4  ldr x1,[x21]
+00fcd2e8  mov x0,x19
+00fcd2ec  ldp x19,x30,[sp, #0x10]
+00fcd2f0  mov x2,xzr
+00fcd2f4  ldp x21,x20,[sp], #0x20
+00fcd2f8  b 0x00dc06f8

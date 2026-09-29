@@ -1,0 +1,59 @@
+Function: Ali$$SetBoolConfig @ 00e0b12c
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetInt @ 024be4d0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PlayerPrefs$$Save @ 024be8f4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+  <- GamePlayerInfomation$$set_Notification_Push_Night @ 00e37254
+  <- GamePlayerInfomation$$set_Notification_Push @ 00e3710c
+  <- GamePlayerInfomation$$set_Notification_Energy_Enable @ 00e36e7c
+  <- AndroidFix$$set_Permission_request @ 00ecb4f8
+  <- GamePlayerInfomation$$set_HighFrameRate_Enable @ 00e3744c
+  <- GamePlayerInfomation$$set_Notification_Activity_Enable @ 00e36fc4
+  <- GamePlayerInfomation$$set_IsGameAgreed @ 00e36b3c
+  <- XLua.CSObjectWrap.AliWrap$$_m_SetBoolConfig_xlua_st_ @ 011992ac
+
+--- Listing ---
+00e0b12c  str x22,[sp, #-0x30]!
+00e0b130  stp x21,x20,[sp, #0x10]
+00e0b134  stp x19,x30,[sp, #0x20]
+00e0b138  adrp x22,0x3572000
+00e0b13c  adrp x21,0x335f000
+00e0b140  ldrb w8,[x22, #0x598]
+00e0b144  ldr x21,[x21, #0x20]
+00e0b148  mov w20,w1
+00e0b14c  mov x19,x0
+00e0b150  tbnz w8,#0x0,0x00e0b168
+00e0b154  adrp x0,0x335f000
+00e0b158  ldr x0,[x0, #0x20]
+00e0b15c  bl 0x00b0789c
+00e0b160  mov w8,#0x1
+00e0b164  strb w8,[x22, #0x598]
+00e0b168  ldr x0,[x21]
+00e0b16c  ldr w8,[x0, #0xe0]
+00e0b170  cbnz w8,0x00e0b17c
+00e0b174  bl 0x00b0798c
+00e0b178  ldr x0,[x21]
+00e0b17c  ldr x8,[x0, #0xb8]
+00e0b180  ldr x0,[x8, #0x468]
+00e0b184  cbz x0,0x00e0b1a4
+00e0b188  and w2,w20,#0x1
+00e0b18c  mov x1,x19
+00e0b190  ldp x19,x30,[sp, #0x20]
+00e0b194  ldp x21,x20,[sp, #0x10]
+00e0b198  mov x3,xzr
+00e0b19c  ldr x22,[sp], #0x30
+00e0b1a0  b 0x010613e4
+00e0b1a4  and w1,w20,#0x1
+00e0b1a8  mov x0,x19
+00e0b1ac  mov x2,xzr
+00e0b1b0  bl 0x024be4d0
+00e0b1b4  ldp x19,x30,[sp, #0x20]
+00e0b1b8  ldp x21,x20,[sp, #0x10]
+00e0b1bc  mov x0,xzr
+00e0b1c0  ldr x22,[sp], #0x30
+00e0b1c4  b 0x024be8f4

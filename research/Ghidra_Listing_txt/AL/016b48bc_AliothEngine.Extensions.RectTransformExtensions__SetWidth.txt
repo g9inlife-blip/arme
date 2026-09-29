@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$SetWidth @ 016b48bc
+
+--- Calls OUT ---
+  -> UnityEngine.RectTransform$$get_rect @ 024f6150
+  -> UnityEngine.Rect$$get_size @ 024db088
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.RectTransformExtensions$$SetSizeDelta @ 016b47b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b48bc  sub sp,sp,#0x30
+016b48c0  str d8,[sp, #0x10]
+016b48c4  stp x19,x30,[sp, #0x20]
+016b48c8  stp xzr,xzr,[sp]
+016b48cc  cbz x0,0x016b4910
+016b48d0  mov x1,xzr
+016b48d4  mov v8.16B,v0.16B
+016b48d8  mov x19,x0
+016b48dc  bl 0x024f6150
+016b48e0  mov x0,sp
+016b48e4  mov x1,xzr
+016b48e8  stp s0,s1,[sp]
+016b48ec  stp s2,s3,[sp, #0x8]
+016b48f0  bl 0x024db088
+016b48f4  mov x0,x19
+016b48f8  mov v0.16B,v8.16B
+016b48fc  bl 0x016b47b0
+016b4900  ldp x19,x30,[sp, #0x20]
+016b4904  ldr d8,[sp, #0x10]
+016b4908  add sp,sp,#0x30
+016b490c  ret
+016b4910  bl 0x00b079b0

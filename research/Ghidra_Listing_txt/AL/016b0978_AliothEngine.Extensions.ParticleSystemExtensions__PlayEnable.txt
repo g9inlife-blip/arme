@@ -1,0 +1,37 @@
+Function: AliothEngine.Extensions.ParticleSystemExtensions$$PlayEnable @ 016b0978
+
+--- Calls OUT ---
+  -> UnityEngine.ParticleSystem$$get_emission @ 02533220
+  -> UnityEngine.ParticleSystem$$Simulate @ 02532748
+  -> UnityEngine.ParticleSystem.EmissionModule$$set_enabled @ 02533dcc
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.ParticleSystem$$Play @ 025328a8
+
+--- Calls IN ---
+
+--- Listing ---
+016b0978  sub sp,sp,#0x20
+016b097c  stp x19,x30,[sp, #0x10]
+016b0980  str xzr,[sp, #0x8]
+016b0984  cbz x0,0x016b09d8
+016b0988  fmov s0,wzr
+016b098c  mov w1,#0x1
+016b0990  mov w2,#0x1
+016b0994  mov x3,xzr
+016b0998  mov x19,x0
+016b099c  bl 0x02532748
+016b09a0  mov x0,x19
+016b09a4  mov x1,xzr
+016b09a8  bl 0x02533220
+016b09ac  str x0,[sp, #0x8]
+016b09b0  add x0,sp,#0x8
+016b09b4  mov w1,#0x1
+016b09b8  mov x2,xzr
+016b09bc  bl 0x02533dcc
+016b09c0  mov x0,x19
+016b09c4  mov x1,xzr
+016b09c8  bl 0x025328a8
+016b09cc  ldp x19,x30,[sp, #0x10]
+016b09d0  add sp,sp,#0x20
+016b09d4  ret
+016b09d8  bl 0x00b079b0

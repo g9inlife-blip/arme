@@ -1,0 +1,45 @@
+Function: Ali$$RunAssetUpdate @ 00e10234
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$GameRestart @ 00e0921c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_RunAssetUpdate_xlua_st_ @ 0119cef4
+  <- AliothEngine.GameUpdateService.<>c$$<CheckAssets>b__75_2 @ 016819b4
+  <- GlobalUIManager$$OnClickAssetUpdate @ 00f1e868
+
+--- Listing ---
+00e10234  str x20,[sp, #-0x20]!
+00e10238  stp x19,x30,[sp, #0x10]
+00e1023c  adrp x20,0x3572000
+00e10240  adrp x19,0x335f000
+00e10244  ldrb w8,[x20, #0x5bc]
+00e10248  ldr x19,[x19, #0x20]
+00e1024c  tbnz w8,#0x0,0x00e10264
+00e10250  adrp x0,0x335f000
+00e10254  ldr x0,[x0, #0x20]
+00e10258  bl 0x00b0789c
+00e1025c  mov w8,#0x1
+00e10260  strb w8,[x20, #0x5bc]
+00e10264  ldr x0,[x19]
+00e10268  ldr w8,[x0, #0xe0]
+00e1026c  cbnz w8,0x00e10278
+00e10270  bl 0x00b0798c
+00e10274  ldr x0,[x19]
+00e10278  ldr x8,[x0, #0xb8]
+00e1027c  ldr x8,[x8, #0x588]
+00e10280  cbz x8,0x00e10298
+00e10284  ldp x19,x30,[sp, #0x10]
+00e10288  mov x0,x8
+00e1028c  mov x1,xzr
+00e10290  ldr x20,[sp], #0x20
+00e10294  b 0x0105fbf0
+00e10298  ldr w8,[x0, #0xe0]
+00e1029c  cbnz w8,0x00e102a4
+00e102a0  bl 0x00b0798c
+00e102a4  ldp x19,x30,[sp, #0x10]
+00e102a8  ldr x20,[sp], #0x20
+00e102ac  b 0x00e0921c

@@ -1,0 +1,90 @@
+Function: AliothEngine.DataStructures.ThreadSafeQueue<object>$$DequeueAll @ 01e3cb84
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Threading.ReaderWriterLockSlim$$ExitWriteLock @ 0223e094
+  -> System.Threading.ReaderWriterLockSlim$$EnterWriteLock @ 0223d7f0
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e3cb84  str x22,[sp, #-0x30]!
+01e3cb88  stp x21,x20,[sp, #0x10]
+01e3cb8c  stp x19,x30,[sp, #0x20]
+01e3cb90  mov x19,x0
+01e3cb94  ldr x0,[x0, #0x18]
+01e3cb98  cbz x0,0x01e3cc78
+01e3cb9c  mov x20,x1
+01e3cba0  mov x1,xzr
+01e3cba4  bl 0x0223d7f0
+01e3cba8  ldr x8,[x20, #0x20]
+01e3cbac  ldr x8,[x8, #0xc0]
+01e3cbb0  ldr x0,[x8, #0x60]
+01e3cbb4  ldrb w8,[x0, #0x132]
+01e3cbb8  tbnz w8,#0x0,0x01e3cbc0
+01e3cbbc  bl 0x00b2ac40
+    ; [PRE] try { // try from 01e3cbbc to 01e3cbe3 has its CatchHandler @ 01e3cc90
+01e3cbc0  bl 0x00b079a0
+01e3cbc4  mov x21,x0
+01e3cbc8  cbz x0,0x01e3cc84
+01e3cbcc  ldr x8,[x20, #0x20]
+01e3cbd0  ldr x8,[x8, #0xc0]
+01e3cbd4  ldr x1,[x8, #0x68]
+01e3cbd8  ldr x8,[x1, #0x8]
+01e3cbdc  mov x0,x21
+01e3cbe0  blr x8
+    ; [POST] } // end try from 01e3cbbc to 01e3cbe3
+01e3cbe4  ldr x0,[x19, #0x10]
+01e3cbe8  cbz x0,0x01e3cc70
+01e3cbec  ldr x8,[x20, #0x20]
+01e3cbf0  ldr x8,[x8, #0xc0]
+01e3cbf4  ldr x1,[x8, #0x78]
+01e3cbf8  ldr x8,[x1, #0x8]
+01e3cbfc  blr x8
+    ; [PRE] try { // try from 01e3cbfc to 01e3cbff has its CatchHandler @ 01e3cc94
+    ; [POST] } // end try from 01e3cbfc to 01e3cbff
+01e3cc00  cmp w0,#0x1
+01e3cc04  b.lt 0x01e3cc44
+01e3cc08  ldr x0,[x19, #0x10]
+01e3cc0c  cbz x0,0x01e3cc74
+01e3cc10  ldr x8,[x20, #0x20]
+01e3cc14  ldr x8,[x8, #0xc0]
+01e3cc18  ldr x1,[x8, #0x38]
+01e3cc1c  ldr x8,[x1, #0x8]
+01e3cc20  blr x8
+    ; [PRE] try { // try from 01e3cc20 to 01e3cc3f has its CatchHandler @ 01e3cc98
+01e3cc24  mov x1,x0
+01e3cc28  ldr x8,[x20, #0x20]
+01e3cc2c  ldr x8,[x8, #0xc0]
+01e3cc30  ldr x2,[x8, #0x70]
+01e3cc34  ldr x8,[x2, #0x8]
+01e3cc38  mov x0,x21
+01e3cc3c  blr x8
+    ; [POST] } // end try from 01e3cc20 to 01e3cc3f
+01e3cc40  b 0x01e3cbe4
+01e3cc44  mov x22,xzr
+01e3cc48  ldr x0,[x19, #0x18]
+01e3cc4c  cbz x0,0x01e3cc78
+01e3cc50  mov x1,xzr
+01e3cc54  bl 0x0223e094
+01e3cc58  cbnz x22,0x01e3cc7c
+01e3cc5c  mov x0,x21
+01e3cc60  ldp x19,x30,[sp, #0x20]
+01e3cc64  ldp x21,x20,[sp, #0x10]
+01e3cc68  ldr x22,[sp], #0x30
+01e3cc6c  ret
+01e3cc70  bl 0x00b079b0
+    ; [PRE] try { // try from 01e3cc70 to 01e3cc73 has its CatchHandler @ 01e3cc8c
+    ; [POST] } // end try from 01e3cc70 to 01e3cc73
+01e3cc74  bl 0x00b079b0
+    ; [PRE] try { // try from 01e3cc74 to 01e3cc77 has its CatchHandler @ 01e3cc88
+    ; [POST] } // end try from 01e3cc74 to 01e3cc77
+01e3cc78  bl 0x00b079b0
+01e3cc7c  mov x0,x22
+01e3cc80  bl 0x00aaac8c
+01e3cc84  bl 0x00b079b0
+    ; [PRE] try { // try from 01e3cc84 to 01e3cc87 has its CatchHandler @ 01e3cc90
+    ; [POST] } // end try from 01e3cc84 to 01e3cc87

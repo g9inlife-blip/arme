@@ -1,0 +1,46 @@
+Function: AliothEngine.Extensions.RectExtensions$$Expand @ 016b21f8
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_position @ 024daf54
+  -> UnityEngine.Rect$$set_size @ 024db090
+  -> UnityEngine.Rect$$set_position @ 024daf5c
+  -> UnityEngine.Rect$$get_size @ 024db088
+
+--- Calls IN ---
+
+--- Listing ---
+016b21f8  sub sp,sp,#0x40
+016b21fc  stp d11,d10,[sp, #0x10]
+016b2200  stp d9,d8,[sp, #0x20]
+016b2204  str x30,[sp, #0x30]
+016b2208  mov x0,sp
+016b220c  mov x1,xzr
+016b2210  mov v8.16B,v7.16B
+016b2214  mov v9.16B,v6.16B
+016b2218  mov v10.16B,v5.16B
+016b221c  mov v11.16B,v4.16B
+016b2220  stp s0,s1,[sp]
+016b2224  stp s2,s3,[sp, #0x8]
+016b2228  bl 0x024daf54
+016b222c  fsub s0,s0,s11
+016b2230  fsub s1,s1,s9
+016b2234  mov x0,sp
+016b2238  mov x1,xzr
+016b223c  bl 0x024daf5c
+016b2240  mov x0,sp
+016b2244  mov x1,xzr
+016b2248  bl 0x024db088
+016b224c  fadd s2,s11,s10
+016b2250  fadd s3,s9,s8
+016b2254  fadd s0,s2,s0
+016b2258  fadd s1,s3,s1
+016b225c  mov x0,sp
+016b2260  mov x1,xzr
+016b2264  bl 0x024db090
+016b2268  ldp s0,s1,[sp]
+016b226c  ldp s2,s3,[sp, #0x8]
+016b2270  ldr x30,[sp, #0x30]
+016b2274  ldp d9,d8,[sp, #0x20]
+016b2278  ldp d11,d10,[sp, #0x10]
+016b227c  add sp,sp,#0x40
+016b2280  ret

@@ -1,0 +1,30 @@
+Function: AliothEngine.Extensions.TransformExtensions$$SetScaleZ @ 016ba6a0
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_localScale @ 024f41b4
+  -> UnityEngine.Transform$$set_localScale @ 024f4254
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$FlipZ @ 016bab28
+
+--- Listing ---
+016ba6a0  stp d9,d8,[sp, #-0x20]!
+016ba6a4  stp x19,x30,[sp, #0x10]
+016ba6a8  cbz x0,0x016ba6e8
+016ba6ac  mov x1,xzr
+016ba6b0  mov v8.16B,v0.16B
+016ba6b4  mov x19,x0
+016ba6b8  bl 0x024f41b4
+016ba6bc  mov x0,x19
+016ba6c0  mov x1,xzr
+016ba6c4  mov v9.16B,v0.16B
+016ba6c8  bl 0x024f41b4
+016ba6cc  mov x0,x19
+016ba6d0  ldp x19,x30,[sp, #0x10]
+016ba6d4  mov v0.16B,v9.16B
+016ba6d8  mov v2.16B,v8.16B
+016ba6dc  mov x1,xzr
+016ba6e0  ldp d9,d8,[sp], #0x20
+016ba6e4  b 0x024f4254
+016ba6e8  bl 0x00b079b0

@@ -1,0 +1,40 @@
+Function: AliothEngine.GUIElementListFilter$$DelElement @ 0168d8d4
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List<object>$$Remove @ 01c02014
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Unitilities.Pools.PoolExtensions$$Recycle @ 0163f080
+
+--- Calls IN ---
+
+--- Listing ---
+0168d8d4  stp x21,x20,[sp, #-0x20]!
+0168d8d8  stp x19,x30,[sp, #0x10]
+0168d8dc  adrp x21,0x3577000
+0168d8e0  ldrb w8,[x21, #0xac0]
+0168d8e4  mov x19,x1
+0168d8e8  mov x20,x0
+0168d8ec  tbnz w8,#0x0,0x0168d904
+0168d8f0  adrp x0,0x3363000
+0168d8f4  ldr x0,[x0, #0x150]
+0168d8f8  bl 0x00b0789c
+0168d8fc  mov w8,#0x1
+0168d900  strb w8,[x21, #0xac0]
+0168d904  cbz x19,0x0168d940
+0168d908  mov x0,x19
+0168d90c  mov x1,xzr
+0168d910  bl 0x024e4ed4
+0168d914  mov x1,xzr
+0168d918  bl 0x0163f080
+0168d91c  ldr x0,[x20, #0x38]
+0168d920  cbz x0,0x0168d940
+0168d924  adrp x8,0x3363000
+0168d928  ldr x8,[x8, #0x150]
+0168d92c  mov x1,x19
+0168d930  ldp x19,x30,[sp, #0x10]
+0168d934  ldr x2,[x8]
+0168d938  ldp x21,x20,[sp], #0x20
+0168d93c  b 0x01c02014
+0168d940  bl 0x00b079b0

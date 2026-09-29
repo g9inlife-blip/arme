@@ -1,0 +1,37 @@
+Function: AliothEngine.Extensions.AppDomainExtension.<>c__1<object>$$<GetNonAbstractTypes>b__1_1 @ 018ee034
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+018ee034  str x22,[sp, #-0x30]!
+018ee038  stp x21,x20,[sp, #0x10]
+018ee03c  stp x19,x30,[sp, #0x20]
+018ee040  adrp x21,0x3578000
+018ee044  adrp x22,0x3345000
+018ee048  ldrb w8,[x21, #0x58f]
+018ee04c  ldr x22,[x22, #0x4a8]
+018ee050  mov x20,x2
+018ee054  mov x19,x1
+018ee058  tbnz w8,#0x0,0x018ee070
+018ee05c  adrp x0,0x3345000
+018ee060  ldr x0,[x0, #0x4a8]
+018ee064  bl 0x00b0789c
+018ee068  mov w8,#0x1
+018ee06c  strb w8,[x21, #0x58f]
+018ee070  ldr x0,[x22]
+018ee074  ldr w8,[x0, #0xe0]
+018ee078  cbnz w8,0x018ee080
+018ee07c  bl 0x00b0798c
+018ee080  ldr x8,[x20, #0x20]
+018ee084  mov x0,x19
+018ee088  ldp x19,x30,[sp, #0x20]
+018ee08c  ldp x21,x20,[sp, #0x10]
+018ee090  ldr x8,[x8, #0xc0]
+018ee094  ldr x1,[x8, #0x18]
+018ee098  ldr x2,[x1, #0x8]
+018ee09c  ldr x22,[sp], #0x30
+018ee0a0  br x2

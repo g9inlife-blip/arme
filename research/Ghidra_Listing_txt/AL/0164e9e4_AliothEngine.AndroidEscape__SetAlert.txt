@@ -1,0 +1,67 @@
+Function: AliothEngine.AndroidEscape$$SetAlert @ 0164e9e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp806 @ 010c9200
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAndroidEscapeWrap$$_m_SetAlert @ 011329dc
+  <- Ali$$InitExitUI @ 00e0ff00
+  <- GlobalUIManager$$InitExitUI @ 00f1f78c
+
+--- Listing ---
+0164e9e4  stp x25,x24,[sp, #-0x40]!
+0164e9e8  stp x23,x22,[sp, #0x10]
+0164e9ec  stp x21,x20,[sp, #0x20]
+0164e9f0  stp x19,x30,[sp, #0x30]
+0164e9f4  adrp x24,0x3577000
+0164e9f8  adrp x25,0x3336000
+0164e9fc  ldrb w8,[x24, #0x7db]
+0164ea00  ldr x25,[x25, #0xa38]
+0164ea04  mov x19,x4
+0164ea08  mov x20,x3
+0164ea0c  mov x22,x2
+0164ea10  mov x23,x1
+0164ea14  mov x21,x0
+0164ea18  tbnz w8,#0x0,0x0164ea30
+0164ea1c  adrp x0,0x3336000
+0164ea20  ldr x0,[x0, #0xa38]
+0164ea24  bl 0x00b0789c
+0164ea28  mov w8,#0x1
+0164ea2c  strb w8,[x24, #0x7db]
+0164ea30  ldr x8,[x25]
+0164ea34  ldr x8,[x8, #0xb8]
+0164ea38  ldr x0,[x8, #0x28]
+0164ea3c  cbz x0,0x0164ea6c
+0164ea40  mov x1,x21
+0164ea44  mov x2,x23
+0164ea48  mov x3,x22
+0164ea4c  mov x4,x20
+0164ea50  mov x5,x19
+0164ea54  ldp x19,x30,[sp, #0x30]
+0164ea58  ldp x21,x20,[sp, #0x20]
+0164ea5c  ldp x23,x22,[sp, #0x10]
+0164ea60  mov x6,xzr
+0164ea64  ldp x25,x24,[sp], #0x40
+0164ea68  b 0x010c9200
+0164ea6c  mov x0,x21
+0164ea70  str x23,[x0, #0x20]!
+0164ea74  mov x1,x23
+0164ea78  bl 0x00b07850
+0164ea7c  mov x0,x21
+0164ea80  str x22,[x0, #0x28]!
+0164ea84  mov x1,x22
+0164ea88  bl 0x00b07850
+0164ea8c  mov x0,x21
+0164ea90  str x20,[x0, #0x30]!
+0164ea94  mov x1,x20
+0164ea98  bl 0x00b07850
+0164ea9c  str x19,[x21, #0x38]!
+0164eaa0  mov x0,x21
+0164eaa4  mov x1,x19
+0164eaa8  ldp x19,x30,[sp, #0x30]
+0164eaac  ldp x21,x20,[sp, #0x20]
+0164eab0  ldp x23,x22,[sp, #0x10]
+0164eab4  ldp x25,x24,[sp], #0x40
+0164eab8  b 0x00b07850

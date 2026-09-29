@@ -1,0 +1,33 @@
+Function: AliothEngine.LogManager$$get_UILogger @ 0168a490
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$get_logger @ 01675194
+  <- AliothEngine.GUIScreen$$get_logger @ 01671a94
+
+--- Listing ---
+0168a490  str x20,[sp, #-0x20]!
+0168a494  stp x19,x30,[sp, #0x10]
+0168a498  adrp x19,0x3577000
+0168a49c  adrp x20,0x3377000
+0168a4a0  ldrb w8,[x19, #0xa8f]
+0168a4a4  ldr x20,[x20, #0x898]
+0168a4a8  tbnz w8,#0x0,0x0168a4c0
+0168a4ac  adrp x0,0x3377000
+0168a4b0  ldr x0,[x0, #0x898]
+0168a4b4  bl 0x00b0789c
+0168a4b8  mov w8,#0x1
+0168a4bc  strb w8,[x19, #0xa8f]
+0168a4c0  ldr x0,[x20]
+0168a4c4  bl 0x01e09a6c
+0168a4c8  cbz x0,0x0168a4dc
+0168a4cc  ldp x19,x30,[sp, #0x10]
+0168a4d0  mov w1,#0x4
+0168a4d4  ldr x20,[sp], #0x20
+0168a4d8  b 0x0168995c
+0168a4dc  bl 0x00b079b0

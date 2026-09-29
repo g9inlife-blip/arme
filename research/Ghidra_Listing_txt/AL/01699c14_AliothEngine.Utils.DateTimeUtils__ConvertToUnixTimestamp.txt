@@ -1,0 +1,67 @@
+Function: AliothEngine.Utils.DateTimeUtils$$ConvertToUnixTimestamp @ 01699c14
+
+--- Calls OUT ---
+  -> System.DateTime$$ToUniversalTime @ 02134cac
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$op_Subtraction @ 021356d4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.DateTime$$.ctor @ 021323ac
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+
+--- Calls IN ---
+
+--- Listing ---
+01699c14  sub sp,sp,#0x40
+01699c18  stp x20,x0,[sp, #0x20]
+01699c1c  stp x19,x30,[sp, #0x30]
+01699c20  adrp x20,0x3577000
+01699c24  adrp x19,0x336f000
+01699c28  ldrb w8,[x20, #0xb25]
+01699c2c  ldr x19,[x19, #0xdc8]
+01699c30  tbnz w8,#0x0,0x01699c48
+01699c34  adrp x0,0x336f000
+01699c38  ldr x0,[x0, #0xdc8]
+01699c3c  bl 0x00b0789c
+01699c40  mov w8,#0x1
+01699c44  strb w8,[x20, #0xb25]
+01699c48  mov w8,#0x1
+01699c4c  add x0,sp,#0x18
+01699c50  mov w1,#0x7b2
+01699c54  mov w2,#0x1
+01699c58  mov w3,#0x1
+01699c5c  mov w4,wzr
+01699c60  mov w5,wzr
+01699c64  mov w6,wzr
+01699c68  mov w7,wzr
+01699c6c  stp xzr,xzr,[sp, #0x10]
+01699c70  str xzr,[sp, #0x8]
+01699c74  str w8,[sp]
+01699c78  bl 0x021323ac
+01699c7c  add x0,sp,#0x28
+01699c80  mov x1,xzr
+01699c84  bl 0x02134cac
+01699c88  ldr x8,[x19]
+01699c8c  ldr x19,[sp, #0x18]
+01699c90  mov x20,x0
+01699c94  ldr w9,[x8, #0xe0]
+01699c98  cbnz w9,0x01699ca4
+01699c9c  mov x0,x8
+01699ca0  bl 0x00b0798c
+01699ca4  mov x0,x20
+01699ca8  mov x1,x19
+01699cac  mov x2,xzr
+01699cb0  bl 0x021356d4
+01699cb4  str x0,[sp, #0x10]
+01699cb8  add x0,sp,#0x10
+01699cbc  mov x1,xzr
+01699cc0  bl 0x02167c88
+01699cc4  mov x8,#0x7ff0000000000000
+01699cc8  ldp x19,x30,[sp, #0x30]
+01699ccc  ldr x20,[sp, #0x20]
+01699cd0  fmov d1,x8
+01699cd4  fcvtzs x9,d0
+01699cd8  fcmp d0,d1
+01699cdc  mov x8,#-0x8000000000000000
+01699ce0  csel x0,x8,x9,eq
+01699ce4  add sp,sp,#0x40
+01699ce8  ret

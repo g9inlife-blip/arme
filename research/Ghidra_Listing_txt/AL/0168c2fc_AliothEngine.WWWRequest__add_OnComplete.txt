@@ -1,0 +1,58 @@
+Function: AliothEngine.WWWRequest$$add_OnComplete @ 0168c2fc
+
+--- Calls OUT ---
+  -> System.Delegate$$Combine @ 02197810
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- BattleSectionMono$$InitOther @ 00e52004
+  <- WWWCacheSample$$SampleCallback @ 00dbfc04
+
+--- Listing ---
+0168c2fc  str x24,[sp, #-0x40]!
+0168c300  stp x23,x22,[sp, #0x10]
+0168c304  stp x21,x20,[sp, #0x20]
+0168c308  stp x19,x30,[sp, #0x30]
+0168c30c  adrp x21,0x3577000
+0168c310  ldrb w8,[x21, #0xaaf]
+0168c314  mov x19,x1
+0168c318  mov x20,x0
+0168c31c  tbnz w8,#0x0,0x0168c334
+0168c320  adrp x0,0x3352000
+0168c324  ldr x0,[x0, #0x458]
+0168c328  bl 0x00b0789c
+0168c32c  mov w8,#0x1
+0168c330  strb w8,[x21, #0xaaf]
+0168c334  adrp x24,0x3352000
+0168c338  ldr x21,[x20, #0x28]!
+0168c33c  ldr x24,[x24, #0x458]
+0168c340  mov x0,x21
+0168c344  mov x1,x19
+0168c348  mov x2,xzr
+0168c34c  bl 0x02197810
+0168c350  cbz x0,0x0168c370
+0168c354  ldr x23,[x24]
+0168c358  mov x22,x0
+0168c35c  mov x1,x23
+0168c360  bl 0x00b07990
+0168c364  mov x1,x0
+0168c368  cbnz x0,0x0168c374
+0168c36c  b 0x0168c3a0
+0168c370  mov x1,xzr
+0168c374  mov x0,x20
+0168c378  mov x2,x21
+0168c37c  bl 0x00ae526c
+0168c380  cmp x21,x0
+0168c384  mov x21,x0
+0168c388  b.ne 0x0168c340
+0168c38c  ldp x19,x30,[sp, #0x30]
+0168c390  ldp x21,x20,[sp, #0x20]
+0168c394  ldp x23,x22,[sp, #0x10]
+0168c398  ldr x24,[sp], #0x40
+0168c39c  ret
+0168c3a0  mov x0,x22
+0168c3a4  mov x1,x23
+0168c3a8  bl 0x00b07c6c

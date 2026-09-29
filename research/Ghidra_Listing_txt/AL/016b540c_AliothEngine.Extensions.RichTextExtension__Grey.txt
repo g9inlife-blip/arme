@@ -1,0 +1,31 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Grey @ 016b540c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.RichTextExtension$$Color @ 016b5170
+
+--- Calls IN ---
+  <- TipsEquipMono$$ShowTips @ 00f0ac6c
+  <- EquipUpPanelMono$$ShowDetail @ 00edbacc
+  <- TipsStigmataMono$$ShowNull @ 00f14408
+  <- TipsStigmataMono$$NoneTips @ 00f14130
+
+--- Listing ---
+016b540c  stp x21,x20,[sp, #-0x20]!
+016b5410  stp x19,x30,[sp, #0x10]
+016b5414  adrp x20,0x3577000
+016b5418  adrp x21,0x337d000
+016b541c  ldrb w8,[x20, #0xbf9]
+016b5420  ldr x21,[x21, #0xb30]
+016b5424  mov x19,x0
+016b5428  tbnz w8,#0x0,0x016b5440
+016b542c  adrp x0,0x337d000
+016b5430  ldr x0,[x0, #0xb30]
+016b5434  bl 0x00b0789c
+016b5438  mov w8,#0x1
+016b543c  strb w8,[x20, #0xbf9]
+016b5440  ldr x1,[x21]
+016b5444  mov x0,x19
+016b5448  ldp x19,x30,[sp, #0x10]
+016b544c  ldp x21,x20,[sp], #0x20
+016b5450  b 0x016b5170

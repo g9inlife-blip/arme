@@ -1,0 +1,31 @@
+Function: AliothEngine.FrameRandom$$.cctor @ 0164a55c
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0164a55c  str x20,[sp, #-0x20]!
+0164a560  stp x19,x30,[sp, #0x10]
+0164a564  adrp x20,0x3577000
+0164a568  adrp x19,0x332a000
+0164a56c  ldrb w8,[x20, #0x7a7]
+0164a570  ldr x19,[x19, #0xda8]
+0164a574  tbnz w8,#0x0,0x0164a58c
+0164a578  adrp x0,0x332a000
+0164a57c  ldr x0,[x0, #0xda8]
+0164a580  bl 0x00b0789c
+0164a584  mov w8,#0x1
+0164a588  strb w8,[x20, #0x7a7]
+0164a58c  mov w0,#0x7fff
+0164a590  mov w1,#0x7fffffff
+0164a594  mov x2,xzr
+0164a598  bl 0x024d63b0
+0164a59c  ldr x8,[x19]
+0164a5a0  ldr x8,[x8, #0xb8]
+0164a5a4  stp w0,wzr,[x8]
+0164a5a8  ldp x19,x30,[sp, #0x10]
+0164a5ac  ldr x20,[sp], #0x20
+0164a5b0  ret

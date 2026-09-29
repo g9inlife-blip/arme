@@ -1,0 +1,52 @@
+Function: Ali$$get_rewardManager @ 00e02cfc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp387 @ 01091874
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- Ali$$ShowReward @ 00e06a70
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_rewardManager @ 011a09c4
+
+--- Listing ---
+00e02cfc  stp x21,x20,[sp, #-0x20]!
+00e02d00  stp x19,x30,[sp, #0x10]
+00e02d04  adrp x21,0x3572000
+00e02d08  adrp x20,0x335f000
+00e02d0c  ldrb w8,[x21, #0x54f]
+00e02d10  ldr x20,[x20, #0x20]
+00e02d14  mov x19,x0
+00e02d18  tbnz w8,#0x0,0x00e02d3c
+00e02d1c  adrp x0,0x335f000
+00e02d20  ldr x0,[x0, #0x20]
+00e02d24  bl 0x00b0789c
+00e02d28  adrp x0,0x3351000
+00e02d2c  ldr x0,[x0, #0x720]
+00e02d30  bl 0x00b0789c
+00e02d34  mov w8,#0x1
+00e02d38  strb w8,[x21, #0x54f]
+00e02d3c  ldr x0,[x20]
+00e02d40  ldr w8,[x0, #0xe0]
+00e02d44  cbnz w8,0x00e02d50
+00e02d48  bl 0x00b0798c
+00e02d4c  ldr x0,[x20]
+00e02d50  ldr x8,[x0, #0xb8]
+00e02d54  ldr x0,[x8, #0x210]
+00e02d58  cbz x0,0x00e02d70
+00e02d5c  mov x1,x19
+00e02d60  ldp x19,x30,[sp, #0x10]
+00e02d64  mov x2,xzr
+00e02d68  ldp x21,x20,[sp], #0x20
+00e02d6c  b 0x01091874
+00e02d70  ldr x0,[x19, #0xf8]
+00e02d74  cbz x0,0x00e02d90
+00e02d78  adrp x8,0x3351000
+00e02d7c  ldr x8,[x8, #0x720]
+00e02d80  ldp x19,x30,[sp, #0x10]
+00e02d84  ldr x1,[x8]
+00e02d88  ldp x21,x20,[sp], #0x20
+00e02d8c  b 0x01f0d67c
+00e02d90  bl 0x00b079b0

@@ -1,0 +1,1135 @@
+Function: Ali$$CheckOnceLocalNotification @ 00e07488
+
+--- Calls OUT ---
+  -> System.DateTime$$get_Month @ 02133d40
+  -> System.DateTime$$get_Today @ 02133f10
+  -> UnityEngine.Debug$$LogFormat @ 024c0324
+  -> BaseData$$get_describeId @ 00df3a24
+  -> System.TimeSpan$$FromDays @ 02167e08
+  -> System.TimeSpan$$get_Hours @ 02167b30
+  -> System.String$$Concat @ 01fd2850
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> System.DateTime$$AddDays @ 02132bdc
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<int,-object>$$GetEnumerator @ 0192e014
+  -> BaseData$$get_nameId @ 00df38a8
+  -> System.Collections.Generic.HashSet.Enumerator<int>$$MoveNext @ 01a04734
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> AliothEngine.Utils.DateTimeUtils$$GetNextWeekday @ 01699e64
+  -> BaseData$$SplitToInt32HashSet @ 00df3da8
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> Ali$$Word @ 00e0581c
+  -> System.Collections.Generic.Dictionary.Enumerator<int,-object>$$MoveNext @ 01a409d4
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.DateTime$$TryParse @ 02134d0c
+  -> System.DateTime$$ToString @ 021349ac
+  -> FUN_00b2ac40 @ 00b2ac40
+  -> AliothEngine.NotificationManager$$ClearLocalNotification @ 01657360
+  -> FUN_00b07978 @ 00b07978
+  -> DataManager$$TryGetBaseData @ 00df4ffc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Collections.Generic.Dictionary.Enumerator<int,-object>$$Dispose @ 01a40af0
+  -> BaseData$$get_NameByWord @ 00df3614
+  -> BaseData$$get_type @ 00df34dc
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$GetExcelDic<object> @ 01737100
+  -> System.TimeSpan$$get_Minutes @ 02167b78
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> Ali$$LocalNotification @ 00e08464
+  -> System.DateTime$$get_Now @ 02133d48
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+  -> Ali$$VersionOpen @ 00e001d0
+  -> System.Collections.Generic.HashSet<int>$$GetEnumerator @ 01afe2cc
+  -> System.Collections.Generic.Dictionary<int,-object>$$get_Item @ 0192db0c
+  -> System.DateTime$$op_LessThanOrEqual @ 02135718
+  -> System.Int32$$ToString @ 0214dc44
+  -> System.String$$Concat @ 01fdebb8
+  -> System.DateTime$$get_Year @ 02133f94
+  -> System.DateTime$$get_TimeOfDay @ 02133edc
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> System.DateTime$$get_Day @ 02133bd8
+  -> FUN_00aaac8c @ 00aaac8c
+  -> GamePlayerInfomation$$get_Notification_Activity_Enable @ 00e36f24
+  -> System.Collections.Generic.HashSet.Enumerator<int>$$Dispose @ 01a04730
+  -> FUN_00b079b8 @ 00b079b8
+  -> Ali$$get_dataManager @ 00e0277c
+  -> UnityEngine.Debug$$Log @ 024c0104
+  -> System.TimeSpan$$get_Seconds @ 02167bc0
+  -> System.DateTime$$.ctor @ 02131f34
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_CheckOnceLocalNotification_xlua_st_ @ 01196e04
+  <- Ali$$CheckAllLocalNotification @ 00e085b8
+
+--- Listing ---
+00e07488  sub sp,sp,#0x160
+00e0748c  str d10,[sp, #0xe0]
+00e07490  stp d9,d8,[sp, #0xf0]
+00e07494  stp x28,x27,[sp, #0x100]
+00e07498  stp x26,x25,[sp, #0x110]
+00e0749c  stp x24,x23,[sp, #0x120]
+00e074a0  stp x22,x21,[sp, #0x130]
+00e074a4  stp x20,x19,[sp, #0x140]
+00e074a8  stp x29,x30,[sp, #0x150]
+00e074ac  adrp x19,0x3572000
+00e074b0  adrp x29,0x335f000
+00e074b4  ldrb w8,[x19, #0x581]
+00e074b8  ldr x29,[x29, #0x20]
+00e074bc  add x20,sp,#0xb0
+00e074c0  tbnz w8,#0x0,0x00e07610
+00e074c4  adrp x0,0x3368000
+00e074c8  ldr x0,[x0, #0xc98]
+00e074cc  bl 0x00b0789c
+00e074d0  adrp x0,0x335f000
+00e074d4  ldr x0,[x0, #0x20]
+00e074d8  bl 0x00b0789c
+00e074dc  adrp x0,0x335b000
+00e074e0  ldr x0,[x0, #0x650]
+00e074e4  bl 0x00b0789c
+00e074e8  adrp x0,0x3369000
+00e074ec  ldr x0,[x0, #0x3c0]
+00e074f0  bl 0x00b0789c
+00e074f4  adrp x0,0x336f000
+00e074f8  ldr x0,[x0, #0xdc8]
+00e074fc  bl 0x00b0789c
+00e07500  adrp x0,0x336b000
+00e07504  ldr x0,[x0, #0x7d0]
+00e07508  bl 0x00b0789c
+00e0750c  adrp x0,0x3326000
+00e07510  ldr x0,[x0, #0x448]
+00e07514  bl 0x00b0789c
+00e07518  adrp x0,0x330b000
+00e0751c  ldr x0,[x0, #0xbb8]
+00e07520  bl 0x00b0789c
+00e07524  adrp x0,0x3310000
+00e07528  ldr x0,[x0, #0x6f0]
+00e0752c  bl 0x00b0789c
+00e07530  adrp x0,0x3360000
+00e07534  ldr x0,[x0, #0xf48]
+00e07538  bl 0x00b0789c
+00e0753c  adrp x0,0x331a000
+00e07540  ldr x0,[x0, #0xac0]
+00e07544  bl 0x00b0789c
+00e07548  adrp x0,0x3322000
+00e0754c  ldr x0,[x0, #0x960]
+00e07550  bl 0x00b0789c
+00e07554  adrp x0,0x3338000
+00e07558  ldr x0,[x0, #0x3a8]
+00e0755c  bl 0x00b0789c
+00e07560  adrp x0,0x3382000
+00e07564  ldr x0,[x0, #0x308]
+00e07568  bl 0x00b0789c
+00e0756c  adrp x0,0x335f000
+00e07570  ldr x0,[x0, #0xf38]
+00e07574  bl 0x00b0789c
+00e07578  adrp x0,0x3351000
+00e0757c  ldr x0,[x0, #0x2e0]
+00e07580  bl 0x00b0789c
+00e07584  adrp x0,0x3332000
+00e07588  ldr x0,[x0, #0x38]
+00e0758c  bl 0x00b0789c
+00e07590  adrp x0,0x334d000
+00e07594  ldr x0,[x0, #0x940]
+00e07598  bl 0x00b0789c
+00e0759c  adrp x0,0x3370000
+00e075a0  ldr x0,[x0, #0x778]
+00e075a4  bl 0x00b0789c
+00e075a8  adrp x0,0x3321000
+00e075ac  ldr x0,[x0, #0xf68]
+00e075b0  bl 0x00b0789c
+00e075b4  adrp x0,0x336c000
+00e075b8  ldr x0,[x0, #0xee8]
+00e075bc  bl 0x00b0789c
+00e075c0  adrp x0,0x3322000
+00e075c4  ldr x0,[x0, #0xef0]
+00e075c8  bl 0x00b0789c
+00e075cc  adrp x0,0x3310000
+00e075d0  ldr x0,[x0, #0x218]
+00e075d4  bl 0x00b0789c
+00e075d8  adrp x0,0x331f000
+00e075dc  ldr x0,[x0, #0xa40]
+00e075e0  bl 0x00b0789c
+00e075e4  adrp x0,0x3325000
+00e075e8  ldr x0,[x0, #0xf78]
+00e075ec  bl 0x00b0789c
+00e075f0  adrp x0,0x337d000
+00e075f4  ldr x0,[x0, #0xaf0]
+00e075f8  bl 0x00b0789c
+00e075fc  adrp x0,0x3354000
+00e07600  ldr x0,[x0, #0x8d0]
+00e07604  bl 0x00b0789c
+00e07608  mov w8,#0x1
+00e0760c  strb w8,[x19, #0x581]
+00e07610  ldr x0,[x29]
+00e07614  movi v0.2D,#0x0
+00e07618  stp xzr,xzr,[sp, #0xd0]
+00e0761c  str wzr,[sp, #0xac]
+00e07620  stp xzr,xzr,[sp, #0x98]
+00e07624  stp xzr,xzr,[sp, #0x88]
+00e07628  stp xzr,xzr,[sp, #0x78]
+00e0762c  stp xzr,xzr,[sp, #0x68]
+00e07630  stp xzr,xzr,[sp, #0x58]
+00e07634  stp q0,q0,[x20]
+00e07638  stp xzr,xzr,[sp, #0x48]
+00e0763c  str wzr,[sp, #0x44]
+00e07640  ldr w8,[x0, #0xe0]
+00e07644  cbnz w8,0x00e07650
+00e07648  bl 0x00b0798c
+00e0764c  ldr x0,[x29]
+00e07650  ldr x8,[x0, #0xb8]
+00e07654  ldr x0,[x8, #0x3b0]
+00e07658  cbz x0,0x00e07668
+00e0765c  mov x1,xzr
+00e07660  bl 0x0105fbf0
+00e07664  b 0x00e08230
+00e07668  adrp x8,0x336f000
+00e0766c  ldr x8,[x8, #0xdc8]
+00e07670  ldr x0,[x8]
+00e07674  ldr w8,[x0, #0xe0]
+00e07678  cbnz w8,0x00e07680
+00e0767c  bl 0x00b0798c
+00e07680  mov x0,xzr
+00e07684  bl 0x02133f10
+00e07688  mov x0,xzr
+00e0768c  bl 0x02133d48
+00e07690  ldr x8,[x29]
+00e07694  str x0,[sp, #0xd8]
+00e07698  ldr w9,[x8, #0xe0]
+00e0769c  cbnz w9,0x00e076ac
+00e076a0  mov x0,x8
+00e076a4  bl 0x00b0798c
+00e076a8  ldr x8,[x29]
+00e076ac  ldr x8,[x8, #0xb8]
+00e076b0  ldr x0,[x8, #0x10]
+00e076b4  cbz x0,0x00e082bc
+00e076b8  adrp x8,0x3368000
+00e076bc  ldr x8,[x8, #0xc98]
+00e076c0  ldr x1,[x8]
+00e076c4  bl 0x01737100
+00e076c8  cbz x0,0x00e08230
+00e076cc  adrp x8,0x3326000
+00e076d0  ldr x8,[x8, #0x448]
+00e076d4  adrp x28,0x3338000
+00e076d8  ldr x28,[x28, #0x3a8]
+00e076dc  mov x19,x0
+00e076e0  ldr x1,[x8]
+00e076e4  add x8,sp,#0x18
+00e076e8  bl 0x0192e014
+00e076ec  ldur q0,[sp, #0x28]
+00e076f0  ldur q1,[sp, #0x18]
+00e076f4  ldr x8,[sp, #0x38]
+00e076f8  fmov d8,0x3ff0000000000000
+00e076fc  fmov d9,0x401c000000000000
+00e07700  stp q1,q0,[x20]
+00e07704  str x8,[sp, #0xd0]
+00e07708  ldr x1,[x28]
+00e0770c  add x0,sp,#0xb0
+    ; [PRE] try { // try from 00e0770c to 00e07713 has its CatchHandler @ 00e083e8
+00e07710  bl 0x01a409d4
+    ; [POST] } // end try from 00e0770c to 00e07713
+00e07714  tbz w0,#0x0,0x00e0821c
+00e07718  adrp x8,0x330b000
+00e0771c  ldr w1,[sp, #0xc0]
+00e07720  ldr x8,[x8, #0xbb8]
+00e07724  str w1,[sp, #0xac]
+00e07728  ldr x2,[x8]
+00e0772c  mov x0,x19
+    ; [PRE] try { // try from 00e0772c to 00e07747 has its CatchHandler @ 00e083ec
+00e07730  bl 0x0192db0c
+00e07734  mov x21,x0
+00e07738  ldr x0,[x29]
+00e0773c  ldr w8,[x0, #0xe0]
+00e07740  cbnz w8,0x00e0774c
+00e07744  bl 0x00b0798c
+    ; [POST] } // end try from 00e0772c to 00e07747
+00e07748  ldr x0,[x29]
+00e0774c  cbz x21,0x00e0827c
+00e07750  ldr x8,[x0, #0xb8]
+00e07754  ldr x0,[x8, #0x10]
+00e07758  cbz x0,0x00e08280
+00e0775c  ldr x1,[x21, #0x90]
+00e07760  bl 0x00e001d0
+    ; [PRE] try { // try from 00e07760 to 00e07763 has its CatchHandler @ 00e083e4
+    ; [POST] } // end try from 00e07760 to 00e07763
+00e07764  tbz w0,#0x0,0x00e07708
+00e07768  ldr x0,[x29]
+00e0776c  ldr w8,[x0, #0xe0]
+00e07770  cbnz w8,0x00e0777c
+00e07774  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07774 to 00e07777 has its CatchHandler @ 00e083e0
+    ; [POST] } // end try from 00e07774 to 00e07777
+00e07778  ldr x0,[x29]
+00e0777c  ldr x8,[x0, #0xb8]
+00e07780  ldr x0,[x8, #0x10]
+00e07784  cbz x0,0x00e08284
+00e07788  bl 0x00e0277c
+    ; [PRE] try { // try from 00e07788 to 00e0778b has its CatchHandler @ 00e083dc
+    ; [POST] } // end try from 00e07788 to 00e0778b
+00e0778c  mov x20,x0
+00e07790  mov x0,x21
+    ; [PRE] try { // try from 00e07790 to 00e0779f has its CatchHandler @ 00e083cc
+00e07794  mov x1,xzr
+00e07798  bl 0x00df38a8
+00e0779c  mov w1,w0
+    ; [POST] } // end try from 00e07790 to 00e0779f
+00e077a0  cbz x20,0x00e08288
+00e077a4  add x2,sp,#0xa0
+    ; [PRE] try { // try from 00e077a4 to 00e077b3 has its CatchHandler @ 00e083d8
+00e077a8  mov x0,x20
+00e077ac  mov x3,xzr
+00e077b0  bl 0x00df4ffc
+    ; [POST] } // end try from 00e077a4 to 00e077b3
+00e077b4  tbz w0,#0x0,0x00e07844
+00e077b8  ldr x0,[x29]
+00e077bc  ldr w8,[x0, #0xe0]
+00e077c0  cbnz w8,0x00e077cc
+00e077c4  bl 0x00b0798c
+    ; [PRE] try { // try from 00e077c4 to 00e077c7 has its CatchHandler @ 00e083e0
+    ; [POST] } // end try from 00e077c4 to 00e077c7
+00e077c8  ldr x0,[x29]
+00e077cc  ldr x8,[x0, #0xb8]
+00e077d0  ldr x20,[x8, #0x10]
+00e077d4  mov x0,x21
+    ; [PRE] try { // try from 00e077d4 to 00e077df has its CatchHandler @ 00e083bc
+00e077d8  mov x1,xzr
+00e077dc  bl 0x00df38a8
+    ; [POST] } // end try from 00e077d4 to 00e077df
+00e077e0  adrp x8,0x335b000
+00e077e4  ldr x8,[x8, #0x650]
+00e077e8  mov w22,w0
+00e077ec  ldr x23,[x8]
+00e077f0  ldr x8,[x23, #0x38]
+00e077f4  ldr x0,[x8]
+00e077f8  ldrb w8,[x0, #0x132]
+00e077fc  tbnz w8,#0x0,0x00e07804
+00e07800  bl 0x00b2ac40
+    ; [PRE] try { // try from 00e07800 to 00e07823 has its CatchHandler @ 00e083c4
+00e07804  ldr w8,[x0, #0xe0]
+00e07808  cbnz w8,0x00e07810
+00e0780c  bl 0x00b0798c
+00e07810  ldr x8,[x23, #0x38]
+00e07814  ldr x0,[x8]
+00e07818  ldrb w8,[x0, #0x132]
+00e0781c  tbnz w8,#0x0,0x00e07824
+00e07820  bl 0x00b2ac40
+    ; [POST] } // end try from 00e07800 to 00e07823
+00e07824  cbz x20,0x00e08294
+00e07828  ldr x8,[x0, #0xb8]
+00e0782c  ldr x2,[x8]
+00e07830  mov x0,x20
+    ; [PRE] try { // try from 00e07830 to 00e0783b has its CatchHandler @ 00e083b4
+00e07834  mov w1,w22
+00e07838  bl 0x00e0581c
+    ; [POST] } // end try from 00e07830 to 00e0783b
+00e0783c  mov x20,x0
+00e07840  b 0x00e07848
+00e07844  mov x20,xzr
+00e07848  ldr x0,[x29]
+00e0784c  ldr w8,[x0, #0xe0]
+00e07850  cbnz w8,0x00e0785c
+00e07854  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07854 to 00e07857 has its CatchHandler @ 00e083e0
+    ; [POST] } // end try from 00e07854 to 00e07857
+00e07858  ldr x0,[x29]
+00e0785c  ldr x8,[x0, #0xb8]
+00e07860  ldr x0,[x8, #0x10]
+00e07864  cbz x0,0x00e0828c
+00e07868  bl 0x00e0277c
+    ; [PRE] try { // try from 00e07868 to 00e0786b has its CatchHandler @ 00e083d4
+    ; [POST] } // end try from 00e07868 to 00e0786b
+00e0786c  mov x22,x0
+00e07870  mov x0,x21
+    ; [PRE] try { // try from 00e07870 to 00e0787f has its CatchHandler @ 00e083c8
+00e07874  mov x1,xzr
+00e07878  bl 0x00df3a24
+00e0787c  mov w1,w0
+    ; [POST] } // end try from 00e07870 to 00e0787f
+00e07880  cbz x22,0x00e08290
+00e07884  add x2,sp,#0x98
+    ; [PRE] try { // try from 00e07884 to 00e07893 has its CatchHandler @ 00e083d0
+00e07888  mov x0,x22
+00e0788c  mov x3,xzr
+00e07890  bl 0x00df4ffc
+    ; [POST] } // end try from 00e07884 to 00e07893
+00e07894  tbz w0,#0x0,0x00e07708
+00e07898  ldr x0,[x29]
+00e0789c  ldr w8,[x0, #0xe0]
+00e078a0  cbnz w8,0x00e078ac
+00e078a4  bl 0x00b0798c
+    ; [PRE] try { // try from 00e078a4 to 00e078a7 has its CatchHandler @ 00e083e0
+    ; [POST] } // end try from 00e078a4 to 00e078a7
+00e078a8  ldr x0,[x29]
+00e078ac  ldr x8,[x0, #0xb8]
+00e078b0  ldr x22,[x8, #0x10]
+00e078b4  mov x0,x21
+    ; [PRE] try { // try from 00e078b4 to 00e078bf has its CatchHandler @ 00e083b8
+00e078b8  mov x1,xzr
+00e078bc  bl 0x00df3a24
+    ; [POST] } // end try from 00e078b4 to 00e078bf
+00e078c0  adrp x8,0x335b000
+00e078c4  ldr x8,[x8, #0x650]
+00e078c8  mov w23,w0
+00e078cc  ldr x24,[x8]
+00e078d0  ldr x8,[x24, #0x38]
+00e078d4  ldr x0,[x8]
+00e078d8  ldrb w8,[x0, #0x132]
+00e078dc  tbnz w8,#0x0,0x00e078e4
+00e078e0  bl 0x00b2ac40
+    ; [PRE] try { // try from 00e078e0 to 00e07903 has its CatchHandler @ 00e083c0
+00e078e4  ldr w8,[x0, #0xe0]
+00e078e8  cbnz w8,0x00e078f0
+00e078ec  bl 0x00b0798c
+00e078f0  ldr x8,[x24, #0x38]
+00e078f4  ldr x0,[x8]
+00e078f8  ldrb w8,[x0, #0x132]
+00e078fc  tbnz w8,#0x0,0x00e07904
+00e07900  bl 0x00b2ac40
+    ; [POST] } // end try from 00e078e0 to 00e07903
+00e07904  cbz x22,0x00e08298
+00e07908  ldr x8,[x0, #0xb8]
+00e0790c  ldr x2,[x8]
+00e07910  mov x0,x22
+    ; [PRE] try { // try from 00e07910 to 00e0791b has its CatchHandler @ 00e083b0
+00e07914  mov w1,w23
+00e07918  bl 0x00e0581c
+    ; [POST] } // end try from 00e07910 to 00e0791b
+00e0791c  cbz x20,0x00e07708
+00e07920  mov x22,x0
+00e07924  cbz x0,0x00e07708
+00e07928  ldr x8,[sp, #0xd8]
+00e0792c  str x8,[sp, #0x90]
+00e07930  ldr x0,[x21, #0x80]
+00e07934  mov x1,xzr
+    ; [PRE] try { // try from 00e07934 to 00e0793b has its CatchHandler @ 00e083a8
+00e07938  bl 0x01fdf3a0
+    ; [POST] } // end try from 00e07934 to 00e0793b
+00e0793c  tbnz w0,#0x0,0x00e07970
+00e07940  adrp x8,0x336f000
+00e07944  ldr x8,[x8, #0xdc8]
+00e07948  ldr x23,[x21, #0x80]
+00e0794c  ldr x0,[x8]
+00e07950  ldr w8,[x0, #0xe0]
+00e07954  cbnz w8,0x00e0795c
+00e07958  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07958 to 00e0795b has its CatchHandler @ 00e08380
+    ; [POST] } // end try from 00e07958 to 00e0795b
+00e0795c  add x1,sp,#0x90
+    ; [PRE] try { // try from 00e0795c to 00e0796b has its CatchHandler @ 00e08398
+00e07960  mov x0,x23
+00e07964  mov x2,xzr
+00e07968  bl 0x02134d0c
+    ; [POST] } // end try from 00e0795c to 00e0796b
+00e0796c  tbz w0,#0x0,0x00e07e20
+00e07970  add x0,sp,#0x90
+    ; [PRE] try { // try from 00e07970 to 00e0797f has its CatchHandler @ 00e083a4
+00e07974  mov x1,xzr
+00e07978  bl 0x021349ac
+00e0797c  mov x1,x0
+    ; [POST] } // end try from 00e07970 to 00e0797f
+00e07980  adrp x8,0x337d000
+00e07984  ldr x8,[x8, #0xaf0]
+00e07988  ldr x0,[x8]
+00e0798c  mov x2,xzr
+    ; [PRE] try { // try from 00e0798c to 00e079bb has its CatchHandler @ 00e083ac
+00e07990  bl 0x01fd2850
+00e07994  adrp x8,0x336b000
+00e07998  ldr x8,[x8, #0x7d0]
+00e0799c  mov x23,x0
+00e079a0  ldr x0,[x8]
+00e079a4  ldr w8,[x0, #0xe0]
+00e079a8  cbnz w8,0x00e079b0
+00e079ac  bl 0x00b0798c
+00e079b0  mov x0,x23
+00e079b4  mov x1,xzr
+00e079b8  bl 0x024c0104
+    ; [POST] } // end try from 00e0798c to 00e079bb
+00e079bc  ldr w8,[x21, #0x88]
+00e079c0  cbz w8,0x00e07e08
+00e079c4  mov x0,xzr
+    ; [PRE] try { // try from 00e079c4 to 00e079cb has its CatchHandler @ 00e08394
+00e079c8  bl 0x00e36f24
+    ; [POST] } // end try from 00e079c4 to 00e079cb
+00e079cc  tbz w0,#0x0,0x00e07e70
+00e079d0  mov x0,x21
+    ; [PRE] try { // try from 00e079d0 to 00e079db has its CatchHandler @ 00e08388
+00e079d4  mov x1,xzr
+00e079d8  bl 0x00df34dc
+    ; [POST] } // end try from 00e079d0 to 00e079db
+00e079dc  cbnz w0,0x00e079f0
+00e079e0  ldr x0,[x21, #0x80]
+00e079e4  mov x1,xzr
+    ; [PRE] try { // try from 00e079e4 to 00e079eb has its CatchHandler @ 00e0836c
+00e079e8  bl 0x01fdf3a0
+    ; [POST] } // end try from 00e079e4 to 00e079eb
+00e079ec  tbz w0,#0x0,0x00e07fe4
+00e079f0  mov x0,x21
+    ; [PRE] try { // try from 00e079f0 to 00e079fb has its CatchHandler @ 00e08384
+00e079f4  mov x1,xzr
+00e079f8  bl 0x00df34dc
+    ; [POST] } // end try from 00e079f0 to 00e079fb
+00e079fc  cmp w0,#0x1
+00e07a00  b.ne 0x00e07a14
+00e07a04  ldr x0,[x21, #0x80]
+00e07a08  mov x1,xzr
+    ; [PRE] try { // try from 00e07a08 to 00e07a0f has its CatchHandler @ 00e08370
+00e07a0c  bl 0x01fdf3a0
+    ; [POST] } // end try from 00e07a08 to 00e07a0f
+00e07a10  tbz w0,#0x0,0x00e07e88
+00e07a14  mov x0,x21
+    ; [PRE] try { // try from 00e07a14 to 00e07a1f has its CatchHandler @ 00e0837c
+00e07a18  mov x1,xzr
+00e07a1c  bl 0x00df34dc
+    ; [POST] } // end try from 00e07a14 to 00e07a1f
+00e07a20  cmp w0,#0x3
+00e07a24  b.ne 0x00e07708
+00e07a28  ldr x0,[x21, #0x80]
+00e07a2c  mov x1,xzr
+    ; [PRE] try { // try from 00e07a2c to 00e07a33 has its CatchHandler @ 00e08360
+00e07a30  bl 0x01fdf3a0
+    ; [POST] } // end try from 00e07a2c to 00e07a33
+00e07a34  tbnz w0,#0x0,0x00e07708
+00e07a38  add x0,sp,#0x90
+    ; [PRE] try { // try from 00e07a38 to 00e07a43 has its CatchHandler @ 00e08308
+00e07a3c  mov x1,xzr
+00e07a40  bl 0x02133edc
+    ; [POST] } // end try from 00e07a38 to 00e07a43
+00e07a44  str x0,[sp, #0x70]
+00e07a48  add x0,sp,#0xd8
+    ; [PRE] try { // try from 00e07a48 to 00e07a53 has its CatchHandler @ 00e08314
+00e07a4c  mov x1,xzr
+00e07a50  bl 0x02133f94
+    ; [POST] } // end try from 00e07a48 to 00e07a53
+00e07a54  mov w23,w0
+00e07a58  add x0,sp,#0xd8
+    ; [PRE] try { // try from 00e07a58 to 00e07a63 has its CatchHandler @ 00e08324
+00e07a5c  mov x1,xzr
+00e07a60  bl 0x02133d40
+    ; [POST] } // end try from 00e07a58 to 00e07a63
+00e07a64  mov w24,w0
+00e07a68  add x0,sp,#0xd8
+    ; [PRE] try { // try from 00e07a68 to 00e07a73 has its CatchHandler @ 00e08310
+00e07a6c  mov x1,xzr
+00e07a70  bl 0x02133bd8
+    ; [POST] } // end try from 00e07a68 to 00e07a73
+00e07a74  mov w25,w0
+00e07a78  add x0,sp,#0x70
+    ; [PRE] try { // try from 00e07a78 to 00e07a83 has its CatchHandler @ 00e08318
+00e07a7c  mov x1,xzr
+00e07a80  bl 0x02167b30
+    ; [POST] } // end try from 00e07a78 to 00e07a83
+00e07a84  mov w26,w0
+00e07a88  add x0,sp,#0x70
+    ; [PRE] try { // try from 00e07a88 to 00e07a93 has its CatchHandler @ 00e0830c
+00e07a8c  mov x1,xzr
+00e07a90  bl 0x02167b78
+    ; [POST] } // end try from 00e07a88 to 00e07a93
+00e07a94  mov w27,w0
+00e07a98  add x0,sp,#0x70
+    ; [PRE] try { // try from 00e07a98 to 00e07ac7 has its CatchHandler @ 00e08364
+00e07a9c  mov x1,xzr
+00e07aa0  bl 0x02167bc0
+00e07aa4  mov w6,w0
+00e07aa8  add x0,sp,#0x68
+00e07aac  mov w1,w23
+00e07ab0  mov w2,w24
+00e07ab4  mov w3,w25
+00e07ab8  mov w4,w26
+00e07abc  mov w5,w27
+00e07ac0  mov x7,xzr
+00e07ac4  bl 0x02131f34
+    ; [POST] } // end try from 00e07a98 to 00e07ac7
+00e07ac8  ldr x0,[x21, #0x78]
+00e07acc  mov w1,#0x7c
+    ; [PRE] try { // try from 00e07acc to 00e07ad7 has its CatchHandler @ 00e08328
+00e07ad0  mov x2,xzr
+00e07ad4  bl 0x00df3da8
+    ; [POST] } // end try from 00e07acc to 00e07ad7
+00e07ad8  cbz x0,0x00e082b4
+00e07adc  adrp x8,0x3351000
+00e07ae0  ldr x8,[x8, #0x2e0]
+00e07ae4  ldr x1,[x8]
+00e07ae8  add x8,sp,#0x18
+    ; [PRE] try { // try from 00e07ae8 to 00e07aef has its CatchHandler @ 00e08320
+00e07aec  bl 0x01afe2cc
+    ; [POST] } // end try from 00e07ae8 to 00e07aef
+00e07af0  ldur q0,[sp, #0x18]
+00e07af4  ldr x8,[sp, #0x28]
+00e07af8  str q0,[sp, #0x50]
+00e07afc  str x8,[sp, #0x60]
+00e07b00  adrp x8,0x3322000
+00e07b04  ldr x8,[x8, #0x960]
+00e07b08  ldr x1,[x8]
+00e07b0c  add x0,sp,#0x50
+    ; [PRE] try { // try from 00e07b0c to 00e07b13 has its CatchHandler @ 00e081e0
+00e07b10  bl 0x01a04734
+    ; [POST] } // end try from 00e07b0c to 00e07b13
+00e07b14  tbz w0,#0x0,0x00e08030
+00e07b18  adrp x8,0x3369000
+00e07b1c  ldr x8,[x8, #0x3c0]
+00e07b20  ldr w23,[sp, #0x60]
+00e07b24  ldr x24,[sp, #0x68]
+00e07b28  ldr x0,[x8]
+00e07b2c  ldr w8,[x0, #0xe0]
+00e07b30  cbnz w8,0x00e07b38
+00e07b34  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07b34 to 00e07b37 has its CatchHandler @ 00e081b4
+    ; [POST] } // end try from 00e07b34 to 00e07b37
+00e07b38  mov x0,x24
+    ; [PRE] try { // try from 00e07b38 to 00e07b47 has its CatchHandler @ 00e081dc
+00e07b3c  mov w1,w23
+00e07b40  mov x2,xzr
+00e07b44  bl 0x01699e64
+    ; [POST] } // end try from 00e07b38 to 00e07b47
+00e07b48  adrp x8,0x336f000
+00e07b4c  ldr x8,[x8, #0xdc8]
+00e07b50  mov x24,x0
+00e07b54  str x24,[sp, #0x48]
+00e07b58  ldr x25,[sp, #0xd8]
+00e07b5c  ldr x0,[x8]
+00e07b60  ldr w8,[x0, #0xe0]
+00e07b64  cbnz w8,0x00e07b6c
+00e07b68  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07b68 to 00e07b6b has its CatchHandler @ 00e081b8
+    ; [POST] } // end try from 00e07b68 to 00e07b6b
+00e07b6c  mov x0,x24
+    ; [PRE] try { // try from 00e07b6c to 00e07b7b has its CatchHandler @ 00e081c8
+00e07b70  mov x1,x25
+00e07b74  mov x2,xzr
+00e07b78  bl 0x02135718
+    ; [POST] } // end try from 00e07b6c to 00e07b7b
+00e07b7c  tbz w0,#0x0,0x00e07bc0
+00e07b80  add x0,sp,#0x68
+    ; [PRE] try { // try from 00e07b80 to 00e07b8f has its CatchHandler @ 00e081c0
+00e07b84  mov v0.16B,v8.16B
+00e07b88  mov x1,xzr
+00e07b8c  bl 0x02132bdc
+    ; [POST] } // end try from 00e07b80 to 00e07b8f
+00e07b90  adrp x8,0x3369000
+00e07b94  ldr x8,[x8, #0x3c0]
+00e07b98  mov x24,x0
+00e07b9c  ldr x0,[x8]
+00e07ba0  ldr w8,[x0, #0xe0]
+00e07ba4  cbnz w8,0x00e07bac
+00e07ba8  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07ba8 to 00e07bab has its CatchHandler @ 00e081b0
+    ; [POST] } // end try from 00e07ba8 to 00e07bab
+00e07bac  mov x0,x24
+    ; [PRE] try { // try from 00e07bac to 00e07bbb has its CatchHandler @ 00e081bc
+00e07bb0  mov w1,w23
+00e07bb4  mov x2,xzr
+00e07bb8  bl 0x01699e64
+    ; [POST] } // end try from 00e07bac to 00e07bbb
+00e07bbc  str x0,[sp, #0x48]
+00e07bc0  add x0,sp,#0x48
+    ; [PRE] try { // try from 00e07bc0 to 00e07bcf has its CatchHandler @ 00e081d0
+00e07bc4  mov x1,xzr
+00e07bc8  bl 0x021349ac
+00e07bcc  mov x1,x0
+    ; [POST] } // end try from 00e07bc0 to 00e07bcf
+00e07bd0  adrp x8,0x3325000
+00e07bd4  ldr x8,[x8, #0xf78]
+00e07bd8  ldr x0,[x8]
+00e07bdc  mov x2,xzr
+    ; [PRE] try { // try from 00e07bdc to 00e07c23 has its CatchHandler @ 00e081f4
+00e07be0  bl 0x01fd2850
+00e07be4  adrp x8,0x336b000
+00e07be8  ldr x8,[x8, #0x7d0]
+00e07bec  mov x24,x0
+00e07bf0  ldr x0,[x8]
+00e07bf4  ldr w8,[x0, #0xe0]
+00e07bf8  cbnz w8,0x00e07c00
+00e07bfc  bl 0x00b0798c
+00e07c00  mov x0,x24
+00e07c04  mov x1,xzr
+00e07c08  bl 0x024c0104
+00e07c0c  adrp x8,0x3321000
+00e07c10  ldr x8,[x8, #0xf68]
+00e07c14  ldr x0,[x8]
+00e07c18  ldr w8,[x0, #0xe0]
+00e07c1c  cbnz w8,0x00e07c24
+00e07c20  bl 0x00b0798c
+    ; [POST] } // end try from 00e07bdc to 00e07c23
+00e07c24  mov v0.16B,v9.16B
+    ; [PRE] try { // try from 00e07c24 to 00e07c2f has its CatchHandler @ 00e081d8
+00e07c28  mov x0,xzr
+00e07c2c  bl 0x02167e08
+    ; [POST] } // end try from 00e07c24 to 00e07c2f
+00e07c30  str x0,[sp, #0x78]
+00e07c34  add x0,sp,#0x78
+    ; [PRE] try { // try from 00e07c34 to 00e07c3f has its CatchHandler @ 00e081d4
+00e07c38  mov x1,xzr
+00e07c3c  bl 0x02167c88
+    ; [POST] } // end try from 00e07c34 to 00e07c3f
+00e07c40  adrp x8,0x3370000
+00e07c44  ldr x8,[x8, #0x778]
+00e07c48  mov v10.16B,v0.16B
+00e07c4c  ldr x0,[x8]
+00e07c50  mov w1,#0x4
+    ; [PRE] try { // try from 00e07c50 to 00e07c57 has its CatchHandler @ 00e081cc
+00e07c54  bl 0x00b078f8
+    ; [POST] } // end try from 00e07c50 to 00e07c57
+00e07c58  mov x24,x0
+00e07c5c  mov x0,x21
+    ; [PRE] try { // try from 00e07c5c to 00e07c9f has its CatchHandler @ 00e081f0
+00e07c60  mov x1,xzr
+00e07c64  bl 0x00df3614
+00e07c68  cbz x24,0x00e08148
+00e07c6c  mov x25,x0
+00e07c70  cbz x0,0x00e07c88
+00e07c74  ldr x8,[x24]
+00e07c78  ldr x1,[x8, #0x40]
+00e07c7c  mov x0,x25
+00e07c80  bl 0x00b07990
+00e07c84  cbz x0,0x00e08170
+00e07c88  ldr w8,[x24, #0x18]
+00e07c8c  cbz w8,0x00e08150
+00e07c90  mov x0,x24
+00e07c94  str x25,[x0, #0x20]!
+00e07c98  mov x1,x25
+00e07c9c  bl 0x00b07850
+    ; [POST] } // end try from 00e07c5c to 00e07c9f
+00e07ca0  adrp x8,0x3332000
+00e07ca4  ldr x8,[x8, #0x38]
+00e07ca8  str w23,[sp, #0x14]
+00e07cac  ldr x0,[x8]
+00e07cb0  add x1,sp,#0x14
+    ; [PRE] try { // try from 00e07cb0 to 00e07cef has its CatchHandler @ 00e081ec
+00e07cb4  bl 0x00b07994
+00e07cb8  mov x25,x0
+00e07cbc  cbz x0,0x00e07cd4
+00e07cc0  ldr x8,[x24]
+00e07cc4  ldr x1,[x8, #0x40]
+00e07cc8  mov x0,x25
+00e07ccc  bl 0x00b07990
+00e07cd0  cbz x0,0x00e08160
+00e07cd4  ldr w8,[x24, #0x18]
+00e07cd8  cmp w8,#0x1
+00e07cdc  b.ls 0x00e08138
+00e07ce0  mov x0,x24
+00e07ce4  str x25,[x0, #0x28]!
+00e07ce8  mov x1,x25
+00e07cec  bl 0x00b07850
+    ; [POST] } // end try from 00e07cb0 to 00e07cef
+00e07cf0  adrp x9,0x336f000
+00e07cf4  ldr x8,[sp, #0x48]
+00e07cf8  ldr x9,[x9, #0xdc8]
+00e07cfc  str x8,[sp, #0x18]
+00e07d00  ldr x0,[x9]
+00e07d04  add x1,sp,#0x18
+    ; [PRE] try { // try from 00e07d04 to 00e07d43 has its CatchHandler @ 00e081e8
+00e07d08  bl 0x00b07994
+00e07d0c  mov x25,x0
+00e07d10  cbz x0,0x00e07d28
+00e07d14  ldr x8,[x24]
+00e07d18  ldr x1,[x8, #0x40]
+00e07d1c  mov x0,x25
+00e07d20  bl 0x00b07990
+00e07d24  cbz x0,0x00e08190
+00e07d28  ldr w8,[x24, #0x18]
+00e07d2c  cmp w8,#0x2
+00e07d30  b.ls 0x00e08158
+00e07d34  mov x0,x24
+00e07d38  str x25,[x0, #0x30]!
+00e07d3c  mov x1,x25
+00e07d40  bl 0x00b07850
+    ; [POST] } // end try from 00e07d04 to 00e07d43
+00e07d44  adrp x8,0x3310000
+00e07d48  ldr x8,[x8, #0x6f0]
+00e07d4c  str d10,[sp, #0x8]
+00e07d50  ldr x0,[x8]
+00e07d54  add x1,sp,#0x8
+    ; [PRE] try { // try from 00e07d54 to 00e07dab has its CatchHandler @ 00e081f8
+00e07d58  bl 0x00b07994
+00e07d5c  mov x25,x0
+00e07d60  cbz x0,0x00e07d78
+00e07d64  ldr x8,[x24]
+00e07d68  ldr x1,[x8, #0x40]
+00e07d6c  mov x0,x25
+00e07d70  bl 0x00b07990
+00e07d74  cbz x0,0x00e08180
+00e07d78  ldr w8,[x24, #0x18]
+00e07d7c  cmp w8,#0x3
+00e07d80  b.ls 0x00e08140
+00e07d84  mov x0,x24
+00e07d88  str x25,[x0, #0x38]!
+00e07d8c  mov x1,x25
+00e07d90  bl 0x00b07850
+00e07d94  adrp x8,0x3354000
+00e07d98  ldr x8,[x8, #0x8d0]
+00e07d9c  ldr x0,[x8]
+00e07da0  mov x1,x24
+00e07da4  mov x2,xzr
+00e07da8  bl 0x024c0324
+    ; [POST] } // end try from 00e07d54 to 00e07dab
+00e07dac  ldr w8,[sp, #0xac]
+00e07db0  mov w9,#0xa
+00e07db4  madd w8,w8,w9,w23
+00e07db8  str w8,[sp, #0x44]
+00e07dbc  add x0,sp,#0x44
+    ; [PRE] try { // try from 00e07dbc to 00e07dc7 has its CatchHandler @ 00e081c4
+00e07dc0  mov x1,xzr
+00e07dc4  bl 0x0214dc44
+    ; [POST] } // end try from 00e07dbc to 00e07dc7
+00e07dc8  mov x23,x0
+00e07dcc  ldr x0,[x29]
+00e07dd0  ldr x24,[sp, #0x48]
+00e07dd4  ldr w8,[x0, #0xe0]
+00e07dd8  cbnz w8,0x00e07de0
+00e07ddc  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07ddc to 00e07e03 has its CatchHandler @ 00e081e4
+00e07de0  adrp x8,0x3322000
+00e07de4  ldr x8,[x8, #0xef0]
+00e07de8  ldr x4,[x8]
+00e07dec  fmov d0,xzr
+00e07df0  mov x0,x23
+00e07df4  mov x1,x24
+00e07df8  mov x2,x20
+00e07dfc  mov x3,x22
+00e07e00  bl 0x00e08464
+    ; [POST] } // end try from 00e07ddc to 00e07e03
+00e07e04  b 0x00e07b00
+00e07e08  add x0,sp,#0xac
+    ; [PRE] try { // try from 00e07e08 to 00e07e1b has its CatchHandler @ 00e0839c
+00e07e0c  mov x1,xzr
+00e07e10  bl 0x0214dc44
+00e07e14  mov x1,xzr
+00e07e18  bl 0x01657360
+    ; [POST] } // end try from 00e07e08 to 00e07e1b
+00e07e1c  b 0x00e07708
+00e07e20  add x0,sp,#0xac
+    ; [PRE] try { // try from 00e07e20 to 00e07e2b has its CatchHandler @ 00e0838c
+00e07e24  mov x1,xzr
+00e07e28  bl 0x0214dc44
+    ; [POST] } // end try from 00e07e20 to 00e07e2b
+00e07e2c  adrp x8,0x3310000
+00e07e30  ldr x2,[x21, #0x80]
+00e07e34  ldr x8,[x8, #0x218]
+00e07e38  ldr x1,[x8]
+00e07e3c  mov x3,xzr
+    ; [PRE] try { // try from 00e07e3c to 00e07e6b has its CatchHandler @ 00e083a0
+00e07e40  bl 0x01fdebb8
+00e07e44  adrp x8,0x336b000
+00e07e48  ldr x8,[x8, #0x7d0]
+00e07e4c  mov x20,x0
+00e07e50  ldr x0,[x8]
+00e07e54  ldr w8,[x0, #0xe0]
+00e07e58  cbnz w8,0x00e07e60
+00e07e5c  bl 0x00b0798c
+00e07e60  mov x0,x20
+00e07e64  mov x1,xzr
+00e07e68  bl 0x024c0830
+    ; [POST] } // end try from 00e07e3c to 00e07e6b
+00e07e6c  b 0x00e07708
+00e07e70  add x0,sp,#0xac
+    ; [PRE] try { // try from 00e07e70 to 00e07e83 has its CatchHandler @ 00e08390
+00e07e74  mov x1,xzr
+00e07e78  bl 0x0214dc44
+00e07e7c  mov x1,xzr
+00e07e80  bl 0x01657360
+    ; [POST] } // end try from 00e07e70 to 00e07e83
+00e07e84  b 0x00e07708
+00e07e88  add x0,sp,#0x90
+    ; [PRE] try { // try from 00e07e88 to 00e07e93 has its CatchHandler @ 00e08348
+00e07e8c  mov x1,xzr
+00e07e90  bl 0x02133edc
+    ; [POST] } // end try from 00e07e88 to 00e07e93
+00e07e94  str x0,[sp, #0x88]
+00e07e98  add x0,sp,#0xd8
+    ; [PRE] try { // try from 00e07e98 to 00e07ea3 has its CatchHandler @ 00e08358
+00e07e9c  mov x1,xzr
+00e07ea0  bl 0x02133f94
+    ; [POST] } // end try from 00e07e98 to 00e07ea3
+00e07ea4  mov w21,w0
+00e07ea8  add x0,sp,#0xd8
+    ; [PRE] try { // try from 00e07ea8 to 00e07eb3 has its CatchHandler @ 00e08344
+00e07eac  mov x1,xzr
+00e07eb0  bl 0x02133d40
+    ; [POST] } // end try from 00e07ea8 to 00e07eb3
+00e07eb4  mov w23,w0
+00e07eb8  add x0,sp,#0xd8
+    ; [PRE] try { // try from 00e07eb8 to 00e07ec3 has its CatchHandler @ 00e0833c
+00e07ebc  mov x1,xzr
+00e07ec0  bl 0x02133bd8
+    ; [POST] } // end try from 00e07eb8 to 00e07ec3
+00e07ec4  mov w24,w0
+00e07ec8  add x0,sp,#0x88
+    ; [PRE] try { // try from 00e07ec8 to 00e07ed3 has its CatchHandler @ 00e08350
+00e07ecc  mov x1,xzr
+00e07ed0  bl 0x02167b30
+    ; [POST] } // end try from 00e07ec8 to 00e07ed3
+00e07ed4  mov w25,w0
+00e07ed8  add x0,sp,#0x88
+    ; [PRE] try { // try from 00e07ed8 to 00e07ee3 has its CatchHandler @ 00e0834c
+00e07edc  mov x1,xzr
+00e07ee0  bl 0x02167b78
+    ; [POST] } // end try from 00e07ed8 to 00e07ee3
+00e07ee4  mov w26,w0
+00e07ee8  add x0,sp,#0x88
+    ; [PRE] try { // try from 00e07ee8 to 00e07f2f has its CatchHandler @ 00e08374
+00e07eec  mov x1,xzr
+00e07ef0  bl 0x02167bc0
+00e07ef4  mov w6,w0
+00e07ef8  add x0,sp,#0x80
+00e07efc  mov w1,w21
+00e07f00  mov w2,w23
+00e07f04  mov w3,w24
+00e07f08  mov w4,w25
+00e07f0c  mov w5,w26
+00e07f10  mov x7,xzr
+00e07f14  bl 0x02131f34
+00e07f18  adrp x8,0x3321000
+00e07f1c  ldr x8,[x8, #0xf68]
+00e07f20  ldr x0,[x8]
+00e07f24  ldr w8,[x0, #0xe0]
+00e07f28  cbnz w8,0x00e07f30
+00e07f2c  bl 0x00b0798c
+    ; [POST] } // end try from 00e07ee8 to 00e07f2f
+00e07f30  mov v0.16B,v8.16B
+    ; [PRE] try { // try from 00e07f30 to 00e07f3b has its CatchHandler @ 00e08338
+00e07f34  mov x0,xzr
+00e07f38  bl 0x02167e08
+    ; [POST] } // end try from 00e07f30 to 00e07f3b
+00e07f3c  str x0,[sp, #0x78]
+00e07f40  add x0,sp,#0x78
+    ; [PRE] try { // try from 00e07f40 to 00e07f4b has its CatchHandler @ 00e08334
+00e07f44  mov x1,xzr
+00e07f48  bl 0x02167c88
+    ; [POST] } // end try from 00e07f40 to 00e07f4b
+00e07f4c  add x0,sp,#0x80
+    ; [PRE] try { // try from 00e07f4c to 00e07f5b has its CatchHandler @ 00e08354
+00e07f50  mov x1,xzr
+00e07f54  bl 0x021349ac
+00e07f58  mov x1,x0
+    ; [POST] } // end try from 00e07f4c to 00e07f5b
+00e07f5c  adrp x8,0x336c000
+00e07f60  ldr x8,[x8, #0xee8]
+00e07f64  ldr x0,[x8]
+00e07f68  mov x2,xzr
+    ; [PRE] try { // try from 00e07f68 to 00e07f97 has its CatchHandler @ 00e08378
+00e07f6c  bl 0x01fd2850
+00e07f70  adrp x8,0x336b000
+00e07f74  ldr x8,[x8, #0x7d0]
+00e07f78  mov x21,x0
+00e07f7c  ldr x0,[x8]
+00e07f80  ldr w8,[x0, #0xe0]
+00e07f84  cbnz w8,0x00e07f8c
+00e07f88  bl 0x00b0798c
+00e07f8c  mov x0,x21
+00e07f90  mov x1,xzr
+00e07f94  bl 0x024c0104
+    ; [POST] } // end try from 00e07f68 to 00e07f97
+00e07f98  add x0,sp,#0xac
+    ; [PRE] try { // try from 00e07f98 to 00e07fa3 has its CatchHandler @ 00e08340
+00e07f9c  mov x1,xzr
+00e07fa0  bl 0x0214dc44
+    ; [POST] } // end try from 00e07f98 to 00e07fa3
+00e07fa4  mov x21,x0
+00e07fa8  ldr x0,[x29]
+00e07fac  ldr x23,[sp, #0x80]
+00e07fb0  ldr w8,[x0, #0xe0]
+00e07fb4  cbnz w8,0x00e07fbc
+00e07fb8  bl 0x00b0798c
+    ; [PRE] try { // try from 00e07fb8 to 00e07fdf has its CatchHandler @ 00e0835c
+00e07fbc  adrp x8,0x3322000
+00e07fc0  ldr x8,[x8, #0xef0]
+00e07fc4  ldr x4,[x8]
+00e07fc8  fmov d0,xzr
+00e07fcc  mov x0,x21
+00e07fd0  mov x1,x23
+00e07fd4  mov x2,x20
+00e07fd8  mov x3,x22
+00e07fdc  bl 0x00e08464
+    ; [POST] } // end try from 00e07fb8 to 00e07fdf
+00e07fe0  b 0x00e07708
+00e07fe4  adrp x8,0x336f000
+00e07fe8  ldr x8,[x8, #0xdc8]
+00e07fec  ldr x21,[sp, #0x90]
+00e07ff0  ldr x23,[sp, #0xd8]
+00e07ff4  ldr x0,[x8]
+00e07ff8  ldr w8,[x0, #0xe0]
+00e07ffc  cbnz w8,0x00e08004
+00e08000  bl 0x00b0798c
+    ; [PRE] try { // try from 00e08000 to 00e08003 has its CatchHandler @ 00e082f8
+    ; [POST] } // end try from 00e08000 to 00e08003
+00e08004  mov x0,x21
+    ; [PRE] try { // try from 00e08004 to 00e08013 has its CatchHandler @ 00e0832c
+00e08008  mov x1,x23
+00e0800c  mov x2,xzr
+00e08010  bl 0x02135718
+    ; [POST] } // end try from 00e08004 to 00e08013
+00e08014  tbz w0,#0x0,0x00e08050
+00e08018  add x0,sp,#0xac
+    ; [PRE] try { // try from 00e08018 to 00e0802b has its CatchHandler @ 00e08330
+00e0801c  mov x1,xzr
+00e08020  bl 0x0214dc44
+00e08024  mov x1,xzr
+00e08028  bl 0x01657360
+    ; [POST] } // end try from 00e08018 to 00e0802b
+00e0802c  b 0x00e07708
+00e08030  mov x22,xzr
+00e08034  adrp x8,0x331a000
+00e08038  ldr x8,[x8, #0xac0]
+00e0803c  ldr x1,[x8]
+00e08040  add x0,sp,#0x50
+    ; [PRE] try { // try from 00e08040 to 00e08047 has its CatchHandler @ 00e0831c
+00e08044  bl 0x01a04730
+    ; [POST] } // end try from 00e08040 to 00e08047
+00e08048  cbz x22,0x00e07708
+00e0804c  b 0x00e082ac
+00e08050  adrp x8,0x3370000
+00e08054  ldr x8,[x8, #0x778]
+00e08058  ldr x0,[x8]
+00e0805c  mov w1,#0x1
+    ; [PRE] try { // try from 00e0805c to 00e08063 has its CatchHandler @ 00e082fc
+00e08060  bl 0x00b078f8
+    ; [POST] } // end try from 00e0805c to 00e08063
+00e08064  adrp x9,0x336f000
+00e08068  ldr x8,[sp, #0x90]
+00e0806c  ldr x9,[x9, #0xdc8]
+00e08070  mov x21,x0
+00e08074  str x8,[sp, #0x18]
+00e08078  ldr x0,[x9]
+00e0807c  add x1,sp,#0x18
+    ; [PRE] try { // try from 00e0807c to 00e080eb has its CatchHandler @ 00e08368
+00e08080  bl 0x00b07994
+00e08084  cbz x21,0x00e082a8
+00e08088  mov x23,x0
+00e0808c  cbz x0,0x00e080a4
+00e08090  ldr x8,[x21]
+00e08094  ldr x1,[x8, #0x40]
+00e08098  mov x0,x23
+00e0809c  bl 0x00b07990
+00e080a0  cbz x0,0x00e0829c
+00e080a4  ldr w8,[x21, #0x18]
+00e080a8  cbz w8,0x00e082b8
+00e080ac  mov x0,x21
+00e080b0  str x23,[x0, #0x20]!
+00e080b4  mov x1,x23
+00e080b8  bl 0x00b07850
+00e080bc  adrp x8,0x336b000
+00e080c0  ldr x8,[x8, #0x7d0]
+00e080c4  ldr x0,[x8]
+00e080c8  ldr w8,[x0, #0xe0]
+00e080cc  cbnz w8,0x00e080d4
+00e080d0  bl 0x00b0798c
+00e080d4  adrp x8,0x331f000
+00e080d8  ldr x8,[x8, #0xa40]
+00e080dc  ldr x0,[x8]
+00e080e0  mov x1,x21
+00e080e4  mov x2,xzr
+00e080e8  bl 0x024c0324
+    ; [POST] } // end try from 00e0807c to 00e080eb
+00e080ec  add x0,sp,#0xac
+    ; [PRE] try { // try from 00e080ec to 00e080f7 has its CatchHandler @ 00e08300
+00e080f0  mov x1,xzr
+00e080f4  bl 0x0214dc44
+    ; [POST] } // end try from 00e080ec to 00e080f7
+00e080f8  mov x21,x0
+00e080fc  ldr x0,[x29]
+00e08100  ldr x23,[sp, #0x90]
+00e08104  ldr w8,[x0, #0xe0]
+00e08108  cbnz w8,0x00e08110
+00e0810c  bl 0x00b0798c
+    ; [PRE] try { // try from 00e0810c to 00e08133 has its CatchHandler @ 00e08304
+00e08110  adrp x8,0x3322000
+00e08114  ldr x8,[x8, #0xef0]
+00e08118  ldr x4,[x8]
+00e0811c  fmov d0,xzr
+00e08120  mov x0,x21
+00e08124  mov x1,x23
+00e08128  mov x2,x20
+00e0812c  mov x3,x22
+00e08130  bl 0x00e08464
+    ; [POST] } // end try from 00e0810c to 00e08133
+00e08134  b 0x00e07708
+00e08138  bl 0x00b079b8
+    ; [PRE] try { // try from 00e08138 to 00e0813b has its CatchHandler @ 00e081a8
+    ; [POST] } // end try from 00e08138 to 00e0813b
+00e08140  bl 0x00b079b8
+    ; [PRE] try { // try from 00e08140 to 00e08143 has its CatchHandler @ 00e081a4
+    ; [POST] } // end try from 00e08140 to 00e08143
+00e08148  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08148 to 00e08153 has its CatchHandler @ 00e081ac
+00e08150  bl 0x00b079b8
+    ; [POST] } // end try from 00e08148 to 00e08153
+00e08158  bl 0x00b079b8
+    ; [PRE] try { // try from 00e08158 to 00e0815b has its CatchHandler @ 00e081a0
+    ; [POST] } // end try from 00e08158 to 00e0815b
+00e08160  bl 0x00b079d4
+    ; [PRE] try { // try from 00e08160 to 00e0816b has its CatchHandler @ 00e081a8
+00e08164  mov x1,xzr
+00e08168  bl 0x00b07978
+    ; [POST] } // end try from 00e08160 to 00e0816b
+00e08170  bl 0x00b079d4
+    ; [PRE] try { // try from 00e08170 to 00e0817b has its CatchHandler @ 00e081ac
+00e08174  mov x1,xzr
+00e08178  bl 0x00b07978
+    ; [POST] } // end try from 00e08170 to 00e0817b
+00e08180  bl 0x00b079d4
+    ; [PRE] try { // try from 00e08180 to 00e0818b has its CatchHandler @ 00e081a4
+00e08184  mov x1,xzr
+00e08188  bl 0x00b07978
+    ; [POST] } // end try from 00e08180 to 00e0818b
+00e08190  bl 0x00b079d4
+    ; [PRE] try { // try from 00e08190 to 00e0819b has its CatchHandler @ 00e081a0
+00e08194  mov x1,xzr
+00e08198  bl 0x00b07978
+    ; [POST] } // end try from 00e08190 to 00e0819b
+00e0821c  adrp x8,0x3360000
+00e08220  ldr x8,[x8, #0xf48]
+00e08224  add x0,sp,#0xb0
+00e08228  ldr x1,[x8]
+00e0822c  bl 0x01a40af0
+00e08230  ldp x29,x30,[sp, #0x150]
+00e08234  ldp x20,x19,[sp, #0x140]
+00e08238  ldp x22,x21,[sp, #0x130]
+00e0823c  ldp x24,x23,[sp, #0x120]
+00e08240  ldp x26,x25,[sp, #0x110]
+00e08244  ldp x28,x27,[sp, #0x100]
+00e08248  ldp d9,d8,[sp, #0xf0]
+00e0824c  ldr d10,[sp, #0xe0]
+00e08250  add sp,sp,#0x160
+00e08254  ret
+00e0827c  bl 0x00b079b0
+    ; [PRE] try { // try from 00e0827c to 00e0827f has its CatchHandler @ 00e082e8
+    ; [POST] } // end try from 00e0827c to 00e0827f
+00e08280  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08280 to 00e08283 has its CatchHandler @ 00e082e4
+    ; [POST] } // end try from 00e08280 to 00e08283
+00e08284  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08284 to 00e08287 has its CatchHandler @ 00e082e0
+    ; [POST] } // end try from 00e08284 to 00e08287
+00e08288  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08288 to 00e0828b has its CatchHandler @ 00e082dc
+    ; [POST] } // end try from 00e08288 to 00e0828b
+00e0828c  bl 0x00b079b0
+    ; [PRE] try { // try from 00e0828c to 00e0828f has its CatchHandler @ 00e082d8
+    ; [POST] } // end try from 00e0828c to 00e0828f
+00e08290  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08290 to 00e08293 has its CatchHandler @ 00e082d4
+    ; [POST] } // end try from 00e08290 to 00e08293
+00e08294  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08294 to 00e08297 has its CatchHandler @ 00e082d0
+    ; [POST] } // end try from 00e08294 to 00e08297
+00e08298  bl 0x00b079b0
+    ; [PRE] try { // try from 00e08298 to 00e0829b has its CatchHandler @ 00e082cc
+    ; [POST] } // end try from 00e08298 to 00e0829b
+00e0829c  bl 0x00b079d4
+    ; [PRE] try { // try from 00e0829c to 00e082ab has its CatchHandler @ 00e082c8
+00e082a0  mov x1,xzr
+00e082a4  bl 0x00b07978
+00e082a8  bl 0x00b079b0
+    ; [POST] } // end try from 00e0829c to 00e082ab
+00e082ac  mov x0,x22
+    ; [PRE] try { // try from 00e082ac to 00e082b3 has its CatchHandler @ 00e082c4
+00e082b0  bl 0x00aaac8c
+    ; [POST] } // end try from 00e082ac to 00e082b3
+00e082b4  bl 0x00b079b0
+    ; [PRE] try { // try from 00e082b4 to 00e082b7 has its CatchHandler @ 00e082c0
+    ; [POST] } // end try from 00e082b4 to 00e082b7
+00e082b8  bl 0x00b079b8
+    ; [PRE] try { // try from 00e082b8 to 00e082bb has its CatchHandler @ 00e082c8
+    ; [POST] } // end try from 00e082b8 to 00e082bb
+00e082bc  bl 0x00b079b0

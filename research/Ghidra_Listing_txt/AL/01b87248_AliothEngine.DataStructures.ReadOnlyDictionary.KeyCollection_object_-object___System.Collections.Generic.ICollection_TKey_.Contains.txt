@@ -1,0 +1,53 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.KeyCollection<object,-object>$$System.Collections.Generic.ICollection<TKey>.Contains @ 01b87248
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00994720 @ 00994720
+
+--- Listing ---
+01b87248  str x20,[sp, #-0x20]!
+01b8724c  stp x19,x30,[sp, #0x10]
+01b87250  ldr x20,[x0]
+01b87254  cbz x20,0x01b872ec
+01b87258  ldr x0,[x2, #0x20]
+01b8725c  mov x19,x1
+01b87260  ldrb w8,[x0, #0x132]
+01b87264  tbnz w8,#0x0,0x01b8726c
+01b87268  bl 0x00b2ac40
+01b8726c  ldr x8,[x0, #0xc0]
+01b87270  ldr x1,[x8]
+01b87274  ldrb w8,[x1, #0x132]
+01b87278  tbnz w8,#0x0,0x01b87288
+01b8727c  mov x0,x1
+01b87280  bl 0x00b2ac40
+01b87284  mov x1,x0
+01b87288  ldr x8,[x20]
+01b8728c  ldrh w9,[x8, #0x12a]
+01b87290  cbz x9,0x01b872b4
+01b87294  ldr x10,[x8, #0xb0]
+01b87298  add x10,x10,#0x8
+01b8729c  ldur x11,[x10, #-0x8]
+01b872a0  cmp x11,x1
+01b872a4  b.eq 0x01b872c4
+01b872a8  subs x9,x9,#0x1
+01b872ac  add x10,x10,#0x10
+01b872b0  b.ne 0x01b8729c
+01b872b4  mov w2,#0x4
+01b872b8  mov x0,x20
+01b872bc  bl 0x00b2ae24
+01b872c0  b 0x01b872d4
+01b872c4  ldr w9,[x10]
+01b872c8  add w9,w9,#0x4
+01b872cc  add x8,x8,w9, SXTW  #0x4
+01b872d0  add x0,x8,#0x138
+01b872d4  ldp x3,x2,[x0]
+01b872d8  mov x1,x19
+01b872dc  ldp x19,x30,[sp, #0x10]
+01b872e0  mov x0,x20
+01b872e4  ldr x20,[sp], #0x20
+01b872e8  br x3
+01b872ec  bl 0x00b079b0

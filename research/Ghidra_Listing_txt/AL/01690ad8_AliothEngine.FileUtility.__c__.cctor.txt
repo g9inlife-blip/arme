@@ -1,0 +1,40 @@
+Function: AliothEngine.FileUtility.<>c$$.cctor @ 01690ad8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01690ad8  str x20,[sp, #-0x20]!
+01690adc  stp x19,x30,[sp, #0x10]
+01690ae0  adrp x19,0x3577000
+01690ae4  adrp x20,0x3379000
+01690ae8  ldrb w8,[x19, #0xad9]
+01690aec  ldr x20,[x20, #0x820]
+01690af0  tbnz w8,#0x0,0x01690b08
+01690af4  adrp x0,0x3379000
+01690af8  ldr x0,[x0, #0x820]
+01690afc  bl 0x00b0789c
+01690b00  mov w8,#0x1
+01690b04  strb w8,[x19, #0xad9]
+01690b08  ldr x0,[x20]
+01690b0c  bl 0x00b079a0
+01690b10  cbz x0,0x01690b44
+01690b14  mov x1,xzr
+01690b18  mov x19,x0
+01690b1c  bl 0x02194104
+01690b20  ldr x8,[x20]
+01690b24  mov x1,x19
+01690b28  ldr x8,[x8, #0xb8]
+01690b2c  str x19,[x8]
+01690b30  ldr x8,[x20]
+01690b34  ldp x19,x30,[sp, #0x10]
+01690b38  ldr x0,[x8, #0xb8]
+01690b3c  ldr x20,[sp], #0x20
+01690b40  b 0x00b07850
+01690b44  bl 0x00b079b0

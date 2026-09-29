@@ -1,0 +1,67 @@
+Function: ResManager$$Start @ 00e2a070
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$get_AliothKing @ 00e015e4
+  -> UnityEngine.Object$$DontDestroyOnLoad @ 024e00c4
+
+--- Calls IN ---
+
+--- Listing ---
+00e2a070  stp x21,x20,[sp, #-0x20]!
+00e2a074  stp x19,x30,[sp, #0x10]
+00e2a078  adrp x20,0x3572000
+00e2a07c  adrp x21,0x337e000
+00e2a080  ldrb w8,[x20, #0x71e]
+00e2a084  ldr x21,[x21, #0x4c8]
+00e2a088  mov x19,x0
+00e2a08c  tbnz w8,#0x0,0x00e2a0bc
+00e2a090  adrp x0,0x335f000
+00e2a094  ldr x0,[x0, #0x20]
+00e2a098  bl 0x00b0789c
+00e2a09c  adrp x0,0x3321000
+00e2a0a0  ldr x0,[x0, #0xca8]
+00e2a0a4  bl 0x00b0789c
+00e2a0a8  adrp x0,0x337e000
+00e2a0ac  ldr x0,[x0, #0x4c8]
+00e2a0b0  bl 0x00b0789c
+00e2a0b4  mov w8,#0x1
+00e2a0b8  strb w8,[x20, #0x71e]
+00e2a0bc  ldr x8,[x21]
+00e2a0c0  ldr x8,[x8, #0xb8]
+00e2a0c4  ldr x0,[x8, #0x10]
+00e2a0c8  cbz x0,0x00e2a0e0
+00e2a0cc  mov x1,x19
+00e2a0d0  ldp x19,x30,[sp, #0x10]
+00e2a0d4  mov x2,xzr
+00e2a0d8  ldp x21,x20,[sp], #0x20
+00e2a0dc  b 0x01060dac
+00e2a0e0  adrp x19,0x335f000
+00e2a0e4  ldr x19,[x19, #0x20]
+00e2a0e8  ldr x0,[x19]
+00e2a0ec  ldr w8,[x0, #0xe0]
+00e2a0f0  cbnz w8,0x00e2a0fc
+00e2a0f4  bl 0x00b0798c
+00e2a0f8  ldr x0,[x19]
+00e2a0fc  ldr x8,[x0, #0xb8]
+00e2a100  ldr x0,[x8, #0x10]
+00e2a104  cbz x0,0x00e2a144
+00e2a108  adrp x19,0x3321000
+00e2a10c  ldr x19,[x19, #0xca8]
+00e2a110  mov x1,xzr
+00e2a114  bl 0x00e015e4
+00e2a118  ldr x8,[x19]
+00e2a11c  mov x19,x0
+00e2a120  ldr w9,[x8, #0xe0]
+00e2a124  cbnz w9,0x00e2a130
+00e2a128  mov x0,x8
+00e2a12c  bl 0x00b0798c
+00e2a130  mov x0,x19
+00e2a134  ldp x19,x30,[sp, #0x10]
+00e2a138  mov x1,xzr
+00e2a13c  ldp x21,x20,[sp], #0x20
+00e2a140  b 0x024e00c4
+00e2a144  bl 0x00b079b0

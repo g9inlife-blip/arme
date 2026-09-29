@@ -1,0 +1,22 @@
+Function: AliothEngine.Samples.GUIScreen_GeneralAlert$$OK @ 016a6ee8
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreenManagerShow$$CloseScreen @ 0167c53c
+
+--- Calls IN ---
+
+--- Listing ---
+016a6ee8  stp x19,x30,[sp, #-0x10]!
+016a6eec  mov w1,wzr
+016a6ef0  mov x2,xzr
+016a6ef4  mov x19,x0
+016a6ef8  bl 0x0167c53c
+016a6efc  ldr x8,[x19, #0xa0]
+016a6f00  cbz x8,0x016a6f18
+016a6f04  ldr x2,[x8, #0x18]
+016a6f08  ldr x0,[x8, #0x40]
+016a6f0c  ldr x1,[x8, #0x28]
+016a6f10  ldp x19,x30,[sp], #0x10
+016a6f14  br x2
+016a6f18  ldp x19,x30,[sp], #0x10
+016a6f1c  ret

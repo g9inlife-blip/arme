@@ -1,0 +1,35 @@
+Function: RewardPanelMono$$get_LayerType @ 0100ea68
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp491 @ 0109f3ac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0100ea68  stp x21,x20,[sp, #-0x20]!
+0100ea6c  stp x19,x30,[sp, #0x10]
+0100ea70  adrp x20,0x3574000
+0100ea74  adrp x21,0x3359000
+0100ea78  ldrb w8,[x20, #0x45d]
+0100ea7c  ldr x21,[x21, #0xdc0]
+0100ea80  mov x19,x0
+0100ea84  tbnz w8,#0x0,0x0100ea9c
+0100ea88  adrp x0,0x3359000
+0100ea8c  ldr x0,[x0, #0xdc0]
+0100ea90  bl 0x00b0789c
+0100ea94  mov w8,#0x1
+0100ea98  strb w8,[x20, #0x45d]
+0100ea9c  ldr x8,[x21]
+0100eaa0  ldr x8,[x8, #0xb8]
+0100eaa4  ldr x0,[x8, #0x30]
+0100eaa8  cbz x0,0x0100eac0
+0100eaac  mov x1,x19
+0100eab0  ldp x19,x30,[sp, #0x10]
+0100eab4  mov x2,xzr
+0100eab8  ldp x21,x20,[sp], #0x20
+0100eabc  b 0x0109f3ac
+0100eac0  ldp x19,x30,[sp, #0x10]
+0100eac4  mov w0,#0x6
+0100eac8  ldp x21,x20,[sp], #0x20
+0100eacc  ret

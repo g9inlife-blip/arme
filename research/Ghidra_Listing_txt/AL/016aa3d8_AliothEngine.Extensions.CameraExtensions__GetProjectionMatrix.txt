@@ -1,0 +1,22 @@
+Function: AliothEngine.Extensions.CameraExtensions$$GetProjectionMatrix @ 016aa3d8
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.CameraExtensions$$GetProjectionMatrix @ 016aa410
+
+--- Calls IN ---
+
+--- Listing ---
+016aa3d8  sub sp,sp,#0x50
+016aa3dc  stp x19,x30,[sp, #0x40]
+016aa3e0  mov x19,x8
+016aa3e4  mov x8,sp
+016aa3e8  fmov s0,wzr
+016aa3ec  fmov s1,wzr
+016aa3f0  bl 0x016aa410
+016aa3f4  ldp q1,q0,[sp, #0x20]
+016aa3f8  ldp q3,q2,[sp]
+016aa3fc  stp q1,q0,[x19, #0x20]
+016aa400  stp q3,q2,[x19]
+016aa404  ldp x19,x30,[sp, #0x40]
+016aa408  add sp,sp,#0x50
+016aa40c  ret

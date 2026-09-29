@@ -1,0 +1,36 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate<object> @ 017a8060
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+017a8060  str x22,[sp, #-0x30]!
+017a8064  stp x21,x20,[sp, #0x10]
+017a8068  stp x19,x30,[sp, #0x20]
+017a806c  adrp x21,0x3578000
+017a8070  adrp x22,0x3321000
+017a8074  ldrb w8,[x21, #0x19d]
+017a8078  ldr x22,[x22, #0xca8]
+017a807c  mov x20,x1
+017a8080  mov x19,x0
+017a8084  tbnz w8,#0x0,0x017a809c
+017a8088  adrp x0,0x3321000
+017a808c  ldr x0,[x0, #0xca8]
+017a8090  bl 0x00b0789c
+017a8094  mov w8,#0x1
+017a8098  strb w8,[x21, #0x19d]
+017a809c  ldr x0,[x22]
+017a80a0  ldr w8,[x0, #0xe0]
+017a80a4  cbnz w8,0x017a80ac
+017a80a8  bl 0x00b0798c
+017a80ac  ldr x8,[x20, #0x38]
+017a80b0  mov x0,x19
+017a80b4  ldp x19,x30,[sp, #0x20]
+017a80b8  ldp x21,x20,[sp, #0x10]
+017a80bc  ldr x1,[x8]
+017a80c0  ldr x2,[x1, #0x8]
+017a80c4  ldr x22,[sp], #0x30
+017a80c8  br x2

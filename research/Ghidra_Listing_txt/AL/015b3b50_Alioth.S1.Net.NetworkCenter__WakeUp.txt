@@ -1,0 +1,36 @@
+Function: Alioth.S1.Net.NetworkCenter$$WakeUp @ 015b3b50
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1NetNetworkCenterWrap$$_m_WakeUp @ 011706cc
+  <- CSBehaviour$$<ShowTimeoutTips>b__27_0 @ 016ddbd8
+
+--- Listing ---
+015b3b50  stp x21,x20,[sp, #-0x20]!
+015b3b54  stp x19,x30,[sp, #0x10]
+015b3b58  adrp x20,0x3577000
+015b3b5c  adrp x21,0x330b000
+015b3b60  ldrb w8,[x20, #0xb4]
+015b3b64  ldr x21,[x21, #0x520]
+015b3b68  mov x19,x0
+015b3b6c  tbnz w8,#0x0,0x015b3b84
+015b3b70  adrp x0,0x330b000
+015b3b74  ldr x0,[x0, #0x520]
+015b3b78  bl 0x00b0789c
+015b3b7c  mov w8,#0x1
+015b3b80  strb w8,[x20, #0xb4]
+015b3b84  ldr x8,[x21]
+015b3b88  ldr x8,[x8, #0xb8]
+015b3b8c  ldr x0,[x8, #0x60]
+015b3b90  cbz x0,0x015b3ba8
+015b3b94  mov x1,x19
+015b3b98  ldp x19,x30,[sp, #0x10]
+015b3b9c  mov x2,xzr
+015b3ba0  ldp x21,x20,[sp], #0x20
+015b3ba4  b 0x01060dac
+015b3ba8  ldp x19,x30,[sp, #0x10]
+015b3bac  ldp x21,x20,[sp], #0x20
+015b3bb0  ret

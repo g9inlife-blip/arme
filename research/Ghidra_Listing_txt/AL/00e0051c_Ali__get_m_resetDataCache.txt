@@ -1,0 +1,42 @@
+Function: Ali$$get_m_resetDataCache @ 00e0051c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_resetDataCache @ 0119dc5c
+  <- Ali$$Init @ 00e019f8
+
+--- Listing ---
+00e0051c  stp x21,x20,[sp, #-0x20]!
+00e00520  stp x19,x30,[sp, #0x10]
+00e00524  adrp x21,0x3572000
+00e00528  adrp x20,0x335f000
+00e0052c  ldrb w8,[x21, #0x51a]
+00e00530  ldr x20,[x20, #0x20]
+00e00534  mov x19,x0
+00e00538  tbnz w8,#0x0,0x00e00550
+00e0053c  adrp x0,0x335f000
+00e00540  ldr x0,[x0, #0x20]
+00e00544  bl 0x00b0789c
+00e00548  mov w8,#0x1
+00e0054c  strb w8,[x21, #0x51a]
+00e00550  ldr x0,[x20]
+00e00554  ldr w8,[x0, #0xe0]
+00e00558  cbnz w8,0x00e00564
+00e0055c  bl 0x00b0798c
+00e00560  ldr x0,[x20]
+00e00564  ldr x8,[x0, #0xb8]
+00e00568  ldr x0,[x8, #0x68]
+00e0056c  cbz x0,0x00e00584
+00e00570  mov x1,x19
+00e00574  ldp x19,x30,[sp, #0x10]
+00e00578  mov x2,xzr
+00e0057c  ldp x21,x20,[sp], #0x20
+00e00580  b 0x01060aac
+00e00584  ldrb w0,[x19, #0x20]
+00e00588  ldp x19,x30,[sp, #0x10]
+00e0058c  ldp x21,x20,[sp], #0x20
+00e00590  ret

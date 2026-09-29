@@ -1,0 +1,126 @@
+Function: AliothExtensions$$CanvasSort @ 00e16100
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Canvas$$set_sortingOrder @ 026d0c18
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+  -> UnityEngine.Canvas$$set_overrideSorting @ 026d0b98
+  -> UnityEngine.GameObject$$AddComponent<object> @ 01794da8
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> UnityEngine.GameObject$$GetComponent<object> @ 01794e94
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.UnityEngineGameObjectWrap$$_m_CanvasSort @ 01477530
+  <- HomePanelMono$$onGUILayerTypeChanged @ 00f6bd30
+
+--- Listing ---
+00e16100  stp x23,x22,[sp, #-0x30]!
+00e16104  stp x21,x20,[sp, #0x10]
+00e16108  stp x19,x30,[sp, #0x20]
+00e1610c  adrp x22,0x3572000
+00e16110  adrp x21,0x3348000
+00e16114  ldrb w8,[x22, #0x5fe]
+00e16118  ldr x21,[x21, #0x138]
+00e1611c  mov w20,w1
+00e16120  mov x19,x0
+00e16124  tbnz w8,#0x0,0x00e16178
+00e16128  adrp x0,0x3348000
+00e1612c  ldr x0,[x0, #0x138]
+00e16130  bl 0x00b0789c
+00e16134  adrp x0,0x3342000
+00e16138  ldr x0,[x0, #0xdd8]
+00e1613c  bl 0x00b0789c
+00e16140  adrp x0,0x331f000
+00e16144  ldr x0,[x0, #0x38]
+00e16148  bl 0x00b0789c
+00e1614c  adrp x0,0x335a000
+00e16150  ldr x0,[x0, #0x9e8]
+00e16154  bl 0x00b0789c
+00e16158  adrp x0,0x336f000
+00e1615c  ldr x0,[x0, #0xc78]
+00e16160  bl 0x00b0789c
+00e16164  adrp x0,0x3321000
+00e16168  ldr x0,[x0, #0xca8]
+00e1616c  bl 0x00b0789c
+00e16170  mov w8,#0x1
+00e16174  strb w8,[x22, #0x5fe]
+00e16178  ldr x0,[x21]
+00e1617c  ldr w8,[x0, #0xe0]
+00e16180  cbnz w8,0x00e1618c
+00e16184  bl 0x00b0798c
+00e16188  ldr x0,[x21]
+00e1618c  ldr x8,[x0, #0xb8]
+00e16190  ldr x0,[x8, #0x150]
+00e16194  cbz x0,0x00e161b4
+00e16198  mov x1,x19
+00e1619c  mov w2,w20
+00e161a0  ldp x19,x30,[sp, #0x20]
+00e161a4  ldp x21,x20,[sp, #0x10]
+00e161a8  mov x3,xzr
+00e161ac  ldp x23,x22,[sp], #0x30
+00e161b0  b 0x0106155c
+00e161b4  cbz x19,0x00e162ac
+00e161b8  adrp x8,0x335a000
+00e161bc  ldr x8,[x8, #0x9e8]
+00e161c0  adrp x22,0x3321000
+00e161c4  mov x0,x19
+00e161c8  ldr x1,[x8]
+00e161cc  ldr x22,[x22, #0xca8]
+00e161d0  bl 0x01794e94
+00e161d4  ldr x8,[x22]
+00e161d8  mov x21,x0
+00e161dc  ldr w9,[x8, #0xe0]
+00e161e0  cbnz w9,0x00e161ec
+00e161e4  mov x0,x8
+00e161e8  bl 0x00b0798c
+00e161ec  mov x0,x21
+00e161f0  mov x1,xzr
+00e161f4  mov x2,xzr
+00e161f8  bl 0x024c8180
+00e161fc  tbz w0,#0x0,0x00e16218
+00e16200  adrp x8,0x3342000
+00e16204  ldr x8,[x8, #0xdd8]
+00e16208  mov x0,x19
+00e1620c  ldr x1,[x8]
+00e16210  bl 0x01794da8
+00e16214  mov x21,x0
+00e16218  cbz x21,0x00e162ac
+00e1621c  adrp x23,0x336f000
+00e16220  ldr x23,[x23, #0xc78]
+00e16224  mov w1,#0x1
+00e16228  mov x0,x21
+00e1622c  mov x2,xzr
+00e16230  bl 0x026d0b98
+00e16234  mov x0,x21
+00e16238  mov w1,w20
+00e1623c  mov x2,xzr
+00e16240  bl 0x026d0c18
+00e16244  ldr x1,[x23]
+00e16248  mov x0,x19
+00e1624c  bl 0x01794e94
+00e16250  ldr x8,[x22]
+00e16254  mov x20,x0
+00e16258  ldr w9,[x8, #0xe0]
+00e1625c  cbnz w9,0x00e16268
+00e16260  mov x0,x8
+00e16264  bl 0x00b0798c
+00e16268  mov x0,x20
+00e1626c  mov x1,xzr
+00e16270  mov x2,xzr
+00e16274  bl 0x024c8180
+00e16278  tbz w0,#0x0,0x00e1629c
+00e1627c  adrp x8,0x331f000
+00e16280  ldr x8,[x8, #0x38]
+00e16284  mov x0,x19
+00e16288  ldp x19,x30,[sp, #0x20]
+00e1628c  ldp x21,x20,[sp, #0x10]
+00e16290  ldr x1,[x8]
+00e16294  ldp x23,x22,[sp], #0x30
+00e16298  b 0x01794da8
+00e1629c  ldp x19,x30,[sp, #0x20]
+00e162a0  ldp x21,x20,[sp, #0x10]
+00e162a4  ldp x23,x22,[sp], #0x30
+00e162a8  ret
+00e162ac  bl 0x00b079b0

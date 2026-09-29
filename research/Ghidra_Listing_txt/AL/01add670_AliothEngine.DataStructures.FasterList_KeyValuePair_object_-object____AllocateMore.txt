@@ -1,0 +1,72 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$AllocateMore @ 01add670
+
+--- Calls OUT ---
+  -> System.Math$$Max @ 02150fd8
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Array$$CopyTo @ 02173ddc
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01add670  str x22,[sp, #-0x30]!
+01add674  stp x21,x20,[sp, #0x10]
+01add678  stp x19,x30,[sp, #0x20]
+01add67c  adrp x19,0x3578000
+01add680  ldrb w8,[x19, #0x9d6]
+01add684  mov x21,x1
+01add688  mov x20,x0
+01add68c  tbnz w8,#0x0,0x01add6a4
+01add690  adrp x0,0x332c000
+01add694  ldr x0,[x0, #0x5a8]
+01add698  bl 0x00b0789c
+01add69c  mov w8,#0x1
+01add6a0  strb w8,[x19, #0x9d6]
+01add6a4  mov x19,x20
+01add6a8  ldr x22,[x19, #0x10]!
+01add6ac  cbz x22,0x01add750
+01add6b0  adrp x8,0x332c000
+01add6b4  ldr x8,[x8, #0x5a8]
+01add6b8  ldr x0,[x8]
+01add6bc  ldr w8,[x0, #0xe0]
+01add6c0  cbnz w8,0x01add6c8
+01add6c4  bl 0x00b0798c
+01add6c8  ldr w8,[x22, #0x18]
+01add6cc  mov w1,#0x4
+01add6d0  mov x2,xzr
+01add6d4  lsl w0,w8,#0x1
+01add6d8  bl 0x02150fd8
+01add6dc  ldr x8,[x21, #0x20]
+01add6e0  mov w21,w0
+01add6e4  ldr x8,[x8, #0xc0]
+01add6e8  ldr x8,[x8]
+01add6ec  ldrb w9,[x8, #0x132]
+01add6f0  tbnz w9,#0x0,0x01add700
+01add6f4  mov x0,x8
+01add6f8  bl 0x00b2ac40
+01add6fc  mov x8,x0
+01add700  mov x0,x8
+01add704  mov w1,w21
+01add708  bl 0x00b078f8
+01add70c  ldr w8,[x20, #0x18]
+01add710  mov x20,x0
+01add714  cmp w8,#0x1
+01add718  b.lt 0x01add734
+01add71c  ldr x0,[x19]
+01add720  cbz x0,0x01add750
+01add724  mov x1,x20
+01add728  mov w2,wzr
+01add72c  mov x3,xzr
+01add730  bl 0x02173ddc
+01add734  str x20,[x19]
+01add738  mov x0,x19
+01add73c  mov x1,x20
+01add740  ldp x19,x30,[sp, #0x20]
+01add744  ldp x21,x20,[sp, #0x10]
+01add748  ldr x22,[sp], #0x30
+01add74c  b 0x00b07850
+01add750  bl 0x00b079b0

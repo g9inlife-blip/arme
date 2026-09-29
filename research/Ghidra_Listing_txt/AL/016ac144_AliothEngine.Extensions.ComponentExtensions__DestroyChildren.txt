@@ -1,0 +1,64 @@
+Function: AliothEngine.Extensions.ComponentExtensions$$DestroyChildren @ 016ac144
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> UnityEngine.Object$$DestroyImmediate @ 024dff90
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ac144  stp x21,x20,[sp, #-0x20]!
+016ac148  stp x19,x30,[sp, #0x10]
+016ac14c  adrp x20,0x3577000
+016ac150  ldrb w8,[x20, #0xbbd]
+016ac154  mov x19,x0
+016ac158  tbnz w8,#0x0,0x016ac170
+016ac15c  adrp x0,0x3321000
+016ac160  ldr x0,[x0, #0xca8]
+016ac164  bl 0x00b0789c
+016ac168  mov w8,#0x1
+016ac16c  strb w8,[x20, #0xbbd]
+016ac170  cbz x19,0x016ac1f8
+016ac174  mov x0,x19
+016ac178  mov x1,xzr
+016ac17c  bl 0x024e4e98
+016ac180  cbz x0,0x016ac1f8
+016ac184  adrp x21,0x3321000
+016ac188  ldr x21,[x21, #0xca8]
+016ac18c  mov x1,xzr
+016ac190  bl 0x024f5578
+016ac194  cmp w0,#0x0
+016ac198  b.le 0x016ac1fc
+016ac19c  mov x0,x19
+016ac1a0  mov x1,xzr
+016ac1a4  bl 0x024e4e98
+016ac1a8  cbz x0,0x016ac1f8
+016ac1ac  mov w1,wzr
+016ac1b0  mov x2,xzr
+016ac1b4  bl 0x024f5bec
+016ac1b8  cbz x0,0x016ac1f8
+016ac1bc  mov x1,xzr
+016ac1c0  bl 0x024e4ed4
+016ac1c4  ldr x8,[x21]
+016ac1c8  mov x20,x0
+016ac1cc  ldr w9,[x8, #0xe0]
+016ac1d0  cbnz w9,0x016ac1dc
+016ac1d4  mov x0,x8
+016ac1d8  bl 0x00b0798c
+016ac1dc  mov x0,x20
+016ac1e0  mov x1,xzr
+016ac1e4  bl 0x024dff90
+016ac1e8  mov x0,x19
+016ac1ec  mov x1,xzr
+016ac1f0  bl 0x024e4e98
+016ac1f4  cbnz x0,0x016ac18c
+016ac1f8  bl 0x00b079b0
+016ac1fc  ldp x19,x30,[sp, #0x10]
+016ac200  ldp x21,x20,[sp], #0x20
+016ac204  ret

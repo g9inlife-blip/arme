@@ -1,0 +1,19 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$CheckBounds<object> @ 017656f0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017656f0  str x30,[sp, #-0x10]!
+017656f4  cbz x0,0x01765718
+017656f8  ldr w8,[x0, #0x18]
+017656fc  cmp w8,w1
+01765700  cset w8,gt
+01765704  cmp w1,#0x0
+01765708  cset w9,ge
+0176570c  and w0,w9,w8
+01765710  ldr x30,[sp], #0x10
+01765714  ret
+01765718  bl 0x00b079b0

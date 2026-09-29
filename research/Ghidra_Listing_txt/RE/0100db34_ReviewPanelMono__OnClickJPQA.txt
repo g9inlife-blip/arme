@@ -1,0 +1,57 @@
+Function: ReviewPanelMono$$OnClickJPQA @ 0100db34
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$Show_QA_JP @ 00e1098c
+
+--- Calls IN ---
+
+--- Listing ---
+0100db34  str x22,[sp, #-0x30]!
+0100db38  stp x21,x20,[sp, #0x10]
+0100db3c  stp x19,x30,[sp, #0x20]
+0100db40  adrp x21,0x3574000
+0100db44  adrp x22,0x3380000
+0100db48  ldrb w8,[x21, #0x453]
+0100db4c  ldr x22,[x22, #0xa78]
+0100db50  mov x19,x1
+0100db54  mov x20,x0
+0100db58  tbnz w8,#0x0,0x0100db7c
+0100db5c  adrp x0,0x335f000
+0100db60  ldr x0,[x0, #0x20]
+0100db64  bl 0x00b0789c
+0100db68  adrp x0,0x3380000
+0100db6c  ldr x0,[x0, #0xa78]
+0100db70  bl 0x00b0789c
+0100db74  mov w8,#0x1
+0100db78  strb w8,[x21, #0x453]
+0100db7c  ldr x8,[x22]
+0100db80  ldr x8,[x8, #0xb8]
+0100db84  ldr x0,[x8, #0x18]
+0100db88  cbz x0,0x0100dba8
+0100db8c  mov x1,x20
+0100db90  mov x2,x19
+0100db94  ldp x19,x30,[sp, #0x20]
+0100db98  ldp x21,x20,[sp, #0x10]
+0100db9c  mov x3,xzr
+0100dba0  ldr x22,[sp], #0x30
+0100dba4  b 0x0106125c
+0100dba8  adrp x19,0x335f000
+0100dbac  ldr x19,[x19, #0x20]
+0100dbb0  ldr x0,[x19]
+0100dbb4  ldr w8,[x0, #0xe0]
+0100dbb8  cbnz w8,0x0100dbc4
+0100dbbc  bl 0x00b0798c
+0100dbc0  ldr x0,[x19]
+0100dbc4  ldr x8,[x0, #0xb8]
+0100dbc8  ldr x0,[x8, #0x10]
+0100dbcc  cbz x0,0x0100dbe4
+0100dbd0  ldp x19,x30,[sp, #0x20]
+0100dbd4  ldp x21,x20,[sp, #0x10]
+0100dbd8  mov x1,xzr
+0100dbdc  ldr x22,[sp], #0x30
+0100dbe0  b 0x00e1098c
+0100dbe4  bl 0x00b079b0

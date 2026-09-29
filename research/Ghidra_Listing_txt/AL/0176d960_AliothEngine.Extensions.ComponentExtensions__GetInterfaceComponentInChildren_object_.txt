@@ -1,0 +1,76 @@
+Function: AliothEngine.Extensions.ComponentExtensions$$GetInterfaceComponentInChildren<object> @ 0176d960
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> UnityEngine.GameObject$$GetComponentInChildren @ 024dde34
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0176d960  str x22,[sp, #-0x30]!
+0176d964  stp x21,x20,[sp, #0x10]
+0176d968  stp x19,x30,[sp, #0x20]
+0176d96c  adrp x22,0x3578000
+0176d970  adrp x21,0x3347000
+0176d974  ldrb w8,[x22, #0xba]
+0176d978  ldr x21,[x21, #0xd68]
+0176d97c  mov x19,x1
+0176d980  mov x20,x0
+0176d984  tbnz w8,#0x0,0x0176d99c
+0176d988  adrp x0,0x3347000
+0176d98c  ldr x0,[x0, #0xd68]
+0176d990  bl 0x00b0789c
+0176d994  mov w8,#0x1
+0176d998  strb w8,[x22, #0xba]
+0176d99c  ldr x0,[x21]
+0176d9a0  ldr x8,[x19, #0x38]
+0176d9a4  ldr w9,[x0, #0xe0]
+0176d9a8  ldr x21,[x8]
+0176d9ac  cbnz w9,0x0176d9b4
+0176d9b0  bl 0x00b0798c
+0176d9b4  mov x0,x21
+0176d9b8  mov x1,xzr
+0176d9bc  bl 0x0215f900
+0176d9c0  cbz x20,0x0176da50
+0176d9c4  mov x1,x0
+0176d9c8  mov x0,x20
+0176d9cc  mov x2,xzr
+0176d9d0  bl 0x024dde34
+0176d9d4  ldr x8,[x19, #0x38]
+0176d9d8  mov x20,x0
+0176d9dc  ldr x1,[x8, #0x8]
+0176d9e0  ldrb w8,[x1, #0x132]
+0176d9e4  tbnz w8,#0x0,0x0176d9f4
+0176d9e8  mov x0,x1
+0176d9ec  bl 0x00b2ac40
+0176d9f0  mov x1,x0
+0176d9f4  mov x0,x20
+0176d9f8  bl 0x00b07990
+0176d9fc  ldr x8,[x19, #0x38]
+0176da00  mov x20,x0
+0176da04  ldr x19,[x8, #0x8]
+0176da08  ldrb w8,[x19, #0x132]
+0176da0c  tbnz w8,#0x0,0x0176da1c
+0176da10  mov x0,x19
+0176da14  bl 0x00b2ac40
+0176da18  mov x19,x0
+0176da1c  cbz x20,0x0176da3c
+0176da20  mov x0,x20
+0176da24  mov x1,x19
+0176da28  bl 0x00b07990
+0176da2c  cbnz x0,0x0176da40
+0176da30  mov x0,x20
+0176da34  mov x1,x19
+0176da38  bl 0x00b07c6c
+0176da3c  mov x0,xzr
+0176da40  ldp x19,x30,[sp, #0x20]
+0176da44  ldp x21,x20,[sp, #0x10]
+0176da48  ldr x22,[sp], #0x30
+0176da4c  ret
+0176da50  bl 0x00b079b0

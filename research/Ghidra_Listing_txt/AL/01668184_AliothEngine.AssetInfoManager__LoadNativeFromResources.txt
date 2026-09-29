@@ -1,0 +1,69 @@
+Function: AliothEngine.AssetInfoManager$$LoadNativeFromResources @ 01668184
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.AssetFileInfoListScriptableObject$$GetByAllAssets @ 0166773c
+  -> UnityEngine.Resources$$Load @ 024f198c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$InitializeResources @ 016680f8
+
+--- Listing ---
+01668184  str x22,[sp, #-0x30]!
+01668188  stp x21,x20,[sp, #0x10]
+0166818c  stp x19,x30,[sp, #0x20]
+01668190  adrp x21,0x3577000
+01668194  adrp x22,0x334f000
+01668198  ldrb w8,[x21, #0x90d]
+0166819c  ldr x22,[x22, #0xaf8]
+016681a0  mov x20,x1
+016681a4  mov x19,x0
+016681a8  tbnz w8,#0x0,0x016681cc
+016681ac  adrp x0,0x333b000
+016681b0  ldr x0,[x0, #0x498]
+016681b4  bl 0x00b0789c
+016681b8  adrp x0,0x334f000
+016681bc  ldr x0,[x0, #0xaf8]
+016681c0  bl 0x00b0789c
+016681c4  mov w8,#0x1
+016681c8  strb w8,[x21, #0x90d]
+016681cc  ldr x8,[x22]
+016681d0  ldr x8,[x8, #0xb8]
+016681d4  ldr x0,[x8, #0x38]
+016681d8  cbz x0,0x016681f8
+016681dc  mov x1,x19
+016681e0  mov x2,x20
+016681e4  ldp x19,x30,[sp, #0x20]
+016681e8  ldp x21,x20,[sp, #0x10]
+016681ec  mov x3,xzr
+016681f0  ldr x22,[sp], #0x30
+016681f4  b 0x0106125c
+016681f8  mov x0,x20
+016681fc  mov x1,xzr
+01668200  bl 0x024f198c
+01668204  cbz x0,0x01668234
+01668208  adrp x8,0x333b000
+0166820c  ldr x8,[x8, #0x498]
+01668210  ldr x9,[x0]
+01668214  ldr x8,[x8]
+01668218  cmp x9,x8
+0166821c  csel x9,x0,xzr,eq
+01668220  str x9,[x19, #0x20]!
+01668224  ldr x9,[x0]
+01668228  cmp x9,x8
+0166822c  csel x1,x0,xzr,eq
+01668230  b 0x0166823c
+01668234  mov x1,xzr
+01668238  str xzr,[x19, #0x20]!
+0166823c  mov x0,x19
+01668240  bl 0x00b07850
+01668244  ldr x0,[x19]
+01668248  cbz x0,0x0166825c
+0166824c  ldp x19,x30,[sp, #0x20]
+01668250  ldp x21,x20,[sp, #0x10]
+01668254  ldr x22,[sp], #0x30
+01668258  b 0x0166773c
+0166825c  bl 0x00b079b0

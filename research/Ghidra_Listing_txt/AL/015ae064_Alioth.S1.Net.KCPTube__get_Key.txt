@@ -1,0 +1,44 @@
+Function: Alioth.S1.Net.KCPTube$$get_Key @ 015ae064
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp745 @ 010c1d70
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$Send @ 015aeddc
+  <- Alioth.S1.Net.KCPTube$$TryRead @ 015b08bc
+  <- Alioth.S1.Net.KCPTube$$Handshake2 @ 015b1f68
+  <- XLua.CSObjectWrap.AliothS1NetKCPTubeWrap$$_g_get_Key @ 0116fc14
+
+--- Listing ---
+015ae064  stp x21,x20,[sp, #-0x20]!
+015ae068  stp x19,x30,[sp, #0x10]
+015ae06c  adrp x21,0x3577000
+015ae070  adrp x20,0x3350000
+015ae074  ldrb w8,[x21, #0x8c]
+015ae078  ldr x20,[x20, #0x8c8]
+015ae07c  mov x19,x0
+015ae080  tbnz w8,#0x0,0x015ae098
+015ae084  adrp x0,0x3350000
+015ae088  ldr x0,[x0, #0x8c8]
+015ae08c  bl 0x00b0789c
+015ae090  mov w8,#0x1
+015ae094  strb w8,[x21, #0x8c]
+015ae098  ldr x0,[x20]
+015ae09c  ldr w8,[x0, #0xe0]
+015ae0a0  cbnz w8,0x015ae0ac
+015ae0a4  bl 0x00b0798c
+015ae0a8  ldr x0,[x20]
+015ae0ac  ldr x8,[x0, #0xb8]
+015ae0b0  ldr x0,[x8, #0x20]
+015ae0b4  cbz x0,0x015ae0cc
+015ae0b8  mov x1,x19
+015ae0bc  ldp x19,x30,[sp, #0x10]
+015ae0c0  mov x2,xzr
+015ae0c4  ldp x21,x20,[sp], #0x20
+015ae0c8  b 0x010c1d70
+015ae0cc  ldr x0,[x19, #0x18]
+015ae0d0  ldp x19,x30,[sp, #0x10]
+015ae0d4  ldp x21,x20,[sp], #0x20
+015ae0d8  ret

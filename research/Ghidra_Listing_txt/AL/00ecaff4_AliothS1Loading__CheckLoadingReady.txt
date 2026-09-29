@@ -1,0 +1,52 @@
+Function: AliothS1Loading$$CheckLoadingReady @ 00ecaff4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothS1Loading$$CheckLoadingReadyIE @ 00ecb1bc
+  -> AliothEngine.StaticCoroutine$$DoStopCoroutine @ 0168ba08
+  -> AliothEngine.StaticCoroutine$$DoCoroutine @ 0168b8b4
+
+--- Calls IN ---
+  <- AliothS1Loading$$StartCheck @ 00ecaebc
+
+--- Listing ---
+00ecaff4  stp x21,x20,[sp, #-0x20]!
+00ecaff8  stp x19,x30,[sp, #0x10]
+00ecaffc  adrp x20,0x3572000
+00ecb000  adrp x21,0x3322000
+00ecb004  ldrb w8,[x20, #0xd6b]
+00ecb008  ldr x21,[x21, #0x6d0]
+00ecb00c  mov x19,x0
+00ecb010  tbnz w8,#0x0,0x00ecb028
+00ecb014  adrp x0,0x3322000
+00ecb018  ldr x0,[x0, #0x6d0]
+00ecb01c  bl 0x00b0789c
+00ecb020  mov w8,#0x1
+00ecb024  strb w8,[x20, #0xd6b]
+00ecb028  ldr x8,[x21]
+00ecb02c  ldr x8,[x8, #0xb8]
+00ecb030  ldr x0,[x8, #0x28]
+00ecb034  cbz x0,0x00ecb04c
+00ecb038  mov x1,x19
+00ecb03c  ldp x19,x30,[sp, #0x10]
+00ecb040  mov x2,xzr
+00ecb044  ldp x21,x20,[sp], #0x20
+00ecb048  b 0x01060dac
+00ecb04c  mov x20,x19
+00ecb050  ldr x0,[x20, #0x18]!
+00ecb054  cbz x0,0x00ecb060
+00ecb058  mov x1,xzr
+00ecb05c  bl 0x0168ba08
+00ecb060  mov x0,x19
+00ecb064  bl 0x00ecb1bc
+00ecb068  mov x1,xzr
+00ecb06c  mov x2,xzr
+00ecb070  bl 0x0168b8b4
+00ecb074  str x0,[x19, #0x18]
+00ecb078  ldp x19,x30,[sp, #0x10]
+00ecb07c  mov x1,x0
+00ecb080  mov x0,x20
+00ecb084  ldp x21,x20,[sp], #0x20
+00ecb088  b 0x00b07850

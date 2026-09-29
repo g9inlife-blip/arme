@@ -1,0 +1,22 @@
+Function: Ali.<>c__DisplayClass287_0$$<GetRechargeLimit>b__2 @ 00e12054
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e12054  str x30,[sp, #-0x10]!
+00e12058  cbz x1,0x00e12088
+00e1205c  ldr w8,[x0, #0x10]
+00e12060  ldr w9,[x1, #0x74]
+00e12064  cmp w8,w9
+00e12068  b.ge 0x00e12074
+00e1206c  mov w0,wzr
+00e12070  b 0x00e12080
+00e12074  ldr w9,[x1, #0x78]
+00e12078  cmp w8,w9
+00e1207c  cset w0,le
+00e12080  ldr x30,[sp], #0x10
+00e12084  ret
+00e12088  bl 0x00b079b0

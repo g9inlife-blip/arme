@@ -1,0 +1,28 @@
+Function: AliothEngine.Compress$$GetCompressFileName @ 01683200
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+
+--- Calls IN ---
+
+--- Listing ---
+01683200  stp x21,x20,[sp, #-0x20]!
+01683204  stp x19,x30,[sp, #0x10]
+01683208  adrp x20,0x3577000
+0168320c  adrp x21,0x334b000
+01683210  ldrb w8,[x20, #0xa5b]
+01683214  ldr x21,[x21, #0x1a0]
+01683218  mov x19,x0
+0168321c  tbnz w8,#0x0,0x01683234
+01683220  adrp x0,0x334b000
+01683224  ldr x0,[x0, #0x1a0]
+01683228  bl 0x00b0789c
+0168322c  mov w8,#0x1
+01683230  strb w8,[x20, #0xa5b]
+01683234  ldr x1,[x21]
+01683238  mov x0,x19
+0168323c  ldp x19,x30,[sp, #0x10]
+01683240  mov x2,xzr
+01683244  ldp x21,x20,[sp], #0x20
+01683248  b 0x01fd2850

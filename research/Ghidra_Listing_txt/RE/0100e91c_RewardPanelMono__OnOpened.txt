@@ -1,0 +1,100 @@
+Function: RewardPanelMono$$OnOpened @ 0100e91c
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$GetSiblingIndex @ 024f5700
+  -> AliothEngine.GUIScreenManager$$GetScreenFromName @ 016737dc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.Transform$$SetSiblingIndex @ 024f5668
+  -> AliothEngine.GUIScreen$$OnOpened @ 01671af8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0100e91c  str x22,[sp, #-0x30]!
+0100e920  stp x21,x20,[sp, #0x10]
+0100e924  stp x19,x30,[sp, #0x20]
+0100e928  adrp x20,0x3574000
+0100e92c  adrp x21,0x3359000
+0100e930  ldrb w8,[x20, #0x45c]
+0100e934  ldr x21,[x21, #0xdc0]
+0100e938  mov x19,x0
+0100e93c  tbnz w8,#0x0,0x0100e978
+0100e940  adrp x0,0x337b000
+0100e944  ldr x0,[x0, #0xb98]
+0100e948  bl 0x00b0789c
+0100e94c  adrp x0,0x3321000
+0100e950  ldr x0,[x0, #0xca8]
+0100e954  bl 0x00b0789c
+0100e958  adrp x0,0x3359000
+0100e95c  ldr x0,[x0, #0xdc0]
+0100e960  bl 0x00b0789c
+0100e964  adrp x0,0x334c000
+0100e968  ldr x0,[x0, #0x388]
+0100e96c  bl 0x00b0789c
+0100e970  mov w8,#0x1
+0100e974  strb w8,[x20, #0x45c]
+0100e978  ldr x8,[x21]
+0100e97c  ldr x8,[x8, #0xb8]
+0100e980  ldr x0,[x8, #0x28]
+0100e984  cbz x0,0x0100e9a0
+0100e988  mov x1,x19
+0100e98c  ldp x19,x30,[sp, #0x20]
+0100e990  ldp x21,x20,[sp, #0x10]
+0100e994  mov x2,xzr
+0100e998  ldr x22,[sp], #0x30
+0100e99c  b 0x01060dac
+0100e9a0  adrp x22,0x337b000
+0100e9a4  adrp x21,0x334c000
+0100e9a8  adrp x20,0x3321000
+0100e9ac  ldr x22,[x22, #0xb98]
+0100e9b0  ldr x21,[x21, #0x388]
+0100e9b4  ldr x20,[x20, #0xca8]
+0100e9b8  mov x0,x19
+0100e9bc  mov x1,xzr
+0100e9c0  bl 0x01671af8
+0100e9c4  ldr x0,[x22]
+0100e9c8  ldr w8,[x0, #0xe0]
+0100e9cc  cbnz w8,0x0100e9d4
+0100e9d0  bl 0x00b0798c
+0100e9d4  ldr x0,[x21]
+0100e9d8  mov x1,xzr
+0100e9dc  bl 0x016737dc
+0100e9e0  ldr x8,[x20]
+0100e9e4  mov x20,x0
+0100e9e8  ldr w9,[x8, #0xe0]
+0100e9ec  cbnz w9,0x0100e9f8
+0100e9f0  mov x0,x8
+0100e9f4  bl 0x00b0798c
+0100e9f8  mov x0,x20
+0100e9fc  mov x1,xzr
+0100ea00  mov x2,xzr
+0100ea04  bl 0x024de30c
+0100ea08  tbz w0,#0x0,0x0100ea54
+0100ea0c  cbz x20,0x0100ea64
+0100ea10  mov x0,x20
+0100ea14  mov x1,xzr
+0100ea18  bl 0x024e4e98
+0100ea1c  cbz x0,0x0100ea64
+0100ea20  mov x1,xzr
+0100ea24  bl 0x024f5700
+0100ea28  mov w20,w0
+0100ea2c  mov x0,x19
+0100ea30  mov x1,xzr
+0100ea34  bl 0x024e4e98
+0100ea38  cbz x0,0x0100ea64
+0100ea3c  mov w1,w20
+0100ea40  ldp x19,x30,[sp, #0x20]
+0100ea44  ldp x21,x20,[sp, #0x10]
+0100ea48  mov x2,xzr
+0100ea4c  ldr x22,[sp], #0x30
+0100ea50  b 0x024f5668
+0100ea54  ldp x19,x30,[sp, #0x20]
+0100ea58  ldp x21,x20,[sp, #0x10]
+0100ea5c  ldr x22,[sp], #0x30
+0100ea60  ret
+0100ea64  bl 0x00b079b0

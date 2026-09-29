@@ -1,0 +1,105 @@
+Function: AliothEngine.IStoreManager$$HandlePurchaseProductFailed @ 016592bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp63 @ 01067254
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> AliothEngine.IStoreManager$$LocalLog @ 01658fa8
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_WePay$$OnResponseCreateWePayOrder @ 0165d71c
+  <- AliothEngine.StoreManager_None$$PurchaseProduct @ 0165c12c
+  <- AliothEngine.StoreManager_BiliBili$$OnBliPayPurchaseFailed @ 0165b1f4
+  <- AliothEngine.StoreManager_AliPay$$OnResponseCreateAliPayOrder @ 0165a510
+  <- AliothEngine.StoreManager_WePay$$OnWePayPurchaseFailed @ 0165db2c
+  <- AliothEngine.StoreManager_SDK$$OnPayFailed @ 0165cc58
+  <- AliothEngine.StoreManager_AliPay$$OnAliPayPurchaseFailed @ 0165a974
+  <- AliothEngine.StoreManager_ChinaPay$$_OnPurchaseProductFailed @ 0165bf5c
+  <- AliothEngine.StoreManager_BiliBili$$OnResponseCreateBiliPayOrder @ 0165af34
+  <- AliothEngine.StoreManager_SDK$$OnPayCancel @ 0165cce4
+
+--- Listing ---
+016592bc  stp x23,x22,[sp, #-0x30]!
+016592c0  stp x21,x20,[sp, #0x10]
+016592c4  stp x19,x30,[sp, #0x20]
+016592c8  adrp x22,0x3577000
+016592cc  adrp x23,0x336f000
+016592d0  ldrb w8,[x22, #0x845]
+016592d4  ldr x23,[x23, #0x1e8]
+016592d8  mov x19,x2
+016592dc  mov w20,w1
+016592e0  mov x21,x0
+016592e4  tbnz w8,#0x0,0x01659314
+016592e8  adrp x0,0x336f000
+016592ec  ldr x0,[x0, #0x1e8]
+016592f0  bl 0x00b0789c
+016592f4  adrp x0,0x3370000
+016592f8  ldr x0,[x0, #0x778]
+016592fc  bl 0x00b0789c
+01659300  adrp x0,0x336a000
+01659304  ldr x0,[x0, #0x778]
+01659308  bl 0x00b0789c
+0165930c  mov w8,#0x1
+01659310  strb w8,[x22, #0x845]
+01659314  ldr x8,[x23]
+01659318  ldr x8,[x8, #0xb8]
+0165931c  ldr x0,[x8, #0x68]
+01659320  cbz x0,0x01659344
+01659324  mov x1,x21
+01659328  mov w2,w20
+0165932c  mov x3,x19
+01659330  ldp x19,x30,[sp, #0x20]
+01659334  ldp x21,x20,[sp, #0x10]
+01659338  mov x4,xzr
+0165933c  ldp x23,x22,[sp], #0x30
+01659340  b 0x01067254
+01659344  adrp x8,0x3370000
+01659348  ldr x8,[x8, #0x778]
+0165934c  mov w1,#0x1
+01659350  ldr x0,[x8]
+01659354  bl 0x00b078f8
+01659358  cbz x0,0x016593e0
+0165935c  mov x22,x0
+01659360  cbz x19,0x01659378
+01659364  ldr x8,[x22]
+01659368  mov x0,x19
+0165936c  ldr x1,[x8, #0x40]
+01659370  bl 0x00b07990
+01659374  cbz x0,0x016593e8
+01659378  ldr w8,[x22, #0x18]
+0165937c  cbz w8,0x016593e4
+01659380  adrp x23,0x336a000
+01659384  ldr x23,[x23, #0x778]
+01659388  mov x0,x22
+0165938c  str x19,[x0, #0x20]!
+01659390  mov x1,x19
+01659394  bl 0x00b07850
+01659398  ldr x0,[x23]
+0165939c  mov x1,x22
+016593a0  bl 0x01658fa8
+016593a4  ldr x8,[x21, #0x28]
+016593a8  cbz x8,0x016593d0
+016593ac  ldr x4,[x8, #0x18]
+016593b0  ldr x0,[x8, #0x40]
+016593b4  ldr x3,[x8, #0x28]
+016593b8  mov w1,w20
+016593bc  mov x2,x19
+016593c0  ldp x19,x30,[sp, #0x20]
+016593c4  ldp x21,x20,[sp, #0x10]
+016593c8  ldp x23,x22,[sp], #0x30
+016593cc  br x4
+016593d0  ldp x19,x30,[sp, #0x20]
+016593d4  ldp x21,x20,[sp, #0x10]
+016593d8  ldp x23,x22,[sp], #0x30
+016593dc  ret
+016593e0  bl 0x00b079b0
+016593e4  bl 0x00b079b8
+016593e8  bl 0x00b079d4
+016593ec  mov x1,xzr
+016593f0  bl 0x00b07978

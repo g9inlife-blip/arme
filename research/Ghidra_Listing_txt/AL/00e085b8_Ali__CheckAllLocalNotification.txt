@@ -1,0 +1,77 @@
+Function: Ali$$CheckAllLocalNotification @ 00e085b8
+
+--- Calls OUT ---
+  -> AliothEngine.NotificationManager$$ClearAllLocalNotifications @ 016574ec
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$CheckOnceLocalNotification @ 00e07488
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> GamePlayerInfomation$$get_Notification_Push @ 00e3706c
+  -> Ali$$CheckPauseLocalNotification @ 00e08690
+  -> Ali$$get_dataManager @ 00e0277c
+  -> FUN_00b079b0 @ 00b079b0
+  -> DataManager$$get_IsLoaded @ 00df4c50
+
+--- Calls IN ---
+  <- SysSettingPanelMono$$OnClick7 @ 00f78048
+  <- SysSettingPanelMono$$OnClick6 @ 00f77f70
+  <- SysSettingPanelMono$$OnClick5 @ 00f77e98
+  <- XLua.CSObjectWrap.AliWrap$$_m_CheckAllLocalNotification_xlua_st_ @ 01196f34
+  <- GlobalUIManager$$OnApplicationPause @ 00f1eefc
+  <- SysSettingPanelMono$$OnClick8 @ 00f7814c
+
+--- Listing ---
+00e085b8  str x20,[sp, #-0x20]!
+00e085bc  stp x19,x30,[sp, #0x10]
+00e085c0  adrp x20,0x3572000
+00e085c4  adrp x19,0x335f000
+00e085c8  ldrb w8,[x20, #0x582]
+00e085cc  ldr x19,[x19, #0x20]
+00e085d0  tbnz w8,#0x0,0x00e085e8
+00e085d4  adrp x0,0x335f000
+00e085d8  ldr x0,[x0, #0x20]
+00e085dc  bl 0x00b0789c
+00e085e0  mov w8,#0x1
+00e085e4  strb w8,[x20, #0x582]
+00e085e8  ldr x0,[x19]
+00e085ec  ldr w8,[x0, #0xe0]
+00e085f0  cbnz w8,0x00e085fc
+00e085f4  bl 0x00b0798c
+00e085f8  ldr x0,[x19]
+00e085fc  ldr x9,[x0, #0xb8]
+00e08600  ldr x8,[x9, #0x3b8]
+00e08604  cbz x8,0x00e0861c
+00e08608  ldp x19,x30,[sp, #0x10]
+00e0860c  mov x0,x8
+00e08610  mov x1,xzr
+00e08614  ldr x20,[sp], #0x20
+00e08618  b 0x0105fbf0
+00e0861c  ldr w8,[x0, #0xe0]
+00e08620  cbnz w8,0x00e08630
+00e08624  bl 0x00b0798c
+00e08628  ldr x8,[x19]
+00e0862c  ldr x9,[x8, #0xb8]
+00e08630  ldr x0,[x9, #0x10]
+00e08634  cbz x0,0x00e0868c
+00e08638  bl 0x00e0277c
+00e0863c  cbz x0,0x00e0868c
+00e08640  mov x1,xzr
+00e08644  bl 0x00df4c50
+00e08648  tbz w0,#0x0,0x00e08680
+00e0864c  mov x0,xzr
+00e08650  bl 0x016574ec
+00e08654  mov x0,xzr
+00e08658  bl 0x00e3706c
+00e0865c  tbz w0,#0x0,0x00e08680
+00e08660  ldr x0,[x19]
+00e08664  ldr w8,[x0, #0xe0]
+00e08668  cbnz w8,0x00e08670
+00e0866c  bl 0x00b0798c
+00e08670  bl 0x00e08690
+00e08674  ldp x19,x30,[sp, #0x10]
+00e08678  ldr x20,[sp], #0x20
+00e0867c  b 0x00e07488
+00e08680  ldp x19,x30,[sp, #0x10]
+00e08684  ldr x20,[sp], #0x20
+00e08688  ret
+00e0868c  bl 0x00b079b0

@@ -1,0 +1,71 @@
+Function: Ali$$ShowReward @ 00e06a70
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_rewardManager @ 00e02cfc
+  -> FUN_00b079b0 @ 00b079b0
+  -> RewardManager$$SET @ 00e2ec2c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp33 @ 0106381c
+
+--- Calls IN ---
+  <- OpenBoxShowPanelMono$$ShowFinish @ 00e9e6a8
+  <- XLua.CSObjectWrap.AliWrap$$_m_ShowReward @ 0119482c
+  <- Ali$$ShowReward @ 00e069a8
+  <- ExploreMainPanelMono$$ExploreFloorRewardBack @ 00efcccc
+
+--- Listing ---
+00e06a70  stp x23,x22,[sp, #-0x30]!
+00e06a74  stp x21,x20,[sp, #0x10]
+00e06a78  stp x19,x30,[sp, #0x20]
+00e06a7c  adrp x23,0x3572000
+00e06a80  adrp x22,0x335f000
+00e06a84  ldrb w8,[x23, #0x576]
+00e06a88  ldr x22,[x22, #0x20]
+00e06a8c  mov w20,w2
+00e06a90  mov x19,x1
+00e06a94  mov x21,x0
+00e06a98  tbnz w8,#0x0,0x00e06abc
+00e06a9c  adrp x0,0x335f000
+00e06aa0  ldr x0,[x0, #0x20]
+00e06aa4  bl 0x00b0789c
+00e06aa8  adrp x0,0x3328000
+00e06aac  ldr x0,[x0, #0x6c8]
+00e06ab0  bl 0x00b0789c
+00e06ab4  mov w8,#0x1
+00e06ab8  strb w8,[x23, #0x576]
+00e06abc  ldr x0,[x22]
+00e06ac0  ldr w8,[x0, #0xe0]
+00e06ac4  cbnz w8,0x00e06ad0
+00e06ac8  bl 0x00b0798c
+00e06acc  ldr x0,[x22]
+00e06ad0  ldr x8,[x0, #0xb8]
+00e06ad4  ldr x0,[x8, #0x358]
+00e06ad8  cbz x0,0x00e06afc
+00e06adc  and w3,w20,#0x1
+00e06ae0  mov x1,x21
+00e06ae4  mov x2,x19
+00e06ae8  ldp x19,x30,[sp, #0x20]
+00e06aec  ldp x21,x20,[sp, #0x10]
+00e06af0  mov x4,xzr
+00e06af4  ldp x23,x22,[sp], #0x30
+00e06af8  b 0x0106381c
+00e06afc  cbz x19,0x00e06b34
+00e06b00  ldr w8,[x19, #0x18]
+00e06b04  cmp w8,#0x1
+00e06b08  b.lt 0x00e06b34
+00e06b0c  mov x0,x21
+00e06b10  bl 0x00e02cfc
+00e06b14  cbz x0,0x00e06b44
+00e06b18  and w2,w20,#0x1
+00e06b1c  mov x1,x19
+00e06b20  ldp x19,x30,[sp, #0x20]
+00e06b24  ldp x21,x20,[sp, #0x10]
+00e06b28  mov x3,xzr
+00e06b2c  ldp x23,x22,[sp], #0x30
+00e06b30  b 0x00e2ec2c
+00e06b34  ldp x19,x30,[sp, #0x20]
+00e06b38  ldp x21,x20,[sp, #0x10]
+00e06b3c  ldp x23,x22,[sp], #0x30
+00e06b40  ret
+00e06b44  bl 0x00b079b0

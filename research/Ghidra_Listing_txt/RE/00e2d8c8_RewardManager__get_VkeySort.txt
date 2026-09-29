@@ -1,0 +1,37 @@
+Function: RewardManager$$get_VkeySort @ 00e2d8c8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp93 @ 0106ae60
+
+--- Calls IN ---
+  <- RewardManager$$NextBoxListener @ 00e2e714
+  <- XLua.CSObjectWrap.RewardManagerWrap$$_g_get_VkeySort @ 0137a010
+
+--- Listing ---
+00e2d8c8  stp x21,x20,[sp, #-0x20]!
+00e2d8cc  stp x19,x30,[sp, #0x10]
+00e2d8d0  adrp x20,0x3572000
+00e2d8d4  adrp x21,0x331f000
+00e2d8d8  ldrb w8,[x20, #0x744]
+00e2d8dc  ldr x21,[x21, #0x418]
+00e2d8e0  mov x19,x0
+00e2d8e4  tbnz w8,#0x0,0x00e2d8fc
+00e2d8e8  adrp x0,0x331f000
+00e2d8ec  ldr x0,[x0, #0x418]
+00e2d8f0  bl 0x00b0789c
+00e2d8f4  mov w8,#0x1
+00e2d8f8  strb w8,[x20, #0x744]
+00e2d8fc  ldr x8,[x21]
+00e2d900  ldr x8,[x8, #0xb8]
+00e2d904  ldr x0,[x8, #0x10]
+00e2d908  cbz x0,0x00e2d920
+00e2d90c  mov x1,x19
+00e2d910  ldp x19,x30,[sp, #0x10]
+00e2d914  mov x2,xzr
+00e2d918  ldp x21,x20,[sp], #0x20
+00e2d91c  b 0x0106ae60
+00e2d920  ldr x0,[x19, #0x40]
+00e2d924  ldp x19,x30,[sp, #0x10]
+00e2d928  ldp x21,x20,[sp], #0x20
+00e2d92c  ret

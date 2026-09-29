@@ -1,0 +1,29 @@
+Function: replace @ 00b8289c
+FuncComment: std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >::replace(unsigned long, unsigned long, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, unsigned long, unsigned long)
+
+--- Calls OUT ---
+  -> FUN_00a8f54c @ 00a8f54c
+  -> replace @ 008d4c80
+
+--- Calls IN ---
+
+--- Listing ---
+00b8289c  stp x29,x30,[sp, #-0x10]!
+    ; [PLATE] std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> >::replace(unsigned long, unsigned long, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char> > const&, unsigned long, unsigned long)
+00b828a0  mov x29,sp
+00b828a4  ldrb w8,[x3]
+00b828a8  ldr x9,[x3, #0x8]
+00b828ac  lsr x10,x8,#0x1
+00b828b0  tst w8,#0x1
+00b828b4  csel x9,x10,x9,eq
+00b828b8  subs x9,x9,x4
+00b828bc  b.cc 0x00b828e0
+00b828c0  ldr x10,[x3, #0x10]
+00b828c4  tst w8,#0x1
+00b828c8  csinc x8,x10,x3,ne
+00b828cc  cmp x9,x5
+00b828d0  add x3,x8,x4
+00b828d4  csel x4,x9,x5,cc
+00b828d8  ldp x29,x30,[sp], #0x10
+00b828dc  b 0x008d4c80
+00b828e0  bl 0x00a8f54c

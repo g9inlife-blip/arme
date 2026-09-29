@@ -1,0 +1,22 @@
+Function: AliothEngine.SingletonBehaviour<object>$$get_isQuiting @ 01e093f8
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e093f8  str x30,[sp, #-0x10]!
+01e093fc  ldr x0,[x0, #0x20]
+01e09400  ldrb w8,[x0, #0x132]
+01e09404  tbnz w8,#0x0,0x01e0940c
+01e09408  bl 0x00b2ac40
+01e0940c  ldr x8,[x0, #0xc0]
+01e09410  ldr x0,[x8]
+01e09414  ldrb w8,[x0, #0x132]
+01e09418  tbnz w8,#0x0,0x01e09420
+01e0941c  bl 0x00b2ac40
+01e09420  ldr x8,[x0, #0xb8]
+01e09424  ldrb w0,[x8, #0x8]
+01e09428  ldr x30,[sp], #0x10
+01e0942c  ret

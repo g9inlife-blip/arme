@@ -1,0 +1,29 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$FastSetActive @ 016ae10c
+
+--- Calls OUT ---
+  -> UnityEngine.GameObject$$get_activeSelf @ 024de8b0
+  -> UnityEngine.GameObject$$SetActive @ 024de86c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ae10c  str x20,[sp, #-0x20]!
+016ae110  stp x19,x30,[sp, #0x10]
+016ae114  cbz x0,0x016ae154
+016ae118  mov w20,w1
+016ae11c  mov x1,xzr
+016ae120  mov x19,x0
+016ae124  bl 0x024de8b0
+016ae128  eor w8,w0,w20
+016ae12c  tbz w8,#0x0,0x016ae148
+016ae130  mov x0,x19
+016ae134  ldp x19,x30,[sp, #0x10]
+016ae138  and w1,w20,#0x1
+016ae13c  mov x2,xzr
+016ae140  ldr x20,[sp], #0x20
+016ae144  b 0x024de86c
+016ae148  ldp x19,x30,[sp, #0x10]
+016ae14c  ldr x20,[sp], #0x20
+016ae150  ret
+016ae154  bl 0x00b079b0

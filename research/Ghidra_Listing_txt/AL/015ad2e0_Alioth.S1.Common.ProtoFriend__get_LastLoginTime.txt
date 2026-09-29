@@ -1,0 +1,19 @@
+Function: Alioth.S1.Common.ProtoFriend$$get_LastLoginTime @ 015ad2e0
+
+--- Calls OUT ---
+  -> System.DateTime$$.ctor @ 02131ae4
+
+--- Calls IN ---
+  <- FriendPanel$$FriendFindBack @ 00f02ef8
+  <- FriendPanel$$InitFriendItem @ 00f043f0
+
+--- Listing ---
+015ad2e0  str x30,[sp, #-0x10]!
+015ad2e4  ldr x1,[x0, #0x28]
+015ad2e8  add x0,sp,#0x8
+015ad2ec  mov x2,xzr
+015ad2f0  str xzr,[sp, #0x8]
+015ad2f4  bl 0x02131ae4
+015ad2f8  ldr x0,[sp, #0x8]
+015ad2fc  ldr x30,[sp], #0x10
+015ad300  ret

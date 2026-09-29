@@ -1,0 +1,49 @@
+Function: Ali$$set_isPlayedOpeningCutScene @ 00e012c8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+  <- OpeningCutScene$$PlayAniDialogEnd @ 00e3aa2c
+  <- XLua.CSObjectWrap.AliWrap$$_s_set_isPlayedOpeningCutScene @ 011a393c
+  <- Ali$$get_isSkipTest @ 00e01358
+
+--- Listing ---
+00e012c8  str x22,[sp, #-0x30]!
+00e012cc  stp x21,x20,[sp, #0x10]
+00e012d0  stp x19,x30,[sp, #0x20]
+00e012d4  adrp x22,0x3572000
+00e012d8  adrp x21,0x335f000
+00e012dc  ldrb w8,[x22, #0x531]
+00e012e0  ldr x21,[x21, #0x20]
+00e012e4  mov w20,w1
+00e012e8  mov x19,x0
+00e012ec  tbnz w8,#0x0,0x00e01304
+00e012f0  adrp x0,0x335f000
+00e012f4  ldr x0,[x0, #0x20]
+00e012f8  bl 0x00b0789c
+00e012fc  mov w8,#0x1
+00e01300  strb w8,[x22, #0x531]
+00e01304  ldr x0,[x21]
+00e01308  ldr w8,[x0, #0xe0]
+00e0130c  cbnz w8,0x00e01318
+00e01310  bl 0x00b0798c
+00e01314  ldr x0,[x21]
+00e01318  ldr x8,[x0, #0xb8]
+00e0131c  ldr x0,[x8, #0x120]
+00e01320  cbz x0,0x00e01340
+00e01324  and w2,w20,#0x1
+00e01328  mov x1,x19
+00e0132c  ldp x19,x30,[sp, #0x20]
+00e01330  ldp x21,x20,[sp, #0x10]
+00e01334  mov x3,xzr
+00e01338  ldr x22,[sp], #0x30
+00e0133c  b 0x010613e4
+00e01340  and w8,w20,#0x1
+00e01344  strb w8,[x19, #0x64]
+00e01348  ldp x19,x30,[sp, #0x20]
+00e0134c  ldp x21,x20,[sp, #0x10]
+00e01350  ldr x22,[sp], #0x30
+00e01354  ret

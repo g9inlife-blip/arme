@@ -1,0 +1,83 @@
+Function: AliothEngine.GUIScreenManager$$SetBGMask_ @ 0167a38c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.GUIScreenManager$$set_BackgroundColorMask @ 0167a2d8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreenManager$$get_BackgroundColorMask @ 0167a260
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp838 @ 010cd96c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_SetBGMask_ @ 0114d73c
+
+--- Listing ---
+0167a38c  stp d11,d10,[sp, #-0x40]!
+0167a390  stp d9,d8,[sp, #0x10]
+0167a394  stp x21,x20,[sp, #0x20]
+0167a398  stp x19,x30,[sp, #0x30]
+0167a39c  adrp x21,0x3577000
+0167a3a0  adrp x20,0x337b000
+0167a3a4  ldrb w8,[x21, #0x9f4]
+0167a3a8  ldr x20,[x20, #0xb98]
+0167a3ac  mov v8.16B,v3.16B
+0167a3b0  mov v9.16B,v2.16B
+0167a3b4  mov v10.16B,v1.16B
+0167a3b8  mov v11.16B,v0.16B
+0167a3bc  mov x19,x0
+0167a3c0  tbnz w8,#0x0,0x0167a3d8
+0167a3c4  adrp x0,0x337b000
+0167a3c8  ldr x0,[x0, #0xb98]
+0167a3cc  bl 0x00b0789c
+0167a3d0  mov w8,#0x1
+0167a3d4  strb w8,[x21, #0x9f4]
+0167a3d8  ldr x0,[x20]
+0167a3dc  ldr w8,[x0, #0xe0]
+0167a3e0  cbnz w8,0x0167a3ec
+0167a3e4  bl 0x00b0798c
+0167a3e8  ldr x0,[x20]
+0167a3ec  ldr x8,[x0, #0xb8]
+0167a3f0  ldr x0,[x8, #0x2b8]
+0167a3f4  cbz x0,0x0167a424
+0167a3f8  mov x1,x19
+0167a3fc  mov v2.16B,v9.16B
+0167a400  mov v3.16B,v8.16B
+0167a404  ldp x19,x30,[sp, #0x30]
+0167a408  ldp x21,x20,[sp, #0x20]
+0167a40c  ldp d9,d8,[sp, #0x10]
+0167a410  mov v0.16B,v11.16B
+0167a414  mov v1.16B,v10.16B
+0167a418  mov x2,xzr
+0167a41c  ldp d11,d10,[sp], #0x40
+0167a420  b 0x010cd96c
+0167a424  mov x0,x19
+0167a428  bl 0x0167a260
+0167a42c  fsub s0,s0,s11
+0167a430  fsub s1,s1,s10
+0167a434  adrp x8,0x26db000
+0167a438  fmul s0,s0,s0
+0167a43c  fmul s1,s1,s1
+0167a440  fsub s2,s2,s9
+0167a444  fadd s0,s0,s1
+0167a448  ldr s1,[x8, #0x294]
+0167a44c  fsub s3,s3,s8
+0167a450  fmul s2,s2,s2
+0167a454  fadd s0,s2,s0
+0167a458  fmul s2,s3,s3
+0167a45c  fadd s0,s2,s0
+0167a460  fcmp s0,s1
+0167a464  b.mi 0x0167a490
+0167a468  mov x0,x19
+0167a46c  mov v2.16B,v9.16B
+0167a470  mov v3.16B,v8.16B
+0167a474  ldp x19,x30,[sp, #0x30]
+0167a478  ldp x21,x20,[sp, #0x20]
+0167a47c  ldp d9,d8,[sp, #0x10]
+0167a480  mov v0.16B,v11.16B
+0167a484  mov v1.16B,v10.16B
+0167a488  ldp d11,d10,[sp], #0x40
+0167a48c  b 0x0167a2d8
+0167a490  ldp x19,x30,[sp, #0x30]
+0167a494  ldp x21,x20,[sp, #0x20]
+0167a498  ldp d9,d8,[sp, #0x10]
+0167a49c  ldp d11,d10,[sp], #0x40
+0167a4a0  ret

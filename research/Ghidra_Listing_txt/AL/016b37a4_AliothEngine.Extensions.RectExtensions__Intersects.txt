@@ -1,0 +1,81 @@
+Function: AliothEngine.Extensions.RectExtensions$$Intersects @ 016b37a4
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Rect$$get_x @ 024daf34
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$get_width @ 024db068
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RectExtensions$$ContainsOrIntersects @ 016b38b8
+
+--- Listing ---
+016b37a4  sub sp,sp,#0x40
+016b37a8  stp d9,d8,[sp, #0x20]
+016b37ac  str x30,[sp, #0x30]
+016b37b0  mov x0,sp
+016b37b4  mov x1,xzr
+016b37b8  stp s0,s1,[sp, #0x10]
+016b37bc  stp s2,s3,[sp, #0x18]
+016b37c0  stp s4,s5,[sp]
+016b37c4  stp s6,s7,[sp, #0x8]
+016b37c8  bl 0x024daf34
+016b37cc  add x0,sp,#0x10
+016b37d0  mov x1,xzr
+016b37d4  mov v8.16B,v0.16B
+016b37d8  bl 0x024daf34
+016b37dc  add x0,sp,#0x10
+016b37e0  mov x1,xzr
+016b37e4  mov v9.16B,v0.16B
+016b37e8  bl 0x024db068
+016b37ec  fadd s0,s9,s0
+016b37f0  fcmp s8,s0
+016b37f4  b.pl 0x016b38a4
+016b37f8  add x0,sp,#0x10
+016b37fc  mov x1,xzr
+016b3800  bl 0x024daf34
+016b3804  mov x0,sp
+016b3808  mov x1,xzr
+016b380c  mov v8.16B,v0.16B
+016b3810  bl 0x024daf34
+016b3814  mov x0,sp
+016b3818  mov x1,xzr
+016b381c  mov v9.16B,v0.16B
+016b3820  bl 0x024db068
+016b3824  fadd s0,s9,s0
+016b3828  fcmp s8,s0
+016b382c  b.pl 0x016b38a4
+016b3830  mov x0,sp
+016b3834  mov x1,xzr
+016b3838  bl 0x024daf44
+016b383c  add x0,sp,#0x10
+016b3840  mov x1,xzr
+016b3844  mov v8.16B,v0.16B
+016b3848  bl 0x024daf44
+016b384c  add x0,sp,#0x10
+016b3850  mov x1,xzr
+016b3854  mov v9.16B,v0.16B
+016b3858  bl 0x024db078
+016b385c  fsub s0,s9,s0
+016b3860  fcmp s8,s0
+016b3864  b.le 0x016b38a4
+016b3868  add x0,sp,#0x10
+016b386c  mov x1,xzr
+016b3870  bl 0x024daf44
+016b3874  mov x0,sp
+016b3878  mov x1,xzr
+016b387c  mov v8.16B,v0.16B
+016b3880  bl 0x024daf44
+016b3884  mov x0,sp
+016b3888  mov x1,xzr
+016b388c  mov v9.16B,v0.16B
+016b3890  bl 0x024db078
+016b3894  fsub s0,s9,s0
+016b3898  fcmp s8,s0
+016b389c  cset w0,gt
+016b38a0  b 0x016b38a8
+016b38a4  mov w0,wzr
+016b38a8  ldr x30,[sp, #0x30]
+016b38ac  ldp d9,d8,[sp, #0x20]
+016b38b0  add sp,sp,#0x40
+016b38b4  ret

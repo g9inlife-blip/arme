@@ -1,0 +1,26 @@
+Function: AliothEngine.AssetLocation$$get_suffix @ 0166db0c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0166db0c  str x20,[sp, #-0x20]!
+0166db10  stp x19,x30,[sp, #0x10]
+0166db14  adrp x19,0x3577000
+0166db18  adrp x20,0x331b000
+0166db1c  ldrb w8,[x19, #0x94c]
+0166db20  ldr x20,[x20, #0x6c8]
+0166db24  tbnz w8,#0x0,0x0166db3c
+0166db28  adrp x0,0x331b000
+0166db2c  ldr x0,[x0, #0x6c8]
+0166db30  bl 0x00b0789c
+0166db34  mov w8,#0x1
+0166db38  strb w8,[x19, #0x94c]
+0166db3c  ldr x8,[x20]
+0166db40  ldp x19,x30,[sp, #0x10]
+0166db44  ldr x8,[x8, #0xb8]
+0166db48  ldr x0,[x8]
+0166db4c  ldr x20,[sp], #0x20
+0166db50  ret

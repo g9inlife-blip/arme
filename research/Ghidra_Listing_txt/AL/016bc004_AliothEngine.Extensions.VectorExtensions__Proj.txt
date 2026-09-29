@@ -1,0 +1,72 @@
+Function: AliothEngine.Extensions.VectorExtensions$$Proj @ 016bc004
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.VectorExtensions$$Rej @ 016bc0fc
+
+--- Listing ---
+016bc004  str d12,[sp, #-0x40]!
+016bc008  stp d11,d10,[sp, #0x10]
+016bc00c  stp d9,d8,[sp, #0x20]
+016bc010  stp x19,x30,[sp, #0x30]
+016bc014  adrp x19,0x3570000
+016bc018  ldrb w8,[x19, #0xf11]
+016bc01c  mov v10.16B,v5.16B
+016bc020  mov v11.16B,v4.16B
+016bc024  mov v12.16B,v3.16B
+016bc028  mov v8.16B,v1.16B
+016bc02c  mov v9.16B,v0.16B
+016bc030  cbnz w8,0x016bc048
+016bc034  adrp x0,0x332c000
+016bc038  ldr x0,[x0, #0x5a8]
+016bc03c  bl 0x00b0789c
+016bc040  mov w8,#0x1
+016bc044  strb w8,[x19, #0xf11]
+016bc048  adrp x8,0x332c000
+016bc04c  ldr x8,[x8, #0x5a8]
+016bc050  ldr x0,[x8]
+016bc054  ldr w8,[x0, #0xe0]
+016bc058  cbnz w8,0x016bc060
+016bc05c  bl 0x00b0798c
+016bc060  fmul s0,s12,s12
+016bc064  fmul s1,s11,s11
+016bc068  adrp x8,0x26db000
+016bc06c  fadd s0,s0,s1
+016bc070  ldr s1,[x8, #0x148]
+016bc074  fmul s2,s10,s10
+016bc078  fadd s0,s2,s0
+016bc07c  fsqrt s2,s0
+016bc080  fcmp s2,s1
+016bc084  b.le 0x016bc098
+016bc088  fdiv s0,s12,s2
+016bc08c  fdiv s1,s11,s2
+016bc090  fdiv s2,s10,s2
+016bc094  b 0x016bc0d0
+016bc098  adrp x19,0x3570000
+016bc09c  ldrb w8,[x19, #0xf0c]
+016bc0a0  cbnz w8,0x016bc0b8
+016bc0a4  adrp x0,0x3368000
+016bc0a8  ldr x0,[x0, #0x9b8]
+016bc0ac  bl 0x00b0789c
+016bc0b0  mov w8,#0x1
+016bc0b4  strb w8,[x19, #0xf0c]
+016bc0b8  adrp x8,0x3368000
+016bc0bc  ldr x8,[x8, #0x9b8]
+016bc0c0  ldr x8,[x8]
+016bc0c4  ldr x8,[x8, #0xb8]
+016bc0c8  ldp s0,s1,[x8]
+016bc0cc  ldr s2,[x8, #0x8]
+016bc0d0  fmul s3,s9,s0
+016bc0d4  fmul s4,s8,s1
+016bc0d8  ldp x19,x30,[sp, #0x30]
+016bc0dc  ldp d9,d8,[sp, #0x20]
+016bc0e0  ldp d11,d10,[sp, #0x10]
+016bc0e4  fadd s3,s3,s4
+016bc0e8  fmul s0,s0,s3
+016bc0ec  fmul s1,s1,s3
+016bc0f0  fmul s2,s2,s3
+016bc0f4  ldr d12,[sp], #0x40
+016bc0f8  ret

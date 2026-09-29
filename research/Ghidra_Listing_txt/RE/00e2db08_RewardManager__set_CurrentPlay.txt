@@ -1,0 +1,42 @@
+Function: RewardManager$$set_CurrentPlay @ 00e2db08
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+  <- RewardManager$$NextBoxListener @ 00e2e714
+
+--- Listing ---
+00e2db08  str x22,[sp, #-0x30]!
+00e2db0c  stp x21,x20,[sp, #0x10]
+00e2db10  stp x19,x30,[sp, #0x20]
+00e2db14  adrp x21,0x3572000
+00e2db18  adrp x22,0x331f000
+00e2db1c  ldrb w8,[x21, #0x749]
+00e2db20  ldr x22,[x22, #0x418]
+00e2db24  mov w20,w1
+00e2db28  mov x19,x0
+00e2db2c  tbnz w8,#0x0,0x00e2db44
+00e2db30  adrp x0,0x331f000
+00e2db34  ldr x0,[x0, #0x418]
+00e2db38  bl 0x00b0789c
+00e2db3c  mov w8,#0x1
+00e2db40  strb w8,[x21, #0x749]
+00e2db44  ldr x8,[x22]
+00e2db48  ldr x8,[x8, #0xb8]
+00e2db4c  ldr x0,[x8, #0x38]
+00e2db50  cbz x0,0x00e2db70
+00e2db54  and w2,w20,#0x1
+00e2db58  mov x1,x19
+00e2db5c  ldp x19,x30,[sp, #0x20]
+00e2db60  ldp x21,x20,[sp, #0x10]
+00e2db64  mov x3,xzr
+00e2db68  ldr x22,[sp], #0x30
+00e2db6c  b 0x010613e4
+00e2db70  and w8,w20,#0x1
+00e2db74  strb w8,[x19, #0x50]
+00e2db78  ldp x19,x30,[sp, #0x20]
+00e2db7c  ldp x21,x20,[sp, #0x10]
+00e2db80  ldr x22,[sp], #0x30
+00e2db84  ret

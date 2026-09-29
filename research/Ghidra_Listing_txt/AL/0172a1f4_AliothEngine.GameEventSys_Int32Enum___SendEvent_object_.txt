@@ -1,0 +1,40 @@
+Function: AliothEngine.GameEventSys<Int32Enum>$$SendEvent<object> @ 0172a1f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.GameEventSysTest$$SendEvent @ 0164bd2c
+
+--- Listing ---
+0172a1f4  stp x21,x20,[sp, #-0x20]!
+0172a1f8  stp x19,x30,[sp, #0x10]
+0172a1fc  ldr x8,[x3, #0x20]
+0172a200  mov x19,x2
+0172a204  mov x20,x3
+0172a208  ldr x8,[x8, #0xc0]
+0172a20c  ldr x2,[x8]
+0172a210  ldr x8,[x2, #0x8]
+0172a214  blr x8
+0172a218  ldr x8,[x20, #0x38]
+0172a21c  mov x21,x0
+0172a220  ldr x1,[x8]
+0172a224  ldrb w8,[x1, #0x132]
+0172a228  tbnz w8,#0x0,0x0172a238
+0172a22c  mov x0,x1
+0172a230  bl 0x00b2ac40
+0172a234  mov x1,x0
+0172a238  mov x0,x21
+0172a23c  bl 0x00b07990
+0172a240  cbz x0,0x0172a260
+0172a244  ldr x8,[x20, #0x38]
+0172a248  mov x1,x19
+0172a24c  ldp x19,x30,[sp, #0x10]
+0172a250  ldr x2,[x8, #0x8]
+0172a254  ldr x3,[x2, #0x8]
+0172a258  ldp x21,x20,[sp], #0x20
+0172a25c  br x3
+0172a260  ldp x19,x30,[sp, #0x10]
+0172a264  ldp x21,x20,[sp], #0x20
+0172a268  ret

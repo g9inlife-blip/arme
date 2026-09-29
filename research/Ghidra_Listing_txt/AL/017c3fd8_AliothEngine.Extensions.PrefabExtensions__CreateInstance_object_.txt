@@ -1,0 +1,51 @@
+Function: AliothEngine.Extensions.PrefabExtensions$$CreateInstance<object> @ 017c3fd8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+
+--- Calls IN ---
+
+--- Listing ---
+017c3fd8  str x22,[sp, #-0x30]!
+017c3fdc  stp x21,x20,[sp, #0x10]
+017c3fe0  stp x19,x30,[sp, #0x20]
+017c3fe4  adrp x22,0x3578000
+017c3fe8  adrp x21,0x3321000
+017c3fec  ldrb w8,[x22, #0x224]
+017c3ff0  ldr x21,[x21, #0xca8]
+017c3ff4  mov x20,x1
+017c3ff8  mov x19,x0
+017c3ffc  tbnz w8,#0x0,0x017c4014
+017c4000  adrp x0,0x3321000
+017c4004  ldr x0,[x0, #0xca8]
+017c4008  bl 0x00b0789c
+017c400c  mov w8,#0x1
+017c4010  strb w8,[x22, #0x224]
+017c4014  ldr x0,[x21]
+017c4018  ldr w8,[x0, #0xe0]
+017c401c  cbnz w8,0x017c4024
+017c4020  bl 0x00b0798c
+017c4024  mov x0,x19
+017c4028  mov x1,xzr
+017c402c  mov x2,xzr
+017c4030  bl 0x024c8180
+017c4034  tbz w0,#0x0,0x017c404c
+017c4038  ldp x19,x30,[sp, #0x20]
+017c403c  ldp x21,x20,[sp, #0x10]
+017c4040  mov x0,xzr
+017c4044  ldr x22,[sp], #0x30
+017c4048  ret
+017c404c  ldr x0,[x21]
+017c4050  ldr w8,[x0, #0xe0]
+017c4054  cbnz w8,0x017c405c
+017c4058  bl 0x00b0798c
+017c405c  ldr x8,[x20, #0x38]
+017c4060  mov x0,x19
+017c4064  ldp x19,x30,[sp, #0x20]
+017c4068  ldp x21,x20,[sp, #0x10]
+017c406c  ldr x1,[x8, #0x8]
+017c4070  ldr x2,[x1, #0x8]
+017c4074  ldr x22,[sp], #0x30
+017c4078  br x2

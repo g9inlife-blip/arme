@@ -1,0 +1,136 @@
+Function: AliothEngine.WeakEvents.WeakActionBase$$.ctor @ 01696f7c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.ArgumentException$$.ctor @ 020d5eb8
+  -> System.Reflection.MethodBase$$get_IsStatic @ 0208bb98
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> AliothEngine.DataStructures.WeakReference<object>$$.ctor @ 01f0d700
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakAction<object>$$.ctor @ 01f0cb68
+  <- AliothEngine.WeakEvents.WeakActionBase$$.ctor @ 01696f00
+  <- AliothEngine.WeakEvents.WeakAction$$.ctor @ 01696f78
+  <- AliothEngine.WeakEvents.WeakAction<object,-object>$$.ctor @ 01f0cc90
+
+--- Listing ---
+01696f7c  stp x23,x22,[sp, #-0x30]!
+01696f80  stp x21,x20,[sp, #0x10]
+01696f84  stp x19,x30,[sp, #0x20]
+01696f88  adrp x23,0x3577000
+01696f8c  adrp x22,0x3337000
+01696f90  ldrb w8,[x23, #0xb0c]
+01696f94  ldr x22,[x22, #0x28]
+01696f98  mov x19,x2
+01696f9c  mov x21,x1
+01696fa0  mov x20,x0
+01696fa4  tbnz w8,#0x0,0x01696fe0
+01696fa8  adrp x0,0x336b000
+01696fac  ldr x0,[x0, #0x140]
+01696fb0  bl 0x00b0789c
+01696fb4  adrp x0,0x3347000
+01696fb8  ldr x0,[x0, #0xd68]
+01696fbc  bl 0x00b0789c
+01696fc0  adrp x0,0x3370000
+01696fc4  ldr x0,[x0, #0xf78]
+01696fc8  bl 0x00b0789c
+01696fcc  adrp x0,0x3337000
+01696fd0  ldr x0,[x0, #0x28]
+01696fd4  bl 0x00b0789c
+01696fd8  mov w8,#0x1
+01696fdc  strb w8,[x23, #0xb0c]
+01696fe0  mov x0,x20
+01696fe4  mov x1,xzr
+01696fe8  bl 0x02194104
+01696fec  ldr x0,[x22]
+01696ff0  bl 0x00b079a0
+01696ff4  cbz x0,0x016970c8
+01696ff8  adrp x8,0x3370000
+01696ffc  ldr x8,[x8, #0xf78]
+01697000  mov x1,x21
+01697004  mov x22,x0
+01697008  ldr x2,[x8]
+0169700c  bl 0x01f0d700
+01697010  mov x0,x20
+01697014  str x22,[x0, #0x10]!
+01697018  mov x1,x22
+0169701c  bl 0x00b07850
+01697020  str x19,[x20, #0x18]!
+01697024  mov x0,x20
+01697028  mov x1,x19
+0169702c  bl 0x00b07850
+01697030  cbz x19,0x016970c8
+01697034  mov x0,x19
+01697038  mov x1,xzr
+0169703c  bl 0x0208bb98
+01697040  tbnz w0,#0x0,0x016970cc
+01697044  ldr x8,[x19]
+01697048  adrp x20,0x336b000
+0169704c  adrp x21,0x3347000
+01697050  mov x0,x19
+01697054  ldp x9,x1,[x8, #0x1b8]
+01697058  ldr x20,[x20, #0x140]
+0169705c  ldr x21,[x21, #0xd68]
+01697060  blr x9
+01697064  ldr x8,[x21]
+01697068  ldr x20,[x20]
+0169706c  mov x19,x0
+01697070  ldr w9,[x8, #0xe0]
+01697074  cbnz w9,0x01697080
+01697078  mov x0,x8
+0169707c  bl 0x00b0798c
+01697080  mov x0,x20
+01697084  mov x1,xzr
+01697088  bl 0x0215f900
+0169708c  cbz x19,0x016970c8
+01697090  ldr x8,[x19]
+01697094  mov x1,x0
+01697098  mov x0,x19
+0169709c  mov w2,wzr
+016970a0  ldr x9,[x8, #0x208]
+016970a4  ldr x3,[x8, #0x210]
+016970a8  blr x9
+016970ac  cbz x0,0x016970c8
+016970b0  ldr x8,[x0, #0x18]
+016970b4  cbnz x8,0x016970f0
+016970b8  ldp x19,x30,[sp, #0x20]
+016970bc  ldp x21,x20,[sp, #0x10]
+016970c0  ldp x23,x22,[sp], #0x30
+016970c4  ret
+016970c8  bl 0x00b079b0
+016970cc  adrp x0,0x3367000
+016970d0  ldr x0,[x0, #0x168]
+016970d4  bl 0x00b078a0
+016970d8  bl 0x00b079a0
+016970dc  mov x19,x0
+016970e0  bl 0x008d74f8
+016970e4  adrp x0,0x331a000
+016970e8  ldr x0,[x0, #0x368]
+016970ec  b 0x01697110
+016970f0  adrp x0,0x3367000
+016970f4  ldr x0,[x0, #0x168]
+016970f8  bl 0x00b078a0
+016970fc  bl 0x00b079a0
+01697100  mov x19,x0
+01697104  bl 0x008d74f8
+01697108  adrp x0,0x3329000
+0169710c  ldr x0,[x0, #0x898]
+01697110  bl 0x00b078a0
+01697114  mov x1,x0
+01697118  mov x0,x19
+0169711c  mov x2,xzr
+01697120  bl 0x020d5eb8
+01697124  adrp x0,0x3337000
+01697128  ldr x0,[x0, #0x280]
+0169712c  bl 0x00b078a0
+01697130  mov x1,x0
+01697134  mov x0,x19
+01697138  bl 0x00b07978

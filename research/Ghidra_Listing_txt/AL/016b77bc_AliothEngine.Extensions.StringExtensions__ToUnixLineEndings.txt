@@ -1,0 +1,47 @@
+Function: AliothEngine.Extensions.StringExtensions$$ToUnixLineEndings @ 016b77bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b77bc  str x20,[sp, #-0x20]!
+016b77c0  stp x19,x30,[sp, #0x10]
+016b77c4  adrp x20,0x3577000
+016b77c8  ldrb w8,[x20, #0xc1a]
+016b77cc  mov x19,x0
+016b77d0  tbnz w8,#0x0,0x016b7800
+016b77d4  adrp x0,0x3308000
+016b77d8  ldr x0,[x0, #0xe78]
+016b77dc  bl 0x00b0789c
+016b77e0  adrp x0,0x3356000
+016b77e4  ldr x0,[x0, #0xe48]
+016b77e8  bl 0x00b0789c
+016b77ec  adrp x0,0x337d000
+016b77f0  ldr x0,[x0, #0x5f0]
+016b77f4  bl 0x00b0789c
+016b77f8  mov w8,#0x1
+016b77fc  strb w8,[x20, #0xc1a]
+016b7800  cbz x19,0x016b784c
+016b7804  adrp x8,0x3356000
+016b7808  adrp x20,0x3308000
+016b780c  ldr x8,[x8, #0xe48]
+016b7810  ldr x20,[x20, #0xe78]
+016b7814  mov x0,x19
+016b7818  mov x3,xzr
+016b781c  ldr x1,[x8]
+016b7820  ldr x2,[x20]
+016b7824  bl 0x01fe06d8
+016b7828  cbz x0,0x016b784c
+016b782c  adrp x8,0x337d000
+016b7830  ldr x8,[x8, #0x5f0]
+016b7834  ldr x2,[x20]
+016b7838  ldp x19,x30,[sp, #0x10]
+016b783c  mov x3,xzr
+016b7840  ldr x1,[x8]
+016b7844  ldr x20,[sp], #0x20
+016b7848  b 0x01fe06d8
+016b784c  bl 0x00b079b0

@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_btn_teamConfig @ 00fce0f8
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$InitReady @ 00e5dec0
+
+--- Listing ---
+00fce0f8  stp x21,x20,[sp, #-0x20]!
+00fce0fc  stp x19,x30,[sp, #0x10]
+00fce100  adrp x20,0x3573000
+00fce104  adrp x21,0x335f000
+00fce108  ldrb w8,[x20, #0xe7a]
+00fce10c  ldr x21,[x21, #0xe70]
+00fce110  mov x19,x0
+00fce114  tbnz w8,#0x0,0x00fce12c
+00fce118  adrp x0,0x335f000
+00fce11c  ldr x0,[x0, #0xe70]
+00fce120  bl 0x00b0789c
+00fce124  mov w8,#0x1
+00fce128  strb w8,[x20, #0xe7a]
+00fce12c  ldr x1,[x21]
+00fce130  mov x0,x19
+00fce134  ldp x19,x30,[sp, #0x10]
+00fce138  mov x2,xzr
+00fce13c  ldp x21,x20,[sp], #0x20
+00fce140  b 0x00dc06f8

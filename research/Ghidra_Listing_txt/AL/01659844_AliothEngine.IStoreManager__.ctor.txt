@@ -1,0 +1,69 @@
+Function: AliothEngine.IStoreManager$$.ctor @ 01659844
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$.ctor @ 024e45bc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_WePay$$.ctor @ 0165dbb8
+  <- AliothEngine.StoreManager_AliPay$$.ctor @ 0165aa00
+  <- AliothEngine.StoreManager_ChinaPay$$.ctor @ 0165c068
+  <- AliothEngine.StoreManager_None$$.ctor @ 0165c178
+  <- AliothEngine.StoreManager_SDK$$.ctor @ 0165cd84
+  <- AliothEngine.StoreManager_BiliBili$$.ctor @ 0165b1f8
+
+--- Listing ---
+01659844  stp x21,x20,[sp, #-0x20]!
+01659848  stp x19,x30,[sp, #0x10]
+0165984c  adrp x20,0x3577000
+01659850  adrp x21,0x3354000
+01659854  ldrb w8,[x20, #0x84e]
+01659858  ldr x21,[x21, #0xc58]
+0165985c  mov x19,x0
+01659860  tbnz w8,#0x0,0x01659890
+01659864  adrp x0,0x3346000
+01659868  ldr x0,[x0, #0x3a8]
+0165986c  bl 0x00b0789c
+01659870  adrp x0,0x3354000
+01659874  ldr x0,[x0, #0xc58]
+01659878  bl 0x00b0789c
+0165987c  adrp x0,0x336f000
+01659880  ldr x0,[x0, #0x1e8]
+01659884  bl 0x00b0789c
+01659888  mov w8,#0x1
+0165988c  strb w8,[x20, #0x84e]
+01659890  ldr x0,[x21]
+01659894  bl 0x00b079a0
+01659898  cbz x0,0x01659904
+0165989c  adrp x8,0x3346000
+016598a0  ldr x8,[x8, #0x3a8]
+016598a4  adrp x21,0x336f000
+016598a8  mov x20,x0
+016598ac  ldr x1,[x8]
+016598b0  ldr x21,[x21, #0x1e8]
+016598b4  bl 0x0196dbb0
+016598b8  mov x0,x19
+016598bc  str x20,[x0, #0x48]!
+016598c0  mov x1,x20
+016598c4  bl 0x00b07850
+016598c8  mov x0,x19
+016598cc  mov x1,xzr
+016598d0  bl 0x024e45bc
+016598d4  ldr x8,[x21]
+016598d8  ldr x8,[x8, #0xb8]
+016598dc  ldr x0,[x8, #0xb0]
+016598e0  cbz x0,0x016598f8
+016598e4  mov x1,x19
+016598e8  ldp x19,x30,[sp, #0x10]
+016598ec  mov x2,xzr
+016598f0  ldp x21,x20,[sp], #0x20
+016598f4  b 0x01060dac
+016598f8  ldp x19,x30,[sp, #0x10]
+016598fc  ldp x21,x20,[sp], #0x20
+01659900  ret
+01659904  bl 0x00b079b0

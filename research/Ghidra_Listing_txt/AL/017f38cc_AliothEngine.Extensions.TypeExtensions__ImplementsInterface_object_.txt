@@ -1,0 +1,67 @@
+Function: AliothEngine.Extensions.TypeExtensions$$ImplementsInterface<object> @ 017f38cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> AliothEngine.Extensions.ListExtensions$$Contains<object> @ 0179de98
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Type$$get_IsInterface @ 0216a194
+
+--- Calls IN ---
+
+--- Listing ---
+017f38cc  str x22,[sp, #-0x30]!
+017f38d0  stp x21,x20,[sp, #0x10]
+017f38d4  stp x19,x30,[sp, #0x20]
+017f38d8  adrp x21,0x3578000
+017f38dc  ldrb w8,[x21, #0x39d]
+017f38e0  mov x19,x1
+017f38e4  mov x20,x0
+017f38e8  tbnz w8,#0x0,0x017f390c
+017f38ec  adrp x0,0x3358000
+017f38f0  ldr x0,[x0, #0xc60]
+017f38f4  bl 0x00b0789c
+017f38f8  adrp x0,0x3347000
+017f38fc  ldr x0,[x0, #0xd68]
+017f3900  bl 0x00b0789c
+017f3904  mov w8,#0x1
+017f3908  strb w8,[x21, #0x39d]
+017f390c  cbz x20,0x017f39a0
+017f3910  mov x0,x20
+017f3914  mov x1,xzr
+017f3918  bl 0x0216a194
+017f391c  tbnz w0,#0x0,0x017f398c
+017f3920  ldr x8,[x20]
+017f3924  adrp x22,0x3347000
+017f3928  adrp x21,0x3358000
+017f392c  mov x0,x20
+017f3930  ldr x9,[x8, #0x8a8]
+017f3934  ldr x1,[x8, #0x8b0]
+017f3938  ldr x22,[x22, #0xd68]
+017f393c  ldr x21,[x21, #0xc60]
+017f3940  blr x9
+017f3944  ldr x8,[x22]
+017f3948  ldr x9,[x19, #0x38]
+017f394c  mov x19,x0
+017f3950  ldr w10,[x8, #0xe0]
+017f3954  ldr x20,[x9]
+017f3958  cbnz w10,0x017f3964
+017f395c  mov x0,x8
+017f3960  bl 0x00b0798c
+017f3964  mov x0,x20
+017f3968  mov x1,xzr
+017f396c  bl 0x0215f900
+017f3970  ldr x2,[x21]
+017f3974  mov x1,x0
+017f3978  mov x0,x19
+017f397c  bl 0x0179de98
+017f3980  tbz w0,#0x0,0x017f398c
+017f3984  mov w0,#0x1
+017f3988  b 0x017f3990
+017f398c  mov w0,wzr
+017f3990  ldp x19,x30,[sp, #0x20]
+017f3994  ldp x21,x20,[sp, #0x10]
+017f3998  ldr x22,[sp], #0x30
+017f399c  ret
+017f39a0  bl 0x00b079b0

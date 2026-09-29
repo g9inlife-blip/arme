@@ -1,0 +1,43 @@
+Function: AliothEngine.RetryController$$RetryAndWait @ 0168a8b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader.<ProcessDownloadByUnityCache>d__20$$MoveNext @ 01660c70
+  <- AliothEngine.AssetDownloader.<ProcessDownload>d__19$$MoveNext @ 0165fcdc
+
+--- Listing ---
+0168a8b0  stp x21,x20,[sp, #-0x20]!
+0168a8b4  stp x19,x30,[sp, #0x10]
+0168a8b8  adrp x20,0x3577000
+0168a8bc  adrp x21,0x3321000
+0168a8c0  ldrb w8,[x20, #0xa97]
+0168a8c4  ldr x21,[x21, #0xfe8]
+0168a8c8  mov x19,x0
+0168a8cc  tbnz w8,#0x0,0x0168a8e4
+0168a8d0  adrp x0,0x3321000
+0168a8d4  ldr x0,[x0, #0xfe8]
+0168a8d8  bl 0x00b0789c
+0168a8dc  mov w8,#0x1
+0168a8e0  strb w8,[x20, #0xa97]
+0168a8e4  ldr x0,[x21]
+0168a8e8  bl 0x00b079a0
+0168a8ec  cbz x0,0x0168a920
+0168a8f0  mov x1,xzr
+0168a8f4  mov x20,x0
+0168a8f8  bl 0x02194104
+0168a8fc  mov x0,x20
+0168a900  str wzr,[x20, #0x10]
+0168a904  str x19,[x0, #0x20]!
+0168a908  mov x1,x19
+0168a90c  bl 0x00b07850
+0168a910  ldp x19,x30,[sp, #0x10]
+0168a914  mov x0,x20
+0168a918  ldp x21,x20,[sp], #0x20
+0168a91c  ret
+0168a920  bl 0x00b079b0

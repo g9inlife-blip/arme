@@ -1,0 +1,215 @@
+Function: AliothEngine.SingletonBehaviour<object>$$Awake @ 01e090dc
+
+--- Calls OUT ---
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Concat @ 01fdebb8
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.Object$$Destroy @ 024dfed4
+  -> FUN_00b2ac40 @ 00b2ac40
+  -> UnityEngine.Object$$DontDestroyOnLoad @ 024e00c4
+
+--- Calls IN ---
+  <- Unitilities.Pools.PoolManager$$Awake @ 0163f2dc
+  <- AliPayManager$$Awake @ 00d9e7b8
+  <- AliothEngine.AliothEngineInitialize$$Awake @ 016498e4
+  <- WePayManager$$Awake @ 00dba284
+  <- YPCShareSDK$$Awake @ 00e42838
+  <- AliothEngine.AssetDownloader$$Awake @ 0165de40
+  <- BiliSDKManager$$Awake @ 00da0eb4
+  <- AliothEngine.GUIScreenManager$$Awake @ 01675ce8
+  <- AliothEngine.AliothSDKManager$$Awake @ 016584f0
+  <- LoginSavedUsersInfo$$Awake @ 00dd7ffc
+  <- QuickSDKManager$$Awake @ 00db9380
+  <- SDKManager$$Awake @ 00debb34
+  <- GameCenterSDK$$Awake @ 00e416f0
+  <- AliothEngine.StoreManager$$Awake @ 01659970
+
+--- Listing ---
+01e090dc  str x24,[sp, #-0x40]!
+01e090e0  stp x23,x22,[sp, #0x10]
+01e090e4  stp x21,x20,[sp, #0x20]
+01e090e8  stp x19,x30,[sp, #0x30]
+01e090ec  adrp x21,0x3578000
+01e090f0  ldrb w8,[x21, #0xeb3]
+01e090f4  mov x20,x1
+01e090f8  mov x19,x0
+01e090fc  tbnz w8,#0x0,0x01e09144
+01e09100  adrp x0,0x336b000
+01e09104  ldr x0,[x0, #0x7d0]
+01e09108  bl 0x00b0789c
+01e0910c  adrp x0,0x3321000
+01e09110  ldr x0,[x0, #0xca8]
+01e09114  bl 0x00b0789c
+01e09118  adrp x0,0x3347000
+01e0911c  ldr x0,[x0, #0xd68]
+01e09120  bl 0x00b0789c
+01e09124  adrp x0,0x3325000
+01e09128  ldr x0,[x0, #0x390]
+01e0912c  bl 0x00b0789c
+01e09130  adrp x0,0x332c000
+01e09134  ldr x0,[x0, #0x788]
+01e09138  bl 0x00b0789c
+01e0913c  mov w8,#0x1
+01e09140  strb w8,[x21, #0xeb3]
+01e09144  ldr x8,[x20, #0x20]
+01e09148  adrp x22,0x3321000
+01e0914c  ldr x8,[x8, #0xc0]
+01e09150  ldr x0,[x8]
+01e09154  ldrb w8,[x0, #0x132]
+01e09158  ldr x22,[x22, #0xca8]
+01e0915c  tbnz w8,#0x0,0x01e09164
+01e09160  bl 0x00b2ac40
+01e09164  ldr x8,[x22]
+01e09168  ldr x9,[x0, #0xb8]
+01e0916c  ldr w10,[x8, #0xe0]
+01e09170  ldr x21,[x9]
+01e09174  cbnz w10,0x01e09180
+01e09178  mov x0,x8
+01e0917c  bl 0x00b0798c
+01e09180  mov x0,x21
+01e09184  mov x1,xzr
+01e09188  mov x2,xzr
+01e0918c  bl 0x024de30c
+01e09190  tbz w0,#0x0,0x01e091b0
+01e09194  ldr x8,[x20, #0x20]
+01e09198  mov x0,x19
+01e0919c  ldr x8,[x8, #0xc0]
+01e091a0  ldr x1,[x8, #0x28]
+01e091a4  ldr x8,[x1, #0x8]
+01e091a8  blr x8
+01e091ac  tbz w0,#0x0,0x01e092cc
+01e091b0  ldr x8,[x20, #0x20]
+01e091b4  ldr x8,[x8, #0xc0]
+01e091b8  ldr x0,[x8]
+01e091bc  ldrb w8,[x0, #0x132]
+01e091c0  tbnz w8,#0x0,0x01e091c8
+01e091c4  bl 0x00b2ac40
+01e091c8  ldr x8,[x22]
+01e091cc  ldr x9,[x0, #0xb8]
+01e091d0  ldr w10,[x8, #0xe0]
+01e091d4  ldr x21,[x9]
+01e091d8  cbnz w10,0x01e091e4
+01e091dc  mov x0,x8
+01e091e0  bl 0x00b0798c
+01e091e4  mov x0,x21
+01e091e8  mov x1,xzr
+01e091ec  mov x2,xzr
+01e091f0  bl 0x024c8180
+01e091f4  tbz w0,#0x0,0x01e092b8
+01e091f8  cbz x19,0x01e093ac
+01e091fc  mov x0,x19
+01e09200  mov x1,xzr
+01e09204  bl 0x024e4ed4
+01e09208  cbz x0,0x01e093ac
+01e0920c  ldr x8,[x20, #0x20]
+01e09210  ldr x8,[x8, #0xc0]
+01e09214  ldr x1,[x8, #0x30]
+01e09218  ldr x8,[x1, #0x8]
+01e0921c  blr x8
+01e09220  ldr x8,[x20, #0x20]
+01e09224  mov x21,x0
+01e09228  ldr x9,[x8, #0xc0]
+01e0922c  ldr x8,[x9]
+01e09230  ldrb w10,[x8, #0x132]
+01e09234  tbnz w10,#0x0,0x01e0924c
+01e09238  mov x0,x8
+01e0923c  bl 0x00b2ac40
+01e09240  ldr x8,[x20, #0x20]
+01e09244  ldr x9,[x8, #0xc0]
+01e09248  mov x8,x0
+01e0924c  ldr x8,[x8, #0xb8]
+01e09250  str x21,[x8]
+01e09254  ldr x0,[x9]
+01e09258  ldrb w8,[x0, #0x132]
+01e0925c  tbnz w8,#0x0,0x01e09264
+01e09260  bl 0x00b2ac40
+01e09264  ldr x0,[x0, #0xb8]
+01e09268  mov x1,x21
+01e0926c  bl 0x00b07850
+01e09270  ldrb w8,[x19, #0x18]
+01e09274  cbz w8,0x01e092b8
+01e09278  mov x0,x19
+01e0927c  mov x1,xzr
+01e09280  bl 0x024e4ed4
+01e09284  ldr x8,[x22]
+01e09288  mov x19,x0
+01e0928c  ldr w9,[x8, #0xe0]
+01e09290  cbnz w9,0x01e0929c
+01e09294  mov x0,x8
+01e09298  bl 0x00b0798c
+01e0929c  mov x0,x19
+01e092a0  ldp x19,x30,[sp, #0x30]
+01e092a4  ldp x21,x20,[sp, #0x20]
+01e092a8  ldp x23,x22,[sp, #0x10]
+01e092ac  mov x1,xzr
+01e092b0  ldr x24,[sp], #0x40
+01e092b4  b 0x024e00c4
+01e092b8  ldp x19,x30,[sp, #0x30]
+01e092bc  ldp x21,x20,[sp, #0x20]
+01e092c0  ldp x23,x22,[sp, #0x10]
+01e092c4  ldr x24,[sp], #0x40
+01e092c8  ret
+01e092cc  adrp x9,0x3347000
+01e092d0  ldr x8,[x20, #0x20]
+01e092d4  ldr x9,[x9, #0xd68]
+01e092d8  adrp x24,0x332c000
+01e092dc  ldr x8,[x8, #0xc0]
+01e092e0  ldr x0,[x9]
+01e092e4  ldr x20,[x8, #0x10]
+01e092e8  ldr w9,[x0, #0xe0]
+01e092ec  ldr x24,[x24, #0x788]
+01e092f0  cbnz w9,0x01e092f8
+01e092f4  bl 0x00b0798c
+01e092f8  adrp x23,0x3325000
+01e092fc  adrp x21,0x336b000
+01e09300  ldr x23,[x23, #0x390]
+01e09304  ldr x21,[x21, #0x7d0]
+01e09308  mov x0,x20
+01e0930c  mov x1,xzr
+01e09310  bl 0x0215f900
+01e09314  ldr x20,[x24]
+01e09318  cbz x0,0x01e09330
+01e0931c  ldr x8,[x0]
+01e09320  ldp x9,x1,[x8, #0x168]
+01e09324  blr x9
+01e09328  mov x1,x0
+01e0932c  b 0x01e09334
+01e09330  mov x1,xzr
+01e09334  ldr x2,[x23]
+01e09338  mov x0,x20
+01e0933c  mov x3,xzr
+01e09340  bl 0x01fdebb8
+01e09344  ldr x8,[x21]
+01e09348  mov x20,x0
+01e0934c  ldr w9,[x8, #0xe0]
+01e09350  cbnz w9,0x01e0935c
+01e09354  mov x0,x8
+01e09358  bl 0x00b0798c
+01e0935c  mov x0,x20
+01e09360  mov x1,xzr
+01e09364  bl 0x024c0f2c
+01e09368  cbz x19,0x01e093ac
+01e0936c  mov x0,x19
+01e09370  mov x1,xzr
+01e09374  bl 0x024e4ed4
+01e09378  ldr x8,[x22]
+01e0937c  mov x19,x0
+01e09380  ldr w9,[x8, #0xe0]
+01e09384  cbnz w9,0x01e09390
+01e09388  mov x0,x8
+01e0938c  bl 0x00b0798c
+01e09390  mov x0,x19
+01e09394  ldp x19,x30,[sp, #0x30]
+01e09398  ldp x21,x20,[sp, #0x20]
+01e0939c  ldp x23,x22,[sp, #0x10]
+01e093a0  mov x1,xzr
+01e093a4  ldr x24,[sp], #0x40
+01e093a8  b 0x024dfed4
+01e093ac  bl 0x00b079b0

@@ -1,0 +1,47 @@
+Function: RechargeRecord$$.ctor @ 00df1320
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.ScriptableObject$$.ctor @ 024e277c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00df1320  stp x21,x20,[sp, #-0x20]!
+00df1324  stp x19,x30,[sp, #0x10]
+00df1328  adrp x20,0x3572000
+00df132c  adrp x21,0x336f000
+00df1330  ldrb w8,[x20, #0x45c]
+00df1334  ldr x21,[x21, #0x7c0]
+00df1338  mov x19,x0
+00df133c  tbnz w8,#0x0,0x00df1360
+00df1340  adrp x0,0x336f000
+00df1344  ldr x0,[x0, #0x8f8]
+00df1348  bl 0x00b0789c
+00df134c  adrp x0,0x336f000
+00df1350  ldr x0,[x0, #0x7c0]
+00df1354  bl 0x00b0789c
+00df1358  mov w8,#0x1
+00df135c  strb w8,[x20, #0x45c]
+00df1360  ldr x0,[x21]
+00df1364  bl 0x00b079a0
+00df1368  cbz x0,0x00df13a4
+00df136c  adrp x8,0x336f000
+00df1370  ldr x8,[x8, #0x8f8]
+00df1374  mov x20,x0
+00df1378  ldr x1,[x8]
+00df137c  bl 0x01bffe10
+00df1380  mov x0,x19
+00df1384  str x20,[x0, #0x18]!
+00df1388  mov x1,x20
+00df138c  bl 0x00b07850
+00df1390  mov x0,x19
+00df1394  ldp x19,x30,[sp, #0x10]
+00df1398  mov x1,xzr
+00df139c  ldp x21,x20,[sp], #0x20
+00df13a0  b 0x024e277c
+00df13a4  bl 0x00b079b0

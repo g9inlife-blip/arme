@@ -1,0 +1,26 @@
+Function: AliothEngine.AssetVersionManager$$UpdateAssetVersionInfo @ 016700c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.AssetVersionManager$$LoadAssetIndex @ 01670104
+
+--- Calls IN ---
+
+--- Listing ---
+016700c0  str x20,[sp, #-0x20]!
+016700c4  stp x19,x30,[sp, #0x10]
+016700c8  mov x20,x0
+016700cc  str x1,[x20, #0x18]!
+016700d0  mov x19,x0
+016700d4  mov x0,x20
+016700d8  bl 0x00b07850
+016700dc  ldrb w8,[x20, #0x18]
+016700e0  cbz w8,0x016700f8
+016700e4  mov x0,x19
+016700e8  ldp x19,x30,[sp, #0x10]
+016700ec  mov x1,xzr
+016700f0  ldr x20,[sp], #0x20
+016700f4  b 0x01670104
+016700f8  ldp x19,x30,[sp, #0x10]
+016700fc  ldr x20,[sp], #0x20
+01670100  ret

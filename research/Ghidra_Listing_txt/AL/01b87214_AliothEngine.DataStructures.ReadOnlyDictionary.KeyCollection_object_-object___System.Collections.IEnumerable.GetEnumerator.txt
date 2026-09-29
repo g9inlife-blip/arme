@@ -1,0 +1,23 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.KeyCollection<object,-object>$$System.Collections.IEnumerable.GetEnumerator @ 01b87214
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.ReadOnlyDictionary.KeyCollection<object,-object>$$GetEnumerator @ 01b87180
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00994718 @ 00994718
+
+--- Listing ---
+01b87214  stp x19,x30,[sp, #-0x10]!
+01b87218  ldr x8,[x1, #0x20]
+01b8721c  mov x19,x0
+01b87220  ldrb w9,[x8, #0x132]
+01b87224  tbnz w9,#0x0,0x01b87234
+01b87228  mov x0,x8
+01b8722c  bl 0x00b2ac40
+01b87230  mov x8,x0
+01b87234  ldr x8,[x8, #0xc0]
+01b87238  mov x0,x19
+01b8723c  ldr x1,[x8, #0x28]
+01b87240  ldp x19,x30,[sp], #0x10
+01b87244  b 0x01b87180

@@ -1,0 +1,17 @@
+Function: rethrow_exception @ 00b473d4
+FuncComment: std::rethrow_exception(std::exception_ptr)
+
+--- Calls OUT ---
+  -> __cxa_rethrow_primary_exception @ 008d40b0
+  -> terminate @ 008d3b90
+
+--- Calls IN ---
+  <- rethrow_exception @ 008d4f60
+
+--- Listing ---
+00b473d4  stp x29,x30,[sp, #-0x10]!
+    ; [PLATE] std::rethrow_exception(std::exception_ptr)
+00b473d8  mov x29,sp
+00b473dc  ldr x0,[x0]
+00b473e0  bl 0x008d40b0
+00b473e4  bl 0x008d3b90

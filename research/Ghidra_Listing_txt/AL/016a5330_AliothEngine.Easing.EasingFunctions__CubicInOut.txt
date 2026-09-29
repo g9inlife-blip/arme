@@ -1,0 +1,33 @@
+Function: AliothEngine.Easing.EasingFunctions$$CubicInOut @ 016a5330
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016a5330  fmov s3,0x3f800000
+016a5334  fabd s4,s0,s1
+016a5338  fcmp s0,s1
+016a533c  fmin s5,s2,s3
+016a5340  fneg s6,s4
+016a5344  fcsel s4,s6,s4,gt
+016a5348  fadd s5,s5,s5
+016a534c  fcmp s2,#0.0
+016a5350  fmov s2,wzr
+016a5354  fmov s1,0x3f000000
+016a5358  fcsel s2,s5,s2,pl
+016a535c  fcmp s2,s3
+016a5360  fmul s1,s4,s1
+016a5364  b.pl 0x016a5374
+016a5368  fmul s3,s2,s2
+016a536c  fmul s2,s2,s3
+016a5370  b 0x016a538c
+016a5374  fmov s3,0xc0000000
+016a5378  fadd s2,s2,s3
+016a537c  fmul s3,s2,s2
+016a5380  fmul s2,s2,s3
+016a5384  fmov s3,0x40000000
+016a5388  fadd s2,s2,s3
+016a538c  fmul s1,s1,s2
+016a5390  fadd s0,s1,s0
+016a5394  ret

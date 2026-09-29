@@ -1,0 +1,106 @@
+Function: AliothEngine.Command.CommandFactory$$Build<object,-object> @ 0176caa4
+
+--- Calls OUT ---
+  -> AliothEngine.Command.CommandFactory$$OnNewCommand @ 016a65d0
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Activator$$CreateInstance @ 0217b21c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0176caa4  stp x23,x22,[sp, #-0x30]!
+0176caa8  stp x21,x20,[sp, #0x10]
+0176caac  stp x19,x30,[sp, #0x20]
+0176cab0  adrp x23,0x3578000
+0176cab4  adrp x22,0x3347000
+0176cab8  ldrb w8,[x23, #0xad]
+0176cabc  ldr x22,[x22, #0xd68]
+0176cac0  mov x20,x2
+0176cac4  mov x21,x1
+0176cac8  mov x19,x0
+0176cacc  tbnz w8,#0x0,0x0176caf0
+0176cad0  adrp x0,0x3370000
+0176cad4  ldr x0,[x0, #0x778]
+0176cad8  bl 0x00b0789c
+0176cadc  adrp x0,0x3347000
+0176cae0  ldr x0,[x0, #0xd68]
+0176cae4  bl 0x00b0789c
+0176cae8  mov w8,#0x1
+0176caec  strb w8,[x23, #0xad]
+0176caf0  ldr x0,[x22]
+0176caf4  ldr x8,[x20, #0x38]
+0176caf8  adrp x23,0x3370000
+0176cafc  ldr w9,[x0, #0xe0]
+0176cb00  ldr x22,[x8]
+0176cb04  ldr x23,[x23, #0x778]
+0176cb08  cbnz w9,0x0176cb10
+0176cb0c  bl 0x00b0798c
+0176cb10  mov x0,x22
+0176cb14  mov x1,xzr
+0176cb18  bl 0x0215f900
+0176cb1c  ldr x8,[x23]
+0176cb20  mov x22,x0
+0176cb24  mov w1,#0x1
+0176cb28  mov x0,x8
+0176cb2c  bl 0x00b078f8
+0176cb30  cbz x0,0x0176cbe4
+0176cb34  mov x23,x0
+0176cb38  cbz x21,0x0176cb50
+0176cb3c  ldr x8,[x23]
+0176cb40  mov x0,x21
+0176cb44  ldr x1,[x8, #0x40]
+0176cb48  bl 0x00b07990
+0176cb4c  cbz x0,0x0176cbec
+0176cb50  ldr w8,[x23, #0x18]
+0176cb54  cbz w8,0x0176cbe8
+0176cb58  mov x0,x23
+0176cb5c  str x21,[x0, #0x20]!
+0176cb60  mov x1,x21
+0176cb64  bl 0x00b07850
+0176cb68  mov x0,x22
+0176cb6c  mov x1,x23
+0176cb70  mov x2,xzr
+0176cb74  bl 0x0217b21c
+0176cb78  ldr x8,[x20, #0x38]
+0176cb7c  mov x21,x0
+0176cb80  ldr x20,[x8, #0x10]
+0176cb84  ldrb w8,[x20, #0x132]
+0176cb88  tbnz w8,#0x0,0x0176cb98
+0176cb8c  mov x0,x20
+0176cb90  bl 0x00b2ac40
+0176cb94  mov x20,x0
+0176cb98  cbz x21,0x0176cbbc
+0176cb9c  mov x0,x21
+0176cba0  mov x1,x20
+0176cba4  bl 0x00b07990
+0176cba8  mov x22,x0
+0176cbac  cbnz x0,0x0176cbc0
+0176cbb0  mov x0,x21
+0176cbb4  mov x1,x20
+0176cbb8  bl 0x00b07c6c
+0176cbbc  mov x22,xzr
+0176cbc0  mov x0,x19
+0176cbc4  mov x1,x22
+0176cbc8  mov x2,xzr
+0176cbcc  bl 0x016a65d0
+0176cbd0  ldp x19,x30,[sp, #0x20]
+0176cbd4  ldp x21,x20,[sp, #0x10]
+0176cbd8  mov x0,x22
+0176cbdc  ldp x23,x22,[sp], #0x30
+0176cbe0  ret
+0176cbe4  bl 0x00b079b0
+0176cbe8  bl 0x00b079b8
+0176cbec  bl 0x00b079d4
+0176cbf0  mov x1,xzr
+0176cbf4  bl 0x00b07978

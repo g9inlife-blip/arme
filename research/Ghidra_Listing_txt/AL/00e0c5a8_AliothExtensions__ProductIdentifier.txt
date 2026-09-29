@@ -1,0 +1,59 @@
+Function: AliothExtensions$$ProductIdentifier @ 00e0c5a8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$ToString @ 0214dc44
+  -> FUN_00b079b0 @ 00b079b0
+  -> BaseData$$get_id @ 00df3164
+
+--- Calls IN ---
+  <- Ali.<>c$$<StoreLoadProductList>b__259_0 @ 00e115ac
+  <- Ali.<>c$$<StoreLoadProductList>b__259_1 @ 00e11680
+  <- DataCenter.<>c$$<RefreshRechargeList>b__90_0 @ 016ea1e4
+  <- XLua.CSObjectWrap.RechargeDataWrap$$_m_ProductIdentifier @ 01352be8
+  <- Ali$$GetRechargeLocalizedPrice @ 00e0c49c
+  <- Ali.<>c__DisplayClass268_0$$<Charge>b__1 @ 00e11efc
+
+--- Listing ---
+00e0c5a8  sub sp,sp,#0x30
+00e0c5ac  stp x21,x20,[sp, #0x10]
+00e0c5b0  stp x19,x30,[sp, #0x20]
+00e0c5b4  adrp x21,0x3572000
+00e0c5b8  adrp x20,0x3348000
+00e0c5bc  ldrb w8,[x21, #0x603]
+00e0c5c0  ldr x20,[x20, #0x138]
+00e0c5c4  mov x19,x0
+00e0c5c8  tbnz w8,#0x0,0x00e0c5e0
+00e0c5cc  adrp x0,0x3348000
+00e0c5d0  ldr x0,[x0, #0x138]
+00e0c5d4  bl 0x00b0789c
+00e0c5d8  mov w8,#0x1
+00e0c5dc  strb w8,[x21, #0x603]
+00e0c5e0  ldr x0,[x20]
+00e0c5e4  str wzr,[sp, #0xc]
+00e0c5e8  ldr w8,[x0, #0xe0]
+00e0c5ec  cbnz w8,0x00e0c5f8
+00e0c5f0  bl 0x00b0798c
+00e0c5f4  ldr x0,[x20]
+00e0c5f8  ldr x8,[x0, #0xb8]
+00e0c5fc  ldr x0,[x8, #0x178]
+00e0c600  cbz x0,0x00e0c614
+00e0c604  mov x1,x19
+00e0c608  mov x2,xzr
+00e0c60c  bl 0x01061abc
+00e0c610  b 0x00e0c634
+00e0c614  cbz x19,0x00e0c644
+00e0c618  mov x0,x19
+00e0c61c  mov x1,xzr
+00e0c620  bl 0x00df3164
+00e0c624  str w0,[sp, #0xc]
+00e0c628  add x0,sp,#0xc
+00e0c62c  mov x1,xzr
+00e0c630  bl 0x0214dc44
+00e0c634  ldp x19,x30,[sp, #0x20]
+00e0c638  ldp x21,x20,[sp, #0x10]
+00e0c63c  add sp,sp,#0x30
+00e0c640  ret
+00e0c644  bl 0x00b079b0

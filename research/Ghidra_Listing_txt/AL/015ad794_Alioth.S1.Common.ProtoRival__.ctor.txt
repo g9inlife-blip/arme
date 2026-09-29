@@ -1,0 +1,109 @@
+Function: Alioth.S1.Common.ProtoRival$$.ctor @ 015ad794
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Collections.Generic.Dictionary<int,-int>$$.ctor @ 019243a8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<int,-object>$$.ctor @ 0192d268
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+015ad794  stp x21,x20,[sp, #-0x20]!
+015ad798  stp x19,x30,[sp, #0x10]
+015ad79c  adrp x20,0x3577000
+015ad7a0  adrp x21,0x3314000
+015ad7a4  ldrb w8,[x20, #0x87]
+015ad7a8  ldr x21,[x21, #0xc70]
+015ad7ac  mov x19,x0
+015ad7b0  tbnz w8,#0x0,0x015ad81c
+015ad7b4  adrp x0,0x3368000
+015ad7b8  ldr x0,[x0, #0xd20]
+015ad7bc  bl 0x00b0789c
+015ad7c0  adrp x0,0x3348000
+015ad7c4  ldr x0,[x0, #0xe20]
+015ad7c8  bl 0x00b0789c
+015ad7cc  adrp x0,0x3367000
+015ad7d0  ldr x0,[x0, #0xdf0]
+015ad7d4  bl 0x00b0789c
+015ad7d8  adrp x0,0x3358000
+015ad7dc  ldr x0,[x0, #0x360]
+015ad7e0  bl 0x00b0789c
+015ad7e4  adrp x0,0x3361000
+015ad7e8  ldr x0,[x0, #0x70]
+015ad7ec  bl 0x00b0789c
+015ad7f0  adrp x0,0x3312000
+015ad7f4  ldr x0,[x0, #0xee8]
+015ad7f8  bl 0x00b0789c
+015ad7fc  adrp x0,0x3314000
+015ad800  ldr x0,[x0, #0xc70]
+015ad804  bl 0x00b0789c
+015ad808  adrp x0,0x3372000
+015ad80c  ldr x0,[x0, #0x908]
+015ad810  bl 0x00b0789c
+015ad814  mov w8,#0x1
+015ad818  strb w8,[x20, #0x87]
+015ad81c  ldr x0,[x21]
+015ad820  bl 0x00b079a0
+015ad824  cbz x0,0x015ad908
+015ad828  adrp x8,0x3368000
+015ad82c  ldr x8,[x8, #0xd20]
+015ad830  adrp x21,0x3361000
+015ad834  mov x20,x0
+015ad838  ldr x1,[x8]
+015ad83c  ldr x21,[x21, #0x70]
+015ad840  bl 0x0192d268
+015ad844  mov x0,x19
+015ad848  str x20,[x0, #0x38]!
+015ad84c  mov x1,x20
+015ad850  bl 0x00b07850
+015ad854  ldr x0,[x21]
+015ad858  bl 0x00b079a0
+015ad85c  cbz x0,0x015ad908
+015ad860  adrp x8,0x3358000
+015ad864  ldr x8,[x8, #0x360]
+015ad868  adrp x21,0x3372000
+015ad86c  mov x20,x0
+015ad870  ldr x1,[x8]
+015ad874  ldr x21,[x21, #0x908]
+015ad878  bl 0x0192d268
+015ad87c  mov x0,x19
+015ad880  str x20,[x0, #0x40]!
+015ad884  mov x1,x20
+015ad888  bl 0x00b07850
+015ad88c  ldr x0,[x21]
+015ad890  bl 0x00b079a0
+015ad894  cbz x0,0x015ad908
+015ad898  adrp x8,0x3348000
+015ad89c  ldr x8,[x8, #0xe20]
+015ad8a0  adrp x21,0x3312000
+015ad8a4  mov x20,x0
+015ad8a8  ldr x1,[x8]
+015ad8ac  ldr x21,[x21, #0xee8]
+015ad8b0  bl 0x0196dbb0
+015ad8b4  mov x0,x19
+015ad8b8  str x20,[x0, #0x48]!
+015ad8bc  mov x1,x20
+015ad8c0  bl 0x00b07850
+015ad8c4  ldr x0,[x21]
+015ad8c8  bl 0x00b079a0
+015ad8cc  cbz x0,0x015ad908
+015ad8d0  adrp x8,0x3367000
+015ad8d4  ldr x8,[x8, #0xdf0]
+015ad8d8  mov x20,x0
+015ad8dc  ldr x1,[x8]
+015ad8e0  bl 0x019243a8
+015ad8e4  mov x0,x19
+015ad8e8  str x20,[x0, #0x58]!
+015ad8ec  mov x1,x20
+015ad8f0  bl 0x00b07850
+015ad8f4  mov x0,x19
+015ad8f8  ldp x19,x30,[sp, #0x10]
+015ad8fc  mov x1,xzr
+015ad900  ldp x21,x20,[sp], #0x20
+015ad904  b 0x02194104
+015ad908  bl 0x00b079b0

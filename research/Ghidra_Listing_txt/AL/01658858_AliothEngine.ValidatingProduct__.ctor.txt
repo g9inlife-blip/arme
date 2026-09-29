@@ -1,0 +1,34 @@
+Function: AliothEngine.ValidatingProduct$$.ctor @ 01658858
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_SDK$$OnPaySuccess @ 0165cb60
+  <- Ali$$GetProductFormRechargeData @ 00e0c24c
+
+--- Listing ---
+01658858  stp x21,x20,[sp, #-0x20]!
+0165885c  stp x19,x30,[sp, #0x10]
+01658860  adrp x20,0x3577000
+01658864  adrp x21,0x3324000
+01658868  ldrb w8,[x20, #0x837]
+0165886c  ldr x21,[x21, #0x5e8]
+01658870  mov x19,x0
+01658874  tbnz w8,#0x0,0x0165888c
+01658878  adrp x0,0x3324000
+0165887c  ldr x0,[x0, #0x5e8]
+01658880  bl 0x00b0789c
+01658884  mov w8,#0x1
+01658888  strb w8,[x20, #0x837]
+0165888c  ldr x1,[x21]
+01658890  mov x0,x19
+01658894  str x1,[x0, #0x30]!
+01658898  bl 0x00b07850
+0165889c  mov x0,x19
+016588a0  ldp x19,x30,[sp, #0x10]
+016588a4  mov x1,xzr
+016588a8  ldp x21,x20,[sp], #0x20
+016588ac  b 0x02194104

@@ -1,0 +1,32 @@
+Function: AliothEngine.Easing.EasingFunctions$$CustomCurve @ 016a5f60
+
+--- Calls OUT ---
+  -> UnityEngine.AnimationCurve$$Evaluate @ 024beb58
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Easing.EasingFunctions.<>c__DisplayClass33_0$$<AnimationCurveFunction>b__0 @ 016a6590
+
+--- Listing ---
+016a5f60  stp d9,d8,[sp, #-0x20]!
+016a5f64  str x30,[sp, #0x10]
+016a5f68  cbz x0,0x016a5fb4
+016a5f6c  mov v8.16B,v0.16B
+016a5f70  fmov s0,0x3f800000
+016a5f74  mov v9.16B,v1.16B
+016a5f78  fcmp s2,#0.0
+016a5f7c  fmin s0,s2,s0
+016a5f80  fmov s1,wzr
+016a5f84  fcsel s0,s0,s1,pl
+016a5f88  mov x1,xzr
+016a5f8c  bl 0x024beb58
+016a5f90  fabd s1,s8,s9
+016a5f94  fneg s2,s1
+016a5f98  fcmp s8,s9
+016a5f9c  ldr x30,[sp, #0x10]
+016a5fa0  fcsel s1,s2,s1,gt
+016a5fa4  fmul s0,s1,s0
+016a5fa8  fadd s0,s0,s8
+016a5fac  ldp d9,d8,[sp], #0x20
+016a5fb0  ret
+016a5fb4  bl 0x00b079b0

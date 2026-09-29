@@ -1,0 +1,60 @@
+Function: AliothEngine.Extensions.StringExtensions$$UppercaseFirst @ 016b7654
+
+--- Calls OUT ---
+  -> System.String$$get_Chars @ 01fda110
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Char$$ToUpper @ 020dc490
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Substring @ 01fe29c0
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Char$$ToString @ 020cbf14
+
+--- Calls IN ---
+
+--- Listing ---
+016b7654  str x20,[sp, #-0x20]!
+016b7658  stp x19,x30,[sp, #0x10]
+016b765c  adrp x20,0x3577000
+016b7660  ldrb w8,[x20, #0xc18]
+016b7664  mov x19,x0
+016b7668  tbnz w8,#0x0,0x016b7680
+016b766c  adrp x0,0x3329000
+016b7670  ldr x0,[x0, #0xc30]
+016b7674  bl 0x00b0789c
+016b7678  mov w8,#0x1
+016b767c  strb w8,[x20, #0xc18]
+016b7680  strh wzr,[sp, #0xc]
+016b7684  cbz x19,0x016b7704
+016b7688  adrp x20,0x3329000
+016b768c  ldr x20,[x20, #0xc30]
+016b7690  mov x0,x19
+016b7694  mov w1,wzr
+016b7698  mov x2,xzr
+016b769c  bl 0x01fda110
+016b76a0  ldr x8,[x20]
+016b76a4  mov w20,w0
+016b76a8  ldr w9,[x8, #0xe0]
+016b76ac  cbnz w9,0x016b76b8
+016b76b0  mov x0,x8
+016b76b4  bl 0x00b0798c
+016b76b8  mov w0,w20
+016b76bc  mov x1,xzr
+016b76c0  bl 0x020dc490
+016b76c4  strh w0,[sp, #0xc]
+016b76c8  add x0,sp,#0xc
+016b76cc  mov x1,xzr
+016b76d0  bl 0x020cbf14
+016b76d4  mov x20,x0
+016b76d8  mov w1,#0x1
+016b76dc  mov x0,x19
+016b76e0  mov x2,xzr
+016b76e4  bl 0x01fe29c0
+016b76e8  mov x1,x0
+016b76ec  mov x0,x20
+016b76f0  mov x2,xzr
+016b76f4  bl 0x01fd2850
+016b76f8  ldp x19,x30,[sp, #0x10]
+016b76fc  ldr x20,[sp], #0x20
+016b7700  ret
+016b7704  bl 0x00b079b0

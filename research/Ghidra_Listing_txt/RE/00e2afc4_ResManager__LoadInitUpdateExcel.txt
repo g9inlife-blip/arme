@@ -1,0 +1,63 @@
+Function: ResManager$$LoadInitUpdateExcel @ 00e2afc4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp172 @ 010756d8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ResManagerWrap$$_m_LoadInitUpdateExcel @ 013591bc
+  <- ResManager$$InitLanguageExcel @ 00e2ae9c
+
+--- Listing ---
+00e2afc4  str x22,[sp, #-0x30]!
+00e2afc8  stp x21,x20,[sp, #0x10]
+00e2afcc  stp x19,x30,[sp, #0x20]
+00e2afd0  adrp x21,0x3572000
+00e2afd4  adrp x22,0x337e000
+00e2afd8  ldrb w8,[x21, #0x72a]
+00e2afdc  ldr x22,[x22, #0x4c8]
+00e2afe0  mov x20,x1
+00e2afe4  mov x19,x0
+00e2afe8  tbnz w8,#0x0,0x00e2b00c
+00e2afec  adrp x0,0x337e000
+00e2aff0  ldr x0,[x0, #0x4c8]
+00e2aff4  bl 0x00b0789c
+00e2aff8  adrp x0,0x3370000
+00e2affc  ldr x0,[x0, #0x588]
+00e2b000  bl 0x00b0789c
+00e2b004  mov w8,#0x1
+00e2b008  strb w8,[x21, #0x72a]
+00e2b00c  ldr x8,[x22]
+00e2b010  ldr x8,[x8, #0xb8]
+00e2b014  ldr x0,[x8, #0x70]
+00e2b018  cbz x0,0x00e2b038
+00e2b01c  mov x1,x19
+00e2b020  mov x2,x20
+00e2b024  ldp x19,x30,[sp, #0x20]
+00e2b028  ldp x21,x20,[sp, #0x10]
+00e2b02c  mov x3,xzr
+00e2b030  ldr x22,[sp], #0x30
+00e2b034  b 0x010756d8
+00e2b038  adrp x8,0x3370000
+00e2b03c  ldr x8,[x8, #0x588]
+00e2b040  ldr x0,[x8]
+00e2b044  bl 0x00b079a0
+00e2b048  cbz x0,0x00e2b080
+00e2b04c  mov x1,xzr
+00e2b050  mov x20,x0
+00e2b054  bl 0x02194104
+00e2b058  mov x0,x20
+00e2b05c  str wzr,[x20, #0x10]
+00e2b060  str x19,[x0, #0x20]!
+00e2b064  mov x1,x19
+00e2b068  bl 0x00b07850
+00e2b06c  mov x0,x20
+00e2b070  ldp x19,x30,[sp, #0x20]
+00e2b074  ldp x21,x20,[sp, #0x10]
+00e2b078  ldr x22,[sp], #0x30
+00e2b07c  ret
+00e2b080  bl 0x00b079b0

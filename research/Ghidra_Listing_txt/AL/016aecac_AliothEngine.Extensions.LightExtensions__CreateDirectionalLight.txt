@@ -1,0 +1,52 @@
+Function: AliothEngine.Extensions.LightExtensions$$CreateDirectionalLight @ 016aecac
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> AliothEngine.Extensions.LightExtensions$$CreateBaseLight @ 016aed44
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Light$$set_type @ 024c4af8
+  -> UnityEngine.Transform$$LookAt @ 024f5018
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.LightExtensions$$CreateThreePointLights @ 016af09c
+
+--- Listing ---
+016aecac  str d10,[sp, #-0x30]!
+016aecb0  stp d9,d8,[sp, #0x10]
+016aecb4  stp x19,x30,[sp, #0x20]
+016aecb8  mov x8,x0
+016aecbc  mov v8.16B,v2.16B
+016aecc0  mov v9.16B,v1.16B
+016aecc4  mov v10.16B,v0.16B
+016aecc8  mov v0.16B,v3.16B
+016aeccc  mov v1.16B,v4.16B
+016aecd0  mov v2.16B,v5.16B
+016aecd4  mov v3.16B,v6.16B
+016aecd8  mov w0,w1
+016aecdc  mov v4.16B,v7.16B
+016aece0  mov x1,x8
+016aece4  bl 0x016aed44
+016aece8  cbz x0,0x016aed40
+016aecec  mov x1,xzr
+016aecf0  mov x19,x0
+016aecf4  bl 0x024e4ed4
+016aecf8  cbz x0,0x016aed40
+016aecfc  mov x1,xzr
+016aed00  bl 0x024de730
+016aed04  cbz x0,0x016aed40
+016aed08  mov v0.16B,v10.16B
+016aed0c  mov v1.16B,v9.16B
+016aed10  mov v2.16B,v8.16B
+016aed14  mov x1,xzr
+016aed18  bl 0x024f5018
+016aed1c  mov w1,#0x1
+016aed20  mov x0,x19
+016aed24  mov x2,xzr
+016aed28  bl 0x024c4af8
+016aed2c  mov x0,x19
+016aed30  ldp x19,x30,[sp, #0x20]
+016aed34  ldp d9,d8,[sp, #0x10]
+016aed38  ldr d10,[sp], #0x30
+016aed3c  ret
+016aed40  bl 0x00b079b0

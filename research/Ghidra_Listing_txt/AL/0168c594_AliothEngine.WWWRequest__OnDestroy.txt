@@ -1,0 +1,48 @@
+Function: AliothEngine.WWWRequest$$OnDestroy @ 0168c594
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.WWW$$Dispose @ 026d8c94
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.WWW$$get_isDone @ 026d88a0
+
+--- Calls IN ---
+
+--- Listing ---
+0168c594  stp x21,x20,[sp, #-0x20]!
+0168c598  stp x19,x30,[sp, #0x10]
+0168c59c  mov x19,x0
+0168c5a0  mov x20,x0
+0168c5a4  ldr x0,[x19, #0x30]!
+0168c5a8  cbz x0,0x0168c618
+0168c5ac  mov x1,xzr
+0168c5b0  bl 0x026d88a0
+0168c5b4  tbnz w0,#0x0,0x0168c5f0
+0168c5b8  mov x21,x20
+0168c5bc  ldr x8,[x21, #0x28]!
+0168c5c0  cbz x8,0x0168c5f0
+0168c5c4  mov w9,#0x2
+0168c5c8  str w9,[x20, #0x38]
+0168c5cc  ldr x9,[x8, #0x18]
+0168c5d0  ldr x0,[x8, #0x40]
+0168c5d4  ldr x2,[x8, #0x28]
+0168c5d8  mov x1,x20
+0168c5dc  blr x9
+0168c5e0  mov x0,x21
+0168c5e4  mov x1,xzr
+0168c5e8  str xzr,[x20, #0x28]
+0168c5ec  bl 0x00b07850
+0168c5f0  ldr x0,[x19]
+0168c5f4  cbz x0,0x0168c624
+0168c5f8  mov x1,xzr
+0168c5fc  bl 0x026d8c94
+0168c600  str xzr,[x19]
+0168c604  mov x0,x19
+0168c608  ldp x19,x30,[sp, #0x10]
+0168c60c  mov x1,xzr
+0168c610  ldp x21,x20,[sp], #0x20
+0168c614  b 0x00b07850
+0168c618  ldp x19,x30,[sp, #0x10]
+0168c61c  ldp x21,x20,[sp], #0x20
+0168c620  ret
+0168c624  bl 0x00b079b0

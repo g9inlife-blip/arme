@@ -1,0 +1,72 @@
+Function: Ali$$RandomValue @ 00e06c5c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp401 @ 010936a4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$GetExcelData<object> @ 01736d60
+
+--- Calls IN ---
+  <- RoleNews$$RandomValue @ 00fdf684
+  <- XLua.CSObjectWrap.AliWrap$$_m_RandomValue @ 011951b4
+  <- BattleManager$$RandomValue @ 0118cb74
+
+--- Listing ---
+00e06c5c  stp x23,x22,[sp, #-0x30]!
+00e06c60  stp x21,x20,[sp, #0x10]
+00e06c64  stp x19,x30,[sp, #0x20]
+00e06c68  adrp x23,0x3572000
+00e06c6c  adrp x22,0x335f000
+00e06c70  ldrb w8,[x23, #0x578]
+00e06c74  ldr x22,[x22, #0x20]
+00e06c78  mov x19,x2
+00e06c7c  mov w21,w1
+00e06c80  mov x20,x0
+00e06c84  tbnz w8,#0x0,0x00e06ca8
+00e06c88  adrp x0,0x3381000
+00e06c8c  ldr x0,[x0, #0x6b8]
+00e06c90  bl 0x00b0789c
+00e06c94  adrp x0,0x335f000
+00e06c98  ldr x0,[x0, #0x20]
+00e06c9c  bl 0x00b0789c
+00e06ca0  mov w8,#0x1
+00e06ca4  strb w8,[x23, #0x578]
+00e06ca8  ldr x0,[x22]
+00e06cac  ldr w8,[x0, #0xe0]
+00e06cb0  cbnz w8,0x00e06cbc
+00e06cb4  bl 0x00b0798c
+00e06cb8  ldr x0,[x22]
+00e06cbc  ldr x8,[x0, #0xb8]
+00e06cc0  ldr x0,[x8, #0x368]
+00e06cc4  cbz x0,0x00e06ce8
+00e06cc8  mov x1,x20
+00e06ccc  mov w2,w21
+00e06cd0  mov x3,x19
+00e06cd4  ldp x19,x30,[sp, #0x20]
+00e06cd8  ldp x21,x20,[sp, #0x10]
+00e06cdc  mov x4,xzr
+00e06ce0  ldp x23,x22,[sp], #0x30
+00e06ce4  b 0x010936a4
+00e06ce8  adrp x8,0x3381000
+00e06cec  ldr x8,[x8, #0x6b8]
+00e06cf0  ldr w9,[x20, #0x40]
+00e06cf4  add w10,w21,#0x1
+00e06cf8  mov w11,#0x1
+00e06cfc  ldr x2,[x8]
+00e06d00  cmp w10,w9
+00e06d04  mov w8,#0x95c1
+00e06d08  csinc w21,w11,w21,ge
+00e06d0c  movk w8,#0x5a9, LSL #16
+00e06d10  add w1,w21,w8
+00e06d14  mov x0,x20
+00e06d18  bl 0x01736d60
+00e06d1c  cbz x0,0x00e06d3c
+00e06d20  ldr w8,[x0, #0x74]
+00e06d24  mov w0,w21
+00e06d28  str w8,[x19]
+00e06d2c  ldp x19,x30,[sp, #0x20]
+00e06d30  ldp x21,x20,[sp, #0x10]
+00e06d34  ldp x23,x22,[sp], #0x30
+00e06d38  ret
+00e06d3c  bl 0x00b079b0

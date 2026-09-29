@@ -1,0 +1,50 @@
+Function: AliothEngine.Extensions.TypeExtensions$$.cctor @ 016bba2c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016bba2c  str x20,[sp, #-0x20]!
+016bba30  stp x19,x30,[sp, #0x10]
+016bba34  adrp x19,0x3577000
+016bba38  adrp x20,0x334b000
+016bba3c  ldrb w8,[x19, #0xc37]
+016bba40  ldr x20,[x20, #0xc68]
+016bba44  tbnz w8,#0x0,0x016bba74
+016bba48  adrp x0,0x3344000
+016bba4c  ldr x0,[x0, #0x6a0]
+016bba50  bl 0x00b0789c
+016bba54  adrp x0,0x334b000
+016bba58  ldr x0,[x0, #0xc68]
+016bba5c  bl 0x00b0789c
+016bba60  adrp x0,0x3345000
+016bba64  ldr x0,[x0, #0x4a8]
+016bba68  bl 0x00b0789c
+016bba6c  mov w8,#0x1
+016bba70  strb w8,[x19, #0xc37]
+016bba74  ldr x0,[x20]
+016bba78  bl 0x00b079a0
+016bba7c  cbz x0,0x016bbac0
+016bba80  adrp x8,0x3344000
+016bba84  ldr x8,[x8, #0x6a0]
+016bba88  adrp x20,0x3345000
+016bba8c  mov x19,x0
+016bba90  ldr x1,[x8]
+016bba94  ldr x20,[x20, #0x4a8]
+016bba98  bl 0x0196dbb0
+016bba9c  ldr x8,[x20]
+016bbaa0  mov x1,x19
+016bbaa4  ldr x8,[x8, #0xb8]
+016bbaa8  str x19,[x8]
+016bbaac  ldr x8,[x20]
+016bbab0  ldp x19,x30,[sp, #0x10]
+016bbab4  ldr x0,[x8, #0xb8]
+016bbab8  ldr x20,[sp], #0x20
+016bbabc  b 0x00b07850
+016bbac0  bl 0x00b079b0

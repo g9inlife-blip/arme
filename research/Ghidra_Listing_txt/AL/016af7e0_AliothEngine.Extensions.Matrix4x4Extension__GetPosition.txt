@@ -1,0 +1,30 @@
+Function: AliothEngine.Extensions.Matrix4x4Extension$$GetPosition @ 016af7e0
+
+--- Calls OUT ---
+  -> UnityEngine.Matrix4x4$$get_Item @ 024e7a78
+
+--- Calls IN ---
+
+--- Listing ---
+016af7e0  stp d9,d8,[sp, #-0x20]!
+016af7e4  stp x19,x30,[sp, #0x10]
+016af7e8  mov w1,#0xc
+016af7ec  mov x2,xzr
+016af7f0  mov x19,x0
+016af7f4  bl 0x024e7a78
+016af7f8  mov w1,#0xd
+016af7fc  mov x0,x19
+016af800  mov x2,xzr
+016af804  mov v8.16B,v0.16B
+016af808  bl 0x024e7a78
+016af80c  mov w1,#0xe
+016af810  mov x0,x19
+016af814  mov x2,xzr
+016af818  mov v9.16B,v0.16B
+016af81c  bl 0x024e7a78
+016af820  ldp x19,x30,[sp, #0x10]
+016af824  mov v2.16B,v0.16B
+016af828  mov v0.16B,v8.16B
+016af82c  mov v1.16B,v9.16B
+016af830  ldp d9,d8,[sp], #0x20
+016af834  ret

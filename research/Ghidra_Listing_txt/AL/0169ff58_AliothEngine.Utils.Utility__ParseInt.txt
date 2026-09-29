@@ -1,0 +1,46 @@
+Function: AliothEngine.Utils.Utility$$ParseInt @ 0169ff58
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$TryParse @ 0214e4ac
+  -> System.Globalization.CultureInfo$$get_InvariantCulture @ 02117234
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$ReadInt @ 0169fcec
+
+--- Listing ---
+0169ff58  sub sp,sp,#0x30
+0169ff5c  stp x21,x20,[sp, #0x10]
+0169ff60  stp x19,x30,[sp, #0x20]
+0169ff64  adrp x21,0x3577000
+0169ff68  adrp x20,0x3360000
+0169ff6c  ldrb w8,[x21, #0xb59]
+0169ff70  ldr x20,[x20, #0x28]
+0169ff74  mov x19,x0
+0169ff78  tbnz w8,#0x0,0x0169ff90
+0169ff7c  adrp x0,0x3360000
+0169ff80  ldr x0,[x0, #0x28]
+0169ff84  bl 0x00b0789c
+0169ff88  mov w8,#0x1
+0169ff8c  strb w8,[x21, #0xb59]
+0169ff90  ldr x0,[x20]
+0169ff94  str wzr,[sp, #0xc]
+0169ff98  ldr w8,[x0, #0xe0]
+0169ff9c  cbnz w8,0x0169ffa4
+0169ffa0  bl 0x00b0798c
+0169ffa4  mov x0,xzr
+0169ffa8  bl 0x02117234
+0169ffac  mov x2,x0
+0169ffb0  add x3,sp,#0xc
+0169ffb4  mov w1,#0x7
+0169ffb8  mov x0,x19
+0169ffbc  mov x4,xzr
+0169ffc0  bl 0x0214e4ac
+0169ffc4  ldr w8,[sp, #0xc]
+0169ffc8  ldp x19,x30,[sp, #0x20]
+0169ffcc  ldp x21,x20,[sp, #0x10]
+0169ffd0  tst w0,#0x1
+0169ffd4  csel w0,w8,wzr,ne
+0169ffd8  add sp,sp,#0x30
+0169ffdc  ret

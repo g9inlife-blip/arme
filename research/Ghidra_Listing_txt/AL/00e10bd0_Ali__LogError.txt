@@ -1,0 +1,62 @@
+Function: Ali$$LogError @ 00e10bd0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+  <- InitializeGamingServices$$OnError @ 00e45e84
+
+--- Listing ---
+00e10bd0  str x22,[sp, #-0x30]!
+00e10bd4  stp x21,x20,[sp, #0x10]
+00e10bd8  stp x19,x30,[sp, #0x20]
+00e10bdc  adrp x22,0x3572000
+00e10be0  adrp x21,0x335f000
+00e10be4  ldrb w8,[x22, #0x5c4]
+00e10be8  ldr x21,[x21, #0x20]
+00e10bec  mov w20,w1
+00e10bf0  mov x19,x0
+00e10bf4  tbnz w8,#0x0,0x00e10c18
+00e10bf8  adrp x0,0x335f000
+00e10bfc  ldr x0,[x0, #0x20]
+00e10c00  bl 0x00b0789c
+00e10c04  adrp x0,0x336b000
+00e10c08  ldr x0,[x0, #0x7d0]
+00e10c0c  bl 0x00b0789c
+00e10c10  mov w8,#0x1
+00e10c14  strb w8,[x22, #0x5c4]
+00e10c18  ldr x0,[x21]
+00e10c1c  ldr w8,[x0, #0xe0]
+00e10c20  cbnz w8,0x00e10c2c
+00e10c24  bl 0x00b0798c
+00e10c28  ldr x0,[x21]
+00e10c2c  ldr x8,[x0, #0xb8]
+00e10c30  ldr x0,[x8, #0x5c8]
+00e10c34  cbz x0,0x00e10c54
+00e10c38  and w2,w20,#0x1
+00e10c3c  mov x1,x19
+00e10c40  ldp x19,x30,[sp, #0x20]
+00e10c44  ldp x21,x20,[sp, #0x10]
+00e10c48  mov x3,xzr
+00e10c4c  ldr x22,[sp], #0x30
+00e10c50  b 0x010613e4
+00e10c54  tbz w20,#0x0,0x00e10c88
+00e10c58  adrp x8,0x336b000
+00e10c5c  ldr x8,[x8, #0x7d0]
+00e10c60  ldr x0,[x8]
+00e10c64  ldr w8,[x0, #0xe0]
+00e10c68  cbnz w8,0x00e10c70
+00e10c6c  bl 0x00b0798c
+00e10c70  mov x0,x19
+00e10c74  ldp x19,x30,[sp, #0x20]
+00e10c78  ldp x21,x20,[sp, #0x10]
+00e10c7c  mov x1,xzr
+00e10c80  ldr x22,[sp], #0x30
+00e10c84  b 0x024c0830
+00e10c88  ldp x19,x30,[sp, #0x20]
+00e10c8c  ldp x21,x20,[sp, #0x10]
+00e10c90  ldr x22,[sp], #0x30
+00e10c94  ret

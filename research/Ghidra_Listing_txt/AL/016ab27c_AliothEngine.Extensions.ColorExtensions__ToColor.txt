@@ -1,0 +1,22 @@
+Function: AliothEngine.Extensions.ColorExtensions$$ToColor @ 016ab27c
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016ab27c  lsr w8,w0,#0x18
+016ab280  scvtf s0,w8
+016ab284  adrp x8,0x26dd000
+016ab288  ldr s4,[x8, #0x8c]
+016ab28c  ubfx w8,w0,#0x10,#0x8
+016ab290  scvtf s1,w8
+016ab294  ubfx w8,w0,#0x8,#0x8
+016ab298  and w9,w0,#0xff
+016ab29c  scvtf s5,w8
+016ab2a0  scvtf s6,w9
+016ab2a4  fmul s3,s0,s4
+016ab2a8  fmul s2,s1,s4
+016ab2ac  fmul s1,s5,s4
+016ab2b0  fmul s0,s6,s4
+016ab2b4  ret

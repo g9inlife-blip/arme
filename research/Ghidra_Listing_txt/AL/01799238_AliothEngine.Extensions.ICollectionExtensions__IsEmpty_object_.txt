@@ -1,0 +1,46 @@
+Function: AliothEngine.Extensions.ICollectionExtensions$$IsEmpty<object> @ 01799238
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01799238  stp x19,x30,[sp, #-0x10]!
+0179923c  cbz x0,0x017992c4
+01799240  ldr x8,[x1, #0x38]
+01799244  mov x19,x0
+01799248  ldr x1,[x8]
+0179924c  ldrb w8,[x1, #0x132]
+01799250  tbnz w8,#0x0,0x01799260
+01799254  mov x0,x1
+01799258  bl 0x00b2ac40
+0179925c  mov x1,x0
+01799260  ldr x8,[x19]
+01799264  ldrh w9,[x8, #0x12a]
+01799268  cbz x9,0x0179928c
+0179926c  ldr x10,[x8, #0xb0]
+01799270  add x10,x10,#0x8
+01799274  ldur x11,[x10, #-0x8]
+01799278  cmp x11,x1
+0179927c  b.eq 0x0179929c
+01799280  subs x9,x9,#0x1
+01799284  add x10,x10,#0x10
+01799288  b.ne 0x01799274
+0179928c  mov x0,x19
+01799290  mov w2,wzr
+01799294  bl 0x00b2ae24
+01799298  b 0x017992a8
+0179929c  ldrsw x9,[x10]
+017992a0  add x8,x8,x9, LSL #0x4
+017992a4  add x0,x8,#0x138
+017992a8  ldp x8,x1,[x0]
+017992ac  mov x0,x19
+017992b0  blr x8
+017992b4  cmp w0,#0x0
+017992b8  cset w0,eq
+017992bc  ldp x19,x30,[sp], #0x10
+017992c0  ret
+017992c4  bl 0x00b079b0

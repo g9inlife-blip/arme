@@ -1,0 +1,59 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate @ 016b030c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$Instantiate<object> @ 017a9980
+
+--- Calls IN ---
+
+--- Listing ---
+016b030c  str d14,[sp, #-0x60]!
+016b0310  stp d13,d12,[sp, #0x10]
+016b0314  stp d11,d10,[sp, #0x20]
+016b0318  stp d9,d8,[sp, #0x30]
+016b031c  stp x21,x20,[sp, #0x40]
+016b0320  stp x19,x30,[sp, #0x50]
+016b0324  adrp x21,0x3577000
+016b0328  adrp x20,0x3321000
+016b032c  ldrb w8,[x21, #0xbd7]
+016b0330  ldr x20,[x20, #0xca8]
+016b0334  mov v8.16B,v6.16B
+016b0338  mov v9.16B,v5.16B
+016b033c  mov v10.16B,v4.16B
+016b0340  mov v11.16B,v3.16B
+016b0344  mov v12.16B,v2.16B
+016b0348  mov v13.16B,v1.16B
+016b034c  mov v14.16B,v0.16B
+016b0350  mov x19,x0
+016b0354  tbnz w8,#0x0,0x016b0378
+016b0358  adrp x0,0x3319000
+016b035c  ldr x0,[x0, #0xc18]
+016b0360  bl 0x00b0789c
+016b0364  adrp x0,0x3321000
+016b0368  ldr x0,[x0, #0xca8]
+016b036c  bl 0x00b0789c
+016b0370  mov w8,#0x1
+016b0374  strb w8,[x21, #0xbd7]
+016b0378  ldr x0,[x20]
+016b037c  adrp x20,0x3319000
+016b0380  ldr w8,[x0, #0xe0]
+016b0384  ldr x20,[x20, #0xc18]
+016b0388  cbnz w8,0x016b0390
+016b038c  bl 0x00b0798c
+016b0390  ldr x1,[x20]
+016b0394  mov x0,x19
+016b0398  mov v1.16B,v13.16B
+016b039c  mov v2.16B,v12.16B
+016b03a0  mov v3.16B,v11.16B
+016b03a4  mov v4.16B,v10.16B
+016b03a8  mov v5.16B,v9.16B
+016b03ac  mov v6.16B,v8.16B
+016b03b0  ldp x19,x30,[sp, #0x50]
+016b03b4  ldp x21,x20,[sp, #0x40]
+016b03b8  ldp d9,d8,[sp, #0x30]
+016b03bc  ldp d11,d10,[sp, #0x20]
+016b03c0  ldp d13,d12,[sp, #0x10]
+016b03c4  mov v0.16B,v14.16B
+016b03c8  ldr d14,[sp], #0x60
+016b03cc  b 0x017a9980

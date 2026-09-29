@@ -1,0 +1,17 @@
+Function: AliothEngine.FloatRange$$GetNormalisedValue @ 0168651c
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+0168651c  ldp s1,s2,[x0, #0x10]
+01686520  fmov s3,0x3f800000
+01686524  fsub s0,s0,s1
+01686528  fsub s1,s2,s1
+0168652c  fdiv s0,s0,s1
+01686530  fmin s1,s0,s3
+01686534  fcmp s0,#0.0
+01686538  fmov s0,wzr
+0168653c  fcsel s0,s1,s0,pl
+01686540  ret

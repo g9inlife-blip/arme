@@ -1,0 +1,29 @@
+Function: ResolvemorepanelNode$$get_btn_ok @ 00fce7e4
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ResolveMorePanelMono$$Start @ 01044b74
+
+--- Listing ---
+00fce7e4  stp x21,x20,[sp, #-0x20]!
+00fce7e8  stp x19,x30,[sp, #0x10]
+00fce7ec  adrp x20,0x3573000
+00fce7f0  adrp x21,0x3331000
+00fce7f4  ldrb w8,[x20, #0xe91]
+00fce7f8  ldr x21,[x21, #0xfd8]
+00fce7fc  mov x19,x0
+00fce800  tbnz w8,#0x0,0x00fce818
+00fce804  adrp x0,0x3331000
+00fce808  ldr x0,[x0, #0xfd8]
+00fce80c  bl 0x00b0789c
+00fce810  mov w8,#0x1
+00fce814  strb w8,[x20, #0xe91]
+00fce818  ldr x1,[x21]
+00fce81c  mov x0,x19
+00fce820  ldp x19,x30,[sp, #0x10]
+00fce824  mov x2,xzr
+00fce828  ldp x21,x20,[sp], #0x20
+00fce82c  b 0x00dc06f8

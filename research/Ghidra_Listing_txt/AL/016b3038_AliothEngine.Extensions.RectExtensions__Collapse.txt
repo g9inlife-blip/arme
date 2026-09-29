@@ -1,0 +1,56 @@
+Function: AliothEngine.Extensions.RectExtensions$$Collapse @ 016b3038
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_yMin @ 024dafe8
+  -> UnityEngine.Rect$$set_yMax @ 024db058
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_xMin @ 024dafa0
+  -> UnityEngine.Rect$$set_xMin @ 024dafcc
+  -> UnityEngine.Rect$$get_yMin @ 024dafa8
+  -> UnityEngine.Rect$$set_xMax @ 024db048
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+
+--- Listing ---
+016b3038  sub sp,sp,#0x30
+016b303c  str d8,[sp, #0x20]
+016b3040  str x30,[sp, #0x28]
+016b3044  add x0,sp,#0x10
+016b3048  mov x1,xzr
+016b304c  mov v8.16B,v4.16B
+016b3050  stp s0,s1,[sp, #0x10]
+016b3054  stp s2,s3,[sp, #0x18]
+016b3058  stp xzr,xzr,[sp]
+016b305c  bl 0x024dafa0
+016b3060  fadd s0,s0,s8
+016b3064  mov x0,sp
+016b3068  mov x1,xzr
+016b306c  bl 0x024dafcc
+016b3070  add x0,sp,#0x10
+016b3074  mov x1,xzr
+016b3078  bl 0x024db014
+016b307c  fsub s0,s0,s8
+016b3080  mov x0,sp
+016b3084  mov x1,xzr
+016b3088  bl 0x024db048
+016b308c  add x0,sp,#0x10
+016b3090  mov x1,xzr
+016b3094  bl 0x024dafa8
+016b3098  fadd s0,s0,s8
+016b309c  mov x0,sp
+016b30a0  mov x1,xzr
+016b30a4  bl 0x024dafe8
+016b30a8  add x0,sp,#0x10
+016b30ac  mov x1,xzr
+016b30b0  bl 0x024db024
+016b30b4  fsub s0,s0,s8
+016b30b8  mov x0,sp
+016b30bc  mov x1,xzr
+016b30c0  bl 0x024db058
+016b30c4  ldp s0,s1,[sp]
+016b30c8  ldp s2,s3,[sp, #0x8]
+016b30cc  ldr x30,[sp, #0x28]
+016b30d0  ldr d8,[sp, #0x20]
+016b30d4  add sp,sp,#0x30
+016b30d8  ret

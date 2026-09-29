@@ -1,0 +1,27 @@
+Function: AliothEngine.FileUtility$$GetFiles @ 0168f0e4
+
+--- Calls OUT ---
+  -> AliothEngine.FileUtility$$GetFiles @ 0168f128
+  -> System.String$$Split @ 01fe0d68
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168f0e4  str x20,[sp, #-0x20]!
+0168f0e8  stp x19,x30,[sp, #0x10]
+0168f0ec  cbz x1,0x0168f124
+0168f0f0  mov w19,w2
+0168f0f4  mov x20,x0
+0168f0f8  mov x0,x1
+0168f0fc  mov w1,w3
+0168f100  mov w2,wzr
+0168f104  mov x3,xzr
+0168f108  bl 0x01fe0d68
+0168f10c  mov w2,w19
+0168f110  ldp x19,x30,[sp, #0x10]
+0168f114  mov x1,x0
+0168f118  mov x0,x20
+0168f11c  ldr x20,[sp], #0x20
+0168f120  b 0x0168f128
+0168f124  bl 0x00b079b0

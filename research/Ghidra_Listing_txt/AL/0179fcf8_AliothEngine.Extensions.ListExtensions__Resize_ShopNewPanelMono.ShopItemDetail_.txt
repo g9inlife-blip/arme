@@ -1,0 +1,71 @@
+Function: AliothEngine.Extensions.ListExtensions$$Resize<ShopNewPanelMono.ShopItemDetail> @ 0179fcf8
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- ShopNewPanelMono$$ConfigShopContents @ 01025bac
+
+--- Listing ---
+0179fcf8  sub sp,sp,#0x70
+0179fcfc  stp x23,x22,[sp, #0x40]
+0179fd00  stp x21,x20,[sp, #0x50]
+0179fd04  stp x19,x30,[sp, #0x60]
+0179fd08  cbz x0,0x0179fdec
+0179fd0c  ldr x8,[x3, #0x38]
+0179fd10  mov w21,w1
+0179fd14  mov x20,x3
+0179fd18  mov x22,x2
+0179fd1c  ldr x1,[x8, #0x8]
+0179fd20  mov x19,x0
+0179fd24  ldr x8,[x1, #0x8]
+0179fd28  blr x8
+0179fd2c  subs w2,w0,w21
+0179fd30  b.le 0x0179fd5c
+0179fd34  ldr x8,[x20, #0x38]
+0179fd38  mov x0,x19
+0179fd3c  mov w1,w21
+0179fd40  ldp x19,x30,[sp, #0x60]
+0179fd44  ldr x3,[x8, #0x10]
+0179fd48  ldp x21,x20,[sp, #0x50]
+0179fd4c  ldp x23,x22,[sp, #0x40]
+0179fd50  ldr x4,[x3, #0x8]
+0179fd54  add sp,sp,#0x70
+0179fd58  br x4
+0179fd5c  b.ge 0x0179fdd8
+0179fd60  ldr x8,[x20, #0x38]
+0179fd64  mov w23,w0
+0179fd68  mov x0,x19
+0179fd6c  ldr x1,[x8, #0x18]
+0179fd70  ldr x8,[x1, #0x8]
+0179fd74  blr x8
+0179fd78  cmp w0,w21
+0179fd7c  b.ge 0x0179fd98
+0179fd80  ldr x8,[x20, #0x38]
+0179fd84  mov x0,x19
+0179fd88  mov w1,w21
+0179fd8c  ldr x2,[x8, #0x20]
+0179fd90  ldr x8,[x2, #0x8]
+0179fd94  blr x8
+0179fd98  ldp q1,q0,[x22]
+0179fd9c  sub w1,w21,w23
+0179fda0  mov x0,sp
+0179fda4  stp q1,q0,[sp, #0x20]
+0179fda8  ldr x8,[x20, #0x38]
+0179fdac  ldr x9,[x8, #0x28]
+0179fdb0  ldr x9,[x9, #0x8]
+0179fdb4  stp q1,q0,[sp]
+0179fdb8  ldr x2,[x8, #0x28]
+0179fdbc  blr x9
+0179fdc0  ldr x8,[x20, #0x38]
+0179fdc4  mov x1,x0
+0179fdc8  mov x0,x19
+0179fdcc  ldr x2,[x8, #0x30]
+0179fdd0  ldr x8,[x2, #0x8]
+0179fdd4  blr x8
+0179fdd8  ldp x19,x30,[sp, #0x60]
+0179fddc  ldp x21,x20,[sp, #0x50]
+0179fde0  ldp x23,x22,[sp, #0x40]
+0179fde4  add sp,sp,#0x70
+0179fde8  ret
+0179fdec  bl 0x00b079b0

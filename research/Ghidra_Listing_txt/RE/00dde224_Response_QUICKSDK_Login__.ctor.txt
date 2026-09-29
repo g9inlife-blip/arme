@@ -1,0 +1,38 @@
+Function: Response_QUICKSDK_Login$$.ctor @ 00dde224
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Response_GetLoginToken$$.ctor @ 00ddddd0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_QUICKSDK_LoginWrap$$__CreateInstance @ 01373048
+
+--- Listing ---
+00dde224  stp x21,x20,[sp, #-0x20]!
+00dde228  stp x19,x30,[sp, #0x10]
+00dde22c  adrp x21,0x3572000
+00dde230  adrp x20,0x3326000
+00dde234  ldrb w8,[x21, #0x2e9]
+00dde238  ldr x20,[x20, #0x430]
+00dde23c  mov x19,x0
+00dde240  tbnz w8,#0x0,0x00dde258
+00dde244  adrp x0,0x3326000
+00dde248  ldr x0,[x0, #0x430]
+00dde24c  bl 0x00b0789c
+00dde250  mov w8,#0x1
+00dde254  strb w8,[x21, #0x2e9]
+00dde258  mov x0,x19
+00dde25c  bl 0x00ddddd0
+00dde260  ldr x8,[x20]
+00dde264  ldr x8,[x8, #0xb8]
+00dde268  ldr x0,[x8]
+00dde26c  cbz x0,0x00dde284
+00dde270  mov x1,x19
+00dde274  ldp x19,x30,[sp, #0x10]
+00dde278  mov x2,xzr
+00dde27c  ldp x21,x20,[sp], #0x20
+00dde280  b 0x01060dac
+00dde284  ldp x19,x30,[sp, #0x10]
+00dde288  ldp x21,x20,[sp], #0x20
+00dde28c  ret

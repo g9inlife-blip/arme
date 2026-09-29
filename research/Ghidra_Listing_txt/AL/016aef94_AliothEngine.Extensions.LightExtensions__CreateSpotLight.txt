@@ -1,0 +1,82 @@
+Function: AliothEngine.Extensions.LightExtensions$$CreateSpotLight @ 016aef94
+
+--- Calls OUT ---
+  -> UnityEngine.Light$$set_range @ 024c5658
+  -> UnityEngine.Light$$set_spotAngle @ 024c4bf8
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> AliothEngine.Extensions.LightExtensions$$CreateBaseLight @ 016aed44
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Light$$set_type @ 024c4af8
+  -> UnityEngine.Transform$$set_position @ 024f3724
+  -> UnityEngine.Transform$$LookAt @ 024f5018
+
+--- Calls IN ---
+
+--- Listing ---
+016aef94  stp d15,d14,[sp, #-0x50]!
+016aef98  stp d13,d12,[sp, #0x10]
+016aef9c  stp d11,d10,[sp, #0x20]
+016aefa0  stp d9,d8,[sp, #0x30]
+016aefa4  stp x19,x30,[sp, #0x40]
+016aefa8  mov v10.16B,v5.16B
+016aefac  mov v14.16B,v1.16B
+016aefb0  ldp s5,s1,[sp, #0x50]
+016aefb4  mov v11.16B,v4.16B
+016aefb8  mov v12.16B,v3.16B
+016aefbc  mov v13.16B,v2.16B
+016aefc0  ldp s2,s3,[sp, #0x58]
+016aefc4  ldr s4,[sp, #0x60]
+016aefc8  mov x8,x0
+016aefcc  mov v15.16B,v0.16B
+016aefd0  mov v0.16B,v5.16B
+016aefd4  mov w0,w1
+016aefd8  mov x1,x8
+016aefdc  mov v8.16B,v7.16B
+016aefe0  mov v9.16B,v6.16B
+016aefe4  bl 0x016aed44
+016aefe8  cbz x0,0x016af098
+016aefec  mov x1,xzr
+016aeff0  mov x19,x0
+016aeff4  bl 0x024e4ed4
+016aeff8  cbz x0,0x016af098
+016aeffc  mov x1,xzr
+016af000  bl 0x024de730
+016af004  cbz x0,0x016af098
+016af008  mov v0.16B,v15.16B
+016af00c  mov v1.16B,v14.16B
+016af010  mov v2.16B,v13.16B
+016af014  mov x1,xzr
+016af018  bl 0x024f3724
+016af01c  mov x0,x19
+016af020  mov x1,xzr
+016af024  bl 0x024e4ed4
+016af028  cbz x0,0x016af098
+016af02c  mov x1,xzr
+016af030  bl 0x024de730
+016af034  cbz x0,0x016af098
+016af038  mov v0.16B,v12.16B
+016af03c  mov v1.16B,v11.16B
+016af040  mov v2.16B,v10.16B
+016af044  mov x1,xzr
+016af048  bl 0x024f5018
+016af04c  mov w1,#0x2
+016af050  mov x0,x19
+016af054  mov x2,xzr
+016af058  bl 0x024c4af8
+016af05c  mov x0,x19
+016af060  mov v0.16B,v9.16B
+016af064  mov x1,xzr
+016af068  bl 0x024c5658
+016af06c  mov x0,x19
+016af070  mov v0.16B,v8.16B
+016af074  mov x1,xzr
+016af078  bl 0x024c4bf8
+016af07c  mov x0,x19
+016af080  ldp x19,x30,[sp, #0x40]
+016af084  ldp d9,d8,[sp, #0x30]
+016af088  ldp d11,d10,[sp, #0x20]
+016af08c  ldp d13,d12,[sp, #0x10]
+016af090  ldp d15,d14,[sp], #0x50
+016af094  ret
+016af098  bl 0x00b079b0

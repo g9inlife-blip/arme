@@ -1,0 +1,39 @@
+Function: RewardManager$$get_VItemDic @ 00e2d7dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp469 @ 0109c5a4
+
+--- Calls IN ---
+  <- RewardManager$$VItemGroup @ 00e2eccc
+  <- XLua.CSObjectWrap.RewardManagerWrap$$_g_get_VItemDic @ 01379e50
+  <- FUN_00e2f00c @ 00e2f00c
+  <- RewardManager$$NextBoxListener @ 00e2e714
+
+--- Listing ---
+00e2d7dc  stp x21,x20,[sp, #-0x20]!
+00e2d7e0  stp x19,x30,[sp, #0x10]
+00e2d7e4  adrp x20,0x3572000
+00e2d7e8  adrp x21,0x331f000
+00e2d7ec  ldrb w8,[x20, #0x742]
+00e2d7f0  ldr x21,[x21, #0x418]
+00e2d7f4  mov x19,x0
+00e2d7f8  tbnz w8,#0x0,0x00e2d810
+00e2d7fc  adrp x0,0x331f000
+00e2d800  ldr x0,[x0, #0x418]
+00e2d804  bl 0x00b0789c
+00e2d808  mov w8,#0x1
+00e2d80c  strb w8,[x20, #0x742]
+00e2d810  ldr x8,[x21]
+00e2d814  ldr x8,[x8, #0xb8]
+00e2d818  ldr x0,[x8]
+00e2d81c  cbz x0,0x00e2d834
+00e2d820  mov x1,x19
+00e2d824  ldp x19,x30,[sp, #0x10]
+00e2d828  mov x2,xzr
+00e2d82c  ldp x21,x20,[sp], #0x20
+00e2d830  b 0x0109c5a4
+00e2d834  ldr x0,[x19, #0x38]
+00e2d838  ldp x19,x30,[sp, #0x10]
+00e2d83c  ldp x21,x20,[sp], #0x20
+00e2d840  ret

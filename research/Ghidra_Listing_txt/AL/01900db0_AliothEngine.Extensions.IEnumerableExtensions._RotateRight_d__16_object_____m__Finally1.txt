@@ -1,0 +1,53 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<RotateRight>d__16<object>$$<>m__Finally1 @ 01900db0
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01900db0  str x20,[sp, #-0x20]!
+01900db4  stp x19,x30,[sp, #0x10]
+01900db8  adrp x19,0x3578000
+01900dbc  ldrb w8,[x19, #0x5f3]
+01900dc0  mov x20,x0
+01900dc4  tbnz w8,#0x0,0x01900ddc
+01900dc8  adrp x0,0x337d000
+01900dcc  ldr x0,[x0, #0x848]
+01900dd0  bl 0x00b0789c
+01900dd4  mov w8,#0x1
+01900dd8  strb w8,[x19, #0x5f3]
+01900ddc  ldr x19,[x20, #0x40]
+01900de0  mov w8,#0xffffffff
+01900de4  str w8,[x20, #0x10]
+01900de8  cbz x19,0x01900e34
+01900dec  adrp x10,0x337d000
+01900df0  ldr x8,[x19]
+01900df4  ldr x10,[x10, #0x848]
+01900df8  ldrh w9,[x8, #0x12a]
+01900dfc  ldr x1,[x10]
+01900e00  cbz x9,0x01900e24
+01900e04  ldr x10,[x8, #0xb0]
+01900e08  add x10,x10,#0x8
+01900e0c  ldur x11,[x10, #-0x8]
+01900e10  cmp x11,x1
+01900e14  b.eq 0x01900e40
+01900e18  subs x9,x9,#0x1
+01900e1c  add x10,x10,#0x10
+01900e20  b.ne 0x01900e0c
+01900e24  mov x0,x19
+01900e28  mov w2,wzr
+01900e2c  bl 0x00b2ae24
+01900e30  b 0x01900e4c
+01900e34  ldp x19,x30,[sp, #0x10]
+01900e38  ldr x20,[sp], #0x20
+01900e3c  ret
+01900e40  ldrsw x9,[x10]
+01900e44  add x8,x8,x9, LSL #0x4
+01900e48  add x0,x8,#0x138
+01900e4c  ldp x2,x1,[x0]
+01900e50  mov x0,x19
+01900e54  ldp x19,x30,[sp, #0x10]
+01900e58  ldr x20,[sp], #0x20
+01900e5c  br x2

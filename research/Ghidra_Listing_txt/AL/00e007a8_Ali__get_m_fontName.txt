@@ -1,0 +1,70 @@
+Function: Ali$$get_m_fontName @ 00e007a8
+
+--- Calls OUT ---
+  -> Ali$$get_language @ 00e00888
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Enum$$ToString @ 02186100
+  -> System.String$$Concat @ 01fd2850
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_fontName @ 0119dfc4
+
+--- Listing ---
+00e007a8  sub sp,sp,#0x40
+00e007ac  stp x21,x20,[sp, #0x20]
+00e007b0  stp x19,x30,[sp, #0x30]
+00e007b4  adrp x21,0x3572000
+00e007b8  adrp x20,0x335f000
+00e007bc  ldrb w8,[x21, #0x51e]
+00e007c0  ldr x20,[x20, #0x20]
+00e007c4  mov x19,x0
+00e007c8  tbnz w8,#0x0,0x00e007f8
+00e007cc  adrp x0,0x335f000
+00e007d0  ldr x0,[x0, #0x20]
+00e007d4  bl 0x00b0789c
+00e007d8  adrp x0,0x3375000
+00e007dc  ldr x0,[x0, #0x180]
+00e007e0  bl 0x00b0789c
+00e007e4  adrp x0,0x3374000
+00e007e8  ldr x0,[x0, #0xdb8]
+00e007ec  bl 0x00b0789c
+00e007f0  mov w8,#0x1
+00e007f4  strb w8,[x21, #0x51e]
+00e007f8  ldr x0,[x20]
+00e007fc  ldr w8,[x0, #0xe0]
+00e00800  cbnz w8,0x00e0080c
+00e00804  bl 0x00b0798c
+00e00808  ldr x0,[x20]
+00e0080c  ldr x8,[x0, #0xb8]
+00e00810  ldr x0,[x8, #0x88]
+00e00814  cbz x0,0x00e00830
+00e00818  mov x1,x19
+00e0081c  ldp x19,x30,[sp, #0x30]
+00e00820  ldp x21,x20,[sp, #0x20]
+00e00824  mov x2,xzr
+00e00828  add sp,sp,#0x40
+00e0082c  b 0x01061abc
+00e00830  adrp x20,0x3375000
+00e00834  adrp x21,0x3374000
+00e00838  ldr x20,[x20, #0x180]
+00e0083c  ldr x21,[x21, #0xdb8]
+00e00840  mov x0,x19
+00e00844  bl 0x00e00888
+00e00848  ldr x8,[x20]
+00e0084c  mov x9,#-0x1
+00e00850  str w0,[sp, #0x18]
+00e00854  add x0,sp,#0x8
+00e00858  mov x1,xzr
+00e0085c  stp x8,x9,[sp, #0x8]
+00e00860  bl 0x02186100
+00e00864  ldr x8,[x21]
+00e00868  mov x1,x0
+00e0086c  mov x2,xzr
+00e00870  mov x0,x8
+00e00874  bl 0x01fd2850
+00e00878  ldp x19,x30,[sp, #0x30]
+00e0087c  ldp x21,x20,[sp, #0x20]
+00e00880  add sp,sp,#0x40
+00e00884  ret

@@ -1,0 +1,52 @@
+Function: AliothEngine.GameEventSysTest$$PostEvent @ 0164bfac
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.GameEventSysTest$$EventManger @ 0164bf6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GameEventSys<Int32Enum>$$PostEvent<object> @ 01729f4c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0164bfac  str x20,[sp, #-0x20]!
+0164bfb0  stp x19,x30,[sp, #0x10]
+0164bfb4  adrp x20,0x3577000
+0164bfb8  adrp x19,0x334e000
+0164bfbc  ldrb w8,[x20, #0x7b9]
+0164bfc0  ldr x19,[x19, #0xf80]
+0164bfc4  tbnz w8,#0x0,0x0164bfe8
+0164bfc8  adrp x0,0x337e000
+0164bfcc  ldr x0,[x0, #0x910]
+0164bfd0  bl 0x00b0789c
+0164bfd4  adrp x0,0x334e000
+0164bfd8  ldr x0,[x0, #0xf80]
+0164bfdc  bl 0x00b0789c
+0164bfe0  mov w8,#0x1
+0164bfe4  strb w8,[x20, #0x7b9]
+0164bfe8  ldr x0,[x19]
+0164bfec  str xzr,[sp, #0x8]
+0164bff0  bl 0x00b079a0
+0164bff4  cbz x0,0x0164c044
+0164bff8  mov w8,#0x1
+0164bffc  mov x1,xzr
+0164c000  mov x19,x0
+0164c004  str w8,[x0, #0x10]
+0164c008  bl 0x02194104
+0164c00c  mov w8,#0xc8
+0164c010  str x19,[sp, #0x8]
+0164c014  str w8,[x19, #0x10]
+0164c018  bl 0x0164bf6c
+0164c01c  cbz x0,0x0164c044
+0164c020  adrp x8,0x337e000
+0164c024  ldr x8,[x8, #0x910]
+0164c028  add x2,sp,#0x8
+0164c02c  mov w1,wzr
+0164c030  ldr x3,[x8]
+0164c034  bl 0x01729f4c
+0164c038  ldp x19,x30,[sp, #0x10]
+0164c03c  ldr x20,[sp], #0x20
+0164c040  ret
+0164c044  bl 0x00b079b0

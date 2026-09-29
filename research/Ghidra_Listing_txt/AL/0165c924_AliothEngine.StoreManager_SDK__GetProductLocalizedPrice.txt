@@ -1,0 +1,47 @@
+Function: AliothEngine.StoreManager_SDK$$GetProductLocalizedPrice @ 0165c924
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp409 @ 01094518
+
+--- Calls IN ---
+
+--- Listing ---
+0165c924  stp x23,x22,[sp, #-0x30]!
+0165c928  stp x21,x20,[sp, #0x10]
+0165c92c  stp x19,x30,[sp, #0x20]
+0165c930  adrp x22,0x3577000
+0165c934  adrp x23,0x3351000
+0165c938  ldrb w8,[x22, #0x87f]
+0165c93c  ldr x23,[x23, #0xa30]
+0165c940  mov x19,x2
+0165c944  mov x20,x1
+0165c948  mov x21,x0
+0165c94c  tbnz w8,#0x0,0x0165c964
+0165c950  adrp x0,0x3351000
+0165c954  ldr x0,[x0, #0xa30]
+0165c958  bl 0x00b0789c
+0165c95c  mov w8,#0x1
+0165c960  strb w8,[x22, #0x87f]
+0165c964  ldr x8,[x23]
+0165c968  ldr x8,[x8, #0xb8]
+0165c96c  ldr x0,[x8, #0x38]
+0165c970  cbz x0,0x0165c994
+0165c974  mov x1,x21
+0165c978  mov x2,x20
+0165c97c  mov x3,x19
+0165c980  ldp x19,x30,[sp, #0x20]
+0165c984  ldp x21,x20,[sp, #0x10]
+0165c988  mov x4,xzr
+0165c98c  ldp x23,x22,[sp], #0x30
+0165c990  b 0x01094518
+0165c994  mov x0,x19
+0165c998  mov x1,xzr
+0165c99c  str xzr,[x19]
+0165c9a0  bl 0x00b07850
+0165c9a4  ldp x19,x30,[sp, #0x20]
+0165c9a8  ldp x21,x20,[sp, #0x10]
+0165c9ac  mov w0,wzr
+0165c9b0  ldp x23,x22,[sp], #0x30
+0165c9b4  ret

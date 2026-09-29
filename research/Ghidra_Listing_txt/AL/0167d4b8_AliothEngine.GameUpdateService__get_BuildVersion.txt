@@ -1,0 +1,39 @@
+Function: AliothEngine.GameUpdateService$$get_BuildVersion @ 0167d4b8
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp843 @ 010ce248
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$isAssetNeedUpdate_CheckCacheAndBuild @ 0167f2f0
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_g_get_BuildVersion @ 01142dbc
+  <- AliothEngine.GameUpdateService$$SaveLatestVersion @ 0167daa0
+  <- AliothEngine.GameUpdateService.<SetupAsync>d__53$$MoveNext @ 01680a70
+
+--- Listing ---
+0167d4b8  stp x21,x20,[sp, #-0x20]!
+0167d4bc  stp x19,x30,[sp, #0x10]
+0167d4c0  adrp x20,0x3577000
+0167d4c4  adrp x21,0x3352000
+0167d4c8  ldrb w8,[x20, #0xa1b]
+0167d4cc  ldr x21,[x21, #0x2a8]
+0167d4d0  mov x19,x0
+0167d4d4  tbnz w8,#0x0,0x0167d4ec
+0167d4d8  adrp x0,0x3352000
+0167d4dc  ldr x0,[x0, #0x2a8]
+0167d4e0  bl 0x00b0789c
+0167d4e4  mov w8,#0x1
+0167d4e8  strb w8,[x20, #0xa1b]
+0167d4ec  ldr x8,[x21]
+0167d4f0  ldr x8,[x8, #0xb8]
+0167d4f4  ldr x0,[x8, #0x50]
+0167d4f8  cbz x0,0x0167d510
+0167d4fc  mov x1,x19
+0167d500  ldp x19,x30,[sp, #0x10]
+0167d504  mov x2,xzr
+0167d508  ldp x21,x20,[sp], #0x20
+0167d50c  b 0x010ce248
+0167d510  ldr x0,[x19, #0x88]
+0167d514  ldp x19,x30,[sp, #0x10]
+0167d518  ldp x21,x20,[sp], #0x20
+0167d51c  ret

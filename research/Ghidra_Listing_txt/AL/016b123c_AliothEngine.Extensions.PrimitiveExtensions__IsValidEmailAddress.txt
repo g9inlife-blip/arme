@@ -1,0 +1,44 @@
+Function: AliothEngine.Extensions.PrimitiveExtensions$$IsValidEmailAddress @ 016b123c
+
+--- Calls OUT ---
+  -> System.Text.RegularExpressions.Regex$$IsMatch @ 02326fec
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.RegularExpressions.Regex$$.ctor @ 023284dc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b123c  stp x21,x20,[sp, #-0x20]!
+016b1240  stp x19,x30,[sp, #0x10]
+016b1244  adrp x20,0x3577000
+016b1248  adrp x21,0x3367000
+016b124c  ldrb w8,[x20, #0xbdf]
+016b1250  ldr x21,[x21, #0x250]
+016b1254  mov x19,x0
+016b1258  tbnz w8,#0x0,0x016b127c
+016b125c  adrp x0,0x3367000
+016b1260  ldr x0,[x0, #0x250]
+016b1264  bl 0x00b0789c
+016b1268  adrp x0,0x3319000
+016b126c  ldr x0,[x0, #0x230]
+016b1270  bl 0x00b0789c
+016b1274  mov w8,#0x1
+016b1278  strb w8,[x20, #0xbdf]
+016b127c  ldr x0,[x21]
+016b1280  bl 0x00b079a0
+016b1284  cbz x0,0x016b12b8
+016b1288  adrp x8,0x3319000
+016b128c  ldr x8,[x8, #0x230]
+016b1290  mov x2,xzr
+016b1294  mov x20,x0
+016b1298  ldr x1,[x8]
+016b129c  bl 0x023284dc
+016b12a0  mov x1,x19
+016b12a4  ldp x19,x30,[sp, #0x10]
+016b12a8  mov x0,x20
+016b12ac  mov x2,xzr
+016b12b0  ldp x21,x20,[sp], #0x20
+016b12b4  b 0x02326fec
+016b12b8  bl 0x00b079b0

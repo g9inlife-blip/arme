@@ -1,0 +1,69 @@
+Function: AliothEngine.FileUtility$$CopyFile @ 0168f818
+
+--- Calls OUT ---
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.IO.Directory$$Exists @ 020ae0e8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.Directory$$CreateDirectory @ 020adf44
+  -> System.IO.File$$Copy @ 020afb20
+  -> System.IO.Path$$GetDirectoryName @ 020b17bc
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Equals @ 01fde08c
+
+--- Calls IN ---
+
+--- Listing ---
+0168f818  str x22,[sp, #-0x30]!
+0168f81c  stp x21,x20,[sp, #0x10]
+0168f820  stp x19,x30,[sp, #0x20]
+0168f824  adrp x22,0x3577000
+0168f828  ldrb w8,[x22, #0xad5]
+0168f82c  mov w20,w2
+0168f830  mov x19,x1
+0168f834  mov x21,x0
+0168f838  tbnz w8,#0x0,0x0168f850
+0168f83c  adrp x0,0x336c000
+0168f840  ldr x0,[x0, #0x318]
+0168f844  bl 0x00b0789c
+0168f848  mov w8,#0x1
+0168f84c  strb w8,[x22, #0xad5]
+0168f850  mov x0,x21
+0168f854  mov x1,xzr
+0168f858  bl 0x020a6ae4
+0168f85c  tbz w0,#0x0,0x0168f878
+0168f860  cbz x21,0x0168f8e8
+0168f864  mov x0,x21
+0168f868  mov x1,x19
+0168f86c  mov x2,xzr
+0168f870  bl 0x01fde08c
+0168f874  tbz w0,#0x0,0x0168f880
+0168f878  mov w0,wzr
+0168f87c  b 0x0168f8d8
+0168f880  adrp x8,0x336c000
+0168f884  ldr x8,[x8, #0x318]
+0168f888  ldr x0,[x8]
+0168f88c  ldr w8,[x0, #0xe0]
+0168f890  cbnz w8,0x0168f898
+0168f894  bl 0x00b0798c
+0168f898  mov x0,x19
+0168f89c  mov x1,xzr
+0168f8a0  bl 0x020b17bc
+0168f8a4  mov x1,xzr
+0168f8a8  mov x22,x0
+0168f8ac  bl 0x020ae0e8
+0168f8b0  tbnz w0,#0x0,0x0168f8c0
+0168f8b4  mov x0,x22
+0168f8b8  mov x1,xzr
+0168f8bc  bl 0x020adf44
+0168f8c0  and w2,w20,#0x1
+0168f8c4  mov x0,x21
+0168f8c8  mov x1,x19
+0168f8cc  mov x3,xzr
+0168f8d0  bl 0x020afb20
+0168f8d4  mov w0,#0x1
+0168f8d8  ldp x19,x30,[sp, #0x20]
+0168f8dc  ldp x21,x20,[sp, #0x10]
+0168f8e0  ldr x22,[sp], #0x30
+0168f8e4  ret
+0168f8e8  bl 0x00b079b0

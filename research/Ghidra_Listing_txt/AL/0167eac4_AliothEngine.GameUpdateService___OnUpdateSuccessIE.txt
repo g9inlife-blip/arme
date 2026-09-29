@@ -1,0 +1,57 @@
+Function: AliothEngine.GameUpdateService$$_OnUpdateSuccessIE @ 0167eac4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$_OnUpdateSuccess @ 0167ea4c
+
+--- Listing ---
+0167eac4  stp x21,x20,[sp, #-0x20]!
+0167eac8  stp x19,x30,[sp, #0x10]
+0167eacc  adrp x20,0x3577000
+0167ead0  adrp x21,0x3352000
+0167ead4  ldrb w8,[x20, #0xa33]
+0167ead8  ldr x21,[x21, #0x2a8]
+0167eadc  mov x19,x0
+0167eae0  tbnz w8,#0x0,0x0167eb04
+0167eae4  adrp x0,0x3352000
+0167eae8  ldr x0,[x0, #0x2a8]
+0167eaec  bl 0x00b0789c
+0167eaf0  adrp x0,0x3328000
+0167eaf4  ldr x0,[x0, #0xd48]
+0167eaf8  bl 0x00b0789c
+0167eafc  mov w8,#0x1
+0167eb00  strb w8,[x20, #0xa33]
+0167eb04  ldr x8,[x21]
+0167eb08  ldr x8,[x8, #0xb8]
+0167eb0c  ldr x0,[x8, #0x110]
+0167eb10  cbz x0,0x0167eb28
+0167eb14  mov x1,x19
+0167eb18  ldp x19,x30,[sp, #0x10]
+0167eb1c  mov x2,xzr
+0167eb20  ldp x21,x20,[sp], #0x20
+0167eb24  b 0x01066218
+0167eb28  adrp x8,0x3328000
+0167eb2c  ldr x8,[x8, #0xd48]
+0167eb30  ldr x0,[x8]
+0167eb34  bl 0x00b079a0
+0167eb38  cbz x0,0x0167eb6c
+0167eb3c  mov x1,xzr
+0167eb40  mov x20,x0
+0167eb44  bl 0x02194104
+0167eb48  mov x0,x20
+0167eb4c  str wzr,[x20, #0x10]
+0167eb50  str x19,[x0, #0x20]!
+0167eb54  mov x1,x19
+0167eb58  bl 0x00b07850
+0167eb5c  ldp x19,x30,[sp, #0x10]
+0167eb60  mov x0,x20
+0167eb64  ldp x21,x20,[sp], #0x20
+0167eb68  ret
+0167eb6c  bl 0x00b079b0

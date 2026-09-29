@@ -1,0 +1,28 @@
+Function: ReadypanelNode$$get_lbl_myLv @ 00fcd4cc
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fcd4cc  stp x21,x20,[sp, #-0x20]!
+00fcd4d0  stp x19,x30,[sp, #0x10]
+00fcd4d4  adrp x20,0x3573000
+00fcd4d8  adrp x21,0x3351000
+00fcd4dc  ldrb w8,[x20, #0xe51]
+00fcd4e0  ldr x21,[x21, #0xcb0]
+00fcd4e4  mov x19,x0
+00fcd4e8  tbnz w8,#0x0,0x00fcd500
+00fcd4ec  adrp x0,0x3351000
+00fcd4f0  ldr x0,[x0, #0xcb0]
+00fcd4f4  bl 0x00b0789c
+00fcd4f8  mov w8,#0x1
+00fcd4fc  strb w8,[x20, #0xe51]
+00fcd500  ldr x1,[x21]
+00fcd504  mov x0,x19
+00fcd508  ldp x19,x30,[sp, #0x10]
+00fcd50c  mov x2,xzr
+00fcd510  ldp x21,x20,[sp], #0x20
+00fcd514  b 0x00dc06f8

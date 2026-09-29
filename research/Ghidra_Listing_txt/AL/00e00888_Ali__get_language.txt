@@ -1,0 +1,60 @@
+Function: Ali$$get_language @ 00e00888
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp372 @ 0108f7f0
+
+--- Calls IN ---
+  <- LiaotianPanelMono$$OnClickEmoji @ 00f88e58
+  <- AliothExtensions$$ResNameByLanguage @ 00e06004
+  <- AliothExtensions$$AddAnimationEx @ 00e16d9c
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_language @ 0119e32c
+  <- ProtocolGame_HttpRequest$$get_languageName @ 00dda650
+  <- Ali$$SetLanguageType @ 00e0b770
+  <- LanguagePanelMono$$Awake @ 00f830b0
+  <- ResManager$$GetExcelRecordName @ 00e2b084
+  <- Ali$$InitGetValidLanguagesCV @ 00e0fa74
+  <- Ali$$get_m_fontName @ 00e007a8
+  <- LanguagePanelMono$$OnClickOK @ 00f83c74
+  <- ProtocolGame_HttpRequest$$get_language @ 00ddab68
+  <- Ali$$InitGetValidLanguages @ 00e0f5c0
+  <- AliothExtensions$$SetAnimationEx @ 00e1676c
+  <- AliothExtensions$$SetTextExt @ 00e13af0
+  <- LiaotianPanelMono$$OnClickSend @ 00f89264
+  <- AliothExtensions$$SetTextExt @ 00e14168
+  <- Ali$$get_m_fontSDFName @ 00e00900
+  <- Ali$$Init @ 00e019f8
+  <- UINode$$Multilingual @ 00dc4174
+
+--- Listing ---
+00e00888  stp x21,x20,[sp, #-0x20]!
+00e0088c  stp x19,x30,[sp, #0x10]
+00e00890  adrp x21,0x3572000
+00e00894  adrp x20,0x335f000
+00e00898  ldrb w8,[x21, #0x520]
+00e0089c  ldr x20,[x20, #0x20]
+00e008a0  mov x19,x0
+00e008a4  tbnz w8,#0x0,0x00e008bc
+00e008a8  adrp x0,0x335f000
+00e008ac  ldr x0,[x0, #0x20]
+00e008b0  bl 0x00b0789c
+00e008b4  mov w8,#0x1
+00e008b8  strb w8,[x21, #0x520]
+00e008bc  ldr x0,[x20]
+00e008c0  ldr w8,[x0, #0xe0]
+00e008c4  cbnz w8,0x00e008d0
+00e008c8  bl 0x00b0798c
+00e008cc  ldr x0,[x20]
+00e008d0  ldr x8,[x0, #0xb8]
+00e008d4  ldr x0,[x8, #0x98]
+00e008d8  cbz x0,0x00e008f0
+00e008dc  mov x1,x19
+00e008e0  ldp x19,x30,[sp, #0x10]
+00e008e4  mov x2,xzr
+00e008e8  ldp x21,x20,[sp], #0x20
+00e008ec  b 0x0108f7f0
+00e008f0  ldr w0,[x19, #0x30]
+00e008f4  ldp x19,x30,[sp, #0x10]
+00e008f8  ldp x21,x20,[sp], #0x20
+00e008fc  ret

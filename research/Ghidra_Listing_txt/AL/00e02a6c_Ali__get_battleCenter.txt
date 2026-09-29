@@ -1,0 +1,111 @@
+Function: Ali$$get_battleCenter @ 00e02a6c
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp385 @ 010913fc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AIPTWDebug$$RayCastPlace @ 00df9c84
+  <- BattleManager$$CutSceneEnd @ 0117ee54
+  <- BaseMono$$DestroyEnhance @ 00e1e854
+  <- SkillPoseMono$$SkillPoseSet @ 00e9239c
+  <- RoleMono$$OnSpineEvent @ 014a6304
+  <- RoleNews$$ShowSkillRange @ 00ff2644
+  <- BattleManager.<PlaySkillShowEnd2>d__260$$MoveNext @ 01316440
+  <- BattleManager$$BattleStartCutscene @ 0117e05c
+  <- BattleManager$$RoundStart @ 0118630c
+  <- TerrainEvent$$RayCastPlace @ 016c5e64
+  <- InterludePanelMono$$InSence @ 00e8cb80
+  <- BattleUIMono$$SetShowIntrusion @ 00e8af50
+  <- TerrainEvent$$OnPointerBeginDragDelegate @ 016c6364
+  <- DialogStoryMono.<ShowTalk>d__9$$MoveNext @ 00ebb50c
+  <- BattleManager$$OnClickTerrain @ 01186680
+  <- TerrainEvent$$ResetPointEvent @ 016c5000
+  <- AIPTWDebug$$LateUpdate @ 00df9bac
+  <- BattleManager$$CutscenesEnd @ 0117e8dc
+  <- BattleHitNum$$Init @ 00e78580
+  <- BattleTipsPanelMono$$OnClickTerrainTips @ 00e89928
+  <- BattleManager$$WeatherManage @ 01189ca0
+  <- BattleUIMono.<>c__DisplayClass15_0$$<CreateSkillLabel>b__0 @ 00e8baa0
+  <- BattleManager.<PlayBossShow>d__207$$MoveNext @ 01314a54
+  <- TerrainEvent$$OnPointerDragDelegate @ 016c6e4c
+  <- BattleManager$$PlaySkillShowGoon @ 0118a958
+  <- InterludePanelMono$$OutSence @ 00e8c3a4
+  <- BattleManager$$NetCloseBatlle @ 0117bc74
+  <- RoleMono$$RefreshCD @ 014a047c
+  <- BattleMainMono$$PowerOpen @ 00e80b08
+  <- BattleManager$$StartSkillPlay @ 0117ff80
+  <- BattleManager$$PlayAniEnd @ 0117c534
+  <- BattleUIMono$$SetShowWarning @ 00e8ab88
+  <- BattleMainMono$$PowerClose @ 00e80524
+  <- NoviceGuidePanelMono$$ShowBattleGuide @ 01006380
+  <- RoleNews$$ChangeBody @ 00fed94c
+  <- RoleMono.<Dead_Destroy>d__148$$MoveNext @ 014adcc4
+  <- RoleNews$$CheckRange @ 00fe8670
+  <- TerrainEvent$$get_IsNoCanClick @ 016c5c28
+  <- BattleManager$$ShowAtkTips @ 01186b20
+  <- BattleManager$$WaitLoadingEnd @ 0118952c
+  <- BattleManager$$InitSence @ 01178810
+  <- BattleManager.<BattleEnd2>d__203$$MoveNext @ 01311274
+  <- BaseAttack$$ResultValue @ 015dc970
+  <- RoleNews$$TurnAround @ 00fe3860
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_battleCenter @ 011a0644
+  <- BattleManager$$BattleStartGoon @ 0117d97c
+  <- RoleMono.<PlayBreakAni>d__154$$MoveNext @ 014ae324
+  <- BattleManager$$PlaySkillShow @ 0118a3f8
+  <- BattleManager$$SkillPlayEnd @ 0118d550
+  <- DialogStoryMono$$UpdatePosition @ 00ebb104
+  <- RoleNews$$RefreshBuffShowUI @ 00feb1a8
+  <- BattleManager$$ActionExecute @ 0118c858
+  <- BattleHitNum.<GetHitNumPos>d__60$$MoveNext @ 00e7ba2c
+  <- BattleCache$$get_IsHaveMainUI @ 00ece800
+  <- SkillEff_9004$$ExecuteSpecial @ 016c3930
+  <- BattleManager$$PlayAniDialogEnd @ 0118a0ec
+  <- BattleManager.<BossShowNextRange>d__194$$MoveNext @ 01310dbc
+  <- BattleManager$$NextWave @ 011789d4
+  <- BattleManager$$LoadShowPoint @ 01178bac
+  <- BattleManager.<SpeedLinePlayEnd>d__257$$MoveNext @ 01315d48
+  <- BattleManager$$FinishCS @ 01189674
+
+--- Listing ---
+00e02a6c  stp x21,x20,[sp, #-0x20]!
+00e02a70  stp x19,x30,[sp, #0x10]
+00e02a74  adrp x21,0x3572000
+00e02a78  adrp x20,0x335f000
+00e02a7c  ldrb w8,[x21, #0x54b]
+00e02a80  ldr x20,[x20, #0x20]
+00e02a84  mov x19,x0
+00e02a88  tbnz w8,#0x0,0x00e02aac
+00e02a8c  adrp x0,0x335f000
+00e02a90  ldr x0,[x0, #0x20]
+00e02a94  bl 0x00b0789c
+00e02a98  adrp x0,0x3337000
+00e02a9c  ldr x0,[x0, #0xa20]
+00e02aa0  bl 0x00b0789c
+00e02aa4  mov w8,#0x1
+00e02aa8  strb w8,[x21, #0x54b]
+00e02aac  ldr x0,[x20]
+00e02ab0  ldr w8,[x0, #0xe0]
+00e02ab4  cbnz w8,0x00e02ac0
+00e02ab8  bl 0x00b0798c
+00e02abc  ldr x0,[x20]
+00e02ac0  ldr x8,[x0, #0xb8]
+00e02ac4  ldr x0,[x8, #0x1f0]
+00e02ac8  cbz x0,0x00e02ae0
+00e02acc  mov x1,x19
+00e02ad0  ldp x19,x30,[sp, #0x10]
+00e02ad4  mov x2,xzr
+00e02ad8  ldp x21,x20,[sp], #0x20
+00e02adc  b 0x010913fc
+00e02ae0  ldr x0,[x19, #0xe0]
+00e02ae4  cbz x0,0x00e02b00
+00e02ae8  adrp x8,0x3337000
+00e02aec  ldr x8,[x8, #0xa20]
+00e02af0  ldp x19,x30,[sp, #0x10]
+00e02af4  ldr x1,[x8]
+00e02af8  ldp x21,x20,[sp], #0x20
+00e02afc  b 0x01f0d67c
+00e02b00  bl 0x00b079b0

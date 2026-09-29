@@ -1,0 +1,45 @@
+Function: RewardManager$$set_VkeySort @ 00e2d930
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RewardManagerWrap$$_s_set_VkeySort @ 0137a44c
+  <- FUN_00e2f00c @ 00e2f00c
+
+--- Listing ---
+00e2d930  str x22,[sp, #-0x30]!
+00e2d934  stp x21,x20,[sp, #0x10]
+00e2d938  stp x19,x30,[sp, #0x20]
+00e2d93c  adrp x21,0x3572000
+00e2d940  adrp x22,0x331f000
+00e2d944  ldrb w8,[x21, #0x745]
+00e2d948  ldr x22,[x22, #0x418]
+00e2d94c  mov x19,x1
+00e2d950  mov x20,x0
+00e2d954  tbnz w8,#0x0,0x00e2d96c
+00e2d958  adrp x0,0x331f000
+00e2d95c  ldr x0,[x0, #0x418]
+00e2d960  bl 0x00b0789c
+00e2d964  mov w8,#0x1
+00e2d968  strb w8,[x21, #0x745]
+00e2d96c  ldr x8,[x22]
+00e2d970  ldr x8,[x8, #0xb8]
+00e2d974  ldr x0,[x8, #0x18]
+00e2d978  cbz x0,0x00e2d998
+00e2d97c  mov x1,x20
+00e2d980  mov x2,x19
+00e2d984  ldp x19,x30,[sp, #0x20]
+00e2d988  ldp x21,x20,[sp, #0x10]
+00e2d98c  mov x3,xzr
+00e2d990  ldr x22,[sp], #0x30
+00e2d994  b 0x0106125c
+00e2d998  str x19,[x20, #0x40]!
+00e2d99c  mov x0,x20
+00e2d9a0  mov x1,x19
+00e2d9a4  ldp x19,x30,[sp, #0x20]
+00e2d9a8  ldp x21,x20,[sp, #0x10]
+00e2d9ac  ldr x22,[sp], #0x30
+00e2d9b0  b 0x00b07850

@@ -1,0 +1,92 @@
+Function: AliothEngine.IStoreManager$$HandlePurchaseAwaitingConfirmation @ 01659064
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> AliothEngine.IStoreManager$$LocalLog @ 01658fa8
+
+--- Calls IN ---
+
+--- Listing ---
+01659064  str x22,[sp, #-0x30]!
+01659068  stp x21,x20,[sp, #0x10]
+0165906c  stp x19,x30,[sp, #0x20]
+01659070  adrp x21,0x3577000
+01659074  adrp x22,0x336f000
+01659078  ldrb w8,[x21, #0x843]
+0165907c  ldr x22,[x22, #0x1e8]
+01659080  mov x19,x1
+01659084  mov x20,x0
+01659088  tbnz w8,#0x0,0x016590b8
+0165908c  adrp x0,0x336f000
+01659090  ldr x0,[x0, #0x1e8]
+01659094  bl 0x00b0789c
+01659098  adrp x0,0x3370000
+0165909c  ldr x0,[x0, #0x778]
+016590a0  bl 0x00b0789c
+016590a4  adrp x0,0x331e000
+016590a8  ldr x0,[x0, #0xe68]
+016590ac  bl 0x00b0789c
+016590b0  mov w8,#0x1
+016590b4  strb w8,[x21, #0x843]
+016590b8  ldr x8,[x22]
+016590bc  ldr x8,[x8, #0xb8]
+016590c0  ldr x0,[x8, #0x58]
+016590c4  cbz x0,0x016590e4
+016590c8  mov x1,x20
+016590cc  mov x2,x19
+016590d0  ldp x19,x30,[sp, #0x20]
+016590d4  ldp x21,x20,[sp, #0x10]
+016590d8  mov x3,xzr
+016590dc  ldr x22,[sp], #0x30
+016590e0  b 0x0106125c
+016590e4  adrp x8,0x3370000
+016590e8  ldr x8,[x8, #0x778]
+016590ec  mov w1,#0x1
+016590f0  ldr x0,[x8]
+016590f4  bl 0x00b078f8
+016590f8  cbz x0,0x0165917c
+016590fc  mov x21,x0
+01659100  cbz x19,0x01659118
+01659104  ldr x8,[x21]
+01659108  mov x0,x19
+0165910c  ldr x1,[x8, #0x40]
+01659110  bl 0x00b07990
+01659114  cbz x0,0x01659184
+01659118  ldr w8,[x21, #0x18]
+0165911c  cbz w8,0x01659180
+01659120  adrp x22,0x331e000
+01659124  ldr x22,[x22, #0xe68]
+01659128  mov x0,x21
+0165912c  str x19,[x0, #0x20]!
+01659130  mov x1,x19
+01659134  bl 0x00b07850
+01659138  ldr x0,[x22]
+0165913c  mov x1,x21
+01659140  bl 0x01658fa8
+01659144  ldr x8,[x20, #0x18]
+01659148  cbz x8,0x0165916c
+0165914c  ldr x3,[x8, #0x18]
+01659150  ldr x0,[x8, #0x40]
+01659154  ldr x2,[x8, #0x28]
+01659158  mov x1,x19
+0165915c  ldp x19,x30,[sp, #0x20]
+01659160  ldp x21,x20,[sp, #0x10]
+01659164  ldr x22,[sp], #0x30
+01659168  br x3
+0165916c  ldp x19,x30,[sp, #0x20]
+01659170  ldp x21,x20,[sp, #0x10]
+01659174  ldr x22,[sp], #0x30
+01659178  ret
+0165917c  bl 0x00b079b0
+01659180  bl 0x00b079b8
+01659184  bl 0x00b079d4
+01659188  mov x1,xzr
+0165918c  bl 0x00b07978

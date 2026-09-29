@@ -1,0 +1,93 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad1c4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.Transform$$SetParent @ 024f44fc
+  -> UnityEngine.Object$$Instantiate<object> @ 017a9980
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Object$$set_name @ 024df584
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad45c
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad514
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad030
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad5b4
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad3ac
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad100
+  <- AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad2e4
+
+--- Listing ---
+016ad1c4  str d14,[sp, #-0x70]!
+016ad1c8  stp d13,d12,[sp, #0x8]
+016ad1cc  stp d11,d10,[sp, #0x18]
+016ad1d0  stp d9,d8,[sp, #0x28]
+016ad1d4  str x24,[sp, #0x38]
+016ad1d8  stp x23,x22,[sp, #0x40]
+016ad1dc  stp x21,x20,[sp, #0x50]
+016ad1e0  stp x19,x30,[sp, #0x60]
+016ad1e4  adrp x24,0x3577000
+016ad1e8  adrp x23,0x3321000
+016ad1ec  ldrb w8,[x24, #0xbc5]
+016ad1f0  ldr x23,[x23, #0xca8]
+016ad1f4  mov w21,w3
+016ad1f8  mov x20,x2
+016ad1fc  mov x19,x1
+016ad200  mov v8.16B,v6.16B
+016ad204  mov v9.16B,v5.16B
+016ad208  mov v10.16B,v4.16B
+016ad20c  mov v11.16B,v3.16B
+016ad210  mov v12.16B,v2.16B
+016ad214  mov v13.16B,v1.16B
+016ad218  mov v14.16B,v0.16B
+016ad21c  mov x22,x0
+016ad220  tbnz w8,#0x0,0x016ad244
+016ad224  adrp x0,0x3319000
+016ad228  ldr x0,[x0, #0xc18]
+016ad22c  bl 0x00b0789c
+016ad230  adrp x0,0x3321000
+016ad234  ldr x0,[x0, #0xca8]
+016ad238  bl 0x00b0789c
+016ad23c  mov w8,#0x1
+016ad240  strb w8,[x24, #0xbc5]
+016ad244  ldr x0,[x23]
+016ad248  adrp x23,0x3319000
+016ad24c  ldr w8,[x0, #0xe0]
+016ad250  ldr x23,[x23, #0xc18]
+016ad254  cbnz w8,0x016ad25c
+016ad258  bl 0x00b0798c
+016ad25c  ldr x1,[x23]
+016ad260  mov x0,x22
+016ad264  mov v0.16B,v14.16B
+016ad268  mov v1.16B,v13.16B
+016ad26c  mov v2.16B,v12.16B
+016ad270  mov v3.16B,v11.16B
+016ad274  mov v4.16B,v10.16B
+016ad278  mov v5.16B,v9.16B
+016ad27c  mov v6.16B,v8.16B
+016ad280  bl 0x017a9980
+016ad284  cbz x0,0x016ad2e0
+016ad288  mov x1,xzr
+016ad28c  mov x22,x0
+016ad290  bl 0x024de730
+016ad294  cbz x0,0x016ad2e0
+016ad298  and w2,w21,#0x1
+016ad29c  mov x1,x20
+016ad2a0  mov x3,xzr
+016ad2a4  bl 0x024f44fc
+016ad2a8  mov x0,x22
+016ad2ac  mov x1,x19
+016ad2b0  mov x2,xzr
+016ad2b4  bl 0x024df584
+016ad2b8  mov x0,x22
+016ad2bc  ldp x19,x30,[sp, #0x60]
+016ad2c0  ldp x21,x20,[sp, #0x50]
+016ad2c4  ldp x23,x22,[sp, #0x40]
+016ad2c8  ldr x24,[sp, #0x38]
+016ad2cc  ldp d9,d8,[sp, #0x28]
+016ad2d0  ldp d11,d10,[sp, #0x18]
+016ad2d4  ldp d13,d12,[sp, #0x8]
+016ad2d8  ldr d14,[sp], #0x70
+016ad2dc  ret
+016ad2e0  bl 0x00b079b0

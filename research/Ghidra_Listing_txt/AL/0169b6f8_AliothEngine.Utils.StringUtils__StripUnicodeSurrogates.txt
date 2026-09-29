@@ -1,0 +1,77 @@
+Function: AliothEngine.Utils.StringUtils$$StripUnicodeSurrogates @ 0169b6f8
+
+--- Calls OUT ---
+  -> System.String$$get_Chars @ 01fda110
+  -> System.Char$$IsSurrogate @ 020dd3b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Char$$ToString @ 020cbf14
+
+--- Calls IN ---
+
+--- Listing ---
+0169b6f8  sub sp,sp,#0x40
+0169b6fc  stp x23,x22,[sp, #0x10]
+0169b700  stp x21,x20,[sp, #0x20]
+0169b704  stp x19,x30,[sp, #0x30]
+0169b708  adrp x20,0x3577000
+0169b70c  ldrb w8,[x20, #0xb37]
+0169b710  mov x19,x0
+0169b714  tbnz w8,#0x0,0x0169b738
+0169b718  adrp x0,0x3329000
+0169b71c  ldr x0,[x0, #0xc30]
+0169b720  bl 0x00b0789c
+0169b724  adrp x0,0x331b000
+0169b728  ldr x0,[x0, #0x6c8]
+0169b72c  bl 0x00b0789c
+0169b730  mov w8,#0x1
+0169b734  strb w8,[x20, #0xb37]
+0169b738  strh wzr,[sp, #0xc]
+0169b73c  cbz x19,0x0169b7f0
+0169b740  adrp x8,0x331b000
+0169b744  ldr x8,[x8, #0x6c8]
+0169b748  ldr w9,[x19, #0x10]
+0169b74c  ldr x8,[x8]
+0169b750  cmp w9,#0x1
+0169b754  ldr x8,[x8, #0xb8]
+0169b758  ldr x20,[x8]
+0169b75c  b.lt 0x0169b7d8
+0169b760  adrp x23,0x3329000
+0169b764  ldr x23,[x23, #0xc30]
+0169b768  mov w21,wzr
+0169b76c  mov x0,x19
+0169b770  mov w1,w21
+0169b774  mov x2,xzr
+0169b778  bl 0x01fda110
+0169b77c  ldr x8,[x23]
+0169b780  strh w0,[sp, #0xc]
+0169b784  mov w22,w0
+0169b788  ldr w9,[x8, #0xe0]
+0169b78c  cbnz w9,0x0169b798
+0169b790  mov x0,x8
+0169b794  bl 0x00b0798c
+0169b798  mov w0,w22
+0169b79c  mov x1,xzr
+0169b7a0  bl 0x020dd3b0
+0169b7a4  tbnz w0,#0x0,0x0169b7c8
+0169b7a8  add x0,sp,#0xc
+0169b7ac  mov x1,xzr
+0169b7b0  bl 0x020cbf14
+0169b7b4  mov x1,x0
+0169b7b8  mov x0,x20
+0169b7bc  mov x2,xzr
+0169b7c0  bl 0x01fd2850
+0169b7c4  mov x20,x0
+0169b7c8  ldr w8,[x19, #0x10]
+0169b7cc  add w21,w21,#0x1
+0169b7d0  cmp w21,w8
+0169b7d4  b.lt 0x0169b76c
+0169b7d8  mov x0,x20
+0169b7dc  ldp x19,x30,[sp, #0x30]
+0169b7e0  ldp x21,x20,[sp, #0x20]
+0169b7e4  ldp x23,x22,[sp, #0x10]
+0169b7e8  add sp,sp,#0x40
+0169b7ec  ret
+0169b7f0  bl 0x00b079b0

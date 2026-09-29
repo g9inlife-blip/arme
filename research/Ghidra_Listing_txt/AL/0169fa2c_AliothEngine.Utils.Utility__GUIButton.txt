@@ -1,0 +1,162 @@
+Function: AliothEngine.Utils.Utility$$GUIButton @ 0169fa2c
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.Utility$$SetGUIColor @ 0169f728
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.GUIStyle$$.ctor @ 0252e17c
+  -> UnityEngine.GUIStyle$$get_normal @ 025295b4
+  -> UnityEngine.GUILayout$$Width @ 02526c04
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GUILayout$$Height @ 02526b58
+  -> UnityEngine.GUILayout$$Button @ 0252608c
+  -> UnityEngine.GUIStyle$$set_alignment @ 0252d2a8
+  -> FUN_00b078f8 @ 00b078f8
+  -> UnityEngine.GUIStyle$$op_Implicit @ 0252eeb4
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.GUIStyleState$$set_textColor @ 02529628
+
+--- Calls IN ---
+
+--- Listing ---
+0169fa2c  stp d15,d14,[sp, #-0x70]!
+0169fa30  stp d13,d12,[sp, #0x10]
+0169fa34  stp d11,d10,[sp, #0x20]
+0169fa38  stp d9,d8,[sp, #0x30]
+0169fa3c  str x22,[sp, #0x40]
+0169fa40  stp x21,x20,[sp, #0x50]
+0169fa44  stp x19,x30,[sp, #0x60]
+0169fa48  str s2,[sp, #0x4c]
+0169fa4c  adrp x21,0x3577000
+0169fa50  adrp x20,0x3330000
+0169fa54  ldrb w8,[x21, #0xb56]
+0169fa58  ldr x20,[x20, #0xba0]
+0169fa5c  mov v12.16B,v7.16B
+0169fa60  mov v13.16B,v6.16B
+0169fa64  mov v14.16B,v5.16B
+0169fa68  mov v15.16B,v4.16B
+0169fa6c  mov v9.16B,v3.16B
+0169fa70  mov v10.16B,v1.16B
+0169fa74  mov v11.16B,v0.16B
+0169fa78  mov x19,x0
+0169fa7c  tbnz w8,#0x0,0x0169faac
+0169fa80  adrp x0,0x3327000
+0169fa84  ldr x0,[x0, #0xca0]
+0169fa88  bl 0x00b0789c
+0169fa8c  adrp x0,0x3330000
+0169fa90  ldr x0,[x0, #0xba0]
+0169fa94  bl 0x00b0789c
+0169fa98  adrp x0,0x333b000
+0169fa9c  ldr x0,[x0, #0xbb0]
+0169faa0  bl 0x00b0789c
+0169faa4  mov w8,#0x1
+0169faa8  strb w8,[x21, #0xb56]
+0169faac  ldr x0,[x20]
+0169fab0  adrp x21,0x333b000
+0169fab4  ldr w8,[x0, #0xe0]
+0169fab8  ldr x21,[x21, #0xbb0]
+0169fabc  cbnz w8,0x0169fac4
+0169fac0  bl 0x00b0798c
+0169fac4  ldr x0,[x21]
+0169fac8  mov x1,xzr
+0169facc  bl 0x0252eeb4
+0169fad0  ldr x8,[x20]
+0169fad4  mov x21,x0
+0169fad8  mov x0,x8
+0169fadc  bl 0x00b079a0
+0169fae0  cbz x0,0x0169fc38
+0169fae4  mov x1,x21
+0169fae8  mov x2,xzr
+0169faec  mov x20,x0
+0169faf0  bl 0x0252e17c
+0169faf4  mov x0,x20
+0169faf8  mov x1,xzr
+0169fafc  bl 0x025295b4
+0169fb00  cbz x0,0x0169fc38
+0169fb04  adrp x21,0x3327000
+0169fb08  ldr s8,[sp, #0x70]
+0169fb0c  ldr x21,[x21, #0xca0]
+0169fb10  mov v0.16B,v15.16B
+0169fb14  mov v1.16B,v14.16B
+0169fb18  mov v2.16B,v13.16B
+0169fb1c  mov v3.16B,v12.16B
+0169fb20  mov x1,xzr
+0169fb24  bl 0x02529628
+0169fb28  mov w1,#0x4
+0169fb2c  mov x0,x20
+0169fb30  mov x2,xzr
+0169fb34  bl 0x0252d2a8
+0169fb38  ldr s2,[sp, #0x4c]
+0169fb3c  mov v0.16B,v11.16B
+0169fb40  mov v1.16B,v10.16B
+0169fb44  mov v3.16B,v9.16B
+0169fb48  bl 0x0169f728
+0169fb4c  ldr x0,[x21]
+0169fb50  mov w1,#0x2
+0169fb54  bl 0x00b078f8
+0169fb58  mov x21,x0
+0169fb5c  mov v0.16B,v8.16B
+0169fb60  mov x0,xzr
+0169fb64  bl 0x02526c04
+0169fb68  cbz x21,0x0169fc38
+0169fb6c  mov x22,x0
+0169fb70  cbz x0,0x0169fb88
+0169fb74  ldr x8,[x21]
+0169fb78  mov x0,x22
+0169fb7c  ldr x1,[x8, #0x40]
+0169fb80  bl 0x00b07990
+0169fb84  cbz x0,0x0169fc40
+0169fb88  ldr w8,[x21, #0x18]
+0169fb8c  cbz w8,0x0169fc3c
+0169fb90  ldr s8,[sp, #0x78]
+0169fb94  mov x0,x21
+0169fb98  str x22,[x0, #0x20]!
+0169fb9c  mov x1,x22
+0169fba0  bl 0x00b07850
+0169fba4  mov v0.16B,v8.16B
+0169fba8  mov x0,xzr
+0169fbac  bl 0x02526b58
+0169fbb0  mov x22,x0
+0169fbb4  cbz x0,0x0169fbcc
+0169fbb8  ldr x8,[x21]
+0169fbbc  mov x0,x22
+0169fbc0  ldr x1,[x8, #0x40]
+0169fbc4  bl 0x00b07990
+0169fbc8  cbz x0,0x0169fc40
+0169fbcc  ldr w8,[x21, #0x18]
+0169fbd0  cmp w8,#0x1
+0169fbd4  b.ls 0x0169fc3c
+0169fbd8  mov x0,x21
+0169fbdc  str x22,[x0, #0x28]!
+0169fbe0  mov x1,x22
+0169fbe4  bl 0x00b07850
+0169fbe8  mov x0,x19
+0169fbec  mov x1,x20
+0169fbf0  mov x2,x21
+0169fbf4  mov x3,xzr
+0169fbf8  bl 0x0252608c
+0169fbfc  fmov s0,0x3f800000
+0169fc00  mov v1.16B,v0.16B
+0169fc04  mov v2.16B,v0.16B
+0169fc08  mov v3.16B,v0.16B
+0169fc0c  mov w19,w0
+0169fc10  bl 0x0169f728
+0169fc14  and w0,w19,#0x1
+0169fc18  ldp x19,x30,[sp, #0x60]
+0169fc1c  ldp x21,x20,[sp, #0x50]
+0169fc20  ldr x22,[sp, #0x40]
+0169fc24  ldp d9,d8,[sp, #0x30]
+0169fc28  ldp d11,d10,[sp, #0x20]
+0169fc2c  ldp d13,d12,[sp, #0x10]
+0169fc30  ldp d15,d14,[sp], #0x70
+0169fc34  ret
+0169fc38  bl 0x00b079b0
+0169fc3c  bl 0x00b079b8
+0169fc40  bl 0x00b079d4
+0169fc44  mov x1,xzr
+0169fc48  bl 0x00b07978

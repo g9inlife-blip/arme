@@ -1,0 +1,40 @@
+Function: ReadyMono$$get_BackgroundName @ 00e5dc30
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00e5dc30  stp x21,x20,[sp, #-0x20]!
+00e5dc34  stp x19,x30,[sp, #0x10]
+00e5dc38  adrp x20,0x3572000
+00e5dc3c  adrp x21,0x333c000
+00e5dc40  ldrb w8,[x20, #0x961]
+00e5dc44  ldr x21,[x21, #0x628]
+00e5dc48  mov x19,x0
+00e5dc4c  tbnz w8,#0x0,0x00e5dc70
+00e5dc50  adrp x0,0x333c000
+00e5dc54  ldr x0,[x0, #0x628]
+00e5dc58  bl 0x00b0789c
+00e5dc5c  adrp x0,0x3348000
+00e5dc60  ldr x0,[x0, #0xcc0]
+00e5dc64  bl 0x00b0789c
+00e5dc68  mov w8,#0x1
+00e5dc6c  strb w8,[x20, #0x961]
+00e5dc70  ldr x8,[x21]
+00e5dc74  ldr x8,[x8, #0xb8]
+00e5dc78  ldr x0,[x8, #0x68]
+00e5dc7c  cbz x0,0x00e5dc94
+00e5dc80  mov x1,x19
+00e5dc84  ldp x19,x30,[sp, #0x10]
+00e5dc88  mov x2,xzr
+00e5dc8c  ldp x21,x20,[sp], #0x20
+00e5dc90  b 0x01061abc
+00e5dc94  adrp x8,0x3348000
+00e5dc98  ldr x8,[x8, #0xcc0]
+00e5dc9c  ldp x19,x30,[sp, #0x10]
+00e5dca0  ldr x0,[x8]
+00e5dca4  ldp x21,x20,[sp], #0x20
+00e5dca8  ret

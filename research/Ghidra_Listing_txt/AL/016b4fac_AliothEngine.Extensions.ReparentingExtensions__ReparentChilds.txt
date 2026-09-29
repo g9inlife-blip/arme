@@ -1,0 +1,45 @@
+Function: AliothEngine.Extensions.ReparentingExtensions$$ReparentChilds @ 016b4fac
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> AliothEngine.Extensions.ReparentingExtensions$$Reparent @ 016b4c14
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b4fac  str x22,[sp, #-0x30]!
+016b4fb0  stp x21,x20,[sp, #0x10]
+016b4fb4  stp x19,x30,[sp, #0x20]
+016b4fb8  cbz x0,0x016b502c
+016b4fbc  mov x20,x1
+016b4fc0  mov x1,xzr
+016b4fc4  mov w19,w2
+016b4fc8  bl 0x024de730
+016b4fcc  cbz x0,0x016b502c
+016b4fd0  mov x1,xzr
+016b4fd4  mov x21,x0
+016b4fd8  bl 0x024f5578
+016b4fdc  cmp w0,#0x1
+016b4fe0  b.lt 0x016b501c
+016b4fe4  mov w22,wzr
+016b4fe8  mov x0,x21
+016b4fec  mov w1,w22
+016b4ff0  mov x2,xzr
+016b4ff4  bl 0x024f5bec
+016b4ff8  mov x1,x20
+016b4ffc  mov w2,w19
+016b5000  bl 0x016b4c14
+016b5004  mov x0,x21
+016b5008  mov x1,xzr
+016b500c  add w22,w22,#0x1
+016b5010  bl 0x024f5578
+016b5014  cmp w22,w0
+016b5018  b.lt 0x016b4fe8
+016b501c  ldp x19,x30,[sp, #0x20]
+016b5020  ldp x21,x20,[sp, #0x10]
+016b5024  ldr x22,[sp], #0x30
+016b5028  ret
+016b502c  bl 0x00b079b0

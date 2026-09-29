@@ -1,0 +1,47 @@
+Function: AliothEngine.Context.GameObjectFactory$$.ctor @ 01696b04
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01696b04  stp x21,x20,[sp, #-0x20]!
+01696b08  stp x19,x30,[sp, #0x10]
+01696b0c  adrp x21,0x3577000
+01696b10  adrp x20,0x332c000
+01696b14  ldrb w8,[x21, #0xb06]
+01696b18  ldr x20,[x20, #0xfe8]
+01696b1c  mov x19,x0
+01696b20  tbnz w8,#0x0,0x01696b44
+01696b24  adrp x0,0x3329000
+01696b28  ldr x0,[x0, #0xd98]
+01696b2c  bl 0x00b0789c
+01696b30  adrp x0,0x332c000
+01696b34  ldr x0,[x0, #0xfe8]
+01696b38  bl 0x00b0789c
+01696b3c  mov w8,#0x1
+01696b40  strb w8,[x21, #0xb06]
+01696b44  mov x0,x19
+01696b48  mov x1,xzr
+01696b4c  bl 0x02194104
+01696b50  ldr x0,[x20]
+01696b54  bl 0x00b079a0
+01696b58  cbz x0,0x01696b88
+01696b5c  adrp x8,0x3329000
+01696b60  ldr x8,[x8, #0xd98]
+01696b64  mov x20,x0
+01696b68  ldr x1,[x8]
+01696b6c  bl 0x0196dbb0
+01696b70  str x20,[x19, #0x10]!
+01696b74  mov x0,x19
+01696b78  ldp x19,x30,[sp, #0x10]
+01696b7c  mov x1,x20
+01696b80  ldp x21,x20,[sp], #0x20
+01696b84  b 0x00b07850
+01696b88  bl 0x00b079b0

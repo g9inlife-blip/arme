@@ -1,0 +1,117 @@
+Function: AliothEngine.AssetLoader$$UnloadALL @ 0166a878
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Collections.Generic.List.Enumerator<object>$$Dispose @ 01a070e8
+  -> System.Collections.Generic.List<object>$$GetEnumerator @ 01c01338
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.GC$$Collect @ 02188c90
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Values @ 0196e348
+  -> System.Linq.Enumerable$$ToList<object> @ 0178daf8
+  -> AliothEngine.AssetLoader$$Unload @ 016631e4
+
+--- Calls IN ---
+  <- Ali$$ClearAllAsset @ 00e0a560
+  <- XLua.CSObjectWrap.AliothEngineAssetLoaderWrap$$_m_UnloadALL @ 0113fe9c
+  <- AliothEngine.AssetLoader$$OnDestroy @ 0166b524
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass25_0$$<LoadAssetBundleManifest>b__0 @ 0166a4cc
+
+--- Listing ---
+0166a878  sub sp,sp,#0x50
+0166a87c  str x22,[sp, #0x20]
+0166a880  stp x21,x20,[sp, #0x30]
+0166a884  stp x19,x30,[sp, #0x40]
+0166a888  adrp x21,0x3577000
+0166a88c  adrp x20,0x331c000
+0166a890  ldrb w8,[x21, #0x93a]
+0166a894  ldr x20,[x20, #0xda8]
+0166a898  mov x19,x0
+0166a89c  tbnz w8,#0x0,0x0166a908
+0166a8a0  adrp x0,0x331c000
+0166a8a4  ldr x0,[x0, #0xda8]
+0166a8a8  bl 0x00b0789c
+0166a8ac  adrp x0,0x3348000
+0166a8b0  ldr x0,[x0, #0xdb0]
+0166a8b4  bl 0x00b0789c
+0166a8b8  adrp x0,0x3328000
+0166a8bc  ldr x0,[x0, #0xdf0]
+0166a8c0  bl 0x00b0789c
+0166a8c4  adrp x0,0x3326000
+0166a8c8  ldr x0,[x0, #0x768]
+0166a8cc  bl 0x00b0789c
+0166a8d0  adrp x0,0x3335000
+0166a8d4  ldr x0,[x0, #0x9e0]
+0166a8d8  bl 0x00b0789c
+0166a8dc  adrp x0,0x3328000
+0166a8e0  ldr x0,[x0, #0x598]
+0166a8e4  bl 0x00b0789c
+0166a8e8  adrp x0,0x3320000
+0166a8ec  ldr x0,[x0, #0x608]
+0166a8f0  bl 0x00b0789c
+0166a8f4  adrp x0,0x3325000
+0166a8f8  ldr x0,[x0, #0x3a0]
+0166a8fc  bl 0x00b0789c
+0166a900  mov w8,#0x1
+0166a904  strb w8,[x21, #0x93a]
+0166a908  ldr x8,[x20]
+0166a90c  stp xzr,xzr,[sp, #0x10]
+0166a910  str xzr,[sp, #0x8]
+0166a914  ldr x8,[x8, #0xb8]
+0166a918  ldr x0,[x8, #0x98]
+0166a91c  cbz x0,0x0166a930
+0166a920  mov x1,x19
+0166a924  mov x2,xzr
+0166a928  bl 0x01060dac
+0166a92c  b 0x0166a9cc
+0166a930  ldr x0,[x19, #0x20]
+0166a934  cbz x0,0x0166a9e0
+0166a938  adrp x8,0x3348000
+0166a93c  ldr x8,[x8, #0xdb0]
+0166a940  adrp x20,0x3328000
+0166a944  ldr x1,[x8]
+0166a948  ldr x20,[x20, #0xdf0]
+0166a94c  bl 0x0196e348
+0166a950  ldr x1,[x20]
+0166a954  bl 0x0178daf8
+0166a958  cbz x0,0x0166a9e0
+0166a95c  adrp x8,0x3325000
+0166a960  ldr x8,[x8, #0x3a0]
+0166a964  adrp x20,0x3335000
+0166a968  adrp x21,0x3320000
+0166a96c  adrp x22,0x3326000
+0166a970  ldr x1,[x8]
+0166a974  ldr x20,[x20, #0x9e0]
+0166a978  ldr x21,[x21, #0x608]
+0166a97c  ldr x22,[x22, #0x768]
+0166a980  add x8,sp,#0x8
+0166a984  bl 0x01c01338
+0166a988  ldr x1,[x20]
+0166a98c  add x0,sp,#0x8
+    ; [PRE] try { // try from 0166a98c to 0166a993 has its CatchHandler @ 0166a9e8
+0166a990  bl 0x01a070ec
+    ; [POST] } // end try from 0166a98c to 0166a993
+0166a994  tbz w0,#0x0,0x0166a9a8
+0166a998  ldr x1,[sp, #0x18]
+0166a99c  mov x0,x19
+    ; [PRE] try { // try from 0166a99c to 0166a9a3 has its CatchHandler @ 0166a9e4
+0166a9a0  bl 0x016631e4
+    ; [POST] } // end try from 0166a99c to 0166a9a3
+0166a9a4  b 0x0166a988
+0166a9a8  ldr x1,[x22]
+0166a9ac  add x0,sp,#0x8
+0166a9b0  bl 0x01a070e8
+0166a9b4  ldr x0,[x21]
+0166a9b8  ldr w8,[x0, #0xe0]
+0166a9bc  cbnz w8,0x0166a9c4
+0166a9c0  bl 0x00b0798c
+0166a9c4  mov x0,xzr
+0166a9c8  bl 0x02188c90
+0166a9cc  ldp x19,x30,[sp, #0x40]
+0166a9d0  ldp x21,x20,[sp, #0x30]
+0166a9d4  ldr x22,[sp, #0x20]
+0166a9d8  add sp,sp,#0x50
+0166a9dc  ret
+0166a9e0  bl 0x00b079b0

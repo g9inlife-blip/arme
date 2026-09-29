@@ -1,0 +1,55 @@
+Function: Ali$$NewKey @ 00e0ba50
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp311 @ 010875e8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$ToString @ 0214dc44
+  -> Ali$$NewKey @ 00e0b928
+
+--- Calls IN ---
+  <- DataCenter$$ProccessRequestRes @ 016e203c
+  <- XLua.CSObjectWrap.AliWrap$$_m_NewKey @ 01199bbc
+
+--- Listing ---
+00e0ba50  str x22,[sp, #-0x30]!
+00e0ba54  stp x21,x20,[sp, #0x10]
+00e0ba58  stp x19,x30,[sp, #0x20]
+00e0ba5c  adrp x22,0x3572000
+00e0ba60  str w1,[sp, #0xc]
+00e0ba64  adrp x21,0x335f000
+00e0ba68  ldrb w8,[x22, #0x59e]
+00e0ba6c  ldr x21,[x21, #0x20]
+00e0ba70  mov w20,w1
+00e0ba74  mov x19,x0
+00e0ba78  tbnz w8,#0x0,0x00e0ba90
+00e0ba7c  adrp x0,0x335f000
+00e0ba80  ldr x0,[x0, #0x20]
+00e0ba84  bl 0x00b0789c
+00e0ba88  mov w8,#0x1
+00e0ba8c  strb w8,[x22, #0x59e]
+00e0ba90  ldr x0,[x21]
+00e0ba94  ldr w8,[x0, #0xe0]
+00e0ba98  cbnz w8,0x00e0baa4
+00e0ba9c  bl 0x00b0798c
+00e0baa0  ldr x0,[x21]
+00e0baa4  ldr x8,[x0, #0xb8]
+00e0baa8  ldr x0,[x8, #0x498]
+00e0baac  cbz x0,0x00e0bacc
+00e0bab0  mov x1,x19
+00e0bab4  mov w2,w20
+00e0bab8  ldp x19,x30,[sp, #0x20]
+00e0babc  ldp x21,x20,[sp, #0x10]
+00e0bac0  mov x3,xzr
+00e0bac4  ldr x22,[sp], #0x30
+00e0bac8  b 0x010875e8
+00e0bacc  add x0,sp,#0xc
+00e0bad0  mov x1,xzr
+00e0bad4  bl 0x0214dc44
+00e0bad8  mov x1,x0
+00e0badc  mov x0,x19
+00e0bae0  bl 0x00e0b928
+00e0bae4  ldp x19,x30,[sp, #0x20]
+00e0bae8  ldp x21,x20,[sp, #0x10]
+00e0baec  ldr x22,[sp], #0x30
+00e0baf0  ret

@@ -1,0 +1,26 @@
+Function: AliothEngine.Utils.Utility$$Gaussian @ 0169db10
+
+--- Calls OUT ---
+  -> expf @ 008d4510
+
+--- Calls IN ---
+
+--- Listing ---
+0169db10  str d8,[sp, #-0x10]!
+0169db14  str x30,[sp, #0x8]
+0169db18  mov v8.16B,v1.16B
+0169db1c  fmul s0,s2,s2
+0169db20  fmov s1,0xbf000000
+0169db24  fmul s0,s0,s1
+0169db28  fmul s1,s8,s8
+0169db2c  fdiv s0,s0,s1
+0169db30  bl 0x008d4510
+0169db34  adrp x8,0x26dd000
+0169db38  ldr s1,[x8, #0x18]
+0169db3c  ldr x30,[sp, #0x8]
+0169db40  fmov s2,0x3f800000
+0169db44  fmul s1,s8,s1
+0169db48  fdiv s1,s2,s1
+0169db4c  fmul s0,s1,s0
+0169db50  ldr d8,[sp], #0x10
+0169db54  ret

@@ -1,0 +1,28 @@
+Function: AliothEngine.GameEventSysTest$$Update @ 0164bf28
+
+--- Calls OUT ---
+  -> AliothEngine.GameEventSysTest$$EventManger @ 0164bf6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GameEventSys<Int32Enum>$$UpdateEvent @ 01af24c4
+
+--- Calls IN ---
+
+--- Listing ---
+0164bf28  stp x19,x30,[sp, #-0x10]!
+0164bf2c  adrp x19,0x3577000
+0164bf30  ldrb w8,[x19, #0x7b4]
+0164bf34  tbnz w8,#0x0,0x0164bf4c
+0164bf38  adrp x0,0x3364000
+0164bf3c  ldr x0,[x0, #0xc38]
+0164bf40  bl 0x00b0789c
+0164bf44  mov w8,#0x1
+0164bf48  strb w8,[x19, #0x7b4]
+0164bf4c  bl 0x0164bf6c
+0164bf50  cbz x0,0x0164bf68
+0164bf54  adrp x8,0x3364000
+0164bf58  ldr x8,[x8, #0xc38]
+0164bf5c  ldr x1,[x8]
+0164bf60  ldp x19,x30,[sp], #0x10
+0164bf64  b 0x01af24c4
+0164bf68  bl 0x00b079b0

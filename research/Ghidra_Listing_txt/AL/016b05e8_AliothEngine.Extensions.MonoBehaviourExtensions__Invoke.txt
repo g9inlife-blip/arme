@@ -1,0 +1,32 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Invoke @ 016b05e8
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$Invoke @ 024e3c44
+  -> System.Delegate$$get_Method @ 0219aa08
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.MonoBehaviourExtensions$$InvokeRandom @ 016b0698
+
+--- Listing ---
+016b05e8  str d8,[sp, #-0x20]!
+016b05ec  stp x19,x30,[sp, #0x10]
+016b05f0  cbz x1,0x016b0638
+016b05f4  mov x19,x0
+016b05f8  mov x0,x1
+016b05fc  mov x1,xzr
+016b0600  mov v8.16B,v0.16B
+016b0604  bl 0x0219aa08
+016b0608  cbz x0,0x016b0638
+016b060c  ldr x8,[x0]
+016b0610  ldp x9,x1,[x8, #0x1a8]
+016b0614  blr x9
+016b0618  cbz x19,0x016b0638
+016b061c  mov x1,x0
+016b0620  mov x0,x19
+016b0624  ldp x19,x30,[sp, #0x10]
+016b0628  mov v0.16B,v8.16B
+016b062c  mov x2,xzr
+016b0630  ldr d8,[sp], #0x20
+016b0634  b 0x024e3c44
+016b0638  bl 0x00b079b0

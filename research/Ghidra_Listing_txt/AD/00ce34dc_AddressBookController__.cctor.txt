@@ -1,0 +1,69 @@
+Function: AddressBookController$$.cctor @ 00ce34dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action$$.ctor @ 020d5760
+
+--- Calls IN ---
+
+--- Listing ---
+00ce34dc  stp x21,x20,[sp, #-0x20]!
+00ce34e0  stp x19,x30,[sp, #0x10]
+00ce34e4  adrp x20,0x3571000
+00ce34e8  adrp x19,0x3331000
+00ce34ec  ldrb w8,[x20, #0x8f4]
+00ce34f0  ldr x19,[x19, #0xa68]
+00ce34f4  tbnz w8,#0x0,0x00ce3530
+00ce34f8  adrp x0,0x3348000
+00ce34fc  ldr x0,[x0, #0xcf8]
+00ce3500  bl 0x00b0789c
+00ce3504  adrp x0,0x3345000
+00ce3508  ldr x0,[x0, #0xcd8]
+00ce350c  bl 0x00b0789c
+00ce3510  adrp x0,0x330b000
+00ce3514  ldr x0,[x0, #0xf08]
+00ce3518  bl 0x00b0789c
+00ce351c  adrp x0,0x3331000
+00ce3520  ldr x0,[x0, #0xa68]
+00ce3524  bl 0x00b0789c
+00ce3528  mov w8,#0x1
+00ce352c  strb w8,[x20, #0x8f4]
+00ce3530  ldr x0,[x19]
+00ce3534  adrp x21,0x3348000
+00ce3538  ldr w8,[x0, #0xe0]
+00ce353c  ldr x21,[x21, #0xcf8]
+00ce3540  cbnz w8,0x00ce354c
+00ce3544  bl 0x00b0798c
+00ce3548  ldr x0,[x19]
+00ce354c  ldr x8,[x0, #0xb8]
+00ce3550  ldr x0,[x21]
+00ce3554  ldr x20,[x8]
+00ce3558  bl 0x00b079a0
+00ce355c  cbz x0,0x00ce35b8
+00ce3560  adrp x8,0x330b000
+00ce3564  ldr x8,[x8, #0xf08]
+00ce3568  adrp x21,0x3345000
+00ce356c  mov x1,x20
+00ce3570  mov x3,xzr
+00ce3574  ldr x2,[x8]
+00ce3578  ldr x21,[x21, #0xcd8]
+00ce357c  mov x19,x0
+00ce3580  bl 0x020d5760
+00ce3584  ldr x8,[x21]
+00ce3588  mov x1,x19
+00ce358c  ldr x8,[x8, #0xb8]
+00ce3590  str x19,[x8]
+00ce3594  ldr x8,[x21]
+00ce3598  ldr x0,[x8, #0xb8]
+00ce359c  bl 0x00b07850
+00ce35a0  ldr x8,[x21]
+00ce35a4  ldr x8,[x8, #0xb8]
+00ce35a8  strb wzr,[x8, #0x8]
+00ce35ac  ldp x19,x30,[sp, #0x10]
+00ce35b0  ldp x21,x20,[sp], #0x20
+00ce35b4  ret
+00ce35b8  bl 0x00b079b0

@@ -1,0 +1,81 @@
+Function: AliothEngine.AssetDownloadingContext$$add_OnFinish @ 0165f1d0
+
+--- Calls OUT ---
+  -> System.Delegate$$Combine @ 02197810
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetDownloadingContextWrap$$_e_OnFinish @ 011372b4
+  <- AliothEngine.AssetDownloader$$RequestDownload @ 0165ea9c
+
+--- Listing ---
+0165f1d0  str x24,[sp, #-0x40]!
+0165f1d4  stp x23,x22,[sp, #0x10]
+0165f1d8  stp x21,x20,[sp, #0x20]
+0165f1dc  stp x19,x30,[sp, #0x30]
+0165f1e0  adrp x22,0x3577000
+0165f1e4  adrp x21,0x3346000
+0165f1e8  ldrb w8,[x22, #0x8ad]
+0165f1ec  ldr x21,[x21, #0x960]
+0165f1f0  mov x19,x1
+0165f1f4  mov x20,x0
+0165f1f8  tbnz w8,#0x0,0x0165f21c
+0165f1fc  adrp x0,0x3380000
+0165f200  ldr x0,[x0, #0x300]
+0165f204  bl 0x00b0789c
+0165f208  adrp x0,0x3346000
+0165f20c  ldr x0,[x0, #0x960]
+0165f210  bl 0x00b0789c
+0165f214  mov w8,#0x1
+0165f218  strb w8,[x22, #0x8ad]
+0165f21c  ldr x0,[x21]
+0165f220  ldr w8,[x0, #0xe0]
+0165f224  cbnz w8,0x0165f230
+0165f228  bl 0x00b0798c
+0165f22c  ldr x0,[x21]
+0165f230  ldr x8,[x0, #0xb8]
+0165f234  ldr x0,[x8, #0x8]
+0165f238  cbz x0,0x0165f25c
+0165f23c  mov x1,x20
+0165f240  mov x2,x19
+0165f244  ldp x19,x30,[sp, #0x30]
+0165f248  ldp x21,x20,[sp, #0x20]
+0165f24c  ldp x23,x22,[sp, #0x10]
+0165f250  mov x3,xzr
+0165f254  ldr x24,[sp], #0x40
+0165f258  b 0x0106125c
+0165f25c  adrp x24,0x3380000
+0165f260  ldr x21,[x20, #0x10]!
+0165f264  ldr x24,[x24, #0x300]
+0165f268  mov x0,x21
+0165f26c  mov x1,x19
+0165f270  mov x2,xzr
+0165f274  bl 0x02197810
+0165f278  cbz x0,0x0165f298
+0165f27c  ldr x23,[x24]
+0165f280  mov x22,x0
+0165f284  mov x1,x23
+0165f288  bl 0x00b07990
+0165f28c  mov x1,x0
+0165f290  cbnz x0,0x0165f29c
+0165f294  b 0x0165f2c8
+0165f298  mov x1,xzr
+0165f29c  mov x0,x20
+0165f2a0  mov x2,x21
+0165f2a4  bl 0x00ae526c
+0165f2a8  cmp x21,x0
+0165f2ac  mov x21,x0
+0165f2b0  b.ne 0x0165f268
+0165f2b4  ldp x19,x30,[sp, #0x30]
+0165f2b8  ldp x21,x20,[sp, #0x20]
+0165f2bc  ldp x23,x22,[sp, #0x10]
+0165f2c0  ldr x24,[sp], #0x40
+0165f2c4  ret
+0165f2c8  mov x0,x22
+0165f2cc  mov x1,x23
+0165f2d0  bl 0x00b07c6c

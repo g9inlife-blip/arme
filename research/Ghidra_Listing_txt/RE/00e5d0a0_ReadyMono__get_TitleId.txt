@@ -1,0 +1,36 @@
+Function: ReadyMono$$get_TitleId @ 00e5d0a0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+
+--- Listing ---
+00e5d0a0  stp x21,x20,[sp, #-0x20]!
+00e5d0a4  stp x19,x30,[sp, #0x10]
+00e5d0a8  adrp x20,0x3572000
+00e5d0ac  adrp x21,0x333c000
+00e5d0b0  ldrb w8,[x20, #0x959]
+00e5d0b4  ldr x21,[x21, #0x628]
+00e5d0b8  mov x19,x0
+00e5d0bc  tbnz w8,#0x0,0x00e5d0d4
+00e5d0c0  adrp x0,0x333c000
+00e5d0c4  ldr x0,[x0, #0x628]
+00e5d0c8  bl 0x00b0789c
+00e5d0cc  mov w8,#0x1
+00e5d0d0  strb w8,[x20, #0x959]
+00e5d0d4  ldr x8,[x21]
+00e5d0d8  ldr x8,[x8, #0xb8]
+00e5d0dc  ldr x0,[x8, #0x28]
+00e5d0e0  cbz x0,0x00e5d0f8
+00e5d0e4  mov x1,x19
+00e5d0e8  ldp x19,x30,[sp, #0x10]
+00e5d0ec  mov x2,xzr
+00e5d0f0  ldp x21,x20,[sp], #0x20
+00e5d0f4  b 0x01060c2c
+00e5d0f8  ldp x19,x30,[sp, #0x10]
+00e5d0fc  mov w0,#0x61e3
+00e5d100  movk w0,#0x4c6, LSL #16
+00e5d104  ldp x21,x20,[sp], #0x20
+00e5d108  ret

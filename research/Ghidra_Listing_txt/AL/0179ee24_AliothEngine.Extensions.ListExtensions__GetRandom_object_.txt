@@ -1,0 +1,39 @@
+Function: AliothEngine.Extensions.ListExtensions$$GetRandom<object> @ 0179ee24
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+
+--- Calls IN ---
+
+--- Listing ---
+0179ee24  str x20,[sp, #-0x20]!
+0179ee28  stp x19,x30,[sp, #0x10]
+0179ee2c  cbz x0,0x0179ee90
+0179ee30  ldr x8,[x1, #0x38]
+0179ee34  mov x20,x1
+0179ee38  mov x19,x0
+0179ee3c  ldr x1,[x8, #0x8]
+0179ee40  ldr x8,[x1, #0x8]
+0179ee44  blr x8
+0179ee48  cbz w0,0x0179ee90
+0179ee4c  ldr x8,[x20, #0x38]
+0179ee50  mov x0,x19
+0179ee54  ldr x1,[x8, #0x8]
+0179ee58  ldr x8,[x1, #0x8]
+0179ee5c  blr x8
+0179ee60  mov w1,w0
+0179ee64  mov w0,wzr
+0179ee68  mov x2,xzr
+0179ee6c  bl 0x024d63b0
+0179ee70  ldr x8,[x20, #0x38]
+0179ee74  mov w1,w0
+0179ee78  mov x0,x19
+0179ee7c  ldp x19,x30,[sp, #0x10]
+0179ee80  ldr x2,[x8, #0x10]
+0179ee84  ldr x3,[x2, #0x8]
+0179ee88  ldr x20,[sp], #0x20
+0179ee8c  br x3
+0179ee90  ldp x19,x30,[sp, #0x10]
+0179ee94  mov x0,xzr
+0179ee98  ldr x20,[sp], #0x20
+0179ee9c  ret

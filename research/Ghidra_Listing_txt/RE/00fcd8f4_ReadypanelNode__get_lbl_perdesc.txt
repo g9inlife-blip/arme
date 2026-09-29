@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_lbl_perdesc @ 00fcd8f4
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$BackSectionRank @ 00e6086c
+
+--- Listing ---
+00fcd8f4  stp x21,x20,[sp, #-0x20]!
+00fcd8f8  stp x19,x30,[sp, #0x10]
+00fcd8fc  adrp x20,0x3573000
+00fcd900  adrp x21,0x336a000
+00fcd904  ldrb w8,[x20, #0xe5f]
+00fcd908  ldr x21,[x21, #0xcb0]
+00fcd90c  mov x19,x0
+00fcd910  tbnz w8,#0x0,0x00fcd928
+00fcd914  adrp x0,0x336a000
+00fcd918  ldr x0,[x0, #0xcb0]
+00fcd91c  bl 0x00b0789c
+00fcd920  mov w8,#0x1
+00fcd924  strb w8,[x20, #0xe5f]
+00fcd928  ldr x1,[x21]
+00fcd92c  mov x0,x19
+00fcd930  ldp x19,x30,[sp, #0x10]
+00fcd934  mov x2,xzr
+00fcd938  ldp x21,x20,[sp], #0x20
+00fcd93c  b 0x00dc06f8

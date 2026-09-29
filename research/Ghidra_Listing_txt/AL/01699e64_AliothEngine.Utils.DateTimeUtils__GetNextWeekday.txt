@@ -1,0 +1,35 @@
+Function: AliothEngine.Utils.DateTimeUtils$$GetNextWeekday @ 01699e64
+
+--- Calls OUT ---
+  -> System.DateTime$$get_DayOfWeek @ 02133be0
+  -> System.DateTime$$AddDays @ 02132bdc
+
+--- Calls IN ---
+  <- Ali$$CheckOnceLocalNotification @ 00e07488
+
+--- Listing ---
+01699e64  sub sp,sp,#0x20
+01699e68  stp x19,x30,[sp, #0x10]
+01699e6c  mov w19,w1
+01699e70  str x0,[sp, #0x8]
+01699e74  add x0,sp,#0x8
+01699e78  mov x1,xzr
+01699e7c  bl 0x02133be0
+01699e80  sub w8,w19,w0
+01699e84  mov w9,#0x2493
+01699e88  add w8,w8,#0x7
+01699e8c  movk w9,#0x9249, LSL #16
+01699e90  smull x9,w8,w9
+01699e94  lsr x9,x9,#0x20
+01699e98  add w9,w9,w8
+01699e9c  asr w10,w9,#0x2
+01699ea0  add w9,w10,w9, LSR #0x1f
+01699ea4  sub w9,w9,w9, LSL #0x3
+01699ea8  add w8,w8,w9
+01699eac  scvtf d0,w8
+01699eb0  add x0,sp,#0x8
+01699eb4  mov x1,xzr
+01699eb8  bl 0x02132bdc
+01699ebc  ldp x19,x30,[sp, #0x10]
+01699ec0  add sp,sp,#0x20
+01699ec4  ret

@@ -1,0 +1,52 @@
+Function: AliothEngine.Net.HttpRequestManager$$.ctor @ 01696058
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+  -> System.Collections.Generic.Queue<object>$$.ctor @ 01d96324
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01696058  stp x21,x20,[sp, #-0x20]!
+0169605c  stp x19,x30,[sp, #0x10]
+01696060  adrp x20,0x3577000
+01696064  adrp x21,0x3328000
+01696068  ldrb w8,[x20, #0xafe]
+0169606c  ldr x21,[x21, #0xbe0]
+01696070  mov x19,x0
+01696074  tbnz w8,#0x0,0x016960a4
+01696078  adrp x0,0x3321000
+0169607c  ldr x0,[x0, #0x8a0]
+01696080  bl 0x00b0789c
+01696084  adrp x0,0x3328000
+01696088  ldr x0,[x0, #0xbe0]
+0169608c  bl 0x00b0789c
+01696090  adrp x0,0x3310000
+01696094  ldr x0,[x0, #0x728]
+01696098  bl 0x00b0789c
+0169609c  mov w8,#0x1
+016960a0  strb w8,[x20, #0xafe]
+016960a4  ldr x0,[x21]
+016960a8  bl 0x00b079a0
+016960ac  cbz x0,0x016960f0
+016960b0  adrp x8,0x3321000
+016960b4  ldr x8,[x8, #0x8a0]
+016960b8  adrp x21,0x3310000
+016960bc  mov x20,x0
+016960c0  ldr x1,[x8]
+016960c4  ldr x21,[x21, #0x728]
+016960c8  bl 0x01d96324
+016960cc  mov x0,x19
+016960d0  str x20,[x0, #0x20]!
+016960d4  mov x1,x20
+016960d8  bl 0x00b07850
+016960dc  ldr x1,[x21]
+016960e0  mov x0,x19
+016960e4  ldp x19,x30,[sp, #0x10]
+016960e8  ldp x21,x20,[sp], #0x20
+016960ec  b 0x01e09460
+016960f0  bl 0x00b079b0

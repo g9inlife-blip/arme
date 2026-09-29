@@ -1,0 +1,82 @@
+Function: AliothEngine.AssetVersionManager$$GetVersionForDirectory @ 0166ffac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Func<object,-bool>$$.ctor @ 01ae8650
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Linq.Enumerable$$Where<object> @ 0178f7b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> System.Linq.Enumerable$$FirstOrDefault<object> @ 01781400
+
+--- Calls IN ---
+
+--- Listing ---
+0166ffac  stp x23,x22,[sp, #-0x30]!
+0166ffb0  stp x21,x20,[sp, #0x10]
+0166ffb4  stp x19,x30,[sp, #0x20]
+0166ffb8  adrp x21,0x3577000
+0166ffbc  adrp x22,0x330e000
+0166ffc0  ldrb w8,[x21, #0x967]
+0166ffc4  ldr x22,[x22, #0xb30]
+0166ffc8  mov x20,x1
+0166ffcc  mov x19,x0
+0166ffd0  tbnz w8,#0x0,0x01670018
+0166ffd4  adrp x0,0x3377000
+0166ffd8  ldr x0,[x0, #0x2b8]
+0166ffdc  bl 0x00b0789c
+0166ffe0  adrp x0,0x330a000
+0166ffe4  ldr x0,[x0, #0x188]
+0166ffe8  bl 0x00b0789c
+0166ffec  adrp x0,0x337d000
+0166fff0  ldr x0,[x0, #0x940]
+0166fff4  bl 0x00b0789c
+0166fff8  adrp x0,0x333e000
+0166fffc  ldr x0,[x0, #0x428]
+01670000  bl 0x00b0789c
+01670004  adrp x0,0x330e000
+01670008  ldr x0,[x0, #0xb30]
+0167000c  bl 0x00b0789c
+01670010  mov w8,#0x1
+01670014  strb w8,[x21, #0x967]
+01670018  ldr x0,[x22]
+0167001c  bl 0x00b079a0
+01670020  cbz x0,0x016700b4
+01670024  adrp x22,0x337d000
+01670028  ldr x22,[x22, #0x940]
+0167002c  mov x1,xzr
+01670030  mov x21,x0
+01670034  bl 0x02194104
+01670038  mov x0,x21
+0167003c  str x20,[x0, #0x10]!
+01670040  mov x1,x20
+01670044  bl 0x00b07850
+01670048  ldr x0,[x22]
+0167004c  ldr x19,[x19, #0x18]
+01670050  bl 0x00b079a0
+01670054  cbz x0,0x016700b4
+01670058  adrp x8,0x333e000
+0167005c  ldr x8,[x8, #0x428]
+01670060  adrp x22,0x330a000
+01670064  adrp x23,0x3377000
+01670068  mov x1,x21
+0167006c  ldr x2,[x8]
+01670070  ldr x22,[x22, #0x188]
+01670074  ldr x23,[x23, #0x2b8]
+01670078  mov x3,xzr
+0167007c  mov x20,x0
+01670080  bl 0x01ae8650
+01670084  ldr x2,[x22]
+01670088  mov x0,x19
+0167008c  mov x1,x20
+01670090  bl 0x0178f7b0
+01670094  ldr x1,[x23]
+01670098  bl 0x01781400
+0167009c  cbz x0,0x016700a4
+016700a0  ldr w0,[x0, #0x18]
+016700a4  ldp x19,x30,[sp, #0x20]
+016700a8  ldp x21,x20,[sp, #0x10]
+016700ac  ldp x23,x22,[sp], #0x30
+016700b0  ret
+016700b4  bl 0x00b079b0

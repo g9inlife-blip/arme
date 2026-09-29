@@ -1,0 +1,53 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<ButLast>d__8<object>$$<>m__Finally1 @ 018fa048
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+018fa048  str x20,[sp, #-0x20]!
+018fa04c  stp x19,x30,[sp, #0x10]
+018fa050  adrp x19,0x3578000
+018fa054  ldrb w8,[x19, #0x5da]
+018fa058  mov x20,x0
+018fa05c  tbnz w8,#0x0,0x018fa074
+018fa060  adrp x0,0x337d000
+018fa064  ldr x0,[x0, #0x848]
+018fa068  bl 0x00b0789c
+018fa06c  mov w8,#0x1
+018fa070  strb w8,[x19, #0x5da]
+018fa074  ldr x19,[x20, #0x40]
+018fa078  mov w8,#0xffffffff
+018fa07c  str w8,[x20, #0x10]
+018fa080  cbz x19,0x018fa0cc
+018fa084  adrp x10,0x337d000
+018fa088  ldr x8,[x19]
+018fa08c  ldr x10,[x10, #0x848]
+018fa090  ldrh w9,[x8, #0x12a]
+018fa094  ldr x1,[x10]
+018fa098  cbz x9,0x018fa0bc
+018fa09c  ldr x10,[x8, #0xb0]
+018fa0a0  add x10,x10,#0x8
+018fa0a4  ldur x11,[x10, #-0x8]
+018fa0a8  cmp x11,x1
+018fa0ac  b.eq 0x018fa0d8
+018fa0b0  subs x9,x9,#0x1
+018fa0b4  add x10,x10,#0x10
+018fa0b8  b.ne 0x018fa0a4
+018fa0bc  mov x0,x19
+018fa0c0  mov w2,wzr
+018fa0c4  bl 0x00b2ae24
+018fa0c8  b 0x018fa0e4
+018fa0cc  ldp x19,x30,[sp, #0x10]
+018fa0d0  ldr x20,[sp], #0x20
+018fa0d4  ret
+018fa0d8  ldrsw x9,[x10]
+018fa0dc  add x8,x8,x9, LSL #0x4
+018fa0e0  add x0,x8,#0x138
+018fa0e4  ldp x2,x1,[x0]
+018fa0e8  mov x0,x19
+018fa0ec  ldp x19,x30,[sp, #0x10]
+018fa0f0  ldr x20,[sp], #0x20
+018fa0f4  br x2

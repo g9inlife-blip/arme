@@ -1,0 +1,46 @@
+Function: AliothEngine.AssetInfoManager$$get_isReady @ 01667fa4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp40 @ 010643f0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_g_get_isReady @ 0113d398
+  <- AliothEngine.AliothEngineInitialize$$get_isReady @ 01649884
+
+--- Listing ---
+01667fa4  str x20,[sp, #-0x20]!
+01667fa8  stp x19,x30,[sp, #0x10]
+01667fac  adrp x19,0x3577000
+01667fb0  adrp x20,0x334f000
+01667fb4  ldrb w8,[x19, #0x90a]
+01667fb8  ldr x20,[x20, #0xaf8]
+01667fbc  tbnz w8,#0x0,0x01667fe0
+01667fc0  adrp x0,0x334f000
+01667fc4  ldr x0,[x0, #0xaf8]
+01667fc8  bl 0x00b0789c
+01667fcc  adrp x0,0x3310000
+01667fd0  ldr x0,[x0, #0x630]
+01667fd4  bl 0x00b0789c
+01667fd8  mov w8,#0x1
+01667fdc  strb w8,[x19, #0x90a]
+01667fe0  ldr x8,[x20]
+01667fe4  ldr x8,[x8, #0xb8]
+01667fe8  ldr x0,[x8, #0x20]
+01667fec  cbz x0,0x01668000
+01667ff0  ldp x19,x30,[sp, #0x10]
+01667ff4  mov x1,xzr
+01667ff8  ldr x20,[sp], #0x20
+01667ffc  b 0x010643f0
+01668000  adrp x8,0x3310000
+01668004  ldr x8,[x8, #0x630]
+01668008  ldr x0,[x8]
+0166800c  bl 0x01e0894c
+01668010  cbz x0,0x01668024
+01668014  ldrb w0,[x0, #0x19]
+01668018  ldp x19,x30,[sp, #0x10]
+0166801c  ldr x20,[sp], #0x20
+01668020  ret
+01668024  bl 0x00b079b0

@@ -1,0 +1,39 @@
+Function: Alioth.S1.Net.TCPTube$$get_logger @ 015b57c4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp283 @ 01083dd8
+  -> AliothEngine.LogManager$$get_NetworkLogger @ 0168a4e0
+
+--- Calls IN ---
+  <- Alioth.S1.Net.TCPTube$$Poll4Write @ 015b74c8
+  <- Alioth.S1.Net.TCPTube$$TryRead @ 015b6d54
+  <- Alioth.S1.Net.TCPTube$$set_State @ 015b5890
+  <- Alioth.S1.Net.TCPTube$$Poll4Read @ 015b7844
+
+--- Listing ---
+015b57c4  stp x21,x20,[sp, #-0x20]!
+015b57c8  stp x19,x30,[sp, #0x10]
+015b57cc  adrp x20,0x3577000
+015b57d0  adrp x21,0x3317000
+015b57d4  ldrb w8,[x20, #0xd5]
+015b57d8  ldr x21,[x21, #0x178]
+015b57dc  mov x19,x0
+015b57e0  tbnz w8,#0x0,0x015b57f8
+015b57e4  adrp x0,0x3317000
+015b57e8  ldr x0,[x0, #0x178]
+015b57ec  bl 0x00b0789c
+015b57f0  mov w8,#0x1
+015b57f4  strb w8,[x20, #0xd5]
+015b57f8  ldr x8,[x21]
+015b57fc  ldr x8,[x8, #0xb8]
+015b5800  ldr x0,[x8]
+015b5804  cbz x0,0x015b581c
+015b5808  mov x1,x19
+015b580c  ldp x19,x30,[sp, #0x10]
+015b5810  mov x2,xzr
+015b5814  ldp x21,x20,[sp], #0x20
+015b5818  b 0x01083dd8
+015b581c  ldp x19,x30,[sp, #0x10]
+015b5820  ldp x21,x20,[sp], #0x20
+015b5824  b 0x0168a4e0

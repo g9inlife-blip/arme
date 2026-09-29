@@ -1,0 +1,99 @@
+Function: readsome @ 00b4acd8
+FuncComment: std::__ndk1::basic_istream<char, std::__ndk1::char_traits<char> >::readsome(char*, long)
+
+--- Calls OUT ---
+  -> FUN_00b53a58 @ 00b53a58
+  -> FUN_00af5708 @ 00af5708
+
+--- Calls IN ---
+
+--- Listing ---
+00b4acd8  str x21,[sp, #-0x30]!
+    ; [PLATE] std::__ndk1::basic_istream<char, std::__ndk1::char_traits<char> >::readsome(char*, long)
+00b4acdc  stp x20,x19,[sp, #0x10]
+00b4ace0  stp x29,x30,[sp, #0x20]
+00b4ace4  add x29,sp,#0x20
+00b4ace8  ldr x8,[x0]
+00b4acec  str xzr,[x0, #0x8]
+00b4acf0  mov x19,x0
+00b4acf4  ldur x8,[x8, #-0x18]
+00b4acf8  add x9,x0,x8
+00b4acfc  ldr w10,[x9, #0x20]
+00b4ad00  cbz w10,0x00b4ad70
+00b4ad04  ldr x8,[x9, #0x28]
+00b4ad08  cmp x8,#0x0
+00b4ad0c  ldr w8,[x9, #0x24]
+00b4ad10  cset w11,eq
+00b4ad14  orr w10,w10,w11
+00b4ad18  orr w10,w10,#0x4
+00b4ad1c  tst w10,w8
+00b4ad20  str w10,[x9, #0x20]
+00b4ad24  b.ne 0x00b4ae24
+00b4ad28  mov w8,#0x4
+00b4ad2c  ldr x9,[x19]
+00b4ad30  ldur x9,[x9, #-0x18]
+00b4ad34  add x9,x19,x9
+00b4ad38  ldr x11,[x9, #0x28]
+00b4ad3c  ldp w10,w12,[x9, #0x20]
+00b4ad40  cmp x11,#0x0
+00b4ad44  orr w8,w10,w8
+00b4ad48  cset w10,eq
+00b4ad4c  orr w8,w8,w10
+00b4ad50  tst w8,w12
+00b4ad54  str w8,[x9, #0x20]
+00b4ad58  b.ne 0x00b4ae24
+00b4ad5c  ldr x0,[x19, #0x8]
+00b4ad60  ldp x29,x30,[sp, #0x20]
+00b4ad64  ldp x20,x19,[sp, #0x10]
+00b4ad68  ldr x21,[sp], #0x30
+00b4ad6c  ret
+00b4ad70  ldr x0,[x9, #0x88]
+00b4ad74  mov x20,x2
+00b4ad78  mov x21,x1
+00b4ad7c  cbz x0,0x00b4ad98
+00b4ad80  bl 0x00af5708
+00b4ad84  ldr x8,[x19]
+00b4ad88  ldur x8,[x8, #-0x18]
+00b4ad8c  add x9,x19,x8
+00b4ad90  ldr w9,[x9, #0x20]
+00b4ad94  cbnz w9,0x00b4ad28
+00b4ad98  add x8,x19,x8
+00b4ad9c  ldr x0,[x8, #0x28]
+00b4ada0  ldp x8,x9,[x0, #0x18]
+00b4ada4  cmp x8,x9
+00b4ada8  b.cs 0x00b4adc0
+00b4adac  sub x0,x9,x8
+00b4adb0  cmn x0,#0x1
+00b4adb4  b.ne 0x00b4add4
+00b4adb8  mov w8,#0x2
+00b4adbc  b 0x00b4ad2c
+00b4adc0  ldr x8,[x0]
+00b4adc4  ldr x8,[x8, #0x38]
+00b4adc8  blr x8
+    ; [PRE] try { // try from 00b4adc8 to 00b4ae0f has its CatchHandler @ 00b4ae30
+00b4adcc  cmn x0,#0x1
+00b4add0  b.eq 0x00b4adb8
+00b4add4  cbnz x0,0x00b4ade0
+00b4add8  mov w8,wzr
+00b4addc  b 0x00b4ad2c
+00b4ade0  ldr x8,[x19]
+00b4ade4  cmp x0,x20
+00b4ade8  csel x20,x20,x0,gt
+00b4adec  ldur x8,[x8, #-0x18]
+00b4adf0  add x8,x19,x8
+00b4adf4  ldr x8,[x8, #0x28]
+00b4adf8  ldr x9,[x8]
+00b4adfc  ldr x9,[x9, #0x40]
+00b4ae00  mov x0,x8
+00b4ae04  mov x1,x21
+00b4ae08  mov x2,x20
+00b4ae0c  blr x9
+    ; [POST] } // end try from 00b4adc8 to 00b4ae0f
+00b4ae10  cmp x0,x20
+00b4ae14  mov w8,#0x6
+00b4ae18  str x0,[x19, #0x8]
+00b4ae1c  csel w8,wzr,w8,eq
+00b4ae20  b 0x00b4ad2c
+00b4ae24  adrp x0,0x2a07000
+00b4ae28  add x0,x0,#0xcf4
+00b4ae2c  bl 0x00b53a58

@@ -1,0 +1,28 @@
+Function: AliothEngine.PlatformTools$$PlayMovie @ 01657f44
+
+--- Calls OUT ---
+  -> AliothEngine.PlatformTools$$PlayMovieCoroutine @ 01657fb4
+  -> AliothEngine.StaticCoroutine$$DoCoroutine @ 0168b8b4
+  -> UnityEngine.Handheld$$PlayFullScreenMovie @ 024dd074
+
+--- Calls IN ---
+
+--- Listing ---
+01657f44  stp x19,x30,[sp, #-0x10]!
+01657f48  tst w1,#0x1
+01657f4c  mov w8,#0x2
+01657f50  mov x19,x2
+01657f54  cinc w1,w8,eq
+01657f58  fmov s3,0x3f800000
+01657f5c  fmov s0,wzr
+01657f60  fmov s1,wzr
+01657f64  fmov s2,wzr
+01657f68  mov w2,#0x1
+01657f6c  mov x3,xzr
+01657f70  bl 0x024dd074
+01657f74  mov w1,wzr
+01657f78  bl 0x01657fb4
+01657f7c  mov x1,x19
+01657f80  mov x2,xzr
+01657f84  ldp x19,x30,[sp], #0x10
+01657f88  b 0x0168b8b4

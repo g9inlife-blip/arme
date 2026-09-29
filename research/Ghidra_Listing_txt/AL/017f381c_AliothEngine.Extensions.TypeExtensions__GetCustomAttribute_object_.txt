@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.TypeExtensions$$GetCustomAttribute<object> @ 017f381c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017f381c  str x22,[sp, #-0x30]!
+017f3820  stp x21,x20,[sp, #0x10]
+017f3824  stp x19,x30,[sp, #0x20]
+017f3828  adrp x22,0x3578000
+017f382c  adrp x21,0x3347000
+017f3830  ldrb w8,[x22, #0x39c]
+017f3834  ldr x21,[x21, #0xd68]
+017f3838  mov x19,x1
+017f383c  mov x20,x0
+017f3840  tbnz w8,#0x0,0x017f3858
+017f3844  adrp x0,0x3347000
+017f3848  ldr x0,[x0, #0xd68]
+017f384c  bl 0x00b0789c
+017f3850  mov w8,#0x1
+017f3854  strb w8,[x22, #0x39c]
+017f3858  ldr x0,[x21]
+017f385c  ldr x8,[x19, #0x38]
+017f3860  ldr w9,[x0, #0xe0]
+017f3864  ldr x21,[x8]
+017f3868  cbnz w9,0x017f3870
+017f386c  bl 0x00b0798c
+017f3870  mov x0,x21
+017f3874  mov x1,xzr
+017f3878  bl 0x0215f900
+017f387c  cbz x20,0x017f38c8
+017f3880  ldr x8,[x20]
+017f3884  mov x1,x0
+017f3888  mov w2,#0x1
+017f388c  mov x0,x20
+017f3890  ldr x9,[x8, #0x208]
+017f3894  ldr x3,[x8, #0x210]
+017f3898  blr x9
+017f389c  ldr x8,[x19, #0x38]
+017f38a0  ldr x1,[x8, #0x8]
+017f38a4  ldr x8,[x1, #0x8]
+017f38a8  blr x8
+017f38ac  ldr x8,[x19, #0x38]
+017f38b0  ldp x19,x30,[sp, #0x20]
+017f38b4  ldp x21,x20,[sp, #0x10]
+017f38b8  ldr x1,[x8, #0x10]
+017f38bc  ldr x2,[x1, #0x8]
+017f38c0  ldr x22,[sp], #0x30
+017f38c4  br x2
+017f38c8  bl 0x00b079b0

@@ -1,0 +1,17 @@
+Function: AliothEngine.GUIScreen_Overlay$$BlockRaycast @ 01677fec
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.CanvasGroup$$set_blocksRaycasts @ 026d15bc
+
+--- Calls IN ---
+
+--- Listing ---
+01677fec  str x30,[sp, #-0x10]!
+01677ff0  ldr x0,[x0, #0x90]
+01677ff4  cbz x0,0x01678008
+01677ff8  and w1,w1,#0x1
+01677ffc  mov x2,xzr
+01678000  ldr x30,[sp], #0x10
+01678004  b 0x026d15bc
+01678008  bl 0x00b079b0

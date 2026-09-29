@@ -1,0 +1,61 @@
+Function: AliothEngine.Pool.ObjectPool<object>$$Get @ 01d540c0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01d540c0  stp x21,x20,[sp, #-0x20]!
+01d540c4  stp x19,x30,[sp, #0x10]
+01d540c8  mov x20,x0
+01d540cc  ldr x0,[x0, #0x10]
+01d540d0  cbz x0,0x01d54190
+01d540d4  ldr x8,[x1, #0x20]
+01d540d8  mov x19,x1
+01d540dc  ldr x8,[x8, #0xc0]
+01d540e0  ldr x1,[x8, #0x18]
+01d540e4  ldr x8,[x1, #0x8]
+01d540e8  blr x8
+01d540ec  cbz w0,0x01d54114
+01d540f0  ldr x0,[x20, #0x10]
+01d540f4  cbz x0,0x01d54190
+01d540f8  ldr x8,[x19, #0x20]
+01d540fc  ldr x8,[x8, #0xc0]
+01d54100  ldr x1,[x8, #0x38]
+01d54104  ldr x8,[x1, #0x8]
+01d54108  blr x8
+01d5410c  mov x21,x0
+01d54110  b 0x01d54160
+01d54114  ldr x8,[x19, #0x20]
+01d54118  ldr x8,[x8, #0xc0]
+01d5411c  ldr x0,[x8, #0x28]
+01d54120  ldr x8,[x0, #0x8]
+01d54124  blr x8
+01d54128  ldr x8,[x19, #0x20]
+01d5412c  mov x21,x0
+01d54130  mov x0,x20
+01d54134  ldr x8,[x8, #0xc0]
+01d54138  ldr x1,[x8]
+01d5413c  ldr x8,[x1, #0x8]
+01d54140  blr x8
+01d54144  ldr x8,[x19, #0x20]
+01d54148  add w1,w0,#0x1
+01d5414c  mov x0,x20
+01d54150  ldr x8,[x8, #0xc0]
+01d54154  ldr x2,[x8, #0x30]
+01d54158  ldr x8,[x2, #0x8]
+01d5415c  blr x8
+01d54160  ldr x0,[x20, #0x18]
+01d54164  cbz x0,0x01d54180
+01d54168  ldr x8,[x19, #0x20]
+01d5416c  mov x1,x21
+01d54170  ldr x8,[x8, #0xc0]
+01d54174  ldr x2,[x8, #0x48]
+01d54178  ldr x8,[x2, #0x8]
+01d5417c  blr x8
+01d54180  ldp x19,x30,[sp, #0x10]
+01d54184  mov x0,x21
+01d54188  ldp x21,x20,[sp], #0x20
+01d5418c  ret
+01d54190  bl 0x00b079b0

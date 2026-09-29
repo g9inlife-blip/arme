@@ -1,0 +1,23 @@
+Function: AliothEngine.WWWCacheHelp$$WriteCache @ 0168c124
+
+--- Calls OUT ---
+  -> AliothEngine.WWWCacheHelp$$UrlToCachePath @ 0168be14
+  -> System.IO.File$$WriteAllBytes @ 020b0d44
+
+--- Calls IN ---
+  <- AliothEngine.WWWRequest.<DoDownLoad>d__23$$MoveNext @ 0168cc88
+
+--- Listing ---
+0168c124  stp x19,x30,[sp, #-0x10]!
+0168c128  mov x19,x1
+0168c12c  bl 0x0168be14
+    ; [PRE] try { // try from 0168c12c to 0168c12f has its CatchHandler @ 0168c14c
+    ; [POST] } // end try from 0168c12c to 0168c12f
+0168c130  mov x1,x19
+    ; [PRE] try { // try from 0168c130 to 0168c13b has its CatchHandler @ 0168c148
+0168c134  mov x2,xzr
+0168c138  bl 0x020b0d44
+    ; [POST] } // end try from 0168c130 to 0168c13b
+0168c13c  mov w0,#0x1
+0168c140  ldp x19,x30,[sp], #0x10
+0168c144  ret

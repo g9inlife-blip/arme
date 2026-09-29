@@ -1,0 +1,42 @@
+Function: ReadyMono$$get_m_backNode @ 00e5d4e0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp503 @ 010a0d90
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$AddMyModel @ 00e61120
+  <- ReadyMono$$OnDestroyAfter @ 00e63d54
+  <- ReadyMono$$GetMyName @ 00e5d1f8
+  <- FUN_00e5f004 @ 00e5f004
+  <- ReadyMono$$SetTeamMembers @ 00e62118
+  <- ReadyMono$$InitReady @ 00e5dec0
+  <- ReadyMono$$GetEnemyNameStyle @ 00e5d548
+
+--- Listing ---
+00e5d4e0  stp x21,x20,[sp, #-0x20]!
+00e5d4e4  stp x19,x30,[sp, #0x10]
+00e5d4e8  adrp x20,0x3572000
+00e5d4ec  adrp x21,0x333c000
+00e5d4f0  ldrb w8,[x20, #0x963]
+00e5d4f4  ldr x21,[x21, #0x628]
+00e5d4f8  mov x19,x0
+00e5d4fc  tbnz w8,#0x0,0x00e5d514
+00e5d500  adrp x0,0x333c000
+00e5d504  ldr x0,[x0, #0x628]
+00e5d508  bl 0x00b0789c
+00e5d50c  mov w8,#0x1
+00e5d510  strb w8,[x20, #0x963]
+00e5d514  ldr x8,[x21]
+00e5d518  ldr x8,[x8, #0xb8]
+00e5d51c  ldr x0,[x8, #0x78]
+00e5d520  cbz x0,0x00e5d538
+00e5d524  mov x1,x19
+00e5d528  ldp x19,x30,[sp, #0x10]
+00e5d52c  mov x2,xzr
+00e5d530  ldp x21,x20,[sp], #0x20
+00e5d534  b 0x010a0d90
+00e5d538  ldr x0,[x19, #0x138]
+00e5d53c  ldp x19,x30,[sp, #0x10]
+00e5d540  ldp x21,x20,[sp], #0x20
+00e5d544  ret

@@ -1,0 +1,39 @@
+Function: AliothEngine.GameUpdateService.<>c$$<GetBestPingServer>b__73_0 @ 016818d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> HttpPingManager.CDNPing$$.ctor @ 00e39818
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016818d8  str x20,[sp, #-0x20]!
+016818dc  stp x19,x30,[sp, #0x10]
+016818e0  adrp x20,0x3577000
+016818e4  ldrb w8,[x20, #0xa4d]
+016818e8  mov x19,x1
+016818ec  tbnz w8,#0x0,0x01681904
+016818f0  adrp x0,0x3346000
+016818f4  ldr x0,[x0, #0xfe8]
+016818f8  bl 0x00b0789c
+016818fc  mov w8,#0x1
+01681900  strb w8,[x20, #0xa4d]
+01681904  cbz x19,0x01681944
+01681908  adrp x8,0x3346000
+0168190c  ldr x8,[x8, #0xfe8]
+01681910  ldr x19,[x19, #0x20]
+01681914  ldr x0,[x8]
+01681918  bl 0x00b079a0
+0168191c  cbz x0,0x01681944
+01681920  mov x1,x19
+01681924  mov x2,x19
+01681928  mov x3,xzr
+0168192c  mov x20,x0
+01681930  bl 0x00e39818
+01681934  ldp x19,x30,[sp, #0x10]
+01681938  mov x0,x20
+0168193c  ldr x20,[sp], #0x20
+01681940  ret
+01681944  bl 0x00b079b0

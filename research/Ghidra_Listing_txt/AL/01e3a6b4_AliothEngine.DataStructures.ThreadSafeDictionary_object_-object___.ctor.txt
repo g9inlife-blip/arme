@@ -1,0 +1,66 @@
+Function: AliothEngine.DataStructures.ThreadSafeDictionary<object,-object>$$.ctor @ 01e3a6b4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Threading.ReaderWriterLockSlim$$.ctor @ 0223cac8
+  -> System.Object$$.ctor @ 02194104
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e3a6b4  stp x23,x22,[sp, #-0x30]!
+01e3a6b8  stp x21,x20,[sp, #0x10]
+01e3a6bc  stp x19,x30,[sp, #0x20]
+01e3a6c0  adrp x22,0x3578000
+01e3a6c4  adrp x23,0x3309000
+01e3a6c8  ldrb w8,[x22, #0xf5f]
+01e3a6cc  ldr x23,[x23, #0x568]
+01e3a6d0  mov x21,x2
+01e3a6d4  mov w20,w1
+01e3a6d8  mov x19,x0
+01e3a6dc  tbnz w8,#0x0,0x01e3a6f4
+01e3a6e0  adrp x0,0x3309000
+01e3a6e4  ldr x0,[x0, #0x568]
+01e3a6e8  bl 0x00b0789c
+01e3a6ec  mov w8,#0x1
+01e3a6f0  strb w8,[x22, #0xf5f]
+01e3a6f4  ldr x0,[x23]
+01e3a6f8  bl 0x00b079a0
+01e3a6fc  cbz x0,0x01e3a780
+01e3a700  mov x1,xzr
+01e3a704  mov x22,x0
+01e3a708  bl 0x0223cac8
+01e3a70c  mov x0,x19
+01e3a710  str x22,[x0, #0x18]!
+01e3a714  mov x1,x22
+01e3a718  bl 0x00b07850
+01e3a71c  mov x0,x19
+01e3a720  mov x1,xzr
+01e3a724  bl 0x02194104
+01e3a728  ldr x8,[x21, #0x20]
+01e3a72c  ldr x8,[x8, #0xc0]
+01e3a730  ldr x0,[x8]
+01e3a734  ldrb w8,[x0, #0x132]
+01e3a738  tbnz w8,#0x0,0x01e3a740
+01e3a73c  bl 0x00b2ac40
+01e3a740  bl 0x00b079a0
+01e3a744  cbz x0,0x01e3a780
+01e3a748  ldr x8,[x21, #0x20]
+01e3a74c  mov w1,w20
+01e3a750  mov x22,x0
+01e3a754  ldr x8,[x8, #0xc0]
+01e3a758  ldr x2,[x8, #0x8]
+01e3a75c  ldr x8,[x2, #0x8]
+01e3a760  blr x8
+01e3a764  str x22,[x19, #0x10]!
+01e3a768  mov x0,x19
+01e3a76c  ldp x19,x30,[sp, #0x20]
+01e3a770  ldp x21,x20,[sp, #0x10]
+01e3a774  mov x1,x22
+01e3a778  ldp x23,x22,[sp], #0x30
+01e3a77c  b 0x00b07850
+01e3a780  bl 0x00b079b0

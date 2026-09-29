@@ -1,0 +1,29 @@
+Function: AliothEngine.UpdateSystemSample.<Start>d__0$$MoveNext @ 0168310c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.AliothEngineInitialize$$get_isReady @ 01649884
+
+--- Calls IN ---
+
+--- Listing ---
+0168310c  stp x19,x30,[sp, #-0x10]!
+01683110  ldr w8,[x0, #0x10]
+01683114  cmp w8,#0x2
+01683118  b.cs 0x01683134
+0168311c  mov w8,#0xffffffff
+01683120  mov x19,x0
+01683124  str w8,[x0, #0x10]
+01683128  mov x0,xzr
+0168312c  bl 0x01649884
+01683130  tbz w0,#0x0,0x0168313c
+01683134  mov w0,wzr
+01683138  b 0x01683154
+0168313c  str xzr,[x19, #0x18]!
+01683140  mov x0,x19
+01683144  mov x1,xzr
+01683148  bl 0x00b07850
+0168314c  mov w0,#0x1
+01683150  stur w0,[x19, #-0x8]
+01683154  ldp x19,x30,[sp], #0x10
+01683158  ret

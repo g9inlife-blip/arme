@@ -1,0 +1,68 @@
+Function: Ali.<>c$$<StoreLoadProductList>b__259_0 @ 00e115ac
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> System.Collections.Generic.Dictionary<int,-object>$$ContainsKey @ 0192ddc0
+  -> AliothExtensions$$ProductIdentifier @ 00e0c5a8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> BaseData$$get_id @ 00df3164
+
+--- Calls IN ---
+
+--- Listing ---
+00e115ac  stp x21,x20,[sp, #-0x20]!
+00e115b0  stp x19,x30,[sp, #0x10]
+00e115b4  adrp x20,0x3572000
+00e115b8  adrp x21,0x3347000
+00e115bc  ldrb w8,[x20, #0x5cc]
+00e115c0  ldr x21,[x21, #0x410]
+00e115c4  mov x19,x1
+00e115c8  tbnz w8,#0x0,0x00e115f8
+00e115cc  adrp x0,0x3348000
+00e115d0  ldr x0,[x0, #0x138]
+00e115d4  bl 0x00b0789c
+00e115d8  adrp x0,0x331d000
+00e115dc  ldr x0,[x0, #0x908]
+00e115e0  bl 0x00b0789c
+00e115e4  adrp x0,0x3347000
+00e115e8  ldr x0,[x0, #0x410]
+00e115ec  bl 0x00b0789c
+00e115f0  mov w8,#0x1
+00e115f4  strb w8,[x20, #0x5cc]
+00e115f8  ldr x0,[x21]
+00e115fc  bl 0x01e0894c
+00e11600  cbz x0,0x00e1167c
+00e11604  cbz x19,0x00e1167c
+00e11608  ldr x20,[x0, #0x70]
+00e1160c  mov x0,x19
+00e11610  mov x1,xzr
+00e11614  bl 0x00df3164
+00e11618  cbz x20,0x00e1167c
+00e1161c  adrp x8,0x331d000
+00e11620  ldr x8,[x8, #0x908]
+00e11624  mov w1,w0
+00e11628  mov x0,x20
+00e1162c  ldr x2,[x8]
+00e11630  bl 0x0192ddc0
+00e11634  tbz w0,#0x0,0x00e11668
+00e11638  adrp x8,0x3348000
+00e1163c  ldr x8,[x8, #0x138]
+00e11640  ldr x0,[x8]
+00e11644  ldr w8,[x0, #0xe0]
+00e11648  cbnz w8,0x00e11650
+00e1164c  bl 0x00b0798c
+00e11650  mov x0,x19
+00e11654  bl 0x00e0c5a8
+00e11658  mov x1,xzr
+00e1165c  bl 0x01fdf3a0
+00e11660  eor w8,w0,#0x1
+00e11664  b 0x00e1166c
+00e11668  mov w8,wzr
+00e1166c  ldp x19,x30,[sp, #0x10]
+00e11670  and w0,w8,#0x1
+00e11674  ldp x21,x20,[sp], #0x20
+00e11678  ret
+00e1167c  bl 0x00b079b0

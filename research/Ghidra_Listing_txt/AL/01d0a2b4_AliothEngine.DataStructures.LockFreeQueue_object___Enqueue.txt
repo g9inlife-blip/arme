@@ -1,0 +1,90 @@
+Function: AliothEngine.DataStructures.LockFreeQueue<object>$$Enqueue @ 01d0a2b4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01d0a2b4  str x22,[sp, #-0x30]!
+01d0a2b8  stp x21,x20,[sp, #0x10]
+01d0a2bc  stp x19,x30,[sp, #0x20]
+01d0a2c0  str xzr,[sp, #0x8]
+01d0a2c4  mov x20,x0
+01d0a2c8  ldr x0,[x0, #0x20]
+01d0a2cc  cbz x0,0x01d0a3ec
+01d0a2d0  ldr x8,[x2, #0x20]
+01d0a2d4  mov x19,x2
+01d0a2d8  mov x21,x1
+01d0a2dc  add x1,sp,#0x8
+01d0a2e0  ldr x8,[x8, #0xc0]
+01d0a2e4  ldr x2,[x8, #0x20]
+01d0a2e8  ldr x8,[x2, #0x8]
+01d0a2ec  blr x8
+01d0a2f0  tbz w0,#0x0,0x01d0a314
+01d0a2f4  ldr x0,[sp, #0x8]
+01d0a2f8  cbz x0,0x01d0a3ec
+01d0a2fc  str xzr,[x0, #0x10]!
+01d0a300  mov x1,xzr
+01d0a304  bl 0x00b07850
+01d0a308  ldr x22,[sp, #0x8]
+01d0a30c  cbnz x22,0x01d0a354
+01d0a310  b 0x01d0a3ec
+01d0a314  ldr x8,[x19, #0x20]
+01d0a318  ldr x8,[x8, #0xc0]
+01d0a31c  ldr x0,[x8]
+01d0a320  ldrb w8,[x0, #0x132]
+01d0a324  tbnz w8,#0x0,0x01d0a32c
+01d0a328  bl 0x00b2ac40
+01d0a32c  bl 0x00b079a0
+01d0a330  cbz x0,0x01d0a3ec
+01d0a334  ldr x8,[x19, #0x20]
+01d0a338  mov x22,x0
+01d0a33c  ldr x8,[x8, #0xc0]
+01d0a340  ldr x1,[x8, #0x8]
+01d0a344  ldr x8,[x1, #0x8]
+01d0a348  blr x8
+01d0a34c  str x22,[sp, #0x8]
+01d0a350  cbz x22,0x01d0a3ec
+01d0a354  str x21,[x22, #0x18]!
+01d0a358  mov x0,x22
+01d0a35c  mov x1,x21
+01d0a360  bl 0x00b07850
+01d0a364  add x20,x20,#0x18
+01d0a368  ldr x21,[x20]
+01d0a36c  cbz x21,0x01d0a3ec
+01d0a370  ldr x2,[x21, #0x10]
+01d0a374  cbz x2,0x01d0a398
+01d0a378  ldr x8,[x19, #0x20]
+01d0a37c  mov x0,x20
+01d0a380  mov x1,x21
+01d0a384  ldr x8,[x8, #0xc0]
+01d0a388  ldr x3,[x8, #0x28]
+01d0a38c  ldr x8,[x3, #0x8]
+01d0a390  blr x8
+01d0a394  b 0x01d0a368
+01d0a398  ldr x8,[x19, #0x20]
+01d0a39c  ldr x2,[sp, #0x8]
+01d0a3a0  add x0,x21,#0x10
+01d0a3a4  mov x1,xzr
+01d0a3a8  ldr x8,[x8, #0xc0]
+01d0a3ac  ldr x3,[x8, #0x28]
+01d0a3b0  ldr x8,[x3, #0x8]
+01d0a3b4  blr x8
+01d0a3b8  tbz w0,#0x0,0x01d0a368
+01d0a3bc  ldr x8,[x19, #0x20]
+01d0a3c0  ldr x2,[sp, #0x8]
+01d0a3c4  mov x0,x20
+01d0a3c8  mov x1,x21
+01d0a3cc  ldr x8,[x8, #0xc0]
+01d0a3d0  ldr x3,[x8, #0x28]
+01d0a3d4  ldr x8,[x3, #0x8]
+01d0a3d8  blr x8
+01d0a3dc  ldp x19,x30,[sp, #0x20]
+01d0a3e0  ldp x21,x20,[sp, #0x10]
+01d0a3e4  ldr x22,[sp], #0x30
+01d0a3e8  ret
+01d0a3ec  bl 0x00b079b0

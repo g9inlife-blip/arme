@@ -1,0 +1,51 @@
+Function: ReadOnlyDictionary<object,-object>$$CopyTo @ 01df9fc8
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01df9fc8  stp x21,x20,[sp, #-0x20]!
+01df9fcc  stp x19,x30,[sp, #0x10]
+01df9fd0  ldr x21,[x0, #0x10]
+01df9fd4  cbz x21,0x01dfa068
+01df9fd8  ldr x8,[x3, #0x20]
+01df9fdc  mov x20,x1
+01df9fe0  mov w19,w2
+01df9fe4  ldr x8,[x8, #0xc0]
+01df9fe8  ldr x1,[x8, #0x48]
+01df9fec  ldrb w8,[x1, #0x132]
+01df9ff0  tbnz w8,#0x0,0x01dfa000
+01df9ff4  mov x0,x1
+01df9ff8  bl 0x00b2ac40
+01df9ffc  mov x1,x0
+01dfa000  ldr x8,[x21]
+01dfa004  ldrh w9,[x8, #0x12a]
+01dfa008  cbz x9,0x01dfa02c
+01dfa00c  ldr x10,[x8, #0xb0]
+01dfa010  add x10,x10,#0x8
+01dfa014  ldur x11,[x10, #-0x8]
+01dfa018  cmp x11,x1
+01dfa01c  b.eq 0x01dfa03c
+01dfa020  subs x9,x9,#0x1
+01dfa024  add x10,x10,#0x10
+01dfa028  b.ne 0x01dfa014
+01dfa02c  mov w2,#0x5
+01dfa030  mov x0,x21
+01dfa034  bl 0x00b2ae24
+01dfa038  b 0x01dfa04c
+01dfa03c  ldr w9,[x10]
+01dfa040  add w9,w9,#0x5
+01dfa044  add x8,x8,w9, SXTW  #0x4
+01dfa048  add x0,x8,#0x138
+01dfa04c  ldp x4,x3,[x0]
+01dfa050  mov w2,w19
+01dfa054  ldp x19,x30,[sp, #0x10]
+01dfa058  mov x0,x21
+01dfa05c  mov x1,x20
+01dfa060  ldp x21,x20,[sp], #0x20
+01dfa064  br x4
+01dfa068  bl 0x00b079b0

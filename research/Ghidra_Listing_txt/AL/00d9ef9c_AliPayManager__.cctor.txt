@@ -1,0 +1,36 @@
+Function: AliPayManager$$.cctor @ 00d9ef9c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00d9ef9c  stp x21,x20,[sp, #-0x20]!
+00d9efa0  stp x19,x30,[sp, #0x10]
+00d9efa4  adrp x21,0x3572000
+00d9efa8  adrp x19,0x3382000
+00d9efac  adrp x20,0x331f000
+00d9efb0  ldrb w8,[x21, #0x33]
+00d9efb4  ldr x19,[x19, #0xd78]
+00d9efb8  ldr x20,[x20, #0x770]
+00d9efbc  tbnz w8,#0x0,0x00d9efe0
+00d9efc0  adrp x0,0x331f000
+00d9efc4  ldr x0,[x0, #0x770]
+00d9efc8  bl 0x00b0789c
+00d9efcc  adrp x0,0x3382000
+00d9efd0  ldr x0,[x0, #0xd78]
+00d9efd4  bl 0x00b0789c
+00d9efd8  mov w8,#0x1
+00d9efdc  strb w8,[x21, #0x33]
+00d9efe0  ldr x8,[x20]
+00d9efe4  ldr x9,[x19]
+00d9efe8  ldr x8,[x8, #0xb8]
+00d9efec  str x9,[x8]
+00d9eff0  ldr x8,[x20]
+00d9eff4  ldr x1,[x19]
+00d9eff8  ldp x19,x30,[sp, #0x10]
+00d9effc  ldr x0,[x8, #0xb8]
+00d9f000  ldp x21,x20,[sp], #0x20
+00d9f004  b 0x00b07850

@@ -1,0 +1,82 @@
+Function: AliothEngine.RetryController.<RetryAndWait>d__8$$MoveNext @ 0168aa40
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.RetryController$$get_isReadyForTry @ 0168a968
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.RetryController$$Retry @ 0168a838
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+
+--- Listing ---
+0168aa40  str x22,[sp, #-0x30]!
+0168aa44  stp x21,x20,[sp, #0x10]
+0168aa48  stp x19,x30,[sp, #0x20]
+0168aa4c  adrp x20,0x3577000
+0168aa50  ldrb w8,[x20, #0xa99]
+0168aa54  mov x19,x0
+0168aa58  tbnz w8,#0x0,0x0168aa88
+0168aa5c  adrp x0,0x336b000
+0168aa60  ldr x0,[x0, #0x7d0]
+0168aa64  bl 0x00b0789c
+0168aa68  adrp x0,0x336e000
+0168aa6c  ldr x0,[x0, #0xdb8]
+0168aa70  bl 0x00b0789c
+0168aa74  adrp x0,0x3327000
+0168aa78  ldr x0,[x0, #0xe90]
+0168aa7c  bl 0x00b0789c
+0168aa80  mov w8,#0x1
+0168aa84  strb w8,[x20, #0xa99]
+0168aa88  ldr w8,[x19, #0x10]
+0168aa8c  adrp x21,0x336b000
+0168aa90  ldr x20,[x19, #0x20]
+0168aa94  ldr x21,[x21, #0x7d0]
+0168aa98  cmp w8,#0x1
+0168aa9c  b.eq 0x0168aae0
+0168aaa0  cbnz w8,0x0168ab1c
+0168aaa4  mov w8,#0xffffffff
+0168aaa8  str w8,[x19, #0x10]
+0168aaac  ldr x0,[x21]
+0168aab0  adrp x22,0x3327000
+0168aab4  ldr w8,[x0, #0xe0]
+0168aab8  ldr x22,[x22, #0xe90]
+0168aabc  cbnz w8,0x0168aac4
+0168aac0  bl 0x00b0798c
+0168aac4  ldr x0,[x22]
+0168aac8  mov x1,xzr
+0168aacc  bl 0x024c0104
+0168aad0  cbz x20,0x0168ab4c
+0168aad4  mov x0,x20
+0168aad8  bl 0x0168a838
+0168aadc  b 0x0168aaec
+0168aae0  mov w8,#0xffffffff
+0168aae4  str w8,[x19, #0x10]
+0168aae8  cbz x20,0x0168ab4c
+0168aaec  mov x0,x20
+0168aaf0  bl 0x0168a968
+0168aaf4  tbz w0,#0x0,0x0168ab24
+0168aaf8  ldr x0,[x21]
+0168aafc  adrp x19,0x336e000
+0168ab00  ldr w8,[x0, #0xe0]
+0168ab04  ldr x19,[x19, #0xdb8]
+0168ab08  cbnz w8,0x0168ab10
+0168ab0c  bl 0x00b0798c
+0168ab10  ldr x0,[x19]
+0168ab14  mov x1,xzr
+0168ab18  bl 0x024c0104
+0168ab1c  mov w0,wzr
+0168ab20  b 0x0168ab3c
+0168ab24  str xzr,[x19, #0x18]!
+0168ab28  mov x0,x19
+0168ab2c  mov x1,xzr
+0168ab30  bl 0x00b07850
+0168ab34  mov w0,#0x1
+0168ab38  stur w0,[x19, #-0x8]
+0168ab3c  ldp x19,x30,[sp, #0x20]
+0168ab40  ldp x21,x20,[sp, #0x10]
+0168ab44  ldr x22,[sp], #0x30
+0168ab48  ret
+0168ab4c  bl 0x00b079b0

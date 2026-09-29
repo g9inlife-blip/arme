@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.TypeExtensions.<>c__1<object>$$<GetAttribute>b__1_0 @ 018ee1a0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018ee1a0  stp x19,x30,[sp, #-0x10]!
+018ee1a4  ldr x8,[x2, #0x20]
+018ee1a8  mov x19,x1
+018ee1ac  ldr x8,[x8, #0xc0]
+018ee1b0  ldr x8,[x8, #0x18]
+018ee1b4  ldrb w9,[x8, #0x132]
+018ee1b8  tbnz w9,#0x0,0x018ee1c8
+018ee1bc  mov x0,x8
+018ee1c0  bl 0x00b2ac40
+018ee1c4  mov x8,x0
+018ee1c8  mov x0,x19
+018ee1cc  mov x1,x8
+018ee1d0  bl 0x00b07990
+018ee1d4  cmp x0,#0x0
+018ee1d8  cset w0,ne
+018ee1dc  ldp x19,x30,[sp], #0x10
+018ee1e0  ret

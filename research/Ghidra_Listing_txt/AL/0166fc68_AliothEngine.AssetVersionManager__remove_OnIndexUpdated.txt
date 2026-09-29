@@ -1,0 +1,56 @@
+Function: AliothEngine.AssetVersionManager$$remove_OnIndexUpdated @ 0166fc68
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+
+--- Listing ---
+0166fc68  str x24,[sp, #-0x40]!
+0166fc6c  stp x23,x22,[sp, #0x10]
+0166fc70  stp x21,x20,[sp, #0x20]
+0166fc74  stp x19,x30,[sp, #0x30]
+0166fc78  adrp x21,0x3577000
+0166fc7c  ldrb w8,[x21, #0x965]
+0166fc80  mov x19,x1
+0166fc84  mov x20,x0
+0166fc88  tbnz w8,#0x0,0x0166fca0
+0166fc8c  adrp x0,0x330e000
+0166fc90  ldr x0,[x0, #0x80]
+0166fc94  bl 0x00b0789c
+0166fc98  mov w8,#0x1
+0166fc9c  strb w8,[x21, #0x965]
+0166fca0  adrp x24,0x330e000
+0166fca4  ldr x21,[x20, #0x28]!
+0166fca8  ldr x24,[x24, #0x80]
+0166fcac  mov x0,x21
+0166fcb0  mov x1,x19
+0166fcb4  mov x2,xzr
+0166fcb8  bl 0x02197a1c
+0166fcbc  cbz x0,0x0166fcdc
+0166fcc0  ldr x23,[x24]
+0166fcc4  mov x22,x0
+0166fcc8  mov x1,x23
+0166fccc  bl 0x00b07990
+0166fcd0  mov x1,x0
+0166fcd4  cbnz x0,0x0166fce0
+0166fcd8  b 0x0166fd0c
+0166fcdc  mov x1,xzr
+0166fce0  mov x0,x20
+0166fce4  mov x2,x21
+0166fce8  bl 0x00ae526c
+0166fcec  cmp x21,x0
+0166fcf0  mov x21,x0
+0166fcf4  b.ne 0x0166fcac
+0166fcf8  ldp x19,x30,[sp, #0x30]
+0166fcfc  ldp x21,x20,[sp, #0x20]
+0166fd00  ldp x23,x22,[sp, #0x10]
+0166fd04  ldr x24,[sp], #0x40
+0166fd08  ret
+0166fd0c  mov x0,x22
+0166fd10  mov x1,x23
+0166fd14  bl 0x00b07c6c

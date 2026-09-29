@@ -1,0 +1,40 @@
+Function: Ali.<>c$$.cctor @ 00e11260
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00e11260  str x20,[sp, #-0x20]!
+00e11264  stp x19,x30,[sp, #0x10]
+00e11268  adrp x19,0x3572000
+00e1126c  adrp x20,0x336d000
+00e11270  ldrb w8,[x19, #0x5c7]
+00e11274  ldr x20,[x20, #0x4b8]
+00e11278  tbnz w8,#0x0,0x00e11290
+00e1127c  adrp x0,0x336d000
+00e11280  ldr x0,[x0, #0x4b8]
+00e11284  bl 0x00b0789c
+00e11288  mov w8,#0x1
+00e1128c  strb w8,[x19, #0x5c7]
+00e11290  ldr x0,[x20]
+00e11294  bl 0x00b079a0
+00e11298  cbz x0,0x00e112cc
+00e1129c  mov x1,xzr
+00e112a0  mov x19,x0
+00e112a4  bl 0x02194104
+00e112a8  ldr x8,[x20]
+00e112ac  mov x1,x19
+00e112b0  ldr x8,[x8, #0xb8]
+00e112b4  str x19,[x8]
+00e112b8  ldr x8,[x20]
+00e112bc  ldp x19,x30,[sp, #0x10]
+00e112c0  ldr x0,[x8, #0xb8]
+00e112c4  ldr x20,[sp], #0x20
+00e112c8  b 0x00b07850
+00e112cc  bl 0x00b079b0

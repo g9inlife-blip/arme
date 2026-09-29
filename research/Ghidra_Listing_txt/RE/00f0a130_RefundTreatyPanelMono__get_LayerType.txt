@@ -1,0 +1,35 @@
+Function: RefundTreatyPanelMono$$get_LayerType @ 00f0a130
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp491 @ 0109f3ac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00f0a130  stp x21,x20,[sp, #-0x20]!
+00f0a134  stp x19,x30,[sp, #0x10]
+00f0a138  adrp x20,0x3572000
+00f0a13c  adrp x21,0x3379000
+00f0a140  ldrb w8,[x20, #0xf9c]
+00f0a144  ldr x21,[x21, #0xed8]
+00f0a148  mov x19,x0
+00f0a14c  tbnz w8,#0x0,0x00f0a164
+00f0a150  adrp x0,0x3379000
+00f0a154  ldr x0,[x0, #0xed8]
+00f0a158  bl 0x00b0789c
+00f0a15c  mov w8,#0x1
+00f0a160  strb w8,[x20, #0xf9c]
+00f0a164  ldr x8,[x21]
+00f0a168  ldr x8,[x8, #0xb8]
+00f0a16c  ldr x0,[x8, #0x8]
+00f0a170  cbz x0,0x00f0a188
+00f0a174  mov x1,x19
+00f0a178  ldp x19,x30,[sp, #0x10]
+00f0a17c  mov x2,xzr
+00f0a180  ldp x21,x20,[sp], #0x20
+00f0a184  b 0x0109f3ac
+00f0a188  ldp x19,x30,[sp, #0x10]
+00f0a18c  mov w0,#0x3
+00f0a190  ldp x21,x20,[sp], #0x20
+00f0a194  ret

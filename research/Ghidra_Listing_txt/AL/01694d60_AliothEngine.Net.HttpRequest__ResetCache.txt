@@ -1,0 +1,60 @@
+Function: AliothEngine.Net.HttpRequest$$ResetCache @ 01694d60
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> System.Int32$$ToString @ 0214dc44
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Concat @ 01fdebb8
+
+--- Calls IN ---
+  <- AliothEngine.Net.HttpRequest.<RequestCoroutine>d__24$$MoveNext @ 01694f98
+
+--- Listing ---
+01694d60  str x22,[sp, #-0x30]!
+01694d64  stp x21,x20,[sp, #0x10]
+01694d68  stp x19,x30,[sp, #0x20]
+01694d6c  adrp x20,0x3577000
+01694d70  ldrb w8,[x20, #0xaf0]
+01694d74  mov x19,x0
+01694d78  tbnz w8,#0x0,0x01694d9c
+01694d7c  adrp x0,0x337a000
+01694d80  ldr x0,[x0, #0xab0]
+01694d84  bl 0x00b0789c
+01694d88  adrp x0,0x3346000
+01694d8c  ldr x0,[x0, #0xf88]
+01694d90  bl 0x00b0789c
+01694d94  mov w8,#0x1
+01694d98  strb w8,[x20, #0xaf0]
+01694d9c  mov w1,#0x4240
+01694da0  movk w1,#0xf, LSL #16
+01694da4  mov w0,wzr
+01694da8  mov x2,xzr
+01694dac  bl 0x024d63b0
+01694db0  str w0,[sp, #0xc]
+01694db4  add x0,sp,#0xc
+01694db8  mov x1,xzr
+01694dbc  bl 0x0214dc44
+01694dc0  cbz x19,0x01694e14
+01694dc4  adrp x21,0x337a000
+01694dc8  ldr x21,[x21, #0xab0]
+01694dcc  adrp x22,0x3346000
+01694dd0  mov x20,x0
+01694dd4  mov x0,x19
+01694dd8  ldr x1,[x21]
+01694ddc  ldr x22,[x22, #0xf88]
+01694de0  mov x2,xzr
+01694de4  bl 0x01fe31fc
+01694de8  tst w0,#0x1
+01694dec  csel x8,x22,x21,ne
+01694df0  ldr x1,[x8]
+01694df4  mov x0,x19
+01694df8  mov x2,x20
+01694dfc  mov x3,xzr
+01694e00  bl 0x01fdebb8
+01694e04  ldp x19,x30,[sp, #0x20]
+01694e08  ldp x21,x20,[sp, #0x10]
+01694e0c  ldr x22,[sp], #0x30
+01694e10  ret
+01694e14  bl 0x00b079b0

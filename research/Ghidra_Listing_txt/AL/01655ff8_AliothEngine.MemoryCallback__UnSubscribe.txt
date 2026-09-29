@@ -1,0 +1,131 @@
+Function: AliothEngine.MemoryCallback$$UnSubscribe @ 01655ff8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> UnityEngine.Application.LowMemoryCallback$$.ctor @ 024f3498
+  -> FUN_00b07978 @ 00b07978
+  -> UnityEngine.Application$$remove_lowMemory @ 024f2cb4
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> AliothEngine.Android_ProxyPool$$CallStatic @ 01653bc4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+  <- AliothEngine.MemoryCallback$$OnDestroy @ 01655f60
+
+--- Listing ---
+01655ff8  stp x23,x22,[sp, #-0x30]!
+01655ffc  stp x21,x20,[sp, #0x10]
+01656000  stp x19,x30,[sp, #0x20]
+01656004  adrp x20,0x3577000
+01656008  adrp x21,0x330c000
+0165600c  ldrb w8,[x20, #0x80b]
+01656010  ldr x21,[x21, #0x9b8]
+01656014  mov x19,x0
+01656018  tbnz w8,#0x0,0x0165606c
+0165601c  adrp x0,0x335f000
+01656020  ldr x0,[x0, #0x3f8]
+01656024  bl 0x00b0789c
+01656028  adrp x0,0x330a000
+0165602c  ldr x0,[x0, #0xaf0]
+01656030  bl 0x00b0789c
+01656034  adrp x0,0x3350000
+01656038  ldr x0,[x0, #0xb00]
+0165603c  bl 0x00b0789c
+01656040  adrp x0,0x330c000
+01656044  ldr x0,[x0, #0x9b8]
+01656048  bl 0x00b0789c
+0165604c  adrp x0,0x3370000
+01656050  ldr x0,[x0, #0x778]
+01656054  bl 0x00b0789c
+01656058  adrp x0,0x3319000
+0165605c  ldr x0,[x0, #0x430]
+01656060  bl 0x00b0789c
+01656064  mov w8,#0x1
+01656068  strb w8,[x20, #0x80b]
+0165606c  ldr x0,[x21]
+01656070  ldr w8,[x0, #0xe0]
+01656074  cbnz w8,0x01656080
+01656078  bl 0x00b0798c
+0165607c  ldr x0,[x21]
+01656080  ldr x8,[x0, #0xb8]
+01656084  ldr x0,[x8, #0x30]
+01656088  cbz x0,0x016560a4
+0165608c  mov x1,x19
+01656090  ldp x19,x30,[sp, #0x20]
+01656094  ldp x21,x20,[sp, #0x10]
+01656098  mov x2,xzr
+0165609c  ldp x23,x22,[sp], #0x30
+016560a0  b 0x01060dac
+016560a4  adrp x8,0x330a000
+016560a8  ldr x8,[x8, #0xaf0]
+016560ac  ldr x0,[x8]
+016560b0  bl 0x00b079a0
+016560b4  cbz x0,0x01656194
+016560b8  adrp x8,0x3350000
+016560bc  ldr x8,[x8, #0xb00]
+016560c0  adrp x22,0x3370000
+016560c4  mov x1,x19
+016560c8  mov x3,xzr
+016560cc  ldr x2,[x8]
+016560d0  ldr x22,[x22, #0x778]
+016560d4  mov x20,x0
+016560d8  bl 0x024f3498
+016560dc  mov x0,x20
+016560e0  mov x1,xzr
+016560e4  bl 0x024f2cb4
+016560e8  ldr x0,[x21]
+016560ec  ldr w8,[x0, #0xe0]
+016560f0  cbnz w8,0x016560fc
+016560f4  bl 0x00b0798c
+016560f8  ldr x0,[x21]
+016560fc  ldr x8,[x0, #0xb8]
+01656100  ldr x0,[x22]
+01656104  mov w1,#0x1
+01656108  ldr x19,[x8]
+0165610c  bl 0x00b078f8
+01656110  mov x20,x0
+01656114  mov x0,xzr
+01656118  bl 0x0164f628
+0165611c  cbz x20,0x01656194
+01656120  mov x21,x0
+01656124  cbz x0,0x0165613c
+01656128  ldr x8,[x20]
+0165612c  mov x0,x21
+01656130  ldr x1,[x8, #0x40]
+01656134  bl 0x00b07990
+01656138  cbz x0,0x0165619c
+0165613c  ldr w8,[x20, #0x18]
+01656140  cbz w8,0x01656198
+01656144  adrp x23,0x335f000
+01656148  adrp x22,0x3319000
+0165614c  ldr x23,[x23, #0x3f8]
+01656150  ldr x22,[x22, #0x430]
+01656154  mov x0,x20
+01656158  str x21,[x0, #0x20]!
+0165615c  mov x1,x21
+01656160  bl 0x00b07850
+01656164  ldr x0,[x23]
+01656168  ldr w8,[x0, #0xe0]
+0165616c  cbnz w8,0x01656174
+01656170  bl 0x00b0798c
+01656174  ldr x1,[x22]
+01656178  mov x0,x19
+0165617c  mov x2,x20
+01656180  ldp x19,x30,[sp, #0x20]
+01656184  ldp x21,x20,[sp, #0x10]
+01656188  mov x3,xzr
+0165618c  ldp x23,x22,[sp], #0x30
+01656190  b 0x01653bc4
+01656194  bl 0x00b079b0
+01656198  bl 0x00b079b8
+0165619c  bl 0x00b079d4
+016561a0  mov x1,xzr
+016561a4  bl 0x00b07978

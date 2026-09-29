@@ -1,0 +1,136 @@
+Function: Response_Allin1$$OnAfterDeserialize @ 00dde2f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Linq.Enumerable$$ToDictionary<object,-object,-object> @ 0178bfe0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Func<object,-object>$$.ctor @ 01ae8f80
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_Allin1Wrap$$_m_OnAfterDeserialize @ 0135ffcc
+
+--- Listing ---
+00dde2f4  stp x25,x24,[sp, #-0x40]!
+00dde2f8  stp x23,x22,[sp, #0x10]
+00dde2fc  stp x21,x20,[sp, #0x20]
+00dde300  stp x19,x30,[sp, #0x30]
+00dde304  adrp x20,0x3572000
+00dde308  adrp x21,0x3355000
+00dde30c  ldrb w8,[x20, #0x2eb]
+00dde310  ldr x21,[x21, #0xe18]
+00dde314  mov x19,x0
+00dde318  tbnz w8,#0x0,0x00dde36c
+00dde31c  adrp x0,0x3352000
+00dde320  ldr x0,[x0, #0x2b8]
+00dde324  bl 0x00b0789c
+00dde328  adrp x0,0x3362000
+00dde32c  ldr x0,[x0, #0xe18]
+00dde330  bl 0x00b0789c
+00dde334  adrp x0,0x3355000
+00dde338  ldr x0,[x0, #0xe18]
+00dde33c  bl 0x00b0789c
+00dde340  adrp x0,0x3383000
+00dde344  ldr x0,[x0, #0xa50]
+00dde348  bl 0x00b0789c
+00dde34c  adrp x0,0x3336000
+00dde350  ldr x0,[x0, #0x538]
+00dde354  bl 0x00b0789c
+00dde358  adrp x0,0x3381000
+00dde35c  ldr x0,[x0, #0xa20]
+00dde360  bl 0x00b0789c
+00dde364  mov w8,#0x1
+00dde368  strb w8,[x20, #0x2eb]
+00dde36c  ldr x8,[x21]
+00dde370  ldr x8,[x8, #0xb8]
+00dde374  ldr x0,[x8, #0x8]
+00dde378  cbz x0,0x00dde398
+00dde37c  mov x1,x19
+00dde380  ldp x19,x30,[sp, #0x30]
+00dde384  ldp x21,x20,[sp, #0x20]
+00dde388  ldp x23,x22,[sp, #0x10]
+00dde38c  mov x2,xzr
+00dde390  ldp x25,x24,[sp], #0x40
+00dde394  b 0x01060dac
+00dde398  adrp x24,0x3381000
+00dde39c  ldr x24,[x24, #0xa20]
+00dde3a0  ldr x20,[x19, #0x38]
+00dde3a4  ldr x0,[x24]
+00dde3a8  ldr w8,[x0, #0xe0]
+00dde3ac  cbnz w8,0x00dde3b8
+00dde3b0  bl 0x00b0798c
+00dde3b4  ldr x0,[x24]
+00dde3b8  ldr x8,[x0, #0xb8]
+00dde3bc  adrp x25,0x3362000
+00dde3c0  ldr x21,[x8, #0x8]
+00dde3c4  ldr x25,[x25, #0xe18]
+00dde3c8  cbnz x21,0x00dde424
+00dde3cc  ldr w8,[x0, #0xe0]
+00dde3d0  cbnz w8,0x00dde3dc
+00dde3d4  bl 0x00b0798c
+00dde3d8  ldr x0,[x24]
+00dde3dc  ldr x8,[x0, #0xb8]
+00dde3e0  ldr x0,[x25]
+00dde3e4  ldr x22,[x8]
+00dde3e8  bl 0x00b079a0
+00dde3ec  cbz x0,0x00dde4d0
+00dde3f0  adrp x8,0x3383000
+00dde3f4  ldr x8,[x8, #0xa50]
+00dde3f8  mov x1,x22
+00dde3fc  mov x3,xzr
+00dde400  mov x21,x0
+00dde404  ldr x2,[x8]
+00dde408  bl 0x01ae8f80
+00dde40c  ldr x8,[x24]
+00dde410  mov x1,x21
+00dde414  ldr x0,[x8, #0xb8]
+00dde418  str x21,[x0, #0x8]!
+00dde41c  bl 0x00b07850
+00dde420  ldr x0,[x24]
+00dde424  ldr w8,[x0, #0xe0]
+00dde428  cbnz w8,0x00dde434
+00dde42c  bl 0x00b0798c
+00dde430  ldr x0,[x24]
+00dde434  ldr x8,[x0, #0xb8]
+00dde438  ldr x22,[x8, #0x10]
+00dde43c  cbnz x22,0x00dde494
+00dde440  ldr w8,[x0, #0xe0]
+00dde444  cbnz w8,0x00dde450
+00dde448  bl 0x00b0798c
+00dde44c  ldr x0,[x24]
+00dde450  ldr x8,[x0, #0xb8]
+00dde454  ldr x0,[x25]
+00dde458  ldr x23,[x8]
+00dde45c  bl 0x00b079a0
+00dde460  cbz x0,0x00dde4d0
+00dde464  adrp x8,0x3336000
+00dde468  ldr x8,[x8, #0x538]
+00dde46c  mov x1,x23
+00dde470  mov x3,xzr
+00dde474  mov x22,x0
+00dde478  ldr x2,[x8]
+00dde47c  bl 0x01ae8f80
+00dde480  ldr x8,[x24]
+00dde484  mov x1,x22
+00dde488  ldr x0,[x8, #0xb8]
+00dde48c  str x22,[x0, #0x10]!
+00dde490  bl 0x00b07850
+00dde494  adrp x8,0x3352000
+00dde498  ldr x8,[x8, #0x2b8]
+00dde49c  mov x0,x20
+00dde4a0  mov x1,x21
+00dde4a4  mov x2,x22
+00dde4a8  ldr x3,[x8]
+00dde4ac  bl 0x0178bfe0
+00dde4b0  str x0,[x19, #0x48]!
+00dde4b4  mov x1,x0
+00dde4b8  mov x0,x19
+00dde4bc  ldp x19,x30,[sp, #0x30]
+00dde4c0  ldp x21,x20,[sp, #0x20]
+00dde4c4  ldp x23,x22,[sp, #0x10]
+00dde4c8  ldp x25,x24,[sp], #0x40
+00dde4cc  b 0x00b07850
+00dde4d0  bl 0x00b079b0

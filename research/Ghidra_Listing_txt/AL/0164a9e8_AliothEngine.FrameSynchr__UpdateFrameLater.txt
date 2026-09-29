@@ -1,0 +1,15 @@
+Function: AliothEngine.FrameSynchr$$UpdateFrameLater @ 0164a9e8
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+0164a9e8  ldp w8,w9,[x0, #0x24]
+0164a9ec  cmp w9,w8
+0164a9f0  b.eq 0x0164aa04
+0164a9f4  ldp w8,w9,[x0, #0x30]
+0164a9f8  str wzr,[x0, #0x24]
+0164a9fc  mul w8,w9,w8
+0164aa00  str w8,[x0, #0x108]
+0164aa04  ret

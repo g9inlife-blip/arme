@@ -1,0 +1,96 @@
+Function: AliothEngine.GameEventSys<Int32Enum>$$RmvEventHandler<object> @ 0172a0a8
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.GameEventSysTest$$RmvEvent @ 0164bdf4
+
+--- Listing ---
+0172a0a8  str x24,[sp, #-0x40]!
+0172a0ac  stp x23,x22,[sp, #0x10]
+0172a0b0  stp x21,x20,[sp, #0x20]
+0172a0b4  stp x19,x30,[sp, #0x30]
+0172a0b8  ldr x8,[x3, #0x20]
+0172a0bc  mov x20,x3
+0172a0c0  mov x22,x2
+0172a0c4  mov w19,w1
+0172a0c8  ldr x8,[x8, #0xc0]
+0172a0cc  mov x21,x0
+0172a0d0  ldr x3,[x8, #0x38]
+0172a0d4  ldr x8,[x3, #0x8]
+0172a0d8  blr x8
+0172a0dc  tbz w0,#0x0,0x0172a144
+0172a0e0  ldr x21,[x21, #0x10]
+0172a0e4  cbz x21,0x0172a1f0
+0172a0e8  ldr x8,[x20, #0x20]
+0172a0ec  mov x0,x21
+0172a0f0  mov w1,w19
+0172a0f4  ldr x8,[x8, #0xc0]
+0172a0f8  ldr x2,[x8, #0x28]
+0172a0fc  ldr x8,[x2, #0x8]
+0172a100  blr x8
+0172a104  ldr x8,[x20, #0x38]
+0172a108  mov x24,x0
+0172a10c  ldr x23,[x8]
+0172a110  ldrb w8,[x23, #0x132]
+0172a114  tbnz w8,#0x0,0x0172a124
+0172a118  mov x0,x23
+0172a11c  bl 0x00b2ac40
+0172a120  mov x23,x0
+0172a124  cbz x24,0x0172a158
+0172a128  mov x0,x24
+0172a12c  mov x1,x23
+0172a130  bl 0x00b07990
+0172a134  cbnz x0,0x0172a15c
+0172a138  mov x0,x24
+0172a13c  mov x1,x23
+0172a140  bl 0x00b07c6c
+0172a144  ldp x19,x30,[sp, #0x30]
+0172a148  ldp x21,x20,[sp, #0x20]
+0172a14c  ldp x23,x22,[sp, #0x10]
+0172a150  ldr x24,[sp], #0x40
+0172a154  ret
+0172a158  mov x0,xzr
+0172a15c  mov x1,x22
+0172a160  mov x2,xzr
+0172a164  bl 0x02197a1c
+0172a168  ldr x8,[x20, #0x20]
+0172a16c  ldr x9,[x20, #0x38]
+0172a170  mov x23,x0
+0172a174  ldr x8,[x8, #0xc0]
+0172a178  ldr x22,[x9]
+0172a17c  ldr x8,[x8, #0x30]
+0172a180  ldrb w9,[x22, #0x132]
+0172a184  ldr x1,[x8, #0x8]
+0172a188  str x1,[sp, #0x8]
+0172a18c  tbnz w9,#0x0,0x0172a19c
+0172a190  mov x0,x22
+0172a194  bl 0x00b2ac40
+0172a198  mov x22,x0
+0172a19c  cbz x23,0x0172a1c0
+0172a1a0  mov x0,x23
+0172a1a4  mov x1,x22
+0172a1a8  bl 0x00b07990
+0172a1ac  mov x2,x0
+0172a1b0  cbnz x0,0x0172a1c4
+0172a1b4  mov x0,x23
+0172a1b8  mov x1,x22
+0172a1bc  bl 0x00b07c6c
+0172a1c0  mov x2,xzr
+0172a1c4  ldr x8,[x20, #0x20]
+0172a1c8  mov x0,x21
+0172a1cc  mov w1,w19
+0172a1d0  ldr x4,[sp, #0x8]
+0172a1d4  ldr x8,[x8, #0xc0]
+0172a1d8  ldp x19,x30,[sp, #0x30]
+0172a1dc  ldp x21,x20,[sp, #0x20]
+0172a1e0  ldp x23,x22,[sp, #0x10]
+0172a1e4  ldr x3,[x8, #0x30]
+0172a1e8  ldr x24,[sp], #0x40
+0172a1ec  br x4
+0172a1f0  bl 0x00b079b0

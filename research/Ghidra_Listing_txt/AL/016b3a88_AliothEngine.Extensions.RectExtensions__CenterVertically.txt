@@ -1,0 +1,54 @@
+Function: AliothEngine.Extensions.RectExtensions$$CenterVertically @ 016b3a88
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Rect$$set_height @ 024db080
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$set_y @ 024daf4c
+
+--- Calls IN ---
+
+--- Listing ---
+016b3a88  sub sp,sp,#0x30
+016b3a8c  stp d9,d8,[sp, #0x10]
+016b3a90  str x30,[sp, #0x20]
+016b3a94  mov v8.16B,v4.16B
+016b3a98  fcmp s4,#0.0
+016b3a9c  mov x0,sp
+016b3aa0  mov x1,xzr
+016b3aa4  stp s0,s1,[sp]
+016b3aa8  stp s2,s3,[sp, #0x8]
+016b3aac  b.le 0x016b3ae0
+016b3ab0  bl 0x024db078
+016b3ab4  mov x0,sp
+016b3ab8  mov x1,xzr
+016b3abc  fsub s9,s0,s8
+016b3ac0  bl 0x024daf44
+016b3ac4  fmov s1,0x3f000000
+016b3ac8  fmul s1,s9,s1
+016b3acc  fadd s0,s0,s1
+016b3ad0  mov x0,sp
+016b3ad4  mov x1,xzr
+016b3ad8  bl 0x024daf4c
+016b3adc  b 0x016b3b0c
+016b3ae0  bl 0x024daf44
+016b3ae4  fmov s1,0xbf000000
+016b3ae8  fmul s1,s8,s1
+016b3aec  fadd s0,s0,s1
+016b3af0  mov x0,sp
+016b3af4  mov x1,xzr
+016b3af8  bl 0x024daf4c
+016b3afc  mov x0,sp
+016b3b00  mov x1,xzr
+016b3b04  bl 0x024db078
+016b3b08  fadd s8,s0,s8
+016b3b0c  mov x0,sp
+016b3b10  mov v0.16B,v8.16B
+016b3b14  mov x1,xzr
+016b3b18  bl 0x024db080
+016b3b1c  ldp s0,s1,[sp]
+016b3b20  ldp s2,s3,[sp, #0x8]
+016b3b24  ldr x30,[sp, #0x20]
+016b3b28  ldp d9,d8,[sp, #0x10]
+016b3b2c  add sp,sp,#0x30
+016b3b30  ret

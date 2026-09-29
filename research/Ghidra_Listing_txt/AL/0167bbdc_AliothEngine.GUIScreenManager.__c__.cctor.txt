@@ -1,0 +1,40 @@
+Function: AliothEngine.GUIScreenManager.<>c$$.cctor @ 0167bbdc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0167bbdc  str x20,[sp, #-0x20]!
+0167bbe0  stp x19,x30,[sp, #0x10]
+0167bbe4  adrp x19,0x3577000
+0167bbe8  adrp x20,0x3343000
+0167bbec  ldrb w8,[x19, #0xa03]
+0167bbf0  ldr x20,[x20, #0x588]
+0167bbf4  tbnz w8,#0x0,0x0167bc0c
+0167bbf8  adrp x0,0x3343000
+0167bbfc  ldr x0,[x0, #0x588]
+0167bc00  bl 0x00b0789c
+0167bc04  mov w8,#0x1
+0167bc08  strb w8,[x19, #0xa03]
+0167bc0c  ldr x0,[x20]
+0167bc10  bl 0x00b079a0
+0167bc14  cbz x0,0x0167bc48
+0167bc18  mov x1,xzr
+0167bc1c  mov x19,x0
+0167bc20  bl 0x02194104
+0167bc24  ldr x8,[x20]
+0167bc28  mov x1,x19
+0167bc2c  ldr x8,[x8, #0xb8]
+0167bc30  str x19,[x8]
+0167bc34  ldr x8,[x20]
+0167bc38  ldp x19,x30,[sp, #0x10]
+0167bc3c  ldr x0,[x8, #0xb8]
+0167bc40  ldr x20,[sp], #0x20
+0167bc44  b 0x00b07850
+0167bc48  bl 0x00b079b0

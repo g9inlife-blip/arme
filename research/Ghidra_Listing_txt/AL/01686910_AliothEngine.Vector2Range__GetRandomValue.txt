@@ -1,0 +1,26 @@
+Function: AliothEngine.Vector2Range$$GetRandomValue @ 01686910
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d6370
+
+--- Calls IN ---
+
+--- Listing ---
+01686910  str d8,[sp, #-0x20]!
+01686914  stp x19,x30,[sp, #0x10]
+01686918  ldr s0,[x0, #0x10]
+0168691c  ldr s1,[x0, #0x18]
+01686920  mov x19,x0
+01686924  mov x0,xzr
+01686928  bl 0x024d6370
+0168692c  ldr s2,[x19, #0x14]
+01686930  ldr s1,[x19, #0x1c]
+01686934  mov v8.16B,v0.16B
+01686938  mov x0,xzr
+0168693c  mov v0.16B,v2.16B
+01686940  bl 0x024d6370
+01686944  ldp x19,x30,[sp, #0x10]
+01686948  mov v1.16B,v0.16B
+0168694c  mov v0.16B,v8.16B
+01686950  ldr d8,[sp], #0x20
+01686954  ret

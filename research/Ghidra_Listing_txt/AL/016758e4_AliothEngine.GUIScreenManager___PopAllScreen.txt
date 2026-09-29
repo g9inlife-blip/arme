@@ -1,0 +1,77 @@
+Function: AliothEngine.GUIScreenManager$$_PopAllScreen @ 016758e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreenManager$$_PopScreen @ 016745c0
+  -> System.Collections.Generic.List<object>$$ToArray @ 01c02720
+
+--- Calls IN ---
+
+--- Listing ---
+016758e4  stp x23,x22,[sp, #-0x30]!
+016758e8  stp x21,x20,[sp, #0x10]
+016758ec  stp x19,x30,[sp, #0x20]
+016758f0  adrp x22,0x3577000
+016758f4  adrp x21,0x337b000
+016758f8  ldrb w8,[x22, #0x9b6]
+016758fc  ldr x21,[x21, #0xb98]
+01675900  mov w20,w1
+01675904  mov x19,x0
+01675908  tbnz w8,#0x0,0x0167592c
+0167590c  adrp x0,0x337b000
+01675910  ldr x0,[x0, #0xb98]
+01675914  bl 0x00b0789c
+01675918  adrp x0,0x3309000
+0167591c  ldr x0,[x0, #0x360]
+01675920  bl 0x00b0789c
+01675924  mov w8,#0x1
+01675928  strb w8,[x22, #0x9b6]
+0167592c  ldr x0,[x21]
+01675930  ldr w8,[x0, #0xe0]
+01675934  cbnz w8,0x01675940
+01675938  bl 0x00b0798c
+0167593c  ldr x0,[x21]
+01675940  ldr x8,[x0, #0xb8]
+01675944  ldr x0,[x8, #0xc8]
+01675948  cbz x0,0x01675968
+0167594c  and w2,w20,#0x1
+01675950  mov x1,x19
+01675954  ldp x19,x30,[sp, #0x20]
+01675958  ldp x21,x20,[sp, #0x10]
+0167595c  mov x3,xzr
+01675960  ldp x23,x22,[sp], #0x30
+01675964  b 0x010613e4
+01675968  ldr x0,[x19, #0x20]
+0167596c  cbz x0,0x016759dc
+01675970  adrp x8,0x3309000
+01675974  ldr x8,[x8, #0x360]
+01675978  ldr x1,[x8]
+0167597c  bl 0x01c02720
+01675980  cbz x0,0x016759dc
+01675984  ldr x8,[x0, #0x18]
+01675988  mov x21,x0
+0167598c  cmp w8,#0x1
+01675990  b.lt 0x016759c8
+01675994  mov x22,xzr
+01675998  and x8,x8,#0xffffffff
+0167599c  add x23,x21,#0x20
+016759a0  cmp x22,w8, UXTW 
+016759a4  b.cs 0x016759d8
+016759a8  ldr x1,[x23, x22, LSL #0x3]
+016759ac  and w2,w20,#0x1
+016759b0  mov x0,x19
+016759b4  bl 0x016745c0
+016759b8  ldr w8,[x21, #0x18]
+016759bc  add x22,x22,#0x1
+016759c0  cmp x22,w8, SXTW 
+016759c4  b.lt 0x016759a0
+016759c8  ldp x19,x30,[sp, #0x20]
+016759cc  ldp x21,x20,[sp, #0x10]
+016759d0  ldp x23,x22,[sp], #0x30
+016759d4  ret
+016759d8  bl 0x00b079b8
+016759dc  bl 0x00b079b0

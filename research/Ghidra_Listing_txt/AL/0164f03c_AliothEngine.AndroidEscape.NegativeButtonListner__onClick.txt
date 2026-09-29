@@ -1,0 +1,60 @@
+Function: AliothEngine.AndroidEscape.NegativeButtonListner$$onClick @ 0164f03c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidEscape$$set_IsExistAlert @ 0164e1b4
+  -> System.Int32$$ToString @ 0214dc44
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+
+--- Listing ---
+0164f03c  str x22,[sp, #-0x30]!
+0164f040  stp x21,x20,[sp, #0x10]
+0164f044  stp x19,x30,[sp, #0x20]
+0164f048  adrp x22,0x3577000
+0164f04c  str w2,[sp, #0xc]
+0164f050  adrp x21,0x3363000
+0164f054  adrp x20,0x336b000
+0164f058  ldrb w8,[x22, #0x7e2]
+0164f05c  ldr x21,[x21, #0x210]
+0164f060  ldr x20,[x20, #0x7d0]
+0164f064  mov x19,x0
+0164f068  tbnz w8,#0x0,0x0164f08c
+0164f06c  adrp x0,0x336b000
+0164f070  ldr x0,[x0, #0x7d0]
+0164f074  bl 0x00b0789c
+0164f078  adrp x0,0x3363000
+0164f07c  ldr x0,[x0, #0x210]
+0164f080  bl 0x00b0789c
+0164f084  mov w8,#0x1
+0164f088  strb w8,[x22, #0x7e2]
+0164f08c  add x0,sp,#0xc
+0164f090  mov x1,xzr
+0164f094  bl 0x0214dc44
+0164f098  ldr x8,[x21]
+0164f09c  mov x1,x0
+0164f0a0  mov x2,xzr
+0164f0a4  mov x0,x8
+0164f0a8  bl 0x01fd2850
+0164f0ac  ldr x8,[x20]
+0164f0b0  mov x20,x0
+0164f0b4  ldr w9,[x8, #0xe0]
+0164f0b8  cbnz w9,0x0164f0c4
+0164f0bc  mov x0,x8
+0164f0c0  bl 0x00b0798c
+0164f0c4  mov x0,x20
+0164f0c8  mov x1,xzr
+0164f0cc  bl 0x024c0104
+0164f0d0  ldr x0,[x19, #0x20]
+0164f0d4  cbz x0,0x0164f0f0
+0164f0d8  mov w1,wzr
+0164f0dc  bl 0x0164e1b4
+0164f0e0  ldp x19,x30,[sp, #0x20]
+0164f0e4  ldp x21,x20,[sp, #0x10]
+0164f0e8  ldr x22,[sp], #0x30
+0164f0ec  ret
+0164f0f0  bl 0x00b079b0

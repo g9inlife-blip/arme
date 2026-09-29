@@ -1,0 +1,122 @@
+Function: AliothEngine.Utils.VerifierUtils$$GetCrc32 @ 016a0c24
+
+--- Calls OUT ---
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> System.Security.Cryptography.HashAlgorithm$$Clear @ 0200a884
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00aaac8c @ 00aaac8c
+  -> AliothEngine.Utils.Crc32$$.ctor @ 01699834
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Security.Cryptography.HashAlgorithm$$ComputeHash @ 0200a608
+  -> System.IO.FileStream$$.ctor @ 020bd3e0
+
+--- Calls IN ---
+
+--- Listing ---
+016a0c24  str x22,[sp, #-0x30]!
+016a0c28  stp x21,x20,[sp, #0x10]
+016a0c2c  stp x19,x30,[sp, #0x20]
+016a0c30  adrp x19,0x3577000
+016a0c34  ldrb w8,[x19, #0xb5e]
+016a0c38  mov x20,x0
+016a0c3c  tbnz w8,#0x0,0x016a0c78
+016a0c40  adrp x0,0x333d000
+016a0c44  ldr x0,[x0, #0x638]
+016a0c48  bl 0x00b0789c
+016a0c4c  adrp x0,0x3311000
+016a0c50  ldr x0,[x0, #0x5c0]
+016a0c54  bl 0x00b0789c
+016a0c58  adrp x0,0x337d000
+016a0c5c  ldr x0,[x0, #0x848]
+016a0c60  bl 0x00b0789c
+016a0c64  adrp x0,0x3321000
+016a0c68  ldr x0,[x0, #0x880]
+016a0c6c  bl 0x00b0789c
+016a0c70  mov w8,#0x1
+016a0c74  strb w8,[x19, #0xb5e]
+016a0c78  mov x0,x20
+016a0c7c  mov x1,xzr
+016a0c80  bl 0x020a6ae4
+016a0c84  tbz w0,#0x0,0x016a0d44
+016a0c88  adrp x8,0x3311000
+016a0c8c  ldr x8,[x8, #0x5c0]
+016a0c90  ldr x0,[x8]
+016a0c94  bl 0x00b079a0
+016a0c98  cbz x0,0x016a0d9c
+016a0c9c  adrp x21,0x333d000
+016a0ca0  adrp x22,0x337d000
+016a0ca4  ldr x21,[x21, #0x638]
+016a0ca8  ldr x22,[x22, #0x848]
+016a0cac  mov w2,#0x3
+016a0cb0  mov w3,#0x1
+016a0cb4  mov x1,x20
+016a0cb8  mov x4,xzr
+016a0cbc  mov x19,x0
+016a0cc0  bl 0x020bd3e0
+016a0cc4  ldr x0,[x21]
+016a0cc8  bl 0x00b079a0
+    ; [PRE] try { // try from 016a0cc8 to 016a0cdf has its CatchHandler @ 016a0db0
+016a0ccc  mov x20,x0
+016a0cd0  cbz x0,0x016a0da0
+016a0cd4  mov x0,x20
+016a0cd8  mov x1,xzr
+016a0cdc  bl 0x01699834
+    ; [POST] } // end try from 016a0cc8 to 016a0cdf
+016a0ce0  mov x0,x20
+    ; [PRE] try { // try from 016a0ce0 to 016a0cff has its CatchHandler @ 016a0dac
+016a0ce4  mov x1,x19
+016a0ce8  mov x2,xzr
+016a0cec  bl 0x0200a608
+016a0cf0  mov x21,x0
+016a0cf4  mov x0,x20
+016a0cf8  mov x1,xzr
+016a0cfc  bl 0x0200a884
+    ; [POST] } // end try from 016a0ce0 to 016a0cff
+016a0d00  mov x20,xzr
+016a0d04  ldr x8,[x19]
+016a0d08  ldr x1,[x22]
+016a0d0c  ldrh w9,[x8, #0x12a]
+016a0d10  cbz x9,0x016a0d34
+016a0d14  ldr x10,[x8, #0xb0]
+016a0d18  add x10,x10,#0x8
+016a0d1c  ldur x11,[x10, #-0x8]
+016a0d20  cmp x11,x1
+016a0d24  b.eq 0x016a0d6c
+016a0d28  subs x9,x9,#0x1
+016a0d2c  add x10,x10,#0x10
+016a0d30  b.ne 0x016a0d1c
+016a0d34  mov x0,x19
+016a0d38  mov w2,wzr
+016a0d3c  bl 0x00b2ae24
+016a0d40  b 0x016a0d78
+016a0d44  adrp x19,0x3321000
+016a0d48  ldr x19,[x19, #0x880]
+016a0d4c  ldr x0,[x19]
+016a0d50  ldr w8,[x0, #0xe0]
+016a0d54  cbnz w8,0x016a0d60
+016a0d58  bl 0x00b0798c
+016a0d5c  ldr x0,[x19]
+016a0d60  ldr x8,[x0, #0xb8]
+016a0d64  ldr x21,[x8]
+016a0d68  b 0x016a0d88
+016a0d6c  ldrsw x9,[x10]
+016a0d70  add x8,x8,x9, LSL #0x4
+016a0d74  add x0,x8,#0x138
+016a0d78  ldp x8,x1,[x0]
+016a0d7c  mov x0,x19
+016a0d80  blr x8
+016a0d84  cbnz x20,0x016a0da4
+016a0d88  mov x0,x21
+016a0d8c  ldp x19,x30,[sp, #0x20]
+016a0d90  ldp x21,x20,[sp, #0x10]
+016a0d94  ldr x22,[sp], #0x30
+016a0d98  ret
+016a0d9c  bl 0x00b079b0
+016a0da0  bl 0x00b079b0
+    ; [PRE] try { // try from 016a0da0 to 016a0da3 has its CatchHandler @ 016a0db0
+    ; [POST] } // end try from 016a0da0 to 016a0da3
+016a0da4  mov x0,x20
+016a0da8  bl 0x00aaac8c

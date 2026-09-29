@@ -1,0 +1,45 @@
+Function: Ali$$GetPlatform @ 00e10b4c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp279 @ 01083814
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ProtocolGame_HttpRequest$$V4_POST_Login @ 00dd5b48
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetPlatform_xlua_st_ @ 0119d7a0
+
+--- Listing ---
+00e10b4c  str x20,[sp, #-0x20]!
+00e10b50  stp x19,x30,[sp, #0x10]
+00e10b54  adrp x20,0x3572000
+00e10b58  adrp x19,0x335f000
+00e10b5c  ldrb w8,[x20, #0x5c2]
+00e10b60  ldr x19,[x19, #0x20]
+00e10b64  tbnz w8,#0x0,0x00e10b88
+00e10b68  adrp x0,0x335f000
+00e10b6c  ldr x0,[x0, #0x20]
+00e10b70  bl 0x00b0789c
+00e10b74  adrp x0,0x3369000
+00e10b78  ldr x0,[x0, #0xab8]
+00e10b7c  bl 0x00b0789c
+00e10b80  mov w8,#0x1
+00e10b84  strb w8,[x20, #0x5c2]
+00e10b88  ldr x0,[x19]
+00e10b8c  ldr w8,[x0, #0xe0]
+00e10b90  cbnz w8,0x00e10b9c
+00e10b94  bl 0x00b0798c
+00e10b98  ldr x0,[x19]
+00e10b9c  ldr x8,[x0, #0xb8]
+00e10ba0  ldr x0,[x8, #0x5b8]
+00e10ba4  cbz x0,0x00e10bb8
+00e10ba8  ldp x19,x30,[sp, #0x10]
+00e10bac  mov x1,xzr
+00e10bb0  ldr x20,[sp], #0x20
+00e10bb4  b 0x01083814
+00e10bb8  adrp x8,0x3369000
+00e10bbc  ldr x8,[x8, #0xab8]
+00e10bc0  ldp x19,x30,[sp, #0x10]
+00e10bc4  ldr x0,[x8]
+00e10bc8  ldr x20,[sp], #0x20
+00e10bcc  ret

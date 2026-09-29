@@ -1,0 +1,35 @@
+Function: AliothEngine.GUIScreen$$Reset @ 01672b20
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_m_Reset @ 01154dcc
+
+--- Listing ---
+01672b20  stp x21,x20,[sp, #-0x20]!
+01672b24  stp x19,x30,[sp, #0x10]
+01672b28  adrp x20,0x3577000
+01672b2c  adrp x21,0x3364000
+01672b30  ldrb w8,[x20, #0x99d]
+01672b34  ldr x21,[x21, #0xd28]
+01672b38  mov x19,x0
+01672b3c  tbnz w8,#0x0,0x01672b54
+01672b40  adrp x0,0x3364000
+01672b44  ldr x0,[x0, #0xd28]
+01672b48  bl 0x00b0789c
+01672b4c  mov w8,#0x1
+01672b50  strb w8,[x20, #0x99d]
+01672b54  ldr x8,[x21]
+01672b58  ldr x8,[x8, #0xb8]
+01672b5c  ldr x0,[x8, #0x160]
+01672b60  cbz x0,0x01672b78
+01672b64  mov x1,x19
+01672b68  ldp x19,x30,[sp, #0x10]
+01672b6c  mov x2,xzr
+01672b70  ldp x21,x20,[sp], #0x20
+01672b74  b 0x01060dac
+01672b78  ldp x19,x30,[sp, #0x10]
+01672b7c  ldp x21,x20,[sp], #0x20
+01672b80  ret

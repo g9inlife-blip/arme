@@ -1,0 +1,85 @@
+Function: ResManager.<LuaLoading>d__28$$MoveNext @ 00e2ceac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> AliothEngine.AssetInfoManager$$LoadOneAsset @ 01668ac0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e2ceac  str x22,[sp, #-0x30]!
+00e2ceb0  stp x21,x20,[sp, #0x10]
+00e2ceb4  stp x19,x30,[sp, #0x20]
+00e2ceb8  adrp x20,0x3572000
+00e2cebc  ldrb w8,[x20, #0x73e]
+00e2cec0  mov x19,x0
+00e2cec4  tbnz w8,#0x0,0x00e2cf00
+00e2cec8  adrp x0,0x3351000
+00e2cecc  ldr x0,[x0, #0xc78]
+00e2ced0  bl 0x00b0789c
+00e2ced4  adrp x0,0x337d000
+00e2ced8  ldr x0,[x0, #0xc38]
+00e2cedc  bl 0x00b0789c
+00e2cee0  adrp x0,0x3310000
+00e2cee4  ldr x0,[x0, #0x630]
+00e2cee8  bl 0x00b0789c
+00e2ceec  adrp x0,0x331f000
+00e2cef0  ldr x0,[x0, #0x500]
+00e2cef4  bl 0x00b0789c
+00e2cef8  mov w8,#0x1
+00e2cefc  strb w8,[x20, #0x73e]
+00e2cf00  ldr w8,[x19, #0x10]
+00e2cf04  mov w0,wzr
+00e2cf08  cmp w8,#0x1
+00e2cf0c  b.eq 0x00e2cfac
+00e2cf10  cbnz w8,0x00e2cfb4
+00e2cf14  adrp x8,0x3310000
+00e2cf18  ldr x8,[x8, #0x630]
+00e2cf1c  mov w9,#0xffffffff
+00e2cf20  str w9,[x19, #0x10]
+00e2cf24  adrp x20,0x3351000
+00e2cf28  ldr x0,[x8]
+00e2cf2c  ldr x22,[x19, #0x20]
+00e2cf30  ldr x20,[x20, #0xc78]
+00e2cf34  bl 0x01e0894c
+00e2cf38  ldr x8,[x20]
+00e2cf3c  mov x20,x0
+00e2cf40  mov x0,x8
+00e2cf44  bl 0x00b079a0
+00e2cf48  cbz x0,0x00e2cfc4
+00e2cf4c  adrp x8,0x337d000
+00e2cf50  ldr x8,[x8, #0xc38]
+00e2cf54  mov x1,x22
+00e2cf58  mov x3,xzr
+00e2cf5c  mov x21,x0
+00e2cf60  ldr x2,[x8]
+00e2cf64  bl 0x01909b80
+00e2cf68  cbz x20,0x00e2cfc4
+00e2cf6c  adrp x8,0x331f000
+00e2cf70  ldr x8,[x8, #0x500]
+00e2cf74  mov w3,#0x2
+00e2cf78  mov x0,x20
+00e2cf7c  mov x2,x21
+00e2cf80  ldr x1,[x8]
+00e2cf84  mov x4,xzr
+00e2cf88  mov x5,xzr
+00e2cf8c  bl 0x01668ac0
+00e2cf90  mov x1,x0
+00e2cf94  mov x0,x19
+00e2cf98  str x1,[x0, #0x18]!
+00e2cf9c  bl 0x00b07850
+00e2cfa0  mov w8,#0x1
+00e2cfa4  mov w0,#0x1
+00e2cfa8  b 0x00e2cfb0
+00e2cfac  mov w8,#0xffffffff
+00e2cfb0  str w8,[x19, #0x10]
+00e2cfb4  ldp x19,x30,[sp, #0x20]
+00e2cfb8  ldp x21,x20,[sp, #0x10]
+00e2cfbc  ldr x22,[sp], #0x30
+00e2cfc0  ret
+00e2cfc4  bl 0x00b079b0

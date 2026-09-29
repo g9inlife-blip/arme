@@ -1,0 +1,43 @@
+Function: AliothEngine.MiniJSON.Json.Serializer$$.ctor @ 016a2560
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json.Serializer$$Serialize @ 016a199c
+
+--- Listing ---
+016a2560  stp x21,x20,[sp, #-0x20]!
+016a2564  stp x19,x30,[sp, #0x10]
+016a2568  adrp x21,0x3577000
+016a256c  adrp x20,0x3332000
+016a2570  ldrb w8,[x21, #0xb76]
+016a2574  ldr x20,[x20, #0xaf0]
+016a2578  mov x19,x0
+016a257c  tbnz w8,#0x0,0x016a2594
+016a2580  adrp x0,0x3332000
+016a2584  ldr x0,[x0, #0xaf0]
+016a2588  bl 0x00b0789c
+016a258c  mov w8,#0x1
+016a2590  strb w8,[x21, #0xb76]
+016a2594  mov x0,x19
+016a2598  mov x1,xzr
+016a259c  bl 0x02194104
+016a25a0  ldr x0,[x20]
+016a25a4  bl 0x00b079a0
+016a25a8  cbz x0,0x016a25d0
+016a25ac  mov x1,xzr
+016a25b0  mov x20,x0
+016a25b4  bl 0x01fe7ee0
+016a25b8  str x20,[x19, #0x10]!
+016a25bc  mov x0,x19
+016a25c0  ldp x19,x30,[sp, #0x10]
+016a25c4  mov x1,x20
+016a25c8  ldp x21,x20,[sp], #0x20
+016a25cc  b 0x00b07850
+016a25d0  bl 0x00b079b0

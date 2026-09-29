@@ -1,0 +1,28 @@
+Function: AdconfirmpanelNode$$get_mask @ 00fa1ed4
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fa1ed4  stp x21,x20,[sp, #-0x20]!
+00fa1ed8  stp x19,x30,[sp, #0x10]
+00fa1edc  adrp x20,0x3573000
+00fa1ee0  adrp x21,0x337b000
+00fa1ee4  ldrb w8,[x20, #0x573]
+00fa1ee8  ldr x21,[x21, #0x2b8]
+00fa1eec  mov x19,x0
+00fa1ef0  tbnz w8,#0x0,0x00fa1f08
+00fa1ef4  adrp x0,0x337b000
+00fa1ef8  ldr x0,[x0, #0x2b8]
+00fa1efc  bl 0x00b0789c
+00fa1f00  mov w8,#0x1
+00fa1f04  strb w8,[x20, #0x573]
+00fa1f08  ldr x1,[x21]
+00fa1f0c  mov x0,x19
+00fa1f10  ldp x19,x30,[sp, #0x10]
+00fa1f14  mov x2,xzr
+00fa1f18  ldp x21,x20,[sp], #0x20
+00fa1f1c  b 0x00dc06f8

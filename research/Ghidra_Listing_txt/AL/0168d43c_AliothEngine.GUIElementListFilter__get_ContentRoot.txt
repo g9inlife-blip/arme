@@ -1,0 +1,21 @@
+Function: AliothEngine.GUIElementListFilter$$get_ContentRoot @ 0168d43c
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$get_parent @ 024f42ec
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GUIElementListFilter$$AddElement<object> @ 01794aa0
+
+--- Listing ---
+0168d43c  str x30,[sp, #-0x10]!
+0168d440  ldr x0,[x0, #0x30]
+0168d444  cbz x0,0x0168d460
+0168d448  mov x1,xzr
+0168d44c  bl 0x024e4e98
+0168d450  cbz x0,0x0168d460
+0168d454  mov x1,xzr
+0168d458  ldr x30,[sp], #0x10
+0168d45c  b 0x024f42ec
+0168d460  bl 0x00b079b0

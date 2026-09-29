@@ -1,0 +1,107 @@
+Function: AliothEngine.AssetBundleInfoList$$GetAssetBundleVersion @ 016668b4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Collections.Generic.List.Enumerator<object>$$Dispose @ 01a070e8
+  -> System.Collections.Generic.List<object>$$GetEnumerator @ 01c01338
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<object,-uint>$$.ctor @ 01985eb8
+  -> System.Collections.Generic.Dictionary<object,-uint>$$Add @ 019867c8
+
+--- Calls IN ---
+
+--- Listing ---
+016668b4  sub sp,sp,#0x50
+016668b8  str x22,[sp, #0x20]
+016668bc  stp x21,x20,[sp, #0x30]
+016668c0  stp x19,x30,[sp, #0x40]
+016668c4  adrp x19,0x3577000
+016668c8  ldrb w8,[x19, #0x8fc]
+016668cc  mov x20,x0
+016668d0  tbnz w8,#0x0,0x0166693c
+016668d4  adrp x0,0x3341000
+016668d8  ldr x0,[x0, #0x510]
+016668dc  bl 0x00b0789c
+016668e0  adrp x0,0x337e000
+016668e4  ldr x0,[x0, #0x230]
+016668e8  bl 0x00b0789c
+016668ec  adrp x0,0x3338000
+016668f0  ldr x0,[x0, #0x888]
+016668f4  bl 0x00b0789c
+016668f8  adrp x0,0x3384000
+016668fc  ldr x0,[x0, #0xe80]
+01666900  bl 0x00b0789c
+01666904  adrp x0,0x3358000
+01666908  ldr x0,[x0, #0xf88]
+0166690c  bl 0x00b0789c
+01666910  adrp x0,0x3329000
+01666914  ldr x0,[x0, #0x448]
+01666918  bl 0x00b0789c
+0166691c  adrp x0,0x3308000
+01666920  ldr x0,[x0, #0xe08]
+01666924  bl 0x00b0789c
+01666928  adrp x0,0x3381000
+0166692c  ldr x0,[x0, #0xc60]
+01666930  bl 0x00b0789c
+01666934  mov w8,#0x1
+01666938  strb w8,[x19, #0x8fc]
+0166693c  stp xzr,xzr,[sp, #0x10]
+01666940  str xzr,[sp, #0x8]
+01666944  ldr x8,[x20, #0x18]
+01666948  cbz x8,0x01666a08
+0166694c  adrp x9,0x3338000
+01666950  ldr x9,[x9, #0x888]
+01666954  ldr w21,[x8, #0x18]
+01666958  ldr x0,[x9]
+0166695c  bl 0x00b079a0
+01666960  cbz x0,0x01666a08
+01666964  adrp x8,0x337e000
+01666968  ldr x8,[x8, #0x230]
+0166696c  mov w1,w21
+01666970  mov x19,x0
+01666974  ldr x2,[x8]
+01666978  bl 0x01985eb8
+0166697c  ldr x0,[x20, #0x18]
+01666980  cbz x0,0x01666a08
+01666984  adrp x8,0x3308000
+01666988  ldr x8,[x8, #0xe08]
+0166698c  adrp x21,0x3358000
+01666990  adrp x22,0x3341000
+01666994  adrp x20,0x3384000
+01666998  ldr x1,[x8]
+0166699c  ldr x21,[x21, #0xf88]
+016669a0  ldr x22,[x22, #0x510]
+016669a4  ldr x20,[x20, #0xe80]
+016669a8  add x8,sp,#0x8
+016669ac  bl 0x01c01338
+016669b0  ldr x1,[x21]
+016669b4  add x0,sp,#0x8
+    ; [PRE] try { // try from 016669b4 to 016669bb has its CatchHandler @ 01666a14
+016669b8  bl 0x01a070ec
+    ; [POST] } // end try from 016669b4 to 016669bb
+016669bc  tbz w0,#0x0,0x016669e0
+016669c0  ldr x8,[sp, #0x18]
+016669c4  cbz x8,0x01666a04
+016669c8  ldr x1,[x8, #0x10]
+016669cc  ldr w2,[x8, #0x24]
+016669d0  ldr x3,[x22]
+016669d4  mov x0,x19
+    ; [PRE] try { // try from 016669d4 to 016669db has its CatchHandler @ 01666a10
+016669d8  bl 0x019867c8
+    ; [POST] } // end try from 016669d4 to 016669db
+016669dc  b 0x016669b0
+016669e0  ldr x1,[x20]
+016669e4  add x0,sp,#0x8
+016669e8  bl 0x01a070e8
+016669ec  mov x0,x19
+016669f0  ldp x19,x30,[sp, #0x40]
+016669f4  ldp x21,x20,[sp, #0x30]
+016669f8  ldr x22,[sp, #0x20]
+016669fc  add sp,sp,#0x50
+01666a00  ret
+01666a04  bl 0x00b079b0
+    ; [PRE] try { // try from 01666a04 to 01666a07 has its CatchHandler @ 01666a0c
+    ; [POST] } // end try from 01666a04 to 01666a07
+01666a08  bl 0x00b079b0

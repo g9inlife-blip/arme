@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_btn_startbattle_gray @ 00fcdfc8
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$InitReady @ 00e5dec0
+
+--- Listing ---
+00fcdfc8  stp x21,x20,[sp, #-0x20]!
+00fcdfcc  stp x19,x30,[sp, #0x10]
+00fcdfd0  adrp x20,0x3573000
+00fcdfd4  adrp x21,0x3340000
+00fcdfd8  ldrb w8,[x20, #0xe76]
+00fcdfdc  ldr x21,[x21, #0x730]
+00fcdfe0  mov x19,x0
+00fcdfe4  tbnz w8,#0x0,0x00fcdffc
+00fcdfe8  adrp x0,0x3340000
+00fcdfec  ldr x0,[x0, #0x730]
+00fcdff0  bl 0x00b0789c
+00fcdff4  mov w8,#0x1
+00fcdff8  strb w8,[x20, #0xe76]
+00fcdffc  ldr x1,[x21]
+00fce000  mov x0,x19
+00fce004  ldp x19,x30,[sp, #0x10]
+00fce008  mov x2,xzr
+00fce00c  ldp x21,x20,[sp], #0x20
+00fce010  b 0x00dc06f8

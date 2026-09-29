@@ -1,0 +1,52 @@
+Function: AliothEngine.Net.HttpRequestManager$$Request @ 01695d00
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Net.HttpRequestManager$$CreateHttpRequest @ 01695c24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Net.HttpRequestManager$$Tick @ 01695a04
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Queue<object>$$Enqueue @ 01d96908
+
+--- Calls IN ---
+
+--- Listing ---
+01695d00  stp x23,x22,[sp, #-0x30]!
+01695d04  stp x21,x20,[sp, #0x10]
+01695d08  stp x19,x30,[sp, #0x20]
+01695d0c  adrp x23,0x3577000
+01695d10  ldrb w8,[x23, #0xaf9]
+01695d14  mov x21,x3
+01695d18  mov x22,x2
+01695d1c  mov x20,x1
+01695d20  mov x19,x0
+01695d24  tbnz w8,#0x0,0x01695d3c
+01695d28  adrp x0,0x3382000
+01695d2c  ldr x0,[x0, #0x258]
+01695d30  bl 0x00b0789c
+01695d34  mov w8,#0x1
+01695d38  strb w8,[x23, #0xaf9]
+01695d3c  mov x0,x19
+01695d40  mov x1,x22
+01695d44  mov x2,x21
+01695d48  bl 0x01695c24
+01695d4c  cbz x0,0x01695d98
+01695d50  mov x21,x0
+01695d54  str x20,[x0, #0x10]!
+01695d58  mov x1,x20
+01695d5c  bl 0x00b07850
+01695d60  ldr x0,[x19, #0x20]
+01695d64  cbz x0,0x01695d98
+01695d68  adrp x8,0x3382000
+01695d6c  ldr x8,[x8, #0x258]
+01695d70  mov x1,x21
+01695d74  ldr x2,[x8]
+01695d78  bl 0x01d96908
+01695d7c  mov x0,x19
+01695d80  bl 0x01695a04
+01695d84  mov x0,x21
+01695d88  ldp x19,x30,[sp, #0x20]
+01695d8c  ldp x21,x20,[sp, #0x10]
+01695d90  ldp x23,x22,[sp], #0x30
+01695d94  ret
+01695d98  bl 0x00b079b0

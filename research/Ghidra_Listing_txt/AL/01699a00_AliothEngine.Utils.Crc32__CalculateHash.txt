@@ -1,0 +1,40 @@
+Function: AliothEngine.Utils.Crc32$$CalculateHash @ 01699a00
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Crc32$$HashCore @ 016999d0
+
+--- Listing ---
+01699a00  str x30,[sp, #-0x10]!
+01699a04  cmp w3,w4
+01699a08  b.ge 0x01699a64
+01699a0c  cbz x2,0x01699a74
+01699a10  ldr w8,[x2, #0x18]
+01699a14  sxtw x10,w4
+01699a18  add x9,x2,w3, SXTW 
+01699a1c  add x9,x9,#0x20
+01699a20  sub x10,x10,w3, SXTW 
+01699a24  cmp w3,w8
+01699a28  b.cs 0x01699a70
+01699a2c  cbz x0,0x01699a74
+01699a30  ldrb w11,[x9]
+01699a34  ldr w12,[x0, #0x18]
+01699a38  and w13,w1,#0xff
+01699a3c  eor w11,w13,w11
+01699a40  cmp w11,w12
+01699a44  b.cs 0x01699a70
+01699a48  add x11,x0,w11, UXTW  #0x2
+01699a4c  ldr w11,[x11, #0x20]
+01699a50  add x9,x9,#0x1
+01699a54  subs x10,x10,#0x1
+01699a58  add w3,w3,#0x1
+01699a5c  eor w1,w11,w1, LSR #0x8
+01699a60  b.ne 0x01699a24
+01699a64  mov w0,w1
+01699a68  ldr x30,[sp], #0x10
+01699a6c  ret
+01699a70  bl 0x00b079b8
+01699a74  bl 0x00b079b0

@@ -1,0 +1,44 @@
+Function: AliothEngine.GUIScreen$$.ctor @ 01672e7c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> BaseMono$$.ctor @ 00e1c6b4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- GUIScreenBaseMono$$.ctor @ 00f1c130
+  <- GUIScreen_Test$$.ctor @ 00dbbbec
+  <- AliothEngine.GUIScreen_Overlay$$.ctor @ 0167cdd4
+  <- GUIScreen_Menu$$.ctor @ 00dbbaa0
+  <- AliothEngine.Samples.GUIScreen_GeneralAlert$$.ctor @ 016a6f20
+  <- GUIScreen_Test2$$.ctor @ 00dbbc9c
+
+--- Listing ---
+01672e7c  stp x21,x20,[sp, #-0x20]!
+01672e80  stp x19,x30,[sp, #0x10]
+01672e84  adrp x21,0x3577000
+01672e88  adrp x20,0x3364000
+01672e8c  ldrb w8,[x21, #0x9a2]
+01672e90  ldr x20,[x20, #0xd28]
+01672e94  mov x19,x0
+01672e98  tbnz w8,#0x0,0x01672eb0
+01672e9c  adrp x0,0x3364000
+01672ea0  ldr x0,[x0, #0xd28]
+01672ea4  bl 0x00b0789c
+01672ea8  mov w8,#0x1
+01672eac  strb w8,[x21, #0x9a2]
+01672eb0  mov x0,x19
+01672eb4  mov x1,xzr
+01672eb8  bl 0x00e1c6b4
+01672ebc  ldr x8,[x20]
+01672ec0  ldr x8,[x8, #0xb8]
+01672ec4  ldr x0,[x8, #0x188]
+01672ec8  cbz x0,0x01672ee0
+01672ecc  mov x1,x19
+01672ed0  ldp x19,x30,[sp, #0x10]
+01672ed4  mov x2,xzr
+01672ed8  ldp x21,x20,[sp], #0x20
+01672edc  b 0x01060dac
+01672ee0  ldp x19,x30,[sp, #0x10]
+01672ee4  ldp x21,x20,[sp], #0x20
+01672ee8  ret

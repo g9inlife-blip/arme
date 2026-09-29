@@ -1,0 +1,27 @@
+Function: AliothEngine.BoundProperty<object>$$set_Value @ 01f4191c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01f4191c  stp x21,x20,[sp, #-0x20]!
+01f41920  stp x19,x30,[sp, #0x10]
+01f41924  mov x20,x0
+01f41928  str x1,[x0, #0x30]!
+01f4192c  mov x21,x2
+01f41930  mov x19,x1
+01f41934  bl 0x00b07850
+01f41938  cbz x20,0x01f41960
+01f4193c  ldr x8,[x21, #0x20]
+01f41940  mov x1,x19
+01f41944  ldp x19,x30,[sp, #0x10]
+01f41948  mov x0,x20
+01f4194c  ldr x8,[x8, #0xc0]
+01f41950  ldr x2,[x8]
+01f41954  ldr x3,[x2, #0x8]
+01f41958  ldp x21,x20,[sp], #0x20
+01f4195c  br x3
+01f41960  bl 0x00b079b0

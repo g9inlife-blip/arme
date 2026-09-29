@@ -1,0 +1,29 @@
+Function: AliothEngine.AssetVersionManager$$set_AssetVersionSaved @ 0166f928
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetString @ 024be710
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$SaveLatestVersion @ 0167daa0
+
+--- Listing ---
+0166f928  stp x21,x20,[sp, #-0x20]!
+0166f92c  stp x19,x30,[sp, #0x10]
+0166f930  adrp x20,0x3577000
+0166f934  adrp x21,0x333b000
+0166f938  ldrb w8,[x20, #0x960]
+0166f93c  ldr x21,[x21, #0x400]
+0166f940  mov x19,x0
+0166f944  tbnz w8,#0x0,0x0166f95c
+0166f948  adrp x0,0x333b000
+0166f94c  ldr x0,[x0, #0x400]
+0166f950  bl 0x00b0789c
+0166f954  mov w8,#0x1
+0166f958  strb w8,[x20, #0x960]
+0166f95c  ldr x0,[x21]
+0166f960  mov x1,x19
+0166f964  ldp x19,x30,[sp, #0x10]
+0166f968  mov x2,xzr
+0166f96c  ldp x21,x20,[sp], #0x20
+0166f970  b 0x024be710

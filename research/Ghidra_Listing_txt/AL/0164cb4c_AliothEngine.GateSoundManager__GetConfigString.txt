@@ -1,0 +1,41 @@
+Function: AliothEngine.GateSoundManager$$GetConfigString @ 0164cb4c
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetString @ 024be710
+  -> UnityEngine.PlayerPrefs$$GetString @ 024be7e8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PlayerPrefs$$HasKey @ 024be854
+
+--- Calls IN ---
+
+--- Listing ---
+0164cb4c  str x20,[sp, #-0x20]!
+0164cb50  stp x19,x30,[sp, #0x10]
+0164cb54  adrp x20,0x3577000
+0164cb58  ldrb w8,[x20, #0x7c5]
+0164cb5c  mov x19,x0
+0164cb60  tbnz w8,#0x0,0x0164cb78
+0164cb64  adrp x0,0x332c000
+0164cb68  ldr x0,[x0, #0x2c0]
+0164cb6c  bl 0x00b0789c
+0164cb70  mov w8,#0x1
+0164cb74  strb w8,[x20, #0x7c5]
+0164cb78  mov x0,x19
+0164cb7c  mov x1,xzr
+0164cb80  bl 0x024be854
+0164cb84  tbz w0,#0x0,0x0164cb9c
+0164cb88  mov x0,x19
+0164cb8c  ldp x19,x30,[sp, #0x10]
+0164cb90  mov x1,xzr
+0164cb94  ldr x20,[sp], #0x20
+0164cb98  b 0x024be7e8
+0164cb9c  adrp x20,0x332c000
+0164cba0  ldr x20,[x20, #0x2c0]
+0164cba4  mov x0,x19
+0164cba8  mov x2,xzr
+0164cbac  ldr x1,[x20]
+0164cbb0  bl 0x024be710
+0164cbb4  ldr x0,[x20]
+0164cbb8  ldp x19,x30,[sp, #0x10]
+0164cbbc  ldr x20,[sp], #0x20
+0164cbc0  ret

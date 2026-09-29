@@ -1,0 +1,72 @@
+Function: AliothExtensions$$GetSafeComponent<object> @ 017373e8
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> XLua.DelegateBridge$$InParam<object> @ 01775bd0
+
+--- Calls IN ---
+  <- UINode$$get_BtnState @ 00dc4dbc
+  <- UINode$$get_Toggle @ 00dc4a2c
+  <- UINode$$get_NicerOutline @ 00dc4afc
+  <- UINode$$get_InputField @ 00dc495c
+  <- UINode$$get_TextMesh @ 00dc488c
+  <- UINode$$get_ScrollRect @ 00dc4bcc
+
+--- Listing ---
+017373e8  str x22,[sp, #-0x30]!
+017373ec  stp x21,x20,[sp, #0x10]
+017373f0  stp x19,x30,[sp, #0x20]
+017373f4  adrp x22,0x3578000
+017373f8  adrp x21,0x3348000
+017373fc  ldrb w8,[x22, #0x41]
+01737400  ldr x21,[x21, #0x138]
+01737404  mov x19,x1
+01737408  mov x20,x0
+0173740c  tbnz w8,#0x0,0x01737430
+01737410  adrp x0,0x3348000
+01737414  ldr x0,[x0, #0x138]
+01737418  bl 0x00b0789c
+0173741c  adrp x0,0x331e000
+01737420  ldr x0,[x0, #0x110]
+01737424  bl 0x00b0789c
+01737428  mov w8,#0x1
+0173742c  strb w8,[x22, #0x41]
+01737430  ldr x0,[x21]
+01737434  ldr w8,[x0, #0xe0]
+01737438  cbnz w8,0x01737444
+0173743c  bl 0x00b0798c
+01737440  ldr x0,[x21]
+01737444  ldr x8,[x0, #0xb8]
+01737448  ldr x21,[x8, #0x148]
+0173744c  cbz x21,0x01737494
+01737450  adrp x22,0x331e000
+01737454  ldr x22,[x22, #0x110]
+01737458  mov x0,x21
+0173745c  mov x1,xzr
+01737460  bl 0x010cef38
+01737464  ldr x2,[x22]
+01737468  mov x0,x21
+0173746c  mov x1,x20
+01737470  bl 0x01775bd0
+01737474  mov w1,#0x1
+01737478  mov x0,x21
+0173747c  mov x2,xzr
+01737480  bl 0x010ceff0
+01737484  ldr x8,[x19, #0x38]
+01737488  mov x0,x21
+0173748c  ldr x1,[x8]
+01737490  b 0x017374a4
+01737494  cbz x20,0x017374b8
+01737498  ldr x8,[x19, #0x38]
+0173749c  mov x0,x20
+017374a0  ldr x1,[x8, #0x8]
+017374a4  ldr x2,[x1, #0x8]
+017374a8  ldp x19,x30,[sp, #0x20]
+017374ac  ldp x21,x20,[sp, #0x10]
+017374b0  ldr x22,[sp], #0x30
+017374b4  br x2
+017374b8  bl 0x00b079b0

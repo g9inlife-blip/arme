@@ -1,0 +1,39 @@
+Function: AliothEngine.GUIElement_Field$$GetFieldsOptions @ 0168de24
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168de24  str x20,[sp, #-0x20]!
+0168de28  stp x19,x30,[sp, #0x10]
+0168de2c  adrp x19,0x3577000
+0168de30  adrp x20,0x3331000
+0168de34  ldrb w8,[x19, #0xac5]
+0168de38  ldr x20,[x20, #0x9c0]
+0168de3c  tbnz w8,#0x0,0x0168de60
+0168de40  adrp x0,0x331a000
+0168de44  ldr x0,[x0, #0xe40]
+0168de48  bl 0x00b0789c
+0168de4c  adrp x0,0x3331000
+0168de50  ldr x0,[x0, #0x9c0]
+0168de54  bl 0x00b0789c
+0168de58  mov w8,#0x1
+0168de5c  strb w8,[x19, #0xac5]
+0168de60  ldr x0,[x20]
+0168de64  bl 0x00b079a0
+0168de68  cbz x0,0x0168de90
+0168de6c  adrp x8,0x331a000
+0168de70  ldr x8,[x8, #0xe40]
+0168de74  mov x19,x0
+0168de78  ldr x1,[x8]
+0168de7c  bl 0x01bffe10
+0168de80  mov x0,x19
+0168de84  ldp x19,x30,[sp, #0x10]
+0168de88  ldr x20,[sp], #0x20
+0168de8c  ret
+0168de90  bl 0x00b079b0

@@ -1,0 +1,42 @@
+Function: AliothEngine.Net.HttpRequestManager$$AutoDispose @ 01695990
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.Net.HttpRequestManager$$OnFinished @ 01695914
+
+--- Listing ---
+01695990  stp x21,x20,[sp, #-0x20]!
+01695994  stp x19,x30,[sp, #0x10]
+01695998  adrp x20,0x3577000
+0169599c  adrp x21,0x3369000
+016959a0  ldrb w8,[x20, #0xaf8]
+016959a4  ldr x21,[x21, #0xb98]
+016959a8  mov x19,x1
+016959ac  tbnz w8,#0x0,0x016959c4
+016959b0  adrp x0,0x3369000
+016959b4  ldr x0,[x0, #0xb98]
+016959b8  bl 0x00b0789c
+016959bc  mov w8,#0x1
+016959c0  strb w8,[x20, #0xaf8]
+016959c4  ldr x0,[x21]
+016959c8  bl 0x00b079a0
+016959cc  cbz x0,0x01695a00
+016959d0  mov x1,xzr
+016959d4  mov x20,x0
+016959d8  bl 0x02194104
+016959dc  mov x0,x20
+016959e0  str wzr,[x20, #0x10]
+016959e4  str x19,[x0, #0x20]!
+016959e8  mov x1,x19
+016959ec  bl 0x00b07850
+016959f0  ldp x19,x30,[sp, #0x10]
+016959f4  mov x0,x20
+016959f8  ldp x21,x20,[sp], #0x20
+016959fc  ret
+01695a00  bl 0x00b079b0

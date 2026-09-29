@@ -1,0 +1,37 @@
+Function: Alioth.S1.Net.Request$$get_SendAt @ 015b40cc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp293 @ 010852d4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter$$TrySendRequest @ 015b3df8
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_g_get_SendAt @ 0117288c
+
+--- Listing ---
+015b40cc  stp x21,x20,[sp, #-0x20]!
+015b40d0  stp x19,x30,[sp, #0x10]
+015b40d4  adrp x20,0x3577000
+015b40d8  adrp x21,0x3374000
+015b40dc  ldrb w8,[x20, #0xc2]
+015b40e0  ldr x21,[x21, #0x470]
+015b40e4  mov x19,x0
+015b40e8  tbnz w8,#0x0,0x015b4100
+015b40ec  adrp x0,0x3374000
+015b40f0  ldr x0,[x0, #0x470]
+015b40f4  bl 0x00b0789c
+015b40f8  mov w8,#0x1
+015b40fc  strb w8,[x20, #0xc2]
+015b4100  ldr x8,[x21]
+015b4104  ldr x8,[x8, #0xb8]
+015b4108  ldr x0,[x8, #0x30]
+015b410c  cbz x0,0x015b4124
+015b4110  mov x1,x19
+015b4114  ldp x19,x30,[sp, #0x10]
+015b4118  mov x2,xzr
+015b411c  ldp x21,x20,[sp], #0x20
+015b4120  b 0x010852d4
+015b4124  ldr x0,[x19, #0x20]
+015b4128  ldp x19,x30,[sp, #0x10]
+015b412c  ldp x21,x20,[sp], #0x20
+015b4130  ret

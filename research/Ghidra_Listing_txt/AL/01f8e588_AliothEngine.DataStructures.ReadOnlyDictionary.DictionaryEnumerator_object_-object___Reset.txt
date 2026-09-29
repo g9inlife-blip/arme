@@ -1,0 +1,52 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.DictionaryEnumerator<object,-object>$$Reset @ 01f8e588
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_009b2650 @ 009b2650
+
+--- Listing ---
+01f8e588  str x20,[sp, #-0x20]!
+01f8e58c  stp x19,x30,[sp, #0x10]
+01f8e590  adrp x20,0x3579000
+01f8e594  ldrb w8,[x20, #0x47f]
+01f8e598  mov x19,x0
+01f8e59c  tbnz w8,#0x0,0x01f8e5b4
+01f8e5a0  adrp x0,0x3364000
+01f8e5a4  ldr x0,[x0, #0xeb0]
+01f8e5a8  bl 0x00b0789c
+01f8e5ac  mov w8,#0x1
+01f8e5b0  strb w8,[x20, #0x47f]
+01f8e5b4  ldr x19,[x19]
+01f8e5b8  cbz x19,0x01f8e628
+01f8e5bc  adrp x10,0x3364000
+01f8e5c0  ldr x8,[x19]
+01f8e5c4  ldr x10,[x10, #0xeb0]
+01f8e5c8  ldrh w9,[x8, #0x12a]
+01f8e5cc  ldr x1,[x10]
+01f8e5d0  cbz x9,0x01f8e5f4
+01f8e5d4  ldr x10,[x8, #0xb0]
+01f8e5d8  add x10,x10,#0x8
+01f8e5dc  ldur x11,[x10, #-0x8]
+01f8e5e0  cmp x11,x1
+01f8e5e4  b.eq 0x01f8e604
+01f8e5e8  subs x9,x9,#0x1
+01f8e5ec  add x10,x10,#0x10
+01f8e5f0  b.ne 0x01f8e5dc
+01f8e5f4  mov w2,#0x2
+01f8e5f8  mov x0,x19
+01f8e5fc  bl 0x00b2ae24
+01f8e600  b 0x01f8e614
+01f8e604  ldr w9,[x10]
+01f8e608  add w9,w9,#0x2
+01f8e60c  add x8,x8,w9, SXTW  #0x4
+01f8e610  add x0,x8,#0x138
+01f8e614  ldp x2,x1,[x0]
+01f8e618  mov x0,x19
+01f8e61c  ldp x19,x30,[sp, #0x10]
+01f8e620  ldr x20,[sp], #0x20
+01f8e624  br x2
+01f8e628  bl 0x00b079b0

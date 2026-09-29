@@ -1,0 +1,94 @@
+Function: Ali$$isMonthShopLimit @ 00e0d8a8
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$get_RechargeLimit @ 00e00b70
+  -> UserInfo$$get_ChargeTotalPerMonth @ 00dd29d8
+
+--- Calls IN ---
+  <- Ali$$ShowCharge @ 00e0d574
+
+--- Listing ---
+00e0d8a8  str d8,[sp, #-0x30]!
+00e0d8ac  str x22,[sp, #0x8]
+00e0d8b0  stp x21,x20,[sp, #0x10]
+00e0d8b4  stp x19,x30,[sp, #0x20]
+00e0d8b8  adrp x22,0x3572000
+00e0d8bc  adrp x21,0x335f000
+00e0d8c0  ldrb w8,[x22, #0x5ac]
+00e0d8c4  ldr x21,[x21, #0x20]
+00e0d8c8  mov x19,x1
+00e0d8cc  mov x20,x0
+00e0d8d0  tbnz w8,#0x0,0x00e0d8f4
+00e0d8d4  adrp x0,0x335f000
+00e0d8d8  ldr x0,[x0, #0x20]
+00e0d8dc  bl 0x00b0789c
+00e0d8e0  adrp x0,0x3347000
+00e0d8e4  ldr x0,[x0, #0x410]
+00e0d8e8  bl 0x00b0789c
+00e0d8ec  mov w8,#0x1
+00e0d8f0  strb w8,[x22, #0x5ac]
+00e0d8f4  ldr x0,[x21]
+00e0d8f8  ldr w8,[x0, #0xe0]
+00e0d8fc  cbnz w8,0x00e0d908
+00e0d900  bl 0x00b0798c
+00e0d904  ldr x0,[x21]
+00e0d908  ldr x9,[x0, #0xb8]
+00e0d90c  ldr x8,[x9, #0x508]
+00e0d910  cbz x8,0x00e0d938
+00e0d914  mov x1,x20
+00e0d918  mov x2,x19
+00e0d91c  ldp x19,x30,[sp, #0x20]
+00e0d920  ldp x21,x20,[sp, #0x10]
+00e0d924  ldr x22,[sp, #0x8]
+00e0d928  mov x0,x8
+00e0d92c  mov x3,xzr
+00e0d930  ldr d8,[sp], #0x30
+00e0d934  b 0x01065a14
+00e0d938  ldr w8,[x0, #0xe0]
+00e0d93c  cbnz w8,0x00e0d94c
+00e0d940  bl 0x00b0798c
+00e0d944  ldr x8,[x21]
+00e0d948  ldr x9,[x8, #0xb8]
+00e0d94c  ldr x0,[x9, #0x10]
+00e0d950  cbz x0,0x00e0d9e0
+00e0d954  bl 0x00e00b70
+00e0d958  cbz x0,0x00e0d9cc
+00e0d95c  adrp x8,0x3347000
+00e0d960  ldr x8,[x8, #0x410]
+00e0d964  ldr x0,[x8]
+00e0d968  bl 0x01e0894c
+00e0d96c  cbz x0,0x00e0d9e0
+00e0d970  ldr x0,[x0, #0x28]
+00e0d974  cbz x0,0x00e0d9e0
+00e0d978  mov x1,xzr
+00e0d97c  bl 0x00dd29d8
+00e0d980  cbz x19,0x00e0d9e0
+00e0d984  mov w20,w0
+00e0d988  ldr x0,[x21]
+00e0d98c  ldr s8,[x19, #0xa8]
+00e0d990  ldr w8,[x0, #0xe0]
+00e0d994  cbnz w8,0x00e0d9a0
+00e0d998  bl 0x00b0798c
+00e0d99c  ldr x0,[x21]
+00e0d9a0  ldr x8,[x0, #0xb8]
+00e0d9a4  ldr x0,[x8, #0x10]
+00e0d9a8  cbz x0,0x00e0d9e0
+00e0d9ac  bl 0x00e00b70
+00e0d9b0  cbz x0,0x00e0d9e0
+00e0d9b4  ldr s0,[x0, #0x84]
+00e0d9b8  scvtf s1,w20
+00e0d9bc  fadd s1,s8,s1
+00e0d9c0  scvtf s0,s0
+00e0d9c4  fcmp s1,s0
+00e0d9c8  cset w0,ge
+00e0d9cc  ldp x19,x30,[sp, #0x20]
+00e0d9d0  ldp x21,x20,[sp, #0x10]
+00e0d9d4  ldr x22,[sp, #0x8]
+00e0d9d8  ldr d8,[sp], #0x30
+00e0d9dc  ret
+00e0d9e0  bl 0x00b079b0

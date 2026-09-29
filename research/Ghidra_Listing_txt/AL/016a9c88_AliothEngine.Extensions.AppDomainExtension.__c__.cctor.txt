@@ -1,0 +1,40 @@
+Function: AliothEngine.Extensions.AppDomainExtension.<>c$$.cctor @ 016a9c88
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016a9c88  str x20,[sp, #-0x20]!
+016a9c8c  stp x19,x30,[sp, #0x10]
+016a9c90  adrp x19,0x3577000
+016a9c94  adrp x20,0x331d000
+016a9c98  ldrb w8,[x19, #0xba7]
+016a9c9c  ldr x20,[x20, #0xd0]
+016a9ca0  tbnz w8,#0x0,0x016a9cb8
+016a9ca4  adrp x0,0x331d000
+016a9ca8  ldr x0,[x0, #0xd0]
+016a9cac  bl 0x00b0789c
+016a9cb0  mov w8,#0x1
+016a9cb4  strb w8,[x19, #0xba7]
+016a9cb8  ldr x0,[x20]
+016a9cbc  bl 0x00b079a0
+016a9cc0  cbz x0,0x016a9cf4
+016a9cc4  mov x1,xzr
+016a9cc8  mov x19,x0
+016a9ccc  bl 0x02194104
+016a9cd0  ldr x8,[x20]
+016a9cd4  mov x1,x19
+016a9cd8  ldr x8,[x8, #0xb8]
+016a9cdc  str x19,[x8]
+016a9ce0  ldr x8,[x20]
+016a9ce4  ldp x19,x30,[sp, #0x10]
+016a9ce8  ldr x0,[x8, #0xb8]
+016a9cec  ldr x20,[sp], #0x20
+016a9cf0  b 0x00b07850
+016a9cf4  bl 0x00b079b0

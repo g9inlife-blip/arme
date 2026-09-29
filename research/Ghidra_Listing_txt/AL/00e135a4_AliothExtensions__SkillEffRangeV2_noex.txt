@@ -1,0 +1,52 @@
+Function: AliothExtensions$$SkillEffRangeV2_noex @ 00e135a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp421 @ 01095bec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothExtensions$$SkillEffRangeV2 @ 00e13644
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothExtensionsWrap$$_m_SkillEffRangeV2_noex_xlua_st_ @ 0116ace4
+
+--- Listing ---
+00e135a4  str x22,[sp, #-0x30]!
+00e135a8  stp x21,x20,[sp, #0x10]
+00e135ac  stp x19,x30,[sp, #0x20]
+00e135b0  adrp x22,0x3572000
+00e135b4  adrp x21,0x3348000
+00e135b8  ldrb w8,[x22, #0x5ef]
+00e135bc  ldr x21,[x21, #0x138]
+00e135c0  mov w20,w1
+00e135c4  mov x19,x0
+00e135c8  tbnz w8,#0x0,0x00e135e0
+00e135cc  adrp x0,0x3348000
+00e135d0  ldr x0,[x0, #0x138]
+00e135d4  bl 0x00b0789c
+00e135d8  mov w8,#0x1
+00e135dc  strb w8,[x22, #0x5ef]
+00e135e0  ldr x0,[x21]
+00e135e4  ldr w8,[x0, #0xe0]
+00e135e8  cbnz w8,0x00e135f4
+00e135ec  bl 0x00b0798c
+00e135f0  ldr x0,[x21]
+00e135f4  ldr x8,[x0, #0xb8]
+00e135f8  ldr x8,[x8, #0xb8]
+00e135fc  cbz x8,0x00e13620
+00e13600  and w2,w20,#0x1
+00e13604  mov x1,x19
+00e13608  ldp x19,x30,[sp, #0x20]
+00e1360c  ldp x21,x20,[sp, #0x10]
+00e13610  mov x0,x8
+00e13614  mov x3,xzr
+00e13618  ldr x22,[sp], #0x30
+00e1361c  b 0x01095bec
+00e13620  ldr w8,[x0, #0xe0]
+00e13624  cbnz w8,0x00e1362c
+00e13628  bl 0x00b0798c
+00e1362c  and w1,w20,#0x1
+00e13630  mov x0,x19
+00e13634  ldp x19,x30,[sp, #0x20]
+00e13638  ldp x21,x20,[sp, #0x10]
+00e1363c  ldr x22,[sp], #0x30
+00e13640  b 0x00e13644

@@ -1,0 +1,35 @@
+Function: AliothEngine.ScaleCamera$$Awake @ 0168b6d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.ScaleCamera$$SetCameraSize @ 0168b734
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+
+--- Listing ---
+0168b6d4  stp x21,x20,[sp, #-0x20]!
+0168b6d8  stp x19,x30,[sp, #0x10]
+0168b6dc  adrp x20,0x3577000
+0168b6e0  adrp x21,0x334f000
+0168b6e4  ldrb w8,[x20, #0xaa0]
+0168b6e8  ldr x21,[x21, #0xde0]
+0168b6ec  mov x19,x0
+0168b6f0  tbnz w8,#0x0,0x0168b708
+0168b6f4  adrp x0,0x334f000
+0168b6f8  ldr x0,[x0, #0xde0]
+0168b6fc  bl 0x00b0789c
+0168b700  mov w8,#0x1
+0168b704  strb w8,[x20, #0xaa0]
+0168b708  ldr x1,[x21]
+0168b70c  mov x0,x19
+0168b710  bl 0x0176cbf8
+0168b714  mov x1,x0
+0168b718  mov x0,x19
+0168b71c  str x1,[x0, #0x18]!
+0168b720  bl 0x00b07850
+0168b724  mov x0,x19
+0168b728  ldp x19,x30,[sp, #0x10]
+0168b72c  ldp x21,x20,[sp], #0x20
+0168b730  b 0x0168b734

@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.ComponentExtensions$$GetUniqueComponent<object> @ 0176dc30
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0176dc30  str x22,[sp, #-0x30]!
+0176dc34  stp x21,x20,[sp, #0x10]
+0176dc38  stp x19,x30,[sp, #0x20]
+0176dc3c  adrp x21,0x3578000
+0176dc40  adrp x22,0x3321000
+0176dc44  ldrb w8,[x21, #0xbd]
+0176dc48  ldr x22,[x22, #0xca8]
+0176dc4c  mov x20,x1
+0176dc50  mov x19,x0
+0176dc54  tbnz w8,#0x0,0x0176dc6c
+0176dc58  adrp x0,0x3321000
+0176dc5c  ldr x0,[x0, #0xca8]
+0176dc60  bl 0x00b0789c
+0176dc64  mov w8,#0x1
+0176dc68  strb w8,[x21, #0xbd]
+0176dc6c  ldr x0,[x22]
+0176dc70  ldr w8,[x0, #0xe0]
+0176dc74  cbnz w8,0x0176dc7c
+0176dc78  bl 0x00b0798c
+0176dc7c  ldr x8,[x20, #0x38]
+0176dc80  ldr x0,[x8]
+0176dc84  ldr x8,[x0, #0x8]
+0176dc88  blr x8
+0176dc8c  cbz x0,0x0176dca0
+0176dc90  ldp x19,x30,[sp, #0x20]
+0176dc94  ldp x21,x20,[sp, #0x10]
+0176dc98  ldr x22,[sp], #0x30
+0176dc9c  ret
+0176dca0  cbz x19,0x0176dcc4
+0176dca4  ldr x8,[x20, #0x38]
+0176dca8  mov x0,x19
+0176dcac  ldp x19,x30,[sp, #0x20]
+0176dcb0  ldp x21,x20,[sp, #0x10]
+0176dcb4  ldr x1,[x8, #0x10]
+0176dcb8  ldr x2,[x1, #0x8]
+0176dcbc  ldr x22,[sp], #0x30
+0176dcc0  br x2
+0176dcc4  bl 0x00b079b0

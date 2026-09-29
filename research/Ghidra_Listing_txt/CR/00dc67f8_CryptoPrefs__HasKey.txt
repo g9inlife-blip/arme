@@ -1,0 +1,34 @@
+Function: CryptoPrefs$$HasKey @ 00dc67f8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> CryptoPrefs$$GetHash @ 00dc5ef0
+  -> UnityEngine.PlayerPrefs$$HasKey @ 024be854
+
+--- Calls IN ---
+
+--- Listing ---
+00dc67f8  stp x21,x20,[sp, #-0x20]!
+00dc67fc  stp x19,x30,[sp, #0x10]
+00dc6800  adrp x20,0x3572000
+00dc6804  adrp x21,0x3341000
+00dc6808  ldrb w8,[x20, #0x1b5]
+00dc680c  ldr x21,[x21, #0x490]
+00dc6810  mov x19,x0
+00dc6814  tbnz w8,#0x0,0x00dc682c
+00dc6818  adrp x0,0x3341000
+00dc681c  ldr x0,[x0, #0x490]
+00dc6820  bl 0x00b0789c
+00dc6824  mov w8,#0x1
+00dc6828  strb w8,[x20, #0x1b5]
+00dc682c  ldr x0,[x21]
+00dc6830  ldr w8,[x0, #0xe0]
+00dc6834  cbnz w8,0x00dc683c
+00dc6838  bl 0x00b0798c
+00dc683c  mov x0,x19
+00dc6840  bl 0x00dc5ef0
+00dc6844  ldp x19,x30,[sp, #0x10]
+00dc6848  mov x1,xzr
+00dc684c  ldp x21,x20,[sp], #0x20
+00dc6850  b 0x024be854

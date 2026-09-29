@@ -1,0 +1,61 @@
+Function: AliothEngine.Utils.SplitScreenHelper$$GetCameraViewportRect @ 0169add0
+
+--- Calls OUT ---
+  -> System.ArgumentException$$.ctor @ 020d70ec
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+
+--- Calls IN ---
+
+--- Listing ---
+0169add0  sub sp,sp,#0x20
+0169add4  stp x19,x30,[sp, #0x10]
+0169add8  cmp w0,w1
+0169addc  b.ge 0x0169ae54
+0169ade0  cmp w1,#0x1
+0169ade4  b.ne 0x0169ae00
+0169ade8  stp xzr,xzr,[sp]
+0169adec  fmov s2,0x3f800000
+0169adf0  mov x0,sp
+0169adf4  fmov s0,wzr
+0169adf8  fmov s1,wzr
+0169adfc  b 0x0169ae34
+0169ae00  cmp w0,#0x0
+0169ae04  cinc w8,w0,lt
+0169ae08  asr w9,w8,#0x1
+0169ae0c  and w8,w8,#0xfffffffe
+0169ae10  fmov s2,0x3f000000
+0169ae14  sub w8,w0,w8
+0169ae18  scvtf s0,w9
+0169ae1c  scvtf s1,w8
+0169ae20  fmul s3,s0,s2
+0169ae24  fmul s0,s1,s2
+0169ae28  fsub s1,s2,s3
+0169ae2c  mov x0,sp
+0169ae30  stp xzr,xzr,[sp]
+0169ae34  mov v3.16B,v2.16B
+0169ae38  mov x1,xzr
+0169ae3c  bl 0x024daef0
+0169ae40  ldp s0,s1,[sp]
+0169ae44  ldp s2,s3,[sp, #0x8]
+0169ae48  ldp x19,x30,[sp, #0x10]
+0169ae4c  add sp,sp,#0x20
+0169ae50  ret
+0169ae54  adrp x0,0x3367000
+0169ae58  ldr x0,[x0, #0x168]
+0169ae5c  bl 0x00b078a0
+0169ae60  bl 0x00b079a0
+0169ae64  mov x19,x0
+0169ae68  bl 0x008d74f8
+0169ae6c  mov x0,x19
+0169ae70  mov x1,xzr
+0169ae74  bl 0x020d70ec
+0169ae78  adrp x0,0x3353000
+0169ae7c  ldr x0,[x0, #0x3e0]
+0169ae80  bl 0x00b078a0
+0169ae84  mov x1,x0
+0169ae88  mov x0,x19
+0169ae8c  bl 0x00b07978

@@ -1,0 +1,37 @@
+Function: AliothEngine.Net.HttpRequest$$AddHeader @ 01694704
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<object,-object>$$Add @ 0196e4d8
+
+--- Calls IN ---
+  <- AliothEngine.Net.HttpRequestManager$$CreateHttpRequest @ 01695c24
+
+--- Listing ---
+01694704  str x22,[sp, #-0x30]!
+01694708  stp x21,x20,[sp, #0x10]
+0169470c  stp x19,x30,[sp, #0x20]
+01694710  adrp x22,0x3577000
+01694714  ldrb w8,[x22, #0xaec]
+01694718  mov x19,x2
+0169471c  mov x20,x1
+01694720  mov x21,x0
+01694724  tbnz w8,#0x0,0x0169473c
+01694728  adrp x0,0x331b000
+0169472c  ldr x0,[x0, #0x880]
+01694730  bl 0x00b0789c
+01694734  mov w8,#0x1
+01694738  strb w8,[x22, #0xaec]
+0169473c  ldr x0,[x21, #0x58]
+01694740  cbz x0,0x01694768
+01694744  adrp x8,0x331b000
+01694748  ldr x8,[x8, #0x880]
+0169474c  mov x1,x20
+01694750  mov x2,x19
+01694754  ldp x19,x30,[sp, #0x20]
+01694758  ldr x3,[x8]
+0169475c  ldp x21,x20,[sp, #0x10]
+01694760  ldr x22,[sp], #0x30
+01694764  b 0x0196e4d8
+01694768  bl 0x00b079b0

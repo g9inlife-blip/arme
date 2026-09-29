@@ -1,0 +1,81 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$GetFullName @ 016ae008
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_parent @ 024f42ec
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Object$$op_Implicit @ 024d0ab0
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Concat @ 01fdebb8
+
+--- Calls IN ---
+
+--- Listing ---
+016ae008  str x22,[sp, #-0x30]!
+016ae00c  stp x21,x20,[sp, #0x10]
+016ae010  stp x19,x30,[sp, #0x20]
+016ae014  adrp x19,0x3577000
+016ae018  ldrb w8,[x19, #0xbca]
+016ae01c  mov x20,x0
+016ae020  tbnz w8,#0x0,0x016ae044
+016ae024  adrp x0,0x3321000
+016ae028  ldr x0,[x0, #0xca8]
+016ae02c  bl 0x00b0789c
+016ae030  adrp x0,0x3321000
+016ae034  ldr x0,[x0, #0x9e0]
+016ae038  bl 0x00b0789c
+016ae03c  mov w8,#0x1
+016ae040  strb w8,[x19, #0xbca]
+016ae044  cbz x20,0x016ae108
+016ae048  adrp x21,0x3321000
+016ae04c  ldr x21,[x21, #0x9e0]
+016ae050  mov x0,x20
+016ae054  mov x1,xzr
+016ae058  bl 0x024c9a1c
+016ae05c  ldr x8,[x21]
+016ae060  mov x1,x0
+016ae064  mov x2,xzr
+016ae068  mov x0,x8
+016ae06c  bl 0x01fd2850
+016ae070  mov x19,x0
+016ae074  mov x0,x20
+016ae078  mov x1,xzr
+016ae07c  bl 0x024de730
+016ae080  cbz x0,0x016ae108
+016ae084  adrp x22,0x3321000
+016ae088  ldr x22,[x22, #0xca8]
+016ae08c  mov x20,x0
+016ae090  mov x0,x20
+016ae094  mov x1,xzr
+016ae098  bl 0x024f42ec
+016ae09c  ldr x8,[x22]
+016ae0a0  mov x20,x0
+016ae0a4  ldr w9,[x8, #0xe0]
+016ae0a8  cbnz w9,0x016ae0b4
+016ae0ac  mov x0,x8
+016ae0b0  bl 0x00b0798c
+016ae0b4  mov x0,x20
+016ae0b8  mov x1,xzr
+016ae0bc  bl 0x024d0ab0
+016ae0c0  tbz w0,#0x0,0x016ae0f4
+016ae0c4  cbz x20,0x016ae108
+016ae0c8  mov x0,x20
+016ae0cc  mov x1,xzr
+016ae0d0  bl 0x024c9a1c
+016ae0d4  ldr x8,[x21]
+016ae0d8  mov x1,x0
+016ae0dc  mov x2,x19
+016ae0e0  mov x3,xzr
+016ae0e4  mov x0,x8
+016ae0e8  bl 0x01fdebb8
+016ae0ec  mov x19,x0
+016ae0f0  b 0x016ae090
+016ae0f4  mov x0,x19
+016ae0f8  ldp x19,x30,[sp, #0x20]
+016ae0fc  ldp x21,x20,[sp, #0x10]
+016ae100  ldr x22,[sp], #0x30
+016ae104  ret
+016ae108  bl 0x00b079b0

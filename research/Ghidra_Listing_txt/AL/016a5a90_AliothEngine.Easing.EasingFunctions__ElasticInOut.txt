@@ -1,0 +1,106 @@
+Function: AliothEngine.Easing.EasingFunctions$$ElasticInOut @ 016a5a90
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> sinf @ 008d5810
+  -> exp2f @ 008d50f0
+
+--- Calls IN ---
+
+--- Listing ---
+016a5a90  str d12,[sp, #-0x40]!
+016a5a94  stp d11,d10,[sp, #0x10]
+016a5a98  stp d9,d8,[sp, #0x20]
+016a5a9c  stp x19,x30,[sp, #0x30]
+016a5aa0  fmov s11,0x3f800000
+016a5aa4  adrp x19,0x3571000
+016a5aa8  mov v8.16B,v0.16B
+016a5aac  fcmp s2,#0.0
+016a5ab0  fmov s0,wzr
+016a5ab4  fmin s2,s2,s11
+016a5ab8  ldrb w8,[x19, #0x198]
+016a5abc  fcsel s9,s2,s0,pl
+016a5ac0  fabd s0,s8,s1
+016a5ac4  fneg s2,s0
+016a5ac8  fcmp s8,s1
+016a5acc  fcsel s10,s2,s0,gt
+016a5ad0  cbnz w8,0x016a5ae8
+016a5ad4  adrp x0,0x3318000
+016a5ad8  ldr x0,[x0, #0x558]
+016a5adc  bl 0x00b0789c
+016a5ae0  mov w8,#0x1
+016a5ae4  strb w8,[x19, #0x198]
+016a5ae8  adrp x8,0x3318000
+016a5aec  ldr x8,[x8, #0x558]
+016a5af0  adrp x9,0x26db000
+016a5af4  ldr s1,[x9, #0x3ec]
+016a5af8  fabs s3,s9
+016a5afc  ldr x8,[x8]
+016a5b00  fmov s2,0x41000000
+016a5b04  fmul s4,s3,s1
+016a5b08  ldr x8,[x8, #0xb8]
+016a5b0c  ldr s0,[x8]
+016a5b10  fmul s2,s0,s2
+016a5b14  fcmp s4,s2
+016a5b18  fcsel s0,s4,s2,gt
+016a5b1c  fcmp s3,s0
+016a5b20  b.mi 0x016a5bf8
+016a5b24  fmax s3,s3,s11
+016a5b28  fmov s0,0xbf800000
+016a5b2c  fmul s1,s3,s1
+016a5b30  fadd s4,s9,s0
+016a5b34  fcmp s1,s2
+016a5b38  fabs s3,s4
+016a5b3c  fcsel s1,s1,s2,gt
+016a5b40  fcmp s3,s1
+016a5b44  b.pl 0x016a5b50
+016a5b48  fadd s8,s10,s8
+016a5b4c  b 0x016a5bf8
+016a5b50  fadd s1,s9,s9
+016a5b54  fcmp s1,s11
+016a5b58  fadd s12,s1,s0
+016a5b5c  b.pl 0x016a5ba8
+016a5b60  fmov s0,0x41200000
+016a5b64  fmul s0,s12,s0
+016a5b68  bl 0x008d50f0
+016a5b6c  adrp x8,0x26db000
+016a5b70  mov v9.16B,v0.16B
+016a5b74  adrp x9,0x26db000
+016a5b78  ldr s0,[x8, #0xdc8]
+016a5b7c  ldr s1,[x9, #0x524]
+016a5b80  adrp x8,0x26db000
+016a5b84  ldr s2,[x8, #0xdd0]
+016a5b88  fadd s0,s12,s0
+016a5b8c  fmul s0,s0,s1
+016a5b90  fdiv s0,s0,s2
+016a5b94  bl 0x008d5810
+016a5b98  fmul s0,s9,s0
+016a5b9c  fmov s1,0xbf000000
+016a5ba0  fmul s0,s0,s1
+016a5ba4  b 0x016a5bf0
+016a5ba8  fmov s0,0xc1200000
+016a5bac  fmul s0,s12,s0
+016a5bb0  bl 0x008d50f0
+016a5bb4  adrp x8,0x26db000
+016a5bb8  mov v9.16B,v0.16B
+016a5bbc  adrp x9,0x26db000
+016a5bc0  ldr s0,[x8, #0xdc8]
+016a5bc4  ldr s1,[x9, #0x524]
+016a5bc8  adrp x8,0x26db000
+016a5bcc  ldr s2,[x8, #0xdd0]
+016a5bd0  fadd s0,s12,s0
+016a5bd4  fmul s0,s0,s1
+016a5bd8  fdiv s0,s0,s2
+016a5bdc  bl 0x008d5810
+016a5be0  fmul s0,s9,s0
+016a5be4  fmov s1,0x3f000000
+016a5be8  fmul s0,s0,s1
+016a5bec  fadd s0,s0,s11
+016a5bf0  fmul s0,s10,s0
+016a5bf4  fadd s8,s0,s8
+016a5bf8  mov v0.16B,v8.16B
+016a5bfc  ldp x19,x30,[sp, #0x30]
+016a5c00  ldp d9,d8,[sp, #0x20]
+016a5c04  ldp d11,d10,[sp, #0x10]
+016a5c08  ldr d12,[sp], #0x40
+016a5c0c  ret

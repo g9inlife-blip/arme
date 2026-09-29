@@ -1,0 +1,36 @@
+Function: AliothEngine.AssetLoadingContext.Observation$$.ctor @ 0166d748
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Time$$get_time @ 024dbfa8
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoadingContext$$AddObserver @ 0166b6f8
+
+--- Listing ---
+0166d748  str x22,[sp, #-0x30]!
+0166d74c  stp x21,x20,[sp, #0x10]
+0166d750  stp x19,x30,[sp, #0x20]
+0166d754  mov x22,x0
+0166d758  mov x0,xzr
+0166d75c  mov x19,x3
+0166d760  mov w20,w2
+0166d764  mov x21,x1
+0166d768  bl 0x024dbfa8
+0166d76c  mov x0,x22
+0166d770  mov x1,xzr
+0166d774  str s0,[x22, #0x20]
+0166d778  bl 0x02194104
+0166d77c  mov x0,x22
+0166d780  str x21,[x0, #0x10]!
+0166d784  mov x1,x21
+0166d788  bl 0x00b07850
+0166d78c  str x19,[x22, #0x18]!
+0166d790  str w20,[x22, #0xc]
+0166d794  mov x1,x19
+0166d798  ldp x19,x30,[sp, #0x20]
+0166d79c  ldp x21,x20,[sp, #0x10]
+0166d7a0  mov x0,x22
+0166d7a4  ldr x22,[sp], #0x30
+0166d7a8  b 0x00b07850

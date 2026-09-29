@@ -1,0 +1,36 @@
+Function: AliothEngine.GameUpdateService$$get_UpdateStepDescription @ 0167d3cc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_g_get_UpdateStepDescription @ 01142c08
+
+--- Listing ---
+0167d3cc  stp x21,x20,[sp, #-0x20]!
+0167d3d0  stp x19,x30,[sp, #0x10]
+0167d3d4  adrp x20,0x3577000
+0167d3d8  adrp x21,0x3352000
+0167d3dc  ldrb w8,[x20, #0xa19]
+0167d3e0  ldr x21,[x21, #0x2a8]
+0167d3e4  mov x19,x0
+0167d3e8  tbnz w8,#0x0,0x0167d400
+0167d3ec  adrp x0,0x3352000
+0167d3f0  ldr x0,[x0, #0x2a8]
+0167d3f4  bl 0x00b0789c
+0167d3f8  mov w8,#0x1
+0167d3fc  strb w8,[x20, #0xa19]
+0167d400  ldr x8,[x21]
+0167d404  ldr x8,[x8, #0xb8]
+0167d408  ldr x0,[x8, #0x40]
+0167d40c  cbz x0,0x0167d424
+0167d410  mov x1,x19
+0167d414  ldp x19,x30,[sp, #0x10]
+0167d418  mov x2,xzr
+0167d41c  ldp x21,x20,[sp], #0x20
+0167d420  b 0x01061abc
+0167d424  ldr x0,[x19, #0x80]
+0167d428  ldp x19,x30,[sp, #0x10]
+0167d42c  ldp x21,x20,[sp], #0x20
+0167d430  ret

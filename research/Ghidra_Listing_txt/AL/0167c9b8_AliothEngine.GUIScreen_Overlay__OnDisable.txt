@@ -1,0 +1,68 @@
+Function: AliothEngine.GUIScreen_Overlay$$OnDisable @ 0167c9b8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreen$$get_logger @ 01671a94
+
+--- Calls IN ---
+
+--- Listing ---
+0167c9b8  stp x21,x20,[sp, #-0x20]!
+0167c9bc  stp x19,x30,[sp, #0x10]
+0167c9c0  adrp x20,0x3577000
+0167c9c4  ldrb w8,[x20, #0xa0e]
+0167c9c8  mov x19,x0
+0167c9cc  tbnz w8,#0x0,0x0167c9fc
+0167c9d0  adrp x0,0x334a000
+0167c9d4  ldr x0,[x0, #0xc98]
+0167c9d8  bl 0x00b0789c
+0167c9dc  adrp x0,0x331f000
+0167c9e0  ldr x0,[x0, #0xf20]
+0167c9e4  bl 0x00b0789c
+0167c9e8  adrp x0,0x3383000
+0167c9ec  ldr x0,[x0, #0x5f8]
+0167c9f0  bl 0x00b0789c
+0167c9f4  mov w8,#0x1
+0167c9f8  strb w8,[x20, #0xa0e]
+0167c9fc  mov x0,x19
+0167ca00  bl 0x01671a94
+0167ca04  cbz x0,0x0167ca98
+0167ca08  adrp x9,0x334a000
+0167ca0c  adrp x10,0x331f000
+0167ca10  adrp x11,0x3383000
+0167ca14  ldr x9,[x9, #0xc98]
+0167ca18  ldr x10,[x10, #0xf20]
+0167ca1c  ldr x8,[x0]
+0167ca20  ldr x11,[x11, #0x5f8]
+0167ca24  ldr x1,[x9]
+0167ca28  ldr x20,[x10]
+0167ca2c  ldrh w9,[x8, #0x12a]
+0167ca30  ldr x21,[x11]
+0167ca34  mov x19,x0
+0167ca38  cbz x9,0x0167ca5c
+0167ca3c  ldr x10,[x8, #0xb0]
+0167ca40  add x10,x10,#0x8
+0167ca44  ldur x11,[x10, #-0x8]
+0167ca48  cmp x11,x1
+0167ca4c  b.eq 0x0167ca6c
+0167ca50  subs x9,x9,#0x1
+0167ca54  add x10,x10,#0x10
+0167ca58  b.ne 0x0167ca44
+0167ca5c  mov w2,#0x9
+0167ca60  mov x0,x19
+0167ca64  bl 0x00b2ae24
+0167ca68  b 0x0167ca7c
+0167ca6c  ldr w9,[x10]
+0167ca70  add w9,w9,#0x9
+0167ca74  add x8,x8,w9, SXTW  #0x4
+0167ca78  add x0,x8,#0x138
+0167ca7c  ldp x4,x3,[x0]
+0167ca80  mov x0,x19
+0167ca84  ldp x19,x30,[sp, #0x10]
+0167ca88  mov x1,x20
+0167ca8c  mov x2,x21
+0167ca90  ldp x21,x20,[sp], #0x20
+0167ca94  br x4
+0167ca98  bl 0x00b079b0

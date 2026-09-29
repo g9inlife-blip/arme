@@ -1,0 +1,28 @@
+Function: ReadybackgroundNode$$get_self_00 @ 00fccf6c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fccf6c  stp x21,x20,[sp, #-0x20]!
+00fccf70  stp x19,x30,[sp, #0x10]
+00fccf74  adrp x20,0x3573000
+00fccf78  adrp x21,0x3317000
+00fccf7c  ldrb w8,[x20, #0xe3f]
+00fccf80  ldr x21,[x21, #0x5d8]
+00fccf84  mov x19,x0
+00fccf88  tbnz w8,#0x0,0x00fccfa0
+00fccf8c  adrp x0,0x3317000
+00fccf90  ldr x0,[x0, #0x5d8]
+00fccf94  bl 0x00b0789c
+00fccf98  mov w8,#0x1
+00fccf9c  strb w8,[x20, #0xe3f]
+00fccfa0  ldr x1,[x21]
+00fccfa4  mov x0,x19
+00fccfa8  ldp x19,x30,[sp, #0x10]
+00fccfac  mov x2,xzr
+00fccfb0  ldp x21,x20,[sp], #0x20
+00fccfb4  b 0x00dc06f8

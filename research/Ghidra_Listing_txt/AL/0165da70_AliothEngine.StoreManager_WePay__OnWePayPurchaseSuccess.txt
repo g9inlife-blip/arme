@@ -1,0 +1,60 @@
+Function: AliothEngine.StoreManager_WePay$$OnWePayPurchaseSuccess @ 0165da70
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$GetProductFormRechargeData @ 00e0c24c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp811 @ 010c9ce8
+  -> AliothEngine.IStoreManager$$HandlePurchaseProductSucceeded @ 01659190
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineStoreManager_WePayWrap$$_m_OnWePayPurchaseSuccess @ 011690b4
+
+--- Listing ---
+0165da70  stp x23,x22,[sp, #-0x30]!
+0165da74  stp x21,x20,[sp, #0x10]
+0165da78  stp x19,x30,[sp, #0x20]
+0165da7c  adrp x22,0x3577000
+0165da80  adrp x23,0x3355000
+0165da84  ldrb w8,[x22, #0x893]
+0165da88  ldr x23,[x23, #0xd20]
+0165da8c  mov x20,x2
+0165da90  mov w21,w1
+0165da94  mov x19,x0
+0165da98  tbnz w8,#0x0,0x0165dabc
+0165da9c  adrp x0,0x335f000
+0165daa0  ldr x0,[x0, #0x20]
+0165daa4  bl 0x00b0789c
+0165daa8  adrp x0,0x3355000
+0165daac  ldr x0,[x0, #0xd20]
+0165dab0  bl 0x00b0789c
+0165dab4  mov w8,#0x1
+0165dab8  strb w8,[x22, #0x893]
+0165dabc  ldr x8,[x23]
+0165dac0  ldr x8,[x8, #0xb8]
+0165dac4  ldr x0,[x8, #0x60]
+0165dac8  cbz x0,0x0165daec
+0165dacc  mov x1,x19
+0165dad0  mov w2,w21
+0165dad4  mov x3,x20
+0165dad8  ldp x19,x30,[sp, #0x20]
+0165dadc  ldp x21,x20,[sp, #0x10]
+0165dae0  mov x4,xzr
+0165dae4  ldp x23,x22,[sp], #0x30
+0165dae8  b 0x010c9ce8
+0165daec  adrp x8,0x335f000
+0165daf0  ldr x8,[x8, #0x20]
+0165daf4  ldr w20,[x19, #0x58]
+0165daf8  ldr x0,[x8]
+0165dafc  ldr w8,[x0, #0xe0]
+0165db00  cbnz w8,0x0165db08
+0165db04  bl 0x00b0798c
+0165db08  mov w0,w20
+0165db0c  mov x1,xzr
+0165db10  bl 0x00e0c24c
+0165db14  mov x1,x0
+0165db18  mov x0,x19
+0165db1c  ldp x19,x30,[sp, #0x20]
+0165db20  ldp x21,x20,[sp, #0x10]
+0165db24  ldp x23,x22,[sp], #0x30
+0165db28  b 0x01659190

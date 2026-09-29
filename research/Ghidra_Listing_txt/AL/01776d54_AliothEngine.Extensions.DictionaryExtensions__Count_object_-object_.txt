@@ -1,0 +1,56 @@
+Function: AliothEngine.Extensions.DictionaryExtensions$$Count<object,-object> @ 01776d54
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary.Enumerator<object,-object>$$MoveNext @ 01a4cb84
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01776d54  sub sp,sp,#0x80
+01776d58  stp x21,x20,[sp, #0x60]
+01776d5c  stp x19,x30,[sp, #0x70]
+01776d60  movi v0.2D,#0x0
+01776d64  str xzr,[sp, #0x50]
+01776d68  stp q0,q0,[sp, #0x30]
+01776d6c  cbz x1,0x01776df4
+01776d70  cbz x0,0x01776e0c
+01776d74  ldr x8,[x2, #0x38]
+01776d78  mov x20,x1
+01776d7c  mov x19,x2
+01776d80  ldr x1,[x8, #0x8]
+01776d84  add x8,sp,#0x8
+01776d88  ldr x9,[x1, #0x8]
+01776d8c  blr x9
+01776d90  ldur q0,[sp, #0x8]
+01776d94  ldur q1,[sp, #0x18]
+01776d98  ldr x8,[sp, #0x28]
+01776d9c  add x0,sp,#0x30
+01776da0  stp q0,q1,[sp, #0x30]
+01776da4  str x8,[sp, #0x50]
+01776da8  ldr x8,[x19, #0x38]
+01776dac  ldr x1,[x8, #0x28]
+01776db0  bl 0x01a4cb84
+01776db4  tbz w0,#0x0,0x01776df4
+01776db8  mov w21,wzr
+01776dbc  ldr x8,[x19, #0x38]
+01776dc0  ldp x1,x2,[sp, #0x40]
+01776dc4  mov x0,x20
+01776dc8  ldr x3,[x8, #0x20]
+01776dcc  ldr x8,[x3, #0x8]
+01776dd0  blr x8
+01776dd4  ldr x8,[x19, #0x38]
+01776dd8  ldr x1,[x8, #0x28]
+01776ddc  and w8,w0,#0x1
+01776de0  add x0,sp,#0x30
+01776de4  add w21,w21,w8
+01776de8  bl 0x01a4cb84
+01776dec  tbnz w0,#0x0,0x01776dbc
+01776df0  b 0x01776df8
+01776df4  mov w21,wzr
+01776df8  mov w0,w21
+01776dfc  ldp x19,x30,[sp, #0x70]
+01776e00  ldp x21,x20,[sp, #0x60]
+01776e04  add sp,sp,#0x80
+01776e08  ret
+01776e0c  bl 0x00b079b0

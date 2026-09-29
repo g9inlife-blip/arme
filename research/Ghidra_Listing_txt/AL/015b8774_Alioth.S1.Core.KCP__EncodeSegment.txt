@@ -1,0 +1,92 @@
+Function: Alioth.S1.Core.KCP$$EncodeSegment @ 015b8774
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp769 @ 010c4990
+  -> Alioth.S1.Core.KCP$$Encode16u @ 015b7f74
+  -> Alioth.S1.Core.KCP$$Encode32u @ 015b80f0
+  -> Alioth.S1.Core.KCP$$Encode8u @ 015b7e28
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Core.KCP$$Encode64u @ 015b81e8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$Flush @ 015b8f84
+
+--- Listing ---
+015b8774  stp x23,x22,[sp, #-0x30]!
+015b8778  stp x21,x20,[sp, #0x10]
+015b877c  stp x19,x30,[sp, #0x20]
+015b8780  adrp x22,0x3577000
+015b8784  adrp x23,0x333d000
+015b8788  ldrb w8,[x22, #0x103]
+015b878c  ldr x23,[x23, #0xfc0]
+015b8790  mov w19,w2
+015b8794  mov x21,x1
+015b8798  mov x20,x0
+015b879c  tbnz w8,#0x0,0x015b87b4
+015b87a0  adrp x0,0x333d000
+015b87a4  ldr x0,[x0, #0xfc0]
+015b87a8  bl 0x00b0789c
+015b87ac  mov w8,#0x1
+015b87b0  strb w8,[x22, #0x103]
+015b87b4  ldr x8,[x23]
+015b87b8  ldr x8,[x8, #0xb8]
+015b87bc  ldr x0,[x8, #0x60]
+015b87c0  cbz x0,0x015b87e4
+015b87c4  mov x1,x20
+015b87c8  mov x2,x21
+015b87cc  mov w3,w19
+015b87d0  ldp x19,x30,[sp, #0x20]
+015b87d4  ldp x21,x20,[sp, #0x10]
+015b87d8  mov x4,xzr
+015b87dc  ldp x23,x22,[sp], #0x30
+015b87e0  b 0x010c4990
+015b87e4  cbz x21,0x015b88a4
+015b87e8  ldr x2,[x21, #0x10]
+015b87ec  mov x0,x20
+015b87f0  mov w1,w19
+015b87f4  bl 0x015b81e8
+015b87f8  ldr w2,[x21, #0x18]
+015b87fc  add w22,w0,w19
+015b8800  mov x0,x20
+015b8804  mov w1,w22
+015b8808  bl 0x015b7e28
+015b880c  ldr w2,[x21, #0x1c]
+015b8810  add w22,w0,w22
+015b8814  mov x0,x20
+015b8818  mov w1,w22
+015b881c  bl 0x015b7e28
+015b8820  ldr w2,[x21, #0x20]
+015b8824  add w22,w0,w22
+015b8828  mov x0,x20
+015b882c  mov w1,w22
+015b8830  bl 0x015b7f74
+015b8834  ldr w2,[x21, #0x24]
+015b8838  add w22,w0,w22
+015b883c  mov x0,x20
+015b8840  mov w1,w22
+015b8844  bl 0x015b80f0
+015b8848  ldr w2,[x21, #0x28]
+015b884c  add w22,w0,w22
+015b8850  mov x0,x20
+015b8854  mov w1,w22
+015b8858  bl 0x015b80f0
+015b885c  ldr w2,[x21, #0x2c]
+015b8860  add w22,w0,w22
+015b8864  mov x0,x20
+015b8868  mov w1,w22
+015b886c  bl 0x015b80f0
+015b8870  ldr x8,[x21, #0x40]
+015b8874  cbz x8,0x015b88a4
+015b8878  ldr w2,[x8, #0x18]
+015b887c  add w21,w0,w22
+015b8880  mov x0,x20
+015b8884  mov w1,w21
+015b8888  bl 0x015b80f0
+015b888c  sub w8,w21,w19
+015b8890  ldp x19,x30,[sp, #0x20]
+015b8894  ldp x21,x20,[sp, #0x10]
+015b8898  add w0,w8,w0
+015b889c  ldp x23,x22,[sp], #0x30
+015b88a0  ret
+015b88a4  bl 0x00b079b0

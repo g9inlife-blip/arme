@@ -1,0 +1,114 @@
+Function: AliothEngine.Utils.Gaussian$$NextGaussian @ 0169d258
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> System.ArgumentOutOfRangeException$$.ctor @ 020d2e30
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> log @ 008d5c90
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169d258  str d14,[sp, #-0x50]!
+0169d25c  stp d13,d12,[sp, #0x8]
+0169d260  stp d11,d10,[sp, #0x18]
+0169d264  stp d9,d8,[sp, #0x28]
+0169d268  str x20,[sp, #0x38]
+0169d26c  stp x19,x30,[sp, #0x40]
+0169d270  adrp x20,0x3577000
+0169d274  ldrb w8,[x20, #0xb4a]
+0169d278  mov v9.16B,v1.16B
+0169d27c  mov v8.16B,v0.16B
+0169d280  mov x19,x0
+0169d284  tbnz w8,#0x0,0x0169d29c
+0169d288  adrp x0,0x332c000
+0169d28c  ldr x0,[x0, #0x5a8]
+0169d290  bl 0x00b0789c
+0169d294  mov w8,#0x1
+0169d298  strb w8,[x20, #0xb4a]
+0169d29c  fcmp d9,#0.0
+0169d2a0  b.ls 0x0169d380
+0169d2a4  ldrb w8,[x19, #0x10]
+0169d2a8  cbz w8,0x0169d2b8
+0169d2ac  ldr d0,[x19, #0x18]
+0169d2b0  strb wzr,[x19, #0x10]
+0169d2b4  b 0x0169d358
+0169d2b8  adrp x20,0x332c000
+0169d2bc  ldr x20,[x20, #0x5a8]
+0169d2c0  fmov d11,-0x4010000000000000
+0169d2c4  fmov d12,0x3ff0000000000000
+0169d2c8  ldr x0,[x19, #0x20]
+0169d2cc  cbz x0,0x0169d37c
+0169d2d0  ldr x8,[x0]
+0169d2d4  ldp x9,x1,[x8, #0x1b8]
+0169d2d8  blr x9
+0169d2dc  ldr x0,[x19, #0x20]
+0169d2e0  cbz x0,0x0169d37c
+0169d2e4  ldr x8,[x0]
+0169d2e8  fadd d0,d0,d0
+0169d2ec  fadd d13,d0,d11
+0169d2f0  ldp x9,x1,[x8, #0x1b8]
+0169d2f4  blr x9
+0169d2f8  fadd d0,d0,d0
+0169d2fc  fadd d14,d0,d11
+0169d300  fmul d0,d13,d13
+0169d304  fmul d1,d14,d14
+0169d308  fadd d10,d0,d1
+0169d30c  fcmp d10,d12
+0169d310  b.ge 0x0169d2c8
+0169d314  fcmp d10,#0.0
+0169d318  b.eq 0x0169d2c8
+0169d31c  ldr x0,[x20]
+0169d320  ldr w8,[x0, #0xe0]
+0169d324  cbnz w8,0x0169d32c
+0169d328  bl 0x00b0798c
+0169d32c  mov v0.16B,v10.16B
+0169d330  bl 0x008d5c90
+0169d334  fmov d1,-0x4000000000000000
+0169d338  fmul d0,d0,d1
+0169d33c  fdiv d0,d0,d10
+0169d340  fsqrt d0,d0
+0169d344  mov w8,#0x1
+0169d348  fmul d1,d14,d0
+0169d34c  fmul d0,d13,d0
+0169d350  strb w8,[x19, #0x10]
+0169d354  str d1,[x19, #0x18]
+0169d358  fmul d0,d0,d9
+0169d35c  fadd d0,d0,d8
+0169d360  ldp x19,x30,[sp, #0x40]
+0169d364  ldr x20,[sp, #0x38]
+0169d368  ldp d9,d8,[sp, #0x28]
+0169d36c  ldp d11,d10,[sp, #0x18]
+0169d370  ldp d13,d12,[sp, #0x8]
+0169d374  ldr d14,[sp], #0x50
+0169d378  ret
+0169d37c  bl 0x00b079b0
+0169d380  adrp x0,0x337a000
+0169d384  ldr x0,[x0, #0x6f0]
+0169d388  bl 0x00b078a0
+0169d38c  bl 0x00b079a0
+0169d390  mov x19,x0
+0169d394  bl 0x008d74f8
+0169d398  adrp x0,0x3349000
+0169d39c  ldr x0,[x0, #0xdb0]
+0169d3a0  bl 0x00b078a0
+0169d3a4  mov x20,x0
+0169d3a8  adrp x0,0x3380000
+0169d3ac  ldr x0,[x0, #0x270]
+0169d3b0  bl 0x00b078a0
+0169d3b4  mov x2,x0
+0169d3b8  mov x0,x19
+0169d3bc  mov x1,x20
+0169d3c0  mov x3,xzr
+0169d3c4  bl 0x020d2e30
+0169d3c8  adrp x0,0x3356000
+0169d3cc  ldr x0,[x0, #0xbc8]
+0169d3d0  bl 0x00b078a0
+0169d3d4  mov x1,x0
+0169d3d8  mov x0,x19
+0169d3dc  bl 0x00b07978

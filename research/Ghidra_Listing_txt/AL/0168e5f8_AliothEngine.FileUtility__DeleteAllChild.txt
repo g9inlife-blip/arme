@@ -1,0 +1,147 @@
+Function: AliothEngine.FileUtility$$DeleteAllChild @ 0168e5f8
+
+--- Calls OUT ---
+  -> System.IO.FileSystemInfo$$get_Attributes @ 020b1614
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.IO.DirectoryInfo$$GetDirectories @ 020af600
+  -> System.IO.Directory$$Exists @ 020ae0e8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.File$$Delete @ 020afd48
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.IO.DirectoryInfo$$GetFiles @ 020af1e4
+  -> System.IO.DirectoryInfo$$.ctor @ 020adebc
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.Directory$$Delete @ 020aeb88
+
+--- Calls IN ---
+
+--- Listing ---
+0168e5f8  str x24,[sp, #-0x40]!
+0168e5fc  stp x23,x22,[sp, #0x10]
+0168e600  stp x21,x20,[sp, #0x20]
+0168e604  stp x19,x30,[sp, #0x30]
+0168e608  adrp x20,0x3577000
+0168e60c  ldrb w8,[x20, #0xaca]
+0168e610  mov w19,w1
+0168e614  mov x21,x0
+0168e618  tbnz w8,#0x0,0x0168e63c
+0168e61c  adrp x0,0x336c000
+0168e620  ldr x0,[x0, #0x858]
+0168e624  bl 0x00b0789c
+0168e628  adrp x0,0x3381000
+0168e62c  ldr x0,[x0, #0xfe0]
+0168e630  bl 0x00b0789c
+0168e634  mov w8,#0x1
+0168e638  strb w8,[x20, #0xaca]
+0168e63c  mov x0,x21
+0168e640  mov x1,xzr
+0168e644  bl 0x020ae0e8
+0168e648  tbz w0,#0x0,0x0168e7dc
+0168e64c  adrp x8,0x336c000
+0168e650  ldr x8,[x8, #0x858]
+0168e654  ldr x0,[x8]
+0168e658  bl 0x00b079a0
+0168e65c  cbz x0,0x0168e7f4
+0168e660  adrp x22,0x3381000
+0168e664  ldr x22,[x22, #0xfe0]
+0168e668  mov x1,x21
+0168e66c  mov x2,xzr
+0168e670  mov x20,x0
+0168e674  bl 0x020adebc
+0168e678  ldr x1,[x22]
+0168e67c  mov x0,x20
+0168e680  mov x2,xzr
+0168e684  bl 0x020af1e4
+0168e688  cbz x0,0x0168e7f4
+0168e68c  ldr w8,[x0, #0x18]
+0168e690  mov x21,x0
+0168e694  cmp w8,#0x1
+0168e698  b.lt 0x0168e728
+0168e69c  mov w23,wzr
+0168e6a0  cmp w23,w8
+0168e6a4  b.cs 0x0168e7f0
+0168e6a8  add x24,x21,w23, SXTW  #0x3
+0168e6ac  ldr x0,[x24, #0x20]!
+0168e6b0  cbz x0,0x0168e7f4
+0168e6b4  mov x1,xzr
+0168e6b8  bl 0x020b1614
+0168e6bc  tst w0,w19
+0168e6c0  b.gt 0x0168e718
+0168e6c4  ldr w8,[x21, #0x18]
+0168e6c8  cmp w23,w8
+0168e6cc  b.cs 0x0168e7f0
+0168e6d0  ldr x0,[x24]
+0168e6d4  cbz x0,0x0168e7f4
+0168e6d8  ldr x8,[x0]
+0168e6dc  ldp x9,x1,[x8, #0x1b8]
+0168e6e0  blr x9
+0168e6e4  mov x1,xzr
+0168e6e8  bl 0x020a6ae4
+0168e6ec  tbz w0,#0x0,0x0168e718
+0168e6f0  ldr w8,[x21, #0x18]
+0168e6f4  cmp w23,w8
+0168e6f8  b.cs 0x0168e7f0
+0168e6fc  ldr x0,[x24]
+0168e700  cbz x0,0x0168e7f4
+0168e704  ldr x8,[x0]
+0168e708  ldp x9,x1,[x8, #0x1b8]
+0168e70c  blr x9
+0168e710  mov x1,xzr
+0168e714  bl 0x020afd48
+0168e718  ldr w8,[x21, #0x18]
+0168e71c  add w23,w23,#0x1
+0168e720  cmp w23,w8
+0168e724  b.lt 0x0168e6a0
+0168e728  ldr x1,[x22]
+0168e72c  mov x0,x20
+0168e730  mov x2,xzr
+0168e734  bl 0x020af600
+0168e738  cbz x0,0x0168e7f4
+0168e73c  ldr w8,[x0, #0x18]
+0168e740  mov x20,x0
+0168e744  cmp w8,#0x1
+0168e748  b.lt 0x0168e7dc
+0168e74c  mov w21,wzr
+0168e750  cmp w21,w8
+0168e754  b.cs 0x0168e7f0
+0168e758  add x22,x20,w21, SXTW  #0x3
+0168e75c  ldr x0,[x22, #0x20]!
+0168e760  cbz x0,0x0168e7f4
+0168e764  mov x1,xzr
+0168e768  bl 0x020b1614
+0168e76c  tst w0,w19
+0168e770  b.gt 0x0168e7cc
+0168e774  ldr w8,[x20, #0x18]
+0168e778  cmp w21,w8
+0168e77c  b.cs 0x0168e7f0
+0168e780  ldr x0,[x22]
+0168e784  cbz x0,0x0168e7f4
+0168e788  ldr x8,[x0]
+0168e78c  ldp x9,x1,[x8, #0x1b8]
+0168e790  blr x9
+0168e794  mov x1,xzr
+0168e798  bl 0x020ae0e8
+0168e79c  tbz w0,#0x0,0x0168e7cc
+0168e7a0  ldr w8,[x20, #0x18]
+0168e7a4  cmp w21,w8
+0168e7a8  b.cs 0x0168e7f0
+0168e7ac  ldr x0,[x22]
+0168e7b0  cbz x0,0x0168e7f4
+0168e7b4  ldr x8,[x0]
+0168e7b8  ldp x9,x1,[x8, #0x1b8]
+0168e7bc  blr x9
+0168e7c0  mov w1,#0x1
+0168e7c4  mov x2,xzr
+0168e7c8  bl 0x020aeb88
+0168e7cc  ldr w8,[x20, #0x18]
+0168e7d0  add w21,w21,#0x1
+0168e7d4  cmp w21,w8
+0168e7d8  b.lt 0x0168e750
+0168e7dc  ldp x19,x30,[sp, #0x30]
+0168e7e0  ldp x21,x20,[sp, #0x20]
+0168e7e4  ldp x23,x22,[sp, #0x10]
+0168e7e8  ldr x24,[sp], #0x40
+0168e7ec  ret
+0168e7f0  bl 0x00b079b8
+0168e7f4  bl 0x00b079b0

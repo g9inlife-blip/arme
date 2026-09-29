@@ -1,0 +1,49 @@
+Function: AliothEngine.Extensions.DirectoryInfoExtensions$$HasSubDirectory @ 016ac5cc
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$TrimEnd @ 01fe3118
+  -> System.IO.DirectoryInfo$$get_Parent @ 020aef44
+
+--- Calls IN ---
+
+--- Listing ---
+016ac5cc  str x20,[sp, #-0x20]!
+016ac5d0  stp x19,x30,[sp, #0x10]
+016ac5d4  cbz x0,0x016ac660
+016ac5d8  ldr x8,[x0]
+016ac5dc  mov x19,x1
+016ac5e0  ldp x9,x1,[x8, #0x1b8]
+016ac5e4  blr x9
+016ac5e8  cbz x0,0x016ac660
+016ac5ec  mov w1,#0x5c
+016ac5f0  mov x2,xzr
+016ac5f4  bl 0x01fe3118
+016ac5f8  cbz x19,0x016ac648
+016ac5fc  mov x20,x0
+016ac600  ldr x8,[x19]
+016ac604  mov x0,x19
+016ac608  ldp x9,x1,[x8, #0x1b8]
+016ac60c  blr x9
+016ac610  cbz x0,0x016ac660
+016ac614  mov w1,#0x5c
+016ac618  mov x2,xzr
+016ac61c  bl 0x01fe3118
+016ac620  mov x1,x20
+016ac624  mov x2,xzr
+016ac628  bl 0x01fd05b0
+016ac62c  tbnz w0,#0x0,0x016ac650
+016ac630  mov x0,x19
+016ac634  mov x1,xzr
+016ac638  bl 0x020aef44
+016ac63c  mov x19,x0
+016ac640  cbnz x0,0x016ac600
+016ac644  b 0x016ac654
+016ac648  mov w0,wzr
+016ac64c  b 0x016ac654
+016ac650  mov w0,#0x1
+016ac654  ldp x19,x30,[sp, #0x10]
+016ac658  ldr x20,[sp], #0x20
+016ac65c  ret
+016ac660  bl 0x00b079b0

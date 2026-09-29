@@ -1,0 +1,28 @@
+Function: RerollresultpanelNode$$get_btn_reroll @ 00fce400
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fce400  stp x21,x20,[sp, #-0x20]!
+00fce404  stp x19,x30,[sp, #0x10]
+00fce408  adrp x20,0x3573000
+00fce40c  adrp x21,0x3340000
+00fce410  ldrb w8,[x20, #0xe84]
+00fce414  ldr x21,[x21, #0x908]
+00fce418  mov x19,x0
+00fce41c  tbnz w8,#0x0,0x00fce434
+00fce420  adrp x0,0x3340000
+00fce424  ldr x0,[x0, #0x908]
+00fce428  bl 0x00b0789c
+00fce42c  mov w8,#0x1
+00fce430  strb w8,[x20, #0xe84]
+00fce434  ldr x1,[x21]
+00fce438  mov x0,x19
+00fce43c  ldp x19,x30,[sp, #0x10]
+00fce440  mov x2,xzr
+00fce444  ldp x21,x20,[sp], #0x20
+00fce448  b 0x00dc06f8

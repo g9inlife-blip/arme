@@ -1,0 +1,28 @@
+Function: ReadybackgroundNode$$get_enemy_03 @ 00fccf20
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fccf20  stp x21,x20,[sp, #-0x20]!
+00fccf24  stp x19,x30,[sp, #0x10]
+00fccf28  adrp x20,0x3573000
+00fccf2c  adrp x21,0x3378000
+00fccf30  ldrb w8,[x20, #0xe3e]
+00fccf34  ldr x21,[x21, #0x8a8]
+00fccf38  mov x19,x0
+00fccf3c  tbnz w8,#0x0,0x00fccf54
+00fccf40  adrp x0,0x3378000
+00fccf44  ldr x0,[x0, #0x8a8]
+00fccf48  bl 0x00b0789c
+00fccf4c  mov w8,#0x1
+00fccf50  strb w8,[x20, #0xe3e]
+00fccf54  ldr x1,[x21]
+00fccf58  mov x0,x19
+00fccf5c  ldp x19,x30,[sp, #0x10]
+00fccf60  mov x2,xzr
+00fccf64  ldp x21,x20,[sp], #0x20
+00fccf68  b 0x00dc06f8

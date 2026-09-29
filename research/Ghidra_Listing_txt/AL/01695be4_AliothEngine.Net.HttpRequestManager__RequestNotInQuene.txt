@@ -1,0 +1,27 @@
+Function: AliothEngine.Net.HttpRequestManager$$RequestNotInQuene @ 01695be4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Net.HttpRequestManager$$CreateHttpRequest @ 01695c24
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- HttpPingManager$$RequestPing @ 00e38e2c
+
+--- Listing ---
+01695be4  str x20,[sp, #-0x20]!
+01695be8  stp x19,x30,[sp, #0x10]
+01695bec  mov x19,x1
+01695bf0  mov x1,x2
+01695bf4  mov x2,x3
+01695bf8  bl 0x01695c24
+01695bfc  cbz x0,0x01695c20
+01695c00  mov x20,x0
+01695c04  str x19,[x0, #0x10]!
+01695c08  mov x1,x19
+01695c0c  bl 0x00b07850
+01695c10  ldp x19,x30,[sp, #0x10]
+01695c14  mov x0,x20
+01695c18  ldr x20,[sp], #0x20
+01695c1c  ret
+01695c20  bl 0x00b079b0

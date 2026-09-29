@@ -1,0 +1,45 @@
+Function: AliothEngine.Extensions.RectExtensions$$ContainsOrIntersects @ 016b38b8
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.RectExtensions$$Intersects @ 016b37a4
+  -> AliothEngine.Extensions.RectExtensions$$Contains @ 016b3654
+
+--- Calls IN ---
+
+--- Listing ---
+016b38b8  stp d15,d14,[sp, #-0x50]!
+016b38bc  stp d13,d12,[sp, #0x10]
+016b38c0  stp d11,d10,[sp, #0x20]
+016b38c4  stp d9,d8,[sp, #0x30]
+016b38c8  str x30,[sp, #0x40]
+016b38cc  mov v8.16B,v7.16B
+016b38d0  mov v9.16B,v6.16B
+016b38d4  mov v10.16B,v5.16B
+016b38d8  mov v11.16B,v4.16B
+016b38dc  mov v12.16B,v3.16B
+016b38e0  mov v13.16B,v2.16B
+016b38e4  mov v14.16B,v1.16B
+016b38e8  mov v15.16B,v0.16B
+016b38ec  bl 0x016b3654
+016b38f0  tbz w0,#0x0,0x016b3910
+016b38f4  ldr x30,[sp, #0x40]
+016b38f8  ldp d9,d8,[sp, #0x30]
+016b38fc  ldp d11,d10,[sp, #0x20]
+016b3900  ldp d13,d12,[sp, #0x10]
+016b3904  mov w0,#0x1
+016b3908  ldp d15,d14,[sp], #0x50
+016b390c  ret
+016b3910  mov v2.16B,v13.16B
+016b3914  mov v3.16B,v12.16B
+016b3918  mov v4.16B,v11.16B
+016b391c  mov v5.16B,v10.16B
+016b3920  mov v6.16B,v9.16B
+016b3924  mov v7.16B,v8.16B
+016b3928  ldr x30,[sp, #0x40]
+016b392c  ldp d9,d8,[sp, #0x30]
+016b3930  ldp d11,d10,[sp, #0x20]
+016b3934  ldp d13,d12,[sp, #0x10]
+016b3938  mov v0.16B,v15.16B
+016b393c  mov v1.16B,v14.16B
+016b3940  ldp d15,d14,[sp], #0x50
+016b3944  b 0x016b37a4

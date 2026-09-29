@@ -1,0 +1,104 @@
+Function: ReviewPanelMono$$OnClickOK @ 0100dbe8
+
+--- Calls OUT ---
+  -> ServerConst$$GetURL @ 016dbad8
+  -> GamePlayerInfomation$$get_ResAllin1 @ 00e36988
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> Ali$$BuildRetailConfirm @ 00e00338
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Application$$OpenURL @ 024f2ad0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> GamePlayerInfomation$$set_Store_Reviewed @ 00e376cc
+
+--- Calls IN ---
+
+--- Listing ---
+0100dbe8  str x22,[sp, #-0x30]!
+0100dbec  stp x21,x20,[sp, #0x10]
+0100dbf0  stp x19,x30,[sp, #0x20]
+0100dbf4  adrp x21,0x3574000
+0100dbf8  adrp x22,0x3380000
+0100dbfc  ldrb w8,[x21, #0x454]
+0100dc00  ldr x22,[x22, #0xa78]
+0100dc04  mov x20,x1
+0100dc08  mov x19,x0
+0100dc0c  tbnz w8,#0x0,0x0100dc48
+0100dc10  adrp x0,0x335f000
+0100dc14  ldr x0,[x0, #0x20]
+0100dc18  bl 0x00b0789c
+0100dc1c  adrp x0,0x3380000
+0100dc20  ldr x0,[x0, #0xa78]
+0100dc24  bl 0x00b0789c
+0100dc28  adrp x0,0x332c000
+0100dc2c  ldr x0,[x0, #0x2a0]
+0100dc30  bl 0x00b0789c
+0100dc34  adrp x0,0x3322000
+0100dc38  ldr x0,[x0, #0x288]
+0100dc3c  bl 0x00b0789c
+0100dc40  mov w8,#0x1
+0100dc44  strb w8,[x21, #0x454]
+0100dc48  ldr x8,[x22]
+0100dc4c  ldr x8,[x8, #0xb8]
+0100dc50  ldr x0,[x8, #0x20]
+0100dc54  cbz x0,0x0100dc74
+0100dc58  mov x1,x19
+0100dc5c  mov x2,x20
+0100dc60  ldp x19,x30,[sp, #0x20]
+0100dc64  ldp x21,x20,[sp, #0x10]
+0100dc68  mov x3,xzr
+0100dc6c  ldr x22,[sp], #0x30
+0100dc70  b 0x0106125c
+0100dc74  adrp x20,0x335f000
+0100dc78  ldr x20,[x20, #0x20]
+0100dc7c  ldr x0,[x20]
+0100dc80  ldr w8,[x0, #0xe0]
+0100dc84  cbnz w8,0x0100dc90
+0100dc88  bl 0x00b0798c
+0100dc8c  ldr x0,[x20]
+0100dc90  ldr x8,[x0, #0xb8]
+0100dc94  ldr x0,[x8, #0x10]
+0100dc98  cbz x0,0x0100dd3c
+0100dc9c  adrp x20,0x332c000
+0100dca0  ldr x20,[x20, #0x2a0]
+0100dca4  mov w1,#0x4
+0100dca8  mov x2,xzr
+0100dcac  bl 0x00e00338
+0100dcb0  tbz w0,#0x0,0x0100dcc0
+0100dcb4  mov w0,#0x1
+0100dcb8  mov x1,xzr
+0100dcbc  bl 0x00e376cc
+0100dcc0  ldr x8,[x19]
+0100dcc4  mov x0,x19
+0100dcc8  ldr x9,[x8, #0x458]
+0100dccc  ldr x1,[x8, #0x460]
+0100dcd0  blr x9
+0100dcd4  ldr x0,[x20]
+0100dcd8  bl 0x01e09a6c
+0100dcdc  cbz x0,0x0100dd3c
+0100dce0  mov x1,xzr
+0100dce4  bl 0x00e36988
+0100dce8  cbz x0,0x0100dd0c
+0100dcec  adrp x19,0x3322000
+0100dcf0  ldr x19,[x19, #0x288]
+0100dcf4  mov x1,xzr
+0100dcf8  ldr x0,[x19]
+0100dcfc  bl 0x016dbad8
+0100dd00  mov x1,xzr
+0100dd04  bl 0x01fdf3a0
+0100dd08  tbz w0,#0x0,0x0100dd1c
+0100dd0c  ldp x19,x30,[sp, #0x20]
+0100dd10  ldp x21,x20,[sp, #0x10]
+0100dd14  ldr x22,[sp], #0x30
+0100dd18  ret
+0100dd1c  ldr x0,[x19]
+0100dd20  mov x1,xzr
+0100dd24  bl 0x016dbad8
+0100dd28  ldp x19,x30,[sp, #0x20]
+0100dd2c  ldp x21,x20,[sp, #0x10]
+0100dd30  mov x1,xzr
+0100dd34  ldr x22,[sp], #0x30
+0100dd38  b 0x024f2ad0
+0100dd3c  bl 0x00b079b0

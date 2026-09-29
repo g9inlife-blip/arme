@@ -1,0 +1,44 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$FindIf<object> @ 01765854
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01765854  stp x23,x22,[sp, #-0x30]!
+01765858  stp x21,x20,[sp, #0x10]
+0176585c  stp x19,x30,[sp, #0x20]
+01765860  cbz x0,0x017658dc
+01765864  ldr x8,[x0, #0x18]
+01765868  mov x22,x0
+0176586c  cmp w8,#0x1
+01765870  b.lt 0x017658c0
+01765874  mov x20,x2
+01765878  mov x21,x1
+0176587c  mov x19,xzr
+01765880  and x8,x8,#0xffffffff
+01765884  add x23,x22,#0x20
+01765888  cmp x19,w8, UXTW 
+0176588c  b.cs 0x017658d8
+01765890  cbz x21,0x017658dc
+01765894  ldr x8,[x20, #0x38]
+01765898  ldr x1,[x23, x19, LSL #0x3]
+0176589c  mov x0,x21
+017658a0  ldr x2,[x8, #0x8]
+017658a4  ldr x8,[x2, #0x8]
+017658a8  blr x8
+017658ac  tbnz w0,#0x0,0x017658c4
+017658b0  ldr w8,[x22, #0x18]
+017658b4  add x19,x19,#0x1
+017658b8  cmp x19,w8, SXTW 
+017658bc  b.lt 0x01765888
+017658c0  mov w19,#0xffffffff
+017658c4  mov w0,w19
+017658c8  ldp x19,x30,[sp, #0x20]
+017658cc  ldp x21,x20,[sp, #0x10]
+017658d0  ldp x23,x22,[sp], #0x30
+017658d4  ret
+017658d8  bl 0x00b079b8
+017658dc  bl 0x00b079b0

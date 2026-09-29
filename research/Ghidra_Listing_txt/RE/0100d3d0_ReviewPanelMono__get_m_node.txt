@@ -1,0 +1,87 @@
+Function: ReviewPanelMono$$get_m_node @ 0100d3d0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp699 @ 010bb8cc
+  -> AliothExtensions$$GetOrAddComponent<object> @ 017372ac
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ReviewPanelMonoWrap$$_g_get_m_node @ 01378cb4
+  <- ReviewPanelMono$$Awake @ 0100d554
+
+--- Listing ---
+0100d3d0  str x22,[sp, #-0x30]!
+0100d3d4  stp x21,x20,[sp, #0x10]
+0100d3d8  stp x19,x30,[sp, #0x20]
+0100d3dc  adrp x20,0x3574000
+0100d3e0  adrp x21,0x3380000
+0100d3e4  ldrb w8,[x20, #0x450]
+0100d3e8  ldr x21,[x21, #0xa78]
+0100d3ec  mov x19,x0
+0100d3f0  tbnz w8,#0x0,0x0100d42c
+0100d3f4  adrp x0,0x3360000
+0100d3f8  ldr x0,[x0, #0x890]
+0100d3fc  bl 0x00b0789c
+0100d400  adrp x0,0x3348000
+0100d404  ldr x0,[x0, #0x138]
+0100d408  bl 0x00b0789c
+0100d40c  adrp x0,0x3321000
+0100d410  ldr x0,[x0, #0xca8]
+0100d414  bl 0x00b0789c
+0100d418  adrp x0,0x3380000
+0100d41c  ldr x0,[x0, #0xa78]
+0100d420  bl 0x00b0789c
+0100d424  mov w8,#0x1
+0100d428  strb w8,[x20, #0x450]
+0100d42c  ldr x8,[x21]
+0100d430  ldr x8,[x8, #0xb8]
+0100d434  ldr x0,[x8]
+0100d438  cbz x0,0x0100d454
+0100d43c  mov x1,x19
+0100d440  ldp x19,x30,[sp, #0x20]
+0100d444  ldp x21,x20,[sp, #0x10]
+0100d448  mov x2,xzr
+0100d44c  ldr x22,[sp], #0x30
+0100d450  b 0x010bb8cc
+0100d454  adrp x8,0x3321000
+0100d458  ldr x8,[x8, #0xca8]
+0100d45c  mov x20,x19
+0100d460  ldr x21,[x20, #0xc8]!
+0100d464  ldr x0,[x8]
+0100d468  ldr w8,[x0, #0xe0]
+0100d46c  cbnz w8,0x0100d474
+0100d470  bl 0x00b0798c
+0100d474  mov x0,x21
+0100d478  mov x1,xzr
+0100d47c  mov x2,xzr
+0100d480  bl 0x024c8180
+0100d484  tbz w0,#0x0,0x0100d4d8
+0100d488  adrp x22,0x3348000
+0100d48c  adrp x21,0x3360000
+0100d490  ldr x22,[x22, #0x138]
+0100d494  ldr x21,[x21, #0x890]
+0100d498  mov x0,x19
+0100d49c  mov x1,xzr
+0100d4a0  bl 0x024e4ed4
+0100d4a4  ldr x8,[x22]
+0100d4a8  mov x19,x0
+0100d4ac  ldr w9,[x8, #0xe0]
+0100d4b0  cbnz w9,0x0100d4bc
+0100d4b4  mov x0,x8
+0100d4b8  bl 0x00b0798c
+0100d4bc  ldr x1,[x21]
+0100d4c0  mov x0,x19
+0100d4c4  bl 0x017372ac
+0100d4c8  mov x1,x0
+0100d4cc  str x0,[x20]
+0100d4d0  mov x0,x20
+0100d4d4  bl 0x00b07850
+0100d4d8  ldr x0,[x20]
+0100d4dc  ldp x19,x30,[sp, #0x20]
+0100d4e0  ldp x21,x20,[sp, #0x10]
+0100d4e4  ldr x22,[sp], #0x30
+0100d4e8  ret

@@ -1,0 +1,15 @@
+Function: __add_shared @ 00b810fc
+FuncComment: std::__ndk1::__shared_weak_count::__add_shared()
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+00b810fc  add x8,x0,#0x8
+    ; [PLATE] std::__ndk1::__shared_weak_count::__add_shared()
+00b81100  ldxr x9,[x8]
+00b81104  add x9,x9,#0x1
+00b81108  stxr w10,x9,[x8]
+00b8110c  cbnz w10,0x00b81100
+00b81110  ret

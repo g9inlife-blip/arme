@@ -1,0 +1,24 @@
+Function: AliothEngine.Singleton<object>$$HasInstance @ 01e09b94
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e09b94  str x30,[sp, #-0x10]!
+01e09b98  ldr x0,[x0, #0x20]
+01e09b9c  ldrb w8,[x0, #0x132]
+01e09ba0  tbnz w8,#0x0,0x01e09ba8
+01e09ba4  bl 0x00b2ac40
+01e09ba8  ldr x8,[x0, #0xc0]
+01e09bac  ldr x0,[x8, #0x8]
+01e09bb0  ldrb w8,[x0, #0x132]
+01e09bb4  tbnz w8,#0x0,0x01e09bbc
+01e09bb8  bl 0x00b2ac40
+01e09bbc  ldr x8,[x0, #0xb8]
+01e09bc0  ldr x8,[x8]
+01e09bc4  cmp x8,#0x0
+01e09bc8  cset w0,ne
+01e09bcc  ldr x30,[sp], #0x10
+01e09bd0  ret

@@ -1,0 +1,40 @@
+Function: ResConst$$.cctor @ 016dba68
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016dba68  str x20,[sp, #-0x20]!
+016dba6c  stp x19,x30,[sp, #0x10]
+016dba70  adrp x19,0x3577000
+016dba74  adrp x20,0x332d000
+016dba78  ldrb w8,[x19, #0xd86]
+016dba7c  ldr x20,[x20, #0xa60]
+016dba80  tbnz w8,#0x0,0x016dba98
+016dba84  adrp x0,0x332d000
+016dba88  ldr x0,[x0, #0xa60]
+016dba8c  bl 0x00b0789c
+016dba90  mov w8,#0x1
+016dba94  strb w8,[x19, #0xd86]
+016dba98  ldr x0,[x20]
+016dba9c  bl 0x00b079a0
+016dbaa0  cbz x0,0x016dbad4
+016dbaa4  mov x1,xzr
+016dbaa8  mov x19,x0
+016dbaac  bl 0x02194104
+016dbab0  ldr x8,[x20]
+016dbab4  mov x1,x19
+016dbab8  ldr x8,[x8, #0xb8]
+016dbabc  str x19,[x8]
+016dbac0  ldr x8,[x20]
+016dbac4  ldp x19,x30,[sp, #0x10]
+016dbac8  ldr x0,[x8, #0xb8]
+016dbacc  ldr x20,[sp], #0x20
+016dbad0  b 0x00b07850
+016dbad4  bl 0x00b079b0

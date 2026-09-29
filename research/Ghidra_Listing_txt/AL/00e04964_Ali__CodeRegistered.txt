@@ -1,0 +1,75 @@
+Function: Ali$$CodeRegistered @ 00e04964
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Item @ 0196e450
+  -> System.Collections.Generic.Dictionary<object,-object>$$ContainsKey @ 0196e6d8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- SDKHandler_QuickSDK$$Init @ 00de6360
+  <- XLua.CSObjectWrap.AliWrap$$_m_CodeRegistered @ 01191ff4
+
+--- Listing ---
+00e04964  str x22,[sp, #-0x30]!
+00e04968  stp x21,x20,[sp, #0x10]
+00e0496c  stp x19,x30,[sp, #0x20]
+00e04970  adrp x22,0x3572000
+00e04974  adrp x21,0x335f000
+00e04978  ldrb w8,[x22, #0x563]
+00e0497c  ldr x21,[x21, #0x20]
+00e04980  mov x19,x1
+00e04984  mov x20,x0
+00e04988  tbnz w8,#0x0,0x00e049b8
+00e0498c  adrp x0,0x335f000
+00e04990  ldr x0,[x0, #0x20]
+00e04994  bl 0x00b0789c
+00e04998  adrp x0,0x332a000
+00e0499c  ldr x0,[x0, #0x40]
+00e049a0  bl 0x00b0789c
+00e049a4  adrp x0,0x3319000
+00e049a8  ldr x0,[x0, #0x878]
+00e049ac  bl 0x00b0789c
+00e049b0  mov w8,#0x1
+00e049b4  strb w8,[x22, #0x563]
+00e049b8  ldr x0,[x21]
+00e049bc  ldr w8,[x0, #0xe0]
+00e049c0  cbnz w8,0x00e049cc
+00e049c4  bl 0x00b0798c
+00e049c8  ldr x0,[x21]
+00e049cc  ldr x8,[x0, #0xb8]
+00e049d0  ldr x0,[x8, #0x2c0]
+00e049d4  cbz x0,0x00e049f4
+00e049d8  mov x1,x20
+00e049dc  mov x2,x19
+00e049e0  ldp x19,x30,[sp, #0x20]
+00e049e4  ldp x21,x20,[sp, #0x10]
+00e049e8  mov x3,xzr
+00e049ec  ldr x22,[sp], #0x30
+00e049f0  b 0x01065a14
+00e049f4  ldr x0,[x20, #0x120]
+00e049f8  cbz x0,0x00e04a50
+00e049fc  adrp x8,0x332a000
+00e04a00  ldr x8,[x8, #0x40]
+00e04a04  mov x1,x19
+00e04a08  ldr x2,[x8]
+00e04a0c  bl 0x0196e6d8
+00e04a10  tbz w0,#0x0,0x00e04a3c
+00e04a14  ldr x0,[x20, #0x120]
+00e04a18  cbz x0,0x00e04a50
+00e04a1c  adrp x8,0x3319000
+00e04a20  ldr x8,[x8, #0x878]
+00e04a24  mov x1,x19
+00e04a28  ldr x2,[x8]
+00e04a2c  bl 0x0196e450
+00e04a30  cmp x0,#0x0
+00e04a34  cset w0,ne
+00e04a38  b 0x00e04a40
+00e04a3c  mov w0,wzr
+00e04a40  ldp x19,x30,[sp, #0x20]
+00e04a44  ldp x21,x20,[sp, #0x10]
+00e04a48  ldr x22,[sp], #0x30
+00e04a4c  ret
+00e04a50  bl 0x00b079b0

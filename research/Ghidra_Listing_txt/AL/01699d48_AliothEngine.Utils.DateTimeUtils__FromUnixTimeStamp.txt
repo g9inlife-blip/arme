@@ -1,0 +1,38 @@
+Function: AliothEngine.Utils.DateTimeUtils$$FromUnixTimeStamp @ 01699d48
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.DateTime$$AddSeconds @ 02133150
+
+--- Calls IN ---
+  <- President.ObjSerializer$$DeserializeDateTime @ 01631064
+
+--- Listing ---
+01699d48  str d8,[sp, #-0x20]!
+01699d4c  str x20,[sp, #0x8]
+01699d50  stp x19,x30,[sp, #0x10]
+01699d54  adrp x20,0x3577000
+01699d58  adrp x19,0x3369000
+01699d5c  ldrb w8,[x20, #0xb26]
+01699d60  ldr x19,[x19, #0x3c0]
+01699d64  mov v8.16B,v0.16B
+01699d68  tbnz w8,#0x0,0x01699d80
+01699d6c  adrp x0,0x3369000
+01699d70  ldr x0,[x0, #0x3c0]
+01699d74  bl 0x00b0789c
+01699d78  mov w8,#0x1
+01699d7c  strb w8,[x20, #0xb26]
+01699d80  ldr x0,[x19]
+01699d84  ldr w8,[x0, #0xe0]
+01699d88  cbnz w8,0x01699d94
+01699d8c  bl 0x00b0798c
+01699d90  ldr x0,[x19]
+01699d94  ldr x8,[x0, #0xb8]
+01699d98  ldp x19,x30,[sp, #0x10]
+01699d9c  ldr x20,[sp, #0x8]
+01699da0  mov v0.16B,v8.16B
+01699da4  add x0,x8,#0x8
+01699da8  mov x1,xzr
+01699dac  ldr d8,[sp], #0x20
+01699db0  b 0x02133150

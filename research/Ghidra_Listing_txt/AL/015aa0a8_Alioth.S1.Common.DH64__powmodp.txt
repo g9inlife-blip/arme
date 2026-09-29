@@ -1,0 +1,52 @@
+Function: Alioth.S1.Common.DH64$$powmodp @ 015aa0a8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_008d74f8 @ 008d74f8
+  -> Alioth.S1.Common.DH64$$pow_mod_p @ 015a9fe0
+  -> System.Exception$$.ctor @ 021876ac
+  -> FUN_00b07978 @ 00b07978
+
+--- Calls IN ---
+  <- Alioth.S1.Common.DH64$$Secret @ 015aa224
+  <- Alioth.S1.Common.DH64$$PublicKey @ 015aa21c
+  <- Alioth.S1.Common.DH64$$KeyPair @ 015aa1ac
+
+--- Listing ---
+015aa0a8  stp x19,x30,[sp, #-0x10]!
+015aa0ac  cbz x0,0x015aa0c8
+015aa0b0  cbz x1,0x015aa0ec
+015aa0b4  add x8,x0,#0x3b
+015aa0b8  cmn x0,#0x3b
+015aa0bc  csel x0,x8,x0,hi
+015aa0c0  ldp x19,x30,[sp], #0x10
+015aa0c4  b 0x015a9fe0
+015aa0c8  adrp x0,0x334a000
+015aa0cc  ldr x0,[x0, #0xbb0]
+015aa0d0  bl 0x00b078a0
+015aa0d4  bl 0x00b079a0
+015aa0d8  mov x19,x0
+015aa0dc  bl 0x008d74f8
+015aa0e0  adrp x0,0x3328000
+015aa0e4  ldr x0,[x0, #0x8f0]
+015aa0e8  b 0x015aa10c
+015aa0ec  adrp x0,0x334a000
+015aa0f0  ldr x0,[x0, #0xbb0]
+015aa0f4  bl 0x00b078a0
+015aa0f8  bl 0x00b079a0
+015aa0fc  mov x19,x0
+015aa100  bl 0x008d74f8
+015aa104  adrp x0,0x337f000
+015aa108  ldr x0,[x0, #0x618]
+015aa10c  bl 0x00b078a0
+015aa110  mov x1,x0
+015aa114  mov x0,x19
+015aa118  mov x2,xzr
+015aa11c  bl 0x021876ac
+015aa120  adrp x0,0x3352000
+015aa124  ldr x0,[x0, #0xf58]
+015aa128  bl 0x00b078a0
+015aa12c  mov x1,x0
+015aa130  mov x0,x19
+015aa134  bl 0x00b07978

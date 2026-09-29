@@ -1,0 +1,34 @@
+Function: AliothEngine.Extensions.RectExtensions$$ResetPosition @ 016b265c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_position @ 024daf5c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016b265c  sub sp,sp,#0x20
+016b2660  stp x19,x30,[sp, #0x10]
+016b2664  adrp x19,0x3570000
+016b2668  ldrb w8,[x19, #0xffd]
+016b266c  stp s0,s1,[sp]
+016b2670  stp s2,s3,[sp, #0x8]
+016b2674  cbnz w8,0x016b268c
+016b2678  adrp x0,0x3365000
+016b267c  ldr x0,[x0, #0x108]
+016b2680  bl 0x00b0789c
+016b2684  mov w8,#0x1
+016b2688  strb w8,[x19, #0xffd]
+016b268c  adrp x8,0x3365000
+016b2690  ldr x8,[x8, #0x108]
+016b2694  mov x0,sp
+016b2698  mov x1,xzr
+016b269c  ldr x8,[x8]
+016b26a0  ldr x8,[x8, #0xb8]
+016b26a4  ldp s0,s1,[x8]
+016b26a8  bl 0x024daf5c
+016b26ac  ldp s0,s1,[sp]
+016b26b0  ldp s2,s3,[sp, #0x8]
+016b26b4  ldp x19,x30,[sp, #0x10]
+016b26b8  add sp,sp,#0x20
+016b26bc  ret

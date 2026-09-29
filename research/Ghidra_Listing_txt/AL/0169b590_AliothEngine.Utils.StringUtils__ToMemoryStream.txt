@@ -1,0 +1,72 @@
+Function: AliothEngine.Utils.StringUtils$$ToMemoryStream @ 0169b590
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.IO.MemoryStream$$.ctor @ 020a3bd8
+  -> System.Text.Encoding$$get_UTF8 @ 01ff8ca0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.StreamWriter$$.ctor @ 020a998c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169b590  str x22,[sp, #-0x30]!
+0169b594  stp x21,x20,[sp, #0x10]
+0169b598  stp x19,x30,[sp, #0x20]
+0169b59c  adrp x20,0x3577000
+0169b5a0  adrp x21,0x3368000
+0169b5a4  ldrb w8,[x20, #0xb35]
+0169b5a8  ldr x21,[x21, #0xf58]
+0169b5ac  mov x19,x0
+0169b5b0  tbnz w8,#0x0,0x0169b5d4
+0169b5b4  adrp x0,0x3368000
+0169b5b8  ldr x0,[x0, #0xf58]
+0169b5bc  bl 0x00b0789c
+0169b5c0  adrp x0,0x330a000
+0169b5c4  ldr x0,[x0, #0xa50]
+0169b5c8  bl 0x00b0789c
+0169b5cc  mov w8,#0x1
+0169b5d0  strb w8,[x20, #0xb35]
+0169b5d4  ldr x0,[x21]
+0169b5d8  bl 0x00b079a0
+0169b5dc  cbz x0,0x0169b678
+0169b5e0  adrp x21,0x330a000
+0169b5e4  ldr x21,[x21, #0xa50]
+0169b5e8  mov x1,xzr
+0169b5ec  mov x20,x0
+0169b5f0  bl 0x020a3bd8
+0169b5f4  mov x0,xzr
+0169b5f8  bl 0x01ff8ca0
+0169b5fc  ldr x8,[x21]
+0169b600  mov x22,x0
+0169b604  mov x0,x8
+0169b608  bl 0x00b079a0
+0169b60c  cbz x0,0x0169b678
+0169b610  mov x1,x20
+0169b614  mov x2,x22
+0169b618  mov x3,xzr
+0169b61c  mov x21,x0
+0169b620  bl 0x020a998c
+0169b624  ldr x8,[x21]
+0169b628  mov x0,x21
+0169b62c  mov x1,x19
+0169b630  ldr x9,[x8, #0x248]
+0169b634  ldr x2,[x8, #0x250]
+0169b638  blr x9
+0169b63c  ldr x8,[x21]
+0169b640  mov x0,x21
+0169b644  ldp x9,x1,[x8, #0x1d8]
+0169b648  blr x9
+0169b64c  ldr x8,[x20]
+0169b650  mov x0,x20
+0169b654  mov x1,xzr
+0169b658  ldr x9,[x8, #0x208]
+0169b65c  ldr x2,[x8, #0x210]
+0169b660  blr x9
+0169b664  mov x0,x20
+0169b668  ldp x19,x30,[sp, #0x20]
+0169b66c  ldp x21,x20,[sp, #0x10]
+0169b670  ldr x22,[sp], #0x30
+0169b674  ret
+0169b678  bl 0x00b079b0

@@ -1,0 +1,131 @@
+Function: Ali$$GetBaseData @ 00e035d4
+
+--- Calls OUT ---
+  -> DataManager$$TryGetBaseData @ 00df4ffc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$ToString @ 0214dc44
+  -> System.String$$Concat @ 01fd2850
+  -> Ali$$get_dataManager @ 00e0277c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp391 @ 01092164
+
+--- Calls IN ---
+  <- EquipItemMono$$Show @ 00eae068
+  <- BattleEndWinPanelMono$$GetWeaponUpExp @ 00e73604
+  <- RewardPanelMono$$Demand @ 0100dfd0
+  <- FUN_00e9e004 @ 00e9e004
+  <- YingyuanYYPanelMono$$OnClickSupport @ 01057afc
+  <- WeaponPanelMono$$DemandByID @ 00f5d484
+  <- ShopNewPanelMono$$SetRechargeItem @ 0102b750
+  <- UserInfoPanelMono$$ShowCoin @ 00f7e524
+  <- EquipInfo$$get_NameByQualityWord @ 016ee014
+  <- HeroPartUpMono$$OnClickTurnTo @ 00f4ffa4
+  <- EquipItemMono$$OnClickItem @ 00eaf6cc
+  <- UnPackPanelMono$$Demand @ 00ea6f6c
+  <- ShopNewPanelMono$$OnClickRefreshShop @ 0102905c
+  <- SkillItemMono$$DemandOpen @ 00eb47d4
+  <- TaoFaPanelMono$$OnClickLevelUp @ 010376e4
+  <- DataTool$$ToNoticeString @ 016ebccc
+  <- OpenBoxShowPanelMono$$DemandOpen @ 00e9cdbc
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetBaseData @ 01191128
+  <- ShopConfirmTipsMono$$SetShopDetails @ 010236d0
+  <- HeroPartEquipMono$$RefreshWeapon @ 00f4214c
+  <- ExploreMainPanelMono$$ShowStart @ 00ef4adc
+  <- StiMarkDevPanelMono$$RefreshEquipDevItem @ 00edfc50
+  <- ExploreMainPanelMono$$OnClickTicket @ 00ef9024
+  <- ExploreMainPanelMono$$OnClickRefresh @ 00ef3244
+  <- WeaponPanelMono$$OpenWeaponForgePanel @ 00f5cabc
+  <- BuyEnergyMono$$ClickChargeEnergy @ 0100cdd4
+  <- ShopConfirmTipsMono$$SetMrkSplitDetails @ 01024a50
+  <- TipsSkillMono$$ShowTips @ 00f0fdd4
+  <- BoxResultPanelMono$$ShowItem @ 00e9f568
+  <- TipsTextPanelMono$$TipsCondition @ 00f151cc
+  <- EquipUpPanelMono$$RefreshMaterial @ 00edd1c0
+  <- RewardManager$$ShowItem @ 00e2e2f4
+  <- ItemAppearPanelMono$$Demand @ 00ea5ba0
+  <- DataCenter$$ProccessRequestRes @ 016e203c
+  <- BattleEndWinPanelMono$$ExpUpDoTween_Weapon @ 00e73ea4
+  <- DevAniPlayPanelMono$$Demand @ 00ebd4a8
+  <- TrainingCampPanelMono$$RefreshTaskItem @ 0103cb68
+  <- OpenBoxShowPanelMono$$GetNext @ 00e9e320
+  <- RewardPanelMono$$ShowItem @ 0100e49c
+  <- WareHousePanelMono$$OnClickIncreaseBag @ 0104bb7c
+
+--- Listing ---
+00e035d4  sub sp,sp,#0x40
+00e035d8  str x22,[sp, #0x10]
+00e035dc  stp x21,x20,[sp, #0x20]
+00e035e0  stp x19,x30,[sp, #0x30]
+00e035e4  adrp x22,0x3572000
+00e035e8  str w1,[sp, #0x1c]
+00e035ec  adrp x21,0x335f000
+00e035f0  ldrb w8,[x22, #0x55a]
+00e035f4  ldr x21,[x21, #0x20]
+00e035f8  mov w19,w1
+00e035fc  mov x20,x0
+00e03600  tbnz w8,#0x0,0x00e03630
+00e03604  adrp x0,0x335f000
+00e03608  ldr x0,[x0, #0x20]
+00e0360c  bl 0x00b0789c
+00e03610  adrp x0,0x336b000
+00e03614  ldr x0,[x0, #0x7d0]
+00e03618  bl 0x00b0789c
+00e0361c  adrp x0,0x336a000
+00e03620  ldr x0,[x0, #0x378]
+00e03624  bl 0x00b0789c
+00e03628  mov w8,#0x1
+00e0362c  strb w8,[x22, #0x55a]
+00e03630  ldr x0,[x21]
+00e03634  str xzr,[sp, #0x8]
+00e03638  ldr w8,[x0, #0xe0]
+00e0363c  cbnz w8,0x00e03648
+00e03640  bl 0x00b0798c
+00e03644  ldr x0,[x21]
+00e03648  ldr x8,[x0, #0xb8]
+00e0364c  ldr x0,[x8, #0x270]
+00e03650  cbz x0,0x00e03668
+00e03654  mov x1,x20
+00e03658  mov w2,w19
+00e0365c  mov x3,xzr
+00e03660  bl 0x01092164
+00e03664  b 0x00e036e8
+00e03668  mov x0,x20
+00e0366c  str xzr,[sp, #0x8]
+00e03670  bl 0x00e0277c
+00e03674  cbz x0,0x00e036fc
+00e03678  add x2,sp,#0x8
+00e0367c  mov w1,w19
+00e03680  mov x3,xzr
+00e03684  bl 0x00df4ffc
+00e03688  tbnz w0,#0x0,0x00e036e4
+00e0368c  cbz w19,0x00e036e4
+00e03690  adrp x19,0x336a000
+00e03694  adrp x20,0x336b000
+00e03698  ldr x19,[x19, #0x378]
+00e0369c  ldr x20,[x20, #0x7d0]
+00e036a0  add x0,sp,#0x1c
+00e036a4  mov x1,xzr
+00e036a8  bl 0x0214dc44
+00e036ac  ldr x8,[x19]
+00e036b0  mov x1,x0
+00e036b4  mov x2,xzr
+00e036b8  mov x0,x8
+00e036bc  bl 0x01fd2850
+00e036c0  ldr x8,[x20]
+00e036c4  mov x19,x0
+00e036c8  ldr w9,[x8, #0xe0]
+00e036cc  cbnz w9,0x00e036d8
+00e036d0  mov x0,x8
+00e036d4  bl 0x00b0798c
+00e036d8  mov x0,x19
+00e036dc  mov x1,xzr
+00e036e0  bl 0x024c0830
+00e036e4  ldr x0,[sp, #0x8]
+00e036e8  ldp x19,x30,[sp, #0x30]
+00e036ec  ldp x21,x20,[sp, #0x20]
+00e036f0  ldr x22,[sp, #0x10]
+00e036f4  add sp,sp,#0x40
+00e036f8  ret
+00e036fc  bl 0x00b079b0

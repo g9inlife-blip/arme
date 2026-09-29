@@ -1,0 +1,95 @@
+Function: AliothEngine.GateSoundManager.<FadeAudioSource>d__25$$MoveNext @ 0164ce74
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.AudioSource$$set_volume @ 024bb940
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Time$$get_deltaTime @ 024dc048
+  -> UnityEngine.AudioSource$$get_volume @ 024bb904
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0164ce74  stp d9,d8,[sp, #-0x30]!
+0164ce78  str x20,[sp, #0x10]
+0164ce7c  stp x19,x30,[sp, #0x20]
+0164ce80  adrp x20,0x3577000
+0164ce84  ldrb w8,[x20, #0x7c8]
+0164ce88  mov x19,x0
+0164ce8c  tbnz w8,#0x0,0x0164cea4
+0164ce90  adrp x0,0x3321000
+0164ce94  ldr x0,[x0, #0xca8]
+0164ce98  bl 0x00b0789c
+0164ce9c  mov w8,#0x1
+0164cea0  strb w8,[x20, #0x7c8]
+0164cea4  ldr w8,[x19, #0x10]
+0164cea8  cmp w8,#0x1
+0164ceac  b.eq 0x0164cef4
+0164ceb0  cbnz w8,0x0164cf58
+0164ceb4  ldr x0,[x19, #0x20]
+0164ceb8  mov w8,#0xffffffff
+0164cebc  str w8,[x19, #0x10]
+0164cec0  cbz x0,0x0164cfb0
+0164cec4  mov x1,xzr
+0164cec8  bl 0x024bb904
+0164cecc  ldrb w8,[x19, #0x28]
+0164ced0  str s0,[x19, #0x30]
+0164ced4  str wzr,[x19, #0x34]
+0164ced8  cbz w8,0x0164cefc
+0164cedc  ldr x0,[x19, #0x20]
+0164cee0  cbz x0,0x0164cfb0
+0164cee4  fmov s0,wzr
+0164cee8  mov x1,xzr
+0164ceec  bl 0x024bb940
+0164cef0  b 0x0164cefc
+0164cef4  mov w8,#0xffffffff
+0164cef8  str w8,[x19, #0x10]
+0164cefc  ldr s9,[x19, #0x34]
+0164cf00  fmov s8,0x3f800000
+0164cf04  fcmp s9,s8
+0164cf08  b.pl 0x0164cf58
+0164cf0c  adrp x20,0x3321000
+0164cf10  ldr x20,[x20, #0xca8]
+0164cf14  mov x0,xzr
+0164cf18  bl 0x024dc048
+0164cf1c  ldr s1,[x19, #0x2c]
+0164cf20  fdiv s1,s8,s1
+0164cf24  fmul s0,s0,s1
+0164cf28  fadd s0,s9,s0
+0164cf2c  str s0,[x19, #0x34]
+0164cf30  ldr x0,[x20]
+0164cf34  ldr x20,[x19, #0x20]
+0164cf38  ldr w8,[x0, #0xe0]
+0164cf3c  cbnz w8,0x0164cf44
+0164cf40  bl 0x00b0798c
+0164cf44  mov x0,x20
+0164cf48  mov x1,xzr
+0164cf4c  mov x2,xzr
+0164cf50  bl 0x024c8180
+0164cf54  tbz w0,#0x0,0x0164cf6c
+0164cf58  mov w0,wzr
+0164cf5c  ldp x19,x30,[sp, #0x20]
+0164cf60  ldr x20,[sp, #0x10]
+0164cf64  ldp d9,d8,[sp], #0x30
+0164cf68  ret
+0164cf6c  ldr x0,[x19, #0x20]
+0164cf70  cbz x0,0x0164cfb0
+0164cf74  ldp s1,s0,[x19, #0x30]
+0164cf78  ldrb w8,[x19, #0x28]
+0164cf7c  mov x1,xzr
+0164cf80  fsub s2,s8,s0
+0164cf84  cmp w8,#0x0
+0164cf88  fcsel s0,s2,s0,eq
+0164cf8c  fmul s0,s1,s0
+0164cf90  bl 0x024bb940
+0164cf94  str xzr,[x19, #0x18]!
+0164cf98  mov x0,x19
+0164cf9c  mov x1,xzr
+0164cfa0  bl 0x00b07850
+0164cfa4  mov w0,#0x1
+0164cfa8  stur w0,[x19, #-0x8]
+0164cfac  b 0x0164cf5c
+0164cfb0  bl 0x00b079b0

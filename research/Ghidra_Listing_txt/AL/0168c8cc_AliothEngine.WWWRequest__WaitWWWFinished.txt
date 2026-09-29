@@ -1,0 +1,42 @@
+Function: AliothEngine.WWWRequest$$WaitWWWFinished @ 0168c8cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- WWWCacheSample.<SampleCoroutine>d__4$$MoveNext @ 00dbff74
+
+--- Listing ---
+0168c8cc  stp x21,x20,[sp, #-0x20]!
+0168c8d0  stp x19,x30,[sp, #0x10]
+0168c8d4  adrp x20,0x3577000
+0168c8d8  adrp x21,0x337f000
+0168c8dc  ldrb w8,[x20, #0xab6]
+0168c8e0  ldr x21,[x21, #0xf30]
+0168c8e4  mov x19,x0
+0168c8e8  tbnz w8,#0x0,0x0168c900
+0168c8ec  adrp x0,0x337f000
+0168c8f0  ldr x0,[x0, #0xf30]
+0168c8f4  bl 0x00b0789c
+0168c8f8  mov w8,#0x1
+0168c8fc  strb w8,[x20, #0xab6]
+0168c900  ldr x0,[x21]
+0168c904  bl 0x00b079a0
+0168c908  cbz x0,0x0168c93c
+0168c90c  mov x1,xzr
+0168c910  mov x20,x0
+0168c914  bl 0x02194104
+0168c918  mov x0,x20
+0168c91c  str wzr,[x20, #0x10]
+0168c920  str x19,[x0, #0x20]!
+0168c924  mov x1,x19
+0168c928  bl 0x00b07850
+0168c92c  ldp x19,x30,[sp, #0x10]
+0168c930  mov x0,x20
+0168c934  ldp x21,x20,[sp], #0x20
+0168c938  ret
+0168c93c  bl 0x00b079b0

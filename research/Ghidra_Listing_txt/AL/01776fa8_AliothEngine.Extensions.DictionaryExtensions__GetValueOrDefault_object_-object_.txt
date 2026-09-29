@@ -1,0 +1,36 @@
+Function: AliothEngine.Extensions.DictionaryExtensions$$GetValueOrDefault<object,-object> @ 01776fa8
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01776fa8  str x22,[sp, #-0x30]!
+01776fac  stp x21,x20,[sp, #0x10]
+01776fb0  stp x19,x30,[sp, #0x20]
+01776fb4  cbz x0,0x01777014
+01776fb8  ldr x8,[x3, #0x38]
+01776fbc  mov x22,x2
+01776fc0  mov x21,x3
+01776fc4  mov x19,x1
+01776fc8  ldr x2,[x8, #0x8]
+01776fcc  mov x20,x0
+01776fd0  ldr x8,[x2, #0x8]
+01776fd4  blr x8
+01776fd8  tbz w0,#0x0,0x01777000
+01776fdc  ldr x8,[x21, #0x38]
+01776fe0  mov x0,x20
+01776fe4  mov x1,x19
+01776fe8  ldp x19,x30,[sp, #0x20]
+01776fec  ldr x2,[x8, #0x10]
+01776ff0  ldp x21,x20,[sp, #0x10]
+01776ff4  ldr x3,[x2, #0x8]
+01776ff8  ldr x22,[sp], #0x30
+01776ffc  br x3
+01777000  ldp x19,x30,[sp, #0x20]
+01777004  ldp x21,x20,[sp, #0x10]
+01777008  mov x0,x22
+0177700c  ldr x22,[sp], #0x30
+01777010  ret
+01777014  bl 0x00b079b0

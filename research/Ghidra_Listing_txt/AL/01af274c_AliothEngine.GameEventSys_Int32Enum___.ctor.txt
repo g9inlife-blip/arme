@@ -1,0 +1,71 @@
+Function: AliothEngine.GameEventSys<Int32Enum>$$.ctor @ 01af274c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01af274c  str x22,[sp, #-0x30]!
+01af2750  stp x21,x20,[sp, #0x10]
+01af2754  stp x19,x30,[sp, #0x20]
+01af2758  adrp x21,0x3578000
+01af275c  ldrb w8,[x21, #0xa01]
+01af2760  mov x20,x1
+01af2764  mov x19,x0
+01af2768  tbnz w8,#0x0,0x01af278c
+01af276c  adrp x0,0x3375000
+01af2770  ldr x0,[x0, #0x720]
+01af2774  bl 0x00b0789c
+01af2778  adrp x0,0x3329000
+01af277c  ldr x0,[x0, #0x460]
+01af2780  bl 0x00b0789c
+01af2784  mov w8,#0x1
+01af2788  strb w8,[x21, #0xa01]
+01af278c  ldr x8,[x20, #0x20]
+01af2790  ldr x8,[x8, #0xc0]
+01af2794  ldr x0,[x8, #0x8]
+01af2798  ldrb w8,[x0, #0x132]
+01af279c  tbnz w8,#0x0,0x01af27a4
+01af27a0  bl 0x00b2ac40
+01af27a4  bl 0x00b079a0
+01af27a8  cbz x0,0x01af2830
+01af27ac  ldr x8,[x20, #0x20]
+01af27b0  adrp x22,0x3329000
+01af27b4  mov x21,x0
+01af27b8  ldr x8,[x8, #0xc0]
+01af27bc  ldr x1,[x8, #0x40]
+01af27c0  ldr x8,[x1, #0x8]
+01af27c4  ldr x22,[x22, #0x460]
+01af27c8  blr x8
+01af27cc  mov x0,x19
+01af27d0  str x21,[x0, #0x10]!
+01af27d4  mov x1,x21
+01af27d8  bl 0x00b07850
+01af27dc  ldr x0,[x22]
+01af27e0  bl 0x00b079a0
+01af27e4  cbz x0,0x01af2830
+01af27e8  adrp x8,0x3375000
+01af27ec  ldr x8,[x8, #0x720]
+01af27f0  mov x21,x0
+01af27f4  ldr x1,[x8]
+01af27f8  bl 0x01bffe10
+01af27fc  mov x0,x19
+01af2800  str x21,[x0, #0x18]!
+01af2804  mov x1,x21
+01af2808  bl 0x00b07850
+01af280c  ldr x8,[x20, #0x20]
+01af2810  mov x0,x19
+01af2814  ldp x19,x30,[sp, #0x20]
+01af2818  ldp x21,x20,[sp, #0x10]
+01af281c  ldr x8,[x8, #0xc0]
+01af2820  ldr x1,[x8, #0x48]
+01af2824  ldr x2,[x1, #0x8]
+01af2828  ldr x22,[sp], #0x30
+01af282c  br x2
+01af2830  bl 0x00b079b0

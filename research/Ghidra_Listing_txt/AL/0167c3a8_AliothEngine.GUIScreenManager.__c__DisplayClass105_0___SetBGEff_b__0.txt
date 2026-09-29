@@ -1,0 +1,64 @@
+Function: AliothEngine.GUIScreenManager.<>c__DisplayClass105_0$$<SetBGEff>b__0 @ 0167c3a8
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreenManager$$SetEffBG @ 01679b6c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.ActionExtensions$$SafeInvoke @ 016a999c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.GameObject$$SetActive @ 024de86c
+  -> UnityEngine.Object$$set_name @ 024df584
+  -> UnityEngine.Object$$DontDestroyOnLoad @ 024e00c4
+
+--- Calls IN ---
+
+--- Listing ---
+0167c3a8  str x22,[sp, #-0x30]!
+0167c3ac  stp x21,x20,[sp, #0x10]
+0167c3b0  stp x19,x30,[sp, #0x20]
+0167c3b4  adrp x21,0x3577000
+0167c3b8  ldrb w8,[x21, #0xa08]
+0167c3bc  mov x20,x1
+0167c3c0  mov x19,x0
+0167c3c4  tbnz w8,#0x0,0x0167c3e8
+0167c3c8  adrp x0,0x337b000
+0167c3cc  ldr x0,[x0, #0xb98]
+0167c3d0  bl 0x00b0789c
+0167c3d4  adrp x0,0x3321000
+0167c3d8  ldr x0,[x0, #0xca8]
+0167c3dc  bl 0x00b0789c
+0167c3e0  mov w8,#0x1
+0167c3e4  strb w8,[x21, #0xa08]
+0167c3e8  cbz x20,0x0167c468
+0167c3ec  ldr x1,[x19, #0x10]
+0167c3f0  adrp x22,0x3321000
+0167c3f4  adrp x21,0x337b000
+0167c3f8  ldr x22,[x22, #0xca8]
+0167c3fc  ldr x21,[x21, #0xb98]
+0167c400  mov x0,x20
+0167c404  mov x2,xzr
+0167c408  bl 0x024df584
+0167c40c  ldr x0,[x22]
+0167c410  ldr w8,[x0, #0xe0]
+0167c414  cbnz w8,0x0167c41c
+0167c418  bl 0x00b0798c
+0167c41c  mov x0,x20
+0167c420  mov x1,xzr
+0167c424  bl 0x024e00c4
+0167c428  ldr x0,[x21]
+0167c42c  ldr w8,[x0, #0xe0]
+0167c430  cbnz w8,0x0167c438
+0167c434  bl 0x00b0798c
+0167c438  mov x0,x20
+0167c43c  bl 0x01679b6c
+0167c440  mov x0,x20
+0167c444  mov w1,wzr
+0167c448  mov x2,xzr
+0167c44c  bl 0x024de86c
+0167c450  ldr x0,[x19, #0x18]
+0167c454  ldp x19,x30,[sp, #0x20]
+0167c458  ldp x21,x20,[sp, #0x10]
+0167c45c  mov x1,xzr
+0167c460  ldr x22,[sp], #0x30
+0167c464  b 0x016a999c
+0167c468  bl 0x00b079b0

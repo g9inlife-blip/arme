@@ -1,0 +1,79 @@
+Function: AliothEngine.AssetHolder$$AddLabel @ 01663798
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01663798  str x22,[sp, #-0x30]!
+0166379c  stp x21,x20,[sp, #0x10]
+016637a0  stp x19,x30,[sp, #0x20]
+016637a4  adrp x22,0x3577000
+016637a8  adrp x21,0x3312000
+016637ac  ldrb w8,[x22, #0x8d5]
+016637b0  ldr x21,[x21, #0x428]
+016637b4  mov x19,x1
+016637b8  mov x20,x0
+016637bc  tbnz w8,#0x0,0x016637e0
+016637c0  adrp x0,0x3312000
+016637c4  ldr x0,[x0, #0x428]
+016637c8  bl 0x00b0789c
+016637cc  adrp x0,0x3362000
+016637d0  ldr x0,[x0, #0xde0]
+016637d4  bl 0x00b0789c
+016637d8  mov w8,#0x1
+016637dc  strb w8,[x22, #0x8d5]
+016637e0  ldr x0,[x21]
+016637e4  ldr w8,[x0, #0xe0]
+016637e8  cbnz w8,0x016637f4
+016637ec  bl 0x00b0798c
+016637f0  ldr x0,[x21]
+016637f4  ldr x8,[x0, #0xb8]
+016637f8  ldr x0,[x8, #0xb8]
+016637fc  cbz x0,0x0166381c
+01663800  mov x1,x20
+01663804  mov x2,x19
+01663808  ldp x19,x30,[sp, #0x20]
+0166380c  ldp x21,x20,[sp, #0x10]
+01663810  mov x3,xzr
+01663814  ldr x22,[sp], #0x30
+01663818  b 0x0106125c
+0166381c  ldr x0,[x20, #0x40]
+01663820  cbz x0,0x016638a0
+01663824  adrp x9,0x3362000
+01663828  ldr x9,[x9, #0xde0]
+0166382c  ldr w10,[x0, #0x1c]
+01663830  ldr x8,[x0, #0x10]
+01663834  ldr x9,[x9]
+01663838  add w10,w10,#0x1
+0166383c  str w10,[x0, #0x1c]
+01663840  cbz x8,0x016638a0
+01663844  ldrsw x10,[x0, #0x18]
+01663848  ldr w11,[x8, #0x18]
+0166384c  cmp w10,w11
+01663850  b.cs 0x0166387c
+01663854  add w9,w10,#0x1
+01663858  add x8,x8,x10, LSL #0x3
+0166385c  str w9,[x0, #0x18]
+01663860  str x19,[x8, #0x20]!
+01663864  mov x1,x19
+01663868  ldp x19,x30,[sp, #0x20]
+0166386c  ldp x21,x20,[sp, #0x10]
+01663870  mov x0,x8
+01663874  ldr x22,[sp], #0x30
+01663878  b 0x00b07850
+0166387c  ldr x8,[x9, #0x20]
+01663880  mov x1,x19
+01663884  ldp x19,x30,[sp, #0x20]
+01663888  ldp x21,x20,[sp, #0x10]
+0166388c  ldr x8,[x8, #0xc0]
+01663890  ldr x2,[x8, #0x58]
+01663894  ldr x3,[x2, #0x8]
+01663898  ldr x22,[sp], #0x30
+0166389c  br x3
+016638a0  bl 0x00b079b0

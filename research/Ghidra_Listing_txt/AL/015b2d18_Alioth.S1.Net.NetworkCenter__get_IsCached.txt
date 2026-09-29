@@ -1,0 +1,46 @@
+Function: Alioth.S1.Net.NetworkCenter$$get_IsCached @ 015b2d18
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- CSBehaviour$$get_isRequesting @ 016dc144
+  <- XLua.CSObjectWrap.AliothS1NetNetworkCenterWrap$$_g_get_IsCached @ 01170c58
+
+--- Listing ---
+015b2d18  stp x21,x20,[sp, #-0x20]!
+015b2d1c  stp x19,x30,[sp, #0x10]
+015b2d20  adrp x20,0x3577000
+015b2d24  adrp x21,0x330b000
+015b2d28  ldrb w8,[x20, #0xad]
+015b2d2c  ldr x21,[x21, #0x520]
+015b2d30  mov x19,x0
+015b2d34  tbnz w8,#0x0,0x015b2d58
+015b2d38  adrp x0,0x330b000
+015b2d3c  ldr x0,[x0, #0x520]
+015b2d40  bl 0x00b0789c
+015b2d44  adrp x0,0x3366000
+015b2d48  ldr x0,[x0, #0x350]
+015b2d4c  bl 0x00b0789c
+015b2d50  mov w8,#0x1
+015b2d54  strb w8,[x20, #0xad]
+015b2d58  ldr x8,[x21]
+015b2d5c  ldr x8,[x8, #0xb8]
+015b2d60  ldr x0,[x8, #0x28]
+015b2d64  cbz x0,0x015b2d7c
+015b2d68  mov x1,x19
+015b2d6c  ldp x19,x30,[sp, #0x10]
+015b2d70  mov x2,xzr
+015b2d74  ldp x21,x20,[sp], #0x20
+015b2d78  b 0x01060aac
+015b2d7c  ldr x8,[x19, #0x18]
+015b2d80  cbz x8,0x015b2d9c
+015b2d84  ldr w8,[x8, #0x20]
+015b2d88  ldp x19,x30,[sp, #0x10]
+015b2d8c  cmp w8,#0x0
+015b2d90  cset w0,gt
+015b2d94  ldp x21,x20,[sp], #0x20
+015b2d98  ret
+015b2d9c  bl 0x00b079b0

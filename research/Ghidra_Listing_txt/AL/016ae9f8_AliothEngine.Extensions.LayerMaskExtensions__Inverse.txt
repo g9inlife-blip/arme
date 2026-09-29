@@ -1,0 +1,19 @@
+Function: AliothEngine.Extensions.LayerMaskExtensions$$Inverse @ 016ae9f8
+
+--- Calls OUT ---
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b74
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b78
+
+--- Calls IN ---
+
+--- Listing ---
+016ae9f8  str x30,[sp, #-0x10]!
+016ae9fc  and x0,x0,#0xffffffff
+016aea00  mov x1,xzr
+016aea04  bl 0x024e0b74
+016aea08  mvn w0,w0
+016aea0c  mov x1,xzr
+016aea10  bl 0x024e0b78
+016aea14  and x0,x0,#0xffffffff
+016aea18  ldr x30,[sp], #0x10
+016aea1c  ret

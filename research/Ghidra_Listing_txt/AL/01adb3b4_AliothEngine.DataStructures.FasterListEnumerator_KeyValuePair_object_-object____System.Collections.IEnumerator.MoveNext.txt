@@ -1,0 +1,20 @@
+Function: AliothEngine.DataStructures.FasterListEnumerator<KeyValuePair<object,-object>>$$System.Collections.IEnumerator.MoveNext @ 01adb3b4
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.FasterListEnumerator<KeyValuePair<object,-object>>$$MoveNext @ 01adb344
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977cb8 @ 00977cb8
+
+--- Listing ---
+01adb3b4  stp x19,x30,[sp, #-0x10]!
+01adb3b8  ldr x8,[x1, #0x20]
+01adb3bc  mov x19,x0
+01adb3c0  ldrb w9,[x8, #0x132]
+01adb3c4  tbnz w9,#0x0,0x01adb3d0
+01adb3c8  mov x0,x8
+01adb3cc  bl 0x00b2ac40
+01adb3d0  mov x0,x19
+01adb3d4  ldp x19,x30,[sp], #0x10
+01adb3d8  b 0x01adb344

@@ -1,0 +1,66 @@
+Function: AliothEngine.Extensions.ListExtensions$$GetShuffledCopy<object> @ 0179ef88
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.ArgumentException$$.ctor @ 020cf900
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0179ef88  stp x21,x20,[sp, #-0x20]!
+0179ef8c  stp x19,x30,[sp, #0x10]
+0179ef90  cbz x0,0x0179eff4
+0179ef94  ldr x8,[x1, #0x38]
+0179ef98  mov x20,x0
+0179ef9c  mov x19,x1
+0179efa0  ldr x0,[x8]
+0179efa4  ldrb w8,[x0, #0x132]
+0179efa8  tbnz w8,#0x0,0x0179efb0
+0179efac  bl 0x00b2ac40
+0179efb0  bl 0x00b079a0
+0179efb4  cbz x0,0x0179f054
+0179efb8  ldr x8,[x19, #0x38]
+0179efbc  mov x1,x20
+0179efc0  mov x21,x0
+0179efc4  ldr x2,[x8, #0x8]
+0179efc8  ldr x8,[x2, #0x8]
+0179efcc  blr x8
+0179efd0  ldr x8,[x19, #0x38]
+0179efd4  mov x0,x21
+0179efd8  ldr x1,[x8, #0x10]
+0179efdc  ldr x8,[x1, #0x8]
+0179efe0  blr x8
+0179efe4  ldp x19,x30,[sp, #0x10]
+0179efe8  mov x0,x21
+0179efec  ldp x21,x20,[sp], #0x20
+0179eff0  ret
+0179eff4  adrp x0,0x3367000
+0179eff8  ldr x0,[x0, #0x168]
+0179effc  bl 0x00b078a0
+0179f000  bl 0x00b079a0
+0179f004  mov x19,x0
+0179f008  bl 0x008d74f8
+0179f00c  adrp x0,0x3354000
+0179f010  ldr x0,[x0, #0x820]
+0179f014  bl 0x00b078a0
+0179f018  mov x20,x0
+0179f01c  adrp x0,0x3338000
+0179f020  ldr x0,[x0, #0xe70]
+0179f024  bl 0x00b078a0
+0179f028  mov x2,x0
+0179f02c  mov x0,x19
+0179f030  mov x1,x20
+0179f034  mov x3,xzr
+0179f038  bl 0x020cf900
+0179f03c  adrp x0,0x337f000
+0179f040  ldr x0,[x0, #0x250]
+0179f044  bl 0x00b078a0
+0179f048  mov x1,x0
+0179f04c  mov x0,x19
+0179f050  bl 0x00b07978
+0179f054  bl 0x00b079b0

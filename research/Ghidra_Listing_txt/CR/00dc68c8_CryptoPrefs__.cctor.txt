@@ -1,0 +1,48 @@
+Function: CryptoPrefs$$.cctor @ 00dc68c8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00dc68c8  str x22,[sp, #-0x30]!
+00dc68cc  stp x21,x20,[sp, #0x10]
+00dc68d0  stp x19,x30,[sp, #0x20]
+00dc68d4  adrp x22,0x3572000
+00dc68d8  adrp x21,0x337f000
+00dc68dc  adrp x19,0x3341000
+00dc68e0  adrp x20,0x3340000
+00dc68e4  ldrb w8,[x22, #0x1ba]
+00dc68e8  ldr x21,[x21, #0xd30]
+00dc68ec  ldr x19,[x19, #0x490]
+00dc68f0  ldr x20,[x20, #0x108]
+00dc68f4  tbnz w8,#0x0,0x00dc6924
+00dc68f8  adrp x0,0x3341000
+00dc68fc  ldr x0,[x0, #0x490]
+00dc6900  bl 0x00b0789c
+00dc6904  adrp x0,0x3340000
+00dc6908  ldr x0,[x0, #0x108]
+00dc690c  bl 0x00b0789c
+00dc6910  adrp x0,0x337f000
+00dc6914  ldr x0,[x0, #0xd30]
+00dc6918  bl 0x00b0789c
+00dc691c  mov w8,#0x1
+00dc6920  strb w8,[x22, #0x1ba]
+00dc6924  ldr x8,[x19]
+00dc6928  ldr x9,[x21]
+00dc692c  ldr x8,[x8, #0xb8]
+00dc6930  str x9,[x8]
+00dc6934  ldr x8,[x19]
+00dc6938  ldr x1,[x21]
+00dc693c  ldr x0,[x8, #0xb8]
+00dc6940  bl 0x00b07850
+00dc6944  ldr x8,[x19]
+00dc6948  ldr x1,[x20]
+00dc694c  ldr x0,[x8, #0xb8]
+00dc6950  str x1,[x0, #0x8]!
+00dc6954  ldp x19,x30,[sp, #0x20]
+00dc6958  ldp x21,x20,[sp, #0x10]
+00dc695c  ldr x22,[sp], #0x30
+00dc6960  b 0x00b07850

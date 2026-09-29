@@ -1,0 +1,30 @@
+Function: replace @ 00b84418
+FuncComment: std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> > const&, unsigned long, unsigned long)
+
+--- Calls OUT ---
+  -> FUN_00a8f54c @ 00a8f54c
+  -> replace @ 008d58e0
+
+--- Calls IN ---
+
+--- Listing ---
+00b84418  stp x29,x30,[sp, #-0x10]!
+    ; [PLATE] std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> > const&, unsigned long, unsigned long)
+00b8441c  mov x29,sp
+00b84420  ldrb w8,[x3]
+00b84424  ldr x9,[x3, #0x8]
+00b84428  lsr x10,x8,#0x1
+00b8442c  tst w8,#0x1
+00b84430  csel x9,x10,x9,eq
+00b84434  subs x9,x9,x4
+00b84438  b.cc 0x00b84460
+00b8443c  ldr x10,[x3, #0x10]
+00b84440  add x11,x3,#0x4
+00b84444  tst w8,#0x1
+00b84448  csel x8,x11,x10,eq
+00b8444c  cmp x9,x5
+00b84450  add x3,x8,x4, LSL #0x2
+00b84454  csel x4,x9,x5,cc
+00b84458  ldp x29,x30,[sp], #0x10
+00b8445c  b 0x008d58e0
+00b84460  bl 0x00a8f54c

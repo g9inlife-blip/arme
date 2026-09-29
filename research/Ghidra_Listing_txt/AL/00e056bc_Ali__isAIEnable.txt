@@ -1,0 +1,72 @@
+Function: Ali$$isAIEnable @ 00e056bc
+
+--- Calls OUT ---
+  -> AIManager$$isEnable @ 00ec3e68
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$get_battleManager @ 00e027f4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp36 @ 01063e54
+  -> FUN_00b079b0 @ 00b079b0
+  -> BattleManager$$get_AIManager @ 011779d4
+
+--- Calls IN ---
+  <- BattleMainMono$$RefreshActionBtn @ 00e7e740
+  <- XLua.CSObjectWrap.AliWrap$$_m_isAIEnable @ 01192e1c
+  <- BattleMainMono$$OnClickAuto @ 00e82068
+  <- BattleMainMono$$OnClickAction @ 00e81eb8
+  <- BattleManager$$ChooseRole @ 01186e04
+  <- RoleNews$$IsCanUseSkill @ 00fe5624
+  <- BattleManager$$HideAllTip @ 0117f4b0
+  <- BattleManager$$OnClickTerrain @ 01186680
+  <- BattleMainMono$$OnClickRoleSelf @ 00e7fc2c
+  <- BattleMainMono$$OnClickTurnTo @ 00e800c4
+  <- RoleNews$$get_m_isCanDrag @ 00fdf2a8
+  <- RoleMono$$ActionTip @ 014a5eec
+  <- BattleMainMono$$OnClickRoleEnemy @ 00e7fe78
+  <- RoleNews$$get_IsCanSkill @ 00fe769c
+  <- BattleManager.<BattleEnd2>d__203$$MoveNext @ 01311274
+
+--- Listing ---
+00e056bc  str x22,[sp, #-0x30]!
+00e056c0  stp x21,x20,[sp, #0x10]
+00e056c4  stp x19,x30,[sp, #0x20]
+00e056c8  adrp x22,0x3572000
+00e056cc  adrp x21,0x335f000
+00e056d0  ldrb w8,[x22, #0x56b]
+00e056d4  ldr x21,[x21, #0x20]
+00e056d8  mov w19,w1
+00e056dc  mov x20,x0
+00e056e0  tbnz w8,#0x0,0x00e056f8
+00e056e4  adrp x0,0x335f000
+00e056e8  ldr x0,[x0, #0x20]
+00e056ec  bl 0x00b0789c
+00e056f0  mov w8,#0x1
+00e056f4  strb w8,[x22, #0x56b]
+00e056f8  ldr x0,[x21]
+00e056fc  ldr w8,[x0, #0xe0]
+00e05700  cbnz w8,0x00e0570c
+00e05704  bl 0x00b0798c
+00e05708  ldr x0,[x21]
+00e0570c  ldr x8,[x0, #0xb8]
+00e05710  ldr x0,[x8, #0x300]
+00e05714  cbz x0,0x00e05734
+00e05718  mov x1,x20
+00e0571c  mov w2,w19
+00e05720  ldp x19,x30,[sp, #0x20]
+00e05724  ldp x21,x20,[sp, #0x10]
+00e05728  mov x3,xzr
+00e0572c  ldr x22,[sp], #0x30
+00e05730  b 0x01063e54
+00e05734  mov x0,x20
+00e05738  bl 0x00e027f4
+00e0573c  cbz x0,0x00e05764
+00e05740  mov x1,xzr
+00e05744  bl 0x011779d4
+00e05748  cbz x0,0x00e05764
+00e0574c  mov w1,w19
+00e05750  ldp x19,x30,[sp, #0x20]
+00e05754  ldp x21,x20,[sp, #0x10]
+00e05758  mov x2,xzr
+00e0575c  ldr x22,[sp], #0x30
+00e05760  b 0x00ec3e68
+00e05764  bl 0x00b079b0

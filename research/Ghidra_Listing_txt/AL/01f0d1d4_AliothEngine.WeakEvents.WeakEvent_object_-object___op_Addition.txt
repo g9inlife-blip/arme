@@ -1,0 +1,106 @@
+Function: AliothEngine.WeakEvents.WeakEvent<object,-object>$$op_Addition @ 01f0d1d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.DataStructures.FasterList<object>$$Add @ 01addf30
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01f0d1d4  stp x23,x22,[sp, #-0x30]!
+01f0d1d8  stp x21,x20,[sp, #0x10]
+01f0d1dc  stp x19,x30,[sp, #0x20]
+01f0d1e0  adrp x22,0x3579000
+01f0d1e4  ldrb w8,[x22, #0x2ed]
+01f0d1e8  mov x21,x2
+01f0d1ec  mov x19,x1
+01f0d1f0  mov x20,x0
+01f0d1f4  tbnz w8,#0x0,0x01f0d20c
+01f0d1f8  adrp x0,0x336a000
+01f0d1fc  ldr x0,[x0, #0x6e0]
+01f0d200  bl 0x00b0789c
+01f0d204  mov w8,#0x1
+01f0d208  strb w8,[x22, #0x2ed]
+01f0d20c  cbnz x20,0x01f0d290
+01f0d210  ldr x0,[x21, #0x20]
+01f0d214  ldrb w8,[x0, #0x132]
+01f0d218  tbnz w8,#0x0,0x01f0d220
+01f0d21c  bl 0x00b2ac40
+01f0d220  ldr x8,[x0, #0xc0]
+01f0d224  ldr x0,[x8]
+01f0d228  ldrb w8,[x0, #0x132]
+01f0d22c  tbnz w8,#0x0,0x01f0d234
+01f0d230  bl 0x00b2ac40
+01f0d234  bl 0x00b079a0
+01f0d238  cbz x0,0x01f0d348
+01f0d23c  ldr x8,[x21, #0x20]
+01f0d240  mov x20,x0
+01f0d244  ldrh w9,[x8, #0x132]
+01f0d248  tbnz w9,#0x0,0x01f0d260
+01f0d24c  mov x0,x8
+01f0d250  bl 0x00b2ac40
+01f0d254  ldr x8,[x21, #0x20]
+01f0d258  ldrh w9,[x8, #0x132]
+01f0d25c  b 0x01f0d264
+01f0d260  mov x0,x8
+01f0d264  ldr x10,[x0, #0xc0]
+01f0d268  ldr x10,[x10, #0x8]
+01f0d26c  ldr x22,[x10, #0x8]
+01f0d270  tbnz w9,#0x0,0x01f0d280
+01f0d274  mov x0,x8
+01f0d278  bl 0x00b2ac40
+01f0d27c  mov x8,x0
+01f0d280  ldr x8,[x8, #0xc0]
+01f0d284  mov x0,x20
+01f0d288  ldr x1,[x8, #0x8]
+01f0d28c  blr x22
+01f0d290  ldr x0,[x21, #0x20]
+01f0d294  ldr x22,[x20, #0x10]
+01f0d298  ldrb w8,[x0, #0x132]
+01f0d29c  tbnz w8,#0x0,0x01f0d2a4
+01f0d2a0  bl 0x00b2ac40
+01f0d2a4  ldr x8,[x0, #0xc0]
+01f0d2a8  ldr x0,[x8, #0x10]
+01f0d2ac  ldrb w8,[x0, #0x132]
+01f0d2b0  tbnz w8,#0x0,0x01f0d2b8
+01f0d2b4  bl 0x00b2ac40
+01f0d2b8  bl 0x00b079a0
+01f0d2bc  cbz x0,0x01f0d348
+01f0d2c0  ldr x8,[x21, #0x20]
+01f0d2c4  mov x23,x0
+01f0d2c8  ldrh w9,[x8, #0x132]
+01f0d2cc  tbnz w9,#0x0,0x01f0d2e4
+01f0d2d0  mov x0,x8
+01f0d2d4  bl 0x00b2ac40
+01f0d2d8  ldr x8,[x21, #0x20]
+01f0d2dc  ldrh w9,[x8, #0x132]
+01f0d2e0  b 0x01f0d2e8
+01f0d2e4  mov x0,x8
+01f0d2e8  ldr x10,[x0, #0xc0]
+01f0d2ec  ldr x10,[x10, #0x18]
+01f0d2f0  ldr x21,[x10, #0x8]
+01f0d2f4  tbnz w9,#0x0,0x01f0d304
+01f0d2f8  mov x0,x8
+01f0d2fc  bl 0x00b2ac40
+01f0d300  mov x8,x0
+01f0d304  ldr x8,[x8, #0xc0]
+01f0d308  mov x0,x23
+01f0d30c  mov x1,x19
+01f0d310  ldr x2,[x8, #0x18]
+01f0d314  blr x21
+01f0d318  cbz x22,0x01f0d348
+01f0d31c  adrp x8,0x336a000
+01f0d320  ldr x8,[x8, #0x6e0]
+01f0d324  mov x0,x22
+01f0d328  mov x1,x23
+01f0d32c  ldr x2,[x8]
+01f0d330  bl 0x01addf30
+01f0d334  mov x0,x20
+01f0d338  ldp x19,x30,[sp, #0x20]
+01f0d33c  ldp x21,x20,[sp, #0x10]
+01f0d340  ldp x23,x22,[sp], #0x30
+01f0d344  ret
+01f0d348  bl 0x00b079b0

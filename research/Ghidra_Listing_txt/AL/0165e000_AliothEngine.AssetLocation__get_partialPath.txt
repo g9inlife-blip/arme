@@ -1,0 +1,59 @@
+Function: AliothEngine.AssetLocation$$get_partialPath @ 0165e000
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.String$$Concat @ 01fdf3bc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader$$GetURL @ 0165dee0
+  <- AliothEngine.AssetVersionManager$$GetFileCacheURL @ 0166fb78
+  <- AliothEngine.AssetDownloader$$GetCachePath @ 0165e144
+
+--- Listing ---
+0165e000  stp x23,x22,[sp, #-0x30]!
+0165e004  stp x21,x20,[sp, #0x10]
+0165e008  stp x19,x30,[sp, #0x20]
+0165e00c  adrp x19,0x3577000
+0165e010  ldrb w8,[x19, #0x94b]
+0165e014  mov x20,x0
+0165e018  tbnz w8,#0x0,0x0165e030
+0165e01c  adrp x0,0x3321000
+0165e020  ldr x0,[x0, #0x9e0]
+0165e024  bl 0x00b0789c
+0165e028  mov w8,#0x1
+0165e02c  strb w8,[x19, #0x94b]
+0165e030  mov x19,x20
+0165e034  ldr x0,[x19, #0x20]!
+0165e038  cbnz x0,0x0165e0a8
+0165e03c  adrp x23,0x3577000
+0165e040  adrp x22,0x3321000
+0165e044  ldrb w8,[x23, #0x957]
+0165e048  ldr x21,[x20, #0x48]
+0165e04c  ldr x20,[x20, #0x50]
+0165e050  ldr x22,[x22, #0x9e0]
+0165e054  cbnz w8,0x0165e06c
+0165e058  adrp x0,0x331b000
+0165e05c  ldr x0,[x0, #0x6c8]
+0165e060  bl 0x00b0789c
+0165e064  mov w8,#0x1
+0165e068  strb w8,[x23, #0x957]
+0165e06c  adrp x8,0x331b000
+0165e070  ldr x8,[x8, #0x6c8]
+0165e074  ldr x1,[x22]
+0165e078  mov x0,x21
+0165e07c  mov x2,x20
+0165e080  ldr x8,[x8]
+0165e084  mov x4,xzr
+0165e088  ldr x8,[x8, #0xb8]
+0165e08c  ldr x3,[x8]
+0165e090  bl 0x01fdf3bc
+0165e094  mov x1,x0
+0165e098  str x0,[x19]
+0165e09c  mov x0,x19
+0165e0a0  bl 0x00b07850
+0165e0a4  ldr x0,[x19]
+0165e0a8  ldp x19,x30,[sp, #0x20]
+0165e0ac  ldp x21,x20,[sp, #0x10]
+0165e0b0  ldp x23,x22,[sp], #0x30
+0165e0b4  ret

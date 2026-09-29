@@ -1,0 +1,44 @@
+Function: Ali$$LoadUp @ 00e07408
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ResManager$$LoadRes @ 00e29078
+  <- XLua.CSObjectWrap.AliWrap$$_m_LoadUp @ 01196b38
+
+--- Listing ---
+00e07408  stp x21,x20,[sp, #-0x20]!
+00e0740c  stp x19,x30,[sp, #0x10]
+00e07410  adrp x21,0x3572000
+00e07414  adrp x20,0x335f000
+00e07418  ldrb w8,[x21, #0x57f]
+00e0741c  ldr x20,[x20, #0x20]
+00e07420  mov x19,x0
+00e07424  tbnz w8,#0x0,0x00e0743c
+00e07428  adrp x0,0x335f000
+00e0742c  ldr x0,[x0, #0x20]
+00e07430  bl 0x00b0789c
+00e07434  mov w8,#0x1
+00e07438  strb w8,[x21, #0x57f]
+00e0743c  ldr x0,[x20]
+00e07440  ldr w8,[x0, #0xe0]
+00e07444  cbnz w8,0x00e07450
+00e07448  bl 0x00b0798c
+00e0744c  ldr x0,[x20]
+00e07450  ldr x8,[x0, #0xb8]
+00e07454  ldr x0,[x8, #0x3a0]
+00e07458  cbz x0,0x00e07470
+00e0745c  mov x1,x19
+00e07460  ldp x19,x30,[sp, #0x10]
+00e07464  mov x2,xzr
+00e07468  ldp x21,x20,[sp], #0x20
+00e0746c  b 0x01060dac
+00e07470  ldr w8,[x19, #0x138]
+00e07474  add w8,w8,#0x1
+00e07478  str w8,[x19, #0x138]
+00e0747c  ldp x19,x30,[sp, #0x10]
+00e07480  ldp x21,x20,[sp], #0x20
+00e07484  ret

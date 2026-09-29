@@ -1,0 +1,69 @@
+Function: Ali$$get_effManager @ 00e029d4
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp384 @ 010911c0
+
+--- Calls IN ---
+  <- BaseSkillEff$$RaiderHpUp @ 015e5ca4
+  <- BattleManager$$WeatherManage @ 01189ca0
+  <- BattleManager$$PlaySkillShow @ 0118a3f8
+  <- RoleMono$$OnSpineEvent @ 014a6304
+  <- BattleManager$$HitFly @ 01188a70
+  <- BaseSkillEff$$PassiveShowEff @ 015e7c84
+  <- RoleMono$$PlayShildEff @ 014a108c
+  <- BattleManager$$PlayRoleEff @ 01182ecc
+  <- BaseSkillEff$$UpdataEvent @ 015d8f24
+  <- SkillEff_9004$$ExecuteSpecial @ 016c3930
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_effManager @ 011a0484
+  <- TerrainMono$$RefreshShow @ 016c9224
+  <- BaseBuff$$ShowLongEff @ 015de310
+  <- PropNews$$CreateProp @ 0149d940
+  <- BaseSkillEff$$PlayEffToTarget @ 015e5544
+  <- RoleMono$$PowerOpen @ 014a98bc
+  <- BattleManager.<SpeedLinePlayEnd>d__257$$MoveNext @ 01315d48
+  <- RoleMono$$RefreshCD @ 014a047c
+  <- BaseBuff$$Execute @ 015df498
+
+--- Listing ---
+00e029d4  stp x21,x20,[sp, #-0x20]!
+00e029d8  stp x19,x30,[sp, #0x10]
+00e029dc  adrp x21,0x3572000
+00e029e0  adrp x20,0x335f000
+00e029e4  ldrb w8,[x21, #0x549]
+00e029e8  ldr x20,[x20, #0x20]
+00e029ec  mov x19,x0
+00e029f0  tbnz w8,#0x0,0x00e02a14
+00e029f4  adrp x0,0x335f000
+00e029f8  ldr x0,[x0, #0x20]
+00e029fc  bl 0x00b0789c
+00e02a00  adrp x0,0x3381000
+00e02a04  ldr x0,[x0, #0x118]
+00e02a08  bl 0x00b0789c
+00e02a0c  mov w8,#0x1
+00e02a10  strb w8,[x21, #0x549]
+00e02a14  ldr x0,[x20]
+00e02a18  ldr w8,[x0, #0xe0]
+00e02a1c  cbnz w8,0x00e02a28
+00e02a20  bl 0x00b0798c
+00e02a24  ldr x0,[x20]
+00e02a28  ldr x8,[x0, #0xb8]
+00e02a2c  ldr x0,[x8, #0x1e0]
+00e02a30  cbz x0,0x00e02a48
+00e02a34  mov x1,x19
+00e02a38  ldp x19,x30,[sp, #0x10]
+00e02a3c  mov x2,xzr
+00e02a40  ldp x21,x20,[sp], #0x20
+00e02a44  b 0x010911c0
+00e02a48  ldr x0,[x19, #0xd8]
+00e02a4c  cbz x0,0x00e02a68
+00e02a50  adrp x8,0x3381000
+00e02a54  ldr x8,[x8, #0x118]
+00e02a58  ldp x19,x30,[sp, #0x10]
+00e02a5c  ldr x1,[x8]
+00e02a60  ldp x21,x20,[sp], #0x20
+00e02a64  b 0x01f0d67c
+00e02a68  bl 0x00b079b0

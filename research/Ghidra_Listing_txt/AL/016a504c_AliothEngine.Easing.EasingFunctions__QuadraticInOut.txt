@@ -1,0 +1,33 @@
+Function: AliothEngine.Easing.EasingFunctions$$QuadraticInOut @ 016a504c
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016a504c  fmov s3,0x3f800000
+016a5050  fabd s4,s0,s1
+016a5054  fcmp s0,s1
+016a5058  fmin s5,s2,s3
+016a505c  fneg s1,s4
+016a5060  fcsel s1,s1,s4,gt
+016a5064  fadd s4,s5,s5
+016a5068  fcmp s2,#0.0
+016a506c  fmov s2,wzr
+016a5070  fcsel s2,s4,s2,pl
+016a5074  fcmp s2,s3
+016a5078  b.pl 0x016a5088
+016a507c  fmov s3,0x3f000000
+016a5080  fmul s3,s2,s3
+016a5084  b 0x016a50a4
+016a5088  fmov s3,0xbf800000
+016a508c  fmov s4,0xc0000000
+016a5090  fadd s2,s2,s3
+016a5094  fadd s4,s2,s4
+016a5098  fmul s2,s2,s4
+016a509c  fadd s2,s2,s3
+016a50a0  fmov s3,0xbf000000
+016a50a4  fmul s2,s2,s3
+016a50a8  fmul s1,s1,s2
+016a50ac  fadd s0,s1,s0
+016a50b0  ret

@@ -1,0 +1,75 @@
+Function: AliothEngine.Utils.CustomPersistentDataPath$$GetPersistentFile @ 016992dc
+
+--- Calls OUT ---
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> AliothEngine.Utils.CustomPersistentDataPath$$FileExists @ 016993c8
+  -> AliothEngine.Utils.CustomPersistentDataPath$$get_persistentDataPaths @ 01698120
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.CustomPersistentDataPath$$SaveData @ 01699450
+
+--- Listing ---
+016992dc  str x24,[sp, #-0x40]!
+016992e0  stp x23,x22,[sp, #0x10]
+016992e4  stp x21,x20,[sp, #0x20]
+016992e8  stp x19,x30,[sp, #0x30]
+016992ec  adrp x20,0x3577000
+016992f0  ldrb w8,[x20, #0xb1e]
+016992f4  mov x19,x0
+016992f8  tbnz w8,#0x0,0x01699310
+016992fc  adrp x0,0x336c000
+01699300  ldr x0,[x0, #0x318]
+01699304  bl 0x00b0789c
+01699308  mov w8,#0x1
+0169930c  strb w8,[x20, #0xb1e]
+01699310  mov x0,x19
+01699314  mov x1,xzr
+01699318  bl 0x01fdf3a0
+0169931c  tbnz w0,#0x0,0x01699378
+01699320  bl 0x01698120
+01699324  cbz x0,0x016993c4
+01699328  ldr x8,[x0, #0x18]
+0169932c  mov x20,x0
+01699330  cmp w8,#0x1
+01699334  b.lt 0x01699378
+01699338  adrp x22,0x336c000
+0169933c  ldr x22,[x22, #0x318]
+01699340  mov x23,xzr
+01699344  and x8,x8,#0xffffffff
+01699348  add x24,x20,#0x20
+0169934c  cmp x23,w8, UXTW 
+01699350  b.cs 0x016993c0
+01699354  ldr x21,[x24, x23, LSL #0x3]
+01699358  mov x1,x19
+0169935c  mov x0,x21
+01699360  bl 0x016993c8
+01699364  tbnz w0,#0x0,0x01699390
+01699368  ldr w8,[x20, #0x18]
+0169936c  add x23,x23,#0x1
+01699370  cmp x23,w8, SXTW 
+01699374  b.lt 0x0169934c
+01699378  ldp x19,x30,[sp, #0x30]
+0169937c  ldp x21,x20,[sp, #0x20]
+01699380  ldp x23,x22,[sp, #0x10]
+01699384  mov x0,xzr
+01699388  ldr x24,[sp], #0x40
+0169938c  ret
+01699390  ldr x0,[x22]
+01699394  ldr w8,[x0, #0xe0]
+01699398  cbnz w8,0x016993a0
+0169939c  bl 0x00b0798c
+016993a0  mov x0,x21
+016993a4  mov x1,x19
+016993a8  ldp x19,x30,[sp, #0x30]
+016993ac  ldp x21,x20,[sp, #0x20]
+016993b0  ldp x23,x22,[sp, #0x10]
+016993b4  mov x2,xzr
+016993b8  ldr x24,[sp], #0x40
+016993bc  b 0x020b2e1c
+016993c0  bl 0x00b079b8
+016993c4  bl 0x00b079b0

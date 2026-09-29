@@ -1,0 +1,54 @@
+Function: AliothEngine.DataStructures.CircularBufferIndexer<object,-object>$$ContainsKey @ 01f49764
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01f49764  stp x23,x22,[sp, #-0x30]!
+01f49768  stp x21,x20,[sp, #0x10]
+01f4976c  stp x19,x30,[sp, #0x20]
+01f49770  ldr w8,[x0, #0x28]
+01f49774  cmp w8,#0x1
+01f49778  b.lt 0x01f497f4
+01f4977c  ldr w22,[x0, #0x20]
+01f49780  mov x19,x2
+01f49784  mov x20,x0
+01f49788  mov x21,x1
+01f4978c  mov w23,wzr
+01f49790  ldr x8,[x20, #0x10]
+01f49794  cbz x8,0x01f49810
+01f49798  ldr w9,[x8, #0x18]
+01f4979c  cmp w22,w9
+01f497a0  b.cs 0x01f49814
+01f497a4  add x8,x8,w22, SXTW  #0x3
+01f497a8  ldr x0,[x8, #0x20]
+01f497ac  cbz x0,0x01f49810
+01f497b0  ldr x8,[x0]
+01f497b4  mov x1,x21
+01f497b8  ldp x9,x2,[x8, #0x138]
+01f497bc  blr x9
+01f497c0  tbnz w0,#0x0,0x01f497fc
+01f497c4  ldr x8,[x19, #0x20]
+01f497c8  mov x0,x20
+01f497cc  mov w1,w22
+01f497d0  ldr x8,[x8, #0xc0]
+01f497d4  ldr x2,[x8, #0x20]
+01f497d8  ldr x8,[x2, #0x8]
+01f497dc  blr x8
+01f497e0  ldr w8,[x20, #0x28]
+01f497e4  add w23,w23,#0x1
+01f497e8  mov w22,w0
+01f497ec  cmp w23,w8
+01f497f0  b.lt 0x01f49790
+01f497f4  mov w0,wzr
+01f497f8  b 0x01f49800
+01f497fc  mov w0,#0x1
+01f49800  ldp x19,x30,[sp, #0x20]
+01f49804  ldp x21,x20,[sp, #0x10]
+01f49808  ldp x23,x22,[sp], #0x30
+01f4980c  ret
+01f49810  bl 0x00b079b0
+01f49814  bl 0x00b079b8

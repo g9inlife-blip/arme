@@ -1,0 +1,46 @@
+Function: AliothEngine.DataStructures.FasterListEnumeratorCast<object,-object>$$get_Current @ 01adb030
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977bdc @ 00977bdc
+
+--- Listing ---
+01adb030  str x20,[sp, #-0x20]!
+01adb034  stp x19,x30,[sp, #0x10]
+01adb038  ldr x8,[x1, #0x20]
+01adb03c  mov x19,x0
+01adb040  ldrh w9,[x8, #0x132]
+01adb044  tbnz w9,#0x0,0x01adb05c
+01adb048  mov x0,x8
+01adb04c  mov x20,x1
+01adb050  bl 0x00b2ac40
+01adb054  ldr x8,[x20, #0x20]
+01adb058  ldrh w9,[x8, #0x132]
+01adb05c  ldr x19,[x19, #0x10]
+01adb060  tbnz w9,#0x0,0x01adb070
+01adb064  mov x0,x8
+01adb068  bl 0x00b2ac40
+01adb06c  mov x8,x0
+01adb070  ldr x8,[x8, #0xc0]
+01adb074  ldr x20,[x8, #0x10]
+01adb078  ldrb w8,[x20, #0x132]
+01adb07c  tbnz w8,#0x0,0x01adb08c
+01adb080  mov x0,x20
+01adb084  bl 0x00b2ac40
+01adb088  mov x20,x0
+01adb08c  cbz x19,0x01adb0ac
+01adb090  mov x0,x19
+01adb094  mov x1,x20
+01adb098  bl 0x00b07990
+01adb09c  cbnz x0,0x01adb0b0
+01adb0a0  mov x0,x19
+01adb0a4  mov x1,x20
+01adb0a8  bl 0x00b07c6c
+01adb0ac  mov x0,xzr
+01adb0b0  ldp x19,x30,[sp, #0x10]
+01adb0b4  ldr x20,[sp], #0x20
+01adb0b8  ret

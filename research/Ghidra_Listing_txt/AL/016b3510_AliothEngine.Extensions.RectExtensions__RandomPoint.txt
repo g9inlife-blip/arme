@@ -1,0 +1,46 @@
+Function: AliothEngine.Extensions.RectExtensions$$RandomPoint @ 016b3510
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d6370
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_xMin @ 024dafa0
+  -> UnityEngine.Rect$$get_yMin @ 024dafa8
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+
+--- Listing ---
+016b3510  sub sp,sp,#0x30
+016b3514  stp d9,d8,[sp, #0x10]
+016b3518  str x30,[sp, #0x20]
+016b351c  mov x0,sp
+016b3520  mov x1,xzr
+016b3524  stp s0,s1,[sp]
+016b3528  stp s2,s3,[sp, #0x8]
+016b352c  bl 0x024dafa0
+016b3530  mov x0,sp
+016b3534  mov x1,xzr
+016b3538  mov v8.16B,v0.16B
+016b353c  bl 0x024db014
+016b3540  mov v1.16B,v0.16B
+016b3544  mov v0.16B,v8.16B
+016b3548  mov x0,xzr
+016b354c  bl 0x024d6370
+016b3550  mov x0,sp
+016b3554  mov x1,xzr
+016b3558  mov v8.16B,v0.16B
+016b355c  bl 0x024dafa8
+016b3560  mov x0,sp
+016b3564  mov x1,xzr
+016b3568  mov v9.16B,v0.16B
+016b356c  bl 0x024db024
+016b3570  mov v1.16B,v0.16B
+016b3574  mov v0.16B,v9.16B
+016b3578  mov x0,xzr
+016b357c  bl 0x024d6370
+016b3580  mov v1.16B,v0.16B
+016b3584  mov v0.16B,v8.16B
+016b3588  ldr x30,[sp, #0x20]
+016b358c  ldp d9,d8,[sp, #0x10]
+016b3590  add sp,sp,#0x30
+016b3594  ret

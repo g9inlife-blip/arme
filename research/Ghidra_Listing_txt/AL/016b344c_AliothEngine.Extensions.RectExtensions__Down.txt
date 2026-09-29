@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.RectExtensions$$Down @ 016b344c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_yMin @ 024dafe8
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_yMin @ 024dafa8
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RectExtensions$$Down @ 016b34a8
+  <- AliothEngine.Extensions.RectExtensions$$Up @ 016b33f0
+
+--- Listing ---
+016b344c  sub sp,sp,#0x20
+016b3450  str d8,[sp, #0x10]
+016b3454  str x30,[sp, #0x18]
+016b3458  mov v8.16B,v4.16B
+016b345c  fcmp s4,#0.0
+016b3460  mov x0,sp
+016b3464  mov x1,xzr
+016b3468  stp s0,s1,[sp]
+016b346c  stp s2,s3,[sp, #0x8]
+016b3470  b.le 0x016b347c
+016b3474  bl 0x024db024
+016b3478  b 0x016b3480
+016b347c  bl 0x024dafa8
+016b3480  fsub s0,s0,s8
+016b3484  mov x0,sp
+016b3488  mov x1,xzr
+016b348c  bl 0x024dafe8
+016b3490  ldp s0,s1,[sp]
+016b3494  ldp s2,s3,[sp, #0x8]
+016b3498  ldr x30,[sp, #0x18]
+016b349c  ldr d8,[sp, #0x10]
+016b34a0  add sp,sp,#0x20
+016b34a4  ret

@@ -1,0 +1,33 @@
+Function: AliothEngine.FrameSynchr$$CalcBackstepTimeSinceStart @ 0164a8f0
+
+--- Calls OUT ---
+  -> UnityEngine.Time$$get_realtimeSinceStartup @ 024dc3a8
+
+--- Calls IN ---
+  <- AliothEngine.FrameSynchr$$SetKeyFrameIndex @ 0164a8c4
+
+--- Listing ---
+0164a8f0  str x20,[sp, #-0x20]!
+0164a8f4  stp x19,x30,[sp, #0x10]
+0164a8f8  mov x20,x0
+0164a8fc  mov x0,xzr
+0164a900  mov w19,w1
+0164a904  bl 0x024dc3a8
+0164a908  ldr w8,[x20, #0x2c]
+0164a90c  adrp x10,0x26dc000
+0164a910  mov w9,w19
+0164a914  ldr s1,[x10, #0xbfc]
+0164a918  mul x8,x8,x9
+0164a91c  ucvtf d2,x8
+0164a920  ldr s3,[x20, #0x118]
+0164a924  fcvt s2,d2
+0164a928  fmul s1,s2,s1
+0164a92c  fadd s0,s0,s1
+0164a930  fsub s1,s0,s3
+0164a934  fcmp s1,#0.0
+0164a938  b.pl 0x0164a940
+0164a93c  str s0,[x20, #0x118]
+0164a940  str w19,[x20, #0x3c]
+0164a944  ldp x19,x30,[sp, #0x10]
+0164a948  ldr x20,[sp], #0x20
+0164a94c  ret

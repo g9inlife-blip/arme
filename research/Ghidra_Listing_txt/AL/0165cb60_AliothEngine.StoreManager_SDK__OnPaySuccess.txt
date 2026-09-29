@@ -1,0 +1,76 @@
+Function: AliothEngine.StoreManager_SDK$$OnPaySuccess @ 0165cb60
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.ValidatingProduct$$.ctor @ 01658858
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+  -> AliothEngine.IStoreManager$$HandlePurchaseProductSucceeded @ 01659190
+
+--- Calls IN ---
+
+--- Listing ---
+0165cb60  stp x23,x22,[sp, #-0x30]!
+0165cb64  stp x21,x20,[sp, #0x10]
+0165cb68  stp x19,x30,[sp, #0x20]
+0165cb6c  adrp x22,0x3577000
+0165cb70  adrp x23,0x3351000
+0165cb74  ldrb w8,[x22, #0x883]
+0165cb78  ldr x23,[x23, #0xa30]
+0165cb7c  mov x19,x2
+0165cb80  mov x21,x1
+0165cb84  mov x20,x0
+0165cb88  tbnz w8,#0x0,0x0165cbb8
+0165cb8c  adrp x0,0x3351000
+0165cb90  ldr x0,[x0, #0xa30]
+0165cb94  bl 0x00b0789c
+0165cb98  adrp x0,0x3341000
+0165cb9c  ldr x0,[x0, #0x4b0]
+0165cba0  bl 0x00b0789c
+0165cba4  adrp x0,0x3313000
+0165cba8  ldr x0,[x0, #0xfd8]
+0165cbac  bl 0x00b0789c
+0165cbb0  mov w8,#0x1
+0165cbb4  strb w8,[x22, #0x883]
+0165cbb8  ldr x8,[x23]
+0165cbbc  ldr x8,[x8, #0xb8]
+0165cbc0  ldr x0,[x8, #0x58]
+0165cbc4  cbz x0,0x0165cbe8
+0165cbc8  mov x1,x20
+0165cbcc  mov x2,x21
+0165cbd0  mov x3,x19
+0165cbd4  ldp x19,x30,[sp, #0x20]
+0165cbd8  ldp x21,x20,[sp, #0x10]
+0165cbdc  mov x4,xzr
+0165cbe0  ldp x23,x22,[sp], #0x30
+0165cbe4  b 0x010670b0
+0165cbe8  adrp x8,0x3341000
+0165cbec  ldr x8,[x8, #0x4b0]
+0165cbf0  ldr x0,[x8]
+0165cbf4  bl 0x00b079a0
+0165cbf8  cbz x0,0x0165cc54
+0165cbfc  adrp x23,0x3313000
+0165cc00  ldr x23,[x23, #0xfd8]
+0165cc04  mov x22,x0
+0165cc08  bl 0x01658858
+0165cc0c  ldr x1,[x23]
+0165cc10  mov x0,x22
+0165cc14  str x1,[x0, #0x18]!
+0165cc18  bl 0x00b07850
+0165cc1c  mov x0,x22
+0165cc20  str x21,[x0, #0x38]!
+0165cc24  mov x1,x21
+0165cc28  bl 0x00b07850
+0165cc2c  mov x0,x22
+0165cc30  str x19,[x0, #0x58]!
+0165cc34  mov x1,x19
+0165cc38  bl 0x00b07850
+0165cc3c  mov x0,x20
+0165cc40  ldp x19,x30,[sp, #0x20]
+0165cc44  ldp x21,x20,[sp, #0x10]
+0165cc48  mov x1,x22
+0165cc4c  ldp x23,x22,[sp], #0x30
+0165cc50  b 0x01659190
+0165cc54  bl 0x00b079b0

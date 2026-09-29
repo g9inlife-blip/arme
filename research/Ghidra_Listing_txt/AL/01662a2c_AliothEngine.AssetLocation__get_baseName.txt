@@ -1,0 +1,44 @@
+Function: AliothEngine.AssetLocation$$get_baseName @ 01662a2c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.IO.Path$$GetFileNameWithoutExtension @ 020c2840
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.AssetHolder$$Create @ 01662758
+
+--- Listing ---
+01662a2c  str x20,[sp, #-0x20]!
+01662a30  stp x19,x30,[sp, #0x10]
+01662a34  adrp x19,0x3577000
+01662a38  ldrb w8,[x19, #0x946]
+01662a3c  mov x20,x0
+01662a40  tbnz w8,#0x0,0x01662a58
+01662a44  adrp x0,0x336c000
+01662a48  ldr x0,[x0, #0x318]
+01662a4c  bl 0x00b0789c
+01662a50  mov w8,#0x1
+01662a54  strb w8,[x19, #0x946]
+01662a58  mov x19,x20
+01662a5c  ldr x0,[x19, #0x10]!
+01662a60  cbnz x0,0x01662aa0
+01662a64  adrp x8,0x336c000
+01662a68  ldr x8,[x8, #0x318]
+01662a6c  ldr x20,[x20, #0x50]
+01662a70  ldr x0,[x8]
+01662a74  ldr w8,[x0, #0xe0]
+01662a78  cbnz w8,0x01662a80
+01662a7c  bl 0x00b0798c
+01662a80  mov x0,x20
+01662a84  mov x1,xzr
+01662a88  bl 0x020c2840
+01662a8c  mov x1,x0
+01662a90  str x0,[x19]
+01662a94  mov x0,x19
+01662a98  bl 0x00b07850
+01662a9c  ldr x0,[x19]
+01662aa0  ldp x19,x30,[sp, #0x10]
+01662aa4  ldr x20,[sp], #0x20
+01662aa8  ret

@@ -1,0 +1,89 @@
+Function: RefundTreatyPanelMono$$RegisterCallBack @ 00f0a198
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> RefundtreatypanelNode$$get_btn_ok @ 00fce2c8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> GUIScreenBaseMono$$RegisterCallBack @ 00f21d5c
+  -> UIEventListener$$Get @ 00e34224
+  -> FUN_00b079b0 @ 00b079b0
+  -> UIEventListener.VoidDelegate$$.ctor @ 00e35bd0
+  -> RefundTreatyPanelMono$$get_m_node @ 00f0a014
+
+--- Calls IN ---
+
+--- Listing ---
+00f0a198  stp x21,x20,[sp, #-0x20]!
+00f0a19c  stp x19,x30,[sp, #0x10]
+00f0a1a0  adrp x20,0x3572000
+00f0a1a4  adrp x21,0x3379000
+00f0a1a8  ldrb w8,[x20, #0xf9d]
+00f0a1ac  ldr x21,[x21, #0xed8]
+00f0a1b0  mov x19,x0
+00f0a1b4  tbnz w8,#0x0,0x00f0a1e4
+00f0a1b8  adrp x0,0x3379000
+00f0a1bc  ldr x0,[x0, #0xed8]
+00f0a1c0  bl 0x00b0789c
+00f0a1c4  adrp x0,0x332d000
+00f0a1c8  ldr x0,[x0, #0xd38]
+00f0a1cc  bl 0x00b0789c
+00f0a1d0  adrp x0,0x3360000
+00f0a1d4  ldr x0,[x0, #0x750]
+00f0a1d8  bl 0x00b0789c
+00f0a1dc  mov w8,#0x1
+00f0a1e0  strb w8,[x20, #0xf9d]
+00f0a1e4  ldr x8,[x21]
+00f0a1e8  ldr x8,[x8, #0xb8]
+00f0a1ec  ldr x0,[x8, #0x10]
+00f0a1f0  cbz x0,0x00f0a208
+00f0a1f4  mov x1,x19
+00f0a1f8  ldp x19,x30,[sp, #0x10]
+00f0a1fc  mov x2,xzr
+00f0a200  ldp x21,x20,[sp], #0x20
+00f0a204  b 0x01060dac
+00f0a208  mov x0,x19
+00f0a20c  mov x1,xzr
+00f0a210  bl 0x00f21d5c
+00f0a214  mov x0,x19
+00f0a218  bl 0x00f0a014
+00f0a21c  cbz x0,0x00f0a2b0
+00f0a220  mov x1,xzr
+00f0a224  bl 0x00fce2c8
+00f0a228  cbz x0,0x00f0a2b0
+00f0a22c  adrp x8,0x332d000
+00f0a230  ldr x8,[x8, #0xd38]
+00f0a234  adrp x21,0x3360000
+00f0a238  ldr x20,[x0, #0x18]
+00f0a23c  ldr x8,[x8]
+00f0a240  ldr w9,[x8, #0xe0]
+00f0a244  ldr x21,[x21, #0x750]
+00f0a248  cbnz w9,0x00f0a254
+00f0a24c  mov x0,x8
+00f0a250  bl 0x00b0798c
+00f0a254  mov w1,#0x1
+00f0a258  mov x0,x20
+00f0a25c  mov x2,xzr
+00f0a260  bl 0x00e34224
+00f0a264  ldr x8,[x21]
+00f0a268  mov x20,x0
+00f0a26c  mov x0,x8
+00f0a270  bl 0x00b079a0
+00f0a274  cbz x0,0x00f0a2b0
+00f0a278  cbz x19,0x00f0a2b0
+00f0a27c  ldr x8,[x19]
+00f0a280  mov x1,x19
+00f0a284  mov x3,xzr
+00f0a288  mov x21,x0
+00f0a28c  ldr x2,[x8, #0x450]
+00f0a290  bl 0x00e35bd0
+00f0a294  cbz x20,0x00f0a2b0
+00f0a298  str x21,[x20, #0x38]!
+00f0a29c  ldp x19,x30,[sp, #0x10]
+00f0a2a0  mov x0,x20
+00f0a2a4  mov x1,x21
+00f0a2a8  ldp x21,x20,[sp], #0x20
+00f0a2ac  b 0x00b07850
+00f0a2b0  bl 0x00b079b0

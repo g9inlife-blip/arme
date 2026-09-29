@@ -1,0 +1,46 @@
+Function: AliothEngine.DataStructures.FasterReadOnlyList<KeyValuePair<object,-object>>$$CopyTo @ 01adf9c8
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977f18 @ 00977f18
+
+--- Listing ---
+01adf9c8  str x22,[sp, #-0x30]!
+01adf9cc  stp x21,x20,[sp, #0x10]
+01adf9d0  stp x19,x30,[sp, #0x20]
+01adf9d4  ldr x21,[x0]
+01adf9d8  cbz x21,0x01adfa54
+01adf9dc  ldr x8,[x3, #0x20]
+01adf9e0  mov x22,x3
+01adf9e4  mov w19,w2
+01adf9e8  mov x20,x1
+01adf9ec  ldrh w9,[x8, #0x132]
+01adf9f0  tbnz w9,#0x0,0x01adfa08
+01adf9f4  mov x0,x8
+01adf9f8  bl 0x00b2ac40
+01adf9fc  ldr x8,[x22, #0x20]
+01adfa00  ldrh w9,[x8, #0x132]
+01adfa04  b 0x01adfa0c
+01adfa08  mov x0,x8
+01adfa0c  ldr x10,[x0, #0xc0]
+01adfa10  ldr x10,[x10, #0x28]
+01adfa14  ldr x4,[x10, #0x8]
+01adfa18  tbnz w9,#0x0,0x01adfa30
+01adfa1c  mov x0,x8
+01adfa20  str x4,[sp, #0x8]
+01adfa24  bl 0x00b2ac40
+01adfa28  ldr x4,[sp, #0x8]
+01adfa2c  mov x8,x0
+01adfa30  ldr x8,[x8, #0xc0]
+01adfa34  mov x0,x21
+01adfa38  mov x1,x20
+01adfa3c  mov w2,w19
+01adfa40  ldr x3,[x8, #0x28]
+01adfa44  ldp x19,x30,[sp, #0x20]
+01adfa48  ldp x21,x20,[sp, #0x10]
+01adfa4c  ldr x22,[sp], #0x30
+01adfa50  br x4
+01adfa54  bl 0x00b079b0

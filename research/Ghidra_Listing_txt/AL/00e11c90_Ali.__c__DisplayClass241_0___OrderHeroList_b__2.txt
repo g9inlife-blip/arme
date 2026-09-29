@@ -1,0 +1,45 @@
+Function: Ali.<>c__DisplayClass241_0$$<OrderHeroList>b__2 @ 00e11c90
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> HeroInfo$$get_State @ 016df754
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<Int32Enum,-object>$$get_Item @ 0193fe14
+
+--- Calls IN ---
+
+--- Listing ---
+00e11c90  stp x21,x20,[sp, #-0x20]!
+00e11c94  stp x19,x30,[sp, #0x10]
+00e11c98  adrp x21,0x3572000
+00e11c9c  ldrb w8,[x21, #0x5d7]
+00e11ca0  mov x19,x1
+00e11ca4  mov x20,x0
+00e11ca8  tbnz w8,#0x0,0x00e11cc0
+00e11cac  adrp x0,0x3337000
+00e11cb0  ldr x0,[x0, #0x508]
+00e11cb4  bl 0x00b0789c
+00e11cb8  mov w8,#0x1
+00e11cbc  strb w8,[x21, #0x5d7]
+00e11cc0  cbz x19,0x00e11d14
+00e11cc4  ldr x20,[x20, #0x10]
+00e11cc8  mov x0,x19
+00e11ccc  mov x1,xzr
+00e11cd0  bl 0x016df754
+00e11cd4  cbz x20,0x00e11d14
+00e11cd8  adrp x8,0x3337000
+00e11cdc  ldr x8,[x8, #0x508]
+00e11ce0  mov w1,w0
+00e11ce4  mov x0,x20
+00e11ce8  ldr x2,[x8]
+00e11cec  bl 0x0193fe14
+00e11cf0  cbz x0,0x00e11d14
+00e11cf4  ldr x8,[x0, #0x40]
+00e11cf8  ldr x3,[x0, #0x18]
+00e11cfc  ldr x2,[x0, #0x28]
+00e11d00  mov x1,x19
+00e11d04  ldp x19,x30,[sp, #0x10]
+00e11d08  mov x0,x8
+00e11d0c  ldp x21,x20,[sp], #0x20
+00e11d10  br x3
+00e11d14  bl 0x00b079b0

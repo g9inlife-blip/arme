@@ -1,0 +1,69 @@
+Function: AliothEngine.GUIScreen$$DemandOpen @ 01671414
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- ShopNewPanelMono$$DemandOpen @ 0102ab80
+  <- ChangeFashionMono$$DemandOpen @ 00f2d520
+  <- WeaponPanelMono$$DemandOpen @ 00f5d2d8
+  <- BoxShopMonoNew$$<>xLuaBaseProxy_DemandOpen @ 00e9a680
+  <- EquipPanelMono$$<>xLuaBaseProxy_DemandOpen @ 00f352c0
+  <- PayPanelMono$$DemandOpen @ 0100b080
+  <- WareHousePanelMono$$DemandOpen @ 0104e508
+  <- WeaponPanelMono$$<>xLuaBaseProxy_DemandOpen @ 00f5da78
+  <- EquipDevMono$$<>xLuaBaseProxy_DemandOpen @ 00edaa44
+  <- BattleChallengePanelMono$$<>xLuaBaseProxy_DemandOpen @ 00e68544
+  <- BoxPrePanelMono$$DemandOpen @ 00e96228
+  <- TaskDetailPanelMono$$DemandOpen @ 0103b8e4
+  <- TutorialMono$$DemandOpen @ 00f19e0c
+  <- ShopNewPanelMono$$<>xLuaBaseProxy_DemandOpen @ 0102d79c
+  <- BattleMapMono$$DemandOpen @ 00e5102c
+  <- EquipDevMono$$DemandOpen @ 00eda788
+  <- SysSettingPanelMono$$<>xLuaBaseProxy_DemandOpen @ 00f79674
+  <- BoxShopMonoNew$$DemandOpen @ 00e9786c
+  <- TutorialMono$$<>xLuaBaseProxy_DemandOpen @ 00f1a04c
+  <- ChangeFashionMono$$<>xLuaBaseProxy_DemandOpen @ 00f2dd9c
+  <- ActiveShowPanelMono$$<>xLuaBaseProxy_DemandOpen @ 01021224
+  <- PayPanelMono$$<>xLuaBaseProxy_DemandOpen @ 0100b300
+  <- SysSettingPanelMono$$DemandOpen @ 00f78d20
+  <- HeroPanelMono$$<>xLuaBaseProxy_DemandOpen @ 00f3f72c
+  <- HeroPanelMono$$DemandOpen @ 00f3eff8
+  <- BattleChallengePanelMono$$DemandOpen @ 00e670b8
+  <- BattleMapMono$$<>xLuaBaseProxy_DemandOpen @ 00e513cc
+  <- BoxPrePanelMono$$<>xLuaBaseProxy_DemandOpen @ 00e96418
+  <- EquipPanelMono$$DemandOpen @ 00f34b7c
+  <- WareHousePanelMono$$<>xLuaBaseProxy_DemandOpen @ 0104e8d0
+
+--- Listing ---
+01671414  str x22,[sp, #-0x30]!
+01671418  stp x21,x20,[sp, #0x10]
+0167141c  stp x19,x30,[sp, #0x20]
+01671420  adrp x21,0x3577000
+01671424  adrp x22,0x3364000
+01671428  ldrb w8,[x21, #0x983]
+0167142c  ldr x22,[x22, #0xd28]
+01671430  mov x19,x1
+01671434  mov x20,x0
+01671438  tbnz w8,#0x0,0x01671450
+0167143c  adrp x0,0x3364000
+01671440  ldr x0,[x0, #0xd28]
+01671444  bl 0x00b0789c
+01671448  mov w8,#0x1
+0167144c  strb w8,[x21, #0x983]
+01671450  ldr x8,[x22]
+01671454  ldr x8,[x8, #0xb8]
+01671458  ldr x0,[x8, #0x90]
+0167145c  cbz x0,0x0167147c
+01671460  mov x1,x20
+01671464  mov x2,x19
+01671468  ldp x19,x30,[sp, #0x20]
+0167146c  ldp x21,x20,[sp, #0x10]
+01671470  mov x3,xzr
+01671474  ldr x22,[sp], #0x30
+01671478  b 0x0106125c
+0167147c  ldp x19,x30,[sp, #0x20]
+01671480  ldp x21,x20,[sp, #0x10]
+01671484  ldr x22,[sp], #0x30
+01671488  ret

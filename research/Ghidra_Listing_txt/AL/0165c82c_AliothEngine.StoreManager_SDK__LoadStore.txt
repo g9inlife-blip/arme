@@ -1,0 +1,34 @@
+Function: AliothEngine.StoreManager_SDK$$LoadStore @ 0165c82c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0165c82c  stp x21,x20,[sp, #-0x20]!
+0165c830  stp x19,x30,[sp, #0x10]
+0165c834  adrp x20,0x3577000
+0165c838  adrp x21,0x3351000
+0165c83c  ldrb w8,[x20, #0x87d]
+0165c840  ldr x21,[x21, #0xa30]
+0165c844  mov x19,x0
+0165c848  tbnz w8,#0x0,0x0165c860
+0165c84c  adrp x0,0x3351000
+0165c850  ldr x0,[x0, #0xa30]
+0165c854  bl 0x00b0789c
+0165c858  mov w8,#0x1
+0165c85c  strb w8,[x20, #0x87d]
+0165c860  ldr x8,[x21]
+0165c864  ldr x8,[x8, #0xb8]
+0165c868  ldr x0,[x8, #0x28]
+0165c86c  cbz x0,0x0165c884
+0165c870  mov x1,x19
+0165c874  ldp x19,x30,[sp, #0x10]
+0165c878  mov x2,xzr
+0165c87c  ldp x21,x20,[sp], #0x20
+0165c880  b 0x01060dac
+0165c884  ldp x19,x30,[sp, #0x10]
+0165c888  ldp x21,x20,[sp], #0x20
+0165c88c  ret

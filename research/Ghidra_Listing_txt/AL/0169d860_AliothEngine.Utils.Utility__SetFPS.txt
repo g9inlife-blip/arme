@@ -1,0 +1,18 @@
+Function: AliothEngine.Utils.Utility$$SetFPS @ 0169d860
+
+--- Calls OUT ---
+  -> UnityEngine.Application$$set_targetFrameRate @ 024f2b0c
+  -> UnityEngine.QualitySettings$$set_vSyncCount @ 024d105c
+
+--- Calls IN ---
+
+--- Listing ---
+0169d860  stp x19,x30,[sp, #-0x10]!
+0169d864  mov w19,w0
+0169d868  mov w0,#0x1
+0169d86c  mov x1,xzr
+0169d870  bl 0x024d105c
+0169d874  mov w0,w19
+0169d878  mov x1,xzr
+0169d87c  ldp x19,x30,[sp], #0x10
+0169d880  b 0x024f2b0c

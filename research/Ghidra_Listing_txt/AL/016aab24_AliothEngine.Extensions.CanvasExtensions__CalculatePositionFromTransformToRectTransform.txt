@@ -1,0 +1,133 @@
+Function: AliothEngine.Extensions.CanvasExtensions$$CalculatePositionFromTransformToRectTransform @ 016aab24
+
+--- Calls OUT ---
+  -> UnityEngine.RectTransformUtility$$ScreenPointToWorldPointInRectangle @ 026ceeb0
+  -> UnityEngine.Canvas$$get_worldCamera @ 026d1068
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Camera$$WorldToScreenPoint @ 024d81a8
+  -> UnityEngine.Canvas$$get_renderMode @ 026d0918
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- UIFollower$$WorldToUIPosition @ 00e4a7b4
+  <- MapRangeDebug$$AddIndexs @ 00dfa2a8
+  <- AIPTWDebug$$AddIndexs @ 00df8e70
+  <- BattleCenter$$WorldToUIPosition @ 00ed3070
+
+--- Listing ---
+016aab24  sub sp,sp,#0x60
+016aab28  str d10,[sp, #0x10]
+016aab2c  stp d9,d8,[sp, #0x20]
+016aab30  stp x23,x22,[sp, #0x30]
+016aab34  stp x21,x20,[sp, #0x40]
+016aab38  stp x19,x30,[sp, #0x50]
+016aab3c  adrp x21,0x3577000
+016aab40  ldrb w8,[x21, #0xbac]
+016aab44  mov x19,x1
+016aab48  mov v8.16B,v2.16B
+016aab4c  mov v9.16B,v1.16B
+016aab50  mov v10.16B,v0.16B
+016aab54  mov x20,x0
+016aab58  tbnz w8,#0x0,0x016aab7c
+016aab5c  adrp x0,0x3360000
+016aab60  ldr x0,[x0, #0x720]
+016aab64  bl 0x00b0789c
+016aab68  adrp x0,0x3335000
+016aab6c  ldr x0,[x0, #0x6e8]
+016aab70  bl 0x00b0789c
+016aab74  mov w8,#0x1
+016aab78  strb w8,[x21, #0xbac]
+016aab7c  adrp x21,0x3570000
+016aab80  ldrb w8,[x21, #0xf0c]
+016aab84  str wzr,[sp, #0x8]
+016aab88  str xzr,[sp]
+016aab8c  cbnz w8,0x016aaba4
+016aab90  adrp x0,0x3368000
+016aab94  ldr x0,[x0, #0x9b8]
+016aab98  bl 0x00b0789c
+016aab9c  mov w8,#0x1
+016aaba0  strb w8,[x21, #0xf0c]
+016aaba4  adrp x8,0x3368000
+016aaba8  ldr x8,[x8, #0x9b8]
+016aabac  ldr x8,[x8]
+016aabb0  ldr x8,[x8, #0xb8]
+016aabb4  ldp w22,w23,[x8]
+016aabb8  ldr w21,[x8, #0x8]
+016aabbc  stp w22,w23,[sp]
+016aabc0  str w21,[sp, #0x8]
+016aabc4  cbz x20,0x016aace8
+016aabc8  mov x0,x20
+016aabcc  mov x1,xzr
+016aabd0  bl 0x026d0918
+016aabd4  cbz w0,0x016aac64
+016aabd8  mov x0,x20
+016aabdc  mov x1,xzr
+016aabe0  bl 0x026d0918
+016aabe4  cmp w0,#0x1
+016aabe8  b.ne 0x016aac8c
+016aabec  mov x0,x20
+016aabf0  mov x1,xzr
+016aabf4  bl 0x024e4e98
+016aabf8  cbz x19,0x016aace8
+016aabfc  adrp x22,0x3360000
+016aac00  ldr x22,[x22, #0x720]
+016aac04  mov x21,x0
+016aac08  mov x0,x19
+016aac0c  mov v0.16B,v10.16B
+016aac10  mov v1.16B,v9.16B
+016aac14  mov v2.16B,v8.16B
+016aac18  mov x1,xzr
+016aac1c  bl 0x024d81a8
+016aac20  mov x0,x20
+016aac24  mov x1,xzr
+016aac28  mov v8.16B,v0.16B
+016aac2c  mov v9.16B,v1.16B
+016aac30  bl 0x026d1068
+016aac34  ldr x8,[x22]
+016aac38  mov x19,x0
+016aac3c  ldr w9,[x8, #0xe0]
+016aac40  cbz w9,0x016aac9c
+016aac44  cbz x21,0x016aaca8
+016aac48  adrp x8,0x3335000
+016aac4c  ldr x8,[x8, #0x6e8]
+016aac50  ldr x9,[x21]
+016aac54  ldr x8,[x8]
+016aac58  cmp x9,x8
+016aac5c  csel x0,x21,xzr,eq
+016aac60  b 0x016aacac
+016aac64  cbz x19,0x016aace8
+016aac68  mov x0,x19
+016aac6c  mov v0.16B,v10.16B
+016aac70  mov v1.16B,v9.16B
+016aac74  mov v2.16B,v8.16B
+016aac78  mov x1,xzr
+016aac7c  bl 0x024d81a8
+016aac80  stp s0,s1,[sp]
+016aac84  str s2,[sp, #0x8]
+016aac88  b 0x016aaccc
+016aac8c  fmov s0,w22
+016aac90  fmov s1,w23
+016aac94  fmov s2,w21
+016aac98  b 0x016aaccc
+016aac9c  mov x0,x8
+016aaca0  bl 0x00b0798c
+016aaca4  cbnz x21,0x016aac48
+016aaca8  mov x0,xzr
+016aacac  mov x2,sp
+016aacb0  mov v0.16B,v8.16B
+016aacb4  mov v1.16B,v9.16B
+016aacb8  mov x1,x19
+016aacbc  mov x3,xzr
+016aacc0  bl 0x026ceeb0
+016aacc4  ldp s0,s1,[sp]
+016aacc8  ldr s2,[sp, #0x8]
+016aaccc  ldp x19,x30,[sp, #0x50]
+016aacd0  ldp x21,x20,[sp, #0x40]
+016aacd4  ldp x23,x22,[sp, #0x30]
+016aacd8  ldp d9,d8,[sp, #0x20]
+016aacdc  ldr d10,[sp, #0x10]
+016aace0  add sp,sp,#0x60
+016aace4  ret
+016aace8  bl 0x00b079b0

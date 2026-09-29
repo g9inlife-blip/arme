@@ -1,0 +1,84 @@
+Function: AliothEngine.Extensions.TransformExtensions$$GetPath @ 016b9ed8
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_parent @ 024f42ec
+  -> AliothEngine.Extensions.TransformExtensions$$GetPath @ 016b9ed8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> System.String$$Concat @ 01fd2850
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Char$$ToString @ 020cbf14
+  -> System.String$$Concat @ 01fdebb8
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$GetPath @ 016b9ed8
+
+--- Listing ---
+016b9ed8  sub sp,sp,#0x30
+016b9edc  stp x21,x20,[sp, #0x10]
+016b9ee0  stp x19,x30,[sp, #0x20]
+016b9ee4  adrp x21,0x3577000
+016b9ee8  ldrb w8,[x21, #0xc30]
+016b9eec  mov w20,w1
+016b9ef0  mov x19,x0
+016b9ef4  strh w1,[sp, #0xc]
+016b9ef8  tbnz w8,#0x0,0x016b9f10
+016b9efc  adrp x0,0x3321000
+016b9f00  ldr x0,[x0, #0xca8]
+016b9f04  bl 0x00b0789c
+016b9f08  mov w8,#0x1
+016b9f0c  strb w8,[x21, #0xc30]
+016b9f10  cbz x19,0x016b9fdc
+016b9f14  adrp x21,0x3321000
+016b9f18  ldr x21,[x21, #0xca8]
+016b9f1c  mov x0,x19
+016b9f20  mov x1,xzr
+016b9f24  bl 0x024f42ec
+016b9f28  ldr x8,[x21]
+016b9f2c  mov x21,x0
+016b9f30  ldr w9,[x8, #0xe0]
+016b9f34  cbnz w9,0x016b9f40
+016b9f38  mov x0,x8
+016b9f3c  bl 0x00b0798c
+016b9f40  mov x0,x21
+016b9f44  mov x1,xzr
+016b9f48  mov x2,xzr
+016b9f4c  bl 0x024c8180
+016b9f50  tbz w0,#0x0,0x016b9f84
+016b9f54  add x0,sp,#0xc
+016b9f58  mov x1,xzr
+016b9f5c  bl 0x020cbf14
+016b9f60  mov x20,x0
+016b9f64  mov x0,x19
+016b9f68  mov x1,xzr
+016b9f6c  bl 0x024c9a1c
+016b9f70  mov x1,x0
+016b9f74  mov x0,x20
+016b9f78  mov x2,xzr
+016b9f7c  bl 0x01fd2850
+016b9f80  b 0x016b9fcc
+016b9f84  mov x0,x19
+016b9f88  mov x1,xzr
+016b9f8c  bl 0x024f42ec
+016b9f90  mov w1,w20
+016b9f94  bl 0x016b9ed8
+016b9f98  mov x20,x0
+016b9f9c  add x0,sp,#0xc
+016b9fa0  mov x1,xzr
+016b9fa4  bl 0x020cbf14
+016b9fa8  mov x21,x0
+016b9fac  mov x0,x19
+016b9fb0  mov x1,xzr
+016b9fb4  bl 0x024c9a1c
+016b9fb8  mov x2,x0
+016b9fbc  mov x0,x20
+016b9fc0  mov x1,x21
+016b9fc4  mov x3,xzr
+016b9fc8  bl 0x01fdebb8
+016b9fcc  ldp x19,x30,[sp, #0x20]
+016b9fd0  ldp x21,x20,[sp, #0x10]
+016b9fd4  add sp,sp,#0x30
+016b9fd8  ret
+016b9fdc  bl 0x00b079b0

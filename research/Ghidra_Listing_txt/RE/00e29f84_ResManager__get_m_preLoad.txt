@@ -1,0 +1,38 @@
+Function: ResManager$$get_m_preLoad @ 00e29f84
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp71 @ 01068234
+
+--- Calls IN ---
+  <- ResManager$$ClearAll @ 00e2a474
+  <- XLua.CSObjectWrap.ResManagerWrap$$_g_get_m_preLoad @ 01359e40
+  <- ResManager$$DontDestroyResLoad @ 00e2a148
+
+--- Listing ---
+00e29f84  stp x21,x20,[sp, #-0x20]!
+00e29f88  stp x19,x30,[sp, #0x10]
+00e29f8c  adrp x20,0x3572000
+00e29f90  adrp x21,0x337e000
+00e29f94  ldrb w8,[x20, #0x71c]
+00e29f98  ldr x21,[x21, #0x4c8]
+00e29f9c  mov x19,x0
+00e29fa0  tbnz w8,#0x0,0x00e29fb8
+00e29fa4  adrp x0,0x337e000
+00e29fa8  ldr x0,[x0, #0x4c8]
+00e29fac  bl 0x00b0789c
+00e29fb0  mov w8,#0x1
+00e29fb4  strb w8,[x20, #0x71c]
+00e29fb8  ldr x8,[x21]
+00e29fbc  ldr x8,[x8, #0xb8]
+00e29fc0  ldr x0,[x8]
+00e29fc4  cbz x0,0x00e29fdc
+00e29fc8  mov x1,x19
+00e29fcc  ldp x19,x30,[sp, #0x10]
+00e29fd0  mov x2,xzr
+00e29fd4  ldp x21,x20,[sp], #0x20
+00e29fd8  b 0x01068234
+00e29fdc  ldr x0,[x19, #0x38]
+00e29fe0  ldp x19,x30,[sp, #0x10]
+00e29fe4  ldp x21,x20,[sp], #0x20
+00e29fe8  ret

@@ -1,0 +1,34 @@
+Function: AliothEngine.LogManager$$get_DefaultLogger @ 0168a3f0
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+  <- PositionTargetManager$$Log @ 00dcc71c
+  <- AliothEngine.GameUpdateService$$get_logger @ 0167d368
+  <- PositionTargetManager$$LogPos @ 00dccb64
+
+--- Listing ---
+0168a3f0  str x20,[sp, #-0x20]!
+0168a3f4  stp x19,x30,[sp, #0x10]
+0168a3f8  adrp x19,0x3577000
+0168a3fc  adrp x20,0x3377000
+0168a400  ldrb w8,[x19, #0xa8d]
+0168a404  ldr x20,[x20, #0x898]
+0168a408  tbnz w8,#0x0,0x0168a420
+0168a40c  adrp x0,0x3377000
+0168a410  ldr x0,[x0, #0x898]
+0168a414  bl 0x00b0789c
+0168a418  mov w8,#0x1
+0168a41c  strb w8,[x19, #0xa8d]
+0168a420  ldr x0,[x20]
+0168a424  bl 0x01e09a6c
+0168a428  cbz x0,0x0168a43c
+0168a42c  ldp x19,x30,[sp, #0x10]
+0168a430  mov w1,wzr
+0168a434  ldr x20,[sp], #0x20
+0168a438  b 0x0168995c
+0168a43c  bl 0x00b079b0

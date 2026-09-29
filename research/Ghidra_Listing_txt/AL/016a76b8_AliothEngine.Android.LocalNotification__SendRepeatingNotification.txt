@@ -1,0 +1,100 @@
+Function: AliothEngine.Android.LocalNotification$$SendRepeatingNotification @ 016a76b8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Random$$.ctor @ 0216133c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Android.LocalNotification$$SendRepeatingNotification @ 016a7810
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+
+--- Calls IN ---
+
+--- Listing ---
+016a76b8  sub sp,sp,#0xa0
+016a76bc  stp d9,d8,[sp, #0x30]
+016a76c0  stp x28,x0,[sp, #0x40]
+016a76c4  stp x27,x26,[sp, #0x50]
+016a76c8  stp x25,x24,[sp, #0x60]
+016a76cc  stp x23,x22,[sp, #0x70]
+016a76d0  stp x21,x20,[sp, #0x80]
+016a76d4  stp x19,x30,[sp, #0x90]
+016a76d8  adrp x25,0x3577000
+016a76dc  str x1,[sp, #0x28]
+016a76e0  adrp x26,0x3355000
+016a76e4  ldrb w8,[x25, #0xb92]
+016a76e8  ldr x26,[x26, #0x1e8]
+016a76ec  mov w23,w7
+016a76f0  mov w21,w6
+016a76f4  mov w22,w5
+016a76f8  mov x24,x4
+016a76fc  mov x19,x3
+016a7700  mov x20,x2
+016a7704  tbnz w8,#0x0,0x016a7728
+016a7708  adrp x0,0x3373000
+016a770c  ldr x0,[x0, #0x508]
+016a7710  bl 0x00b0789c
+016a7714  adrp x0,0x3355000
+016a7718  ldr x0,[x0, #0x1e8]
+016a771c  bl 0x00b0789c
+016a7720  mov w8,#0x1
+016a7724  strb w8,[x25, #0xb92]
+016a7728  ldr x0,[x26]
+016a772c  bl 0x00b079a0
+016a7730  cbz x0,0x016a780c
+016a7734  adrp x28,0x3373000
+016a7738  ldp x27,x26,[sp, #0xa8]
+016a773c  ldr x28,[x28, #0x508]
+016a7740  mov x1,xzr
+016a7744  mov x25,x0
+016a7748  bl 0x0216133c
+016a774c  ldr x8,[x25]
+016a7750  mov x0,x25
+016a7754  ldp x9,x1,[x8, #0x188]
+016a7758  blr x9
+016a775c  mov w25,w0
+016a7760  add x0,sp,#0x48
+016a7764  mov x1,xzr
+016a7768  bl 0x02167c88
+016a776c  add x0,sp,#0x28
+016a7770  mov x1,xzr
+016a7774  mov v8.16B,v0.16B
+016a7778  bl 0x02167c88
+016a777c  ldr x0,[x28]
+016a7780  mov v9.16B,v0.16B
+016a7784  ldr w8,[x0, #0xe0]
+016a7788  cbnz w8,0x016a7790
+016a778c  bl 0x00b0798c
+016a7790  mov x10,#0x7ff0000000000000
+016a7794  fcvtzs x8,d8
+016a7798  mov w9,#0x3e8
+016a779c  fcvtzs w11,d9
+016a77a0  fmov d0,x10
+016a77a4  mul x8,x8,x9
+016a77a8  fcmp d8,d0
+016a77ac  mul w9,w11,w9
+016a77b0  csel x1,xzr,x8,eq
+016a77b4  sxtw x8,w9
+016a77b8  fcmp d9,d0
+016a77bc  csel x2,xzr,x8,eq
+016a77c0  and x5,x24,#0xffffffff
+016a77c4  and w8,w23,#0x1
+016a77c8  and w6,w22,#0x1
+016a77cc  and w7,w21,#0x1
+016a77d0  mov w0,w25
+016a77d4  mov x3,x20
+016a77d8  mov x4,x19
+016a77dc  stp x27,x26,[sp, #0x10]
+016a77e0  strb w8,[sp]
+016a77e4  bl 0x016a7810
+016a77e8  ldp x19,x30,[sp, #0x90]
+016a77ec  ldp x21,x20,[sp, #0x80]
+016a77f0  ldp x23,x22,[sp, #0x70]
+016a77f4  ldp x25,x24,[sp, #0x60]
+016a77f8  ldp x27,x26,[sp, #0x50]
+016a77fc  ldr x28,[sp, #0x40]
+016a7800  ldp d9,d8,[sp, #0x30]
+016a7804  add sp,sp,#0xa0
+016a7808  ret
+016a780c  bl 0x00b079b0

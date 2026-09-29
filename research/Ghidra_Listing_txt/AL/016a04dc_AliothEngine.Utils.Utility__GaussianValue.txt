@@ -1,0 +1,72 @@
+Function: AliothEngine.Utils.Utility$$GaussianValue @ 016a04dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> log @ 008d5c90
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> cos @ 008d4cc0
+  -> AliothEngine.Utils.Utility$$GetRNG @ 0169d3e0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$GaussianVector3 @ 016a05c4
+
+--- Listing ---
+016a04dc  stp d11,d10,[sp, #-0x30]!
+016a04e0  stp d9,d8,[sp, #0x10]
+016a04e4  stp x19,x30,[sp, #0x20]
+016a04e8  adrp x19,0x3577000
+016a04ec  ldrb w8,[x19, #0xb5b]
+016a04f0  mov v8.16B,v1.16B
+016a04f4  mov v9.16B,v0.16B
+016a04f8  tbnz w8,#0x0,0x016a0510
+016a04fc  adrp x0,0x332c000
+016a0500  ldr x0,[x0, #0x5a8]
+016a0504  bl 0x00b0789c
+016a0508  mov w8,#0x1
+016a050c  strb w8,[x19, #0xb5b]
+016a0510  fcmp s9,#0.0
+016a0514  b.ne 0x016a0524
+016a0518  fcmp s8,#0.0
+016a051c  fmov s0,wzr
+016a0520  b.eq 0x016a05b0
+016a0524  bl 0x0169d3e0
+016a0528  cbz x0,0x016a05c0
+016a052c  ldr x8,[x0]
+016a0530  ldp x9,x1,[x8, #0x1b8]
+016a0534  blr x9
+016a0538  mov v10.16B,v0.16B
+016a053c  bl 0x0169d3e0
+016a0540  cbz x0,0x016a05c0
+016a0544  ldr x8,[x0]
+016a0548  adrp x19,0x332c000
+016a054c  fmov d11,0x3ff0000000000000
+016a0550  fsub d10,d11,d10
+016a0554  ldp x9,x1,[x8, #0x1b8]
+016a0558  ldr x19,[x19, #0x5a8]
+016a055c  blr x9
+016a0560  ldr x0,[x19]
+016a0564  fsub d11,d11,d0
+016a0568  ldr w8,[x0, #0xe0]
+016a056c  cbnz w8,0x016a0574
+016a0570  bl 0x00b0798c
+016a0574  mov v0.16B,v10.16B
+016a0578  bl 0x008d5c90
+016a057c  adrp x8,0x26dd000
+016a0580  ldr d1,[x8, #0x40]
+016a0584  fmov d2,-0x4000000000000000
+016a0588  fmul d0,d0,d2
+016a058c  fsqrt d10,d0
+016a0590  fmul d0,d11,d1
+016a0594  bl 0x008d4cc0
+016a0598  fmul d0,d10,d0
+016a059c  fcvt d1,s8
+016a05a0  fmul d0,d0,d1
+016a05a4  fcvt d1,s9
+016a05a8  fadd d0,d0,d1
+016a05ac  fcvt s0,d0
+016a05b0  ldp x19,x30,[sp, #0x20]
+016a05b4  ldp d9,d8,[sp, #0x10]
+016a05b8  ldp d11,d10,[sp], #0x30
+016a05bc  ret
+016a05c0  bl 0x00b079b0

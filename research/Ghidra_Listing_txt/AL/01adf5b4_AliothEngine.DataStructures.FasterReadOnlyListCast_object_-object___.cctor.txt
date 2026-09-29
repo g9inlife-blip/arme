@@ -1,0 +1,85 @@
+Function: AliothEngine.DataStructures.FasterReadOnlyListCast<object,-object>$$.cctor @ 01adf5b4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01adf5b4  sub sp,sp,#0x30
+01adf5b8  stp x21,x20,[sp, #0x10]
+01adf5bc  stp x19,x30,[sp, #0x20]
+01adf5c0  mov x19,x0
+01adf5c4  ldr x0,[x0, #0x20]
+01adf5c8  ldrb w8,[x0, #0x132]
+01adf5cc  tbnz w8,#0x0,0x01adf5d4
+01adf5d0  bl 0x00b2ac40
+01adf5d4  ldr x8,[x0, #0xc0]
+01adf5d8  ldr x0,[x8]
+01adf5dc  ldrb w8,[x0, #0x132]
+01adf5e0  tbnz w8,#0x0,0x01adf5e8
+01adf5e4  bl 0x00b2ac40
+01adf5e8  bl 0x00b079a0
+01adf5ec  cbz x0,0x01adf6d8
+01adf5f0  ldr x8,[x19, #0x20]
+01adf5f4  mov x20,x0
+01adf5f8  ldrh w9,[x8, #0x132]
+01adf5fc  tbnz w9,#0x0,0x01adf614
+01adf600  mov x0,x8
+01adf604  bl 0x00b2ac40
+01adf608  ldr x8,[x19, #0x20]
+01adf60c  ldrh w9,[x8, #0x132]
+01adf610  b 0x01adf618
+01adf614  mov x0,x8
+01adf618  ldr x10,[x0, #0xc0]
+01adf61c  ldr x10,[x10, #0x60]
+01adf620  ldr x21,[x10, #0x8]
+01adf624  tbnz w9,#0x0,0x01adf634
+01adf628  mov x0,x8
+01adf62c  bl 0x00b2ac40
+01adf630  mov x8,x0
+01adf634  ldr x8,[x8, #0xc0]
+01adf638  mov x0,x20
+01adf63c  ldr x1,[x8, #0x60]
+01adf640  blr x21
+01adf644  str xzr,[sp, #0x8]
+01adf648  ldr x0,[x19, #0x20]
+01adf64c  ldrb w8,[x0, #0x132]
+01adf650  tbnz w8,#0x0,0x01adf658
+01adf654  bl 0x00b2ac40
+01adf658  add x0,sp,#0x8
+01adf65c  mov x1,x20
+01adf660  str x20,[sp, #0x8]
+01adf664  bl 0x00b07850
+01adf668  ldr x0,[x19, #0x20]
+01adf66c  ldrb w8,[x0, #0x132]
+01adf670  tbnz w8,#0x0,0x01adf678
+01adf674  bl 0x00b2ac40
+01adf678  ldr x8,[x0, #0xc0]
+01adf67c  ldr x0,[x8, #0x78]
+01adf680  ldrb w8,[x0, #0x132]
+01adf684  tbnz w8,#0x0,0x01adf68c
+01adf688  bl 0x00b2ac40
+01adf68c  ldr x8,[x0, #0xb8]
+01adf690  ldr x9,[sp, #0x8]
+01adf694  str x9,[x8]
+01adf698  ldr x0,[x19, #0x20]
+01adf69c  ldrb w8,[x0, #0x132]
+01adf6a0  tbnz w8,#0x0,0x01adf6a8
+01adf6a4  bl 0x00b2ac40
+01adf6a8  ldr x8,[x0, #0xc0]
+01adf6ac  ldr x0,[x8, #0x78]
+01adf6b0  ldrb w8,[x0, #0x132]
+01adf6b4  tbnz w8,#0x0,0x01adf6bc
+01adf6b8  bl 0x00b2ac40
+01adf6bc  ldr x0,[x0, #0xb8]
+01adf6c0  mov x1,xzr
+01adf6c4  bl 0x00b07850
+01adf6c8  ldp x19,x30,[sp, #0x20]
+01adf6cc  ldp x21,x20,[sp, #0x10]
+01adf6d0  add sp,sp,#0x30
+01adf6d4  ret
+01adf6d8  bl 0x00b079b0

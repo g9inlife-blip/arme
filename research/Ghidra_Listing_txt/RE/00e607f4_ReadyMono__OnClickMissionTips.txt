@@ -1,0 +1,39 @@
+Function: ReadyMono$$OnClickMissionTips @ 00e607f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+
+--- Listing ---
+00e607f4  str x22,[sp, #-0x30]!
+00e607f8  stp x21,x20,[sp, #0x10]
+00e607fc  stp x19,x30,[sp, #0x20]
+00e60800  adrp x21,0x3572000
+00e60804  adrp x22,0x333c000
+00e60808  ldrb w8,[x21, #0x969]
+00e6080c  ldr x22,[x22, #0x628]
+00e60810  mov x19,x1
+00e60814  mov x20,x0
+00e60818  tbnz w8,#0x0,0x00e60830
+00e6081c  adrp x0,0x333c000
+00e60820  ldr x0,[x0, #0x628]
+00e60824  bl 0x00b0789c
+00e60828  mov w8,#0x1
+00e6082c  strb w8,[x21, #0x969]
+00e60830  ldr x8,[x22]
+00e60834  ldr x8,[x8, #0xb8]
+00e60838  ldr x0,[x8, #0xa8]
+00e6083c  cbz x0,0x00e6085c
+00e60840  mov x1,x20
+00e60844  mov x2,x19
+00e60848  ldp x19,x30,[sp, #0x20]
+00e6084c  ldp x21,x20,[sp, #0x10]
+00e60850  mov x3,xzr
+00e60854  ldr x22,[sp], #0x30
+00e60858  b 0x0106125c
+00e6085c  ldp x19,x30,[sp, #0x20]
+00e60860  ldp x21,x20,[sp, #0x10]
+00e60864  ldr x22,[sp], #0x30
+00e60868  ret

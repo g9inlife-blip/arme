@@ -1,0 +1,40 @@
+Function: AliothEngine.Easing.EasingFunctions$$QuinticInOut @ 016a5234
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016a5234  fmov s4,0x3f800000
+016a5238  fabd s3,s0,s1
+016a523c  fcmp s0,s1
+016a5240  fmin s1,s2,s4
+016a5244  fneg s5,s3
+016a5248  fcsel s3,s5,s3,gt
+016a524c  fadd s1,s1,s1
+016a5250  fcmp s2,#0.0
+016a5254  fmov s2,wzr
+016a5258  fcsel s1,s1,s2,pl
+016a525c  fcmp s1,s4
+016a5260  b.pl 0x016a5284
+016a5264  fmov s2,0x3f000000
+016a5268  fmul s2,s3,s2
+016a526c  fmul s2,s2,s1
+016a5270  fmul s2,s1,s2
+016a5274  fmul s2,s1,s2
+016a5278  fmul s2,s1,s2
+016a527c  fmul s1,s1,s2
+016a5280  b 0x016a52b0
+016a5284  fmov s2,0xc0000000
+016a5288  fmov s4,0x3f000000
+016a528c  fadd s1,s1,s2
+016a5290  fmul s2,s3,s4
+016a5294  fmul s3,s1,s1
+016a5298  fmul s3,s1,s3
+016a529c  fmul s3,s1,s3
+016a52a0  fmul s1,s1,s3
+016a52a4  fmov s3,0x40000000
+016a52a8  fadd s1,s1,s3
+016a52ac  fmul s1,s2,s1
+016a52b0  fadd s0,s1,s0
+016a52b4  ret

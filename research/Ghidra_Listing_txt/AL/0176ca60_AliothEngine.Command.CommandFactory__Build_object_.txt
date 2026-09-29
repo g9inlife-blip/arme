@@ -1,0 +1,25 @@
+Function: AliothEngine.Command.CommandFactory$$Build<object> @ 0176ca60
+
+--- Calls OUT ---
+  -> AliothEngine.Command.CommandFactory$$OnNewCommand @ 016a65d0
+
+--- Calls IN ---
+
+--- Listing ---
+0176ca60  str x20,[sp, #-0x20]!
+0176ca64  stp x19,x30,[sp, #0x10]
+0176ca68  ldr x8,[x1, #0x38]
+0176ca6c  mov x19,x0
+0176ca70  ldr x8,[x8]
+0176ca74  ldr x9,[x8, #0x8]
+0176ca78  mov x0,x8
+0176ca7c  blr x9
+0176ca80  mov x20,x0
+0176ca84  mov x0,x19
+0176ca88  mov x1,x20
+0176ca8c  mov x2,xzr
+0176ca90  bl 0x016a65d0
+0176ca94  ldp x19,x30,[sp, #0x10]
+0176ca98  mov x0,x20
+0176ca9c  ldr x20,[sp], #0x20
+0176caa0  ret

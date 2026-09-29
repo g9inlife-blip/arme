@@ -1,0 +1,71 @@
+Function: ResManager$$LoadSingleExcel @ 00e2b360
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp467 @ 0109c04c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ResManagerWrap$$_m_LoadSingleExcel @ 013593c0
+  <- ResManager.<LoadInitUpdateExcel>d__20$$MoveNext @ 00e2c464
+  <- ResManager.<LoadExcel>d__23$$MoveNext @ 00e2c9a4
+
+--- Listing ---
+00e2b360  stp x23,x22,[sp, #-0x30]!
+00e2b364  stp x21,x20,[sp, #0x10]
+00e2b368  stp x19,x30,[sp, #0x20]
+00e2b36c  adrp x22,0x3572000
+00e2b370  adrp x23,0x337e000
+00e2b374  ldrb w8,[x22, #0x72b]
+00e2b378  ldr x23,[x23, #0x4c8]
+00e2b37c  mov x19,x2
+00e2b380  mov w20,w1
+00e2b384  mov x21,x0
+00e2b388  tbnz w8,#0x0,0x00e2b3ac
+00e2b38c  adrp x0,0x337e000
+00e2b390  ldr x0,[x0, #0x4c8]
+00e2b394  bl 0x00b0789c
+00e2b398  adrp x0,0x3350000
+00e2b39c  ldr x0,[x0, #0x4d8]
+00e2b3a0  bl 0x00b0789c
+00e2b3a4  mov w8,#0x1
+00e2b3a8  strb w8,[x22, #0x72b]
+00e2b3ac  ldr x8,[x23]
+00e2b3b0  ldr x8,[x8, #0xb8]
+00e2b3b4  ldr x0,[x8, #0x78]
+00e2b3b8  cbz x0,0x00e2b3dc
+00e2b3bc  mov x1,x21
+00e2b3c0  mov w2,w20
+00e2b3c4  mov x3,x19
+00e2b3c8  ldp x19,x30,[sp, #0x20]
+00e2b3cc  ldp x21,x20,[sp, #0x10]
+00e2b3d0  mov x4,xzr
+00e2b3d4  ldp x23,x22,[sp], #0x30
+00e2b3d8  b 0x0109c04c
+00e2b3dc  adrp x8,0x3350000
+00e2b3e0  ldr x8,[x8, #0x4d8]
+00e2b3e4  ldr x0,[x8]
+00e2b3e8  bl 0x00b079a0
+00e2b3ec  cbz x0,0x00e2b438
+00e2b3f0  mov x1,xzr
+00e2b3f4  mov x22,x0
+00e2b3f8  bl 0x02194104
+00e2b3fc  mov x0,x22
+00e2b400  str wzr,[x22, #0x10]
+00e2b404  str x21,[x0, #0x28]!
+00e2b408  mov x1,x21
+00e2b40c  bl 0x00b07850
+00e2b410  mov x0,x22
+00e2b414  str w20,[x22, #0x30]
+00e2b418  str x19,[x0, #0x20]!
+00e2b41c  mov x1,x19
+00e2b420  bl 0x00b07850
+00e2b424  ldp x19,x30,[sp, #0x20]
+00e2b428  ldp x21,x20,[sp, #0x10]
+00e2b42c  mov x0,x22
+00e2b430  ldp x23,x22,[sp], #0x30
+00e2b434  ret
+00e2b438  bl 0x00b079b0

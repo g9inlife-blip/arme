@@ -1,0 +1,27 @@
+Function: AliothEngine.AliothSDKManager$$.ctor @ 01658598
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+
+--- Listing ---
+01658598  stp x21,x20,[sp, #-0x20]!
+0165859c  stp x19,x30,[sp, #0x10]
+016585a0  adrp x20,0x3577000
+016585a4  adrp x21,0x3313000
+016585a8  ldrb w8,[x20, #0x835]
+016585ac  ldr x21,[x21, #0x4b0]
+016585b0  mov x19,x0
+016585b4  tbnz w8,#0x0,0x016585cc
+016585b8  adrp x0,0x3313000
+016585bc  ldr x0,[x0, #0x4b0]
+016585c0  bl 0x00b0789c
+016585c4  mov w8,#0x1
+016585c8  strb w8,[x20, #0x835]
+016585cc  ldr x1,[x21]
+016585d0  mov x0,x19
+016585d4  ldp x19,x30,[sp, #0x10]
+016585d8  ldp x21,x20,[sp], #0x20
+016585dc  b 0x01e09460

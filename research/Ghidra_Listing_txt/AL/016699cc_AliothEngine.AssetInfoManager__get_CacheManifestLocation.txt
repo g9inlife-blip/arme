@@ -1,0 +1,96 @@
+Function: AliothEngine.AssetInfoManager$$get_CacheManifestLocation @ 016699cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AssetBundles.AssetBundleManager$$get_AssetBundleDirectory @ 01647804
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp821 @ 010cb4d4
+  -> AliothEngine.AssetLocation$$FileCache @ 016675f0
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> AssetBundles.AssetBundleManager$$get_AssetBundleManifestBundleName @ 016463ec
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$LoadAssetBundleManifest @ 01669868
+  <- AliothEngine.GameUpdateService$$isAssetNeedUpdate_CheckCacheAndBuild @ 0167f2f0
+  <- AliothEngine.GameUpdateService$$CleaupCache @ 0167edf8
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_g_get_CacheManifestLocation @ 0113d814
+
+--- Listing ---
+016699cc  str x22,[sp, #-0x30]!
+016699d0  stp x21,x20,[sp, #0x10]
+016699d4  stp x19,x30,[sp, #0x20]
+016699d8  adrp x19,0x3577000
+016699dc  adrp x22,0x334f000
+016699e0  ldrb w8,[x19, #0x91a]
+016699e4  ldr x22,[x22, #0xaf8]
+016699e8  tbnz w8,#0x0,0x01669a24
+016699ec  adrp x0,0x331a000
+016699f0  ldr x0,[x0, #0x8b0]
+016699f4  bl 0x00b0789c
+016699f8  adrp x0,0x334f000
+016699fc  ldr x0,[x0, #0xaf8]
+01669a00  bl 0x00b0789c
+01669a04  adrp x0,0x335b000
+01669a08  ldr x0,[x0, #0xca0]
+01669a0c  bl 0x00b0789c
+01669a10  adrp x0,0x3347000
+01669a14  ldr x0,[x0, #0xd68]
+01669a18  bl 0x00b0789c
+01669a1c  mov w8,#0x1
+01669a20  strb w8,[x19, #0x91a]
+01669a24  ldr x8,[x22]
+01669a28  ldr x9,[x8, #0xb8]
+01669a2c  ldr x0,[x9, #0xa0]
+01669a30  cbz x0,0x01669a48
+01669a34  ldp x19,x30,[sp, #0x20]
+01669a38  ldp x21,x20,[sp, #0x10]
+01669a3c  mov x1,xzr
+01669a40  ldr x22,[sp], #0x30
+01669a44  b 0x010cb4d4
+01669a48  ldr x9,[x9]
+01669a4c  cbnz x9,0x01669ae8
+01669a50  adrp x8,0x331a000
+01669a54  ldr x8,[x8, #0x8b0]
+01669a58  adrp x20,0x335b000
+01669a5c  adrp x21,0x3347000
+01669a60  ldr x0,[x8]
+01669a64  ldr w8,[x0, #0xe0]
+01669a68  ldr x20,[x20, #0xca0]
+01669a6c  ldr x21,[x21, #0xd68]
+01669a70  cbnz w8,0x01669a78
+01669a74  bl 0x00b0798c
+01669a78  mov x0,xzr
+01669a7c  bl 0x01647804
+01669a80  mov x19,x0
+01669a84  mov x0,xzr
+01669a88  bl 0x016463ec
+01669a8c  ldr x8,[x21]
+01669a90  ldr x21,[x20]
+01669a94  mov x20,x0
+01669a98  ldr w9,[x8, #0xe0]
+01669a9c  cbnz w9,0x01669aa8
+01669aa0  mov x0,x8
+01669aa4  bl 0x00b0798c
+01669aa8  mov x0,x21
+01669aac  mov x1,xzr
+01669ab0  bl 0x0215f900
+01669ab4  mov x2,x0
+01669ab8  mov x0,x19
+01669abc  mov x1,x20
+01669ac0  mov w3,wzr
+01669ac4  bl 0x016675f0
+01669ac8  ldr x8,[x22]
+01669acc  mov x1,x0
+01669ad0  ldr x8,[x8, #0xb8]
+01669ad4  str x0,[x8]
+01669ad8  ldr x8,[x22]
+01669adc  ldr x0,[x8, #0xb8]
+01669ae0  bl 0x00b07850
+01669ae4  ldr x8,[x22]
+01669ae8  ldr x8,[x8, #0xb8]
+01669aec  ldp x19,x30,[sp, #0x20]
+01669af0  ldp x21,x20,[sp, #0x10]
+01669af4  ldr x0,[x8]
+01669af8  ldr x22,[sp], #0x30
+01669afc  ret

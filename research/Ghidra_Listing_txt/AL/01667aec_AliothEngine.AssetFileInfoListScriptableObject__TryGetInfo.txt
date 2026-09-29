@@ -1,0 +1,61 @@
+Function: AliothEngine.AssetFileInfoListScriptableObject$$TryGetInfo @ 01667aec
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<object,-object>$$TryGetValue @ 0196fd30
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$TryGetAssetFileInfo @ 0166898c
+
+--- Listing ---
+01667aec  str x22,[sp, #-0x30]!
+01667af0  stp x21,x20,[sp, #0x10]
+01667af4  stp x19,x30,[sp, #0x20]
+01667af8  adrp x22,0x3577000
+01667afc  ldrb w8,[x22, #0x904]
+01667b00  mov x19,x2
+01667b04  mov x20,x1
+01667b08  mov x21,x0
+01667b0c  tbnz w8,#0x0,0x01667b24
+01667b10  adrp x0,0x335a000
+01667b14  ldr x0,[x0, #0xed0]
+01667b18  bl 0x00b0789c
+01667b1c  mov w8,#0x1
+01667b20  strb w8,[x22, #0x904]
+01667b24  ldr x0,[x21, #0x28]
+01667b28  cbz x0,0x01667bac
+01667b2c  adrp x22,0x335a000
+01667b30  ldr x22,[x22, #0xed0]
+01667b34  mov x1,x20
+01667b38  mov x2,x19
+01667b3c  ldr x3,[x22]
+01667b40  bl 0x0196fd30
+01667b44  tbnz w0,#0x0,0x01667b80
+01667b48  ldr x0,[x21, #0x20]
+01667b4c  cbz x0,0x01667bac
+01667b50  ldr x3,[x22]
+01667b54  mov x1,x20
+01667b58  mov x2,x19
+01667b5c  bl 0x0196fd30
+01667b60  tbnz w0,#0x0,0x01667b80
+01667b64  ldr x0,[x21, #0x30]
+01667b68  cbz x0,0x01667bac
+01667b6c  ldr x3,[x22]
+01667b70  mov x1,x20
+01667b74  mov x2,x19
+01667b78  bl 0x0196fd30
+01667b7c  tbz w0,#0x0,0x01667b94
+01667b80  mov w0,#0x1
+01667b84  ldp x19,x30,[sp, #0x20]
+01667b88  ldp x21,x20,[sp, #0x10]
+01667b8c  ldr x22,[sp], #0x30
+01667b90  ret
+01667b94  mov x0,x19
+01667b98  mov x1,xzr
+01667b9c  str xzr,[x19]
+01667ba0  bl 0x00b07850
+01667ba4  mov w0,wzr
+01667ba8  b 0x01667b84
+01667bac  bl 0x00b079b0

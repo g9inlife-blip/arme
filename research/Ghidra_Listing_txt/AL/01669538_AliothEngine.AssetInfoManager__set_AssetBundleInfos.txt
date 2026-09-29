@@ -1,0 +1,45 @@
+Function: AliothEngine.AssetInfoManager$$set_AssetBundleInfos @ 01669538
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$SetAssetBundleInfo @ 01669d08
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_s_set_AssetBundleInfos @ 0113db9c
+
+--- Listing ---
+01669538  str x22,[sp, #-0x30]!
+0166953c  stp x21,x20,[sp, #0x10]
+01669540  stp x19,x30,[sp, #0x20]
+01669544  adrp x21,0x3577000
+01669548  adrp x22,0x334f000
+0166954c  ldrb w8,[x21, #0x915]
+01669550  ldr x22,[x22, #0xaf8]
+01669554  mov x19,x1
+01669558  mov x20,x0
+0166955c  tbnz w8,#0x0,0x01669574
+01669560  adrp x0,0x334f000
+01669564  ldr x0,[x0, #0xaf8]
+01669568  bl 0x00b0789c
+0166956c  mov w8,#0x1
+01669570  strb w8,[x21, #0x915]
+01669574  ldr x8,[x22]
+01669578  ldr x8,[x8, #0xb8]
+0166957c  ldr x0,[x8, #0x78]
+01669580  cbz x0,0x016695a0
+01669584  mov x1,x20
+01669588  mov x2,x19
+0166958c  ldp x19,x30,[sp, #0x20]
+01669590  ldp x21,x20,[sp, #0x10]
+01669594  mov x3,xzr
+01669598  ldr x22,[sp], #0x30
+0166959c  b 0x0106125c
+016695a0  str x19,[x20, #0x30]!
+016695a4  mov x0,x20
+016695a8  mov x1,x19
+016695ac  ldp x19,x30,[sp, #0x20]
+016695b0  ldp x21,x20,[sp, #0x10]
+016695b4  ldr x22,[sp], #0x30
+016695b8  b 0x00b07850

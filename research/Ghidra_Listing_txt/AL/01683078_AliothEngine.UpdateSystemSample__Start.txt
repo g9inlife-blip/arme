@@ -1,0 +1,35 @@
+Function: AliothEngine.UpdateSystemSample$$Start @ 01683078
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01683078  str x20,[sp, #-0x20]!
+0168307c  stp x19,x30,[sp, #0x10]
+01683080  adrp x19,0x3577000
+01683084  adrp x20,0x3372000
+01683088  ldrb w8,[x19, #0xa59]
+0168308c  ldr x20,[x20, #0xa10]
+01683090  tbnz w8,#0x0,0x016830a8
+01683094  adrp x0,0x3372000
+01683098  ldr x0,[x0, #0xa10]
+0168309c  bl 0x00b0789c
+016830a0  mov w8,#0x1
+016830a4  strb w8,[x19, #0xa59]
+016830a8  ldr x0,[x20]
+016830ac  bl 0x00b079a0
+016830b0  cbz x0,0x016830d4
+016830b4  mov x1,xzr
+016830b8  mov x19,x0
+016830bc  bl 0x02194104
+016830c0  str wzr,[x19, #0x10]
+016830c4  mov x0,x19
+016830c8  ldp x19,x30,[sp, #0x10]
+016830cc  ldr x20,[sp], #0x20
+016830d0  ret
+016830d4  bl 0x00b079b0

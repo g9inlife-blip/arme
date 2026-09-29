@@ -1,0 +1,57 @@
+Function: AliothEngine.Extensions.TransformExtensions.<SelfAndAllChildren>d__4$$System.Collections.Generic.IEnumerable<UnityEngine.Transform>.GetEnumerator @ 016bb710
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> System.Environment$$get_CurrentManagedThreadId @ 02197f70
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions.<SelfAndAllChildren>d__4$$System.Collections.IEnumerable.GetEnumerator @ 016bb7bc
+
+--- Listing ---
+016bb710  str x20,[sp, #-0x20]!
+016bb714  stp x19,x30,[sp, #0x10]
+016bb718  adrp x20,0x3577000
+016bb71c  ldrb w8,[x20, #0xc34]
+016bb720  mov x19,x0
+016bb724  tbnz w8,#0x0,0x016bb73c
+016bb728  adrp x0,0x332b000
+016bb72c  ldr x0,[x0, #0xba8]
+016bb730  bl 0x00b0789c
+016bb734  mov w8,#0x1
+016bb738  strb w8,[x20, #0xc34]
+016bb73c  ldr w8,[x19, #0x10]
+016bb740  cmn w8,#0x2
+016bb744  b.ne 0x016bb768
+016bb748  ldr w20,[x19, #0x20]
+016bb74c  mov x0,xzr
+016bb750  bl 0x02197f70
+016bb754  cmp w20,w0
+016bb758  b.ne 0x016bb768
+016bb75c  str wzr,[x19, #0x10]
+016bb760  mov x20,x19
+016bb764  b 0x016bb798
+016bb768  adrp x8,0x332b000
+016bb76c  ldr x8,[x8, #0xba8]
+016bb770  ldr x0,[x8]
+016bb774  bl 0x00b079a0
+016bb778  cbz x0,0x016bb7b8
+016bb77c  mov x1,xzr
+016bb780  mov x20,x0
+016bb784  bl 0x02194104
+016bb788  mov x0,xzr
+016bb78c  str wzr,[x20, #0x10]
+016bb790  bl 0x02197f70
+016bb794  str w0,[x20, #0x20]
+016bb798  ldr x1,[x19, #0x30]
+016bb79c  mov x0,x20
+016bb7a0  str x1,[x0, #0x28]!
+016bb7a4  bl 0x00b07850
+016bb7a8  ldp x19,x30,[sp, #0x10]
+016bb7ac  mov x0,x20
+016bb7b0  ldr x20,[sp], #0x20
+016bb7b4  ret
+016bb7b8  bl 0x00b079b0

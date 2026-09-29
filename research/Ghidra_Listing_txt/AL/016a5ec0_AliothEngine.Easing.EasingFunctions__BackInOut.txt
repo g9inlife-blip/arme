@@ -1,0 +1,47 @@
+Function: AliothEngine.Easing.EasingFunctions$$BackInOut @ 016a5ec0
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016a5ec0  fmov s3,0x3f800000
+016a5ec4  fabd s4,s0,s1
+016a5ec8  fcmp s0,s1
+016a5ecc  fmin s5,s2,s3
+016a5ed0  fneg s1,s4
+016a5ed4  fcsel s1,s1,s4,gt
+016a5ed8  fadd s4,s5,s5
+016a5edc  fcmp s2,#0.0
+016a5ee0  fmov s2,wzr
+016a5ee4  fcsel s2,s4,s2,pl
+016a5ee8  fcmp s2,s3
+016a5eec  b.pl 0x016a5f1c
+016a5ef0  adrp x8,0x26db000
+016a5ef4  ldr s4,[x8, #0x560]
+016a5ef8  adrp x8,0x26db000
+016a5efc  ldr s5,[x8, #0x568]
+016a5f00  fmov s3,0x3f000000
+016a5f04  fmul s1,s1,s3
+016a5f08  fmul s3,s2,s2
+016a5f0c  fmul s2,s2,s4
+016a5f10  fadd s2,s2,s5
+016a5f14  fmul s2,s3,s2
+016a5f18  b 0x016a5f54
+016a5f1c  fmov s3,0xc0000000
+016a5f20  adrp x8,0x26db000
+016a5f24  adrp x9,0x26db000
+016a5f28  fadd s2,s2,s3
+016a5f2c  ldr s3,[x8, #0x560]
+016a5f30  ldr s5,[x9, #0x564]
+016a5f34  fmov s4,0x3f000000
+016a5f38  fmul s1,s1,s4
+016a5f3c  fmul s4,s2,s2
+016a5f40  fmul s2,s2,s3
+016a5f44  fadd s2,s2,s5
+016a5f48  fmul s2,s4,s2
+016a5f4c  fmov s3,0x40000000
+016a5f50  fadd s2,s2,s3
+016a5f54  fmul s1,s1,s2
+016a5f58  fadd s0,s1,s0
+016a5f5c  ret

@@ -1,0 +1,34 @@
+Function: AliothEngine.Net.HttpRequestManager$$get_isWorking @ 016958b4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- WaitPanelMono$$Update @ 01042098
+
+--- Listing ---
+016958b4  str x20,[sp, #-0x20]!
+016958b8  stp x19,x30,[sp, #0x10]
+016958bc  adrp x20,0x3577000
+016958c0  ldrb w8,[x20, #0xaf6]
+016958c4  mov x19,x0
+016958c8  tbnz w8,#0x0,0x016958e0
+016958cc  adrp x0,0x333c000
+016958d0  ldr x0,[x0, #0x38]
+016958d4  bl 0x00b0789c
+016958d8  mov w8,#0x1
+016958dc  strb w8,[x20, #0xaf6]
+016958e0  ldrb w8,[x19, #0x19]
+016958e4  cbz w8,0x016958f0
+016958e8  mov w0,#0x1
+016958ec  b 0x01695904
+016958f0  ldr x8,[x19, #0x20]
+016958f4  cbz x8,0x01695910
+016958f8  ldr w8,[x8, #0x20]
+016958fc  cmp w8,#0x0
+01695900  cset w0,gt
+01695904  ldp x19,x30,[sp, #0x10]
+01695908  ldr x20,[sp], #0x20
+0169590c  ret
+01695910  bl 0x00b079b0

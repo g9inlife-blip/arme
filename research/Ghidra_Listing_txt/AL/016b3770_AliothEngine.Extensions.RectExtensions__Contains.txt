@@ -1,0 +1,21 @@
+Function: AliothEngine.Extensions.RectExtensions$$Contains @ 016b3770
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$Contains @ 024db098
+
+--- Calls IN ---
+
+--- Listing ---
+016b3770  sub sp,sp,#0x20
+016b3774  str x30,[sp, #0x10]
+016b3778  stp s0,s1,[sp]
+016b377c  scvtf s0,w0
+016b3780  scvtf s1,w1
+016b3784  mov x0,sp
+016b3788  mov x1,xzr
+016b378c  stp s2,s3,[sp, #0x8]
+016b3790  bl 0x024db098
+016b3794  ldr x30,[sp, #0x10]
+016b3798  and w0,w0,#0x1
+016b379c  add sp,sp,#0x20
+016b37a0  ret

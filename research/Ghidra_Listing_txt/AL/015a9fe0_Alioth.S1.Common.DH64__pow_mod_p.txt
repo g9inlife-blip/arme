@@ -1,0 +1,60 @@
+Function: Alioth.S1.Common.DH64$$pow_mod_p @ 015a9fe0
+
+--- Calls OUT ---
+  -> Alioth.S1.Common.DH64$$pow_mod_p @ 015a9fe0
+
+--- Calls IN ---
+  <- Alioth.S1.Common.DH64$$pow_mod_p @ 015a9fe0
+  <- Alioth.S1.Common.DH64$$powmodp @ 015aa0a8
+
+--- Listing ---
+015a9fe0  str x20,[sp, #-0x20]!
+015a9fe4  stp x19,x30,[sp, #0x10]
+015a9fe8  cmp x1,#0x1
+015a9fec  mov x19,x0
+015a9ff0  b.ne 0x015a9ffc
+015a9ff4  mov x0,x19
+015a9ff8  b 0x015aa09c
+015a9ffc  mov x20,x1
+015aa000  lsr x1,x1,#0x1
+015aa004  mov x0,x19
+015aa008  bl 0x015a9fe0
+015aa00c  mov x8,xzr
+015aa010  cbz x0,0x015aa050
+015aa014  mov x9,#-0x3b
+015aa018  mov x10,x0
+015aa01c  sub x11,x9,x0
+015aa020  tbz w10,#0x0,0x015aa038
+015aa024  subs x12,x8,x11
+015aa028  b.cs 0x015aa034
+015aa02c  add x8,x8,x0
+015aa030  b 0x015aa038
+015aa034  mov x8,x12
+015aa038  lsl x12,x0,#0x1
+015aa03c  cmp x0,x11
+015aa040  add x11,x12,#0x3b
+015aa044  lsr x10,x10,#0x1
+015aa048  csel x0,x12,x11,cc
+015aa04c  cbnz x10,0x015aa01c
+015aa050  tbnz w20,#0x0,0x015aa05c
+015aa054  mov x0,x8
+015aa058  b 0x015aa09c
+015aa05c  mov x0,xzr
+015aa060  cbz x19,0x015aa09c
+015aa064  mov x9,#-0x3b
+015aa068  sub x10,x9,x8
+015aa06c  tbz w19,#0x0,0x015aa084
+015aa070  subs x11,x0,x10
+015aa074  b.cs 0x015aa080
+015aa078  add x0,x0,x8
+015aa07c  b 0x015aa084
+015aa080  mov x0,x11
+015aa084  lsl x11,x8,#0x1
+015aa088  cmp x8,x10
+015aa08c  add x8,x11,#0x3b
+015aa090  lsr x19,x19,#0x1
+015aa094  csel x8,x11,x8,cc
+015aa098  cbnz x19,0x015aa068
+015aa09c  ldp x19,x30,[sp, #0x10]
+015aa0a0  ldr x20,[sp], #0x20
+015aa0a4  ret

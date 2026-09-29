@@ -1,0 +1,26 @@
+Function: AliothEngine.AssetLocation$$CompareTo @ 0166dc70
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$CompareTo @ 01fddce4
+  -> AliothEngine.AssetLocation$$get_hash @ 0165f060
+
+--- Calls IN ---
+
+--- Listing ---
+0166dc70  str x20,[sp, #-0x20]!
+0166dc74  stp x19,x30,[sp, #0x10]
+0166dc78  mov x20,x1
+0166dc7c  bl 0x0165f060
+0166dc80  cbz x20,0x0166dcac
+0166dc84  mov x19,x0
+0166dc88  mov x0,x20
+0166dc8c  bl 0x0165f060
+0166dc90  cbz x19,0x0166dcac
+0166dc94  mov x1,x0
+0166dc98  mov x0,x19
+0166dc9c  ldp x19,x30,[sp, #0x10]
+0166dca0  mov x2,xzr
+0166dca4  ldr x20,[sp], #0x20
+0166dca8  b 0x01fddce4
+0166dcac  bl 0x00b079b0

@@ -1,0 +1,103 @@
+Function: Ali$$LocalNotification @ 00e08464
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$Log @ 00e03560
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> AliothEngine.NotificationManager$$ScheduleLocalNotification @ 01656dc4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp406 @ 01093fe4
+  -> GamePlayerInfomation$$get_Notification_Push_Night @ 00e371b4
+  -> GamePlayerInfomation$$IsNight @ 00e372fc
+
+--- Calls IN ---
+  <- Ali$$CheckOnceLocalNotification @ 00e07488
+  <- Ali$$CheckPauseLocalNotification @ 00e08690
+  <- XLua.CSObjectWrap.AliWrap$$_m_LocalNotification_xlua_st_ @ 011981d8
+
+--- Listing ---
+00e08464  str d8,[sp, #-0x50]!
+00e08468  stp x25,x24,[sp, #0x10]
+00e0846c  stp x23,x22,[sp, #0x20]
+00e08470  stp x21,x20,[sp, #0x30]
+00e08474  stp x19,x30,[sp, #0x40]
+00e08478  adrp x25,0x3572000
+00e0847c  adrp x24,0x335f000
+00e08480  ldrb w8,[x25, #0x590]
+00e08484  ldr x24,[x24, #0x20]
+00e08488  mov x19,x4
+00e0848c  mov v8.16B,v0.16B
+00e08490  mov x20,x3
+00e08494  mov x21,x2
+00e08498  mov x22,x1
+00e0849c  mov x23,x0
+00e084a0  tbnz w8,#0x0,0x00e084c4
+00e084a4  adrp x0,0x335f000
+00e084a8  ldr x0,[x0, #0x20]
+00e084ac  bl 0x00b0789c
+00e084b0  adrp x0,0x3311000
+00e084b4  ldr x0,[x0, #0x620]
+00e084b8  bl 0x00b0789c
+00e084bc  mov w8,#0x1
+00e084c0  strb w8,[x25, #0x590]
+00e084c4  ldr x0,[x24]
+00e084c8  ldr w8,[x0, #0xe0]
+00e084cc  cbnz w8,0x00e084d8
+00e084d0  bl 0x00b0798c
+00e084d4  ldr x0,[x24]
+00e084d8  ldr x8,[x0, #0xb8]
+00e084dc  ldr x0,[x8, #0x428]
+00e084e0  cbz x0,0x00e08518
+00e084e4  mov x1,x23
+00e084e8  mov x2,x22
+00e084ec  mov x3,x21
+00e084f0  mov x4,x20
+00e084f4  mov x5,x19
+00e084f8  ldp x19,x30,[sp, #0x40]
+00e084fc  ldp x21,x20,[sp, #0x30]
+00e08500  ldp x23,x22,[sp, #0x20]
+00e08504  ldp x25,x24,[sp, #0x10]
+00e08508  mov v0.16B,v8.16B
+00e0850c  mov x6,xzr
+00e08510  ldr d8,[sp], #0x50
+00e08514  b 0x01093fe4
+00e08518  bl 0x00e371b4
+00e0851c  tbnz w0,#0x0,0x00e08548
+00e08520  mov x0,x22
+00e08524  mov x1,xzr
+00e08528  bl 0x00e372fc
+00e0852c  tbz w0,#0x0,0x00e08548
+00e08530  ldp x19,x30,[sp, #0x40]
+00e08534  ldp x21,x20,[sp, #0x30]
+00e08538  ldp x23,x22,[sp, #0x20]
+00e0853c  ldp x25,x24,[sp, #0x10]
+00e08540  ldr d8,[sp], #0x50
+00e08544  ret
+00e08548  adrp x8,0x3311000
+00e0854c  ldr x8,[x8, #0x620]
+00e08550  mov x1,x23
+00e08554  mov x2,xzr
+00e08558  ldr x0,[x8]
+00e0855c  bl 0x01fd2850
+00e08560  ldr x8,[x24]
+00e08564  mov x24,x0
+00e08568  ldr w9,[x8, #0xe0]
+00e0856c  cbnz w9,0x00e08578
+00e08570  mov x0,x8
+00e08574  bl 0x00b0798c
+00e08578  mov x0,x24
+00e0857c  bl 0x00e03560
+00e08580  mov x0,x23
+00e08584  mov x1,x22
+00e08588  mov x2,x21
+00e0858c  mov x3,x20
+00e08590  mov x4,x19
+00e08594  ldp x19,x30,[sp, #0x40]
+00e08598  ldp x21,x20,[sp, #0x30]
+00e0859c  ldp x23,x22,[sp, #0x20]
+00e085a0  ldp x25,x24,[sp, #0x10]
+00e085a4  mov v0.16B,v8.16B
+00e085a8  mov x5,xzr
+00e085ac  mov x6,xzr
+00e085b0  ldr d8,[sp], #0x50
+00e085b4  b 0x01656dc4

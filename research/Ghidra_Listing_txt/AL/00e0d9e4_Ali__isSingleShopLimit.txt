@@ -1,0 +1,77 @@
+Function: Ali$$isSingleShopLimit @ 00e0d9e4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$get_RechargeLimit @ 00e00b70
+
+--- Calls IN ---
+  <- Ali$$ShowCharge @ 00e0d574
+
+--- Listing ---
+00e0d9e4  str d8,[sp, #-0x30]!
+00e0d9e8  str x22,[sp, #0x8]
+00e0d9ec  stp x21,x20,[sp, #0x10]
+00e0d9f0  stp x19,x30,[sp, #0x20]
+00e0d9f4  adrp x22,0x3572000
+00e0d9f8  adrp x21,0x335f000
+00e0d9fc  ldrb w8,[x22, #0x5ad]
+00e0da00  ldr x21,[x21, #0x20]
+00e0da04  mov x19,x1
+00e0da08  mov x20,x0
+00e0da0c  tbnz w8,#0x0,0x00e0da24
+00e0da10  adrp x0,0x335f000
+00e0da14  ldr x0,[x0, #0x20]
+00e0da18  bl 0x00b0789c
+00e0da1c  mov w8,#0x1
+00e0da20  strb w8,[x22, #0x5ad]
+00e0da24  ldr x0,[x21]
+00e0da28  ldr w8,[x0, #0xe0]
+00e0da2c  cbnz w8,0x00e0da38
+00e0da30  bl 0x00b0798c
+00e0da34  ldr x0,[x21]
+00e0da38  ldr x9,[x0, #0xb8]
+00e0da3c  ldr x8,[x9, #0x510]
+00e0da40  cbz x8,0x00e0da68
+00e0da44  mov x1,x20
+00e0da48  mov x2,x19
+00e0da4c  ldp x19,x30,[sp, #0x20]
+00e0da50  ldp x21,x20,[sp, #0x10]
+00e0da54  ldr x22,[sp, #0x8]
+00e0da58  mov x0,x8
+00e0da5c  mov x3,xzr
+00e0da60  ldr d8,[sp], #0x30
+00e0da64  b 0x01065a14
+00e0da68  ldr w8,[x0, #0xe0]
+00e0da6c  cbnz w8,0x00e0da7c
+00e0da70  bl 0x00b0798c
+00e0da74  ldr x8,[x21]
+00e0da78  ldr x9,[x8, #0xb8]
+00e0da7c  ldr x0,[x9, #0x10]
+00e0da80  cbz x0,0x00e0dae0
+00e0da84  bl 0x00e00b70
+00e0da88  cbz x0,0x00e0dacc
+00e0da8c  cbz x19,0x00e0dae0
+00e0da90  ldr x0,[x21]
+00e0da94  ldr s8,[x19, #0xa8]
+00e0da98  ldr w8,[x0, #0xe0]
+00e0da9c  cbnz w8,0x00e0daa8
+00e0daa0  bl 0x00b0798c
+00e0daa4  ldr x0,[x21]
+00e0daa8  ldr x8,[x0, #0xb8]
+00e0daac  ldr x0,[x8, #0x10]
+00e0dab0  cbz x0,0x00e0dae0
+00e0dab4  bl 0x00e00b70
+00e0dab8  cbz x0,0x00e0dae0
+00e0dabc  ldr s0,[x0, #0x7c]
+00e0dac0  scvtf s0,s0
+00e0dac4  fcmp s8,s0
+00e0dac8  cset w0,ge
+00e0dacc  ldp x19,x30,[sp, #0x20]
+00e0dad0  ldp x21,x20,[sp, #0x10]
+00e0dad4  ldr x22,[sp, #0x8]
+00e0dad8  ldr d8,[sp], #0x30
+00e0dadc  ret
+00e0dae0  bl 0x00b079b0

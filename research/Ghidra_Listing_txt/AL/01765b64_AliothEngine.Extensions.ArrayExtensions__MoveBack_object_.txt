@@ -1,0 +1,49 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$MoveBack<object> @ 01765b64
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01765b64  stp x23,x22,[sp, #-0x30]!
+01765b68  stp x21,x20,[sp, #0x10]
+01765b6c  stp x19,x30,[sp, #0x20]
+01765b70  ldr x8,[x2, #0x38]
+01765b74  mov x20,x1
+01765b78  mov x19,x0
+01765b7c  ldr x2,[x8]
+01765b80  ldr x8,[x2, #0x8]
+01765b84  blr x8
+01765b88  cmp w0,#0x1
+01765b8c  b.lt 0x01765be8
+01765b90  cbz x19,0x01765bfc
+01765b94  ldr w9,[x19, #0x18]
+01765b98  mov w21,w0
+01765b9c  sxtw x23,w21
+01765ba0  sub x8,x23,#0x1
+01765ba4  cmp w8,w9
+01765ba8  b.cs 0x01765bf8
+01765bac  add x0,x19,x8, LSL #0x3
+01765bb0  ldr x22,[x0, #0x20]!
+01765bb4  mov x1,x20
+01765bb8  str x20,[x0]
+01765bbc  bl 0x00b07850
+01765bc0  ldr w8,[x19, #0x18]
+01765bc4  cmp w21,w8
+01765bc8  b.cs 0x01765bf8
+01765bcc  add x0,x19,x23, LSL #0x3
+01765bd0  str x22,[x0, #0x20]!
+01765bd4  ldp x19,x30,[sp, #0x20]
+01765bd8  ldp x21,x20,[sp, #0x10]
+01765bdc  mov x1,x22
+01765be0  ldp x23,x22,[sp], #0x30
+01765be4  b 0x00b07850
+01765be8  ldp x19,x30,[sp, #0x20]
+01765bec  ldp x21,x20,[sp, #0x10]
+01765bf0  ldp x23,x22,[sp], #0x30
+01765bf4  ret
+01765bf8  bl 0x00b079b8
+01765bfc  bl 0x00b079b0

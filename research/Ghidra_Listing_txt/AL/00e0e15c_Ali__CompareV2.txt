@@ -1,0 +1,69 @@
+Function: Ali$$CompareV2 @ 00e0e15c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp414 @ 01094e10
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Single$$CompareTo @ 02162f7c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_CompareV2 @ 0119b864
+
+--- Listing ---
+00e0e15c  sub sp,sp,#0x50
+00e0e160  stp d11,d10,[sp, #0x10]
+00e0e164  stp d9,d8,[sp, #0x20]
+00e0e168  stp x21,x20,[sp, #0x30]
+00e0e16c  stp x19,x30,[sp, #0x40]
+00e0e170  adrp x21,0x3572000
+00e0e174  stp s0,s1,[sp, #0x8]
+00e0e178  adrp x20,0x335f000
+00e0e17c  ldrb w8,[x21, #0x5b0]
+00e0e180  ldr x20,[x20, #0x20]
+00e0e184  mov v8.16B,v3.16B
+00e0e188  mov v9.16B,v2.16B
+00e0e18c  mov v10.16B,v1.16B
+00e0e190  mov v11.16B,v0.16B
+00e0e194  mov x19,x0
+00e0e198  tbnz w8,#0x0,0x00e0e1b0
+00e0e19c  adrp x0,0x335f000
+00e0e1a0  ldr x0,[x0, #0x20]
+00e0e1a4  bl 0x00b0789c
+00e0e1a8  mov w8,#0x1
+00e0e1ac  strb w8,[x21, #0x5b0]
+00e0e1b0  ldr x0,[x20]
+00e0e1b4  ldr w8,[x0, #0xe0]
+00e0e1b8  cbnz w8,0x00e0e1c4
+00e0e1bc  bl 0x00b0798c
+00e0e1c0  ldr x0,[x20]
+00e0e1c4  ldr x8,[x0, #0xb8]
+00e0e1c8  ldr x0,[x8, #0x528]
+00e0e1cc  cbz x0,0x00e0e200
+00e0e1d0  mov x1,x19
+00e0e1d4  mov v0.16B,v11.16B
+00e0e1d8  mov v1.16B,v10.16B
+00e0e1dc  mov v2.16B,v9.16B
+00e0e1e0  mov v3.16B,v8.16B
+00e0e1e4  ldp x19,x30,[sp, #0x40]
+00e0e1e8  ldp x21,x20,[sp, #0x30]
+00e0e1ec  ldp d9,d8,[sp, #0x20]
+00e0e1f0  ldp d11,d10,[sp, #0x10]
+00e0e1f4  mov x2,xzr
+00e0e1f8  add sp,sp,#0x50
+00e0e1fc  b 0x01094e10
+00e0e200  fcmp s11,s9
+00e0e204  b.ne 0x00e0e218
+00e0e208  add x8,sp,#0x8
+00e0e20c  orr x0,x8,#0x4
+00e0e210  mov v0.16B,v8.16B
+00e0e214  b 0x00e0e220
+00e0e218  add x0,sp,#0x8
+00e0e21c  mov v0.16B,v9.16B
+00e0e220  mov x1,xzr
+00e0e224  bl 0x02162f7c
+00e0e228  ldp x19,x30,[sp, #0x40]
+00e0e22c  ldp x21,x20,[sp, #0x30]
+00e0e230  ldp d9,d8,[sp, #0x20]
+00e0e234  ldp d11,d10,[sp, #0x10]
+00e0e238  add sp,sp,#0x50
+00e0e23c  ret

@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.RectExtensions$$SetCenterX @ 016b251c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_center @ 024daf7c
+  -> UnityEngine.Rect$$get_center @ 024daf64
+
+--- Calls IN ---
+
+--- Listing ---
+016b251c  sub sp,sp,#0x20
+016b2520  str d8,[sp, #0x10]
+016b2524  str x30,[sp, #0x18]
+016b2528  mov x0,sp
+016b252c  mov x1,xzr
+016b2530  mov v8.16B,v4.16B
+016b2534  stp s0,s1,[sp]
+016b2538  stp s2,s3,[sp, #0x8]
+016b253c  bl 0x024daf64
+016b2540  mov x0,sp
+016b2544  mov v0.16B,v8.16B
+016b2548  mov x1,xzr
+016b254c  bl 0x024daf7c
+016b2550  ldp s0,s1,[sp]
+016b2554  ldp s2,s3,[sp, #0x8]
+016b2558  ldr x30,[sp, #0x18]
+016b255c  ldr d8,[sp, #0x10]
+016b2560  add sp,sp,#0x20
+016b2564  ret

@@ -1,0 +1,17 @@
+Function: AliothEngine.Utils.Utility$$Interpolate @ 0169dc78
+
+--- Calls OUT ---
+  -> UnityEngine.Quaternion$$Slerp @ 024edba8
+
+--- Calls IN ---
+
+--- Listing ---
+0169dc78  ldr s16,[sp]
+0169dc7c  fmov s17,0x3f800000
+0169dc80  mov x0,xzr
+0169dc84  fmin s17,s16,s17
+0169dc88  fcmp s16,#0.0
+0169dc8c  fmov s16,wzr
+0169dc90  fcsel s16,s17,s16,pl
+0169dc94  str s16,[sp]
+0169dc98  b 0x024edba8

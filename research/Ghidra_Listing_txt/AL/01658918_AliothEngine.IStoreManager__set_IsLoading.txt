@@ -1,0 +1,41 @@
+Function: AliothEngine.IStoreManager$$set_IsLoading @ 01658918
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+
+--- Listing ---
+01658918  str x22,[sp, #-0x30]!
+0165891c  stp x21,x20,[sp, #0x10]
+01658920  stp x19,x30,[sp, #0x20]
+01658924  adrp x21,0x3577000
+01658928  adrp x22,0x336f000
+0165892c  ldrb w8,[x21, #0x839]
+01658930  ldr x22,[x22, #0x1e8]
+01658934  mov w20,w1
+01658938  mov x19,x0
+0165893c  tbnz w8,#0x0,0x01658954
+01658940  adrp x0,0x336f000
+01658944  ldr x0,[x0, #0x1e8]
+01658948  bl 0x00b0789c
+0165894c  mov w8,#0x1
+01658950  strb w8,[x21, #0x839]
+01658954  ldr x8,[x22]
+01658958  ldr x8,[x8, #0xb8]
+0165895c  ldr x0,[x8, #0x8]
+01658960  cbz x0,0x01658980
+01658964  and w2,w20,#0x1
+01658968  mov x1,x19
+0165896c  ldp x19,x30,[sp, #0x20]
+01658970  ldp x21,x20,[sp, #0x10]
+01658974  mov x3,xzr
+01658978  ldr x22,[sp], #0x30
+0165897c  b 0x010613e4
+01658980  and w8,w20,#0x1
+01658984  strb w8,[x19, #0x40]
+01658988  ldp x19,x30,[sp, #0x20]
+0165898c  ldp x21,x20,[sp, #0x10]
+01658990  ldr x22,[sp], #0x30
+01658994  ret

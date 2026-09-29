@@ -1,0 +1,151 @@
+Function: AliothEngine.Extensions.ColorExtensions$$ToHex @ 016ab56c
+
+--- Calls OUT ---
+  -> System.IndexOutOfRangeException$$.ctor @ 0214b8fc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Int32$$ToString @ 0214dc44
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Concat @ 01fdebb8
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.String$$Replace @ 01fe06d8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.BitConverter$$ToString @ 020d8bf0
+
+--- Calls IN ---
+
+--- Listing ---
+016ab56c  sub sp,sp,#0x60
+016ab570  stp d11,d10,[sp, #0x10]
+016ab574  stp d9,d8,[sp, #0x20]
+016ab578  stp x23,x22,[sp, #0x30]
+016ab57c  stp x21,x20,[sp, #0x40]
+016ab580  stp x19,x30,[sp, #0x50]
+016ab584  adrp x21,0x3577000
+016ab588  adrp x20,0x334f000
+016ab58c  ldrb w8,[x21, #0xbb4]
+016ab590  ldr x20,[x20, #0x28]
+016ab594  mov w19,w0
+016ab598  mov v8.16B,v3.16B
+016ab59c  mov v9.16B,v2.16B
+016ab5a0  mov v10.16B,v1.16B
+016ab5a4  mov v11.16B,v0.16B
+016ab5a8  tbnz w8,#0x0,0x016ab5e4
+016ab5ac  adrp x0,0x3334000
+016ab5b0  ldr x0,[x0, #0x1f0]
+016ab5b4  bl 0x00b0789c
+016ab5b8  adrp x0,0x334f000
+016ab5bc  ldr x0,[x0, #0x28]
+016ab5c0  bl 0x00b0789c
+016ab5c4  adrp x0,0x3375000
+016ab5c8  ldr x0,[x0, #0xea8]
+016ab5cc  bl 0x00b0789c
+016ab5d0  adrp x0,0x332c000
+016ab5d4  ldr x0,[x0, #0x2c0]
+016ab5d8  bl 0x00b0789c
+016ab5dc  mov w8,#0x1
+016ab5e0  strb w8,[x21, #0xbb4]
+016ab5e4  adrp x23,0x3334000
+016ab5e8  adrp x21,0x3375000
+016ab5ec  adrp x22,0x332c000
+016ab5f0  ldr x23,[x23, #0x1f0]
+016ab5f4  ldr x21,[x21, #0xea8]
+016ab5f8  ldr x22,[x22, #0x2c0]
+016ab5fc  ldr x0,[x20]
+016ab600  tst w19,#0x1
+016ab604  mov w8,#0x3
+016ab608  cinc w20,w8,ne
+016ab60c  mov w1,w20
+016ab610  bl 0x00b078f8
+016ab614  adrp x10,0x26dd000
+016ab618  mov x19,x0
+016ab61c  mov x8,xzr
+016ab620  add x9,x0,#0x20
+016ab624  add x10,x10,#0xaf
+016ab628  mov w11,#0x437f0000
+016ab62c  cmp w8,#0x3
+016ab630  str w8,[sp, #0xc]
+016ab634  b.hi 0x016ab6e8
+016ab638  and x12,x8,#0xffffffff
+016ab63c  adr x13,0x16ab650
+016ab640  ldrb w14,[x10, x12, LSL ]
+016ab644  add x13,x13,x14, LSL #0x2
+016ab648  mov v0.16B,v11.16B
+016ab64c  br x13
+016ab650  mov v0.16B,v10.16B
+016ab654  cbnz x19,0x016ab670
+016ab658  b 0x016ab770
+016ab65c  mov v0.16B,v9.16B
+016ab660  cbnz x19,0x016ab670
+016ab664  b 0x016ab770
+016ab668  mov v0.16B,v8.16B
+016ab66c  cbz x19,0x016ab770
+016ab670  ldr w12,[x19, #0x18]
+016ab674  cmp x8,x12
+016ab678  b.cs 0x016ab76c
+016ab67c  fmov s1,w11
+016ab680  fmul s0,s0,s1
+016ab684  fcvtzs w12,s0
+016ab688  fcmp s0,#0.0
+016ab68c  csel w12,w12,w12,mi
+016ab690  strb w12,[x9, x8, LSL ]
+016ab694  add x8,x8,#0x1
+016ab698  cmp x8,x20
+016ab69c  b.cc 0x016ab62c
+016ab6a0  ldr x0,[x23]
+016ab6a4  ldr w8,[x0, #0xe0]
+016ab6a8  cbnz w8,0x016ab6b0
+016ab6ac  bl 0x00b0798c
+016ab6b0  mov x0,x19
+016ab6b4  mov x1,xzr
+016ab6b8  bl 0x020d8bf0
+016ab6bc  cbz x0,0x016ab770
+016ab6c0  ldr x1,[x21]
+016ab6c4  ldr x2,[x22]
+016ab6c8  ldp x19,x30,[sp, #0x50]
+016ab6cc  ldp x21,x20,[sp, #0x40]
+016ab6d0  ldp x23,x22,[sp, #0x30]
+016ab6d4  ldp d9,d8,[sp, #0x20]
+016ab6d8  ldp d11,d10,[sp, #0x10]
+016ab6dc  mov x3,xzr
+016ab6e0  add sp,sp,#0x60
+016ab6e4  b 0x01fe06d8
+016ab6e8  add x0,sp,#0xc
+016ab6ec  mov x1,xzr
+016ab6f0  bl 0x0214dc44
+016ab6f4  mov x19,x0
+016ab6f8  adrp x0,0x3360000
+016ab6fc  ldr x0,[x0, #0xed8]
+016ab700  bl 0x00b078a0
+016ab704  mov x20,x0
+016ab708  adrp x0,0x3364000
+016ab70c  ldr x0,[x0, #0x190]
+016ab710  bl 0x00b078a0
+016ab714  mov x2,x0
+016ab718  mov x0,x20
+016ab71c  mov x1,x19
+016ab720  mov x3,xzr
+016ab724  bl 0x01fdebb8
+016ab728  mov x19,x0
+016ab72c  adrp x0,0x3336000
+016ab730  ldr x0,[x0, #0x9f8]
+016ab734  bl 0x00b078a0
+016ab738  bl 0x00b079a0
+016ab73c  mov x20,x0
+016ab740  bl 0x008d74f8
+016ab744  mov x0,x20
+016ab748  mov x1,x19
+016ab74c  mov x2,xzr
+016ab750  bl 0x0214b8fc
+016ab754  adrp x0,0x3316000
+016ab758  ldr x0,[x0, #0xc88]
+016ab75c  bl 0x00b078a0
+016ab760  mov x1,x0
+016ab764  mov x0,x20
+016ab768  bl 0x00b07978
+016ab76c  bl 0x00b079b8
+016ab770  bl 0x00b079b0

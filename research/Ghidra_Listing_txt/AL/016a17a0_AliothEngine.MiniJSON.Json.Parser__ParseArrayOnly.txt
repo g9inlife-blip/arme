@@ -1,0 +1,144 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$ParseArrayOnly @ 016a17a0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.String$$get_Chars @ 01fda110
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Substring @ 01fe0458
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> System.String$$TrimEnd @ 01fe3138
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json$$DeserializeArrayNoRecursion @ 016a1614
+
+--- Listing ---
+016a17a0  stp x25,x24,[sp, #-0x40]!
+016a17a4  stp x23,x22,[sp, #0x10]
+016a17a8  stp x21,x20,[sp, #0x20]
+016a17ac  stp x19,x30,[sp, #0x30]
+016a17b0  adrp x20,0x3577000
+016a17b4  ldrb w8,[x20, #0xb6d]
+016a17b8  mov x19,x0
+016a17bc  tbnz w8,#0x0,0x016a17f8
+016a17c0  adrp x0,0x335a000
+016a17c4  ldr x0,[x0, #0x340]
+016a17c8  bl 0x00b0789c
+016a17cc  adrp x0,0x333d000
+016a17d0  ldr x0,[x0, #0x3b0]
+016a17d4  bl 0x00b0789c
+016a17d8  adrp x0,0x334e000
+016a17dc  ldr x0,[x0, #0x470]
+016a17e0  bl 0x00b0789c
+016a17e4  adrp x0,0x3319000
+016a17e8  ldr x0,[x0, #0xc58]
+016a17ec  bl 0x00b0789c
+016a17f0  mov w8,#0x1
+016a17f4  strb w8,[x20, #0xb6d]
+016a17f8  ldr x0,[x19, #0x10]
+016a17fc  cbz x0,0x016a1990
+016a1800  ldr x8,[x0]
+016a1804  adrp x19,0x335a000
+016a1808  ldp x9,x1,[x8, #0x1f8]
+016a180c  ldr x19,[x19, #0x340]
+016a1810  blr x9
+016a1814  ldr x8,[x19]
+016a1818  mov x19,x0
+016a181c  mov w1,#0x2
+016a1820  mov x0,x8
+016a1824  bl 0x00b078f8
+016a1828  cbz x0,0x016a1990
+016a182c  ldr w8,[x0, #0x18]
+016a1830  mov x1,x0
+016a1834  cbz w8,0x016a1994
+016a1838  mov w9,#0x5d
+016a183c  cmp w8,#0x1
+016a1840  strh w9,[x1, #0x20]
+016a1844  b.eq 0x016a1994
+016a1848  mov w8,#0x20
+016a184c  strh w8,[x1, #0x22]
+016a1850  cbz x19,0x016a1990
+016a1854  adrp x20,0x3319000
+016a1858  ldr x20,[x20, #0xc58]
+016a185c  mov x0,x19
+016a1860  mov x2,xzr
+016a1864  bl 0x01fe3138
+016a1868  ldr x8,[x20]
+016a186c  mov x19,x0
+016a1870  mov x0,x8
+016a1874  bl 0x00b079a0
+016a1878  cbz x0,0x016a1990
+016a187c  adrp x8,0x334e000
+016a1880  ldr x8,[x8, #0x470]
+016a1884  mov x20,x0
+016a1888  ldr x1,[x8]
+016a188c  bl 0x01bffe10
+016a1890  cbz x19,0x016a1990
+016a1894  ldr w8,[x19, #0x10]
+016a1898  cmp w8,#0x1
+016a189c  b.lt 0x016a1978
+016a18a0  adrp x23,0x333d000
+016a18a4  ldr x23,[x23, #0x3b0]
+016a18a8  mov w21,wzr
+016a18ac  mov w25,wzr
+016a18b0  mov w24,#0x1
+016a18b4  sub w22,w24,#0x1
+016a18b8  mov x0,x19
+016a18bc  mov w1,w22
+016a18c0  mov x2,xzr
+016a18c4  bl 0x01fda110
+016a18c8  and w8,w0,#0xffff
+016a18cc  cmp w8,#0x7d
+016a18d0  b.eq 0x016a18ec
+016a18d4  cmp w8,#0x7b
+016a18d8  b.ne 0x016a1968
+016a18dc  cmp w25,#0x0
+016a18e0  add w25,w25,#0x1
+016a18e4  csel w21,w22,w21,eq
+016a18e8  b 0x016a1968
+016a18ec  subs w25,w25,#0x1
+016a18f0  b.ne 0x016a1968
+016a18f4  sub w2,w24,w21
+016a18f8  mov x0,x19
+016a18fc  mov w1,w21
+016a1900  mov x3,xzr
+016a1904  bl 0x01fe0458
+016a1908  ldr w10,[x20, #0x1c]
+016a190c  ldr x8,[x20, #0x10]
+016a1910  ldr x9,[x23]
+016a1914  add w10,w10,#0x1
+016a1918  str w10,[x20, #0x1c]
+016a191c  cbz x8,0x016a1990
+016a1920  ldrsw x10,[x20, #0x18]
+016a1924  ldr w11,[x8, #0x18]
+016a1928  mov x1,x0
+016a192c  cmp w10,w11
+016a1930  b.cs 0x016a194c
+016a1934  add w9,w10,#0x1
+016a1938  add x0,x8,x10, LSL #0x3
+016a193c  str w9,[x20, #0x18]
+016a1940  str x1,[x0, #0x20]!
+016a1944  bl 0x00b07850
+016a1948  b 0x016a1964
+016a194c  ldr x8,[x9, #0x20]
+016a1950  mov x0,x20
+016a1954  ldr x8,[x8, #0xc0]
+016a1958  ldr x2,[x8, #0x58]
+016a195c  ldr x8,[x2, #0x8]
+016a1960  blr x8
+016a1964  mov w25,wzr
+016a1968  ldr w8,[x19, #0x10]
+016a196c  cmp w24,w8
+016a1970  add w24,w24,#0x1
+016a1974  b.lt 0x016a18b4
+016a1978  mov x0,x20
+016a197c  ldp x19,x30,[sp, #0x30]
+016a1980  ldp x21,x20,[sp, #0x20]
+016a1984  ldp x23,x22,[sp, #0x10]
+016a1988  ldp x25,x24,[sp], #0x40
+016a198c  ret
+016a1990  bl 0x00b079b0
+016a1994  bl 0x00b079b8

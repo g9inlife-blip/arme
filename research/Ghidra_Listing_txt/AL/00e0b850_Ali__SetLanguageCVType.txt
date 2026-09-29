@@ -1,0 +1,70 @@
+Function: Ali$$SetLanguageCVType @ 00e0b850
+
+--- Calls OUT ---
+  -> Ali$$set_languageCV @ 00e00ae4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> GamePlayerInfomation$$set_LanguageCVType @ 00e37a5c
+  -> System.Enum$$ToString @ 02186100
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp373 @ 0108f9a8
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_SetLanguageCVType @ 011999c8
+  <- CVPanelMono$$OnClickOK @ 00f829bc
+  <- Ali$$InitGetValidLanguagesCV @ 00e0fa74
+
+--- Listing ---
+00e0b850  sub sp,sp,#0x50
+00e0b854  str x22,[sp, #0x20]
+00e0b858  stp x21,x20,[sp, #0x30]
+00e0b85c  stp x19,x30,[sp, #0x40]
+00e0b860  adrp x22,0x3572000
+00e0b864  adrp x21,0x335f000
+00e0b868  ldrb w8,[x22, #0x59c]
+00e0b86c  ldr x21,[x21, #0x20]
+00e0b870  mov w19,w1
+00e0b874  mov x20,x0
+00e0b878  tbnz w8,#0x0,0x00e0b89c
+00e0b87c  adrp x0,0x335f000
+00e0b880  ldr x0,[x0, #0x20]
+00e0b884  bl 0x00b0789c
+00e0b888  adrp x0,0x3375000
+00e0b88c  ldr x0,[x0, #0x180]
+00e0b890  bl 0x00b0789c
+00e0b894  mov w8,#0x1
+00e0b898  strb w8,[x22, #0x59c]
+00e0b89c  ldr x0,[x21]
+00e0b8a0  ldr w8,[x0, #0xe0]
+00e0b8a4  cbnz w8,0x00e0b8b0
+00e0b8a8  bl 0x00b0798c
+00e0b8ac  ldr x0,[x21]
+00e0b8b0  ldr x8,[x0, #0xb8]
+00e0b8b4  ldr x0,[x8, #0x488]
+00e0b8b8  cbz x0,0x00e0b8dc
+00e0b8bc  mov x1,x20
+00e0b8c0  mov w2,w19
+00e0b8c4  ldp x19,x30,[sp, #0x40]
+00e0b8c8  ldp x21,x20,[sp, #0x30]
+00e0b8cc  ldr x22,[sp, #0x20]
+00e0b8d0  mov x3,xzr
+00e0b8d4  add sp,sp,#0x50
+00e0b8d8  b 0x0108f9a8
+00e0b8dc  adrp x21,0x3375000
+00e0b8e0  ldr x21,[x21, #0x180]
+00e0b8e4  mov x0,x20
+00e0b8e8  mov w1,w19
+00e0b8ec  bl 0x00e00ae4
+00e0b8f0  ldr x8,[x21]
+00e0b8f4  mov x9,#-0x1
+00e0b8f8  add x0,sp,#0x8
+00e0b8fc  mov x1,xzr
+00e0b900  stp x8,x9,[sp, #0x8]
+00e0b904  str w19,[sp, #0x18]
+00e0b908  bl 0x02186100
+00e0b90c  mov x1,xzr
+00e0b910  bl 0x00e37a5c
+00e0b914  ldp x19,x30,[sp, #0x40]
+00e0b918  ldp x21,x20,[sp, #0x30]
+00e0b91c  ldr x22,[sp, #0x20]
+00e0b920  add sp,sp,#0x50
+00e0b924  ret

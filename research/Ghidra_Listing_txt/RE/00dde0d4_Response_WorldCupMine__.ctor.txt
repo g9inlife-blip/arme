@@ -1,0 +1,39 @@
+Function: Response_WorldCupMine$$.ctor @ 00dde0d4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_WorldCupMineWrap$$__CreateInstance @ 01376388
+
+--- Listing ---
+00dde0d4  stp x21,x20,[sp, #-0x20]!
+00dde0d8  stp x19,x30,[sp, #0x10]
+00dde0dc  adrp x21,0x3572000
+00dde0e0  adrp x20,0x3363000
+00dde0e4  ldrb w8,[x21, #0x2e6]
+00dde0e8  ldr x20,[x20, #0x328]
+00dde0ec  mov x19,x0
+00dde0f0  tbnz w8,#0x0,0x00dde108
+00dde0f4  adrp x0,0x3363000
+00dde0f8  ldr x0,[x0, #0x328]
+00dde0fc  bl 0x00b0789c
+00dde100  mov w8,#0x1
+00dde104  strb w8,[x21, #0x2e6]
+00dde108  mov x0,x19
+00dde10c  mov x1,xzr
+00dde110  bl 0x02194104
+00dde114  ldr x8,[x20]
+00dde118  ldr x8,[x8, #0xb8]
+00dde11c  ldr x0,[x8]
+00dde120  cbz x0,0x00dde138
+00dde124  mov x1,x19
+00dde128  ldp x19,x30,[sp, #0x10]
+00dde12c  mov x2,xzr
+00dde130  ldp x21,x20,[sp], #0x20
+00dde134  b 0x01060dac
+00dde138  ldp x19,x30,[sp, #0x10]
+00dde13c  ldp x21,x20,[sp], #0x20
+00dde140  ret

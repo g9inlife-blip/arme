@@ -1,0 +1,41 @@
+Function: Alioth.S1.Net.KCPTube$$get_GetHostAddressesTask @ 015ae82c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp749 @ 010c2588
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$Update @ 015af650
+
+--- Listing ---
+015ae82c  stp x21,x20,[sp, #-0x20]!
+015ae830  stp x19,x30,[sp, #0x10]
+015ae834  adrp x21,0x3577000
+015ae838  adrp x20,0x3350000
+015ae83c  ldrb w8,[x21, #0x9b]
+015ae840  ldr x20,[x20, #0x8c8]
+015ae844  mov x19,x0
+015ae848  tbnz w8,#0x0,0x015ae860
+015ae84c  adrp x0,0x3350000
+015ae850  ldr x0,[x0, #0x8c8]
+015ae854  bl 0x00b0789c
+015ae858  mov w8,#0x1
+015ae85c  strb w8,[x21, #0x9b]
+015ae860  ldr x0,[x20]
+015ae864  ldr w8,[x0, #0xe0]
+015ae868  cbnz w8,0x015ae874
+015ae86c  bl 0x00b0798c
+015ae870  ldr x0,[x20]
+015ae874  ldr x8,[x0, #0xb8]
+015ae878  ldr x0,[x8, #0x98]
+015ae87c  cbz x0,0x015ae894
+015ae880  mov x1,x19
+015ae884  ldp x19,x30,[sp, #0x10]
+015ae888  mov x2,xzr
+015ae88c  ldp x21,x20,[sp], #0x20
+015ae890  b 0x010c2588
+015ae894  ldr x0,[x19, #0x90]
+015ae898  ldp x19,x30,[sp, #0x10]
+015ae89c  ldp x21,x20,[sp], #0x20
+015ae8a0  ret

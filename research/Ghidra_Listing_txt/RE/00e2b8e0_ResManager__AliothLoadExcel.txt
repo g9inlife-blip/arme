@@ -1,0 +1,57 @@
+Function: ResManager$$AliothLoadExcel @ 00e2b8e0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- ResManager.<LoadExcel>d__23$$MoveNext @ 00e2c9a4
+
+--- Listing ---
+00e2b8e0  stp x21,x20,[sp, #-0x20]!
+00e2b8e4  stp x19,x30,[sp, #0x10]
+00e2b8e8  adrp x20,0x3572000
+00e2b8ec  adrp x21,0x337e000
+00e2b8f0  ldrb w8,[x20, #0x731]
+00e2b8f4  ldr x21,[x21, #0x4c8]
+00e2b8f8  mov x19,x0
+00e2b8fc  tbnz w8,#0x0,0x00e2b920
+00e2b900  adrp x0,0x337e000
+00e2b904  ldr x0,[x0, #0x4c8]
+00e2b908  bl 0x00b0789c
+00e2b90c  adrp x0,0x3310000
+00e2b910  ldr x0,[x0, #0xca8]
+00e2b914  bl 0x00b0789c
+00e2b918  mov w8,#0x1
+00e2b91c  strb w8,[x20, #0x731]
+00e2b920  ldr x8,[x21]
+00e2b924  ldr x8,[x8, #0xb8]
+00e2b928  ldr x0,[x8, #0xa8]
+00e2b92c  cbz x0,0x00e2b944
+00e2b930  mov x1,x19
+00e2b934  ldp x19,x30,[sp, #0x10]
+00e2b938  mov x2,xzr
+00e2b93c  ldp x21,x20,[sp], #0x20
+00e2b940  b 0x01066218
+00e2b944  adrp x8,0x3310000
+00e2b948  ldr x8,[x8, #0xca8]
+00e2b94c  ldr x0,[x8]
+00e2b950  bl 0x00b079a0
+00e2b954  cbz x0,0x00e2b988
+00e2b958  mov x1,xzr
+00e2b95c  mov x20,x0
+00e2b960  bl 0x02194104
+00e2b964  mov x0,x20
+00e2b968  str wzr,[x20, #0x10]
+00e2b96c  str x19,[x0, #0x20]!
+00e2b970  mov x1,x19
+00e2b974  bl 0x00b07850
+00e2b978  ldp x19,x30,[sp, #0x10]
+00e2b97c  mov x0,x20
+00e2b980  ldp x21,x20,[sp], #0x20
+00e2b984  ret
+00e2b988  bl 0x00b079b0

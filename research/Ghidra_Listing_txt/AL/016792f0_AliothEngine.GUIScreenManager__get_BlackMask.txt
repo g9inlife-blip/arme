@@ -1,0 +1,100 @@
+Function: AliothEngine.GUIScreenManager$$get_BlackMask @ 016792f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Extensions.TransformExtensions$$FindRecursively @ 016b9afc
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> AliothEngine.GUIScreenManager$$get_RootCanvas @ 016767b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp836 @ 010cd5e8
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_g_get_BlackMask @ 0114fc34
+  <- AliothEngine.GUIScreenManager$$SetGUIBlackMask @ 01679fb0
+
+--- Listing ---
+016792f0  str x20,[sp, #-0x20]!
+016792f4  stp x19,x30,[sp, #0x10]
+016792f8  adrp x19,0x3577000
+016792fc  adrp x20,0x337b000
+01679300  ldrb w8,[x19, #0x9e5]
+01679304  ldr x20,[x20, #0xb98]
+01679308  tbnz w8,#0x0,0x01679338
+0167930c  adrp x0,0x337b000
+01679310  ldr x0,[x0, #0xb98]
+01679314  bl 0x00b0789c
+01679318  adrp x0,0x3321000
+0167931c  ldr x0,[x0, #0xca8]
+01679320  bl 0x00b0789c
+01679324  adrp x0,0x333a000
+01679328  ldr x0,[x0, #0xb68]
+0167932c  bl 0x00b0789c
+01679330  mov w8,#0x1
+01679334  strb w8,[x19, #0x9e5]
+01679338  ldr x0,[x20]
+0167933c  ldr w8,[x0, #0xe0]
+01679340  cbnz w8,0x0167934c
+01679344  bl 0x00b0798c
+01679348  ldr x0,[x20]
+0167934c  ldr x9,[x0, #0xb8]
+01679350  ldr x8,[x9, #0x240]
+01679354  cbz x8,0x0167936c
+01679358  ldp x19,x30,[sp, #0x10]
+0167935c  mov x0,x8
+01679360  mov x1,xzr
+01679364  ldr x20,[sp], #0x20
+01679368  b 0x010cd5e8
+0167936c  adrp x19,0x3321000
+01679370  ldr w8,[x0, #0xe0]
+01679374  ldr x19,[x19, #0xca8]
+01679378  cbnz w8,0x01679388
+0167937c  bl 0x00b0798c
+01679380  ldr x8,[x20]
+01679384  ldr x9,[x8, #0xb8]
+01679388  ldr x0,[x19]
+0167938c  ldr x19,[x9, #0x20]
+01679390  ldr w8,[x0, #0xe0]
+01679394  cbnz w8,0x0167939c
+01679398  bl 0x00b0798c
+0167939c  mov x0,x19
+016793a0  mov x1,xzr
+016793a4  mov x2,xzr
+016793a8  bl 0x024c8180
+016793ac  tbz w0,#0x0,0x01679408
+016793b0  ldr x0,[x20]
+016793b4  ldr w8,[x0, #0xe0]
+016793b8  cbnz w8,0x016793c0
+016793bc  bl 0x00b0798c
+016793c0  bl 0x016767b0
+016793c4  cbz x0,0x01679430
+016793c8  adrp x19,0x333a000
+016793cc  ldr x19,[x19, #0xb68]
+016793d0  mov x1,xzr
+016793d4  bl 0x024e4e98
+016793d8  ldr x1,[x19]
+016793dc  mov x2,xzr
+016793e0  bl 0x016b9afc
+016793e4  cbz x0,0x01679430
+016793e8  mov x1,xzr
+016793ec  bl 0x024e4ed4
+016793f0  ldr x8,[x20]
+016793f4  mov x1,x0
+016793f8  ldr x8,[x8, #0xb8]
+016793fc  str x0,[x8, #0x20]!
+01679400  mov x0,x8
+01679404  bl 0x00b07850
+01679408  ldr x0,[x20]
+0167940c  ldr w8,[x0, #0xe0]
+01679410  cbnz w8,0x0167941c
+01679414  bl 0x00b0798c
+01679418  ldr x0,[x20]
+0167941c  ldr x8,[x0, #0xb8]
+01679420  ldp x19,x30,[sp, #0x10]
+01679424  ldr x0,[x8, #0x20]
+01679428  ldr x20,[sp], #0x20
+0167942c  ret
+01679430  bl 0x00b079b0

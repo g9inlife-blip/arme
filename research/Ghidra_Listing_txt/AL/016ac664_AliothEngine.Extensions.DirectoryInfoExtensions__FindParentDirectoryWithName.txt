@@ -1,0 +1,39 @@
+Function: AliothEngine.Extensions.DirectoryInfoExtensions$$FindParentDirectoryWithName @ 016ac664
+
+--- Calls OUT ---
+  -> System.String$$Equals @ 01fde39c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.DirectoryInfo$$get_Parent @ 020aef44
+
+--- Calls IN ---
+
+--- Listing ---
+016ac664  str x20,[sp, #-0x20]!
+016ac668  stp x19,x30,[sp, #0x10]
+016ac66c  cbz x0,0x016ac6c0
+016ac670  mov x20,x1
+016ac674  mov x19,x0
+016ac678  mov x0,x19
+016ac67c  mov x1,xzr
+016ac680  bl 0x020aef44
+016ac684  cbz x0,0x016ac6c4
+016ac688  ldr x8,[x19]
+016ac68c  mov x0,x19
+016ac690  ldp x9,x1,[x8, #0x1c8]
+016ac694  blr x9
+016ac698  mov w2,#0x3
+016ac69c  mov x1,x20
+016ac6a0  mov x3,xzr
+016ac6a4  bl 0x01fde39c
+016ac6a8  tbnz w0,#0x0,0x016ac6c8
+016ac6ac  mov x0,x19
+016ac6b0  mov x1,xzr
+016ac6b4  bl 0x020aef44
+016ac6b8  mov x19,x0
+016ac6bc  cbnz x0,0x016ac678
+016ac6c0  bl 0x00b079b0
+016ac6c4  mov x19,xzr
+016ac6c8  mov x0,x19
+016ac6cc  ldp x19,x30,[sp, #0x10]
+016ac6d0  ldr x20,[sp], #0x20
+016ac6d4  ret

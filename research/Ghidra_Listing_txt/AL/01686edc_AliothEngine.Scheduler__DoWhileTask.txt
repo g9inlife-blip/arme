@@ -1,0 +1,68 @@
+Function: AliothEngine.Scheduler$$DoWhileTask @ 01686edc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Scheduler.<DoWhileTask>d__15$$.ctor @ 016886dc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Scheduler$$DoWhile @ 01686e48
+  <- AliothEngine.Scheduler$$DoWhile @ 016871d0
+  <- AliothEngine.Scheduler.<DoWhileTask>d__15$$MoveNext @ 01688708
+
+--- Listing ---
+01686edc  stp x25,x24,[sp, #-0x40]!
+01686ee0  stp x23,x22,[sp, #0x10]
+01686ee4  stp x21,x20,[sp, #0x20]
+01686ee8  stp x19,x30,[sp, #0x30]
+01686eec  adrp x22,0x3577000
+01686ef0  adrp x25,0x3366000
+01686ef4  ldrb w8,[x22, #0xa71]
+01686ef8  ldr x25,[x25, #0xdb0]
+01686efc  mov x19,x4
+01686f00  mov x20,x3
+01686f04  mov x21,x2
+01686f08  mov x23,x1
+01686f0c  mov x24,x0
+01686f10  tbnz w8,#0x0,0x01686f28
+01686f14  adrp x0,0x3366000
+01686f18  ldr x0,[x0, #0xdb0]
+01686f1c  bl 0x00b0789c
+01686f20  mov w8,#0x1
+01686f24  strb w8,[x22, #0xa71]
+01686f28  ldr x0,[x25]
+01686f2c  bl 0x00b079a0
+01686f30  cbz x0,0x01686fac
+01686f34  mov w1,wzr
+01686f38  mov x2,xzr
+01686f3c  mov x22,x0
+01686f40  bl 0x016886dc
+01686f44  mov x0,x22
+01686f48  str x24,[x0, #0x40]!
+01686f4c  mov x1,x24
+01686f50  bl 0x00b07850
+01686f54  mov x0,x22
+01686f58  str x23,[x0, #0x28]!
+01686f5c  mov x1,x23
+01686f60  bl 0x00b07850
+01686f64  mov x0,x22
+01686f68  str x21,[x0, #0x30]!
+01686f6c  mov x1,x21
+01686f70  bl 0x00b07850
+01686f74  mov x0,x22
+01686f78  str x20,[x0, #0x38]!
+01686f7c  mov x1,x20
+01686f80  bl 0x00b07850
+01686f84  mov x0,x22
+01686f88  str x19,[x0, #0x20]!
+01686f8c  mov x1,x19
+01686f90  bl 0x00b07850
+01686f94  mov x0,x22
+01686f98  ldp x19,x30,[sp, #0x30]
+01686f9c  ldp x21,x20,[sp, #0x20]
+01686fa0  ldp x23,x22,[sp, #0x10]
+01686fa4  ldp x25,x24,[sp], #0x40
+01686fa8  ret
+01686fac  bl 0x00b079b0

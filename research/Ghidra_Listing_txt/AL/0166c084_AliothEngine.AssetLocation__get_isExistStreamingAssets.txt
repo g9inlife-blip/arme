@@ -1,0 +1,52 @@
+Function: AliothEngine.AssetLocation$$get_isExistStreamingAssets @ 0166c084
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetLocation$$get_url @ 0165e31c
+  -> AssetBundles.AssetBundleManager$$GetStreamingAssetsPath @ 0164257c
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$HasValidCache @ 0166bd3c
+
+--- Listing ---
+0166c084  str x20,[sp, #-0x20]!
+0166c088  stp x19,x30,[sp, #0x10]
+0166c08c  adrp x20,0x3577000
+0166c090  ldrb w8,[x20, #0x94a]
+0166c094  mov x19,x0
+0166c098  tbnz w8,#0x0,0x0166c0b0
+0166c09c  adrp x0,0x331a000
+0166c0a0  ldr x0,[x0, #0x8b0]
+0166c0a4  bl 0x00b0789c
+0166c0a8  mov w8,#0x1
+0166c0ac  strb w8,[x20, #0x94a]
+0166c0b0  ldr w8,[x19, #0x5c]
+0166c0b4  cmp w8,#0x1
+0166c0b8  b.ne 0x0166c108
+0166c0bc  adrp x20,0x331a000
+0166c0c0  ldr x20,[x20, #0x8b0]
+0166c0c4  mov x0,x19
+0166c0c8  bl 0x0165e31c
+0166c0cc  ldr x8,[x20]
+0166c0d0  mov x19,x0
+0166c0d4  ldr w9,[x8, #0xe0]
+0166c0d8  cbnz w9,0x0166c0e4
+0166c0dc  mov x0,x8
+0166c0e0  bl 0x00b0798c
+0166c0e4  mov x0,xzr
+0166c0e8  bl 0x0164257c
+0166c0ec  cbz x19,0x0166c118
+0166c0f0  mov x1,x0
+0166c0f4  mov x0,x19
+0166c0f8  ldp x19,x30,[sp, #0x10]
+0166c0fc  mov x2,xzr
+0166c100  ldr x20,[sp], #0x20
+0166c104  b 0x01fe31fc
+0166c108  ldp x19,x30,[sp, #0x10]
+0166c10c  mov w0,wzr
+0166c110  ldr x20,[sp], #0x20
+0166c114  ret
+0166c118  bl 0x00b079b0

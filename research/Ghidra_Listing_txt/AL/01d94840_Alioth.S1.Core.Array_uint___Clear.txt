@@ -1,0 +1,55 @@
+Function: Alioth.S1.Core.Array<uint>$$Clear @ 01d94840
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$InvokeSessionEnd @ 010cf0d4
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$Flush @ 015b8f84
+
+--- Listing ---
+01d94840  stp x21,x20,[sp, #-0x20]!
+01d94844  stp x19,x30,[sp, #0x10]
+01d94848  ldr x8,[x1, #0x20]
+01d9484c  mov x20,x1
+01d94850  mov x19,x0
+01d94854  ldr x8,[x8, #0xc0]
+01d94858  ldr x8,[x8]
+01d9485c  ldrb w9,[x8, #0x132]
+01d94860  tbnz w9,#0x0,0x01d94870
+01d94864  mov x0,x8
+01d94868  bl 0x00b2ac40
+01d9486c  mov x8,x0
+01d94870  ldr x8,[x8, #0xb8]
+01d94874  ldr x21,[x8, #0x38]
+01d94878  cbz x21,0x01d948c8
+01d9487c  mov x0,x21
+01d94880  mov x1,xzr
+01d94884  bl 0x010cef38
+01d94888  ldr x8,[x20, #0x20]
+01d9488c  mov x0,x21
+01d94890  mov x1,x19
+01d94894  ldr x8,[x8, #0xc0]
+01d94898  ldr x2,[x8, #0x8]
+01d9489c  ldr x8,[x2, #0x8]
+01d948a0  blr x8
+01d948a4  mov x0,x21
+01d948a8  mov w1,wzr
+01d948ac  mov x2,xzr
+01d948b0  bl 0x010ceff0
+01d948b4  ldp x19,x30,[sp, #0x10]
+01d948b8  mov x0,x21
+01d948bc  mov x1,xzr
+01d948c0  ldp x21,x20,[sp], #0x20
+01d948c4  b 0x010cf0d4
+01d948c8  ldr x8,[x20, #0x20]
+01d948cc  mov x0,x19
+01d948d0  ldp x19,x30,[sp, #0x10]
+01d948d4  mov w1,wzr
+01d948d8  ldr x8,[x8, #0xc0]
+01d948dc  ldr x2,[x8, #0x20]
+01d948e0  ldr x3,[x2, #0x8]
+01d948e4  ldp x21,x20,[sp], #0x20
+01d948e8  br x3

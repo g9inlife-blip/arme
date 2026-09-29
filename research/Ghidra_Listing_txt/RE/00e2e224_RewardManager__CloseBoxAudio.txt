@@ -1,0 +1,67 @@
+Function: RewardManager$$CloseBoxAudio @ 00e2e224
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> SoundManager$$StopPlayByType @ 00e2f4a4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_soundManager @ 00e0293c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- RewardManager$$ShowFinal @ 00e2f2d0
+  <- RewardManager$$NextItemListener @ 00e2e140
+
+--- Listing ---
+00e2e224  stp x21,x20,[sp, #-0x20]!
+00e2e228  stp x19,x30,[sp, #0x10]
+00e2e22c  adrp x20,0x3572000
+00e2e230  adrp x21,0x331f000
+00e2e234  ldrb w8,[x20, #0x75b]
+00e2e238  ldr x21,[x21, #0x418]
+00e2e23c  mov x19,x0
+00e2e240  tbnz w8,#0x0,0x00e2e264
+00e2e244  adrp x0,0x335f000
+00e2e248  ldr x0,[x0, #0x20]
+00e2e24c  bl 0x00b0789c
+00e2e250  adrp x0,0x331f000
+00e2e254  ldr x0,[x0, #0x418]
+00e2e258  bl 0x00b0789c
+00e2e25c  mov w8,#0x1
+00e2e260  strb w8,[x20, #0x75b]
+00e2e264  ldr x8,[x21]
+00e2e268  ldr x8,[x8, #0xb8]
+00e2e26c  ldr x0,[x8, #0xc8]
+00e2e270  cbz x0,0x00e2e288
+00e2e274  mov x1,x19
+00e2e278  ldp x19,x30,[sp, #0x10]
+00e2e27c  mov x2,xzr
+00e2e280  ldp x21,x20,[sp], #0x20
+00e2e284  b 0x01060dac
+00e2e288  adrp x19,0x335f000
+00e2e28c  ldr x19,[x19, #0x20]
+00e2e290  ldr x0,[x19]
+00e2e294  ldr w8,[x0, #0xe0]
+00e2e298  cbnz w8,0x00e2e2a4
+00e2e29c  bl 0x00b0798c
+00e2e2a0  ldr x0,[x19]
+00e2e2a4  ldr x8,[x0, #0xb8]
+00e2e2a8  ldr x0,[x8, #0x10]
+00e2e2ac  cbz x0,0x00e2e2f0
+00e2e2b0  mov x1,xzr
+00e2e2b4  bl 0x00e0293c
+00e2e2b8  cbz x0,0x00e2e2f0
+00e2e2bc  mov w1,#0x6
+00e2e2c0  bl 0x00e2f4a4
+00e2e2c4  ldr x8,[x19]
+00e2e2c8  ldr x8,[x8, #0xb8]
+00e2e2cc  ldr x0,[x8, #0x10]
+00e2e2d0  cbz x0,0x00e2e2f0
+00e2e2d4  mov x1,xzr
+00e2e2d8  bl 0x00e0293c
+00e2e2dc  cbz x0,0x00e2e2f0
+00e2e2e0  ldp x19,x30,[sp, #0x10]
+00e2e2e4  mov w1,#0x7
+00e2e2e8  ldp x21,x20,[sp], #0x20
+00e2e2ec  b 0x00e2f4a4
+00e2e2f0  bl 0x00b079b0

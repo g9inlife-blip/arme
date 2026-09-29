@@ -1,0 +1,76 @@
+Function: AliothEngine.AndroidUtils$$GetCurrentPackageName @ 0164fc7c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.AndroidJavaObject$$Call<object> @ 017378fc
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.AndroidUtils$$GetSignatureMD5Hash @ 01651cf4
+  <- AliothEngine.AndroidUtils$$GetCurrentApplicationLabel @ 0164f820
+  <- AliothEngine.AndroidUtils$$StartActivity @ 016505a4
+  <- GlobalUIManager$$OnClickPackUpdate @ 00f1e63c
+
+--- Listing ---
+0164fc7c  stp x21,x20,[sp, #-0x20]!
+0164fc80  stp x19,x30,[sp, #0x10]
+0164fc84  adrp x19,0x3577000
+0164fc88  adrp x20,0x331d000
+0164fc8c  ldrb w8,[x19, #0x7e6]
+0164fc90  ldr x20,[x20, #0x7c8]
+0164fc94  tbnz w8,#0x0,0x0164fcd0
+0164fc98  adrp x0,0x335b000
+0164fc9c  ldr x0,[x0, #0xb28]
+0164fca0  bl 0x00b0789c
+0164fca4  adrp x0,0x335b000
+0164fca8  ldr x0,[x0, #0x650]
+0164fcac  bl 0x00b0789c
+0164fcb0  adrp x0,0x331c000
+0164fcb4  ldr x0,[x0, #0x1b8]
+0164fcb8  bl 0x00b0789c
+0164fcbc  adrp x0,0x331d000
+0164fcc0  ldr x0,[x0, #0x7c8]
+0164fcc4  bl 0x00b0789c
+0164fcc8  mov w8,#0x1
+0164fccc  strb w8,[x19, #0x7e6]
+0164fcd0  ldr x19,[x20]
+0164fcd4  bl 0x0164f628
+0164fcd8  cbz x0,0x0164fd4c
+0164fcdc  adrp x8,0x335b000
+0164fce0  ldr x8,[x8, #0x650]
+0164fce4  mov x20,x0
+0164fce8  ldr x21,[x8]
+0164fcec  ldr x8,[x21, #0x38]
+0164fcf0  ldr x0,[x8]
+0164fcf4  ldrb w8,[x0, #0x132]
+0164fcf8  tbnz w8,#0x0,0x0164fd00
+0164fcfc  bl 0x00b2ac40
+    ; [PRE] try { // try from 0164fcfc to 0164fd1f has its CatchHandler @ 0164fd60
+0164fd00  ldr w8,[x0, #0xe0]
+0164fd04  cbnz w8,0x0164fd0c
+0164fd08  bl 0x00b0798c
+0164fd0c  ldr x8,[x21, #0x38]
+0164fd10  ldr x0,[x8]
+0164fd14  ldrb w8,[x0, #0x132]
+0164fd18  tbnz w8,#0x0,0x0164fd20
+0164fd1c  bl 0x00b2ac40
+    ; [POST] } // end try from 0164fcfc to 0164fd1f
+0164fd20  adrp x9,0x331c000
+0164fd24  ldr x8,[x0, #0xb8]
+0164fd28  ldr x9,[x9, #0x1b8]
+0164fd2c  adrp x10,0x335b000
+0164fd30  ldr x10,[x10, #0xb28]
+0164fd34  ldr x2,[x8]
+0164fd38  ldr x1,[x9]
+0164fd3c  ldr x3,[x10]
+0164fd40  mov x0,x20
+    ; [PRE] try { // try from 0164fd40 to 0164fd47 has its CatchHandler @ 0164fd5c
+0164fd44  bl 0x017378fc
+    ; [POST] } // end try from 0164fd40 to 0164fd47
+0164fd48  mov x19,x0
+0164fd4c  mov x0,x19
+0164fd50  ldp x19,x30,[sp, #0x10]
+0164fd54  ldp x21,x20,[sp], #0x20
+0164fd58  ret

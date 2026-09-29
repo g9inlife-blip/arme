@@ -1,0 +1,16 @@
+Function: AliothEngine.Utils.Utility$$Normalise @ 0169d9b4
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+0169d9b4  fsub d2,d2,d1
+0169d9b8  fcmp d2,#0.0
+0169d9bc  b.eq 0x0169d9d4
+0169d9c0  fsub d0,d0,d1
+0169d9c4  fdiv d0,d0,d2
+0169d9c8  fsub d1,d4,d3
+0169d9cc  fmul d0,d0,d1
+0169d9d0  fadd d0,d0,d3
+0169d9d4  ret

@@ -1,0 +1,27 @@
+Function: AliothEngine.Extensions.RectExtensions$$GetGuiBottomRight @ 016b3c9c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+
+--- Listing ---
+016b3c9c  sub sp,sp,#0x20
+016b3ca0  str d8,[sp, #0x10]
+016b3ca4  str x30,[sp, #0x18]
+016b3ca8  mov x0,sp
+016b3cac  mov x1,xzr
+016b3cb0  stp s0,s1,[sp]
+016b3cb4  stp s2,s3,[sp, #0x8]
+016b3cb8  bl 0x024db014
+016b3cbc  mov x0,sp
+016b3cc0  mov x1,xzr
+016b3cc4  mov v8.16B,v0.16B
+016b3cc8  bl 0x024db024
+016b3ccc  mov v1.16B,v0.16B
+016b3cd0  mov v0.16B,v8.16B
+016b3cd4  ldr x30,[sp, #0x18]
+016b3cd8  ldr d8,[sp, #0x10]
+016b3cdc  add sp,sp,#0x20
+016b3ce0  ret

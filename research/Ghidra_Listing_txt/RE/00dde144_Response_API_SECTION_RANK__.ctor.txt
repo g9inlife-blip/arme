@@ -1,0 +1,39 @@
+Function: Response_API_SECTION_RANK$$.ctor @ 00dde144
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_API_SECTION_RANKWrap$$__CreateInstance @ 013662e4
+
+--- Listing ---
+00dde144  stp x21,x20,[sp, #-0x20]!
+00dde148  stp x19,x30,[sp, #0x10]
+00dde14c  adrp x21,0x3572000
+00dde150  adrp x20,0x3384000
+00dde154  ldrb w8,[x21, #0x2e7]
+00dde158  ldr x20,[x20, #0x4a0]
+00dde15c  mov x19,x0
+00dde160  tbnz w8,#0x0,0x00dde178
+00dde164  adrp x0,0x3384000
+00dde168  ldr x0,[x0, #0x4a0]
+00dde16c  bl 0x00b0789c
+00dde170  mov w8,#0x1
+00dde174  strb w8,[x21, #0x2e7]
+00dde178  mov x0,x19
+00dde17c  mov x1,xzr
+00dde180  bl 0x02194104
+00dde184  ldr x8,[x20]
+00dde188  ldr x8,[x8, #0xb8]
+00dde18c  ldr x0,[x8]
+00dde190  cbz x0,0x00dde1a8
+00dde194  mov x1,x19
+00dde198  ldp x19,x30,[sp, #0x10]
+00dde19c  mov x2,xzr
+00dde1a0  ldp x21,x20,[sp], #0x20
+00dde1a4  b 0x01060dac
+00dde1a8  ldp x19,x30,[sp, #0x10]
+00dde1ac  ldp x21,x20,[sp], #0x20
+00dde1b0  ret

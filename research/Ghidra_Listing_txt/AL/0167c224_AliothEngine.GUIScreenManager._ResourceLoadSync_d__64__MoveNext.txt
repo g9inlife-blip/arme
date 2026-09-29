@@ -1,0 +1,89 @@
+Function: AliothEngine.GUIScreenManager.<ResourceLoadSync>d__64$$MoveNext @ 0167c224
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.ActionExtensions$$SafeInvoke<object> @ 017369dc
+  -> UnityEngine.Resources$$LoadAsync @ 024f1a10
+  -> UnityEngine.ResourceRequest$$get_asset @ 024f1468
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Object$$Instantiate @ 024dfb48
+
+--- Calls IN ---
+
+--- Listing ---
+0167c224  stp x21,x20,[sp, #-0x20]!
+0167c228  stp x19,x30,[sp, #0x10]
+0167c22c  adrp x20,0x3577000
+0167c230  ldrb w8,[x20, #0xa07]
+0167c234  mov x19,x0
+0167c238  tbnz w8,#0x0,0x0167c268
+0167c23c  adrp x0,0x3373000
+0167c240  ldr x0,[x0, #0x148]
+0167c244  bl 0x00b0789c
+0167c248  adrp x0,0x3310000
+0167c24c  ldr x0,[x0, #0xe40]
+0167c250  bl 0x00b0789c
+0167c254  adrp x0,0x3321000
+0167c258  ldr x0,[x0, #0xca8]
+0167c25c  bl 0x00b0789c
+0167c260  mov w8,#0x1
+0167c264  strb w8,[x20, #0xa07]
+0167c268  ldr w8,[x19, #0x10]
+0167c26c  cmp w8,#0x1
+0167c270  b.eq 0x0167c2bc
+0167c274  cbnz w8,0x0167c338
+0167c278  ldr x0,[x19, #0x20]
+0167c27c  mov w8,#0xffffffff
+0167c280  mov x1,xzr
+0167c284  str w8,[x19, #0x10]
+0167c288  bl 0x024f1a10
+0167c28c  mov x20,x19
+0167c290  str x0,[x20, #0x30]!
+0167c294  mov x1,x0
+0167c298  mov x0,x20
+0167c29c  bl 0x00b07850
+0167c2a0  ldr x1,[x20]
+0167c2a4  mov x0,x19
+0167c2a8  str x1,[x0, #0x18]!
+0167c2ac  bl 0x00b07850
+0167c2b0  mov w0,#0x1
+0167c2b4  str w0,[x19, #0x10]
+0167c2b8  b 0x0167c33c
+0167c2bc  ldr x0,[x19, #0x30]
+0167c2c0  mov w8,#0xffffffff
+0167c2c4  str w8,[x19, #0x10]
+0167c2c8  cbz x0,0x0167c348
+0167c2cc  adrp x20,0x3321000
+0167c2d0  ldr x20,[x20, #0xca8]
+0167c2d4  mov x1,xzr
+0167c2d8  bl 0x024f1468
+0167c2dc  ldr x8,[x20]
+0167c2e0  mov x20,x0
+0167c2e4  ldr w9,[x8, #0xe0]
+0167c2e8  cbnz w9,0x0167c2f4
+0167c2ec  mov x0,x8
+0167c2f0  bl 0x00b0798c
+0167c2f4  adrp x21,0x3373000
+0167c2f8  ldr x21,[x21, #0x148]
+0167c2fc  mov x0,x20
+0167c300  mov x1,xzr
+0167c304  bl 0x024dfb48
+0167c308  cbz x0,0x0167c328
+0167c30c  adrp x8,0x3310000
+0167c310  ldr x8,[x8, #0xe40]
+0167c314  ldr x9,[x0]
+0167c318  ldr x8,[x8]
+0167c31c  cmp x9,x8
+0167c320  csel x1,x0,xzr,eq
+0167c324  b 0x0167c32c
+0167c328  mov x1,xzr
+0167c32c  ldr x0,[x19, #0x28]
+0167c330  ldr x2,[x21]
+0167c334  bl 0x017369dc
+0167c338  mov w0,wzr
+0167c33c  ldp x19,x30,[sp, #0x10]
+0167c340  ldp x21,x20,[sp], #0x20
+0167c344  ret
+0167c348  bl 0x00b079b0

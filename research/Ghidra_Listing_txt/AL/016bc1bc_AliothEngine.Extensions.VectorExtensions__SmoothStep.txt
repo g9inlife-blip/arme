@@ -1,0 +1,36 @@
+Function: AliothEngine.Extensions.VectorExtensions$$SmoothStep @ 016bc1bc
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016bc1bc  fmov s7,0x3f800000
+016bc1c0  fcmp s6,#0.0
+016bc1c4  fmov s16,wzr
+016bc1c8  fmin s6,s6,s7
+016bc1cc  fmov s17,0xc0000000
+016bc1d0  fcsel s6,s6,s16,pl
+016bc1d4  fmov s18,0x40400000
+016bc1d8  fmul s17,s6,s17
+016bc1dc  fmul s18,s6,s18
+016bc1e0  fmul s17,s6,s17
+016bc1e4  fmul s18,s6,s18
+016bc1e8  fmul s6,s6,s17
+016bc1ec  fadd s6,s18,s6
+016bc1f0  fsub s17,s7,s6
+016bc1f4  fmul s17,s17,s16
+016bc1f8  fadd s6,s6,s17
+016bc1fc  fmin s7,s6,s7
+016bc200  fcmp s6,#0.0
+016bc204  fsub s3,s3,s0
+016bc208  fsub s4,s4,s1
+016bc20c  fsub s5,s5,s2
+016bc210  fcsel s6,s7,s16,pl
+016bc214  fmul s3,s3,s6
+016bc218  fmul s4,s4,s6
+016bc21c  fmul s5,s5,s6
+016bc220  fadd s0,s0,s3
+016bc224  fadd s1,s1,s4
+016bc228  fadd s2,s2,s5
+016bc22c  ret

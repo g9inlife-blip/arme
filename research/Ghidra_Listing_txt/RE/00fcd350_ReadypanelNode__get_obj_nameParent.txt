@@ -1,0 +1,32 @@
+Function: ReadypanelNode$$get_obj_nameParent @ 00fcd350
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$PreloadAssetComplete @ 00e5ddf4
+  <- ReadyMono$$GetMyName @ 00e5d1f8
+  <- ReadyMono$$OnOpening @ 00e5dcac
+  <- ReadyMono$$GetEnemyNameStyle @ 00e5d548
+
+--- Listing ---
+00fcd350  stp x21,x20,[sp, #-0x20]!
+00fcd354  stp x19,x30,[sp, #0x10]
+00fcd358  adrp x20,0x3573000
+00fcd35c  adrp x21,0x3344000
+00fcd360  ldrb w8,[x20, #0xe4c]
+00fcd364  ldr x21,[x21, #0x800]
+00fcd368  mov x19,x0
+00fcd36c  tbnz w8,#0x0,0x00fcd384
+00fcd370  adrp x0,0x3344000
+00fcd374  ldr x0,[x0, #0x800]
+00fcd378  bl 0x00b0789c
+00fcd37c  mov w8,#0x1
+00fcd380  strb w8,[x20, #0xe4c]
+00fcd384  ldr x1,[x21]
+00fcd388  mov x0,x19
+00fcd38c  ldp x19,x30,[sp, #0x10]
+00fcd390  mov x2,xzr
+00fcd394  ldp x21,x20,[sp], #0x20
+00fcd398  b 0x00dc06f8

@@ -1,0 +1,49 @@
+Function: AliothEngine.GUIScreen$$Awake @ 01671504
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- GUIScreen_Test2$$Awake @ 00dbbbf4
+  <- AliothEngine.Samples.GUIScreen_GeneralAlert$$Awake @ 016a6d8c
+  <- AliothEngine.GUIScreen_Overlay$$Awake @ 0167c780
+  <- GUIScreenBaseMono$$Awake @ 00f21c4c
+  <- GUIScreenBaseMono$$<>xLuaBaseProxy_Awake @ 00f2356c
+  <- GUIScreen_Test$$Awake @ 00dbbb44
+
+--- Listing ---
+01671504  stp x21,x20,[sp, #-0x20]!
+01671508  stp x19,x30,[sp, #0x10]
+0167150c  adrp x20,0x3577000
+01671510  adrp x21,0x3364000
+01671514  ldrb w8,[x20, #0x985]
+01671518  ldr x21,[x21, #0xd28]
+0167151c  mov x19,x0
+01671520  tbnz w8,#0x0,0x01671538
+01671524  adrp x0,0x3364000
+01671528  ldr x0,[x0, #0xd28]
+0167152c  bl 0x00b0789c
+01671530  mov w8,#0x1
+01671534  strb w8,[x20, #0x985]
+01671538  ldr x8,[x21]
+0167153c  ldr x8,[x8, #0xb8]
+01671540  ldr x0,[x8, #0xa0]
+01671544  cbz x0,0x0167155c
+01671548  mov x1,x19
+0167154c  ldp x19,x30,[sp, #0x10]
+01671550  mov x2,xzr
+01671554  ldp x21,x20,[sp], #0x20
+01671558  b 0x01060dac
+0167155c  ldr x8,[x19, #0x58]
+01671560  cbz x8,0x01671580
+01671564  ldr x3,[x8, #0x18]
+01671568  ldr x0,[x8, #0x40]
+0167156c  ldr x2,[x8, #0x28]
+01671570  mov x1,x19
+01671574  ldp x19,x30,[sp, #0x10]
+01671578  ldp x21,x20,[sp], #0x20
+0167157c  br x3
+01671580  ldp x19,x30,[sp, #0x10]
+01671584  ldp x21,x20,[sp], #0x20
+01671588  ret

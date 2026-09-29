@@ -1,0 +1,57 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary<object,-object>$$get_Values @ 01dfa404
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+  -> AliothEngine.DataStructures.ReadOnlyDictionary.ValueCollection<object,-object>$$.ctor @ 01e7fa68
+
+--- Calls IN ---
+  <- FUN_0099fab0 @ 0099fab0
+  <- AliothEngine.DataStructures.ReadOnlyDictionary<object,-object>$$System.Collections.Generic.IDictionary<TKey,TValue>.get_Values @ 01dfa610
+
+--- Listing ---
+01dfa404  sub sp,sp,#0x30
+01dfa408  stp x21,x20,[sp, #0x10]
+01dfa40c  stp x19,x30,[sp, #0x20]
+01dfa410  ldr x20,[x0]
+01dfa414  cbz x20,0x01dfa4b4
+01dfa418  ldr x8,[x1, #0x20]
+01dfa41c  mov x19,x1
+01dfa420  ldrh w9,[x8, #0x132]
+01dfa424  tbnz w9,#0x0,0x01dfa43c
+01dfa428  mov x0,x8
+01dfa42c  bl 0x00b2ac40
+01dfa430  ldr x8,[x19, #0x20]
+01dfa434  ldrh w9,[x8, #0x132]
+01dfa438  b 0x01dfa440
+01dfa43c  mov x0,x8
+01dfa440  ldr x10,[x0, #0xc0]
+01dfa444  ldr x10,[x10, #0x30]
+01dfa448  ldr x21,[x10, #0x8]
+01dfa44c  tbnz w9,#0x0,0x01dfa45c
+01dfa450  mov x0,x8
+01dfa454  bl 0x00b2ac40
+01dfa458  mov x8,x0
+01dfa45c  ldr x8,[x8, #0xc0]
+01dfa460  mov x0,x20
+01dfa464  ldr x1,[x8, #0x30]
+01dfa468  blr x21
+01dfa46c  str xzr,[sp, #0x8]
+01dfa470  ldr x8,[x19, #0x20]
+01dfa474  mov x19,x0
+01dfa478  ldrb w9,[x8, #0x132]
+01dfa47c  tbnz w9,#0x0,0x01dfa48c
+01dfa480  mov x0,x8
+01dfa484  bl 0x00b2ac40
+01dfa488  mov x8,x0
+01dfa48c  ldr x8,[x8, #0xc0]
+01dfa490  add x0,sp,#0x8
+01dfa494  mov x1,x19
+01dfa498  ldr x2,[x8, #0x40]
+01dfa49c  bl 0x01e7fa68
+01dfa4a0  ldr x0,[sp, #0x8]
+01dfa4a4  ldp x19,x30,[sp, #0x20]
+01dfa4a8  ldp x21,x20,[sp, #0x10]
+01dfa4ac  add sp,sp,#0x30
+01dfa4b0  ret
+01dfa4b4  bl 0x00b079b0

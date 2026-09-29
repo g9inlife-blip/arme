@@ -1,0 +1,48 @@
+Function: AliothEngine.Observer.Observer.<>c__DisplayClass0_0$$<.ctor>b__0 @ 016a13dc
+
+--- Calls OUT ---
+  -> AliothEngine.Observer.Observable$$remove_Notify @ 016a1080
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action$$.ctor @ 020d5760
+
+--- Calls IN ---
+
+--- Listing ---
+016a13dc  str x22,[sp, #-0x30]!
+016a13e0  stp x21,x20,[sp, #0x10]
+016a13e4  stp x19,x30,[sp, #0x20]
+016a13e8  adrp x19,0x3577000
+016a13ec  adrp x22,0x3348000
+016a13f0  ldrb w8,[x19, #0xb66]
+016a13f4  ldr x22,[x22, #0xcf8]
+016a13f8  mov x20,x0
+016a13fc  tbnz w8,#0x0,0x016a1420
+016a1400  adrp x0,0x3348000
+016a1404  ldr x0,[x0, #0xcf8]
+016a1408  bl 0x00b0789c
+016a140c  adrp x0,0x3329000
+016a1410  ldr x0,[x0, #0x230]
+016a1414  bl 0x00b0789c
+016a1418  mov w8,#0x1
+016a141c  strb w8,[x19, #0xb66]
+016a1420  ldr x0,[x22]
+016a1424  ldp x19,x21,[x20, #0x10]
+016a1428  bl 0x00b079a0
+016a142c  cbz x0,0x016a1468
+016a1430  adrp x8,0x3329000
+016a1434  ldr x8,[x8, #0x230]
+016a1438  mov x1,x21
+016a143c  mov x3,xzr
+016a1440  mov x20,x0
+016a1444  ldr x2,[x8]
+016a1448  bl 0x020d5760
+016a144c  cbz x19,0x016a1468
+016a1450  mov x0,x19
+016a1454  mov x1,x20
+016a1458  ldp x19,x30,[sp, #0x20]
+016a145c  ldp x21,x20,[sp, #0x10]
+016a1460  ldr x22,[sp], #0x30
+016a1464  b 0x016a1080
+016a1468  bl 0x00b079b0

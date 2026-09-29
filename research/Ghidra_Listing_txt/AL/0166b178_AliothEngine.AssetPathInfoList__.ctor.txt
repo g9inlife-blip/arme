@@ -1,0 +1,36 @@
+Function: AliothEngine.AssetPathInfoList$$.ctor @ 0166b178
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0166b178  stp x21,x20,[sp, #-0x20]!
+0166b17c  stp x19,x30,[sp, #0x10]
+0166b180  adrp x20,0x3577000
+0166b184  adrp x21,0x3335000
+0166b188  ldrb w8,[x20, #0x926]
+0166b18c  ldr x21,[x21, #0xa60]
+0166b190  mov x19,x0
+0166b194  tbnz w8,#0x0,0x0166b1ac
+0166b198  adrp x0,0x3335000
+0166b19c  ldr x0,[x0, #0xa60]
+0166b1a0  bl 0x00b0789c
+0166b1a4  mov w8,#0x1
+0166b1a8  strb w8,[x20, #0x926]
+0166b1ac  ldr x0,[x21]
+0166b1b0  mov w1,wzr
+0166b1b4  bl 0x00b078f8
+0166b1b8  mov x1,x0
+0166b1bc  mov x0,x19
+0166b1c0  str x1,[x0, #0x10]!
+0166b1c4  bl 0x00b07850
+0166b1c8  mov x0,x19
+0166b1cc  ldp x19,x30,[sp, #0x10]
+0166b1d0  mov x1,xzr
+0166b1d4  ldp x21,x20,[sp], #0x20
+0166b1d8  b 0x02194104

@@ -1,0 +1,47 @@
+Function: AliothEngine.DataStructures.CircularBufferIndexer<object,-object>$$.ctor @ 01f49380
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Object$$.ctor @ 02194104
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01f49380  stp x21,x20,[sp, #-0x20]!
+01f49384  stp x19,x30,[sp, #0x10]
+01f49388  mov w20,w1
+01f4938c  mov x1,xzr
+01f49390  mov x21,x2
+01f49394  mov x19,x0
+01f49398  bl 0x02194104
+01f4939c  ldr x8,[x21, #0x20]
+01f493a0  ldr x8,[x8, #0xc0]
+01f493a4  ldr x0,[x8]
+01f493a8  ldrb w8,[x0, #0x132]
+01f493ac  tbnz w8,#0x0,0x01f493b4
+01f493b0  bl 0x00b2ac40
+01f493b4  mov w1,w20
+01f493b8  bl 0x00b078f8
+01f493bc  mov x1,x0
+01f493c0  mov x0,x19
+01f493c4  str x1,[x0, #0x10]!
+01f493c8  bl 0x00b07850
+01f493cc  ldr x8,[x21, #0x20]
+01f493d0  ldr x8,[x8, #0xc0]
+01f493d4  ldr x0,[x8, #0x8]
+01f493d8  ldrb w8,[x0, #0x132]
+01f493dc  tbnz w8,#0x0,0x01f493e4
+01f493e0  bl 0x00b2ac40
+01f493e4  mov w1,w20
+01f493e8  bl 0x00b078f8
+01f493ec  str x0,[x19, #0x18]!
+01f493f0  mov x1,x0
+01f493f4  mov x0,x19
+01f493f8  bl 0x00b07850
+01f493fc  str xzr,[x19, #0x8]
+01f49400  str wzr,[x19, #0x10]
+01f49404  ldp x19,x30,[sp, #0x10]
+01f49408  ldp x21,x20,[sp], #0x20
+01f4940c  ret

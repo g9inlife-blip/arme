@@ -1,0 +1,29 @@
+Function: ReviewpanelNode$$get_btn_cancel @ 00fce8d0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReviewPanelMono$$Awake @ 0100d554
+
+--- Listing ---
+00fce8d0  stp x21,x20,[sp, #-0x20]!
+00fce8d4  stp x19,x30,[sp, #0x10]
+00fce8d8  adrp x20,0x3573000
+00fce8dc  adrp x21,0x3312000
+00fce8e0  ldrb w8,[x20, #0xe94]
+00fce8e4  ldr x21,[x21, #0x200]
+00fce8e8  mov x19,x0
+00fce8ec  tbnz w8,#0x0,0x00fce904
+00fce8f0  adrp x0,0x3312000
+00fce8f4  ldr x0,[x0, #0x200]
+00fce8f8  bl 0x00b0789c
+00fce8fc  mov w8,#0x1
+00fce900  strb w8,[x20, #0xe94]
+00fce904  ldr x1,[x21]
+00fce908  mov x0,x19
+00fce90c  ldp x19,x30,[sp, #0x10]
+00fce910  mov x2,xzr
+00fce914  ldp x21,x20,[sp], #0x20
+00fce918  b 0x00dc06f8

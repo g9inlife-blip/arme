@@ -1,0 +1,57 @@
+Function: Alioth.S1.Net.RequestExtensions$$WaitClientProcessFinished @ 015b52dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_m_WaitClientProcessFinished @ 01172048
+
+--- Listing ---
+015b52dc  stp x21,x20,[sp, #-0x20]!
+015b52e0  stp x19,x30,[sp, #0x10]
+015b52e4  adrp x20,0x3577000
+015b52e8  adrp x21,0x3357000
+015b52ec  ldrb w8,[x20, #0xd1]
+015b52f0  ldr x21,[x21, #0x940]
+015b52f4  mov x19,x0
+015b52f8  tbnz w8,#0x0,0x015b531c
+015b52fc  adrp x0,0x3357000
+015b5300  ldr x0,[x0, #0x940]
+015b5304  bl 0x00b0789c
+015b5308  adrp x0,0x3343000
+015b530c  ldr x0,[x0, #0x58]
+015b5310  bl 0x00b0789c
+015b5314  mov w8,#0x1
+015b5318  strb w8,[x20, #0xd1]
+015b531c  ldr x8,[x21]
+015b5320  ldr x8,[x8, #0xb8]
+015b5324  ldr x0,[x8]
+015b5328  cbz x0,0x015b5340
+015b532c  mov x1,x19
+015b5330  ldp x19,x30,[sp, #0x10]
+015b5334  mov x2,xzr
+015b5338  ldp x21,x20,[sp], #0x20
+015b533c  b 0x01066218
+015b5340  adrp x8,0x3343000
+015b5344  ldr x8,[x8, #0x58]
+015b5348  ldr x0,[x8]
+015b534c  bl 0x00b079a0
+015b5350  cbz x0,0x015b5384
+015b5354  mov x1,xzr
+015b5358  mov x20,x0
+015b535c  bl 0x02194104
+015b5360  mov x0,x20
+015b5364  str wzr,[x20, #0x10]
+015b5368  str x19,[x0, #0x20]!
+015b536c  mov x1,x19
+015b5370  bl 0x00b07850
+015b5374  ldp x19,x30,[sp, #0x10]
+015b5378  mov x0,x20
+015b537c  ldp x21,x20,[sp], #0x20
+015b5380  ret
+015b5384  bl 0x00b079b0

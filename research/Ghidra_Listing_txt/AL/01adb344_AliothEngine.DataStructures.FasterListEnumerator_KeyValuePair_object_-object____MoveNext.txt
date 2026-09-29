@@ -1,0 +1,38 @@
+Function: AliothEngine.DataStructures.FasterListEnumerator<KeyValuePair<object,-object>>$$MoveNext @ 01adb344
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_00977ca8 @ 00977ca8
+  <- AliothEngine.DataStructures.FasterListEnumerator<KeyValuePair<object,-object>>$$System.Collections.IEnumerator.MoveNext @ 01adb3b4
+
+--- Listing ---
+01adb344  str x30,[sp, #-0x10]!
+01adb348  ldp w8,w9,[x0, #0x8]
+01adb34c  sxtw x8,w8
+01adb350  cmp w8,w9
+01adb354  b.ge 0x01adb390
+01adb358  ldr x9,[x0]
+01adb35c  add w10,w8,#0x1
+01adb360  str w10,[x0, #0x8]
+01adb364  cbz x9,0x01adb3a4
+01adb368  ldr w10,[x9, #0x18]
+01adb36c  cmp w8,w10
+01adb370  b.cs 0x01adb3a8
+01adb374  add x8,x9,x8, LSL #0x4
+01adb378  ldr q0,[x8, #0x20]
+01adb37c  mov x1,xzr
+01adb380  str q0,[x0, #0x10]!
+01adb384  bl 0x00b07850
+01adb388  mov w8,#0x1
+01adb38c  b 0x01adb398
+01adb390  mov w8,wzr
+01adb394  stp xzr,xzr,[x0, #0x10]
+01adb398  mov w0,w8
+01adb39c  ldr x30,[sp], #0x10
+01adb3a0  ret
+01adb3a4  bl 0x00b079b0
+01adb3a8  bl 0x00b079b8

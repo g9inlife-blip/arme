@@ -1,0 +1,33 @@
+Function: AliothEngine.LogManager$$get_AssetBundleLogger @ 0168a620
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+  <- AssetBundles.AssetBundleLoadAssetOperationFull$$Update @ 01641290
+  <- AssetBundles.AssetBundleManager$$get_logger @ 01642510
+
+--- Listing ---
+0168a620  str x20,[sp, #-0x20]!
+0168a624  stp x19,x30,[sp, #0x10]
+0168a628  adrp x19,0x3577000
+0168a62c  adrp x20,0x3377000
+0168a630  ldrb w8,[x19, #0xa94]
+0168a634  ldr x20,[x20, #0x898]
+0168a638  tbnz w8,#0x0,0x0168a650
+0168a63c  adrp x0,0x3377000
+0168a640  ldr x0,[x0, #0x898]
+0168a644  bl 0x00b0789c
+0168a648  mov w8,#0x1
+0168a64c  strb w8,[x19, #0xa94]
+0168a650  ldr x0,[x20]
+0168a654  bl 0x01e09a6c
+0168a658  cbz x0,0x0168a66c
+0168a65c  ldp x19,x30,[sp, #0x10]
+0168a660  mov w1,#0x1
+0168a664  ldr x20,[sp], #0x20
+0168a668  b 0x0168995c
+0168a66c  bl 0x00b079b0

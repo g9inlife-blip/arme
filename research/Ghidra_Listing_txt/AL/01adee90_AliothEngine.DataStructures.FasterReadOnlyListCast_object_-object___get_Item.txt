@@ -1,0 +1,68 @@
+Function: AliothEngine.DataStructures.FasterReadOnlyListCast<object,-object>$$get_Item @ 01adee90
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977e18 @ 00977e18
+
+--- Listing ---
+01adee90  str x22,[sp, #-0x30]!
+01adee94  stp x21,x20,[sp, #0x10]
+01adee98  stp x19,x30,[sp, #0x20]
+01adee9c  ldr x21,[x0]
+01adeea0  cbz x21,0x01adef6c
+01adeea4  ldr x8,[x2, #0x20]
+01adeea8  mov x19,x2
+01adeeac  mov w20,w1
+01adeeb0  ldrh w9,[x8, #0x132]
+01adeeb4  tbnz w9,#0x0,0x01adeecc
+01adeeb8  mov x0,x8
+01adeebc  bl 0x00b2ac40
+01adeec0  ldr x8,[x19, #0x20]
+01adeec4  ldrh w9,[x8, #0x132]
+01adeec8  b 0x01adeed0
+01adeecc  mov x0,x8
+01adeed0  ldr x10,[x0, #0xc0]
+01adeed4  ldr x10,[x10, #0x10]
+01adeed8  ldr x22,[x10, #0x8]
+01adeedc  tbnz w9,#0x0,0x01adeeec
+01adeee0  mov x0,x8
+01adeee4  bl 0x00b2ac40
+01adeee8  mov x8,x0
+01adeeec  ldr x8,[x8, #0xc0]
+01adeef0  mov x0,x21
+01adeef4  mov w1,w20
+01adeef8  ldr x2,[x8, #0x10]
+01adeefc  blr x22
+01adef00  ldr x8,[x19, #0x20]
+01adef04  mov x19,x0
+01adef08  ldrb w9,[x8, #0x132]
+01adef0c  tbnz w9,#0x0,0x01adef1c
+01adef10  mov x0,x8
+01adef14  bl 0x00b2ac40
+01adef18  mov x8,x0
+01adef1c  ldr x8,[x8, #0xc0]
+01adef20  ldr x20,[x8, #0x20]
+01adef24  ldrb w8,[x20, #0x132]
+01adef28  tbnz w8,#0x0,0x01adef38
+01adef2c  mov x0,x20
+01adef30  bl 0x00b2ac40
+01adef34  mov x20,x0
+01adef38  cbz x19,0x01adef58
+01adef3c  mov x0,x19
+01adef40  mov x1,x20
+01adef44  bl 0x00b07990
+01adef48  cbnz x0,0x01adef5c
+01adef4c  mov x0,x19
+01adef50  mov x1,x20
+01adef54  bl 0x00b07c6c
+01adef58  mov x0,xzr
+01adef5c  ldp x19,x30,[sp, #0x20]
+01adef60  ldp x21,x20,[sp, #0x10]
+01adef64  ldr x22,[sp], #0x30
+01adef68  ret
+01adef6c  bl 0x00b079b0

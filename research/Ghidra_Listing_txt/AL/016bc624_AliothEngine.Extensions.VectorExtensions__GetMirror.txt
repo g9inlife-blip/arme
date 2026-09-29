@@ -1,0 +1,100 @@
+Function: AliothEngine.Extensions.VectorExtensions$$GetMirror @ 016bc624
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016bc624  str d14,[sp, #-0x50]!
+016bc628  stp d13,d12,[sp, #0x8]
+016bc62c  stp d11,d10,[sp, #0x18]
+016bc630  stp d9,d8,[sp, #0x28]
+016bc634  str x20,[sp, #0x38]
+016bc638  stp x19,x30,[sp, #0x40]
+016bc63c  adrp x19,0x3570000
+016bc640  ldrb w8,[x19, #0xf13]
+016bc644  mov v9.16B,v5.16B
+016bc648  mov v10.16B,v4.16B
+016bc64c  mov v11.16B,v3.16B
+016bc650  mov v8.16B,v2.16B
+016bc654  mov v12.16B,v1.16B
+016bc658  mov v13.16B,v0.16B
+016bc65c  cbnz w8,0x016bc674
+016bc660  adrp x0,0x3368000
+016bc664  ldr x0,[x0, #0x9b8]
+016bc668  bl 0x00b0789c
+016bc66c  mov w8,#0x1
+016bc670  strb w8,[x19, #0xf13]
+016bc674  adrp x19,0x3368000
+016bc678  ldr x19,[x19, #0x9b8]
+016bc67c  adrp x9,0x26db000
+016bc680  ldr s14,[x9, #0x294]
+016bc684  adrp x20,0x3570000
+016bc688  ldr x8,[x19]
+016bc68c  ldrb w9,[x20, #0xffe]
+016bc690  ldr x8,[x8, #0xb8]
+016bc694  ldp s0,s1,[x8, #0x3c]
+016bc698  ldr s2,[x8, #0x44]
+016bc69c  fsub s0,s11,s0
+016bc6a0  fsub s1,s10,s1
+016bc6a4  fmul s0,s0,s0
+016bc6a8  fmul s1,s1,s1
+016bc6ac  fadd s0,s0,s1
+016bc6b0  fsub s1,s9,s2
+016bc6b4  fmul s1,s1,s1
+016bc6b8  fadd s0,s1,s0
+016bc6bc  fneg s1,s13
+016bc6c0  fcmp s0,s14
+016bc6c4  fcsel s13,s1,s13,mi
+016bc6c8  cbnz w9,0x016bc6e4
+016bc6cc  mov x0,x19
+016bc6d0  bl 0x00b0789c
+016bc6d4  ldr x8,[x19]
+016bc6d8  mov w9,#0x1
+016bc6dc  strb w9,[x20, #0xffe]
+016bc6e0  ldr x8,[x8, #0xb8]
+016bc6e4  ldp s0,s1,[x8, #0x18]
+016bc6e8  ldr s2,[x8, #0x20]
+016bc6ec  adrp x20,0x3570000
+016bc6f0  ldrb w9,[x20, #0xf0f]
+016bc6f4  fsub s0,s11,s0
+016bc6f8  fsub s1,s10,s1
+016bc6fc  fsub s2,s9,s2
+016bc700  fmul s0,s0,s0
+016bc704  fmul s1,s1,s1
+016bc708  fmul s2,s2,s2
+016bc70c  fadd s0,s0,s1
+016bc710  fadd s0,s2,s0
+016bc714  fneg s1,s12
+016bc718  fcmp s0,s14
+016bc71c  fcsel s12,s1,s12,mi
+016bc720  cbnz w9,0x016bc73c
+016bc724  mov x0,x19
+016bc728  bl 0x00b0789c
+016bc72c  ldr x8,[x19]
+016bc730  mov w9,#0x1
+016bc734  strb w9,[x20, #0xf0f]
+016bc738  ldr x8,[x8, #0xb8]
+016bc73c  ldp s0,s1,[x8, #0x48]
+016bc740  ldr s2,[x8, #0x50]
+016bc744  ldp x19,x30,[sp, #0x40]
+016bc748  ldr x20,[sp, #0x38]
+016bc74c  fsub s0,s11,s0
+016bc750  fsub s1,s10,s1
+016bc754  fsub s2,s9,s2
+016bc758  fmul s0,s0,s0
+016bc75c  fmul s1,s1,s1
+016bc760  fmul s2,s2,s2
+016bc764  fadd s0,s0,s1
+016bc768  fadd s0,s2,s0
+016bc76c  fneg s1,s8
+016bc770  fcmp s0,s14
+016bc774  fcsel s2,s1,s8,mi
+016bc778  mov v0.16B,v13.16B
+016bc77c  mov v1.16B,v12.16B
+016bc780  ldp d9,d8,[sp, #0x28]
+016bc784  ldp d11,d10,[sp, #0x18]
+016bc788  ldp d13,d12,[sp, #0x8]
+016bc78c  ldr d14,[sp], #0x50
+016bc790  ret

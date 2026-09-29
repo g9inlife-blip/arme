@@ -1,0 +1,26 @@
+Function: AliothEngine.Utils.Utility$$LinSin3 @ 0169dac8
+
+--- Calls OUT ---
+  -> cosf @ 008d5c50
+
+--- Calls IN ---
+
+--- Listing ---
+0169dac8  stp d9,d8,[sp, #-0x20]!
+0169dacc  str x30,[sp, #0x10]
+0169dad0  adrp x8,0x26db000
+0169dad4  mov v9.16B,v0.16B
+0169dad8  ldr s0,[x8, #0x530]
+0169dadc  mov v8.16B,v1.16B
+0169dae0  fsub s1,s5,s2
+0169dae4  fmul s1,s1,s8
+0169dae8  fadd s1,s1,s1
+0169daec  fmul s0,s1,s0
+0169daf0  bl 0x008d5c50
+0169daf4  fmul s1,s9,s8
+0169daf8  ldr x30,[sp, #0x10]
+0169dafc  fmul s1,s1,s8
+0169db00  fmul s1,s1,s8
+0169db04  fnmul s0,s1,s0
+0169db08  ldp d9,d8,[sp], #0x20
+0169db0c  ret

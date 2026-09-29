@@ -1,0 +1,23 @@
+Function: AliothEngine.FrameSynchr$$UpdateFrame @ 0164af78
+
+--- Calls OUT ---
+  -> AliothEngine.FrameSynchr$$UpdateMultiFrame @ 0164aad8
+  -> AliothEngine.FrameSynchr$$UpdatePing @ 0164afac
+  -> AliothEngine.FrameSynchr$$UpdateSingleFrame @ 0164ae28
+
+--- Calls IN ---
+
+--- Listing ---
+0164af78  str x30,[sp, #-0x10]!
+0164af7c  ldrb w9,[x0, #0x10]
+0164af80  ldrb w8,[x0, #0x11]
+0164af84  cbz w9,0x0164af98
+0164af88  cbz w8,0x0164afa4
+0164af8c  bl 0x0164aad8
+0164af90  ldr x30,[sp], #0x10
+0164af94  b 0x0164afac
+0164af98  cbz w8,0x0164afa4
+0164af9c  ldr x30,[sp], #0x10
+0164afa0  b 0x0164ae28
+0164afa4  ldr x30,[sp], #0x10
+0164afa8  ret

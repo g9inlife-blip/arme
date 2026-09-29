@@ -1,0 +1,64 @@
+Function: AliothEngine.DataStructures.FasterListThreadSafe<object>$$Contains @ 01adbc58
+
+--- Calls OUT ---
+  -> System.Threading.ReaderWriterLockSlim$$ExitReadLock @ 0223def4
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Threading.ReaderWriterLockSlim$$EnterReadLock @ 0223ccf4
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977db8 @ 00977db8
+
+--- Listing ---
+01adbc58  str x22,[sp, #-0x30]!
+01adbc5c  stp x21,x20,[sp, #0x10]
+01adbc60  stp x19,x30,[sp, #0x20]
+01adbc64  mov x19,x0
+01adbc68  ldr x0,[x0, #0x8]
+01adbc6c  cbz x0,0x01adbd04
+01adbc70  mov x20,x1
+01adbc74  mov x1,xzr
+01adbc78  mov x22,x2
+01adbc7c  bl 0x0223ccf4
+01adbc80  ldr x21,[x19]
+01adbc84  cbz x21,0x01adbd08
+01adbc88  ldr x0,[x22, #0x20]
+01adbc8c  ldrh w9,[x0, #0x132]
+01adbc90  tbnz w9,#0x0,0x01adbca8
+01adbc94  bl 0x00b2ac40
+    ; [PRE] try { // try from 01adbc94 to 01adbcd3 has its CatchHandler @ 01adbd18
+01adbc98  mov x8,x0
+01adbc9c  ldr x0,[x22, #0x20]
+01adbca0  ldrh w9,[x0, #0x132]
+01adbca4  b 0x01adbcac
+01adbca8  mov x8,x0
+01adbcac  ldr x8,[x8, #0xc0]
+01adbcb0  ldr x8,[x8, #0x38]
+01adbcb4  ldr x22,[x8, #0x8]
+01adbcb8  tbnz w9,#0x0,0x01adbcc0
+01adbcbc  bl 0x00b2ac40
+01adbcc0  ldr x8,[x0, #0xc0]
+01adbcc4  ldr x2,[x8, #0x38]
+01adbcc8  mov x0,x21
+01adbccc  mov x1,x20
+01adbcd0  blr x22
+    ; [POST] } // end try from 01adbc94 to 01adbcd3
+01adbcd4  mov w21,w0
+01adbcd8  mov x20,xzr
+01adbcdc  ldr x0,[x19, #0x8]
+01adbce0  cbz x0,0x01adbd04
+01adbce4  mov x1,xzr
+01adbce8  bl 0x0223def4
+01adbcec  cbnz x20,0x01adbd0c
+01adbcf0  and w0,w21,#0x1
+01adbcf4  ldp x19,x30,[sp, #0x20]
+01adbcf8  ldp x21,x20,[sp, #0x10]
+01adbcfc  ldr x22,[sp], #0x30
+01adbd00  ret
+01adbd04  bl 0x00b079b0
+01adbd08  bl 0x00b079b0
+    ; [PRE] try { // try from 01adbd08 to 01adbd0b has its CatchHandler @ 01adbd14
+    ; [POST] } // end try from 01adbd08 to 01adbd0b
+01adbd0c  mov x0,x20
+01adbd10  bl 0x00aaac8c

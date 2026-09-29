@@ -1,0 +1,35 @@
+Function: Response_Allin1$$OnBeforeSerialize @ 00dde290
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_Allin1Wrap$$_m_OnBeforeSerialize @ 0135fe30
+
+--- Listing ---
+00dde290  stp x21,x20,[sp, #-0x20]!
+00dde294  stp x19,x30,[sp, #0x10]
+00dde298  adrp x20,0x3572000
+00dde29c  adrp x21,0x3355000
+00dde2a0  ldrb w8,[x20, #0x2ea]
+00dde2a4  ldr x21,[x21, #0xe18]
+00dde2a8  mov x19,x0
+00dde2ac  tbnz w8,#0x0,0x00dde2c4
+00dde2b0  adrp x0,0x3355000
+00dde2b4  ldr x0,[x0, #0xe18]
+00dde2b8  bl 0x00b0789c
+00dde2bc  mov w8,#0x1
+00dde2c0  strb w8,[x20, #0x2ea]
+00dde2c4  ldr x8,[x21]
+00dde2c8  ldr x8,[x8, #0xb8]
+00dde2cc  ldr x0,[x8]
+00dde2d0  cbz x0,0x00dde2e8
+00dde2d4  mov x1,x19
+00dde2d8  ldp x19,x30,[sp, #0x10]
+00dde2dc  mov x2,xzr
+00dde2e0  ldp x21,x20,[sp], #0x20
+00dde2e4  b 0x01060dac
+00dde2e8  ldp x19,x30,[sp, #0x10]
+00dde2ec  ldp x21,x20,[sp], #0x20
+00dde2f0  ret

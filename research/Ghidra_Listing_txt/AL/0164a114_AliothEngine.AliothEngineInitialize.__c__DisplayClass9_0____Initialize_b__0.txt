@@ -1,0 +1,83 @@
+Function: AliothEngine.AliothEngineInitialize.<>c__DisplayClass9_0$$<_Initialize>b__0 @ 0164a114
+
+--- Calls OUT ---
+  -> System.Boolean$$ToString @ 020d8f78
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+
+--- Listing ---
+0164a114  stp x21,x20,[sp, #-0x20]!
+0164a118  stp x19,x30,[sp, #0x10]
+0164a11c  adrp x20,0x3577000
+0164a120  ldrb w8,[x20, #0x7a1]
+0164a124  mov x19,x0
+0164a128  tbnz w8,#0x0,0x0164a158
+0164a12c  adrp x0,0x332a000
+0164a130  ldr x0,[x0, #0xb98]
+0164a134  bl 0x00b0789c
+0164a138  adrp x0,0x336b000
+0164a13c  ldr x0,[x0, #0x7d0]
+0164a140  bl 0x00b0789c
+0164a144  adrp x0,0x3339000
+0164a148  ldr x0,[x0, #0xd38]
+0164a14c  bl 0x00b0789c
+0164a150  mov w8,#0x1
+0164a154  strb w8,[x20, #0x7a1]
+0164a158  ldr x8,[x19, #0x10]
+0164a15c  cbz x8,0x0164a224
+0164a160  ldr x0,[x8, #0x20]
+0164a164  mov x1,xzr
+0164a168  bl 0x01fdf3a0
+0164a16c  ldr x8,[x19, #0x10]
+0164a170  tbz w0,#0x0,0x0164a184
+0164a174  cbz x8,0x0164a224
+0164a178  mov w9,#0x1
+0164a17c  strb w9,[x8, #0x1a]
+0164a180  b 0x0164a188
+0164a184  cbz x8,0x0164a224
+0164a188  adrp x20,0x3339000
+0164a18c  adrp x21,0x336b000
+0164a190  ldr x20,[x20, #0xd38]
+0164a194  ldr x21,[x21, #0x7d0]
+0164a198  add x0,x8,#0x1a
+0164a19c  mov x1,xzr
+0164a1a0  bl 0x020d8f78
+0164a1a4  ldr x8,[x20]
+0164a1a8  mov x1,x0
+0164a1ac  mov x2,xzr
+0164a1b0  mov x0,x8
+0164a1b4  bl 0x01fd2850
+0164a1b8  ldr x8,[x21]
+0164a1bc  mov x20,x0
+0164a1c0  ldr w9,[x8, #0xe0]
+0164a1c4  cbnz w9,0x0164a1d0
+0164a1c8  mov x0,x8
+0164a1cc  bl 0x00b0798c
+0164a1d0  mov x0,x20
+0164a1d4  mov x1,xzr
+0164a1d8  bl 0x024c0104
+0164a1dc  ldr x8,[x19, #0x18]
+0164a1e0  cbz x8,0x0164a200
+0164a1e4  ldr x9,[x19, #0x10]
+0164a1e8  cbz x9,0x0164a224
+0164a1ec  ldrb w1,[x9, #0x1a]
+0164a1f0  ldr x9,[x8, #0x18]
+0164a1f4  ldr x0,[x8, #0x40]
+0164a1f8  ldr x2,[x8, #0x28]
+0164a1fc  blr x9
+0164a200  adrp x8,0x332a000
+0164a204  ldr x8,[x8, #0xb98]
+0164a208  mov w9,#0x1
+0164a20c  ldr x8,[x8]
+0164a210  ldr x8,[x8, #0xb8]
+0164a214  strb w9,[x8]
+0164a218  ldp x19,x30,[sp, #0x10]
+0164a21c  ldp x21,x20,[sp], #0x20
+0164a220  ret
+0164a224  bl 0x00b079b0

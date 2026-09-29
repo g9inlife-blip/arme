@@ -1,0 +1,32 @@
+Function: AliothEngine.BuildVersionBindings$$get_AndroidBundleVersion @ 016551cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.BuildVersionBindings$$GetVersionInfo @ 01655228
+
+--- Calls IN ---
+
+--- Listing ---
+016551cc  str x20,[sp, #-0x20]!
+016551d0  stp x19,x30,[sp, #0x10]
+016551d4  adrp x20,0x3577000
+016551d8  adrp x19,0x333b000
+016551dc  ldrb w8,[x20, #0x800]
+016551e0  ldr x19,[x19, #0x110]
+016551e4  tbnz w8,#0x0,0x016551fc
+016551e8  adrp x0,0x333b000
+016551ec  ldr x0,[x0, #0x110]
+016551f0  bl 0x00b0789c
+016551f4  mov w8,#0x1
+016551f8  strb w8,[x20, #0x800]
+016551fc  ldr x8,[x19]
+01655200  ldr x8,[x8, #0xb8]
+01655204  ldr x0,[x8]
+01655208  cbnz x0,0x0165521c
+0165520c  bl 0x01655228
+01655210  ldr x8,[x19]
+01655214  ldr x8,[x8, #0xb8]
+01655218  ldr x0,[x8]
+0165521c  ldp x19,x30,[sp, #0x10]
+01655220  ldr x20,[sp], #0x20
+01655224  ret

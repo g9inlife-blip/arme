@@ -1,0 +1,26 @@
+Function: AliothEngine.ExtRandom<int>$$Choice @ 01ad905c
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01ad905c  stp x19,x30,[sp, #-0x10]!
+01ad9060  cbz x0,0x01ad9094
+01ad9064  ldr w1,[x0, #0x18]
+01ad9068  mov x19,x0
+01ad906c  mov w0,wzr
+01ad9070  mov x2,xzr
+01ad9074  bl 0x024d63b0
+01ad9078  ldr w8,[x19, #0x18]
+01ad907c  cmp w0,w8
+01ad9080  b.cs 0x01ad9098
+01ad9084  add x8,x19,w0, SXTW  #0x2
+01ad9088  ldr w0,[x8, #0x20]
+01ad908c  ldp x19,x30,[sp], #0x10
+01ad9090  ret
+01ad9094  bl 0x00b079b0
+01ad9098  bl 0x00b079b8

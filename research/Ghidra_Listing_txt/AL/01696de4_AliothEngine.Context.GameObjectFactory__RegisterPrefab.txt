@@ -1,0 +1,84 @@
+Function: AliothEngine.Context.GameObjectFactory$$RegisterPrefab @ 01696de4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> System.Collections.Generic.Dictionary<object,-object>$$Add @ 0196e4d8
+
+--- Calls IN ---
+
+--- Listing ---
+01696de4  str x24,[sp, #-0x40]!
+01696de8  stp x23,x22,[sp, #0x10]
+01696dec  stp x21,x20,[sp, #0x20]
+01696df0  stp x19,x30,[sp, #0x30]
+01696df4  adrp x22,0x3577000
+01696df8  adrp x24,0x3315000
+01696dfc  ldrb w8,[x22, #0xb09]
+01696e00  ldr x24,[x24, #0xbd8]
+01696e04  mov x21,x3
+01696e08  mov x19,x2
+01696e0c  mov x23,x1
+01696e10  mov x20,x0
+01696e14  tbnz w8,#0x0,0x01696e38
+01696e18  adrp x0,0x3328000
+01696e1c  ldr x0,[x0, #0xbc0]
+01696e20  bl 0x00b0789c
+01696e24  adrp x0,0x3315000
+01696e28  ldr x0,[x0, #0xbd8]
+01696e2c  bl 0x00b0789c
+01696e30  mov w8,#0x1
+01696e34  strb w8,[x22, #0xb09]
+01696e38  ldr x0,[x24]
+01696e3c  mov w1,#0x2
+01696e40  bl 0x00b078f8
+01696e44  cbz x0,0x01696ee4
+01696e48  mov x22,x0
+01696e4c  cbz x23,0x01696e64
+01696e50  ldr x8,[x22]
+01696e54  mov x0,x23
+01696e58  ldr x1,[x8, #0x40]
+01696e5c  bl 0x00b07990
+01696e60  cbz x0,0x01696ee8
+01696e64  ldr w8,[x22, #0x18]
+01696e68  cbz w8,0x01696ee0
+01696e6c  mov x0,x22
+01696e70  str x23,[x0, #0x20]!
+01696e74  mov x1,x23
+01696e78  bl 0x00b07850
+01696e7c  cbz x21,0x01696e94
+01696e80  ldr x8,[x22]
+01696e84  mov x0,x21
+01696e88  ldr x1,[x8, #0x40]
+01696e8c  bl 0x00b07990
+01696e90  cbz x0,0x01696ee8
+01696e94  ldr w8,[x22, #0x18]
+01696e98  cmp w8,#0x1
+01696e9c  b.ls 0x01696ee0
+01696ea0  mov x0,x22
+01696ea4  str x21,[x0, #0x28]!
+01696ea8  mov x1,x21
+01696eac  bl 0x00b07850
+01696eb0  ldr x0,[x20, #0x10]
+01696eb4  cbz x0,0x01696ee4
+01696eb8  adrp x8,0x3328000
+01696ebc  ldr x8,[x8, #0xbc0]
+01696ec0  mov x1,x19
+01696ec4  mov x2,x22
+01696ec8  ldp x19,x30,[sp, #0x30]
+01696ecc  ldr x3,[x8]
+01696ed0  ldp x21,x20,[sp, #0x20]
+01696ed4  ldp x23,x22,[sp, #0x10]
+01696ed8  ldr x24,[sp], #0x40
+01696edc  b 0x0196e4d8
+01696ee0  bl 0x00b079b8
+01696ee4  bl 0x00b079b0
+01696ee8  bl 0x00b079d4
+01696eec  mov x1,xzr
+01696ef0  bl 0x00b07978

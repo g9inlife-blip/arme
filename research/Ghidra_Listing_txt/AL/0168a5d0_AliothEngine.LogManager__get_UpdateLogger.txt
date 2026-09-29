@@ -1,0 +1,31 @@
+Function: AliothEngine.LogManager$$get_UpdateLogger @ 0168a5d0
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+
+--- Listing ---
+0168a5d0  str x20,[sp, #-0x20]!
+0168a5d4  stp x19,x30,[sp, #0x10]
+0168a5d8  adrp x19,0x3577000
+0168a5dc  adrp x20,0x3377000
+0168a5e0  ldrb w8,[x19, #0xa93]
+0168a5e4  ldr x20,[x20, #0x898]
+0168a5e8  tbnz w8,#0x0,0x0168a600
+0168a5ec  adrp x0,0x3377000
+0168a5f0  ldr x0,[x0, #0x898]
+0168a5f4  bl 0x00b0789c
+0168a5f8  mov w8,#0x1
+0168a5fc  strb w8,[x19, #0xa93]
+0168a600  ldr x0,[x20]
+0168a604  bl 0x01e09a6c
+0168a608  cbz x0,0x0168a61c
+0168a60c  ldp x19,x30,[sp, #0x10]
+0168a610  mov w1,#0x7
+0168a614  ldr x20,[sp], #0x20
+0168a618  b 0x0168995c
+0168a61c  bl 0x00b079b0

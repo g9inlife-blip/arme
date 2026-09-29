@@ -1,0 +1,43 @@
+Function: AliothEngine.AssetLocation$$get_version @ 0166db64
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetVersionManager$$GetCachedVersion @ 0166f1c4
+
+--- Calls IN ---
+
+--- Listing ---
+0166db64  str x20,[sp, #-0x20]!
+0166db68  stp x19,x30,[sp, #0x10]
+0166db6c  adrp x20,0x3577000
+0166db70  ldrb w8,[x20, #0x94e]
+0166db74  mov x19,x0
+0166db78  tbnz w8,#0x0,0x0166db90
+0166db7c  adrp x0,0x3364000
+0166db80  ldr x0,[x0, #0x2e0]
+0166db84  bl 0x00b0789c
+0166db88  mov w8,#0x1
+0166db8c  strb w8,[x20, #0x94e]
+0166db90  mov x20,x19
+0166db94  ldr x0,[x20, #0x60]!
+0166db98  cbnz x0,0x0166dbd0
+0166db9c  adrp x8,0x3364000
+0166dba0  ldr x8,[x8, #0x2e0]
+0166dba4  ldr x0,[x8]
+0166dba8  bl 0x01e09a6c
+0166dbac  cbz x0,0x0166dbdc
+0166dbb0  mov x1,x19
+0166dbb4  mov x2,xzr
+0166dbb8  bl 0x0166f1c4
+0166dbbc  mov x1,x0
+0166dbc0  str x0,[x19, #0x60]
+0166dbc4  mov x0,x20
+0166dbc8  bl 0x00b07850
+0166dbcc  ldr x0,[x19, #0x60]
+0166dbd0  ldp x19,x30,[sp, #0x10]
+0166dbd4  ldr x20,[sp], #0x20
+0166dbd8  ret
+0166dbdc  bl 0x00b079b0

@@ -1,0 +1,51 @@
+Function: AliothEngine.Utils.Utility$$Destroy @ 0169d7c8
+
+--- Calls OUT ---
+  -> UnityEngine.Object$$DestroyImmediate @ 024dff4c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Application$$get_isPlaying @ 024f2968
+  -> UnityEngine.Object$$Destroy @ 024dfed4
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$Screenshot @ 0169d6a8
+
+--- Listing ---
+0169d7c8  str x22,[sp, #-0x30]!
+0169d7cc  stp x21,x20,[sp, #0x10]
+0169d7d0  stp x19,x30,[sp, #0x20]
+0169d7d4  adrp x22,0x3577000
+0169d7d8  adrp x21,0x3321000
+0169d7dc  ldrb w8,[x22, #0xb52]
+0169d7e0  ldr x21,[x21, #0xca8]
+0169d7e4  mov w20,w1
+0169d7e8  mov x19,x0
+0169d7ec  tbnz w8,#0x0,0x0169d804
+0169d7f0  adrp x0,0x3321000
+0169d7f4  ldr x0,[x0, #0xca8]
+0169d7f8  bl 0x00b0789c
+0169d7fc  mov w8,#0x1
+0169d800  strb w8,[x22, #0xb52]
+0169d804  mov x0,xzr
+0169d808  bl 0x024f2968
+0169d80c  ldr x8,[x21]
+0169d810  mov w21,w0
+0169d814  ldr w9,[x8, #0xe0]
+0169d818  cbz w9,0x0169d838
+0169d81c  tbz w21,#0x0,0x0169d844
+0169d820  mov x0,x19
+0169d824  ldp x19,x30,[sp, #0x20]
+0169d828  ldp x21,x20,[sp, #0x10]
+0169d82c  mov x1,xzr
+0169d830  ldr x22,[sp], #0x30
+0169d834  b 0x024dfed4
+0169d838  mov x0,x8
+0169d83c  bl 0x00b0798c
+0169d840  tbnz w21,#0x0,0x0169d820
+0169d844  and w1,w20,#0x1
+0169d848  mov x0,x19
+0169d84c  ldp x19,x30,[sp, #0x20]
+0169d850  ldp x21,x20,[sp, #0x10]
+0169d854  mov x2,xzr
+0169d858  ldr x22,[sp], #0x30
+0169d85c  b 0x024dff4c

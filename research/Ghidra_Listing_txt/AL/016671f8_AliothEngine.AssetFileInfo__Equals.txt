@@ -1,0 +1,22 @@
+Function: AliothEngine.AssetFileInfo$$Equals @ 016671f8
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Equals @ 01fde08c
+
+--- Calls IN ---
+  <- AliothEngine.AssetFileInfo$$Equals @ 01667228
+
+--- Listing ---
+016671f8  str x30,[sp, #-0x10]!
+016671fc  cbz x1,0x01667218
+01667200  ldr x0,[x0, #0x30]
+01667204  cbz x0,0x01667224
+01667208  ldr x1,[x1, #0x30]
+0166720c  mov x2,xzr
+01667210  ldr x30,[sp], #0x10
+01667214  b 0x01fde08c
+01667218  mov w0,wzr
+0166721c  ldr x30,[sp], #0x10
+01667220  ret
+01667224  bl 0x00b079b0

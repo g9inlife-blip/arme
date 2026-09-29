@@ -1,0 +1,56 @@
+Function: Ali$$get_m_battleStatistics @ 00e017fc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp378 @ 01090458
+
+--- Calls IN ---
+  <- BattleManager$$ClearPropTime @ 0117fa60
+  <- BattleManager$$InitSencePrefab @ 0117adf0
+  <- BattleManager$$HitFly @ 01188a70
+  <- FUN_0131200c @ 0131200c
+  <- PartNews$$AttackPart @ 013212dc
+  <- BaseSkillEff$$KillAbout @ 015eba24
+  <- BattleChallengePanelMono$$Init @ 00e67204
+  <- BaseSkillEff$$CheckUseNum @ 015e755c
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_battleStatistics @ 0119fa04
+  <- GuideCheck$$CheckTrigger @ 00ffce20
+  <- BattleManager$$ClearTerrainTime @ 01180100
+  <- TerrainNews$$RecordStatistics @ 016ccad4
+  <- BattleManager.<BattleEnd2>d__203$$MoveNext @ 01311274
+  <- RoleNews$$HPChange @ 00fe237c
+  <- BattleManager$$AddNewRole @ 0117cf64
+  <- BaseBuff$$Execute @ 015df498
+
+--- Listing ---
+00e017fc  stp x21,x20,[sp, #-0x20]!
+00e01800  stp x19,x30,[sp, #0x10]
+00e01804  adrp x21,0x3572000
+00e01808  adrp x20,0x335f000
+00e0180c  ldrb w8,[x21, #0x53b]
+00e01810  ldr x20,[x20, #0x20]
+00e01814  mov x19,x0
+00e01818  tbnz w8,#0x0,0x00e01830
+00e0181c  adrp x0,0x335f000
+00e01820  ldr x0,[x0, #0x20]
+00e01824  bl 0x00b0789c
+00e01828  mov w8,#0x1
+00e0182c  strb w8,[x21, #0x53b]
+00e01830  ldr x0,[x20]
+00e01834  ldr w8,[x0, #0xe0]
+00e01838  cbnz w8,0x00e01844
+00e0183c  bl 0x00b0798c
+00e01840  ldr x0,[x20]
+00e01844  ldr x8,[x0, #0xb8]
+00e01848  ldr x0,[x8, #0x170]
+00e0184c  cbz x0,0x00e01864
+00e01850  mov x1,x19
+00e01854  ldp x19,x30,[sp, #0x10]
+00e01858  mov x2,xzr
+00e0185c  ldp x21,x20,[sp], #0x20
+00e01860  b 0x01090458
+00e01864  ldr x0,[x19, #0x98]
+00e01868  ldp x19,x30,[sp, #0x10]
+00e0186c  ldp x21,x20,[sp], #0x20
+00e01870  ret

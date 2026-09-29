@@ -1,0 +1,47 @@
+Function: CrusadeRecord$$.ctor @ 00def3d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> UnityEngine.ScriptableObject$$.ctor @ 024e277c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00def3d8  stp x21,x20,[sp, #-0x20]!
+00def3dc  stp x19,x30,[sp, #0x10]
+00def3e0  adrp x20,0x3572000
+00def3e4  adrp x21,0x337c000
+00def3e8  ldrb w8,[x20, #0x434]
+00def3ec  ldr x21,[x21, #0x1f0]
+00def3f0  mov x19,x0
+00def3f4  tbnz w8,#0x0,0x00def418
+00def3f8  adrp x0,0x330e000
+00def3fc  ldr x0,[x0, #0x710]
+00def400  bl 0x00b0789c
+00def404  adrp x0,0x337c000
+00def408  ldr x0,[x0, #0x1f0]
+00def40c  bl 0x00b0789c
+00def410  mov w8,#0x1
+00def414  strb w8,[x20, #0x434]
+00def418  ldr x0,[x21]
+00def41c  bl 0x00b079a0
+00def420  cbz x0,0x00def45c
+00def424  adrp x8,0x330e000
+00def428  ldr x8,[x8, #0x710]
+00def42c  mov x20,x0
+00def430  ldr x1,[x8]
+00def434  bl 0x01bffe10
+00def438  mov x0,x19
+00def43c  str x20,[x0, #0x18]!
+00def440  mov x1,x20
+00def444  bl 0x00b07850
+00def448  mov x0,x19
+00def44c  ldp x19,x30,[sp, #0x10]
+00def450  mov x1,xzr
+00def454  ldp x21,x20,[sp], #0x20
+00def458  b 0x024e277c
+00def45c  bl 0x00b079b0

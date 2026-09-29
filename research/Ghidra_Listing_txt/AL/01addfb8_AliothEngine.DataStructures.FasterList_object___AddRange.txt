@@ -1,0 +1,59 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$AddRange @ 01addfb8
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01addfb8  str x22,[sp, #-0x30]!
+01addfbc  stp x21,x20,[sp, #0x10]
+01addfc0  stp x19,x30,[sp, #0x20]
+01addfc4  cbz x1,0x01ade078
+01addfc8  ldr x8,[x3, #0x20]
+01addfcc  mov x22,x1
+01addfd0  mov x21,x3
+01addfd4  mov w19,w2
+01addfd8  ldr x8,[x8, #0xc0]
+01addfdc  mov x20,x0
+01addfe0  ldr x1,[x8, #0x58]
+01addfe4  ldrb w8,[x1, #0x132]
+01addfe8  tbnz w8,#0x0,0x01addff8
+01addfec  mov x0,x1
+01addff0  bl 0x00b2ac40
+01addff4  mov x1,x0
+01addff8  ldr x8,[x22]
+01addffc  ldrh w9,[x8, #0x12a]
+01ade000  cbz x9,0x01ade024
+01ade004  ldr x10,[x8, #0xb0]
+01ade008  add x10,x10,#0x8
+01ade00c  ldur x11,[x10, #-0x8]
+01ade010  cmp x11,x1
+01ade014  b.eq 0x01ade034
+01ade018  subs x9,x9,#0x1
+01ade01c  add x10,x10,#0x10
+01ade020  b.ne 0x01ade00c
+01ade024  mov x0,x22
+01ade028  mov w2,wzr
+01ade02c  bl 0x00b2ae24
+01ade030  b 0x01ade040
+01ade034  ldrsw x9,[x10]
+01ade038  add x8,x8,x9, LSL #0x4
+01ade03c  add x0,x8,#0x138
+01ade040  ldp x8,x1,[x0]
+01ade044  mov x0,x22
+01ade048  blr x8
+01ade04c  ldr x8,[x21, #0x20]
+01ade050  mov x1,x0
+01ade054  mov x0,x20
+01ade058  mov w2,w19
+01ade05c  ldr x8,[x8, #0xc0]
+01ade060  ldp x19,x30,[sp, #0x20]
+01ade064  ldp x21,x20,[sp, #0x10]
+01ade068  ldr x3,[x8, #0x68]
+01ade06c  ldr x4,[x3, #0x8]
+01ade070  ldr x22,[sp], #0x30
+01ade074  br x4
+01ade078  bl 0x00b079b0

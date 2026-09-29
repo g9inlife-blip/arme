@@ -1,0 +1,65 @@
+Function: AliothEngine.SingletonScriptableObject<object>$$get_Instance @ 01e09560
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AppConst$$get_GooglePlay_Base64 @ 016da964
+  <- AppConst$$get_GoogleWebClient @ 016dac28
+  <- LoginManager$$get_isOfficialLoginUI @ 00dd4a34
+  <- Ali$$GetDefaultLanguage @ 00e01908
+  <- LoginGateMono$$Start @ 00f90038
+  <- Ali$$TargetRetailConfirm @ 00e003f0
+  <- ThirtyLoginPanelMono$$get_retail @ 00f965fc
+  <- GameUpdatePanelMono.<Start>d__18$$MoveNext @ 0103fb00
+  <- PolicyAgreePanelMono$$AgreeAndStart @ 00f956c4
+  <- BattleHitNum$$FadeIn2 @ 00e7a878
+  <- SoundManager$$m_audioSource @ 00e300b0
+  <- SysSettingPanelMono$$RefreshUI @ 00f73d14
+  <- LoginGateMono$$GameStart @ 00f929f4
+  <- LoginGateMono$$get_isShowChinaTips @ 00f8f7dc
+  <- Ali$$BuildRetailConfirm @ 00e00338
+  <- SDKHandler_YPCShare$$get_Retail @ 00dea2a4
+  <- LoginGateMono$$Awake @ 00f8fe2c
+  <- SDKHandler_Steam$$get_Retail @ 00de8b4c
+  <- SDKManager$$get_Internal_Retail @ 00deb874
+  <- AppConst$$get_Mark @ 016dacf8
+  <- SDKHandler_None$$get_isShowAgree @ 00de3fb8
+  <- Ali$$ShowCharge @ 00e0d574
+  <- Ali$$GetRMBLocalizedPrice @ 00e0c7f0
+  <- SDKHandler_None$$get_Retail @ 00de3e5c
+  <- RoleMono$$ColorDarker @ 014abb24
+  <- BattleHitNum$$FadeIn @ 00e79ec8
+  <- ServerConst$$GetURL @ 016dbad8
+  <- VideoPlayerPanelMono$$ReadyPlay @ 01040aac
+  <- AppConst$$get_IOS_APPID @ 016dab1c
+  <- LoginManager$$get_isThirtyLogin @ 00dd4ad8
+  <- AppConst$$get_STEAM_APPID @ 016daa70
+
+--- Listing ---
+01e09560  sub sp,sp,#0x20
+01e09564  stp x19,x30,[sp, #0x10]
+01e09568  ldr x8,[x0, #0x20]
+01e0956c  ldrh w9,[x8, #0x132]
+01e09570  tbnz w9,#0x0,0x01e0958c
+01e09574  mov x19,x0
+01e09578  mov x0,x8
+01e0957c  bl 0x00b2ac40
+01e09580  ldr x8,[x19, #0x20]
+01e09584  ldrh w9,[x8, #0x132]
+01e09588  b 0x01e09590
+01e0958c  mov x0,x8
+01e09590  ldr x10,[x0, #0xc0]
+01e09594  ldr x10,[x10, #0x18]
+01e09598  ldr x1,[x10, #0x8]
+01e0959c  tbnz w9,#0x0,0x01e095b4
+01e095a0  mov x0,x8
+01e095a4  str x1,[sp, #0x8]
+01e095a8  bl 0x00b2ac40
+01e095ac  ldr x1,[sp, #0x8]
+01e095b0  mov x8,x0
+01e095b4  ldr x8,[x8, #0xc0]
+01e095b8  ldp x19,x30,[sp, #0x10]
+01e095bc  ldr x0,[x8, #0x18]
+01e095c0  add sp,sp,#0x20
+01e095c4  br x1

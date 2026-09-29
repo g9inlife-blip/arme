@@ -1,0 +1,63 @@
+Function: AliothEngine.Net.HttpRequestManager.<AutoDispose>d__9$$MoveNext @ 01696180
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Networking.UnityWebRequest$$Dispose @ 026d5b08
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01696180  str x20,[sp, #-0x20]!
+01696184  stp x19,x30,[sp, #0x10]
+01696188  adrp x20,0x3577000
+0169618c  ldrb w8,[x20, #0xb00]
+01696190  mov x19,x0
+01696194  tbnz w8,#0x0,0x016961ac
+01696198  adrp x0,0x332a000
+0169619c  ldr x0,[x0, #0xe60]
+016961a0  bl 0x00b0789c
+016961a4  mov w8,#0x1
+016961a8  strb w8,[x20, #0xb00]
+016961ac  ldr w8,[x19, #0x10]
+016961b0  cmp w8,#0x1
+016961b4  b.eq 0x01696200
+016961b8  cbnz w8,0x01696220
+016961bc  adrp x20,0x332a000
+016961c0  ldr x20,[x20, #0xe60]
+016961c4  mov w8,#0xffffffff
+016961c8  str w8,[x19, #0x10]
+016961cc  ldr x0,[x20]
+016961d0  ldr w8,[x0, #0xe0]
+016961d4  cbnz w8,0x016961e0
+016961d8  bl 0x00b0798c
+016961dc  ldr x0,[x20]
+016961e0  ldr x8,[x0, #0xb8]
+016961e4  ldr x1,[x8]
+016961e8  str x1,[x19, #0x18]!
+016961ec  mov x0,x19
+016961f0  bl 0x00b07850
+016961f4  mov w0,#0x1
+016961f8  stur w0,[x19, #-0x8]
+016961fc  b 0x01696224
+01696200  ldr x20,[x19, #0x20]
+01696204  mov w8,#0xffffffff
+01696208  str w8,[x19, #0x10]
+0169620c  cbz x20,0x01696248
+01696210  ldr x0,[x20, #0x38]
+01696214  cbz x0,0x01696224
+01696218  ldrb w8,[x20, #0x6c]
+0169621c  cbz w8,0x01696230
+01696220  mov w0,wzr
+01696224  ldp x19,x30,[sp, #0x10]
+01696228  ldr x20,[sp], #0x20
+0169622c  ret
+01696230  mov x1,xzr
+01696234  bl 0x026d5b08
+01696238  mov w0,wzr
+0169623c  mov w8,#0x1
+01696240  strb w8,[x20, #0x6c]
+01696244  b 0x01696224
+01696248  bl 0x00b079b0

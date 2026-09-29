@@ -1,0 +1,28 @@
+Function: AliothEngine.AssetVersionManager$$GetFileCacheURL @ 0166fb78
+
+--- Calls OUT ---
+  -> AliothEngine.AssetLocation$$get_partialPath @ 0165e000
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetVersionManager$$get_AssetHostDomain @ 0166f9f0
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader$$GetURL @ 0165dee0
+
+--- Listing ---
+0166fb78  str x20,[sp, #-0x20]!
+0166fb7c  stp x19,x30,[sp, #0x10]
+0166fb80  mov x20,x0
+0166fb84  bl 0x0166f9f0
+0166fb88  cbz x20,0x0166fbb4
+0166fb8c  mov x19,x0
+0166fb90  mov x0,x20
+0166fb94  mov x1,xzr
+0166fb98  bl 0x0165e000
+0166fb9c  mov x1,x0
+0166fba0  mov x0,x19
+0166fba4  ldp x19,x30,[sp, #0x10]
+0166fba8  mov x2,xzr
+0166fbac  ldr x20,[sp], #0x20
+0166fbb0  b 0x01fd2850
+0166fbb4  bl 0x00b079b0

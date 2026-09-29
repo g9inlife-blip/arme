@@ -1,0 +1,101 @@
+Function: Alioth.S1.Core.Array<object>$$Append @ 01d93684
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$InvokeSessionEnd @ 010cf0d4
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$Send @ 015aec24
+  <- Alioth.S1.Core.KCP$$Recv @ 015b1860
+  <- Alioth.S1.Core.KCP$$ParseData @ 015b8d20
+  <- Alioth.S1.Core.KCP$$Flush @ 015b8f84
+
+--- Listing ---
+01d93684  str x22,[sp, #-0x30]!
+01d93688  stp x21,x20,[sp, #0x10]
+01d9368c  stp x19,x30,[sp, #0x20]
+01d93690  ldr x8,[x2, #0x20]
+01d93694  mov x19,x2
+01d93698  mov x21,x1
+01d9369c  mov x20,x0
+01d936a0  ldr x8,[x8, #0xc0]
+01d936a4  ldr x8,[x8]
+01d936a8  ldrb w9,[x8, #0x132]
+01d936ac  tbnz w9,#0x0,0x01d936bc
+01d936b0  mov x0,x8
+01d936b4  bl 0x00b2ac40
+01d936b8  mov x8,x0
+01d936bc  ldr x8,[x8, #0xb8]
+01d936c0  ldr x22,[x8, #0x20]
+01d936c4  cbz x22,0x01d93734
+01d936c8  mov x0,x22
+01d936cc  mov x1,xzr
+01d936d0  bl 0x010cef38
+01d936d4  ldr x8,[x19, #0x20]
+01d936d8  mov x0,x22
+01d936dc  mov x1,x20
+01d936e0  ldr x8,[x8, #0xc0]
+01d936e4  ldr x2,[x8, #0x8]
+01d936e8  ldr x8,[x2, #0x8]
+01d936ec  blr x8
+01d936f0  ldr x8,[x19, #0x20]
+01d936f4  mov x0,x22
+01d936f8  mov x1,x21
+01d936fc  ldr x8,[x8, #0xc0]
+01d93700  ldr x2,[x8, #0x28]
+01d93704  ldr x8,[x2, #0x8]
+01d93708  blr x8
+01d9370c  mov x0,x22
+01d93710  mov w1,wzr
+01d93714  mov x2,xzr
+01d93718  bl 0x010ceff0
+01d9371c  ldp x19,x30,[sp, #0x20]
+01d93720  ldp x21,x20,[sp, #0x10]
+01d93724  mov x0,x22
+01d93728  mov x1,xzr
+01d9372c  ldr x22,[sp], #0x30
+01d93730  b 0x010cf0d4
+01d93734  ldr x8,[x19, #0x20]
+01d93738  mov x0,x20
+01d9373c  ldr x8,[x8, #0xc0]
+01d93740  ldr x1,[x8, #0x30]
+01d93744  ldr x8,[x1, #0x8]
+01d93748  blr x8
+01d9374c  ldr x8,[x19, #0x20]
+01d93750  ldr x22,[x20, #0x10]
+01d93754  mov x0,x20
+01d93758  ldr x8,[x8, #0xc0]
+01d9375c  ldr x1,[x8, #0x10]
+01d93760  ldr x8,[x1, #0x8]
+01d93764  blr x8
+01d93768  cbz x22,0x01d937c8
+01d9376c  ldr w8,[x22, #0x18]
+01d93770  cmp w0,w8
+01d93774  b.cs 0x01d937cc
+01d93778  add x0,x22,w0, SXTW  #0x3
+01d9377c  str x21,[x0, #0x20]!
+01d93780  mov x1,x21
+01d93784  bl 0x00b07850
+01d93788  ldr x8,[x19, #0x20]
+01d9378c  mov x0,x20
+01d93790  ldr x8,[x8, #0xc0]
+01d93794  ldr x1,[x8, #0x10]
+01d93798  ldr x8,[x1, #0x8]
+01d9379c  blr x8
+01d937a0  ldr x8,[x19, #0x20]
+01d937a4  add w1,w0,#0x1
+01d937a8  mov x0,x20
+01d937ac  ldp x19,x30,[sp, #0x20]
+01d937b0  ldr x8,[x8, #0xc0]
+01d937b4  ldp x21,x20,[sp, #0x10]
+01d937b8  ldr x2,[x8, #0x20]
+01d937bc  ldr x3,[x2, #0x8]
+01d937c0  ldr x22,[sp], #0x30
+01d937c4  br x3
+01d937c8  bl 0x00b079b0
+01d937cc  bl 0x00b079b8

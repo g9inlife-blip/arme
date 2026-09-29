@@ -1,0 +1,40 @@
+Function: RewardManager.<>c$$.cctor @ 00e2f930
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00e2f930  str x20,[sp, #-0x20]!
+00e2f934  stp x19,x30,[sp, #0x10]
+00e2f938  adrp x19,0x3572000
+00e2f93c  adrp x20,0x331d000
+00e2f940  ldrb w8,[x19, #0x762]
+00e2f944  ldr x20,[x20, #0xd78]
+00e2f948  tbnz w8,#0x0,0x00e2f960
+00e2f94c  adrp x0,0x331d000
+00e2f950  ldr x0,[x0, #0xd78]
+00e2f954  bl 0x00b0789c
+00e2f958  mov w8,#0x1
+00e2f95c  strb w8,[x19, #0x762]
+00e2f960  ldr x0,[x20]
+00e2f964  bl 0x00b079a0
+00e2f968  cbz x0,0x00e2f99c
+00e2f96c  mov x1,xzr
+00e2f970  mov x19,x0
+00e2f974  bl 0x02194104
+00e2f978  ldr x8,[x20]
+00e2f97c  mov x1,x19
+00e2f980  ldr x8,[x8, #0xb8]
+00e2f984  str x19,[x8]
+00e2f988  ldr x8,[x20]
+00e2f98c  ldp x19,x30,[sp, #0x10]
+00e2f990  ldr x0,[x8, #0xb8]
+00e2f994  ldr x20,[sp], #0x20
+00e2f998  b 0x00b07850
+00e2f99c  bl 0x00b079b0

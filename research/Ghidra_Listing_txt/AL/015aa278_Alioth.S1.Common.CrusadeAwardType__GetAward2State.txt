@@ -1,0 +1,19 @@
+Function: Alioth.S1.Common.CrusadeAwardType$$GetAward2State @ 015aa278
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- TaoFaPanelMono$$RefreshShow @ 0103457c
+  <- HomePanelMono$$RefreshPoint_TaoFA @ 00f69924
+  <- TaoFaPanelMono$$CheckTaskCompleteTips @ 010349b4
+  <- TaoFaPanelMono$$OnClickReceive @ 01037c80
+  <- TaoFaPanelMono$$OnClickReceiveAll @ 01037e2c
+  <- TaoFaPanelMono$$RefreshTaoFaItem @ 010365b4
+
+--- Listing ---
+015aa278  tbnz w0,#0x1,0x015aa288
+015aa27c  sbfx w8,w0,#0x3,#0x1
+015aa280  and w0,w8,#0x3
+015aa284  ret
+015aa288  mov w0,#0x2
+015aa28c  ret

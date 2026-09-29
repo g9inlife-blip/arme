@@ -1,0 +1,40 @@
+Function: AliothEngine.AssetFileInfoListScriptableObject.<>c$$.cctor @ 01667e08
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01667e08  str x20,[sp, #-0x20]!
+01667e0c  stp x19,x30,[sp, #0x10]
+01667e10  adrp x19,0x3577000
+01667e14  adrp x20,0x3348000
+01667e18  ldrb w8,[x19, #0x907]
+01667e1c  ldr x20,[x20, #0x868]
+01667e20  tbnz w8,#0x0,0x01667e38
+01667e24  adrp x0,0x3348000
+01667e28  ldr x0,[x0, #0x868]
+01667e2c  bl 0x00b0789c
+01667e30  mov w8,#0x1
+01667e34  strb w8,[x19, #0x907]
+01667e38  ldr x0,[x20]
+01667e3c  bl 0x00b079a0
+01667e40  cbz x0,0x01667e74
+01667e44  mov x1,xzr
+01667e48  mov x19,x0
+01667e4c  bl 0x02194104
+01667e50  ldr x8,[x20]
+01667e54  mov x1,x19
+01667e58  ldr x8,[x8, #0xb8]
+01667e5c  str x19,[x8]
+01667e60  ldr x8,[x20]
+01667e64  ldp x19,x30,[sp, #0x10]
+01667e68  ldr x0,[x8, #0xb8]
+01667e6c  ldr x20,[sp], #0x20
+01667e70  b 0x00b07850
+01667e74  bl 0x00b079b0

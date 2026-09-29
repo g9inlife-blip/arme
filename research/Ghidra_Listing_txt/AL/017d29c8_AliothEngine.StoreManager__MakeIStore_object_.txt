@@ -1,0 +1,132 @@
+Function: AliothEngine.StoreManager$$MakeIStore<object> @ 017d29c8
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> AliothEngine.Extensions.ReparentingExtensions$$Reparent @ 016b0f04
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> UnityEngine.Object$$set_name @ 024df584
+  -> UnityEngine.GameObject$$.ctor @ 024dede8
+  -> UnityEngine.Object$$DontDestroyOnLoad @ 024e00c4
+  -> XLua.DelegateBridge$$InParam<object> @ 01775bd0
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_ChinaPay$$Awake @ 0165b460
+  <- AliothEngine.StoreManager$$InitIStore @ 01659a08
+
+--- Listing ---
+017d29c8  stp x23,x22,[sp, #-0x30]!
+017d29cc  stp x21,x20,[sp, #0x10]
+017d29d0  stp x19,x30,[sp, #0x20]
+017d29d4  adrp x21,0x3578000
+017d29d8  adrp x22,0x3334000
+017d29dc  ldrb w8,[x21, #0x2d4]
+017d29e0  ldr x22,[x22, #0x178]
+017d29e4  mov x20,x1
+017d29e8  mov x19,x0
+017d29ec  tbnz w8,#0x0,0x017d2a34
+017d29f0  adrp x0,0x3317000
+017d29f4  ldr x0,[x0, #0x2c0]
+017d29f8  bl 0x00b0789c
+017d29fc  adrp x0,0x3310000
+017d2a00  ldr x0,[x0, #0xe40]
+017d2a04  bl 0x00b0789c
+017d2a08  adrp x0,0x3321000
+017d2a0c  ldr x0,[x0, #0xca8]
+017d2a10  bl 0x00b0789c
+017d2a14  adrp x0,0x3334000
+017d2a18  ldr x0,[x0, #0x178]
+017d2a1c  bl 0x00b0789c
+017d2a20  adrp x0,0x3347000
+017d2a24  ldr x0,[x0, #0xd68]
+017d2a28  bl 0x00b0789c
+017d2a2c  mov w8,#0x1
+017d2a30  strb w8,[x21, #0x2d4]
+017d2a34  ldr x8,[x22]
+017d2a38  ldr x8,[x8, #0xb8]
+017d2a3c  ldr x21,[x8, #0x20]
+017d2a40  cbz x21,0x017d2a98
+017d2a44  adrp x22,0x3317000
+017d2a48  ldr x22,[x22, #0x2c0]
+017d2a4c  mov x0,x21
+017d2a50  mov x1,xzr
+017d2a54  bl 0x010cef38
+017d2a58  ldr x2,[x22]
+017d2a5c  mov x0,x21
+017d2a60  mov x1,x19
+017d2a64  bl 0x01775bd0
+017d2a68  mov w1,#0x1
+017d2a6c  mov x0,x21
+017d2a70  mov x2,xzr
+017d2a74  bl 0x010ceff0
+017d2a78  ldr x8,[x20, #0x38]
+017d2a7c  mov x0,x21
+017d2a80  ldp x19,x30,[sp, #0x20]
+017d2a84  ldp x21,x20,[sp, #0x10]
+017d2a88  ldr x1,[x8]
+017d2a8c  ldr x2,[x1, #0x8]
+017d2a90  ldp x23,x22,[sp], #0x30
+017d2a94  br x2
+017d2a98  adrp x8,0x3310000
+017d2a9c  ldr x8,[x8, #0xe40]
+017d2aa0  ldr x0,[x8]
+017d2aa4  bl 0x00b079a0
+017d2aa8  cbz x0,0x017d2b7c
+017d2aac  adrp x23,0x3321000
+017d2ab0  adrp x22,0x3347000
+017d2ab4  ldr x23,[x23, #0xca8]
+017d2ab8  ldr x22,[x22, #0xd68]
+017d2abc  mov x1,xzr
+017d2ac0  mov x21,x0
+017d2ac4  bl 0x024dede8
+017d2ac8  ldr x0,[x23]
+017d2acc  ldr w8,[x0, #0xe0]
+017d2ad0  cbnz w8,0x017d2ad8
+017d2ad4  bl 0x00b0798c
+017d2ad8  mov x0,x21
+017d2adc  mov x1,xzr
+017d2ae0  bl 0x024e00c4
+017d2ae4  ldr x8,[x20, #0x38]
+017d2ae8  mov x0,x21
+017d2aec  ldr x1,[x8, #0x8]
+017d2af0  ldr x8,[x1, #0x8]
+017d2af4  blr x8
+017d2af8  ldr x8,[x22]
+017d2afc  ldr x9,[x20, #0x38]
+017d2b00  mov x20,x0
+017d2b04  ldr w10,[x8, #0xe0]
+017d2b08  ldr x22,[x9, #0x10]
+017d2b0c  cbnz w10,0x017d2b18
+017d2b10  mov x0,x8
+017d2b14  bl 0x00b0798c
+017d2b18  mov x0,x22
+017d2b1c  mov x1,xzr
+017d2b20  bl 0x0215f900
+017d2b24  cbz x0,0x017d2b7c
+017d2b28  ldr x8,[x0]
+017d2b2c  ldp x9,x1,[x8, #0x1a8]
+017d2b30  blr x9
+017d2b34  mov x1,x0
+017d2b38  mov x0,x21
+017d2b3c  mov x2,xzr
+017d2b40  bl 0x024df584
+017d2b44  cbz x19,0x017d2b7c
+017d2b48  mov x0,x19
+017d2b4c  mov x1,xzr
+017d2b50  bl 0x024e4e98
+017d2b54  mov x1,x0
+017d2b58  mov w2,#0x2
+017d2b5c  mov x0,x21
+017d2b60  mov x3,xzr
+017d2b64  bl 0x016b0f04
+017d2b68  mov x0,x20
+017d2b6c  ldp x19,x30,[sp, #0x20]
+017d2b70  ldp x21,x20,[sp, #0x10]
+017d2b74  ldp x23,x22,[sp], #0x30
+017d2b78  ret
+017d2b7c  bl 0x00b079b0

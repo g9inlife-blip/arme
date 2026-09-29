@@ -1,0 +1,50 @@
+Function: AliothEngine.Utils.StringUtils$$ToHexStringFromBytes @ 0169b4f8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> System.BitConverter$$ToString @ 020d8bf0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169b4f8  stp x21,x20,[sp, #-0x20]!
+0169b4fc  stp x19,x30,[sp, #0x10]
+0169b500  adrp x20,0x3577000
+0169b504  adrp x21,0x3334000
+0169b508  ldrb w8,[x20, #0xb34]
+0169b50c  ldr x21,[x21, #0x1f0]
+0169b510  mov x19,x0
+0169b514  tbnz w8,#0x0,0x0169b544
+0169b518  adrp x0,0x3334000
+0169b51c  ldr x0,[x0, #0x1f0]
+0169b520  bl 0x00b0789c
+0169b524  adrp x0,0x3375000
+0169b528  ldr x0,[x0, #0xea8]
+0169b52c  bl 0x00b0789c
+0169b530  adrp x0,0x332c000
+0169b534  ldr x0,[x0, #0x2c0]
+0169b538  bl 0x00b0789c
+0169b53c  mov w8,#0x1
+0169b540  strb w8,[x20, #0xb34]
+0169b544  ldr x0,[x21]
+0169b548  ldr w8,[x0, #0xe0]
+0169b54c  cbnz w8,0x0169b554
+0169b550  bl 0x00b0798c
+0169b554  mov x0,x19
+0169b558  mov x1,xzr
+0169b55c  bl 0x020d8bf0
+0169b560  cbz x0,0x0169b58c
+0169b564  adrp x8,0x3375000
+0169b568  adrp x9,0x332c000
+0169b56c  ldr x8,[x8, #0xea8]
+0169b570  ldr x9,[x9, #0x2c0]
+0169b574  ldp x19,x30,[sp, #0x10]
+0169b578  mov x3,xzr
+0169b57c  ldr x1,[x8]
+0169b580  ldr x2,[x9]
+0169b584  ldp x21,x20,[sp], #0x20
+0169b588  b 0x01fe06d8
+0169b58c  bl 0x00b079b0

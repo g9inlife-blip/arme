@@ -1,0 +1,28 @@
+Function: RerollresultpanelNode$$get_MoreScrollView @ 00fce31c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fce31c  stp x21,x20,[sp, #-0x20]!
+00fce320  stp x19,x30,[sp, #0x10]
+00fce324  adrp x20,0x3573000
+00fce328  adrp x21,0x3321000
+00fce32c  ldrb w8,[x20, #0xe81]
+00fce330  ldr x21,[x21, #0xbb8]
+00fce334  mov x19,x0
+00fce338  tbnz w8,#0x0,0x00fce350
+00fce33c  adrp x0,0x3321000
+00fce340  ldr x0,[x0, #0xbb8]
+00fce344  bl 0x00b0789c
+00fce348  mov w8,#0x1
+00fce34c  strb w8,[x20, #0xe81]
+00fce350  ldr x1,[x21]
+00fce354  mov x0,x19
+00fce358  ldp x19,x30,[sp, #0x10]
+00fce35c  mov x2,xzr
+00fce360  ldp x21,x20,[sp], #0x20
+00fce364  b 0x00dc06f8

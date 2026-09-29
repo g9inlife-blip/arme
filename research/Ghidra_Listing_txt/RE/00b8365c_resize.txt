@@ -1,0 +1,36 @@
+Function: resize @ 00b8365c
+FuncComment: std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::resize(unsigned long, wchar_t)
+
+--- Calls OUT ---
+  -> append @ 008d5960
+
+--- Calls IN ---
+
+--- Listing ---
+00b8365c  stp x29,x30,[sp, #-0x10]!
+    ; [PLATE] std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::resize(unsigned long, wchar_t)
+00b83660  mov x29,sp
+00b83664  ldrb w8,[x0]
+00b83668  tbnz w8,#0x0,0x00b83694
+00b8366c  lsr x9,x8,#0x1
+00b83670  cmp x9,x1
+00b83674  b.cc 0x00b836a0
+00b83678  tbnz w8,#0x0,0x00b836b0
+00b8367c  add x8,x0,x1, LSL #0x2
+00b83680  lsl w9,w1,#0x1
+00b83684  str wzr,[x8, #0x4]
+00b83688  strb w9,[x0]
+00b8368c  ldp x29,x30,[sp], #0x10
+00b83690  ret
+00b83694  ldr x9,[x0, #0x8]
+00b83698  cmp x9,x1
+00b8369c  b.cs 0x00b83678
+00b836a0  sub x1,x1,x9
+00b836a4  bl 0x008d5960
+00b836a8  ldp x29,x30,[sp], #0x10
+00b836ac  ret
+00b836b0  ldr x8,[x0, #0x10]
+00b836b4  str wzr,[x8, x1, LSL #0x2]
+00b836b8  str x1,[x0, #0x8]
+00b836bc  ldp x29,x30,[sp], #0x10
+00b836c0  ret

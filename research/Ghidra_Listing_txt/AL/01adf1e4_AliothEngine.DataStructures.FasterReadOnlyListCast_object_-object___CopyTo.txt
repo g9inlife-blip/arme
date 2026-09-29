@@ -1,0 +1,76 @@
+Function: AliothEngine.DataStructures.FasterReadOnlyListCast<object,-object>$$CopyTo @ 01adf1e4
+
+--- Calls OUT ---
+  -> System.Array$$Copy @ 02173e94
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977e74 @ 00977e74
+
+--- Listing ---
+01adf1e4  str x24,[sp, #-0x40]!
+01adf1e8  stp x23,x22,[sp, #0x10]
+01adf1ec  stp x21,x20,[sp, #0x20]
+01adf1f0  stp x19,x30,[sp, #0x30]
+01adf1f4  ldr x23,[x0]
+01adf1f8  cbz x23,0x01adf2e4
+01adf1fc  ldr x8,[x3, #0x20]
+01adf200  mov x21,x3
+01adf204  mov w19,w2
+01adf208  mov x22,x0
+01adf20c  ldrh w9,[x8, #0x132]
+01adf210  mov x20,x1
+01adf214  tbnz w9,#0x0,0x01adf22c
+01adf218  mov x0,x8
+01adf21c  bl 0x00b2ac40
+01adf220  ldr x8,[x21, #0x20]
+01adf224  ldrh w9,[x8, #0x132]
+01adf228  b 0x01adf230
+01adf22c  mov x0,x8
+01adf230  ldr x10,[x0, #0xc0]
+01adf234  ldr x10,[x10, #0x48]
+01adf238  ldr x24,[x10, #0x8]
+01adf23c  tbnz w9,#0x0,0x01adf24c
+01adf240  mov x0,x8
+01adf244  bl 0x00b2ac40
+01adf248  mov x8,x0
+01adf24c  ldr x8,[x8, #0xc0]
+01adf250  mov x0,x23
+01adf254  ldr x1,[x8, #0x48]
+01adf258  blr x24
+01adf25c  ldr x23,[x22]
+01adf260  cbz x23,0x01adf2e4
+01adf264  ldr x8,[x21, #0x20]
+01adf268  mov x22,x0
+01adf26c  ldrh w9,[x8, #0x132]
+01adf270  tbnz w9,#0x0,0x01adf288
+01adf274  mov x0,x8
+01adf278  bl 0x00b2ac40
+01adf27c  ldr x8,[x21, #0x20]
+01adf280  ldrh w9,[x8, #0x132]
+01adf284  b 0x01adf28c
+01adf288  mov x0,x8
+01adf28c  ldr x10,[x0, #0xc0]
+01adf290  ldr x10,[x10, #0x8]
+01adf294  ldr x21,[x10, #0x8]
+01adf298  tbnz w9,#0x0,0x01adf2a8
+01adf29c  mov x0,x8
+01adf2a0  bl 0x00b2ac40
+01adf2a4  mov x8,x0
+01adf2a8  ldr x8,[x8, #0xc0]
+01adf2ac  mov x0,x23
+01adf2b0  ldr x1,[x8, #0x8]
+01adf2b4  blr x21
+01adf2b8  mov w4,w0
+01adf2bc  mov x0,x22
+01adf2c0  mov x2,x20
+01adf2c4  mov w3,w19
+01adf2c8  ldp x19,x30,[sp, #0x30]
+01adf2cc  ldp x21,x20,[sp, #0x20]
+01adf2d0  ldp x23,x22,[sp, #0x10]
+01adf2d4  mov w1,wzr
+01adf2d8  mov x5,xzr
+01adf2dc  ldr x24,[sp], #0x40
+01adf2e0  b 0x02173e94
+01adf2e4  bl 0x00b079b0

@@ -1,0 +1,73 @@
+Function: AliothEngine.GameUpdateService$$GetBestPingServer @ 0167ef14
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp166 @ 01074a94
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_m_GetBestPingServer @ 01141694
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+
+--- Listing ---
+0167ef14  stp x23,x22,[sp, #-0x30]!
+0167ef18  stp x21,x20,[sp, #0x10]
+0167ef1c  stp x19,x30,[sp, #0x20]
+0167ef20  adrp x22,0x3577000
+0167ef24  adrp x23,0x3352000
+0167ef28  ldrb w8,[x22, #0xa38]
+0167ef2c  ldr x23,[x23, #0x2a8]
+0167ef30  mov x19,x2
+0167ef34  mov x20,x1
+0167ef38  mov x21,x0
+0167ef3c  tbnz w8,#0x0,0x0167ef60
+0167ef40  adrp x0,0x3352000
+0167ef44  ldr x0,[x0, #0x2a8]
+0167ef48  bl 0x00b0789c
+0167ef4c  adrp x0,0x336d000
+0167ef50  ldr x0,[x0, #0x8e8]
+0167ef54  bl 0x00b0789c
+0167ef58  mov w8,#0x1
+0167ef5c  strb w8,[x22, #0xa38]
+0167ef60  ldr x8,[x23]
+0167ef64  ldr x8,[x8, #0xb8]
+0167ef68  ldr x0,[x8, #0x138]
+0167ef6c  cbz x0,0x0167ef90
+0167ef70  mov x1,x21
+0167ef74  mov x2,x20
+0167ef78  mov x3,x19
+0167ef7c  ldp x19,x30,[sp, #0x20]
+0167ef80  ldp x21,x20,[sp, #0x10]
+0167ef84  mov x4,xzr
+0167ef88  ldp x23,x22,[sp], #0x30
+0167ef8c  b 0x01074a94
+0167ef90  adrp x8,0x336d000
+0167ef94  ldr x8,[x8, #0x8e8]
+0167ef98  ldr x0,[x8]
+0167ef9c  bl 0x00b079a0
+0167efa0  cbz x0,0x0167eff8
+0167efa4  mov x1,xzr
+0167efa8  mov x22,x0
+0167efac  bl 0x02194104
+0167efb0  mov x0,x22
+0167efb4  str wzr,[x22, #0x10]
+0167efb8  str x21,[x0, #0x20]!
+0167efbc  mov x1,x21
+0167efc0  bl 0x00b07850
+0167efc4  mov x0,x22
+0167efc8  str x20,[x0, #0x28]!
+0167efcc  mov x1,x20
+0167efd0  bl 0x00b07850
+0167efd4  mov x0,x22
+0167efd8  str x19,[x0, #0x30]!
+0167efdc  mov x1,x19
+0167efe0  bl 0x00b07850
+0167efe4  ldp x19,x30,[sp, #0x20]
+0167efe8  ldp x21,x20,[sp, #0x10]
+0167efec  mov x0,x22
+0167eff0  ldp x23,x22,[sp], #0x30
+0167eff4  ret
+0167eff8  bl 0x00b079b0

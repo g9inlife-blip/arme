@@ -1,0 +1,40 @@
+Function: AliothEngine.Extensions.GameObjectExtensions.<>c$$.cctor @ 016ae320
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016ae320  str x20,[sp, #-0x20]!
+016ae324  stp x19,x30,[sp, #0x10]
+016ae328  adrp x19,0x3577000
+016ae32c  adrp x20,0x337a000
+016ae330  ldrb w8,[x19, #0xbcc]
+016ae334  ldr x20,[x20, #0x408]
+016ae338  tbnz w8,#0x0,0x016ae350
+016ae33c  adrp x0,0x337a000
+016ae340  ldr x0,[x0, #0x408]
+016ae344  bl 0x00b0789c
+016ae348  mov w8,#0x1
+016ae34c  strb w8,[x19, #0xbcc]
+016ae350  ldr x0,[x20]
+016ae354  bl 0x00b079a0
+016ae358  cbz x0,0x016ae38c
+016ae35c  mov x1,xzr
+016ae360  mov x19,x0
+016ae364  bl 0x02194104
+016ae368  ldr x8,[x20]
+016ae36c  mov x1,x19
+016ae370  ldr x8,[x8, #0xb8]
+016ae374  str x19,[x8]
+016ae378  ldr x8,[x20]
+016ae37c  ldp x19,x30,[sp, #0x10]
+016ae380  ldr x0,[x8, #0xb8]
+016ae384  ldr x20,[sp], #0x20
+016ae388  b 0x00b07850
+016ae38c  bl 0x00b079b0

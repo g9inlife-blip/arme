@@ -1,0 +1,27 @@
+Function: AliothEngine.FrameSynchr$$CalculateJitterDelay @ 0164a72c
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0164a72c  str x30,[sp, #-0x10]!
+0164a730  cbz x0,0x0164a774
+0164a734  ldr w8,[x0, #0x4c]
+0164a738  cmp x1,#0x1
+0164a73c  mov w9,#0x1d
+0164a740  csel w10,wzr,w1,lt
+0164a744  madd w8,w8,w9,w10
+0164a748  mov w9,#0x8889
+0164a74c  movk w9,#0x8888, LSL #16
+0164a750  smull x9,w8,w9
+0164a754  lsr x9,x9,#0x20
+0164a758  add w8,w9,w8
+0164a75c  asr w9,w8,#0x4
+0164a760  add w8,w9,w8, LSR #0x1f
+0164a764  stp w10,w8,[x0, #0x48]
+0164a768  mov w0,w8
+0164a76c  ldr x30,[sp], #0x10
+0164a770  ret
+0164a774  bl 0x00b079b0

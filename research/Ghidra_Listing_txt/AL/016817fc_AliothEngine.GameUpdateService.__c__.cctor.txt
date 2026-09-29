@@ -1,0 +1,40 @@
+Function: AliothEngine.GameUpdateService.<>c$$.cctor @ 016817fc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016817fc  str x20,[sp, #-0x20]!
+01681800  stp x19,x30,[sp, #0x10]
+01681804  adrp x19,0x3577000
+01681808  adrp x20,0x3349000
+0168180c  ldrb w8,[x19, #0xa4b]
+01681810  ldr x20,[x20, #0x520]
+01681814  tbnz w8,#0x0,0x0168182c
+01681818  adrp x0,0x3349000
+0168181c  ldr x0,[x0, #0x520]
+01681820  bl 0x00b0789c
+01681824  mov w8,#0x1
+01681828  strb w8,[x19, #0xa4b]
+0168182c  ldr x0,[x20]
+01681830  bl 0x00b079a0
+01681834  cbz x0,0x01681868
+01681838  mov x1,xzr
+0168183c  mov x19,x0
+01681840  bl 0x02194104
+01681844  ldr x8,[x20]
+01681848  mov x1,x19
+0168184c  ldr x8,[x8, #0xb8]
+01681850  str x19,[x8]
+01681854  ldr x8,[x20]
+01681858  ldp x19,x30,[sp, #0x10]
+0168185c  ldr x0,[x8, #0xb8]
+01681860  ldr x20,[sp], #0x20
+01681864  b 0x00b07850
+01681868  bl 0x00b079b0

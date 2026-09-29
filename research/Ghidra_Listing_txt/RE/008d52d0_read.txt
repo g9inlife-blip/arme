@@ -1,0 +1,20 @@
+Function: read @ 008d52d0
+
+--- Calls OUT ---
+  -> read @ 03799630
+
+--- Calls IN ---
+  <- FUN_00b3dd2c @ 00b3dd2c
+  <- FUN_00b05410 @ 00b05410
+  <- SystemNative_GetNonCryptographicallySecureRandomBytes @ 00a99b28
+  <- FUN_00aca37c @ 00aca37c
+  <- SystemNative_CopyFile @ 00a99914
+  <- FUN_00aa9cbc @ 00aa9cbc
+  <- FUN_00b3db1c @ 00b3db1c
+  <- FUN_00b3dbbc @ 00b3dbbc
+
+--- Listing ---
+008d52d0  adrp x16,0x3308000
+008d52d4  ldr x17,[x16, #0x328]
+008d52d8  add x16,x16,#0x328
+008d52dc  br x17

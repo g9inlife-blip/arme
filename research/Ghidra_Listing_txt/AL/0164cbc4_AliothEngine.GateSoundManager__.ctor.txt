@@ -1,0 +1,42 @@
+Function: AliothEngine.GateSoundManager$$.ctor @ 0164cbc4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+
+--- Listing ---
+0164cbc4  str x22,[sp, #-0x30]!
+0164cbc8  stp x21,x20,[sp, #0x10]
+0164cbcc  stp x19,x30,[sp, #0x20]
+0164cbd0  adrp x22,0x3577000
+0164cbd4  adrp x21,0x332c000
+0164cbd8  adrp x20,0x3309000
+0164cbdc  ldrb w8,[x22, #0x7c6]
+0164cbe0  ldr x21,[x21, #0x2c0]
+0164cbe4  ldr x20,[x20, #0x728]
+0164cbe8  mov x19,x0
+0164cbec  tbnz w8,#0x0,0x0164cc10
+0164cbf0  adrp x0,0x3309000
+0164cbf4  ldr x0,[x0, #0x728]
+0164cbf8  bl 0x00b0789c
+0164cbfc  adrp x0,0x332c000
+0164cc00  ldr x0,[x0, #0x2c0]
+0164cc04  bl 0x00b0789c
+0164cc08  mov w8,#0x1
+0164cc0c  strb w8,[x22, #0x7c6]
+0164cc10  fmov v0.2S,#0x3f800000
+0164cc14  stur d0,[x19, #0x1c]
+0164cc18  str d0,[x19, #0x40]
+0164cc1c  ldr x1,[x21]
+0164cc20  mov x0,x19
+0164cc24  str x1,[x0, #0x58]!
+0164cc28  bl 0x00b07850
+0164cc2c  ldr x1,[x20]
+0164cc30  mov x0,x19
+0164cc34  ldp x19,x30,[sp, #0x20]
+0164cc38  ldp x21,x20,[sp, #0x10]
+0164cc3c  ldr x22,[sp], #0x30
+0164cc40  b 0x01e09460

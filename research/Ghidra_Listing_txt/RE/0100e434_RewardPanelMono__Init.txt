@@ -1,0 +1,37 @@
+Function: RewardPanelMono$$Init @ 0100e434
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> RewardPanelMono$$ShowItem @ 0100e49c
+
+--- Calls IN ---
+  <- RewardPanelMono$$Start @ 0100e804
+
+--- Listing ---
+0100e434  stp x21,x20,[sp, #-0x20]!
+0100e438  stp x19,x30,[sp, #0x10]
+0100e43c  adrp x20,0x3574000
+0100e440  adrp x21,0x3359000
+0100e444  ldrb w8,[x20, #0x45a]
+0100e448  ldr x21,[x21, #0xdc0]
+0100e44c  mov x19,x0
+0100e450  tbnz w8,#0x0,0x0100e468
+0100e454  adrp x0,0x3359000
+0100e458  ldr x0,[x0, #0xdc0]
+0100e45c  bl 0x00b0789c
+0100e460  mov w8,#0x1
+0100e464  strb w8,[x20, #0x45a]
+0100e468  ldr x8,[x21]
+0100e46c  ldr x8,[x8, #0xb8]
+0100e470  ldr x0,[x8, #0x18]
+0100e474  cbz x0,0x0100e48c
+0100e478  mov x1,x19
+0100e47c  ldp x19,x30,[sp, #0x10]
+0100e480  mov x2,xzr
+0100e484  ldp x21,x20,[sp], #0x20
+0100e488  b 0x01060dac
+0100e48c  mov x0,x19
+0100e490  ldp x19,x30,[sp, #0x10]
+0100e494  ldp x21,x20,[sp], #0x20
+0100e498  b 0x0100e49c

@@ -1,0 +1,14 @@
+Function: AliothEngine.FileUtility$$PathIsDirectory @ 0168dfd0
+
+--- Calls OUT ---
+  -> System.IO.File$$GetAttributes @ 020aff18
+
+--- Calls IN ---
+
+--- Listing ---
+0168dfd0  str x30,[sp, #-0x10]!
+0168dfd4  mov x1,xzr
+0168dfd8  bl 0x020aff18
+0168dfdc  ubfx w0,w0,#0x4,#0x1
+0168dfe0  ldr x30,[sp], #0x10
+0168dfe4  ret

@@ -1,0 +1,155 @@
+Function: AliothEngine.Extensions.DictionaryExtensions$$ToStringFull<object,-object> @ 01777688
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> System.Collections.Generic.Dictionary.Enumerator<object,-object>$$MoveNext @ 01a4cb84
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Text.StringBuilder$$Remove @ 01fea004
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Text.StringBuilder$$Append @ 01fe9960
+  -> System.Text.StringBuilder$$get_Length @ 01fe8ab0
+
+--- Calls IN ---
+  <- ProtocolGame_HttpRequest$$Sign @ 00dd95c0
+
+--- Listing ---
+01777688  sub sp,sp,#0x90
+0177768c  str x22,[sp, #0x60]
+01777690  stp x21,x20,[sp, #0x70]
+01777694  stp x19,x30,[sp, #0x80]
+01777698  adrp x20,0x3578000
+0177769c  ldrb w8,[x20, #0xec]
+017776a0  mov x19,x1
+017776a4  mov x21,x0
+017776a8  tbnz w8,#0x0,0x01777708
+017776ac  adrp x0,0x3332000
+017776b0  ldr x0,[x0, #0xaf0]
+017776b4  bl 0x00b0789c
+017776b8  adrp x0,0x331e000
+017776bc  ldr x0,[x0, #0x200]
+017776c0  bl 0x00b0789c
+017776c4  adrp x0,0x3339000
+017776c8  ldr x0,[x0, #0xd90]
+017776cc  bl 0x00b0789c
+017776d0  adrp x0,0x3310000
+017776d4  ldr x0,[x0, #0xe98]
+017776d8  bl 0x00b0789c
+017776dc  adrp x0,0x330c000
+017776e0  ldr x0,[x0, #0xca0]
+017776e4  bl 0x00b0789c
+017776e8  adrp x0,0x3327000
+017776ec  ldr x0,[x0, #0xe70]
+017776f0  bl 0x00b0789c
+017776f4  adrp x0,0x337f000
+017776f8  ldr x0,[x0, #0xa60]
+017776fc  bl 0x00b0789c
+01777700  mov w8,#0x1
+01777704  strb w8,[x20, #0xec]
+01777708  movi v0.2D,#0x0
+0177770c  str xzr,[sp, #0x50]
+01777710  stp q0,q0,[sp, #0x30]
+01777714  cbz x21,0x01777884
+01777718  ldr x8,[x19, #0x38]
+0177771c  mov x0,x21
+01777720  ldr x1,[x8, #0x8]
+01777724  ldr x8,[x1, #0x8]
+01777728  blr x8
+0177772c  cmp w0,#0x0
+01777730  b.le 0x01777890
+01777734  adrp x8,0x3332000
+01777738  ldr x8,[x8, #0xaf0]
+0177773c  ldr x0,[x8]
+01777740  bl 0x00b079a0
+01777744  cbz x0,0x017778b0
+01777748  adrp x22,0x3327000
+0177774c  ldr x22,[x22, #0xe70]
+01777750  mov x1,xzr
+01777754  mov x20,x0
+01777758  bl 0x01fe7ee0
+0177775c  ldr x1,[x22]
+01777760  mov x0,x20
+01777764  mov x2,xzr
+01777768  bl 0x01fe9960
+0177776c  ldr x8,[x19, #0x38]
+01777770  mov x0,x21
+01777774  ldr x1,[x8, #0x10]
+01777778  add x8,sp,#0x8
+0177777c  ldr x9,[x1, #0x8]
+01777780  blr x9
+01777784  ldur q0,[sp, #0x8]
+01777788  ldur q1,[sp, #0x18]
+0177778c  ldr x8,[sp, #0x28]
+01777790  add x0,sp,#0x30
+01777794  stp q0,q1,[sp, #0x30]
+01777798  str x8,[sp, #0x50]
+0177779c  ldr x8,[x19, #0x38]
+017777a0  ldr x1,[x8, #0x50]
+017777a4  bl 0x01a4cb84
+017777a8  tbz w0,#0x0,0x01777838
+017777ac  adrp x21,0x331e000
+017777b0  adrp x22,0x3310000
+017777b4  ldr x21,[x21, #0x200]
+017777b8  ldr x22,[x22, #0xe98]
+017777bc  ldr x0,[sp, #0x40]
+017777c0  cbz x0,0x017778b0
+017777c4  ldr x8,[x0]
+017777c8  ldp x9,x1,[x8, #0x168]
+017777cc  blr x9
+017777d0  mov x1,x0
+017777d4  mov x0,x20
+017777d8  mov x2,xzr
+017777dc  bl 0x01fe9960
+017777e0  ldr x1,[x21]
+017777e4  mov x0,x20
+017777e8  mov x2,xzr
+017777ec  bl 0x01fe9960
+017777f0  ldr x0,[sp, #0x48]
+017777f4  cbz x0,0x017778b0
+017777f8  ldr x8,[x0]
+017777fc  ldp x9,x1,[x8, #0x168]
+01777800  blr x9
+01777804  mov x1,x0
+01777808  mov x0,x20
+0177780c  mov x2,xzr
+01777810  bl 0x01fe9960
+01777814  ldr x1,[x22]
+01777818  mov x0,x20
+0177781c  mov x2,xzr
+01777820  bl 0x01fe9960
+01777824  ldr x8,[x19, #0x38]
+01777828  add x0,sp,#0x30
+0177782c  ldr x1,[x8, #0x50]
+01777830  bl 0x01a4cb84
+01777834  tbnz w0,#0x0,0x017777bc
+01777838  adrp x19,0x337f000
+0177783c  ldr x19,[x19, #0xa60]
+01777840  mov x0,x20
+01777844  mov x1,xzr
+01777848  bl 0x01fe8ab0
+0177784c  sub w1,w0,#0x2
+01777850  mov w2,#0x2
+01777854  mov x0,x20
+01777858  mov x3,xzr
+0177785c  bl 0x01fea004
+01777860  ldr x1,[x19]
+01777864  mov x0,x20
+01777868  mov x2,xzr
+0177786c  bl 0x01fe9960
+01777870  ldr x8,[x20]
+01777874  mov x0,x20
+01777878  ldp x9,x1,[x8, #0x168]
+0177787c  blr x9
+01777880  b 0x0177789c
+01777884  adrp x8,0x3339000
+01777888  ldr x8,[x8, #0xd90]
+0177788c  b 0x01777898
+01777890  adrp x8,0x330c000
+01777894  ldr x8,[x8, #0xca0]
+01777898  ldr x0,[x8]
+0177789c  ldp x19,x30,[sp, #0x80]
+017778a0  ldp x21,x20,[sp, #0x70]
+017778a4  ldr x22,[sp, #0x60]
+017778a8  add sp,sp,#0x90
+017778ac  ret
+017778b0  bl 0x00b079b0

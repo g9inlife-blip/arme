@@ -1,0 +1,32 @@
+Function: Ali.<>c$$<DataProccessCallBack>b__180_2 @ 00e1148c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e1148c  str x20,[sp, #-0x20]!
+00e11490  stp x19,x30,[sp, #0x10]
+00e11494  adrp x20,0x3572000
+00e11498  ldrb w8,[x20, #0x5ca]
+00e1149c  mov x19,x1
+00e114a0  tbnz w8,#0x0,0x00e114b8
+00e114a4  adrp x0,0x336d000
+00e114a8  ldr x0,[x0, #0x670]
+00e114ac  bl 0x00b0789c
+00e114b0  mov w8,#0x1
+00e114b4  strb w8,[x20, #0x5ca]
+00e114b8  cbz x19,0x00e114e4
+00e114bc  adrp x9,0x336d000
+00e114c0  ldr x8,[x19]
+00e114c4  ldr x9,[x9, #0x670]
+00e114c8  mov x0,x19
+00e114cc  ldp x19,x30,[sp, #0x10]
+00e114d0  ldr x3,[x8, #0x268]
+00e114d4  ldr x1,[x9]
+00e114d8  ldr x2,[x8, #0x270]
+00e114dc  ldr x20,[sp], #0x20
+00e114e0  br x3
+00e114e4  bl 0x00b079b0

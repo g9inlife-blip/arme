@@ -1,0 +1,57 @@
+Function: AliothS1Loading$$CheckLoadingReadyIE @ 00ecb1bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothS1Loading$$CheckLoadingReady @ 00ecaff4
+
+--- Listing ---
+00ecb1bc  stp x21,x20,[sp, #-0x20]!
+00ecb1c0  stp x19,x30,[sp, #0x10]
+00ecb1c4  adrp x20,0x3572000
+00ecb1c8  adrp x21,0x3322000
+00ecb1cc  ldrb w8,[x20, #0xd6c]
+00ecb1d0  ldr x21,[x21, #0x6d0]
+00ecb1d4  mov x19,x0
+00ecb1d8  tbnz w8,#0x0,0x00ecb1fc
+00ecb1dc  adrp x0,0x3322000
+00ecb1e0  ldr x0,[x0, #0x6d0]
+00ecb1e4  bl 0x00b0789c
+00ecb1e8  adrp x0,0x3314000
+00ecb1ec  ldr x0,[x0, #0x940]
+00ecb1f0  bl 0x00b0789c
+00ecb1f4  mov w8,#0x1
+00ecb1f8  strb w8,[x20, #0xd6c]
+00ecb1fc  ldr x8,[x21]
+00ecb200  ldr x8,[x8, #0xb8]
+00ecb204  ldr x0,[x8, #0x30]
+00ecb208  cbz x0,0x00ecb220
+00ecb20c  mov x1,x19
+00ecb210  ldp x19,x30,[sp, #0x10]
+00ecb214  mov x2,xzr
+00ecb218  ldp x21,x20,[sp], #0x20
+00ecb21c  b 0x01066218
+00ecb220  adrp x8,0x3314000
+00ecb224  ldr x8,[x8, #0x940]
+00ecb228  ldr x0,[x8]
+00ecb22c  bl 0x00b079a0
+00ecb230  cbz x0,0x00ecb264
+00ecb234  mov x1,xzr
+00ecb238  mov x20,x0
+00ecb23c  bl 0x02194104
+00ecb240  mov x0,x20
+00ecb244  str wzr,[x20, #0x10]
+00ecb248  str x19,[x0, #0x20]!
+00ecb24c  mov x1,x19
+00ecb250  bl 0x00b07850
+00ecb254  ldp x19,x30,[sp, #0x10]
+00ecb258  mov x0,x20
+00ecb25c  ldp x21,x20,[sp], #0x20
+00ecb260  ret
+00ecb264  bl 0x00b079b0

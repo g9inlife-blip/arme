@@ -1,0 +1,47 @@
+Function: AddressBookExample$$.ctor @ 00cf8ab4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$.ctor @ 024e45bc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00cf8ab4  stp x21,x20,[sp, #-0x20]!
+00cf8ab8  stp x19,x30,[sp, #0x10]
+00cf8abc  adrp x20,0x3571000
+00cf8ac0  adrp x21,0x3361000
+00cf8ac4  ldrb w8,[x20, #0xa0a]
+00cf8ac8  ldr x21,[x21, #0xd50]
+00cf8acc  mov x19,x0
+00cf8ad0  tbnz w8,#0x0,0x00cf8af4
+00cf8ad4  adrp x0,0x336f000
+00cf8ad8  ldr x0,[x0, #0x460]
+00cf8adc  bl 0x00b0789c
+00cf8ae0  adrp x0,0x3361000
+00cf8ae4  ldr x0,[x0, #0xd50]
+00cf8ae8  bl 0x00b0789c
+00cf8aec  mov w8,#0x1
+00cf8af0  strb w8,[x20, #0xa0a]
+00cf8af4  ldr x0,[x21]
+00cf8af8  bl 0x00b079a0
+00cf8afc  cbz x0,0x00cf8b38
+00cf8b00  adrp x8,0x336f000
+00cf8b04  ldr x8,[x8, #0x460]
+00cf8b08  mov x20,x0
+00cf8b0c  ldr x1,[x8]
+00cf8b10  bl 0x01bffe10
+00cf8b14  mov x0,x19
+00cf8b18  str x20,[x0, #0x48]!
+00cf8b1c  mov x1,x20
+00cf8b20  bl 0x00b07850
+00cf8b24  mov x0,x19
+00cf8b28  ldp x19,x30,[sp, #0x10]
+00cf8b2c  mov x1,xzr
+00cf8b30  ldp x21,x20,[sp], #0x20
+00cf8b34  b 0x024e45bc
+00cf8b38  bl 0x00b079b0

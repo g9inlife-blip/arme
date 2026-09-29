@@ -1,0 +1,62 @@
+Function: AliothEngine.AssetVersionManager$$DeleteCache @ 0166f104
+
+--- Calls OUT ---
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> AliothEngine.AssetLocation$$get_cachePath @ 0166b680
+  -> System.IO.File$$Delete @ 020afd48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$CleaupCache @ 0167edf8
+
+--- Listing ---
+0166f104  str x20,[sp, #-0x20]!
+0166f108  stp x19,x30,[sp, #0x10]
+0166f10c  adrp x20,0x3577000
+0166f110  ldrb w8,[x20, #0x95a]
+0166f114  mov x19,x1
+0166f118  tbnz w8,#0x0,0x0166f130
+0166f11c  adrp x0,0x333a000
+0166f120  ldr x0,[x0, #0xc40]
+0166f124  bl 0x00b0789c
+0166f128  mov w8,#0x1
+0166f12c  strb w8,[x20, #0x95a]
+0166f130  cbz x19,0x0166f1c0
+0166f134  adrp x20,0x333a000
+0166f138  ldr x20,[x20, #0xc40]
+0166f13c  mov x0,x19
+0166f140  mov x1,xzr
+0166f144  bl 0x0166b680
+0166f148  mov x1,xzr
+0166f14c  bl 0x020a6ae4
+0166f150  tbz w0,#0x0,0x0166f168
+0166f154  mov x0,x19
+0166f158  mov x1,xzr
+0166f15c  bl 0x0166b680
+0166f160  mov x1,xzr
+0166f164  bl 0x020afd48
+0166f168  mov x0,x19
+0166f16c  mov x1,xzr
+0166f170  bl 0x0166b680
+0166f174  ldr x1,[x20]
+0166f178  mov x2,xzr
+0166f17c  bl 0x01fd2850
+0166f180  mov x1,xzr
+0166f184  bl 0x020a6ae4
+0166f188  tbz w0,#0x0,0x0166f1b4
+0166f18c  mov x0,x19
+0166f190  mov x1,xzr
+0166f194  bl 0x0166b680
+0166f198  ldr x1,[x20]
+0166f19c  mov x2,xzr
+0166f1a0  bl 0x01fd2850
+0166f1a4  ldp x19,x30,[sp, #0x10]
+0166f1a8  mov x1,xzr
+0166f1ac  ldr x20,[sp], #0x20
+0166f1b0  b 0x020afd48
+0166f1b4  ldp x19,x30,[sp, #0x10]
+0166f1b8  ldr x20,[sp], #0x20
+0166f1bc  ret
+0166f1c0  bl 0x00b079b0

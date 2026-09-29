@@ -1,0 +1,71 @@
+Function: AliothExtensions$$isCanBuy @ 00e16b4c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- ShopNewPanelMono$$SetRechargeSpeicalItem @ 0102c73c
+  <- ShopNewPanelMono.<>c$$<get_rechargelist>b__67_2 @ 0102ecec
+
+--- Listing ---
+00e16b4c  stp x21,x20,[sp, #-0x20]!
+00e16b50  stp x19,x30,[sp, #0x10]
+00e16b54  adrp x21,0x3572000
+00e16b58  adrp x20,0x3348000
+00e16b5c  ldrb w8,[x21, #0x604]
+00e16b60  ldr x20,[x20, #0x138]
+00e16b64  mov x19,x0
+00e16b68  tbnz w8,#0x0,0x00e16b98
+00e16b6c  adrp x0,0x3383000
+00e16b70  ldr x0,[x0, #0x448]
+00e16b74  bl 0x00b0789c
+00e16b78  adrp x0,0x335f000
+00e16b7c  ldr x0,[x0, #0x20]
+00e16b80  bl 0x00b0789c
+00e16b84  adrp x0,0x3348000
+00e16b88  ldr x0,[x0, #0x138]
+00e16b8c  bl 0x00b0789c
+00e16b90  mov w8,#0x1
+00e16b94  strb w8,[x21, #0x604]
+00e16b98  ldr x0,[x20]
+00e16b9c  ldr w8,[x0, #0xe0]
+00e16ba0  cbnz w8,0x00e16bac
+00e16ba4  bl 0x00b0798c
+00e16ba8  ldr x0,[x20]
+00e16bac  ldr x8,[x0, #0xb8]
+00e16bb0  ldr x0,[x8, #0x180]
+00e16bb4  cbz x0,0x00e16bcc
+00e16bb8  mov x1,x19
+00e16bbc  ldp x19,x30,[sp, #0x10]
+00e16bc0  mov x2,xzr
+00e16bc4  ldp x21,x20,[sp], #0x20
+00e16bc8  b 0x01060aac
+00e16bcc  adrp x20,0x335f000
+00e16bd0  ldr x20,[x20, #0x20]
+00e16bd4  ldr x0,[x20]
+00e16bd8  ldr w8,[x0, #0xe0]
+00e16bdc  cbnz w8,0x00e16be8
+00e16be0  bl 0x00b0798c
+00e16be4  ldr x0,[x20]
+00e16be8  cbz x19,0x00e16c2c
+00e16bec  ldr x8,[x0, #0xb8]
+00e16bf0  ldr x0,[x8, #0x10]
+00e16bf4  cbz x0,0x00e16c2c
+00e16bf8  adrp x8,0x3383000
+00e16bfc  ldr x8,[x8, #0x448]
+00e16c00  ldr w1,[x19, #0x10]
+00e16c04  ldr x2,[x8]
+00e16c08  bl 0x01736d60
+00e16c0c  cbz x0,0x00e16c20
+00e16c10  ldr w8,[x19, #0x18]
+00e16c14  ldr w9,[x0, #0xa4]
+00e16c18  cmp w8,w9
+00e16c1c  cset w0,lt
+00e16c20  ldp x19,x30,[sp, #0x10]
+00e16c24  ldp x21,x20,[sp], #0x20
+00e16c28  ret
+00e16c2c  bl 0x00b079b0

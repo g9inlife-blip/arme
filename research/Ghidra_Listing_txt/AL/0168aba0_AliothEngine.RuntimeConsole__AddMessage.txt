@@ -1,0 +1,84 @@
+Function: AliothEngine.RuntimeConsole$$AddMessage @ 0168aba0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.List<RuntimeConsole.Log>$$Insert @ 01cc6ba8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Behaviour$$get_enabled @ 024dd268
+  -> System.Collections.Generic.List<RuntimeConsole.Log>$$RemoveAt @ 01cc7944
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168aba0  sub sp,sp,#0x70
+0168aba4  stp x23,x22,[sp, #0x40]
+0168aba8  stp x21,x20,[sp, #0x50]
+0168abac  stp x19,x30,[sp, #0x60]
+0168abb0  adrp x23,0x3577000
+0168abb4  ldrb w8,[x23, #0xa9a]
+0168abb8  mov w22,w3
+0168abbc  mov x20,x2
+0168abc0  mov x21,x1
+0168abc4  mov x19,x0
+0168abc8  tbnz w8,#0x0,0x0168abf8
+0168abcc  adrp x0,0x3324000
+0168abd0  ldr x0,[x0, #0x3b8]
+0168abd4  bl 0x00b0789c
+0168abd8  adrp x0,0x3368000
+0168abdc  ldr x0,[x0, #0x188]
+0168abe0  bl 0x00b0789c
+0168abe4  adrp x0,0x336f000
+0168abe8  ldr x0,[x0, #0xa70]
+0168abec  bl 0x00b0789c
+0168abf0  mov w8,#0x1
+0168abf4  strb w8,[x23, #0xa9a]
+0168abf8  mov x0,x19
+0168abfc  mov x1,xzr
+0168ac00  stp xzr,xzr,[sp, #0x10]
+0168ac04  str xzr,[sp, #0x8]
+0168ac08  bl 0x024dd268
+0168ac0c  tbz w0,#0x0,0x0168aca4
+0168ac10  add x8,sp,#0x8
+0168ac14  add x0,x8,#0x8
+0168ac18  mov x1,x21
+0168ac1c  stp xzr,x21,[sp, #0x8]
+0168ac20  str w22,[sp, #0x8]
+0168ac24  add x22,x8,#0x10
+0168ac28  str xzr,[sp, #0x18]
+0168ac2c  bl 0x00b07850
+0168ac30  mov x0,x22
+0168ac34  mov x1,x20
+0168ac38  str x20,[sp, #0x18]
+0168ac3c  bl 0x00b07850
+0168ac40  ldr x0,[x19, #0x20]
+0168ac44  cbz x0,0x0168acb8
+0168ac48  adrp x8,0x3324000
+0168ac4c  ldr x8,[x8, #0x3b8]
+0168ac50  ldr w1,[x0, #0x18]
+0168ac54  ldur q0,[sp, #0x8]
+0168ac58  ldr x9,[sp, #0x18]
+0168ac5c  ldr x3,[x8]
+0168ac60  add x2,sp,#0x20
+0168ac64  str q0,[sp, #0x20]
+0168ac68  str x9,[sp, #0x30]
+0168ac6c  bl 0x01cc6ba8
+0168ac70  ldr x0,[x19, #0x20]
+0168ac74  cbz x0,0x0168acb8
+0168ac78  ldr w9,[x0, #0x18]
+0168ac7c  ldr w8,[x19, #0x1c]
+0168ac80  cmp w9,w8
+0168ac84  b.le 0x0168aca4
+0168ac88  cmp w8,#0x1
+0168ac8c  b.lt 0x0168aca4
+0168ac90  adrp x8,0x3368000
+0168ac94  ldr x8,[x8, #0x188]
+0168ac98  mov w1,wzr
+0168ac9c  ldr x2,[x8]
+0168aca0  bl 0x01cc7944
+0168aca4  ldp x19,x30,[sp, #0x60]
+0168aca8  ldp x21,x20,[sp, #0x50]
+0168acac  ldp x23,x22,[sp, #0x40]
+0168acb0  add sp,sp,#0x70
+0168acb4  ret
+0168acb8  bl 0x00b079b0

@@ -1,0 +1,36 @@
+Function: AliothEngine.StoreManager_BiliBili$$PurchaseProduct @ 0165aecc
+
+--- Calls OUT ---
+  -> ProtocolGame_HttpRequest$$V3_POST_Order_Create @ 00ddc2dc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$TryParse @ 0214e358
+
+--- Calls IN ---
+
+--- Listing ---
+0165aecc  str x22,[sp, #-0x30]!
+0165aed0  stp x21,x20,[sp, #0x10]
+0165aed4  stp x19,x30,[sp, #0x20]
+0165aed8  adrp x22,0x3577000
+0165aedc  adrp x21,0x3368000
+0165aee0  ldrb w8,[x22, #0x865]
+0165aee4  ldr x21,[x21, #0x9f0]
+0165aee8  mov x19,x1
+0165aeec  mov x20,x0
+0165aef0  tbnz w8,#0x0,0x0165af08
+0165aef4  adrp x0,0x3368000
+0165aef8  ldr x0,[x0, #0x9f0]
+0165aefc  bl 0x00b0789c
+0165af00  mov w8,#0x1
+0165af04  strb w8,[x22, #0x865]
+0165af08  add x1,x20,#0x58
+0165af0c  mov x0,x19
+0165af10  mov x2,xzr
+0165af14  bl 0x0214e358
+0165af18  ldr x1,[x21]
+0165af1c  mov x0,x19
+0165af20  ldp x19,x30,[sp, #0x20]
+0165af24  ldp x21,x20,[sp, #0x10]
+0165af28  mov x2,xzr
+0165af2c  ldr x22,[sp], #0x30
+0165af30  b 0x00ddc2dc

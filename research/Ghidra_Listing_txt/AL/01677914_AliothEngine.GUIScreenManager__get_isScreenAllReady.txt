@@ -1,0 +1,72 @@
+Function: AliothEngine.GUIScreenManager$$get_isScreenAllReady @ 01677914
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_g_get_isScreenAllReady @ 0114f5d4
+  <- AliothEngine.GUIScreenManager.<WaitLoading>d__62$$MoveNext @ 0167bfc4
+
+--- Listing ---
+01677914  stp x21,x20,[sp, #-0x20]!
+01677918  stp x19,x30,[sp, #0x10]
+0167791c  adrp x21,0x3577000
+01677920  adrp x20,0x337b000
+01677924  ldrb w8,[x21, #0x9cf]
+01677928  ldr x20,[x20, #0xb98]
+0167792c  mov x19,x0
+01677930  tbnz w8,#0x0,0x01677960
+01677934  adrp x0,0x337b000
+01677938  ldr x0,[x0, #0xb98]
+0167793c  bl 0x00b0789c
+01677940  adrp x0,0x3359000
+01677944  ldr x0,[x0, #0xf98]
+01677948  bl 0x00b0789c
+0167794c  adrp x0,0x3362000
+01677950  ldr x0,[x0, #0xaa0]
+01677954  bl 0x00b0789c
+01677958  mov w8,#0x1
+0167795c  strb w8,[x21, #0x9cf]
+01677960  ldr x0,[x20]
+01677964  ldr w8,[x0, #0xe0]
+01677968  cbnz w8,0x01677974
+0167796c  bl 0x00b0798c
+01677970  ldr x0,[x20]
+01677974  ldr x8,[x0, #0xb8]
+01677978  ldr x0,[x8, #0x190]
+0167797c  cbz x0,0x01677994
+01677980  mov x1,x19
+01677984  ldp x19,x30,[sp, #0x10]
+01677988  mov x2,xzr
+0167798c  ldp x21,x20,[sp], #0x20
+01677990  b 0x01060aac
+01677994  ldr x0,[x19, #0x20]
+01677998  cbz x0,0x016779e0
+0167799c  adrp x21,0x3362000
+016779a0  ldr x21,[x21, #0xaa0]
+016779a4  mov w20,wzr
+016779a8  ldr w8,[x0, #0x18]
+016779ac  cmp w20,w8
+016779b0  b.ge 0x016779e4
+016779b4  ldr x2,[x21]
+016779b8  mov w1,w20
+016779bc  bl 0x01c00380
+016779c0  cbz x0,0x016779e0
+016779c4  ldr x8,[x0]
+016779c8  ldp x9,x1,[x8, #0x1e8]
+016779cc  blr x9
+016779d0  tbz w0,#0x0,0x016779ec
+016779d4  ldr x0,[x19, #0x20]
+016779d8  add w20,w20,#0x1
+016779dc  cbnz x0,0x016779a8
+016779e0  bl 0x00b079b0
+016779e4  mov w0,#0x1
+016779e8  b 0x016779f0
+016779ec  mov w0,wzr
+016779f0  ldp x19,x30,[sp, #0x10]
+016779f4  ldp x21,x20,[sp], #0x20
+016779f8  ret

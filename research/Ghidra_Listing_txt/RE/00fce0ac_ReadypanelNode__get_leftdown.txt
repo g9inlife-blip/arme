@@ -1,0 +1,28 @@
+Function: ReadypanelNode$$get_leftdown @ 00fce0ac
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fce0ac  stp x21,x20,[sp, #-0x20]!
+00fce0b0  stp x19,x30,[sp, #0x10]
+00fce0b4  adrp x20,0x3573000
+00fce0b8  adrp x21,0x3339000
+00fce0bc  ldrb w8,[x20, #0xe79]
+00fce0c0  ldr x21,[x21, #0x268]
+00fce0c4  mov x19,x0
+00fce0c8  tbnz w8,#0x0,0x00fce0e0
+00fce0cc  adrp x0,0x3339000
+00fce0d0  ldr x0,[x0, #0x268]
+00fce0d4  bl 0x00b0789c
+00fce0d8  mov w8,#0x1
+00fce0dc  strb w8,[x20, #0xe79]
+00fce0e0  ldr x1,[x21]
+00fce0e4  mov x0,x19
+00fce0e8  ldp x19,x30,[sp, #0x10]
+00fce0ec  mov x2,xzr
+00fce0f0  ldp x21,x20,[sp], #0x20
+00fce0f4  b 0x00dc06f8

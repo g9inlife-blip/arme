@@ -1,0 +1,27 @@
+Function: AliothEngine.AliothSDKManager$$OnDestroy @ 01658548
+
+--- Calls OUT ---
+  -> AliothEngine.SingletonBehaviour<object>$$OnDestroy @ 01e093b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01658548  stp x21,x20,[sp, #-0x20]!
+0165854c  stp x19,x30,[sp, #0x10]
+01658550  adrp x20,0x3577000
+01658554  adrp x21,0x3320000
+01658558  ldrb w8,[x20, #0x834]
+0165855c  ldr x21,[x21, #0x640]
+01658560  mov x19,x0
+01658564  tbnz w8,#0x0,0x0165857c
+01658568  adrp x0,0x3320000
+0165856c  ldr x0,[x0, #0x640]
+01658570  bl 0x00b0789c
+01658574  mov w8,#0x1
+01658578  strb w8,[x20, #0x834]
+0165857c  ldr x1,[x21]
+01658580  mov x0,x19
+01658584  ldp x19,x30,[sp, #0x10]
+01658588  ldp x21,x20,[sp], #0x20
+0165858c  b 0x01e093b0

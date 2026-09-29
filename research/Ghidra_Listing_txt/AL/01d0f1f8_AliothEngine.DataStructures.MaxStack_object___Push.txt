@@ -1,0 +1,42 @@
+Function: AliothEngine.DataStructures.MaxStack<object>$$Push @ 01d0f1f8
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_PushScreen @ 01673d28
+
+--- Listing ---
+01d0f1f8  stp x21,x20,[sp, #-0x20]!
+01d0f1fc  stp x19,x30,[sp, #0x10]
+01d0f200  mov x21,x0
+01d0f204  ldr x0,[x0, #0x18]
+01d0f208  cbz x0,0x01d0f278
+01d0f20c  ldr x8,[x2, #0x20]
+01d0f210  mov x19,x1
+01d0f214  mov x20,x2
+01d0f218  ldr x8,[x8, #0xc0]
+01d0f21c  ldr x1,[x8, #0x10]
+01d0f220  ldr x8,[x1, #0x8]
+01d0f224  blr x8
+01d0f228  ldr w8,[x21, #0x10]
+01d0f22c  cmp w0,w8
+01d0f230  b.ne 0x01d0f250
+01d0f234  ldr x0,[x21, #0x18]
+01d0f238  cbz x0,0x01d0f278
+01d0f23c  ldr x8,[x20, #0x20]
+01d0f240  ldr x8,[x8, #0xc0]
+01d0f244  ldr x1,[x8, #0x18]
+01d0f248  ldr x8,[x1, #0x8]
+01d0f24c  blr x8
+01d0f250  ldr x0,[x21, #0x18]
+01d0f254  cbz x0,0x01d0f278
+01d0f258  ldr x8,[x20, #0x20]
+01d0f25c  mov x1,x19
+01d0f260  ldp x19,x30,[sp, #0x10]
+01d0f264  ldr x8,[x8, #0xc0]
+01d0f268  ldr x2,[x8, #0x20]
+01d0f26c  ldr x3,[x2, #0x8]
+01d0f270  ldp x21,x20,[sp], #0x20
+01d0f274  br x3
+01d0f278  bl 0x00b079b0

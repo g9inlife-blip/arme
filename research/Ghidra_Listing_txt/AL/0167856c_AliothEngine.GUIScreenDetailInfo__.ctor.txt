@@ -1,0 +1,31 @@
+Function: AliothEngine.GUIScreenDetailInfo$$.ctor @ 0167856c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$ShowScreenInQuene @ 01678330
+
+--- Listing ---
+0167856c  str x22,[sp, #-0x30]!
+01678570  stp x21,x20,[sp, #0x10]
+01678574  stp x19,x30,[sp, #0x20]
+01678578  mov w21,w1
+0167857c  mov x1,xzr
+01678580  mov x19,x3
+01678584  mov x20,x2
+01678588  mov x22,x0
+0167858c  bl 0x02194104
+01678590  mov x0,x22
+01678594  str w21,[x22, #0x20]
+01678598  str x19,[x0, #0x10]!
+0167859c  mov x1,x19
+016785a0  bl 0x00b07850
+016785a4  str x20,[x22, #0x18]!
+016785a8  mov x1,x20
+016785ac  ldp x19,x30,[sp, #0x20]
+016785b0  ldp x21,x20,[sp, #0x10]
+016785b4  mov x0,x22
+016785b8  ldr x22,[sp], #0x30
+016785bc  b 0x00b07850

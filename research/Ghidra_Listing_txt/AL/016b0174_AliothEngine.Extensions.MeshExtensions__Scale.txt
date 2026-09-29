@@ -1,0 +1,56 @@
+Function: AliothEngine.Extensions.MeshExtensions$$Scale @ 016b0174
+
+--- Calls OUT ---
+  -> UnityEngine.Mesh$$get_vertices @ 024c8efc
+  -> UnityEngine.Mesh$$set_vertices @ 024c8f48
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.Mesh$$RecalculateBounds @ 024ca410
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b0174  sub sp,sp,#0x40
+016b0178  str d8,[sp, #0x20]
+016b017c  stp x19,x30,[sp, #0x30]
+016b0180  str d1,[sp]
+016b0184  str d0,[sp, #0x10]
+016b0188  cbz x0,0x016b0220
+016b018c  mov x1,xzr
+016b0190  mov v8.16B,v2.16B
+016b0194  mov x19,x0
+016b0198  bl 0x024c8efc
+016b019c  cbz x0,0x016b0220
+016b01a0  ldr w8,[x0, #0x18]
+016b01a4  ldr q2,[sp, #0x10]
+016b01a8  mov x1,x0
+016b01ac  lsl x9,x8,#0x20
+016b01b0  cmp x9,#0x1
+016b01b4  b.lt 0x016b01f8
+016b01b8  ldr q0,[sp]
+016b01bc  mov x9,xzr
+016b01c0  sxtw x10,w8
+016b01c4  add x11,x1,#0x28
+016b01c8  mov v2.S[0x1],v0.S[0x0]
+016b01cc  cmp x8,x9
+016b01d0  b.eq 0x016b021c
+016b01d4  ldur d0,[x11, #-0x8]
+016b01d8  ldr s1,[x11]
+016b01dc  add x9,x9,#0x1
+016b01e0  cmp x9,x10
+016b01e4  fmul v0.2S,v2.2S,v0.2S
+016b01e8  fmul s1,s8,s1
+016b01ec  stur d0,[x11, #-0x8]
+016b01f0  str s1,[x11], #0xc
+016b01f4  b.lt 0x016b01cc
+016b01f8  mov x0,x19
+016b01fc  mov x2,xzr
+016b0200  bl 0x024c8f48
+016b0204  mov x0,x19
+016b0208  ldp x19,x30,[sp, #0x30]
+016b020c  ldr d8,[sp, #0x20]
+016b0210  mov x1,xzr
+016b0214  add sp,sp,#0x40
+016b0218  b 0x024ca410
+016b021c  bl 0x00b079b8
+016b0220  bl 0x00b079b0

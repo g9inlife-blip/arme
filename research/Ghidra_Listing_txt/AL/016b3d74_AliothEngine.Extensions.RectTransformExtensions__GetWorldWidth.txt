@@ -1,0 +1,60 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$GetWorldWidth @ 016b3d74
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.RectTransform$$GetWorldCorners @ 024f6bf4
+
+--- Calls IN ---
+
+--- Listing ---
+016b3d74  stp d9,d8,[sp, #-0x30]!
+016b3d78  stp x21,x20,[sp, #0x10]
+016b3d7c  stp x19,x30,[sp, #0x20]
+016b3d80  adrp x20,0x3577000
+016b3d84  adrp x21,0x3365000
+016b3d88  ldrb w8,[x20, #0xbe4]
+016b3d8c  ldr x21,[x21, #0x98]
+016b3d90  mov x19,x0
+016b3d94  tbnz w8,#0x0,0x016b3db8
+016b3d98  adrp x0,0x332c000
+016b3d9c  ldr x0,[x0, #0x5a8]
+016b3da0  bl 0x00b0789c
+016b3da4  adrp x0,0x3365000
+016b3da8  ldr x0,[x0, #0x98]
+016b3dac  bl 0x00b0789c
+016b3db0  mov w8,#0x1
+016b3db4  strb w8,[x20, #0xbe4]
+016b3db8  ldr x0,[x21]
+016b3dbc  mov w1,#0x4
+016b3dc0  bl 0x00b078f8
+016b3dc4  cbz x19,0x016b3e28
+016b3dc8  mov x20,x0
+016b3dcc  mov x0,x19
+016b3dd0  mov x1,x20
+016b3dd4  mov x2,xzr
+016b3dd8  bl 0x024f6bf4
+016b3ddc  cbz x20,0x016b3e28
+016b3de0  ldr w8,[x20, #0x18]
+016b3de4  cmp w8,#0x1
+016b3de8  b.ls 0x016b3e2c
+016b3dec  cmp w8,#0x2
+016b3df0  b.eq 0x016b3e2c
+016b3df4  adrp x8,0x332c000
+016b3df8  ldr x8,[x8, #0x5a8]
+016b3dfc  ldr s8,[x20, #0x30]
+016b3e00  ldr s9,[x20, #0x3c]
+016b3e04  ldr x0,[x8]
+016b3e08  ldr w8,[x0, #0xe0]
+016b3e0c  cbnz w8,0x016b3e14
+016b3e10  bl 0x00b0798c
+016b3e14  ldp x19,x30,[sp, #0x20]
+016b3e18  ldp x21,x20,[sp, #0x10]
+016b3e1c  fabd s0,s8,s9
+016b3e20  ldp d9,d8,[sp], #0x30
+016b3e24  ret
+016b3e28  bl 0x00b079b0
+016b3e2c  bl 0x00b079b8

@@ -1,0 +1,101 @@
+Function: AliothEngine.GUIElementListFilter$$FilterElements @ 0168d944
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Func<object,-bool>$$.ctor @ 01ae8650
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Linq.Enumerable$$Where<object> @ 0178f7b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.Linq.Enumerable$$ToList<object> @ 0178daf8
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GUIElementListFilter$$UpdateFilterElements @ 0168daa0
+
+--- Listing ---
+0168d944  str x22,[sp, #-0x30]!
+0168d948  stp x21,x20,[sp, #0x10]
+0168d94c  stp x19,x30,[sp, #0x20]
+0168d950  adrp x20,0x3577000
+0168d954  adrp x22,0x3354000
+0168d958  ldrb w8,[x20, #0xac1]
+0168d95c  ldr x22,[x22, #0x3b0]
+0168d960  mov x19,x1
+0168d964  mov x21,x0
+0168d968  tbnz w8,#0x0,0x0168d9b0
+0168d96c  adrp x0,0x3328000
+0168d970  ldr x0,[x0, #0x2e0]
+0168d974  bl 0x00b0789c
+0168d978  adrp x0,0x3362000
+0168d97c  ldr x0,[x0, #0xe8]
+0168d980  bl 0x00b0789c
+0168d984  adrp x0,0x3376000
+0168d988  ldr x0,[x0, #0xa88]
+0168d98c  bl 0x00b0789c
+0168d990  adrp x0,0x3359000
+0168d994  ldr x0,[x0, #0xcb8]
+0168d998  bl 0x00b0789c
+0168d99c  adrp x0,0x3354000
+0168d9a0  ldr x0,[x0, #0x3b0]
+0168d9a4  bl 0x00b0789c
+0168d9a8  mov w8,#0x1
+0168d9ac  strb w8,[x20, #0xac1]
+0168d9b0  ldr x0,[x22]
+0168d9b4  bl 0x00b079a0
+0168d9b8  cbz x0,0x0168da90
+0168d9bc  mov x1,xzr
+0168d9c0  mov x20,x0
+0168d9c4  bl 0x02194104
+0168d9c8  ldr x8,[x21, #0x18]
+0168d9cc  cbz x8,0x0168da90
+0168d9d0  ldr x0,[x8, #0x100]
+0168d9d4  cbz x0,0x0168da90
+0168d9d8  ldr x8,[x0]
+0168d9dc  ldr x9,[x8, #0x5d8]
+0168d9e0  ldr x1,[x8, #0x5e0]
+0168d9e4  blr x9
+0168d9e8  mov x1,x0
+0168d9ec  mov x0,x20
+0168d9f0  str x1,[x0, #0x10]!
+0168d9f4  bl 0x00b07850
+0168d9f8  ldr x8,[x21, #0x20]
+0168d9fc  cbz x8,0x0168da90
+0168da00  ldr x1,[x8, #0x178]
+0168da04  mov x21,x20
+0168da08  str x1,[x21, #0x18]!
+0168da0c  mov x0,x21
+0168da10  bl 0x00b07850
+0168da14  ldr x0,[x21]
+0168da18  mov x1,xzr
+0168da1c  bl 0x01fdf3a0
+0168da20  tbnz w0,#0x0,0x0168da70
+0168da24  adrp x8,0x3376000
+0168da28  ldr x8,[x8, #0xa88]
+0168da2c  ldr x0,[x8]
+0168da30  bl 0x00b079a0
+0168da34  cbz x0,0x0168da90
+0168da38  adrp x8,0x3359000
+0168da3c  ldr x8,[x8, #0xcb8]
+0168da40  adrp x22,0x3362000
+0168da44  mov x1,x20
+0168da48  mov x3,xzr
+0168da4c  ldr x2,[x8]
+0168da50  ldr x22,[x22, #0xe8]
+0168da54  mov x21,x0
+0168da58  bl 0x01ae8650
+0168da5c  ldr x2,[x22]
+0168da60  mov x0,x19
+0168da64  mov x1,x21
+0168da68  bl 0x0178f7b0
+0168da6c  mov x19,x0
+0168da70  adrp x8,0x3328000
+0168da74  ldr x8,[x8, #0x2e0]
+0168da78  mov x0,x19
+0168da7c  ldp x19,x30,[sp, #0x20]
+0168da80  ldp x21,x20,[sp, #0x10]
+0168da84  ldr x1,[x8]
+0168da88  ldr x22,[sp], #0x30
+0168da8c  b 0x0178daf8
+0168da90  bl 0x00b079b0

@@ -1,0 +1,155 @@
+Function: ReadyMono$$CheckHeroCurrentBreakType @ 00e62bc4
+
+--- Calls OUT ---
+  -> BaseMono$$GetHeroInfo @ 00e20e4c
+  -> AliothExtensions$$Skill @ 00e12978
+  -> System.String$$Split @ 01fe0d68
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Int32$$Parse @ 0214df74
+  -> SkilleffData$$get_breakType @ 00df1e98
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> HeroInfo$$get_Weapon @ 016ee62c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> FUN_00b079b8 @ 00b079b8
+  -> Ali$$GetExcelData<object> @ 01736d60
+
+--- Calls IN ---
+  <- ReadyMono$$SetTeamMembers @ 00e62118
+
+--- Listing ---
+00e62bc4  str x22,[sp, #-0x30]!
+00e62bc8  stp x21,x20,[sp, #0x10]
+00e62bcc  stp x19,x30,[sp, #0x20]
+00e62bd0  adrp x21,0x3572000
+00e62bd4  adrp x22,0x333c000
+00e62bd8  ldrb w8,[x21, #0x972]
+00e62bdc  ldr x22,[x22, #0x628]
+00e62be0  mov w20,w1
+00e62be4  mov x19,x0
+00e62be8  tbnz w8,#0x0,0x00e62c3c
+00e62bec  adrp x0,0x3361000
+00e62bf0  ldr x0,[x0, #0x210]
+00e62bf4  bl 0x00b0789c
+00e62bf8  adrp x0,0x3368000
+00e62bfc  ldr x0,[x0, #0xf60]
+00e62c00  bl 0x00b0789c
+00e62c04  adrp x0,0x335f000
+00e62c08  ldr x0,[x0, #0x20]
+00e62c0c  bl 0x00b0789c
+00e62c10  adrp x0,0x3348000
+00e62c14  ldr x0,[x0, #0x138]
+00e62c18  bl 0x00b0789c
+00e62c1c  adrp x0,0x333c000
+00e62c20  ldr x0,[x0, #0x628]
+00e62c24  bl 0x00b0789c
+00e62c28  adrp x0,0x3381000
+00e62c2c  ldr x0,[x0, #0xfe0]
+00e62c30  bl 0x00b0789c
+00e62c34  mov w8,#0x1
+00e62c38  strb w8,[x21, #0x972]
+00e62c3c  ldr x8,[x22]
+00e62c40  ldr x8,[x8, #0xb8]
+00e62c44  ldr x0,[x8, #0xf0]
+00e62c48  cbz x0,0x00e62c68
+00e62c4c  mov x1,x19
+00e62c50  mov w2,w20
+00e62c54  ldp x19,x30,[sp, #0x20]
+00e62c58  ldp x21,x20,[sp, #0x10]
+00e62c5c  mov x3,xzr
+00e62c60  ldr x22,[sp], #0x30
+00e62c64  b 0x0106155c
+00e62c68  adrp x22,0x335f000
+00e62c6c  ldr x22,[x22, #0x20]
+00e62c70  ldr x0,[x22]
+00e62c74  ldr w8,[x0, #0xe0]
+00e62c78  cbnz w8,0x00e62c84
+00e62c7c  bl 0x00b0798c
+00e62c80  ldr x0,[x22]
+00e62c84  ldr x8,[x0, #0xb8]
+00e62c88  ldr x0,[x8, #0x10]
+00e62c8c  cbz x0,0x00e62dd4
+00e62c90  adrp x8,0x3361000
+00e62c94  ldr x8,[x8, #0x210]
+00e62c98  mov w1,w20
+00e62c9c  ldr x2,[x8]
+00e62ca0  bl 0x01736d60
+00e62ca4  mov x21,x0
+00e62ca8  mov x0,x19
+00e62cac  mov w1,w20
+00e62cb0  mov x2,xzr
+00e62cb4  bl 0x00e20e4c
+00e62cb8  mov x20,x0
+00e62cbc  cbz x0,0x00e62cd0
+00e62cc0  mov x0,x20
+00e62cc4  mov x1,xzr
+00e62cc8  bl 0x016ee62c
+00e62ccc  b 0x00e62d24
+00e62cd0  cbz x21,0x00e62dd4
+00e62cd4  ldr x0,[x21, #0xf0]
+00e62cd8  cbz x0,0x00e62dd4
+00e62cdc  adrp x8,0x3381000
+00e62ce0  ldr x8,[x8, #0xfe0]
+00e62ce4  mov x2,xzr
+00e62ce8  ldr x1,[x8]
+00e62cec  bl 0x01fe31fc
+00e62cf0  tbz w0,#0x0,0x00e62dd4
+00e62cf4  ldr x0,[x21, #0xf0]
+00e62cf8  cbz x0,0x00e62dd4
+00e62cfc  mov w1,#0x2a
+00e62d00  mov w2,wzr
+00e62d04  mov x3,xzr
+00e62d08  bl 0x01fe0d68
+00e62d0c  cbz x0,0x00e62dd4
+00e62d10  ldr w8,[x0, #0x18]
+00e62d14  cbz w8,0x00e62dd8
+00e62d18  ldr x0,[x0, #0x20]
+00e62d1c  mov x1,xzr
+00e62d20  bl 0x0214df74
+00e62d24  mov w21,w0
+00e62d28  ldr x0,[x22]
+00e62d2c  ldr w8,[x0, #0xe0]
+00e62d30  cbnz w8,0x00e62d3c
+00e62d34  bl 0x00b0798c
+00e62d38  ldr x0,[x22]
+00e62d3c  ldr x8,[x0, #0xb8]
+00e62d40  ldr x0,[x8, #0x10]
+00e62d44  cbz x0,0x00e62dd4
+00e62d48  adrp x8,0x3368000
+00e62d4c  ldr x8,[x8, #0xf60]
+00e62d50  adrp x22,0x3348000
+00e62d54  mov w1,w21
+00e62d58  ldr x2,[x8]
+00e62d5c  ldr x22,[x22, #0x138]
+00e62d60  bl 0x01736d60
+00e62d64  ldr x8,[x22]
+00e62d68  mov x21,x0
+00e62d6c  ldr w9,[x8, #0xe0]
+00e62d70  cbnz w9,0x00e62d7c
+00e62d74  mov x0,x8
+00e62d78  bl 0x00b0798c
+00e62d7c  mov x0,x21
+00e62d80  mov x1,x20
+00e62d84  mov x2,xzr
+00e62d88  bl 0x00e12978
+00e62d8c  cbz x0,0x00e62dd4
+00e62d90  mov x1,xzr
+00e62d94  bl 0x00df1e98
+00e62d98  ldr x8,[x19, #0x120]
+00e62d9c  cbz x8,0x00e62dd4
+00e62da0  ldr w9,[x8, #0x18]
+00e62da4  cmp w0,w9
+00e62da8  b.cs 0x00e62dd8
+00e62dac  add x8,x8,w0, SXTW  #0x2
+00e62db0  ldr w9,[x8, #0x20]!
+00e62db4  cmp w9,#0x1
+00e62db8  b.ne 0x00e62dc4
+00e62dbc  mov w9,#0x2
+00e62dc0  str w9,[x8]
+00e62dc4  ldp x19,x30,[sp, #0x20]
+00e62dc8  ldp x21,x20,[sp, #0x10]
+00e62dcc  ldr x22,[sp], #0x30
+00e62dd0  ret
+00e62dd4  bl 0x00b079b0
+00e62dd8  bl 0x00b079b8

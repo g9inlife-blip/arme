@@ -1,0 +1,24 @@
+Function: AliothEngine.NotificationManager_Android$$DoGetRegistrationId @ 01657ea0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01657ea0  str x20,[sp, #-0x20]!
+01657ea4  stp x19,x30,[sp, #0x10]
+01657ea8  adrp x19,0x3577000
+01657eac  adrp x20,0x332c000
+01657eb0  ldrb w8,[x19, #0x827]
+01657eb4  ldr x20,[x20, #0x2c0]
+01657eb8  tbnz w8,#0x0,0x01657ed0
+01657ebc  adrp x0,0x332c000
+01657ec0  ldr x0,[x0, #0x2c0]
+01657ec4  bl 0x00b0789c
+01657ec8  mov w8,#0x1
+01657ecc  strb w8,[x19, #0x827]
+01657ed0  ldr x0,[x20]
+01657ed4  ldp x19,x30,[sp, #0x10]
+01657ed8  ldr x20,[sp], #0x20
+01657edc  ret

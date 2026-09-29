@@ -1,0 +1,89 @@
+Function: Alioth.S1.Net.RequestExtensions.<WaitReceiveFinished>d__1$$MoveNext @ 015b5648
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.WaitUntil$$.ctor @ 024df0cc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Func<bool>$$.ctor @ 01ae4960
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+015b5648  str x22,[sp, #-0x30]!
+015b564c  stp x21,x20,[sp, #0x10]
+015b5650  stp x19,x30,[sp, #0x20]
+015b5654  adrp x20,0x3577000
+015b5658  ldrb w8,[x20, #0xd4]
+015b565c  mov x19,x0
+015b5660  tbnz w8,#0x0,0x015b569c
+015b5664  adrp x0,0x331b000
+015b5668  ldr x0,[x0, #0xeb0]
+015b566c  bl 0x00b0789c
+015b5670  adrp x0,0x3332000
+015b5674  ldr x0,[x0, #0xfc0]
+015b5678  bl 0x00b0789c
+015b567c  adrp x0,0x333d000
+015b5680  ldr x0,[x0, #0x288]
+015b5684  bl 0x00b0789c
+015b5688  adrp x0,0x3354000
+015b568c  ldr x0,[x0, #0xb28]
+015b5690  bl 0x00b0789c
+015b5694  mov w8,#0x1
+015b5698  strb w8,[x20, #0xd4]
+015b569c  ldr w8,[x19, #0x10]
+015b56a0  mov w0,wzr
+015b56a4  cmp w8,#0x1
+015b56a8  b.eq 0x015b5758
+015b56ac  cbnz w8,0x015b5760
+015b56b0  adrp x8,0x333d000
+015b56b4  ldr x8,[x8, #0x288]
+015b56b8  mov w9,#0xffffffff
+015b56bc  str w9,[x19, #0x10]
+015b56c0  ldr x0,[x8]
+015b56c4  bl 0x00b079a0
+015b56c8  cbz x0,0x015b5770
+015b56cc  adrp x21,0x331b000
+015b56d0  ldr x21,[x21, #0xeb0]
+015b56d4  mov x1,xzr
+015b56d8  mov x20,x0
+015b56dc  bl 0x02194104
+015b56e0  ldr x1,[x19, #0x20]
+015b56e4  mov x0,x20
+015b56e8  str x1,[x0, #0x10]!
+015b56ec  bl 0x00b07850
+015b56f0  ldr x0,[x21]
+015b56f4  bl 0x00b079a0
+015b56f8  cbz x0,0x015b5770
+015b56fc  adrp x8,0x3332000
+015b5700  ldr x8,[x8, #0xfc0]
+015b5704  adrp x22,0x3354000
+015b5708  mov x1,x20
+015b570c  mov x3,xzr
+015b5710  ldr x2,[x8]
+015b5714  ldr x22,[x22, #0xb28]
+015b5718  mov x21,x0
+015b571c  bl 0x01ae4960
+015b5720  ldr x0,[x22]
+015b5724  bl 0x00b079a0
+015b5728  cbz x0,0x015b5770
+015b572c  mov x1,x21
+015b5730  mov x2,xzr
+015b5734  mov x20,x0
+015b5738  bl 0x024df0cc
+015b573c  mov x0,x19
+015b5740  str x20,[x0, #0x18]!
+015b5744  mov x1,x20
+015b5748  bl 0x00b07850
+015b574c  mov w8,#0x1
+015b5750  mov w0,#0x1
+015b5754  b 0x015b575c
+015b5758  mov w8,#0xffffffff
+015b575c  str w8,[x19, #0x10]
+015b5760  ldp x19,x30,[sp, #0x20]
+015b5764  ldp x21,x20,[sp, #0x10]
+015b5768  ldr x22,[sp], #0x30
+015b576c  ret
+015b5770  bl 0x00b079b0

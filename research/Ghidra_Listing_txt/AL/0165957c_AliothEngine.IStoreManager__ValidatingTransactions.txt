@@ -1,0 +1,39 @@
+Function: AliothEngine.IStoreManager$$ValidatingTransactions @ 0165957c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+
+--- Listing ---
+0165957c  str x22,[sp, #-0x30]!
+01659580  stp x21,x20,[sp, #0x10]
+01659584  stp x19,x30,[sp, #0x20]
+01659588  adrp x21,0x3577000
+0165958c  adrp x22,0x336f000
+01659590  ldrb w8,[x21, #0x84a]
+01659594  ldr x22,[x22, #0x1e8]
+01659598  mov x19,x1
+0165959c  mov x20,x0
+016595a0  tbnz w8,#0x0,0x016595b8
+016595a4  adrp x0,0x336f000
+016595a8  ldr x0,[x0, #0x1e8]
+016595ac  bl 0x00b0789c
+016595b0  mov w8,#0x1
+016595b4  strb w8,[x21, #0x84a]
+016595b8  ldr x8,[x22]
+016595bc  ldr x8,[x8, #0xb8]
+016595c0  ldr x0,[x8, #0x90]
+016595c4  cbz x0,0x016595e4
+016595c8  mov x1,x20
+016595cc  mov x2,x19
+016595d0  ldp x19,x30,[sp, #0x20]
+016595d4  ldp x21,x20,[sp, #0x10]
+016595d8  mov x3,xzr
+016595dc  ldr x22,[sp], #0x30
+016595e0  b 0x0106125c
+016595e4  ldp x19,x30,[sp, #0x20]
+016595e8  ldp x21,x20,[sp, #0x10]
+016595ec  ldr x22,[sp], #0x30
+016595f0  ret

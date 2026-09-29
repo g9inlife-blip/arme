@@ -1,0 +1,16 @@
+Function: __add_shared @ 00b810a0
+FuncComment: std::__ndk1::__shared_count::__add_shared()
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- __add_shared @ 008d5b10
+
+--- Listing ---
+00b810a0  add x8,x0,#0x8
+    ; [PLATE] std::__ndk1::__shared_count::__add_shared()
+00b810a4  ldxr x9,[x8]
+00b810a8  add x9,x9,#0x1
+00b810ac  stxr w10,x9,[x8]
+00b810b0  cbnz w10,0x00b810a4
+00b810b4  ret

@@ -1,0 +1,31 @@
+Function: AliothEngine.GameUpdateService.<>c__DisplayClass56_0$$<DownloadUpdateAssetBundles>b__0 @ 016817a4
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.ActionExtensions$$SafeInvoke<bool> @ 017369a8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016817a4  str x22,[sp, #-0x30]!
+016817a8  stp x21,x20,[sp, #0x10]
+016817ac  stp x19,x30,[sp, #0x20]
+016817b0  adrp x22,0x3577000
+016817b4  adrp x21,0x3309000
+016817b8  ldrb w8,[x22, #0xa4a]
+016817bc  ldr x21,[x21, #0xe70]
+016817c0  mov w19,w1
+016817c4  mov x20,x0
+016817c8  tbnz w8,#0x0,0x016817e0
+016817cc  adrp x0,0x3309000
+016817d0  ldr x0,[x0, #0xe70]
+016817d4  bl 0x00b0789c
+016817d8  mov w8,#0x1
+016817dc  strb w8,[x22, #0xa4a]
+016817e0  ldr x0,[x20, #0x10]
+016817e4  ldr x2,[x21]
+016817e8  and w1,w19,#0x1
+016817ec  ldp x19,x30,[sp, #0x20]
+016817f0  ldp x21,x20,[sp, #0x10]
+016817f4  ldr x22,[sp], #0x30
+016817f8  b 0x017369a8

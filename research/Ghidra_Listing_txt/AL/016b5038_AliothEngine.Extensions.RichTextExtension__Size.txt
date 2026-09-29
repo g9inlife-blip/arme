@@ -1,0 +1,67 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Size @ 016b5038
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fdf7a4
+  -> thunk_FUN_00ace368 @ 00b07994
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RichTextExtension$$Large @ 016b5030
+  <- AliothEngine.Extensions.RichTextExtension$$MiniBoldLabel @ 016b5d94
+  <- AliothEngine.Extensions.RichTextExtension$$BlackMiniBoldLabel @ 016b5e84
+  <- AliothEngine.Extensions.RichTextExtension$$BlackLargeBoldLabel @ 016b5e98
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteBoldLabel @ 016b5df8
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteLargeBoldLabel @ 016b5e20
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteMiniLabel @ 016b5de4
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteLargeLabel @ 016b5dd0
+  <- AliothEngine.Extensions.RichTextExtension$$BoldLabel @ 016b5d80
+  <- AliothEngine.Extensions.RichTextExtension$$Label @ 016b5d68
+  <- AliothEngine.Extensions.RichTextExtension$$MiniLabel @ 016b5d70
+  <- AliothEngine.Extensions.RichTextExtension$$Middle @ 016b50c8
+  <- AliothEngine.Extensions.RichTextExtension$$Small @ 016b50d0
+  <- AliothEngine.Extensions.RichTextExtension$$BlackBoldLabel @ 016b5e70
+  <- AliothEngine.Extensions.RichTextExtension$$BlackMiniLabel @ 016b5e5c
+  <- AliothEngine.Extensions.RichTextExtension$$BlackLabel @ 016b5e34
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteLabel @ 016b5dbc
+  <- AliothEngine.Extensions.RichTextExtension$$BlackLargeLabel @ 016b5e48
+  <- AliothEngine.Extensions.RichTextExtension$$LargeLabel @ 016b5d78
+  <- AliothEngine.Extensions.RichTextExtension$$LargeBoldLabel @ 016b5da8
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteMiniBoldLabel @ 016b5e0c
+
+--- Listing ---
+016b5038  sub sp,sp,#0x40
+016b503c  stp x23,x22,[sp, #0x10]
+016b5040  stp x21,x20,[sp, #0x20]
+016b5044  stp x19,x30,[sp, #0x30]
+016b5048  adrp x23,0x3577000
+016b504c  adrp x22,0x3332000
+016b5050  adrp x21,0x3339000
+016b5054  ldrb w8,[x23, #0xbed]
+016b5058  ldr x22,[x22, #0x38]
+016b505c  ldr x21,[x21, #0xf30]
+016b5060  mov w20,w1
+016b5064  mov x19,x0
+016b5068  tbnz w8,#0x0,0x016b508c
+016b506c  adrp x0,0x3332000
+016b5070  ldr x0,[x0, #0x38]
+016b5074  bl 0x00b0789c
+016b5078  adrp x0,0x3339000
+016b507c  ldr x0,[x0, #0xf30]
+016b5080  bl 0x00b0789c
+016b5084  mov w8,#0x1
+016b5088  strb w8,[x23, #0xbed]
+016b508c  ldr x0,[x22]
+016b5090  add x1,sp,#0xc
+016b5094  str w20,[sp, #0xc]
+016b5098  bl 0x00b07994
+016b509c  ldr x8,[x21]
+016b50a0  mov x1,x0
+016b50a4  mov x2,x19
+016b50a8  mov x3,xzr
+016b50ac  mov x0,x8
+016b50b0  bl 0x01fdf7a4
+016b50b4  ldp x19,x30,[sp, #0x30]
+016b50b8  ldp x21,x20,[sp, #0x20]
+016b50bc  ldp x23,x22,[sp, #0x10]
+016b50c0  add sp,sp,#0x40
+016b50c4  ret

@@ -1,0 +1,64 @@
+Function: ReadyMono$$OnOpening @ 00e5dcac
+
+--- Calls OUT ---
+  -> AliothExtensions$$SetActiveCheck @ 00e13880
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> ReadypanelNode$$get_obj_nameParent @ 00fcd350
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> GUIScreenBaseMono$$OnOpening @ 00f20e84
+  -> FUN_00b079b0 @ 00b079b0
+  -> ReadyMono$$get_m_node @ 00e5cc94
+
+--- Calls IN ---
+
+--- Listing ---
+00e5dcac  stp x21,x20,[sp, #-0x20]!
+00e5dcb0  stp x19,x30,[sp, #0x10]
+00e5dcb4  adrp x20,0x3572000
+00e5dcb8  adrp x21,0x333c000
+00e5dcbc  ldrb w8,[x20, #0x962]
+00e5dcc0  ldr x21,[x21, #0x628]
+00e5dcc4  mov x19,x0
+00e5dcc8  tbnz w8,#0x0,0x00e5dcec
+00e5dccc  adrp x0,0x3348000
+00e5dcd0  ldr x0,[x0, #0x138]
+00e5dcd4  bl 0x00b0789c
+00e5dcd8  adrp x0,0x333c000
+00e5dcdc  ldr x0,[x0, #0x628]
+00e5dce0  bl 0x00b0789c
+00e5dce4  mov w8,#0x1
+00e5dce8  strb w8,[x20, #0x962]
+00e5dcec  ldr x8,[x21]
+00e5dcf0  ldr x8,[x8, #0xb8]
+00e5dcf4  ldr x0,[x8, #0x70]
+00e5dcf8  cbz x0,0x00e5dd10
+00e5dcfc  mov x1,x19
+00e5dd00  ldp x19,x30,[sp, #0x10]
+00e5dd04  mov x2,xzr
+00e5dd08  ldp x21,x20,[sp], #0x20
+00e5dd0c  b 0x01060dac
+00e5dd10  mov x0,x19
+00e5dd14  mov x1,xzr
+00e5dd18  bl 0x00f20e84
+00e5dd1c  mov x0,x19
+00e5dd20  bl 0x00e5cc94
+00e5dd24  cbz x0,0x00e5dd6c
+00e5dd28  mov x1,xzr
+00e5dd2c  bl 0x00fcd350
+00e5dd30  cbz x0,0x00e5dd6c
+00e5dd34  adrp x8,0x3348000
+00e5dd38  ldr x8,[x8, #0x138]
+00e5dd3c  ldr x19,[x0, #0x18]
+00e5dd40  ldr x8,[x8]
+00e5dd44  ldr w9,[x8, #0xe0]
+00e5dd48  cbnz w9,0x00e5dd54
+00e5dd4c  mov x0,x8
+00e5dd50  bl 0x00b0798c
+00e5dd54  mov x0,x19
+00e5dd58  ldp x19,x30,[sp, #0x10]
+00e5dd5c  mov w1,#0x1
+00e5dd60  mov x2,xzr
+00e5dd64  ldp x21,x20,[sp], #0x20
+00e5dd68  b 0x00e13880
+00e5dd6c  bl 0x00b079b0

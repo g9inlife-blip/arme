@@ -1,0 +1,33 @@
+Function: AliothEngine.SingletonBehaviour<object>$$OnDestroy @ 01e093b0
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- LoginManager$$OnDestroy @ 00dd50e8
+  <- AliothEngine.MemoryCallback$$OnDestroy @ 01655f60
+  <- AliothEngine.AliothSDKManager$$OnDestroy @ 01658548
+  <- QuickSDKManager$$OnDestroy @ 00db9558
+  <- SDKManager$$OnDestroy @ 00debfbc
+  <- AliothEngine.StoreManager$$OnDestroy @ 01659a88
+  <- AIPTWDebug$$OnDestroy @ 00df8bf0
+
+--- Listing ---
+01e093b0  stp x19,x30,[sp, #-0x10]!
+01e093b4  ldr x8,[x1, #0x20]
+01e093b8  mov x19,x1
+01e093bc  ldr x8,[x8, #0xc0]
+01e093c0  ldr x1,[x8, #0x28]
+01e093c4  ldr x8,[x1, #0x8]
+01e093c8  blr x8
+01e093cc  tbz w0,#0x0,0x01e093f0
+01e093d0  ldr x8,[x19, #0x20]
+01e093d4  ldr x8,[x8, #0xc0]
+01e093d8  ldr x0,[x8]
+01e093dc  ldrb w8,[x0, #0x132]
+01e093e0  tbnz w8,#0x0,0x01e093e8
+01e093e4  bl 0x00b2ac40
+01e093e8  ldr x8,[x0, #0xb8]
+01e093ec  str xzr,[x8]
+01e093f0  ldp x19,x30,[sp], #0x10
+01e093f4  ret

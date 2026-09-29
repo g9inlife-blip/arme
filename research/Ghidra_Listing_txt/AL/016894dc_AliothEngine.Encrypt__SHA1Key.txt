@@ -1,0 +1,118 @@
+Function: AliothEngine.Encrypt$$SHA1Key @ 016894dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Security.Cryptography.HashAlgorithm$$ComputeHash @ 0200a324
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Convert$$ToString @ 020e3e7c
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$PadLeft @ 01fe0028
+  -> System.Text.UTF8Encoding$$.ctor @ 01ff0dc0
+  -> System.Security.Cryptography.SHA1CryptoServiceProvider$$.ctor @ 0201e554
+
+--- Calls IN ---
+
+--- Listing ---
+016894dc  str x24,[sp, #-0x40]!
+016894e0  stp x23,x22,[sp, #0x10]
+016894e4  stp x21,x20,[sp, #0x20]
+016894e8  stp x19,x30,[sp, #0x30]
+016894ec  adrp x20,0x3577000
+016894f0  adrp x21,0x3328000
+016894f4  ldrb w8,[x20, #0xa84]
+016894f8  ldr x21,[x21, #0x4f0]
+016894fc  mov x19,x0
+01689500  tbnz w8,#0x0,0x0168953c
+01689504  adrp x0,0x3362000
+01689508  ldr x0,[x0, #0xe28]
+0168950c  bl 0x00b0789c
+01689510  adrp x0,0x3384000
+01689514  ldr x0,[x0, #0xa88]
+01689518  bl 0x00b0789c
+0168951c  adrp x0,0x3328000
+01689520  ldr x0,[x0, #0x4f0]
+01689524  bl 0x00b0789c
+01689528  adrp x0,0x332c000
+0168952c  ldr x0,[x0, #0x2c0]
+01689530  bl 0x00b0789c
+01689534  mov w8,#0x1
+01689538  strb w8,[x20, #0xa84]
+0168953c  ldr x0,[x21]
+01689540  bl 0x00b079a0
+01689544  cbz x0,0x01689664
+01689548  adrp x21,0x3384000
+0168954c  ldr x21,[x21, #0xa88]
+01689550  mov x1,xzr
+01689554  mov x20,x0
+01689558  bl 0x01ff0dc0
+0168955c  ldr x8,[x20]
+01689560  mov x0,x20
+01689564  mov x1,x19
+01689568  ldr x9,[x8, #0x268]
+0168956c  ldr x2,[x8, #0x270]
+01689570  blr x9
+01689574  ldr x8,[x21]
+01689578  mov x19,x0
+0168957c  mov x0,x8
+01689580  bl 0x00b079a0
+01689584  cbz x0,0x01689664
+01689588  mov x1,xzr
+0168958c  mov x20,x0
+01689590  bl 0x0201e554
+01689594  mov x0,x20
+01689598  mov x1,x19
+0168959c  mov x2,xzr
+016895a0  bl 0x0200a324
+016895a4  cbz x0,0x01689664
+016895a8  adrp x9,0x332c000
+016895ac  ldr x8,[x0, #0x18]
+016895b0  ldr x9,[x9, #0x2c0]
+016895b4  mov x19,x0
+016895b8  cmp w8,#0x1
+016895bc  ldr x20,[x9]
+016895c0  b.lt 0x0168963c
+016895c4  adrp x23,0x3362000
+016895c8  ldr x23,[x23, #0xe28]
+016895cc  mov x22,xzr
+016895d0  and x8,x8,#0xffffffff
+016895d4  add x24,x19,#0x20
+016895d8  cmp x22,w8, UXTW 
+016895dc  b.cs 0x01689668
+016895e0  ldr x0,[x23]
+016895e4  ldrb w21,[x24, x22, LSL ]
+016895e8  ldr w8,[x0, #0xe0]
+016895ec  cbnz w8,0x016895f4
+016895f0  bl 0x00b0798c
+016895f4  mov w1,#0x10
+016895f8  mov w0,w21
+016895fc  mov x2,xzr
+01689600  bl 0x020e3e7c
+01689604  cbz x0,0x01689664
+01689608  mov w1,#0x2
+0168960c  mov w2,#0x30
+01689610  mov x3,xzr
+01689614  bl 0x01fe0028
+01689618  mov x1,x0
+0168961c  mov x0,x20
+01689620  mov x2,xzr
+01689624  bl 0x01fd2850
+01689628  ldr w8,[x19, #0x18]
+0168962c  add x22,x22,#0x1
+01689630  mov x20,x0
+01689634  cmp x22,w8, SXTW 
+01689638  b.lt 0x016895d8
+0168963c  cbz x20,0x01689664
+01689640  mov x0,x20
+01689644  ldp x19,x30,[sp, #0x30]
+01689648  ldp x21,x20,[sp, #0x20]
+0168964c  ldp x23,x22,[sp, #0x10]
+01689650  mov w1,#0x20
+01689654  mov w2,#0x30
+01689658  mov x3,xzr
+0168965c  ldr x24,[sp], #0x40
+01689660  b 0x01fe0028
+01689664  bl 0x00b079b0
+01689668  bl 0x00b079b8

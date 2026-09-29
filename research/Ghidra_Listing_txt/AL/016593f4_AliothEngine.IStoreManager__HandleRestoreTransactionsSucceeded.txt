@@ -1,0 +1,73 @@
+Function: AliothEngine.IStoreManager$$HandleRestoreTransactionsSucceeded @ 016593f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.IStoreManager$$LocalLog @ 01658fa8
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+016593f4  stp x21,x20,[sp, #-0x20]!
+016593f8  stp x19,x30,[sp, #0x10]
+016593fc  adrp x20,0x3577000
+01659400  adrp x21,0x336f000
+01659404  ldrb w8,[x20, #0x846]
+01659408  ldr x21,[x21, #0x1e8]
+0165940c  mov x19,x0
+01659410  tbnz w8,#0x0,0x01659440
+01659414  adrp x0,0x335b000
+01659418  ldr x0,[x0, #0x650]
+0165941c  bl 0x00b0789c
+01659420  adrp x0,0x336f000
+01659424  ldr x0,[x0, #0x1e8]
+01659428  bl 0x00b0789c
+0165942c  adrp x0,0x330d000
+01659430  ldr x0,[x0, #0x428]
+01659434  bl 0x00b0789c
+01659438  mov w8,#0x1
+0165943c  strb w8,[x20, #0x846]
+01659440  ldr x8,[x21]
+01659444  ldr x8,[x8, #0xb8]
+01659448  ldr x0,[x8, #0x70]
+0165944c  cbz x0,0x01659464
+01659450  mov x1,x19
+01659454  ldp x19,x30,[sp, #0x10]
+01659458  mov x2,xzr
+0165945c  ldp x21,x20,[sp], #0x20
+01659460  b 0x01060dac
+01659464  adrp x8,0x335b000
+01659468  ldr x8,[x8, #0x650]
+0165946c  ldr x20,[x8]
+01659470  ldr x8,[x20, #0x38]
+01659474  ldr x0,[x8]
+01659478  ldrb w8,[x0, #0x132]
+0165947c  tbnz w8,#0x0,0x01659484
+01659480  bl 0x00b2ac40
+01659484  ldr w8,[x0, #0xe0]
+01659488  cbnz w8,0x01659490
+0165948c  bl 0x00b0798c
+01659490  ldr x8,[x20, #0x38]
+01659494  adrp x20,0x330d000
+01659498  ldr x0,[x8]
+0165949c  ldrb w8,[x0, #0x132]
+016594a0  ldr x20,[x20, #0x428]
+016594a4  tbnz w8,#0x0,0x016594ac
+016594a8  bl 0x00b2ac40
+016594ac  ldr x8,[x0, #0xb8]
+016594b0  ldr x0,[x20]
+016594b4  ldr x1,[x8]
+016594b8  bl 0x01658fa8
+016594bc  ldr x8,[x19, #0x30]
+016594c0  cbz x8,0x016594dc
+016594c4  ldr x2,[x8, #0x18]
+016594c8  ldr x0,[x8, #0x40]
+016594cc  ldr x1,[x8, #0x28]
+016594d0  ldp x19,x30,[sp, #0x10]
+016594d4  ldp x21,x20,[sp], #0x20
+016594d8  br x2
+016594dc  ldp x19,x30,[sp, #0x10]
+016594e0  ldp x21,x20,[sp], #0x20
+016594e4  ret

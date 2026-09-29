@@ -1,0 +1,31 @@
+Function: AliothEngine.Compress$$IsCompressFile @ 016831ac
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016831ac  str x20,[sp, #-0x20]!
+016831b0  stp x19,x30,[sp, #0x10]
+016831b4  adrp x20,0x3577000
+016831b8  ldrb w8,[x20, #0xa5a]
+016831bc  mov x19,x0
+016831c0  tbnz w8,#0x0,0x016831d8
+016831c4  adrp x0,0x334b000
+016831c8  ldr x0,[x0, #0x1a0]
+016831cc  bl 0x00b0789c
+016831d0  mov w8,#0x1
+016831d4  strb w8,[x20, #0xa5a]
+016831d8  cbz x19,0x016831fc
+016831dc  adrp x8,0x334b000
+016831e0  ldr x8,[x8, #0x1a0]
+016831e4  mov x0,x19
+016831e8  ldp x19,x30,[sp, #0x10]
+016831ec  mov x2,xzr
+016831f0  ldr x1,[x8]
+016831f4  ldr x20,[sp], #0x20
+016831f8  b 0x01fe31fc
+016831fc  bl 0x00b079b0

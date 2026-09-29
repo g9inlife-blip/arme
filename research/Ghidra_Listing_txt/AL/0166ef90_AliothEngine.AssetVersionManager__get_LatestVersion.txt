@@ -1,0 +1,62 @@
+Function: AliothEngine.AssetVersionManager$$get_LatestVersion @ 0166ef90
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Version$$.ctor @ 02170230
+  -> System.Version$$op_Equality @ 021704ac
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetVersionManager$$get_AssetVersionSaved @ 0166f050
+
+--- Calls IN ---
+
+--- Listing ---
+0166ef90  stp x21,x20,[sp, #-0x20]!
+0166ef94  stp x19,x30,[sp, #0x10]
+0166ef98  adrp x19,0x3577000
+0166ef9c  adrp x21,0x332e000
+0166efa0  ldrb w8,[x19, #0x958]
+0166efa4  ldr x21,[x21, #0x690]
+0166efa8  tbnz w8,#0x0,0x0166efcc
+0166efac  adrp x0,0x332e000
+0166efb0  ldr x0,[x0, #0x690]
+0166efb4  bl 0x00b0789c
+0166efb8  adrp x0,0x330a000
+0166efbc  ldr x0,[x0, #0x888]
+0166efc0  bl 0x00b0789c
+0166efc4  mov w8,#0x1
+0166efc8  strb w8,[x19, #0x958]
+0166efcc  ldr x8,[x21]
+0166efd0  mov x1,xzr
+0166efd4  mov x2,xzr
+0166efd8  ldr x8,[x8, #0xb8]
+0166efdc  ldr x0,[x8]
+0166efe0  bl 0x021704ac
+0166efe4  tbz w0,#0x0,0x0166f034
+0166efe8  adrp x19,0x330a000
+0166efec  ldr x19,[x19, #0x888]
+0166eff0  bl 0x0166f050
+0166eff4  ldr x8,[x19]
+0166eff8  mov x20,x0
+0166effc  mov x0,x8
+0166f000  bl 0x00b079a0
+0166f004  cbz x0,0x0166f04c
+0166f008  mov x1,x20
+0166f00c  mov x2,xzr
+0166f010  mov x19,x0
+0166f014  bl 0x02170230
+0166f018  ldr x8,[x21]
+0166f01c  mov x1,x19
+0166f020  ldr x8,[x8, #0xb8]
+0166f024  str x19,[x8]
+0166f028  ldr x8,[x21]
+0166f02c  ldr x0,[x8, #0xb8]
+0166f030  bl 0x00b07850
+0166f034  ldr x8,[x21]
+0166f038  ldp x19,x30,[sp, #0x10]
+0166f03c  ldr x8,[x8, #0xb8]
+0166f040  ldr x0,[x8]
+0166f044  ldp x21,x20,[sp], #0x20
+0166f048  ret
+0166f04c  bl 0x00b079b0

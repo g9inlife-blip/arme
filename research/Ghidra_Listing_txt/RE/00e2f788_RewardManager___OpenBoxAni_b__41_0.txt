@@ -1,0 +1,51 @@
+Function: RewardManager$$<OpenBoxAni>b__41_0 @ 00e2f788
+
+--- Calls OUT ---
+  -> RewardManager$$get_BoxID @ 00e2db88
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnPackPanelMono$$Demand @ 00ea6f6c
+  -> RewardManager$$get_Current @ 00e2d9b4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e2f788  stp x21,x20,[sp, #-0x20]!
+00e2f78c  stp x19,x30,[sp, #0x10]
+00e2f790  adrp x20,0x3572000
+00e2f794  ldrb w8,[x20, #0x75f]
+00e2f798  mov x19,x1
+00e2f79c  mov x21,x0
+00e2f7a0  tbnz w8,#0x0,0x00e2f7b8
+00e2f7a4  adrp x0,0x334f000
+00e2f7a8  ldr x0,[x0, #0x8a0]
+00e2f7ac  bl 0x00b0789c
+00e2f7b0  mov w8,#0x1
+00e2f7b4  strb w8,[x20, #0x75f]
+00e2f7b8  mov x0,x21
+00e2f7bc  bl 0x00e2db88
+00e2f7c0  mov w20,w0
+00e2f7c4  mov x0,x21
+00e2f7c8  bl 0x00e2d9b4
+00e2f7cc  cbz x19,0x00e2f820
+00e2f7d0  adrp x8,0x334f000
+00e2f7d4  ldr x8,[x8, #0x8a0]
+00e2f7d8  ldr x9,[x19]
+00e2f7dc  ldr x8,[x8]
+00e2f7e0  ldrb w11,[x9, #0x12c]
+00e2f7e4  ldrb w10,[x8, #0x12c]
+00e2f7e8  cmp w11,w10
+00e2f7ec  b.cc 0x00e2f820
+00e2f7f0  ldr x9,[x9, #0xc8]
+00e2f7f4  add x9,x9,x10, LSL #0x3
+00e2f7f8  ldur x9,[x9, #-0x8]
+00e2f7fc  cmp x9,x8
+00e2f800  b.ne 0x00e2f820
+00e2f804  mov x2,x0
+00e2f808  mov x0,x19
+00e2f80c  ldp x19,x30,[sp, #0x10]
+00e2f810  mov w1,w20
+00e2f814  mov x3,xzr
+00e2f818  ldp x21,x20,[sp], #0x20
+00e2f81c  b 0x00ea6f6c
+00e2f820  bl 0x00b079b0

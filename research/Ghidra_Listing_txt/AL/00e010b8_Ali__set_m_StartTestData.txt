@@ -1,0 +1,51 @@
+Function: Ali$$set_m_StartTestData @ 00e010b8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- Ali$$LoginEnd @ 00e0e348
+  <- XLua.CSObjectWrap.AliWrap$$_s_set_m_StartTestData @ 011a34fc
+  <- Ali$$get_isSkipTest @ 00e01358
+
+--- Listing ---
+00e010b8  str x22,[sp, #-0x30]!
+00e010bc  stp x21,x20,[sp, #0x10]
+00e010c0  stp x19,x30,[sp, #0x20]
+00e010c4  adrp x22,0x3572000
+00e010c8  adrp x21,0x335f000
+00e010cc  ldrb w8,[x22, #0x52d]
+00e010d0  ldr x21,[x21, #0x20]
+00e010d4  mov x19,x1
+00e010d8  mov x20,x0
+00e010dc  tbnz w8,#0x0,0x00e010f4
+00e010e0  adrp x0,0x335f000
+00e010e4  ldr x0,[x0, #0x20]
+00e010e8  bl 0x00b0789c
+00e010ec  mov w8,#0x1
+00e010f0  strb w8,[x22, #0x52d]
+00e010f4  ldr x0,[x21]
+00e010f8  ldr w8,[x0, #0xe0]
+00e010fc  cbnz w8,0x00e01108
+00e01100  bl 0x00b0798c
+00e01104  ldr x0,[x21]
+00e01108  ldr x8,[x0, #0xb8]
+00e0110c  ldr x0,[x8, #0x100]
+00e01110  cbz x0,0x00e01130
+00e01114  mov x1,x20
+00e01118  mov x2,x19
+00e0111c  ldp x19,x30,[sp, #0x20]
+00e01120  ldp x21,x20,[sp, #0x10]
+00e01124  mov x3,xzr
+00e01128  ldr x22,[sp], #0x30
+00e0112c  b 0x0106125c
+00e01130  str x19,[x20, #0x58]!
+00e01134  mov x0,x20
+00e01138  mov x1,x19
+00e0113c  ldp x19,x30,[sp, #0x20]
+00e01140  ldp x21,x20,[sp, #0x10]
+00e01144  ldr x22,[sp], #0x30
+00e01148  b 0x00b07850

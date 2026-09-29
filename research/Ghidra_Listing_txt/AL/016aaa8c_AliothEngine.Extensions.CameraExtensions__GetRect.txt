@@ -1,0 +1,51 @@
+Function: AliothEngine.Extensions.CameraExtensions$$GetRect @ 016aaa8c
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Rect$$.ctor @ 024daefc
+  -> UnityEngine.Camera$$get_aspect @ 024d73d4
+  -> UnityEngine.Camera$$get_orthographicSize @ 024d7244
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016aaa8c  sub sp,sp,#0x30
+016aaa90  stp d9,d8,[sp, #0x10]
+016aaa94  stp x19,x30,[sp, #0x20]
+016aaa98  cbz x0,0x016aab20
+016aaa9c  mov x1,xzr
+016aaaa0  mov x19,x0
+016aaaa4  bl 0x024d7244
+016aaaa8  mov x0,x19
+016aaaac  mov x1,xzr
+016aaab0  mov v8.16B,v0.16B
+016aaab4  bl 0x024d73d4
+016aaab8  mov x0,x19
+016aaabc  mov x1,xzr
+016aaac0  mov v9.16B,v0.16B
+016aaac4  bl 0x024e4e98
+016aaac8  cbz x0,0x016aab20
+016aaacc  fadd s8,s8,s8
+016aaad0  mov x1,xzr
+016aaad4  fmul s9,s8,s9
+016aaad8  bl 0x024f3684
+016aaadc  fmov s2,0x3f000000
+016aaae0  fmul s3,s9,s2
+016aaae4  fmul s2,s8,s2
+016aaae8  fsub s0,s0,s3
+016aaaec  fsub s1,s1,s2
+016aaaf0  mov x0,sp
+016aaaf4  mov v2.16B,v9.16B
+016aaaf8  mov v3.16B,v8.16B
+016aaafc  mov x1,xzr
+016aab00  stp xzr,xzr,[sp]
+016aab04  bl 0x024daefc
+016aab08  ldp s0,s1,[sp]
+016aab0c  ldp s2,s3,[sp, #0x8]
+016aab10  ldp x19,x30,[sp, #0x20]
+016aab14  ldp d9,d8,[sp, #0x10]
+016aab18  add sp,sp,#0x30
+016aab1c  ret
+016aab20  bl 0x00b079b0

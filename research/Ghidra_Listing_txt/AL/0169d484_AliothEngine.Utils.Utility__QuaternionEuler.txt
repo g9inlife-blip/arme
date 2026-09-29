@@ -1,0 +1,118 @@
+Function: AliothEngine.Utils.Utility$$QuaternionEuler @ 0169d484
+
+--- Calls OUT ---
+  -> sincos @ 008d4640
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.Utils.Utility$$MultiplyQuaternions @ 0169d630
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0169d484  sub sp,sp,#0x90
+0169d488  stp d15,d14,[sp, #0x30]
+0169d48c  stp d13,d12,[sp, #0x40]
+0169d490  stp d11,d10,[sp, #0x50]
+0169d494  stp d9,d8,[sp, #0x60]
+0169d498  stp x21,x20,[sp, #0x70]
+0169d49c  stp x19,x30,[sp, #0x80]
+0169d4a0  adrp x19,0x3577000
+0169d4a4  ldrb w8,[x19, #0xb4c]
+0169d4a8  mov v8.16B,v2.16B
+0169d4ac  mov v9.16B,v1.16B
+0169d4b0  mov v10.16B,v0.16B
+0169d4b4  tbnz w8,#0x0,0x0169d4cc
+0169d4b8  adrp x0,0x332c000
+0169d4bc  ldr x0,[x0, #0x5a8]
+0169d4c0  bl 0x00b0789c
+0169d4c4  mov w8,#0x1
+0169d4c8  strb w8,[x19, #0xb4c]
+0169d4cc  adrp x19,0x3570000
+0169d4d0  ldrb w8,[x19, #0xf0f]
+0169d4d4  cbnz w8,0x0169d4ec
+0169d4d8  adrp x0,0x3368000
+0169d4dc  ldr x0,[x0, #0x9b8]
+0169d4e0  bl 0x00b0789c
+0169d4e4  mov w8,#0x1
+0169d4e8  strb w8,[x19, #0xf0f]
+0169d4ec  adrp x19,0x3368000
+0169d4f0  ldr x19,[x19, #0x9b8]
+0169d4f4  adrp x21,0x3570000
+0169d4f8  ldrb w9,[x21, #0xf13]
+0169d4fc  adrp x20,0x26dd000
+0169d500  ldr x8,[x19]
+0169d504  ldr x8,[x8, #0xb8]
+0169d508  ldr s11,[x8, #0x50]
+0169d50c  cbnz w9,0x0169d528
+0169d510  mov x0,x19
+0169d514  bl 0x00b0789c
+0169d518  ldr x8,[x19]
+0169d51c  mov w9,#0x1
+0169d520  strb w9,[x21, #0xf13]
+0169d524  ldr x8,[x8, #0xb8]
+0169d528  ldr s14,[x20, #0x14]
+0169d52c  adrp x21,0x3570000
+0169d530  adrp x20,0x332c000
+0169d534  ldrb w9,[x21, #0xffe]
+0169d538  ldr s12,[x8, #0x3c]
+0169d53c  ldr x20,[x20, #0x5a8]
+0169d540  cbnz w9,0x0169d55c
+0169d544  mov x0,x19
+0169d548  bl 0x00b0789c
+0169d54c  ldr x8,[x19]
+0169d550  mov w9,#0x1
+0169d554  strb w9,[x21, #0xffe]
+0169d558  ldr x8,[x8, #0xb8]
+0169d55c  ldr x0,[x20]
+0169d560  ldr s13,[x8, #0x1c]
+0169d564  fmul s15,s10,s14
+0169d568  fmul s10,s9,s14
+0169d56c  ldr w9,[x0, #0xe0]
+0169d570  fmul s14,s8,s14
+0169d574  cbnz w9,0x0169d57c
+0169d578  bl 0x00b0798c
+0169d57c  fcvt d0,s15
+0169d580  add x0,sp,#0x28
+0169d584  add x1,sp,#0x20
+0169d588  bl 0x008d4640
+0169d58c  ldp d1,d0,[sp, #0x20]
+0169d590  add x0,sp,#0x18
+0169d594  add x1,sp,#0x10
+0169d598  fcvt s0,d0
+0169d59c  fmul s9,s11,s0
+0169d5a0  fcvt d0,s10
+0169d5a4  fcvt s8,d1
+0169d5a8  bl 0x008d4640
+0169d5ac  ldp d1,d0,[sp, #0x10]
+0169d5b0  add x0,sp,#0x8
+0169d5b4  mov x1,sp
+0169d5b8  fcvt s0,d0
+0169d5bc  fmul s11,s12,s0
+0169d5c0  fcvt d0,s14
+0169d5c4  fcvt s10,d1
+0169d5c8  bl 0x008d4640
+0169d5cc  ldp d1,d0,[sp]
+0169d5d0  fmov s5,wzr
+0169d5d4  fmov s6,wzr
+0169d5d8  mov v2.16B,v9.16B
+0169d5dc  fcvt s0,d0
+0169d5e0  fcvt s12,d1
+0169d5e4  fmul s13,s13,s0
+0169d5e8  fmov s0,wzr
+0169d5ec  fmov s1,wzr
+0169d5f0  mov v3.16B,v8.16B
+0169d5f4  mov v4.16B,v11.16B
+0169d5f8  mov v7.16B,v10.16B
+0169d5fc  bl 0x0169d630
+0169d600  mov v5.16B,v13.16B
+0169d604  mov v7.16B,v12.16B
+0169d608  ldp x19,x30,[sp, #0x80]
+0169d60c  ldp x21,x20,[sp, #0x70]
+0169d610  ldp d9,d8,[sp, #0x60]
+0169d614  ldp d11,d10,[sp, #0x50]
+0169d618  ldp d13,d12,[sp, #0x40]
+0169d61c  ldp d15,d14,[sp, #0x30]
+0169d620  fmov s4,wzr
+0169d624  fmov s6,wzr
+0169d628  add sp,sp,#0x90
+0169d62c  b 0x0169d630

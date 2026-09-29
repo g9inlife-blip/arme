@@ -1,0 +1,79 @@
+Function: AliothEngine.Easing.EasingFunctions$$ElasticIn @ 016a585c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> sinf @ 008d5810
+  -> exp2f @ 008d50f0
+
+--- Calls IN ---
+
+--- Listing ---
+016a585c  stp d11,d10,[sp, #-0x30]!
+016a5860  stp d9,d8,[sp, #0x10]
+016a5864  stp x19,x30,[sp, #0x20]
+016a5868  fmov s9,0x3f800000
+016a586c  adrp x19,0x3571000
+016a5870  mov v8.16B,v0.16B
+016a5874  fcmp s2,#0.0
+016a5878  fmov s0,wzr
+016a587c  fmin s2,s2,s9
+016a5880  ldrb w8,[x19, #0x198]
+016a5884  fcsel s11,s2,s0,pl
+016a5888  fabd s0,s8,s1
+016a588c  fneg s2,s0
+016a5890  fcmp s8,s1
+016a5894  fcsel s10,s2,s0,gt
+016a5898  cbnz w8,0x016a58b0
+016a589c  adrp x0,0x3318000
+016a58a0  ldr x0,[x0, #0x558]
+016a58a4  bl 0x00b0789c
+016a58a8  mov w8,#0x1
+016a58ac  strb w8,[x19, #0x198]
+016a58b0  adrp x8,0x3318000
+016a58b4  ldr x8,[x8, #0x558]
+016a58b8  adrp x9,0x26db000
+016a58bc  ldr s0,[x9, #0x3ec]
+016a58c0  fabs s2,s11
+016a58c4  ldr x8,[x8]
+016a58c8  fmov s4,0x41000000
+016a58cc  fmul s3,s2,s0
+016a58d0  ldr x8,[x8, #0xb8]
+016a58d4  ldr s1,[x8]
+016a58d8  fmul s1,s1,s4
+016a58dc  fcmp s3,s1
+016a58e0  fcsel s3,s3,s1,gt
+016a58e4  fcmp s2,s3
+016a58e8  b.mi 0x016a595c
+016a58ec  fmax s2,s2,s9
+016a58f0  fmov s3,0xbf800000
+016a58f4  fmul s0,s2,s0
+016a58f8  fadd s11,s11,s3
+016a58fc  fcmp s0,s1
+016a5900  fabs s2,s11
+016a5904  fcsel s0,s0,s1,gt
+016a5908  fcmp s2,s0
+016a590c  b.pl 0x016a5918
+016a5910  fadd s8,s10,s8
+016a5914  b 0x016a595c
+016a5918  fmov s0,0x41200000
+016a591c  fmul s0,s11,s0
+016a5920  bl 0x008d50f0
+016a5924  adrp x8,0x26db000
+016a5928  mov v9.16B,v0.16B
+016a592c  adrp x9,0x26db000
+016a5930  ldr s0,[x8, #0xdc8]
+016a5934  ldr s1,[x9, #0x570]
+016a5938  adrp x8,0x26db000
+016a593c  ldr s2,[x8, #0xdd0]
+016a5940  fadd s0,s11,s0
+016a5944  fmul s0,s0,s1
+016a5948  fdiv s0,s0,s2
+016a594c  bl 0x008d5810
+016a5950  fmul s0,s9,s0
+016a5954  fmul s0,s10,s0
+016a5958  fadd s8,s8,s0
+016a595c  mov v0.16B,v8.16B
+016a5960  ldp x19,x30,[sp, #0x20]
+016a5964  ldp d9,d8,[sp, #0x10]
+016a5968  ldp d11,d10,[sp], #0x30
+016a596c  ret

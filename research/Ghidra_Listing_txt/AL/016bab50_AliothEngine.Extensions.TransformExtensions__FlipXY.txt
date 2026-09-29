@@ -1,0 +1,27 @@
+Function: AliothEngine.Extensions.TransformExtensions$$FlipXY @ 016bab50
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_localScale @ 024f41b4
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.TransformExtensions$$SetScaleXY @ 016ba6ec
+
+--- Calls IN ---
+
+--- Listing ---
+016bab50  str d8,[sp, #-0x20]!
+016bab54  stp x19,x30,[sp, #0x10]
+016bab58  cbz x0,0x016bab90
+016bab5c  mov x1,xzr
+016bab60  mov x19,x0
+016bab64  bl 0x024f41b4
+016bab68  mov x0,x19
+016bab6c  mov x1,xzr
+016bab70  mov v8.16B,v0.16B
+016bab74  bl 0x024f41b4
+016bab78  mov x0,x19
+016bab7c  ldp x19,x30,[sp, #0x10]
+016bab80  fneg s0,s8
+016bab84  fneg s1,s1
+016bab88  ldr d8,[sp], #0x20
+016bab8c  b 0x016ba6ec
+016bab90  bl 0x00b079b0

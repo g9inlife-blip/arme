@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.QueueExtensions$$Filter<object> @ 017c44cc
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017c44cc  stp x23,x22,[sp, #-0x30]!
+017c44d0  stp x21,x20,[sp, #0x10]
+017c44d4  stp x19,x30,[sp, #0x20]
+017c44d8  cbz x0,0x017c4584
+017c44dc  ldr x8,[x2, #0x38]
+017c44e0  mov x20,x1
+017c44e4  mov x19,x2
+017c44e8  mov x21,x0
+017c44ec  ldr x1,[x8, #0x8]
+017c44f0  ldr x8,[x1, #0x8]
+017c44f4  blr x8
+017c44f8  cbz w0,0x017c4574
+017c44fc  ldr x8,[x19, #0x38]
+017c4500  mov x0,x21
+017c4504  ldr x1,[x8, #0x8]
+017c4508  ldr x8,[x1, #0x8]
+017c450c  blr x8
+017c4510  cmp w0,#0x1
+017c4514  b.lt 0x017c4574
+017c4518  mov w22,w0
+017c451c  ldr x8,[x19, #0x38]
+017c4520  mov x0,x21
+017c4524  ldr x1,[x8, #0x10]
+017c4528  ldr x8,[x1, #0x8]
+017c452c  blr x8
+017c4530  cbz x20,0x017c4584
+017c4534  ldr x8,[x19, #0x38]
+017c4538  mov x23,x0
+017c453c  mov x0,x20
+017c4540  mov x1,x23
+017c4544  ldr x2,[x8, #0x20]
+017c4548  ldr x8,[x2, #0x8]
+017c454c  blr x8
+017c4550  tbnz w0,#0x0,0x017c456c
+017c4554  ldr x8,[x19, #0x38]
+017c4558  mov x0,x21
+017c455c  mov x1,x23
+017c4560  ldr x2,[x8, #0x28]
+017c4564  ldr x8,[x2, #0x8]
+017c4568  blr x8
+017c456c  subs w22,w22,#0x1
+017c4570  b.ne 0x017c451c
+017c4574  ldp x19,x30,[sp, #0x20]
+017c4578  ldp x21,x20,[sp, #0x10]
+017c457c  ldp x23,x22,[sp], #0x30
+017c4580  ret
+017c4584  bl 0x00b079b0

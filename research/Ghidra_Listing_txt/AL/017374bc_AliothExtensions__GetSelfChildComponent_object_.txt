@@ -1,0 +1,87 @@
+Function: AliothExtensions$$GetSelfChildComponent<object> @ 017374bc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> AliothExtensions$$GetSelfChild @ 00e15f34
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> XLua.DelegateBridge$$InParam<object> @ 01775bd0
+
+--- Calls IN ---
+  <- ChooseCountryPanelMono$$InitItem @ 01021c7c
+  <- HomePanelMono$$RefreshUIBanner @ 00f6ca94
+  <- TerrainMono$$Awake @ 016c8b00
+  <- PassiveSkillMono$$PlaySkillUI @ 00e8dc10
+
+--- Listing ---
+017374bc  str x24,[sp, #-0x40]!
+017374c0  stp x23,x22,[sp, #0x10]
+017374c4  stp x21,x20,[sp, #0x20]
+017374c8  stp x19,x30,[sp, #0x30]
+017374cc  adrp x23,0x3578000
+017374d0  adrp x22,0x3348000
+017374d4  ldrb w8,[x23, #0x42]
+017374d8  ldr x22,[x22, #0x138]
+017374dc  mov x19,x2
+017374e0  mov x20,x1
+017374e4  mov x21,x0
+017374e8  tbnz w8,#0x0,0x01737518
+017374ec  adrp x0,0x3348000
+017374f0  ldr x0,[x0, #0x138]
+017374f4  bl 0x00b0789c
+017374f8  adrp x0,0x331e000
+017374fc  ldr x0,[x0, #0x110]
+01737500  bl 0x00b0789c
+01737504  adrp x0,0x3375000
+01737508  ldr x0,[x0, #0xdd8]
+0173750c  bl 0x00b0789c
+01737510  mov w8,#0x1
+01737514  strb w8,[x23, #0x42]
+01737518  ldr x0,[x22]
+0173751c  ldr w8,[x0, #0xe0]
+01737520  cbnz w8,0x0173752c
+01737524  bl 0x00b0798c
+01737528  ldr x0,[x22]
+0173752c  ldr x8,[x0, #0xb8]
+01737530  ldr x22,[x8, #0x140]
+01737534  cbz x22,0x01737594
+01737538  adrp x23,0x331e000
+0173753c  adrp x24,0x3375000
+01737540  ldr x23,[x23, #0x110]
+01737544  ldr x24,[x24, #0xdd8]
+01737548  mov x0,x22
+0173754c  mov x1,xzr
+01737550  bl 0x010cef38
+01737554  ldr x2,[x23]
+01737558  mov x0,x22
+0173755c  mov x1,x21
+01737560  bl 0x01775bd0
+01737564  ldr x2,[x24]
+01737568  mov x0,x22
+0173756c  mov x1,x20
+01737570  bl 0x01775bd0
+01737574  mov w1,#0x1
+01737578  mov x0,x22
+0173757c  mov x2,xzr
+01737580  bl 0x010ceff0
+01737584  ldr x8,[x19, #0x38]
+01737588  mov x0,x22
+0173758c  ldr x1,[x8]
+01737590  b 0x017375bc
+01737594  ldr w8,[x0, #0xe0]
+01737598  cbnz w8,0x017375a0
+0173759c  bl 0x00b0798c
+017375a0  mov w2,#0x1
+017375a4  mov x0,x21
+017375a8  mov x1,x20
+017375ac  mov x3,xzr
+017375b0  bl 0x00e15f34
+017375b4  ldr x8,[x19, #0x38]
+017375b8  ldr x1,[x8, #0x8]
+017375bc  ldr x2,[x1, #0x8]
+017375c0  ldp x19,x30,[sp, #0x30]
+017375c4  ldp x21,x20,[sp, #0x20]
+017375c8  ldp x23,x22,[sp, #0x10]
+017375cc  ldr x24,[sp], #0x40
+017375d0  br x2

@@ -1,0 +1,78 @@
+Function: AliothEngine.PathUtils$$CombinePaths @ 01690c94
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Func<object,-object,-object>$$.ctor @ 01aef6b8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Linq.Enumerable$$Aggregate<object> @ 017779cc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01690c94  str x22,[sp, #-0x30]!
+01690c98  stp x21,x20,[sp, #0x10]
+01690c9c  stp x19,x30,[sp, #0x20]
+01690ca0  adrp x20,0x3577000
+01690ca4  adrp x22,0x3363000
+01690ca8  ldrb w8,[x20, #0xadd]
+01690cac  ldr x22,[x22, #0x908]
+01690cb0  mov x19,x0
+01690cb4  tbnz w8,#0x0,0x01690cf0
+01690cb8  adrp x0,0x3381000
+01690cbc  ldr x0,[x0, #0x8f0]
+01690cc0  bl 0x00b0789c
+01690cc4  adrp x0,0x337d000
+01690cc8  ldr x0,[x0, #0x8d0]
+01690ccc  bl 0x00b0789c
+01690cd0  adrp x0,0x330d000
+01690cd4  ldr x0,[x0, #0xca8]
+01690cd8  bl 0x00b0789c
+01690cdc  adrp x0,0x3363000
+01690ce0  ldr x0,[x0, #0x908]
+01690ce4  bl 0x00b0789c
+01690ce8  mov w8,#0x1
+01690cec  strb w8,[x20, #0xadd]
+01690cf0  ldr x0,[x22]
+01690cf4  ldr w8,[x0, #0xe0]
+01690cf8  cbnz w8,0x01690d04
+01690cfc  bl 0x00b0798c
+01690d00  ldr x0,[x22]
+01690d04  ldr x8,[x0, #0xb8]
+01690d08  ldr x20,[x8, #0x8]
+01690d0c  cbnz x20,0x01690d6c
+01690d10  adrp x20,0x337d000
+01690d14  ldr w8,[x0, #0xe0]
+01690d18  ldr x20,[x20, #0x8d0]
+01690d1c  cbnz w8,0x01690d28
+01690d20  bl 0x00b0798c
+01690d24  ldr x0,[x22]
+01690d28  ldr x8,[x0, #0xb8]
+01690d2c  ldr x0,[x20]
+01690d30  ldr x21,[x8]
+01690d34  bl 0x00b079a0
+01690d38  cbz x0,0x01690d90
+01690d3c  adrp x8,0x330d000
+01690d40  ldr x8,[x8, #0xca8]
+01690d44  mov x1,x21
+01690d48  mov x3,xzr
+01690d4c  mov x20,x0
+01690d50  ldr x2,[x8]
+01690d54  bl 0x01aef6b8
+01690d58  ldr x8,[x22]
+01690d5c  mov x1,x20
+01690d60  ldr x0,[x8, #0xb8]
+01690d64  str x20,[x0, #0x8]!
+01690d68  bl 0x00b07850
+01690d6c  adrp x8,0x3381000
+01690d70  ldr x8,[x8, #0x8f0]
+01690d74  mov x0,x19
+01690d78  mov x1,x20
+01690d7c  ldp x19,x30,[sp, #0x20]
+01690d80  ldr x2,[x8]
+01690d84  ldp x21,x20,[sp, #0x10]
+01690d88  ldr x22,[sp], #0x30
+01690d8c  b 0x017779cc
+01690d90  bl 0x00b079b0

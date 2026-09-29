@@ -1,0 +1,32 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$System.Collections.Generic.IEnumerable<T>.GetEnumerator @ 01add614
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01add614  sub sp,sp,#0x50
+01add618  stp x19,x30,[sp, #0x40]
+01add61c  ldr x8,[x1, #0x20]
+01add620  mov x19,x1
+01add624  ldr x8,[x8, #0xc0]
+01add628  ldr x1,[x8, #0x108]
+01add62c  mov x8,sp
+01add630  ldr x9,[x1, #0x8]
+01add634  blr x9
+01add638  ldp q1,q0,[sp]
+01add63c  stp q1,q0,[sp, #0x20]
+01add640  stp q1,q0,[sp]
+01add644  ldr x8,[x19, #0x20]
+01add648  ldr x8,[x8, #0xc0]
+01add64c  ldr x0,[x8, #0xb0]
+01add650  ldrb w8,[x0, #0x132]
+01add654  tbnz w8,#0x0,0x01add65c
+01add658  bl 0x00b2ac40
+01add65c  mov x1,sp
+01add660  bl 0x00b07994
+01add664  ldp x19,x30,[sp, #0x40]
+01add668  add sp,sp,#0x50
+01add66c  ret

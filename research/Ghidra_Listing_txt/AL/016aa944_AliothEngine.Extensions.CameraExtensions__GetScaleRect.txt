@@ -1,0 +1,97 @@
+Function: AliothEngine.Extensions.CameraExtensions$$GetScaleRect @ 016aa944
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_width @ 024db070
+  -> UnityEngine.Rect$$set_height @ 024db080
+  -> UnityEngine.Rect$$set_x @ 024daf3c
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> UnityEngine.Rect$$set_y @ 024daf4c
+  -> UnityEngine.Screen$$get_height @ 024d2684
+  -> UnityEngine.Rect$$get_zero @ 024daf14
+
+--- Calls IN ---
+  <- Ali$$LetterboxGUIDelegate @ 00e0ada8
+
+--- Listing ---
+016aa944  sub sp,sp,#0x60
+016aa948  stp d9,d8,[sp, #0x20]
+016aa94c  str x22,[sp, #0x30]
+016aa950  stp x21,x20,[sp, #0x40]
+016aa954  stp x19,x30,[sp, #0x50]
+016aa958  mov x0,xzr
+016aa95c  mov v8.16B,v0.16B
+016aa960  stp xzr,xzr,[sp, #0x10]
+016aa964  stp xzr,xzr,[sp]
+016aa968  bl 0x024d265c
+016aa96c  mov w19,w0
+016aa970  mov x0,xzr
+016aa974  bl 0x024d2684
+016aa978  scvtf s0,w19
+016aa97c  scvtf s1,w0
+016aa980  fdiv s0,s0,s1
+016aa984  fdiv s9,s0,s8
+016aa988  fmov s8,0x3f800000
+016aa98c  fcmp s9,s8
+016aa990  b.pl 0x016aa9f8
+016aa994  mov x0,xzr
+016aa998  bl 0x024daf14
+016aa99c  add x19,sp,#0x10
+016aa9a0  stp s0,s1,[sp, #0x10]
+016aa9a4  add x0,sp,#0x10
+016aa9a8  mov v0.16B,v8.16B
+016aa9ac  mov x1,xzr
+016aa9b0  stp s2,s3,[sp, #0x18]
+016aa9b4  orr x20,x19,#0x4
+016aa9b8  add x21,x19,#0x8
+016aa9bc  add x22,x19,#0xc
+016aa9c0  bl 0x024db070
+016aa9c4  add x0,sp,#0x10
+016aa9c8  mov v0.16B,v9.16B
+016aa9cc  mov x1,xzr
+016aa9d0  bl 0x024db080
+016aa9d4  add x0,sp,#0x10
+016aa9d8  fmov s0,wzr
+016aa9dc  mov x1,xzr
+016aa9e0  bl 0x024daf3c
+016aa9e4  fsub s0,s8,s9
+016aa9e8  fmov s1,0x3f000000
+016aa9ec  fmul s0,s0,s1
+016aa9f0  add x0,sp,#0x10
+016aa9f4  b 0x016aaa5c
+016aa9f8  mov x0,xzr
+016aa9fc  fdiv s9,s8,s9
+016aaa00  bl 0x024daf14
+016aaa04  mov x19,sp
+016aaa08  stp s0,s1,[sp]
+016aaa0c  mov x0,sp
+016aaa10  mov v0.16B,v9.16B
+016aaa14  mov x1,xzr
+016aaa18  stp s2,s3,[sp, #0x8]
+016aaa1c  orr x20,x19,#0x4
+016aaa20  add x21,x19,#0x8
+016aaa24  add x22,x19,#0xc
+016aaa28  bl 0x024db070
+016aaa2c  mov x0,sp
+016aaa30  mov v0.16B,v8.16B
+016aaa34  mov x1,xzr
+016aaa38  bl 0x024db080
+016aaa3c  fsub s0,s8,s9
+016aaa40  fmov s1,0x3f000000
+016aaa44  fmul s0,s0,s1
+016aaa48  mov x0,sp
+016aaa4c  mov x1,xzr
+016aaa50  bl 0x024daf3c
+016aaa54  mov x0,sp
+016aaa58  fmov s0,wzr
+016aaa5c  mov x1,xzr
+016aaa60  bl 0x024daf4c
+016aaa64  ldr s0,[x19]
+016aaa68  ldr s1,[x20]
+016aaa6c  ldr s2,[x21]
+016aaa70  ldr s3,[x22]
+016aaa74  ldp x19,x30,[sp, #0x50]
+016aaa78  ldp x21,x20,[sp, #0x40]
+016aaa7c  ldr x22,[sp, #0x30]
+016aaa80  ldp d9,d8,[sp, #0x20]
+016aaa84  add sp,sp,#0x60
+016aaa88  ret

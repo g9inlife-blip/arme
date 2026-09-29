@@ -1,0 +1,65 @@
+Function: AliothEngine.Utils.StringUtils$$GetUniqueStringFromFile @ 0169bc7c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> AliothEngine.Utils.StringUtils$$GetUniqueString @ 0169b968
+  -> System.IO.File$$ReadAllText @ 020b0164
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Text.StringBuilder$$Append @ 01fe9960
+
+--- Calls IN ---
+
+--- Listing ---
+0169bc7c  str x22,[sp, #-0x30]!
+0169bc80  stp x21,x20,[sp, #0x10]
+0169bc84  stp x19,x30,[sp, #0x20]
+0169bc88  adrp x20,0x3577000
+0169bc8c  adrp x21,0x3332000
+0169bc90  ldrb w8,[x20, #0xb3a]
+0169bc94  ldr x21,[x21, #0xaf0]
+0169bc98  mov x19,x0
+0169bc9c  tbnz w8,#0x0,0x0169bcb4
+0169bca0  adrp x0,0x3332000
+0169bca4  ldr x0,[x0, #0xaf0]
+0169bca8  bl 0x00b0789c
+0169bcac  mov w8,#0x1
+0169bcb0  strb w8,[x20, #0xb3a]
+0169bcb4  ldr x0,[x21]
+0169bcb8  bl 0x00b079a0
+0169bcbc  cbz x0,0x0169bd40
+0169bcc0  mov x1,xzr
+0169bcc4  mov x20,x0
+0169bcc8  bl 0x01fe7ee0
+0169bccc  cbz x19,0x0169bd40
+0169bcd0  ldr x8,[x19, #0x18]
+0169bcd4  cmp w8,#0x1
+0169bcd8  b.lt 0x0169bd1c
+0169bcdc  mov x21,xzr
+0169bce0  and x8,x8,#0xffffffff
+0169bce4  add x22,x19,#0x20
+0169bce8  cmp x21,w8, UXTW 
+0169bcec  b.cs 0x0169bd3c
+0169bcf0  ldr x0,[x22, x21, LSL #0x3]
+0169bcf4  mov x1,xzr
+0169bcf8  bl 0x020b0164
+0169bcfc  mov x1,x0
+0169bd00  mov x0,x20
+0169bd04  mov x2,xzr
+0169bd08  bl 0x01fe9960
+0169bd0c  ldr w8,[x19, #0x18]
+0169bd10  add x21,x21,#0x1
+0169bd14  cmp x21,w8, SXTW 
+0169bd18  b.lt 0x0169bce8
+0169bd1c  ldr x8,[x20]
+0169bd20  mov x0,x20
+0169bd24  ldp x9,x1,[x8, #0x168]
+0169bd28  blr x9
+0169bd2c  ldp x19,x30,[sp, #0x20]
+0169bd30  ldp x21,x20,[sp, #0x10]
+0169bd34  ldr x22,[sp], #0x30
+0169bd38  b 0x0169b968
+0169bd3c  bl 0x00b079b8
+0169bd40  bl 0x00b079b0

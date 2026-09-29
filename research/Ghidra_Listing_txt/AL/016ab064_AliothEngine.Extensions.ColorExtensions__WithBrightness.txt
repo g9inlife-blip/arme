@@ -1,0 +1,63 @@
+Function: AliothEngine.Extensions.ColorExtensions$$WithBrightness @ 016ab064
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.ColorExtensions$$IsApproximatelyBlack @ 016ab138
+
+--- Calls IN ---
+
+--- Listing ---
+016ab064  str d12,[sp, #-0x40]!
+016ab068  stp d11,d10,[sp, #0x8]
+016ab06c  stp d9,d8,[sp, #0x18]
+016ab070  str x20,[sp, #0x28]
+016ab074  stp x19,x30,[sp, #0x30]
+016ab078  adrp x20,0x3577000
+016ab07c  adrp x19,0x330b000
+016ab080  ldrb w8,[x20, #0xbaf]
+016ab084  ldr x19,[x19, #0x690]
+016ab088  mov v9.16B,v4.16B
+016ab08c  mov v8.16B,v3.16B
+016ab090  mov v10.16B,v2.16B
+016ab094  mov v12.16B,v1.16B
+016ab098  mov v11.16B,v0.16B
+016ab09c  tbnz w8,#0x0,0x016ab0b4
+016ab0a0  adrp x0,0x330b000
+016ab0a4  ldr x0,[x0, #0x690]
+016ab0a8  bl 0x00b0789c
+016ab0ac  mov w8,#0x1
+016ab0b0  strb w8,[x20, #0xbaf]
+016ab0b4  ldr x0,[x19]
+016ab0b8  ldr w8,[x0, #0xe0]
+016ab0bc  cbnz w8,0x016ab0c4
+016ab0c0  bl 0x00b0798c
+016ab0c4  mov v0.16B,v11.16B
+016ab0c8  mov v1.16B,v12.16B
+016ab0cc  mov v2.16B,v10.16B
+016ab0d0  mov v3.16B,v8.16B
+016ab0d4  bl 0x016ab138
+016ab0d8  tbz w0,#0x0,0x016ab0e8
+016ab0dc  mov v1.16B,v9.16B
+016ab0e0  mov v2.16B,v9.16B
+016ab0e4  b 0x016ab118
+016ab0e8  ldr x0,[x19]
+016ab0ec  ldr w8,[x0, #0xe0]
+016ab0f0  cbnz w8,0x016ab0f8
+016ab0f4  bl 0x00b0798c
+016ab0f8  fadd s0,s11,s12
+016ab0fc  fmov s1,0x40400000
+016ab100  fadd s0,s10,s0
+016ab104  fdiv s0,s0,s1
+016ab108  fdiv s0,s9,s0
+016ab10c  fmul s1,s12,s0
+016ab110  fmul s2,s10,s0
+016ab114  fmul s9,s11,s0
+016ab118  mov v0.16B,v9.16B
+016ab11c  mov v3.16B,v8.16B
+016ab120  ldp x19,x30,[sp, #0x30]
+016ab124  ldr x20,[sp, #0x28]
+016ab128  ldp d9,d8,[sp, #0x18]
+016ab12c  ldp d11,d10,[sp, #0x8]
+016ab130  ldr d12,[sp], #0x40
+016ab134  ret

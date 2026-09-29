@@ -1,0 +1,36 @@
+Function: Alioth.S1.Net.NetworkCenter$$get_LastActivateTime @ 015b2da0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp293 @ 010852d4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter$$TryPing @ 015b46d4
+
+--- Listing ---
+015b2da0  stp x21,x20,[sp, #-0x20]!
+015b2da4  stp x19,x30,[sp, #0x10]
+015b2da8  adrp x20,0x3577000
+015b2dac  adrp x21,0x330b000
+015b2db0  ldrb w8,[x20, #0xae]
+015b2db4  ldr x21,[x21, #0x520]
+015b2db8  mov x19,x0
+015b2dbc  tbnz w8,#0x0,0x015b2dd4
+015b2dc0  adrp x0,0x330b000
+015b2dc4  ldr x0,[x0, #0x520]
+015b2dc8  bl 0x00b0789c
+015b2dcc  mov w8,#0x1
+015b2dd0  strb w8,[x20, #0xae]
+015b2dd4  ldr x8,[x21]
+015b2dd8  ldr x8,[x8, #0xb8]
+015b2ddc  ldr x0,[x8, #0x30]
+015b2de0  cbz x0,0x015b2df8
+015b2de4  mov x1,x19
+015b2de8  ldp x19,x30,[sp, #0x10]
+015b2dec  mov x2,xzr
+015b2df0  ldp x21,x20,[sp], #0x20
+015b2df4  b 0x010852d4
+015b2df8  ldr x0,[x19, #0x40]
+015b2dfc  ldp x19,x30,[sp, #0x10]
+015b2e00  ldp x21,x20,[sp], #0x20
+015b2e04  ret

@@ -1,0 +1,39 @@
+Function: Alioth.S1.Common.DH64$$KeyPair @ 015aa1ac
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> Alioth.S1.Common.DH64$$powmodp @ 015aa0a8
+
+--- Calls IN ---
+  <- Alioth.S1.Net.TCPTube$$Update @ 015b64a4
+  <- Alioth.S1.Net.KCPTube$$Handshake1 @ 015aff18
+
+--- Listing ---
+015aa1ac  stp x21,x20,[sp, #-0x20]!
+015aa1b0  stp x19,x30,[sp, #0x10]
+015aa1b4  mov x21,x0
+015aa1b8  ldr x0,[x0, #0x10]
+015aa1bc  cbz x0,0x015aa218
+015aa1c0  ldr x8,[x0]
+015aa1c4  mov x20,x1
+015aa1c8  mov x19,x2
+015aa1cc  ldp x9,x1,[x8, #0x188]
+015aa1d0  blr x9
+015aa1d4  ldr x8,[x21, #0x10]
+015aa1d8  cbz x8,0x015aa218
+015aa1dc  ldr x9,[x8]
+015aa1e0  mov w21,w0
+015aa1e4  mov x0,x8
+015aa1e8  ldp x10,x1,[x9, #0x188]
+015aa1ec  blr x10
+015aa1f0  sxtw x8,w0
+015aa1f4  add x8,x8,#0x1
+015aa1f8  orr x1,x8,x21, LSL #0x20
+015aa1fc  mov w0,#0x5
+015aa200  str x1,[x20]
+015aa204  bl 0x015aa0a8
+015aa208  str x0,[x19]
+015aa20c  ldp x19,x30,[sp, #0x10]
+015aa210  ldp x21,x20,[sp], #0x20
+015aa214  ret
+015aa218  bl 0x00b079b0

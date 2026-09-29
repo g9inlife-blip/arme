@@ -1,0 +1,73 @@
+Function: AliothEngine.AssetHolder$$add_OnUnload @ 01662368
+
+--- Calls OUT ---
+  -> System.Delegate$$Combine @ 02197810
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_e_OnUnload @ 0113aa0c
+
+--- Listing ---
+01662368  str x22,[sp, #-0x30]!
+0166236c  stp x21,x20,[sp, #0x10]
+01662370  stp x19,x30,[sp, #0x20]
+01662374  adrp x22,0x3577000
+01662378  adrp x21,0x3312000
+0166237c  ldrb w8,[x22, #0x8c4]
+01662380  ldr x21,[x21, #0x428]
+01662384  mov x19,x1
+01662388  mov x20,x0
+0166238c  tbnz w8,#0x0,0x016623b0
+01662390  adrp x0,0x3348000
+01662394  ldr x0,[x0, #0xcf8]
+01662398  bl 0x00b0789c
+0166239c  adrp x0,0x3312000
+016623a0  ldr x0,[x0, #0x428]
+016623a4  bl 0x00b0789c
+016623a8  mov w8,#0x1
+016623ac  strb w8,[x22, #0x8c4]
+016623b0  ldr x0,[x21]
+016623b4  ldr w8,[x0, #0xe0]
+016623b8  cbnz w8,0x016623c4
+016623bc  bl 0x00b0798c
+016623c0  ldr x0,[x21]
+016623c4  ldr x8,[x0, #0xb8]
+016623c8  ldr x0,[x8, #0x30]
+016623cc  cbz x0,0x016623ec
+016623d0  mov x1,x20
+016623d4  mov x2,x19
+016623d8  ldp x19,x30,[sp, #0x20]
+016623dc  ldp x21,x20,[sp, #0x10]
+016623e0  mov x3,xzr
+016623e4  ldr x22,[sp], #0x30
+016623e8  b 0x0106125c
+016623ec  adrp x22,0x3348000
+016623f0  ldr x21,[x20, #0x28]!
+016623f4  ldr x22,[x22, #0xcf8]
+016623f8  mov x0,x21
+016623fc  mov x1,x19
+01662400  mov x2,xzr
+01662404  bl 0x02197810
+01662408  mov x8,x0
+0166240c  cbz x0,0x01662420
+01662410  ldr x1,[x22]
+01662414  ldr x9,[x8]
+01662418  cmp x9,x1
+0166241c  b.ne 0x0166244c
+01662420  mov x0,x20
+01662424  mov x1,x8
+01662428  mov x2,x21
+0166242c  bl 0x00ae526c
+01662430  cmp x21,x0
+01662434  mov x21,x0
+01662438  b.ne 0x016623f8
+0166243c  ldp x19,x30,[sp, #0x20]
+01662440  ldp x21,x20,[sp, #0x10]
+01662444  ldr x22,[sp], #0x30
+01662448  ret
+0166244c  mov x0,x8
+01662450  bl 0x00b07c6c

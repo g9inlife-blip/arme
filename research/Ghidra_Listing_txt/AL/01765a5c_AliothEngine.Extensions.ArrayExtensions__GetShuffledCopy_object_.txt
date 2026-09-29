@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$GetShuffledCopy<object> @ 01765a5c
+
+--- Calls OUT ---
+  -> System.Array$$Clone @ 021743c8
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01765a5c  str x22,[sp, #-0x30]!
+01765a60  stp x21,x20,[sp, #0x10]
+01765a64  stp x19,x30,[sp, #0x20]
+01765a68  cbz x0,0x01765ae8
+01765a6c  mov x19,x1
+01765a70  mov x1,xzr
+01765a74  bl 0x021743c8
+01765a78  ldr x8,[x19, #0x38]
+01765a7c  mov x21,x0
+01765a80  ldr x20,[x8]
+01765a84  ldrb w8,[x20, #0x132]
+01765a88  tbnz w8,#0x0,0x01765a98
+01765a8c  mov x0,x20
+01765a90  bl 0x00b2ac40
+01765a94  mov x20,x0
+01765a98  cbz x21,0x01765abc
+01765a9c  mov x0,x21
+01765aa0  mov x1,x20
+01765aa4  bl 0x00b07990
+01765aa8  mov x22,x0
+01765aac  cbnz x0,0x01765ac0
+01765ab0  mov x0,x21
+01765ab4  mov x1,x20
+01765ab8  bl 0x00b07c6c
+01765abc  mov x22,xzr
+01765ac0  ldr x8,[x19, #0x38]
+01765ac4  mov x0,x22
+01765ac8  ldr x1,[x8, #0x8]
+01765acc  ldr x8,[x1, #0x8]
+01765ad0  blr x8
+01765ad4  ldp x19,x30,[sp, #0x20]
+01765ad8  ldp x21,x20,[sp, #0x10]
+01765adc  mov x0,x22
+01765ae0  ldr x22,[sp], #0x30
+01765ae4  ret
+01765ae8  bl 0x00b079b0

@@ -1,0 +1,40 @@
+Function: ResManager.<>c$$.cctor @ 00e2cb70
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00e2cb70  str x20,[sp, #-0x20]!
+00e2cb74  stp x19,x30,[sp, #0x10]
+00e2cb78  adrp x19,0x3572000
+00e2cb7c  adrp x20,0x3329000
+00e2cb80  ldrb w8,[x19, #0x73b]
+00e2cb84  ldr x20,[x20, #0x928]
+00e2cb88  tbnz w8,#0x0,0x00e2cba0
+00e2cb8c  adrp x0,0x3329000
+00e2cb90  ldr x0,[x0, #0x928]
+00e2cb94  bl 0x00b0789c
+00e2cb98  mov w8,#0x1
+00e2cb9c  strb w8,[x19, #0x73b]
+00e2cba0  ldr x0,[x20]
+00e2cba4  bl 0x00b079a0
+00e2cba8  cbz x0,0x00e2cbdc
+00e2cbac  mov x1,xzr
+00e2cbb0  mov x19,x0
+00e2cbb4  bl 0x02194104
+00e2cbb8  ldr x8,[x20]
+00e2cbbc  mov x1,x19
+00e2cbc0  ldr x8,[x8, #0xb8]
+00e2cbc4  str x19,[x8]
+00e2cbc8  ldr x8,[x20]
+00e2cbcc  ldp x19,x30,[sp, #0x10]
+00e2cbd0  ldr x0,[x8, #0xb8]
+00e2cbd4  ldr x20,[sp], #0x20
+00e2cbd8  b 0x00b07850
+00e2cbdc  bl 0x00b079b0

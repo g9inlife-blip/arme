@@ -1,0 +1,19 @@
+Function: AliothEngine.BoundProperty<bool>$$set_Value @ 01f417e0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01f417e0  str x30,[sp, #-0x10]!
+01f417e4  and w1,w1,#0x1
+01f417e8  strb w1,[x0, #0x30]
+01f417ec  cbz x0,0x01f41808
+01f417f0  ldr x8,[x2, #0x20]
+01f417f4  ldr x8,[x8, #0xc0]
+01f417f8  ldr x2,[x8]
+01f417fc  ldr x3,[x2, #0x8]
+01f41800  ldr x30,[sp], #0x10
+01f41804  br x3
+01f41808  bl 0x00b079b0

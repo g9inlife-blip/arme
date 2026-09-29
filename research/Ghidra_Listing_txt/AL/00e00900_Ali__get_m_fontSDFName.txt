@@ -1,0 +1,74 @@
+Function: Ali$$get_m_fontSDFName @ 00e00900
+
+--- Calls OUT ---
+  -> Ali$$get_language @ 00e00888
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Enum$$ToString @ 02186100
+  -> System.String$$Concat @ 01fd2850
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_fontSDFName @ 0119e178
+  <- AliothExtensions$$SetTextExt @ 00e13af0
+  <- AliothExtensions$$SetTextExt @ 00e14168
+  <- ResManager$$DontDestroyResLoad @ 00e2a148
+  <- UINode$$Multilingual @ 00dc4174
+
+--- Listing ---
+00e00900  sub sp,sp,#0x40
+00e00904  stp x21,x20,[sp, #0x20]
+00e00908  stp x19,x30,[sp, #0x30]
+00e0090c  adrp x21,0x3572000
+00e00910  adrp x20,0x335f000
+00e00914  ldrb w8,[x21, #0x51f]
+00e00918  ldr x20,[x20, #0x20]
+00e0091c  mov x19,x0
+00e00920  tbnz w8,#0x0,0x00e00950
+00e00924  adrp x0,0x335f000
+00e00928  ldr x0,[x0, #0x20]
+00e0092c  bl 0x00b0789c
+00e00930  adrp x0,0x3375000
+00e00934  ldr x0,[x0, #0x180]
+00e00938  bl 0x00b0789c
+00e0093c  adrp x0,0x337d000
+00e00940  ldr x0,[x0, #0xd18]
+00e00944  bl 0x00b0789c
+00e00948  mov w8,#0x1
+00e0094c  strb w8,[x21, #0x51f]
+00e00950  ldr x0,[x20]
+00e00954  ldr w8,[x0, #0xe0]
+00e00958  cbnz w8,0x00e00964
+00e0095c  bl 0x00b0798c
+00e00960  ldr x0,[x20]
+00e00964  ldr x8,[x0, #0xb8]
+00e00968  ldr x0,[x8, #0x90]
+00e0096c  cbz x0,0x00e00988
+00e00970  mov x1,x19
+00e00974  ldp x19,x30,[sp, #0x30]
+00e00978  ldp x21,x20,[sp, #0x20]
+00e0097c  mov x2,xzr
+00e00980  add sp,sp,#0x40
+00e00984  b 0x01061abc
+00e00988  adrp x20,0x3375000
+00e0098c  adrp x21,0x337d000
+00e00990  ldr x20,[x20, #0x180]
+00e00994  ldr x21,[x21, #0xd18]
+00e00998  mov x0,x19
+00e0099c  bl 0x00e00888
+00e009a0  ldr x8,[x20]
+00e009a4  mov x9,#-0x1
+00e009a8  str w0,[sp, #0x18]
+00e009ac  add x0,sp,#0x8
+00e009b0  mov x1,xzr
+00e009b4  stp x8,x9,[sp, #0x8]
+00e009b8  bl 0x02186100
+00e009bc  ldr x8,[x21]
+00e009c0  mov x1,x0
+00e009c4  mov x2,xzr
+00e009c8  mov x0,x8
+00e009cc  bl 0x01fd2850
+00e009d0  ldp x19,x30,[sp, #0x30]
+00e009d4  ldp x21,x20,[sp, #0x20]
+00e009d8  add sp,sp,#0x40
+00e009dc  ret

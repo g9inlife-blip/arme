@@ -1,0 +1,35 @@
+Function: AddressBookController$$havePhoto @ 00ce3380
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Equals @ 01fde08c
+
+--- Calls IN ---
+  <- AddressBookController$$parseContacts @ 00ce28a0
+
+--- Listing ---
+00ce3380  str x20,[sp, #-0x20]!
+00ce3384  stp x19,x30,[sp, #0x10]
+00ce3388  adrp x20,0x3571000
+00ce338c  ldrb w8,[x20, #0x8f1]
+00ce3390  mov x19,x1
+00ce3394  tbnz w8,#0x0,0x00ce33ac
+00ce3398  adrp x0,0x3375000
+00ce339c  ldr x0,[x0, #0xea8]
+00ce33a0  bl 0x00b0789c
+00ce33a4  mov w8,#0x1
+00ce33a8  strb w8,[x20, #0x8f1]
+00ce33ac  cbz x19,0x00ce33dc
+00ce33b0  adrp x8,0x3375000
+00ce33b4  ldr x8,[x8, #0xea8]
+00ce33b8  mov x0,x19
+00ce33bc  mov x2,xzr
+00ce33c0  ldr x1,[x8]
+00ce33c4  bl 0x01fde08c
+00ce33c8  ldp x19,x30,[sp, #0x10]
+00ce33cc  mvn w8,w0
+00ce33d0  and w0,w8,#0x1
+00ce33d4  ldr x20,[sp], #0x20
+00ce33d8  ret
+00ce33dc  bl 0x00b079b0

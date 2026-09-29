@@ -1,0 +1,35 @@
+Function: AliothEngine.RateReview$$OpenReview @ 01658370
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineRateReviewWrap$$_m_OpenReview_xlua_st_ @ 011605b4
+
+--- Listing ---
+01658370  stp x21,x20,[sp, #-0x20]!
+01658374  stp x19,x30,[sp, #0x10]
+01658378  adrp x20,0x3577000
+0165837c  adrp x21,0x3359000
+01658380  ldrb w8,[x20, #0x830]
+01658384  ldr x21,[x21, #0xfb8]
+01658388  mov x19,x0
+0165838c  tbnz w8,#0x0,0x016583a4
+01658390  adrp x0,0x3359000
+01658394  ldr x0,[x0, #0xfb8]
+01658398  bl 0x00b0789c
+0165839c  mov w8,#0x1
+016583a0  strb w8,[x20, #0x830]
+016583a4  ldr x8,[x21]
+016583a8  ldr x8,[x8, #0xb8]
+016583ac  ldr x0,[x8, #0x18]
+016583b0  cbz x0,0x016583c8
+016583b4  mov x1,x19
+016583b8  ldp x19,x30,[sp, #0x10]
+016583bc  mov x2,xzr
+016583c0  ldp x21,x20,[sp], #0x20
+016583c4  b 0x01060dac
+016583c8  ldp x19,x30,[sp, #0x10]
+016583cc  ldp x21,x20,[sp], #0x20
+016583d0  ret

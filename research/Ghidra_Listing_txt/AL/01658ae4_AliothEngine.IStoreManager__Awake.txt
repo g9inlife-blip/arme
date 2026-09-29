@@ -1,0 +1,43 @@
+Function: AliothEngine.IStoreManager$$Awake @ 01658ae4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_ChinaPay$$Awake @ 0165b460
+  <- AliothEngine.StoreManager_WePay$$Awake @ 0165cf50
+  <- AliothEngine.StoreManager_BiliBili$$Awake @ 0165aa90
+  <- AliothEngine.StoreManager_WePay$$<>xLuaBaseProxy_Awake @ 0165dc24
+  <- AliothEngine.StoreManager_AliPay$$Awake @ 01659d44
+  <- AliothEngine.StoreManager_ChinaPay$$<>xLuaBaseProxy_Awake @ 0165c0d4
+  <- AliothEngine.StoreManager_AliPay$$<>xLuaBaseProxy_Awake @ 0165aa6c
+  <- AliothEngine.StoreManager_SDK$$<>xLuaBaseProxy_Awake @ 0165cdf0
+  <- AliothEngine.StoreManager_SDK$$Awake @ 0165c2d0
+
+--- Listing ---
+01658ae4  stp x21,x20,[sp, #-0x20]!
+01658ae8  stp x19,x30,[sp, #0x10]
+01658aec  adrp x20,0x3577000
+01658af0  adrp x21,0x336f000
+01658af4  ldrb w8,[x20, #0x83d]
+01658af8  ldr x21,[x21, #0x1e8]
+01658afc  mov x19,x0
+01658b00  tbnz w8,#0x0,0x01658b18
+01658b04  adrp x0,0x336f000
+01658b08  ldr x0,[x0, #0x1e8]
+01658b0c  bl 0x00b0789c
+01658b10  mov w8,#0x1
+01658b14  strb w8,[x20, #0x83d]
+01658b18  ldr x8,[x21]
+01658b1c  ldr x8,[x8, #0xb8]
+01658b20  ldr x0,[x8, #0x28]
+01658b24  cbz x0,0x01658b3c
+01658b28  mov x1,x19
+01658b2c  ldp x19,x30,[sp, #0x10]
+01658b30  mov x2,xzr
+01658b34  ldp x21,x20,[sp], #0x20
+01658b38  b 0x01060dac
+01658b3c  ldp x19,x30,[sp, #0x10]
+01658b40  ldp x21,x20,[sp], #0x20
+01658b44  ret

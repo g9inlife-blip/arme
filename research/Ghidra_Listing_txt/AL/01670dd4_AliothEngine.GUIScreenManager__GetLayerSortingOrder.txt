@@ -1,0 +1,54 @@
+Function: AliothEngine.GUIScreenManager$$GetLayerSortingOrder @ 01670dd4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp833 @ 010ccfec
+
+--- Calls IN ---
+  <- AliothExtensions$$GetCanvaOrder @ 00e162b0
+  <- ChangeFashionMono$$LayFashionItem @ 00f2bf6c
+  <- HeroPanelMono$$PreloadAssetComplete @ 00f3b3e4
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_GetLayerSortingOrder_xlua_st_ @ 0114a8d8
+  <- DialogStoryMono$$Start @ 00eba698
+  <- HeroPartEquipMono$$<WeaponSetting>b__18_0 @ 00f4587c
+  <- ItemShowNormalMono$$SetPlayEff @ 00eb219c
+  <- HeroPartFashionMono$$ShowDetail @ 00f47a70
+  <- HeroPanelMono$$<ChangeRoleModel>b__72_0 @ 00f3f410
+  <- CallPanelMono$$ShowHeroNormal @ 00ea24d8
+  <- AliothEngine.GUIScreen$$get_LayerSortingOrder @ 01670d2c
+  <- AliothEngine.GUIScreenManager$$_InitSubCanvas @ 0167730c
+  <- WeaponPanelMono.<>c__DisplayClass50_0$$<LayWeaponItem>b__0 @ 00f5dc04
+
+--- Listing ---
+01670dd4  stp x21,x20,[sp, #-0x20]!
+01670dd8  stp x19,x30,[sp, #0x10]
+01670ddc  adrp x21,0x3577000
+01670de0  adrp x20,0x337b000
+01670de4  ldrb w8,[x21, #0x9c8]
+01670de8  ldr x20,[x20, #0xb98]
+01670dec  mov w19,w0
+01670df0  tbnz w8,#0x0,0x01670e08
+01670df4  adrp x0,0x337b000
+01670df8  ldr x0,[x0, #0xb98]
+01670dfc  bl 0x00b0789c
+01670e00  mov w8,#0x1
+01670e04  strb w8,[x21, #0x9c8]
+01670e08  ldr x0,[x20]
+01670e0c  ldr w8,[x0, #0xe0]
+01670e10  cbnz w8,0x01670e1c
+01670e14  bl 0x00b0798c
+01670e18  ldr x0,[x20]
+01670e1c  ldr x8,[x0, #0xb8]
+01670e20  ldr x0,[x8, #0x158]
+01670e24  cbz x0,0x01670e3c
+01670e28  mov w1,w19
+01670e2c  ldp x19,x30,[sp, #0x10]
+01670e30  mov x2,xzr
+01670e34  ldp x21,x20,[sp], #0x20
+01670e38  b 0x010ccfec
+01670e3c  mov w8,#0x64
+01670e40  mul w0,w19,w8
+01670e44  ldp x19,x30,[sp, #0x10]
+01670e48  ldp x21,x20,[sp], #0x20
+01670e4c  ret

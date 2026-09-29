@@ -1,0 +1,31 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$Remove @ 01ade700
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+01ade700  str x20,[sp, #-0x20]!
+01ade704  stp x19,x30,[sp, #0x10]
+01ade708  ldr x8,[x2, #0x20]
+01ade70c  mov x19,x2
+01ade710  mov x20,x0
+01ade714  ldr x8,[x8, #0xc0]
+01ade718  ldr x2,[x8, #0xa8]
+01ade71c  ldr x8,[x2, #0x8]
+01ade720  blr x8
+01ade724  cmn w0,#0x1
+01ade728  b.eq 0x01ade750
+01ade72c  ldr x8,[x19, #0x20]
+01ade730  mov w1,w0
+01ade734  mov x0,x20
+01ade738  ldr x8,[x8, #0xc0]
+01ade73c  ldr x2,[x8, #0xe0]
+01ade740  ldr x8,[x2, #0x8]
+01ade744  blr x8
+01ade748  mov w0,#0x1
+01ade74c  b 0x01ade754
+01ade750  mov w0,wzr
+01ade754  ldp x19,x30,[sp, #0x10]
+01ade758  ldr x20,[sp], #0x20
+01ade75c  ret

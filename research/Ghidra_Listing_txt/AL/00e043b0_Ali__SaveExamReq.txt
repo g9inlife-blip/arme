@@ -1,0 +1,78 @@
+Function: Ali$$SaveExamReq @ 00e043b0
+
+--- Calls OUT ---
+  -> DataCache$$set_m_examReq @ 00e25c54
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$get_dataCache @ 00e014f4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Net.Request$$get_Res @ 015b4f10
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> DataCache$$set_m_myExamReq @ 00e25e2c
+  -> FUN_00b079b0 @ 00b079b0
+  -> DataCache$$set_m_examTimes @ 00e26004
+
+--- Calls IN ---
+  <- Ali$$DataProccessCallBack @ 00e03dd4
+
+--- Listing ---
+00e043b0  str x22,[sp, #-0x30]!
+00e043b4  stp x21,x20,[sp, #0x10]
+00e043b8  stp x19,x30,[sp, #0x20]
+00e043bc  adrp x22,0x3572000
+00e043c0  adrp x21,0x335f000
+00e043c4  ldrb w8,[x22, #0x561]
+00e043c8  ldr x21,[x21, #0x20]
+00e043cc  mov x19,x1
+00e043d0  mov x20,x0
+00e043d4  tbnz w8,#0x0,0x00e043ec
+00e043d8  adrp x0,0x335f000
+00e043dc  ldr x0,[x0, #0x20]
+00e043e0  bl 0x00b0789c
+00e043e4  mov w8,#0x1
+00e043e8  strb w8,[x22, #0x561]
+00e043ec  ldr x0,[x21]
+00e043f0  ldr w8,[x0, #0xe0]
+00e043f4  cbnz w8,0x00e04400
+00e043f8  bl 0x00b0798c
+00e043fc  ldr x0,[x21]
+00e04400  ldr x8,[x0, #0xb8]
+00e04404  ldr x0,[x8, #0x2b0]
+00e04408  cbz x0,0x00e04428
+00e0440c  mov x1,x20
+00e04410  mov x2,x19
+00e04414  ldp x19,x30,[sp, #0x20]
+00e04418  ldp x21,x20,[sp, #0x10]
+00e0441c  mov x3,xzr
+00e04420  ldr x22,[sp], #0x30
+00e04424  b 0x0106125c
+00e04428  mov x0,x20
+00e0442c  bl 0x00e014f4
+00e04430  cbz x0,0x00e044a0
+00e04434  mov x1,x19
+00e04438  mov x2,xzr
+00e0443c  bl 0x00e25c54
+00e04440  mov x0,x20
+00e04444  bl 0x00e014f4
+00e04448  cbz x0,0x00e044a0
+00e0444c  mov x1,x19
+00e04450  mov x2,xzr
+00e04454  bl 0x00e25e2c
+00e04458  mov x0,x20
+00e0445c  bl 0x00e014f4
+00e04460  cbz x19,0x00e044a0
+00e04464  mov x20,x0
+00e04468  mov x0,x19
+00e0446c  mov x1,xzr
+00e04470  bl 0x015b4f10
+00e04474  cbz x0,0x00e044a0
+00e04478  ldr x8,[x0, #0x108]
+00e0447c  cbz x8,0x00e044a0
+00e04480  cbz x20,0x00e044a0
+00e04484  ldr w1,[x8, #0x40]
+00e04488  mov x0,x20
+00e0448c  ldp x19,x30,[sp, #0x20]
+00e04490  ldp x21,x20,[sp, #0x10]
+00e04494  mov x2,xzr
+00e04498  ldr x22,[sp], #0x30
+00e0449c  b 0x00e26004
+00e044a0  bl 0x00b079b0

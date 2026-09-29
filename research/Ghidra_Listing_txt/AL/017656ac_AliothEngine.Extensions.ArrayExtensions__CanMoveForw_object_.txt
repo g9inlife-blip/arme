@@ -1,0 +1,25 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$CanMoveForw<object> @ 017656ac
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017656ac  stp x19,x30,[sp, #-0x10]!
+017656b0  ldr x8,[x2, #0x38]
+017656b4  mov x19,x0
+017656b8  ldr x2,[x8]
+017656bc  ldr x8,[x2, #0x8]
+017656c0  blr x8
+017656c4  cbz x19,0x017656ec
+017656c8  ldr w8,[x19, #0x18]
+017656cc  sub w8,w8,#0x1
+017656d0  cmp w0,w8
+017656d4  cset w8,lt
+017656d8  cmp w0,#0x0
+017656dc  cset w9,ge
+017656e0  and w0,w9,w8
+017656e4  ldp x19,x30,[sp], #0x10
+017656e8  ret
+017656ec  bl 0x00b079b0

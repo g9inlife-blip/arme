@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate<object> @ 017a8194
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$set_rotation @ 024f3bac
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_position @ 024f3724
+
+--- Calls IN ---
+
+--- Listing ---
+017a8194  str d14,[sp, #-0x50]!
+017a8198  stp d13,d12,[sp, #0x10]
+017a819c  stp d11,d10,[sp, #0x20]
+017a81a0  stp d9,d8,[sp, #0x30]
+017a81a4  stp x19,x30,[sp, #0x40]
+017a81a8  ldr x8,[x1, #0x38]
+017a81ac  mov v8.16B,v6.16B
+017a81b0  mov v9.16B,v5.16B
+017a81b4  mov v10.16B,v4.16B
+017a81b8  ldr x1,[x8]
+017a81bc  mov v11.16B,v3.16B
+017a81c0  mov v12.16B,v2.16B
+017a81c4  mov v13.16B,v1.16B
+017a81c8  ldr x8,[x1, #0x8]
+017a81cc  mov v14.16B,v0.16B
+017a81d0  blr x8
+017a81d4  cbz x0,0x017a8240
+017a81d8  mov x1,xzr
+017a81dc  mov x19,x0
+017a81e0  bl 0x024e4e98
+017a81e4  cbz x0,0x017a8240
+017a81e8  mov v0.16B,v14.16B
+017a81ec  mov v1.16B,v13.16B
+017a81f0  mov v2.16B,v12.16B
+017a81f4  mov x1,xzr
+017a81f8  bl 0x024f3724
+017a81fc  mov x0,x19
+017a8200  mov x1,xzr
+017a8204  bl 0x024e4e98
+017a8208  cbz x0,0x017a8240
+017a820c  mov v0.16B,v11.16B
+017a8210  mov v1.16B,v10.16B
+017a8214  mov v2.16B,v9.16B
+017a8218  mov v3.16B,v8.16B
+017a821c  mov x1,xzr
+017a8220  bl 0x024f3bac
+017a8224  mov x0,x19
+017a8228  ldp x19,x30,[sp, #0x40]
+017a822c  ldp d9,d8,[sp, #0x30]
+017a8230  ldp d11,d10,[sp, #0x20]
+017a8234  ldp d13,d12,[sp, #0x10]
+017a8238  ldr d14,[sp], #0x50
+017a823c  ret
+017a8240  bl 0x00b079b0

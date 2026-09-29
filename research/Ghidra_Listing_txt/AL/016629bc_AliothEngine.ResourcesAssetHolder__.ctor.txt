@@ -1,0 +1,40 @@
+Function: AliothEngine.ResourcesAssetHolder$$.ctor @ 016629bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetHolder$$.ctor @ 01663ef4
+
+--- Calls IN ---
+  <- AliothEngine.AssetHolder$$Create @ 01662758
+
+--- Listing ---
+016629bc  str x22,[sp, #-0x30]!
+016629c0  stp x21,x20,[sp, #0x10]
+016629c4  stp x19,x30,[sp, #0x20]
+016629c8  adrp x21,0x3577000
+016629cc  adrp x22,0x3312000
+016629d0  ldrb w8,[x21, #0x8ee]
+016629d4  ldr x22,[x22, #0x428]
+016629d8  mov x19,x1
+016629dc  mov x20,x0
+016629e0  tbnz w8,#0x0,0x016629f8
+016629e4  adrp x0,0x3312000
+016629e8  ldr x0,[x0, #0x428]
+016629ec  bl 0x00b0789c
+016629f0  mov w8,#0x1
+016629f4  strb w8,[x21, #0x8ee]
+016629f8  ldr x0,[x22]
+016629fc  ldr w8,[x0, #0xe0]
+01662a00  cbnz w8,0x01662a08
+01662a04  bl 0x00b0798c
+01662a08  mov x0,x20
+01662a0c  bl 0x01663ef4
+01662a10  str x19,[x20, #0x58]!
+01662a14  mov x0,x20
+01662a18  mov x1,x19
+01662a1c  ldp x19,x30,[sp, #0x20]
+01662a20  ldp x21,x20,[sp, #0x10]
+01662a24  ldr x22,[sp], #0x30
+01662a28  b 0x00b07850

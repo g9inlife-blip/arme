@@ -1,0 +1,71 @@
+Function: AliothEngine.AssetDownloader$$ProcessDownloadByUnityCache @ 0165e5f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp172 @ 010756d8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader$$TryDequeue @ 0165e778
+
+--- Listing ---
+0165e5f0  str x22,[sp, #-0x30]!
+0165e5f4  stp x21,x20,[sp, #0x10]
+0165e5f8  stp x19,x30,[sp, #0x20]
+0165e5fc  adrp x22,0x3577000
+0165e600  adrp x21,0x3337000
+0165e604  ldrb w8,[x22, #0x8a0]
+0165e608  ldr x21,[x21, #0x5c8]
+0165e60c  mov x19,x1
+0165e610  mov x20,x0
+0165e614  tbnz w8,#0x0,0x0165e638
+0165e618  adrp x0,0x3337000
+0165e61c  ldr x0,[x0, #0x5c8]
+0165e620  bl 0x00b0789c
+0165e624  adrp x0,0x334d000
+0165e628  ldr x0,[x0, #0xb78]
+0165e62c  bl 0x00b0789c
+0165e630  mov w8,#0x1
+0165e634  strb w8,[x22, #0x8a0]
+0165e638  ldr x0,[x21]
+0165e63c  ldr w8,[x0, #0xe0]
+0165e640  cbnz w8,0x0165e64c
+0165e644  bl 0x00b0798c
+0165e648  ldr x0,[x21]
+0165e64c  ldr x8,[x0, #0xb8]
+0165e650  ldr x0,[x8, #0x58]
+0165e654  cbz x0,0x0165e674
+0165e658  mov x1,x20
+0165e65c  mov x2,x19
+0165e660  ldp x19,x30,[sp, #0x20]
+0165e664  ldp x21,x20,[sp, #0x10]
+0165e668  mov x3,xzr
+0165e66c  ldr x22,[sp], #0x30
+0165e670  b 0x010756d8
+0165e674  adrp x8,0x334d000
+0165e678  ldr x8,[x8, #0xb78]
+0165e67c  ldr x0,[x8]
+0165e680  bl 0x00b079a0
+0165e684  cbz x0,0x0165e6cc
+0165e688  mov x1,xzr
+0165e68c  mov x21,x0
+0165e690  bl 0x02194104
+0165e694  mov x0,x21
+0165e698  str wzr,[x21, #0x10]
+0165e69c  str x20,[x0, #0x20]!
+0165e6a0  mov x1,x20
+0165e6a4  bl 0x00b07850
+0165e6a8  mov x0,x21
+0165e6ac  str x19,[x0, #0x28]!
+0165e6b0  mov x1,x19
+0165e6b4  bl 0x00b07850
+0165e6b8  mov x0,x21
+0165e6bc  ldp x19,x30,[sp, #0x20]
+0165e6c0  ldp x21,x20,[sp, #0x10]
+0165e6c4  ldr x22,[sp], #0x30
+0165e6c8  ret
+0165e6cc  bl 0x00b079b0

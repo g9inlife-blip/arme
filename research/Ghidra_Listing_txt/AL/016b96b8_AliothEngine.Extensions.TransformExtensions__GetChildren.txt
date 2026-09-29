@@ -1,0 +1,92 @@
+Function: AliothEngine.Extensions.TransformExtensions$$GetChildren @ 016b96b8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$Sort @ 016b98a0
+  <- AliothEngine.Extensions.TransformExtensions.<SelfAndAllChildren>d__4$$MoveNext @ 016bb464
+
+--- Listing ---
+016b96b8  str x22,[sp, #-0x30]!
+016b96bc  stp x21,x20,[sp, #0x10]
+016b96c0  stp x19,x30,[sp, #0x20]
+016b96c4  adrp x20,0x3577000
+016b96c8  adrp x21,0x3362000
+016b96cc  ldrb w8,[x20, #0xc2a]
+016b96d0  ldr x21,[x21, #0xf58]
+016b96d4  mov x19,x0
+016b96d8  tbnz w8,#0x0,0x016b9708
+016b96dc  adrp x0,0x3320000
+016b96e0  ldr x0,[x0, #0x448]
+016b96e4  bl 0x00b0789c
+016b96e8  adrp x0,0x337f000
+016b96ec  ldr x0,[x0, #0x6d0]
+016b96f0  bl 0x00b0789c
+016b96f4  adrp x0,0x3362000
+016b96f8  ldr x0,[x0, #0xf58]
+016b96fc  bl 0x00b0789c
+016b9700  mov w8,#0x1
+016b9704  strb w8,[x20, #0xc2a]
+016b9708  ldr x0,[x21]
+016b970c  bl 0x00b079a0
+016b9710  cbz x0,0x016b97e4
+016b9714  adrp x8,0x337f000
+016b9718  ldr x8,[x8, #0x6d0]
+016b971c  mov x20,x0
+016b9720  ldr x1,[x8]
+016b9724  bl 0x01bffe10
+016b9728  cbz x19,0x016b97e4
+016b972c  mov x0,x19
+016b9730  mov x1,xzr
+016b9734  bl 0x024f5578
+016b9738  cmp w0,#0x1
+016b973c  b.lt 0x016b97d0
+016b9740  adrp x22,0x3320000
+016b9744  ldr x22,[x22, #0x448]
+016b9748  mov w21,wzr
+016b974c  mov x0,x19
+016b9750  mov w1,w21
+016b9754  mov x2,xzr
+016b9758  bl 0x024f5bec
+016b975c  ldr w10,[x20, #0x1c]
+016b9760  ldr x8,[x20, #0x10]
+016b9764  ldr x9,[x22]
+016b9768  add w10,w10,#0x1
+016b976c  str w10,[x20, #0x1c]
+016b9770  cbz x8,0x016b97e4
+016b9774  ldrsw x10,[x20, #0x18]
+016b9778  ldr w11,[x8, #0x18]
+016b977c  mov x1,x0
+016b9780  cmp w10,w11
+016b9784  b.cs 0x016b97a0
+016b9788  add w9,w10,#0x1
+016b978c  add x0,x8,x10, LSL #0x3
+016b9790  str w9,[x20, #0x18]
+016b9794  str x1,[x0, #0x20]!
+016b9798  bl 0x00b07850
+016b979c  b 0x016b97b8
+016b97a0  ldr x8,[x9, #0x20]
+016b97a4  mov x0,x20
+016b97a8  ldr x8,[x8, #0xc0]
+016b97ac  ldr x2,[x8, #0x58]
+016b97b0  ldr x8,[x2, #0x8]
+016b97b4  blr x8
+016b97b8  mov x0,x19
+016b97bc  mov x1,xzr
+016b97c0  add w21,w21,#0x1
+016b97c4  bl 0x024f5578
+016b97c8  cmp w21,w0
+016b97cc  b.lt 0x016b974c
+016b97d0  mov x0,x20
+016b97d4  ldp x19,x30,[sp, #0x20]
+016b97d8  ldp x21,x20,[sp, #0x10]
+016b97dc  ldr x22,[sp], #0x30
+016b97e0  ret
+016b97e4  bl 0x00b079b0

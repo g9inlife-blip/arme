@@ -1,0 +1,49 @@
+Function: AliothExtensions$$.cctor @ 00e196ac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Globalization.DateTimeFormatInfo$$get_CurrentInfo @ 020ec158
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e196ac  stp x21,x20,[sp, #-0x20]!
+00e196b0  stp x19,x30,[sp, #0x10]
+00e196b4  adrp x21,0x3572000
+00e196b8  adrp x19,0x3348000
+00e196bc  adrp x20,0x3344000
+00e196c0  ldrb w8,[x21, #0x615]
+00e196c4  ldr x19,[x19, #0x138]
+00e196c8  ldr x20,[x20, #0x7e0]
+00e196cc  tbnz w8,#0x0,0x00e196f0
+00e196d0  adrp x0,0x3348000
+00e196d4  ldr x0,[x0, #0x138]
+00e196d8  bl 0x00b0789c
+00e196dc  adrp x0,0x3344000
+00e196e0  ldr x0,[x0, #0x7e0]
+00e196e4  bl 0x00b0789c
+00e196e8  mov w8,#0x1
+00e196ec  strb w8,[x21, #0x615]
+00e196f0  ldr x8,[x19]
+00e196f4  adrp x9,0x26db000
+00e196f8  ldr q0,[x9, #0x710]
+00e196fc  ldr x8,[x8, #0xb8]
+00e19700  str q0,[x8]
+00e19704  ldr x0,[x20]
+00e19708  ldr w8,[x0, #0xe0]
+00e1970c  cbnz w8,0x00e19714
+00e19710  bl 0x00b0798c
+00e19714  mov x0,xzr
+00e19718  bl 0x020ec158
+00e1971c  cbz x0,0x00e1973c
+00e19720  ldr x8,[x19]
+00e19724  ldr x1,[x0, #0x78]
+00e19728  ldr x0,[x8, #0xb8]
+00e1972c  str x1,[x0, #0x10]!
+00e19730  ldp x19,x30,[sp, #0x10]
+00e19734  ldp x21,x20,[sp], #0x20
+00e19738  b 0x00b07850
+00e1973c  bl 0x00b079b0

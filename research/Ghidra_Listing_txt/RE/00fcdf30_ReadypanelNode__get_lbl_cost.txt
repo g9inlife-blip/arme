@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_lbl_cost @ 00fcdf30
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$RefreshBtnState @ 00e5e86c
+
+--- Listing ---
+00fcdf30  stp x21,x20,[sp, #-0x20]!
+00fcdf34  stp x19,x30,[sp, #0x10]
+00fcdf38  adrp x20,0x3573000
+00fcdf3c  adrp x21,0x3322000
+00fcdf40  ldrb w8,[x20, #0xe74]
+00fcdf44  ldr x21,[x21, #0x340]
+00fcdf48  mov x19,x0
+00fcdf4c  tbnz w8,#0x0,0x00fcdf64
+00fcdf50  adrp x0,0x3322000
+00fcdf54  ldr x0,[x0, #0x340]
+00fcdf58  bl 0x00b0789c
+00fcdf5c  mov w8,#0x1
+00fcdf60  strb w8,[x20, #0xe74]
+00fcdf64  ldr x1,[x21]
+00fcdf68  mov x0,x19
+00fcdf6c  ldp x19,x30,[sp, #0x10]
+00fcdf70  mov x2,xzr
+00fcdf74  ldp x21,x20,[sp], #0x20
+00fcdf78  b 0x00dc06f8

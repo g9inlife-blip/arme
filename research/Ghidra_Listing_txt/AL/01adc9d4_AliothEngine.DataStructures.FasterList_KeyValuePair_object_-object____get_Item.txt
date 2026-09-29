@@ -1,0 +1,23 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$get_Item @ 01adc9d4
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakEvent$$InternalInvoke @ 01697724
+
+--- Listing ---
+01adc9d4  str x30,[sp, #-0x10]!
+01adc9d8  ldr x8,[x0, #0x10]
+01adc9dc  cbz x8,0x01adca00
+01adc9e0  ldr w9,[x8, #0x18]
+01adc9e4  cmp w9,w1
+01adc9e8  b.ls 0x01adca04
+01adc9ec  sxtw x9,w1
+01adc9f0  add x8,x8,x9, LSL #0x4
+01adc9f4  ldp x0,x1,[x8, #0x20]
+01adc9f8  ldr x30,[sp], #0x10
+01adc9fc  ret
+01adca00  bl 0x00b079b0
+01adca04  bl 0x00b079b8

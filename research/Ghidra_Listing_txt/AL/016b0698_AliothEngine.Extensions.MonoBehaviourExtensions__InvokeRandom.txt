@@ -1,0 +1,27 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$InvokeRandom @ 016b0698
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.MonoBehaviourExtensions$$Invoke @ 016b05e8
+  -> UnityEngine.Random$$get_value @ 024d6438
+
+--- Calls IN ---
+
+--- Listing ---
+016b0698  stp d9,d8,[sp, #-0x30]!
+016b069c  str x20,[sp, #0x10]
+016b06a0  stp x19,x30,[sp, #0x20]
+016b06a4  mov x20,x0
+016b06a8  mov x0,xzr
+016b06ac  mov v8.16B,v1.16B
+016b06b0  mov v9.16B,v0.16B
+016b06b4  mov x19,x1
+016b06b8  bl 0x024d6438
+016b06bc  mov x0,x20
+016b06c0  mov x1,x19
+016b06c4  ldp x19,x30,[sp, #0x20]
+016b06c8  ldr x20,[sp, #0x10]
+016b06cc  fsub s1,s8,s9
+016b06d0  fmul s0,s1,s0
+016b06d4  fadd s0,s0,s9
+016b06d8  ldp d9,d8,[sp], #0x30
+016b06dc  b 0x016b05e8

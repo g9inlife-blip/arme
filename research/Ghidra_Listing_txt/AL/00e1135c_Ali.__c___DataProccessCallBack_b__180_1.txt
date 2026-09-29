@@ -1,0 +1,90 @@
+Function: Ali.<>c$$<DataProccessCallBack>b__180_1 @ 00e1135c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreenManager$$ShowScreen @ 0167a614
+
+--- Calls IN ---
+
+--- Listing ---
+00e1135c  str x22,[sp, #-0x30]!
+00e11360  stp x21,x20,[sp, #0x10]
+00e11364  stp x19,x30,[sp, #0x20]
+00e11368  adrp x19,0x3572000
+00e1136c  adrp x22,0x336d000
+00e11370  ldrb w8,[x19, #0x5c9]
+00e11374  ldr x22,[x22, #0x4b8]
+00e11378  tbnz w8,#0x0,0x00e113c0
+00e1137c  adrp x0,0x334a000
+00e11380  ldr x0,[x0, #0xf38]
+00e11384  bl 0x00b0789c
+00e11388  adrp x0,0x337b000
+00e1138c  ldr x0,[x0, #0xb98]
+00e11390  bl 0x00b0789c
+00e11394  adrp x0,0x334e000
+00e11398  ldr x0,[x0, #0xc40]
+00e1139c  bl 0x00b0789c
+00e113a0  adrp x0,0x336d000
+00e113a4  ldr x0,[x0, #0x4b8]
+00e113a8  bl 0x00b0789c
+00e113ac  adrp x0,0x3355000
+00e113b0  ldr x0,[x0, #0x670]
+00e113b4  bl 0x00b0789c
+00e113b8  mov w8,#0x1
+00e113bc  strb w8,[x19, #0x5c9]
+00e113c0  ldr x0,[x22]
+00e113c4  adrp x19,0x3355000
+00e113c8  ldr w8,[x0, #0xe0]
+00e113cc  ldr x19,[x19, #0x670]
+00e113d0  cbnz w8,0x00e113dc
+00e113d4  bl 0x00b0798c
+00e113d8  ldr x0,[x22]
+00e113dc  ldr x8,[x0, #0xb8]
+00e113e0  ldr x19,[x19]
+00e113e4  ldr x20,[x8, #0x18]
+00e113e8  cbnz x20,0x00e11448
+00e113ec  adrp x20,0x334a000
+00e113f0  ldr w8,[x0, #0xe0]
+00e113f4  ldr x20,[x20, #0xf38]
+00e113f8  cbnz w8,0x00e11404
+00e113fc  bl 0x00b0798c
+00e11400  ldr x0,[x22]
+00e11404  ldr x8,[x0, #0xb8]
+00e11408  ldr x0,[x20]
+00e1140c  ldr x21,[x8]
+00e11410  bl 0x00b079a0
+00e11414  cbz x0,0x00e11488
+00e11418  adrp x8,0x334e000
+00e1141c  ldr x8,[x8, #0xc40]
+00e11420  mov x1,x21
+00e11424  mov x3,xzr
+00e11428  mov x20,x0
+00e1142c  ldr x2,[x8]
+00e11430  bl 0x01909b80
+00e11434  ldr x8,[x22]
+00e11438  mov x1,x20
+00e1143c  ldr x0,[x8, #0xb8]
+00e11440  str x20,[x0, #0x18]!
+00e11444  bl 0x00b07850
+00e11448  adrp x8,0x337b000
+00e1144c  ldr x8,[x8, #0xb98]
+00e11450  ldr x0,[x8]
+00e11454  ldr w8,[x0, #0xe0]
+00e11458  cbnz w8,0x00e11460
+00e1145c  bl 0x00b0798c
+00e11460  mov x0,x19
+00e11464  mov x1,x20
+00e11468  ldp x19,x30,[sp, #0x20]
+00e1146c  ldp x21,x20,[sp, #0x10]
+00e11470  mov w3,#0x1
+00e11474  mov x2,xzr
+00e11478  mov w4,wzr
+00e1147c  mov x5,xzr
+00e11480  ldr x22,[sp], #0x30
+00e11484  b 0x0167a614
+00e11488  bl 0x00b079b0

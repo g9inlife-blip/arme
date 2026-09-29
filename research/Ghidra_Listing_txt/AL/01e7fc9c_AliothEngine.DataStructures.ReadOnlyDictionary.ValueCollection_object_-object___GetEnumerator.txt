@@ -1,0 +1,49 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.ValueCollection<object,-object>$$GetEnumerator @ 01e7fc9c
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_009a565c @ 009a565c
+  <- AliothEngine.DataStructures.ReadOnlyDictionary.ValueCollection<object,-object>$$System.Collections.IEnumerable.GetEnumerator @ 01e7fd30
+
+--- Listing ---
+01e7fc9c  stp x19,x30,[sp, #-0x10]!
+01e7fca0  ldr x19,[x0]
+01e7fca4  cbz x19,0x01e7fd2c
+01e7fca8  ldr x0,[x1, #0x20]
+01e7fcac  ldrb w8,[x0, #0x132]
+01e7fcb0  tbnz w8,#0x0,0x01e7fcb8
+01e7fcb4  bl 0x00b2ac40
+01e7fcb8  ldr x8,[x0, #0xc0]
+01e7fcbc  ldr x1,[x8, #0x18]
+01e7fcc0  ldrb w8,[x1, #0x132]
+01e7fcc4  tbnz w8,#0x0,0x01e7fcd4
+01e7fcc8  mov x0,x1
+01e7fccc  bl 0x00b2ac40
+01e7fcd0  mov x1,x0
+01e7fcd4  ldr x8,[x19]
+01e7fcd8  ldrh w9,[x8, #0x12a]
+01e7fcdc  cbz x9,0x01e7fd00
+01e7fce0  ldr x10,[x8, #0xb0]
+01e7fce4  add x10,x10,#0x8
+01e7fce8  ldur x11,[x10, #-0x8]
+01e7fcec  cmp x11,x1
+01e7fcf0  b.eq 0x01e7fd10
+01e7fcf4  subs x9,x9,#0x1
+01e7fcf8  add x10,x10,#0x10
+01e7fcfc  b.ne 0x01e7fce8
+01e7fd00  mov x0,x19
+01e7fd04  mov w2,wzr
+01e7fd08  bl 0x00b2ae24
+01e7fd0c  b 0x01e7fd1c
+01e7fd10  ldrsw x9,[x10]
+01e7fd14  add x8,x8,x9, LSL #0x4
+01e7fd18  add x0,x8,#0x138
+01e7fd1c  ldp x2,x1,[x0]
+01e7fd20  mov x0,x19
+01e7fd24  ldp x19,x30,[sp], #0x10
+01e7fd28  br x2
+01e7fd2c  bl 0x00b079b0

@@ -1,0 +1,37 @@
+Function: ~recursive_timed_mutex @ 00b816d0
+FuncComment: std::__ndk1::recursive_timed_mutex::~recursive_timed_mutex()
+
+--- Calls OUT ---
+  -> ~mutex @ 008d50a0
+  -> ~condition_variable @ 008d4770
+  -> __throw_system_error @ 008d5980
+  -> pthread_mutex_unlock @ 008d4a20
+  -> pthread_mutex_lock @ 008d3d40
+
+--- Calls IN ---
+
+--- Listing ---
+00b816d0  stp x20,x19,[sp, #-0x20]!
+    ; [PLATE] std::__ndk1::recursive_timed_mutex::~recursive_timed_mutex()
+00b816d4  stp x29,x30,[sp, #0x10]
+00b816d8  add x29,sp,#0x10
+00b816dc  mov x19,x0
+00b816e0  bl 0x008d3d40
+    ; [PRE] try { // try from 00b816e0 to 00b816e3 has its CatchHandler @ 00b81714
+    ; [POST] } // end try from 00b816e0 to 00b816e3
+00b816e4  cbnz w0,0x00b81708
+00b816e8  mov x0,x19
+    ; [PRE] try { // try from 00b816e8 to 00b816ef has its CatchHandler @ 00b81730
+00b816ec  bl 0x008d4a20
+    ; [POST] } // end try from 00b816e8 to 00b816ef
+00b816f0  add x0,x19,#0x28
+00b816f4  bl 0x008d4770
+00b816f8  ldp x29,x30,[sp, #0x10]
+00b816fc  mov x0,x19
+00b81700  ldp x20,x19,[sp], #0x20
+00b81704  b 0x008d50a0
+00b81708  adrp x1,0x2a0a000
+    ; [PRE] try { // try from 00b81708 to 00b81713 has its CatchHandler @ 00b81714
+00b8170c  add x1,x1,#0x1b8
+00b81710  bl 0x008d5980
+    ; [POST] } // end try from 00b81708 to 00b81713

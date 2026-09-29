@@ -1,0 +1,18 @@
+Function: AliothEngine.Utils.Utility$$PhaseVector @ 016a0640
+
+--- Calls OUT ---
+  -> sincosf @ 008d4720
+
+--- Calls IN ---
+
+--- Listing ---
+016a0640  str x30,[sp, #-0x10]!
+016a0644  adrp x8,0x26db000
+016a0648  ldr s1,[x8, #0x524]
+016a064c  add x0,sp,#0xc
+016a0650  add x1,sp,#0x8
+016a0654  fmul s0,s0,s1
+016a0658  bl 0x008d4720
+016a065c  ldp s1,s0,[sp, #0x8]
+016a0660  ldr x30,[sp], #0x10
+016a0664  ret

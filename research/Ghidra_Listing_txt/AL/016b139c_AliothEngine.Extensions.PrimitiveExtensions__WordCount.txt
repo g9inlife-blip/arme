@@ -1,0 +1,61 @@
+Function: AliothEngine.Extensions.PrimitiveExtensions$$WordCount @ 016b139c
+
+--- Calls OUT ---
+  -> System.Text.RegularExpressions.Regex$$Matches @ 023273cc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.RegularExpressions.Regex$$.ctor @ 023284dc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Text.RegularExpressions.MatchCollection$$get_Count @ 02324f64
+
+--- Calls IN ---
+
+--- Listing ---
+016b139c  stp x21,x20,[sp, #-0x20]!
+016b13a0  stp x19,x30,[sp, #0x10]
+016b13a4  adrp x20,0x3577000
+016b13a8  adrp x21,0x3367000
+016b13ac  ldrb w8,[x20, #0xbe2]
+016b13b0  ldr x21,[x21, #0x250]
+016b13b4  mov x19,x0
+016b13b8  tbnz w8,#0x0,0x016b13dc
+016b13bc  adrp x0,0x3367000
+016b13c0  ldr x0,[x0, #0x250]
+016b13c4  bl 0x00b0789c
+016b13c8  adrp x0,0x3380000
+016b13cc  ldr x0,[x0, #0xf40]
+016b13d0  bl 0x00b0789c
+016b13d4  mov w8,#0x1
+016b13d8  strb w8,[x20, #0xbe2]
+016b13dc  ldr x0,[x21]
+016b13e0  bl 0x00b079a0
+    ; [PRE] try { // try from 016b13e0 to 016b1403 has its CatchHandler @ 016b143c
+016b13e4  mov x20,x0
+016b13e8  cbz x0,0x016b142c
+016b13ec  adrp x8,0x3380000
+016b13f0  ldr x8,[x8, #0xf40]
+016b13f4  ldr x1,[x8]
+016b13f8  mov x0,x20
+016b13fc  mov x2,xzr
+016b1400  bl 0x023284dc
+    ; [POST] } // end try from 016b13e0 to 016b1403
+016b1404  mov x0,x20
+    ; [PRE] try { // try from 016b1404 to 016b1413 has its CatchHandler @ 016b1438
+016b1408  mov x1,x19
+016b140c  mov x2,xzr
+016b1410  bl 0x023273cc
+    ; [POST] } // end try from 016b1404 to 016b1413
+016b1414  cbz x0,0x016b1430
+016b1418  mov x1,xzr
+    ; [PRE] try { // try from 016b1418 to 016b141f has its CatchHandler @ 016b1434
+016b141c  bl 0x02324f64
+    ; [POST] } // end try from 016b1418 to 016b141f
+016b1420  ldp x19,x30,[sp, #0x10]
+016b1424  ldp x21,x20,[sp], #0x20
+016b1428  ret
+016b142c  bl 0x00b079b0
+    ; [PRE] try { // try from 016b142c to 016b142f has its CatchHandler @ 016b143c
+    ; [POST] } // end try from 016b142c to 016b142f
+016b1430  bl 0x00b079b0
+    ; [PRE] try { // try from 016b1430 to 016b1433 has its CatchHandler @ 016b1438
+    ; [POST] } // end try from 016b1430 to 016b1433

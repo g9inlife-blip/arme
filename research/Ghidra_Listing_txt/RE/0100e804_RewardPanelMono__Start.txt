@@ -1,0 +1,88 @@
+Function: RewardPanelMono$$Start @ 0100e804
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UIEventListener$$Get @ 00e34224
+  -> FUN_00b079b0 @ 00b079b0
+  -> UIEventListener.VoidDelegate$$.ctor @ 00e35bd0
+  -> RewardPanelMono$$Init @ 0100e434
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RewardPanelMonoWrap$$_m_Start @ 0137af40
+
+--- Listing ---
+0100e804  stp x21,x20,[sp, #-0x20]!
+0100e808  stp x19,x30,[sp, #0x10]
+0100e80c  adrp x20,0x3574000
+0100e810  adrp x21,0x3359000
+0100e814  ldrb w8,[x20, #0x45b]
+0100e818  ldr x21,[x21, #0xdc0]
+0100e81c  mov x19,x0
+0100e820  tbnz w8,#0x0,0x0100e85c
+0100e824  adrp x0,0x3349000
+0100e828  ldr x0,[x0, #0xf00]
+0100e82c  bl 0x00b0789c
+0100e830  adrp x0,0x3359000
+0100e834  ldr x0,[x0, #0xdc0]
+0100e838  bl 0x00b0789c
+0100e83c  adrp x0,0x332d000
+0100e840  ldr x0,[x0, #0xd38]
+0100e844  bl 0x00b0789c
+0100e848  adrp x0,0x3360000
+0100e84c  ldr x0,[x0, #0x750]
+0100e850  bl 0x00b0789c
+0100e854  mov w8,#0x1
+0100e858  strb w8,[x20, #0x45b]
+0100e85c  ldr x8,[x21]
+0100e860  ldr x8,[x8, #0xb8]
+0100e864  ldr x0,[x8, #0x20]
+0100e868  cbz x0,0x0100e880
+0100e86c  mov x1,x19
+0100e870  ldp x19,x30,[sp, #0x10]
+0100e874  mov x2,xzr
+0100e878  ldp x21,x20,[sp], #0x20
+0100e87c  b 0x01060dac
+0100e880  adrp x20,0x332d000
+0100e884  adrp x21,0x3360000
+0100e888  ldr x20,[x20, #0xd38]
+0100e88c  ldr x21,[x21, #0x750]
+0100e890  mov x0,x19
+0100e894  mov x1,xzr
+0100e898  bl 0x024e4ed4
+0100e89c  ldr x8,[x20]
+0100e8a0  mov x20,x0
+0100e8a4  ldr w9,[x8, #0xe0]
+0100e8a8  cbnz w9,0x0100e8b4
+0100e8ac  mov x0,x8
+0100e8b0  bl 0x00b0798c
+0100e8b4  mov x0,x20
+0100e8b8  mov w1,wzr
+0100e8bc  mov x2,xzr
+0100e8c0  bl 0x00e34224
+0100e8c4  ldr x8,[x21]
+0100e8c8  mov x20,x0
+0100e8cc  mov x0,x8
+0100e8d0  bl 0x00b079a0
+0100e8d4  cbz x0,0x0100e918
+0100e8d8  adrp x8,0x3349000
+0100e8dc  ldr x8,[x8, #0xf00]
+0100e8e0  mov x1,x19
+0100e8e4  mov x3,xzr
+0100e8e8  mov x21,x0
+0100e8ec  ldr x2,[x8]
+0100e8f0  bl 0x00e35bd0
+0100e8f4  cbz x20,0x0100e918
+0100e8f8  str x21,[x20, #0x38]!
+0100e8fc  mov x0,x20
+0100e900  mov x1,x21
+0100e904  bl 0x00b07850
+0100e908  mov x0,x19
+0100e90c  ldp x19,x30,[sp, #0x10]
+0100e910  ldp x21,x20,[sp], #0x20
+0100e914  b 0x0100e434
+0100e918  bl 0x00b079b0

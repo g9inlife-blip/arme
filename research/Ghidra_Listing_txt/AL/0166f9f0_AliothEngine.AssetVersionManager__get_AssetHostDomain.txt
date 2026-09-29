@@ -1,0 +1,57 @@
+Function: AliothEngine.AssetVersionManager$$get_AssetHostDomain @ 0166f9f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Extensions.StringExtensions$$WWWURI @ 016b6ef0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Application$$get_streamingAssetsPath @ 024f2a08
+
+--- Calls IN ---
+  <- AliothEngine.AssetVersionManager$$GetFileCacheURL @ 0166fb78
+  <- AssetBundles.AssetBundleManager$$get_AssetBundleHostDomain @ 01647748
+
+--- Listing ---
+0166f9f0  str x20,[sp, #-0x20]!
+0166f9f4  stp x19,x30,[sp, #0x10]
+0166f9f8  adrp x19,0x3577000
+0166f9fc  adrp x20,0x332e000
+0166fa00  ldrb w8,[x19, #0x962]
+0166fa04  ldr x20,[x20, #0x690]
+0166fa08  tbnz w8,#0x0,0x0166fa2c
+0166fa0c  adrp x0,0x332e000
+0166fa10  ldr x0,[x0, #0x690]
+0166fa14  bl 0x00b0789c
+0166fa18  adrp x0,0x335b000
+0166fa1c  ldr x0,[x0, #0x4b0]
+0166fa20  bl 0x00b0789c
+0166fa24  mov w8,#0x1
+0166fa28  strb w8,[x19, #0x962]
+0166fa2c  ldr x8,[x20]
+0166fa30  ldr x8,[x8, #0xb8]
+0166fa34  ldr x0,[x8, #0x8]
+0166fa38  cbnz x0,0x0166fa90
+0166fa3c  adrp x19,0x335b000
+0166fa40  ldr x19,[x19, #0x4b0]
+0166fa44  bl 0x024f2a08
+0166fa48  ldr x8,[x19]
+0166fa4c  mov x19,x0
+0166fa50  ldr w9,[x8, #0xe0]
+0166fa54  cbnz w9,0x0166fa60
+0166fa58  mov x0,x8
+0166fa5c  bl 0x00b0798c
+0166fa60  mov x0,x19
+0166fa64  mov x1,xzr
+0166fa68  bl 0x016b6ef0
+0166fa6c  ldr x8,[x20]
+0166fa70  mov x1,x0
+0166fa74  ldr x8,[x8, #0xb8]
+0166fa78  str x0,[x8, #0x8]!
+0166fa7c  mov x0,x8
+0166fa80  bl 0x00b07850
+0166fa84  ldr x8,[x20]
+0166fa88  ldr x8,[x8, #0xb8]
+0166fa8c  ldr x0,[x8, #0x8]
+0166fa90  ldp x19,x30,[sp, #0x10]
+0166fa94  ldr x20,[sp], #0x20
+0166fa98  ret

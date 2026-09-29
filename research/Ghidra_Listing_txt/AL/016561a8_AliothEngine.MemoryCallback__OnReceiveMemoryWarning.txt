@@ -1,0 +1,71 @@
+Function: AliothEngine.MemoryCallback$$OnReceiveMemoryWarning @ 016561a8
+
+--- Calls OUT ---
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.MemoryCallback$$CleanupMemory @ 01655cc4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> System.String$$Concat @ 01fd2850
+
+--- Calls IN ---
+
+--- Listing ---
+016561a8  str x22,[sp, #-0x30]!
+016561ac  stp x21,x20,[sp, #0x10]
+016561b0  stp x19,x30,[sp, #0x20]
+016561b4  adrp x22,0x3577000
+016561b8  adrp x21,0x330c000
+016561bc  ldrb w8,[x22, #0x80c]
+016561c0  ldr x21,[x21, #0x9b8]
+016561c4  mov x20,x1
+016561c8  mov x19,x0
+016561cc  tbnz w8,#0x0,0x016561fc
+016561d0  adrp x0,0x336b000
+016561d4  ldr x0,[x0, #0x7d0]
+016561d8  bl 0x00b0789c
+016561dc  adrp x0,0x330c000
+016561e0  ldr x0,[x0, #0x9b8]
+016561e4  bl 0x00b0789c
+016561e8  adrp x0,0x3333000
+016561ec  ldr x0,[x0, #0xfc8]
+016561f0  bl 0x00b0789c
+016561f4  mov w8,#0x1
+016561f8  strb w8,[x22, #0x80c]
+016561fc  ldr x0,[x21]
+01656200  ldr w8,[x0, #0xe0]
+01656204  cbnz w8,0x01656210
+01656208  bl 0x00b0798c
+0165620c  ldr x0,[x21]
+01656210  ldr x8,[x0, #0xb8]
+01656214  ldr x0,[x8, #0x38]
+01656218  cbz x0,0x01656238
+0165621c  mov x1,x19
+01656220  mov x2,x20
+01656224  ldp x19,x30,[sp, #0x20]
+01656228  ldp x21,x20,[sp, #0x10]
+0165622c  mov x3,xzr
+01656230  ldr x22,[sp], #0x30
+01656234  b 0x0106125c
+01656238  adrp x8,0x3333000
+0165623c  ldr x8,[x8, #0xfc8]
+01656240  adrp x21,0x336b000
+01656244  mov x1,x20
+01656248  mov x2,xzr
+0165624c  ldr x0,[x8]
+01656250  ldr x21,[x21, #0x7d0]
+01656254  bl 0x01fd2850
+01656258  ldr x8,[x21]
+0165625c  mov x20,x0
+01656260  ldr w9,[x8, #0xe0]
+01656264  cbnz w9,0x01656270
+01656268  mov x0,x8
+0165626c  bl 0x00b0798c
+01656270  mov x0,x20
+01656274  mov x1,xzr
+01656278  bl 0x024c0f2c
+0165627c  mov x0,x19
+01656280  ldp x19,x30,[sp, #0x20]
+01656284  ldp x21,x20,[sp, #0x10]
+01656288  ldr x22,[sp], #0x30
+0165628c  b 0x01655cc4

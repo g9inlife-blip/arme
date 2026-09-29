@@ -1,0 +1,47 @@
+Function: Ali$$set_Dir @ 00dfffa8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp20 @ 01061c3c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_s_set_Dir @ 011a3d78
+  <- Ali$$.ctor @ 00dff78c
+
+--- Listing ---
+00dfffa8  str d8,[sp, #-0x30]!
+00dfffac  stp x21,x20,[sp, #0x10]
+00dfffb0  stp x19,x30,[sp, #0x20]
+00dfffb4  adrp x21,0x3572000
+00dfffb8  adrp x20,0x335f000
+00dfffbc  ldrb w8,[x21, #0x536]
+00dfffc0  ldr x20,[x20, #0x20]
+00dfffc4  mov v8.16B,v0.16B
+00dfffc8  mov x19,x0
+00dfffcc  tbnz w8,#0x0,0x00dfffe4
+00dfffd0  adrp x0,0x335f000
+00dfffd4  ldr x0,[x0, #0x20]
+00dfffd8  bl 0x00b0789c
+00dfffdc  mov w8,#0x1
+00dfffe0  strb w8,[x21, #0x536]
+00dfffe4  ldr x0,[x20]
+00dfffe8  ldr w8,[x0, #0xe0]
+00dfffec  cbnz w8,0x00dffff8
+00dffff0  bl 0x00b0798c
+00dffff4  ldr x0,[x20]
+00dffff8  ldr x8,[x0, #0xb8]
+00dffffc  ldr x0,[x8, #0x148]
+00e00000  cbz x0,0x00e00020
+00e00004  mov x1,x19
+00e00008  ldp x19,x30,[sp, #0x20]
+00e0000c  ldp x21,x20,[sp, #0x10]
+00e00010  mov v0.16B,v8.16B
+00e00014  mov x2,xzr
+00e00018  ldr d8,[sp], #0x30
+00e0001c  b 0x01061c3c
+00e00020  str s8,[x19, #0x78]
+00e00024  ldp x19,x30,[sp, #0x20]
+00e00028  ldp x21,x20,[sp, #0x10]
+00e0002c  ldr d8,[sp], #0x30
+00e00030  ret

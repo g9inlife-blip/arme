@@ -1,0 +1,64 @@
+Function: AliothEngine.AssetDownloader.<>c__DisplayClass19_0$$<ProcessDownload>b__0 @ 0165fb0c
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetVersionManager$$Store @ 0166f62c
+  -> AliothEngine.AssetDownloadingContext$$get_location @ 0165ea24
+
+--- Calls IN ---
+
+--- Listing ---
+0165fb0c  stp x21,x20,[sp, #-0x20]!
+0165fb10  stp x19,x30,[sp, #0x10]
+0165fb14  adrp x20,0x3577000
+0165fb18  adrp x21,0x3364000
+0165fb1c  ldrb w8,[x20, #0x8a8]
+0165fb20  ldr x21,[x21, #0x2e0]
+0165fb24  mov x19,x0
+0165fb28  tbnz w8,#0x0,0x0165fb40
+0165fb2c  adrp x0,0x3364000
+0165fb30  ldr x0,[x0, #0x2e0]
+0165fb34  bl 0x00b0789c
+0165fb38  mov w8,#0x1
+0165fb3c  strb w8,[x20, #0x8a8]
+0165fb40  ldr x0,[x21]
+0165fb44  bl 0x01e09a6c
+    ; [PRE] try { // try from 0165fb44 to 0165fb47 has its CatchHandler @ 0165fbbc
+    ; [POST] } // end try from 0165fb44 to 0165fb47
+0165fb48  mov x20,x0
+0165fb4c  ldr x0,[x19, #0x10]
+0165fb50  cbz x0,0x0165fbb0
+0165fb54  ldr x21,[x19, #0x20]
+0165fb58  bl 0x0165ea24
+    ; [PRE] try { // try from 0165fb58 to 0165fb73 has its CatchHandler @ 0165fbc0
+0165fb5c  cbz x20,0x0165fbb4
+0165fb60  mov x2,x0
+0165fb64  mov x0,x20
+0165fb68  mov x1,x21
+0165fb6c  mov x3,xzr
+0165fb70  bl 0x0166f62c
+    ; [POST] } // end try from 0165fb58 to 0165fb73
+0165fb74  mov w8,#0x1
+0165fb78  mov x21,xzr
+0165fb7c  strb w8,[x19, #0x28]
+0165fb80  ldrb w8,[x19, #0x39]
+0165fb84  ldrb w9,[x19, #0x28]
+0165fb88  mov w10,#0x1
+0165fb8c  strb w10,[x19, #0x38]
+0165fb90  and w8,w9,w8
+0165fb94  strb w8,[x19, #0x18]
+0165fb98  cbnz x21,0x0165fba8
+0165fb9c  ldp x19,x30,[sp, #0x10]
+0165fba0  ldp x21,x20,[sp], #0x20
+0165fba4  ret
+0165fba8  mov x0,x21
+0165fbac  bl 0x00aaac8c
+0165fbb0  bl 0x00b079b0
+    ; [PRE] try { // try from 0165fbb0 to 0165fbb3 has its CatchHandler @ 0165fbb8
+    ; [POST] } // end try from 0165fbb0 to 0165fbb3
+0165fbb4  bl 0x00b079b0
+    ; [PRE] try { // try from 0165fbb4 to 0165fbb7 has its CatchHandler @ 0165fbc0
+    ; [POST] } // end try from 0165fbb4 to 0165fbb7

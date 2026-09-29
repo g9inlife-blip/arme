@@ -1,0 +1,61 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions$$MinBy<object> @ 0179ab8c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AITendencySelector$$SelectTarget @ 00ec473c
+
+--- Listing ---
+0179ab8c  str x22,[sp, #-0x30]!
+0179ab90  stp x21,x20,[sp, #0x10]
+0179ab94  stp x19,x30,[sp, #0x20]
+0179ab98  ldr x8,[x2, #0x38]
+0179ab9c  mov x19,x2
+0179aba0  mov x22,x1
+0179aba4  mov x20,x0
+0179aba8  ldr x8,[x8]
+0179abac  ldrb w9,[x8, #0x132]
+0179abb0  tbnz w9,#0x0,0x0179abc0
+0179abb4  mov x0,x8
+0179abb8  bl 0x00b2ac40
+0179abbc  mov x8,x0
+0179abc0  mov x0,x8
+0179abc4  bl 0x00b079a0
+0179abc8  cbz x0,0x0179ac4c
+0179abcc  ldr x8,[x19, #0x38]
+0179abd0  mov x21,x0
+0179abd4  ldr x1,[x8, #0x8]
+0179abd8  ldr x8,[x1, #0x8]
+0179abdc  blr x8
+0179abe0  mov x0,x21
+0179abe4  str x22,[x0, #0x10]!
+0179abe8  mov x1,x22
+0179abec  bl 0x00b07850
+0179abf0  ldr x8,[x19, #0x38]
+0179abf4  ldr x0,[x8, #0x18]
+0179abf8  ldrb w8,[x0, #0x132]
+0179abfc  tbnz w8,#0x0,0x0179ac04
+0179ac00  bl 0x00b2ac40
+0179ac04  bl 0x00b079a0
+0179ac08  cbz x0,0x0179ac4c
+0179ac0c  ldr x8,[x19, #0x38]
+0179ac10  mov x1,x21
+0179ac14  mov x22,x0
+0179ac18  ldr x3,[x8, #0x20]
+0179ac1c  ldr x2,[x8, #0x10]
+0179ac20  ldr x9,[x3, #0x8]
+0179ac24  blr x9
+0179ac28  ldr x8,[x19, #0x38]
+0179ac2c  mov x0,x20
+0179ac30  ldp x19,x30,[sp, #0x20]
+0179ac34  ldp x21,x20,[sp, #0x10]
+0179ac38  ldr x2,[x8, #0x28]
+0179ac3c  mov x1,x22
+0179ac40  ldr x3,[x2, #0x8]
+0179ac44  ldr x22,[sp], #0x30
+0179ac48  br x3
+0179ac4c  bl 0x00b079b0

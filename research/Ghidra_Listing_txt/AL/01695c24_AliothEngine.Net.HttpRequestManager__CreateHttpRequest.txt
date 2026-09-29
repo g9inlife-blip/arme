@@ -1,0 +1,70 @@
+Function: AliothEngine.Net.HttpRequestManager$$CreateHttpRequest @ 01695c24
+
+--- Calls OUT ---
+  -> AliothEngine.Net.HttpRequest$$.ctor @ 016942f4
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Net.HttpRequest$$AddHeader @ 01694704
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Net.HttpRequestManager$$RequestNotInQuene @ 01695be4
+  <- AliothEngine.Net.HttpRequestManager$$PostRequest @ 01695d9c
+  <- AliothEngine.Net.HttpRequestManager$$Request @ 01695d00
+
+--- Listing ---
+01695c24  stp x25,x24,[sp, #-0x40]!
+01695c28  stp x23,x22,[sp, #0x10]
+01695c2c  stp x21,x20,[sp, #0x20]
+01695c30  stp x19,x30,[sp, #0x30]
+01695c34  adrp x22,0x3577000
+01695c38  adrp x23,0x3308000
+01695c3c  ldrb w8,[x22, #0xafb]
+01695c40  ldr x23,[x23, #0xfe0]
+01695c44  mov x19,x2
+01695c48  mov x20,x1
+01695c4c  mov x21,x0
+01695c50  tbnz w8,#0x0,0x01695c8c
+01695c54  adrp x0,0x3308000
+01695c58  ldr x0,[x0, #0xfe0]
+01695c5c  bl 0x00b0789c
+01695c60  adrp x0,0x334d000
+01695c64  ldr x0,[x0, #0xf88]
+01695c68  bl 0x00b0789c
+01695c6c  adrp x0,0x3334000
+01695c70  ldr x0,[x0, #0x710]
+01695c74  bl 0x00b0789c
+01695c78  adrp x0,0x3331000
+01695c7c  ldr x0,[x0, #0x870]
+01695c80  bl 0x00b0789c
+01695c84  mov w8,#0x1
+01695c88  strb w8,[x22, #0xafb]
+01695c8c  ldr x0,[x23]
+01695c90  bl 0x00b079a0
+01695c94  cbz x0,0x01695cfc
+01695c98  adrp x23,0x3331000
+01695c9c  adrp x24,0x3334000
+01695ca0  adrp x25,0x334d000
+01695ca4  ldr x23,[x23, #0x870]
+01695ca8  ldr x24,[x24, #0x710]
+01695cac  ldr x25,[x25, #0xf88]
+01695cb0  mov x1,x21
+01695cb4  mov x2,x20
+01695cb8  mov x3,x19
+01695cbc  mov x22,x0
+01695cc0  bl 0x016942f4
+01695cc4  ldr x1,[x23]
+01695cc8  ldr x2,[x24]
+01695ccc  mov x0,x22
+01695cd0  bl 0x01694704
+01695cd4  ldr x1,[x25]
+01695cd8  ldr x2,[x24]
+01695cdc  mov x0,x22
+01695ce0  bl 0x01694704
+01695ce4  mov x0,x22
+01695ce8  ldp x19,x30,[sp, #0x30]
+01695cec  ldp x21,x20,[sp, #0x20]
+01695cf0  ldp x23,x22,[sp, #0x10]
+01695cf4  ldp x25,x24,[sp], #0x40
+01695cf8  ret
+01695cfc  bl 0x00b079b0

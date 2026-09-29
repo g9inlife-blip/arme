@@ -1,0 +1,60 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$get_NextWord @ 016a2398
+
+--- Calls OUT ---
+  -> AliothEngine.MiniJSON.Json.Parser$$get_PeekChar @ 016a24e8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> AliothEngine.MiniJSON.Json.Parser$$IsWordBreak @ 016a1a10
+  -> AliothEngine.MiniJSON.Json.Parser$$get_NextChar @ 016a2320
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Text.StringBuilder$$Append @ 01fea30c
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json.Parser$$ParseNumber @ 016a2250
+  <- AliothEngine.MiniJSON.Json.Parser$$get_NextToken @ 016a1c1c
+
+--- Listing ---
+016a2398  stp x21,x20,[sp, #-0x20]!
+016a239c  stp x19,x30,[sp, #0x10]
+016a23a0  adrp x20,0x3577000
+016a23a4  adrp x21,0x3332000
+016a23a8  ldrb w8,[x20, #0xb74]
+016a23ac  ldr x21,[x21, #0xaf0]
+016a23b0  mov x19,x0
+016a23b4  tbnz w8,#0x0,0x016a23cc
+016a23b8  adrp x0,0x3332000
+016a23bc  ldr x0,[x0, #0xaf0]
+016a23c0  bl 0x00b0789c
+016a23c4  mov w8,#0x1
+016a23c8  strb w8,[x20, #0xb74]
+016a23cc  ldr x0,[x21]
+016a23d0  bl 0x00b079a0
+016a23d4  cbz x0,0x016a2440
+016a23d8  mov x1,xzr
+016a23dc  mov x20,x0
+016a23e0  bl 0x01fe7ee0
+016a23e4  mov x0,x19
+016a23e8  bl 0x016a24e8
+016a23ec  bl 0x016a1a10
+016a23f0  tbnz w0,#0x0,0x016a2428
+016a23f4  mov x0,x19
+016a23f8  bl 0x016a2320
+016a23fc  mov w1,w0
+016a2400  mov x0,x20
+016a2404  mov x2,xzr
+016a2408  bl 0x01fea30c
+016a240c  ldr x0,[x19, #0x10]
+016a2410  cbz x0,0x016a2440
+016a2414  ldr x8,[x0]
+016a2418  ldp x9,x1,[x8, #0x1c8]
+016a241c  blr x9
+016a2420  cmn w0,#0x1
+016a2424  b.ne 0x016a23e4
+016a2428  ldr x8,[x20]
+016a242c  ldp x19,x30,[sp, #0x10]
+016a2430  mov x0,x20
+016a2434  ldp x2,x1,[x8, #0x168]
+016a2438  ldp x21,x20,[sp], #0x20
+016a243c  br x2
+016a2440  bl 0x00b079b0

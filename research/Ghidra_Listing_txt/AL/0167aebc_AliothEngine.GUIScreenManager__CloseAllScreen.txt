@@ -1,0 +1,60 @@
+Function: AliothEngine.GUIScreenManager$$CloseAllScreen @ 0167aebc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreenManager$$ShowScreen @ 0167a614
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp404 @ 01093d3c
+
+--- Calls IN ---
+  <- OpeningCutScene$$PlayAniDialogEnd @ 00e3aa2c
+  <- EntryPoint$$GotoGameStart @ 00dff328
+  <- TaskNewPanelMono$$CloseAll @ 00f7d6d8
+  <- BattleManager$$TestEnd @ 01183f50
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_CloseAllScreen_xlua_st_ @ 0114e884
+  <- BattleEndWinPanelMono$$Close @ 00e754a0
+  <- BattleEndFailPanelMono$$Close @ 00e6bc30
+  <- EntryPoint$$GotoEntryScene @ 00dff26c
+  <- TaoFaPanelMono$$CloseAll @ 0103a000
+  <- TaskDetailPanelMono$$CloseAll @ 0103ba88
+  <- EntryPoint$$GotoGameMain @ 00dff3f8
+
+--- Listing ---
+0167aebc  stp x21,x20,[sp, #-0x20]!
+0167aec0  stp x19,x30,[sp, #0x10]
+0167aec4  adrp x21,0x3577000
+0167aec8  adrp x20,0x337b000
+0167aecc  ldrb w8,[x21, #0x9fa]
+0167aed0  ldr x20,[x20, #0xb98]
+0167aed4  mov w19,w0
+0167aed8  tbnz w8,#0x0,0x0167aef0
+0167aedc  adrp x0,0x337b000
+0167aee0  ldr x0,[x0, #0xb98]
+0167aee4  bl 0x00b0789c
+0167aee8  mov w8,#0x1
+0167aeec  strb w8,[x21, #0x9fa]
+0167aef0  ldr x0,[x20]
+0167aef4  ldr w8,[x0, #0xe0]
+0167aef8  cbnz w8,0x0167af04
+0167aefc  bl 0x00b0798c
+0167af00  ldr x0,[x20]
+0167af04  ldr x8,[x0, #0xb8]
+0167af08  ldr x8,[x8, #0x2e8]
+0167af0c  cbz x8,0x0167af28
+0167af10  and w1,w19,#0x1
+0167af14  ldp x19,x30,[sp, #0x10]
+0167af18  mov x0,x8
+0167af1c  mov x2,xzr
+0167af20  ldp x21,x20,[sp], #0x20
+0167af24  b 0x01093d3c
+0167af28  ldr w8,[x0, #0xe0]
+0167af2c  cbnz w8,0x0167af34
+0167af30  bl 0x00b0798c
+0167af34  and w4,w19,#0x1
+0167af38  ldp x19,x30,[sp, #0x10]
+0167af3c  mov w3,#0x1
+0167af40  mov x0,xzr
+0167af44  mov x1,xzr
+0167af48  mov x2,xzr
+0167af4c  ldp x21,x20,[sp], #0x20
+0167af50  b 0x0167a614

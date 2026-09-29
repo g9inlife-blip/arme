@@ -1,0 +1,16 @@
+Function: AliothEngine.Utils.Utility$$Sigmoid @ 0169db58
+
+--- Calls OUT ---
+  -> expf @ 008d4510
+
+--- Calls IN ---
+
+--- Listing ---
+0169db58  str x30,[sp, #-0x10]!
+0169db5c  fneg s0,s0
+0169db60  bl 0x008d4510
+0169db64  fmov s1,0x3f800000
+0169db68  fadd s0,s0,s1
+0169db6c  fdiv s0,s1,s0
+0169db70  ldr x30,[sp], #0x10
+0169db74  ret

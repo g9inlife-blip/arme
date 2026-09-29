@@ -1,0 +1,114 @@
+Function: Ali$$get_deviceUniqueIdentifier @ 00e0a148
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetString @ 024be710
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.String$$op_Inequality @ 01fde620
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PlayerPrefs$$GetString @ 024be7e8
+  -> System.Guid$$NewGuid @ 02148e48
+  -> UnityEngine.PlayerPrefs$$Save @ 024be8f4
+  -> UnityEngine.PlayerPrefs$$HasKey @ 024be854
+  -> UnityEngine.SystemInfo$$get_deviceUniqueIdentifier @ 024d5ca0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.Guid$$ToString @ 0214acd8
+
+--- Calls IN ---
+  <- ProtocolGame_HttpRequest$$PostSteamVerify @ 00ddd3c4
+  <- ProtocolGame_HttpRequest$$GetRegisterURL @ 00ddac14
+  <- QuickSDKListener_S1$$onSucceed @ 00db8ed8
+  <- WebViewUIShow$$ShowBindingWeb @ 01051d94
+  <- ProtocolGame_HttpRequest$$PostGooglePlayVerify @ 00dd9c98
+  <- ProtocolGame_SendRequest$$SupportHeroByItem @ 00de3684
+  <- ProtocolGame_HttpRequest$$GetDefaultParams @ 00ddbf58
+  <- ProtocolGame_HttpRequest$$V3_POST_Order_Create @ 00ddc2dc
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_deviceUniqueIdentifier @ 011a17a0
+  <- Ali$$SeverAddUp @ 00e099cc
+  <- ProtocolGame_HttpRequest$$PostOneStoreVerify @ 00dda0ac
+  <- ProtocolGame_HttpRequest$$PostApplePayVerify @ 00dd9118
+  <- ProtocolGame_HttpRequest$$V3_POST_Order_Create_Steam @ 00ddd064
+  <- ProtocolGame_SendRequest$$SupportHeroByFree @ 00de3548
+  <- LoginManager$$GuestLogin_Request @ 00dd5fe4
+
+--- Listing ---
+00e0a148  sub sp,sp,#0x30
+00e0a14c  stp x21,x20,[sp, #0x10]
+00e0a150  stp x19,x30,[sp, #0x20]
+00e0a154  adrp x21,0x3572000
+00e0a158  adrp x20,0x335f000
+00e0a15c  ldrb w8,[x21, #0x58f]
+00e0a160  ldr x20,[x20, #0x20]
+00e0a164  mov x19,x0
+00e0a168  tbnz w8,#0x0,0x00e0a198
+00e0a16c  adrp x0,0x335f000
+00e0a170  ldr x0,[x0, #0x20]
+00e0a174  bl 0x00b0789c
+00e0a178  adrp x0,0x3349000
+00e0a17c  ldr x0,[x0, #0x7f8]
+00e0a180  bl 0x00b0789c
+00e0a184  adrp x0,0x336c000
+00e0a188  ldr x0,[x0, #0x288]
+00e0a18c  bl 0x00b0789c
+00e0a190  mov w8,#0x1
+00e0a194  strb w8,[x21, #0x58f]
+00e0a198  ldr x0,[x20]
+00e0a19c  stp xzr,xzr,[sp]
+00e0a1a0  ldr w8,[x0, #0xe0]
+00e0a1a4  cbnz w8,0x00e0a1b0
+00e0a1a8  bl 0x00b0798c
+00e0a1ac  ldr x0,[x20]
+00e0a1b0  ldr x8,[x0, #0xb8]
+00e0a1b4  ldr x0,[x8, #0x420]
+00e0a1b8  cbz x0,0x00e0a1e0
+00e0a1bc  mov x1,x19
+00e0a1c0  mov x2,xzr
+00e0a1c4  bl 0x01061abc
+00e0a1c8  mov x19,x0
+00e0a1cc  mov x0,x19
+00e0a1d0  ldp x19,x30,[sp, #0x20]
+00e0a1d4  ldp x21,x20,[sp, #0x10]
+00e0a1d8  add sp,sp,#0x30
+00e0a1dc  ret
+00e0a1e0  adrp x19,0x3349000
+00e0a1e4  ldr x19,[x19, #0x7f8]
+00e0a1e8  bl 0x024d5ca0
+00e0a1ec  ldr x8,[x19]
+00e0a1f0  mov x1,x0
+00e0a1f4  mov x2,xzr
+00e0a1f8  mov x0,x8
+00e0a1fc  bl 0x01fde620
+00e0a200  tbz w0,#0x0,0x00e0a218
+00e0a204  mov x0,xzr
+00e0a208  bl 0x024d5ca0
+00e0a20c  mov x1,xzr
+00e0a210  bl 0x01fdf3a0
+00e0a214  tbz w0,#0x0,0x00e0a27c
+00e0a218  adrp x19,0x336c000
+00e0a21c  ldr x19,[x19, #0x288]
+00e0a220  mov x1,xzr
+00e0a224  ldr x0,[x19]
+00e0a228  bl 0x024be854
+00e0a22c  tbz w0,#0x0,0x00e0a240
+00e0a230  ldr x0,[x19]
+00e0a234  mov x1,xzr
+00e0a238  bl 0x024be7e8
+00e0a23c  b 0x00e0a1c8
+00e0a240  mov x0,xzr
+00e0a244  bl 0x02148e48
+00e0a248  stp x0,x1,[sp]
+00e0a24c  mov x0,sp
+00e0a250  mov x1,xzr
+00e0a254  bl 0x0214acd8
+00e0a258  ldr x8,[x19]
+00e0a25c  mov x19,x0
+00e0a260  mov x1,x19
+00e0a264  mov x2,xzr
+00e0a268  mov x0,x8
+00e0a26c  bl 0x024be710
+00e0a270  mov x0,xzr
+00e0a274  bl 0x024be8f4
+00e0a278  b 0x00e0a1cc
+00e0a27c  mov x0,xzr
+00e0a280  bl 0x024d5ca0
+00e0a284  b 0x00e0a1c8

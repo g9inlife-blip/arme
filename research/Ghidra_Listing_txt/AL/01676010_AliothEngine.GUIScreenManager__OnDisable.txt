@@ -1,0 +1,43 @@
+Function: AliothEngine.GUIScreenManager$$OnDisable @ 01676010
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StopCoroutine @ 024e42ec
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01676010  stp x21,x20,[sp, #-0x20]!
+01676014  stp x19,x30,[sp, #0x10]
+01676018  adrp x21,0x3577000
+0167601c  adrp x20,0x337b000
+01676020  ldrb w8,[x21, #0x9bd]
+01676024  ldr x20,[x20, #0xb98]
+01676028  mov x19,x0
+0167602c  tbnz w8,#0x0,0x01676044
+01676030  adrp x0,0x337b000
+01676034  ldr x0,[x0, #0xb98]
+01676038  bl 0x00b0789c
+0167603c  mov w8,#0x1
+01676040  strb w8,[x21, #0x9bd]
+01676044  ldr x0,[x20]
+01676048  ldr w8,[x0, #0xe0]
+0167604c  cbnz w8,0x01676058
+01676050  bl 0x00b0798c
+01676054  ldr x0,[x20]
+01676058  ldr x8,[x0, #0xb8]
+0167605c  ldr x0,[x8, #0x100]
+01676060  cbz x0,0x01676078
+01676064  mov x1,x19
+01676068  ldp x19,x30,[sp, #0x10]
+0167606c  mov x2,xzr
+01676070  ldp x21,x20,[sp], #0x20
+01676074  b 0x01060dac
+01676078  ldr x1,[x19, #0x68]
+0167607c  mov x0,x19
+01676080  ldp x19,x30,[sp, #0x10]
+01676084  mov x2,xzr
+01676088  ldp x21,x20,[sp], #0x20
+0167608c  b 0x024e42ec

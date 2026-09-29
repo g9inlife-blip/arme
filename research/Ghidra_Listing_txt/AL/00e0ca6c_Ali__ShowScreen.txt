@@ -1,0 +1,70 @@
+Function: Ali$$ShowScreen @ 00e0ca6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_ShowScreen_xlua_st_ @ 0119aaac
+
+--- Listing ---
+00e0ca6c  str x22,[sp, #-0x30]!
+00e0ca70  stp x21,x20,[sp, #0x10]
+00e0ca74  stp x19,x30,[sp, #0x20]
+00e0ca78  adrp x22,0x3572000
+00e0ca7c  adrp x21,0x335f000
+00e0ca80  ldrb w8,[x22, #0x5a7]
+00e0ca84  ldr x21,[x21, #0x20]
+00e0ca88  mov x20,x1
+00e0ca8c  mov x19,x0
+00e0ca90  tbnz w8,#0x0,0x00e0cacc
+00e0ca94  adrp x0,0x3348000
+00e0ca98  ldr x0,[x0, #0xcf8]
+00e0ca9c  bl 0x00b0789c
+00e0caa0  adrp x0,0x335f000
+00e0caa4  ldr x0,[x0, #0x20]
+00e0caa8  bl 0x00b0789c
+00e0caac  adrp x0,0x332f000
+00e0cab0  ldr x0,[x0, #0x950]
+00e0cab4  bl 0x00b0789c
+00e0cab8  adrp x0,0x333a000
+00e0cabc  ldr x0,[x0, #0x688]
+00e0cac0  bl 0x00b0789c
+00e0cac4  mov w8,#0x1
+00e0cac8  strb w8,[x22, #0x5a7]
+00e0cacc  ldr x0,[x21]
+00e0cad0  ldr w8,[x0, #0xe0]
+00e0cad4  cbnz w8,0x00e0cae0
+00e0cad8  bl 0x00b0798c
+00e0cadc  ldr x0,[x21]
+00e0cae0  ldr x8,[x0, #0xb8]
+00e0cae4  ldr x0,[x8, #0x4e0]
+00e0cae8  cbz x0,0x00e0cb08
+00e0caec  mov x1,x19
+00e0caf0  mov x2,x20
+00e0caf4  ldp x19,x30,[sp, #0x20]
+00e0caf8  ldp x21,x20,[sp, #0x10]
+00e0cafc  mov x3,xzr
+00e0cb00  ldr x22,[sp], #0x30
+00e0cb04  b 0x0106125c
+00e0cb08  adrp x8,0x333a000
+00e0cb0c  ldr x8,[x8, #0x688]
+00e0cb10  ldr x0,[x8]
+00e0cb14  bl 0x00b079a0
+00e0cb18  cbz x0,0x00e0cb44
+00e0cb1c  mov x1,xzr
+00e0cb20  mov x20,x0
+00e0cb24  bl 0x02194104
+00e0cb28  str x19,[x20, #0x10]!
+00e0cb2c  mov x0,x20
+00e0cb30  mov x1,x19
+00e0cb34  ldp x19,x30,[sp, #0x20]
+00e0cb38  ldp x21,x20,[sp, #0x10]
+00e0cb3c  ldr x22,[sp], #0x30
+00e0cb40  b 0x00b07850
+00e0cb44  bl 0x00b079b0

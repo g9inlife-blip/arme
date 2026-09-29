@@ -1,0 +1,51 @@
+Function: Alioth.S1.Common.Extends$$ToLE @ 015aa334
+
+--- Calls OUT ---
+  -> System.BitConverter$$GetBytes @ 020d828c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Array$$Reverse<byte> @ 018e24f0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+015aa334  str x22,[sp, #-0x30]!
+015aa338  stp x21,x20,[sp, #0x10]
+015aa33c  stp x19,x30,[sp, #0x20]
+015aa340  adrp x22,0x3577000
+015aa344  adrp x21,0x3334000
+015aa348  ldrb w8,[x22, #0x7a]
+015aa34c  ldr x21,[x21, #0x1f0]
+015aa350  mov w19,w1
+015aa354  mov w20,w0
+015aa358  tbnz w8,#0x0,0x015aa37c
+015aa35c  adrp x0,0x332f000
+015aa360  ldr x0,[x0, #0x428]
+015aa364  bl 0x00b0789c
+015aa368  adrp x0,0x3334000
+015aa36c  ldr x0,[x0, #0x1f0]
+015aa370  bl 0x00b0789c
+015aa374  mov w8,#0x1
+015aa378  strb w8,[x22, #0x7a]
+015aa37c  ldr x0,[x21]
+015aa380  ldr w8,[x0, #0xe0]
+015aa384  cbnz w8,0x015aa38c
+015aa388  bl 0x00b0798c
+015aa38c  add w0,w19,w20
+015aa390  mov x1,xzr
+015aa394  bl 0x020d828c
+015aa398  ldr x8,[x21]
+015aa39c  mov x19,x0
+015aa3a0  ldr x8,[x8, #0xb8]
+015aa3a4  ldrb w8,[x8]
+015aa3a8  cbnz w8,0x015aa3c0
+015aa3ac  adrp x8,0x332f000
+015aa3b0  ldr x8,[x8, #0x428]
+015aa3b4  mov x0,x19
+015aa3b8  ldr x1,[x8]
+015aa3bc  bl 0x018e24f0
+015aa3c0  mov x0,x19
+015aa3c4  ldp x19,x30,[sp, #0x20]
+015aa3c8  ldp x21,x20,[sp, #0x10]
+015aa3cc  ldr x22,[sp], #0x30
+015aa3d0  ret

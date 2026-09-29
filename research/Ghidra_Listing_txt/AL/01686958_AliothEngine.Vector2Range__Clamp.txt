@@ -1,0 +1,19 @@
+Function: AliothEngine.Vector2Range$$Clamp @ 01686958
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+01686958  ldp s4,s2,[x0, #0x14]
+0168695c  ldr s3,[x0, #0x10]
+01686960  ldr s5,[x0, #0x1c]
+01686964  fcmp s0,s2
+01686968  fcsel s2,s2,s0,gt
+0168696c  fcmp s0,s3
+01686970  fcsel s0,s2,s3,pl
+01686974  fcmp s1,s5
+01686978  fcsel s2,s5,s1,gt
+0168697c  fcmp s1,s4
+01686980  fcsel s1,s2,s4,pl
+01686984  ret

@@ -1,0 +1,300 @@
+Function: AliothExtensions$$SetAnimationEx @ 00e1676c
+
+--- Calls OUT ---
+  -> Spine.AnimationState$$SetAnimation @ 00d65868
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> Spine.SkeletonData$$FindAnimation @ 00d7ae18
+  -> System.String$$Concat @ 01fdf4c4
+  -> System.ArgumentException$$.ctor @ 020d5eb8
+  -> System.String$$Substring @ 01fe0458
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_008dc8c4 @ 008dc8c4
+  -> System.String$$Concat @ 01fdebb8
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> Ali$$get_language @ 00e00888
+  -> System.String$$IndexOf @ 01fe37dc
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp429 @ 01096df8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> FUN_008dc8f8 @ 008dc8f8
+  -> System.Enum$$ToString @ 02186100
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+  <- ItemShowWeaponMono$$Play @ 00eb3204
+  <- AliothExtensions$$PlaySpineAni @ 00e09674
+  <- BattleMainMono.<PlayTurnAni>d__55$$MoveNext @ 00e84d58
+  <- TerrainMono$$ShowSkillTip @ 016c9638
+  <- HeroPanelMono$$PlayLevelUpEff @ 00f3b624
+  <- BaseMono$$PlaySpineAni @ 00e1ebec
+  <- BattleEndWinPanelMono$$RewardShow @ 00e72338
+  <- HeroPanelMono$$PlayFashionAni @ 00f3b888
+  <- BattleEndWinPanelMono.<>c__DisplayClass48_0$$<PlayChallenge>b__1 @ 00e7833c
+  <- BaseMono$$PlayUISpineAni @ 00e1edec
+  <- LineUpPanelMono$$SpineRoleComplete @ 00f8d01c
+  <- RoleMono$$RoleAni @ 014a47a4
+  <- ChangeFashionMono$$FashionBack @ 00f2b0e0
+  <- PropPlayMono$$Ani_Use @ 0149dea0
+  <- EffLiveMono$$PlaySpineAni @ 00dfe01c
+  <- DialogMono$$RoleAni @ 00eb9910
+  <- TerrainEditorMono.<>c__DisplayClass18_0$$<TerrainShow>b__0 @ 016d98a4
+  <- RoleEditorMono$$Ani_Idle @ 016d90f8
+  <- ItemShowWeaponMono$$<Play>b__17_1 @ 00eb3c04
+  <- WeaponLvUpPanelMono$$<Init>b__26_0 @ 00e949d4
+  <- EffInfo$$Play @ 00dfbca0
+  <- WeaponPanelMono$$ClickWeaponSpine @ 00f5c348
+  <- HeroBreakMono$$ShowTempTrue @ 00f38350
+  <- BattleEndWinPanelMono$$<PlayChallenge>b__48_0 @ 00e76994
+
+--- Listing ---
+00e1676c  sub sp,sp,#0x70
+00e16770  str x26,[sp, #0x20]
+00e16774  stp x25,x24,[sp, #0x30]
+00e16778  stp x23,x22,[sp, #0x40]
+00e1677c  stp x21,x20,[sp, #0x50]
+00e16780  stp x19,x30,[sp, #0x60]
+00e16784  adrp x24,0x3572000
+00e16788  adrp x23,0x3348000
+00e1678c  ldrb w8,[x24, #0x606]
+00e16790  ldr x23,[x23, #0x138]
+00e16794  mov w22,w3
+00e16798  mov x20,x2
+00e1679c  mov w21,w1
+00e167a0  mov x19,x0
+00e167a4  tbnz w8,#0x0,0x00e167e0
+00e167a8  adrp x0,0x335f000
+00e167ac  ldr x0,[x0, #0x20]
+00e167b0  bl 0x00b0789c
+00e167b4  adrp x0,0x3348000
+00e167b8  ldr x0,[x0, #0x138]
+00e167bc  bl 0x00b0789c
+00e167c0  adrp x0,0x3375000
+00e167c4  ldr x0,[x0, #0x180]
+00e167c8  bl 0x00b0789c
+00e167cc  adrp x0,0x3348000
+00e167d0  ldr x0,[x0, #0x570]
+00e167d4  bl 0x00b0789c
+00e167d8  mov w8,#0x1
+00e167dc  strb w8,[x24, #0x606]
+00e167e0  ldr x0,[x23]
+00e167e4  ldr w8,[x0, #0xe0]
+00e167e8  cbnz w8,0x00e167f4
+00e167ec  bl 0x00b0798c
+00e167f0  ldr x0,[x23]
+00e167f4  ldr x8,[x0, #0xb8]
+00e167f8  ldr x0,[x8, #0x190]
+00e167fc  cbz x0,0x00e16830
+00e16800  and w4,w22,#0x1
+00e16804  mov x1,x19
+00e16808  mov w2,w21
+00e1680c  mov x3,x20
+00e16810  ldp x19,x30,[sp, #0x60]
+00e16814  ldp x21,x20,[sp, #0x50]
+00e16818  ldp x23,x22,[sp, #0x40]
+00e1681c  ldp x25,x24,[sp, #0x30]
+00e16820  ldr x26,[sp, #0x20]
+00e16824  mov x5,xzr
+00e16828  add sp,sp,#0x70
+00e1682c  b 0x01096df8
+00e16830  cbz x20,0x00e169c4
+00e16834  adrp x24,0x3348000
+00e16838  ldr x24,[x24, #0x570]
+00e1683c  mov x0,x20
+00e16840  mov x2,xzr
+00e16844  ldr x1,[x24]
+00e16848  bl 0x01fe31fc
+00e1684c  tbz w0,#0x0,0x00e1696c
+00e16850  ldr x1,[x24]
+00e16854  adrp x25,0x335f000
+00e16858  ldr x25,[x25, #0x20]
+00e1685c  mov x0,x20
+00e16860  mov x2,xzr
+00e16864  bl 0x01fe37dc
+00e16868  mov w2,w0
+00e1686c  mov x0,x20
+00e16870  mov w1,wzr
+00e16874  mov x3,xzr
+00e16878  bl 0x01fe0458
+00e1687c  ldr x8,[x25]
+00e16880  mov x23,x0
+00e16884  ldr w9,[x8, #0xe0]
+00e16888  cbnz w9,0x00e16898
+00e1688c  mov x0,x8
+00e16890  bl 0x00b0798c
+00e16894  ldr x8,[x25]
+00e16898  ldr x8,[x8, #0xb8]
+00e1689c  ldr x0,[x8, #0x10]
+00e168a0  cbz x0,0x00e169c4
+00e168a4  adrp x26,0x3375000
+00e168a8  ldr x26,[x26, #0x180]
+00e168ac  bl 0x00e00888
+00e168b0  ldr x8,[x26]
+00e168b4  mov x9,#-0x1
+00e168b8  str w0,[sp, #0x18]
+00e168bc  add x0,sp,#0x8
+00e168c0  mov x1,xzr
+00e168c4  stp x8,x9,[sp, #0x8]
+00e168c8  bl 0x02186100
+00e168cc  ldr x1,[x24]
+00e168d0  mov x2,x0
+00e168d4  mov x0,x23
+00e168d8  mov x3,xzr
+00e168dc  bl 0x01fdebb8
+00e168e0  cbz x19,0x00e169c4
+00e168e4  ldr x8,[x19, #0x10]
+00e168e8  cbz x8,0x00e169c4
+00e168ec  mov x1,x0
+00e168f0  ldr x0,[x8, #0x10]
+00e168f4  cbz x0,0x00e169c4
+00e168f8  mov x2,xzr
+00e168fc  bl 0x00d7ae18
+00e16900  cbnz x0,0x00e16990
+00e16904  ldr x1,[x24]
+00e16908  mov x0,x20
+00e1690c  mov x2,xzr
+00e16910  bl 0x01fe37dc
+00e16914  mov w2,w0
+00e16918  mov x0,x20
+00e1691c  mov w1,wzr
+00e16920  mov x3,xzr
+00e16924  bl 0x01fe0458
+00e16928  ldr x8,[x25]
+00e1692c  mov x23,x0
+00e16930  ldr w9,[x8, #0xe0]
+00e16934  cbnz w9,0x00e16944
+00e16938  mov x0,x8
+00e1693c  bl 0x00b0798c
+00e16940  ldr x8,[x25]
+00e16944  ldr x8,[x8, #0xb8]
+00e16948  ldr x8,[x8, #0x10]
+00e1694c  cbz x8,0x00e169c4
+00e16950  ldr x2,[x8, #0x38]
+00e16954  ldr x1,[x24]
+00e16958  mov x0,x23
+00e1695c  mov x3,xzr
+00e16960  bl 0x01fdebb8
+00e16964  mov x1,x0
+00e16968  b 0x00e16974
+00e1696c  mov x1,x20
+00e16970  cbz x19,0x00e169c4
+00e16974  ldr x8,[x19, #0x10]
+00e16978  cbz x8,0x00e169c4
+00e1697c  ldr x0,[x8, #0x10]
+00e16980  cbz x0,0x00e169c4
+00e16984  mov x2,xzr
+00e16988  bl 0x00d7ae18
+00e1698c  cbz x0,0x00e169c8
+00e16990  and w3,w22,#0x1
+00e16994  mov x0,x19
+00e16998  mov w1,w21
+00e1699c  mov x2,x20
+00e169a0  mov x4,xzr
+00e169a4  bl 0x00d65868
+00e169a8  ldp x19,x30,[sp, #0x60]
+00e169ac  ldp x21,x20,[sp, #0x50]
+00e169b0  ldp x23,x22,[sp, #0x40]
+00e169b4  ldp x25,x24,[sp, #0x30]
+00e169b8  ldr x26,[sp, #0x20]
+00e169bc  add sp,sp,#0x70
+00e169c0  ret
+00e169c4  bl 0x00b079b0
+00e169c8  adrp x0,0x3308000
+00e169cc  ldr x0,[x0, #0x9a8]
+00e169d0  bl 0x00b078a0
+00e169d4  mov w1,#0x5
+00e169d8  bl 0x00b078f8
+00e169dc  mov x21,x0
+00e169e0  bl 0x008d74f8
+00e169e4  adrp x22,0x336b000
+00e169e8  ldr x22,[x22, #0x9b8]
+00e169ec  mov x0,x22
+00e169f0  bl 0x00b078a0
+00e169f4  mov x1,x0
+00e169f8  mov x0,x21
+00e169fc  bl 0x008dc8c4
+00e16a00  mov x0,x22
+00e16a04  bl 0x00b078a0
+00e16a08  mov x2,x0
+00e16a0c  mov x0,x21
+00e16a10  mov x1,xzr
+00e16a14  bl 0x008dc8f8
+00e16a18  mov x0,x21
+00e16a1c  bl 0x008d74f8
+00e16a20  mov x0,x21
+00e16a24  mov x1,x20
+00e16a28  bl 0x008dc8c4
+00e16a2c  mov w1,#0x1
+00e16a30  mov x0,x21
+00e16a34  mov x2,x20
+00e16a38  bl 0x008dc8f8
+00e16a3c  mov x0,x21
+00e16a40  bl 0x008d74f8
+00e16a44  adrp x20,0x335c000
+00e16a48  ldr x20,[x20, #0x148]
+00e16a4c  mov x0,x20
+00e16a50  bl 0x00b078a0
+00e16a54  mov x1,x0
+00e16a58  mov x0,x21
+00e16a5c  bl 0x008dc8c4
+00e16a60  mov x0,x20
+00e16a64  bl 0x00b078a0
+00e16a68  mov x2,x0
+00e16a6c  mov w1,#0x2
+00e16a70  mov x0,x21
+00e16a74  bl 0x008dc8f8
+00e16a78  mov x0,x19
+00e16a7c  bl 0x008d74f8
+00e16a80  ldr x19,[x19, #0x10]
+00e16a84  mov x0,x19
+00e16a88  bl 0x008d74f8
+00e16a8c  ldr x19,[x19, #0x10]
+00e16a90  mov x0,x19
+00e16a94  bl 0x008d74f8
+00e16a98  ldr x19,[x19, #0x10]
+00e16a9c  mov x0,x21
+00e16aa0  bl 0x008d74f8
+00e16aa4  mov x0,x21
+00e16aa8  mov x1,x19
+00e16aac  bl 0x008dc8c4
+00e16ab0  mov w1,#0x3
+00e16ab4  mov x0,x21
+00e16ab8  mov x2,x19
+00e16abc  bl 0x008dc8f8
+00e16ac0  mov x0,x21
+00e16ac4  bl 0x008d74f8
+00e16ac8  adrp x19,0x3372000
+00e16acc  ldr x19,[x19, #0xff0]
+00e16ad0  mov x0,x19
+00e16ad4  bl 0x00b078a0
+00e16ad8  mov x1,x0
+00e16adc  mov x0,x21
+00e16ae0  bl 0x008dc8c4
+00e16ae4  mov x0,x19
+00e16ae8  bl 0x00b078a0
+00e16aec  mov x2,x0
+00e16af0  mov w1,#0x4
+00e16af4  mov x0,x21
+00e16af8  bl 0x008dc8f8
+00e16afc  mov x0,x21
+00e16b00  mov x1,xzr
+00e16b04  bl 0x01fdf4c4
+00e16b08  mov x19,x0
+00e16b0c  adrp x0,0x3367000
+00e16b10  ldr x0,[x0, #0x168]
+00e16b14  bl 0x00b078a0
+00e16b18  bl 0x00b079a0
+00e16b1c  mov x20,x0
+00e16b20  bl 0x008d74f8
+00e16b24  mov x0,x20
+00e16b28  mov x1,x19
+00e16b2c  mov x2,xzr
+00e16b30  bl 0x020d5eb8
+00e16b34  adrp x0,0x331f000
+00e16b38  ldr x0,[x0, #0xb8]
+00e16b3c  bl 0x00b078a0
+00e16b40  mov x1,x0
+00e16b44  mov x0,x20
+00e16b48  bl 0x00b07978

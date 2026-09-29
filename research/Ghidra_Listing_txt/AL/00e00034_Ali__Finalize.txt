@@ -1,0 +1,98 @@
+Function: Ali$$Finalize @ 00e00034
+
+--- Calls OUT ---
+  -> AliothEngine.Net.HttpRequestManager$$remove_FinishCallback @ 01695804
+  -> AliothEngine.SingletonBehaviour<object>$$get_hasInstance @ 01e088c0
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$GetInstance @ 01e08f7c
+  -> System.Object$$Finalize @ 021a1e10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e00034  stp x21,x20,[sp, #-0x20]!
+00e00038  stp x19,x30,[sp, #0x10]
+00e0003c  adrp x21,0x3572000
+00e00040  adrp x20,0x335f000
+00e00044  ldrb w8,[x21, #0x515]
+00e00048  ldr x20,[x20, #0x20]
+00e0004c  mov x19,x0
+00e00050  tbnz w8,#0x0,0x00e00098
+00e00054  adrp x0,0x3351000
+00e00058  ldr x0,[x0, #0xec0]
+00e0005c  bl 0x00b0789c
+00e00060  adrp x0,0x3363000
+00e00064  ldr x0,[x0, #0xc88]
+00e00068  bl 0x00b0789c
+00e0006c  adrp x0,0x335f000
+00e00070  ldr x0,[x0, #0x20]
+00e00074  bl 0x00b0789c
+00e00078  adrp x0,0x3373000
+00e0007c  ldr x0,[x0, #0xaa0]
+00e00080  bl 0x00b0789c
+00e00084  adrp x0,0x330b000
+00e00088  ldr x0,[x0, #0xe50]
+00e0008c  bl 0x00b0789c
+00e00090  mov w8,#0x1
+00e00094  strb w8,[x21, #0x515]
+00e00098  ldr x0,[x20]
+00e0009c  ldr w8,[x0, #0xe0]
+00e000a0  cbnz w8,0x00e000ac
+00e000a4  bl 0x00b0798c
+00e000a8  ldr x0,[x20]
+00e000ac  ldr x8,[x0, #0xb8]
+00e000b0  ldr x0,[x8, #0x40]
+00e000b4  cbz x0,0x00e000cc
+00e000b8  mov x1,x19
+00e000bc  ldp x19,x30,[sp, #0x10]
+00e000c0  mov x2,xzr
+00e000c4  ldp x21,x20,[sp], #0x20
+00e000c8  b 0x01060dac
+00e000cc  adrp x8,0x330b000
+00e000d0  ldr x8,[x8, #0xe50]
+00e000d4  ldr x0,[x8]
+00e000d8  bl 0x01e088c0
+    ; [PRE] try { // try from 00e000d8 to 00e000db has its CatchHandler @ 00e0015c
+    ; [POST] } // end try from 00e000d8 to 00e000db
+00e000dc  tbz w0,#0x0,0x00e0013c
+00e000e0  adrp x8,0x3373000
+00e000e4  ldr x8,[x8, #0xaa0]
+00e000e8  ldr x0,[x8]
+00e000ec  bl 0x01e08f7c
+    ; [PRE] try { // try from 00e000ec to 00e000ef has its CatchHandler @ 00e00158
+    ; [POST] } // end try from 00e000ec to 00e000ef
+00e000f0  adrp x8,0x3351000
+00e000f4  ldr x8,[x8, #0xec0]
+00e000f8  mov x20,x0
+00e000fc  ldr x0,[x8]
+00e00100  bl 0x00b079a0
+    ; [PRE] try { // try from 00e00100 to 00e0013b has its CatchHandler @ 00e00160
+00e00104  mov x21,x0
+00e00108  cbz x0,0x00e00150
+00e0010c  adrp x8,0x3363000
+00e00110  ldr x8,[x8, #0xc88]
+00e00114  ldr x2,[x8]
+00e00118  mov x0,x21
+00e0011c  mov x1,x19
+00e00120  mov x3,xzr
+00e00124  bl 0x01909b80
+00e00128  cbz x20,0x00e00154
+00e0012c  mov x0,x20
+00e00130  mov x1,x21
+00e00134  mov x2,xzr
+00e00138  bl 0x01695804
+    ; [POST] } // end try from 00e00100 to 00e0013b
+00e0013c  mov x0,x19
+00e00140  ldp x19,x30,[sp, #0x10]
+00e00144  mov x1,xzr
+00e00148  ldp x21,x20,[sp], #0x20
+00e0014c  b 0x021a1e10
+00e00150  bl 0x00b079b0
+    ; [PRE] try { // try from 00e00150 to 00e00157 has its CatchHandler @ 00e00160
+00e00154  bl 0x00b079b0
+    ; [POST] } // end try from 00e00150 to 00e00157

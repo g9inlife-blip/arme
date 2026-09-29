@@ -1,0 +1,45 @@
+Function: AliothEngine.Extensions.BoundsExtensions$$ToRect @ 016a9e30
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> UnityEngine.Bounds$$get_size @ 024da5dc
+  -> UnityEngine.Bounds$$get_max @ 024da68c
+  -> UnityEngine.Bounds$$get_min @ 024da61c
+
+--- Calls IN ---
+
+--- Listing ---
+016a9e30  sub sp,sp,#0x40
+016a9e34  str d10,[sp, #0x10]
+016a9e38  stp d9,d8,[sp, #0x20]
+016a9e3c  stp x19,x30,[sp, #0x30]
+016a9e40  mov x1,xzr
+016a9e44  mov x19,x0
+016a9e48  bl 0x024da61c
+016a9e4c  mov x0,x19
+016a9e50  mov x1,xzr
+016a9e54  mov v8.16B,v0.16B
+016a9e58  bl 0x024da68c
+016a9e5c  mov x0,x19
+016a9e60  mov x1,xzr
+016a9e64  mov v9.16B,v1.16B
+016a9e68  bl 0x024da5dc
+016a9e6c  mov x0,x19
+016a9e70  mov x1,xzr
+016a9e74  mov v10.16B,v0.16B
+016a9e78  bl 0x024da5dc
+016a9e7c  mov v3.16B,v1.16B
+016a9e80  mov x0,sp
+016a9e84  mov v0.16B,v8.16B
+016a9e88  mov v1.16B,v9.16B
+016a9e8c  mov v2.16B,v10.16B
+016a9e90  mov x1,xzr
+016a9e94  stp xzr,xzr,[sp]
+016a9e98  bl 0x024daef0
+016a9e9c  ldp s0,s1,[sp]
+016a9ea0  ldp s2,s3,[sp, #0x8]
+016a9ea4  ldp x19,x30,[sp, #0x30]
+016a9ea8  ldp d9,d8,[sp, #0x20]
+016a9eac  ldr d10,[sp, #0x10]
+016a9eb0  add sp,sp,#0x40
+016a9eb4  ret

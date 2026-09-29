@@ -1,0 +1,81 @@
+Function: AliothEngine.DataStructures.CircularBufferIndexer<object,-object>$$get_Item @ 01f49410
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.KeyNotFoundException$$.ctor @ 0213065c
+
+--- Calls IN ---
+
+--- Listing ---
+01f49410  str x24,[sp, #-0x40]!
+01f49414  stp x23,x22,[sp, #0x10]
+01f49418  stp x21,x20,[sp, #0x20]
+01f4941c  stp x19,x30,[sp, #0x30]
+01f49420  ldr w8,[x0, #0x28]
+01f49424  cmp w8,#0x1
+01f49428  b.lt 0x01f494a8
+01f4942c  ldr w22,[x0, #0x20]
+01f49430  mov x19,x2
+01f49434  mov x20,x0
+01f49438  mov x21,x1
+01f4943c  mov w23,wzr
+01f49440  ldr x8,[x20, #0x10]
+01f49444  cbz x8,0x01f49514
+01f49448  ldr w9,[x8, #0x18]
+01f4944c  cmp w22,w9
+01f49450  b.cs 0x01f49518
+01f49454  sxtw x24,w22
+01f49458  add x8,x8,x24, LSL #0x3
+01f4945c  ldr x0,[x8, #0x20]
+01f49460  cbz x0,0x01f49514
+01f49464  ldr x8,[x0]
+01f49468  mov x1,x21
+01f4946c  ldp x9,x2,[x8, #0x138]
+01f49470  blr x9
+01f49474  tbnz w0,#0x0,0x01f494e4
+01f49478  ldr x8,[x19, #0x20]
+01f4947c  mov x0,x20
+01f49480  mov w1,w22
+01f49484  ldr x8,[x8, #0xc0]
+01f49488  ldr x2,[x8, #0x20]
+01f4948c  ldr x8,[x2, #0x8]
+01f49490  blr x8
+01f49494  ldr w8,[x20, #0x28]
+01f49498  add w23,w23,#0x1
+01f4949c  mov w22,w0
+01f494a0  cmp w23,w8
+01f494a4  b.lt 0x01f49440
+01f494a8  adrp x0,0x3340000
+01f494ac  ldr x0,[x0, #0x268]
+01f494b0  bl 0x00b078a0
+01f494b4  bl 0x00b079a0
+01f494b8  mov x19,x0
+01f494bc  bl 0x008d74f8
+01f494c0  mov x0,x19
+01f494c4  mov x1,xzr
+01f494c8  bl 0x0213065c
+01f494cc  adrp x0,0x331a000
+01f494d0  ldr x0,[x0, #0xa18]
+01f494d4  bl 0x00b078a0
+01f494d8  mov x1,x0
+01f494dc  mov x0,x19
+01f494e0  bl 0x00b07978
+01f494e4  ldr x8,[x20, #0x18]
+01f494e8  cbz x8,0x01f49514
+01f494ec  ldr w9,[x8, #0x18]
+01f494f0  cmp w22,w9
+01f494f4  b.cs 0x01f49518
+01f494f8  add x8,x8,x24, LSL #0x3
+01f494fc  ldr x0,[x8, #0x20]
+01f49500  ldp x19,x30,[sp, #0x30]
+01f49504  ldp x21,x20,[sp, #0x20]
+01f49508  ldp x23,x22,[sp, #0x10]
+01f4950c  ldr x24,[sp], #0x40
+01f49510  ret
+01f49514  bl 0x00b079b0
+01f49518  bl 0x00b079b8

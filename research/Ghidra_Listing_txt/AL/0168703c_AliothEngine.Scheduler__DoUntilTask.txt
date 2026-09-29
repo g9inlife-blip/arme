@@ -1,0 +1,63 @@
+Function: AliothEngine.Scheduler$$DoUntilTask @ 0168703c
+
+--- Calls OUT ---
+  -> AliothEngine.Scheduler.<DoUntilTask>d__16$$.ctor @ 01688830
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Scheduler$$DoUntil @ 01686fb0
+  <- AliothEngine.Scheduler.<DoUntilTask>d__16$$MoveNext @ 0168885c
+  <- AliothEngine.Scheduler$$DoUntil @ 016870fc
+
+--- Listing ---
+0168703c  str x24,[sp, #-0x40]!
+01687040  stp x23,x22,[sp, #0x10]
+01687044  stp x21,x20,[sp, #0x20]
+01687048  stp x19,x30,[sp, #0x30]
+0168704c  adrp x22,0x3577000
+01687050  adrp x24,0x3332000
+01687054  ldrb w8,[x22, #0xa72]
+01687058  ldr x24,[x24, #0x678]
+0168705c  mov x19,x3
+01687060  mov x20,x2
+01687064  mov x21,x1
+01687068  mov x23,x0
+0168706c  tbnz w8,#0x0,0x01687084
+01687070  adrp x0,0x3332000
+01687074  ldr x0,[x0, #0x678]
+01687078  bl 0x00b0789c
+0168707c  mov w8,#0x1
+01687080  strb w8,[x22, #0xa72]
+01687084  ldr x0,[x24]
+01687088  bl 0x00b079a0
+0168708c  cbz x0,0x016870f8
+01687090  mov w1,wzr
+01687094  mov x2,xzr
+01687098  mov x22,x0
+0168709c  bl 0x01688830
+016870a0  mov x0,x22
+016870a4  str x23,[x0, #0x38]!
+016870a8  mov x1,x23
+016870ac  bl 0x00b07850
+016870b0  mov x0,x22
+016870b4  str x21,[x0, #0x28]!
+016870b8  mov x1,x21
+016870bc  bl 0x00b07850
+016870c0  mov x0,x22
+016870c4  str x20,[x0, #0x30]!
+016870c8  mov x1,x20
+016870cc  bl 0x00b07850
+016870d0  mov x0,x22
+016870d4  str x19,[x0, #0x20]!
+016870d8  mov x1,x19
+016870dc  bl 0x00b07850
+016870e0  mov x0,x22
+016870e4  ldp x19,x30,[sp, #0x30]
+016870e8  ldp x21,x20,[sp, #0x20]
+016870ec  ldp x23,x22,[sp, #0x10]
+016870f0  ldr x24,[sp], #0x40
+016870f4  ret
+016870f8  bl 0x00b079b0

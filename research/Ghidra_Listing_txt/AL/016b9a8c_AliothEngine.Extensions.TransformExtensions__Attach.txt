@@ -1,0 +1,38 @@
+Function: AliothEngine.Extensions.TransformExtensions$$Attach @ 016b9a8c
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$set_rotation @ 024f3bac
+  -> UnityEngine.Transform$$get_rotation @ 024f3b24
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_position @ 024f3724
+  -> UnityEngine.Transform$$set_parent @ 024f4364
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$AttachTo @ 016b9aec
+
+--- Listing ---
+016b9a8c  str x20,[sp, #-0x20]!
+016b9a90  stp x19,x30,[sp, #0x10]
+016b9a94  cbz x0,0x016b9ae8
+016b9a98  mov x20,x1
+016b9a9c  mov x1,xzr
+016b9aa0  mov x19,x0
+016b9aa4  bl 0x024f3684
+016b9aa8  cbz x20,0x016b9ae8
+016b9aac  mov x0,x20
+016b9ab0  mov x1,xzr
+016b9ab4  bl 0x024f3724
+016b9ab8  mov x0,x19
+016b9abc  mov x1,xzr
+016b9ac0  bl 0x024f3b24
+016b9ac4  mov x0,x20
+016b9ac8  mov x1,xzr
+016b9acc  bl 0x024f3bac
+016b9ad0  mov x1,x19
+016b9ad4  ldp x19,x30,[sp, #0x10]
+016b9ad8  mov x0,x20
+016b9adc  mov x2,xzr
+016b9ae0  ldr x20,[sp], #0x20
+016b9ae4  b 0x024f4364
+016b9ae8  bl 0x00b079b0

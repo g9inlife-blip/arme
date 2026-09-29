@@ -1,0 +1,35 @@
+Function: AliothEngine.LogManager$$get_NetworkLogger @ 0168a4e0
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+  <- CSBehaviour$$get_logger @ 016dbef8
+  <- Alioth.S1.Net.TCPTube$$get_logger @ 015b57c4
+  <- Alioth.S1.Net.KCPTube$$get_logger @ 015addec
+  <- Alioth.S1.Net.NetworkCenter$$get_logger @ 015b29e4
+
+--- Listing ---
+0168a4e0  str x20,[sp, #-0x20]!
+0168a4e4  stp x19,x30,[sp, #0x10]
+0168a4e8  adrp x19,0x3577000
+0168a4ec  adrp x20,0x3377000
+0168a4f0  ldrb w8,[x19, #0xa90]
+0168a4f4  ldr x20,[x20, #0x898]
+0168a4f8  tbnz w8,#0x0,0x0168a510
+0168a4fc  adrp x0,0x3377000
+0168a500  ldr x0,[x0, #0x898]
+0168a504  bl 0x00b0789c
+0168a508  mov w8,#0x1
+0168a50c  strb w8,[x19, #0xa90]
+0168a510  ldr x0,[x20]
+0168a514  bl 0x01e09a6c
+0168a518  cbz x0,0x0168a52c
+0168a51c  ldp x19,x30,[sp, #0x10]
+0168a520  mov w1,#0x6
+0168a524  ldr x20,[sp], #0x20
+0168a528  b 0x0168995c
+0168a52c  bl 0x00b079b0

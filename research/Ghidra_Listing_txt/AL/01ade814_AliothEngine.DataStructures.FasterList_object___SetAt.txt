@@ -1,0 +1,44 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$SetAt @ 01ade814
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01ade814  str x22,[sp, #-0x30]!
+01ade818  stp x21,x20,[sp, #0x10]
+01ade81c  stp x19,x30,[sp, #0x20]
+01ade820  ldr x8,[x0, #0x10]
+01ade824  cbz x8,0x01ade8a0
+01ade828  ldr w8,[x8, #0x18]
+01ade82c  mov x22,x3
+01ade830  mov x19,x2
+01ade834  mov x20,x0
+01ade838  mov w21,w1
+01ade83c  cmp w8,w1
+01ade840  b.gt 0x01ade860
+01ade844  ldr x8,[x22, #0x20]
+01ade848  add w1,w21,#0x1
+01ade84c  mov x0,x20
+01ade850  ldr x8,[x8, #0xc0]
+01ade854  ldr x2,[x8, #0x70]
+01ade858  ldr x8,[x2, #0x8]
+01ade85c  blr x8
+01ade860  ldr w8,[x20, #0x18]
+01ade864  cmp w8,w21
+01ade868  b.gt 0x01ade874
+01ade86c  add w8,w21,#0x1
+01ade870  str w8,[x20, #0x18]
+01ade874  ldr x8,[x22, #0x20]
+01ade878  mov x0,x20
+01ade87c  mov w1,w21
+01ade880  mov x2,x19
+01ade884  ldr x8,[x8, #0xc0]
+01ade888  ldp x19,x30,[sp, #0x20]
+01ade88c  ldp x21,x20,[sp, #0x10]
+01ade890  ldr x3,[x8, #0xf0]
+01ade894  ldr x4,[x3, #0x8]
+01ade898  ldr x22,[sp], #0x30
+01ade89c  br x4
+01ade8a0  bl 0x00b079b0

@@ -1,0 +1,78 @@
+Function: AliothEngine.GameUpdateService$$.ctor @ 0167f904
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe80
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$__CreateInstance @ 01140b24
+
+--- Listing ---
+0167f904  str x22,[sp, #-0x30]!
+0167f908  stp x21,x20,[sp, #0x10]
+0167f90c  stp x19,x30,[sp, #0x20]
+0167f910  adrp x20,0x3577000
+0167f914  adrp x21,0x337d000
+0167f918  ldrb w8,[x20, #0xa3e]
+0167f91c  ldr x21,[x21, #0x428]
+0167f920  mov x19,x0
+0167f924  tbnz w8,#0x0,0x0167f960
+0167f928  adrp x0,0x3352000
+0167f92c  ldr x0,[x0, #0x2a8]
+0167f930  bl 0x00b0789c
+0167f934  adrp x0,0x3317000
+0167f938  ldr x0,[x0, #0xea0]
+0167f93c  bl 0x00b0789c
+0167f940  adrp x0,0x337d000
+0167f944  ldr x0,[x0, #0x428]
+0167f948  bl 0x00b0789c
+0167f94c  adrp x0,0x3319000
+0167f950  ldr x0,[x0, #0xef0]
+0167f954  bl 0x00b0789c
+0167f958  mov w8,#0x1
+0167f95c  strb w8,[x20, #0xa3e]
+0167f960  ldr x0,[x21]
+0167f964  bl 0x00b079a0
+0167f968  cbz x0,0x0167f9fc
+0167f96c  adrp x8,0x3317000
+0167f970  ldr x8,[x8, #0xea0]
+0167f974  adrp x21,0x3319000
+0167f978  adrp x22,0x3352000
+0167f97c  mov w1,wzr
+0167f980  ldr x2,[x8]
+0167f984  ldr x21,[x21, #0xef0]
+0167f988  ldr x22,[x22, #0x2a8]
+0167f98c  mov x20,x0
+0167f990  bl 0x01bffe80
+0167f994  mov x0,x19
+0167f998  str x20,[x0, #0x20]!
+0167f99c  mov x1,x20
+0167f9a0  bl 0x00b07850
+0167f9a4  mov w8,#0x1
+0167f9a8  mov w9,#0xffffffff
+0167f9ac  str w8,[x19, #0x2c]
+0167f9b0  str x8,[x19, #0x38]
+0167f9b4  str w9,[x19, #0x78]
+0167f9b8  ldr x1,[x21]
+0167f9bc  mov x0,x19
+0167f9c0  bl 0x01e09460
+0167f9c4  ldr x8,[x22]
+0167f9c8  ldr x8,[x8, #0xb8]
+0167f9cc  ldr x0,[x8, #0x168]
+0167f9d0  cbz x0,0x0167f9ec
+0167f9d4  mov x1,x19
+0167f9d8  ldp x19,x30,[sp, #0x20]
+0167f9dc  ldp x21,x20,[sp, #0x10]
+0167f9e0  mov x2,xzr
+0167f9e4  ldr x22,[sp], #0x30
+0167f9e8  b 0x01060dac
+0167f9ec  ldp x19,x30,[sp, #0x20]
+0167f9f0  ldp x21,x20,[sp, #0x10]
+0167f9f4  ldr x22,[sp], #0x30
+0167f9f8  ret
+0167f9fc  bl 0x00b079b0

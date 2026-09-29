@@ -1,0 +1,66 @@
+Function: AddressBookExample$$LoadAdressBook @ 00cf8598
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> SA.Common.Pattern.Singleton<object>$$get_Instance @ 01e09dd4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AddressBookController$$add_OnContactsLoadedAction @ 00ce24e8
+  -> AddressBookController$$LoadContacts @ 00ce2704
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action$$.ctor @ 020d5760
+
+--- Calls IN ---
+
+--- Listing ---
+00cf8598  stp x21,x20,[sp, #-0x20]!
+00cf859c  stp x19,x30,[sp, #0x10]
+00cf85a0  adrp x20,0x3571000
+00cf85a4  adrp x21,0x3334000
+00cf85a8  ldrb w8,[x20, #0xa08]
+00cf85ac  ldr x21,[x21, #0xcd0]
+00cf85b0  mov x19,x0
+00cf85b4  tbnz w8,#0x0,0x00cf85f0
+00cf85b8  adrp x0,0x3348000
+00cf85bc  ldr x0,[x0, #0xcf8]
+00cf85c0  bl 0x00b0789c
+00cf85c4  adrp x0,0x3345000
+00cf85c8  ldr x0,[x0, #0xcd8]
+00cf85cc  bl 0x00b0789c
+00cf85d0  adrp x0,0x3338000
+00cf85d4  ldr x0,[x0, #0xd88]
+00cf85d8  bl 0x00b0789c
+00cf85dc  adrp x0,0x3334000
+00cf85e0  ldr x0,[x0, #0xcd0]
+00cf85e4  bl 0x00b0789c
+00cf85e8  mov w8,#0x1
+00cf85ec  strb w8,[x20, #0xa08]
+00cf85f0  ldr x0,[x21]
+00cf85f4  bl 0x01e09dd4
+00cf85f8  cbz x0,0x00cf8660
+00cf85fc  adrp x20,0x3348000
+00cf8600  ldr x20,[x20, #0xcf8]
+00cf8604  mov x1,xzr
+00cf8608  bl 0x00ce2704
+00cf860c  ldr x0,[x20]
+00cf8610  bl 0x00b079a0
+00cf8614  cbz x0,0x00cf8660
+00cf8618  adrp x8,0x3338000
+00cf861c  ldr x8,[x8, #0xd88]
+00cf8620  adrp x21,0x3345000
+00cf8624  mov x1,x19
+00cf8628  mov x3,xzr
+00cf862c  ldr x2,[x8]
+00cf8630  ldr x21,[x21, #0xcd8]
+00cf8634  mov x20,x0
+00cf8638  bl 0x020d5760
+00cf863c  ldr x0,[x21]
+00cf8640  ldr w8,[x0, #0xe0]
+00cf8644  cbnz w8,0x00cf864c
+00cf8648  bl 0x00b0798c
+00cf864c  ldp x19,x30,[sp, #0x10]
+00cf8650  mov x0,x20
+00cf8654  mov x1,xzr
+00cf8658  ldp x21,x20,[sp], #0x20
+00cf865c  b 0x00ce24e8
+00cf8660  bl 0x00b079b0

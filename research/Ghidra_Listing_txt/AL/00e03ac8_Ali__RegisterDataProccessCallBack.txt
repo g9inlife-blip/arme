@@ -1,0 +1,104 @@
+Function: Ali$$RegisterDataProccessCallBack @ 00e03ac8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> NetEvent$$add_execute @ 00e27c04
+  -> System.Collections.Generic.Dictionary<Int16Enum,-object>$$get_Item @ 0191bd58
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp393 @ 010925b0
+  -> System.Collections.Generic.Dictionary<Int16Enum,-object>$$ContainsKey @ 0191c00c
+  -> NetEvent$$.ctor @ 00e27e5c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<Int16Enum,-object>$$set_Item @ 0191bdf4
+
+--- Calls IN ---
+  <- BaseMono$$RegisterDataProccessCallBack @ 00e1a5c0
+  <- LoginManager$$Start @ 00dd4e98
+  <- XLua.CSObjectWrap.AliWrap$$_m_RegisterDataProccessCallBack @ 01191944
+
+--- Listing ---
+00e03ac8  stp x23,x22,[sp, #-0x30]!
+00e03acc  stp x21,x20,[sp, #0x10]
+00e03ad0  stp x19,x30,[sp, #0x20]
+00e03ad4  adrp x23,0x3572000
+00e03ad8  adrp x22,0x335f000
+00e03adc  ldrb w8,[x23, #0x55e]
+00e03ae0  ldr x22,[x22, #0x20]
+00e03ae4  mov x19,x2
+00e03ae8  mov w20,w1
+00e03aec  mov x21,x0
+00e03af0  tbnz w8,#0x0,0x00e03b38
+00e03af4  adrp x0,0x335f000
+00e03af8  ldr x0,[x0, #0x20]
+00e03afc  bl 0x00b0789c
+00e03b00  adrp x0,0x3368000
+00e03b04  ldr x0,[x0, #0xe10]
+00e03b08  bl 0x00b0789c
+00e03b0c  adrp x0,0x3374000
+00e03b10  ldr x0,[x0, #0xb08]
+00e03b14  bl 0x00b0789c
+00e03b18  adrp x0,0x335e000
+00e03b1c  ldr x0,[x0, #0x200]
+00e03b20  bl 0x00b0789c
+00e03b24  adrp x0,0x331e000
+00e03b28  ldr x0,[x0, #0x7c0]
+00e03b2c  bl 0x00b0789c
+00e03b30  mov w8,#0x1
+00e03b34  strb w8,[x23, #0x55e]
+00e03b38  ldr x0,[x22]
+00e03b3c  ldr w8,[x0, #0xe0]
+00e03b40  cbnz w8,0x00e03b4c
+00e03b44  bl 0x00b0798c
+00e03b48  ldr x0,[x22]
+00e03b4c  ldr x8,[x0, #0xb8]
+00e03b50  ldr x0,[x8, #0x298]
+00e03b54  cbz x0,0x00e03b78
+00e03b58  mov x1,x21
+00e03b5c  mov w2,w20
+00e03b60  mov x3,x19
+00e03b64  ldp x19,x30,[sp, #0x20]
+00e03b68  ldp x21,x20,[sp, #0x10]
+00e03b6c  mov x4,xzr
+00e03b70  ldp x23,x22,[sp], #0x30
+00e03b74  b 0x010925b0
+00e03b78  ldr x0,[x21, #0x118]
+00e03b7c  cbz x0,0x00e03c14
+00e03b80  adrp x8,0x3368000
+00e03b84  ldr x8,[x8, #0xe10]
+00e03b88  mov w1,w20
+00e03b8c  ldr x2,[x8]
+00e03b90  bl 0x0191c00c
+00e03b94  tbnz w0,#0x0,0x00e03bdc
+00e03b98  adrp x8,0x331e000
+00e03b9c  ldr x8,[x8, #0x7c0]
+00e03ba0  ldr x22,[x21, #0x118]
+00e03ba4  ldr x0,[x8]
+00e03ba8  bl 0x00b079a0
+00e03bac  cbz x0,0x00e03c14
+00e03bb0  mov x1,xzr
+00e03bb4  mov x23,x0
+00e03bb8  bl 0x00e27e5c
+00e03bbc  cbz x22,0x00e03c14
+00e03bc0  adrp x8,0x335e000
+00e03bc4  ldr x8,[x8, #0x200]
+00e03bc8  mov x0,x22
+00e03bcc  mov w1,w20
+00e03bd0  mov x2,x23
+00e03bd4  ldr x3,[x8]
+00e03bd8  bl 0x0191bdf4
+00e03bdc  ldr x0,[x21, #0x118]
+00e03be0  cbz x0,0x00e03c14
+00e03be4  adrp x8,0x3374000
+00e03be8  ldr x8,[x8, #0xb08]
+00e03bec  mov w1,w20
+00e03bf0  ldr x2,[x8]
+00e03bf4  bl 0x0191bd58
+00e03bf8  cbz x0,0x00e03c14
+00e03bfc  mov x1,x19
+00e03c00  ldp x19,x30,[sp, #0x20]
+00e03c04  ldp x21,x20,[sp, #0x10]
+00e03c08  mov x2,xzr
+00e03c0c  ldp x23,x22,[sp], #0x30
+00e03c10  b 0x00e27c04
+00e03c14  bl 0x00b079b0

@@ -1,0 +1,40 @@
+Function: Alioth.S1.Net.NetworkCenter.<>c$$.cctor @ 015b47d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+015b47d4  str x20,[sp, #-0x20]!
+015b47d8  stp x19,x30,[sp, #0x10]
+015b47dc  adrp x19,0x3577000
+015b47e0  adrp x20,0x332e000
+015b47e4  ldrb w8,[x19, #0xba]
+015b47e8  ldr x20,[x20, #0x450]
+015b47ec  tbnz w8,#0x0,0x015b4804
+015b47f0  adrp x0,0x332e000
+015b47f4  ldr x0,[x0, #0x450]
+015b47f8  bl 0x00b0789c
+015b47fc  mov w8,#0x1
+015b4800  strb w8,[x19, #0xba]
+015b4804  ldr x0,[x20]
+015b4808  bl 0x00b079a0
+015b480c  cbz x0,0x015b4840
+015b4810  mov x1,xzr
+015b4814  mov x19,x0
+015b4818  bl 0x02194104
+015b481c  ldr x8,[x20]
+015b4820  mov x1,x19
+015b4824  ldr x8,[x8, #0xb8]
+015b4828  str x19,[x8]
+015b482c  ldr x8,[x20]
+015b4830  ldp x19,x30,[sp, #0x10]
+015b4834  ldr x0,[x8, #0xb8]
+015b4838  ldr x20,[sp], #0x20
+015b483c  b 0x00b07850
+015b4840  bl 0x00b079b0

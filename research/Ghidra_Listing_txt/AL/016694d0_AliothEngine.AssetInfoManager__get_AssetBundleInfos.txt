@@ -1,0 +1,40 @@
+Function: AliothEngine.AssetInfoManager$$get_AssetBundleInfos @ 016694d0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp820 @ 010cb2b4
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$SetAssetBundleInfo @ 01669d08
+  <- AliothEngine.GameUpdateService$$<StartGetAssetNeedUpdate>b__58_0 @ 0167fd60
+  <- AliothEngine.GameUpdateService$$SaveLatestVersion @ 0167daa0
+  <- AliothEngine.GameUpdateService$$CalDownloadInfo @ 0167e3dc
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_g_get_AssetBundleInfos @ 0113d654
+
+--- Listing ---
+016694d0  stp x21,x20,[sp, #-0x20]!
+016694d4  stp x19,x30,[sp, #0x10]
+016694d8  adrp x20,0x3577000
+016694dc  adrp x21,0x334f000
+016694e0  ldrb w8,[x20, #0x914]
+016694e4  ldr x21,[x21, #0xaf8]
+016694e8  mov x19,x0
+016694ec  tbnz w8,#0x0,0x01669504
+016694f0  adrp x0,0x334f000
+016694f4  ldr x0,[x0, #0xaf8]
+016694f8  bl 0x00b0789c
+016694fc  mov w8,#0x1
+01669500  strb w8,[x20, #0x914]
+01669504  ldr x8,[x21]
+01669508  ldr x8,[x8, #0xb8]
+0166950c  ldr x0,[x8, #0x70]
+01669510  cbz x0,0x01669528
+01669514  mov x1,x19
+01669518  ldp x19,x30,[sp, #0x10]
+0166951c  mov x2,xzr
+01669520  ldp x21,x20,[sp], #0x20
+01669524  b 0x010cb2b4
+01669528  ldr x0,[x19, #0x30]
+0166952c  ldp x19,x30,[sp, #0x10]
+01669530  ldp x21,x20,[sp], #0x20
+01669534  ret

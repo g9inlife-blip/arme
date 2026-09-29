@@ -1,0 +1,36 @@
+Function: AliothEngine.IStoreManager$$get_IsLoading @ 016588b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineIStoreManagerWrap$$_g_get_IsLoading @ 0115c5cc
+
+--- Listing ---
+016588b0  stp x21,x20,[sp, #-0x20]!
+016588b4  stp x19,x30,[sp, #0x10]
+016588b8  adrp x20,0x3577000
+016588bc  adrp x21,0x336f000
+016588c0  ldrb w8,[x20, #0x838]
+016588c4  ldr x21,[x21, #0x1e8]
+016588c8  mov x19,x0
+016588cc  tbnz w8,#0x0,0x016588e4
+016588d0  adrp x0,0x336f000
+016588d4  ldr x0,[x0, #0x1e8]
+016588d8  bl 0x00b0789c
+016588dc  mov w8,#0x1
+016588e0  strb w8,[x20, #0x838]
+016588e4  ldr x8,[x21]
+016588e8  ldr x8,[x8, #0xb8]
+016588ec  ldr x0,[x8]
+016588f0  cbz x0,0x01658908
+016588f4  mov x1,x19
+016588f8  ldp x19,x30,[sp, #0x10]
+016588fc  mov x2,xzr
+01658900  ldp x21,x20,[sp], #0x20
+01658904  b 0x01060aac
+01658908  ldrb w0,[x19, #0x40]
+0165890c  ldp x19,x30,[sp, #0x10]
+01658910  ldp x21,x20,[sp], #0x20
+01658914  ret

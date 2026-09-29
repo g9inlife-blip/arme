@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.TransformExtensions$$ScaleByY @ 016ba824
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_localScale @ 024f41b4
+  -> UnityEngine.Transform$$set_localScale @ 024f4254
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ba824  str d10,[sp, #-0x30]!
+016ba828  stp d9,d8,[sp, #0x10]
+016ba82c  stp x19,x30,[sp, #0x20]
+016ba830  cbz x0,0x016ba884
+016ba834  mov x1,xzr
+016ba838  mov v8.16B,v0.16B
+016ba83c  mov x19,x0
+016ba840  bl 0x024f41b4
+016ba844  mov x0,x19
+016ba848  mov x1,xzr
+016ba84c  mov v9.16B,v0.16B
+016ba850  bl 0x024f41b4
+016ba854  mov x0,x19
+016ba858  mov x1,xzr
+016ba85c  mov v10.16B,v1.16B
+016ba860  bl 0x024f41b4
+016ba864  fmul s1,s10,s8
+016ba868  mov x0,x19
+016ba86c  mov v0.16B,v9.16B
+016ba870  ldp x19,x30,[sp, #0x20]
+016ba874  ldp d9,d8,[sp, #0x10]
+016ba878  mov x1,xzr
+016ba87c  ldr d10,[sp], #0x30
+016ba880  b 0x024f4254
+016ba884  bl 0x00b079b0

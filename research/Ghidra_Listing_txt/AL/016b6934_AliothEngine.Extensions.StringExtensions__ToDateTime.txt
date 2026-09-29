@@ -1,0 +1,59 @@
+Function: AliothEngine.Extensions.StringExtensions$$ToDateTime @ 016b6934
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.DateTime$$ParseExact @ 02134264
+  -> System.Globalization.CultureInfo$$get_InvariantCulture @ 02117234
+
+--- Calls IN ---
+
+--- Listing ---
+016b6934  stp x21,x20,[sp, #-0x20]!
+016b6938  stp x19,x30,[sp, #0x10]
+016b693c  adrp x20,0x3577000
+016b6940  adrp x21,0x3360000
+016b6944  ldrb w8,[x20, #0xc0f]
+016b6948  ldr x21,[x21, #0x28]
+016b694c  mov x19,x0
+016b6950  tbnz w8,#0x0,0x016b6980
+016b6954  adrp x0,0x3360000
+016b6958  ldr x0,[x0, #0x28]
+016b695c  bl 0x00b0789c
+016b6960  adrp x0,0x336f000
+016b6964  ldr x0,[x0, #0xdc8]
+016b6968  bl 0x00b0789c
+016b696c  adrp x0,0x331a000
+016b6970  ldr x0,[x0, #0x118]
+016b6974  bl 0x00b0789c
+016b6978  mov w8,#0x1
+016b697c  strb w8,[x20, #0xc0f]
+016b6980  ldr x0,[x21]
+016b6984  ldr w8,[x0, #0xe0]
+016b6988  cbnz w8,0x016b6990
+016b698c  bl 0x00b0798c
+    ; [PRE] try { // try from 016b698c to 016b698f has its CatchHandler @ 016b69dc
+    ; [POST] } // end try from 016b698c to 016b698f
+016b6990  mov x0,xzr
+    ; [PRE] try { // try from 016b6990 to 016b69b3 has its CatchHandler @ 016b69e4
+016b6994  bl 0x02117234
+016b6998  adrp x8,0x336f000
+016b699c  ldr x8,[x8, #0xdc8]
+016b69a0  mov x20,x0
+016b69a4  ldr x0,[x8]
+016b69a8  ldr w8,[x0, #0xe0]
+016b69ac  cbnz w8,0x016b69b4
+016b69b0  bl 0x00b0798c
+    ; [POST] } // end try from 016b6990 to 016b69b3
+016b69b4  adrp x8,0x331a000
+016b69b8  ldr x8,[x8, #0x118]
+016b69bc  ldr x1,[x8]
+016b69c0  mov x0,x19
+    ; [PRE] try { // try from 016b69c0 to 016b69cf has its CatchHandler @ 016b69e0
+016b69c4  mov x2,x20
+016b69c8  mov x3,xzr
+016b69cc  bl 0x02134264
+    ; [POST] } // end try from 016b69c0 to 016b69cf
+016b69d0  ldp x19,x30,[sp, #0x10]
+016b69d4  ldp x21,x20,[sp], #0x20
+016b69d8  ret

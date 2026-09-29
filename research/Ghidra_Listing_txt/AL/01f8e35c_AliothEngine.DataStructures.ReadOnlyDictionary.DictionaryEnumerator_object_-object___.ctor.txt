@@ -1,0 +1,79 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.DictionaryEnumerator<object,-object>$$.ctor @ 01f8e35c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b2ac40 @ 00b2ac40
+  -> System.ArgumentNullException$$.ctor @ 020cf888
+
+--- Calls IN ---
+  <- FUN_009b2638 @ 009b2638
+  <- AliothEngine.DataStructures.ReadOnlyDictionary<object,-object>$$GetEnumerator @ 01dfab9c
+
+--- Listing ---
+01f8e35c  str x20,[sp, #-0x20]!
+01f8e360  stp x19,x30,[sp, #0x10]
+01f8e364  cbz x1,0x01f8e408
+01f8e368  mov x19,x0
+01f8e36c  ldr x0,[x2, #0x20]
+01f8e370  mov x20,x1
+01f8e374  ldrb w8,[x0, #0x132]
+01f8e378  tbnz w8,#0x0,0x01f8e380
+01f8e37c  bl 0x00b2ac40
+01f8e380  ldr x8,[x0, #0xc0]
+01f8e384  ldr x1,[x8, #0x20]
+01f8e388  ldrb w8,[x1, #0x132]
+01f8e38c  tbnz w8,#0x0,0x01f8e39c
+01f8e390  mov x0,x1
+01f8e394  bl 0x00b2ac40
+01f8e398  mov x1,x0
+01f8e39c  ldr x8,[x20]
+01f8e3a0  ldrh w9,[x8, #0x12a]
+01f8e3a4  cbz x9,0x01f8e3c8
+01f8e3a8  ldr x10,[x8, #0xb0]
+01f8e3ac  add x10,x10,#0x8
+01f8e3b0  ldur x11,[x10, #-0x8]
+01f8e3b4  cmp x11,x1
+01f8e3b8  b.eq 0x01f8e3d8
+01f8e3bc  subs x9,x9,#0x1
+01f8e3c0  add x10,x10,#0x10
+01f8e3c4  b.ne 0x01f8e3b0
+01f8e3c8  mov x0,x20
+01f8e3cc  mov w2,wzr
+01f8e3d0  bl 0x00b2ae24
+01f8e3d4  b 0x01f8e3e4
+01f8e3d8  ldrsw x9,[x10]
+01f8e3dc  add x8,x8,x9, LSL #0x4
+01f8e3e0  add x0,x8,#0x138
+01f8e3e4  ldp x8,x1,[x0]
+01f8e3e8  mov x0,x20
+01f8e3ec  blr x8
+01f8e3f0  str x0,[x19]
+01f8e3f4  mov x1,x0
+01f8e3f8  mov x0,x19
+01f8e3fc  ldp x19,x30,[sp, #0x10]
+01f8e400  ldr x20,[sp], #0x20
+01f8e404  b 0x00b07850
+01f8e408  adrp x0,0x3310000
+01f8e40c  ldr x0,[x0, #0xd90]
+01f8e410  bl 0x00b078a0
+01f8e414  bl 0x00b079a0
+01f8e418  mov x19,x0
+01f8e41c  bl 0x008d74f8
+01f8e420  adrp x0,0x332f000
+01f8e424  ldr x0,[x0, #0x670]
+01f8e428  bl 0x00b078a0
+01f8e42c  mov x1,x0
+01f8e430  mov x0,x19
+01f8e434  mov x2,xzr
+01f8e438  bl 0x020cf888
+01f8e43c  adrp x0,0x333f000
+01f8e440  ldr x0,[x0, #0xe48]
+01f8e444  bl 0x00b078a0
+01f8e448  mov x1,x0
+01f8e44c  mov x0,x19
+01f8e450  bl 0x00b07978

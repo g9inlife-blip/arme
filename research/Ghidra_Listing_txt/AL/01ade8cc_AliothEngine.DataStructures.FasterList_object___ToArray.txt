@@ -1,0 +1,36 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$ToArray @ 01ade8cc
+
+--- Calls OUT ---
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Array$$Copy @ 02173e94
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- NetFXCoreWrappers$$FindWritablePropertiesWithCustomAttribute @ 00dbcca0
+
+--- Listing ---
+01ade8cc  str x20,[sp, #-0x20]!
+01ade8d0  stp x19,x30,[sp, #0x10]
+01ade8d4  ldr x8,[x1, #0x20]
+01ade8d8  mov x19,x0
+01ade8dc  ldr w20,[x19, #0x18]
+01ade8e0  ldr x8,[x8, #0xc0]
+01ade8e4  ldr x0,[x8]
+01ade8e8  ldrb w8,[x0, #0x132]
+01ade8ec  tbnz w8,#0x0,0x01ade8f4
+01ade8f0  bl 0x00b2ac40
+01ade8f4  mov w1,w20
+01ade8f8  bl 0x00b078f8
+01ade8fc  ldr x8,[x19, #0x10]
+01ade900  ldr w4,[x19, #0x18]
+01ade904  mov x19,x0
+01ade908  mov w1,wzr
+01ade90c  mov x0,x8
+01ade910  mov x2,x19
+01ade914  mov w3,wzr
+01ade918  mov x5,xzr
+01ade91c  bl 0x02173e94
+01ade920  mov x0,x19
+01ade924  ldp x19,x30,[sp, #0x10]
+01ade928  ldr x20,[sp], #0x20
+01ade92c  ret

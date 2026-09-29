@@ -1,0 +1,111 @@
+Function: AliothEngine.ViewModels.ViewModel$$SetDirty @ 016a945c
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List.Enumerator<object>$$Dispose @ 01a070e8
+  -> System.Collections.Generic.List<object>$$GetEnumerator @ 01c01338
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.ViewModels.ViewModel$$SetDirty @ 016a945c
+
+--- Calls IN ---
+  <- AliothEngine.ViewModels.ViewModel$$SetDirty @ 016a945c
+
+--- Listing ---
+016a945c  sub sp,sp,#0x70
+016a9460  stp x23,x22,[sp, #0x40]
+016a9464  stp x21,x20,[sp, #0x50]
+016a9468  stp x19,x30,[sp, #0x60]
+016a946c  adrp x20,0x3577000
+016a9470  ldrb w8,[x20, #0xb9f]
+016a9474  mov x19,x0
+016a9478  tbnz w8,#0x0,0x016a94c0
+016a947c  adrp x0,0x3324000
+016a9480  ldr x0,[x0, #0xfb0]
+016a9484  bl 0x00b0789c
+016a9488  adrp x0,0x3349000
+016a948c  ldr x0,[x0, #0x640]
+016a9490  bl 0x00b0789c
+016a9494  adrp x0,0x330d000
+016a9498  ldr x0,[x0, #0x2e0]
+016a949c  bl 0x00b0789c
+016a94a0  adrp x0,0x3351000
+016a94a4  ldr x0,[x0, #0x488]
+016a94a8  bl 0x00b0789c
+016a94ac  adrp x0,0x3345000
+016a94b0  ldr x0,[x0, #0x508]
+016a94b4  bl 0x00b0789c
+016a94b8  mov w8,#0x1
+016a94bc  strb w8,[x20, #0xb9f]
+016a94c0  stp xzr,xzr,[sp, #0x28]
+016a94c4  str xzr,[sp, #0x20]
+016a94c8  ldr w8,[x19, #0x20]
+016a94cc  ldr x0,[x19, #0x10]
+016a94d0  add w8,w8,#0x1
+016a94d4  str w8,[x19, #0x20]
+016a94d8  cbz x0,0x016a95c0
+016a94dc  adrp x8,0x3345000
+016a94e0  ldr x8,[x8, #0x508]
+016a94e4  adrp x22,0x3349000
+016a94e8  adrp x23,0x3351000
+016a94ec  adrp x21,0x3324000
+016a94f0  ldr x1,[x8]
+016a94f4  ldr x22,[x22, #0x640]
+016a94f8  ldr x23,[x23, #0x488]
+016a94fc  ldr x21,[x21, #0xfb0]
+016a9500  add x8,sp,#0x8
+016a9504  bl 0x01c01338
+016a9508  ldur q0,[sp, #0x8]
+016a950c  ldr x8,[sp, #0x18]
+016a9510  str q0,[sp, #0x20]
+016a9514  str x8,[sp, #0x30]
+016a9518  ldr x1,[x22]
+016a951c  add x0,sp,#0x20
+    ; [PRE] try { // try from 016a951c to 016a9523 has its CatchHandler @ 016a95c8
+016a9520  bl 0x01a070ec
+    ; [POST] } // end try from 016a951c to 016a9523
+016a9524  tbz w0,#0x0,0x016a958c
+016a9528  ldr x20,[sp, #0x30]
+016a952c  cbz x20,0x016a95b8
+016a9530  ldr x8,[x20]
+016a9534  ldr x1,[x23]
+016a9538  ldrh w9,[x8, #0x12a]
+016a953c  cbz x9,0x016a9560
+016a9540  ldr x10,[x8, #0xb0]
+016a9544  add x10,x10,#0x8
+016a9548  ldur x11,[x10, #-0x8]
+016a954c  cmp x11,x1
+016a9550  b.eq 0x016a9570
+016a9554  subs x9,x9,#0x1
+016a9558  add x10,x10,#0x10
+016a955c  b.ne 0x016a9548
+016a9560  mov x0,x20
+    ; [PRE] try { // try from 016a9560 to 016a9587 has its CatchHandler @ 016a95cc
+016a9564  mov w2,wzr
+016a9568  bl 0x00b2ae24
+016a956c  b 0x016a957c
+016a9570  ldrsw x9,[x10]
+016a9574  add x8,x8,x9, LSL #0x4
+016a9578  add x0,x8,#0x138
+016a957c  ldp x8,x1,[x0]
+016a9580  mov x0,x20
+016a9584  blr x8
+    ; [POST] } // end try from 016a9560 to 016a9587
+016a9588  b 0x016a9518
+016a958c  ldr x1,[x21]
+016a9590  add x0,sp,#0x20
+016a9594  bl 0x01a070e8
+016a9598  ldr x0,[x19, #0x18]
+016a959c  cbz x0,0x016a95a4
+016a95a0  bl 0x016a945c
+016a95a4  ldp x19,x30,[sp, #0x60]
+016a95a8  ldp x21,x20,[sp, #0x50]
+016a95ac  ldp x23,x22,[sp, #0x40]
+016a95b0  add sp,sp,#0x70
+016a95b4  ret
+016a95b8  mov x22,x21
+    ; [PRE] try { // try from 016a95b8 to 016a95bf has its CatchHandler @ 016a95c4
+016a95bc  bl 0x00b079b0
+    ; [POST] } // end try from 016a95b8 to 016a95bf
+016a95c0  bl 0x00b079b0

@@ -1,0 +1,47 @@
+Function: AliothEngine.AssetInfoManager$$InitializeResources @ 016680f8
+
+--- Calls OUT ---
+  -> AliothEngine.AssetInfoManager$$LoadNativeFromResources @ 01668184
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.AliothEngineInitialize$$InitSync @ 01649b44
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_m_InitializeResources @ 0113b9a4
+
+--- Listing ---
+016680f8  stp x21,x20,[sp, #-0x20]!
+016680fc  stp x19,x30,[sp, #0x10]
+01668100  adrp x20,0x3577000
+01668104  adrp x21,0x334f000
+01668108  ldrb w8,[x20, #0x90c]
+0166810c  ldr x21,[x21, #0xaf8]
+01668110  mov x19,x0
+01668114  tbnz w8,#0x0,0x01668138
+01668118  adrp x0,0x334f000
+0166811c  ldr x0,[x0, #0xaf8]
+01668120  bl 0x00b0789c
+01668124  adrp x0,0x3312000
+01668128  ldr x0,[x0, #0xd00]
+0166812c  bl 0x00b0789c
+01668130  mov w8,#0x1
+01668134  strb w8,[x20, #0x90c]
+01668138  ldr x8,[x21]
+0166813c  ldr x8,[x8, #0xb8]
+01668140  ldr x0,[x8, #0x30]
+01668144  cbz x0,0x0166815c
+01668148  mov x1,x19
+0166814c  ldp x19,x30,[sp, #0x10]
+01668150  mov x2,xzr
+01668154  ldp x21,x20,[sp], #0x20
+01668158  b 0x01060dac
+0166815c  adrp x8,0x3312000
+01668160  ldr x8,[x8, #0xd00]
+01668164  mov x0,x19
+01668168  ldr x1,[x8]
+0166816c  bl 0x01668184
+01668170  mov w8,#0x1
+01668174  strb w8,[x19, #0x19]
+01668178  ldp x19,x30,[sp, #0x10]
+0166817c  ldp x21,x20,[sp], #0x20
+01668180  ret

@@ -1,0 +1,63 @@
+Function: AliothEngine.GUIScreen$$OnKeyBack @ 016722f8
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreenManager$$PopScreen @ 016723c8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016722f8  stp x21,x20,[sp, #-0x20]!
+016722fc  stp x19,x30,[sp, #0x10]
+01672300  adrp x20,0x3577000
+01672304  adrp x21,0x3364000
+01672308  ldrb w8,[x20, #0x995]
+0167230c  ldr x21,[x21, #0xd28]
+01672310  mov x19,x0
+01672314  tbnz w8,#0x0,0x01672338
+01672318  adrp x0,0x337b000
+0167231c  ldr x0,[x0, #0xb98]
+01672320  bl 0x00b0789c
+01672324  adrp x0,0x3364000
+01672328  ldr x0,[x0, #0xd28]
+0167232c  bl 0x00b0789c
+01672330  mov w8,#0x1
+01672334  strb w8,[x20, #0x995]
+01672338  ldr x8,[x21]
+0167233c  ldr x8,[x8, #0xb8]
+01672340  ldr x0,[x8, #0x120]
+01672344  cbz x0,0x0167235c
+01672348  mov x1,x19
+0167234c  ldp x19,x30,[sp, #0x10]
+01672350  mov x2,xzr
+01672354  ldp x21,x20,[sp], #0x20
+01672358  b 0x01060dac
+0167235c  ldr x8,[x19]
+01672360  mov x0,x19
+01672364  ldr x9,[x8, #0x208]
+01672368  ldr x1,[x8, #0x210]
+0167236c  blr x9
+01672370  cmp w0,#0x2
+01672374  b.ne 0x016723a0
+01672378  ldr x8,[x19]
+0167237c  mov x0,x19
+01672380  ldr x9,[x8, #0x208]
+01672384  ldr x1,[x8, #0x210]
+01672388  blr x9
+0167238c  cmp w0,#0x8
+01672390  b.ne 0x016723a0
+01672394  ldp x19,x30,[sp, #0x10]
+01672398  ldp x21,x20,[sp], #0x20
+0167239c  ret
+016723a0  adrp x8,0x337b000
+016723a4  ldr x8,[x8, #0xb98]
+016723a8  ldr x0,[x8]
+016723ac  ldr w8,[x0, #0xe0]
+016723b0  cbnz w8,0x016723b8
+016723b4  bl 0x00b0798c
+016723b8  ldp x19,x30,[sp, #0x10]
+016723bc  mov w0,wzr
+016723c0  ldp x21,x20,[sp], #0x20
+016723c4  b 0x016723c8

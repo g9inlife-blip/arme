@@ -1,0 +1,81 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$Parse @ 016a1478
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00aaac8c @ 00aaac8c
+  -> AliothEngine.MiniJSON.Json.Parser$$.ctor @ 016a171c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.MiniJSON.Json.Parser$$get_NextToken @ 016a1c1c
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseByToken @ 016a2168
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json$$Deserialize @ 016a146c
+
+--- Listing ---
+016a1478  str x22,[sp, #-0x30]!
+016a147c  stp x21,x20,[sp, #0x10]
+016a1480  stp x19,x30,[sp, #0x20]
+016a1484  adrp x19,0x3577000
+016a1488  adrp x21,0x3321000
+016a148c  ldrb w8,[x19, #0xb6a]
+016a1490  ldr x21,[x21, #0x258]
+016a1494  mov x20,x0
+016a1498  tbnz w8,#0x0,0x016a14bc
+016a149c  adrp x0,0x337d000
+016a14a0  ldr x0,[x0, #0x848]
+016a14a4  bl 0x00b0789c
+016a14a8  adrp x0,0x3321000
+016a14ac  ldr x0,[x0, #0x258]
+016a14b0  bl 0x00b0789c
+016a14b4  mov w8,#0x1
+016a14b8  strb w8,[x19, #0xb6a]
+016a14bc  ldr x0,[x21]
+016a14c0  bl 0x00b079a0
+016a14c4  cbz x0,0x016a1568
+016a14c8  adrp x22,0x337d000
+016a14cc  ldr x22,[x22, #0x848]
+016a14d0  mov x1,x20
+016a14d4  mov x19,x0
+016a14d8  bl 0x016a171c
+016a14dc  mov x0,x19
+    ; [PRE] try { // try from 016a14dc to 016a14ef has its CatchHandler @ 016a1574
+016a14e0  bl 0x016a1c1c
+016a14e4  mov w1,w0
+016a14e8  mov x0,x19
+016a14ec  bl 0x016a2168
+    ; [POST] } // end try from 016a14dc to 016a14ef
+016a14f0  mov x21,x0
+016a14f4  mov x20,xzr
+016a14f8  ldr x8,[x19]
+016a14fc  ldr x1,[x22]
+016a1500  ldrh w9,[x8, #0x12a]
+016a1504  cbz x9,0x016a1528
+016a1508  ldr x10,[x8, #0xb0]
+016a150c  add x10,x10,#0x8
+016a1510  ldur x11,[x10, #-0x8]
+016a1514  cmp x11,x1
+016a1518  b.eq 0x016a1538
+016a151c  subs x9,x9,#0x1
+016a1520  add x10,x10,#0x10
+016a1524  b.ne 0x016a1510
+016a1528  mov x0,x19
+016a152c  mov w2,wzr
+016a1530  bl 0x00b2ae24
+016a1534  b 0x016a1544
+016a1538  ldrsw x9,[x10]
+016a153c  add x8,x8,x9, LSL #0x4
+016a1540  add x0,x8,#0x138
+016a1544  ldp x8,x1,[x0]
+016a1548  mov x0,x19
+016a154c  blr x8
+016a1550  cbnz x20,0x016a156c
+016a1554  mov x0,x21
+016a1558  ldp x19,x30,[sp, #0x20]
+016a155c  ldp x21,x20,[sp, #0x10]
+016a1560  ldr x22,[sp], #0x30
+016a1564  ret
+016a1568  bl 0x00b079b0
+016a156c  mov x0,x20
+016a1570  bl 0x00aaac8c

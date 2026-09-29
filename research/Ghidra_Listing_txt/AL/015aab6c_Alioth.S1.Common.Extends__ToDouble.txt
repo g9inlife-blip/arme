@@ -1,0 +1,74 @@
+Function: Alioth.S1.Common.Extends$$ToDouble @ 015aab6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.BitConverter$$ToDouble @ 020d889c
+  -> System.Array$$Reverse<byte> @ 018e24f0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Buffer$$BlockCopy @ 0217cb44
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+015aab6c  str x22,[sp, #-0x30]!
+015aab70  stp x21,x20,[sp, #0x10]
+015aab74  stp x19,x30,[sp, #0x20]
+015aab78  adrp x19,0x3577000
+015aab7c  adrp x22,0x334f000
+015aab80  ldrb w8,[x19, #0x84]
+015aab84  ldr x22,[x22, #0x28]
+015aab88  mov w20,w1
+015aab8c  mov x21,x0
+015aab90  tbnz w8,#0x0,0x015aabc0
+015aab94  adrp x0,0x332f000
+015aab98  ldr x0,[x0, #0x428]
+015aab9c  bl 0x00b0789c
+015aaba0  adrp x0,0x3334000
+015aaba4  ldr x0,[x0, #0x1f0]
+015aaba8  bl 0x00b0789c
+015aabac  adrp x0,0x334f000
+015aabb0  ldr x0,[x0, #0x28]
+015aabb4  bl 0x00b0789c
+015aabb8  mov w8,#0x1
+015aabbc  strb w8,[x19, #0x84]
+015aabc0  ldr x0,[x22]
+015aabc4  mov w1,#0x8
+015aabc8  bl 0x00b078f8
+015aabcc  cbz x0,0x015aac58
+015aabd0  ldr w4,[x0, #0x18]
+015aabd4  adrp x22,0x3334000
+015aabd8  ldr x22,[x22, #0x1f0]
+015aabdc  mov x19,x0
+015aabe0  mov x0,x21
+015aabe4  mov w1,w20
+015aabe8  mov x2,x19
+015aabec  mov w3,wzr
+015aabf0  mov x5,xzr
+015aabf4  bl 0x0217cb44
+015aabf8  ldr x0,[x22]
+015aabfc  ldr w8,[x0, #0xe0]
+015aac00  cbnz w8,0x015aac0c
+015aac04  bl 0x00b0798c
+015aac08  ldr x0,[x22]
+015aac0c  ldr x8,[x0, #0xb8]
+015aac10  ldrb w8,[x8]
+015aac14  cbz w8,0x015aac30
+015aac18  adrp x8,0x332f000
+015aac1c  ldr x8,[x8, #0x428]
+015aac20  mov x0,x19
+015aac24  ldr x1,[x8]
+015aac28  bl 0x018e24f0
+015aac2c  ldr x0,[x22]
+015aac30  ldr w8,[x0, #0xe0]
+015aac34  cbnz w8,0x015aac3c
+015aac38  bl 0x00b0798c
+015aac3c  mov x0,x19
+015aac40  ldp x19,x30,[sp, #0x20]
+015aac44  ldp x21,x20,[sp, #0x10]
+015aac48  mov w1,wzr
+015aac4c  mov x2,xzr
+015aac50  ldr x22,[sp], #0x30
+015aac54  b 0x020d889c
+015aac58  bl 0x00b079b0

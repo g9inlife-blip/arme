@@ -1,0 +1,43 @@
+Function: AliothEngine.PathUtils$$CleanPathSeparators @ 0168e384
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.StringExtensions$$IsUnderDirectory @ 016b6fcc
+  <- AliothEngine.PathUtils$$IsUnderDirectory @ 0168eefc
+  <- AliothEngine.PathUtils$$GetRelativeAssetPathFromFullPath @ 01690d94
+  <- AliothEngine.FileUtility$$GetResourcesDirectories @ 0168dfe8
+  <- AliothEngine.FileUtility$$IsStreamingAssetFile @ 0168ee88
+  <- AliothEngine.AssetFileInfo$$.ctor @ 01667058
+
+--- Listing ---
+0168e384  str x20,[sp, #-0x20]!
+0168e388  stp x19,x30,[sp, #0x10]
+0168e38c  adrp x20,0x3577000
+0168e390  ldrb w8,[x20, #0xadb]
+0168e394  mov x19,x0
+0168e398  tbnz w8,#0x0,0x0168e3bc
+0168e39c  adrp x0,0x334a000
+0168e3a0  ldr x0,[x0, #0xa0]
+0168e3a4  bl 0x00b0789c
+0168e3a8  adrp x0,0x3321000
+0168e3ac  ldr x0,[x0, #0x9e0]
+0168e3b0  bl 0x00b0789c
+0168e3b4  mov w8,#0x1
+0168e3b8  strb w8,[x20, #0xadb]
+0168e3bc  cbz x19,0x0168e3ec
+0168e3c0  adrp x8,0x334a000
+0168e3c4  adrp x9,0x3321000
+0168e3c8  ldr x8,[x8, #0xa0]
+0168e3cc  ldr x9,[x9, #0x9e0]
+0168e3d0  mov x0,x19
+0168e3d4  ldp x19,x30,[sp, #0x10]
+0168e3d8  ldr x1,[x8]
+0168e3dc  ldr x2,[x9]
+0168e3e0  mov x3,xzr
+0168e3e4  ldr x20,[sp], #0x20
+0168e3e8  b 0x01fe06d8
+0168e3ec  bl 0x00b079b0

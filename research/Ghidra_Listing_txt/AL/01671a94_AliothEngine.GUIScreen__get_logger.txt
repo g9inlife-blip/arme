@@ -1,0 +1,46 @@
+Function: AliothEngine.GUIScreen$$get_logger @ 01671a94
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp283 @ 01083dd8
+  -> AliothEngine.LogManager$$get_UILogger @ 0168a490
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreen$$OnClosed @ 01671df8
+  <- AliothEngine.GUIScreen$$OnBeingStacked @ 016726ac
+  <- AliothEngine.GUIScreen$$OnOpening @ 016718d0
+  <- GUIScreenBaseMono$$PreloadComplete @ 00f2197c
+  <- AliothEngine.GUIScreen$$OnRegainedTop @ 0167255c
+  <- AliothEngine.GUIScreen$$OnClosing @ 01671c70
+  <- AliothEngine.GUIScreen_Overlay$$OnEnable @ 0167c8d4
+  <- AliothEngine.GUIScreen$$OnOpened @ 01671af8
+  <- AliothEngine.GUIScreen$$OnShowing @ 01671fd4
+  <- AliothEngine.GUIScreen_Overlay$$OnDisable @ 0167c9b8
+  <- AliothEngine.GUIScreen$$OnHiding @ 01672130
+
+--- Listing ---
+01671a94  stp x21,x20,[sp, #-0x20]!
+01671a98  stp x19,x30,[sp, #0x10]
+01671a9c  adrp x20,0x3577000
+01671aa0  adrp x21,0x3364000
+01671aa4  ldrb w8,[x20, #0x99a]
+01671aa8  ldr x21,[x21, #0xd28]
+01671aac  mov x19,x0
+01671ab0  tbnz w8,#0x0,0x01671ac8
+01671ab4  adrp x0,0x3364000
+01671ab8  ldr x0,[x0, #0xd28]
+01671abc  bl 0x00b0789c
+01671ac0  mov w8,#0x1
+01671ac4  strb w8,[x20, #0x99a]
+01671ac8  ldr x8,[x21]
+01671acc  ldr x8,[x8, #0xb8]
+01671ad0  ldr x0,[x8, #0x148]
+01671ad4  cbz x0,0x01671aec
+01671ad8  mov x1,x19
+01671adc  ldp x19,x30,[sp, #0x10]
+01671ae0  mov x2,xzr
+01671ae4  ldp x21,x20,[sp], #0x20
+01671ae8  b 0x01083dd8
+01671aec  ldp x19,x30,[sp, #0x10]
+01671af0  ldp x21,x20,[sp], #0x20
+01671af4  b 0x0168a490

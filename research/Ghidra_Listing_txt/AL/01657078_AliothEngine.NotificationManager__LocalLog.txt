@@ -1,0 +1,59 @@
+Function: AliothEngine.NotificationManager$$LocalLog @ 01657078
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> UnityEngine.Debug$$Log @ 024c0104
+  -> System.String$$Format @ 01fdf82c
+
+--- Calls IN ---
+  <- AliothEngine.NotificationManager$$ClearAllLocalNotifications @ 016574ec
+  <- AliothEngine.NotificationManager$$DoOnApplicationPause @ 016577dc
+  <- AliothEngine.NotificationManager$$ClearLocalNotification @ 01657360
+  <- AliothEngine.NotificationManager$$ScheduleLocalNotification @ 01656dc4
+  <- AliothEngine.NotificationManager$$OnApplicationPause @ 016571c0
+  <- AliothEngine.NotificationManager$$Register @ 01657608
+
+--- Listing ---
+01657078  stp x23,x22,[sp, #-0x30]!
+0165707c  stp x21,x20,[sp, #0x10]
+01657080  stp x19,x30,[sp, #0x20]
+01657084  adrp x23,0x3577000
+01657088  adrp x22,0x3328000
+0165708c  adrp x21,0x336b000
+01657090  ldrb w8,[x23, #0x823]
+01657094  ldr x22,[x22, #0x240]
+01657098  ldr x21,[x21, #0x7d0]
+0165709c  mov x19,x1
+016570a0  mov x20,x0
+016570a4  tbnz w8,#0x0,0x016570c8
+016570a8  adrp x0,0x336b000
+016570ac  ldr x0,[x0, #0x7d0]
+016570b0  bl 0x00b0789c
+016570b4  adrp x0,0x3328000
+016570b8  ldr x0,[x0, #0x240]
+016570bc  bl 0x00b0789c
+016570c0  mov w8,#0x1
+016570c4  strb w8,[x23, #0x823]
+016570c8  mov x0,x20
+016570cc  mov x1,x19
+016570d0  mov x2,xzr
+016570d4  bl 0x01fdf82c
+016570d8  ldr x8,[x22]
+016570dc  mov x1,x0
+016570e0  mov x2,xzr
+016570e4  mov x0,x8
+016570e8  bl 0x01fd2850
+016570ec  ldr x8,[x21]
+016570f0  mov x19,x0
+016570f4  ldr w9,[x8, #0xe0]
+016570f8  cbnz w9,0x01657104
+016570fc  mov x0,x8
+01657100  bl 0x00b0798c
+01657104  mov x0,x19
+01657108  ldp x19,x30,[sp, #0x20]
+0165710c  ldp x21,x20,[sp, #0x10]
+01657110  mov x1,xzr
+01657114  ldp x23,x22,[sp], #0x30
+01657118  b 0x024c0104

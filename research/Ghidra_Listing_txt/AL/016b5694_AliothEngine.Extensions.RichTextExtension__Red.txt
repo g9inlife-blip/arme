@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Red @ 016b5694
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.RichTextExtension$$Color @ 016b5170
+
+--- Calls IN ---
+  <- AIUnit$$CalNewAIATKInfo @ 00ec9864
+  <- WeaponUpgradePanelMono$$RefreshMaterial @ 00f61074
+  <- BoxResultPanelMono$$ShowItem @ 00e9f568
+  <- EquipUpPanelMono$$ShowDetail @ 00edbacc
+  <- PositionTargetWithEnemy$$ToString @ 00ebf440
+  <- EquipUpPanelMono$$RefreshMaterial @ 00edd1c0
+
+--- Listing ---
+016b5694  stp x21,x20,[sp, #-0x20]!
+016b5698  stp x19,x30,[sp, #0x10]
+016b569c  adrp x20,0x3577000
+016b56a0  adrp x21,0x3377000
+016b56a4  ldrb w8,[x20, #0xc02]
+016b56a8  ldr x21,[x21, #0xa18]
+016b56ac  mov x19,x0
+016b56b0  tbnz w8,#0x0,0x016b56c8
+016b56b4  adrp x0,0x3377000
+016b56b8  ldr x0,[x0, #0xa18]
+016b56bc  bl 0x00b0789c
+016b56c0  mov w8,#0x1
+016b56c4  strb w8,[x20, #0xc02]
+016b56c8  ldr x1,[x21]
+016b56cc  mov x0,x19
+016b56d0  ldp x19,x30,[sp, #0x10]
+016b56d4  ldp x21,x20,[sp], #0x20
+016b56d8  b 0x016b5170

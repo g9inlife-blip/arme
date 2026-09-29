@@ -1,0 +1,27 @@
+Function: AliothEngine.GUIScreenLoaderParams$$.ctor @ 016733d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_LoadScreen @ 01673958
+
+--- Listing ---
+016733d4  stp x21,x20,[sp, #-0x20]!
+016733d8  stp x19,x30,[sp, #0x10]
+016733dc  mov x20,x1
+016733e0  mov x1,xzr
+016733e4  mov x19,x2
+016733e8  mov x21,x0
+016733ec  bl 0x02194104
+016733f0  mov x0,x21
+016733f4  str x20,[x0, #0x18]!
+016733f8  mov x1,x20
+016733fc  bl 0x00b07850
+01673400  str x19,[x21, #0x10]!
+01673404  mov x1,x19
+01673408  ldp x19,x30,[sp, #0x10]
+0167340c  mov x0,x21
+01673410  ldp x21,x20,[sp], #0x20
+01673414  b 0x00b07850

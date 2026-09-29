@@ -1,0 +1,52 @@
+Function: AliothEngine.StoreManager_ChinaPay$$get_PayType @ 0165b1fc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp481 @ 0109dee4
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> GamePlayerInfomation$$get_ChinaPayType @ 00e37d30
+
+--- Calls IN ---
+  <- AliothEngine.StoreManager_ChinaPay$$get_IsBillingSupported @ 0165b288
+  <- AliothEngine.StoreManager_ChinaPay$$PurchaseProduct @ 0165be88
+  <- Ali$$ChargeError @ 00e0deac
+  <- XLua.CSObjectWrap.AliothEngineStoreManager_ChinaPayWrap$$_g_get_PayType @ 01165058
+  <- AliothEngine.StoreManager_ChinaPay$$LoadProductList @ 0165bdc0
+
+--- Listing ---
+0165b1fc  stp x21,x20,[sp, #-0x20]!
+0165b200  stp x19,x30,[sp, #0x10]
+0165b204  adrp x20,0x3577000
+0165b208  adrp x21,0x333d000
+0165b20c  ldrb w8,[x20, #0x868]
+0165b210  ldr x21,[x21, #0xe50]
+0165b214  mov x19,x0
+0165b218  tbnz w8,#0x0,0x0165b23c
+0165b21c  adrp x0,0x332c000
+0165b220  ldr x0,[x0, #0x2a0]
+0165b224  bl 0x00b0789c
+0165b228  adrp x0,0x333d000
+0165b22c  ldr x0,[x0, #0xe50]
+0165b230  bl 0x00b0789c
+0165b234  mov w8,#0x1
+0165b238  strb w8,[x20, #0x868]
+0165b23c  ldr x8,[x21]
+0165b240  ldr x8,[x8, #0xb8]
+0165b244  ldr x0,[x8]
+0165b248  cbz x0,0x0165b260
+0165b24c  mov x1,x19
+0165b250  ldp x19,x30,[sp, #0x10]
+0165b254  mov x2,xzr
+0165b258  ldp x21,x20,[sp], #0x20
+0165b25c  b 0x0109dee4
+0165b260  adrp x8,0x332c000
+0165b264  ldr x8,[x8, #0x2a0]
+0165b268  ldr x0,[x8]
+0165b26c  bl 0x01e09a6c
+0165b270  cbz x0,0x0165b284
+0165b274  ldp x19,x30,[sp, #0x10]
+0165b278  mov x1,xzr
+0165b27c  ldp x21,x20,[sp], #0x20
+0165b280  b 0x00e37d30
+0165b284  bl 0x00b079b0

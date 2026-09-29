@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.RectExtensions$$MoveVertical @ 016b282c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$set_y @ 024daf4c
+
+--- Calls IN ---
+
+--- Listing ---
+016b282c  sub sp,sp,#0x20
+016b2830  str d8,[sp, #0x10]
+016b2834  str x30,[sp, #0x18]
+016b2838  mov x0,sp
+016b283c  mov x1,xzr
+016b2840  mov v8.16B,v4.16B
+016b2844  stp s0,s1,[sp]
+016b2848  stp s2,s3,[sp, #0x8]
+016b284c  bl 0x024daf44
+016b2850  fadd s0,s0,s8
+016b2854  mov x0,sp
+016b2858  mov x1,xzr
+016b285c  bl 0x024daf4c
+016b2860  ldp s0,s1,[sp]
+016b2864  ldp s2,s3,[sp, #0x8]
+016b2868  ldr x30,[sp, #0x18]
+016b286c  ldr d8,[sp, #0x10]
+016b2870  add sp,sp,#0x20
+016b2874  ret

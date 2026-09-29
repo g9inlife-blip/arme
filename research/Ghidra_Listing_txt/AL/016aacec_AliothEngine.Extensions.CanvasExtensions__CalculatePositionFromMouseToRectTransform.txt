@@ -1,0 +1,113 @@
+Function: AliothEngine.Extensions.CanvasExtensions$$CalculatePositionFromMouseToRectTransform @ 016aacec
+
+--- Calls OUT ---
+  -> UnityEngine.Canvas$$get_worldCamera @ 026d1068
+  -> UnityEngine.RectTransformUtility$$ScreenPointToWorldPointInRectangle @ 026ceeb0
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Input$$get_mousePosition @ 0252f9e0
+  -> UnityEngine.Canvas$$get_renderMode @ 026d0918
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016aacec  sub sp,sp,#0x50
+016aacf0  stp d9,d8,[sp, #0x10]
+016aacf4  str x22,[sp, #0x20]
+016aacf8  stp x21,x20,[sp, #0x30]
+016aacfc  stp x19,x30,[sp, #0x40]
+016aad00  adrp x20,0x3577000
+016aad04  ldrb w8,[x20, #0xbad]
+016aad08  mov x19,x0
+016aad0c  tbnz w8,#0x0,0x016aad30
+016aad10  adrp x0,0x3360000
+016aad14  ldr x0,[x0, #0x720]
+016aad18  bl 0x00b0789c
+016aad1c  adrp x0,0x3335000
+016aad20  ldr x0,[x0, #0x6e8]
+016aad24  bl 0x00b0789c
+016aad28  mov w8,#0x1
+016aad2c  strb w8,[x20, #0xbad]
+016aad30  adrp x20,0x3570000
+016aad34  ldrb w8,[x20, #0xf0c]
+016aad38  str wzr,[sp, #0x8]
+016aad3c  str xzr,[sp]
+016aad40  cbnz w8,0x016aad58
+016aad44  adrp x0,0x3368000
+016aad48  ldr x0,[x0, #0x9b8]
+016aad4c  bl 0x00b0789c
+016aad50  mov w8,#0x1
+016aad54  strb w8,[x20, #0xf0c]
+016aad58  adrp x8,0x3368000
+016aad5c  ldr x8,[x8, #0x9b8]
+016aad60  ldr x8,[x8]
+016aad64  ldr x8,[x8, #0xb8]
+016aad68  ldp w21,w22,[x8]
+016aad6c  ldr w20,[x8, #0x8]
+016aad70  stp w21,w22,[sp]
+016aad74  str w20,[sp, #0x8]
+016aad78  cbz x19,0x016aae70
+016aad7c  mov x0,x19
+016aad80  mov x1,xzr
+016aad84  bl 0x026d0918
+016aad88  cbz w0,0x016aae04
+016aad8c  mov x0,x19
+016aad90  mov x1,xzr
+016aad94  bl 0x026d0918
+016aad98  cmp w0,#0x1
+016aad9c  b.ne 0x016aae18
+016aada0  adrp x21,0x3360000
+016aada4  ldr x21,[x21, #0x720]
+016aada8  mov x0,x19
+016aadac  mov x1,xzr
+016aadb0  bl 0x024e4e98
+016aadb4  mov x20,x0
+016aadb8  mov x0,xzr
+016aadbc  bl 0x0252f9e0
+016aadc0  mov x0,x19
+016aadc4  mov x1,xzr
+016aadc8  mov v8.16B,v0.16B
+016aadcc  mov v9.16B,v1.16B
+016aadd0  bl 0x026d1068
+016aadd4  ldr x8,[x21]
+016aadd8  mov x19,x0
+016aaddc  ldr w9,[x8, #0xe0]
+016aade0  cbz w9,0x016aae28
+016aade4  cbz x20,0x016aae34
+016aade8  adrp x8,0x3335000
+016aadec  ldr x8,[x8, #0x6e8]
+016aadf0  ldr x9,[x20]
+016aadf4  ldr x8,[x8]
+016aadf8  cmp x9,x8
+016aadfc  csel x0,x20,xzr,eq
+016aae00  b 0x016aae38
+016aae04  mov x0,xzr
+016aae08  bl 0x0252f9e0
+016aae0c  stp s0,s1,[sp]
+016aae10  str s2,[sp, #0x8]
+016aae14  b 0x016aae58
+016aae18  fmov s0,w21
+016aae1c  fmov s1,w22
+016aae20  fmov s2,w20
+016aae24  b 0x016aae58
+016aae28  mov x0,x8
+016aae2c  bl 0x00b0798c
+016aae30  cbnz x20,0x016aade8
+016aae34  mov x0,xzr
+016aae38  mov x2,sp
+016aae3c  mov v0.16B,v8.16B
+016aae40  mov v1.16B,v9.16B
+016aae44  mov x1,x19
+016aae48  mov x3,xzr
+016aae4c  bl 0x026ceeb0
+016aae50  ldp s0,s1,[sp]
+016aae54  ldr s2,[sp, #0x8]
+016aae58  ldp x19,x30,[sp, #0x40]
+016aae5c  ldp x21,x20,[sp, #0x30]
+016aae60  ldr x22,[sp, #0x20]
+016aae64  ldp d9,d8,[sp, #0x10]
+016aae68  add sp,sp,#0x50
+016aae6c  ret
+016aae70  bl 0x00b079b0

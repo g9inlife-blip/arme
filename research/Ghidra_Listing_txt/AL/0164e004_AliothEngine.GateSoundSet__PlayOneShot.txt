@@ -1,0 +1,27 @@
+Function: AliothEngine.GateSoundSet$$PlayOneShot @ 0164e004
+
+--- Calls OUT ---
+  -> UnityEngine.AudioSource$$get_clip @ 024bbb1c
+  -> UnityEngine.AudioSource$$PlayOneShot @ 024bbc20
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GateSoundSet$$SetupAudioSource @ 0164dcbc
+
+--- Calls IN ---
+
+--- Listing ---
+0164e004  stp x19,x30,[sp, #-0x10]!
+0164e008  mov x19,x1
+0164e00c  bl 0x0164dcbc
+0164e010  tbz w0,#0x0,0x0164e038
+0164e014  cbz x19,0x0164e040
+0164e018  mov x0,x19
+0164e01c  mov x1,xzr
+0164e020  bl 0x024bbb1c
+0164e024  mov x1,x0
+0164e028  mov x0,x19
+0164e02c  mov x2,xzr
+0164e030  ldp x19,x30,[sp], #0x10
+0164e034  b 0x024bbc20
+0164e038  ldp x19,x30,[sp], #0x10
+0164e03c  ret
+0164e040  bl 0x00b079b0

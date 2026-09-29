@@ -1,0 +1,34 @@
+Function: AliothEngine.GameUpdateService.<>c$$<DownloadUpdateAssetBundles>b__56_1 @ 01681874
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01681874  stp x21,x20,[sp, #-0x20]!
+01681878  stp x19,x30,[sp, #0x10]
+0168187c  adrp x21,0x3577000
+01681880  adrp x20,0x3346000
+01681884  ldrb w8,[x21, #0xa4c]
+01681888  ldr x20,[x20, #0x960]
+0168188c  mov x19,x1
+01681890  tbnz w8,#0x0,0x016818a8
+01681894  adrp x0,0x3346000
+01681898  ldr x0,[x0, #0x960]
+0168189c  bl 0x00b0789c
+016818a0  mov w8,#0x1
+016818a4  strb w8,[x21, #0xa4c]
+016818a8  ldr x0,[x20]
+016818ac  ldr w8,[x0, #0xe0]
+016818b0  cbnz w8,0x016818bc
+016818b4  bl 0x00b0798c
+016818b8  ldr x0,[x20]
+016818bc  ldr x8,[x0, #0xb8]
+016818c0  ldr x8,[x8]
+016818c4  cmp x19,x8
+016818c8  ldp x19,x30,[sp, #0x10]
+016818cc  cset w0,ne
+016818d0  ldp x21,x20,[sp], #0x20
+016818d4  ret

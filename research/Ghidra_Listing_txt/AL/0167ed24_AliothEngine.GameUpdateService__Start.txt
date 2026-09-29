@@ -1,0 +1,57 @@
+Function: AliothEngine.GameUpdateService$$Start @ 0167ed24
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_m_Start @ 011413dc
+
+--- Listing ---
+0167ed24  stp x21,x20,[sp, #-0x20]!
+0167ed28  stp x19,x30,[sp, #0x10]
+0167ed2c  adrp x20,0x3577000
+0167ed30  adrp x21,0x3352000
+0167ed34  ldrb w8,[x20, #0xa35]
+0167ed38  ldr x21,[x21, #0x2a8]
+0167ed3c  mov x19,x0
+0167ed40  tbnz w8,#0x0,0x0167ed64
+0167ed44  adrp x0,0x3352000
+0167ed48  ldr x0,[x0, #0x2a8]
+0167ed4c  bl 0x00b0789c
+0167ed50  adrp x0,0x3319000
+0167ed54  ldr x0,[x0, #0x2e0]
+0167ed58  bl 0x00b0789c
+0167ed5c  mov w8,#0x1
+0167ed60  strb w8,[x20, #0xa35]
+0167ed64  ldr x8,[x21]
+0167ed68  ldr x8,[x8, #0xb8]
+0167ed6c  ldr x0,[x8, #0x120]
+0167ed70  cbz x0,0x0167ed88
+0167ed74  mov x1,x19
+0167ed78  ldp x19,x30,[sp, #0x10]
+0167ed7c  mov x2,xzr
+0167ed80  ldp x21,x20,[sp], #0x20
+0167ed84  b 0x01066218
+0167ed88  adrp x8,0x3319000
+0167ed8c  ldr x8,[x8, #0x2e0]
+0167ed90  ldr x0,[x8]
+0167ed94  bl 0x00b079a0
+0167ed98  cbz x0,0x0167edcc
+0167ed9c  mov x1,xzr
+0167eda0  mov x20,x0
+0167eda4  bl 0x02194104
+0167eda8  mov x0,x20
+0167edac  str wzr,[x20, #0x10]
+0167edb0  str x19,[x0, #0x20]!
+0167edb4  mov x1,x19
+0167edb8  bl 0x00b07850
+0167edbc  ldp x19,x30,[sp, #0x10]
+0167edc0  mov x0,x20
+0167edc4  ldp x21,x20,[sp], #0x20
+0167edc8  ret
+0167edcc  bl 0x00b079b0

@@ -1,0 +1,47 @@
+Function: AliothEngine.AssetInfoManager$$IsHaveAsset @ 01668904
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> AliothEngine.AssetInfoManager$$TryGetAssetFileInfo @ 0166898c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- SoundManager$$Play @ 00e21e78
+  <- AliothExtensions$$ResNameByLanguage @ 00e06004
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_m_IsHaveAsset @ 0113bd44
+
+--- Listing ---
+01668904  str x22,[sp, #-0x30]!
+01668908  stp x21,x20,[sp, #0x10]
+0166890c  stp x19,x30,[sp, #0x20]
+01668910  adrp x22,0x3577000
+01668914  adrp x21,0x334f000
+01668918  ldrb w8,[x22, #0x90f]
+0166891c  ldr x21,[x21, #0xaf8]
+01668920  mov x19,x1
+01668924  mov x20,x0
+01668928  tbnz w8,#0x0,0x01668940
+0166892c  adrp x0,0x334f000
+01668930  ldr x0,[x0, #0xaf8]
+01668934  bl 0x00b0789c
+01668938  mov w8,#0x1
+0166893c  strb w8,[x22, #0x90f]
+01668940  ldr x8,[x21]
+01668944  str xzr,[sp, #0x8]
+01668948  ldr x8,[x8, #0xb8]
+0166894c  ldr x0,[x8, #0x48]
+01668950  cbz x0,0x01668968
+01668954  mov x1,x20
+01668958  mov x2,x19
+0166895c  mov x3,xzr
+01668960  bl 0x01065a14
+01668964  b 0x01668978
+01668968  add x2,sp,#0x8
+0166896c  mov x0,x20
+01668970  mov x1,x19
+01668974  bl 0x0166898c
+01668978  ldp x19,x30,[sp, #0x20]
+0166897c  ldp x21,x20,[sp, #0x10]
+01668980  and w0,w0,#0x1
+01668984  ldr x22,[sp], #0x30
+01668988  ret

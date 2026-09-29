@@ -1,0 +1,36 @@
+Function: AliothEngine.Extensions.DictionaryExtensions$$TryAdd<object,-object> @ 017778b4
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017778b4  str x22,[sp, #-0x30]!
+017778b8  stp x21,x20,[sp, #0x10]
+017778bc  stp x19,x30,[sp, #0x20]
+017778c0  cbz x0,0x01777920
+017778c4  ldr x8,[x3, #0x38]
+017778c8  mov x19,x2
+017778cc  mov x22,x3
+017778d0  mov x20,x1
+017778d4  ldr x2,[x8, #0x8]
+017778d8  mov x21,x0
+017778dc  ldr x8,[x2, #0x8]
+017778e0  blr x8
+017778e4  tbz w0,#0x0,0x017778f8
+017778e8  ldp x19,x30,[sp, #0x20]
+017778ec  ldp x21,x20,[sp, #0x10]
+017778f0  ldr x22,[sp], #0x30
+017778f4  ret
+017778f8  ldr x8,[x22, #0x38]
+017778fc  mov x0,x21
+01777900  mov x1,x20
+01777904  mov x2,x19
+01777908  ldr x3,[x8, #0x10]
+0177790c  ldp x19,x30,[sp, #0x20]
+01777910  ldp x21,x20,[sp, #0x10]
+01777914  ldr x4,[x3, #0x8]
+01777918  ldr x22,[sp], #0x30
+0177791c  br x4
+01777920  bl 0x00b079b0

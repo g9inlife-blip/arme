@@ -1,0 +1,44 @@
+Function: Ali$$get_Dir @ 00e0156c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp32 @ 01063698
+
+--- Calls IN ---
+  <- CurrentDownMono$$ShowCurrent @ 0131bb30
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_Dir @ 0119f690
+  <- RoleMono$$GoToRun @ 014a88a0
+  <- BattleManager$$.ctor @ 0118da20
+
+--- Listing ---
+00e0156c  stp x21,x20,[sp, #-0x20]!
+00e01570  stp x19,x30,[sp, #0x10]
+00e01574  adrp x21,0x3572000
+00e01578  adrp x20,0x335f000
+00e0157c  ldrb w8,[x21, #0x535]
+00e01580  ldr x20,[x20, #0x20]
+00e01584  mov x19,x0
+00e01588  tbnz w8,#0x0,0x00e015a0
+00e0158c  adrp x0,0x335f000
+00e01590  ldr x0,[x0, #0x20]
+00e01594  bl 0x00b0789c
+00e01598  mov w8,#0x1
+00e0159c  strb w8,[x21, #0x535]
+00e015a0  ldr x0,[x20]
+00e015a4  ldr w8,[x0, #0xe0]
+00e015a8  cbnz w8,0x00e015b4
+00e015ac  bl 0x00b0798c
+00e015b0  ldr x0,[x20]
+00e015b4  ldr x8,[x0, #0xb8]
+00e015b8  ldr x0,[x8, #0x140]
+00e015bc  cbz x0,0x00e015d4
+00e015c0  mov x1,x19
+00e015c4  ldp x19,x30,[sp, #0x10]
+00e015c8  mov x2,xzr
+00e015cc  ldp x21,x20,[sp], #0x20
+00e015d0  b 0x01063698
+00e015d4  ldr s0,[x19, #0x78]
+00e015d8  ldp x19,x30,[sp, #0x10]
+00e015dc  ldp x21,x20,[sp], #0x20
+00e015e0  ret

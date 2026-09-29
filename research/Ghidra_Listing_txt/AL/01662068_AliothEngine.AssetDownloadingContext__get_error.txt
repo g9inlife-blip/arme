@@ -1,0 +1,42 @@
+Function: AliothEngine.AssetDownloadingContext$$get_error @ 01662068
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetDownloadingContextWrap$$_g_get_error @ 01136d7c
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+
+--- Listing ---
+01662068  stp x21,x20,[sp, #-0x20]!
+0166206c  stp x19,x30,[sp, #0x10]
+01662070  adrp x21,0x3577000
+01662074  adrp x20,0x3346000
+01662078  ldrb w8,[x21, #0x8bd]
+0166207c  ldr x20,[x20, #0x960]
+01662080  mov x19,x0
+01662084  tbnz w8,#0x0,0x0166209c
+01662088  adrp x0,0x3346000
+0166208c  ldr x0,[x0, #0x960]
+01662090  bl 0x00b0789c
+01662094  mov w8,#0x1
+01662098  strb w8,[x21, #0x8bd]
+0166209c  ldr x0,[x20]
+016620a0  ldr w8,[x0, #0xe0]
+016620a4  cbnz w8,0x016620b0
+016620a8  bl 0x00b0798c
+016620ac  ldr x0,[x20]
+016620b0  ldr x8,[x0, #0xb8]
+016620b4  ldr x0,[x8, #0x88]
+016620b8  cbz x0,0x016620d0
+016620bc  mov x1,x19
+016620c0  ldp x19,x30,[sp, #0x10]
+016620c4  mov x2,xzr
+016620c8  ldp x21,x20,[sp], #0x20
+016620cc  b 0x01061abc
+016620d0  ldr x0,[x19, #0x30]
+016620d4  ldp x19,x30,[sp, #0x10]
+016620d8  ldp x21,x20,[sp], #0x20
+016620dc  ret

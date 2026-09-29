@@ -1,0 +1,47 @@
+Function: AliothEngine.WeakEvents.WeakActionBase$$IsMatch @ 01697280
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Reflection.MethodInfo$$op_Equality @ 02081114
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakEvent$$RemoveInternal @ 016975c4
+
+--- Listing ---
+01697280  str x22,[sp, #-0x30]!
+01697284  stp x21,x20,[sp, #0x10]
+01697288  stp x19,x30,[sp, #0x20]
+0169728c  adrp x22,0x3577000
+01697290  ldrb w8,[x22, #0xb0e]
+01697294  mov x19,x2
+01697298  mov x21,x1
+0169729c  mov x20,x0
+016972a0  tbnz w8,#0x0,0x016972b8
+016972a4  adrp x0,0x336b000
+016972a8  ldr x0,[x0, #0x970]
+016972ac  bl 0x00b0789c
+016972b0  mov w8,#0x1
+016972b4  strb w8,[x22, #0xb0e]
+016972b8  ldr x0,[x20, #0x10]
+016972bc  cbz x0,0x01697308
+016972c0  adrp x8,0x336b000
+016972c4  ldr x8,[x8, #0x970]
+016972c8  ldr x1,[x8]
+016972cc  bl 0x01f0d67c
+016972d0  cmp x0,x21
+016972d4  b.eq 0x016972ec
+016972d8  ldp x19,x30,[sp, #0x20]
+016972dc  ldp x21,x20,[sp, #0x10]
+016972e0  mov w0,wzr
+016972e4  ldr x22,[sp], #0x30
+016972e8  ret
+016972ec  ldr x0,[x20, #0x18]
+016972f0  mov x1,x19
+016972f4  ldp x19,x30,[sp, #0x20]
+016972f8  ldp x21,x20,[sp, #0x10]
+016972fc  mov x2,xzr
+01697300  ldr x22,[sp], #0x30
+01697304  b 0x02081114
+01697308  bl 0x00b079b0

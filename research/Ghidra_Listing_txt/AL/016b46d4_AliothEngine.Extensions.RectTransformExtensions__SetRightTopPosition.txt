@@ -1,0 +1,69 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$SetRightTopPosition @ 016b46d4
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Transform$$set_localPosition @ 024f385c
+  -> UnityEngine.Transform$$get_localPosition @ 024f37bc
+  -> UnityEngine.RectTransform$$get_rect @ 024f6150
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Rect$$get_width @ 024db068
+  -> UnityEngine.RectTransform$$get_pivot @ 024f665c
+
+--- Calls IN ---
+
+--- Listing ---
+016b46d4  sub sp,sp,#0x50
+016b46d8  stp d13,d12,[sp, #0x10]
+016b46dc  stp d11,d10,[sp, #0x20]
+016b46e0  stp d9,d8,[sp, #0x30]
+016b46e4  stp x19,x30,[sp, #0x40]
+016b46e8  stp xzr,xzr,[sp]
+016b46ec  cbz x0,0x016b47ac
+016b46f0  mov x1,xzr
+016b46f4  mov v8.16B,v1.16B
+016b46f8  mov v9.16B,v0.16B
+016b46fc  mov x19,x0
+016b4700  bl 0x024f665c
+016b4704  mov x0,x19
+016b4708  mov x1,xzr
+016b470c  mov v10.16B,v0.16B
+016b4710  bl 0x024f6150
+016b4714  mov x0,sp
+016b4718  mov x1,xzr
+016b471c  stp s0,s1,[sp]
+016b4720  stp s2,s3,[sp, #0x8]
+016b4724  bl 0x024db068
+016b4728  mov x0,x19
+016b472c  mov x1,xzr
+016b4730  mov v11.16B,v0.16B
+016b4734  bl 0x024f665c
+016b4738  mov x0,x19
+016b473c  mov x1,xzr
+016b4740  mov v12.16B,v1.16B
+016b4744  bl 0x024f6150
+016b4748  mov x0,sp
+016b474c  mov x1,xzr
+016b4750  stp s0,s1,[sp]
+016b4754  stp s2,s3,[sp, #0x8]
+016b4758  bl 0x024db078
+016b475c  mov x0,x19
+016b4760  mov x1,xzr
+016b4764  mov v13.16B,v0.16B
+016b4768  bl 0x024f37bc
+016b476c  fmov s0,0x3f800000
+016b4770  fsub s1,s0,s10
+016b4774  fsub s0,s0,s12
+016b4778  fmul s1,s1,s11
+016b477c  fmul s3,s0,s13
+016b4780  fsub s0,s9,s1
+016b4784  fsub s1,s8,s3
+016b4788  mov x0,x19
+016b478c  mov x1,xzr
+016b4790  bl 0x024f385c
+016b4794  ldp x19,x30,[sp, #0x40]
+016b4798  ldp d9,d8,[sp, #0x30]
+016b479c  ldp d11,d10,[sp, #0x20]
+016b47a0  ldp d13,d12,[sp, #0x10]
+016b47a4  add sp,sp,#0x50
+016b47a8  ret
+016b47ac  bl 0x00b079b0

@@ -1,0 +1,61 @@
+Function: Ali$$set_battleManager @ 00e0288c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> AliothEngine.DataStructures.WeakReference<object>$$set_Target @ 01f0d6ec
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- BattleCenter$$Start @ 00ed08d0
+  <- BattleCenter$$OnDestroy @ 00ed4420
+  <- XLua.CSObjectWrap.AliWrap$$_s_set_battleManager @ 011a4430
+  <- BattleManager$$Awake @ 01177f84
+  <- BattleManager$$OnDestroy @ 0117b8f4
+
+--- Listing ---
+00e0288c  str x22,[sp, #-0x30]!
+00e02890  stp x21,x20,[sp, #0x10]
+00e02894  stp x19,x30,[sp, #0x20]
+00e02898  adrp x22,0x3572000
+00e0289c  adrp x21,0x335f000
+00e028a0  ldrb w8,[x22, #0x546]
+00e028a4  ldr x21,[x21, #0x20]
+00e028a8  mov x19,x1
+00e028ac  mov x20,x0
+00e028b0  tbnz w8,#0x0,0x00e028d4
+00e028b4  adrp x0,0x335f000
+00e028b8  ldr x0,[x0, #0x20]
+00e028bc  bl 0x00b0789c
+00e028c0  adrp x0,0x3368000
+00e028c4  ldr x0,[x0, #0x800]
+00e028c8  bl 0x00b0789c
+00e028cc  mov w8,#0x1
+00e028d0  strb w8,[x22, #0x546]
+00e028d4  ldr x0,[x21]
+00e028d8  ldr w8,[x0, #0xe0]
+00e028dc  cbnz w8,0x00e028e8
+00e028e0  bl 0x00b0798c
+00e028e4  ldr x0,[x21]
+00e028e8  ldr x8,[x0, #0xb8]
+00e028ec  ldr x0,[x8, #0x1c8]
+00e028f0  cbz x0,0x00e02910
+00e028f4  mov x1,x20
+00e028f8  mov x2,x19
+00e028fc  ldp x19,x30,[sp, #0x20]
+00e02900  ldp x21,x20,[sp, #0x10]
+00e02904  mov x3,xzr
+00e02908  ldr x22,[sp], #0x30
+00e0290c  b 0x0106125c
+00e02910  ldr x0,[x20, #0xc8]
+00e02914  cbz x0,0x00e02938
+00e02918  adrp x8,0x3368000
+00e0291c  ldr x8,[x8, #0x800]
+00e02920  mov x1,x19
+00e02924  ldp x19,x30,[sp, #0x20]
+00e02928  ldp x21,x20,[sp, #0x10]
+00e0292c  ldr x2,[x8]
+00e02930  ldr x22,[sp], #0x30
+00e02934  b 0x01f0d6ec
+00e02938  bl 0x00b079b0

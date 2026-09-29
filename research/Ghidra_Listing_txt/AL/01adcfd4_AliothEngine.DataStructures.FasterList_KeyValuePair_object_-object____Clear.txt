@@ -1,0 +1,21 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$Clear @ 01adcfd4
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Array$$Clear @ 02173bc0
+
+--- Calls IN ---
+
+--- Listing ---
+01adcfd4  stp x19,x30,[sp, #-0x10]!
+01adcfd8  mov x19,x0
+01adcfdc  ldr x0,[x0, #0x10]
+01adcfe0  cbz x0,0x01add000
+01adcfe4  ldr w2,[x0, #0x18]
+01adcfe8  mov w1,wzr
+01adcfec  mov x3,xzr
+01adcff0  bl 0x02173bc0
+01adcff4  str wzr,[x19, #0x18]
+01adcff8  ldp x19,x30,[sp], #0x10
+01adcffc  ret
+01add000  bl 0x00b079b0

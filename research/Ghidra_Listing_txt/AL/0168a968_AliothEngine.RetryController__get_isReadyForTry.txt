@@ -1,0 +1,67 @@
+Function: AliothEngine.RetryController$$get_isReadyForTry @ 0168a968
+
+--- Calls OUT ---
+  -> System.DateTime$$op_LessThan @ 02135704
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Math$$Min @ 021510ec
+  -> System.DateTime$$AddSeconds @ 02133150
+
+--- Calls IN ---
+  <- AliothEngine.RetryController.<RetryAndWait>d__8$$MoveNext @ 0168aa40
+
+--- Listing ---
+0168a968  stp x21,x20,[sp, #-0x20]!
+0168a96c  stp x19,x30,[sp, #0x10]
+0168a970  adrp x20,0x3577000
+0168a974  ldrb w8,[x20, #0xa98]
+0168a978  mov x19,x0
+0168a97c  tbnz w8,#0x0,0x0168a9a0
+0168a980  adrp x0,0x336f000
+0168a984  ldr x0,[x0, #0xdc8]
+0168a988  bl 0x00b0789c
+0168a98c  adrp x0,0x332c000
+0168a990  ldr x0,[x0, #0x5a8]
+0168a994  bl 0x00b0789c
+0168a998  mov w8,#0x1
+0168a99c  strb w8,[x20, #0xa98]
+0168a9a0  ldr w8,[x19, #0x10]
+0168a9a4  cmp w8,#0x1
+0168a9a8  b.lt 0x0168aa2c
+0168a9ac  adrp x8,0x332c000
+0168a9b0  ldr x8,[x8, #0x5a8]
+0168a9b4  adrp x21,0x336f000
+0168a9b8  ldr w20,[x19, #0x18]
+0168a9bc  add x19,x19,#0x20
+0168a9c0  ldr x0,[x8]
+0168a9c4  ldr w8,[x0, #0xe0]
+0168a9c8  ldr x21,[x21, #0xdc8]
+0168a9cc  cbnz w8,0x0168a9d4
+0168a9d0  bl 0x00b0798c
+0168a9d4  mov w1,#0x64
+0168a9d8  mov w0,w20
+0168a9dc  mov x2,xzr
+0168a9e0  bl 0x021510ec
+0168a9e4  scvtf d0,w0
+0168a9e8  mov x0,x19
+0168a9ec  mov x1,xzr
+0168a9f0  bl 0x02133150
+0168a9f4  ldr x8,[x21]
+0168a9f8  mov x19,x0
+0168a9fc  ldr w9,[x8, #0xe0]
+0168aa00  cbnz w9,0x0168aa0c
+0168aa04  mov x0,x8
+0168aa08  bl 0x00b0798c
+0168aa0c  mov x0,xzr
+0168aa10  bl 0x02133d48
+0168aa14  mov x1,x0
+0168aa18  mov x0,x19
+0168aa1c  ldp x19,x30,[sp, #0x10]
+0168aa20  mov x2,xzr
+0168aa24  ldp x21,x20,[sp], #0x20
+0168aa28  b 0x02135704
+0168aa2c  ldp x19,x30,[sp, #0x10]
+0168aa30  mov w0,#0x1
+0168aa34  ldp x21,x20,[sp], #0x20
+0168aa38  ret

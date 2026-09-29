@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$FindChild @ 016b07a0
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.MonoBehaviourExtensions$$FindChildRecursively @ 016b07d4
+  -> AliothEngine.Extensions.MonoBehaviourExtensions$$FindChild @ 016b0768
+
+--- Calls IN ---
+  <- BattleEditorUI_Element_Select$$Awake @ 016d7234
+  <- AliothEngine.GUIElementListFilter$$Awake @ 0168d464
+  <- BattleEditorUI_Element$$Awake @ 016d6830
+  <- BattleEditorUIMono$$Start @ 016d25f4
+
+--- Listing ---
+016b07a0  stp x19,x30,[sp, #-0x10]!
+016b07a4  mov x19,x1
+016b07a8  tbz w2,#0x0,0x016b07c4
+016b07ac  cbz x0,0x016b07d0
+016b07b0  mov x1,xzr
+016b07b4  bl 0x024e4e98
+016b07b8  mov x1,x19
+016b07bc  ldp x19,x30,[sp], #0x10
+016b07c0  b 0x016b07d4
+016b07c4  mov x1,x19
+016b07c8  ldp x19,x30,[sp], #0x10
+016b07cc  b 0x016b0768
+016b07d0  bl 0x00b079b0

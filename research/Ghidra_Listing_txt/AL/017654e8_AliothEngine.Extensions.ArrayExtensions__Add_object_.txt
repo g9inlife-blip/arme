@@ -1,0 +1,68 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$Add<object> @ 017654e8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017654e8  str x24,[sp, #-0x40]!
+017654ec  stp x23,x22,[sp, #0x10]
+017654f0  stp x21,x20,[sp, #0x20]
+017654f4  stp x19,x30,[sp, #0x30]
+017654f8  cbz x0,0x017655c4
+017654fc  ldr x8,[x2, #0x38]
+01765500  mov x20,x0
+01765504  mov x19,x1
+01765508  ldr x0,[x8]
+0176550c  ldrb w8,[x0, #0x132]
+01765510  tbnz w8,#0x0,0x01765518
+01765514  bl 0x00b2ac40
+01765518  ldr w8,[x20, #0x18]
+0176551c  add w1,w8,#0x1
+01765520  bl 0x00b078f8
+01765524  ldr x8,[x20, #0x18]
+01765528  mov x21,x0
+0176552c  cmp w8,#0x1
+01765530  and x8,x8,#0xffffffff
+01765534  b.lt 0x01765584
+01765538  mov x22,xzr
+0176553c  add x23,x20,#0x20
+01765540  add x0,x21,#0x20
+01765544  cmp x22,w8, UXTW 
+01765548  b.cs 0x017655c0
+0176554c  cbz x21,0x017655c4
+01765550  ldr w8,[x21, #0x18]
+01765554  cmp x22,x8
+01765558  b.cs 0x017655c0
+0176555c  ldr x1,[x23, x22, LSL #0x3]
+01765560  mov x24,x0
+01765564  str x1,[x24], #0x8
+01765568  bl 0x00b07850
+0176556c  ldr w8,[x20, #0x18]
+01765570  add x22,x22,#0x1
+01765574  mov x0,x24
+01765578  cmp x22,w8, SXTW 
+0176557c  b.lt 0x01765544
+01765580  b 0x01765588
+01765584  cbz x21,0x017655c4
+01765588  ldr w9,[x21, #0x18]
+0176558c  cmp w8,w9
+01765590  b.cs 0x017655c0
+01765594  sxtw x8,w8
+01765598  add x0,x21,x8, LSL #0x3
+0176559c  str x19,[x0, #0x20]!
+017655a0  mov x1,x19
+017655a4  bl 0x00b07850
+017655a8  mov x0,x21
+017655ac  ldp x19,x30,[sp, #0x30]
+017655b0  ldp x21,x20,[sp, #0x20]
+017655b4  ldp x23,x22,[sp, #0x10]
+017655b8  ldr x24,[sp], #0x40
+017655bc  ret
+017655c0  bl 0x00b079b8
+017655c4  bl 0x00b079b0

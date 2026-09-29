@@ -1,0 +1,53 @@
+Function: AliothEngine.FileCacheAssetHolder$$Load @ 01664d9c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01664d9c  stp x23,x22,[sp, #-0x30]!
+01664da0  stp x21,x20,[sp, #0x10]
+01664da4  stp x19,x30,[sp, #0x20]
+01664da8  adrp x22,0x3577000
+01664dac  adrp x23,0x333d000
+01664db0  ldrb w8,[x22, #0x8e9]
+01664db4  ldr x23,[x23, #0xc50]
+01664db8  mov x19,x2
+01664dbc  mov x20,x1
+01664dc0  mov x21,x0
+01664dc4  tbnz w8,#0x0,0x01664ddc
+01664dc8  adrp x0,0x333d000
+01664dcc  ldr x0,[x0, #0xc50]
+01664dd0  bl 0x00b0789c
+01664dd4  mov w8,#0x1
+01664dd8  strb w8,[x22, #0x8e9]
+01664ddc  ldr x0,[x23]
+01664de0  bl 0x00b079a0
+01664de4  cbz x0,0x01664e3c
+01664de8  mov x1,xzr
+01664dec  mov x22,x0
+01664df0  bl 0x02194104
+01664df4  mov x0,x22
+01664df8  str wzr,[x22, #0x10]
+01664dfc  str x21,[x0, #0x20]!
+01664e00  mov x1,x21
+01664e04  bl 0x00b07850
+01664e08  mov x0,x22
+01664e0c  str x20,[x0, #0x28]!
+01664e10  mov x1,x20
+01664e14  bl 0x00b07850
+01664e18  mov x0,x22
+01664e1c  str x19,[x0, #0x38]!
+01664e20  mov x1,x19
+01664e24  bl 0x00b07850
+01664e28  ldp x19,x30,[sp, #0x20]
+01664e2c  ldp x21,x20,[sp, #0x10]
+01664e30  mov x0,x22
+01664e34  ldp x23,x22,[sp], #0x30
+01664e38  ret
+01664e3c  bl 0x00b079b0

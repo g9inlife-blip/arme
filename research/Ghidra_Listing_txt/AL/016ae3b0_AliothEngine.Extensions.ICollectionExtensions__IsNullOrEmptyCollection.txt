@@ -1,0 +1,53 @@
+Function: AliothEngine.Extensions.ICollectionExtensions$$IsNullOrEmptyCollection @ 016ae3b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+
+--- Calls IN ---
+
+--- Listing ---
+016ae3b0  str x20,[sp, #-0x20]!
+016ae3b4  stp x19,x30,[sp, #0x10]
+016ae3b8  adrp x20,0x3577000
+016ae3bc  ldrb w8,[x20, #0xbcd]
+016ae3c0  mov x19,x0
+016ae3c4  tbnz w8,#0x0,0x016ae3dc
+016ae3c8  adrp x0,0x3327000
+016ae3cc  ldr x0,[x0, #0xea8]
+016ae3d0  bl 0x00b0789c
+016ae3d4  mov w8,#0x1
+016ae3d8  strb w8,[x20, #0xbcd]
+016ae3dc  cbz x19,0x016ae428
+016ae3e0  adrp x10,0x3327000
+016ae3e4  ldr x8,[x19]
+016ae3e8  ldr x10,[x10, #0xea8]
+016ae3ec  ldrh w9,[x8, #0x12a]
+016ae3f0  ldr x1,[x10]
+016ae3f4  cbz x9,0x016ae418
+016ae3f8  ldr x10,[x8, #0xb0]
+016ae3fc  add x10,x10,#0x8
+016ae400  ldur x11,[x10, #-0x8]
+016ae404  cmp x11,x1
+016ae408  b.eq 0x016ae430
+016ae40c  subs x9,x9,#0x1
+016ae410  add x10,x10,#0x10
+016ae414  b.ne 0x016ae400
+016ae418  mov w2,#0x1
+016ae41c  mov x0,x19
+016ae420  bl 0x00b2ae24
+016ae424  b 0x016ae440
+016ae428  mov w0,#0x1
+016ae42c  b 0x016ae454
+016ae430  ldr w9,[x10]
+016ae434  add w9,w9,#0x1
+016ae438  add x8,x8,w9, SXTW  #0x4
+016ae43c  add x0,x8,#0x138
+016ae440  ldp x8,x1,[x0]
+016ae444  mov x0,x19
+016ae448  blr x8
+016ae44c  cmp w0,#0x0
+016ae450  cset w0,eq
+016ae454  ldp x19,x30,[sp, #0x10]
+016ae458  ldr x20,[sp], #0x20
+016ae45c  ret

@@ -1,0 +1,50 @@
+Function: AliothEngine.Utils.Utility$$SoftMax @ 016a0258
+
+--- Calls OUT ---
+  -> expf @ 008d4510
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a0258  str d8,[sp, #-0x40]!
+016a025c  stp x23,x22,[sp, #0x10]
+016a0260  stp x21,x20,[sp, #0x20]
+016a0264  stp x19,x30,[sp, #0x30]
+016a0268  ldr x20,[x0]
+016a026c  cbz x20,0x016a02f4
+016a0270  ldr w19,[x20, #0x18]
+016a0274  lsl x8,x19,#0x20
+016a0278  cmp x8,#0x1
+016a027c  b.lt 0x016a02b8
+016a0280  mov x21,xzr
+016a0284  sxtw x22,w19
+016a0288  add x23,x20,#0x20
+016a028c  fmov s8,wzr
+016a0290  cmp x21,x19
+016a0294  b.cs 0x016a02f0
+016a0298  ldr s0,[x23,x21, lsl #2]
+016a029c  bl 0x008d4510
+016a02a0  str s0,[x23,x21, lsl #2]
+016a02a4  add x21,x21,#0x1
+016a02a8  cmp x21,x22
+016a02ac  fadd s8,s8,s0
+016a02b0  b.lt 0x016a0290
+016a02b4  b 0x016a02bc
+016a02b8  fmov s8,wzr
+016a02bc  cmp w19,#0x1
+016a02c0  b.lt 0x016a02dc
+016a02c4  add x8,x20,#0x20
+016a02c8  ldr s0,[x8]
+016a02cc  subs x19,x19,#0x1
+016a02d0  fdiv s0,s0,s8
+016a02d4  str s0,[x8], #0x4
+016a02d8  b.ne 0x016a02c8
+016a02dc  ldp x19,x30,[sp, #0x30]
+016a02e0  ldp x21,x20,[sp, #0x20]
+016a02e4  ldp x23,x22,[sp, #0x10]
+016a02e8  ldr d8,[sp], #0x40
+016a02ec  ret
+016a02f0  bl 0x00b079b8
+016a02f4  bl 0x00b079b0

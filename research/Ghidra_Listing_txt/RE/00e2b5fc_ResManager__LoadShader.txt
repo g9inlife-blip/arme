@@ -1,0 +1,52 @@
+Function: ResManager$$LoadShader @ 00e2b5fc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- ResManager.<LoadExcel>d__23$$MoveNext @ 00e2c9a4
+
+--- Listing ---
+00e2b5fc  stp x21,x20,[sp, #-0x20]!
+00e2b600  stp x19,x30,[sp, #0x10]
+00e2b604  adrp x20,0x3572000
+00e2b608  adrp x21,0x337e000
+00e2b60c  ldrb w8,[x20, #0x72e]
+00e2b610  ldr x21,[x21, #0x4c8]
+00e2b614  mov x19,x0
+00e2b618  tbnz w8,#0x0,0x00e2b63c
+00e2b61c  adrp x0,0x337e000
+00e2b620  ldr x0,[x0, #0x4c8]
+00e2b624  bl 0x00b0789c
+00e2b628  adrp x0,0x334e000
+00e2b62c  ldr x0,[x0, #0x468]
+00e2b630  bl 0x00b0789c
+00e2b634  mov w8,#0x1
+00e2b638  strb w8,[x20, #0x72e]
+00e2b63c  ldr x8,[x21]
+00e2b640  ldr x8,[x8, #0xb8]
+00e2b644  ldr x0,[x8, #0x90]
+00e2b648  cbz x0,0x00e2b660
+00e2b64c  mov x1,x19
+00e2b650  ldp x19,x30,[sp, #0x10]
+00e2b654  mov x2,xzr
+00e2b658  ldp x21,x20,[sp], #0x20
+00e2b65c  b 0x01066218
+00e2b660  adrp x8,0x334e000
+00e2b664  ldr x8,[x8, #0x468]
+00e2b668  ldr x0,[x8]
+00e2b66c  bl 0x00b079a0
+00e2b670  cbz x0,0x00e2b694
+00e2b674  mov x1,xzr
+00e2b678  mov x19,x0
+00e2b67c  bl 0x02194104
+00e2b680  str wzr,[x19, #0x10]
+00e2b684  mov x0,x19
+00e2b688  ldp x19,x30,[sp, #0x10]
+00e2b68c  ldp x21,x20,[sp], #0x20
+00e2b690  ret
+00e2b694  bl 0x00b079b0

@@ -1,0 +1,45 @@
+Function: AliothEngine.Utils.Gaussian$$.ctor @ 0169d1d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Random$$.ctor @ 0216133c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0169d1d8  stp x21,x20,[sp, #-0x20]!
+0169d1dc  stp x19,x30,[sp, #0x10]
+0169d1e0  adrp x21,0x3577000
+0169d1e4  ldrb w8,[x21, #0xb49]
+0169d1e8  mov x20,x1
+0169d1ec  mov x19,x0
+0169d1f0  tbnz w8,#0x0,0x0169d208
+0169d1f4  adrp x0,0x3355000
+0169d1f8  ldr x0,[x0, #0x1e8]
+0169d1fc  bl 0x00b0789c
+0169d200  mov w8,#0x1
+0169d204  strb w8,[x21, #0xb49]
+0169d208  mov x0,x19
+0169d20c  mov x1,xzr
+0169d210  bl 0x02194104
+0169d214  cbnz x20,0x0169d238
+0169d218  adrp x8,0x3355000
+0169d21c  ldr x8,[x8, #0x1e8]
+0169d220  ldr x0,[x8]
+0169d224  bl 0x00b079a0
+0169d228  cbz x0,0x0169d254
+0169d22c  mov x1,xzr
+0169d230  mov x20,x0
+0169d234  bl 0x0216133c
+0169d238  cbz x19,0x0169d254
+0169d23c  str x20,[x19, #0x20]!
+0169d240  mov x0,x19
+0169d244  ldp x19,x30,[sp, #0x10]
+0169d248  mov x1,x20
+0169d24c  ldp x21,x20,[sp], #0x20
+0169d250  b 0x00b07850
+0169d254  bl 0x00b079b0

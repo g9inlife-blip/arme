@@ -1,0 +1,21 @@
+Function: AliothEngine.Extensions.ListExtensions$$IsNullOrEmpty<object> @ 0179f058
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager.<_FlushOperation>d__33$$MoveNext @ 0167b798
+  <- AliothEngine.GUIScreenManager$$get_HasPrep @ 0167800c
+
+--- Listing ---
+0179f058  cbz x0,0x0179f080
+0179f05c  str x30,[sp, #-0x10]!
+0179f060  ldr x8,[x1, #0x38]
+0179f064  ldr x1,[x8, #0x8]
+0179f068  ldr x8,[x1, #0x8]
+0179f06c  blr x8
+0179f070  cmp w0,#0x0
+0179f074  cset w0,eq
+0179f078  ldr x30,[sp], #0x10
+0179f07c  ret
+0179f080  mov w0,#0x1
+0179f084  ret

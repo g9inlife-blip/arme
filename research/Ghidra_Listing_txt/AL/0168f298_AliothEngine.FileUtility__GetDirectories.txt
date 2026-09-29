@@ -1,0 +1,109 @@
+Function: AliothEngine.FileUtility$$GetDirectories @ 0168f298
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.Directory$$GetDirectories @ 020ae938
+  -> System.Collections.ArrayList$$.ctor @ 02122dd0
+
+--- Calls IN ---
+
+--- Listing ---
+0168f298  str x24,[sp, #-0x40]!
+0168f29c  stp x23,x22,[sp, #0x10]
+0168f2a0  stp x21,x20,[sp, #0x20]
+0168f2a4  stp x19,x30,[sp, #0x30]
+0168f2a8  adrp x22,0x3577000
+0168f2ac  adrp x23,0x330b000
+0168f2b0  ldrb w8,[x22, #0xad2]
+0168f2b4  ldr x23,[x23, #0xe28]
+0168f2b8  mov w19,w2
+0168f2bc  mov x20,x1
+0168f2c0  mov x21,x0
+0168f2c4  tbnz w8,#0x0,0x0168f300
+0168f2c8  adrp x0,0x330b000
+0168f2cc  ldr x0,[x0, #0xe28]
+0168f2d0  bl 0x00b0789c
+0168f2d4  adrp x0,0x3308000
+0168f2d8  ldr x0,[x0, #0x9a8]
+0168f2dc  bl 0x00b0789c
+0168f2e0  adrp x0,0x3338000
+0168f2e4  ldr x0,[x0, #0xdf8]
+0168f2e8  bl 0x00b0789c
+0168f2ec  adrp x0,0x3347000
+0168f2f0  ldr x0,[x0, #0xd68]
+0168f2f4  bl 0x00b0789c
+0168f2f8  mov w8,#0x1
+0168f2fc  strb w8,[x22, #0xad2]
+0168f300  ldr x0,[x23]
+0168f304  bl 0x00b079a0
+0168f308  cbz x0,0x0168f3f8
+0168f30c  mov x1,xzr
+0168f310  mov x22,x0
+0168f314  bl 0x02122dd0
+0168f318  cbz x20,0x0168f3f8
+0168f31c  ldr x8,[x20, #0x18]
+0168f320  cmp w8,#0x1
+0168f324  b.lt 0x0168f378
+0168f328  mov x23,xzr
+0168f32c  and x8,x8,#0xffffffff
+0168f330  add x24,x20,#0x20
+0168f334  cmp x23,w8, UXTW 
+0168f338  b.cs 0x0168f3f4
+0168f33c  ldr x1,[x24, x23, LSL #0x3]
+0168f340  mov x0,x21
+0168f344  mov w2,w19
+0168f348  mov x3,xzr
+0168f34c  bl 0x020ae938
+0168f350  ldr x8,[x22]
+0168f354  mov x1,x0
+0168f358  mov x0,x22
+0168f35c  ldr x9,[x8, #0x318]
+0168f360  ldr x2,[x8, #0x320]
+0168f364  blr x9
+0168f368  ldr w8,[x20, #0x18]
+0168f36c  add x23,x23,#0x1
+0168f370  cmp x23,w8, SXTW 
+0168f374  b.lt 0x0168f334
+0168f378  adrp x8,0x3347000
+0168f37c  ldr x8,[x8, #0xd68]
+0168f380  ldr x0,[x8]
+0168f384  adrp x8,0x3338000
+0168f388  ldr x8,[x8, #0xdf8]
+0168f38c  ldr w9,[x0, #0xe0]
+0168f390  ldr x19,[x8]
+0168f394  cbnz w9,0x0168f39c
+0168f398  bl 0x00b0798c
+0168f39c  mov x0,x19
+0168f3a0  mov x1,xzr
+0168f3a4  bl 0x0215f900
+0168f3a8  ldr x8,[x22]
+0168f3ac  mov x1,x0
+0168f3b0  mov x0,x22
+0168f3b4  ldr x9,[x8, #0x428]
+0168f3b8  ldr x2,[x8, #0x430]
+0168f3bc  blr x9
+0168f3c0  cbz x0,0x0168f3e0
+0168f3c4  adrp x8,0x3308000
+0168f3c8  ldr x8,[x8, #0x9a8]
+0168f3cc  mov x19,x0
+0168f3d0  ldr x20,[x8]
+0168f3d4  mov x1,x20
+0168f3d8  bl 0x00b07990
+0168f3dc  cbz x0,0x0168f3fc
+0168f3e0  ldp x19,x30,[sp, #0x30]
+0168f3e4  ldp x21,x20,[sp, #0x20]
+0168f3e8  ldp x23,x22,[sp, #0x10]
+0168f3ec  ldr x24,[sp], #0x40
+0168f3f0  ret
+0168f3f4  bl 0x00b079b8
+0168f3f8  bl 0x00b079b0
+0168f3fc  mov x0,x19
+0168f400  mov x1,x20
+0168f404  bl 0x00b07c6c

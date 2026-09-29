@@ -1,0 +1,83 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions$$IsNullOrEmptyEnumerable @ 016ae460
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ae460  str x20,[sp, #-0x20]!
+016ae464  stp x19,x30,[sp, #0x10]
+016ae468  adrp x20,0x3577000
+016ae46c  ldrb w8,[x20, #0xbce]
+016ae470  mov x19,x0
+016ae474  tbnz w8,#0x0,0x016ae498
+016ae478  adrp x0,0x332f000
+016ae47c  ldr x0,[x0, #0x9e8]
+016ae480  bl 0x00b0789c
+016ae484  adrp x0,0x3364000
+016ae488  ldr x0,[x0, #0xeb0]
+016ae48c  bl 0x00b0789c
+016ae490  mov w8,#0x1
+016ae494  strb w8,[x20, #0xbce]
+016ae498  cbz x19,0x016ae4e4
+016ae49c  adrp x10,0x332f000
+016ae4a0  ldr x8,[x19]
+016ae4a4  ldr x10,[x10, #0x9e8]
+016ae4a8  ldrh w9,[x8, #0x12a]
+016ae4ac  ldr x1,[x10]
+016ae4b0  cbz x9,0x016ae4d4
+016ae4b4  ldr x10,[x8, #0xb0]
+016ae4b8  add x10,x10,#0x8
+016ae4bc  ldur x11,[x10, #-0x8]
+016ae4c0  cmp x11,x1
+016ae4c4  b.eq 0x016ae4ec
+016ae4c8  subs x9,x9,#0x1
+016ae4cc  add x10,x10,#0x10
+016ae4d0  b.ne 0x016ae4bc
+016ae4d4  mov x0,x19
+016ae4d8  mov w2,wzr
+016ae4dc  bl 0x00b2ae24
+016ae4e0  b 0x016ae4f8
+016ae4e4  mov w8,#0x1
+016ae4e8  b 0x016ae570
+016ae4ec  ldrsw x9,[x10]
+016ae4f0  add x8,x8,x9, LSL #0x4
+016ae4f4  add x0,x8,#0x138
+016ae4f8  ldp x8,x1,[x0]
+016ae4fc  mov x0,x19
+016ae500  blr x8
+016ae504  cbz x0,0x016ae580
+016ae508  adrp x10,0x3364000
+016ae50c  ldr x8,[x0]
+016ae510  ldr x10,[x10, #0xeb0]
+016ae514  mov x19,x0
+016ae518  ldrh w9,[x8, #0x12a]
+016ae51c  ldr x1,[x10]
+016ae520  cbz x9,0x016ae544
+016ae524  ldr x10,[x8, #0xb0]
+016ae528  add x10,x10,#0x8
+016ae52c  ldur x11,[x10, #-0x8]
+016ae530  cmp x11,x1
+016ae534  b.eq 0x016ae554
+016ae538  subs x9,x9,#0x1
+016ae53c  add x10,x10,#0x10
+016ae540  b.ne 0x016ae52c
+016ae544  mov x0,x19
+016ae548  mov w2,wzr
+016ae54c  bl 0x00b2ae24
+016ae550  b 0x016ae560
+016ae554  ldrsw x9,[x10]
+016ae558  add x8,x8,x9, LSL #0x4
+016ae55c  add x0,x8,#0x138
+016ae560  ldp x8,x1,[x0]
+016ae564  mov x0,x19
+016ae568  blr x8
+016ae56c  eor w8,w0,#0x1
+016ae570  ldp x19,x30,[sp, #0x10]
+016ae574  and w0,w8,#0x1
+016ae578  ldr x20,[sp], #0x20
+016ae57c  ret
+016ae580  bl 0x00b079b0

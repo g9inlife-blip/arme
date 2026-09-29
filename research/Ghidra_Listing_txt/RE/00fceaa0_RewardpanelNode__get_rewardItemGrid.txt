@@ -1,0 +1,30 @@
+Function: RewardpanelNode$$get_rewardItemGrid @ 00fceaa0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- RewardPanelMono.<PlayMove>d__20$$MoveNext @ 0100eedc
+  <- RewardPanelMono$$ShowItem @ 0100e49c
+
+--- Listing ---
+00fceaa0  stp x21,x20,[sp, #-0x20]!
+00fceaa4  stp x19,x30,[sp, #0x10]
+00fceaa8  adrp x20,0x3573000
+00fceaac  adrp x21,0x3322000
+00fceab0  ldrb w8,[x20, #0xe9a]
+00fceab4  ldr x21,[x21, #0x7c8]
+00fceab8  mov x19,x0
+00fceabc  tbnz w8,#0x0,0x00fcead4
+00fceac0  adrp x0,0x3322000
+00fceac4  ldr x0,[x0, #0x7c8]
+00fceac8  bl 0x00b0789c
+00fceacc  mov w8,#0x1
+00fcead0  strb w8,[x20, #0xe9a]
+00fcead4  ldr x1,[x21]
+00fcead8  mov x0,x19
+00fceadc  ldp x19,x30,[sp, #0x10]
+00fceae0  mov x2,xzr
+00fceae4  ldp x21,x20,[sp], #0x20
+00fceae8  b 0x00dc06f8

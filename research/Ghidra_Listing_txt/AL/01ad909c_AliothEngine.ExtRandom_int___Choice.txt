@@ -1,0 +1,68 @@
+Function: AliothEngine.ExtRandom<int>$$Choice @ 01ad909c
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01ad909c  sub sp,sp,#0x30
+01ad90a0  stp x21,x20,[sp, #0x10]
+01ad90a4  stp x19,x30,[sp, #0x20]
+01ad90a8  cbz x0,0x01ad9180
+01ad90ac  ldr x8,[x1, #0x20]
+01ad90b0  mov x20,x1
+01ad90b4  mov x19,x0
+01ad90b8  ldrh w9,[x8, #0x132]
+01ad90bc  tbnz w9,#0x0,0x01ad90d4
+01ad90c0  mov x0,x8
+01ad90c4  bl 0x00b2ac40
+01ad90c8  ldr x8,[x20, #0x20]
+01ad90cc  ldrh w9,[x8, #0x132]
+01ad90d0  b 0x01ad90d8
+01ad90d4  mov x0,x8
+01ad90d8  ldr x10,[x0, #0xc0]
+01ad90dc  ldr x10,[x10, #0x8]
+01ad90e0  ldr x21,[x10, #0x8]
+01ad90e4  tbnz w9,#0x0,0x01ad90f4
+01ad90e8  mov x0,x8
+01ad90ec  bl 0x00b2ac40
+01ad90f0  mov x8,x0
+01ad90f4  ldr x8,[x8, #0xc0]
+01ad90f8  mov x0,x19
+01ad90fc  ldr x1,[x8, #0x8]
+01ad9100  blr x21
+01ad9104  mov w1,w0
+01ad9108  mov w0,wzr
+01ad910c  mov x2,xzr
+01ad9110  bl 0x024d63b0
+01ad9114  ldr x8,[x20, #0x20]
+01ad9118  mov w21,w0
+01ad911c  ldrh w9,[x8, #0x132]
+01ad9120  tbnz w9,#0x0,0x01ad9138
+01ad9124  mov x0,x8
+01ad9128  bl 0x00b2ac40
+01ad912c  ldr x8,[x20, #0x20]
+01ad9130  ldrh w9,[x8, #0x132]
+01ad9134  b 0x01ad913c
+01ad9138  mov x0,x8
+01ad913c  ldr x10,[x0, #0xc0]
+01ad9140  ldr x10,[x10, #0x10]
+01ad9144  ldr x3,[x10, #0x8]
+01ad9148  tbnz w9,#0x0,0x01ad9160
+01ad914c  mov x0,x8
+01ad9150  str x3,[sp, #0x8]
+01ad9154  bl 0x00b2ac40
+01ad9158  ldr x3,[sp, #0x8]
+01ad915c  mov x8,x0
+01ad9160  ldr x8,[x8, #0xc0]
+01ad9164  mov x0,x19
+01ad9168  mov w1,w21
+01ad916c  ldp x19,x30,[sp, #0x20]
+01ad9170  ldr x2,[x8, #0x10]
+01ad9174  ldp x21,x20,[sp, #0x10]
+01ad9178  add sp,sp,#0x30
+01ad917c  br x3
+01ad9180  bl 0x00b079b0

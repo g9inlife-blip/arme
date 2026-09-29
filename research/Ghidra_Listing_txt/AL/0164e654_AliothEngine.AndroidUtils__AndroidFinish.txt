@@ -1,0 +1,60 @@
+Function: AliothEngine.AndroidUtils$$AndroidFinish @ 0164e654
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.AndroidJavaObject$$Call @ 024acea8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.AndroidUtils$$ShowAndroidToastMessage @ 016508fc
+  <- AliothEngine.AndroidEscape$$ApplicationQuit @ 0164e574
+  <- AliothEngine.Utils.ApplicationUtils$$ApplicationQuit @ 0169804c
+
+--- Listing ---
+0164e654  str x20,[sp, #-0x20]!
+0164e658  stp x19,x30,[sp, #0x10]
+0164e65c  adrp x19,0x3577000
+0164e660  ldrb w8,[x19, #0x7ec]
+0164e664  tbnz w8,#0x0,0x0164e688
+0164e668  adrp x0,0x335b000
+0164e66c  ldr x0,[x0, #0x650]
+0164e670  bl 0x00b0789c
+0164e674  adrp x0,0x3364000
+0164e678  ldr x0,[x0, #0x880]
+0164e67c  bl 0x00b0789c
+0164e680  mov w8,#0x1
+0164e684  strb w8,[x19, #0x7ec]
+0164e688  bl 0x0164f628
+0164e68c  cbz x0,0x0164e6f4
+0164e690  adrp x8,0x335b000
+0164e694  ldr x8,[x8, #0x650]
+0164e698  mov x19,x0
+0164e69c  ldr x20,[x8]
+0164e6a0  ldr x8,[x20, #0x38]
+0164e6a4  ldr x0,[x8]
+0164e6a8  ldrb w8,[x0, #0x132]
+0164e6ac  tbnz w8,#0x0,0x0164e6b4
+0164e6b0  bl 0x00b2ac40
+    ; [PRE] try { // try from 0164e6b0 to 0164e6f3 has its CatchHandler @ 0164e700
+0164e6b4  ldr w8,[x0, #0xe0]
+0164e6b8  cbnz w8,0x0164e6c0
+0164e6bc  bl 0x00b0798c
+0164e6c0  ldr x8,[x20, #0x38]
+0164e6c4  ldr x0,[x8]
+0164e6c8  ldrb w8,[x0, #0x132]
+0164e6cc  tbnz w8,#0x0,0x0164e6d4
+0164e6d0  bl 0x00b2ac40
+0164e6d4  adrp x9,0x3364000
+0164e6d8  ldr x8,[x0, #0xb8]
+0164e6dc  ldr x9,[x9, #0x880]
+0164e6e0  ldr x2,[x8]
+0164e6e4  ldr x1,[x9]
+0164e6e8  mov x0,x19
+0164e6ec  mov x3,xzr
+0164e6f0  bl 0x024acea8
+    ; [POST] } // end try from 0164e6b0 to 0164e6f3
+0164e6f4  ldp x19,x30,[sp, #0x10]
+0164e6f8  ldr x20,[sp], #0x20
+0164e6fc  ret

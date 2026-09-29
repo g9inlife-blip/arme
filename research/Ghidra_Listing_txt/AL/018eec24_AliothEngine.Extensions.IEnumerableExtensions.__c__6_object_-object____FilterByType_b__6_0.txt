@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<>c__6<object,-object>$$<FilterByType>b__6_0 @ 018eec24
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018eec24  str x20,[sp, #-0x20]!
+018eec28  stp x19,x30,[sp, #0x10]
+018eec2c  ldr x8,[x2, #0x20]
+018eec30  mov x19,x2
+018eec34  mov x20,x1
+018eec38  ldr x8,[x8, #0xc0]
+018eec3c  ldr x8,[x8, #0x20]
+018eec40  ldrb w9,[x8, #0x132]
+018eec44  tbnz w9,#0x0,0x018eec54
+018eec48  mov x0,x8
+018eec4c  bl 0x00b2ac40
+018eec50  mov x8,x0
+018eec54  mov x0,x20
+018eec58  mov x1,x8
+018eec5c  bl 0x00b07990
+018eec60  ldr x8,[x19, #0x20]
+018eec64  mov x20,x0
+018eec68  ldr x8,[x8, #0xc0]
+018eec6c  ldr x19,[x8, #0x20]
+018eec70  ldrb w8,[x19, #0x132]
+018eec74  tbnz w8,#0x0,0x018eec84
+018eec78  mov x0,x19
+018eec7c  bl 0x00b2ac40
+018eec80  mov x19,x0
+018eec84  cbz x20,0x018eeca4
+018eec88  mov x0,x20
+018eec8c  mov x1,x19
+018eec90  bl 0x00b07990
+018eec94  cbnz x0,0x018eeca8
+018eec98  mov x0,x20
+018eec9c  mov x1,x19
+018eeca0  bl 0x00b07c6c
+018eeca4  mov x0,xzr
+018eeca8  ldp x19,x30,[sp, #0x10]
+018eecac  cmp x0,#0x0
+018eecb0  cset w0,ne
+018eecb4  ldr x20,[sp], #0x20
+018eecb8  ret

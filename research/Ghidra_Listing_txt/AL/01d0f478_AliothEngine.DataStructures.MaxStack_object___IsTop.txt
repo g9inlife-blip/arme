@@ -1,0 +1,38 @@
+Function: AliothEngine.DataStructures.MaxStack<object>$$IsTop @ 01d0f478
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01d0f478  stp x21,x20,[sp, #-0x20]!
+01d0f47c  stp x19,x30,[sp, #0x10]
+01d0f480  ldr x8,[x2, #0x20]
+01d0f484  mov x19,x1
+01d0f488  mov x20,x2
+01d0f48c  mov x21,x0
+01d0f490  ldr x8,[x8, #0xc0]
+01d0f494  ldr x1,[x8, #0x50]
+01d0f498  ldr x8,[x1, #0x8]
+01d0f49c  blr x8
+01d0f4a0  cmp w0,#0x1
+01d0f4a4  b.lt 0x01d0f4dc
+01d0f4a8  ldr x8,[x20, #0x20]
+01d0f4ac  mov x0,x21
+01d0f4b0  ldr x8,[x8, #0xc0]
+01d0f4b4  ldr x1,[x8, #0x58]
+01d0f4b8  ldr x8,[x1, #0x8]
+01d0f4bc  blr x8
+01d0f4c0  cbz x0,0x01d0f4ec
+01d0f4c4  ldr x8,[x0]
+01d0f4c8  mov x1,x19
+01d0f4cc  ldp x19,x30,[sp, #0x10]
+01d0f4d0  ldp x3,x2,[x8, #0x138]
+01d0f4d4  ldp x21,x20,[sp], #0x20
+01d0f4d8  br x3
+01d0f4dc  ldp x19,x30,[sp, #0x10]
+01d0f4e0  mov w0,wzr
+01d0f4e4  ldp x21,x20,[sp], #0x20
+01d0f4e8  ret
+01d0f4ec  bl 0x00b079b0

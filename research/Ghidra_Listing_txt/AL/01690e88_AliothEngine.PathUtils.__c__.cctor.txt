@@ -1,0 +1,40 @@
+Function: AliothEngine.PathUtils.<>c$$.cctor @ 01690e88
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01690e88  str x20,[sp, #-0x20]!
+01690e8c  stp x19,x30,[sp, #0x10]
+01690e90  adrp x19,0x3577000
+01690e94  adrp x20,0x3363000
+01690e98  ldrb w8,[x19, #0xadf]
+01690e9c  ldr x20,[x20, #0x908]
+01690ea0  tbnz w8,#0x0,0x01690eb8
+01690ea4  adrp x0,0x3363000
+01690ea8  ldr x0,[x0, #0x908]
+01690eac  bl 0x00b0789c
+01690eb0  mov w8,#0x1
+01690eb4  strb w8,[x19, #0xadf]
+01690eb8  ldr x0,[x20]
+01690ebc  bl 0x00b079a0
+01690ec0  cbz x0,0x01690ef4
+01690ec4  mov x1,xzr
+01690ec8  mov x19,x0
+01690ecc  bl 0x02194104
+01690ed0  ldr x8,[x20]
+01690ed4  mov x1,x19
+01690ed8  ldr x8,[x8, #0xb8]
+01690edc  str x19,[x8]
+01690ee0  ldr x8,[x20]
+01690ee4  ldp x19,x30,[sp, #0x10]
+01690ee8  ldr x0,[x8, #0xb8]
+01690eec  ldr x20,[sp], #0x20
+01690ef0  b 0x00b07850
+01690ef4  bl 0x00b079b0

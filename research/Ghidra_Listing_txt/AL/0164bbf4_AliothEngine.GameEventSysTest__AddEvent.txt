@@ -1,0 +1,93 @@
+Function: AliothEngine.GameEventSysTest$$AddEvent @ 0164bbf4
+
+--- Calls OUT ---
+  -> AliothEngine.RefAction<object>$$.ctor @ 01dfedf8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.GameEventSysTest$$EventManger @ 0164bf6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GameEventSys<Int32Enum>$$AddEventHandler<object> @ 01729e00
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action$$.ctor @ 020d5760
+  -> AliothEngine.GameEventSys<Int32Enum>$$AddEventHandler @ 01af22ac
+
+--- Calls IN ---
+  <- AliothEngine.GameEventSysTest$$Awake @ 0164bbf0
+
+--- Listing ---
+0164bbf4  str x22,[sp, #-0x30]!
+0164bbf8  stp x21,x20,[sp, #0x10]
+0164bbfc  stp x19,x30,[sp, #0x20]
+0164bc00  adrp x21,0x3577000
+0164bc04  adrp x20,0x3348000
+0164bc08  ldrb w8,[x21, #0x7b6]
+0164bc0c  ldr x20,[x20, #0xcf8]
+0164bc10  mov x19,x0
+0164bc14  tbnz w8,#0x0,0x0164bc68
+0164bc18  adrp x0,0x3348000
+0164bc1c  ldr x0,[x0, #0xcf8]
+0164bc20  bl 0x00b0789c
+0164bc24  adrp x0,0x3375000
+0164bc28  ldr x0,[x0, #0xc28]
+0164bc2c  bl 0x00b0789c
+0164bc30  adrp x0,0x3353000
+0164bc34  ldr x0,[x0, #0x9f0]
+0164bc38  bl 0x00b0789c
+0164bc3c  adrp x0,0x3351000
+0164bc40  ldr x0,[x0, #0x890]
+0164bc44  bl 0x00b0789c
+0164bc48  adrp x0,0x337f000
+0164bc4c  ldr x0,[x0, #0x808]
+0164bc50  bl 0x00b0789c
+0164bc54  adrp x0,0x3337000
+0164bc58  ldr x0,[x0, #0x1e0]
+0164bc5c  bl 0x00b0789c
+0164bc60  mov w8,#0x1
+0164bc64  strb w8,[x21, #0x7b6]
+0164bc68  bl 0x0164bf6c
+0164bc6c  ldr x8,[x20]
+0164bc70  mov x20,x0
+0164bc74  mov x0,x8
+0164bc78  bl 0x00b079a0
+0164bc7c  cbz x0,0x0164bd24
+0164bc80  adrp x8,0x3353000
+0164bc84  ldr x8,[x8, #0x9f0]
+0164bc88  mov x1,x19
+0164bc8c  mov x3,xzr
+0164bc90  mov x21,x0
+0164bc94  ldr x2,[x8]
+0164bc98  bl 0x020d5760
+0164bc9c  cbz x20,0x0164bd24
+0164bca0  adrp x8,0x337f000
+0164bca4  ldr x8,[x8, #0x808]
+0164bca8  adrp x22,0x3337000
+0164bcac  mov x0,x20
+0164bcb0  mov w1,wzr
+0164bcb4  ldr x3,[x8]
+0164bcb8  ldr x22,[x22, #0x1e0]
+0164bcbc  mov x2,x21
+0164bcc0  bl 0x01af22ac
+0164bcc4  bl 0x0164bf6c
+0164bcc8  ldr x8,[x22]
+0164bccc  mov x20,x0
+0164bcd0  mov x0,x8
+0164bcd4  bl 0x00b079a0
+0164bcd8  cbz x0,0x0164bd24
+0164bcdc  adrp x8,0x3375000
+0164bce0  ldr x8,[x8, #0xc28]
+0164bce4  mov x1,x19
+0164bce8  mov x3,xzr
+0164bcec  mov x21,x0
+0164bcf0  ldr x2,[x8]
+0164bcf4  bl 0x01dfedf8
+0164bcf8  cbz x20,0x0164bd24
+0164bcfc  adrp x8,0x3351000
+0164bd00  ldr x8,[x8, #0x890]
+0164bd04  mov x0,x20
+0164bd08  mov x2,x21
+0164bd0c  ldp x19,x30,[sp, #0x20]
+0164bd10  ldr x3,[x8]
+0164bd14  ldp x21,x20,[sp, #0x10]
+0164bd18  mov w1,wzr
+0164bd1c  ldr x22,[sp], #0x30
+0164bd20  b 0x01729e00
+0164bd24  bl 0x00b079b0

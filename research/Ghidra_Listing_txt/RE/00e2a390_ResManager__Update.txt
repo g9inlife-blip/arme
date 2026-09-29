@@ -1,0 +1,70 @@
+Function: ResManager$$Update @ 00e2a390
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_luaenv @ 00dff5e4
+  -> XLua.LuaEnv$$Tick @ 010ef4d4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e2a390  stp x21,x20,[sp, #-0x20]!
+00e2a394  stp x19,x30,[sp, #0x10]
+00e2a398  adrp x20,0x3572000
+00e2a39c  adrp x21,0x337e000
+00e2a3a0  ldrb w8,[x20, #0x720]
+00e2a3a4  ldr x21,[x21, #0x4c8]
+00e2a3a8  mov x19,x0
+00e2a3ac  tbnz w8,#0x0,0x00e2a3d0
+00e2a3b0  adrp x0,0x335f000
+00e2a3b4  ldr x0,[x0, #0x20]
+00e2a3b8  bl 0x00b0789c
+00e2a3bc  adrp x0,0x337e000
+00e2a3c0  ldr x0,[x0, #0x4c8]
+00e2a3c4  bl 0x00b0789c
+00e2a3c8  mov w8,#0x1
+00e2a3cc  strb w8,[x20, #0x720]
+00e2a3d0  ldr x8,[x21]
+00e2a3d4  ldr x8,[x8, #0xb8]
+00e2a3d8  ldr x0,[x8, #0x20]
+00e2a3dc  cbz x0,0x00e2a3f4
+00e2a3e0  mov x1,x19
+00e2a3e4  ldp x19,x30,[sp, #0x10]
+00e2a3e8  mov x2,xzr
+00e2a3ec  ldp x21,x20,[sp], #0x20
+00e2a3f0  b 0x01060dac
+00e2a3f4  adrp x19,0x335f000
+00e2a3f8  ldr x19,[x19, #0x20]
+00e2a3fc  ldr x0,[x19]
+00e2a400  ldr w8,[x0, #0xe0]
+00e2a404  cbnz w8,0x00e2a410
+00e2a408  bl 0x00b0798c
+00e2a40c  ldr x0,[x19]
+00e2a410  ldr x8,[x0, #0xb8]
+00e2a414  ldr x0,[x8, #0x10]
+00e2a418  cbz x0,0x00e2a470
+00e2a41c  mov x1,xzr
+00e2a420  bl 0x00dff5e4
+00e2a424  cbz x0,0x00e2a464
+00e2a428  ldr x0,[x19]
+00e2a42c  ldr w8,[x0, #0xe0]
+00e2a430  cbnz w8,0x00e2a43c
+00e2a434  bl 0x00b0798c
+00e2a438  ldr x0,[x19]
+00e2a43c  ldr x8,[x0, #0xb8]
+00e2a440  ldr x0,[x8, #0x10]
+00e2a444  cbz x0,0x00e2a470
+00e2a448  mov x1,xzr
+00e2a44c  bl 0x00dff5e4
+00e2a450  cbz x0,0x00e2a470
+00e2a454  ldp x19,x30,[sp, #0x10]
+00e2a458  mov x1,xzr
+00e2a45c  ldp x21,x20,[sp], #0x20
+00e2a460  b 0x010ef4d4
+00e2a464  ldp x19,x30,[sp, #0x10]
+00e2a468  ldp x21,x20,[sp], #0x20
+00e2a46c  ret
+00e2a470  bl 0x00b079b0

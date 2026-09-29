@@ -1,0 +1,38 @@
+Function: RewardManager$$get_BoxID @ 00e2db88
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+  <- RewardManager$$<ShowFinal>b__44_0 @ 00e2f824
+  <- RewardManager$$NextBoxListener @ 00e2e714
+  <- RewardManager$$<OpenBoxAni>b__41_0 @ 00e2f788
+
+--- Listing ---
+00e2db88  stp x21,x20,[sp, #-0x20]!
+00e2db8c  stp x19,x30,[sp, #0x10]
+00e2db90  adrp x20,0x3572000
+00e2db94  adrp x21,0x331f000
+00e2db98  ldrb w8,[x20, #0x74a]
+00e2db9c  ldr x21,[x21, #0x418]
+00e2dba0  mov x19,x0
+00e2dba4  tbnz w8,#0x0,0x00e2dbbc
+00e2dba8  adrp x0,0x331f000
+00e2dbac  ldr x0,[x0, #0x418]
+00e2dbb0  bl 0x00b0789c
+00e2dbb4  mov w8,#0x1
+00e2dbb8  strb w8,[x20, #0x74a]
+00e2dbbc  ldr x8,[x21]
+00e2dbc0  ldr x8,[x8, #0xb8]
+00e2dbc4  ldr x0,[x8, #0x40]
+00e2dbc8  cbz x0,0x00e2dbe0
+00e2dbcc  mov x1,x19
+00e2dbd0  ldp x19,x30,[sp, #0x10]
+00e2dbd4  mov x2,xzr
+00e2dbd8  ldp x21,x20,[sp], #0x20
+00e2dbdc  b 0x01060c2c
+00e2dbe0  ldr w0,[x19, #0x54]
+00e2dbe4  ldp x19,x30,[sp, #0x10]
+00e2dbe8  ldp x21,x20,[sp], #0x20
+00e2dbec  ret

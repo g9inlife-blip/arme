@@ -1,0 +1,42 @@
+Function: AliothEngine.ViewModels.ViewModel.<>c__DisplayClass16_0$$<Remove>b__0 @ 016a98b4
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a98b4  stp x21,x20,[sp, #-0x20]!
+016a98b8  stp x19,x30,[sp, #0x10]
+016a98bc  adrp x21,0x3577000
+016a98c0  ldrb w8,[x21, #0xba4]
+016a98c4  mov x20,x1
+016a98c8  mov x19,x0
+016a98cc  tbnz w8,#0x0,0x016a98e4
+016a98d0  adrp x0,0x3352000
+016a98d4  ldr x0,[x0, #0x3e8]
+016a98d8  bl 0x00b0789c
+016a98dc  mov w8,#0x1
+016a98e0  strb w8,[x21, #0xba4]
+016a98e4  cbz x20,0x016a9930
+016a98e8  ldr x8,[x20]
+016a98ec  mov x0,x20
+016a98f0  ldp x9,x1,[x8, #0x188]
+016a98f4  blr x9
+016a98f8  tbz w0,#0x0,0x016a9920
+016a98fc  adrp x8,0x3352000
+016a9900  ldr x8,[x8, #0x3e8]
+016a9904  mov x0,x20
+016a9908  ldr x1,[x8]
+016a990c  bl 0x01f0d67c
+016a9910  ldr x8,[x19, #0x10]
+016a9914  cmp x0,x8
+016a9918  cset w0,ne
+016a991c  b 0x016a9924
+016a9920  mov w0,wzr
+016a9924  ldp x19,x30,[sp, #0x10]
+016a9928  ldp x21,x20,[sp], #0x20
+016a992c  ret
+016a9930  bl 0x00b079b0

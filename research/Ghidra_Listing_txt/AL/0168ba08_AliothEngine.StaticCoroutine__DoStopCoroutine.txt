@@ -1,0 +1,33 @@
+Function: AliothEngine.StaticCoroutine$$DoStopCoroutine @ 0168ba08
+
+--- Calls OUT ---
+  -> AliothEngine.StaticCoroutine$$_DoStopCoroutine @ 0168ba5c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothS1Loading$$CheckLoadingReady @ 00ecaff4
+
+--- Listing ---
+0168ba08  stp x21,x20,[sp, #-0x20]!
+0168ba0c  stp x19,x30,[sp, #0x10]
+0168ba10  adrp x20,0x3577000
+0168ba14  adrp x21,0x332b000
+0168ba18  ldrb w8,[x20, #0xaa5]
+0168ba1c  ldr x21,[x21, #0x100]
+0168ba20  mov x19,x0
+0168ba24  tbnz w8,#0x0,0x0168ba3c
+0168ba28  adrp x0,0x332b000
+0168ba2c  ldr x0,[x0, #0x100]
+0168ba30  bl 0x00b0789c
+0168ba34  mov w8,#0x1
+0168ba38  strb w8,[x20, #0xaa5]
+0168ba3c  ldr x0,[x21]
+0168ba40  bl 0x01e0894c
+0168ba44  cbz x0,0x0168ba58
+0168ba48  mov x1,x19
+0168ba4c  ldp x19,x30,[sp, #0x10]
+0168ba50  ldp x21,x20,[sp], #0x20
+0168ba54  b 0x0168ba5c
+0168ba58  bl 0x00b079b0

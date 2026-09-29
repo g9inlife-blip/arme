@@ -1,0 +1,57 @@
+Function: AliothEngine.Extensions.LayerMaskExtensions$$NamesToMask @ 016ae8ac
+
+--- Calls OUT ---
+  -> UnityEngine.LayerMask$$NameToLayer @ 024e0bcc
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b74
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b78
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.LayerMaskExtensions$$RemoveFromMask @ 016aea6c
+  <- AliothEngine.Extensions.LayerMaskExtensions$$Create @ 016ae898
+  <- AliothEngine.Extensions.LayerMaskExtensions$$AddToMask @ 016aea20
+
+--- Listing ---
+016ae8ac  str x24,[sp, #-0x40]!
+016ae8b0  stp x23,x22,[sp, #0x10]
+016ae8b4  stp x21,x20,[sp, #0x20]
+016ae8b8  stp x19,x30,[sp, #0x30]
+016ae8bc  mov x19,x0
+016ae8c0  mov w0,wzr
+016ae8c4  mov x1,xzr
+016ae8c8  bl 0x024e0b78
+016ae8cc  cbz x19,0x016ae950
+016ae8d0  ldr x8,[x19, #0x18]
+016ae8d4  cmp w8,#0x1
+016ae8d8  b.lt 0x016ae934
+016ae8dc  mov x22,xzr
+016ae8e0  and x8,x8,#0xffffffff
+016ae8e4  add x23,x19,#0x20
+016ae8e8  mov w24,#0x1
+016ae8ec  cmp x22,w8, UXTW 
+016ae8f0  b.cs 0x016ae94c
+016ae8f4  ldr x20,[x23, x22, LSL #0x3]
+016ae8f8  and x0,x0,#0xffffffff
+016ae8fc  mov x1,xzr
+016ae900  bl 0x024e0b74
+016ae904  mov w21,w0
+016ae908  mov x0,x20
+016ae90c  mov x1,xzr
+016ae910  bl 0x024e0bcc
+016ae914  lsl w8,w24,w0
+016ae918  orr w0,w8,w21
+016ae91c  mov x1,xzr
+016ae920  bl 0x024e0b78
+016ae924  ldr w8,[x19, #0x18]
+016ae928  add x22,x22,#0x1
+016ae92c  cmp x22,w8, SXTW 
+016ae930  b.lt 0x016ae8ec
+016ae934  ldp x19,x30,[sp, #0x30]
+016ae938  ldp x21,x20,[sp, #0x20]
+016ae93c  ldp x23,x22,[sp, #0x10]
+016ae940  and x0,x0,#0xffffffff
+016ae944  ldr x24,[sp], #0x40
+016ae948  ret
+016ae94c  bl 0x00b079b8
+016ae950  bl 0x00b079b0

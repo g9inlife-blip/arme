@@ -1,0 +1,115 @@
+Function: reserve @ 00b83794
+FuncComment: std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::reserve(unsigned long)
+
+--- Calls OUT ---
+  -> FUN_00a8cdc8 @ 00a8cdc8
+  -> operator.new @ 008d4f40
+  -> wmemcpy @ 008d5720
+  -> operator.delete @ 008d3ed0
+  -> FUN_00a8cdb8 @ 00a8cdb8
+
+--- Calls IN ---
+
+--- Listing ---
+00b83794  stp x26,x25,[sp, #-0x50]!
+    ; [PLATE] std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::reserve(unsigned long)
+00b83798  stp x24,x23,[sp, #0x10]
+00b8379c  stp x22,x21,[sp, #0x20]
+00b837a0  stp x20,x19,[sp, #0x30]
+00b837a4  stp x29,x30,[sp, #0x40]
+00b837a8  add x29,sp,#0x40
+00b837ac  orr x8,xzr,#0x3ffffffffffffff0
+00b837b0  cmp x1,x8
+00b837b4  mov x19,x0
+00b837b8  b.cs 0x00b838f0
+00b837bc  ldrb w24,[x19]
+00b837c0  tbnz w24,#0x0,0x00b837d0
+00b837c4  lsr x22,x24,#0x1
+00b837c8  mov w8,#0x4
+00b837cc  b 0x00b837dc
+00b837d0  ldp x8,x22,[x19]
+00b837d4  and x8,x8,#-0x2
+00b837d8  sub x8,x8,#0x1
+00b837dc  cmp x22,x1
+00b837e0  csel x9,x22,x1,hi
+00b837e4  cmp x9,#0x5
+00b837e8  b.cs 0x00b83818
+00b837ec  mov w23,#0x4
+00b837f0  cmp x23,x8
+00b837f4  b.eq 0x00b838d8
+00b837f8  cmp x23,#0x4
+00b837fc  b.ne 0x00b83830
+00b83800  ldr x21,[x19, #0x10]
+00b83804  mov w25,wzr
+00b83808  add x20,x19,#0x4
+00b8380c  tbnz w24,#0x0,0x00b83890
+00b83810  mov w26,#0x1
+00b83814  b 0x00b83878
+00b83818  add x9,x9,#0x4
+00b8381c  and x9,x9,#-0x4
+00b83820  sub x23,x9,#0x1
+00b83824  cmp x23,x8
+00b83828  b.ne 0x00b837f8
+00b8382c  b 0x00b838d8
+00b83830  cmp x23,x8
+00b83834  add x8,x23,#0x1
+00b83838  lsr x9,x8,#0x3e
+00b8383c  b.ls 0x00b83858
+00b83840  cbnz x9,0x00b838f8
+00b83844  lsl x0,x8,#0x2
+00b83848  bl 0x008d4f40
+00b8384c  mov x20,x0
+00b83850  tbz w24,#0x0,0x00b8386c
+00b83854  b 0x00b83888
+00b83858  cbnz x9,0x00b83904
+00b8385c  lsl x0,x8,#0x2
+00b83860  bl 0x008d4f40
+    ; [PRE] try { // try from 00b83860 to 00b83863 has its CatchHandler @ 00b83910
+    ; [POST] } // end try from 00b83860 to 00b83863
+00b83864  mov x20,x0
+00b83868  tbnz w24,#0x0,0x00b83888
+00b8386c  mov w26,wzr
+00b83870  add x21,x19,#0x4
+00b83874  mov w25,#0x1
+00b83878  ubfx x8,x24,#0x1,#0x1f
+00b8387c  adds x2,x8,#0x1
+00b83880  b.cc 0x00b838a0
+00b83884  b 0x00b838ac
+00b83888  ldr x21,[x19, #0x10]
+00b8388c  mov w25,#0x1
+00b83890  ldr x8,[x19, #0x8]
+00b83894  mov w26,#0x1
+00b83898  adds x2,x8,#0x1
+00b8389c  b.cs 0x00b838ac
+00b838a0  mov x0,x20
+    ; [PRE] try { // try from 00b838a0 to 00b838ab has its CatchHandler @ 00b8392c
+00b838a4  mov x1,x21
+00b838a8  bl 0x008d5720
+    ; [POST] } // end try from 00b838a0 to 00b838ab
+00b838ac  cbz w26,0x00b838b8
+00b838b0  mov x0,x21
+00b838b4  bl 0x008d3ed0
+00b838b8  cbz w25,0x00b838d0
+00b838bc  add x8,x23,#0x1
+00b838c0  orr x8,x8,#0x1
+00b838c4  stp x8,x22,[x19]
+00b838c8  str x20,[x19, #0x10]
+00b838cc  b 0x00b838d8
+00b838d0  lsl w8,w22,#0x1
+00b838d4  strb w8,[x19]
+00b838d8  ldp x29,x30,[sp, #0x40]
+00b838dc  ldp x20,x19,[sp, #0x30]
+00b838e0  ldp x22,x21,[sp, #0x20]
+00b838e4  ldp x24,x23,[sp, #0x10]
+00b838e8  ldp x26,x25,[sp], #0x50
+00b838ec  ret
+00b838f0  mov x0,x19
+00b838f4  bl 0x00a8cdb8
+00b838f8  adrp x0,0x293c000
+00b838fc  add x0,x0,#0xc4
+00b83900  bl 0x00a8cdc8
+00b83904  adrp x0,0x293c000
+    ; [PRE] try { // try from 00b83904 to 00b8390f has its CatchHandler @ 00b83910
+00b83908  add x0,x0,#0xc4
+00b8390c  bl 0x00a8cdc8
+    ; [POST] } // end try from 00b83904 to 00b8390f

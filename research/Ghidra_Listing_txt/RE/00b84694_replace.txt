@@ -1,0 +1,96 @@
+Function: replace @ 00b84694
+FuncComment: std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, unsigned long, wchar_t)
+
+--- Calls OUT ---
+  -> __grow_by @ 008d3e90
+  -> wmemset @ 008d5b30
+  -> FUN_00a8f54c @ 00a8f54c
+  -> wmemmove @ 008d5660
+
+--- Calls IN ---
+
+--- Listing ---
+00b84694  str x25,[sp, #-0x50]!
+    ; [PLATE] std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, unsigned long, wchar_t)
+00b84698  stp x24,x23,[sp, #0x10]
+00b8469c  stp x22,x21,[sp, #0x20]
+00b846a0  stp x20,x19,[sp, #0x30]
+00b846a4  stp x29,x30,[sp, #0x40]
+00b846a8  add x29,sp,#0x40
+00b846ac  ldrb w9,[x0]
+00b846b0  mov w21,w4
+00b846b4  mov x20,x3
+00b846b8  mov x19,x0
+00b846bc  mov x23,x1
+00b846c0  tbnz w9,#0x0,0x00b846d4
+00b846c4  lsr x22,x9,#0x1
+00b846c8  subs x8,x22,x23
+00b846cc  b.cs 0x00b846e0
+00b846d0  b 0x00b847c8
+00b846d4  ldr x22,[x19, #0x8]
+00b846d8  subs x8,x22,x23
+00b846dc  b.cc 0x00b847c8
+00b846e0  cmp x8,x2
+00b846e4  csel x24,x8,x2,cc
+00b846e8  tbnz w9,#0x0,0x00b846f4
+00b846ec  mov w1,#0x4
+00b846f0  b 0x00b84700
+00b846f4  ldr x10,[x19]
+00b846f8  and x10,x10,#-0x2
+00b846fc  sub x1,x10,#0x1
+00b84700  sub x10,x24,x22
+00b84704  add x10,x10,x1
+00b84708  cmp x10,x20
+00b8470c  b.cs 0x00b8473c
+00b84710  add x8,x22,x20
+00b84714  sub x8,x8,x24
+00b84718  sub x2,x8,x1
+00b8471c  mov x0,x19
+00b84720  mov x3,x22
+00b84724  mov x4,x23
+00b84728  mov x5,x24
+00b8472c  mov x6,x20
+00b84730  bl 0x008d3e90
+00b84734  ldr x25,[x19, #0x10]
+00b84738  b 0x00b84778
+00b8473c  tbnz w9,#0x0,0x00b84768
+00b84740  add x25,x19,#0x4
+00b84744  cmp x24,x20
+00b84748  b.eq 0x00b84774
+00b8474c  subs x2,x8,x24
+00b84750  b.eq 0x00b84774
+00b84754  add x8,x25,x23, LSL #0x2
+00b84758  add x0,x8,x20, LSL #0x2
+00b8475c  add x1,x8,x24, LSL #0x2
+00b84760  bl 0x008d5660
+    ; [PRE] try { // try from 00b84760 to 00b84763 has its CatchHandler @ 00b847d0
+    ; [POST] } // end try from 00b84760 to 00b84763
+00b84764  b 0x00b84774
+00b84768  ldr x25,[x19, #0x10]
+00b8476c  cmp x24,x20
+00b84770  b.ne 0x00b8474c
+00b84774  cbz x20,0x00b84788
+00b84778  add x0,x25,x23, LSL #0x2
+00b8477c  mov w1,w21
+    ; [PRE] try { // try from 00b8477c to 00b84787 has its CatchHandler @ 00b847d4
+00b84780  mov x2,x20
+00b84784  bl 0x008d5b30
+    ; [POST] } // end try from 00b8477c to 00b84787
+00b84788  ldrb w9,[x19]
+00b8478c  sub x8,x20,x24
+00b84790  add x8,x8,x22
+00b84794  tbnz w9,#0x0,0x00b847a4
+00b84798  lsl w9,w8,#0x1
+00b8479c  strb w9,[x19]
+00b847a0  b 0x00b847a8
+00b847a4  str x8,[x19, #0x8]
+00b847a8  str wzr,[x25, x8, LSL #0x2]
+00b847ac  mov x0,x19
+00b847b0  ldp x29,x30,[sp, #0x40]
+00b847b4  ldp x20,x19,[sp, #0x30]
+00b847b8  ldp x22,x21,[sp, #0x20]
+00b847bc  ldp x24,x23,[sp, #0x10]
+00b847c0  ldr x25,[sp], #0x50
+00b847c4  ret
+00b847c8  mov x0,x19
+00b847cc  bl 0x00a8f54c

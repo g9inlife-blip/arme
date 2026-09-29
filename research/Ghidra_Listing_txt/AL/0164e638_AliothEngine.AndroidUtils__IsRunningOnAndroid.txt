@@ -1,0 +1,16 @@
+Function: AliothEngine.AndroidUtils$$IsRunningOnAndroid @ 0164e638
+
+--- Calls OUT ---
+  -> UnityEngine.Application$$get_platform @ 024f2b84
+
+--- Calls IN ---
+  <- AliothEngine.Utils.ApplicationUtils$$ApplicationQuit @ 0169804c
+
+--- Listing ---
+0164e638  str x30,[sp, #-0x10]!
+0164e63c  mov x0,xzr
+0164e640  bl 0x024f2b84
+0164e644  cmp w0,#0xb
+0164e648  cset w0,eq
+0164e64c  ldr x30,[sp], #0x10
+0164e650  ret

@@ -1,0 +1,57 @@
+Function: AliothEngine.AndroidUtils$$LaunchApplicationDetailsSettings @ 01651234
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.AndroidJavaObject$$Call @ 024acea8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01651234  str x20,[sp, #-0x20]!
+01651238  stp x19,x30,[sp, #0x10]
+0165123c  adrp x19,0x3577000
+01651240  ldrb w8,[x19, #0x7f2]
+01651244  tbnz w8,#0x0,0x01651268
+01651248  adrp x0,0x335b000
+0165124c  ldr x0,[x0, #0x650]
+01651250  bl 0x00b0789c
+01651254  adrp x0,0x3344000
+01651258  ldr x0,[x0, #0x868]
+0165125c  bl 0x00b0789c
+01651260  mov w8,#0x1
+01651264  strb w8,[x19, #0x7f2]
+01651268  bl 0x0164f628
+0165126c  cbz x0,0x016512d4
+01651270  adrp x8,0x335b000
+01651274  ldr x8,[x8, #0x650]
+01651278  mov x19,x0
+0165127c  ldr x20,[x8]
+01651280  ldr x8,[x20, #0x38]
+01651284  ldr x0,[x8]
+01651288  ldrb w8,[x0, #0x132]
+0165128c  tbnz w8,#0x0,0x01651294
+01651290  bl 0x00b2ac40
+    ; [PRE] try { // try from 01651290 to 016512d3 has its CatchHandler @ 016512e0
+01651294  ldr w8,[x0, #0xe0]
+01651298  cbnz w8,0x016512a0
+0165129c  bl 0x00b0798c
+016512a0  ldr x8,[x20, #0x38]
+016512a4  ldr x0,[x8]
+016512a8  ldrb w8,[x0, #0x132]
+016512ac  tbnz w8,#0x0,0x016512b4
+016512b0  bl 0x00b2ac40
+016512b4  adrp x9,0x3344000
+016512b8  ldr x8,[x0, #0xb8]
+016512bc  ldr x9,[x9, #0x868]
+016512c0  ldr x2,[x8]
+016512c4  ldr x1,[x9]
+016512c8  mov x0,x19
+016512cc  mov x3,xzr
+016512d0  bl 0x024acea8
+    ; [POST] } // end try from 01651290 to 016512d3
+016512d4  ldp x19,x30,[sp, #0x10]
+016512d8  ldr x20,[sp], #0x20
+016512dc  ret

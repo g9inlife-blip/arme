@@ -1,0 +1,32 @@
+Function: AliothEngine.FrameSynchr$$ResetSynchrSeed @ 0164a988
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.FrameRandom$$ResetSeed @ 0164a3fc
+
+--- Calls IN ---
+
+--- Listing ---
+0164a988  stp x21,x20,[sp, #-0x20]!
+0164a98c  stp x19,x30,[sp, #0x10]
+0164a990  adrp x21,0x3577000
+0164a994  adrp x20,0x332a000
+0164a998  ldrb w8,[x21, #0x7a9]
+0164a99c  ldr x20,[x20, #0xda8]
+0164a9a0  mov x19,x0
+0164a9a4  tbnz w8,#0x0,0x0164a9bc
+0164a9a8  adrp x0,0x332a000
+0164a9ac  ldr x0,[x0, #0xda8]
+0164a9b0  bl 0x00b0789c
+0164a9b4  mov w8,#0x1
+0164a9b8  strb w8,[x21, #0x7a9]
+0164a9bc  ldr x0,[x20]
+0164a9c0  ldr w19,[x19, #0x38]
+0164a9c4  ldr w8,[x0, #0xe0]
+0164a9c8  cbnz w8,0x0164a9d0
+0164a9cc  bl 0x00b0798c
+0164a9d0  mov w0,w19
+0164a9d4  ldp x19,x30,[sp, #0x10]
+0164a9d8  ldp x21,x20,[sp], #0x20
+0164a9dc  b 0x0164a3fc

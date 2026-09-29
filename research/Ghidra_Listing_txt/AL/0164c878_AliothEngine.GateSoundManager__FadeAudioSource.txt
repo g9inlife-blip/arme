@@ -1,0 +1,51 @@
+Function: AliothEngine.GateSoundManager$$FadeAudioSource @ 0164c878
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.GateSoundManager$$PlayFadeAudio @ 0164c854
+
+--- Listing ---
+0164c878  str d8,[sp, #-0x30]!
+0164c87c  str x22,[sp, #0x8]
+0164c880  stp x21,x20,[sp, #0x10]
+0164c884  stp x19,x30,[sp, #0x20]
+0164c888  adrp x21,0x3577000
+0164c88c  adrp x22,0x3354000
+0164c890  ldrb w8,[x21, #0x7c3]
+0164c894  ldr x22,[x22, #0xac0]
+0164c898  mov v8.16B,v0.16B
+0164c89c  mov w20,w2
+0164c8a0  mov x19,x1
+0164c8a4  tbnz w8,#0x0,0x0164c8bc
+0164c8a8  adrp x0,0x3354000
+0164c8ac  ldr x0,[x0, #0xac0]
+0164c8b0  bl 0x00b0789c
+0164c8b4  mov w8,#0x1
+0164c8b8  strb w8,[x21, #0x7c3]
+0164c8bc  ldr x0,[x22]
+0164c8c0  bl 0x00b079a0
+0164c8c4  cbz x0,0x0164c90c
+0164c8c8  mov x1,xzr
+0164c8cc  mov x21,x0
+0164c8d0  and w20,w20,#0x1
+0164c8d4  bl 0x02194104
+0164c8d8  mov x0,x21
+0164c8dc  str wzr,[x21, #0x10]
+0164c8e0  str x19,[x0, #0x20]!
+0164c8e4  mov x1,x19
+0164c8e8  bl 0x00b07850
+0164c8ec  strb w20,[x21, #0x28]
+0164c8f0  str s8,[x21, #0x2c]
+0164c8f4  mov x0,x21
+0164c8f8  ldp x19,x30,[sp, #0x20]
+0164c8fc  ldp x21,x20,[sp, #0x10]
+0164c900  ldr x22,[sp, #0x8]
+0164c904  ldr d8,[sp], #0x30
+0164c908  ret
+0164c90c  bl 0x00b079b0

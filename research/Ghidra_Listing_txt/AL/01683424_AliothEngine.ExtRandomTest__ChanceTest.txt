@@ -1,0 +1,129 @@
+Function: AliothEngine.ExtRandomTest$$ChanceTest @ 01683424
+
+--- Calls OUT ---
+  -> System.String$$Concat @ 01fdf3bc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.ExtRandom<int>$$Chance @ 01ad9038
+  -> UnityEngine.Debug$$Log @ 024c0104
+  -> System.Single$$ToString @ 021632b0
+
+--- Calls IN ---
+  <- AliothEngine.ExtRandomTest$$Awake @ 016832b8
+
+--- Listing ---
+01683424  sub sp,sp,#0x60
+01683428  stp x27,x26,[sp, #0x10]
+0168342c  stp x25,x24,[sp, #0x20]
+01683430  stp x23,x22,[sp, #0x30]
+01683434  stp x21,x20,[sp, #0x40]
+01683438  stp x19,x30,[sp, #0x50]
+0168343c  adrp x19,0x3577000
+01683440  ldrb w8,[x19, #0xa5e]
+01683444  tbnz w8,#0x0,0x01683498
+01683448  adrp x0,0x336b000
+0168344c  ldr x0,[x0, #0x7d0]
+01683450  bl 0x00b0789c
+01683454  adrp x0,0x335d000
+01683458  ldr x0,[x0, #0x170]
+0168345c  bl 0x00b0789c
+01683460  adrp x0,0x3324000
+01683464  ldr x0,[x0, #0x338]
+01683468  bl 0x00b0789c
+0168346c  adrp x0,0x336a000
+01683470  ldr x0,[x0, #0xaa0]
+01683474  bl 0x00b0789c
+01683478  adrp x0,0x3312000
+0168347c  ldr x0,[x0, #0x1e8]
+01683480  bl 0x00b0789c
+01683484  adrp x0,0x3367000
+01683488  ldr x0,[x0, #0xb20]
+0168348c  bl 0x00b0789c
+01683490  mov w8,#0x1
+01683494  strb w8,[x19, #0xa5e]
+01683498  adrp x26,0x335d000
+0168349c  adrp x23,0x336b000
+016834a0  adrp x19,0x3367000
+016834a4  adrp x22,0x336a000
+016834a8  adrp x20,0x3312000
+016834ac  adrp x21,0x3324000
+016834b0  ldr x26,[x26, #0x170]
+016834b4  ldr x23,[x23, #0x7d0]
+016834b8  ldr x19,[x19, #0xb20]
+016834bc  ldr x22,[x22, #0xaa0]
+016834c0  ldr x20,[x20, #0x1e8]
+016834c4  ldr x21,[x21, #0x338]
+016834c8  mov w8,#0xd70a
+016834cc  mov w9,#0x147b
+016834d0  mov w27,#0xf080
+016834d4  mov w25,wzr
+016834d8  mov w24,wzr
+016834dc  movk w8,#0x3ea3, LSL #16
+016834e0  movk w9,#0x3f2e, LSL #16
+016834e4  movk w27,#0x2fa, LSL #16
+016834e8  str xzr,[sp]
+016834ec  stp w9,w8,[sp, #0x8]
+016834f0  ldr x2,[x26]
+016834f4  mov w0,#0x20
+016834f8  mov w1,#0x64
+016834fc  bl 0x01ad9038
+01683500  mvn w8,w0
+01683504  and w9,w0,#0x1
+01683508  and w8,w8,#0x1
+0168350c  subs w27,w27,#0x1
+01683510  add w24,w24,w8
+01683514  add w25,w25,w9
+01683518  b.ne 0x016834f0
+0168351c  adrp x8,0x26dc000
+01683520  ldr s0,[x8, #0xfec]
+01683524  ldr x0,[x23]
+01683528  scvtf s1,w25
+0168352c  scvtf s2,w24
+01683530  fdiv s1,s1,s0
+01683534  fdiv s0,s2,s0
+01683538  stp s0,s1,[sp]
+0168353c  ldr w8,[x0, #0xe0]
+01683540  cbnz w8,0x01683548
+01683544  bl 0x00b0798c
+01683548  ldr x0,[x19]
+0168354c  mov x1,xzr
+01683550  bl 0x024c0104
+01683554  add x0,sp,#0xc
+01683558  mov x1,xzr
+0168355c  bl 0x021632b0
+01683560  mov x19,x0
+01683564  add x0,sp,#0x4
+01683568  mov x1,xzr
+0168356c  bl 0x021632b0
+01683570  ldr x8,[x22]
+01683574  ldr x2,[x20]
+01683578  mov x3,x0
+0168357c  mov x1,x19
+01683580  mov x0,x8
+01683584  mov x4,xzr
+01683588  bl 0x01fdf3bc
+0168358c  mov x1,xzr
+01683590  bl 0x024c0104
+01683594  add x0,sp,#0x8
+01683598  mov x1,xzr
+0168359c  bl 0x021632b0
+016835a0  mov x19,x0
+016835a4  mov x0,sp
+016835a8  mov x1,xzr
+016835ac  bl 0x021632b0
+016835b0  ldr x8,[x21]
+016835b4  ldr x2,[x20]
+016835b8  mov x3,x0
+016835bc  mov x1,x19
+016835c0  mov x0,x8
+016835c4  mov x4,xzr
+016835c8  bl 0x01fdf3bc
+016835cc  mov x1,xzr
+016835d0  bl 0x024c0104
+016835d4  ldp x19,x30,[sp, #0x50]
+016835d8  ldp x21,x20,[sp, #0x40]
+016835dc  ldp x23,x22,[sp, #0x30]
+016835e0  ldp x25,x24,[sp, #0x20]
+016835e4  ldp x27,x26,[sp, #0x10]
+016835e8  add sp,sp,#0x60
+016835ec  ret

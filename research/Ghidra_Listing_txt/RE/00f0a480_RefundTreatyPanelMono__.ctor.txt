@@ -1,0 +1,39 @@
+Function: RefundTreatyPanelMono$$.ctor @ 00f0a480
+
+--- Calls OUT ---
+  -> GUIScreenBaseMono$$.ctor @ 00f1c130
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RefundTreatyPanelMonoWrap$$__CreateInstance @ 01356a28
+
+--- Listing ---
+00f0a480  stp x21,x20,[sp, #-0x20]!
+00f0a484  stp x19,x30,[sp, #0x10]
+00f0a488  adrp x21,0x3572000
+00f0a48c  adrp x20,0x3379000
+00f0a490  ldrb w8,[x21, #0xf9f]
+00f0a494  ldr x20,[x20, #0xed8]
+00f0a498  mov x19,x0
+00f0a49c  tbnz w8,#0x0,0x00f0a4b4
+00f0a4a0  adrp x0,0x3379000
+00f0a4a4  ldr x0,[x0, #0xed8]
+00f0a4a8  bl 0x00b0789c
+00f0a4ac  mov w8,#0x1
+00f0a4b0  strb w8,[x21, #0xf9f]
+00f0a4b4  mov x0,x19
+00f0a4b8  mov x1,xzr
+00f0a4bc  bl 0x00f1c130
+00f0a4c0  ldr x8,[x20]
+00f0a4c4  ldr x8,[x8, #0xb8]
+00f0a4c8  ldr x0,[x8, #0x20]
+00f0a4cc  cbz x0,0x00f0a4e4
+00f0a4d0  mov x1,x19
+00f0a4d4  ldp x19,x30,[sp, #0x10]
+00f0a4d8  mov x2,xzr
+00f0a4dc  ldp x21,x20,[sp], #0x20
+00f0a4e0  b 0x01060dac
+00f0a4e4  ldp x19,x30,[sp, #0x10]
+00f0a4e8  ldp x21,x20,[sp], #0x20
+00f0a4ec  ret

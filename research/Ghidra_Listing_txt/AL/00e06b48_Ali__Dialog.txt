@@ -1,0 +1,88 @@
+Function: Ali$$Dialog @ 00e06b48
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp63 @ 01067254
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> DataCache$$set_m_dialogId @ 00e24460
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_dataCache @ 00e014f4
+  -> FUN_00b079b0 @ 00b079b0
+  -> DataCache$$set_m_endAct @ 00e24544
+  -> AliothEngine.GUIScreenManager$$ShowScreen @ 0167a614
+
+--- Calls IN ---
+  <- BattleManager$$BattleStartGoon @ 0117d97c
+  <- BattleManager$$NetCloseBatlle @ 0117bc74
+  <- BattleManager.<BattleEnd2>d__203$$MoveNext @ 01311274
+  <- XLua.CSObjectWrap.AliWrap$$_m_Dialog @ 01194fa4
+
+--- Listing ---
+00e06b48  stp x23,x22,[sp, #-0x30]!
+00e06b4c  stp x21,x20,[sp, #0x10]
+00e06b50  stp x19,x30,[sp, #0x20]
+00e06b54  adrp x23,0x3572000
+00e06b58  adrp x22,0x335f000
+00e06b5c  ldrb w8,[x23, #0x577]
+00e06b60  ldr x22,[x22, #0x20]
+00e06b64  mov x19,x2
+00e06b68  mov w21,w1
+00e06b6c  mov x20,x0
+00e06b70  tbnz w8,#0x0,0x00e06ba0
+00e06b74  adrp x0,0x335f000
+00e06b78  ldr x0,[x0, #0x20]
+00e06b7c  bl 0x00b0789c
+00e06b80  adrp x0,0x337b000
+00e06b84  ldr x0,[x0, #0xb98]
+00e06b88  bl 0x00b0789c
+00e06b8c  adrp x0,0x3324000
+00e06b90  ldr x0,[x0, #0xca8]
+00e06b94  bl 0x00b0789c
+00e06b98  mov w8,#0x1
+00e06b9c  strb w8,[x23, #0x577]
+00e06ba0  ldr x0,[x22]
+00e06ba4  ldr w8,[x0, #0xe0]
+00e06ba8  cbnz w8,0x00e06bb4
+00e06bac  bl 0x00b0798c
+00e06bb0  ldr x0,[x22]
+00e06bb4  ldr x8,[x0, #0xb8]
+00e06bb8  ldr x0,[x8, #0x360]
+00e06bbc  cbz x0,0x00e06be0
+00e06bc0  mov x1,x20
+00e06bc4  mov w2,w21
+00e06bc8  mov x3,x19
+00e06bcc  ldp x19,x30,[sp, #0x20]
+00e06bd0  ldp x21,x20,[sp, #0x10]
+00e06bd4  mov x4,xzr
+00e06bd8  ldp x23,x22,[sp], #0x30
+00e06bdc  b 0x01067254
+00e06be0  mov x0,x20
+00e06be4  bl 0x00e014f4
+00e06be8  cbz x0,0x00e06c58
+00e06bec  mov w1,w21
+00e06bf0  mov x2,xzr
+00e06bf4  bl 0x00e24460
+00e06bf8  mov x0,x20
+00e06bfc  bl 0x00e014f4
+00e06c00  cbz x0,0x00e06c58
+00e06c04  adrp x21,0x337b000
+00e06c08  adrp x20,0x3324000
+00e06c0c  ldr x21,[x21, #0xb98]
+00e06c10  ldr x20,[x20, #0xca8]
+00e06c14  mov x1,x19
+00e06c18  mov x2,xzr
+00e06c1c  bl 0x00e24544
+00e06c20  ldr x0,[x21]
+00e06c24  ldr w8,[x0, #0xe0]
+00e06c28  cbnz w8,0x00e06c30
+00e06c2c  bl 0x00b0798c
+00e06c30  ldr x0,[x20]
+00e06c34  ldp x19,x30,[sp, #0x20]
+00e06c38  ldp x21,x20,[sp, #0x10]
+00e06c3c  mov x1,xzr
+00e06c40  mov x2,xzr
+00e06c44  mov w3,wzr
+00e06c48  mov w4,wzr
+00e06c4c  mov x5,xzr
+00e06c50  ldp x23,x22,[sp], #0x30
+00e06c54  b 0x0167a614
+00e06c58  bl 0x00b079b0

@@ -1,0 +1,33 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Black @ 016b5214
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.RichTextExtension$$Color @ 016b5170
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RichTextExtension$$BlackMiniBoldLabel @ 016b5e84
+  <- AliothEngine.Extensions.RichTextExtension$$BlackLargeBoldLabel @ 016b5e98
+  <- AliothEngine.Extensions.RichTextExtension$$BlackLargeLabel @ 016b5e48
+  <- AliothEngine.Extensions.RichTextExtension$$BlackBoldLabel @ 016b5e70
+  <- AliothEngine.Extensions.RichTextExtension$$BlackMiniLabel @ 016b5e5c
+  <- AliothEngine.Extensions.RichTextExtension$$BlackLabel @ 016b5e34
+
+--- Listing ---
+016b5214  stp x21,x20,[sp, #-0x20]!
+016b5218  stp x19,x30,[sp, #0x10]
+016b521c  adrp x20,0x3577000
+016b5220  adrp x21,0x3334000
+016b5224  ldrb w8,[x20, #0xbf2]
+016b5228  ldr x21,[x21, #0xba0]
+016b522c  mov x19,x0
+016b5230  tbnz w8,#0x0,0x016b5248
+016b5234  adrp x0,0x3334000
+016b5238  ldr x0,[x0, #0xba0]
+016b523c  bl 0x00b0789c
+016b5240  mov w8,#0x1
+016b5244  strb w8,[x20, #0xbf2]
+016b5248  ldr x1,[x21]
+016b524c  mov x0,x19
+016b5250  ldp x19,x30,[sp, #0x10]
+016b5254  ldp x21,x20,[sp], #0x20
+016b5258  b 0x016b5170

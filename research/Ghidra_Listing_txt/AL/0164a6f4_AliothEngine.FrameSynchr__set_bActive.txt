@@ -1,0 +1,13 @@
+Function: AliothEngine.FrameSynchr$$set_bActive @ 0164a6f4
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+0164a6f4  ldrb w9,[x0, #0x10]
+0164a6f8  and w8,w1,#0x1
+0164a6fc  cmp w9,w8
+0164a700  b.eq 0x0164a708
+0164a704  strb w8,[x0, #0x10]
+0164a708  ret

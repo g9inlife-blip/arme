@@ -1,0 +1,65 @@
+Function: AliothEngine.Utils.Utility$$GetFontColor @ 0169f7bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GUIStyle$$get_hover @ 0252e3f0
+  -> UnityEngine.GUIStyle$$get_normal @ 025295b4
+  -> UnityEngine.GUIStyle$$.ctor @ 02528788
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.GUIStyleState$$set_textColor @ 02529628
+
+--- Calls IN ---
+
+--- Listing ---
+0169f7bc  stp d11,d10,[sp, #-0x40]!
+0169f7c0  stp d9,d8,[sp, #0x10]
+0169f7c4  str x20,[sp, #0x20]
+0169f7c8  stp x19,x30,[sp, #0x30]
+0169f7cc  adrp x19,0x3577000
+0169f7d0  adrp x20,0x3330000
+0169f7d4  ldrb w8,[x19, #0xb54]
+0169f7d8  ldr x20,[x20, #0xba0]
+0169f7dc  mov v8.16B,v3.16B
+0169f7e0  mov v9.16B,v2.16B
+0169f7e4  mov v10.16B,v1.16B
+0169f7e8  mov v11.16B,v0.16B
+0169f7ec  tbnz w8,#0x0,0x0169f804
+0169f7f0  adrp x0,0x3330000
+0169f7f4  ldr x0,[x0, #0xba0]
+0169f7f8  bl 0x00b0789c
+0169f7fc  mov w8,#0x1
+0169f800  strb w8,[x19, #0xb54]
+0169f804  ldr x0,[x20]
+0169f808  bl 0x00b079a0
+0169f80c  cbz x0,0x0169f884
+0169f810  mov x1,xzr
+0169f814  mov x19,x0
+0169f818  bl 0x02528788
+0169f81c  mov x0,x19
+0169f820  mov x1,xzr
+0169f824  bl 0x025295b4
+0169f828  cbz x0,0x0169f884
+0169f82c  mov v0.16B,v11.16B
+0169f830  mov v1.16B,v10.16B
+0169f834  mov v2.16B,v9.16B
+0169f838  mov v3.16B,v8.16B
+0169f83c  mov x1,xzr
+0169f840  bl 0x02529628
+0169f844  mov x0,x19
+0169f848  mov x1,xzr
+0169f84c  bl 0x0252e3f0
+0169f850  cbz x0,0x0169f884
+0169f854  mov v0.16B,v11.16B
+0169f858  mov v1.16B,v10.16B
+0169f85c  mov v2.16B,v9.16B
+0169f860  mov v3.16B,v8.16B
+0169f864  mov x1,xzr
+0169f868  bl 0x02529628
+0169f86c  mov x0,x19
+0169f870  ldp x19,x30,[sp, #0x30]
+0169f874  ldr x20,[sp, #0x20]
+0169f878  ldp d9,d8,[sp, #0x10]
+0169f87c  ldp d11,d10,[sp], #0x40
+0169f880  ret
+0169f884  bl 0x00b079b0

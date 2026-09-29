@@ -1,0 +1,137 @@
+Function: AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f30f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Predicate<object>$$.ctor @ 01d60c90
+  -> AliothEngine.Extensions.ArrayExtensions$$FirstOrDefault<object> @ 01765910
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.TypeExtensions$$GetAttributes @ 016bb850
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- President.ObjSerializer$$_GetSerializeFields @ 016303d8
+
+--- Listing ---
+017f30f4  str x22,[sp, #-0x30]!
+017f30f8  stp x21,x20,[sp, #0x10]
+017f30fc  stp x19,x30,[sp, #0x20]
+017f3100  adrp x21,0x3578000
+017f3104  adrp x22,0x3345000
+017f3108  ldrb w8,[x21, #0x398]
+017f310c  ldr x22,[x22, #0x4a8]
+017f3110  mov x19,x1
+017f3114  mov x20,x0
+017f3118  tbnz w8,#0x0,0x017f3148
+017f311c  adrp x0,0x3355000
+017f3120  ldr x0,[x0, #0x7a8]
+017f3124  bl 0x00b0789c
+017f3128  adrp x0,0x3319000
+017f312c  ldr x0,[x0, #0xa58]
+017f3130  bl 0x00b0789c
+017f3134  adrp x0,0x3345000
+017f3138  ldr x0,[x0, #0x4a8]
+017f313c  bl 0x00b0789c
+017f3140  mov w8,#0x1
+017f3144  strb w8,[x21, #0x398]
+017f3148  ldr x0,[x22]
+017f314c  ldr w8,[x0, #0xe0]
+017f3150  cbnz w8,0x017f3158
+017f3154  bl 0x00b0798c
+017f3158  mov x0,x20
+017f315c  mov x1,xzr
+017f3160  bl 0x016bb850
+017f3164  ldr x8,[x19, #0x38]
+017f3168  mov x20,x0
+017f316c  ldr x8,[x8]
+017f3170  ldrb w9,[x8, #0x132]
+017f3174  tbnz w9,#0x0,0x017f3184
+017f3178  mov x0,x8
+017f317c  bl 0x00b2ac40
+017f3180  mov x8,x0
+017f3184  ldr w9,[x8, #0xe0]
+017f3188  cbnz w9,0x017f3194
+017f318c  mov x0,x8
+017f3190  bl 0x00b0798c
+017f3194  ldr x8,[x19, #0x38]
+017f3198  ldr x0,[x8]
+017f319c  ldrb w8,[x0, #0x132]
+017f31a0  tbnz w8,#0x0,0x017f31a8
+017f31a4  bl 0x00b2ac40
+017f31a8  ldr x8,[x0, #0xb8]
+017f31ac  ldr x21,[x8, #0x8]
+017f31b0  cbnz x21,0x017f325c
+017f31b4  ldr x8,[x19, #0x38]
+017f31b8  ldr x0,[x8]
+017f31bc  ldrb w8,[x0, #0x132]
+017f31c0  tbnz w8,#0x0,0x017f31c8
+017f31c4  bl 0x00b2ac40
+017f31c8  ldr w8,[x0, #0xe0]
+017f31cc  cbnz w8,0x017f31d4
+017f31d0  bl 0x00b0798c
+017f31d4  ldr x8,[x19, #0x38]
+017f31d8  adrp x21,0x3319000
+017f31dc  ldr x0,[x8]
+017f31e0  ldrb w8,[x0, #0x132]
+017f31e4  ldr x21,[x21, #0xa58]
+017f31e8  tbnz w8,#0x0,0x017f31f0
+017f31ec  bl 0x00b2ac40
+017f31f0  ldr x8,[x0, #0xb8]
+017f31f4  ldr x0,[x21]
+017f31f8  ldr x22,[x8]
+017f31fc  bl 0x00b079a0
+017f3200  cbz x0,0x017f32c8
+017f3204  ldr x8,[x19, #0x38]
+017f3208  mov x1,x22
+017f320c  mov x3,xzr
+017f3210  mov x21,x0
+017f3214  ldr x2,[x8, #0x8]
+017f3218  bl 0x01d60c90
+017f321c  ldr x8,[x19, #0x38]
+017f3220  ldr x0,[x8]
+017f3224  ldrb w8,[x0, #0x132]
+017f3228  tbnz w8,#0x0,0x017f3230
+017f322c  bl 0x00b2ac40
+017f3230  ldr x8,[x0, #0xb8]
+017f3234  str x21,[x8, #0x8]
+017f3238  ldr x8,[x19, #0x38]
+017f323c  ldr x0,[x8]
+017f3240  ldrb w8,[x0, #0x132]
+017f3244  tbnz w8,#0x0,0x017f324c
+017f3248  bl 0x00b2ac40
+017f324c  ldr x8,[x0, #0xb8]
+017f3250  mov x1,x21
+017f3254  add x0,x8,#0x8
+017f3258  bl 0x00b07850
+017f325c  adrp x8,0x3355000
+017f3260  ldr x8,[x8, #0x7a8]
+017f3264  mov x0,x20
+017f3268  mov x1,x21
+017f326c  ldr x2,[x8]
+017f3270  bl 0x01765910
+017f3274  ldr x8,[x19, #0x38]
+017f3278  mov x20,x0
+017f327c  ldr x19,[x8, #0x10]
+017f3280  ldrb w8,[x19, #0x132]
+017f3284  tbnz w8,#0x0,0x017f3294
+017f3288  mov x0,x19
+017f328c  bl 0x00b2ac40
+017f3290  mov x19,x0
+017f3294  cbz x20,0x017f32b4
+017f3298  mov x0,x20
+017f329c  mov x1,x19
+017f32a0  bl 0x00b07990
+017f32a4  cbnz x0,0x017f32b8
+017f32a8  mov x0,x20
+017f32ac  mov x1,x19
+017f32b0  bl 0x00b07c6c
+017f32b4  mov x0,xzr
+017f32b8  ldp x19,x30,[sp, #0x20]
+017f32bc  ldp x21,x20,[sp, #0x10]
+017f32c0  ldr x22,[sp], #0x30
+017f32c4  ret
+017f32c8  bl 0x00b079b0

@@ -1,0 +1,85 @@
+Function: AliothEngine.Utils.TransformUtils$$CreateChild @ 0169ca44
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$set_localPosition @ 024f385c
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.GameObject$$.ctor @ 024ded14
+  -> UnityEngine.Transform$$set_localRotation @ 024f3cb8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_parent @ 024f4364
+
+--- Calls IN ---
+
+--- Listing ---
+0169ca44  str x22,[sp, #-0x30]!
+0169ca48  stp x21,x20,[sp, #0x10]
+0169ca4c  stp x19,x30,[sp, #0x20]
+0169ca50  adrp x21,0x3577000
+0169ca54  adrp x22,0x3310000
+0169ca58  ldrb w8,[x21, #0xb44]
+0169ca5c  ldr x22,[x22, #0xe40]
+0169ca60  mov x20,x1
+0169ca64  mov x19,x0
+0169ca68  tbnz w8,#0x0,0x0169ca80
+0169ca6c  adrp x0,0x3310000
+0169ca70  ldr x0,[x0, #0xe40]
+0169ca74  bl 0x00b0789c
+0169ca78  mov w8,#0x1
+0169ca7c  strb w8,[x21, #0xb44]
+0169ca80  ldr x0,[x22]
+0169ca84  bl 0x00b079a0
+0169ca88  cbz x0,0x0169cb58
+0169ca8c  mov x1,x19
+0169ca90  mov x2,xzr
+0169ca94  mov x21,x0
+0169ca98  bl 0x024ded14
+0169ca9c  mov x0,x21
+0169caa0  mov x1,xzr
+0169caa4  bl 0x024de730
+0169caa8  cbz x0,0x0169cb58
+0169caac  mov x1,x20
+0169cab0  mov x2,xzr
+0169cab4  mov x19,x0
+0169cab8  bl 0x024f4364
+0169cabc  adrp x20,0x3570000
+0169cac0  ldrb w8,[x20, #0xf0c]
+0169cac4  cbnz w8,0x0169cadc
+0169cac8  adrp x0,0x3368000
+0169cacc  ldr x0,[x0, #0x9b8]
+0169cad0  bl 0x00b0789c
+0169cad4  mov w8,#0x1
+0169cad8  strb w8,[x20, #0xf0c]
+0169cadc  adrp x8,0x3368000
+0169cae0  ldr x8,[x8, #0x9b8]
+0169cae4  mov x0,x19
+0169cae8  mov x1,xzr
+0169caec  ldr x8,[x8]
+0169caf0  ldr x8,[x8, #0xb8]
+0169caf4  ldp s0,s1,[x8]
+0169caf8  ldr s2,[x8, #0x8]
+0169cafc  bl 0x024f385c
+0169cb00  adrp x20,0x3570000
+0169cb04  ldrb w8,[x20, #0xf0d]
+0169cb08  cbnz w8,0x0169cb20
+0169cb0c  adrp x0,0x3352000
+0169cb10  ldr x0,[x0, #0xd40]
+0169cb14  bl 0x00b0789c
+0169cb18  mov w8,#0x1
+0169cb1c  strb w8,[x20, #0xf0d]
+0169cb20  adrp x8,0x3352000
+0169cb24  ldr x8,[x8, #0xd40]
+0169cb28  mov x0,x19
+0169cb2c  mov x1,xzr
+0169cb30  ldr x8,[x8]
+0169cb34  ldr x8,[x8, #0xb8]
+0169cb38  ldp s0,s1,[x8]
+0169cb3c  ldp s2,s3,[x8, #0x8]
+0169cb40  bl 0x024f3cb8
+0169cb44  mov x0,x19
+0169cb48  ldp x19,x30,[sp, #0x20]
+0169cb4c  ldp x21,x20,[sp, #0x10]
+0169cb50  ldr x22,[sp], #0x30
+0169cb54  ret
+0169cb58  bl 0x00b079b0

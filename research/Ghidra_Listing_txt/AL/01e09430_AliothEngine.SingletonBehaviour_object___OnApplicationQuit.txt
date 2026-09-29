@@ -1,0 +1,21 @@
+Function: AliothEngine.SingletonBehaviour<object>$$OnApplicationQuit @ 01e09430
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- CSBehaviour$$OnApplicationQuit @ 016dda9c
+
+--- Listing ---
+01e09430  str x30,[sp, #-0x10]!
+01e09434  ldr x8,[x1, #0x20]
+01e09438  ldr x8,[x8, #0xc0]
+01e0943c  ldr x0,[x8]
+01e09440  ldrb w8,[x0, #0x132]
+01e09444  tbnz w8,#0x0,0x01e0944c
+01e09448  bl 0x00b2ac40
+01e0944c  ldr x8,[x0, #0xb8]
+01e09450  mov w9,#0x1
+01e09454  strb w9,[x8, #0x8]
+01e09458  ldr x30,[sp], #0x10
+01e0945c  ret

@@ -1,0 +1,80 @@
+Function: AliothEngine.GateSoundSet$$.ctor @ 0164e044
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$.ctor @ 024e45bc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.FloatRange$$.ctor @ 01686480
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0164e044  stp x21,x20,[sp, #-0x20]!
+0164e048  stp x19,x30,[sp, #0x10]
+0164e04c  adrp x20,0x3577000
+0164e050  adrp x21,0x3356000
+0164e054  ldrb w8,[x20, #0x7d5]
+0164e058  ldr x21,[x21, #0x228]
+0164e05c  mov x19,x0
+0164e060  tbnz w8,#0x0,0x0164e090
+0164e064  adrp x0,0x3375000
+0164e068  ldr x0,[x0, #0x800]
+0164e06c  bl 0x00b0789c
+0164e070  adrp x0,0x333a000
+0164e074  ldr x0,[x0, #0xe58]
+0164e078  bl 0x00b0789c
+0164e07c  adrp x0,0x3356000
+0164e080  ldr x0,[x0, #0x228]
+0164e084  bl 0x00b0789c
+0164e088  mov w8,#0x1
+0164e08c  strb w8,[x20, #0x7d5]
+0164e090  ldr x0,[x21]
+0164e094  bl 0x00b079a0
+0164e098  cbz x0,0x0164e148
+0164e09c  adrp x8,0x333a000
+0164e0a0  ldr x8,[x8, #0xe58]
+0164e0a4  adrp x21,0x3375000
+0164e0a8  mov x20,x0
+0164e0ac  ldr x1,[x8]
+0164e0b0  ldr x21,[x21, #0x800]
+0164e0b4  bl 0x01bffe10
+0164e0b8  mov x0,x19
+0164e0bc  str x20,[x0, #0x18]!
+0164e0c0  mov x1,x20
+0164e0c4  bl 0x00b07850
+0164e0c8  ldr x0,[x21]
+0164e0cc  bl 0x00b079a0
+0164e0d0  cbz x0,0x0164e148
+0164e0d4  fmov s0,0x3f800000
+0164e0d8  mov v1.16B,v0.16B
+0164e0dc  mov x1,xzr
+0164e0e0  mov x20,x0
+0164e0e4  bl 0x01686480
+0164e0e8  mov x0,x19
+0164e0ec  str x20,[x0, #0x30]!
+0164e0f0  mov x1,x20
+0164e0f4  bl 0x00b07850
+0164e0f8  ldr x0,[x21]
+0164e0fc  bl 0x00b079a0
+0164e100  cbz x0,0x0164e148
+0164e104  mov w8,#0x42c80000
+0164e108  fmov s0,0x3f800000
+0164e10c  fmov s1,w8
+0164e110  mov x1,xzr
+0164e114  mov x20,x0
+0164e118  bl 0x01686480
+0164e11c  mov x0,x19
+0164e120  str x20,[x0, #0x38]!
+0164e124  mov x1,x20
+0164e128  bl 0x00b07850
+0164e12c  mov w8,#0x1
+0164e130  str w8,[x19, #0x40]
+0164e134  mov x0,x19
+0164e138  ldp x19,x30,[sp, #0x10]
+0164e13c  mov x1,xzr
+0164e140  ldp x21,x20,[sp], #0x20
+0164e144  b 0x024e45bc
+0164e148  bl 0x00b079b0

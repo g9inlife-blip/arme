@@ -1,0 +1,199 @@
+Function: AliothEngine.Extensions.ICollectionExtensions$$AddRange<Vector2> @ 01798ed0
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- BaseSkillEff$$CheckRange @ 015e9270
+  <- BaseSkillEff$$InitRange @ 015e2b80
+  <- SkillEffCache$$InitRange @ 014b0244
+  <- RoleNews$$GetBodyArea @ 00fe6a40
+
+--- Listing ---
+01798ed0  stp d9,d8,[sp, #-0x40]!
+01798ed4  stp x23,x22,[sp, #0x10]
+01798ed8  stp x21,x20,[sp, #0x20]
+01798edc  stp x19,x30,[sp, #0x30]
+01798ee0  adrp x22,0x3578000
+01798ee4  ldrb w8,[x22, #0x15d]
+01798ee8  mov x20,x2
+01798eec  mov x19,x1
+01798ef0  mov x21,x0
+01798ef4  tbnz w8,#0x0,0x01798f18
+01798ef8  adrp x0,0x337d000
+01798efc  ldr x0,[x0, #0x848]
+01798f00  bl 0x00b0789c
+01798f04  adrp x0,0x3364000
+01798f08  ldr x0,[x0, #0xeb0]
+01798f0c  bl 0x00b0789c
+01798f10  mov w8,#0x1
+01798f14  strb w8,[x22, #0x15d]
+01798f18  cbz x19,0x01799160
+01798f1c  ldr x8,[x20, #0x38]
+01798f20  ldr x1,[x8]
+01798f24  ldrb w8,[x1, #0x132]
+01798f28  tbnz w8,#0x0,0x01798f38
+01798f2c  mov x0,x1
+01798f30  bl 0x00b2ac40
+01798f34  mov x1,x0
+01798f38  ldr x8,[x19]
+01798f3c  ldrh w9,[x8, #0x12a]
+01798f40  cbz x9,0x01798f64
+01798f44  ldr x10,[x8, #0xb0]
+01798f48  add x10,x10,#0x8
+01798f4c  ldur x11,[x10, #-0x8]
+01798f50  cmp x11,x1
+01798f54  b.eq 0x01798f74
+01798f58  subs x9,x9,#0x1
+01798f5c  add x10,x10,#0x10
+01798f60  b.ne 0x01798f4c
+01798f64  mov x0,x19
+01798f68  mov w2,wzr
+01798f6c  bl 0x00b2ae24
+01798f70  b 0x01798f80
+01798f74  ldrsw x9,[x10]
+01798f78  add x8,x8,x9, LSL #0x4
+01798f7c  add x0,x8,#0x138
+01798f80  ldp x8,x1,[x0]
+01798f84  adrp x22,0x337d000
+01798f88  ldr x22,[x22, #0x848]
+01798f8c  mov x0,x19
+01798f90  blr x8
+01798f94  mov x19,x0
+01798f98  cbz x0,0x01799178
+01798f9c  adrp x23,0x3364000
+01798fa0  ldr x23,[x23, #0xeb0]
+01798fa4  ldr x8,[x19]
+01798fa8  ldr x1,[x23]
+01798fac  ldrh w9,[x8, #0x12a]
+01798fb0  cbz x9,0x01798fd4
+01798fb4  ldr x10,[x8, #0xb0]
+01798fb8  add x10,x10,#0x8
+01798fbc  ldur x11,[x10, #-0x8]
+01798fc0  cmp x11,x1
+01798fc4  b.eq 0x01798fe4
+01798fc8  subs x9,x9,#0x1
+01798fcc  add x10,x10,#0x10
+01798fd0  b.ne 0x01798fbc
+01798fd4  mov x0,x19
+    ; [PRE] try { // try from 01798fd4 to 01798ffb has its CatchHandler @ 0179918c
+01798fd8  mov w2,wzr
+01798fdc  bl 0x00b2ae24
+01798fe0  b 0x01798ff0
+01798fe4  ldrsw x9,[x10]
+01798fe8  add x8,x8,x9, LSL #0x4
+01798fec  add x0,x8,#0x138
+01798ff0  ldp x8,x1,[x0]
+01798ff4  mov x0,x19
+01798ff8  blr x8
+    ; [POST] } // end try from 01798fd4 to 01798ffb
+01798ffc  tbz w0,#0x0,0x017990fc
+01799000  ldr x8,[x20, #0x38]
+01799004  ldr x1,[x8, #0x10]
+01799008  ldrb w8,[x1, #0x132]
+0179900c  tbnz w8,#0x0,0x0179901c
+01799010  mov x0,x1
+    ; [PRE] try { // try from 01799010 to 0179906f has its CatchHandler @ 01799194
+01799014  bl 0x00b2ac40
+01799018  mov x1,x0
+0179901c  ldr x8,[x19]
+01799020  ldrh w9,[x8, #0x12a]
+01799024  cbz x9,0x01799048
+01799028  ldr x10,[x8, #0xb0]
+0179902c  add x10,x10,#0x8
+01799030  ldur x11,[x10, #-0x8]
+01799034  cmp x11,x1
+01799038  b.eq 0x01799058
+0179903c  subs x9,x9,#0x1
+01799040  add x10,x10,#0x10
+01799044  b.ne 0x01799030
+01799048  mov x0,x19
+0179904c  mov w2,wzr
+01799050  bl 0x00b2ae24
+01799054  b 0x01799064
+01799058  ldrsw x9,[x10]
+0179905c  add x8,x8,x9, LSL #0x4
+01799060  add x0,x8,#0x138
+01799064  ldp x8,x1,[x0]
+01799068  mov x0,x19
+0179906c  blr x8
+    ; [POST] } // end try from 01799010 to 0179906f
+01799070  cbz x21,0x01799174
+01799074  ldr x8,[x20, #0x38]
+01799078  mov v8.16B,v0.16B
+0179907c  mov v9.16B,v1.16B
+01799080  ldr x1,[x8, #0x20]
+01799084  ldrb w8,[x1, #0x132]
+01799088  tbnz w8,#0x0,0x01799098
+0179908c  mov x0,x1
+    ; [PRE] try { // try from 0179908c to 017990f7 has its CatchHandler @ 01799190
+01799090  bl 0x00b2ac40
+01799094  mov x1,x0
+01799098  ldr x8,[x21]
+0179909c  ldrh w9,[x8, #0x12a]
+017990a0  cbz x9,0x017990c4
+017990a4  ldr x10,[x8, #0xb0]
+017990a8  add x10,x10,#0x8
+017990ac  ldur x11,[x10, #-0x8]
+017990b0  cmp x11,x1
+017990b4  b.eq 0x017990d4
+017990b8  subs x9,x9,#0x1
+017990bc  add x10,x10,#0x10
+017990c0  b.ne 0x017990ac
+017990c4  mov w2,#0x2
+017990c8  mov x0,x21
+017990cc  bl 0x00b2ae24
+017990d0  b 0x017990e4
+017990d4  ldr w9,[x10]
+017990d8  add w9,w9,#0x2
+017990dc  add x8,x8,w9, SXTW  #0x4
+017990e0  add x0,x8,#0x138
+017990e4  ldp x8,x1,[x0]
+017990e8  mov x0,x21
+017990ec  mov v0.16B,v8.16B
+017990f0  mov v1.16B,v9.16B
+017990f4  blr x8
+    ; [POST] } // end try from 0179908c to 017990f7
+017990f8  b 0x01798fa4
+017990fc  mov x20,xzr
+01799100  cbz x19,0x0179915c
+01799104  ldr x8,[x19]
+01799108  ldr x1,[x22]
+0179910c  ldrh w9,[x8, #0x12a]
+01799110  cbz x9,0x01799134
+01799114  ldr x10,[x8, #0xb0]
+01799118  add x10,x10,#0x8
+0179911c  ldur x11,[x10, #-0x8]
+01799120  cmp x11,x1
+01799124  b.eq 0x01799144
+01799128  subs x9,x9,#0x1
+0179912c  add x10,x10,#0x10
+01799130  b.ne 0x0179911c
+01799134  mov x0,x19
+01799138  mov w2,wzr
+0179913c  bl 0x00b2ae24
+01799140  b 0x01799150
+01799144  ldrsw x9,[x10]
+01799148  add x8,x8,x9, LSL #0x4
+0179914c  add x0,x8,#0x138
+01799150  ldp x8,x1,[x0]
+01799154  mov x0,x19
+01799158  blr x8
+0179915c  cbnz x20,0x0179917c
+01799160  ldp x19,x30,[sp, #0x30]
+01799164  ldp x21,x20,[sp, #0x20]
+01799168  ldp x23,x22,[sp, #0x10]
+0179916c  ldp d9,d8,[sp], #0x40
+01799170  ret
+01799174  bl 0x00b079b0
+    ; [PRE] try { // try from 01799174 to 01799177 has its CatchHandler @ 01799188
+    ; [POST] } // end try from 01799174 to 01799177
+01799178  bl 0x00b079b0
+    ; [PRE] try { // try from 01799178 to 0179917b has its CatchHandler @ 01799184
+    ; [POST] } // end try from 01799178 to 0179917b
+0179917c  mov x0,x20
+01799180  bl 0x00aaac8c

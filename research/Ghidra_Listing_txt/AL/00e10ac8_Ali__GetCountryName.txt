@@ -1,0 +1,46 @@
+Function: Ali$$GetCountryName @ 00e10ac8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp279 @ 01083814
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Globalization.RegionInfo$$get_CurrentRegion @ 0211dd54
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetCountryName_xlua_st_ @ 0119d658
+
+--- Listing ---
+00e10ac8  str x20,[sp, #-0x20]!
+00e10acc  stp x19,x30,[sp, #0x10]
+00e10ad0  adrp x20,0x3572000
+00e10ad4  adrp x19,0x335f000
+00e10ad8  ldrb w8,[x20, #0x5c1]
+00e10adc  ldr x19,[x19, #0x20]
+00e10ae0  tbnz w8,#0x0,0x00e10af8
+00e10ae4  adrp x0,0x335f000
+00e10ae8  ldr x0,[x0, #0x20]
+00e10aec  bl 0x00b0789c
+00e10af0  mov w8,#0x1
+00e10af4  strb w8,[x20, #0x5c1]
+00e10af8  ldr x0,[x19]
+00e10afc  ldr w8,[x0, #0xe0]
+00e10b00  cbnz w8,0x00e10b0c
+00e10b04  bl 0x00b0798c
+00e10b08  ldr x0,[x19]
+00e10b0c  ldr x8,[x0, #0xb8]
+00e10b10  ldr x0,[x8, #0x5b0]
+00e10b14  cbz x0,0x00e10b28
+00e10b18  ldp x19,x30,[sp, #0x10]
+00e10b1c  mov x1,xzr
+00e10b20  ldr x20,[sp], #0x20
+00e10b24  b 0x01083814
+00e10b28  bl 0x0211dd54
+00e10b2c  cbz x0,0x00e10b48
+00e10b30  ldr x8,[x0]
+00e10b34  ldp x19,x30,[sp, #0x10]
+00e10b38  ldr x2,[x8, #0x208]
+00e10b3c  ldr x1,[x8, #0x210]
+00e10b40  ldr x20,[sp], #0x20
+00e10b44  br x2
+00e10b48  bl 0x00b079b0

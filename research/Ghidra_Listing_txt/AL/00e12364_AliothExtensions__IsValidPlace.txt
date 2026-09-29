@@ -1,0 +1,78 @@
+Function: AliothExtensions$$IsValidPlace @ 00e12364
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp417 @ 01095398
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- SkillEff_1018$$Execute @ 016bdd0c
+  <- BaseSkillEff$$CheckRange @ 015e9270
+  <- XLua.CSObjectWrap.UnityEngineVector2Wrap$$_m_IsValidPlace @ 014e8bd0
+  <- BaseSkillEff$$<CheckRange>b__221_3 @ 015ec018
+  <- SkillEff_1016$$Execute @ 016bd164
+  <- NodeManager$$GetTerrainNews @ 0131ecd4
+  <- NodeManager$$GetTerrainMono @ 0131edfc
+  <- BaseSkillEff$$GetAtkRangeCurrent @ 015ea640
+  <- RoleNews$$Leave @ 00fe670c
+  <- SkillEff_4005$$ExecuteSpecial @ 016c04b8
+  <- PathTools$$IsValidPoint @ 01322e9c
+  <- RoleNews$$PlaceTo @ 00fe5df0
+  <- NodeManager$$GetTerrain @ 0131eee0
+  <- RoleNews$$IsCanMoveTo @ 00fdd57c
+  <- SkillEff_1015$$ExecuteSpecial @ 016bca98
+  <- NodeManager$$CheckPlace @ 0131f250
+  <- SkillEff_1018$$SelfExecuteSpecial @ 016be394
+  <- PropNews$$.ctor @ 0149c5d4
+  <- RoleNews$$IsPartEnter @ 00fe729c
+  <- RoleNews$$IsCanEnter @ 00fe7134
+  <- RoleNews$$CheckRoundMoveRange @ 00fe4a8c
+  <- BattleManager$$CreatePropFinal @ 011851e0
+
+--- Listing ---
+00e12364  stp d9,d8,[sp, #-0x30]!
+00e12368  str x20,[sp, #0x10]
+00e1236c  stp x19,x30,[sp, #0x20]
+00e12370  adrp x20,0x3572000
+00e12374  adrp x19,0x3348000
+00e12378  ldrb w8,[x20, #0x5e1]
+00e1237c  ldr x19,[x19, #0x138]
+00e12380  mov v8.16B,v1.16B
+00e12384  mov v9.16B,v0.16B
+00e12388  tbnz w8,#0x0,0x00e123a0
+00e1238c  adrp x0,0x3348000
+00e12390  ldr x0,[x0, #0x138]
+00e12394  bl 0x00b0789c
+00e12398  mov w8,#0x1
+00e1239c  strb w8,[x20, #0x5e1]
+00e123a0  ldr x0,[x19]
+00e123a4  ldr w8,[x0, #0xe0]
+00e123a8  cbnz w8,0x00e123b4
+00e123ac  bl 0x00b0798c
+00e123b0  ldr x0,[x19]
+00e123b4  ldr x8,[x0, #0xb8]
+00e123b8  ldr x0,[x8, #0x48]
+00e123bc  cbz x0,0x00e123dc
+00e123c0  ldp x19,x30,[sp, #0x20]
+00e123c4  ldr x20,[sp, #0x10]
+00e123c8  mov v0.16B,v9.16B
+00e123cc  mov v1.16B,v8.16B
+00e123d0  mov x1,xzr
+00e123d4  ldp d9,d8,[sp], #0x30
+00e123d8  b 0x01095398
+00e123dc  fcmp s8,#0.0
+00e123e0  b.mi 0x00e12408
+00e123e4  fcmp s9,#0.0
+00e123e8  b.mi 0x00e12408
+00e123ec  fmov s0,0x40e00000
+00e123f0  fcmp s9,s0
+00e123f4  b.gt 0x00e12408
+00e123f8  fmov s0,0x40400000
+00e123fc  fcmp s8,s0
+00e12400  cset w0,le
+00e12404  b 0x00e1240c
+00e12408  mov w0,wzr
+00e1240c  ldp x19,x30,[sp, #0x20]
+00e12410  ldr x20,[sp, #0x10]
+00e12414  ldp d9,d8,[sp], #0x30
+00e12418  ret

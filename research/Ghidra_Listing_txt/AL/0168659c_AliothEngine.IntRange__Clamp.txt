@@ -1,0 +1,13 @@
+Function: AliothEngine.IntRange$$Clamp @ 0168659c
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+0168659c  ldp w9,w8,[x0, #0x10]
+016865a0  cmp w8,w1
+016865a4  csel w8,w8,w1,lt
+016865a8  cmp w9,w1
+016865ac  csel w0,w9,w8,gt
+016865b0  ret

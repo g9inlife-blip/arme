@@ -1,0 +1,45 @@
+Function: AliothEngine.AssetLoader$$GetAll @ 0166b594
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp822 @ 010cb6f4
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Values @ 0196e348
+
+--- Calls IN ---
+
+--- Listing ---
+0166b594  stp x21,x20,[sp, #-0x20]!
+0166b598  stp x19,x30,[sp, #0x10]
+0166b59c  adrp x20,0x3577000
+0166b5a0  adrp x21,0x331c000
+0166b5a4  ldrb w8,[x20, #0x92d]
+0166b5a8  ldr x21,[x21, #0xda8]
+0166b5ac  mov x19,x0
+0166b5b0  tbnz w8,#0x0,0x0166b5d4
+0166b5b4  adrp x0,0x331c000
+0166b5b8  ldr x0,[x0, #0xda8]
+0166b5bc  bl 0x00b0789c
+0166b5c0  adrp x0,0x3348000
+0166b5c4  ldr x0,[x0, #0xdb0]
+0166b5c8  bl 0x00b0789c
+0166b5cc  mov w8,#0x1
+0166b5d0  strb w8,[x20, #0x92d]
+0166b5d4  ldr x8,[x21]
+0166b5d8  ldr x8,[x8, #0xb8]
+0166b5dc  ldr x0,[x8, #0x30]
+0166b5e0  cbz x0,0x0166b5f8
+0166b5e4  mov x1,x19
+0166b5e8  ldp x19,x30,[sp, #0x10]
+0166b5ec  mov x2,xzr
+0166b5f0  ldp x21,x20,[sp], #0x20
+0166b5f4  b 0x010cb6f4
+0166b5f8  ldr x0,[x19, #0x20]
+0166b5fc  cbz x0,0x0166b618
+0166b600  adrp x8,0x3348000
+0166b604  ldr x8,[x8, #0xdb0]
+0166b608  ldp x19,x30,[sp, #0x10]
+0166b60c  ldr x1,[x8]
+0166b610  ldp x21,x20,[sp], #0x20
+0166b614  b 0x0196e348
+0166b618  bl 0x00b079b0

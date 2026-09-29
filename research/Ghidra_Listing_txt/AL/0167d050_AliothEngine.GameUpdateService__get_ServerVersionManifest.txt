@@ -1,0 +1,52 @@
+Function: AliothEngine.GameUpdateService$$get_ServerVersionManifest @ 0167d050
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp341 @ 0108b458
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> GamePlayerInfomation$$get_ServerVersionManifest @ 00e36cf4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_g_get_ServerVersionManifest @ 011426a4
+  <- AliothEngine.GameUpdateService$$isPackNeedUpdate @ 0167f1a0
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- GameUpdatePanelMono$$OnAssetUpdate @ 0103f3f0
+  <- AliothEngine.GameUpdateService.<GetBestPingServer>d__73$$MoveNext @ 016825ac
+
+--- Listing ---
+0167d050  stp x21,x20,[sp, #-0x20]!
+0167d054  stp x19,x30,[sp, #0x10]
+0167d058  adrp x20,0x3577000
+0167d05c  adrp x21,0x3352000
+0167d060  ldrb w8,[x20, #0xa15]
+0167d064  ldr x21,[x21, #0x2a8]
+0167d068  mov x19,x0
+0167d06c  tbnz w8,#0x0,0x0167d090
+0167d070  adrp x0,0x3352000
+0167d074  ldr x0,[x0, #0x2a8]
+0167d078  bl 0x00b0789c
+0167d07c  adrp x0,0x332c000
+0167d080  ldr x0,[x0, #0x2a0]
+0167d084  bl 0x00b0789c
+0167d088  mov w8,#0x1
+0167d08c  strb w8,[x20, #0xa15]
+0167d090  ldr x8,[x21]
+0167d094  ldr x8,[x8, #0xb8]
+0167d098  ldr x0,[x8, #0x20]
+0167d09c  cbz x0,0x0167d0b4
+0167d0a0  mov x1,x19
+0167d0a4  ldp x19,x30,[sp, #0x10]
+0167d0a8  mov x2,xzr
+0167d0ac  ldp x21,x20,[sp], #0x20
+0167d0b0  b 0x0108b458
+0167d0b4  adrp x8,0x332c000
+0167d0b8  ldr x8,[x8, #0x2a0]
+0167d0bc  ldr x0,[x8]
+0167d0c0  bl 0x01e09a6c
+0167d0c4  cbz x0,0x0167d0d8
+0167d0c8  ldp x19,x30,[sp, #0x10]
+0167d0cc  mov x1,xzr
+0167d0d0  ldp x21,x20,[sp], #0x20
+0167d0d4  b 0x00e36cf4
+0167d0d8  bl 0x00b079b0

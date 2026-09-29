@@ -1,0 +1,93 @@
+Function: AliothExtensions$$GetSelfChildComponent<object> @ 017375d4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> AliothExtensions$$GetSelfChild @ 00e15f34
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> XLua.DelegateBridge$$InParam<object> @ 01775bd0
+
+--- Calls IN ---
+
+--- Listing ---
+017375d4  str x24,[sp, #-0x40]!
+017375d8  stp x23,x22,[sp, #0x10]
+017375dc  stp x21,x20,[sp, #0x20]
+017375e0  stp x19,x30,[sp, #0x30]
+017375e4  adrp x22,0x3578000
+017375e8  adrp x23,0x3348000
+017375ec  ldrb w8,[x22, #0x43]
+017375f0  ldr x23,[x23, #0x138]
+017375f4  mov x19,x2
+017375f8  mov x20,x1
+017375fc  mov x21,x0
+01737600  tbnz w8,#0x0,0x01737630
+01737604  adrp x0,0x3348000
+01737608  ldr x0,[x0, #0x138]
+0173760c  bl 0x00b0789c
+01737610  adrp x0,0x3309000
+01737614  ldr x0,[x0, #0x6d0]
+01737618  bl 0x00b0789c
+0173761c  adrp x0,0x3375000
+01737620  ldr x0,[x0, #0xdd8]
+01737624  bl 0x00b0789c
+01737628  mov w8,#0x1
+0173762c  strb w8,[x22, #0x43]
+01737630  ldr x0,[x23]
+01737634  ldr w8,[x0, #0xe0]
+01737638  cbnz w8,0x01737644
+0173763c  bl 0x00b0798c
+01737640  ldr x0,[x23]
+01737644  ldr x8,[x0, #0xb8]
+01737648  ldr x22,[x8, #0x138]
+0173764c  cbz x22,0x017376ac
+01737650  adrp x23,0x3309000
+01737654  adrp x24,0x3375000
+01737658  ldr x23,[x23, #0x6d0]
+0173765c  ldr x24,[x24, #0xdd8]
+01737660  mov x0,x22
+01737664  mov x1,xzr
+01737668  bl 0x010cef38
+0173766c  ldr x2,[x23]
+01737670  mov x0,x22
+01737674  mov x1,x21
+01737678  bl 0x01775bd0
+0173767c  ldr x2,[x24]
+01737680  mov x0,x22
+01737684  mov x1,x20
+01737688  bl 0x01775bd0
+0173768c  mov w1,#0x1
+01737690  mov x0,x22
+01737694  mov x2,xzr
+01737698  bl 0x010ceff0
+0173769c  ldr x8,[x19, #0x38]
+017376a0  mov x0,x22
+017376a4  ldr x1,[x8]
+017376a8  b 0x017376f0
+017376ac  cbz x21,0x01737708
+017376b0  mov x0,x21
+017376b4  mov x1,xzr
+017376b8  bl 0x024e4ed4
+017376bc  ldr x8,[x23]
+017376c0  mov x21,x0
+017376c4  ldr w9,[x8, #0xe0]
+017376c8  cbnz w9,0x017376d4
+017376cc  mov x0,x8
+017376d0  bl 0x00b0798c
+017376d4  mov w2,#0x1
+017376d8  mov x0,x21
+017376dc  mov x1,x20
+017376e0  mov x3,xzr
+017376e4  bl 0x00e15f34
+017376e8  ldr x8,[x19, #0x38]
+017376ec  ldr x1,[x8, #0x8]
+017376f0  ldr x2,[x1, #0x8]
+017376f4  ldp x19,x30,[sp, #0x30]
+017376f8  ldp x21,x20,[sp, #0x20]
+017376fc  ldp x23,x22,[sp, #0x10]
+01737700  ldr x24,[sp], #0x40
+01737704  br x2
+01737708  bl 0x00b079b0

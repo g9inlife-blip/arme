@@ -1,0 +1,59 @@
+Function: AliothEngine.Scheduler$$DoForeach<object> @ 017ce4d8
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017ce4d8  str d8,[sp, #-0x50]!
+017ce4dc  stp x25,x24,[sp, #0x10]
+017ce4e0  stp x23,x22,[sp, #0x20]
+017ce4e4  stp x21,x20,[sp, #0x30]
+017ce4e8  stp x19,x30,[sp, #0x40]
+017ce4ec  adrp x25,0x3578000
+017ce4f0  adrp x24,0x336c000
+017ce4f4  ldrb w8,[x25, #0x2c0]
+017ce4f8  ldr x24,[x24, #0x370]
+017ce4fc  mov x23,x4
+017ce500  mov x19,x3
+017ce504  mov v8.16B,v0.16B
+017ce508  mov x20,x2
+017ce50c  mov x21,x1
+017ce510  mov x22,x0
+017ce514  tbnz w8,#0x0,0x017ce52c
+017ce518  adrp x0,0x336c000
+017ce51c  ldr x0,[x0, #0x370]
+017ce520  bl 0x00b0789c
+017ce524  mov w8,#0x1
+017ce528  strb w8,[x25, #0x2c0]
+017ce52c  ldr x0,[x24]
+017ce530  bl 0x01e0894c
+017ce534  ldr x8,[x24]
+017ce538  mov x24,x0
+017ce53c  mov x0,x8
+017ce540  bl 0x01e0894c
+017ce544  cbz x0,0x017ce594
+017ce548  ldr x8,[x23, #0x38]
+017ce54c  mov x1,x22
+017ce550  mov x2,x21
+017ce554  mov x3,x20
+017ce558  ldr x5,[x8]
+017ce55c  mov v0.16B,v8.16B
+017ce560  mov x4,x19
+017ce564  ldr x8,[x5, #0x8]
+017ce568  blr x8
+017ce56c  cbz x24,0x017ce594
+017ce570  mov x1,x0
+017ce574  mov x0,x24
+017ce578  ldp x19,x30,[sp, #0x40]
+017ce57c  ldp x21,x20,[sp, #0x30]
+017ce580  ldp x23,x22,[sp, #0x20]
+017ce584  ldp x25,x24,[sp, #0x10]
+017ce588  mov x2,xzr
+017ce58c  ldr d8,[sp], #0x50
+017ce590  b 0x024e4070
+017ce594  bl 0x00b079b0

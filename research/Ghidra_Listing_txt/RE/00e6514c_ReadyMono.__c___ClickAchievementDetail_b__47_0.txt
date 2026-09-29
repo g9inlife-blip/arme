@@ -1,0 +1,71 @@
+Function: ReadyMono.<>c$$<ClickAchievementDetail>b__47_0 @ 00e6514c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_dataCache @ 00e014f4
+  -> System.Int32$$ToString @ 0214dc44
+  -> FUN_00b079b0 @ 00b079b0
+  -> DataCache$$get_missionID @ 00e23bb8
+
+--- Calls IN ---
+
+--- Listing ---
+00e6514c  str x20,[sp, #-0x20]!
+00e65150  stp x19,x30,[sp, #0x10]
+00e65154  adrp x20,0x3572000
+00e65158  ldrb w8,[x20, #0x982]
+00e6515c  mov x19,x1
+00e65160  tbnz w8,#0x0,0x00e65184
+00e65164  adrp x0,0x335f000
+00e65168  ldr x0,[x0, #0x20]
+00e6516c  bl 0x00b0789c
+00e65170  adrp x0,0x3327000
+00e65174  ldr x0,[x0, #0xde8]
+00e65178  bl 0x00b0789c
+00e6517c  mov w8,#0x1
+00e65180  strb w8,[x20, #0x982]
+00e65184  str wzr,[sp, #0xc]
+00e65188  cbz x19,0x00e65224
+00e6518c  adrp x8,0x3327000
+00e65190  ldr x8,[x8, #0xde8]
+00e65194  ldr x9,[x19]
+00e65198  ldr x8,[x8]
+00e6519c  ldrb w11,[x9, #0x12c]
+00e651a0  ldrb w10,[x8, #0x12c]
+00e651a4  cmp w11,w10
+00e651a8  b.cc 0x00e65224
+00e651ac  ldr x9,[x9, #0xc8]
+00e651b0  add x9,x9,x10, LSL #0x3
+00e651b4  ldur x9,[x9, #-0x8]
+00e651b8  cmp x9,x8
+00e651bc  b.ne 0x00e65224
+00e651c0  adrp x20,0x335f000
+00e651c4  ldr x20,[x20, #0x20]
+00e651c8  ldr x0,[x20]
+00e651cc  ldr w8,[x0, #0xe0]
+00e651d0  cbnz w8,0x00e651dc
+00e651d4  bl 0x00b0798c
+00e651d8  ldr x0,[x20]
+00e651dc  ldr x8,[x0, #0xb8]
+00e651e0  ldr x0,[x8, #0x10]
+00e651e4  cbz x0,0x00e65230
+00e651e8  mov x1,xzr
+00e651ec  bl 0x00e014f4
+00e651f0  cbz x0,0x00e65230
+00e651f4  mov x1,xzr
+00e651f8  bl 0x00e23bb8
+00e651fc  str w0,[sp, #0xc]
+00e65200  add x0,sp,#0xc
+00e65204  mov x1,xzr
+00e65208  bl 0x0214dc44
+00e6520c  ldr x8,[x19]
+00e65210  mov x1,x0
+00e65214  mov x0,x19
+00e65218  ldr x9,[x8, #0x268]
+00e6521c  ldr x2,[x8, #0x270]
+00e65220  blr x9
+00e65224  ldp x19,x30,[sp, #0x10]
+00e65228  ldr x20,[sp], #0x20
+00e6522c  ret
+00e65230  bl 0x00b079b0

@@ -1,0 +1,83 @@
+Function: Ali$$GetQualityColorText @ 00e0e240
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp415 @ 01094fec
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fd0378
+
+--- Calls IN ---
+  <- BaseData$$get_NameByQualityWord2 @ 00df3728
+  <- EquipInfo$$get_NameByQualityWord @ 016ee014
+  <- BaseMono$$GetQualityColorText @ 00e1fc7c
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetQualityColorText @ 0119ba7c
+  <- WeaponPanelMono$$RefreshWeaponInfoBoard @ 00f59c90
+  <- HeroPartEquipMono$$RefreshWeapon @ 00f4214c
+
+--- Listing ---
+00e0e240  stp x23,x22,[sp, #-0x30]!
+00e0e244  stp x21,x20,[sp, #0x10]
+00e0e248  stp x19,x30,[sp, #0x20]
+00e0e24c  adrp x23,0x3572000
+00e0e250  adrp x22,0x335f000
+00e0e254  ldrb w8,[x23, #0x5b1]
+00e0e258  ldr x22,[x22, #0x20]
+00e0e25c  mov w20,w2
+00e0e260  mov x19,x1
+00e0e264  mov x21,x0
+00e0e268  tbnz w8,#0x0,0x00e0e2c8
+00e0e26c  adrp x0,0x335f000
+00e0e270  ldr x0,[x0, #0x20]
+00e0e274  bl 0x00b0789c
+00e0e278  adrp x0,0x3329000
+00e0e27c  ldr x0,[x0, #0xdf0]
+00e0e280  bl 0x00b0789c
+00e0e284  adrp x0,0x335b000
+00e0e288  ldr x0,[x0, #0xf08]
+00e0e28c  bl 0x00b0789c
+00e0e290  adrp x0,0x3350000
+00e0e294  ldr x0,[x0, #0x4f8]
+00e0e298  bl 0x00b0789c
+00e0e29c  adrp x0,0x330c000
+00e0e2a0  ldr x0,[x0, #0xc10]
+00e0e2a4  bl 0x00b0789c
+00e0e2a8  adrp x0,0x330a000
+00e0e2ac  ldr x0,[x0, #0x3f0]
+00e0e2b0  bl 0x00b0789c
+00e0e2b4  adrp x0,0x330e000
+00e0e2b8  ldr x0,[x0, #0xf68]
+00e0e2bc  bl 0x00b0789c
+00e0e2c0  mov w8,#0x1
+00e0e2c4  strb w8,[x23, #0x5b1]
+00e0e2c8  ldr x0,[x22]
+00e0e2cc  ldr w8,[x0, #0xe0]
+00e0e2d0  cbnz w8,0x00e0e2dc
+00e0e2d4  bl 0x00b0798c
+00e0e2d8  ldr x0,[x22]
+00e0e2dc  ldr x8,[x0, #0xb8]
+00e0e2e0  ldr x0,[x8, #0x530]
+00e0e2e4  cbz x0,0x00e0e308
+00e0e2e8  mov x1,x21
+00e0e2ec  mov x2,x19
+00e0e2f0  mov w3,w20
+00e0e2f4  ldp x19,x30,[sp, #0x20]
+00e0e2f8  ldp x21,x20,[sp, #0x10]
+00e0e2fc  mov x4,xzr
+00e0e300  ldp x23,x22,[sp], #0x30
+00e0e304  b 0x01094fec
+00e0e308  sub w8,w20,#0x1
+00e0e30c  cmp w8,#0x4
+00e0e310  b.hi 0x00e0e324
+00e0e314  adrp x9,0x31a4000
+00e0e318  add x9,x9,#0x678
+00e0e31c  ldr x8,[x9, w8, SXTW #0x3]
+00e0e320  b 0x00e0e32c
+00e0e324  adrp x8,0x330c000
+00e0e328  ldr x8,[x8, #0xc10]
+00e0e32c  ldr x0,[x8]
+00e0e330  mov x1,x19
+00e0e334  ldp x19,x30,[sp, #0x20]
+00e0e338  ldp x21,x20,[sp, #0x10]
+00e0e33c  mov x2,xzr
+00e0e340  ldp x23,x22,[sp], #0x30
+00e0e344  b 0x01fd0378

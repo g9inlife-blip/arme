@@ -1,0 +1,46 @@
+Function: AliothEngine.AssetHolder$$OnLoadSuccessed @ 01662e58
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.CacheAssetBundleHolder.<Load>d__4$$MoveNext @ 01664508
+  <- AliothEngine.NullHolder$$LoadImmediate @ 01665510
+  <- AliothEngine.ResourcesAssetHolder$$LoadImmediate @ 0166566c
+  <- AliothEngine.ResourcesAssetHolder.<Load>d__2$$MoveNext @ 01665960
+  <- AliothEngine.FileCacheAssetHolder$$LoadImmediate @ 01664e68
+  <- AliothEngine.EditorAssetHolder$$LoadImmediate @ 01664d28
+  <- AliothEngine.NullHolder.<Load>d__0$$MoveNext @ 0166551c
+
+--- Listing ---
+01662e58  stp x21,x20,[sp, #-0x20]!
+01662e5c  stp x19,x30,[sp, #0x10]
+01662e60  adrp x21,0x3577000
+01662e64  adrp x20,0x3312000
+01662e68  ldrb w8,[x21, #0x8cd]
+01662e6c  ldr x20,[x20, #0x428]
+01662e70  mov x19,x0
+01662e74  tbnz w8,#0x0,0x01662e8c
+01662e78  adrp x0,0x3312000
+01662e7c  ldr x0,[x0, #0x428]
+01662e80  bl 0x00b0789c
+01662e84  mov w8,#0x1
+01662e88  strb w8,[x21, #0x8cd]
+01662e8c  ldr x0,[x20]
+01662e90  ldr w8,[x0, #0xe0]
+01662e94  cbnz w8,0x01662ea0
+01662e98  bl 0x00b0798c
+01662e9c  ldr x0,[x20]
+01662ea0  ldr x8,[x0, #0xb8]
+01662ea4  ldr x0,[x8, #0x78]
+01662ea8  cbz x0,0x01662ec0
+01662eac  mov x1,x19
+01662eb0  ldp x19,x30,[sp, #0x10]
+01662eb4  mov x2,xzr
+01662eb8  ldp x21,x20,[sp], #0x20
+01662ebc  b 0x01060dac
+01662ec0  ldp x19,x30,[sp, #0x10]
+01662ec4  ldp x21,x20,[sp], #0x20
+01662ec8  ret

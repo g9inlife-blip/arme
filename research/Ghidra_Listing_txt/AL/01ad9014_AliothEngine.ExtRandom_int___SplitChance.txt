@@ -1,0 +1,18 @@
+Function: AliothEngine.ExtRandom<int>$$SplitChance @ 01ad9014
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+
+--- Calls IN ---
+  <- AliothEngine.ExtRandomTest$$SplitChanceTest @ 016832d8
+
+--- Listing ---
+01ad9014  str x30,[sp, #-0x10]!
+01ad9018  mov w1,#0x2
+01ad901c  mov w0,wzr
+01ad9020  mov x2,xzr
+01ad9024  bl 0x024d63b0
+01ad9028  cmp w0,#0x0
+01ad902c  cset w0,eq
+01ad9030  ldr x30,[sp], #0x10
+01ad9034  ret

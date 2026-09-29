@@ -1,0 +1,68 @@
+Function: AliothEngine.Extensions.RectExtensions$$SplitGrid @ 016b2444
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_width @ 024db070
+  -> UnityEngine.Rect$$get_x @ 024daf34
+  -> UnityEngine.Rect$$set_height @ 024db080
+  -> UnityEngine.Rect$$set_x @ 024daf3c
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$get_width @ 024db068
+  -> UnityEngine.Rect$$set_y @ 024daf4c
+
+--- Calls IN ---
+
+--- Listing ---
+016b2444  sub sp,sp,#0x40
+016b2448  stp d9,d8,[sp, #0x10]
+016b244c  str x20,[sp, #0x20]
+016b2450  stp x19,x30,[sp, #0x30]
+016b2454  mov w19,w0
+016b2458  mov x0,sp
+016b245c  mov x1,xzr
+016b2460  mov v8.16B,v5.16B
+016b2464  mov v9.16B,v4.16B
+016b2468  stp s0,s1,[sp]
+016b246c  stp s2,s3,[sp, #0x8]
+016b2470  bl 0x024db068
+016b2474  mov w8,#0x7f800000
+016b2478  fdiv s0,s0,s9
+016b247c  fmov s1,w8
+016b2480  fcvtzs w9,s0
+016b2484  fcmp s0,s1
+016b2488  mov w8,#0x80000000
+016b248c  csel w8,w8,w9,eq
+016b2490  sdiv w20,w19,w8
+016b2494  mov x0,sp
+016b2498  mov x1,xzr
+016b249c  msub w19,w20,w8,w19
+016b24a0  bl 0x024daf34
+016b24a4  scvtf s1,w20
+016b24a8  fmul s1,s1,s9
+016b24ac  fadd s0,s0,s1
+016b24b0  mov x0,sp
+016b24b4  mov x1,xzr
+016b24b8  bl 0x024daf3c
+016b24bc  mov x0,sp
+016b24c0  mov x1,xzr
+016b24c4  bl 0x024daf44
+016b24c8  scvtf s1,w19
+016b24cc  fmul s1,s1,s8
+016b24d0  fadd s0,s1,s0
+016b24d4  mov x0,sp
+016b24d8  mov x1,xzr
+016b24dc  bl 0x024daf4c
+016b24e0  mov x0,sp
+016b24e4  mov v0.16B,v9.16B
+016b24e8  mov x1,xzr
+016b24ec  bl 0x024db070
+016b24f0  mov x0,sp
+016b24f4  mov v0.16B,v8.16B
+016b24f8  mov x1,xzr
+016b24fc  bl 0x024db080
+016b2500  ldp s0,s1,[sp]
+016b2504  ldp s2,s3,[sp, #0x8]
+016b2508  ldp x19,x30,[sp, #0x30]
+016b250c  ldr x20,[sp, #0x20]
+016b2510  ldp d9,d8,[sp, #0x10]
+016b2514  add sp,sp,#0x40
+016b2518  ret

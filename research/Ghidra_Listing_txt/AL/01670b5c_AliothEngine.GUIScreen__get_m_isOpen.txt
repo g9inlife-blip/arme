@@ -1,0 +1,37 @@
+Function: AliothEngine.GUIScreen$$get_m_isOpen @ 01670b5c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreen$$get_IsOpen @ 01670e50
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_g_get_m_isOpen @ 011552a0
+
+--- Listing ---
+01670b5c  stp x21,x20,[sp, #-0x20]!
+01670b60  stp x19,x30,[sp, #0x10]
+01670b64  adrp x20,0x3577000
+01670b68  adrp x21,0x3364000
+01670b6c  ldrb w8,[x20, #0x971]
+01670b70  ldr x21,[x21, #0xd28]
+01670b74  mov x19,x0
+01670b78  tbnz w8,#0x0,0x01670b90
+01670b7c  adrp x0,0x3364000
+01670b80  ldr x0,[x0, #0xd28]
+01670b84  bl 0x00b0789c
+01670b88  mov w8,#0x1
+01670b8c  strb w8,[x20, #0x971]
+01670b90  ldr x8,[x21]
+01670b94  ldr x8,[x8, #0xb8]
+01670b98  ldr x0,[x8]
+01670b9c  cbz x0,0x01670bb4
+01670ba0  mov x1,x19
+01670ba4  ldp x19,x30,[sp, #0x10]
+01670ba8  mov x2,xzr
+01670bac  ldp x21,x20,[sp], #0x20
+01670bb0  b 0x01060aac
+01670bb4  ldrb w0,[x19, #0x38]
+01670bb8  ldp x19,x30,[sp, #0x10]
+01670bbc  ldp x21,x20,[sp], #0x20
+01670bc0  ret

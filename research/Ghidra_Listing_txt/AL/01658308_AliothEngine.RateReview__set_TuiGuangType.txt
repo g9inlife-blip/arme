@@ -1,0 +1,37 @@
+Function: AliothEngine.RateReview$$set_TuiGuangType @ 01658308
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp479 @ 0109dbdc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.RateReview$$IOS_TuiGuang @ 016583d4
+  <- XLua.CSObjectWrap.AliothEngineRateReviewWrap$$_s_set_TuiGuangType @ 011608c4
+
+--- Listing ---
+01658308  stp x21,x20,[sp, #-0x20]!
+0165830c  stp x19,x30,[sp, #0x10]
+01658310  adrp x20,0x3577000
+01658314  adrp x21,0x3359000
+01658318  ldrb w8,[x20, #0x82f]
+0165831c  ldr x21,[x21, #0xfb8]
+01658320  mov w19,w0
+01658324  tbnz w8,#0x0,0x0165833c
+01658328  adrp x0,0x3359000
+0165832c  ldr x0,[x0, #0xfb8]
+01658330  bl 0x00b0789c
+01658334  mov w8,#0x1
+01658338  strb w8,[x20, #0x82f]
+0165833c  ldr x8,[x21]
+01658340  ldr x8,[x8, #0xb8]
+01658344  ldr x0,[x8, #0x10]
+01658348  cbz x0,0x01658360
+0165834c  mov w1,w19
+01658350  ldp x19,x30,[sp, #0x10]
+01658354  mov x2,xzr
+01658358  ldp x21,x20,[sp], #0x20
+0165835c  b 0x0109dbdc
+01658360  str w19,[x8]
+01658364  ldp x19,x30,[sp, #0x10]
+01658368  ldp x21,x20,[sp], #0x20
+0165836c  ret

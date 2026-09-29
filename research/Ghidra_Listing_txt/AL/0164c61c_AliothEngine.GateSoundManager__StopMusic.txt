@@ -1,0 +1,40 @@
+Function: AliothEngine.GateSoundManager$$StopMusic @ 0164c61c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.AudioSource$$get_isPlaying @ 024bbd64
+
+--- Calls IN ---
+
+--- Listing ---
+0164c61c  stp x21,x20,[sp, #-0x20]!
+0164c620  stp x19,x30,[sp, #0x10]
+0164c624  adrp x20,0x3577000
+0164c628  adrp x21,0x332c000
+0164c62c  ldrb w8,[x20, #0x7c0]
+0164c630  ldr x21,[x21, #0x2c0]
+0164c634  mov x19,x0
+0164c638  tbnz w8,#0x0,0x0164c650
+0164c63c  adrp x0,0x332c000
+0164c640  ldr x0,[x0, #0x2c0]
+0164c644  bl 0x00b0789c
+0164c648  mov w8,#0x1
+0164c64c  strb w8,[x20, #0x7c0]
+0164c650  ldr x1,[x21]
+0164c654  mov x20,x19
+0164c658  str x1,[x20, #0x58]!
+0164c65c  mov x0,x20
+0164c660  bl 0x00b07850
+0164c664  ldur x0,[x20, #-0x30]
+0164c668  cbz x0,0x0164c68c
+0164c66c  mov x1,xzr
+0164c670  bl 0x024bbd64
+0164c674  tbz w0,#0x0,0x0164c680
+0164c678  mov w8,#0x1
+0164c67c  strb w8,[x19, #0x3a]
+0164c680  ldp x19,x30,[sp, #0x10]
+0164c684  ldp x21,x20,[sp], #0x20
+0164c688  ret
+0164c68c  bl 0x00b079b0

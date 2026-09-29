@@ -1,0 +1,37 @@
+Function: AliothEngine.Compress$$GetDefaultFileName @ 0168324c
+
+--- Calls OUT ---
+  -> System.String$$Replace @ 01fe06d8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168324c  str x20,[sp, #-0x20]!
+01683250  stp x19,x30,[sp, #0x10]
+01683254  adrp x20,0x3577000
+01683258  ldrb w8,[x20, #0xa5c]
+0168325c  mov x19,x0
+01683260  tbnz w8,#0x0,0x01683284
+01683264  adrp x0,0x334b000
+01683268  ldr x0,[x0, #0x1a0]
+0168326c  bl 0x00b0789c
+01683270  adrp x0,0x332c000
+01683274  ldr x0,[x0, #0x2c0]
+01683278  bl 0x00b0789c
+0168327c  mov w8,#0x1
+01683280  strb w8,[x20, #0xa5c]
+01683284  cbz x19,0x016832b4
+01683288  adrp x8,0x334b000
+0168328c  adrp x9,0x332c000
+01683290  ldr x8,[x8, #0x1a0]
+01683294  ldr x9,[x9, #0x2c0]
+01683298  mov x0,x19
+0168329c  ldp x19,x30,[sp, #0x10]
+016832a0  ldr x1,[x8]
+016832a4  ldr x2,[x9]
+016832a8  mov x3,xzr
+016832ac  ldr x20,[sp], #0x20
+016832b0  b 0x01fe06d8
+016832b4  bl 0x00b079b0

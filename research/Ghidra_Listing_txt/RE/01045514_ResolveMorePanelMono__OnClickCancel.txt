@@ -1,0 +1,43 @@
+Function: ResolveMorePanelMono$$OnClickCancel @ 01045514
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+
+--- Listing ---
+01045514  str x22,[sp, #-0x30]!
+01045518  stp x21,x20,[sp, #0x10]
+0104551c  stp x19,x30,[sp, #0x20]
+01045520  adrp x21,0x3574000
+01045524  adrp x22,0x3378000
+01045528  ldrb w8,[x21, #0x5fd]
+0104552c  ldr x22,[x22, #0x490]
+01045530  mov x20,x1
+01045534  mov x19,x0
+01045538  tbnz w8,#0x0,0x01045550
+0104553c  adrp x0,0x3378000
+01045540  ldr x0,[x0, #0x490]
+01045544  bl 0x00b0789c
+01045548  mov w8,#0x1
+0104554c  strb w8,[x21, #0x5fd]
+01045550  ldr x8,[x22]
+01045554  ldr x8,[x8, #0xb8]
+01045558  ldr x0,[x8, #0x20]
+0104555c  cbz x0,0x0104557c
+01045560  mov x1,x19
+01045564  mov x2,x20
+01045568  ldp x19,x30,[sp, #0x20]
+0104556c  ldp x21,x20,[sp, #0x10]
+01045570  mov x3,xzr
+01045574  ldr x22,[sp], #0x30
+01045578  b 0x0106125c
+0104557c  ldr x8,[x19]
+01045580  mov x0,x19
+01045584  ldp x19,x30,[sp, #0x20]
+01045588  ldp x21,x20,[sp, #0x10]
+0104558c  ldr x2,[x8, #0x438]
+01045590  ldr x1,[x8, #0x440]
+01045594  ldr x22,[sp], #0x30
+01045598  br x2

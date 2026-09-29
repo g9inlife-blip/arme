@@ -1,0 +1,89 @@
+Function: AliothEngine.Utils.VerifierUtils$$GetMD5 @ 016a0e50
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Text.StringBuilder$$.ctor @ 01fe7ee0
+  -> System.Security.Cryptography.HashAlgorithm$$ComputeHash @ 0200a324
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Byte$$ToString @ 020db3dc
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Security.Cryptography.MD5CryptoServiceProvider$$.ctor @ 0201e478
+  -> System.Text.StringBuilder$$Append @ 01fe9960
+
+--- Calls IN ---
+  <- AliothEngine.AndroidUtils$$GetSignatureMD5Hash @ 01651cf4
+
+--- Listing ---
+016a0e50  stp x23,x22,[sp, #-0x30]!
+016a0e54  stp x21,x20,[sp, #0x10]
+016a0e58  stp x19,x30,[sp, #0x20]
+016a0e5c  adrp x20,0x3577000
+016a0e60  adrp x21,0x3374000
+016a0e64  ldrb w8,[x20, #0xb5f]
+016a0e68  ldr x21,[x21, #0xad8]
+016a0e6c  mov x19,x0
+016a0e70  tbnz w8,#0x0,0x016a0ea0
+016a0e74  adrp x0,0x3374000
+016a0e78  ldr x0,[x0, #0xad8]
+016a0e7c  bl 0x00b0789c
+016a0e80  adrp x0,0x3332000
+016a0e84  ldr x0,[x0, #0xaf0]
+016a0e88  bl 0x00b0789c
+016a0e8c  adrp x0,0x3367000
+016a0e90  ldr x0,[x0, #0x4b8]
+016a0e94  bl 0x00b0789c
+016a0e98  mov w8,#0x1
+016a0e9c  strb w8,[x20, #0xb5f]
+016a0ea0  ldr x0,[x21]
+016a0ea4  bl 0x00b079a0
+016a0ea8  cbz x0,0x016a0f6c
+016a0eac  adrp x21,0x3332000
+016a0eb0  ldr x21,[x21, #0xaf0]
+016a0eb4  mov x1,xzr
+016a0eb8  mov x20,x0
+016a0ebc  bl 0x0201e478
+016a0ec0  mov x0,x20
+016a0ec4  mov x1,x19
+016a0ec8  mov x2,xzr
+016a0ecc  bl 0x0200a324
+016a0ed0  ldr x8,[x21]
+016a0ed4  mov x19,x0
+016a0ed8  mov x0,x8
+016a0edc  bl 0x00b079a0
+016a0ee0  cbz x0,0x016a0f6c
+016a0ee4  mov x1,xzr
+016a0ee8  mov x20,x0
+016a0eec  bl 0x01fe7ee0
+016a0ef0  cbz x19,0x016a0f6c
+016a0ef4  ldr x8,[x19, #0x18]
+016a0ef8  cmp w8,#0x1
+016a0efc  b.lt 0x016a0f4c
+016a0f00  adrp x22,0x3367000
+016a0f04  ldr x22,[x22, #0x4b8]
+016a0f08  mov x21,xzr
+016a0f0c  and x8,x8,#0xffffffff
+016a0f10  add x23,x19,#0x20
+016a0f14  cmp x21,w8, UXTW 
+016a0f18  b.cs 0x016a0f68
+016a0f1c  ldr x1,[x22]
+016a0f20  add x0,x23,x21
+016a0f24  mov x2,xzr
+016a0f28  bl 0x020db3dc
+016a0f2c  mov x1,x0
+016a0f30  mov x0,x20
+016a0f34  mov x2,xzr
+016a0f38  bl 0x01fe9960
+016a0f3c  ldr w8,[x19, #0x18]
+016a0f40  add x21,x21,#0x1
+016a0f44  cmp x21,w8, SXTW 
+016a0f48  b.lt 0x016a0f14
+016a0f4c  ldr x8,[x20]
+016a0f50  mov x0,x20
+016a0f54  ldp x19,x30,[sp, #0x20]
+016a0f58  ldp x21,x20,[sp, #0x10]
+016a0f5c  ldp x2,x1,[x8, #0x168]
+016a0f60  ldp x23,x22,[sp], #0x30
+016a0f64  br x2
+016a0f68  bl 0x00b079b8
+016a0f6c  bl 0x00b079b0

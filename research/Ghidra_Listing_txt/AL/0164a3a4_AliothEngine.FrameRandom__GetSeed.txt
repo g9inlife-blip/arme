@@ -1,0 +1,31 @@
+Function: AliothEngine.FrameRandom$$GetSeed @ 0164a3a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0164a3a4  str x20,[sp, #-0x20]!
+0164a3a8  stp x19,x30,[sp, #0x10]
+0164a3ac  adrp x20,0x3577000
+0164a3b0  adrp x19,0x332a000
+0164a3b4  ldrb w8,[x20, #0x7a3]
+0164a3b8  ldr x19,[x19, #0xda8]
+0164a3bc  tbnz w8,#0x0,0x0164a3d4
+0164a3c0  adrp x0,0x332a000
+0164a3c4  ldr x0,[x0, #0xda8]
+0164a3c8  bl 0x00b0789c
+0164a3cc  mov w8,#0x1
+0164a3d0  strb w8,[x20, #0x7a3]
+0164a3d4  ldr x0,[x19]
+0164a3d8  ldr w8,[x0, #0xe0]
+0164a3dc  cbnz w8,0x0164a3e8
+0164a3e0  bl 0x00b0798c
+0164a3e4  ldr x0,[x19]
+0164a3e8  ldr x8,[x0, #0xb8]
+0164a3ec  ldp x19,x30,[sp, #0x10]
+0164a3f0  ldr w0,[x8]
+0164a3f4  ldr x20,[sp], #0x20
+0164a3f8  ret

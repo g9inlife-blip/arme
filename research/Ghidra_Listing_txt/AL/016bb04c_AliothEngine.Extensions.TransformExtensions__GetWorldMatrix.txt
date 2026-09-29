@@ -1,0 +1,80 @@
+Function: AliothEngine.Extensions.TransformExtensions$$GetWorldMatrix @ 016bb04c
+
+--- Calls OUT ---
+  -> UnityEngine.Matrix4x4$$TRS @ 024e8d58
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Transform$$get_rotation @ 024f3b24
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$get_lossyScale @ 024f5864
+
+--- Calls IN ---
+
+--- Listing ---
+016bb04c  sub sp,sp,#0xb0
+016bb050  str d14,[sp, #0x50]
+016bb054  stp d13,d12,[sp, #0x60]
+016bb058  stp d11,d10,[sp, #0x70]
+016bb05c  stp d9,d8,[sp, #0x80]
+016bb060  stp x21,x20,[sp, #0x90]
+016bb064  stp x19,x30,[sp, #0xa0]
+016bb068  cbz x0,0x016bb154
+016bb06c  mov w21,w1
+016bb070  mov x1,xzr
+016bb074  mov x20,x0
+016bb078  mov x19,x8
+016bb07c  bl 0x024f3684
+016bb080  mov x0,x20
+016bb084  mov x1,xzr
+016bb088  mov v8.16B,v0.16B
+016bb08c  mov v9.16B,v1.16B
+016bb090  mov v10.16B,v2.16B
+016bb094  bl 0x024f3b24
+016bb098  mov v11.16B,v0.16B
+016bb09c  mov v12.16B,v1.16B
+016bb0a0  mov v13.16B,v2.16B
+016bb0a4  mov v14.16B,v3.16B
+016bb0a8  tbz w21,#0x0,0x016bb0e8
+016bb0ac  adrp x20,0x3570000
+016bb0b0  ldrb w8,[x20, #0xf0e]
+016bb0b4  cbnz w8,0x016bb0cc
+016bb0b8  adrp x0,0x3368000
+016bb0bc  ldr x0,[x0, #0x9b8]
+016bb0c0  bl 0x00b0789c
+016bb0c4  mov w8,#0x1
+016bb0c8  strb w8,[x20, #0xf0e]
+016bb0cc  adrp x8,0x3368000
+016bb0d0  ldr x8,[x8, #0x9b8]
+016bb0d4  ldr x8,[x8]
+016bb0d8  ldr x8,[x8, #0xb8]
+016bb0dc  ldp s0,s1,[x8, #0xc]
+016bb0e0  ldr s2,[x8, #0x14]
+016bb0e4  b 0x016bb0f4
+016bb0e8  mov x0,x20
+016bb0ec  mov x1,xzr
+016bb0f0  bl 0x024f5864
+016bb0f4  stp s1,s2,[sp, #0x4]
+016bb0f8  add x8,sp,#0x10
+016bb0fc  str s0,[sp]
+016bb100  mov v0.16B,v8.16B
+016bb104  mov v1.16B,v9.16B
+016bb108  mov v2.16B,v10.16B
+016bb10c  mov v3.16B,v11.16B
+016bb110  mov v4.16B,v12.16B
+016bb114  mov v5.16B,v13.16B
+016bb118  mov v6.16B,v14.16B
+016bb11c  mov x0,xzr
+016bb120  bl 0x024e8d58
+016bb124  ldp q1,q0,[sp, #0x30]
+016bb128  ldp q3,q2,[sp, #0x10]
+016bb12c  ldp x21,x20,[sp, #0x90]
+016bb130  ldp d9,d8,[sp, #0x80]
+016bb134  stp q1,q0,[x19, #0x20]
+016bb138  stp q3,q2,[x19]
+016bb13c  ldp x19,x30,[sp, #0xa0]
+016bb140  ldp d11,d10,[sp, #0x70]
+016bb144  ldp d13,d12,[sp, #0x60]
+016bb148  ldr d14,[sp, #0x50]
+016bb14c  add sp,sp,#0xb0
+016bb150  ret
+016bb154  bl 0x00b079b0

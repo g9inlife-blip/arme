@@ -1,0 +1,42 @@
+Function: ResizePanel$$Awake @ 00dc1adc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$get_parent @ 024f42ec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+
+--- Listing ---
+00dc1adc  str x20,[sp, #-0x20]!
+00dc1ae0  stp x19,x30,[sp, #0x10]
+00dc1ae4  adrp x20,0x3572000
+00dc1ae8  ldrb w8,[x20, #0x179]
+00dc1aec  mov x19,x0
+00dc1af0  tbnz w8,#0x0,0x00dc1b08
+00dc1af4  adrp x0,0x332d000
+00dc1af8  ldr x0,[x0, #0x198]
+00dc1afc  bl 0x00b0789c
+00dc1b00  mov w8,#0x1
+00dc1b04  strb w8,[x20, #0x179]
+00dc1b08  mov x0,x19
+00dc1b0c  mov x1,xzr
+00dc1b10  bl 0x024e4e98
+00dc1b14  cbz x0,0x00dc1b4c
+00dc1b18  mov x1,xzr
+00dc1b1c  bl 0x024f42ec
+00dc1b20  cbz x0,0x00dc1b4c
+00dc1b24  adrp x8,0x332d000
+00dc1b28  ldr x8,[x8, #0x198]
+00dc1b2c  ldr x1,[x8]
+00dc1b30  bl 0x0176cbf8
+00dc1b34  str x0,[x19, #0x28]!
+00dc1b38  mov x1,x0
+00dc1b3c  mov x0,x19
+00dc1b40  ldp x19,x30,[sp, #0x10]
+00dc1b44  ldr x20,[sp], #0x20
+00dc1b48  b 0x00b07850
+00dc1b4c  bl 0x00b079b0

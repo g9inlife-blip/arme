@@ -1,0 +1,137 @@
+Function: AliothEngine.Utils.CustomPersistentDataPath$$SaveData @ 01699594
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.CustomPersistentDataPath$$get_persistentDataPaths @ 01698120
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.Directory$$Exists @ 020ae0e8
+  -> System.IO.Directory$$CreateDirectory @ 020adf44
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.IO.Path$$GetDirectoryName @ 020b17bc
+  -> System.IO.File$$WriteAllBytes @ 020b0d44
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+  <- AliothEngine.Utils.CustomPersistentDataPath$$SaveData @ 01699450
+
+--- Listing ---
+01699594  stp x28,x27,[sp, #-0x60]!
+01699598  stp x26,x25,[sp, #0x10]
+0169959c  stp x24,x23,[sp, #0x20]
+016995a0  stp x22,x21,[sp, #0x30]
+016995a4  stp x20,x19,[sp, #0x40]
+016995a8  stp x29,x30,[sp, #0x50]
+016995ac  adrp x23,0x336c000
+016995b0  adrp x25,0x3366000
+016995b4  adrp x24,0x336b000
+016995b8  adrp x26,0x3362000
+016995bc  ldr x23,[x23, #0x318]
+016995c0  ldr x25,[x25, #0x960]
+016995c4  ldr x24,[x24, #0x7d0]
+016995c8  ldr x26,[x26, #0x108]
+016995cc  mov w19,w2
+016995d0  sbfiz x8,x19,#0x3,#0x20
+016995d4  mov x21,x1
+016995d8  mov x22,x0
+016995dc  adrp x27,0x3577000
+016995e0  add x20,x8,#0x20
+016995e4  ldrb w8,[x27, #0xb1f]
+016995e8  mov w28,#0x1
+016995ec  tbnz w8,#0x0,0x01699614
+016995f0  mov x0,x24
+016995f4  bl 0x00b0789c
+016995f8  mov x0,x23
+016995fc  bl 0x00b0789c
+01699600  mov x0,x26
+01699604  bl 0x00b0789c
+01699608  mov x0,x25
+0169960c  bl 0x00b0789c
+01699610  strb w28,[x27, #0xb1f]
+01699614  bl 0x01698120
+01699618  cbz x0,0x016997f4
+0169961c  ldr w8,[x0, #0x18]
+01699620  cmp w19,w8
+01699624  b.ge 0x016997d0
+01699628  bl 0x01698120
+0169962c  cbz x0,0x016997f4
+01699630  ldr w8,[x0, #0x18]
+01699634  cmp w19,w8
+01699638  b.cs 0x016997f8
+0169963c  ldr x8,[x23]
+01699640  ldr x26,[x0, x20, LSL #0x0]
+01699644  ldr w9,[x8, #0xe0]
+01699648  cbnz w9,0x01699654
+0169964c  mov x0,x8
+01699650  bl 0x00b0798c
+01699654  mov x0,x26
+01699658  mov x1,x22
+0169965c  mov x2,xzr
+01699660  bl 0x020b2e1c
+01699664  ldr x8,[x23]
+01699668  mov x28,x0
+0169966c  ldr w9,[x8, #0xe0]
+01699670  cbnz w9,0x0169967c
+01699674  mov x0,x8
+    ; [PRE] try { // try from 01699674 to 0169967b has its CatchHandler @ 016996e8
+01699678  bl 0x00b0798c
+    ; [POST] } // end try from 01699674 to 0169967b
+0169967c  mov x0,x28
+    ; [PRE] try { // try from 0169967c to 01699687 has its CatchHandler @ 016996f8
+01699680  mov x1,xzr
+01699684  bl 0x020b17bc
+    ; [POST] } // end try from 0169967c to 01699687
+01699688  mov x29,x0
+0169968c  mov x1,xzr
+    ; [PRE] try { // try from 0169968c to 01699693 has its CatchHandler @ 016996f4
+01699690  bl 0x020ae0e8
+    ; [POST] } // end try from 0169968c to 01699693
+01699694  tbnz w0,#0x0,0x016996d4
+01699698  ldr x0,[x25]
+0169969c  mov x1,x29
+    ; [PRE] try { // try from 0169969c to 016996c7 has its CatchHandler @ 016996fc
+016996a0  mov x2,xzr
+016996a4  bl 0x01fd2850
+016996a8  mov x26,x0
+016996ac  ldr x0,[x24]
+016996b0  ldr w8,[x0, #0xe0]
+016996b4  cbnz w8,0x016996bc
+016996b8  bl 0x00b0798c
+016996bc  mov x0,x26
+016996c0  mov x1,xzr
+016996c4  bl 0x024c0104
+    ; [POST] } // end try from 0169969c to 016996c7
+016996c8  mov x0,x29
+    ; [PRE] try { // try from 016996c8 to 016996d3 has its CatchHandler @ 016996ec
+016996cc  mov x1,xzr
+016996d0  bl 0x020adf44
+    ; [POST] } // end try from 016996c8 to 016996d3
+016996d4  mov x0,x28
+    ; [PRE] try { // try from 016996d4 to 016996e3 has its CatchHandler @ 016996f0
+016996d8  mov x1,x21
+016996dc  mov x2,xzr
+016996e0  bl 0x020b0d44
+    ; [POST] } // end try from 016996d4 to 016996e3
+016996e4  b 0x016997b0
+016997b0  mov w0,#0x1
+016997b4  ldp x29,x30,[sp, #0x50]
+016997b8  ldp x20,x19,[sp, #0x40]
+016997bc  ldp x22,x21,[sp, #0x30]
+016997c0  ldp x24,x23,[sp, #0x20]
+016997c4  ldp x26,x25,[sp, #0x10]
+016997c8  ldp x28,x27,[sp], #0x60
+016997cc  ret
+016997d0  ldr x0,[x24]
+016997d4  ldr w8,[x0, #0xe0]
+016997d8  cbnz w8,0x016997e0
+016997dc  bl 0x00b0798c
+016997e0  ldr x0,[x26]
+016997e4  mov x1,xzr
+016997e8  bl 0x024c0f2c
+016997ec  mov w0,wzr
+016997f0  b 0x016997b4
+016997f4  bl 0x00b079b0
+016997f8  bl 0x00b079b8

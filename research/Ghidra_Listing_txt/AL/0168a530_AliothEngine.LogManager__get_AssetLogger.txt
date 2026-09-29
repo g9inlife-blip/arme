@@ -1,0 +1,35 @@
+Function: AliothEngine.LogManager$$get_AssetLogger @ 0168a530
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoadingContext$$get_logger @ 0166da24
+  <- AliothEngine.AssetInfoManager$$get_logger @ 01669054
+  <- AliothEngine.AssetHolder$$get_logger @ 01662de4
+  <- AliothEngine.AssetLoader$$get_logger @ 0166b61c
+
+--- Listing ---
+0168a530  str x20,[sp, #-0x20]!
+0168a534  stp x19,x30,[sp, #0x10]
+0168a538  adrp x19,0x3577000
+0168a53c  adrp x20,0x3377000
+0168a540  ldrb w8,[x19, #0xa91]
+0168a544  ldr x20,[x20, #0x898]
+0168a548  tbnz w8,#0x0,0x0168a560
+0168a54c  adrp x0,0x3377000
+0168a550  ldr x0,[x0, #0x898]
+0168a554  bl 0x00b0789c
+0168a558  mov w8,#0x1
+0168a55c  strb w8,[x19, #0xa91]
+0168a560  ldr x0,[x20]
+0168a564  bl 0x01e09a6c
+0168a568  cbz x0,0x0168a57c
+0168a56c  ldp x19,x30,[sp, #0x10]
+0168a570  mov w1,#0x2
+0168a574  ldr x20,[sp], #0x20
+0168a578  b 0x0168995c
+0168a57c  bl 0x00b079b0

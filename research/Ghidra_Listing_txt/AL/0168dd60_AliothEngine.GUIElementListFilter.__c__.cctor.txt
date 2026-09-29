@@ -1,0 +1,40 @@
+Function: AliothEngine.GUIElementListFilter.<>c$$.cctor @ 0168dd60
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0168dd60  str x20,[sp, #-0x20]!
+0168dd64  stp x19,x30,[sp, #0x10]
+0168dd68  adrp x19,0x3577000
+0168dd6c  adrp x20,0x337f000
+0168dd70  ldrb w8,[x19, #0xac4]
+0168dd74  ldr x20,[x20, #0x2f8]
+0168dd78  tbnz w8,#0x0,0x0168dd90
+0168dd7c  adrp x0,0x337f000
+0168dd80  ldr x0,[x0, #0x2f8]
+0168dd84  bl 0x00b0789c
+0168dd88  mov w8,#0x1
+0168dd8c  strb w8,[x19, #0xac4]
+0168dd90  ldr x0,[x20]
+0168dd94  bl 0x00b079a0
+0168dd98  cbz x0,0x0168ddcc
+0168dd9c  mov x1,xzr
+0168dda0  mov x19,x0
+0168dda4  bl 0x02194104
+0168dda8  ldr x8,[x20]
+0168ddac  mov x1,x19
+0168ddb0  ldr x8,[x8, #0xb8]
+0168ddb4  str x19,[x8]
+0168ddb8  ldr x8,[x20]
+0168ddbc  ldp x19,x30,[sp, #0x10]
+0168ddc0  ldr x0,[x8, #0xb8]
+0168ddc4  ldr x20,[sp], #0x20
+0168ddc8  b 0x00b07850
+0168ddcc  bl 0x00b079b0

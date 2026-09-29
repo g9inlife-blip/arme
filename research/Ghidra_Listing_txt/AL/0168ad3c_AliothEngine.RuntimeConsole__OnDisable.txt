@@ -1,0 +1,44 @@
+Function: AliothEngine.RuntimeConsole$$OnDisable @ 0168ad3c
+
+--- Calls OUT ---
+  -> UnityEngine.Application.LogCallback$$.ctor @ 024f3578
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Application$$remove_logMessageReceived @ 024f2eac
+
+--- Calls IN ---
+
+--- Listing ---
+0168ad3c  stp x21,x20,[sp, #-0x20]!
+0168ad40  stp x19,x30,[sp, #0x10]
+0168ad44  adrp x20,0x3577000
+0168ad48  adrp x21,0x330e000
+0168ad4c  ldrb w8,[x20, #0xa9c]
+0168ad50  ldr x21,[x21, #0x818]
+0168ad54  mov x19,x0
+0168ad58  tbnz w8,#0x0,0x0168ad7c
+0168ad5c  adrp x0,0x330e000
+0168ad60  ldr x0,[x0, #0x818]
+0168ad64  bl 0x00b0789c
+0168ad68  adrp x0,0x3383000
+0168ad6c  ldr x0,[x0, #0xde8]
+0168ad70  bl 0x00b0789c
+0168ad74  mov w8,#0x1
+0168ad78  strb w8,[x20, #0xa9c]
+0168ad7c  ldr x0,[x21]
+0168ad80  bl 0x00b079a0
+0168ad84  cbz x0,0x0168adb8
+0168ad88  adrp x8,0x3383000
+0168ad8c  ldr x8,[x8, #0xde8]
+0168ad90  mov x1,x19
+0168ad94  mov x3,xzr
+0168ad98  mov x20,x0
+0168ad9c  ldr x2,[x8]
+0168ada0  bl 0x024f3578
+0168ada4  ldp x19,x30,[sp, #0x10]
+0168ada8  mov x0,x20
+0168adac  mov x1,xzr
+0168adb0  ldp x21,x20,[sp], #0x20
+0168adb4  b 0x024f2eac
+0168adb8  bl 0x00b079b0

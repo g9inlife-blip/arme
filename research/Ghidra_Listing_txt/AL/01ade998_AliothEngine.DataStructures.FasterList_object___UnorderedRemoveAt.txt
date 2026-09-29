@@ -1,0 +1,54 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$UnorderedRemoveAt @ 01ade998
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakEvent$$InternalInvoke @ 01697724
+  <- AliothEngine.WeakEvents.WeakEvent$$RemoveInternal @ 016975c4
+
+--- Listing ---
+01ade998  stp x19,x30,[sp, #-0x10]!
+01ade99c  ldr w8,[x0, #0x18]
+01ade9a0  ldr x9,[x0, #0x10]
+01ade9a4  sub w8,w8,#0x1
+01ade9a8  cmp w8,w1
+01ade9ac  str w8,[x0, #0x18]
+01ade9b0  b.ne 0x01ade9cc
+01ade9b4  cbz x9,0x01adea3c
+01ade9b8  ldr w8,[x9, #0x18]
+01ade9bc  cmp w8,w1
+01ade9c0  b.ls 0x01adea38
+01ade9c4  mov w19,wzr
+01ade9c8  b 0x01adea1c
+01ade9cc  cbz x9,0x01adea3c
+01ade9d0  ldr w10,[x9, #0x18]
+01ade9d4  cmp w8,w10
+01ade9d8  b.cs 0x01adea38
+01ade9dc  cmp w10,w1
+01ade9e0  b.ls 0x01adea38
+01ade9e4  add x8,x9,w8, SXTW  #0x3
+01ade9e8  ldr x8,[x8, #0x20]
+01ade9ec  mov x19,x0
+01ade9f0  add x0,x9,w1, SXTW  #0x3
+01ade9f4  str x8,[x0, #0x20]!
+01ade9f8  mov x1,x8
+01ade9fc  bl 0x00b07850
+01adea00  ldr x9,[x19, #0x10]
+01adea04  cbz x9,0x01adea3c
+01adea08  ldr w1,[x19, #0x18]
+01adea0c  ldr w8,[x9, #0x18]
+01adea10  cmp w1,w8
+01adea14  b.cs 0x01adea38
+01adea18  mov w19,#0x1
+01adea1c  add x0,x9,w1, SXTW  #0x3
+01adea20  str xzr,[x0, #0x20]!
+01adea24  mov x1,xzr
+01adea28  bl 0x00b07850
+01adea2c  mov w0,w19
+01adea30  ldp x19,x30,[sp], #0x10
+01adea34  ret
+01adea38  bl 0x00b079b8
+01adea3c  bl 0x00b079b0

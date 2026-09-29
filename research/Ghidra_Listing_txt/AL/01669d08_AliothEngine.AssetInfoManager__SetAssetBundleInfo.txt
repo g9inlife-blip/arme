@@ -1,0 +1,93 @@
+Function: AliothEngine.AssetInfoManager$$SetAssetBundleInfo @ 01669d08
+
+--- Calls OUT ---
+  -> AliothEngine.AssetInfoManager$$get_AssetBundleInfos @ 016694d0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AssetBundles.AssetBundleManager$$SetCRC @ 01648074
+  -> FUN_00b079b0 @ 00b079b0
+  -> AssetBundles.AssetBundleManager$$SetVersion @ 016480fc
+  -> AliothEngine.AssetBundleInfoList$$RefreshIndexs @ 016664d8
+  -> AliothEngine.AssetBundleInfoList$$GetAssetBundleCRC @ 016666e0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.JsonUtility$$FromJsonOverwrite @ 025316d0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> AliothEngine.AssetInfoManager$$set_AssetBundleInfos @ 01669538
+  -> AliothEngine.AssetBundleInfoList$$.ctor @ 01666efc
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass24_0$$<LoadAssetBundleInfo>b__0 @ 0166a228
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_m_SetAssetBundleInfo @ 0113d0c8
+
+--- Listing ---
+01669d08  str x22,[sp, #-0x30]!
+01669d0c  stp x21,x20,[sp, #0x10]
+01669d10  stp x19,x30,[sp, #0x20]
+01669d14  adrp x20,0x3577000
+01669d18  adrp x22,0x334f000
+01669d1c  ldrb w8,[x20, #0x91c]
+01669d20  ldr x22,[x22, #0xaf8]
+01669d24  mov x21,x1
+01669d28  mov x19,x0
+01669d2c  tbnz w8,#0x0,0x01669d5c
+01669d30  adrp x0,0x3375000
+01669d34  ldr x0,[x0, #0x280]
+01669d38  bl 0x00b0789c
+01669d3c  adrp x0,0x331a000
+01669d40  ldr x0,[x0, #0x8b0]
+01669d44  bl 0x00b0789c
+01669d48  adrp x0,0x334f000
+01669d4c  ldr x0,[x0, #0xaf8]
+01669d50  bl 0x00b0789c
+01669d54  mov w8,#0x1
+01669d58  strb w8,[x20, #0x91c]
+01669d5c  ldr x8,[x22]
+01669d60  ldr x8,[x8, #0xb8]
+01669d64  ldr x0,[x8, #0xb0]
+01669d68  cbz x0,0x01669d88
+01669d6c  mov x1,x19
+01669d70  mov x2,x21
+01669d74  ldp x19,x30,[sp, #0x20]
+01669d78  ldp x21,x20,[sp, #0x10]
+01669d7c  mov x3,xzr
+01669d80  ldr x22,[sp], #0x30
+01669d84  b 0x0106125c
+01669d88  adrp x8,0x3375000
+01669d8c  ldr x8,[x8, #0x280]
+01669d90  ldr x0,[x8]
+01669d94  bl 0x00b079a0
+01669d98  cbz x0,0x01669e20
+01669d9c  mov x20,x0
+01669da0  bl 0x01666efc
+01669da4  mov x0,x21
+01669da8  mov x1,x20
+01669dac  mov x2,xzr
+01669db0  bl 0x025316d0
+01669db4  mov x0,x19
+01669db8  mov x1,x20
+01669dbc  bl 0x01669538
+01669dc0  mov x0,x19
+01669dc4  bl 0x016694d0
+01669dc8  cbz x0,0x01669e20
+01669dcc  adrp x19,0x331a000
+01669dd0  ldr x19,[x19, #0x8b0]
+01669dd4  bl 0x016664d8
+01669dd8  mov x0,x20
+01669ddc  bl 0x016666e0
+01669de0  ldr x8,[x19]
+01669de4  mov x19,x0
+01669de8  ldr w9,[x8, #0xe0]
+01669dec  cbnz w9,0x01669df8
+01669df0  mov x0,x8
+01669df4  bl 0x00b0798c
+01669df8  mov x0,x19
+01669dfc  mov x1,xzr
+01669e00  bl 0x01648074
+01669e04  mov x0,x20
+01669e08  bl 0x016666e0
+01669e0c  ldp x19,x30,[sp, #0x20]
+01669e10  ldp x21,x20,[sp, #0x10]
+01669e14  mov x1,xzr
+01669e18  ldr x22,[sp], #0x30
+01669e1c  b 0x016480fc
+01669e20  bl 0x00b079b0

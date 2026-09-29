@@ -1,0 +1,122 @@
+Function: AliothEngine.AssetHolder$$RefUp @ 01663a60
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$StopCoroutine @ 024e42ec
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetHolder$$get_m_waitUnload @ 01663954
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> Ali$$get_resManager @ 00e02500
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetHolder$$set_m_waitUnload @ 016639cc
+
+--- Calls IN ---
+  <- RoleMono$$<PerLoadRes>b__119_0 @ 014ad6a8
+  <- AssetCount$$WaitAssetHorder @ 00e19c74
+  <- GUIScreenBaseMono$$PreloadAssetsLoadEnd @ 00f22b94
+  <- PreLoad$$LoadEnd @ 00e29470
+  <- AssetCount$$UseAsset @ 00e19a04
+  <- SoundManager$$<Play>b__29_1 @ 00e31eb0
+  <- PreLoad$$MergePreload @ 00e29ae4
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_m_RefUp @ 0113924c
+
+--- Listing ---
+01663a60  str x22,[sp, #-0x30]!
+01663a64  stp x21,x20,[sp, #0x10]
+01663a68  stp x19,x30,[sp, #0x20]
+01663a6c  adrp x22,0x3577000
+01663a70  adrp x21,0x3312000
+01663a74  ldrb w8,[x22, #0x8da]
+01663a78  ldr x21,[x21, #0x428]
+01663a7c  mov x20,x1
+01663a80  mov x19,x0
+01663a84  tbnz w8,#0x0,0x01663ab4
+01663a88  adrp x0,0x335f000
+01663a8c  ldr x0,[x0, #0x20]
+01663a90  bl 0x00b0789c
+01663a94  adrp x0,0x3312000
+01663a98  ldr x0,[x0, #0x428]
+01663a9c  bl 0x00b0789c
+01663aa0  adrp x0,0x335e000
+01663aa4  ldr x0,[x0, #0x4f0]
+01663aa8  bl 0x00b0789c
+01663aac  mov w8,#0x1
+01663ab0  strb w8,[x22, #0x8da]
+01663ab4  ldr x0,[x21]
+01663ab8  ldr w8,[x0, #0xe0]
+01663abc  cbnz w8,0x01663ac8
+01663ac0  bl 0x00b0798c
+01663ac4  ldr x0,[x21]
+01663ac8  ldr x8,[x0, #0xb8]
+01663acc  ldr x0,[x8, #0xe0]
+01663ad0  cbz x0,0x01663af0
+01663ad4  mov x1,x19
+01663ad8  mov x2,x20
+01663adc  ldp x19,x30,[sp, #0x20]
+01663ae0  ldp x21,x20,[sp, #0x10]
+01663ae4  mov x3,xzr
+01663ae8  ldr x22,[sp], #0x30
+01663aec  b 0x0106125c
+01663af0  ldr x0,[x19, #0x50]
+01663af4  cbz x0,0x01663be4
+01663af8  adrp x9,0x335e000
+01663afc  ldr x9,[x9, #0x4f0]
+01663b00  ldr w10,[x0, #0x1c]
+01663b04  ldr x8,[x0, #0x10]
+01663b08  ldr x9,[x9]
+01663b0c  add w10,w10,#0x1
+01663b10  str w10,[x0, #0x1c]
+01663b14  cbz x8,0x01663be4
+01663b18  ldrsw x10,[x0, #0x18]
+01663b1c  ldr w11,[x8, #0x18]
+01663b20  cmp w10,w11
+01663b24  b.cs 0x01663b48
+01663b28  add w9,w10,#0x1
+01663b2c  add x8,x8,x10, LSL #0x3
+01663b30  str w9,[x0, #0x18]
+01663b34  str x20,[x8, #0x20]!
+01663b38  mov x0,x8
+01663b3c  mov x1,x20
+01663b40  bl 0x00b07850
+01663b44  b 0x01663b60
+01663b48  ldr x8,[x9, #0x20]
+01663b4c  mov x1,x20
+01663b50  ldr x8,[x8, #0xc0]
+01663b54  ldr x2,[x8, #0x58]
+01663b58  ldr x8,[x2, #0x8]
+01663b5c  blr x8
+01663b60  mov x0,x19
+01663b64  bl 0x01663954
+01663b68  cbz x0,0x01663bd4
+01663b6c  adrp x20,0x335f000
+01663b70  ldr x20,[x20, #0x20]
+01663b74  ldr x0,[x20]
+01663b78  ldr w8,[x0, #0xe0]
+01663b7c  cbnz w8,0x01663b88
+01663b80  bl 0x00b0798c
+01663b84  ldr x0,[x20]
+01663b88  ldr x8,[x0, #0xb8]
+01663b8c  ldr x0,[x8, #0x10]
+01663b90  cbz x0,0x01663be4
+01663b94  mov x1,xzr
+01663b98  bl 0x00e02500
+01663b9c  mov x20,x0
+01663ba0  mov x0,x19
+01663ba4  bl 0x01663954
+01663ba8  cbz x20,0x01663be4
+01663bac  mov x1,x0
+01663bb0  mov x0,x20
+01663bb4  mov x2,xzr
+01663bb8  bl 0x024e42ec
+01663bbc  mov x0,x19
+01663bc0  ldp x19,x30,[sp, #0x20]
+01663bc4  ldp x21,x20,[sp, #0x10]
+01663bc8  mov x1,xzr
+01663bcc  ldr x22,[sp], #0x30
+01663bd0  b 0x016639cc
+01663bd4  ldp x19,x30,[sp, #0x20]
+01663bd8  ldp x21,x20,[sp, #0x10]
+01663bdc  ldr x22,[sp], #0x30
+01663be0  ret
+01663be4  bl 0x00b079b0

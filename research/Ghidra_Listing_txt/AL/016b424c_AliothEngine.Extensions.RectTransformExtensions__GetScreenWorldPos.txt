@@ -1,0 +1,52 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$GetScreenWorldPos @ 016b424c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.RectTransform$$GetWorldCorners @ 024f6bf4
+
+--- Calls IN ---
+
+--- Listing ---
+016b424c  stp x21,x20,[sp, #-0x20]!
+016b4250  stp x19,x30,[sp, #0x10]
+016b4254  adrp x19,0x3577000
+016b4258  adrp x21,0x3365000
+016b425c  ldrb w8,[x19, #0xbe8]
+016b4260  ldr x21,[x21, #0x98]
+016b4264  mov x20,x0
+016b4268  tbnz w8,#0x0,0x016b4280
+016b426c  adrp x0,0x3365000
+016b4270  ldr x0,[x0, #0x98]
+016b4274  bl 0x00b0789c
+016b4278  mov w8,#0x1
+016b427c  strb w8,[x19, #0xbe8]
+016b4280  ldr x0,[x21]
+016b4284  mov w1,#0x4
+016b4288  bl 0x00b078f8
+016b428c  cbz x20,0x016b42e4
+016b4290  mov x19,x0
+016b4294  mov x0,x20
+016b4298  mov x1,x19
+016b429c  mov x2,xzr
+016b42a0  bl 0x024f6bf4
+016b42a4  cbz x19,0x016b42e4
+016b42a8  ldr w8,[x19, #0x18]
+016b42ac  cbz w8,0x016b42e8
+016b42b0  cmp w8,#0x3
+016b42b4  b.ls 0x016b42e8
+016b42b8  ldp s0,s1,[x19, #0x20]
+016b42bc  ldr s2,[x19, #0x44]
+016b42c0  ldr s3,[x19, #0x30]
+016b42c4  ldp x19,x30,[sp, #0x10]
+016b42c8  fmov s4,0x3f000000
+016b42cc  fadd s0,s0,s2
+016b42d0  fadd s1,s1,s3
+016b42d4  fmul s0,s0,s4
+016b42d8  fmul s1,s1,s4
+016b42dc  ldp x21,x20,[sp], #0x20
+016b42e0  ret
+016b42e4  bl 0x00b079b0
+016b42e8  bl 0x00b079b8

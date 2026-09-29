@@ -1,0 +1,64 @@
+Function: AliothEngine.FrameSynchr$$StartSynchr @ 0164aa08
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Queue<object>$$Clear @ 01d96598
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Time$$get_realtimeSinceStartup @ 024dc3a8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Array$$Clear @ 02173bc0
+
+--- Calls IN ---
+
+--- Listing ---
+0164aa08  str x20,[sp, #-0x20]!
+0164aa0c  stp x19,x30,[sp, #0x10]
+0164aa10  adrp x20,0x3577000
+0164aa14  ldrb w8,[x20, #0x7aa]
+0164aa18  mov x19,x0
+0164aa1c  tbnz w8,#0x0,0x0164aa34
+0164aa20  adrp x0,0x330a000
+0164aa24  ldr x0,[x0, #0x9c8]
+0164aa28  bl 0x00b0789c
+0164aa2c  mov w8,#0x1
+0164aa30  strb w8,[x20, #0x7aa]
+0164aa34  ldrb w8,[x19, #0x10]
+0164aa38  cmp w8,#0x1
+0164aa3c  b.eq 0x0164aa48
+0164aa40  mov w8,#0x1
+0164aa44  strb w8,[x19, #0x10]
+0164aa48  mov w9,#0x1
+0164aa4c  ldr w8,[x19, #0x2c]
+0164aa50  strb w9,[x19, #0x40]
+0164aa54  ldr w9,[x19, #0x34]
+0164aa58  ldr x0,[x19, #0x58]
+0164aa5c  strb wzr,[x19, #0x11]
+0164aa60  str wzr,[x19, #0x30]
+0164aa64  udiv w8,w8,w9
+0164aa68  str wzr,[x19, #0x108]
+0164aa6c  str wzr,[x19, #0x104]
+0164aa70  str xzr,[x19, #0x110]
+0164aa74  str wzr,[x19, #0x60]
+0164aa78  stur xzr,[x19, #0x4c]
+0164aa7c  stur xzr,[x19, #0x44]
+0164aa80  stp w8,wzr,[x19, #0x14]
+0164aa84  str wzr,[x19, #0x54]
+0164aa88  cbz x0,0x0164aad4
+0164aa8c  ldr w2,[x0, #0x18]
+0164aa90  mov w1,wzr
+0164aa94  mov x3,xzr
+0164aa98  bl 0x02173bc0
+0164aa9c  ldr x0,[x19, #0x130]
+0164aaa0  cbz x0,0x0164aad4
+0164aaa4  adrp x8,0x330a000
+0164aaa8  ldr x8,[x8, #0x9c8]
+0164aaac  ldr x1,[x8]
+0164aab0  bl 0x01d96598
+0164aab4  mov x0,xzr
+0164aab8  str wzr,[x19, #0x12c]
+0164aabc  bl 0x024dc3a8
+0164aac0  str s0,[x19, #0x118]
+0164aac4  str wzr,[x19, #0x3c]
+0164aac8  ldp x19,x30,[sp, #0x10]
+0164aacc  ldr x20,[sp], #0x20
+0164aad0  ret
+0164aad4  bl 0x00b079b0

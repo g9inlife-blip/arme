@@ -1,0 +1,55 @@
+Function: Ali$$set_m_isPlayMoreTimes @ 00e00f98
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetInt @ 024be4d0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+  <- SysSettingPanelMono$$OnClick3 @ 00f77d08
+  <- XLua.CSObjectWrap.AliWrap$$_s_set_m_isPlayMoreTimes @ 011a333c
+
+--- Listing ---
+00e00f98  str x22,[sp, #-0x30]!
+00e00f9c  stp x21,x20,[sp, #0x10]
+00e00fa0  stp x19,x30,[sp, #0x20]
+00e00fa4  adrp x22,0x3572000
+00e00fa8  adrp x21,0x335f000
+00e00fac  ldrb w8,[x22, #0x52b]
+00e00fb0  ldr x21,[x21, #0x20]
+00e00fb4  mov w19,w1
+00e00fb8  mov x20,x0
+00e00fbc  tbnz w8,#0x0,0x00e00fe0
+00e00fc0  adrp x0,0x335f000
+00e00fc4  ldr x0,[x0, #0x20]
+00e00fc8  bl 0x00b0789c
+00e00fcc  adrp x0,0x3346000
+00e00fd0  ldr x0,[x0, #0x2e8]
+00e00fd4  bl 0x00b0789c
+00e00fd8  mov w8,#0x1
+00e00fdc  strb w8,[x22, #0x52b]
+00e00fe0  ldr x0,[x21]
+00e00fe4  ldr w8,[x0, #0xe0]
+00e00fe8  cbnz w8,0x00e00ff4
+00e00fec  bl 0x00b0798c
+00e00ff0  ldr x0,[x21]
+00e00ff4  ldr x8,[x0, #0xb8]
+00e00ff8  ldr x0,[x8, #0xf0]
+00e00ffc  cbz x0,0x00e0101c
+00e01000  and w2,w19,#0x1
+00e01004  mov x1,x20
+00e01008  ldp x19,x30,[sp, #0x20]
+00e0100c  ldp x21,x20,[sp, #0x10]
+00e01010  mov x3,xzr
+00e01014  ldr x22,[sp], #0x30
+00e01018  b 0x010613e4
+00e0101c  adrp x8,0x3346000
+00e01020  ldr x8,[x8, #0x2e8]
+00e01024  and w1,w19,#0x1
+00e01028  ldp x19,x30,[sp, #0x20]
+00e0102c  ldp x21,x20,[sp, #0x10]
+00e01030  ldr x0,[x8]
+00e01034  mov x2,xzr
+00e01038  ldr x22,[sp], #0x30
+00e0103c  b 0x024be4d0

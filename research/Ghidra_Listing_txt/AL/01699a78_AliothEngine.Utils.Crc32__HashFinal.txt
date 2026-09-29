@@ -1,0 +1,24 @@
+Function: AliothEngine.Utils.Crc32$$HashFinal @ 01699a78
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Utils.Crc32$$UInt32ToBigEndianBytes @ 01699ab4
+
+--- Calls IN ---
+
+--- Listing ---
+01699a78  str x20,[sp, #-0x20]!
+01699a7c  stp x19,x30,[sp, #0x10]
+01699a80  ldr w8,[x0, #0x30]
+01699a84  mov x19,x0
+01699a88  mvn w0,w8
+01699a8c  bl 0x01699ab4
+01699a90  mov x20,x0
+01699a94  str x0,[x19, #0x18]!
+01699a98  mov x0,x19
+01699a9c  mov x1,x20
+01699aa0  bl 0x00b07850
+01699aa4  ldp x19,x30,[sp, #0x10]
+01699aa8  mov x0,x20
+01699aac  ldr x20,[sp], #0x20
+01699ab0  ret

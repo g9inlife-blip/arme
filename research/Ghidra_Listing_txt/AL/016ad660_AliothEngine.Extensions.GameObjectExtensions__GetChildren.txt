@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$GetChildren @ 016ad660
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> System.Environment$$get_CurrentManagedThreadId @ 02197f70
+
+--- Calls IN ---
+  <- BattleMapMono$$OnOpening @ 00e4dbc0
+  <- GUIScreenBaseMono$$ShowGridAnimation @ 00f22560
+
+--- Listing ---
+016ad660  stp x21,x20,[sp, #-0x20]!
+016ad664  stp x19,x30,[sp, #0x10]
+016ad668  adrp x20,0x3577000
+016ad66c  adrp x21,0x3384000
+016ad670  ldrb w8,[x20, #0xbc6]
+016ad674  ldr x21,[x21, #0x8f8]
+016ad678  mov x19,x0
+016ad67c  tbnz w8,#0x0,0x016ad694
+016ad680  adrp x0,0x3384000
+016ad684  ldr x0,[x0, #0x8f8]
+016ad688  bl 0x00b0789c
+016ad68c  mov w8,#0x1
+016ad690  strb w8,[x20, #0xbc6]
+016ad694  ldr x0,[x21]
+016ad698  bl 0x00b079a0
+016ad69c  cbz x0,0x016ad6e0
+016ad6a0  mov x1,xzr
+016ad6a4  mov x20,x0
+016ad6a8  bl 0x02194104
+016ad6ac  mov w8,#0xfffffffe
+016ad6b0  mov x0,xzr
+016ad6b4  str w8,[x20, #0x10]
+016ad6b8  bl 0x02197f70
+016ad6bc  str w0,[x20, #0x20]
+016ad6c0  mov x0,x20
+016ad6c4  str x19,[x0, #0x30]!
+016ad6c8  mov x1,x19
+016ad6cc  bl 0x00b07850
+016ad6d0  ldp x19,x30,[sp, #0x10]
+016ad6d4  mov x0,x20
+016ad6d8  ldp x21,x20,[sp], #0x20
+016ad6dc  ret
+016ad6e0  bl 0x00b079b0

@@ -1,0 +1,48 @@
+Function: AliothEngine.GUIScreen$$set_m_isShow @ 01670cac
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp15 @ 010613e4
+
+--- Calls IN ---
+  <- UIFeedBackMono.<FixShow>d__16$$MoveNext @ 00f1ab38
+  <- AliothEngine.GUIScreen$$OnOpening @ 016718d0
+  <- NoviceGuidePanelMono$$HideControl @ 01005604
+  <- UIFeedBackMono$$FeedBackShow @ 00f1a4cc
+  <- AliothEngine.GUIScreen$$OnShowing @ 01671fd4
+  <- NoviceGuidePanelMono.<ShowControl>d__47$$MoveNext @ 01009cb4
+  <- AliothEngine.GUIScreen$$OnHiding @ 01672130
+
+--- Listing ---
+01670cac  str x22,[sp, #-0x30]!
+01670cb0  stp x21,x20,[sp, #0x10]
+01670cb4  stp x19,x30,[sp, #0x20]
+01670cb8  adrp x21,0x3577000
+01670cbc  adrp x22,0x3364000
+01670cc0  ldrb w8,[x21, #0x974]
+01670cc4  ldr x22,[x22, #0xd28]
+01670cc8  mov w20,w1
+01670ccc  mov x19,x0
+01670cd0  tbnz w8,#0x0,0x01670ce8
+01670cd4  adrp x0,0x3364000
+01670cd8  ldr x0,[x0, #0xd28]
+01670cdc  bl 0x00b0789c
+01670ce0  mov w8,#0x1
+01670ce4  strb w8,[x21, #0x974]
+01670ce8  ldr x8,[x22]
+01670cec  ldr x8,[x8, #0xb8]
+01670cf0  ldr x0,[x8, #0x18]
+01670cf4  cbz x0,0x01670d14
+01670cf8  and w2,w20,#0x1
+01670cfc  mov x1,x19
+01670d00  ldp x19,x30,[sp, #0x20]
+01670d04  ldp x21,x20,[sp, #0x10]
+01670d08  mov x3,xzr
+01670d0c  ldr x22,[sp], #0x30
+01670d10  b 0x010613e4
+01670d14  and w8,w20,#0x1
+01670d18  strb w8,[x19, #0x39]
+01670d1c  ldp x19,x30,[sp, #0x20]
+01670d20  ldp x21,x20,[sp, #0x10]
+01670d24  ldr x22,[sp], #0x30
+01670d28  ret

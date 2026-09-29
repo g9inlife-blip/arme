@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.RichTextExtension$$Magenta @ 016b54e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.RichTextExtension$$Color @ 016b5170
+
+--- Calls IN ---
+  <- PositionTargetWithProp$$ToString @ 00ebfab0
+
+--- Listing ---
+016b54e4  stp x21,x20,[sp, #-0x20]!
+016b54e8  stp x19,x30,[sp, #0x10]
+016b54ec  adrp x20,0x3577000
+016b54f0  adrp x21,0x330c000
+016b54f4  ldrb w8,[x20, #0xbfc]
+016b54f8  ldr x21,[x21, #0x648]
+016b54fc  mov x19,x0
+016b5500  tbnz w8,#0x0,0x016b5518
+016b5504  adrp x0,0x330c000
+016b5508  ldr x0,[x0, #0x648]
+016b550c  bl 0x00b0789c
+016b5510  mov w8,#0x1
+016b5514  strb w8,[x20, #0xbfc]
+016b5518  ldr x1,[x21]
+016b551c  mov x0,x19
+016b5520  ldp x19,x30,[sp, #0x10]
+016b5524  ldp x21,x20,[sp], #0x20
+016b5528  b 0x016b5170

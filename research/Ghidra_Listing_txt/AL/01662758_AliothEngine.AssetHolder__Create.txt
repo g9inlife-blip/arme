@@ -1,0 +1,138 @@
+Function: AliothEngine.AssetHolder$$Create @ 01662758
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.AssetHolder$$SetHash @ 01662b8c
+  -> AliothEngine.ResourcesAssetHolder$$.ctor @ 016629bc
+  -> AliothEngine.EditorAssetHolder$$.ctor @ 01662b1c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.FileCacheAssetHolder$$.ctor @ 01662aac
+  -> AliothEngine.CacheAssetBundleHolder$$.ctor @ 01662924
+  -> AliothEngine.AssetLocation$$get_hash @ 0165f060
+  -> AliothEngine.AssetHolder$$set_AssetName @ 016626c4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp465 @ 0109bbd0
+  -> AliothEngine.AssetLocation$$get_baseName @ 01662a2c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_m_Create_xlua_st_ @ 01137bc0
+  <- AliothEngine.AssetLoader$$TryLoadImmediate @ 0166ba4c
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+
+--- Listing ---
+01662758  str x22,[sp, #-0x30]!
+0166275c  stp x21,x20,[sp, #0x10]
+01662760  stp x19,x30,[sp, #0x20]
+01662764  adrp x22,0x3577000
+01662768  adrp x21,0x3312000
+0166276c  ldrb w8,[x22, #0x8ca]
+01662770  ldr x21,[x21, #0x428]
+01662774  mov x20,x1
+01662778  mov x19,x0
+0166277c  tbnz w8,#0x0,0x016627c4
+01662780  adrp x0,0x3312000
+01662784  ldr x0,[x0, #0x428]
+01662788  bl 0x00b0789c
+0166278c  adrp x0,0x3342000
+01662790  ldr x0,[x0, #0x668]
+01662794  bl 0x00b0789c
+01662798  adrp x0,0x3375000
+0166279c  ldr x0,[x0, #0x218]
+016627a0  bl 0x00b0789c
+016627a4  adrp x0,0x3348000
+016627a8  ldr x0,[x0, #0x328]
+016627ac  bl 0x00b0789c
+016627b0  adrp x0,0x333f000
+016627b4  ldr x0,[x0, #0x948]
+016627b8  bl 0x00b0789c
+016627bc  mov w8,#0x1
+016627c0  strb w8,[x22, #0x8ca]
+016627c4  ldr x0,[x21]
+016627c8  ldr w8,[x0, #0xe0]
+016627cc  cbnz w8,0x016627d8
+016627d0  bl 0x00b0798c
+016627d4  ldr x0,[x21]
+016627d8  ldr x8,[x0, #0xb8]
+016627dc  ldr x0,[x8, #0x60]
+016627e0  cbz x0,0x01662800
+016627e4  mov x1,x19
+016627e8  mov x2,x20
+016627ec  ldp x19,x30,[sp, #0x20]
+016627f0  ldp x21,x20,[sp, #0x10]
+016627f4  mov x3,xzr
+016627f8  ldr x22,[sp], #0x30
+016627fc  b 0x0109bbd0
+01662800  cbz x19,0x01662920
+01662804  ldr w8,[x19, #0x5c]
+01662808  add w8,w8,#0x1
+0166280c  cmp w8,#0x4
+01662810  b.hi 0x01662918
+01662814  adrp x9,0x26dc000
+01662818  add x9,x9,#0xfd1
+0166281c  adr x10,0x1662834
+01662820  ldrb w11,[x9, x8, LSL ]
+01662824  add x10,x10,x11, LSL #0x2
+01662828  adrp x8,0x3375000
+0166282c  ldr x8,[x8, #0x218]
+01662830  br x10
+01662834  ldr x0,[x8]
+01662838  ldr x21,[x19, #0x40]
+0166283c  bl 0x00b079a0
+01662840  cbz x0,0x01662920
+01662844  mov x1,x21
+01662848  mov x20,x0
+0166284c  bl 0x01662b1c
+01662850  b 0x016628d8
+01662854  adrp x8,0x3348000
+01662858  ldr x8,[x8, #0x328]
+0166285c  ldr x21,[x19, #0x50]
+01662860  ldr x0,[x8]
+01662864  bl 0x00b079a0
+01662868  cbz x0,0x01662920
+0166286c  mov x1,x21
+01662870  mov x20,x0
+01662874  bl 0x01662aac
+01662878  b 0x016628d8
+0166287c  adrp x8,0x3342000
+01662880  ldr x8,[x8, #0x668]
+01662884  ldr x21,[x19, #0x50]
+01662888  ldr x22,[x19, #0x40]
+0166288c  ldr x0,[x8]
+01662890  bl 0x00b079a0
+01662894  cbz x0,0x01662920
+01662898  mov x1,x21
+0166289c  mov x2,x22
+016628a0  mov w3,wzr
+016628a4  mov x20,x0
+016628a8  bl 0x01662924
+016628ac  ldr x1,[x19, #0x40]
+016628b0  b 0x016628e4
+016628b4  adrp x8,0x333f000
+016628b8  ldr x8,[x8, #0x948]
+016628bc  ldr x21,[x19, #0x40]
+016628c0  ldr x0,[x8]
+016628c4  bl 0x00b079a0
+016628c8  cbz x0,0x01662920
+016628cc  mov x1,x21
+016628d0  mov x20,x0
+016628d4  bl 0x016629bc
+016628d8  mov x0,x19
+016628dc  bl 0x01662a2c
+016628e0  mov x1,x0
+016628e4  mov x0,x20
+016628e8  bl 0x016626c4
+016628ec  mov x0,x19
+016628f0  bl 0x0165f060
+016628f4  cbz x20,0x01662920
+016628f8  mov x1,x0
+016628fc  mov x0,x20
+01662900  bl 0x01662b8c
+01662904  mov x0,x20
+01662908  ldp x19,x30,[sp, #0x20]
+0166290c  ldp x21,x20,[sp, #0x10]
+01662910  ldr x22,[sp], #0x30
+01662914  ret
+01662918  mov x0,x19
+0166291c  bl 0x0165f060
+01662920  bl 0x00b079b0

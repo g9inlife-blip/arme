@@ -1,0 +1,51 @@
+Function: AliothEngine.GUIScreenManager$$set_RootCanvas @ 01676838
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_InitRoot @ 01677154
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_s_set_RootCanvas @ 01150598
+
+--- Listing ---
+01676838  stp x21,x20,[sp, #-0x20]!
+0167683c  stp x19,x30,[sp, #0x10]
+01676840  adrp x21,0x3577000
+01676844  adrp x20,0x337b000
+01676848  ldrb w8,[x21, #0x9c4]
+0167684c  ldr x20,[x20, #0xb98]
+01676850  mov x19,x0
+01676854  tbnz w8,#0x0,0x0167686c
+01676858  adrp x0,0x337b000
+0167685c  ldr x0,[x0, #0xb98]
+01676860  bl 0x00b0789c
+01676864  mov w8,#0x1
+01676868  strb w8,[x21, #0x9c4]
+0167686c  ldr x0,[x20]
+01676870  ldr w8,[x0, #0xe0]
+01676874  cbnz w8,0x01676880
+01676878  bl 0x00b0798c
+0167687c  ldr x0,[x20]
+01676880  ldr x8,[x0, #0xb8]
+01676884  ldr x9,[x8, #0x138]
+01676888  cbz x9,0x016768a4
+0167688c  mov x1,x19
+01676890  ldp x19,x30,[sp, #0x10]
+01676894  mov x0,x9
+01676898  mov x2,xzr
+0167689c  ldp x21,x20,[sp], #0x20
+016768a0  b 0x01060dac
+016768a4  ldr w9,[x0, #0xe0]
+016768a8  cbnz w9,0x016768b8
+016768ac  bl 0x00b0798c
+016768b0  ldr x8,[x20]
+016768b4  ldr x8,[x8, #0xb8]
+016768b8  str x19,[x8, #0x8]!
+016768bc  mov x1,x19
+016768c0  ldp x19,x30,[sp, #0x10]
+016768c4  mov x0,x8
+016768c8  ldp x21,x20,[sp], #0x20
+016768cc  b 0x00b07850

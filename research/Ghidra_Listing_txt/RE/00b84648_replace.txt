@@ -1,0 +1,30 @@
+Function: replace @ 00b84648
+FuncComment: std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, wchar_t const*)
+
+--- Calls OUT ---
+  -> replace @ 008d58e0
+  -> wcslen @ 008d4660
+
+--- Calls IN ---
+
+--- Listing ---
+00b84648  stp x22,x21,[sp, #-0x30]!
+    ; [PLATE] std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, wchar_t const*)
+00b8464c  stp x20,x19,[sp, #0x10]
+00b84650  stp x29,x30,[sp, #0x20]
+00b84654  add x29,sp,#0x20
+00b84658  mov x22,x0
+00b8465c  mov x0,x3
+00b84660  mov x19,x3
+00b84664  mov x20,x2
+00b84668  mov x21,x1
+00b8466c  bl 0x008d4660
+00b84670  mov x2,x20
+00b84674  mov x3,x19
+00b84678  ldp x29,x30,[sp, #0x20]
+00b8467c  ldp x20,x19,[sp, #0x10]
+00b84680  mov x4,x0
+00b84684  mov x0,x22
+00b84688  mov x1,x21
+00b8468c  ldp x22,x21,[sp], #0x30
+00b84690  b 0x008d58e0

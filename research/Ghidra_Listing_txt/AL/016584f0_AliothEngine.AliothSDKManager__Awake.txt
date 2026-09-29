@@ -1,0 +1,31 @@
+Function: AliothEngine.AliothSDKManager$$Awake @ 016584f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$Awake @ 01e090dc
+
+--- Calls IN ---
+
+--- Listing ---
+016584f0  stp x21,x20,[sp, #-0x20]!
+016584f4  stp x19,x30,[sp, #0x10]
+016584f8  adrp x21,0x3577000
+016584fc  adrp x20,0x3335000
+01658500  ldrb w8,[x21, #0x833]
+01658504  ldr x20,[x20, #0x268]
+01658508  mov x19,x0
+0165850c  tbnz w8,#0x0,0x01658524
+01658510  adrp x0,0x3335000
+01658514  ldr x0,[x0, #0x268]
+01658518  bl 0x00b0789c
+0165851c  mov w8,#0x1
+01658520  strb w8,[x21, #0x833]
+01658524  ldr x8,[x19]
+01658528  mov x0,x19
+0165852c  ldp x9,x1,[x8, #0x1a8]
+01658530  blr x9
+01658534  ldr x1,[x20]
+01658538  mov x0,x19
+0165853c  ldp x19,x30,[sp, #0x10]
+01658540  ldp x21,x20,[sp], #0x20
+01658544  b 0x01e090dc

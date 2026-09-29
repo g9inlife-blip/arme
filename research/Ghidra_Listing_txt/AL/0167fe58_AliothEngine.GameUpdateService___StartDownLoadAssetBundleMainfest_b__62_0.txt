@@ -1,0 +1,112 @@
+Function: AliothEngine.GameUpdateService$$<StartDownLoadAssetBundleMainfest>b__62_0 @ 0167fe58
+
+--- Calls OUT ---
+  -> AliothEngine.GameUpdateService$$get_logger @ 0167d368
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> AliothEngine.GameUpdateService$$CleaupCache @ 0167edf8
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GameUpdateService$$_OnUpdateFail @ 0167eb98
+
+--- Calls IN ---
+
+--- Listing ---
+0167fe58  str x24,[sp, #-0x40]!
+0167fe5c  stp x23,x22,[sp, #0x10]
+0167fe60  stp x21,x20,[sp, #0x20]
+0167fe64  stp x19,x30,[sp, #0x30]
+0167fe68  adrp x21,0x3577000
+0167fe6c  ldrb w8,[x21, #0xa42]
+0167fe70  mov x20,x1
+0167fe74  mov x19,x0
+0167fe78  tbnz w8,#0x0,0x0167fea8
+0167fe7c  adrp x0,0x334a000
+0167fe80  ldr x0,[x0, #0xc98]
+0167fe84  bl 0x00b0789c
+0167fe88  adrp x0,0x330f000
+0167fe8c  ldr x0,[x0, #0x4d8]
+0167fe90  bl 0x00b0789c
+0167fe94  adrp x0,0x3383000
+0167fe98  ldr x0,[x0, #0x768]
+0167fe9c  bl 0x00b0789c
+0167fea0  mov w8,#0x1
+0167fea4  strb w8,[x21, #0xa42]
+0167fea8  bl 0x0167edf8
+0167feac  mov x0,x19
+0167feb0  bl 0x0167d368
+0167feb4  cbz x0,0x0167ffe0
+0167feb8  adrp x24,0x334a000
+0167febc  adrp x9,0x330f000
+0167fec0  adrp x10,0x3383000
+0167fec4  ldr x24,[x24, #0xc98]
+0167fec8  ldr x9,[x9, #0x4d8]
+0167fecc  ldr x8,[x0]
+0167fed0  ldr x10,[x10, #0x768]
+0167fed4  ldr x1,[x24]
+0167fed8  ldr x22,[x9]
+0167fedc  ldrh w9,[x8, #0x12a]
+0167fee0  ldr x23,[x10]
+0167fee4  mov x21,x0
+0167fee8  cbz x9,0x0167ff0c
+0167feec  ldr x10,[x8, #0xb0]
+0167fef0  add x10,x10,#0x8
+0167fef4  ldur x11,[x10, #-0x8]
+0167fef8  cmp x11,x1
+0167fefc  b.eq 0x0167ff1c
+0167ff00  subs x9,x9,#0x1
+0167ff04  add x10,x10,#0x10
+0167ff08  b.ne 0x0167fef4
+0167ff0c  mov w2,#0xb
+0167ff10  mov x0,x21
+0167ff14  bl 0x00b2ae24
+0167ff18  b 0x0167ff2c
+0167ff1c  ldr w9,[x10]
+0167ff20  add w9,w9,#0xb
+0167ff24  add x8,x8,w9, SXTW  #0x4
+0167ff28  add x0,x8,#0x138
+0167ff2c  ldp x8,x3,[x0]
+0167ff30  mov x0,x21
+0167ff34  mov x1,x22
+0167ff38  mov x2,x23
+0167ff3c  blr x8
+0167ff40  mov x0,x19
+0167ff44  bl 0x0167d368
+0167ff48  cbz x0,0x0167ffe0
+0167ff4c  ldr x8,[x0]
+0167ff50  ldr x1,[x24]
+0167ff54  mov x21,x0
+0167ff58  ldrh w9,[x8, #0x12a]
+0167ff5c  cbz x9,0x0167ff80
+0167ff60  ldr x10,[x8, #0xb0]
+0167ff64  add x10,x10,#0x8
+0167ff68  ldur x11,[x10, #-0x8]
+0167ff6c  cmp x11,x1
+0167ff70  b.eq 0x0167ff90
+0167ff74  subs x9,x9,#0x1
+0167ff78  add x10,x10,#0x10
+0167ff7c  b.ne 0x0167ff68
+0167ff80  mov w2,#0xd
+0167ff84  mov x0,x21
+0167ff88  bl 0x00b2ae24
+0167ff8c  b 0x0167ffa0
+0167ff90  ldr w9,[x10]
+0167ff94  add w9,w9,#0xd
+0167ff98  add x8,x8,w9, SXTW  #0x4
+0167ff9c  add x0,x8,#0x138
+0167ffa0  ldp x8,x2,[x0]
+0167ffa4  mov x0,x21
+0167ffa8  mov x1,x20
+0167ffac  blr x8
+0167ffb0  cbz x20,0x0167ffe0
+0167ffb4  ldr x8,[x20]
+0167ffb8  mov x0,x20
+0167ffbc  ldp x9,x1,[x8, #0x188]
+0167ffc0  blr x9
+0167ffc4  mov x1,x0
+0167ffc8  mov x0,x19
+0167ffcc  ldp x19,x30,[sp, #0x30]
+0167ffd0  ldp x21,x20,[sp, #0x20]
+0167ffd4  ldp x23,x22,[sp, #0x10]
+0167ffd8  ldr x24,[sp], #0x40
+0167ffdc  b 0x0167eb98
+0167ffe0  bl 0x00b079b0

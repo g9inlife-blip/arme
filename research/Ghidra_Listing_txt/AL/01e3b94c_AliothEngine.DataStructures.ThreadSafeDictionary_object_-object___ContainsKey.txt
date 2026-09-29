@@ -1,0 +1,76 @@
+Function: AliothEngine.DataStructures.ThreadSafeDictionary<object,-object>$$ContainsKey @ 01e3b94c
+
+--- Calls OUT ---
+  -> System.Threading.ReaderWriterLockSlim$$ExitReadLock @ 0223def4
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Threading.ReaderWriterLockSlim$$EnterReadLock @ 0223ccf4
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e3b94c  str x22,[sp, #-0x30]!
+01e3b950  stp x21,x20,[sp, #0x10]
+01e3b954  stp x19,x30,[sp, #0x20]
+01e3b958  mov x19,x0
+01e3b95c  ldr x0,[x0, #0x18]
+01e3b960  cbz x0,0x01e3ba28
+01e3b964  mov x20,x1
+01e3b968  mov x1,xzr
+01e3b96c  mov x22,x2
+01e3b970  bl 0x0223ccf4
+01e3b974  ldr x21,[x19, #0x10]
+01e3b978  cbz x21,0x01e3ba2c
+01e3b97c  ldr x8,[x22, #0x20]
+01e3b980  ldr x8,[x8, #0xc0]
+01e3b984  ldr x1,[x8, #0x30]
+01e3b988  ldrb w8,[x1, #0x132]
+01e3b98c  tbnz w8,#0x0,0x01e3b99c
+01e3b990  mov x0,x1
+    ; [PRE] try { // try from 01e3b990 to 01e3b9f7 has its CatchHandler @ 01e3ba3c
+01e3b994  bl 0x00b2ac40
+01e3b998  mov x1,x0
+01e3b99c  ldr x8,[x21]
+01e3b9a0  ldrh w9,[x8, #0x12a]
+01e3b9a4  cbz x9,0x01e3b9c8
+01e3b9a8  ldr x10,[x8, #0xb0]
+01e3b9ac  add x10,x10,#0x8
+01e3b9b0  ldur x11,[x10, #-0x8]
+01e3b9b4  cmp x11,x1
+01e3b9b8  b.eq 0x01e3b9d8
+01e3b9bc  subs x9,x9,#0x1
+01e3b9c0  add x10,x10,#0x10
+01e3b9c4  b.ne 0x01e3b9b0
+01e3b9c8  mov w2,#0x4
+01e3b9cc  mov x0,x21
+01e3b9d0  bl 0x00b2ae24
+01e3b9d4  b 0x01e3b9e8
+01e3b9d8  ldr w9,[x10]
+01e3b9dc  add w9,w9,#0x4
+01e3b9e0  add x8,x8,w9, SXTW  #0x4
+01e3b9e4  add x0,x8,#0x138
+01e3b9e8  ldp x8,x2,[x0]
+01e3b9ec  mov x0,x21
+01e3b9f0  mov x1,x20
+01e3b9f4  blr x8
+    ; [POST] } // end try from 01e3b990 to 01e3b9f7
+01e3b9f8  mov w21,w0
+01e3b9fc  mov x20,xzr
+01e3ba00  ldr x0,[x19, #0x18]
+01e3ba04  cbz x0,0x01e3ba28
+01e3ba08  mov x1,xzr
+01e3ba0c  bl 0x0223def4
+01e3ba10  cbnz x20,0x01e3ba30
+01e3ba14  and w0,w21,#0x1
+01e3ba18  ldp x19,x30,[sp, #0x20]
+01e3ba1c  ldp x21,x20,[sp, #0x10]
+01e3ba20  ldr x22,[sp], #0x30
+01e3ba24  ret
+01e3ba28  bl 0x00b079b0
+01e3ba2c  bl 0x00b079b0
+    ; [PRE] try { // try from 01e3ba2c to 01e3ba2f has its CatchHandler @ 01e3ba38
+    ; [POST] } // end try from 01e3ba2c to 01e3ba2f
+01e3ba30  mov x0,x20
+01e3ba34  bl 0x00aaac8c

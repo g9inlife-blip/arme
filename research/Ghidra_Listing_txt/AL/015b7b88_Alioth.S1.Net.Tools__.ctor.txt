@@ -1,0 +1,44 @@
+Function: Alioth.S1.Net.Tools$$.ctor @ 015b7b88
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1NetToolsWrap$$__CreateInstance @ 0118efd4
+
+--- Listing ---
+015b7b88  stp x21,x20,[sp, #-0x20]!
+015b7b8c  stp x19,x30,[sp, #0x10]
+015b7b90  adrp x21,0x3577000
+015b7b94  adrp x20,0x3339000
+015b7b98  ldrb w8,[x21, #0xf4]
+015b7b9c  ldr x20,[x20, #0x1b0]
+015b7ba0  mov x19,x0
+015b7ba4  tbnz w8,#0x0,0x015b7bbc
+015b7ba8  adrp x0,0x3339000
+015b7bac  ldr x0,[x0, #0x1b0]
+015b7bb0  bl 0x00b0789c
+015b7bb4  mov w8,#0x1
+015b7bb8  strb w8,[x21, #0xf4]
+015b7bbc  mov x0,x19
+015b7bc0  mov x1,xzr
+015b7bc4  bl 0x02194104
+015b7bc8  ldr x0,[x20]
+015b7bcc  ldr w8,[x0, #0xe0]
+015b7bd0  cbnz w8,0x015b7bdc
+015b7bd4  bl 0x00b0798c
+015b7bd8  ldr x0,[x20]
+015b7bdc  ldr x8,[x0, #0xb8]
+015b7be0  ldr x0,[x8, #0x38]
+015b7be4  cbz x0,0x015b7bfc
+015b7be8  mov x1,x19
+015b7bec  ldp x19,x30,[sp, #0x10]
+015b7bf0  mov x2,xzr
+015b7bf4  ldp x21,x20,[sp], #0x20
+015b7bf8  b 0x01060dac
+015b7bfc  ldp x19,x30,[sp, #0x10]
+015b7c00  ldp x21,x20,[sp], #0x20
+015b7c04  ret

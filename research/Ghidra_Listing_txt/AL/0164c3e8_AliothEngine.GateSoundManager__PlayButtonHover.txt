@@ -1,0 +1,54 @@
+Function: AliothEngine.GateSoundManager$$PlayButtonHover @ 0164c3e8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+
+--- Calls IN ---
+
+--- Listing ---
+0164c3e8  str x22,[sp, #-0x30]!
+0164c3ec  stp x21,x20,[sp, #0x10]
+0164c3f0  stp x19,x30,[sp, #0x20]
+0164c3f4  adrp x22,0x3577000
+0164c3f8  ldrb w8,[x22, #0x7bd]
+0164c3fc  mov w21,w2
+0164c400  mov x19,x1
+0164c404  mov x20,x0
+0164c408  tbnz w8,#0x0,0x0164c420
+0164c40c  adrp x0,0x3321000
+0164c410  ldr x0,[x0, #0xca8]
+0164c414  bl 0x00b0789c
+0164c418  mov w8,#0x1
+0164c41c  strb w8,[x22, #0x7bd]
+0164c420  add x20,x20,#0x68
+0164c424  tbz w21,#0x0,0x0164c468
+0164c428  adrp x8,0x3321000
+0164c42c  ldr x8,[x8, #0xca8]
+0164c430  ldr x21,[x20]
+0164c434  ldr x0,[x8]
+0164c438  ldr w8,[x0, #0xe0]
+0164c43c  cbnz w8,0x0164c444
+0164c440  bl 0x00b0798c
+0164c444  mov x0,x19
+0164c448  mov x1,x21
+0164c44c  mov x2,xzr
+0164c450  bl 0x024de30c
+0164c454  tbz w0,#0x0,0x0164c484
+0164c458  mov x0,x20
+0164c45c  mov x1,x19
+0164c460  str x19,[x20]
+0164c464  b 0x0164c474
+0164c468  str xzr,[x20]
+0164c46c  mov x0,x20
+0164c470  mov x1,xzr
+0164c474  ldp x19,x30,[sp, #0x20]
+0164c478  ldp x21,x20,[sp, #0x10]
+0164c47c  ldr x22,[sp], #0x30
+0164c480  b 0x00b07850
+0164c484  ldp x19,x30,[sp, #0x20]
+0164c488  ldp x21,x20,[sp, #0x10]
+0164c48c  ldr x22,[sp], #0x30
+0164c490  ret

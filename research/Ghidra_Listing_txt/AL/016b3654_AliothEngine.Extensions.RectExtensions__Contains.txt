@@ -1,0 +1,83 @@
+Function: AliothEngine.Extensions.RectExtensions$$Contains @ 016b3654
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Rect$$get_x @ 024daf34
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$get_width @ 024db068
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RectExtensions$$ContainsOrIntersects @ 016b38b8
+
+--- Listing ---
+016b3654  sub sp,sp,#0x40
+016b3658  str d10,[sp, #0x20]
+016b365c  stp d9,d8,[sp, #0x28]
+016b3660  str x30,[sp, #0x38]
+016b3664  add x0,sp,#0x10
+016b3668  mov x1,xzr
+016b366c  stp s0,s1,[sp, #0x10]
+016b3670  stp s2,s3,[sp, #0x18]
+016b3674  stp s4,s5,[sp]
+016b3678  stp s6,s7,[sp, #0x8]
+016b367c  bl 0x024daf34
+016b3680  mov x0,sp
+016b3684  mov x1,xzr
+016b3688  mov v8.16B,v0.16B
+016b368c  bl 0x024daf34
+016b3690  fcmp s8,s0
+016b3694  b.hi 0x016b3758
+016b3698  mov x0,sp
+016b369c  mov x1,xzr
+016b36a0  bl 0x024daf34
+016b36a4  mov x0,sp
+016b36a8  mov x1,xzr
+016b36ac  mov v8.16B,v0.16B
+016b36b0  bl 0x024db068
+016b36b4  add x0,sp,#0x10
+016b36b8  mov x1,xzr
+016b36bc  mov v9.16B,v0.16B
+016b36c0  bl 0x024daf34
+016b36c4  add x0,sp,#0x10
+016b36c8  mov x1,xzr
+016b36cc  mov v10.16B,v0.16B
+016b36d0  bl 0x024db068
+016b36d4  fadd s1,s8,s9
+016b36d8  fadd s0,s10,s0
+016b36dc  fcmp s1,s0
+016b36e0  b.hi 0x016b3758
+016b36e4  mov x0,sp
+016b36e8  mov x1,xzr
+016b36ec  bl 0x024daf44
+016b36f0  add x0,sp,#0x10
+016b36f4  mov x1,xzr
+016b36f8  mov v8.16B,v0.16B
+016b36fc  bl 0x024daf44
+016b3700  fcmp s8,s0
+016b3704  b.pl 0x016b3758
+016b3708  mov x0,sp
+016b370c  mov x1,xzr
+016b3710  bl 0x024daf44
+016b3714  mov x0,sp
+016b3718  mov x1,xzr
+016b371c  mov v8.16B,v0.16B
+016b3720  bl 0x024db078
+016b3724  add x0,sp,#0x10
+016b3728  mov x1,xzr
+016b372c  mov v9.16B,v0.16B
+016b3730  bl 0x024daf44
+016b3734  add x0,sp,#0x10
+016b3738  mov x1,xzr
+016b373c  mov v10.16B,v0.16B
+016b3740  bl 0x024db078
+016b3744  fsub s1,s8,s9
+016b3748  fsub s0,s10,s0
+016b374c  fcmp s1,s0
+016b3750  cset w0,ge
+016b3754  b 0x016b375c
+016b3758  mov w0,wzr
+016b375c  ldr x30,[sp, #0x38]
+016b3760  ldp d9,d8,[sp, #0x28]
+016b3764  ldr d10,[sp, #0x20]
+016b3768  add sp,sp,#0x40
+016b376c  ret

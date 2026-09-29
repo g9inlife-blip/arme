@@ -1,0 +1,74 @@
+Function: AliothEngine.AudioFadeInOut$$Update @ 01688d0c
+
+--- Calls OUT ---
+  -> UnityEngine.AudioSource$$set_volume @ 024bb940
+  -> UnityEngine.AudioSource$$Stop @ 024bbd24
+  -> UnityEngine.Time$$get_time @ 024dbfa8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01688d0c  str x20,[sp, #-0x20]!
+01688d10  stp x19,x30,[sp, #0x10]
+01688d14  ldr w20,[x0, #0x38]
+01688d18  cbz w20,0x01688d88
+01688d1c  mov x19,x0
+01688d20  mov x0,xzr
+01688d24  bl 0x024dbfa8
+01688d28  ldr s1,[x19, #0x44]
+01688d2c  cmp w20,#0x1
+01688d30  b.ne 0x01688d94
+01688d34  ldr s2,[x19, #0x18]
+01688d38  fsub s0,s0,s1
+01688d3c  fmov s1,0x3f800000
+01688d40  fdiv s0,s0,s2
+01688d44  fcmp s0,s1
+01688d48  b.lt 0x01688d54
+01688d4c  mov v0.16B,v1.16B
+01688d50  str wzr,[x19, #0x38]
+01688d54  ldr x0,[x19, #0x30]
+01688d58  cbz x0,0x01688e04
+01688d5c  ldr s1,[x19, #0x1c]
+01688d60  ldr s2,[x19, #0x3c]
+01688d64  fmov s3,0x3f800000
+01688d68  fcmp s0,#0.0
+01688d6c  fmov s4,wzr
+01688d70  fmin s0,s0,s3
+01688d74  fsub s2,s2,s1
+01688d78  fcsel s0,s0,s4,pl
+01688d7c  fmul s0,s0,s2
+01688d80  fadd s0,s1,s0
+01688d84  b 0x01688dd8
+01688d88  ldp x19,x30,[sp, #0x10]
+01688d8c  ldr x20,[sp], #0x20
+01688d90  ret
+01688d94  ldr s2,[x19, #0x28]
+01688d98  fsub s0,s0,s1
+01688d9c  fmov s1,0x3f800000
+01688da0  fdiv s0,s0,s2
+01688da4  fcmp s0,s1
+01688da8  b.ge 0x01688de8
+01688dac  ldr x0,[x19, #0x30]
+01688db0  cbz x0,0x01688e04
+01688db4  ldr s2,[x19, #0x40]
+01688db8  ldr s3,[x19, #0x2c]
+01688dbc  fmin s1,s0,s1
+01688dc0  fcmp s0,#0.0
+01688dc4  fmov s0,wzr
+01688dc8  fsub s3,s3,s2
+01688dcc  fcsel s0,s1,s0,pl
+01688dd0  fmul s0,s0,s3
+01688dd4  fadd s0,s2,s0
+01688dd8  ldp x19,x30,[sp, #0x10]
+01688ddc  mov x1,xzr
+01688de0  ldr x20,[sp], #0x20
+01688de4  b 0x024bb940
+01688de8  ldr x0,[x19, #0x30]
+01688dec  str wzr,[x19, #0x38]
+01688df0  cbz x0,0x01688e04
+01688df4  ldp x19,x30,[sp, #0x10]
+01688df8  mov x1,xzr
+01688dfc  ldr x20,[sp], #0x20
+01688e00  b 0x024bbd24
+01688e04  bl 0x00b079b0

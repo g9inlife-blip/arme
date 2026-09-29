@@ -1,0 +1,61 @@
+Function: AliothEngine.PlatformTools.<PlayMovieCoroutine>d__1$$MoveNext @ 0165818c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0165818c  str x20,[sp, #-0x20]!
+01658190  stp x19,x30,[sp, #0x10]
+01658194  adrp x20,0x3577000
+01658198  ldrb w8,[x20, #0x82d]
+0165819c  mov x19,x0
+016581a0  tbnz w8,#0x0,0x016581b8
+016581a4  adrp x0,0x335f000
+016581a8  ldr x0,[x0, #0x20]
+016581ac  bl 0x00b0789c
+016581b0  mov w8,#0x1
+016581b4  strb w8,[x20, #0x82d]
+016581b8  ldr w8,[x19, #0x10]
+016581bc  mov w0,wzr
+016581c0  cmp w8,#0x2
+016581c4  b.eq 0x01658208
+016581c8  adrp x20,0x335f000
+016581cc  ldr x20,[x20, #0x20]
+016581d0  cmp w8,#0x1
+016581d4  b.eq 0x01658210
+016581d8  cbnz w8,0x0165824c
+016581dc  mov w8,#0xffffffff
+016581e0  str w8,[x19, #0x10]
+016581e4  ldr x0,[x20]
+016581e8  ldr w8,[x0, #0xe0]
+016581ec  cbnz w8,0x016581f8
+016581f0  bl 0x00b0798c
+016581f4  ldr x0,[x20]
+016581f8  ldr x8,[x0, #0xb8]
+016581fc  mov x0,x19
+01658200  mov w20,#0x1
+01658204  b 0x01658238
+01658208  mov w20,#0xffffffff
+0165820c  b 0x01658248
+01658210  mov w8,#0xffffffff
+01658214  str w8,[x19, #0x10]
+01658218  ldr x0,[x20]
+0165821c  ldr w8,[x0, #0xe0]
+01658220  cbnz w8,0x0165822c
+01658224  bl 0x00b0798c
+01658228  ldr x0,[x20]
+0165822c  ldr x8,[x0, #0xb8]
+01658230  mov x0,x19
+01658234  mov w20,#0x2
+01658238  ldr x1,[x8, #0x8]
+0165823c  str x1,[x0, #0x18]!
+01658240  bl 0x00b07850
+01658244  mov w0,#0x1
+01658248  str w20,[x19, #0x10]
+0165824c  ldp x19,x30,[sp, #0x10]
+01658250  ldr x20,[sp], #0x20
+01658254  ret

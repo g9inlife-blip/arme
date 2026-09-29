@@ -1,0 +1,38 @@
+Function: AliothEngine.Vector3Range$$.ctor @ 016865e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016865e4  str x20,[sp, #-0x20]!
+016865e8  stp x19,x30,[sp, #0x10]
+016865ec  mov x1,xzr
+016865f0  mov x19,x0
+016865f4  bl 0x02194104
+016865f8  adrp x20,0x3570000
+016865fc  ldrb w8,[x20, #0xf0c]
+01686600  cbnz w8,0x01686618
+01686604  adrp x0,0x3368000
+01686608  ldr x0,[x0, #0x9b8]
+0168660c  bl 0x00b0789c
+01686610  mov w8,#0x1
+01686614  strb w8,[x20, #0xf0c]
+01686618  adrp x8,0x3368000
+0168661c  ldr x8,[x8, #0x9b8]
+01686620  ldr x8,[x8]
+01686624  ldr x9,[x8, #0xb8]
+01686628  ldr x10,[x9]
+0168662c  ldr w9,[x9, #0x8]
+01686630  str x10,[x19, #0x10]
+01686634  str w9,[x19, #0x18]
+01686638  ldr x8,[x8, #0xb8]
+0168663c  ldr x9,[x8]
+01686640  ldr w8,[x8, #0x8]
+01686644  stur x9,[x19, #0x1c]
+01686648  str w8,[x19, #0x24]
+0168664c  ldp x19,x30,[sp, #0x10]
+01686650  ldr x20,[sp], #0x20
+01686654  ret

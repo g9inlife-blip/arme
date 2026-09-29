@@ -1,0 +1,42 @@
+Function: ResolveMorePanelMono$$OnClickClose @ 01044af4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> GUIScreenBaseMono$$OnClickClose @ 00f206a8
+
+--- Calls IN ---
+
+--- Listing ---
+01044af4  stp x21,x20,[sp, #-0x20]!
+01044af8  stp x19,x30,[sp, #0x10]
+01044afc  adrp x20,0x3574000
+01044b00  adrp x21,0x3378000
+01044b04  ldrb w8,[x20, #0x5fb]
+01044b08  ldr x21,[x21, #0x490]
+01044b0c  mov x19,x0
+01044b10  tbnz w8,#0x0,0x01044b28
+01044b14  adrp x0,0x3378000
+01044b18  ldr x0,[x0, #0x490]
+01044b1c  bl 0x00b0789c
+01044b20  mov w8,#0x1
+01044b24  strb w8,[x20, #0x5fb]
+01044b28  ldr x8,[x21]
+01044b2c  ldr x8,[x8, #0xb8]
+01044b30  ldr x0,[x8, #0x10]
+01044b34  cbz x0,0x01044b4c
+01044b38  mov x1,x19
+01044b3c  ldp x19,x30,[sp, #0x10]
+01044b40  mov x2,xzr
+01044b44  ldp x21,x20,[sp], #0x20
+01044b48  b 0x01060dac
+01044b4c  ldr x8,[x19]
+01044b50  mov x0,x19
+01044b54  ldr x9,[x8, #0x458]
+01044b58  ldr x1,[x8, #0x460]
+01044b5c  blr x9
+01044b60  mov x0,x19
+01044b64  ldp x19,x30,[sp, #0x10]
+01044b68  mov x1,xzr
+01044b6c  ldp x21,x20,[sp], #0x20
+01044b70  b 0x00f206a8

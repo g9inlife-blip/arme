@@ -1,0 +1,113 @@
+Function: ResManager.<LoadExcel>d__23$$MoveNext @ 00e2c9a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> ResManager$$LoadShader @ 00e2b5fc
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> ResManager$$AliothLoadExcel @ 00e2b8e0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> ResManager$$LuaLoading @ 00e2b80c
+  -> ResManager$$DisposeLua @ 00e2b6c0
+  -> FUN_00b079b0 @ 00b079b0
+  -> ResManager$$LoadSingleExcel @ 00e2b360
+  -> Ali$$InitGetValidLanguagesCV @ 00e0fa74
+
+--- Calls IN ---
+
+--- Listing ---
+00e2c9a4  stp x21,x20,[sp, #-0x20]!
+00e2c9a8  stp x19,x30,[sp, #0x10]
+00e2c9ac  adrp x20,0x3572000
+00e2c9b0  ldrb w8,[x20, #0x73a]
+00e2c9b4  mov x19,x0
+00e2c9b8  tbnz w8,#0x0,0x00e2c9d0
+00e2c9bc  adrp x0,0x335f000
+00e2c9c0  ldr x0,[x0, #0x20]
+00e2c9c4  bl 0x00b0789c
+00e2c9c8  mov w8,#0x1
+00e2c9cc  strb w8,[x20, #0x73a]
+00e2c9d0  ldr w8,[x19, #0x10]
+00e2c9d4  mov w0,wzr
+00e2c9d8  cmp w8,#0x4
+00e2c9dc  b.hi 0x00e2cb10
+00e2c9e0  ldr x20,[x19, #0x20]
+00e2c9e4  adrp x9,0x26db000
+00e2c9e8  add x9,x9,#0xcc0
+00e2c9ec  adr x10,0xe2ca00
+00e2c9f0  ldrb w11,[x9, x8, LSL ]
+00e2c9f4  add x10,x10,x11, LSL #0x2
+00e2c9f8  mov w8,#0xffffffff
+00e2c9fc  br x10
+00e2ca00  mov w8,#0xffffffff
+00e2ca04  str w8,[x19, #0x10]
+00e2ca08  cbz x20,0x00e2cb1c
+00e2ca0c  mov x0,x20
+00e2ca10  bl 0x00e2b6c0
+00e2ca14  mov x0,x20
+00e2ca18  bl 0x00e2b5fc
+00e2ca1c  mov x1,x0
+00e2ca20  mov x0,x19
+00e2ca24  str x1,[x0, #0x18]!
+00e2ca28  bl 0x00b07850
+00e2ca2c  mov w8,#0x1
+00e2ca30  mov w0,#0x1
+00e2ca34  b 0x00e2cb0c
+00e2ca38  adrp x21,0x335f000
+00e2ca3c  ldr x21,[x21, #0x20]
+00e2ca40  mov w8,#0xffffffff
+00e2ca44  str w8,[x19, #0x10]
+00e2ca48  ldr x0,[x21]
+00e2ca4c  ldr w8,[x0, #0xe0]
+00e2ca50  cbnz w8,0x00e2ca5c
+00e2ca54  bl 0x00b0798c
+00e2ca58  ldr x0,[x21]
+00e2ca5c  ldr x8,[x0, #0xb8]
+00e2ca60  ldr x0,[x8, #0x10]
+00e2ca64  cbz x0,0x00e2cb1c
+00e2ca68  mov x1,xzr
+00e2ca6c  bl 0x00e0fa74
+00e2ca70  cbz x20,0x00e2cb1c
+00e2ca74  mov x0,x20
+00e2ca78  bl 0x00e2b8e0
+00e2ca7c  mov x1,x0
+00e2ca80  mov x0,x19
+00e2ca84  str x1,[x0, #0x18]!
+00e2ca88  bl 0x00b07850
+00e2ca8c  mov w0,#0x1
+00e2ca90  mov w8,#0x4
+00e2ca94  b 0x00e2cb0c
+00e2ca98  mov w8,#0xffffffff
+00e2ca9c  str w8,[x19, #0x10]
+00e2caa0  cbz x20,0x00e2cb1c
+00e2caa4  mov x0,x20
+00e2caa8  bl 0x00e2b80c
+00e2caac  mov x1,x0
+00e2cab0  mov x0,x19
+00e2cab4  str x1,[x0, #0x18]!
+00e2cab8  bl 0x00b07850
+00e2cabc  mov w0,#0x1
+00e2cac0  mov w8,#0x2
+00e2cac4  b 0x00e2cb0c
+00e2cac8  mov w8,#0xffffffff
+00e2cacc  str w8,[x19, #0x10]
+00e2cad0  cbz x20,0x00e2cb1c
+00e2cad4  mov w1,#0x42
+00e2cad8  mov x0,x20
+00e2cadc  mov x2,xzr
+00e2cae0  bl 0x00e2b360
+00e2cae4  mov x1,x0
+00e2cae8  mov x0,x20
+00e2caec  mov x2,xzr
+00e2caf0  bl 0x024e4070
+00e2caf4  mov x1,x0
+00e2caf8  mov x0,x19
+00e2cafc  str x1,[x0, #0x18]!
+00e2cb00  bl 0x00b07850
+00e2cb04  mov w0,#0x1
+00e2cb08  mov w8,#0x3
+00e2cb0c  str w8,[x19, #0x10]
+00e2cb10  ldp x19,x30,[sp, #0x10]
+00e2cb14  ldp x21,x20,[sp], #0x20
+00e2cb18  ret
+00e2cb1c  bl 0x00b079b0

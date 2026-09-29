@@ -1,0 +1,47 @@
+Function: CryptoPrefs$$SetFloat @ 00dc63ec
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetString @ 024be710
+  -> CryptoPrefs$$Encrypt @ 00dc6030
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> CryptoPrefs$$GetHash @ 00dc5ef0
+  -> System.Single$$ToString @ 021632b0
+
+--- Calls IN ---
+
+--- Listing ---
+00dc63ec  sub sp,sp,#0x30
+00dc63f0  stp x21,x20,[sp, #0x10]
+00dc63f4  stp x19,x30,[sp, #0x20]
+00dc63f8  adrp x20,0x3572000
+00dc63fc  str s0,[sp, #0xc]
+00dc6400  adrp x21,0x3341000
+00dc6404  ldrb w8,[x20, #0x1b1]
+00dc6408  ldr x21,[x21, #0x490]
+00dc640c  mov x19,x0
+00dc6410  tbnz w8,#0x0,0x00dc6428
+00dc6414  adrp x0,0x3341000
+00dc6418  ldr x0,[x0, #0x490]
+00dc641c  bl 0x00b0789c
+00dc6420  mov w8,#0x1
+00dc6424  strb w8,[x20, #0x1b1]
+00dc6428  ldr x0,[x21]
+00dc642c  ldr w8,[x0, #0xe0]
+00dc6430  cbnz w8,0x00dc6438
+00dc6434  bl 0x00b0798c
+00dc6438  mov x0,x19
+00dc643c  bl 0x00dc5ef0
+00dc6440  mov x19,x0
+00dc6444  add x0,sp,#0xc
+00dc6448  mov x1,xzr
+00dc644c  bl 0x021632b0
+00dc6450  bl 0x00dc6030
+00dc6454  mov x1,x0
+00dc6458  mov x0,x19
+00dc645c  mov x2,xzr
+00dc6460  bl 0x024be710
+00dc6464  ldp x19,x30,[sp, #0x20]
+00dc6468  ldp x21,x20,[sp, #0x10]
+00dc646c  add sp,sp,#0x30
+00dc6470  ret

@@ -1,0 +1,58 @@
+Function: AliothEngine.GateSoundManager$$.cctor @ 0164cc44
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0164cc44  stp x23,x22,[sp, #-0x30]!
+0164cc48  stp x21,x20,[sp, #0x10]
+0164cc4c  stp x19,x30,[sp, #0x20]
+0164cc50  adrp x23,0x3577000
+0164cc54  adrp x22,0x333f000
+0164cc58  adrp x19,0x3311000
+0164cc5c  adrp x21,0x3333000
+0164cc60  adrp x20,0x335f000
+0164cc64  ldrb w8,[x23, #0x7c7]
+0164cc68  ldr x22,[x22, #0xe60]
+0164cc6c  ldr x19,[x19, #0xde8]
+0164cc70  ldr x21,[x21, #0xb10]
+0164cc74  ldr x20,[x20, #0x8]
+0164cc78  tbnz w8,#0x0,0x0164ccb4
+0164cc7c  adrp x0,0x3311000
+0164cc80  ldr x0,[x0, #0xde8]
+0164cc84  bl 0x00b0789c
+0164cc88  adrp x0,0x3333000
+0164cc8c  ldr x0,[x0, #0xb10]
+0164cc90  bl 0x00b0789c
+0164cc94  adrp x0,0x333f000
+0164cc98  ldr x0,[x0, #0xe60]
+0164cc9c  bl 0x00b0789c
+0164cca0  adrp x0,0x335f000
+0164cca4  ldr x0,[x0, #0x8]
+0164cca8  bl 0x00b0789c
+0164ccac  mov w8,#0x1
+0164ccb0  strb w8,[x23, #0x7c7]
+0164ccb4  ldr x8,[x19]
+0164ccb8  ldr x9,[x22]
+0164ccbc  ldr x8,[x8, #0xb8]
+0164ccc0  str x9,[x8]
+0164ccc4  ldr x8,[x19]
+0164ccc8  ldr x1,[x22]
+0164cccc  ldr x0,[x8, #0xb8]
+0164ccd0  bl 0x00b07850
+0164ccd4  ldr x8,[x19]
+0164ccd8  ldr x1,[x21]
+0164ccdc  ldr x0,[x8, #0xb8]
+0164cce0  str x1,[x0, #0x8]!
+0164cce4  bl 0x00b07850
+0164cce8  ldr x8,[x19]
+0164ccec  ldr x1,[x20]
+0164ccf0  ldr x0,[x8, #0xb8]
+0164ccf4  str x1,[x0, #0x10]!
+0164ccf8  ldp x19,x30,[sp, #0x20]
+0164ccfc  ldp x21,x20,[sp, #0x10]
+0164cd00  ldp x23,x22,[sp], #0x30
+0164cd04  b 0x00b07850

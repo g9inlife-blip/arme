@@ -1,0 +1,86 @@
+Function: AliothEngine.GUIScreenManager$$CheckOverlay @ 01677e48
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$SetAsLastSibling @ 024f562c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.CanvasGroup$$set_blocksRaycasts @ 026d15bc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_HideEmptyOverlay @ 01677f58
+  <- AliothEngine.GUIScreenManager$$_ShowEmptyOverlay @ 01677a04
+  <- AliothEngine.GUIScreenManager$$_InitEmptyOverlay @ 01677590
+
+--- Listing ---
+01677e48  stp x21,x20,[sp, #-0x20]!
+01677e4c  stp x19,x30,[sp, #0x10]
+01677e50  adrp x21,0x3577000
+01677e54  adrp x20,0x337b000
+01677e58  ldrb w8,[x21, #0x9d8]
+01677e5c  ldr x20,[x20, #0xb98]
+01677e60  mov x19,x0
+01677e64  tbnz w8,#0x0,0x01677e88
+01677e68  adrp x0,0x337b000
+01677e6c  ldr x0,[x0, #0xb98]
+01677e70  bl 0x00b0789c
+01677e74  adrp x0,0x3321000
+01677e78  ldr x0,[x0, #0xca8]
+01677e7c  bl 0x00b0789c
+01677e80  mov w8,#0x1
+01677e84  strb w8,[x21, #0x9d8]
+01677e88  ldr x0,[x20]
+01677e8c  ldr w8,[x0, #0xe0]
+01677e90  cbnz w8,0x01677e9c
+01677e94  bl 0x00b0798c
+01677e98  ldr x0,[x20]
+01677e9c  ldr x8,[x0, #0xb8]
+01677ea0  ldr x0,[x8, #0x1d8]
+01677ea4  cbz x0,0x01677ebc
+01677ea8  mov x1,x19
+01677eac  ldp x19,x30,[sp, #0x10]
+01677eb0  mov x2,xzr
+01677eb4  ldp x21,x20,[sp], #0x20
+01677eb8  b 0x01060dac
+01677ebc  adrp x8,0x3321000
+01677ec0  ldr x8,[x8, #0xca8]
+01677ec4  ldr x20,[x19, #0x50]
+01677ec8  ldr x0,[x8]
+01677ecc  ldr w8,[x0, #0xe0]
+01677ed0  cbnz w8,0x01677ed8
+01677ed4  bl 0x00b0798c
+01677ed8  mov x0,x20
+01677edc  mov x1,xzr
+01677ee0  mov x2,xzr
+01677ee4  bl 0x024de30c
+01677ee8  tbz w0,#0x0,0x01677f2c
+01677eec  ldr x0,[x19, #0x50]
+01677ef0  cbz x0,0x01677f54
+01677ef4  ldr w8,[x19, #0x48]
+01677ef8  cmp w8,#0x1
+01677efc  b.lt 0x01677f38
+01677f00  mov x1,xzr
+01677f04  bl 0x024e4e98
+01677f08  cbz x0,0x01677f54
+01677f0c  mov x1,xzr
+01677f10  bl 0x024f562c
+01677f14  ldr x8,[x19, #0x50]
+01677f18  cbz x8,0x01677f54
+01677f1c  ldr x0,[x8, #0x90]
+01677f20  cbz x0,0x01677f54
+01677f24  mov w1,#0x1
+01677f28  b 0x01677f44
+01677f2c  ldp x19,x30,[sp, #0x10]
+01677f30  ldp x21,x20,[sp], #0x20
+01677f34  ret
+01677f38  ldr x0,[x0, #0x90]
+01677f3c  cbz x0,0x01677f54
+01677f40  mov w1,wzr
+01677f44  ldp x19,x30,[sp, #0x10]
+01677f48  mov x2,xzr
+01677f4c  ldp x21,x20,[sp], #0x20
+01677f50  b 0x026d15bc
+01677f54  bl 0x00b079b0

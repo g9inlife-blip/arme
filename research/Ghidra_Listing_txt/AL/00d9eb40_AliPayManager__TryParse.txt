@@ -1,0 +1,129 @@
+Function: AliPayManager$$TryParse @ 00d9eb40
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> System.Enum$$ToString @ 02186100
+  -> System.String$$Concat @ 01fd2850
+  -> thunk_FUN_00ace8b4 @ 00b07998
+  -> System.Enum$$Parse @ 021835b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+  <- AliPayManager$$OnPurchaseFailed @ 00d9ed50
+  <- AliPayManager$$OnPurchaseSuccess @ 00d9eaf4
+
+--- Listing ---
+00d9eb40  sub sp,sp,#0x50
+00d9eb44  stp x23,x22,[sp, #0x20]
+00d9eb48  stp x21,x20,[sp, #0x30]
+00d9eb4c  stp x19,x30,[sp, #0x40]
+00d9eb50  adrp x22,0x3572000
+00d9eb54  adrp x21,0x336a000
+00d9eb58  adrp x23,0x3347000
+00d9eb5c  ldrb w8,[x22, #0x31]
+00d9eb60  ldr x21,[x21, #0xdf8]
+00d9eb64  ldr x23,[x23, #0xd68]
+00d9eb68  mov x19,x2
+00d9eb6c  mov x20,x1
+00d9eb70  tbnz w8,#0x0,0x00d9ebc4
+00d9eb74  adrp x0,0x336b000
+00d9eb78  ldr x0,[x0, #0x7d0]
+00d9eb7c  bl 0x00b0789c
+00d9eb80  adrp x0,0x3358000
+00d9eb84  ldr x0,[x0, #0xa10]
+00d9eb88  bl 0x00b0789c
+00d9eb8c  adrp x0,0x336a000
+00d9eb90  ldr x0,[x0, #0xdf8]
+00d9eb94  bl 0x00b0789c
+00d9eb98  adrp x0,0x3308000
+00d9eb9c  ldr x0,[x0, #0x8b8]
+00d9eba0  bl 0x00b0789c
+00d9eba4  adrp x0,0x3347000
+00d9eba8  ldr x0,[x0, #0xd68]
+00d9ebac  bl 0x00b0789c
+00d9ebb0  adrp x0,0x3353000
+00d9ebb4  ldr x0,[x0, #0x450]
+00d9ebb8  bl 0x00b0789c
+00d9ebbc  mov w8,#0x1
+00d9ebc0  strb w8,[x22, #0x31]
+00d9ebc4  ldr x0,[x23]
+00d9ebc8  ldr x21,[x21]
+00d9ebcc  ldr w8,[x0, #0xe0]
+00d9ebd0  cbnz w8,0x00d9ebd8
+00d9ebd4  bl 0x00b0798c
+    ; [PRE] try { // try from 00d9ebd4 to 00d9ebd7 has its CatchHandler @ 00d9ecc4
+    ; [POST] } // end try from 00d9ebd4 to 00d9ebd7
+00d9ebd8  mov x0,x21
+    ; [PRE] try { // try from 00d9ebd8 to 00d9ebe3 has its CatchHandler @ 00d9eccc
+00d9ebdc  mov x1,xzr
+00d9ebe0  bl 0x0215f900
+    ; [POST] } // end try from 00d9ebd8 to 00d9ebe3
+00d9ebe4  adrp x8,0x3358000
+00d9ebe8  ldr x8,[x8, #0xa10]
+00d9ebec  mov x21,x0
+00d9ebf0  ldr x0,[x8]
+00d9ebf4  ldr w8,[x0, #0xe0]
+00d9ebf8  cbnz w8,0x00d9ec00
+00d9ebfc  bl 0x00b0798c
+    ; [PRE] try { // try from 00d9ebfc to 00d9ebff has its CatchHandler @ 00d9ecc0
+    ; [POST] } // end try from 00d9ebfc to 00d9ebff
+00d9ec00  mov w2,#0x1
+    ; [PRE] try { // try from 00d9ec00 to 00d9ec3b has its CatchHandler @ 00d9ecd0
+00d9ec04  mov x0,x21
+00d9ec08  mov x1,x20
+00d9ec0c  mov x3,xzr
+00d9ec10  bl 0x021835b8
+00d9ec14  cbz x0,0x00d9ecb8
+00d9ec18  adrp x20,0x3308000
+00d9ec1c  ldr x20,[x20, #0x8b8]
+00d9ec20  ldr x8,[x0]
+00d9ec24  ldr x1,[x20]
+00d9ec28  ldr x8,[x8, #0x40]
+00d9ec2c  ldr x9,[x1, #0x40]
+00d9ec30  cmp x8,x9
+00d9ec34  b.ne 0x00d9ecbc
+00d9ec38  bl 0x00b07998
+    ; [POST] } // end try from 00d9ec00 to 00d9ec3b
+00d9ec3c  ldr w8,[x0]
+00d9ec40  mov x10,#-0x1
+00d9ec44  str w8,[x19]
+00d9ec48  ldr x9,[x20]
+00d9ec4c  str w8,[sp, #0x18]
+00d9ec50  stp x9,x10,[sp, #0x8]
+00d9ec54  add x0,sp,#0x8
+    ; [PRE] try { // try from 00d9ec54 to 00d9ec63 has its CatchHandler @ 00d9ecc8
+00d9ec58  mov x1,xzr
+00d9ec5c  bl 0x02186100
+00d9ec60  mov x1,x0
+    ; [POST] } // end try from 00d9ec54 to 00d9ec63
+00d9ec64  adrp x8,0x3353000
+00d9ec68  ldr x8,[x8, #0x450]
+00d9ec6c  ldr x0,[x8]
+00d9ec70  mov x2,xzr
+    ; [PRE] try { // try from 00d9ec70 to 00d9ec9f has its CatchHandler @ 00d9ecd4
+00d9ec74  bl 0x01fd2850
+00d9ec78  adrp x8,0x336b000
+00d9ec7c  ldr x8,[x8, #0x7d0]
+00d9ec80  mov x20,x0
+00d9ec84  ldr x0,[x8]
+00d9ec88  ldr w8,[x0, #0xe0]
+00d9ec8c  cbnz w8,0x00d9ec94
+00d9ec90  bl 0x00b0798c
+00d9ec94  mov x0,x20
+00d9ec98  mov x1,xzr
+00d9ec9c  bl 0x024c0104
+    ; [POST] } // end try from 00d9ec70 to 00d9ec9f
+00d9eca0  mov w0,#0x1
+00d9eca4  ldp x19,x30,[sp, #0x40]
+00d9eca8  ldp x21,x20,[sp, #0x30]
+00d9ecac  ldp x23,x22,[sp, #0x20]
+00d9ecb0  add sp,sp,#0x50
+00d9ecb4  ret
+00d9ecb8  bl 0x00b079b0
+    ; [PRE] try { // try from 00d9ecb8 to 00d9ecbf has its CatchHandler @ 00d9ecd0
+00d9ecbc  bl 0x00b07c6c
+    ; [POST] } // end try from 00d9ecb8 to 00d9ecbf

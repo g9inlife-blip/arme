@@ -1,0 +1,49 @@
+Function: AliothEngine.Utils.Crc32$$UInt32ToBigEndianBytes @ 01699ab4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Crc32$$HashFinal @ 01699a78
+
+--- Listing ---
+01699ab4  stp x21,x20,[sp, #-0x20]!
+01699ab8  stp x19,x30,[sp, #0x10]
+01699abc  adrp x20,0x3577000
+01699ac0  adrp x21,0x334f000
+01699ac4  ldrb w8,[x20, #0xb23]
+01699ac8  ldr x21,[x21, #0x28]
+01699acc  mov w19,w0
+01699ad0  tbnz w8,#0x0,0x01699ae8
+01699ad4  adrp x0,0x334f000
+01699ad8  ldr x0,[x0, #0x28]
+01699adc  bl 0x00b0789c
+01699ae0  mov w8,#0x1
+01699ae4  strb w8,[x20, #0xb23]
+01699ae8  ldr x0,[x21]
+01699aec  mov w1,#0x4
+01699af0  bl 0x00b078f8
+01699af4  cbz x0,0x01699b44
+01699af8  ldr w8,[x0, #0x18]
+01699afc  cbz w8,0x01699b40
+01699b00  lsr w9,w19,#0x18
+01699b04  cmp w8,#0x1
+01699b08  strb w9,[x0, #0x20]
+01699b0c  b.eq 0x01699b40
+01699b10  lsr w9,w19,#0x10
+01699b14  cmp w8,#0x2
+01699b18  strb w9,[x0, #0x21]
+01699b1c  b.ls 0x01699b40
+01699b20  lsr w9,w19,#0x8
+01699b24  cmp w8,#0x3
+01699b28  strb w9,[x0, #0x22]
+01699b2c  b.eq 0x01699b40
+01699b30  strb w19,[x0, #0x23]
+01699b34  ldp x19,x30,[sp, #0x10]
+01699b38  ldp x21,x20,[sp], #0x20
+01699b3c  ret
+01699b40  bl 0x00b079b8
+01699b44  bl 0x00b079b0

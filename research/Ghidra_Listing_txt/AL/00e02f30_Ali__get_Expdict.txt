@@ -1,0 +1,134 @@
+Function: Ali$$get_Expdict @ 00e02f30
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary<int,-object>$$get_Values @ 0192da04
+  -> System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,-object>$$MoveNext @ 01a417b8
+  -> System.Collections.Generic.Dictionary.ValueCollection<int,-object>$$GetEnumerator @ 01e762b8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp389 @ 01091cec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<int,-object>$$get_Count @ 0192d8ec
+  -> System.Collections.Generic.Dictionary<int,-object>$$set_Item @ 0192dba8
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$GetExcelDic<object> @ 01737100
+  -> System.Collections.Generic.Dictionary.ValueCollection.Enumerator<int,-object>$$Dispose @ 01a417b4
+
+--- Calls IN ---
+  <- BaseMono$$GetLvExpdata @ 00e1fdf8
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_Expdict @ 011a0ef8
+
+--- Listing ---
+00e02f30  sub sp,sp,#0x50
+00e02f34  str x22,[sp, #0x20]
+00e02f38  stp x21,x20,[sp, #0x30]
+00e02f3c  stp x19,x30,[sp, #0x40]
+00e02f40  adrp x21,0x3572000
+00e02f44  adrp x20,0x335f000
+00e02f48  ldrb w8,[x21, #0x555]
+00e02f4c  ldr x20,[x20, #0x20]
+00e02f50  mov x19,x0
+00e02f54  tbnz w8,#0x0,0x00e02fcc
+00e02f58  adrp x0,0x3372000
+00e02f5c  ldr x0,[x0, #0x6b0]
+00e02f60  bl 0x00b0789c
+00e02f64  adrp x0,0x335f000
+00e02f68  ldr x0,[x0, #0x20]
+00e02f6c  bl 0x00b0789c
+00e02f70  adrp x0,0x3376000
+00e02f74  ldr x0,[x0, #0x670]
+00e02f78  bl 0x00b0789c
+00e02f7c  adrp x0,0x3318000
+00e02f80  ldr x0,[x0, #0x260]
+00e02f84  bl 0x00b0789c
+00e02f88  adrp x0,0x3315000
+00e02f8c  ldr x0,[x0, #0x788]
+00e02f90  bl 0x00b0789c
+00e02f94  adrp x0,0x3329000
+00e02f98  ldr x0,[x0, #0x7c0]
+00e02f9c  bl 0x00b0789c
+00e02fa0  adrp x0,0x3364000
+00e02fa4  ldr x0,[x0, #0x580]
+00e02fa8  bl 0x00b0789c
+00e02fac  adrp x0,0x3335000
+00e02fb0  ldr x0,[x0, #0x3e0]
+00e02fb4  bl 0x00b0789c
+00e02fb8  adrp x0,0x3330000
+00e02fbc  ldr x0,[x0, #0x710]
+00e02fc0  bl 0x00b0789c
+00e02fc4  mov w8,#0x1
+00e02fc8  strb w8,[x21, #0x555]
+00e02fcc  ldr x0,[x20]
+00e02fd0  stp xzr,xzr,[sp, #0x10]
+00e02fd4  str xzr,[sp, #0x8]
+00e02fd8  ldr w8,[x0, #0xe0]
+00e02fdc  cbnz w8,0x00e02fe8
+00e02fe0  bl 0x00b0798c
+00e02fe4  ldr x0,[x20]
+00e02fe8  ldr x8,[x0, #0xb8]
+00e02fec  ldr x0,[x8, #0x240]
+00e02ff0  cbz x0,0x00e03004
+00e02ff4  mov x1,x19
+00e02ff8  mov x2,xzr
+00e02ffc  bl 0x01091cec
+00e03000  b 0x00e030b8
+00e03004  ldr x0,[x19, #0xa0]
+00e03008  cbz x0,0x00e030d4
+00e0300c  adrp x8,0x3376000
+00e03010  ldr x8,[x8, #0x670]
+00e03014  ldr x1,[x8]
+00e03018  bl 0x0192d8ec
+00e0301c  cbnz w0,0x00e030b4
+00e03020  adrp x8,0x3372000
+00e03024  ldr x8,[x8, #0x6b0]
+00e03028  mov x0,x19
+00e0302c  ldr x1,[x8]
+00e03030  bl 0x01737100
+00e03034  cbz x0,0x00e030d4
+00e03038  adrp x8,0x3318000
+00e0303c  ldr x8,[x8, #0x260]
+00e03040  ldr x1,[x8]
+00e03044  bl 0x0192da04
+00e03048  cbz x0,0x00e030d4
+00e0304c  adrp x8,0x3330000
+00e03050  ldr x8,[x8, #0x710]
+00e03054  adrp x21,0x3364000
+00e03058  adrp x22,0x3315000
+00e0305c  adrp x20,0x3329000
+00e03060  ldr x1,[x8]
+00e03064  ldr x21,[x21, #0x580]
+00e03068  ldr x22,[x22, #0x788]
+00e0306c  ldr x20,[x20, #0x7c0]
+00e03070  add x8,sp,#0x8
+00e03074  bl 0x01e762b8
+00e03078  ldr x1,[x21]
+00e0307c  add x0,sp,#0x8
+    ; [PRE] try { // try from 00e0307c to 00e03083 has its CatchHandler @ 00e030e4
+00e03080  bl 0x01a417b8
+    ; [POST] } // end try from 00e0307c to 00e03083
+00e03084  tbz w0,#0x0,0x00e030a8
+00e03088  ldr x2,[sp, #0x18]
+00e0308c  cbz x2,0x00e030cc
+00e03090  ldr x0,[x19, #0xa0]
+00e03094  cbz x0,0x00e030d0
+00e03098  ldr w1,[x2, #0x74]
+00e0309c  ldr x3,[x22]
+00e030a0  bl 0x0192dba8
+    ; [PRE] try { // try from 00e030a0 to 00e030a3 has its CatchHandler @ 00e030e0
+    ; [POST] } // end try from 00e030a0 to 00e030a3
+00e030a4  b 0x00e03078
+00e030a8  ldr x1,[x20]
+00e030ac  add x0,sp,#0x8
+00e030b0  bl 0x01a417b4
+00e030b4  ldr x0,[x19, #0xa0]
+00e030b8  ldp x19,x30,[sp, #0x40]
+00e030bc  ldp x21,x20,[sp, #0x30]
+00e030c0  ldr x22,[sp, #0x20]
+00e030c4  add sp,sp,#0x50
+00e030c8  ret
+00e030cc  bl 0x00b079b0
+    ; [PRE] try { // try from 00e030cc to 00e030cf has its CatchHandler @ 00e030dc
+    ; [POST] } // end try from 00e030cc to 00e030cf
+00e030d0  bl 0x00b079b0
+    ; [PRE] try { // try from 00e030d0 to 00e030d3 has its CatchHandler @ 00e030d8
+    ; [POST] } // end try from 00e030d0 to 00e030d3
+00e030d4  bl 0x00b079b0

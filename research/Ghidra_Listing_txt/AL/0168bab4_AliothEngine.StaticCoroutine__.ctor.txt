@@ -1,0 +1,27 @@
+Function: AliothEngine.StaticCoroutine$$.ctor @ 0168bab4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+
+--- Listing ---
+0168bab4  stp x21,x20,[sp, #-0x20]!
+0168bab8  stp x19,x30,[sp, #0x10]
+0168babc  adrp x20,0x3577000
+0168bac0  adrp x21,0x3326000
+0168bac4  ldrb w8,[x20, #0xaa7]
+0168bac8  ldr x21,[x21, #0xcd0]
+0168bacc  mov x19,x0
+0168bad0  tbnz w8,#0x0,0x0168bae8
+0168bad4  adrp x0,0x3326000
+0168bad8  ldr x0,[x0, #0xcd0]
+0168badc  bl 0x00b0789c
+0168bae0  mov w8,#0x1
+0168bae4  strb w8,[x20, #0xaa7]
+0168bae8  ldr x1,[x21]
+0168baec  mov x0,x19
+0168baf0  ldp x19,x30,[sp, #0x10]
+0168baf4  ldp x21,x20,[sp], #0x20
+0168baf8  b 0x01e09460

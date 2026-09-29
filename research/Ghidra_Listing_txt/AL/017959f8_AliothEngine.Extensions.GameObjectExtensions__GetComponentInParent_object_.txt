@@ -1,0 +1,82 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$GetComponentInParent<object> @ 017959f8
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_parent @ 024f42ec
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017959f8  str x22,[sp, #-0x30]!
+017959fc  stp x21,x20,[sp, #0x10]
+01795a00  stp x19,x30,[sp, #0x20]
+01795a04  adrp x22,0x3578000
+01795a08  ldrb w8,[x22, #0x147]
+01795a0c  mov x19,x2
+01795a10  mov w21,w1
+01795a14  mov x20,x0
+01795a18  tbnz w8,#0x0,0x01795a30
+01795a1c  adrp x0,0x3321000
+01795a20  ldr x0,[x0, #0xca8]
+01795a24  bl 0x00b0789c
+01795a28  mov w8,#0x1
+01795a2c  strb w8,[x22, #0x147]
+01795a30  tbz w21,#0x0,0x01795ad0
+01795a34  cbz x20,0x01795b08
+01795a38  adrp x22,0x3321000
+01795a3c  ldr x22,[x22, #0xca8]
+01795a40  mov x0,x20
+01795a44  mov x1,xzr
+01795a48  bl 0x024de730
+01795a4c  mov x20,x0
+01795a50  mov x21,xzr
+01795a54  ldr x0,[x22]
+01795a58  ldr w8,[x0, #0xe0]
+01795a5c  cbnz w8,0x01795a64
+01795a60  bl 0x00b0798c
+01795a64  mov x0,x20
+01795a68  mov x1,xzr
+01795a6c  mov x2,xzr
+01795a70  bl 0x024de30c
+01795a74  tbz w0,#0x0,0x01795af4
+01795a78  cbz x20,0x01795b08
+01795a7c  ldr x8,[x19, #0x38]
+01795a80  mov x0,x20
+01795a84  ldr x1,[x8]
+01795a88  ldr x8,[x1, #0x8]
+01795a8c  blr x8
+01795a90  ldr x8,[x22]
+01795a94  mov x21,x0
+01795a98  ldr w9,[x8, #0xe0]
+01795a9c  cbnz w9,0x01795aa8
+01795aa0  mov x0,x8
+01795aa4  bl 0x00b0798c
+01795aa8  mov x0,x21
+01795aac  mov x1,xzr
+01795ab0  mov x2,xzr
+01795ab4  bl 0x024de30c
+01795ab8  tbnz w0,#0x0,0x01795af4
+01795abc  mov x0,x20
+01795ac0  mov x1,xzr
+01795ac4  bl 0x024f42ec
+01795ac8  mov x20,x0
+01795acc  b 0x01795a54
+01795ad0  cbz x20,0x01795b08
+01795ad4  ldr x8,[x19, #0x38]
+01795ad8  mov x0,x20
+01795adc  ldp x19,x30,[sp, #0x20]
+01795ae0  ldp x21,x20,[sp, #0x10]
+01795ae4  ldr x1,[x8, #0x10]
+01795ae8  ldr x2,[x1, #0x8]
+01795aec  ldr x22,[sp], #0x30
+01795af0  br x2
+01795af4  mov x0,x21
+01795af8  ldp x19,x30,[sp, #0x20]
+01795afc  ldp x21,x20,[sp, #0x10]
+01795b00  ldr x22,[sp], #0x30
+01795b04  ret
+01795b08  bl 0x00b079b0

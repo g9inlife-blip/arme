@@ -1,0 +1,60 @@
+Function: AliothEngine.Scheduler$$ForEachTaskNonLinear<object> @ 017ce64c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017ce64c  str d8,[sp, #-0x40]!
+017ce650  str x24,[sp, #0x8]
+017ce654  stp x23,x22,[sp, #0x10]
+017ce658  stp x21,x20,[sp, #0x20]
+017ce65c  stp x19,x30,[sp, #0x30]
+017ce660  ldr x8,[x5, #0x38]
+017ce664  mov x24,x5
+017ce668  mov x19,x4
+017ce66c  mov v8.16B,v0.16B
+017ce670  ldr x0,[x8]
+017ce674  mov x20,x3
+017ce678  mov x21,x2
+017ce67c  mov x23,x1
+017ce680  ldrb w8,[x0, #0x132]
+017ce684  tbnz w8,#0x0,0x017ce68c
+017ce688  bl 0x00b2ac40
+017ce68c  bl 0x00b079a0
+017ce690  cbz x0,0x017ce70c
+017ce694  ldr x8,[x24, #0x38]
+017ce698  mov w1,wzr
+017ce69c  mov x22,x0
+017ce6a0  ldr x2,[x8, #0x8]
+017ce6a4  ldr x8,[x2, #0x8]
+017ce6a8  blr x8
+017ce6ac  mov x0,x22
+017ce6b0  str x23,[x0, #0x20]!
+017ce6b4  mov x1,x23
+017ce6b8  bl 0x00b07850
+017ce6bc  mov x0,x22
+017ce6c0  str x21,[x0, #0x38]!
+017ce6c4  mov x1,x21
+017ce6c8  bl 0x00b07850
+017ce6cc  mov x0,x22
+017ce6d0  str x20,[x0, #0x28]!
+017ce6d4  mov x1,x20
+017ce6d8  bl 0x00b07850
+017ce6dc  mov x0,x22
+017ce6e0  str s8,[x22, #0x30]
+017ce6e4  str x19,[x0, #0x40]!
+017ce6e8  mov x1,x19
+017ce6ec  bl 0x00b07850
+017ce6f0  mov x0,x22
+017ce6f4  ldp x19,x30,[sp, #0x30]
+017ce6f8  ldp x21,x20,[sp, #0x20]
+017ce6fc  ldp x23,x22,[sp, #0x10]
+017ce700  ldr x24,[sp, #0x8]
+017ce704  ldr d8,[sp], #0x40
+017ce708  ret
+017ce70c  bl 0x00b079b0

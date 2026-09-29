@@ -1,0 +1,28 @@
+Function: RerollresultpanelNode$$get_lbl_times @ 00fce3b4
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fce3b4  stp x21,x20,[sp, #-0x20]!
+00fce3b8  stp x19,x30,[sp, #0x10]
+00fce3bc  adrp x20,0x3573000
+00fce3c0  adrp x21,0x3364000
+00fce3c4  ldrb w8,[x20, #0xe83]
+00fce3c8  ldr x21,[x21, #0x708]
+00fce3cc  mov x19,x0
+00fce3d0  tbnz w8,#0x0,0x00fce3e8
+00fce3d4  adrp x0,0x3364000
+00fce3d8  ldr x0,[x0, #0x708]
+00fce3dc  bl 0x00b0789c
+00fce3e0  mov w8,#0x1
+00fce3e4  strb w8,[x20, #0xe83]
+00fce3e8  ldr x1,[x21]
+00fce3ec  mov x0,x19
+00fce3f0  ldp x19,x30,[sp, #0x10]
+00fce3f4  mov x2,xzr
+00fce3f8  ldp x21,x20,[sp], #0x20
+00fce3fc  b 0x00dc06f8

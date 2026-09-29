@@ -1,0 +1,53 @@
+Function: AliothEngine.IStoreManager$$HandlePurchaseValidating @ 0165979c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<object,-object>$$set_Item @ 0196e4c0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0165979c  str x22,[sp, #-0x30]!
+016597a0  stp x21,x20,[sp, #0x10]
+016597a4  stp x19,x30,[sp, #0x20]
+016597a8  adrp x21,0x3577000
+016597ac  adrp x22,0x336f000
+016597b0  ldrb w8,[x21, #0x84d]
+016597b4  ldr x22,[x22, #0x1e8]
+016597b8  mov x19,x1
+016597bc  mov x20,x0
+016597c0  tbnz w8,#0x0,0x016597e4
+016597c4  adrp x0,0x3314000
+016597c8  ldr x0,[x0, #0xe58]
+016597cc  bl 0x00b0789c
+016597d0  adrp x0,0x336f000
+016597d4  ldr x0,[x0, #0x1e8]
+016597d8  bl 0x00b0789c
+016597dc  mov w8,#0x1
+016597e0  strb w8,[x21, #0x84d]
+016597e4  ldr x8,[x22]
+016597e8  ldr x8,[x8, #0xb8]
+016597ec  ldr x0,[x8, #0xa8]
+016597f0  cbz x0,0x01659810
+016597f4  mov x1,x20
+016597f8  mov x2,x19
+016597fc  ldp x19,x30,[sp, #0x20]
+01659800  ldp x21,x20,[sp, #0x10]
+01659804  mov x3,xzr
+01659808  ldr x22,[sp], #0x30
+0165980c  b 0x0106125c
+01659810  cbz x19,0x01659840
+01659814  ldr x0,[x20, #0x48]
+01659818  cbz x0,0x01659840
+0165981c  adrp x8,0x3314000
+01659820  ldr x8,[x8, #0xe58]
+01659824  ldr x1,[x19, #0x40]
+01659828  mov x2,x19
+0165982c  ldp x19,x30,[sp, #0x20]
+01659830  ldr x3,[x8]
+01659834  ldp x21,x20,[sp, #0x10]
+01659838  ldr x22,[sp], #0x30
+0165983c  b 0x0196e4c0
+01659840  bl 0x00b079b0

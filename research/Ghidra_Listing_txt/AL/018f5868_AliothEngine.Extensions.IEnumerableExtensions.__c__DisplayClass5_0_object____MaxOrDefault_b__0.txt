@@ -1,0 +1,53 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<>c__DisplayClass5_0<object>$$<MaxOrDefault>b__0 @ 018f5868
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018f5868  stp x21,x20,[sp, #-0x20]!
+018f586c  stp x19,x30,[sp, #0x10]
+018f5870  ldr x21,[x0, #0x10]
+018f5874  cbz x21,0x018f5910
+018f5878  ldr x8,[x3, #0x20]
+018f587c  mov x20,x1
+018f5880  mov x19,x2
+018f5884  ldr x8,[x8, #0xc0]
+018f5888  ldr x1,[x8]
+018f588c  ldrb w8,[x1, #0x132]
+018f5890  tbnz w8,#0x0,0x018f58a0
+018f5894  mov x0,x1
+018f5898  bl 0x00b2ac40
+018f589c  mov x1,x0
+018f58a0  ldr x8,[x21]
+018f58a4  ldrh w9,[x8, #0x12a]
+018f58a8  cbz x9,0x018f58cc
+018f58ac  ldr x10,[x8, #0xb0]
+018f58b0  add x10,x10,#0x8
+018f58b4  ldur x11,[x10, #-0x8]
+018f58b8  cmp x11,x1
+018f58bc  b.eq 0x018f58dc
+018f58c0  subs x9,x9,#0x1
+018f58c4  add x10,x10,#0x10
+018f58c8  b.ne 0x018f58b4
+018f58cc  mov x0,x21
+018f58d0  mov w2,wzr
+018f58d4  bl 0x00b2ae24
+018f58d8  b 0x018f58e8
+018f58dc  ldrsw x9,[x10]
+018f58e0  add x8,x8,x9, LSL #0x4
+018f58e4  add x0,x8,#0x138
+018f58e8  ldp x8,x3,[x0]
+018f58ec  mov x0,x21
+018f58f0  mov x1,x20
+018f58f4  mov x2,x19
+018f58f8  blr x8
+018f58fc  cmp w0,#0x0
+018f5900  csel x0,x19,x20,ge
+018f5904  ldp x19,x30,[sp, #0x10]
+018f5908  ldp x21,x20,[sp], #0x20
+018f590c  ret
+018f5910  bl 0x00b079b0

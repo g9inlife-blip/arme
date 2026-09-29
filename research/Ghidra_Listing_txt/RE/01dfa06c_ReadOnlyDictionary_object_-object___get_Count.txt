@@ -1,0 +1,44 @@
+Function: ReadOnlyDictionary<object,-object>$$get_Count @ 01dfa06c
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01dfa06c  stp x19,x30,[sp, #-0x10]!
+01dfa070  ldr x19,[x0, #0x10]
+01dfa074  cbz x19,0x01dfa0f0
+01dfa078  ldr x8,[x1, #0x20]
+01dfa07c  ldr x8,[x8, #0xc0]
+01dfa080  ldr x1,[x8, #0x48]
+01dfa084  ldrb w8,[x1, #0x132]
+01dfa088  tbnz w8,#0x0,0x01dfa098
+01dfa08c  mov x0,x1
+01dfa090  bl 0x00b2ac40
+01dfa094  mov x1,x0
+01dfa098  ldr x8,[x19]
+01dfa09c  ldrh w9,[x8, #0x12a]
+01dfa0a0  cbz x9,0x01dfa0c4
+01dfa0a4  ldr x10,[x8, #0xb0]
+01dfa0a8  add x10,x10,#0x8
+01dfa0ac  ldur x11,[x10, #-0x8]
+01dfa0b0  cmp x11,x1
+01dfa0b4  b.eq 0x01dfa0d4
+01dfa0b8  subs x9,x9,#0x1
+01dfa0bc  add x10,x10,#0x10
+01dfa0c0  b.ne 0x01dfa0ac
+01dfa0c4  mov x0,x19
+01dfa0c8  mov w2,wzr
+01dfa0cc  bl 0x00b2ae24
+01dfa0d0  b 0x01dfa0e0
+01dfa0d4  ldrsw x9,[x10]
+01dfa0d8  add x8,x8,x9, LSL #0x4
+01dfa0dc  add x0,x8,#0x138
+01dfa0e0  ldp x2,x1,[x0]
+01dfa0e4  mov x0,x19
+01dfa0e8  ldp x19,x30,[sp], #0x10
+01dfa0ec  br x2
+01dfa0f0  bl 0x00b079b0

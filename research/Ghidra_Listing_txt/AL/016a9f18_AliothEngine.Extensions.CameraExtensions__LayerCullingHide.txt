@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.CameraExtensions$$LayerCullingHide @ 016a9f18
+
+--- Calls OUT ---
+  -> UnityEngine.Camera$$set_cullingMask @ 024d7498
+  -> UnityEngine.Camera$$get_cullingMask @ 024d745c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.CameraExtensions$$LayerCullingHide @ 016a9f50
+  <- AliothEngine.Extensions.CameraExtensions$$LayerCullingToggle @ 016aa048
+
+--- Listing ---
+016a9f18  str x20,[sp, #-0x20]!
+016a9f1c  stp x19,x30,[sp, #0x10]
+016a9f20  cbz x0,0x016a9f4c
+016a9f24  mov w20,w1
+016a9f28  mov x1,xzr
+016a9f2c  mov x19,x0
+016a9f30  bl 0x024d745c
+016a9f34  bic w1,w0,w20
+016a9f38  mov x0,x19
+016a9f3c  ldp x19,x30,[sp, #0x10]
+016a9f40  mov x2,xzr
+016a9f44  ldr x20,[sp], #0x20
+016a9f48  b 0x024d7498
+016a9f4c  bl 0x00b079b0

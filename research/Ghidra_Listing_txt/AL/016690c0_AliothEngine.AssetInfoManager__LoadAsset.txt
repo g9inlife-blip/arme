@@ -1,0 +1,151 @@
+Function: AliothEngine.AssetInfoManager$$LoadAsset @ 016690c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.AssetLoader$$GetAndAcquireLoadedAsset @ 016692d0
+  -> AliothEngine.AssetLoader$$LoadAsset @ 0166847c
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$GetInstance @ 01e08f7c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp819 @ 010cb038
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> AliothEngine.AssetInfoManager$$LoadFinish @ 01669414
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_m_LoadAsset @ 0113c71c
+  <- AliothEngine.AssetInfoManager$$LoadOneAsset @ 01668ac0
+
+--- Listing ---
+016690c0  str x26,[sp, #-0x50]!
+016690c4  stp x25,x24,[sp, #0x10]
+016690c8  stp x23,x22,[sp, #0x20]
+016690cc  stp x21,x20,[sp, #0x30]
+016690d0  stp x19,x30,[sp, #0x40]
+016690d4  adrp x21,0x3577000
+016690d8  adrp x23,0x334f000
+016690dc  ldrb w8,[x21, #0x912]
+016690e0  ldr x23,[x23, #0xaf8]
+016690e4  mov x22,x2
+016690e8  mov x19,x1
+016690ec  mov x20,x0
+016690f0  tbnz w8,#0x0,0x01669150
+016690f4  adrp x0,0x3351000
+016690f8  ldr x0,[x0, #0xc78]
+016690fc  bl 0x00b0789c
+01669100  adrp x0,0x334f000
+01669104  ldr x0,[x0, #0xaf8]
+01669108  bl 0x00b0789c
+0166910c  adrp x0,0x3349000
+01669110  ldr x0,[x0, #0x30]
+01669114  bl 0x00b0789c
+01669118  adrp x0,0x3365000
+0166911c  ldr x0,[x0, #0xe88]
+01669120  bl 0x00b0789c
+01669124  adrp x0,0x337b000
+01669128  ldr x0,[x0, #0xd18]
+0166912c  bl 0x00b0789c
+01669130  adrp x0,0x3315000
+01669134  ldr x0,[x0, #0x298]
+01669138  bl 0x00b0789c
+0166913c  adrp x0,0x3352000
+01669140  ldr x0,[x0, #0x730]
+01669144  bl 0x00b0789c
+01669148  mov w8,#0x1
+0166914c  strb w8,[x21, #0x912]
+01669150  ldr x8,[x23]
+01669154  ldr x8,[x8, #0xb8]
+01669158  ldr x0,[x8, #0x60]
+0166915c  cbz x0,0x01669188
+01669160  mov x1,x20
+01669164  mov x2,x19
+01669168  mov x3,x22
+0166916c  ldp x19,x30,[sp, #0x40]
+01669170  ldp x21,x20,[sp, #0x30]
+01669174  ldp x23,x22,[sp, #0x20]
+01669178  ldp x25,x24,[sp, #0x10]
+0166917c  mov x4,xzr
+01669180  ldr x26,[sp], #0x50
+01669184  b 0x010cb038
+01669188  adrp x8,0x3315000
+0166918c  ldr x8,[x8, #0x298]
+01669190  ldr x0,[x8]
+01669194  bl 0x00b079a0
+01669198  cbz x0,0x016692c4
+0166919c  adrp x24,0x3349000
+016691a0  adrp x25,0x3365000
+016691a4  ldr x24,[x24, #0x30]
+016691a8  ldr x25,[x25, #0xe88]
+016691ac  mov x1,xzr
+016691b0  mov x21,x0
+016691b4  bl 0x02194104
+016691b8  mov x0,x21
+016691bc  str x20,[x0, #0x18]!
+016691c0  mov x1,x20
+016691c4  bl 0x00b07850
+016691c8  mov x23,x21
+016691cc  str x22,[x23, #0x20]!
+016691d0  mov x0,x23
+016691d4  mov x1,x22
+016691d8  bl 0x00b07850
+016691dc  ldr x0,[x24]
+016691e0  ldr w8,[x0, #0xe0]
+016691e4  cbnz w8,0x016691f0
+016691e8  bl 0x00b0798c
+016691ec  ldr x0,[x24]
+016691f0  ldr x8,[x0, #0xb8]
+016691f4  ldr x0,[x25]
+016691f8  ldr x22,[x8]
+016691fc  bl 0x01e08f7c
+01669200  cbz x0,0x016692c4
+01669204  adrp x26,0x3352000
+01669208  ldr x26,[x26, #0x730]
+0166920c  add x24,x21,#0x10
+01669210  mov x1,x19
+01669214  mov x2,x24
+01669218  ldr x3,[x26]
+0166921c  bl 0x016692d0
+01669220  tbz w0,#0x0,0x01669250
+01669224  ldr x1,[x24]
+01669228  ldr x2,[x23]
+0166922c  mov x0,x20
+01669230  bl 0x01669414
+01669234  mov x0,x22
+01669238  ldp x19,x30,[sp, #0x40]
+0166923c  ldp x21,x20,[sp, #0x30]
+01669240  ldp x23,x22,[sp, #0x20]
+01669244  ldp x25,x24,[sp, #0x10]
+01669248  ldr x26,[sp], #0x50
+0166924c  ret
+01669250  ldr x0,[x25]
+01669254  adrp x20,0x3351000
+01669258  ldr x20,[x20, #0xc78]
+0166925c  bl 0x01e08f7c
+01669260  ldr x8,[x20]
+01669264  mov x20,x0
+01669268  mov x0,x8
+0166926c  bl 0x00b079a0
+01669270  cbz x0,0x016692c4
+01669274  adrp x8,0x337b000
+01669278  ldr x8,[x8, #0xd18]
+0166927c  mov x1,x21
+01669280  mov x3,xzr
+01669284  mov x22,x0
+01669288  ldr x2,[x8]
+0166928c  bl 0x01909b80
+01669290  cbz x20,0x016692c4
+01669294  ldr x3,[x26]
+01669298  mov x0,x20
+0166929c  mov x1,x19
+016692a0  mov x2,x22
+016692a4  ldp x19,x30,[sp, #0x40]
+016692a8  ldp x21,x20,[sp, #0x30]
+016692ac  ldp x23,x22,[sp, #0x20]
+016692b0  ldp x25,x24,[sp, #0x10]
+016692b4  mov w4,wzr
+016692b8  mov w5,wzr
+016692bc  ldr x26,[sp], #0x50
+016692c0  b 0x0166847c
+016692c4  bl 0x00b079b0

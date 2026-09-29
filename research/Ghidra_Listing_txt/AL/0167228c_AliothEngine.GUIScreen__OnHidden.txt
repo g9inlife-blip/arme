@@ -1,0 +1,36 @@
+Function: AliothEngine.GUIScreen$$OnHidden @ 0167228c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0167228c  stp x21,x20,[sp, #-0x20]!
+01672290  stp x19,x30,[sp, #0x10]
+01672294  adrp x20,0x3577000
+01672298  adrp x21,0x3364000
+0167229c  ldrb w8,[x20, #0x994]
+016722a0  ldr x21,[x21, #0xd28]
+016722a4  mov x19,x0
+016722a8  tbnz w8,#0x0,0x016722c0
+016722ac  adrp x0,0x3364000
+016722b0  ldr x0,[x0, #0xd28]
+016722b4  bl 0x00b0789c
+016722b8  mov w8,#0x1
+016722bc  strb w8,[x20, #0x994]
+016722c0  ldr x8,[x21]
+016722c4  ldr x8,[x8, #0xb8]
+016722c8  ldr x0,[x8, #0x118]
+016722cc  cbz x0,0x016722e4
+016722d0  mov x1,x19
+016722d4  ldp x19,x30,[sp, #0x10]
+016722d8  mov x2,xzr
+016722dc  ldp x21,x20,[sp], #0x20
+016722e0  b 0x01060dac
+016722e4  mov w8,#0x8
+016722e8  str w8,[x19, #0x4c]
+016722ec  ldp x19,x30,[sp, #0x10]
+016722f0  ldp x21,x20,[sp], #0x20
+016722f4  ret

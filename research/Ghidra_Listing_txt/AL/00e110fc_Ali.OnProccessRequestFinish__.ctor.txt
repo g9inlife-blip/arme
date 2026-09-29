@@ -1,0 +1,131 @@
+Function: Ali.OnProccessRequestFinish$$.ctor @ 00e110fc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_008dcc08 @ 008dcc08
+  -> FUN_008dcc34 @ 008dcc34
+  -> thunk_FUN_00aed804 @ 00b079c0
+  -> FUN_00b07910 @ 00b07910
+  -> FUN_008dcbf8 @ 008dcbf8
+  -> FUN_008dcbd8 @ 008dcbd8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_008dcb90 @ 008dcb90
+  -> thunk_FUN_00afcc14 @ 00b07984
+
+--- Calls IN ---
+  <- LoginManager$$OnDestroy @ 00dd50e8
+  <- ZhuxiaoPanelMono$$RegisterCallBack @ 00f98058
+  <- BuyEnergyMono$$Start @ 0100b9ec
+  <- TrainingCampPanelMono$$RegisterCallBack @ 0103bbfc
+  <- TipsEquipMono$$Awake @ 00f0a61c
+  <- WareHousePanelMono$$RegisterCallBack @ 0104b528
+  <- GoToBattleMono$$Start @ 00e5a120
+  <- BattleEndTwoBtnGroupMono$$OnClickBackExam @ 00e71198
+  <- ChangeFashionMono$$Start @ 00f2945c
+  <- LoginManager$$Start @ 00dd4e98
+  <- TaskNewPanelMono$$Start @ 00f7a170
+  <- CheckInMono$$RefreshData @ 00eaa82c
+  <- ChangeStigmaMono$$RegisterCallBack @ 00f2e6d4
+  <- YingyuanPanelMono$$RegisterCallBack @ 0105398c
+  <- ExploreMainPanelMono$$Start @ 00ef2884
+  <- RankCVCPanelMono$$RegisterCallBack @ 00eee8d8
+  <- WeaponUpgradePanelMono$$RegisterCallBack @ 00f5f6e4
+  <- EquipPanelMono$$RegisterCallBack @ 00f32a1c
+  <- ShopNewPanelMono$$Awake @ 010285d4
+  <- TaoFaPanelMono$$RegisterCallBack @ 01035d28
+  <- ReadyMono$$InitReady @ 00e5dec0
+  <- BattleManager$$Init @ 01178064
+  <- LineUpPanelMono$$RegisterCallBack @ 00f8a7bc
+  <- HeroPartMarkMono$$Awake @ 00f4a3b4
+  <- AISettingPanelMono$$Start @ 00e4b03c
+  <- HeroBreakMono$$Start @ 00f35af8
+  <- ExamPanelMono$$OnClickRanking @ 00eea038
+  <- TipsNormalPanelMono$$RegisterCallBack @ 00f0ebec
+  <- ActiveShowPanelMono$$RegisterCallBack @ 0101a12c
+  <- SupportPanelMono$$RegisterCallBack @ 00f05dd4
+  <- YingyuanYYPanelMono$$RegisterCallBack @ 0105696c
+  <- SupportTotalPanelMono$$Start @ 00f087ec
+  <- SetGameNamePanelMono$$RegisterCallBack @ 00f95dcc
+  <- BaseExtensions$$Init @ 00e1a4e8
+  <- ChapBoxMono$$Start @ 00e55798
+  <- MailMono$$RegisterCallBack @ 00f99e2c
+  <- SplitModelPanelMono$$Start @ 010472d4
+  <- StiMarkDetailsPanelMono$$RegisterCallBack @ 00f50aac
+  <- BoxShopMonoNew$$RegisterCallBack @ 00e96aa8
+  <- OpenBoxMono$$Awake @ 00e9b118
+  <- WeaponPanelMono$$Init @ 00f58380
+  <- HeroPartEquipMono$$Awake @ 00f3f96c
+  <- HomePanelMono$$Start @ 00f67adc
+  <- WeaponLevelUpPanelMono$$Start @ 00f54884
+  <- LiaotianPanelMono$$RegisterCallBack @ 00f85e98
+  <- EquipItemMono$$Start @ 00eadd40
+  <- HeroPartFashionMono$$Awake @ 00f465a8
+  <- EquipDevMono$$RegisterCallBack @ 00ed6aec
+  <- UserInfoPanelMono$$Start @ 00f7e92c
+  <- EquipUpPanelMono$$Start @ 00edb2e0
+  <- PurchseLimitPanelMono$$RegisterCallBack @ 01022544
+  <- StiMarkDevPanelMono$$RegisterCallBack @ 00eddc2c
+  <- NoviceGuidePanelMono$$Start @ 01004a4c
+  <- TaskHeadActivityMono$$Start @ 0102fbcc
+  <- ExamPanelMono$$RegisterCallBack @ 00ee7664
+  <- HeroPartUpMono$$Start @ 00f4e84c
+  <- FriendPanel$$RegisterCallBack @ 00f00b04
+
+--- Listing ---
+00e110fc  str x22,[sp, #-0x30]!
+00e11100  stp x21,x20,[sp, #0x10]
+00e11104  stp x19,x30,[sp, #0x20]
+00e11108  mov x19,x0
+00e1110c  mov x0,x2
+00e11110  mov x21,x2
+00e11114  mov x20,x1
+00e11118  bl 0x00b07984
+00e1111c  str x0,[x19, #0x10]
+00e11120  mov x0,x19
+00e11124  str x21,[x19, #0x28]
+00e11128  str x20,[x0, #0x20]!
+00e1112c  mov x1,x20
+00e11130  bl 0x00b07850
+00e11134  ldrb w22,[x21, #0x52]
+00e11138  mov x0,x21
+00e1113c  str x19,[x19, #0x40]
+00e11140  bl 0x00b07910
+00e11144  tbz w0,#0x0,0x00e11164
+00e11148  ldrb w8,[x21, #0x53]
+00e1114c  tbnz w8,#0x4,0x00e11180
+00e11150  cmp w22,#0x1
+00e11154  b.ne 0x00e1116c
+00e11158  adrp x8,0x8dc000
+00e1115c  add x8,x8,#0xbf8
+00e11160  b 0x00e111a8
+00e11164  cbz w22,0x00e11194
+00e11168  cbz x20,0x00e111c8
+00e1116c  ldr x8,[x19, #0x10]
+00e11170  ldr x9,[x19, #0x20]
+00e11174  str x8,[x19, #0x18]
+00e11178  str x9,[x19, #0x40]
+00e1117c  b 0x00e111ac
+00e11180  cmp w22,#0x1
+00e11184  b.ne 0x00e111a0
+00e11188  adrp x8,0x8dc000
+00e1118c  add x8,x8,#0xc08
+00e11190  b 0x00e111a8
+00e11194  adrp x8,0x8dc000
+00e11198  add x8,x8,#0xbd8
+00e1119c  b 0x00e111a8
+00e111a0  adrp x8,0x8dc000
+00e111a4  add x8,x8,#0xc34
+00e111a8  str x8,[x19, #0x18]
+00e111ac  adrp x8,0x8dc000
+00e111b0  add x8,x8,#0xb90
+00e111b4  str x8,[x19, #0x38]
+00e111b8  ldp x19,x30,[sp, #0x20]
+00e111bc  ldp x21,x20,[sp, #0x10]
+00e111c0  ldr x22,[sp], #0x30
+00e111c4  ret
+00e111c8  adrp x1,0x26db000
+00e111cc  add x1,x1,#0xd9
+00e111d0  mov x0,xzr
+00e111d4  bl 0x00b079c0
+00e111d8  mov x1,xzr
+00e111dc  bl 0x00b07978

@@ -1,0 +1,66 @@
+Function: Ali$$BuildRetailConfirm @ 00e00338
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp370 @ 0108f430
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.SingletonScriptableObject<object>$$get_Instance @ 01e09560
+
+--- Calls IN ---
+  <- SysSettingPanelMono$$OnClickType2 @ 00f7835c
+  <- Ali$$CheckShowReview @ 00e0f0d8
+  <- GamePlayerInfomation$$get_Store_Reviewed @ 00e374f4
+  <- LoginGateMono$$Start @ 00f90038
+  <- GlobalUIManager$$NotifyChargeSuccess @ 00f1da04
+  <- ReviewPanelMono$$OnClickOK @ 0100dbe8
+  <- GamePlayerInfomation$$set_Store_Reviewed @ 00e376cc
+  <- XLua.CSObjectWrap.AliWrap$$_m_BuildRetailConfirm @ 011900e4
+
+--- Listing ---
+00e00338  str x22,[sp, #-0x30]!
+00e0033c  stp x21,x20,[sp, #0x10]
+00e00340  stp x19,x30,[sp, #0x20]
+00e00344  adrp x22,0x3572000
+00e00348  adrp x21,0x335f000
+00e0034c  ldrb w8,[x22, #0x517]
+00e00350  ldr x21,[x21, #0x20]
+00e00354  mov w19,w1
+00e00358  mov x20,x0
+00e0035c  tbnz w8,#0x0,0x00e00380
+00e00360  adrp x0,0x335f000
+00e00364  ldr x0,[x0, #0x20]
+00e00368  bl 0x00b0789c
+00e0036c  adrp x0,0x333f000
+00e00370  ldr x0,[x0, #0x50]
+00e00374  bl 0x00b0789c
+00e00378  mov w8,#0x1
+00e0037c  strb w8,[x22, #0x517]
+00e00380  ldr x0,[x21]
+00e00384  ldr w8,[x0, #0xe0]
+00e00388  cbnz w8,0x00e00394
+00e0038c  bl 0x00b0798c
+00e00390  ldr x0,[x21]
+00e00394  ldr x8,[x0, #0xb8]
+00e00398  ldr x0,[x8, #0x50]
+00e0039c  cbz x0,0x00e003bc
+00e003a0  mov x1,x20
+00e003a4  mov w2,w19
+00e003a8  ldp x19,x30,[sp, #0x20]
+00e003ac  ldp x21,x20,[sp, #0x10]
+00e003b0  mov x3,xzr
+00e003b4  ldr x22,[sp], #0x30
+00e003b8  b 0x0108f430
+00e003bc  adrp x8,0x333f000
+00e003c0  ldr x8,[x8, #0x50]
+00e003c4  ldr x0,[x8]
+00e003c8  bl 0x01e09560
+00e003cc  cbz x0,0x00e003ec
+00e003d0  ldr w8,[x0, #0x1c]
+00e003d4  ldp x21,x20,[sp, #0x10]
+00e003d8  cmp w8,w19
+00e003dc  ldp x19,x30,[sp, #0x20]
+00e003e0  cset w0,eq
+00e003e4  ldr x22,[sp], #0x30
+00e003e8  ret
+00e003ec  bl 0x00b079b0

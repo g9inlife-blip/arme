@@ -1,0 +1,41 @@
+Function: AliothEngine.NullHolder$$Load @ 01665474
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01665474  stp x21,x20,[sp, #-0x20]!
+01665478  stp x19,x30,[sp, #0x10]
+0166547c  adrp x20,0x3577000
+01665480  adrp x21,0x3370000
+01665484  ldrb w8,[x20, #0x8ec]
+01665488  ldr x21,[x21, #0xdb8]
+0166548c  mov x19,x0
+01665490  tbnz w8,#0x0,0x016654a8
+01665494  adrp x0,0x3370000
+01665498  ldr x0,[x0, #0xdb8]
+0166549c  bl 0x00b0789c
+016654a0  mov w8,#0x1
+016654a4  strb w8,[x20, #0x8ec]
+016654a8  ldr x0,[x21]
+016654ac  bl 0x00b079a0
+016654b0  cbz x0,0x016654e4
+016654b4  mov x1,xzr
+016654b8  mov x20,x0
+016654bc  bl 0x02194104
+016654c0  mov x0,x20
+016654c4  str wzr,[x20, #0x10]
+016654c8  str x19,[x0, #0x20]!
+016654cc  mov x1,x19
+016654d0  bl 0x00b07850
+016654d4  ldp x19,x30,[sp, #0x10]
+016654d8  mov x0,x20
+016654dc  ldp x21,x20,[sp], #0x20
+016654e0  ret
+016654e4  bl 0x00b079b0

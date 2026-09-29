@@ -1,0 +1,66 @@
+Function: register_callback @ 00b5391c
+FuncComment: std::__ndk1::ios_base::register_callback(void (*)(std::__ndk1::ios_base::event, std::__ndk1::ios_base&, int), int)
+
+--- Calls OUT ---
+  -> FUN_00b53a58 @ 00b53a58
+  -> realloc @ 008d4c90
+
+--- Calls IN ---
+
+--- Listing ---
+00b5391c  stp x22,x21,[sp, #-0x30]!
+    ; [PLATE] std::__ndk1::ios_base::register_callback(void (*)(std::__ndk1::ios_base::event, std::__ndk1::ios_base&, int), int)
+00b53920  stp x20,x19,[sp, #0x10]
+00b53924  stp x29,x30,[sp, #0x20]
+00b53928  add x29,sp,#0x20
+00b5392c  ldp x9,x10,[x0, #0x48]
+00b53930  mov w19,w2
+00b53934  mov x20,x0
+00b53938  mov x21,x1
+00b5393c  add x8,x9,#0x1
+00b53940  cmp x8,x10
+00b53944  b.ls 0x00b539c8
+00b53948  orr x9,xzr,#0xffffffffffffffe
+00b5394c  cmp x8,x9
+00b53950  b.hi 0x00b53964
+00b53954  lsl x9,x10,#0x1
+00b53958  cmp x9,x8
+00b5395c  csel x22,x8,x9,cc
+00b53960  b 0x00b53968
+00b53964  mov x22,#0x1fffffffffffffff
+00b53968  ldr x0,[x20, #0x38]
+00b5396c  lsl x1,x22,#0x3
+00b53970  bl 0x008d4c90
+00b53974  cbnz x0,0x00b5398c
+00b53978  ldp w8,w9,[x20, #0x20]
+00b5397c  orr w8,w8,#0x1
+00b53980  tst w9,w8
+00b53984  str w8,[x20, #0x20]
+00b53988  b.ne 0x00b539ec
+00b5398c  ldr x8,[x20, #0x40]
+00b53990  str x0,[x20, #0x38]
+00b53994  lsl x1,x22,#0x2
+00b53998  mov x0,x8
+00b5399c  bl 0x008d4c90
+00b539a0  cbnz x0,0x00b539b8
+00b539a4  ldp w8,w9,[x20, #0x20]
+00b539a8  orr w8,w8,#0x1
+00b539ac  tst w9,w8
+00b539b0  str w8,[x20, #0x20]
+00b539b4  b.ne 0x00b539ec
+00b539b8  ldr x9,[x20, #0x48]
+00b539bc  str x0,[x20, #0x40]
+00b539c0  str x22,[x20, #0x50]
+00b539c4  add x8,x9,#0x1
+00b539c8  ldr x10,[x20, #0x38]
+00b539cc  str x21,[x10, x9, LSL #0x3]
+00b539d0  ldr x10,[x20, #0x40]
+00b539d4  str w19,[x10, x9, LSL #0x2]
+00b539d8  str x8,[x20, #0x48]
+00b539dc  ldp x29,x30,[sp, #0x20]
+00b539e0  ldp x20,x19,[sp, #0x10]
+00b539e4  ldp x22,x21,[sp], #0x30
+00b539e8  ret
+00b539ec  adrp x0,0x2a07000
+00b539f0  add x0,x0,#0xcf4
+00b539f4  bl 0x00b53a58

@@ -1,0 +1,38 @@
+Function: AliothEngine.AssetLoader$$OnDestroy @ 0166b524
+
+--- Calls OUT ---
+  -> AliothEngine.AssetLoader$$UnloadALL @ 0166a878
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0166b524  stp x21,x20,[sp, #-0x20]!
+0166b528  stp x19,x30,[sp, #0x10]
+0166b52c  adrp x20,0x3577000
+0166b530  adrp x21,0x331c000
+0166b534  ldrb w8,[x20, #0x92c]
+0166b538  ldr x21,[x21, #0xda8]
+0166b53c  mov x19,x0
+0166b540  tbnz w8,#0x0,0x0166b558
+0166b544  adrp x0,0x331c000
+0166b548  ldr x0,[x0, #0xda8]
+0166b54c  bl 0x00b0789c
+0166b550  mov w8,#0x1
+0166b554  strb w8,[x20, #0x92c]
+0166b558  ldr x8,[x21]
+0166b55c  ldr x8,[x8, #0xb8]
+0166b560  ldr x0,[x8, #0x28]
+0166b564  cbz x0,0x0166b57c
+0166b568  mov x1,x19
+0166b56c  ldp x19,x30,[sp, #0x10]
+0166b570  mov x2,xzr
+0166b574  ldp x21,x20,[sp], #0x20
+0166b578  b 0x01060dac
+0166b57c  mov w8,#0x1
+0166b580  strb w8,[x19, #0x40]
+0166b584  mov x0,x19
+0166b588  ldp x19,x30,[sp, #0x10]
+0166b58c  ldp x21,x20,[sp], #0x20
+0166b590  b 0x0166a878

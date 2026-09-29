@@ -1,0 +1,49 @@
+Function: AliothEngine.Utils.Utility$$GetElapsedTime @ 0169d8d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Now @ 02133d48
+  -> System.DateTime$$op_Subtraction @ 021356d4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.TimeSpan$$Duration @ 02167fb8
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+
+--- Calls IN ---
+
+--- Listing ---
+0169d8d4  sub sp,sp,#0x30
+0169d8d8  stp x21,x20,[sp, #0x10]
+0169d8dc  stp x19,x30,[sp, #0x20]
+0169d8e0  adrp x21,0x3577000
+0169d8e4  adrp x20,0x336f000
+0169d8e8  ldrb w8,[x21, #0xb4f]
+0169d8ec  ldr x20,[x20, #0xdc8]
+0169d8f0  mov x19,x0
+0169d8f4  tbnz w8,#0x0,0x0169d90c
+0169d8f8  adrp x0,0x336f000
+0169d8fc  ldr x0,[x0, #0xdc8]
+0169d900  bl 0x00b0789c
+0169d904  mov w8,#0x1
+0169d908  strb w8,[x21, #0xb4f]
+0169d90c  ldr x0,[x20]
+0169d910  str xzr,[sp, #0x8]
+0169d914  ldr w8,[x0, #0xe0]
+0169d918  cbnz w8,0x0169d920
+0169d91c  bl 0x00b0798c
+0169d920  mov x0,xzr
+0169d924  bl 0x02133d48
+0169d928  mov x1,x19
+0169d92c  mov x2,xzr
+0169d930  bl 0x021356d4
+0169d934  str x0,[sp, #0x8]
+0169d938  add x0,sp,#0x8
+0169d93c  mov x1,xzr
+0169d940  bl 0x02167fb8
+0169d944  str x0,[sp, #0x8]
+0169d948  add x0,sp,#0x8
+0169d94c  mov x1,xzr
+0169d950  bl 0x02167c88
+0169d954  ldp x19,x30,[sp, #0x20]
+0169d958  ldp x21,x20,[sp, #0x10]
+0169d95c  add sp,sp,#0x30
+0169d960  ret

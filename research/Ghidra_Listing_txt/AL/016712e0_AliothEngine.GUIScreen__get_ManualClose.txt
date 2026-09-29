@@ -1,0 +1,40 @@
+Function: AliothEngine.GUIScreen$$get_ManualClose @ 016712e0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- TipsNormalPanelMono$$<>xLuaBaseProxy_get_ManualClose @ 00f12fa4
+  <- WaitPanelMono$$<>xLuaBaseProxy_get_ManualClose @ 0104303c
+  <- TipsTextPanelMono$$<>xLuaBaseProxy_get_ManualClose @ 00f17f20
+  <- UIFeedBackMono$$<>xLuaBaseProxy_get_ManualClose @ 00f1aafc
+  <- MenuPanelMono$$<>xLuaBaseProxy_get_ManualClose @ 00fa070c
+  <- NoviceGuidePanelMono$$<>xLuaBaseProxy_get_ManualClose @ 01007e70
+
+--- Listing ---
+016712e0  stp x21,x20,[sp, #-0x20]!
+016712e4  stp x19,x30,[sp, #0x10]
+016712e8  adrp x20,0x3577000
+016712ec  adrp x21,0x3364000
+016712f0  ldrb w8,[x20, #0x980]
+016712f4  ldr x21,[x21, #0xd28]
+016712f8  mov x19,x0
+016712fc  tbnz w8,#0x0,0x01671314
+01671300  adrp x0,0x3364000
+01671304  ldr x0,[x0, #0xd28]
+01671308  bl 0x00b0789c
+0167130c  mov w8,#0x1
+01671310  strb w8,[x20, #0x980]
+01671314  ldr x8,[x21]
+01671318  ldr x8,[x8, #0xb8]
+0167131c  ldr x0,[x8, #0x78]
+01671320  cbz x0,0x01671338
+01671324  mov x1,x19
+01671328  ldp x19,x30,[sp, #0x10]
+0167132c  mov x2,xzr
+01671330  ldp x21,x20,[sp], #0x20
+01671334  b 0x01060aac
+01671338  ldp x19,x30,[sp, #0x10]
+0167133c  ldp x21,x20,[sp], #0x20
+01671340  ret

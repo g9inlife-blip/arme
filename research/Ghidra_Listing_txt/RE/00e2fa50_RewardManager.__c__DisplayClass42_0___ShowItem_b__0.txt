@@ -1,0 +1,45 @@
+Function: RewardManager.<>c__DisplayClass42_0$$<ShowItem>b__0 @ 00e2fa50
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> WeaponDevAniPanelMono$$Demand @ 00f52c84
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e2fa50  stp x21,x20,[sp, #-0x20]!
+00e2fa54  stp x19,x30,[sp, #0x10]
+00e2fa58  adrp x21,0x3572000
+00e2fa5c  ldrb w8,[x21, #0x764]
+00e2fa60  mov x19,x1
+00e2fa64  mov x20,x0
+00e2fa68  tbnz w8,#0x0,0x00e2fa80
+00e2fa6c  adrp x0,0x3346000
+00e2fa70  ldr x0,[x0, #0x240]
+00e2fa74  bl 0x00b0789c
+00e2fa78  mov w8,#0x1
+00e2fa7c  strb w8,[x21, #0x764]
+00e2fa80  ldr x8,[x20, #0x18]
+00e2fa84  cbz x8,0x00e2fad8
+00e2fa88  cbz x19,0x00e2fad8
+00e2fa8c  adrp x9,0x3346000
+00e2fa90  ldr x9,[x9, #0x240]
+00e2fa94  ldr x10,[x19]
+00e2fa98  ldr x9,[x9]
+00e2fa9c  ldrb w12,[x10, #0x12c]
+00e2faa0  ldrb w11,[x9, #0x12c]
+00e2faa4  cmp w12,w11
+00e2faa8  b.cc 0x00e2fad8
+00e2faac  ldr x10,[x10, #0xc8]
+00e2fab0  add x10,x10,x11, LSL #0x3
+00e2fab4  ldur x10,[x10, #-0x8]
+00e2fab8  cmp x10,x9
+00e2fabc  b.ne 0x00e2fad8
+00e2fac0  ldr w1,[x8, #0x10]
+00e2fac4  mov x0,x19
+00e2fac8  ldp x19,x30,[sp, #0x10]
+00e2facc  mov x2,xzr
+00e2fad0  ldp x21,x20,[sp], #0x20
+00e2fad4  b 0x00f52c84
+00e2fad8  bl 0x00b079b0

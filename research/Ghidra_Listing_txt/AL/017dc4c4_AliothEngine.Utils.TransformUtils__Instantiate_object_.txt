@@ -1,0 +1,68 @@
+Function: AliothEngine.Utils.TransformUtils$$Instantiate<object> @ 017dc4c4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Object$$op_Implicit @ 024d0ab0
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Utils.TransformUtils$$Instantiate @ 0169c704
+
+--- Calls IN ---
+
+--- Listing ---
+017dc4c4  str x24,[sp, #-0x40]!
+017dc4c8  stp x23,x22,[sp, #0x10]
+017dc4cc  stp x21,x20,[sp, #0x20]
+017dc4d0  stp x19,x30,[sp, #0x30]
+017dc4d4  adrp x24,0x3578000
+017dc4d8  ldrb w8,[x24, #0x329]
+017dc4dc  mov x19,x4
+017dc4e0  mov w21,w3
+017dc4e4  mov w22,w2
+017dc4e8  mov x20,x1
+017dc4ec  mov x23,x0
+017dc4f0  tbnz w8,#0x0,0x017dc508
+017dc4f4  adrp x0,0x3321000
+017dc4f8  ldr x0,[x0, #0xca8]
+017dc4fc  bl 0x00b0789c
+017dc500  mov w8,#0x1
+017dc504  strb w8,[x24, #0x329]
+017dc508  cbz x23,0x017dc59c
+017dc50c  adrp x24,0x3321000
+017dc510  ldr x24,[x24, #0xca8]
+017dc514  mov x0,x23
+017dc518  mov x1,xzr
+017dc51c  bl 0x024e4ed4
+017dc520  and w2,w22,#0x1
+017dc524  and w3,w21,#0x1
+017dc528  mov x1,x20
+017dc52c  mov x4,xzr
+017dc530  bl 0x0169c704
+017dc534  ldr x8,[x24]
+017dc538  mov x20,x0
+017dc53c  ldr w9,[x8, #0xe0]
+017dc540  cbnz w9,0x017dc54c
+017dc544  mov x0,x8
+017dc548  bl 0x00b0798c
+017dc54c  mov x0,x20
+017dc550  mov x1,xzr
+017dc554  bl 0x024d0ab0
+017dc558  tbz w0,#0x0,0x017dc584
+017dc55c  cbz x20,0x017dc59c
+017dc560  ldr x8,[x19, #0x38]
+017dc564  mov x0,x20
+017dc568  ldp x19,x30,[sp, #0x30]
+017dc56c  ldp x21,x20,[sp, #0x20]
+017dc570  ldr x1,[x8, #0x8]
+017dc574  ldp x23,x22,[sp, #0x10]
+017dc578  ldr x2,[x1, #0x8]
+017dc57c  ldr x24,[sp], #0x40
+017dc580  br x2
+017dc584  ldp x19,x30,[sp, #0x30]
+017dc588  ldp x21,x20,[sp, #0x20]
+017dc58c  ldp x23,x22,[sp, #0x10]
+017dc590  mov x0,xzr
+017dc594  ldr x24,[sp], #0x40
+017dc598  ret
+017dc59c  bl 0x00b079b0

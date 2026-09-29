@@ -1,0 +1,45 @@
+Function: AliothEngine.StoreManager_SDK$$OnPayFailed @ 0165cc58
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp63 @ 01067254
+  -> AliothEngine.IStoreManager$$HandlePurchaseProductFailed @ 016592bc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0165cc58  stp x23,x22,[sp, #-0x30]!
+0165cc5c  stp x21,x20,[sp, #0x10]
+0165cc60  stp x19,x30,[sp, #0x20]
+0165cc64  adrp x22,0x3577000
+0165cc68  adrp x23,0x3351000
+0165cc6c  ldrb w8,[x22, #0x884]
+0165cc70  ldr x23,[x23, #0xa30]
+0165cc74  mov x19,x2
+0165cc78  mov w20,w1
+0165cc7c  mov x21,x0
+0165cc80  tbnz w8,#0x0,0x0165cc98
+0165cc84  adrp x0,0x3351000
+0165cc88  ldr x0,[x0, #0xa30]
+0165cc8c  bl 0x00b0789c
+0165cc90  mov w8,#0x1
+0165cc94  strb w8,[x22, #0x884]
+0165cc98  ldr x8,[x23]
+0165cc9c  ldr x8,[x8, #0xb8]
+0165cca0  ldr x0,[x8, #0x60]
+0165cca4  cbz x0,0x0165ccc8
+0165cca8  mov x1,x21
+0165ccac  mov w2,w20
+0165ccb0  mov x3,x19
+0165ccb4  ldp x19,x30,[sp, #0x20]
+0165ccb8  ldp x21,x20,[sp, #0x10]
+0165ccbc  mov x4,xzr
+0165ccc0  ldp x23,x22,[sp], #0x30
+0165ccc4  b 0x01067254
+0165ccc8  mov x0,x21
+0165cccc  mov w1,w20
+0165ccd0  mov x2,x19
+0165ccd4  ldp x19,x30,[sp, #0x20]
+0165ccd8  ldp x21,x20,[sp, #0x10]
+0165ccdc  ldp x23,x22,[sp], #0x30
+0165cce0  b 0x016592bc

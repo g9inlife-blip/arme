@@ -1,0 +1,28 @@
+Function: ReadypanelNode$$get_spr_achievement_5 @ 00fcdd68
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fcdd68  stp x21,x20,[sp, #-0x20]!
+00fcdd6c  stp x19,x30,[sp, #0x10]
+00fcdd70  adrp x20,0x3573000
+00fcdd74  adrp x21,0x3325000
+00fcdd78  ldrb w8,[x20, #0xe6e]
+00fcdd7c  ldr x21,[x21, #0x720]
+00fcdd80  mov x19,x0
+00fcdd84  tbnz w8,#0x0,0x00fcdd9c
+00fcdd88  adrp x0,0x3325000
+00fcdd8c  ldr x0,[x0, #0x720]
+00fcdd90  bl 0x00b0789c
+00fcdd94  mov w8,#0x1
+00fcdd98  strb w8,[x20, #0xe6e]
+00fcdd9c  ldr x1,[x21]
+00fcdda0  mov x0,x19
+00fcdda4  ldp x19,x30,[sp, #0x10]
+00fcdda8  mov x2,xzr
+00fcddac  ldp x21,x20,[sp], #0x20
+00fcddb0  b 0x00dc06f8

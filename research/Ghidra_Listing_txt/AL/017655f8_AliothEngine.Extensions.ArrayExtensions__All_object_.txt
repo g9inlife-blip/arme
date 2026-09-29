@@ -1,0 +1,45 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$All<object> @ 017655f8
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017655f8  stp x23,x22,[sp, #-0x30]!
+017655fc  stp x21,x20,[sp, #0x10]
+01765600  stp x19,x30,[sp, #0x20]
+01765604  cbz x1,0x0176566c
+01765608  mov x21,x0
+0176560c  cbz x0,0x01765684
+01765610  ldr x8,[x21, #0x18]
+01765614  cmp w8,#0x1
+01765618  b.lt 0x01765664
+0176561c  mov x19,x2
+01765620  mov x20,x1
+01765624  mov x22,xzr
+01765628  and x8,x8,#0xffffffff
+0176562c  add x23,x21,#0x20
+01765630  cmp x22,w8, UXTW 
+01765634  b.cs 0x01765680
+01765638  ldr x8,[x19, #0x38]
+0176563c  ldr x1,[x23, x22, LSL #0x3]
+01765640  mov x0,x20
+01765644  ldr x2,[x8, #0x8]
+01765648  ldr x8,[x2, #0x8]
+0176564c  blr x8
+01765650  tbz w0,#0x0,0x0176566c
+01765654  ldr w8,[x21, #0x18]
+01765658  add x22,x22,#0x1
+0176565c  cmp x22,w8, SXTW 
+01765660  b.lt 0x01765630
+01765664  mov w0,#0x1
+01765668  b 0x01765670
+0176566c  mov w0,wzr
+01765670  ldp x19,x30,[sp, #0x20]
+01765674  ldp x21,x20,[sp, #0x10]
+01765678  ldp x23,x22,[sp], #0x30
+0176567c  ret
+01765680  bl 0x00b079b8
+01765684  bl 0x00b079b0

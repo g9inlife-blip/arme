@@ -1,0 +1,58 @@
+Function: AliothExtensions$$GetScaleFieldOfView @ 00e17658
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp32 @ 01063698
+  -> UnityEngine.Screen$$get_height @ 024d2684
+
+--- Calls IN ---
+  <- BattleCenter$$SetMainCamAndElse @ 00ed259c
+
+--- Listing ---
+00e17658  stp x21,x20,[sp, #-0x20]!
+00e1765c  stp x19,x30,[sp, #0x10]
+00e17660  adrp x21,0x3572000
+00e17664  adrp x20,0x3348000
+00e17668  ldrb w8,[x21, #0x60b]
+00e1766c  ldr x20,[x20, #0x138]
+00e17670  mov x19,x0
+00e17674  tbnz w8,#0x0,0x00e1768c
+00e17678  adrp x0,0x3348000
+00e1767c  ldr x0,[x0, #0x138]
+00e17680  bl 0x00b0789c
+00e17684  mov w8,#0x1
+00e17688  strb w8,[x21, #0x60b]
+00e1768c  ldr x0,[x20]
+00e17690  ldr w8,[x0, #0xe0]
+00e17694  cbnz w8,0x00e176a0
+00e17698  bl 0x00b0798c
+00e1769c  ldr x0,[x20]
+00e176a0  ldr x8,[x0, #0xb8]
+00e176a4  ldr x0,[x8, #0x1b8]
+00e176a8  cbz x0,0x00e176c0
+00e176ac  mov x1,x19
+00e176b0  ldp x19,x30,[sp, #0x10]
+00e176b4  mov x2,xzr
+00e176b8  ldp x21,x20,[sp], #0x20
+00e176bc  b 0x01063698
+00e176c0  bl 0x024d265c
+00e176c4  mov w19,w0
+00e176c8  mov x0,xzr
+00e176cc  bl 0x024d2684
+00e176d0  adrp x8,0x26db000
+00e176d4  ldr s0,[x8, #0xc58]
+00e176d8  scvtf s1,w19
+00e176dc  scvtf s2,w0
+00e176e0  fdiv s1,s1,s2
+00e176e4  fcmp s1,s0
+00e176e8  b.gt 0x00e176fc
+00e176ec  fdiv s0,s0,s1
+00e176f0  fmov s1,0x41f00000
+00e176f4  fmul s0,s0,s1
+00e176f8  b 0x00e17700
+00e176fc  fmov s0,0x41f00000
+00e17700  ldp x19,x30,[sp, #0x10]
+00e17704  ldp x21,x20,[sp], #0x20
+00e17708  ret

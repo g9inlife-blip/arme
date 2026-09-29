@@ -1,0 +1,39 @@
+Function: AliothEngine.AssetLoadingContext$$.cctor @ 0166da50
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetLoadingContext$$.ctor @ 0166d670
+
+--- Calls IN ---
+
+--- Listing ---
+0166da50  str x20,[sp, #-0x20]!
+0166da54  stp x19,x30,[sp, #0x10]
+0166da58  adrp x19,0x3577000
+0166da5c  adrp x20,0x3349000
+0166da60  ldrb w8,[x19, #0x945]
+0166da64  ldr x20,[x20, #0x30]
+0166da68  tbnz w8,#0x0,0x0166da80
+0166da6c  adrp x0,0x3349000
+0166da70  ldr x0,[x0, #0x30]
+0166da74  bl 0x00b0789c
+0166da78  mov w8,#0x1
+0166da7c  strb w8,[x19, #0x945]
+0166da80  ldr x0,[x20]
+0166da84  bl 0x00b079a0
+0166da88  cbz x0,0x0166dab8
+0166da8c  mov x19,x0
+0166da90  bl 0x0166d670
+0166da94  ldr x8,[x20]
+0166da98  mov x1,x19
+0166da9c  ldr x8,[x8, #0xb8]
+0166daa0  str x19,[x8]
+0166daa4  ldr x8,[x20]
+0166daa8  ldp x19,x30,[sp, #0x10]
+0166daac  ldr x0,[x8, #0xb8]
+0166dab0  ldr x20,[sp], #0x20
+0166dab4  b 0x00b07850
+0166dab8  bl 0x00b079b0

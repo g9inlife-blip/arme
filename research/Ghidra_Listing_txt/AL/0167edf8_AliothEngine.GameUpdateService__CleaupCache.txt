@@ -1,0 +1,93 @@
+Function: AliothEngine.GameUpdateService$$CleaupCache @ 0167edf8
+
+--- Calls OUT ---
+  -> AliothEngine.AssetInfoManager$$get_CacheManifestLocation @ 016699cc
+  -> UnityEngine.PlayerPrefs$$DeleteKey @ 024be890
+  -> AliothEngine.AssetVersionManager$$DeleteCache @ 0166f104
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PlayerPrefs$$Save @ 024be8f4
+  -> AliothEngine.AssetInfoManager$$get_CacheAssetBundleInfoLocation @ 01669730
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$<StartDownLoadAssetBundleMainfest>b__62_0 @ 0167fe58
+  <- AliothEngine.GameUpdateService.<SetupAsync>d__53$$MoveNext @ 01680a70
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_m_CleaupCache_xlua_st_ @ 0114159c
+
+--- Listing ---
+0167edf8  str x20,[sp, #-0x20]!
+0167edfc  stp x19,x30,[sp, #0x10]
+0167ee00  adrp x19,0x3577000
+0167ee04  adrp x20,0x3352000
+0167ee08  ldrb w8,[x19, #0xa37]
+0167ee0c  ldr x20,[x20, #0x2a8]
+0167ee10  tbnz w8,#0x0,0x0167ee58
+0167ee14  adrp x0,0x336b000
+0167ee18  ldr x0,[x0, #0x7d0]
+0167ee1c  bl 0x00b0789c
+0167ee20  adrp x0,0x3352000
+0167ee24  ldr x0,[x0, #0x2a8]
+0167ee28  bl 0x00b0789c
+0167ee2c  adrp x0,0x3364000
+0167ee30  ldr x0,[x0, #0x2e0]
+0167ee34  bl 0x00b0789c
+0167ee38  adrp x0,0x3363000
+0167ee3c  ldr x0,[x0, #0x228]
+0167ee40  bl 0x00b0789c
+0167ee44  adrp x0,0x333b000
+0167ee48  ldr x0,[x0, #0x400]
+0167ee4c  bl 0x00b0789c
+0167ee50  mov w8,#0x1
+0167ee54  strb w8,[x19, #0xa37]
+0167ee58  ldr x8,[x20]
+0167ee5c  ldr x8,[x8, #0xb8]
+0167ee60  ldr x0,[x8, #0x130]
+0167ee64  cbz x0,0x0167ee78
+0167ee68  ldp x19,x30,[sp, #0x10]
+0167ee6c  mov x1,xzr
+0167ee70  ldr x20,[sp], #0x20
+0167ee74  b 0x0105fbf0
+0167ee78  adrp x8,0x336b000
+0167ee7c  ldr x8,[x8, #0x7d0]
+0167ee80  adrp x19,0x3363000
+0167ee84  adrp x20,0x3364000
+0167ee88  ldr x0,[x8]
+0167ee8c  ldr w8,[x0, #0xe0]
+0167ee90  ldr x19,[x19, #0x228]
+0167ee94  ldr x20,[x20, #0x2e0]
+0167ee98  cbnz w8,0x0167eea0
+0167ee9c  bl 0x00b0798c
+0167eea0  ldr x0,[x19]
+0167eea4  mov x1,xzr
+0167eea8  bl 0x024c0104
+0167eeac  ldr x0,[x20]
+0167eeb0  bl 0x01e09a6c
+0167eeb4  mov x19,x0
+0167eeb8  mov x0,xzr
+0167eebc  bl 0x01669730
+0167eec0  cbz x19,0x0167ef10
+0167eec4  mov x1,x0
+0167eec8  bl 0x0166f104
+0167eecc  ldr x0,[x20]
+0167eed0  bl 0x01e09a6c
+0167eed4  mov x19,x0
+0167eed8  mov x0,xzr
+0167eedc  bl 0x016699cc
+0167eee0  cbz x19,0x0167ef10
+0167eee4  adrp x19,0x333b000
+0167eee8  ldr x19,[x19, #0x400]
+0167eeec  mov x1,x0
+0167eef0  bl 0x0166f104
+0167eef4  ldr x0,[x19]
+0167eef8  mov x1,xzr
+0167eefc  bl 0x024be890
+0167ef00  ldp x19,x30,[sp, #0x10]
+0167ef04  mov x0,xzr
+0167ef08  ldr x20,[sp], #0x20
+0167ef0c  b 0x024be8f4
+0167ef10  bl 0x00b079b0

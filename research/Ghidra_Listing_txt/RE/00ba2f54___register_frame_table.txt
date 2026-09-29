@@ -1,0 +1,20 @@
+Function: __register_frame_table @ 00ba2f54
+
+--- Calls OUT ---
+  -> malloc @ 008d56a0
+  -> __register_frame_info_table @ 008d4b70
+
+--- Calls IN ---
+
+--- Listing ---
+00ba2f54  stp x29,x30,[sp, #-0x20]!
+00ba2f58  mov x29,sp
+00ba2f5c  str x19,[sp, #0x10]
+00ba2f60  mov x19,x0
+00ba2f64  mov x0,#0x30
+00ba2f68  bl 0x008d56a0
+00ba2f6c  mov x1,x0
+00ba2f70  mov x0,x19
+00ba2f74  ldr x19,[sp, #0x10]
+00ba2f78  ldp x29,x30,[sp], #0x20
+00ba2f7c  b 0x008d4b70

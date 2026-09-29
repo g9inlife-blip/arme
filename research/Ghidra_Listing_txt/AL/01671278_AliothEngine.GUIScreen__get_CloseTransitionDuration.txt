@@ -1,0 +1,35 @@
+Function: AliothEngine.GUIScreen$$get_CloseTransitionDuration @ 01671278
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp32 @ 01063698
+
+--- Calls IN ---
+
+--- Listing ---
+01671278  stp x21,x20,[sp, #-0x20]!
+0167127c  stp x19,x30,[sp, #0x10]
+01671280  adrp x20,0x3577000
+01671284  adrp x21,0x3364000
+01671288  ldrb w8,[x20, #0x97f]
+0167128c  ldr x21,[x21, #0xd28]
+01671290  mov x19,x0
+01671294  tbnz w8,#0x0,0x016712ac
+01671298  adrp x0,0x3364000
+0167129c  ldr x0,[x0, #0xd28]
+016712a0  bl 0x00b0789c
+016712a4  mov w8,#0x1
+016712a8  strb w8,[x20, #0x97f]
+016712ac  ldr x8,[x21]
+016712b0  ldr x8,[x8, #0xb8]
+016712b4  ldr x0,[x8, #0x70]
+016712b8  cbz x0,0x016712d0
+016712bc  mov x1,x19
+016712c0  ldp x19,x30,[sp, #0x10]
+016712c4  mov x2,xzr
+016712c8  ldp x21,x20,[sp], #0x20
+016712cc  b 0x01063698
+016712d0  ldp x19,x30,[sp, #0x10]
+016712d4  fmov s0,wzr
+016712d8  ldp x21,x20,[sp], #0x20
+016712dc  ret

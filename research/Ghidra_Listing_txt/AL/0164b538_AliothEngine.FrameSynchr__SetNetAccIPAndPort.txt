@@ -1,0 +1,52 @@
+Function: AliothEngine.FrameSynchr$$SetNetAccIPAndPort @ 0164b538
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+
+--- Calls IN ---
+  <- AliothEngine.FrameSynchr$$onRelaySvrPingMsg @ 0164b054
+
+--- Listing ---
+0164b538  str x20,[sp, #-0x20]!
+0164b53c  stp x19,x30,[sp, #0x10]
+0164b540  adrp x20,0x3577000
+0164b544  adrp x19,0x3370000
+0164b548  ldrb w8,[x20, #0x7ae]
+0164b54c  ldr x19,[x19, #0x40]
+0164b550  tbnz w8,#0x0,0x0164b574
+0164b554  adrp x0,0x330b000
+0164b558  ldr x0,[x0, #0xfb8]
+0164b55c  bl 0x00b0789c
+0164b560  adrp x0,0x3370000
+0164b564  ldr x0,[x0, #0x40]
+0164b568  bl 0x00b0789c
+0164b56c  mov w8,#0x1
+0164b570  strb w8,[x20, #0x7ae]
+0164b574  ldr x0,[x19]
+0164b578  bl 0x01e09a6c
+0164b57c  cbz x0,0x0164b5d4
+0164b580  ldrb w8,[x0, #0xe0]
+0164b584  cbz w8,0x0164b594
+0164b588  ldp x19,x30,[sp, #0x10]
+0164b58c  ldr x20,[sp], #0x20
+0164b590  ret
+0164b594  adrp x8,0x330b000
+0164b598  ldr x8,[x8, #0xfb8]
+0164b59c  ldr x8,[x8]
+0164b5a0  ldr x8,[x8, #0xb8]
+0164b5a4  ldr w9,[x8, #0x8]
+0164b5a8  cbz w9,0x0164b588
+0164b5ac  ldr x0,[x8]
+0164b5b0  mov x1,xzr
+0164b5b4  bl 0x01fdf3a0
+0164b5b8  tbnz w0,#0x0,0x0164b588
+0164b5bc  ldr x0,[x19]
+0164b5c0  bl 0x01e09a6c
+0164b5c4  cbz x0,0x0164b5d4
+0164b5c8  mov w8,#0x1
+0164b5cc  strb w8,[x0, #0xe0]
+0164b5d0  b 0x0164b588
+0164b5d4  bl 0x00b079b0

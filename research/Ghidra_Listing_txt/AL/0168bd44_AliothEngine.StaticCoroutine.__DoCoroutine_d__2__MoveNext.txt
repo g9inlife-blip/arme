@@ -1,0 +1,43 @@
+Function: AliothEngine.StaticCoroutine.<_DoCoroutine>d__2$$MoveNext @ 0168bd44
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.StaticCoroutine$$Perform @ 0168b7e8
+
+--- Calls IN ---
+
+--- Listing ---
+0168bd44  str x20,[sp, #-0x20]!
+0168bd48  stp x19,x30,[sp, #0x10]
+0168bd4c  ldr w8,[x0, #0x10]
+0168bd50  mov x19,x0
+0168bd54  mov w0,wzr
+0168bd58  cmp w8,#0x1
+0168bd5c  b.eq 0x0168bdac
+0168bd60  cbnz w8,0x0168bdb4
+0168bd64  ldr x20,[x19, #0x20]
+0168bd68  mov w8,#0xffffffff
+0168bd6c  str w8,[x19, #0x10]
+0168bd70  cbz x20,0x0168bdc0
+0168bd74  ldp x1,x2,[x19, #0x28]
+0168bd78  mov x0,x20
+0168bd7c  bl 0x0168b7e8
+0168bd80  mov x1,x0
+0168bd84  mov x0,x20
+0168bd88  mov x2,xzr
+0168bd8c  bl 0x024e4070
+0168bd90  mov x1,x0
+0168bd94  mov x0,x19
+0168bd98  str x1,[x0, #0x18]!
+0168bd9c  bl 0x00b07850
+0168bda0  mov w8,#0x1
+0168bda4  mov w0,#0x1
+0168bda8  b 0x0168bdb0
+0168bdac  mov w8,#0xffffffff
+0168bdb0  str w8,[x19, #0x10]
+0168bdb4  ldp x19,x30,[sp, #0x10]
+0168bdb8  ldr x20,[sp], #0x20
+0168bdbc  ret
+0168bdc0  bl 0x00b079b0

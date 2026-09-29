@@ -1,0 +1,108 @@
+Function: AliothExtensions$$GetWebViewMargin @ 00e16544
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp427 @ 01096904
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Rect$$get_xMin @ 024dafa0
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> UnityEngine.Rect$$get_width @ 024db068
+  -> UnityEngine.Screen$$get_height @ 024d2684
+  -> UnityEngine.Rect$$get_yMin @ 024dafa8
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothExtensionsWrap$$_m_GetWebViewMargin_xlua_st_ @ 0116b22c
+  <- WebUIMono$$SetWebViewTransform @ 0104ff6c
+
+--- Listing ---
+00e16544  sub sp,sp,#0x70
+00e16548  stp d11,d10,[sp, #0x10]
+00e1654c  stp d9,d8,[sp, #0x20]
+00e16550  str x24,[sp, #0x30]
+00e16554  stp x23,x22,[sp, #0x40]
+00e16558  stp x21,x20,[sp, #0x50]
+00e1655c  stp x19,x30,[sp, #0x60]
+00e16560  adrp x24,0x3572000
+00e16564  stp s0,s1,[sp]
+00e16568  stp s2,s3,[sp, #0x8]
+00e1656c  adrp x23,0x3348000
+00e16570  ldrb w8,[x24, #0x600]
+00e16574  ldr x23,[x23, #0x138]
+00e16578  mov x19,x3
+00e1657c  mov x20,x2
+00e16580  mov x21,x1
+00e16584  mov x22,x0
+00e16588  mov v8.16B,v3.16B
+00e1658c  mov v9.16B,v2.16B
+00e16590  mov v10.16B,v1.16B
+00e16594  mov v11.16B,v0.16B
+00e16598  tbnz w8,#0x0,0x00e165b0
+00e1659c  adrp x0,0x3348000
+00e165a0  ldr x0,[x0, #0x138]
+00e165a4  bl 0x00b0789c
+00e165a8  mov w8,#0x1
+00e165ac  strb w8,[x24, #0x600]
+00e165b0  ldr x0,[x23]
+00e165b4  ldr w8,[x0, #0xe0]
+00e165b8  cbnz w8,0x00e165c4
+00e165bc  bl 0x00b0798c
+00e165c0  ldr x0,[x23]
+00e165c4  ldr x8,[x0, #0xb8]
+00e165c8  ldr x0,[x8, #0x160]
+00e165cc  cbz x0,0x00e16614
+00e165d0  mov v0.16B,v11.16B
+00e165d4  mov v1.16B,v10.16B
+00e165d8  mov v2.16B,v9.16B
+00e165dc  mov v3.16B,v8.16B
+00e165e0  mov x1,x22
+00e165e4  mov x2,x21
+00e165e8  mov x3,x20
+00e165ec  mov x4,x19
+00e165f0  ldp x19,x30,[sp, #0x60]
+00e165f4  ldp x21,x20,[sp, #0x50]
+00e165f8  ldp x23,x22,[sp, #0x40]
+00e165fc  ldr x24,[sp, #0x30]
+00e16600  ldp d9,d8,[sp, #0x20]
+00e16604  ldp d11,d10,[sp, #0x10]
+00e16608  mov x5,xzr
+00e1660c  add sp,sp,#0x70
+00e16610  b 0x01096904
+00e16614  mov x0,sp
+00e16618  mov x1,xzr
+00e1661c  bl 0x024dafa0
+00e16620  mov x0,xzr
+00e16624  str s0,[x22]
+00e16628  bl 0x024d265c
+00e1662c  ldr s8,[x22]
+00e16630  mov w22,w0
+00e16634  mov x0,sp
+00e16638  mov x1,xzr
+00e1663c  bl 0x024db068
+00e16640  scvtf s1,w22
+00e16644  fsub s1,s1,s8
+00e16648  fsub s0,s1,s0
+00e1664c  mov x0,sp
+00e16650  mov x1,xzr
+00e16654  str s0,[x21]
+00e16658  bl 0x024dafa8
+00e1665c  mov x0,xzr
+00e16660  str s0,[x20]
+00e16664  bl 0x024d2684
+00e16668  ldr s8,[x20]
+00e1666c  mov w20,w0
+00e16670  mov x0,sp
+00e16674  mov x1,xzr
+00e16678  bl 0x024db078
+00e1667c  scvtf s1,w20
+00e16680  fsub s1,s1,s8
+00e16684  fsub s0,s1,s0
+00e16688  str s0,[x19]
+00e1668c  ldp x19,x30,[sp, #0x60]
+00e16690  ldp x21,x20,[sp, #0x50]
+00e16694  ldp x23,x22,[sp, #0x40]
+00e16698  ldr x24,[sp, #0x30]
+00e1669c  ldp d9,d8,[sp, #0x20]
+00e166a0  ldp d11,d10,[sp, #0x10]
+00e166a4  add sp,sp,#0x70
+00e166a8  ret

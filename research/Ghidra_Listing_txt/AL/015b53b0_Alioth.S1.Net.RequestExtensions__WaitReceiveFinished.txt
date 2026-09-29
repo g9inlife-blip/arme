@@ -1,0 +1,58 @@
+Function: Alioth.S1.Net.RequestExtensions$$WaitReceiveFinished @ 015b53b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- CSBehaviour.<SendRequest>d__22$$MoveNext @ 016ddbf8
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_m_WaitReceiveFinished @ 011721e8
+
+--- Listing ---
+015b53b0  stp x21,x20,[sp, #-0x20]!
+015b53b4  stp x19,x30,[sp, #0x10]
+015b53b8  adrp x20,0x3577000
+015b53bc  adrp x21,0x3357000
+015b53c0  ldrb w8,[x20, #0xd2]
+015b53c4  ldr x21,[x21, #0x940]
+015b53c8  mov x19,x0
+015b53cc  tbnz w8,#0x0,0x015b53f0
+015b53d0  adrp x0,0x3357000
+015b53d4  ldr x0,[x0, #0x940]
+015b53d8  bl 0x00b0789c
+015b53dc  adrp x0,0x3376000
+015b53e0  ldr x0,[x0]
+015b53e4  bl 0x00b0789c
+015b53e8  mov w8,#0x1
+015b53ec  strb w8,[x20, #0xd2]
+015b53f0  ldr x8,[x21]
+015b53f4  ldr x8,[x8, #0xb8]
+015b53f8  ldr x0,[x8, #0x8]
+015b53fc  cbz x0,0x015b5414
+015b5400  mov x1,x19
+015b5404  ldp x19,x30,[sp, #0x10]
+015b5408  mov x2,xzr
+015b540c  ldp x21,x20,[sp], #0x20
+015b5410  b 0x01066218
+015b5414  adrp x8,0x3376000
+015b5418  ldr x8,[x8]
+015b541c  ldr x0,[x8]
+015b5420  bl 0x00b079a0
+015b5424  cbz x0,0x015b5458
+015b5428  mov x1,xzr
+015b542c  mov x20,x0
+015b5430  bl 0x02194104
+015b5434  mov x0,x20
+015b5438  str wzr,[x20, #0x10]
+015b543c  str x19,[x0, #0x20]!
+015b5440  mov x1,x19
+015b5444  bl 0x00b07850
+015b5448  ldp x19,x30,[sp, #0x10]
+015b544c  mov x0,x20
+015b5450  ldp x21,x20,[sp], #0x20
+015b5454  ret
+015b5458  bl 0x00b079b0

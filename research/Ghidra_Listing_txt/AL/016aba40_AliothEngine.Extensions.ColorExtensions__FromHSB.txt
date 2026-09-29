@@ -1,0 +1,65 @@
+Function: AliothEngine.Extensions.ColorExtensions$$FromHSB @ 016aba40
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016aba40  fmov s2,0x3f800000
+016aba44  fmov s0,0x3f000000
+016aba48  fadd s1,s5,s2
+016aba4c  fsub s5,s1,s5
+016aba50  fcmp s6,s0
+016aba54  fcsel s0,s5,s1,hi
+016aba58  mov v3.16B,v7.16B
+016aba5c  fcmp s0,#0.0
+016aba60  b.le 0x016abae4
+016aba64  fmov s1,0x40c00000
+016aba68  mov w8,#0x7f800000
+016aba6c  fmul s1,s4,s1
+016aba70  fmov s4,w8
+016aba74  fcvtzs w8,s1
+016aba78  fcmp s1,s4
+016aba7c  mov w9,#0x80000000
+016aba80  csel w8,w9,w8,eq
+016aba84  cmp w8,#0x5
+016aba88  b.hi 0x016abae4
+016aba8c  fmov s2,0x40000000
+016aba90  fsub s4,s2,s0
+016aba94  fsub s2,s0,s4
+016aba98  scvtf s5,w8
+016aba9c  fdiv s2,s2,s0
+016abaa0  adrp x9,0x26dd000
+016abaa4  fsub s1,s1,s5
+016abaa8  fmul s2,s0,s2
+016abaac  add x9,x9,#0xb3
+016abab0  fmul s1,s1,s2
+016abab4  fadd s6,s4,s1
+016abab8  adr x10,0x16abad4
+016ababc  ldrb w11,[x9, x8, LSL ]
+016abac0  add x10,x10,x11, LSL #0x2
+016abac4  fadd s5,s0,s1
+016abac8  mov v2.16B,v4.16B
+016abacc  mov v1.16B,v6.16B
+016abad0  br x10
+016abad4  mov v2.16B,v4.16B
+016abad8  mov v1.16B,v0.16B
+016abadc  mov v0.16B,v5.16B
+016abae0  ret
+016abae4  mov v1.16B,v2.16B
+016abae8  mov v0.16B,v2.16B
+016abaec  ret
+016abaf0  mov v2.16B,v6.16B
+016abaf4  mov v1.16B,v0.16B
+016abaf8  b 0x016abb04
+016abafc  mov v2.16B,v0.16B
+016abb00  mov v1.16B,v5.16B
+016abb04  mov v0.16B,v4.16B
+016abb08  ret
+016abb0c  mov v2.16B,v0.16B
+016abb10  mov v1.16B,v4.16B
+016abb14  mov v0.16B,v6.16B
+016abb18  ret
+016abb1c  mov v2.16B,v5.16B
+016abb20  mov v1.16B,v4.16B
+016abb24  ret

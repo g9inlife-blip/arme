@@ -1,0 +1,76 @@
+Function: Alioth.S1.Net.NetworkCenter$$remove_OnStatusChanged @ 015b2c24
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- CSBehaviour$$StopNCRun @ 016dc8dc
+  <- XLua.CSObjectWrap.AliothS1NetNetworkCenterWrap$$_e_OnStatusChanged @ 01170df0
+
+--- Listing ---
+015b2c24  str x24,[sp, #-0x40]!
+015b2c28  stp x23,x22,[sp, #0x10]
+015b2c2c  stp x21,x20,[sp, #0x20]
+015b2c30  stp x19,x30,[sp, #0x30]
+015b2c34  adrp x21,0x3577000
+015b2c38  adrp x22,0x330b000
+015b2c3c  ldrb w8,[x21, #0xac]
+015b2c40  ldr x22,[x22, #0x520]
+015b2c44  mov x19,x1
+015b2c48  mov x20,x0
+015b2c4c  tbnz w8,#0x0,0x015b2c70
+015b2c50  adrp x0,0x334a000
+015b2c54  ldr x0,[x0, #0x2b0]
+015b2c58  bl 0x00b0789c
+015b2c5c  adrp x0,0x330b000
+015b2c60  ldr x0,[x0, #0x520]
+015b2c64  bl 0x00b0789c
+015b2c68  mov w8,#0x1
+015b2c6c  strb w8,[x21, #0xac]
+015b2c70  ldr x8,[x22]
+015b2c74  ldr x8,[x8, #0xb8]
+015b2c78  ldr x0,[x8, #0x20]
+015b2c7c  cbz x0,0x015b2ca0
+015b2c80  mov x1,x20
+015b2c84  mov x2,x19
+015b2c88  ldp x19,x30,[sp, #0x30]
+015b2c8c  ldp x21,x20,[sp, #0x20]
+015b2c90  ldp x23,x22,[sp, #0x10]
+015b2c94  mov x3,xzr
+015b2c98  ldr x24,[sp], #0x40
+015b2c9c  b 0x0106125c
+015b2ca0  adrp x24,0x334a000
+015b2ca4  ldr x21,[x20, #0x38]!
+015b2ca8  ldr x24,[x24, #0x2b0]
+015b2cac  mov x0,x21
+015b2cb0  mov x1,x19
+015b2cb4  mov x2,xzr
+015b2cb8  bl 0x02197a1c
+015b2cbc  cbz x0,0x015b2cdc
+015b2cc0  ldr x23,[x24]
+015b2cc4  mov x22,x0
+015b2cc8  mov x1,x23
+015b2ccc  bl 0x00b07990
+015b2cd0  mov x1,x0
+015b2cd4  cbnz x0,0x015b2ce0
+015b2cd8  b 0x015b2d0c
+015b2cdc  mov x1,xzr
+015b2ce0  mov x0,x20
+015b2ce4  mov x2,x21
+015b2ce8  bl 0x00ae526c
+015b2cec  cmp x21,x0
+015b2cf0  mov x21,x0
+015b2cf4  b.ne 0x015b2cac
+015b2cf8  ldp x19,x30,[sp, #0x30]
+015b2cfc  ldp x21,x20,[sp, #0x20]
+015b2d00  ldp x23,x22,[sp, #0x10]
+015b2d04  ldr x24,[sp], #0x40
+015b2d08  ret
+015b2d0c  mov x0,x22
+015b2d10  mov x1,x23
+015b2d14  bl 0x00b07c6c

@@ -1,0 +1,46 @@
+Function: AliothEngine.Utils.SizeUtils$$GetFileSize @ 0169aa34
+
+--- Calls OUT ---
+  -> System.IO.FileInfo$$.ctor @ 020b12c4
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Utils.SizeUtils$$GetMemSize @ 0169aab8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.FileInfo$$get_Length @ 020b1588
+
+--- Calls IN ---
+
+--- Listing ---
+0169aa34  stp x21,x20,[sp, #-0x20]!
+0169aa38  stp x19,x30,[sp, #0x10]
+0169aa3c  adrp x20,0x3577000
+0169aa40  adrp x21,0x3319000
+0169aa44  ldrb w8,[x20, #0xb2d]
+0169aa48  ldr x21,[x21, #0xee8]
+0169aa4c  mov x19,x0
+0169aa50  tbnz w8,#0x0,0x0169aa74
+0169aa54  adrp x0,0x3319000
+0169aa58  ldr x0,[x0, #0xee8]
+0169aa5c  bl 0x00b0789c
+0169aa60  adrp x0,0x333f000
+0169aa64  ldr x0,[x0, #0xdc8]
+0169aa68  bl 0x00b0789c
+0169aa6c  mov w8,#0x1
+0169aa70  strb w8,[x20, #0xb2d]
+0169aa74  ldr x0,[x21]
+0169aa78  bl 0x00b079a0
+0169aa7c  cbz x0,0x0169aab4
+0169aa80  adrp x21,0x333f000
+0169aa84  ldr x21,[x21, #0xdc8]
+0169aa88  mov x1,x19
+0169aa8c  mov x2,xzr
+0169aa90  mov x20,x0
+0169aa94  bl 0x020b12c4
+0169aa98  mov x0,x20
+0169aa9c  mov x1,xzr
+0169aaa0  bl 0x020b1588
+0169aaa4  ldr x1,[x21]
+0169aaa8  ldp x19,x30,[sp, #0x10]
+0169aaac  ldp x21,x20,[sp], #0x20
+0169aab0  b 0x0169aab8
+0169aab4  bl 0x00b079b0

@@ -1,0 +1,36 @@
+Function: RewardPanelMono$$get_SysConfig_BGM_ID @ 0100df64
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+
+--- Listing ---
+0100df64  stp x21,x20,[sp, #-0x20]!
+0100df68  stp x19,x30,[sp, #0x10]
+0100df6c  adrp x20,0x3574000
+0100df70  adrp x21,0x3359000
+0100df74  ldrb w8,[x20, #0x458]
+0100df78  ldr x21,[x21, #0xdc0]
+0100df7c  mov x19,x0
+0100df80  tbnz w8,#0x0,0x0100df98
+0100df84  adrp x0,0x3359000
+0100df88  ldr x0,[x0, #0xdc0]
+0100df8c  bl 0x00b0789c
+0100df90  mov w8,#0x1
+0100df94  strb w8,[x20, #0x458]
+0100df98  ldr x8,[x21]
+0100df9c  ldr x8,[x8, #0xb8]
+0100dfa0  ldr x0,[x8, #0x8]
+0100dfa4  cbz x0,0x0100dfbc
+0100dfa8  mov x1,x19
+0100dfac  ldp x19,x30,[sp, #0x10]
+0100dfb0  mov x2,xzr
+0100dfb4  ldp x21,x20,[sp], #0x20
+0100dfb8  b 0x01060c2c
+0100dfbc  ldp x19,x30,[sp, #0x10]
+0100dfc0  mov w0,#0x8455
+0100dfc4  movk w0,#0x5a8, LSL #16
+0100dfc8  ldp x21,x20,[sp], #0x20
+0100dfcc  ret

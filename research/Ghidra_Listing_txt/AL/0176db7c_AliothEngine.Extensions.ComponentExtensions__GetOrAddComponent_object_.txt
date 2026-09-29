@@ -1,0 +1,41 @@
+Function: AliothEngine.Extensions.ComponentExtensions$$GetOrAddComponent<object> @ 0176db7c
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- BattleCenter$$SetMainCamAndElse @ 00ed259c
+  <- CVPanelMono$$InitToggles @ 00f82104
+  <- RoleMono$$OnSpineEvent @ 014a6304
+  <- AliothEngine.GUIScreenManager$$ShowBGSprite @ 016797b8
+  <- CVPanelMono$$CheckToggleState @ 00f828a0
+  <- LanguagePanelMono$$CheckToggleState @ 00f83b58
+  <- WebUIMono$$InitWebView @ 0104f7e8
+  <- LanguagePanelMono$$InitToggles @ 00f83470
+
+--- Listing ---
+0176db7c  str x20,[sp, #-0x20]!
+0176db80  stp x19,x30,[sp, #0x10]
+0176db84  cbz x0,0x0176dbd8
+0176db88  ldr x8,[x1, #0x38]
+0176db8c  mov x19,x1
+0176db90  mov x20,x0
+0176db94  ldr x1,[x8]
+0176db98  ldr x8,[x1, #0x8]
+0176db9c  blr x8
+0176dba0  cbz x0,0x0176dbb0
+0176dba4  ldp x19,x30,[sp, #0x10]
+0176dba8  ldr x20,[sp], #0x20
+0176dbac  ret
+0176dbb0  mov x0,x20
+0176dbb4  mov x1,xzr
+0176dbb8  bl 0x024e4ed4
+0176dbbc  cbz x0,0x0176dbd8
+0176dbc0  ldr x8,[x19, #0x38]
+0176dbc4  ldp x19,x30,[sp, #0x10]
+0176dbc8  ldr x1,[x8, #0x10]
+0176dbcc  ldr x2,[x1, #0x8]
+0176dbd0  ldr x20,[sp], #0x20
+0176dbd4  br x2
+0176dbd8  bl 0x00b079b0

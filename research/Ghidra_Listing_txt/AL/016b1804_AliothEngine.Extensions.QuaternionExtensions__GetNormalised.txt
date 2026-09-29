@@ -1,0 +1,20 @@
+Function: AliothEngine.Extensions.QuaternionExtensions$$GetNormalised @ 016b1804
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016b1804  fmul s4,s0,s0
+016b1808  fmul s5,s1,s1
+016b180c  fadd s4,s4,s5
+016b1810  fmul s5,s2,s2
+016b1814  fadd s4,s5,s4
+016b1818  fmul s5,s3,s3
+016b181c  fadd s4,s5,s4
+016b1820  fsqrt s4,s4
+016b1824  fdiv s0,s0,s4
+016b1828  fdiv s1,s1,s4
+016b182c  fdiv s2,s2,s4
+016b1830  fdiv s3,s3,s4
+016b1834  ret

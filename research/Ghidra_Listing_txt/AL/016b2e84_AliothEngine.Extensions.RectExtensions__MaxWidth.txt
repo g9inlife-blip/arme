@@ -1,0 +1,29 @@
+Function: AliothEngine.Extensions.RectExtensions$$MaxWidth @ 016b2e84
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_width @ 024db070
+  -> UnityEngine.Rect$$get_width @ 024db068
+
+--- Calls IN ---
+
+--- Listing ---
+016b2e84  sub sp,sp,#0x20
+016b2e88  str d8,[sp, #0x10]
+016b2e8c  str x30,[sp, #0x18]
+016b2e90  mov x0,sp
+016b2e94  mov x1,xzr
+016b2e98  mov v8.16B,v4.16B
+016b2e9c  stp s0,s1,[sp]
+016b2ea0  stp s2,s3,[sp, #0x8]
+016b2ea4  bl 0x024db068
+016b2ea8  fcmp s0,s8
+016b2eac  fcsel s0,s0,s8,mi
+016b2eb0  mov x0,sp
+016b2eb4  mov x1,xzr
+016b2eb8  bl 0x024db070
+016b2ebc  ldp s0,s1,[sp]
+016b2ec0  ldp s2,s3,[sp, #0x8]
+016b2ec4  ldr x30,[sp, #0x18]
+016b2ec8  ldr d8,[sp, #0x10]
+016b2ecc  add sp,sp,#0x20
+016b2ed0  ret

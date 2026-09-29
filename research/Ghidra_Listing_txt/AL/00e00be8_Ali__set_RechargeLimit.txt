@@ -1,0 +1,49 @@
+Function: Ali$$set_RechargeLimit @ 00e00be8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- Ali$$GetRechargeLimit @ 00e10480
+
+--- Listing ---
+00e00be8  str x22,[sp, #-0x30]!
+00e00bec  stp x21,x20,[sp, #0x10]
+00e00bf0  stp x19,x30,[sp, #0x20]
+00e00bf4  adrp x22,0x3572000
+00e00bf8  adrp x21,0x335f000
+00e00bfc  ldrb w8,[x22, #0x525]
+00e00c00  ldr x21,[x21, #0x20]
+00e00c04  mov x19,x1
+00e00c08  mov x20,x0
+00e00c0c  tbnz w8,#0x0,0x00e00c24
+00e00c10  adrp x0,0x335f000
+00e00c14  ldr x0,[x0, #0x20]
+00e00c18  bl 0x00b0789c
+00e00c1c  mov w8,#0x1
+00e00c20  strb w8,[x22, #0x525]
+00e00c24  ldr x0,[x21]
+00e00c28  ldr w8,[x0, #0xe0]
+00e00c2c  cbnz w8,0x00e00c38
+00e00c30  bl 0x00b0798c
+00e00c34  ldr x0,[x21]
+00e00c38  ldr x8,[x0, #0xb8]
+00e00c3c  ldr x0,[x8, #0xc0]
+00e00c40  cbz x0,0x00e00c60
+00e00c44  mov x1,x20
+00e00c48  mov x2,x19
+00e00c4c  ldp x19,x30,[sp, #0x20]
+00e00c50  ldp x21,x20,[sp, #0x10]
+00e00c54  mov x3,xzr
+00e00c58  ldr x22,[sp], #0x30
+00e00c5c  b 0x0106125c
+00e00c60  str x19,[x20, #0x48]!
+00e00c64  mov x0,x20
+00e00c68  mov x1,x19
+00e00c6c  ldp x19,x30,[sp, #0x20]
+00e00c70  ldp x21,x20,[sp, #0x10]
+00e00c74  ldr x22,[sp], #0x30
+00e00c78  b 0x00b07850

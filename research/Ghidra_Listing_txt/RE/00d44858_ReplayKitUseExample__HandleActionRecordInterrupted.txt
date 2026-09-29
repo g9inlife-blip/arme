@@ -1,0 +1,42 @@
+Function: ReplayKitUseExample$$HandleActionRecordInterrupted @ 00d44858
+
+--- Calls OUT ---
+  -> IOSNativePopUpManager$$showMessage @ 00d25960
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00d44858  str x20,[sp, #-0x20]!
+00d4485c  stp x19,x30,[sp, #0x10]
+00d44860  adrp x20,0x3571000
+00d44864  ldrb w8,[x20, #0xdb9]
+00d44868  mov x19,x1
+00d4486c  tbnz w8,#0x0,0x00d44890
+00d44870  adrp x0,0x3370000
+00d44874  ldr x0,[x0, #0xe68]
+00d44878  bl 0x00b0789c
+00d4487c  adrp x0,0x331a000
+00d44880  ldr x0,[x0, #0x2d0]
+00d44884  bl 0x00b0789c
+00d44888  mov w8,#0x1
+00d4488c  strb w8,[x20, #0xdb9]
+00d44890  cbz x19,0x00d448d0
+00d44894  adrp x8,0x3370000
+00d44898  ldr x8,[x8, #0xe68]
+00d4489c  ldr x1,[x19, #0x18]
+00d448a0  adrp x19,0x331a000
+00d448a4  mov x2,xzr
+00d448a8  ldr x0,[x8]
+00d448ac  ldr x19,[x19, #0x2d0]
+00d448b0  bl 0x01fd2850
+00d448b4  ldr x8,[x19]
+00d448b8  ldp x19,x30,[sp, #0x10]
+00d448bc  mov x1,x0
+00d448c0  mov x2,xzr
+00d448c4  mov x0,x8
+00d448c8  ldr x20,[sp], #0x20
+00d448cc  b 0x00d25960
+00d448d0  bl 0x00b079b0

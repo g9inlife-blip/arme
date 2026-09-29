@@ -1,0 +1,54 @@
+Function: AliothEngine.MemoryCallback$$Awake @ 01655b80
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Object$$set_name @ 024df584
+
+--- Calls IN ---
+
+--- Listing ---
+01655b80  stp x21,x20,[sp, #-0x20]!
+01655b84  stp x19,x30,[sp, #0x10]
+01655b88  adrp x21,0x3577000
+01655b8c  adrp x20,0x330c000
+01655b90  ldrb w8,[x21, #0x806]
+01655b94  ldr x20,[x20, #0x9b8]
+01655b98  mov x19,x0
+01655b9c  tbnz w8,#0x0,0x01655bc0
+01655ba0  adrp x0,0x330c000
+01655ba4  ldr x0,[x0, #0x9b8]
+01655ba8  bl 0x00b0789c
+01655bac  adrp x0,0x3362000
+01655bb0  ldr x0,[x0, #0x140]
+01655bb4  bl 0x00b0789c
+01655bb8  mov w8,#0x1
+01655bbc  strb w8,[x21, #0x806]
+01655bc0  ldr x0,[x20]
+01655bc4  ldr w8,[x0, #0xe0]
+01655bc8  cbnz w8,0x01655bd4
+01655bcc  bl 0x00b0798c
+01655bd0  ldr x0,[x20]
+01655bd4  ldr x8,[x0, #0xb8]
+01655bd8  ldr x0,[x8, #0x8]
+01655bdc  cbz x0,0x01655bf4
+01655be0  mov x1,x19
+01655be4  ldp x19,x30,[sp, #0x10]
+01655be8  mov x2,xzr
+01655bec  ldp x21,x20,[sp], #0x20
+01655bf0  b 0x01060dac
+01655bf4  mov x0,x19
+01655bf8  mov x1,xzr
+01655bfc  bl 0x024e4ed4
+01655c00  cbz x0,0x01655c20
+01655c04  adrp x8,0x3362000
+01655c08  ldr x8,[x8, #0x140]
+01655c0c  ldp x19,x30,[sp, #0x10]
+01655c10  mov x2,xzr
+01655c14  ldr x1,[x8]
+01655c18  ldp x21,x20,[sp], #0x20
+01655c1c  b 0x024df584
+01655c20  bl 0x00b079b0

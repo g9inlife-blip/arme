@@ -1,0 +1,124 @@
+Function: AliothEngine.Extensions.Matrix4x4Extension$$GetOrthographicProjection @ 016aa5b0
+
+--- Calls OUT ---
+  -> UnityEngine.Matrix4x4$$set_Item @ 024e7b74
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.CameraExtensions$$GetProjectionMatrix @ 016aa410
+
+--- Listing ---
+016aa5b0  sub sp,sp,#0x80
+016aa5b4  str d12,[sp, #0x40]
+016aa5b8  stp d11,d10,[sp, #0x50]
+016aa5bc  stp d9,d8,[sp, #0x60]
+016aa5c0  stp x19,x30,[sp, #0x70]
+016aa5c4  fsub s6,s1,s0
+016aa5c8  fmov s7,0x40000000
+016aa5cc  fsub s16,s3,s2
+016aa5d0  fadd s1,s0,s1
+016aa5d4  fadd s2,s2,s3
+016aa5d8  fadd s3,s4,s5
+016aa5dc  fsub s17,s5,s4
+016aa5e0  fmov s18,0xc0000000
+016aa5e4  movi v4.2D,#0x0
+016aa5e8  fdiv s0,s7,s6
+016aa5ec  fneg s1,s1
+016aa5f0  fneg s2,s2
+016aa5f4  fneg s3,s3
+016aa5f8  mov x0,sp
+016aa5fc  mov w1,wzr
+016aa600  mov x2,xzr
+016aa604  mov x19,x8
+016aa608  fdiv s10,s7,s16
+016aa60c  fdiv s9,s18,s17
+016aa610  stp q4,q4,[sp, #0x20]
+016aa614  fdiv s11,s1,s6
+016aa618  fdiv s12,s2,s16
+016aa61c  fdiv s8,s3,s17
+016aa620  stp q4,q4,[sp]
+016aa624  bl 0x024e7b74
+016aa628  mov x0,sp
+016aa62c  fmov s0,wzr
+016aa630  mov w1,#0x4
+016aa634  mov x2,xzr
+016aa638  bl 0x024e7b74
+016aa63c  mov x0,sp
+016aa640  fmov s0,wzr
+016aa644  mov w1,#0x8
+016aa648  mov x2,xzr
+016aa64c  bl 0x024e7b74
+016aa650  mov x0,sp
+016aa654  mov w1,#0xc
+016aa658  mov v0.16B,v11.16B
+016aa65c  mov x2,xzr
+016aa660  bl 0x024e7b74
+016aa664  mov x0,sp
+016aa668  fmov s0,wzr
+016aa66c  mov w1,#0x1
+016aa670  mov x2,xzr
+016aa674  bl 0x024e7b74
+016aa678  mov x0,sp
+016aa67c  mov w1,#0x5
+016aa680  mov v0.16B,v10.16B
+016aa684  mov x2,xzr
+016aa688  bl 0x024e7b74
+016aa68c  mov x0,sp
+016aa690  fmov s0,wzr
+016aa694  mov w1,#0x9
+016aa698  mov x2,xzr
+016aa69c  bl 0x024e7b74
+016aa6a0  mov x0,sp
+016aa6a4  mov w1,#0xd
+016aa6a8  mov v0.16B,v12.16B
+016aa6ac  mov x2,xzr
+016aa6b0  bl 0x024e7b74
+016aa6b4  mov x0,sp
+016aa6b8  fmov s0,wzr
+016aa6bc  mov w1,#0x2
+016aa6c0  mov x2,xzr
+016aa6c4  bl 0x024e7b74
+016aa6c8  mov x0,sp
+016aa6cc  fmov s0,wzr
+016aa6d0  mov w1,#0x6
+016aa6d4  mov x2,xzr
+016aa6d8  bl 0x024e7b74
+016aa6dc  mov x0,sp
+016aa6e0  mov w1,#0xa
+016aa6e4  mov v0.16B,v9.16B
+016aa6e8  mov x2,xzr
+016aa6ec  bl 0x024e7b74
+016aa6f0  mov x0,sp
+016aa6f4  mov w1,#0xe
+016aa6f8  mov v0.16B,v8.16B
+016aa6fc  mov x2,xzr
+016aa700  bl 0x024e7b74
+016aa704  mov x0,sp
+016aa708  fmov s0,wzr
+016aa70c  mov w1,#0x3
+016aa710  mov x2,xzr
+016aa714  bl 0x024e7b74
+016aa718  mov x0,sp
+016aa71c  fmov s0,wzr
+016aa720  mov w1,#0x7
+016aa724  mov x2,xzr
+016aa728  bl 0x024e7b74
+016aa72c  mov x0,sp
+016aa730  fmov s0,wzr
+016aa734  mov w1,#0xb
+016aa738  mov x2,xzr
+016aa73c  bl 0x024e7b74
+016aa740  fmov s0,0x3f800000
+016aa744  mov x0,sp
+016aa748  mov w1,#0xf
+016aa74c  mov x2,xzr
+016aa750  bl 0x024e7b74
+016aa754  ldp q1,q0,[sp, #0x20]
+016aa758  ldp q3,q2,[sp]
+016aa75c  ldp d9,d8,[sp, #0x60]
+016aa760  ldp d11,d10,[sp, #0x50]
+016aa764  stp q1,q0,[x19, #0x20]
+016aa768  stp q3,q2,[x19]
+016aa76c  ldp x19,x30,[sp, #0x70]
+016aa770  ldr d12,[sp, #0x40]
+016aa774  add sp,sp,#0x80
+016aa778  ret

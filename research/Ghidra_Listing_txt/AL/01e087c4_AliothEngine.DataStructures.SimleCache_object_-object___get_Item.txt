@@ -1,0 +1,49 @@
+Function: AliothEngine.DataStructures.SimleCache<object,-object>$$get_Item @ 01e087c4
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01e087c4  sub sp,sp,#0x30
+01e087c8  stp x21,x20,[sp, #0x10]
+01e087cc  stp x19,x30,[sp, #0x20]
+01e087d0  str xzr,[sp, #0x8]
+01e087d4  mov x21,x0
+01e087d8  ldr x0,[x0, #0x10]
+01e087dc  cbz x0,0x01e08864
+01e087e0  ldr x8,[x2, #0x20]
+01e087e4  mov x20,x2
+01e087e8  add x2,sp,#0x8
+01e087ec  mov x19,x1
+01e087f0  ldr x8,[x8, #0xc0]
+01e087f4  ldr x3,[x8, #0x10]
+01e087f8  ldr x8,[x3, #0x8]
+01e087fc  blr x8
+01e08800  tbnz w0,#0x0,0x01e08850
+01e08804  ldr x0,[x21, #0x18]
+01e08808  cbz x0,0x01e08864
+01e0880c  ldr x8,[x20, #0x20]
+01e08810  ldr x21,[x21, #0x10]
+01e08814  mov x1,x19
+01e08818  ldr x8,[x8, #0xc0]
+01e0881c  ldr x2,[x8, #0x20]
+01e08820  ldr x8,[x2, #0x8]
+01e08824  blr x8
+01e08828  str x0,[sp, #0x8]
+01e0882c  cbz x21,0x01e08864
+01e08830  ldr x8,[x20, #0x20]
+01e08834  mov x2,x0
+01e08838  mov x0,x21
+01e0883c  mov x1,x19
+01e08840  ldr x8,[x8, #0xc0]
+01e08844  ldr x3,[x8, #0x28]
+01e08848  ldr x8,[x3, #0x8]
+01e0884c  blr x8
+01e08850  ldr x0,[sp, #0x8]
+01e08854  ldp x19,x30,[sp, #0x20]
+01e08858  ldp x21,x20,[sp, #0x10]
+01e0885c  add sp,sp,#0x30
+01e08860  ret
+01e08864  bl 0x00b079b0

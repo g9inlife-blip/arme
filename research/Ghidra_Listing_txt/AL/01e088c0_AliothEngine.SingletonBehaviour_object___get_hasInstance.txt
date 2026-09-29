@@ -1,0 +1,69 @@
+Function: AliothEngine.SingletonBehaviour<object>$$get_hasInstance @ 01e088c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- Ali$$ClearAllAsset @ 00e0a560
+  <- LoginManager$$OnDestroy @ 00dd50e8
+  <- OpeningCutScene$$PlayAniDialogEnd @ 00e3aa2c
+  <- BattleEditorUIMono$$OnDestroy @ 016d3720
+  <- AliothEngine.NotificationManager$$ClearLocalNotification @ 01657360
+  <- LoginGateMono$$OnDestroy @ 00f91764
+  <- Ali$$get_advertisingIdentifier @ 00e0a494
+  <- GUIScreenBaseMono$$OnDestroy @ 00f21dc0
+  <- AliothEngine.StoreManager_BiliBili$$OnDestroy @ 0165ac90
+  <- AliothEngine.StoreManager_WePay$$OnDestroy @ 0165d190
+  <- AliothEngine.NotificationManager$$ScheduleLocalNotification @ 01656dc4
+  <- AliothEngine.NotificationManager$$Register @ 01657608
+  <- AliothEngine.NotificationManager$$ClearAllLocalNotifications @ 016574ec
+  <- GUIScreenBaseMono$$UIGuideCheck @ 00f21088
+  <- Ali$$GetLocalizedPrice @ 00e0c648
+  <- GlobalUIManager$$OnDestroy @ 00f1cbf8
+  <- AliothEngine.StoreManager_SDK$$OnDestroy @ 0165c564
+  <- Ali$$Init @ 00e019f8
+  <- AliothEngine.AssetHolder$$Release @ 01662f60
+  <- AliothEngine.StoreManager_AliPay$$OnDestroy @ 01659f84
+  <- AliothEngine.GUIScreenManager$$get_isLoadingScreen @ 0167b15c
+  <- Ali$$Finalize @ 00e00034
+  <- AliothEngine.NotificationManager$$AppendDeviceData @ 016572d0
+
+--- Listing ---
+01e088c0  str x20,[sp, #-0x20]!
+01e088c4  stp x19,x30,[sp, #0x10]
+01e088c8  adrp x20,0x3578000
+01e088cc  ldrb w8,[x20, #0xeb0]
+01e088d0  mov x19,x0
+01e088d4  tbnz w8,#0x0,0x01e088ec
+01e088d8  adrp x0,0x3321000
+01e088dc  ldr x0,[x0, #0xca8]
+01e088e0  bl 0x00b0789c
+01e088e4  mov w8,#0x1
+01e088e8  strb w8,[x20, #0xeb0]
+01e088ec  ldr x0,[x19, #0x20]
+01e088f0  ldrb w8,[x0, #0x132]
+01e088f4  tbnz w8,#0x0,0x01e088fc
+01e088f8  bl 0x00b2ac40
+01e088fc  ldr x8,[x0, #0xc0]
+01e08900  adrp x19,0x3321000
+01e08904  ldr x0,[x8]
+01e08908  ldrb w8,[x0, #0x132]
+01e0890c  ldr x19,[x19, #0xca8]
+01e08910  tbnz w8,#0x0,0x01e08918
+01e08914  bl 0x00b2ac40
+01e08918  ldr x8,[x19]
+01e0891c  ldr x9,[x0, #0xb8]
+01e08920  ldr w10,[x8, #0xe0]
+01e08924  ldr x19,[x9]
+01e08928  cbnz w10,0x01e08934
+01e0892c  mov x0,x8
+01e08930  bl 0x00b0798c
+01e08934  mov x0,x19
+01e08938  ldp x19,x30,[sp, #0x10]
+01e0893c  mov x1,xzr
+01e08940  mov x2,xzr
+01e08944  ldr x20,[sp], #0x20
+01e08948  b 0x024de30c

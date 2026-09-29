@@ -1,0 +1,53 @@
+Function: Alioth.S1.Core.KCP$$Encode8u @ 015b7e28
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp758 @ 010c36dc
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$EncodeSegment @ 015b8774
+
+--- Listing ---
+015b7e28  stp x23,x22,[sp, #-0x30]!
+015b7e2c  stp x21,x20,[sp, #0x10]
+015b7e30  stp x19,x30,[sp, #0x20]
+015b7e34  adrp x23,0x3577000
+015b7e38  adrp x22,0x333d000
+015b7e3c  ldrb w8,[x23, #0xf7]
+015b7e40  ldr x22,[x22, #0xfc0]
+015b7e44  mov w19,w2
+015b7e48  mov w20,w1
+015b7e4c  mov x21,x0
+015b7e50  tbnz w8,#0x0,0x015b7e68
+015b7e54  adrp x0,0x333d000
+015b7e58  ldr x0,[x0, #0xfc0]
+015b7e5c  bl 0x00b0789c
+015b7e60  mov w8,#0x1
+015b7e64  strb w8,[x23, #0xf7]
+015b7e68  ldr x8,[x22]
+015b7e6c  ldr x8,[x8, #0xb8]
+015b7e70  ldr x0,[x8]
+015b7e74  cbz x0,0x015b7e98
+015b7e78  mov x1,x21
+015b7e7c  mov w2,w20
+015b7e80  mov w3,w19
+015b7e84  ldp x19,x30,[sp, #0x20]
+015b7e88  ldp x21,x20,[sp, #0x10]
+015b7e8c  mov x4,xzr
+015b7e90  ldp x23,x22,[sp], #0x30
+015b7e94  b 0x010c36dc
+015b7e98  cbz x21,0x015b7ec4
+015b7e9c  ldr w8,[x21, #0x18]
+015b7ea0  cmp w8,w20
+015b7ea4  b.ls 0x015b7ec8
+015b7ea8  add x8,x21,w20, SXTW 
+015b7eac  strb w19,[x8, #0x20]
+015b7eb0  ldp x19,x30,[sp, #0x20]
+015b7eb4  ldp x21,x20,[sp, #0x10]
+015b7eb8  mov w0,#0x1
+015b7ebc  ldp x23,x22,[sp], #0x30
+015b7ec0  ret
+015b7ec4  bl 0x00b079b0
+015b7ec8  bl 0x00b079b8

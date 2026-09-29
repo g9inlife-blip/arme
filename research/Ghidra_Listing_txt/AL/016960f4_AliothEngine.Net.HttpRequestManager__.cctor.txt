@@ -1,0 +1,46 @@
+Function: AliothEngine.Net.HttpRequestManager$$.cctor @ 016960f4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.WaitForSeconds$$.ctor @ 024dd340
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016960f4  str x20,[sp, #-0x20]!
+016960f8  stp x19,x30,[sp, #0x10]
+016960fc  adrp x19,0x3577000
+01696100  adrp x20,0x3380000
+01696104  ldrb w8,[x19, #0xaff]
+01696108  ldr x20,[x20, #0xea8]
+0169610c  tbnz w8,#0x0,0x01696130
+01696110  adrp x0,0x332a000
+01696114  ldr x0,[x0, #0xe60]
+01696118  bl 0x00b0789c
+0169611c  adrp x0,0x3380000
+01696120  ldr x0,[x0, #0xea8]
+01696124  bl 0x00b0789c
+01696128  mov w8,#0x1
+0169612c  strb w8,[x19, #0xaff]
+01696130  ldr x0,[x20]
+01696134  bl 0x00b079a0
+01696138  cbz x0,0x01696178
+0169613c  adrp x20,0x332a000
+01696140  ldr x20,[x20, #0xe60]
+01696144  fmov s0,0x3f800000
+01696148  mov x1,xzr
+0169614c  mov x19,x0
+01696150  bl 0x024dd340
+01696154  ldr x8,[x20]
+01696158  mov x1,x19
+0169615c  ldr x8,[x8, #0xb8]
+01696160  str x19,[x8]
+01696164  ldr x8,[x20]
+01696168  ldp x19,x30,[sp, #0x10]
+0169616c  ldr x0,[x8, #0xb8]
+01696170  ldr x20,[sp], #0x20
+01696174  b 0x00b07850
+01696178  bl 0x00b079b0

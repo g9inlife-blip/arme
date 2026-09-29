@@ -1,0 +1,46 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary<object,-object>$$System.Collections.Generic.IDictionary<TKey,TValue>.TryGetValue @ 01dfa948
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_0099fb30 @ 0099fb30
+
+--- Listing ---
+01dfa948  str x22,[sp, #-0x30]!
+01dfa94c  stp x21,x20,[sp, #0x10]
+01dfa950  stp x19,x30,[sp, #0x20]
+01dfa954  ldr x21,[x0]
+01dfa958  cbz x21,0x01dfa9d4
+01dfa95c  ldr x8,[x3, #0x20]
+01dfa960  mov x22,x3
+01dfa964  mov x19,x2
+01dfa968  mov x20,x1
+01dfa96c  ldrh w9,[x8, #0x132]
+01dfa970  tbnz w9,#0x0,0x01dfa988
+01dfa974  mov x0,x8
+01dfa978  bl 0x00b2ac40
+01dfa97c  ldr x8,[x22, #0x20]
+01dfa980  ldrh w9,[x8, #0x132]
+01dfa984  b 0x01dfa98c
+01dfa988  mov x0,x8
+01dfa98c  ldr x10,[x0, #0xc0]
+01dfa990  ldr x10,[x10, #0x78]
+01dfa994  ldr x4,[x10, #0x8]
+01dfa998  tbnz w9,#0x0,0x01dfa9b0
+01dfa99c  mov x0,x8
+01dfa9a0  str x4,[sp, #0x8]
+01dfa9a4  bl 0x00b2ac40
+01dfa9a8  ldr x4,[sp, #0x8]
+01dfa9ac  mov x8,x0
+01dfa9b0  ldr x8,[x8, #0xc0]
+01dfa9b4  mov x0,x21
+01dfa9b8  mov x1,x20
+01dfa9bc  mov x2,x19
+01dfa9c0  ldr x3,[x8, #0x78]
+01dfa9c4  ldp x19,x30,[sp, #0x20]
+01dfa9c8  ldp x21,x20,[sp, #0x10]
+01dfa9cc  ldr x22,[sp], #0x30
+01dfa9d0  br x4
+01dfa9d4  bl 0x00b079b0

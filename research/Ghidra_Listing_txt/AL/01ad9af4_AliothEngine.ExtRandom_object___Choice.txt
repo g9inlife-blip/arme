@@ -1,0 +1,27 @@
+Function: AliothEngine.ExtRandom<object>$$Choice @ 01ad9af4
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.ExtRandomTest$$ChoiceTestArray @ 016835f0
+
+--- Listing ---
+01ad9af4  stp x19,x30,[sp, #-0x10]!
+01ad9af8  cbz x0,0x01ad9b2c
+01ad9afc  ldr w1,[x0, #0x18]
+01ad9b00  mov x19,x0
+01ad9b04  mov w0,wzr
+01ad9b08  mov x2,xzr
+01ad9b0c  bl 0x024d63b0
+01ad9b10  ldr w8,[x19, #0x18]
+01ad9b14  cmp w0,w8
+01ad9b18  b.cs 0x01ad9b30
+01ad9b1c  add x8,x19,w0, SXTW  #0x3
+01ad9b20  ldr x0,[x8, #0x20]
+01ad9b24  ldp x19,x30,[sp], #0x10
+01ad9b28  ret
+01ad9b2c  bl 0x00b079b0
+01ad9b30  bl 0x00b079b8

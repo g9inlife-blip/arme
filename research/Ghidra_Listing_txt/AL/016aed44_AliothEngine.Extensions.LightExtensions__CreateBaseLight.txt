@@ -1,0 +1,132 @@
+Function: AliothEngine.Extensions.LightExtensions$$CreateBaseLight @ 016aed44
+
+--- Calls OUT ---
+  -> UnityEngine.LayerMask$$GetMask @ 024e0c08
+  -> UnityEngine.GameObject$$set_layer @ 024de7a8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.LayerMask$$NameToLayer @ 024e0bcc
+  -> UnityEngine.GameObject$$AddComponent<object> @ 01794da8
+  -> FUN_00b07978 @ 00b07978
+  -> UnityEngine.Light$$set_intensity @ 024c4f44
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> UnityEngine.Light$$set_shadows @ 024c433c
+  -> UnityEngine.GameObject$$.ctor @ 024dede8
+  -> UnityEngine.Light$$set_color @ 024c4d68
+  -> UnityEngine.Light$$set_cullingMask @ 024c5894
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.LightExtensions$$CreateSpotLight @ 016aef94
+  <- AliothEngine.Extensions.LightExtensions$$CreateDirectionalLight @ 016aecac
+  <- AliothEngine.Extensions.LightExtensions$$CreatePointLight @ 016aeee4
+
+--- Listing ---
+016aed44  str d12,[sp, #-0x60]!
+016aed48  stp d11,d10,[sp, #0x10]
+016aed4c  stp d9,d8,[sp, #0x20]
+016aed50  stp x23,x22,[sp, #0x30]
+016aed54  stp x21,x20,[sp, #0x40]
+016aed58  stp x19,x30,[sp, #0x50]
+016aed5c  adrp x21,0x3577000
+016aed60  adrp x22,0x3310000
+016aed64  ldrb w8,[x21, #0xbd4]
+016aed68  ldr x22,[x22, #0xe40]
+016aed6c  mov x20,x1
+016aed70  mov v8.16B,v4.16B
+016aed74  mov w19,w0
+016aed78  mov v9.16B,v3.16B
+016aed7c  mov v10.16B,v2.16B
+016aed80  mov v11.16B,v1.16B
+016aed84  mov v12.16B,v0.16B
+016aed88  tbnz w8,#0x0,0x016aedb8
+016aed8c  adrp x0,0x3326000
+016aed90  ldr x0,[x0, #0xf28]
+016aed94  bl 0x00b0789c
+016aed98  adrp x0,0x3310000
+016aed9c  ldr x0,[x0, #0xe40]
+016aeda0  bl 0x00b0789c
+016aeda4  adrp x0,0x3308000
+016aeda8  ldr x0,[x0, #0x9a8]
+016aedac  bl 0x00b0789c
+016aedb0  mov w8,#0x1
+016aedb4  strb w8,[x21, #0xbd4]
+016aedb8  ldr x0,[x22]
+016aedbc  bl 0x00b079a0
+016aedc0  cbz x0,0x016aeed0
+016aedc4  adrp x22,0x3326000
+016aedc8  adrp x23,0x3308000
+016aedcc  ldr x22,[x22, #0xf28]
+016aedd0  ldr x23,[x23, #0x9a8]
+016aedd4  mov x1,xzr
+016aedd8  mov x21,x0
+016aeddc  bl 0x024dede8
+016aede0  mov x0,x20
+016aede4  mov x1,xzr
+016aede8  bl 0x024e0bcc
+016aedec  mov w1,w0
+016aedf0  mov x0,x21
+016aedf4  mov x2,xzr
+016aedf8  bl 0x024de7a8
+016aedfc  ldr x1,[x22]
+016aee00  mov x0,x21
+016aee04  bl 0x01794da8
+016aee08  ldr x8,[x23]
+016aee0c  mov x21,x0
+016aee10  mov w1,#0x1
+016aee14  mov x0,x8
+016aee18  bl 0x00b078f8
+016aee1c  cbz x0,0x016aeed0
+016aee20  mov x22,x0
+016aee24  cbz x20,0x016aee3c
+016aee28  ldr x8,[x22]
+016aee2c  mov x0,x20
+016aee30  ldr x1,[x8, #0x40]
+016aee34  bl 0x00b07990
+016aee38  cbz x0,0x016aeed8
+016aee3c  ldr w8,[x22, #0x18]
+016aee40  cbz w8,0x016aeed4
+016aee44  mov x0,x22
+016aee48  str x20,[x0, #0x20]!
+016aee4c  mov x1,x20
+016aee50  bl 0x00b07850
+016aee54  mov x0,x22
+016aee58  mov x1,xzr
+016aee5c  bl 0x024e0c08
+016aee60  cbz x21,0x016aeed0
+016aee64  mov w1,w0
+016aee68  mov x0,x21
+016aee6c  mov x2,xzr
+016aee70  bl 0x024c5894
+016aee74  mov x0,x21
+016aee78  mov v0.16B,v12.16B
+016aee7c  mov v1.16B,v11.16B
+016aee80  mov v2.16B,v10.16B
+016aee84  mov v3.16B,v9.16B
+016aee88  mov x1,xzr
+016aee8c  bl 0x024c4d68
+016aee90  mov x0,x21
+016aee94  mov w1,w19
+016aee98  mov x2,xzr
+016aee9c  bl 0x024c433c
+016aeea0  mov x0,x21
+016aeea4  mov v0.16B,v8.16B
+016aeea8  mov x1,xzr
+016aeeac  bl 0x024c4f44
+016aeeb0  mov x0,x21
+016aeeb4  ldp x19,x30,[sp, #0x50]
+016aeeb8  ldp x21,x20,[sp, #0x40]
+016aeebc  ldp x23,x22,[sp, #0x30]
+016aeec0  ldp d9,d8,[sp, #0x20]
+016aeec4  ldp d11,d10,[sp, #0x10]
+016aeec8  ldr d12,[sp], #0x60
+016aeecc  ret
+016aeed0  bl 0x00b079b0
+016aeed4  bl 0x00b079b8
+016aeed8  bl 0x00b079d4
+016aeedc  mov x1,xzr
+016aeee0  bl 0x00b07978

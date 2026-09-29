@@ -1,0 +1,86 @@
+Function: ResolveMorePanelMono$$Confirm @ 010456d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> BaseMono$$Notify @ 00e1d098
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+
+--- Calls IN ---
+
+--- Listing ---
+010456d4  str x22,[sp, #-0x30]!
+010456d8  stp x21,x20,[sp, #0x10]
+010456dc  stp x19,x30,[sp, #0x20]
+010456e0  adrp x20,0x3574000
+010456e4  adrp x21,0x3378000
+010456e8  ldrb w8,[x20, #0x5ff]
+010456ec  ldr x21,[x21, #0x490]
+010456f0  mov x19,x0
+010456f4  tbnz w8,#0x0,0x01045724
+010456f8  adrp x0,0x3370000
+010456fc  ldr x0,[x0, #0x778]
+01045700  bl 0x00b0789c
+01045704  adrp x0,0x3378000
+01045708  ldr x0,[x0, #0x490]
+0104570c  bl 0x00b0789c
+01045710  adrp x0,0x334e000
+01045714  ldr x0,[x0, #0xc50]
+01045718  bl 0x00b0789c
+0104571c  mov w8,#0x1
+01045720  strb w8,[x20, #0x5ff]
+01045724  ldr x8,[x21]
+01045728  ldr x8,[x8, #0xb8]
+0104572c  ldr x0,[x8, #0x30]
+01045730  cbz x0,0x0104574c
+01045734  mov x1,x19
+01045738  ldp x19,x30,[sp, #0x20]
+0104573c  ldp x21,x20,[sp, #0x10]
+01045740  mov x2,xzr
+01045744  ldr x22,[sp], #0x30
+01045748  b 0x01060dac
+0104574c  adrp x8,0x3370000
+01045750  ldr x8,[x8, #0x778]
+01045754  mov w1,#0x1
+01045758  ldr x0,[x8]
+0104575c  bl 0x00b078f8
+01045760  cbz x0,0x010457d4
+01045764  ldr x21,[x19, #0xd0]
+01045768  mov x20,x0
+0104576c  cbz x21,0x01045784
+01045770  ldr x8,[x20]
+01045774  mov x0,x21
+01045778  ldr x1,[x8, #0x40]
+0104577c  bl 0x00b07990
+01045780  cbz x0,0x010457dc
+01045784  ldr w8,[x20, #0x18]
+01045788  cbz w8,0x010457d8
+0104578c  adrp x22,0x334e000
+01045790  ldr x22,[x22, #0xc50]
+01045794  mov x0,x20
+01045798  str x21,[x0, #0x20]!
+0104579c  mov x1,x21
+010457a0  bl 0x00b07850
+010457a4  ldr x0,[x22]
+010457a8  mov x1,x20
+010457ac  mov x2,xzr
+010457b0  bl 0x00e1d098
+010457b4  ldr x8,[x19]
+010457b8  mov x0,x19
+010457bc  ldp x19,x30,[sp, #0x20]
+010457c0  ldp x21,x20,[sp, #0x10]
+010457c4  ldr x2,[x8, #0x438]
+010457c8  ldr x1,[x8, #0x440]
+010457cc  ldr x22,[sp], #0x30
+010457d0  br x2
+010457d4  bl 0x00b079b0
+010457d8  bl 0x00b079b8
+010457dc  bl 0x00b079d4
+010457e0  mov x1,xzr
+010457e4  bl 0x00b07978

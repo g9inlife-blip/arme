@@ -1,0 +1,35 @@
+Function: AliothEngine.RateReview$$get_TuiGuangType @ 016582a8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp39 @ 010642ac
+
+--- Calls IN ---
+  <- GlobalUIManager$$Idfa_IosBack @ 00f1fad4
+  <- XLua.CSObjectWrap.AliothEngineRateReviewWrap$$_g_get_TuiGuangType @ 011607bc
+
+--- Listing ---
+016582a8  str x20,[sp, #-0x20]!
+016582ac  stp x19,x30,[sp, #0x10]
+016582b0  adrp x19,0x3577000
+016582b4  adrp x20,0x3359000
+016582b8  ldrb w8,[x19, #0x82e]
+016582bc  ldr x20,[x20, #0xfb8]
+016582c0  tbnz w8,#0x0,0x016582d8
+016582c4  adrp x0,0x3359000
+016582c8  ldr x0,[x0, #0xfb8]
+016582cc  bl 0x00b0789c
+016582d0  mov w8,#0x1
+016582d4  strb w8,[x19, #0x82e]
+016582d8  ldr x8,[x20]
+016582dc  ldr x8,[x8, #0xb8]
+016582e0  ldr x0,[x8, #0x8]
+016582e4  cbz x0,0x016582f8
+016582e8  ldp x19,x30,[sp, #0x10]
+016582ec  mov x1,xzr
+016582f0  ldr x20,[sp], #0x20
+016582f4  b 0x010642ac
+016582f8  ldr w0,[x8]
+016582fc  ldp x19,x30,[sp, #0x10]
+01658300  ldr x20,[sp], #0x20
+01658304  ret

@@ -1,0 +1,28 @@
+Function: AdconfirmpanelNode$$get_equipItemGrid @ 00fa1f6c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fa1f6c  stp x21,x20,[sp, #-0x20]!
+00fa1f70  stp x19,x30,[sp, #0x10]
+00fa1f74  adrp x20,0x3573000
+00fa1f78  adrp x21,0x3367000
+00fa1f7c  ldrb w8,[x20, #0x575]
+00fa1f80  ldr x21,[x21, #0x950]
+00fa1f84  mov x19,x0
+00fa1f88  tbnz w8,#0x0,0x00fa1fa0
+00fa1f8c  adrp x0,0x3367000
+00fa1f90  ldr x0,[x0, #0x950]
+00fa1f94  bl 0x00b0789c
+00fa1f98  mov w8,#0x1
+00fa1f9c  strb w8,[x20, #0x575]
+00fa1fa0  ldr x1,[x21]
+00fa1fa4  mov x0,x19
+00fa1fa8  ldp x19,x30,[sp, #0x10]
+00fa1fac  mov x2,xzr
+00fa1fb0  ldp x21,x20,[sp], #0x20
+00fa1fb4  b 0x00dc06f8

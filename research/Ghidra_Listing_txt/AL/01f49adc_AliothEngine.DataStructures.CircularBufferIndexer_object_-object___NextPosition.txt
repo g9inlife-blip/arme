@@ -1,0 +1,18 @@
+Function: AliothEngine.DataStructures.CircularBufferIndexer<object,-object>$$NextPosition @ 01f49adc
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01f49adc  str x30,[sp, #-0x10]!
+01f49ae0  ldr x8,[x0, #0x10]
+01f49ae4  cbz x8,0x01f49b00
+01f49ae8  ldr w8,[x8, #0x18]
+01f49aec  add w9,w1,#0x1
+01f49af0  sdiv w10,w9,w8
+01f49af4  msub w0,w10,w8,w9
+01f49af8  ldr x30,[sp], #0x10
+01f49afc  ret
+01f49b00  bl 0x00b079b0

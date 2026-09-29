@@ -1,0 +1,90 @@
+Function: RewardManager$$Start @ 00e2e00c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> BaseMono$$AddNotifyListener @ 00e1cfa8
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali.NotifyDelegate$$.ctor @ 00e10f80
+
+--- Calls IN ---
+
+--- Listing ---
+00e2e00c  str x22,[sp, #-0x30]!
+00e2e010  stp x21,x20,[sp, #0x10]
+00e2e014  stp x19,x30,[sp, #0x20]
+00e2e018  adrp x20,0x3572000
+00e2e01c  adrp x21,0x331f000
+00e2e020  ldrb w8,[x20, #0x754]
+00e2e024  ldr x21,[x21, #0x418]
+00e2e028  mov x19,x0
+00e2e02c  tbnz w8,#0x0,0x00e2e080
+00e2e030  adrp x0,0x333a000
+00e2e034  ldr x0,[x0, #0x628]
+00e2e038  bl 0x00b0789c
+00e2e03c  adrp x0,0x335b000
+00e2e040  ldr x0,[x0, #0x1b8]
+00e2e044  bl 0x00b0789c
+00e2e048  adrp x0,0x3367000
+00e2e04c  ldr x0,[x0, #0x580]
+00e2e050  bl 0x00b0789c
+00e2e054  adrp x0,0x331f000
+00e2e058  ldr x0,[x0, #0x418]
+00e2e05c  bl 0x00b0789c
+00e2e060  adrp x0,0x330a000
+00e2e064  ldr x0,[x0, #0x320]
+00e2e068  bl 0x00b0789c
+00e2e06c  adrp x0,0x3321000
+00e2e070  ldr x0,[x0, #0x888]
+00e2e074  bl 0x00b0789c
+00e2e078  mov w8,#0x1
+00e2e07c  strb w8,[x20, #0x754]
+00e2e080  ldr x8,[x21]
+00e2e084  ldr x8,[x8, #0xb8]
+00e2e088  ldr x0,[x8, #0x90]
+00e2e08c  cbz x0,0x00e2e0a8
+00e2e090  mov x1,x19
+00e2e094  ldp x19,x30,[sp, #0x20]
+00e2e098  ldp x21,x20,[sp, #0x10]
+00e2e09c  mov x2,xzr
+00e2e0a0  ldr x22,[sp], #0x30
+00e2e0a4  b 0x01060dac
+00e2e0a8  adrp x21,0x333a000
+00e2e0ac  ldr x21,[x21, #0x628]
+00e2e0b0  ldr x0,[x21]
+00e2e0b4  bl 0x00b079a0
+00e2e0b8  cbz x0,0x00e2e13c
+00e2e0bc  adrp x8,0x335b000
+00e2e0c0  ldr x8,[x8, #0x1b8]
+00e2e0c4  adrp x22,0x330a000
+00e2e0c8  mov x1,x19
+00e2e0cc  mov x3,xzr
+00e2e0d0  ldr x2,[x8]
+00e2e0d4  ldr x22,[x22, #0x320]
+00e2e0d8  mov x20,x0
+00e2e0dc  bl 0x00e10f80
+00e2e0e0  ldr x1,[x22]
+00e2e0e4  mov x0,x19
+00e2e0e8  mov x2,x20
+00e2e0ec  bl 0x00e1cfa8
+00e2e0f0  ldr x0,[x21]
+00e2e0f4  bl 0x00b079a0
+00e2e0f8  cbz x0,0x00e2e13c
+00e2e0fc  adrp x8,0x3367000
+00e2e100  ldr x8,[x8, #0x580]
+00e2e104  adrp x21,0x3321000
+00e2e108  mov x1,x19
+00e2e10c  mov x3,xzr
+00e2e110  ldr x2,[x8]
+00e2e114  ldr x21,[x21, #0x888]
+00e2e118  mov x20,x0
+00e2e11c  bl 0x00e10f80
+00e2e120  ldr x1,[x21]
+00e2e124  mov x0,x19
+00e2e128  mov x2,x20
+00e2e12c  ldp x19,x30,[sp, #0x20]
+00e2e130  ldp x21,x20,[sp, #0x10]
+00e2e134  ldr x22,[sp], #0x30
+00e2e138  b 0x00e1cfa8
+00e2e13c  bl 0x00b079b0

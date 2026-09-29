@@ -1,0 +1,105 @@
+Function: Ali$$IsAtkSkillEff @ 00e0978c
+
+--- Calls OUT ---
+  -> SkillExtension.Extension$$IntParse @ 015b99e8
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> SkilleffData$$get_parameterA @ 00df1d18
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> BaseData$$get_type @ 00df34dc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+
+--- Calls IN ---
+  <- BaseSkillEff$$ExecuteEnd @ 015e63e4
+  <- BaseSkillEff$$ExecuteAll @ 015e4118
+  <- RoleNews$$TargetHurtAfter @ 00ff05fc
+  <- XLua.CSObjectWrap.AliWrap$$_m_IsAtkSkillEff @ 011979f4
+
+--- Listing ---
+00e0978c  str x22,[sp, #-0x30]!
+00e09790  stp x21,x20,[sp, #0x10]
+00e09794  stp x19,x30,[sp, #0x20]
+00e09798  adrp x22,0x3572000
+00e0979c  adrp x21,0x335f000
+00e097a0  ldrb w8,[x22, #0x589]
+00e097a4  ldr x21,[x21, #0x20]
+00e097a8  mov x19,x1
+00e097ac  mov x20,x0
+00e097b0  tbnz w8,#0x0,0x00e097d4
+00e097b4  adrp x0,0x3347000
+00e097b8  ldr x0,[x0, #0x918]
+00e097bc  bl 0x00b0789c
+00e097c0  adrp x0,0x335f000
+00e097c4  ldr x0,[x0, #0x20]
+00e097c8  bl 0x00b0789c
+00e097cc  mov w8,#0x1
+00e097d0  strb w8,[x22, #0x589]
+00e097d4  ldr x0,[x21]
+00e097d8  ldr w8,[x0, #0xe0]
+00e097dc  cbnz w8,0x00e097e8
+00e097e0  bl 0x00b0798c
+00e097e4  ldr x0,[x21]
+00e097e8  ldr x8,[x0, #0xb8]
+00e097ec  ldr x0,[x8, #0x3f0]
+00e097f0  cbz x0,0x00e09810
+00e097f4  mov x1,x20
+00e097f8  mov x2,x19
+00e097fc  ldp x19,x30,[sp, #0x20]
+00e09800  ldp x21,x20,[sp, #0x10]
+00e09804  mov x3,xzr
+00e09808  ldr x22,[sp], #0x30
+00e0980c  b 0x01065a14
+00e09810  cbz x19,0x00e098dc
+00e09814  mov x0,x19
+00e09818  mov x1,xzr
+00e0981c  bl 0x00df34dc
+00e09820  cmp w0,#0xfa4
+00e09824  b.ne 0x00e09840
+00e09828  mov x0,x19
+00e0982c  mov x1,xzr
+00e09830  bl 0x00df1d18
+00e09834  mov x1,xzr
+00e09838  bl 0x01fdf3a0
+00e0983c  tbz w0,#0x0,0x00e09858
+00e09840  mov w8,wzr
+00e09844  mov w0,w8
+00e09848  ldp x19,x30,[sp, #0x20]
+00e0984c  ldp x21,x20,[sp, #0x10]
+00e09850  ldr x22,[sp], #0x30
+00e09854  ret
+00e09858  ldr x0,[x21]
+00e0985c  ldr w8,[x0, #0xe0]
+00e09860  cbnz w8,0x00e0986c
+00e09864  bl 0x00b0798c
+00e09868  ldr x0,[x21]
+00e0986c  ldr x8,[x0, #0xb8]
+00e09870  mov x0,x19
+00e09874  mov x1,xzr
+00e09878  ldr x20,[x8, #0x10]
+00e0987c  bl 0x00df1d18
+00e09880  mov x1,xzr
+00e09884  bl 0x015b99e8
+00e09888  cbz x20,0x00e098dc
+00e0988c  adrp x8,0x3347000
+00e09890  ldr x8,[x8, #0x918]
+00e09894  mov w1,w0
+00e09898  mov x0,x20
+00e0989c  ldr x2,[x8]
+00e098a0  bl 0x01736d60
+00e098a4  cbz x0,0x00e098dc
+00e098a8  mov x1,xzr
+00e098ac  bl 0x00df34dc
+00e098b0  sub w9,w0,#0x3e9
+00e098b4  cmp w9,#0x4
+00e098b8  b.hi 0x00e098d0
+00e098bc  mov w8,#0x1
+00e098c0  lsl w9,w8,w9
+00e098c4  mov w10,#0x13
+00e098c8  tst w9,w10
+00e098cc  b.ne 0x00e09844
+00e098d0  cmp w0,#0x3ef
+00e098d4  cset w0,eq
+00e098d8  b 0x00e09848
+00e098dc  bl 0x00b079b0

@@ -1,0 +1,104 @@
+Function: AliothEngine.Net.HttpRequest.FinishedDelegate$$.ctor @ 01694e18
+
+--- Calls OUT ---
+  -> FUN_0095f660 @ 0095f660
+  -> FUN_00b07cc4 @ 00b07cc4
+  -> FUN_00b07910 @ 00b07910
+  -> FUN_0095f7e8 @ 0095f7e8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_0095f704 @ 0095f704
+  -> FUN_0095f6d8 @ 0095f6d8
+  -> FUN_0095f6c8 @ 0095f6c8
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_0095f6a8 @ 0095f6a8
+  -> thunk_FUN_00aed804 @ 00b079c0
+  -> FUN_0095f764 @ 0095f764
+  -> thunk_FUN_00afc848 @ 00b07908
+  -> FUN_0095f834 @ 0095f834
+  -> thunk_FUN_00afcc14 @ 00b07984
+  -> FUN_0095f73c @ 0095f73c
+
+--- Calls IN ---
+  <- HttpPingManager$$RequestPing @ 00e38e2c
+  <- AliothEngine.Net.HttpRequestManager$$Tick @ 01695a04
+
+--- Listing ---
+01694e18  str x22,[sp, #-0x30]!
+01694e1c  stp x21,x20,[sp, #0x10]
+01694e20  stp x19,x30,[sp, #0x20]
+01694e24  mov x19,x0
+01694e28  mov x0,x2
+01694e2c  mov x20,x2
+01694e30  mov x21,x1
+01694e34  bl 0x00b07984
+01694e38  str x0,[x19, #0x10]
+01694e3c  mov x0,x19
+01694e40  str x20,[x19, #0x28]
+01694e44  str x21,[x0, #0x20]!
+01694e48  mov x1,x21
+01694e4c  bl 0x00b07850
+01694e50  ldrb w22,[x20, #0x52]
+01694e54  mov x0,x20
+01694e58  str x19,[x19, #0x40]
+01694e5c  bl 0x00b07910
+01694e60  tbz w0,#0x0,0x01694e80
+01694e64  ldrb w8,[x20, #0x53]
+01694e68  tbnz w8,#0x4,0x01694e9c
+01694e6c  cmp w22,#0x1
+01694e70  b.ne 0x01694e88
+01694e74  adrp x8,0x95f000
+01694e78  add x8,x8,#0x6c8
+01694e7c  b 0x01694f1c
+01694e80  cbz w22,0x01694eb0
+01694e84  cbz x21,0x01694f3c
+01694e88  ldr x8,[x19, #0x10]
+01694e8c  ldr x9,[x19, #0x20]
+01694e90  str x8,[x19, #0x18]
+01694e94  str x9,[x19, #0x40]
+01694e98  b 0x01694f20
+01694e9c  cmp w22,#0x1
+01694ea0  b.ne 0x01694ee0
+01694ea4  adrp x8,0x95f000
+01694ea8  add x8,x8,#0x6d8
+01694eac  b 0x01694f1c
+01694eb0  ldrb w8,[x19, #0x70]
+01694eb4  cbz w8,0x01694eec
+01694eb8  mov x0,x20
+01694ebc  bl 0x00b07908
+01694ec0  mov w21,w0
+01694ec4  mov x0,x20
+01694ec8  bl 0x00b07cc4
+01694ecc  tbz w21,#0x0,0x01694ef8
+01694ed0  tbz w0,#0x0,0x01694f08
+01694ed4  adrp x8,0x95f000
+01694ed8  add x8,x8,#0x834
+01694edc  b 0x01694f1c
+01694ee0  adrp x8,0x95f000
+01694ee4  add x8,x8,#0x704
+01694ee8  b 0x01694f1c
+01694eec  adrp x8,0x95f000
+01694ef0  add x8,x8,#0x6a8
+01694ef4  b 0x01694f1c
+01694ef8  tbz w0,#0x0,0x01694f14
+01694efc  adrp x8,0x95f000
+01694f00  add x8,x8,#0x764
+01694f04  b 0x01694f1c
+01694f08  adrp x8,0x95f000
+01694f0c  add x8,x8,#0x7e8
+01694f10  b 0x01694f1c
+01694f14  adrp x8,0x95f000
+01694f18  add x8,x8,#0x73c
+01694f1c  str x8,[x19, #0x18]
+01694f20  adrp x8,0x95f000
+01694f24  add x8,x8,#0x660
+01694f28  str x8,[x19, #0x38]
+01694f2c  ldp x19,x30,[sp, #0x20]
+01694f30  ldp x21,x20,[sp, #0x10]
+01694f34  ldr x22,[sp], #0x30
+01694f38  ret
+01694f3c  adrp x1,0x26db000
+01694f40  add x1,x1,#0xd9
+01694f44  mov x0,xzr
+01694f48  bl 0x00b079c0
+01694f4c  mov x1,xzr
+01694f50  bl 0x00b07978

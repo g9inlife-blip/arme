@@ -1,0 +1,43 @@
+Function: AliothEngine.GateSoundSet$$Awake @ 0164d0c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+
+--- Calls IN ---
+
+--- Listing ---
+0164d0c0  str x20,[sp, #-0x20]!
+0164d0c4  stp x19,x30,[sp, #0x10]
+0164d0c8  adrp x20,0x3577000
+0164d0cc  ldrb w8,[x20, #0x7ca]
+0164d0d0  mov x19,x0
+0164d0d4  tbnz w8,#0x0,0x0164d0f8
+0164d0d8  adrp x0,0x3349000
+0164d0dc  ldr x0,[x0, #0xb20]
+0164d0e0  bl 0x00b0789c
+0164d0e4  adrp x0,0x334f000
+0164d0e8  ldr x0,[x0, #0x488]
+0164d0ec  bl 0x00b0789c
+0164d0f0  mov w8,#0x1
+0164d0f4  strb w8,[x20, #0x7ca]
+0164d0f8  ldr x0,[x19, #0x18]
+0164d0fc  cbz x0,0x0164d138
+0164d100  ldr w8,[x0, #0x18]
+0164d104  cmp w8,#0x1
+0164d108  b.lt 0x0164d138
+0164d10c  adrp x8,0x334f000
+0164d110  ldr x8,[x8, #0x488]
+0164d114  mov w1,wzr
+0164d118  ldr x2,[x8]
+0164d11c  bl 0x01c00380
+0164d120  str x0,[x19, #0x28]!
+0164d124  mov x1,x0
+0164d128  mov x0,x19
+0164d12c  ldp x19,x30,[sp, #0x10]
+0164d130  ldr x20,[sp], #0x20
+0164d134  b 0x00b07850
+0164d138  ldp x19,x30,[sp, #0x10]
+0164d13c  ldr x20,[sp], #0x20
+0164d140  ret

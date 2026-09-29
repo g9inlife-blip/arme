@@ -1,0 +1,42 @@
+Function: AliothEngine.Utils.StringUtils$$Concat @ 0169b67c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Join @ 01fdfb84
+
+--- Calls IN ---
+
+--- Listing ---
+0169b67c  str x20,[sp, #-0x20]!
+0169b680  stp x19,x30,[sp, #0x10]
+0169b684  adrp x20,0x3577000
+0169b688  ldrb w8,[x20, #0xb36]
+0169b68c  mov x19,x0
+0169b690  tbnz w8,#0x0,0x0169b6a8
+0169b694  adrp x0,0x331b000
+0169b698  ldr x0,[x0, #0x6c8]
+0169b69c  bl 0x00b0789c
+0169b6a0  mov w8,#0x1
+0169b6a4  strb w8,[x20, #0xb36]
+0169b6a8  cbz x19,0x0169b6f4
+0169b6ac  ldr w8,[x19, #0x18]
+0169b6b0  cmp w8,#0x2
+0169b6b4  b.ne 0x0169b6cc
+0169b6b8  ldp x0,x1,[x19, #0x20]
+0169b6bc  ldp x19,x30,[sp, #0x10]
+0169b6c0  mov x2,xzr
+0169b6c4  ldr x20,[sp], #0x20
+0169b6c8  b 0x01fd2850
+0169b6cc  adrp x8,0x331b000
+0169b6d0  ldr x8,[x8, #0x6c8]
+0169b6d4  mov x1,x19
+0169b6d8  ldp x19,x30,[sp, #0x10]
+0169b6dc  mov x2,xzr
+0169b6e0  ldr x8,[x8]
+0169b6e4  ldr x8,[x8, #0xb8]
+0169b6e8  ldr x0,[x8]
+0169b6ec  ldr x20,[sp], #0x20
+0169b6f0  b 0x01fdfb84
+0169b6f4  bl 0x00b079b0

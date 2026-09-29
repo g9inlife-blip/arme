@@ -1,0 +1,22 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$Dispose @ 016a1ac8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.IO.TextReader$$Dispose @ 020ab218
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a1ac8  stp x19,x30,[sp, #-0x10]!
+016a1acc  mov x19,x0
+016a1ad0  ldr x0,[x19, #0x10]!
+016a1ad4  cbz x0,0x016a1af4
+016a1ad8  mov x1,xzr
+016a1adc  bl 0x020ab218
+016a1ae0  str xzr,[x19]
+016a1ae4  mov x0,x19
+016a1ae8  mov x1,xzr
+016a1aec  ldp x19,x30,[sp], #0x10
+016a1af0  b 0x00b07850
+016a1af4  bl 0x00b079b0

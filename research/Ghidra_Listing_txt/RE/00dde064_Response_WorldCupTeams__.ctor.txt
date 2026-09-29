@@ -1,0 +1,39 @@
+Function: Response_WorldCupTeams$$.ctor @ 00dde064
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_WorldCupTeamsWrap$$__CreateInstance @ 013772ec
+
+--- Listing ---
+00dde064  stp x21,x20,[sp, #-0x20]!
+00dde068  stp x19,x30,[sp, #0x10]
+00dde06c  adrp x21,0x3572000
+00dde070  adrp x20,0x3345000
+00dde074  ldrb w8,[x21, #0x2e5]
+00dde078  ldr x20,[x20, #0x3c0]
+00dde07c  mov x19,x0
+00dde080  tbnz w8,#0x0,0x00dde098
+00dde084  adrp x0,0x3345000
+00dde088  ldr x0,[x0, #0x3c0]
+00dde08c  bl 0x00b0789c
+00dde090  mov w8,#0x1
+00dde094  strb w8,[x21, #0x2e5]
+00dde098  mov x0,x19
+00dde09c  mov x1,xzr
+00dde0a0  bl 0x02194104
+00dde0a4  ldr x8,[x20]
+00dde0a8  ldr x8,[x8, #0xb8]
+00dde0ac  ldr x0,[x8]
+00dde0b0  cbz x0,0x00dde0c8
+00dde0b4  mov x1,x19
+00dde0b8  ldp x19,x30,[sp, #0x10]
+00dde0bc  mov x2,xzr
+00dde0c0  ldp x21,x20,[sp], #0x20
+00dde0c4  b 0x01060dac
+00dde0c8  ldp x19,x30,[sp, #0x10]
+00dde0cc  ldp x21,x20,[sp], #0x20
+00dde0d0  ret

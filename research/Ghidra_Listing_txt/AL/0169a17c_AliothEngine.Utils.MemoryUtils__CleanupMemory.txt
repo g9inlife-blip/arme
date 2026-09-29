@@ -1,0 +1,36 @@
+Function: AliothEngine.Utils.MemoryUtils$$CleanupMemory @ 0169a17c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.GC$$Collect @ 02188c90
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Resources$$UnloadUnusedAssets @ 024f1cf0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.MemoryUtils$$AssetCleanupMemory @ 0169a1dc
+
+--- Listing ---
+0169a17c  str x20,[sp, #-0x20]!
+0169a180  stp x19,x30,[sp, #0x10]
+0169a184  adrp x19,0x3577000
+0169a188  adrp x20,0x3320000
+0169a18c  ldrb w8,[x19, #0xb29]
+0169a190  ldr x20,[x20, #0x608]
+0169a194  tbnz w8,#0x0,0x0169a1ac
+0169a198  adrp x0,0x3320000
+0169a19c  ldr x0,[x0, #0x608]
+0169a1a0  bl 0x00b0789c
+0169a1a4  mov w8,#0x1
+0169a1a8  strb w8,[x19, #0xb29]
+0169a1ac  ldr x0,[x20]
+0169a1b0  ldr w8,[x0, #0xe0]
+0169a1b4  cbnz w8,0x0169a1bc
+0169a1b8  bl 0x00b0798c
+0169a1bc  mov x0,xzr
+0169a1c0  bl 0x02188c90
+0169a1c4  mov x0,xzr
+0169a1c8  bl 0x024f1cf0
+0169a1cc  ldp x19,x30,[sp, #0x10]
+0169a1d0  mov x0,xzr
+0169a1d4  ldr x20,[sp], #0x20
+0169a1d8  b 0x02188c90

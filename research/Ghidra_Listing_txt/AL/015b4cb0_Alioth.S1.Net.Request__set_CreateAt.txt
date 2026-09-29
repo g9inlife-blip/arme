@@ -1,0 +1,41 @@
+Function: Alioth.S1.Net.Request$$set_CreateAt @ 015b4cb0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp294 @ 01085494
+
+--- Calls IN ---
+  <- Alioth.S1.Net.Request$$.ctor @ 015b3c1c
+
+--- Listing ---
+015b4cb0  str x22,[sp, #-0x30]!
+015b4cb4  stp x21,x20,[sp, #0x10]
+015b4cb8  stp x19,x30,[sp, #0x20]
+015b4cbc  adrp x21,0x3577000
+015b4cc0  adrp x22,0x3374000
+015b4cc4  ldrb w8,[x21, #0xc1]
+015b4cc8  ldr x22,[x22, #0x470]
+015b4ccc  mov x19,x1
+015b4cd0  mov x20,x0
+015b4cd4  tbnz w8,#0x0,0x015b4cec
+015b4cd8  adrp x0,0x3374000
+015b4cdc  ldr x0,[x0, #0x470]
+015b4ce0  bl 0x00b0789c
+015b4ce4  mov w8,#0x1
+015b4ce8  strb w8,[x21, #0xc1]
+015b4cec  ldr x8,[x22]
+015b4cf0  ldr x8,[x8, #0xb8]
+015b4cf4  ldr x0,[x8, #0x28]
+015b4cf8  cbz x0,0x015b4d18
+015b4cfc  mov x1,x20
+015b4d00  mov x2,x19
+015b4d04  ldp x19,x30,[sp, #0x20]
+015b4d08  ldp x21,x20,[sp, #0x10]
+015b4d0c  mov x3,xzr
+015b4d10  ldr x22,[sp], #0x30
+015b4d14  b 0x01085494
+015b4d18  str x19,[x20, #0x18]
+015b4d1c  ldp x19,x30,[sp, #0x20]
+015b4d20  ldp x21,x20,[sp, #0x10]
+015b4d24  ldr x22,[sp], #0x30
+015b4d28  ret

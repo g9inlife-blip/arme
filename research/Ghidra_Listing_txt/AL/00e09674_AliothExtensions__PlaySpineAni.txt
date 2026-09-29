@@ -1,0 +1,88 @@
+Function: AliothExtensions$$PlaySpineAni @ 00e09674
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.GameObject$$get_activeSelf @ 024de8b0
+  -> AliothExtensions$$SetAnimationEx @ 00e1676c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$SetActive @ 024de86c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.GameObject$$GetComponent<object> @ 01794e94
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp101 @ 0106c040
+
+--- Calls IN ---
+  <- BattleEditorStartMono.<>c__DisplayClass44_0$$<AddProp>b__0 @ 016d2178
+  <- Ali$$PlayClickHeroSpine @ 00e09370
+  <- XLua.CSObjectWrap.UnityEngineGameObjectWrap$$_m_PlaySpineAni @ 014778c0
+
+--- Listing ---
+00e09674  str x24,[sp, #-0x40]!
+00e09678  stp x23,x22,[sp, #0x10]
+00e0967c  stp x21,x20,[sp, #0x20]
+00e09680  stp x19,x30,[sp, #0x30]
+00e09684  adrp x24,0x3572000
+00e09688  adrp x23,0x3348000
+00e0968c  ldrb w8,[x24, #0x602]
+00e09690  ldr x23,[x23, #0x138]
+00e09694  mov w21,w3
+00e09698  mov x19,x2
+00e0969c  mov w20,w1
+00e096a0  mov x22,x0
+00e096a4  tbnz w8,#0x0,0x00e096c8
+00e096a8  adrp x0,0x3348000
+00e096ac  ldr x0,[x0, #0x138]
+00e096b0  bl 0x00b0789c
+00e096b4  adrp x0,0x337f000
+00e096b8  ldr x0,[x0, #0xc50]
+00e096bc  bl 0x00b0789c
+00e096c0  mov w8,#0x1
+00e096c4  strb w8,[x24, #0x602]
+00e096c8  ldr x0,[x23]
+00e096cc  ldr w8,[x0, #0xe0]
+00e096d0  cbnz w8,0x00e096dc
+00e096d4  bl 0x00b0798c
+00e096d8  ldr x0,[x23]
+00e096dc  ldr x8,[x0, #0xb8]
+00e096e0  ldr x0,[x8, #0x170]
+00e096e4  cbz x0,0x00e09710
+00e096e8  and w4,w21,#0x1
+00e096ec  mov x1,x22
+00e096f0  mov w2,w20
+00e096f4  mov x3,x19
+00e096f8  ldp x19,x30,[sp, #0x30]
+00e096fc  ldp x21,x20,[sp, #0x20]
+00e09700  ldp x23,x22,[sp, #0x10]
+00e09704  mov x5,xzr
+00e09708  ldr x24,[sp], #0x40
+00e0970c  b 0x0106c040
+00e09710  cbz x22,0x00e09788
+00e09714  adrp x24,0x337f000
+00e09718  ldr x24,[x24, #0xc50]
+00e0971c  mov x0,x22
+00e09720  mov x1,xzr
+00e09724  bl 0x024de8b0
+00e09728  tbnz w0,#0x0,0x00e0973c
+00e0972c  mov w1,#0x1
+00e09730  mov x0,x22
+00e09734  mov x2,xzr
+00e09738  bl 0x024de86c
+00e0973c  ldr x1,[x24]
+00e09740  mov x0,x22
+00e09744  bl 0x01794e94
+00e09748  cbz x0,0x00e09788
+00e0974c  ldr x8,[x23]
+00e09750  ldr x22,[x0, #0xb0]
+00e09754  ldr w9,[x8, #0xe0]
+00e09758  cbnz w9,0x00e09764
+00e0975c  mov x0,x8
+00e09760  bl 0x00b0798c
+00e09764  and w3,w21,#0x1
+00e09768  mov x0,x22
+00e0976c  mov w1,w20
+00e09770  mov x2,x19
+00e09774  ldp x19,x30,[sp, #0x30]
+00e09778  ldp x21,x20,[sp, #0x20]
+00e0977c  ldp x23,x22,[sp, #0x10]
+00e09780  ldr x24,[sp], #0x40
+00e09784  b 0x00e1676c
+00e09788  bl 0x00b079b0

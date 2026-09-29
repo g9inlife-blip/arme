@@ -1,0 +1,122 @@
+Function: AliothEngine.Extensions.TypeExtensions$$GetAttributes @ 016bb850
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<object,-object>$$set_Item @ 0196e4c0
+  -> System.Collections.Generic.Dictionary<object,-object>$$TryGetValue @ 0196fd30
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f34a4
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f30f4
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttributes<object> @ 017f367c
+  <- AliothEngine.Extensions.TypeExtensions$$GetAttribute<object> @ 017f32cc
+
+--- Listing ---
+016bb850  sub sp,sp,#0x30
+016bb854  stp x21,x20,[sp, #0x10]
+016bb858  stp x19,x30,[sp, #0x20]
+016bb85c  adrp x21,0x3577000
+016bb860  adrp x20,0x3345000
+016bb864  ldrb w8,[x21, #0xc36]
+016bb868  ldr x20,[x20, #0x4a8]
+016bb86c  mov x19,x0
+016bb870  tbnz w8,#0x0,0x016bb8c4
+016bb874  adrp x0,0x3373000
+016bb878  ldr x0,[x0, #0xc10]
+016bb87c  bl 0x00b0789c
+016bb880  adrp x0,0x336e000
+016bb884  ldr x0,[x0, #0x1e8]
+016bb888  bl 0x00b0789c
+016bb88c  adrp x0,0x3351000
+016bb890  ldr x0,[x0, #0x1c8]
+016bb894  bl 0x00b0789c
+016bb898  adrp x0,0x3314000
+016bb89c  ldr x0,[x0, #0xfc8]
+016bb8a0  bl 0x00b0789c
+016bb8a4  adrp x0,0x3345000
+016bb8a8  ldr x0,[x0, #0x4a8]
+016bb8ac  bl 0x00b0789c
+016bb8b0  adrp x0,0x3347000
+016bb8b4  ldr x0,[x0, #0xd68]
+016bb8b8  bl 0x00b0789c
+016bb8bc  mov w8,#0x1
+016bb8c0  strb w8,[x21, #0xc36]
+016bb8c4  ldr x0,[x20]
+016bb8c8  str xzr,[sp, #0x8]
+016bb8cc  ldr w8,[x0, #0xe0]
+016bb8d0  cbnz w8,0x016bb8dc
+016bb8d4  bl 0x00b0798c
+016bb8d8  ldr x0,[x20]
+016bb8dc  ldr x8,[x0, #0xb8]
+016bb8e0  ldr x0,[x8]
+016bb8e4  cbz x0,0x016bb9f4
+016bb8e8  adrp x8,0x3373000
+016bb8ec  ldr x8,[x8, #0xc10]
+016bb8f0  add x2,sp,#0x8
+016bb8f4  mov x1,x19
+016bb8f8  ldr x3,[x8]
+016bb8fc  bl 0x0196fd30
+016bb900  tbnz w0,#0x0,0x016bb9e0
+016bb904  cbz x19,0x016bb9a8
+016bb908  adrp x9,0x3351000
+016bb90c  ldr x9,[x9, #0x1c8]
+016bb910  ldr x8,[x19]
+016bb914  ldr x10,[x9]
+016bb918  ldrb w9,[x8, #0x12c]
+016bb91c  ldrb w11,[x10, #0x12c]
+016bb920  cmp w9,w11
+016bb924  b.cc 0x016bb93c
+016bb928  ldr x12,[x8, #0xc8]
+016bb92c  add x11,x12,x11, LSL #0x3
+016bb930  ldur x11,[x11, #-0x8]
+016bb934  cmp x11,x10
+016bb938  b.eq 0x016bb994
+016bb93c  adrp x10,0x3314000
+016bb940  ldr x10,[x10, #0xfc8]
+016bb944  ldr x10,[x10]
+016bb948  ldrb w11,[x10, #0x12c]
+016bb94c  cmp w9,w11
+016bb950  b.cc 0x016bb968
+016bb954  ldr x12,[x8, #0xc8]
+016bb958  add x11,x12,x11, LSL #0x3
+016bb95c  ldur x11,[x11, #-0x8]
+016bb960  cmp x11,x10
+016bb964  b.eq 0x016bb994
+016bb968  adrp x10,0x3347000
+016bb96c  ldr x10,[x10, #0xd68]
+016bb970  ldr x10,[x10]
+016bb974  ldrb w11,[x10, #0x12c]
+016bb978  cmp w9,w11
+016bb97c  b.cc 0x016bb9a8
+016bb980  ldr x9,[x8, #0xc8]
+016bb984  add x9,x9,x11, LSL #0x3
+016bb988  ldur x9,[x9, #-0x8]
+016bb98c  cmp x9,x10
+016bb990  b.ne 0x016bb9a8
+016bb994  ldp x9,x2,[x8, #0x1f8]
+016bb998  mov w1,#0x1
+016bb99c  mov x0,x19
+016bb9a0  blr x9
+016bb9a4  str x0,[sp, #0x8]
+016bb9a8  ldr x0,[x20]
+016bb9ac  ldr w8,[x0, #0xe0]
+016bb9b0  cbnz w8,0x016bb9bc
+016bb9b4  bl 0x00b0798c
+016bb9b8  ldr x0,[x20]
+016bb9bc  ldr x8,[x0, #0xb8]
+016bb9c0  ldr x0,[x8]
+016bb9c4  cbz x0,0x016bb9f4
+016bb9c8  adrp x8,0x336e000
+016bb9cc  ldr x8,[x8, #0x1e8]
+016bb9d0  ldr x2,[sp, #0x8]
+016bb9d4  mov x1,x19
+016bb9d8  ldr x3,[x8]
+016bb9dc  bl 0x0196e4c0
+016bb9e0  ldr x0,[sp, #0x8]
+016bb9e4  ldp x19,x30,[sp, #0x20]
+016bb9e8  ldp x21,x20,[sp, #0x10]
+016bb9ec  add sp,sp,#0x30
+016bb9f0  ret
+016bb9f4  bl 0x00b079b0

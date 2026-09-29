@@ -1,0 +1,81 @@
+Function: AliothEngine.Android.LocalNotification$$SendRepeatingNotification @ 016a7dac
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Android.LocalNotification$$SendRepeatingNotification @ 016a7810
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+
+--- Calls IN ---
+
+--- Listing ---
+016a7dac  sub sp,sp,#0xa0
+016a7db0  stp d9,d8,[sp, #0x30]
+016a7db4  stp x28,x1,[sp, #0x40]
+016a7db8  stp x27,x26,[sp, #0x50]
+016a7dbc  stp x25,x24,[sp, #0x60]
+016a7dc0  stp x23,x22,[sp, #0x70]
+016a7dc4  stp x21,x20,[sp, #0x80]
+016a7dc8  stp x19,x30,[sp, #0x90]
+016a7dcc  adrp x25,0x3577000
+016a7dd0  str x2,[sp, #0x28]
+016a7dd4  adrp x28,0x3373000
+016a7dd8  ldrb w8,[x25, #0xb93]
+016a7ddc  ldr x28,[x28, #0x508]
+016a7de0  mov w21,w7
+016a7de4  mov w22,w6
+016a7de8  mov x24,x5
+016a7dec  mov x19,x4
+016a7df0  mov x20,x3
+016a7df4  mov w23,w0
+016a7df8  tbnz w8,#0x0,0x016a7e10
+016a7dfc  adrp x0,0x3373000
+016a7e00  ldr x0,[x0, #0x508]
+016a7e04  bl 0x00b0789c
+016a7e08  mov w8,#0x1
+016a7e0c  strb w8,[x25, #0xb93]
+016a7e10  ldp x26,x25,[sp, #0xb0]
+016a7e14  ldrb w27,[sp, #0xa0]
+016a7e18  add x0,sp,#0x48
+016a7e1c  mov x1,xzr
+016a7e20  bl 0x02167c88
+016a7e24  add x0,sp,#0x28
+016a7e28  mov x1,xzr
+016a7e2c  mov v8.16B,v0.16B
+016a7e30  bl 0x02167c88
+016a7e34  ldr x0,[x28]
+016a7e38  mov v9.16B,v0.16B
+016a7e3c  ldr w8,[x0, #0xe0]
+016a7e40  cbnz w8,0x016a7e48
+016a7e44  bl 0x00b0798c
+016a7e48  mov x10,#0x7ff0000000000000
+016a7e4c  fcvtzs x8,d8
+016a7e50  mov w9,#0x3e8
+016a7e54  fcvtzs w11,d9
+016a7e58  fmov d0,x10
+016a7e5c  mul x8,x8,x9
+016a7e60  fcmp d8,d0
+016a7e64  mul w9,w11,w9
+016a7e68  csel x1,xzr,x8,eq
+016a7e6c  sxtw x8,w9
+016a7e70  fcmp d9,d0
+016a7e74  csel x2,xzr,x8,eq
+016a7e78  and x5,x24,#0xffffffff
+016a7e7c  and w8,w27,#0x1
+016a7e80  and w6,w22,#0x1
+016a7e84  and w7,w21,#0x1
+016a7e88  mov w0,w23
+016a7e8c  mov x3,x20
+016a7e90  mov x4,x19
+016a7e94  stp x26,x25,[sp, #0x10]
+016a7e98  strb w8,[sp]
+016a7e9c  bl 0x016a7810
+016a7ea0  ldp x19,x30,[sp, #0x90]
+016a7ea4  ldp x21,x20,[sp, #0x80]
+016a7ea8  ldp x23,x22,[sp, #0x70]
+016a7eac  ldp x25,x24,[sp, #0x60]
+016a7eb0  ldp x27,x26,[sp, #0x50]
+016a7eb4  ldr x28,[sp, #0x40]
+016a7eb8  ldp d9,d8,[sp, #0x30]
+016a7ebc  add sp,sp,#0xa0
+016a7ec0  ret

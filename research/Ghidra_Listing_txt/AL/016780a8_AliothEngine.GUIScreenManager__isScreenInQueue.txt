@@ -1,0 +1,82 @@
+Function: AliothEngine.GUIScreenManager$$isScreenInQueue @ 016780a8
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_isScreenInQueue @ 0114b440
+
+--- Listing ---
+016780a8  str x22,[sp, #-0x30]!
+016780ac  stp x21,x20,[sp, #0x10]
+016780b0  stp x19,x30,[sp, #0x20]
+016780b4  adrp x22,0x3577000
+016780b8  adrp x21,0x337b000
+016780bc  ldrb w8,[x22, #0x9da]
+016780c0  ldr x21,[x21, #0xb98]
+016780c4  mov x19,x1
+016780c8  mov x20,x0
+016780cc  tbnz w8,#0x0,0x016780fc
+016780d0  adrp x0,0x337b000
+016780d4  ldr x0,[x0, #0xb98]
+016780d8  bl 0x00b0789c
+016780dc  adrp x0,0x3334000
+016780e0  ldr x0,[x0, #0xd30]
+016780e4  bl 0x00b0789c
+016780e8  adrp x0,0x3315000
+016780ec  ldr x0,[x0, #0xcf8]
+016780f0  bl 0x00b0789c
+016780f4  mov w8,#0x1
+016780f8  strb w8,[x22, #0x9da]
+016780fc  ldr x0,[x21]
+01678100  ldr w8,[x0, #0xe0]
+01678104  cbnz w8,0x01678110
+01678108  bl 0x00b0798c
+0167810c  ldr x0,[x21]
+01678110  ldr x8,[x0, #0xb8]
+01678114  ldr x0,[x8, #0x1e8]
+01678118  cbz x0,0x01678138
+0167811c  mov x1,x20
+01678120  mov x2,x19
+01678124  ldp x19,x30,[sp, #0x20]
+01678128  ldp x21,x20,[sp, #0x10]
+0167812c  mov x3,xzr
+01678130  ldr x22,[sp], #0x30
+01678134  b 0x01065a14
+01678138  ldr x0,[x20, #0x58]
+0167813c  cbz x0,0x01678194
+01678140  adrp x22,0x3315000
+01678144  ldr x22,[x22, #0xcf8]
+01678148  mov w21,wzr
+0167814c  ldr w8,[x0, #0x18]
+01678150  cmp w21,w8
+01678154  b.ge 0x01678198
+01678158  ldr x2,[x22]
+0167815c  mov w1,w21
+01678160  bl 0x01c00380
+01678164  cbz x0,0x01678194
+01678168  ldr x0,[x0, #0x28]
+0167816c  cbz x0,0x01678194
+01678170  mov x1,xzr
+01678174  bl 0x024c9a1c
+01678178  mov x1,x19
+0167817c  mov x2,xzr
+01678180  bl 0x01fd05b0
+01678184  tbnz w0,#0x0,0x016781a0
+01678188  ldr x0,[x20, #0x58]
+0167818c  add w21,w21,#0x1
+01678190  cbnz x0,0x0167814c
+01678194  bl 0x00b079b0
+01678198  mov w0,wzr
+0167819c  b 0x016781a4
+016781a0  mov w0,#0x1
+016781a4  ldp x19,x30,[sp, #0x20]
+016781a8  ldp x21,x20,[sp, #0x10]
+016781ac  ldr x22,[sp], #0x30
+016781b0  ret

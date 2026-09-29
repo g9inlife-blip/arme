@@ -1,0 +1,54 @@
+Function: AliothEngine.Utils.Utility$$GetRNG @ 0169d3e0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Random$$.ctor @ 0216133c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$GaussianValue @ 016a04dc
+
+--- Listing ---
+0169d3e0  str x20,[sp, #-0x20]!
+0169d3e4  stp x19,x30,[sp, #0x10]
+0169d3e8  adrp x19,0x3577000
+0169d3ec  adrp x20,0x3372000
+0169d3f0  ldrb w8,[x19, #0xb4b]
+0169d3f4  ldr x20,[x20, #0x3b8]
+0169d3f8  tbnz w8,#0x0,0x0169d41c
+0169d3fc  adrp x0,0x3355000
+0169d400  ldr x0,[x0, #0x1e8]
+0169d404  bl 0x00b0789c
+0169d408  adrp x0,0x3372000
+0169d40c  ldr x0,[x0, #0x3b8]
+0169d410  bl 0x00b0789c
+0169d414  mov w8,#0x1
+0169d418  strb w8,[x19, #0xb4b]
+0169d41c  ldr x8,[x20]
+0169d420  ldr x8,[x8, #0xb8]
+0169d424  ldr x0,[x8]
+0169d428  cbnz x0,0x0169d474
+0169d42c  adrp x8,0x3355000
+0169d430  ldr x8,[x8, #0x1e8]
+0169d434  ldr x0,[x8]
+0169d438  bl 0x00b079a0
+0169d43c  cbz x0,0x0169d480
+0169d440  mov x1,xzr
+0169d444  mov x19,x0
+0169d448  bl 0x0216133c
+0169d44c  ldr x8,[x20]
+0169d450  mov x1,x19
+0169d454  ldr x8,[x8, #0xb8]
+0169d458  str x19,[x8]
+0169d45c  ldr x8,[x20]
+0169d460  ldr x0,[x8, #0xb8]
+0169d464  bl 0x00b07850
+0169d468  ldr x8,[x20]
+0169d46c  ldr x8,[x8, #0xb8]
+0169d470  ldr x0,[x8]
+0169d474  ldp x19,x30,[sp, #0x10]
+0169d478  ldr x20,[sp], #0x20
+0169d47c  ret
+0169d480  bl 0x00b079b0

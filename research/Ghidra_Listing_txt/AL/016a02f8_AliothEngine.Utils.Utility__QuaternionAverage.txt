@@ -1,0 +1,133 @@
+Function: AliothEngine.Utils.Utility$$QuaternionAverage @ 016a02f8
+
+--- Calls OUT ---
+  -> UnityEngine.Quaternion$$op_Multiply @ 024ee4b4
+  -> UnityEngine.Quaternion$$LookRotation @ 024ee194
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a02f8  sub sp,sp,#0xa0
+016a02fc  stp d15,d14,[sp, #0x20]
+016a0300  stp d13,d12,[sp, #0x30]
+016a0304  stp d11,d10,[sp, #0x40]
+016a0308  stp d9,d8,[sp, #0x50]
+016a030c  stp x25,x24,[sp, #0x60]
+016a0310  stp x23,x22,[sp, #0x70]
+016a0314  stp x21,x20,[sp, #0x80]
+016a0318  stp x19,x30,[sp, #0x90]
+016a031c  adrp x20,0x3570000
+016a0320  ldrb w8,[x20, #0xf0c]
+016a0324  mov x19,x0
+016a0328  cbnz w8,0x016a0340
+016a032c  adrp x0,0x3368000
+016a0330  ldr x0,[x0, #0x9b8]
+016a0334  bl 0x00b0789c
+016a0338  mov w8,#0x1
+016a033c  strb w8,[x20, #0xf0c]
+016a0340  cbz x19,0x016a04d8
+016a0344  adrp x20,0x3368000
+016a0348  ldr x20,[x20, #0x9b8]
+016a034c  ldr x9,[x19, #0x18]
+016a0350  ldr x8,[x20]
+016a0354  cmp w9,#0x1
+016a0358  ldr x8,[x8, #0xb8]
+016a035c  ldp s13,s12,[x8, #0x4]
+016a0360  ldr s14,[x8]
+016a0364  and x8,x9,#0xffffffff
+016a0368  b.lt 0x016a047c
+016a036c  mov x21,xzr
+016a0370  add x22,x19,#0x2c
+016a0374  adrp x23,0x3570000
+016a0378  mov w24,#0x1
+016a037c  adrp x25,0x3570000
+016a0380  mov v8.16B,v12.16B
+016a0384  mov v9.16B,v13.16B
+016a0388  str s14,[sp, #0x1c]
+016a038c  cmp x21,w8, UXTW 
+016a0390  stp s9,s8,[sp, #0x14]
+016a0394  b.cs 0x016a04d4
+016a0398  ldp s8,s9,[x22, #-0xc]
+016a039c  ldp s10,s11,[x22, #-0x4]
+016a03a0  ldrb w8,[x23, #0xf0f]
+016a03a4  cbnz w8,0x016a03b4
+016a03a8  mov x0,x20
+016a03ac  bl 0x00b0789c
+016a03b0  strb w24,[x23, #0xf0f]
+016a03b4  ldr x8,[x20]
+016a03b8  mov v0.16B,v8.16B
+016a03bc  mov v1.16B,v9.16B
+016a03c0  mov v2.16B,v10.16B
+016a03c4  ldr x8,[x8, #0xb8]
+016a03c8  mov v3.16B,v11.16B
+016a03cc  mov x0,xzr
+016a03d0  ldp s4,s5,[x8, #0x48]
+016a03d4  ldr s6,[x8, #0x50]
+016a03d8  bl 0x024ee4b4
+016a03dc  ldr w8,[x19, #0x18]
+016a03e0  cmp x21,x8
+016a03e4  b.cs 0x016a04d4
+016a03e8  mov v9.16B,v1.16B
+016a03ec  mov v10.16B,v2.16B
+016a03f0  ldp s1,s15,[x22, #-0xc]
+016a03f4  ldp s2,s11,[x22, #-0x4]
+016a03f8  ldrb w8,[x25, #0xffe]
+016a03fc  mov v8.16B,v0.16B
+016a0400  cbnz w8,0x016a0418
+016a0404  mov x0,x20
+016a0408  stp s2,s1,[sp, #0xc]
+016a040c  bl 0x00b0789c
+016a0410  ldp s2,s1,[sp, #0xc]
+016a0414  strb w24,[x25, #0xffe]
+016a0418  ldr x8,[x20]
+016a041c  ldr s0,[sp, #0x1c]
+016a0420  mov v3.16B,v11.16B
+016a0424  mov x0,xzr
+016a0428  ldr x8,[x8, #0xb8]
+016a042c  fadd s0,s0,s8
+016a0430  ldp s4,s5,[x8, #0x18]
+016a0434  str s0,[sp, #0x1c]
+016a0438  ldp s0,s8,[sp, #0x14]
+016a043c  ldr s6,[x8, #0x20]
+016a0440  fadd s0,s0,s9
+016a0444  mov v9.16B,v0.16B
+016a0448  mov v0.16B,v1.16B
+016a044c  mov v1.16B,v15.16B
+016a0450  fadd s8,s8,s10
+016a0454  bl 0x024ee4b4
+016a0458  ldr w8,[x19, #0x18]
+016a045c  add x21,x21,#0x1
+016a0460  fadd s14,s14,s0
+016a0464  fadd s13,s13,s1
+016a0468  fadd s12,s12,s2
+016a046c  cmp x21,w8, SXTW 
+016a0470  add x22,x22,#0x10
+016a0474  b.lt 0x016a038c
+016a0478  b 0x016a0488
+016a047c  str s14,[sp, #0x1c]
+016a0480  mov v9.16B,v13.16B
+016a0484  mov v8.16B,v12.16B
+016a0488  ldr s0,[sp, #0x1c]
+016a048c  scvtf s5,w8
+016a0490  fdiv s1,s9,s5
+016a0494  fdiv s2,s8,s5
+016a0498  fdiv s0,s0,s5
+016a049c  fdiv s3,s14,s5
+016a04a0  fdiv s4,s13,s5
+016a04a4  fdiv s5,s12,s5
+016a04a8  ldp x19,x30,[sp, #0x90]
+016a04ac  ldp x21,x20,[sp, #0x80]
+016a04b0  ldp x23,x22,[sp, #0x70]
+016a04b4  ldp x25,x24,[sp, #0x60]
+016a04b8  ldp d9,d8,[sp, #0x50]
+016a04bc  ldp d11,d10,[sp, #0x40]
+016a04c0  ldp d13,d12,[sp, #0x30]
+016a04c4  ldp d15,d14,[sp, #0x20]
+016a04c8  mov x0,xzr
+016a04cc  add sp,sp,#0xa0
+016a04d0  b 0x024ee194
+016a04d4  bl 0x00b079b8
+016a04d8  bl 0x00b079b0

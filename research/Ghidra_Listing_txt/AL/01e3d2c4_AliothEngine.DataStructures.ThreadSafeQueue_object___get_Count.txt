@@ -1,0 +1,45 @@
+Function: AliothEngine.DataStructures.ThreadSafeQueue<object>$$get_Count @ 01e3d2c4
+
+--- Calls OUT ---
+  -> System.Threading.ReaderWriterLockSlim$$ExitWriteLock @ 0223e094
+  -> System.Threading.ReaderWriterLockSlim$$EnterWriteLock @ 0223d7f0
+  -> FUN_00aaac8c @ 00aaac8c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01e3d2c4  stp x21,x20,[sp, #-0x20]!
+01e3d2c8  stp x19,x30,[sp, #0x10]
+01e3d2cc  mov x19,x0
+01e3d2d0  ldr x0,[x0, #0x18]
+01e3d2d4  cbz x0,0x01e3d32c
+01e3d2d8  mov x20,x1
+01e3d2dc  mov x1,xzr
+01e3d2e0  bl 0x0223d7f0
+01e3d2e4  ldr x0,[x19, #0x10]
+01e3d2e8  cbz x0,0x01e3d330
+01e3d2ec  ldr x8,[x20, #0x20]
+01e3d2f0  ldr x8,[x8, #0xc0]
+01e3d2f4  ldr x1,[x8, #0x78]
+01e3d2f8  ldr x8,[x1, #0x8]
+01e3d2fc  blr x8
+    ; [PRE] try { // try from 01e3d2fc to 01e3d2ff has its CatchHandler @ 01e3d340
+    ; [POST] } // end try from 01e3d2fc to 01e3d2ff
+01e3d300  mov w21,w0
+01e3d304  mov x20,xzr
+01e3d308  ldr x0,[x19, #0x18]
+01e3d30c  cbz x0,0x01e3d32c
+01e3d310  mov x1,xzr
+01e3d314  bl 0x0223e094
+01e3d318  cbnz x20,0x01e3d334
+01e3d31c  ldp x19,x30,[sp, #0x10]
+01e3d320  mov w0,w21
+01e3d324  ldp x21,x20,[sp], #0x20
+01e3d328  ret
+01e3d32c  bl 0x00b079b0
+01e3d330  bl 0x00b079b0
+    ; [PRE] try { // try from 01e3d330 to 01e3d333 has its CatchHandler @ 01e3d33c
+    ; [POST] } // end try from 01e3d330 to 01e3d333
+01e3d334  mov x0,x20
+01e3d338  bl 0x00aaac8c

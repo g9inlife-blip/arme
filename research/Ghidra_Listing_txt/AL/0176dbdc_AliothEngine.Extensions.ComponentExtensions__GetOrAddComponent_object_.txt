@@ -1,0 +1,29 @@
+Function: AliothEngine.Extensions.ComponentExtensions$$GetOrAddComponent<object> @ 0176dbdc
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0176dbdc  str x20,[sp, #-0x20]!
+0176dbe0  stp x19,x30,[sp, #0x10]
+0176dbe4  cbz x0,0x0176dc2c
+0176dbe8  ldr x8,[x1, #0x38]
+0176dbec  mov x20,x1
+0176dbf0  mov x19,x0
+0176dbf4  ldr x1,[x8]
+0176dbf8  ldr x8,[x1, #0x8]
+0176dbfc  blr x8
+0176dc00  cbz x0,0x0176dc10
+0176dc04  ldp x19,x30,[sp, #0x10]
+0176dc08  ldr x20,[sp], #0x20
+0176dc0c  ret
+0176dc10  ldr x8,[x20, #0x38]
+0176dc14  mov x0,x19
+0176dc18  ldp x19,x30,[sp, #0x10]
+0176dc1c  ldr x1,[x8, #0x10]
+0176dc20  ldr x2,[x1, #0x8]
+0176dc24  ldr x20,[sp], #0x20
+0176dc28  br x2
+0176dc2c  bl 0x00b079b0

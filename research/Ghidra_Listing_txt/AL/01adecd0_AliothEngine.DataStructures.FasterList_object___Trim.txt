@@ -1,0 +1,25 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$Trim @ 01adecd0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01adecd0  str x30,[sp, #-0x10]!
+01adecd4  ldr x9,[x0, #0x10]
+01adecd8  cbz x9,0x01aded10
+01adecdc  mov x8,x1
+01adece0  ldr w1,[x0, #0x18]
+01adece4  ldr w9,[x9, #0x18]
+01adece8  cmp w1,w9
+01adecec  b.ge 0x01aded08
+01adecf0  ldr x8,[x8, #0x20]
+01adecf4  ldr x8,[x8, #0xc0]
+01adecf8  ldr x2,[x8, #0x110]
+01adecfc  ldr x3,[x2, #0x8]
+01aded00  ldr x30,[sp], #0x10
+01aded04  br x3
+01aded08  ldr x30,[sp], #0x10
+01aded0c  ret
+01aded10  bl 0x00b079b0

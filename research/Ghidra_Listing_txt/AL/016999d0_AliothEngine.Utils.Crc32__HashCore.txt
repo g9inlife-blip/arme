@@ -1,0 +1,20 @@
+Function: AliothEngine.Utils.Crc32$$HashCore @ 016999d0
+
+--- Calls OUT ---
+  -> AliothEngine.Utils.Crc32$$CalculateHash @ 01699a00
+
+--- Calls IN ---
+
+--- Listing ---
+016999d0  stp x19,x30,[sp, #-0x10]!
+016999d4  mov x19,x0
+016999d8  ldr w8,[x19, #0x30]
+016999dc  ldr x0,[x0, #0x28]
+016999e0  mov w4,w3
+016999e4  mov w3,w2
+016999e8  mov x2,x1
+016999ec  mov w1,w8
+016999f0  bl 0x01699a00
+016999f4  str w0,[x19, #0x30]
+016999f8  ldp x19,x30,[sp], #0x10
+016999fc  ret

@@ -1,0 +1,38 @@
+Function: Ali$$SetSlateDirectorSetting @ 00e09304
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_SetSlateDirectorSetting_xlua_st_ @ 011975cc
+
+--- Listing ---
+00e09304  str x20,[sp, #-0x20]!
+00e09308  stp x19,x30,[sp, #0x10]
+00e0930c  adrp x20,0x3572000
+00e09310  adrp x19,0x335f000
+00e09314  ldrb w8,[x20, #0x587]
+00e09318  ldr x19,[x19, #0x20]
+00e0931c  tbnz w8,#0x0,0x00e09334
+00e09320  adrp x0,0x335f000
+00e09324  ldr x0,[x0, #0x20]
+00e09328  bl 0x00b0789c
+00e0932c  mov w8,#0x1
+00e09330  strb w8,[x20, #0x587]
+00e09334  ldr x0,[x19]
+00e09338  ldr w8,[x0, #0xe0]
+00e0933c  cbnz w8,0x00e09348
+00e09340  bl 0x00b0798c
+00e09344  ldr x0,[x19]
+00e09348  ldr x8,[x0, #0xb8]
+00e0934c  ldr x0,[x8, #0x3e0]
+00e09350  cbz x0,0x00e09364
+00e09354  ldp x19,x30,[sp, #0x10]
+00e09358  mov x1,xzr
+00e0935c  ldr x20,[sp], #0x20
+00e09360  b 0x0105fbf0
+00e09364  ldp x19,x30,[sp, #0x10]
+00e09368  ldr x20,[sp], #0x20
+00e0936c  ret

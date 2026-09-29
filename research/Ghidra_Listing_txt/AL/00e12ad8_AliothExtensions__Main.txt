@@ -1,0 +1,81 @@
+Function: AliothExtensions$$Main @ 00e12ad8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp238 @ 0107e274
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$GetExcelData<object> @ 01736d60
+
+--- Calls IN ---
+  <- RoleNews$$IsCanUseSkill @ 00fe5624
+  <- SkillTargetInfo$$isCanUseNoTarget @ 0130f8f8
+  <- SkillTargetInfo$$CanUseNotNeedMove @ 0130f7b4
+  <- AliothExtensions$$Skill @ 00e12978
+  <- HeroPartSkillMono$$RefreshPassiveShow @ 00f4dc54
+  <- SkillItemMono$$DemandOpen @ 00eb47d4
+  <- XLua.CSObjectWrap.SkillDataWrap$$_m_Main @ 013dacbc
+  <- TipsWeaponMono$$ShowTips @ 00f10094
+  <- TipsSkillMono$$ShowTips @ 00f0fdd4
+  <- HeroPartSkillMono$$RefreshUniqueShow @ 00f4d678
+  <- HeroPartEquipMono$$RefreshWeapon @ 00f4214c
+
+--- Listing ---
+00e12ad8  stp x21,x20,[sp, #-0x20]!
+00e12adc  stp x19,x30,[sp, #0x10]
+00e12ae0  adrp x21,0x3572000
+00e12ae4  adrp x20,0x3348000
+00e12ae8  ldrb w8,[x21, #0x5e7]
+00e12aec  ldr x20,[x20, #0x138]
+00e12af0  mov x19,x0
+00e12af4  tbnz w8,#0x0,0x00e12b24
+00e12af8  adrp x0,0x3338000
+00e12afc  ldr x0,[x0, #0xc88]
+00e12b00  bl 0x00b0789c
+00e12b04  adrp x0,0x335f000
+00e12b08  ldr x0,[x0, #0x20]
+00e12b0c  bl 0x00b0789c
+00e12b10  adrp x0,0x3348000
+00e12b14  ldr x0,[x0, #0x138]
+00e12b18  bl 0x00b0789c
+00e12b1c  mov w8,#0x1
+00e12b20  strb w8,[x21, #0x5e7]
+00e12b24  ldr x0,[x20]
+00e12b28  ldr w8,[x0, #0xe0]
+00e12b2c  cbnz w8,0x00e12b38
+00e12b30  bl 0x00b0798c
+00e12b34  ldr x0,[x20]
+00e12b38  ldr x8,[x0, #0xb8]
+00e12b3c  ldr x0,[x8, #0x78]
+00e12b40  cbz x0,0x00e12b58
+00e12b44  mov x1,x19
+00e12b48  ldp x19,x30,[sp, #0x10]
+00e12b4c  mov x2,xzr
+00e12b50  ldp x21,x20,[sp], #0x20
+00e12b54  b 0x0107e274
+00e12b58  cbz x19,0x00e12bbc
+00e12b5c  ldr w8,[x19, #0x94]
+00e12b60  cmp w8,#0x1
+00e12b64  b.lt 0x00e12bac
+00e12b68  adrp x20,0x335f000
+00e12b6c  ldr x20,[x20, #0x20]
+00e12b70  ldr x0,[x20]
+00e12b74  ldr w8,[x0, #0xe0]
+00e12b78  cbnz w8,0x00e12b84
+00e12b7c  bl 0x00b0798c
+00e12b80  ldr x0,[x20]
+00e12b84  ldr x8,[x0, #0xb8]
+00e12b88  ldr x0,[x8, #0x10]
+00e12b8c  cbz x0,0x00e12bbc
+00e12b90  adrp x8,0x3338000
+00e12b94  ldr x8,[x8, #0xc88]
+00e12b98  ldr w1,[x19, #0x94]
+00e12b9c  ldp x19,x30,[sp, #0x10]
+00e12ba0  ldr x2,[x8]
+00e12ba4  ldp x21,x20,[sp], #0x20
+00e12ba8  b 0x01736d60
+00e12bac  ldp x19,x30,[sp, #0x10]
+00e12bb0  mov x0,xzr
+00e12bb4  ldp x21,x20,[sp], #0x20
+00e12bb8  ret
+00e12bbc  bl 0x00b079b0

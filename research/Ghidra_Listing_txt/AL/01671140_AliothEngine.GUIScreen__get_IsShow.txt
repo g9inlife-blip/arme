@@ -1,0 +1,38 @@
+Function: AliothEngine.GUIScreen$$get_IsShow @ 01671140
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+  -> AliothEngine.GUIScreen$$get_m_isShow @ 01670c44
+
+--- Calls IN ---
+  <- TipsTextPanelMono$$<>xLuaBaseProxy_get_IsShow @ 00f17f38
+  <- TipsNormalPanelMono$$<>xLuaBaseProxy_get_IsShow @ 00f12f9c
+
+--- Listing ---
+01671140  stp x21,x20,[sp, #-0x20]!
+01671144  stp x19,x30,[sp, #0x10]
+01671148  adrp x20,0x3577000
+0167114c  adrp x21,0x3364000
+01671150  ldrb w8,[x20, #0x97c]
+01671154  ldr x21,[x21, #0xd28]
+01671158  mov x19,x0
+0167115c  tbnz w8,#0x0,0x01671174
+01671160  adrp x0,0x3364000
+01671164  ldr x0,[x0, #0xd28]
+01671168  bl 0x00b0789c
+0167116c  mov w8,#0x1
+01671170  strb w8,[x20, #0x97c]
+01671174  ldr x8,[x21]
+01671178  ldr x8,[x8, #0xb8]
+0167117c  ldr x0,[x8, #0x58]
+01671180  cbz x0,0x01671198
+01671184  mov x1,x19
+01671188  ldp x19,x30,[sp, #0x10]
+0167118c  mov x2,xzr
+01671190  ldp x21,x20,[sp], #0x20
+01671194  b 0x01060aac
+01671198  mov x0,x19
+0167119c  ldp x19,x30,[sp, #0x10]
+016711a0  ldp x21,x20,[sp], #0x20
+016711a4  b 0x01670c44

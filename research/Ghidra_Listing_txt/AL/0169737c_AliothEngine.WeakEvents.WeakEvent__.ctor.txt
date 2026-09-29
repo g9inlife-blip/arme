@@ -1,0 +1,90 @@
+Function: AliothEngine.WeakEvents.WeakEvent$$.ctor @ 0169737c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$.ctor @ 01adc480
+  -> System.Func<object,-bool>$$.ctor @ 01ae8650
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.DataStructures.FasterList<object>$$.ctor @ 01add978
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakEvent<object,-object>$$.ctor @ 01f0d630
+  <- AliothEngine.WeakEvents.WeakEvent<object>$$.ctor @ 01f0d1cc
+  <- AliothEngine.WeakEvents.WeakEvent$$op_Addition @ 0169730c
+
+--- Listing ---
+0169737c  stp x21,x20,[sp, #-0x20]!
+01697380  stp x19,x30,[sp, #0x10]
+01697384  adrp x20,0x3577000
+01697388  adrp x21,0x3377000
+0169738c  ldrb w8,[x20, #0xb15]
+01697390  ldr x21,[x21, #0x560]
+01697394  mov x19,x0
+01697398  tbnz w8,#0x0,0x016973e0
+0169739c  adrp x0,0x335f000
+016973a0  ldr x0,[x0, #0x950]
+016973a4  bl 0x00b0789c
+016973a8  adrp x0,0x331f000
+016973ac  ldr x0,[x0, #0x948]
+016973b0  bl 0x00b0789c
+016973b4  adrp x0,0x333f000
+016973b8  ldr x0,[x0, #0xd78]
+016973bc  bl 0x00b0789c
+016973c0  adrp x0,0x3377000
+016973c4  ldr x0,[x0, #0x560]
+016973c8  bl 0x00b0789c
+016973cc  adrp x0,0x330e000
+016973d0  ldr x0,[x0, #0x6b8]
+016973d4  bl 0x00b0789c
+016973d8  mov w8,#0x1
+016973dc  strb w8,[x20, #0xb15]
+016973e0  ldr x0,[x21]
+016973e4  bl 0x00b079a0
+016973e8  cbz x0,0x01697498
+016973ec  adrp x8,0x335f000
+016973f0  ldr x8,[x8, #0x950]
+016973f4  adrp x21,0x333f000
+016973f8  mov x20,x0
+016973fc  ldr x1,[x8]
+01697400  ldr x21,[x21, #0xd78]
+01697404  bl 0x01add978
+01697408  mov x0,x19
+0169740c  str x20,[x0, #0x10]!
+01697410  mov x1,x20
+01697414  bl 0x00b07850
+01697418  ldr x0,[x21]
+0169741c  bl 0x00b079a0
+01697420  cbz x0,0x01697498
+01697424  adrp x8,0x331f000
+01697428  ldr x8,[x8, #0x948]
+0169742c  adrp x21,0x330e000
+01697430  mov x20,x0
+01697434  ldr x1,[x8]
+01697438  ldr x21,[x21, #0x6b8]
+0169743c  bl 0x01adc480
+01697440  mov x0,x19
+01697444  str x20,[x0, #0x18]!
+01697448  mov x1,x20
+0169744c  bl 0x00b07850
+01697450  mov x0,x19
+01697454  mov x1,xzr
+01697458  bl 0x02194104
+0169745c  ldr x0,[x21]
+01697460  bl 0x00b079a0
+01697464  cbz x0,0x01697498
+01697468  ldr x8,[x19]
+0169746c  mov x1,x19
+01697470  mov x3,xzr
+01697474  mov x20,x0
+01697478  ldr x2,[x8, #0x180]
+0169747c  bl 0x01ae8650
+01697480  str x20,[x19, #0x28]!
+01697484  mov x0,x19
+01697488  ldp x19,x30,[sp, #0x10]
+0169748c  mov x1,x20
+01697490  ldp x21,x20,[sp], #0x20
+01697494  b 0x00b07850
+01697498  bl 0x00b079b0

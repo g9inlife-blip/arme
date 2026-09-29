@@ -1,0 +1,37 @@
+Function: AliothEngine.AssetInfoManager$$get_logger @ 01669054
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp283 @ 01083dd8
+  -> AliothEngine.LogManager$$get_AssetLogger @ 0168a530
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass18_0$$<LoadAsset>b__0 @ 0166a0d0
+  <- AliothEngine.AssetInfoManager$$LoadOneAsset @ 01668ac0
+
+--- Listing ---
+01669054  stp x21,x20,[sp, #-0x20]!
+01669058  stp x19,x30,[sp, #0x10]
+0166905c  adrp x20,0x3577000
+01669060  adrp x21,0x334f000
+01669064  ldrb w8,[x20, #0x91d]
+01669068  ldr x21,[x21, #0xaf8]
+0166906c  mov x19,x0
+01669070  tbnz w8,#0x0,0x01669088
+01669074  adrp x0,0x334f000
+01669078  ldr x0,[x0, #0xaf8]
+0166907c  bl 0x00b0789c
+01669080  mov w8,#0x1
+01669084  strb w8,[x20, #0x91d]
+01669088  ldr x8,[x21]
+0166908c  ldr x8,[x8, #0xb8]
+01669090  ldr x0,[x8, #0xb8]
+01669094  cbz x0,0x016690ac
+01669098  mov x1,x19
+0166909c  ldp x19,x30,[sp, #0x10]
+016690a0  mov x2,xzr
+016690a4  ldp x21,x20,[sp], #0x20
+016690a8  b 0x01083dd8
+016690ac  ldp x19,x30,[sp, #0x10]
+016690b0  ldp x21,x20,[sp], #0x20
+016690b4  b 0x0168a530

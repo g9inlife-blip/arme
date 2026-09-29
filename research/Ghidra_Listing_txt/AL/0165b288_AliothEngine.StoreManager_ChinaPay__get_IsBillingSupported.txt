@@ -1,0 +1,81 @@
+Function: AliothEngine.StoreManager_ChinaPay$$get_IsBillingSupported @ 0165b288
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.StoreManager_ChinaPay$$get_PayType @ 0165b1fc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+
+--- Listing ---
+0165b288  stp x21,x20,[sp, #-0x20]!
+0165b28c  stp x19,x30,[sp, #0x10]
+0165b290  adrp x20,0x3577000
+0165b294  adrp x21,0x333d000
+0165b298  ldrb w8,[x20, #0x869]
+0165b29c  ldr x21,[x21, #0xe50]
+0165b2a0  mov x19,x0
+0165b2a4  tbnz w8,#0x0,0x0165b2c8
+0165b2a8  adrp x0,0x3321000
+0165b2ac  ldr x0,[x0, #0xca8]
+0165b2b0  bl 0x00b0789c
+0165b2b4  adrp x0,0x333d000
+0165b2b8  ldr x0,[x0, #0xe50]
+0165b2bc  bl 0x00b0789c
+0165b2c0  mov w8,#0x1
+0165b2c4  strb w8,[x20, #0x869]
+0165b2c8  ldr x8,[x21]
+0165b2cc  ldr x8,[x8, #0xb8]
+0165b2d0  ldr x0,[x8, #0x8]
+0165b2d4  cbz x0,0x0165b2ec
+0165b2d8  mov x1,x19
+0165b2dc  ldp x19,x30,[sp, #0x10]
+0165b2e0  mov x2,xzr
+0165b2e4  ldp x21,x20,[sp], #0x20
+0165b2e8  b 0x01060aac
+0165b2ec  adrp x20,0x3321000
+0165b2f0  ldr x20,[x20, #0xca8]
+0165b2f4  mov x0,x19
+0165b2f8  bl 0x0165b1fc
+0165b2fc  cbz w0,0x0165b344
+0165b300  mov x0,x19
+0165b304  bl 0x0165b1fc
+0165b308  cmp w0,#0x1
+0165b30c  b.ne 0x0165b388
+0165b310  ldr x0,[x20]
+0165b314  ldr x20,[x19, #0x60]
+0165b318  ldr w8,[x0, #0xe0]
+0165b31c  cbnz w8,0x0165b324
+0165b320  bl 0x00b0798c
+0165b324  mov x0,x20
+0165b328  mov x1,xzr
+0165b32c  mov x2,xzr
+0165b330  bl 0x024de30c
+0165b334  tbz w0,#0x0,0x0165b388
+0165b338  ldr x0,[x19, #0x60]
+0165b33c  cbnz x0,0x0165b374
+0165b340  bl 0x00b079b0
+0165b344  ldr x0,[x20]
+0165b348  ldr x20,[x19, #0x58]
+0165b34c  ldr w8,[x0, #0xe0]
+0165b350  cbnz w8,0x0165b358
+0165b354  bl 0x00b0798c
+0165b358  mov x0,x20
+0165b35c  mov x1,xzr
+0165b360  mov x2,xzr
+0165b364  bl 0x024de30c
+0165b368  tbz w0,#0x0,0x0165b388
+0165b36c  ldr x0,[x19, #0x58]
+0165b370  cbz x0,0x0165b340
+0165b374  ldr x8,[x0]
+0165b378  ldp x19,x30,[sp, #0x10]
+0165b37c  ldp x2,x1,[x8, #0x178]
+0165b380  ldp x21,x20,[sp], #0x20
+0165b384  br x2
+0165b388  ldp x19,x30,[sp, #0x10]
+0165b38c  mov w0,wzr
+0165b390  ldp x21,x20,[sp], #0x20
+0165b394  ret

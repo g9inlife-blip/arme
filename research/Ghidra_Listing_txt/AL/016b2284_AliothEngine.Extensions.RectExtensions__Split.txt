@@ -1,0 +1,86 @@
+Function: AliothEngine.Extensions.RectExtensions$$Split @ 016b2284
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_width @ 024db070
+  -> UnityEngine.Rect$$get_x @ 024daf34
+  -> UnityEngine.Rect$$set_x @ 024daf3c
+  -> UnityEngine.Rect$$get_width @ 024db068
+
+--- Calls IN ---
+
+--- Listing ---
+016b2284  sub sp,sp,#0x50
+016b2288  stp d9,d8,[sp, #0x10]
+016b228c  str x22,[sp, #0x20]
+016b2290  stp x21,x20,[sp, #0x30]
+016b2294  stp x19,x30,[sp, #0x40]
+016b2298  mov w20,w1
+016b229c  mov w19,w0
+016b22a0  mov x0,sp
+016b22a4  mov x1,xzr
+016b22a8  stp s0,s1,[sp]
+016b22ac  stp s2,s3,[sp, #0x8]
+016b22b0  bl 0x024db068
+016b22b4  mov w8,#0x7f800000
+016b22b8  fmov s8,w8
+016b22bc  fcvtzs w9,s0
+016b22c0  fcmp s0,s8
+016b22c4  mov w22,#0x80000000
+016b22c8  csel w8,w22,w9,eq
+016b22cc  sdiv w9,w8,w20
+016b22d0  mov x0,sp
+016b22d4  mov x1,xzr
+016b22d8  msub w21,w9,w20,w8
+016b22dc  bl 0x024db068
+016b22e0  scvtf s1,w20
+016b22e4  fdiv s0,s0,s1
+016b22e8  fcvtzs w9,s0
+016b22ec  fcmp s0,s8
+016b22f0  csel w22,w22,w9,eq
+016b22f4  cmp w21,w19
+016b22f8  add w8,w19,#0x1
+016b22fc  cinc w9,w22,gt
+016b2300  subs w20,w8,w20
+016b2304  scvtf s9,w9
+016b2308  fmov s0,wzr
+016b230c  b.ne 0x016b2350
+016b2310  mov x0,sp
+016b2314  mov x1,xzr
+016b2318  bl 0x024db068
+016b231c  mov x0,sp
+016b2320  mov x1,xzr
+016b2324  mov v8.16B,v0.16B
+016b2328  bl 0x024db068
+016b232c  mov w9,#0x7f800000
+016b2330  fcvtzs w8,s0
+016b2334  mov w10,#0xcf000000
+016b2338  fmov s2,w9
+016b233c  scvtf s1,w8
+016b2340  fcmp s0,s2
+016b2344  fmov s0,w10
+016b2348  fcsel s0,s0,s1,eq
+016b234c  fsub s0,s8,s0
+016b2350  fadd s0,s0,s9
+016b2354  mov x0,sp
+016b2358  mov x1,xzr
+016b235c  bl 0x024db070
+016b2360  cmp w19,#0x1
+016b2364  b.lt 0x016b2390
+016b2368  mov x0,sp
+016b236c  mov x1,xzr
+016b2370  bl 0x024daf34
+016b2374  add w8,w20,w21
+016b2378  madd w8,w22,w19,w8
+016b237c  scvtf s1,w8
+016b2380  fadd s0,s0,s1
+016b2384  mov x0,sp
+016b2388  mov x1,xzr
+016b238c  bl 0x024daf3c
+016b2390  ldp s0,s1,[sp]
+016b2394  ldp s2,s3,[sp, #0x8]
+016b2398  ldp x19,x30,[sp, #0x40]
+016b239c  ldp x21,x20,[sp, #0x30]
+016b23a0  ldr x22,[sp, #0x20]
+016b23a4  ldp d9,d8,[sp, #0x10]
+016b23a8  add sp,sp,#0x50
+016b23ac  ret

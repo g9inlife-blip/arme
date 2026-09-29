@@ -1,0 +1,79 @@
+Function: AliothEngine.GameEventSys<Int32Enum>$$RmvEventHandler @ 01af23b8
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GameEventSysTest$$RmvEvent @ 0164bdf4
+
+--- Listing ---
+01af23b8  stp x23,x22,[sp, #-0x30]!
+01af23bc  stp x21,x20,[sp, #0x10]
+01af23c0  stp x19,x30,[sp, #0x20]
+01af23c4  adrp x23,0x3578000
+01af23c8  ldrb w8,[x23, #0x9fe]
+01af23cc  mov x20,x3
+01af23d0  mov x21,x2
+01af23d4  mov w19,w1
+01af23d8  mov x22,x0
+01af23dc  tbnz w8,#0x0,0x01af23f4
+01af23e0  adrp x0,0x3348000
+01af23e4  ldr x0,[x0, #0xcf8]
+01af23e8  bl 0x00b0789c
+01af23ec  mov w8,#0x1
+01af23f0  strb w8,[x23, #0x9fe]
+01af23f4  ldr x8,[x20, #0x20]
+01af23f8  mov x0,x22
+01af23fc  mov w1,w19
+01af2400  mov x2,x21
+01af2404  ldr x8,[x8, #0xc0]
+01af2408  ldr x3,[x8, #0x38]
+01af240c  ldr x8,[x3, #0x8]
+01af2410  blr x8
+01af2414  tbz w0,#0x0,0x01af24a4
+01af2418  ldr x22,[x22, #0x10]
+01af241c  cbz x22,0x01af24b4
+01af2420  ldr x8,[x20, #0x20]
+01af2424  adrp x23,0x3348000
+01af2428  mov x0,x22
+01af242c  mov w1,w19
+01af2430  ldr x8,[x8, #0xc0]
+01af2434  ldr x2,[x8, #0x28]
+01af2438  ldr x8,[x2, #0x8]
+01af243c  ldr x23,[x23, #0xcf8]
+01af2440  blr x8
+01af2444  cbz x0,0x01af2458
+01af2448  ldr x1,[x23]
+01af244c  ldr x8,[x0]
+01af2450  cmp x8,x1
+01af2454  b.ne 0x01af24b8
+01af2458  mov x1,x21
+01af245c  mov x2,xzr
+01af2460  bl 0x02197a1c
+01af2464  ldr x8,[x20, #0x20]
+01af2468  mov x2,x0
+01af246c  ldr x8,[x8, #0xc0]
+01af2470  ldr x3,[x8, #0x30]
+01af2474  ldr x4,[x3, #0x8]
+01af2478  cbz x0,0x01af248c
+01af247c  ldr x1,[x23]
+01af2480  ldr x8,[x2]
+01af2484  cmp x8,x1
+01af2488  b.ne 0x01af24bc
+01af248c  mov w1,w19
+01af2490  ldp x19,x30,[sp, #0x20]
+01af2494  ldp x21,x20,[sp, #0x10]
+01af2498  mov x0,x22
+01af249c  ldp x23,x22,[sp], #0x30
+01af24a0  br x4
+01af24a4  ldp x19,x30,[sp, #0x20]
+01af24a8  ldp x21,x20,[sp, #0x10]
+01af24ac  ldp x23,x22,[sp], #0x30
+01af24b0  ret
+01af24b4  bl 0x00b079b0
+01af24b8  bl 0x00b07c6c
+01af24bc  mov x0,x2
+01af24c0  bl 0x00b07c6c

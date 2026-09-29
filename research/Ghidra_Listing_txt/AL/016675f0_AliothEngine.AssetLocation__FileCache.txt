@@ -1,0 +1,50 @@
+Function: AliothEngine.AssetLocation$$FileCache @ 016675f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.AssetLocation$$.ctor @ 0166dbe0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$get_CacheManifestLocation @ 016699cc
+  <- AliothEngine.AssetFileInfo$$GetAssetLocation @ 016673e0
+  <- AliothEngine.AssetInfoManager$$get_CacheAssetBundleInfoLocation @ 01669730
+
+--- Listing ---
+016675f0  str x24,[sp, #-0x40]!
+016675f4  stp x23,x22,[sp, #0x10]
+016675f8  stp x21,x20,[sp, #0x20]
+016675fc  stp x19,x30,[sp, #0x30]
+01667600  adrp x23,0x3577000
+01667604  adrp x24,0x3347000
+01667608  ldrb w8,[x23, #0x953]
+0166760c  ldr x24,[x24, #0xc28]
+01667610  mov w19,w3
+01667614  mov x20,x2
+01667618  mov x21,x1
+0166761c  mov x22,x0
+01667620  tbnz w8,#0x0,0x01667638
+01667624  adrp x0,0x3347000
+01667628  ldr x0,[x0, #0xc28]
+0166762c  bl 0x00b0789c
+01667630  mov w8,#0x1
+01667634  strb w8,[x23, #0x953]
+01667638  ldr x0,[x24]
+0166763c  bl 0x00b079a0
+01667640  cbz x0,0x0166767c
+01667644  mov w1,#0x3
+01667648  mov x2,x22
+0166764c  mov x3,x21
+01667650  mov x4,x21
+01667654  mov x5,x20
+01667658  mov w6,w19
+0166765c  mov x23,x0
+01667660  bl 0x0166dbe0
+01667664  mov x0,x23
+01667668  ldp x19,x30,[sp, #0x30]
+0166766c  ldp x21,x20,[sp, #0x20]
+01667670  ldp x23,x22,[sp, #0x10]
+01667674  ldr x24,[sp], #0x40
+01667678  ret
+0166767c  bl 0x00b079b0

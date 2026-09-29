@@ -1,0 +1,38 @@
+Function: Response_Account_Anon$$.ctor @ 00dddf88
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Response_WebBase$$.ctor @ 00ddde40
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_Account_AnonWrap$$__CreateInstance @ 0135dc8c
+
+--- Listing ---
+00dddf88  stp x21,x20,[sp, #-0x20]!
+00dddf8c  stp x19,x30,[sp, #0x10]
+00dddf90  adrp x21,0x3572000
+00dddf94  adrp x20,0x3325000
+00dddf98  ldrb w8,[x21, #0x2e3]
+00dddf9c  ldr x20,[x20, #0xd30]
+00dddfa0  mov x19,x0
+00dddfa4  tbnz w8,#0x0,0x00dddfbc
+00dddfa8  adrp x0,0x3325000
+00dddfac  ldr x0,[x0, #0xd30]
+00dddfb0  bl 0x00b0789c
+00dddfb4  mov w8,#0x1
+00dddfb8  strb w8,[x21, #0x2e3]
+00dddfbc  mov x0,x19
+00dddfc0  bl 0x00ddde40
+00dddfc4  ldr x8,[x20]
+00dddfc8  ldr x8,[x8, #0xb8]
+00dddfcc  ldr x0,[x8]
+00dddfd0  cbz x0,0x00dddfe8
+00dddfd4  mov x1,x19
+00dddfd8  ldp x19,x30,[sp, #0x10]
+00dddfdc  mov x2,xzr
+00dddfe0  ldp x21,x20,[sp], #0x20
+00dddfe4  b 0x01060dac
+00dddfe8  ldp x19,x30,[sp, #0x10]
+00dddfec  ldp x21,x20,[sp], #0x20
+00dddff0  ret

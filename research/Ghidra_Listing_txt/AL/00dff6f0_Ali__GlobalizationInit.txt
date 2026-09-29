@@ -1,0 +1,54 @@
+Function: Ali$$GlobalizationInit @ 00dff6f0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp0 @ 0105fbf0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Globalization.CultureInfo$$set_CurrentCulture @ 021172b4
+  -> System.Globalization.CultureInfo$$get_InvariantCulture @ 02117234
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_GlobalizationInit_xlua_st_ @ 0118fdd4
+  <- Main.<Start>d__1$$MoveNext @ 00e3a070
+  <- Ali$$.ctor @ 00dff78c
+
+--- Listing ---
+00dff6f0  str x20,[sp, #-0x20]!
+00dff6f4  stp x19,x30,[sp, #0x10]
+00dff6f8  adrp x20,0x3572000
+00dff6fc  adrp x19,0x335f000
+00dff700  ldrb w8,[x20, #0x513]
+00dff704  ldr x19,[x19, #0x20]
+00dff708  tbnz w8,#0x0,0x00dff72c
+00dff70c  adrp x0,0x335f000
+00dff710  ldr x0,[x0, #0x20]
+00dff714  bl 0x00b0789c
+00dff718  adrp x0,0x3360000
+00dff71c  ldr x0,[x0, #0x28]
+00dff720  bl 0x00b0789c
+00dff724  mov w8,#0x1
+00dff728  strb w8,[x20, #0x513]
+00dff72c  ldr x0,[x19]
+00dff730  ldr w8,[x0, #0xe0]
+00dff734  cbnz w8,0x00dff740
+00dff738  bl 0x00b0798c
+00dff73c  ldr x0,[x19]
+00dff740  ldr x8,[x0, #0xb8]
+00dff744  ldr x0,[x8, #0x30]
+00dff748  cbz x0,0x00dff75c
+00dff74c  ldp x19,x30,[sp, #0x10]
+00dff750  mov x1,xzr
+00dff754  ldr x20,[sp], #0x20
+00dff758  b 0x0105fbf0
+00dff75c  adrp x8,0x3360000
+00dff760  ldr x8,[x8, #0x28]
+00dff764  ldr x0,[x8]
+00dff768  ldr w8,[x0, #0xe0]
+00dff76c  cbnz w8,0x00dff774
+00dff770  bl 0x00b0798c
+00dff774  mov x0,xzr
+00dff778  bl 0x02117234
+00dff77c  ldp x19,x30,[sp, #0x10]
+00dff780  mov x1,xzr
+00dff784  ldr x20,[sp], #0x20
+00dff788  b 0x021172b4

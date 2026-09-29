@@ -1,0 +1,18 @@
+Function: AliothEngine.Vector2Range$$GetValue @ 016868e4
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016868e4  ldp d1,d2,[x0, #0x10]
+016868e8  fmov s3,0x3f800000
+016868ec  fmin s3,s0,s3
+016868f0  fcmp s0,#0.0
+016868f4  fmov s0,wzr
+016868f8  fcsel s0,s3,s0,pl
+016868fc  fsub v2.2S,v2.2S,v1.2S
+01686900  fmul v0.2S,v2.2S,v0.S[0x0]
+01686904  fadd v0.2S,v1.2S,v0.2S
+01686908  dup s1,v0.S[0x1]
+0168690c  ret

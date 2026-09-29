@@ -1,0 +1,47 @@
+Function: AliothEngine.Extensions.TransformExtensions$$SelfAndAllChildren @ 016b97e8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> System.Environment$$get_CurrentManagedThreadId @ 02197f70
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.MonoBehaviourExtensions$$GetComponentInChildrenAlways<object> @ 017a7a70
+
+--- Listing ---
+016b97e8  stp x21,x20,[sp, #-0x20]!
+016b97ec  stp x19,x30,[sp, #0x10]
+016b97f0  adrp x20,0x3577000
+016b97f4  adrp x21,0x332b000
+016b97f8  ldrb w8,[x20, #0xc2b]
+016b97fc  ldr x21,[x21, #0xba8]
+016b9800  mov x19,x0
+016b9804  tbnz w8,#0x0,0x016b981c
+016b9808  adrp x0,0x332b000
+016b980c  ldr x0,[x0, #0xba8]
+016b9810  bl 0x00b0789c
+016b9814  mov w8,#0x1
+016b9818  strb w8,[x20, #0xc2b]
+016b981c  ldr x0,[x21]
+016b9820  bl 0x00b079a0
+016b9824  cbz x0,0x016b9868
+016b9828  mov x1,xzr
+016b982c  mov x20,x0
+016b9830  bl 0x02194104
+016b9834  mov w8,#0xfffffffe
+016b9838  mov x0,xzr
+016b983c  str w8,[x20, #0x10]
+016b9840  bl 0x02197f70
+016b9844  str w0,[x20, #0x20]
+016b9848  mov x0,x20
+016b984c  str x19,[x0, #0x30]!
+016b9850  mov x1,x19
+016b9854  bl 0x00b07850
+016b9858  ldp x19,x30,[sp, #0x10]
+016b985c  mov x0,x20
+016b9860  ldp x21,x20,[sp], #0x20
+016b9864  ret
+016b9868  bl 0x00b079b0

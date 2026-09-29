@@ -1,0 +1,44 @@
+Function: Ali$$get_luaenv @ 00dff5e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp369 @ 0108f1f4
+
+--- Calls IN ---
+  <- ResManager$$<LuaLoading>b__28_0 @ 00e2bbac
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_luaenv @ 0119d8e8
+  <- ResManager$$DisposeLua @ 00e2b6c0
+  <- ResManager$$Update @ 00e2a390
+
+--- Listing ---
+00dff5e4  stp x21,x20,[sp, #-0x20]!
+00dff5e8  stp x19,x30,[sp, #0x10]
+00dff5ec  adrp x21,0x3572000
+00dff5f0  adrp x20,0x335f000
+00dff5f4  ldrb w8,[x21, #0x511]
+00dff5f8  ldr x20,[x20, #0x20]
+00dff5fc  mov x19,x0
+00dff600  tbnz w8,#0x0,0x00dff618
+00dff604  adrp x0,0x335f000
+00dff608  ldr x0,[x0, #0x20]
+00dff60c  bl 0x00b0789c
+00dff610  mov w8,#0x1
+00dff614  strb w8,[x21, #0x511]
+00dff618  ldr x0,[x20]
+00dff61c  ldr w8,[x0, #0xe0]
+00dff620  cbnz w8,0x00dff62c
+00dff624  bl 0x00b0798c
+00dff628  ldr x0,[x20]
+00dff62c  ldr x8,[x0, #0xb8]
+00dff630  ldr x0,[x8, #0x20]
+00dff634  cbz x0,0x00dff64c
+00dff638  mov x1,x19
+00dff63c  ldp x19,x30,[sp, #0x10]
+00dff640  mov x2,xzr
+00dff644  ldp x21,x20,[sp], #0x20
+00dff648  b 0x0108f1f4
+00dff64c  ldr x0,[x19, #0x10]
+00dff650  ldp x19,x30,[sp, #0x10]
+00dff654  ldp x21,x20,[sp], #0x20
+00dff658  ret

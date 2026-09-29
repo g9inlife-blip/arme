@@ -1,0 +1,31 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$UnorderedRemove @ 01add498
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+01add498  str x20,[sp, #-0x20]!
+01add49c  stp x19,x30,[sp, #0x10]
+01add4a0  ldr x8,[x3, #0x20]
+01add4a4  mov x19,x3
+01add4a8  mov x20,x0
+01add4ac  ldr x8,[x8, #0xc0]
+01add4b0  ldr x3,[x8, #0xa8]
+01add4b4  ldr x8,[x3, #0x8]
+01add4b8  blr x8
+01add4bc  cmn w0,#0x1
+01add4c0  b.eq 0x01add4e8
+01add4c4  ldr x8,[x19, #0x20]
+01add4c8  mov w1,w0
+01add4cc  mov x0,x20
+01add4d0  ldr x8,[x8, #0xc0]
+01add4d4  ldr x2,[x8, #0x100]
+01add4d8  ldr x8,[x2, #0x8]
+01add4dc  blr x8
+01add4e0  mov w0,#0x1
+01add4e4  b 0x01add4ec
+01add4e8  mov w0,wzr
+01add4ec  ldp x19,x30,[sp, #0x10]
+01add4f0  ldr x20,[sp], #0x20
+01add4f4  ret

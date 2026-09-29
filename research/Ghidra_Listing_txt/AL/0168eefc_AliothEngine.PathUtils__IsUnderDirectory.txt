@@ -1,0 +1,75 @@
+Function: AliothEngine.PathUtils$$IsUnderDirectory @ 0168eefc
+
+--- Calls OUT ---
+  -> AliothEngine.PathUtils$$CleanPathSeparators @ 0168e384
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fdf7a4
+  -> System.String$$Contains @ 01fe31fc
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.FileUtility$$IsStreamingAssetFile @ 0168ee88
+
+--- Listing ---
+0168eefc  sub sp,sp,#0x40
+0168ef00  stp x23,x22,[sp, #0x10]
+0168ef04  stp x21,x20,[sp, #0x20]
+0168ef08  stp x19,x30,[sp, #0x30]
+0168ef0c  adrp x22,0x3577000
+0168ef10  adrp x21,0x336c000
+0168ef14  ldrb w8,[x22, #0xadc]
+0168ef18  ldr x21,[x21, #0x318]
+0168ef1c  mov x19,x1
+0168ef20  mov x20,x0
+0168ef24  tbnz w8,#0x0,0x0168ef54
+0168ef28  adrp x0,0x3329000
+0168ef2c  ldr x0,[x0, #0xc30]
+0168ef30  bl 0x00b0789c
+0168ef34  adrp x0,0x336c000
+0168ef38  ldr x0,[x0, #0x318]
+0168ef3c  bl 0x00b0789c
+0168ef40  adrp x0,0x3353000
+0168ef44  ldr x0,[x0, #0xef8]
+0168ef48  bl 0x00b0789c
+0168ef4c  mov w8,#0x1
+0168ef50  strb w8,[x22, #0xadc]
+0168ef54  adrp x23,0x3329000
+0168ef58  adrp x22,0x3353000
+0168ef5c  ldr x23,[x23, #0xc30]
+0168ef60  ldr x22,[x22, #0xef8]
+0168ef64  mov x0,x20
+0168ef68  bl 0x0168e384
+0168ef6c  ldr x8,[x21]
+0168ef70  mov x20,x0
+0168ef74  ldr w9,[x8, #0xe0]
+0168ef78  cbnz w9,0x0168ef88
+0168ef7c  mov x0,x8
+0168ef80  bl 0x00b0798c
+0168ef84  ldr x8,[x21]
+0168ef88  ldr x8,[x8, #0xb8]
+0168ef8c  ldr x0,[x23]
+0168ef90  add x1,sp,#0xc
+0168ef94  ldrh w8,[x8, #0xa]
+0168ef98  strh w8,[sp, #0xc]
+0168ef9c  bl 0x00b07994
+0168efa0  ldr x8,[x22]
+0168efa4  mov x2,x0
+0168efa8  mov x1,x19
+0168efac  mov x3,xzr
+0168efb0  mov x0,x8
+0168efb4  bl 0x01fdf7a4
+0168efb8  bl 0x0168e384
+0168efbc  cbz x20,0x0168efe8
+0168efc0  mov x1,x0
+0168efc4  mov x0,x20
+0168efc8  mov x2,xzr
+0168efcc  bl 0x01fe31fc
+0168efd0  ldp x19,x30,[sp, #0x30]
+0168efd4  ldp x21,x20,[sp, #0x20]
+0168efd8  ldp x23,x22,[sp, #0x10]
+0168efdc  and w0,w0,#0x1
+0168efe0  add sp,sp,#0x40
+0168efe4  ret
+0168efe8  bl 0x00b079b0

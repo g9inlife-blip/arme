@@ -1,0 +1,72 @@
+Function: Ali$$GetBackgroundName @ 00e098e0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp405 @ 01093e80
+
+--- Calls IN ---
+  <- BattleSectionMono$$get_BackgroundName @ 00e519f4
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetBackgroundName_xlua_st_ @ 01197c90
+  <- BattleMapMono$$get_BackgroundName @ 00e4d910
+
+--- Listing ---
+00e098e0  stp x21,x20,[sp, #-0x20]!
+00e098e4  stp x19,x30,[sp, #0x10]
+00e098e8  adrp x21,0x3572000
+00e098ec  adrp x20,0x335f000
+00e098f0  ldrb w8,[x21, #0x58a]
+00e098f4  ldr x20,[x20, #0x20]
+00e098f8  mov w19,w0
+00e098fc  tbnz w8,#0x0,0x00e09944
+00e09900  adrp x0,0x335f000
+00e09904  ldr x0,[x0, #0x20]
+00e09908  bl 0x00b0789c
+00e0990c  adrp x0,0x3384000
+00e09910  ldr x0,[x0, #0x300]
+00e09914  bl 0x00b0789c
+00e09918  adrp x0,0x337a000
+00e0991c  ldr x0,[x0, #0x420]
+00e09920  bl 0x00b0789c
+00e09924  adrp x0,0x330c000
+00e09928  ldr x0,[x0, #0x748]
+00e0992c  bl 0x00b0789c
+00e09930  adrp x0,0x3366000
+00e09934  ldr x0,[x0, #0x148]
+00e09938  bl 0x00b0789c
+00e0993c  mov w8,#0x1
+00e09940  strb w8,[x21, #0x58a]
+00e09944  ldr x0,[x20]
+00e09948  ldr w8,[x0, #0xe0]
+00e0994c  cbnz w8,0x00e09958
+00e09950  bl 0x00b0798c
+00e09954  ldr x0,[x20]
+00e09958  ldr x8,[x0, #0xb8]
+00e0995c  ldr x0,[x8, #0x3f8]
+00e09960  cbz x0,0x00e09978
+00e09964  mov w1,w19
+00e09968  ldp x19,x30,[sp, #0x10]
+00e0996c  mov x2,xzr
+00e09970  ldp x21,x20,[sp], #0x20
+00e09974  b 0x01093e80
+00e09978  cmp w19,#0x3
+00e0997c  b.eq 0x00e0999c
+00e09980  cmp w19,#0x2
+00e09984  b.eq 0x00e099a8
+00e09988  cmp w19,#0x1
+00e0998c  b.ne 0x00e099b4
+00e09990  adrp x8,0x330c000
+00e09994  ldr x8,[x8, #0x748]
+00e09998  b 0x00e099bc
+00e0999c  adrp x8,0x3384000
+00e099a0  ldr x8,[x8, #0x300]
+00e099a4  b 0x00e099bc
+00e099a8  adrp x8,0x337a000
+00e099ac  ldr x8,[x8, #0x420]
+00e099b0  b 0x00e099bc
+00e099b4  adrp x8,0x3366000
+00e099b8  ldr x8,[x8, #0x148]
+00e099bc  ldr x0,[x8]
+00e099c0  ldp x19,x30,[sp, #0x10]
+00e099c4  ldp x21,x20,[sp], #0x20
+00e099c8  ret

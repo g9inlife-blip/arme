@@ -1,0 +1,70 @@
+Function: Ali$$get_Slate_CINEBOX_SIZE @ 00e0ac0c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp407 @ 01094228
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.ScreenUtils$$Refresh @ 01690f68
+  -> AliothEngine.ScreenUtils$$isChange @ 01690fcc
+  -> Ali$$GetSlate_CINEBOX_SIZE @ 00e0ace8
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_Slate_CINEBOX_SIZE @ 011a1954
+  <- Slate.DirectorGUI$$get_CINEBOX_SIZE @ 015d43b4
+
+--- Listing ---
+00e0ac0c  str x20,[sp, #-0x20]!
+00e0ac10  stp x19,x30,[sp, #0x10]
+00e0ac14  adrp x20,0x3572000
+00e0ac18  adrp x19,0x335f000
+00e0ac1c  ldrb w8,[x20, #0x593]
+00e0ac20  ldr x19,[x19, #0x20]
+00e0ac24  tbnz w8,#0x0,0x00e0ac3c
+00e0ac28  adrp x0,0x335f000
+00e0ac2c  ldr x0,[x0, #0x20]
+00e0ac30  bl 0x00b0789c
+00e0ac34  mov w8,#0x1
+00e0ac38  strb w8,[x20, #0x593]
+00e0ac3c  ldr x0,[x19]
+00e0ac40  ldr w8,[x0, #0xe0]
+00e0ac44  cbnz w8,0x00e0ac50
+00e0ac48  bl 0x00b0798c
+00e0ac4c  ldr x0,[x19]
+00e0ac50  ldr x8,[x0, #0xb8]
+00e0ac54  ldr x0,[x8, #0x440]
+00e0ac58  cbz x0,0x00e0ac6c
+00e0ac5c  ldp x19,x30,[sp, #0x10]
+00e0ac60  mov x1,xzr
+00e0ac64  ldr x20,[sp], #0x20
+00e0ac68  b 0x01094228
+00e0ac6c  bl 0x01690fcc
+00e0ac70  tbnz w0,#0x0,0x00e0ac9c
+00e0ac74  ldr x0,[x19]
+00e0ac78  ldr w8,[x0, #0xe0]
+00e0ac7c  cbnz w8,0x00e0ac88
+00e0ac80  bl 0x00b0798c
+00e0ac84  ldr x0,[x19]
+00e0ac88  ldr x8,[x0, #0xb8]
+00e0ac8c  fmov s1,0xbf800000
+00e0ac90  ldr s0,[x8, #0x1c]
+00e0ac94  fcmp s0,s1
+00e0ac98  b.ne 0x00e0acc4
+00e0ac9c  mov x0,xzr
+00e0aca0  bl 0x01690f68
+00e0aca4  ldr x0,[x19]
+00e0aca8  ldr w8,[x0, #0xe0]
+00e0acac  cbnz w8,0x00e0acb4
+00e0acb0  bl 0x00b0798c
+00e0acb4  bl 0x00e0ace8
+00e0acb8  ldr x0,[x19]
+00e0acbc  ldr x8,[x0, #0xb8]
+00e0acc0  str s0,[x8, #0x1c]
+00e0acc4  ldr w8,[x0, #0xe0]
+00e0acc8  cbnz w8,0x00e0acd4
+00e0accc  bl 0x00b0798c
+00e0acd0  ldr x0,[x19]
+00e0acd4  ldr x8,[x0, #0xb8]
+00e0acd8  ldp x19,x30,[sp, #0x10]
+00e0acdc  ldr s0,[x8, #0x1c]
+00e0ace0  ldr x20,[sp], #0x20
+00e0ace4  ret

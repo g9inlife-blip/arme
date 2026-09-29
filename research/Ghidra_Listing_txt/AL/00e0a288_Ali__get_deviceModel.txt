@@ -1,0 +1,56 @@
+Function: Ali$$get_deviceModel @ 00e0a288
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.SystemInfo$$get_deviceModel @ 024d5cf0
+
+--- Calls IN ---
+  <- ProtocolGame_HttpRequest$$QuestionSubmit @ 00dd8818
+  <- Ali$$SeverAddUp @ 00e099cc
+  <- ProtocolGame_HttpRequest$$AppleQuWanZhuanQian @ 00dd8470
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_deviceModel @ 011a1438
+
+--- Listing ---
+00e0a288  stp x21,x20,[sp, #-0x20]!
+00e0a28c  stp x19,x30,[sp, #0x10]
+00e0a290  adrp x21,0x3572000
+00e0a294  adrp x20,0x335f000
+00e0a298  ldrb w8,[x21, #0x58d]
+00e0a29c  ldr x20,[x20, #0x20]
+00e0a2a0  mov x19,x0
+00e0a2a4  tbnz w8,#0x0,0x00e0a2c8
+00e0a2a8  adrp x0,0x335f000
+00e0a2ac  ldr x0,[x0, #0x20]
+00e0a2b0  bl 0x00b0789c
+00e0a2b4  adrp x0,0x332c000
+00e0a2b8  ldr x0,[x0, #0x2c0]
+00e0a2bc  bl 0x00b0789c
+00e0a2c0  mov w8,#0x1
+00e0a2c4  strb w8,[x21, #0x58d]
+00e0a2c8  ldr x0,[x20]
+00e0a2cc  ldr w8,[x0, #0xe0]
+00e0a2d0  cbnz w8,0x00e0a2dc
+00e0a2d4  bl 0x00b0798c
+00e0a2d8  ldr x0,[x20]
+00e0a2dc  ldr x8,[x0, #0xb8]
+00e0a2e0  ldr x0,[x8, #0x410]
+00e0a2e4  cbz x0,0x00e0a2fc
+00e0a2e8  mov x1,x19
+00e0a2ec  ldp x19,x30,[sp, #0x10]
+00e0a2f0  mov x2,xzr
+00e0a2f4  ldp x21,x20,[sp], #0x20
+00e0a2f8  b 0x01061abc
+00e0a2fc  bl 0x024d5cf0
+00e0a300  cbz x0,0x00e0a314
+00e0a304  ldp x19,x30,[sp, #0x10]
+00e0a308  mov x0,xzr
+00e0a30c  ldp x21,x20,[sp], #0x20
+00e0a310  b 0x024d5cf0
+00e0a314  adrp x8,0x332c000
+00e0a318  ldr x8,[x8, #0x2c0]
+00e0a31c  ldp x19,x30,[sp, #0x10]
+00e0a320  ldr x0,[x8]
+00e0a324  ldp x21,x20,[sp], #0x20
+00e0a328  ret

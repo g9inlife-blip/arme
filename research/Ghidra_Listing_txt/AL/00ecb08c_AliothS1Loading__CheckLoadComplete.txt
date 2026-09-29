@@ -1,0 +1,94 @@
+Function: AliothS1Loading$$CheckLoadComplete @ 00ecb08c
+
+--- Calls OUT ---
+  -> Ali$$remove_LoadComplete @ 00e07280
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Events.UnityEvent$$Invoke @ 0250c290
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Events.UnityEventBase$$RemoveAllListeners @ 0250bf68
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action$$.ctor @ 020d5760
+
+--- Calls IN ---
+  <- AliothS1Loading.<CheckLoadingReadyIE>d__11$$MoveNext @ 00ecb364
+
+--- Listing ---
+00ecb08c  stp x21,x20,[sp, #-0x20]!
+00ecb090  stp x19,x30,[sp, #0x10]
+00ecb094  adrp x20,0x3572000
+00ecb098  adrp x21,0x3322000
+00ecb09c  ldrb w8,[x20, #0xd6a]
+00ecb0a0  ldr x21,[x21, #0x6d0]
+00ecb0a4  mov x19,x0
+00ecb0a8  tbnz w8,#0x0,0x00ecb0e4
+00ecb0ac  adrp x0,0x3348000
+00ecb0b0  ldr x0,[x0, #0xcf8]
+00ecb0b4  bl 0x00b0789c
+00ecb0b8  adrp x0,0x335f000
+00ecb0bc  ldr x0,[x0, #0x20]
+00ecb0c0  bl 0x00b0789c
+00ecb0c4  adrp x0,0x3344000
+00ecb0c8  ldr x0,[x0, #0x180]
+00ecb0cc  bl 0x00b0789c
+00ecb0d0  adrp x0,0x3322000
+00ecb0d4  ldr x0,[x0, #0x6d0]
+00ecb0d8  bl 0x00b0789c
+00ecb0dc  mov w8,#0x1
+00ecb0e0  strb w8,[x20, #0xd6a]
+00ecb0e4  ldr x8,[x21]
+00ecb0e8  ldr x8,[x8, #0xb8]
+00ecb0ec  ldr x0,[x8, #0x20]
+00ecb0f0  cbz x0,0x00ecb108
+00ecb0f4  mov x1,x19
+00ecb0f8  ldp x19,x30,[sp, #0x10]
+00ecb0fc  mov x2,xzr
+00ecb100  ldp x21,x20,[sp], #0x20
+00ecb104  b 0x01060dac
+00ecb108  adrp x20,0x335f000
+00ecb10c  ldr x20,[x20, #0x20]
+00ecb110  mov w8,#0x1
+00ecb114  strb wzr,[x19, #0x28]
+00ecb118  strb w8,[x19, #0x10]
+00ecb11c  ldr x0,[x20]
+00ecb120  adrp x21,0x3348000
+00ecb124  ldr w8,[x0, #0xe0]
+00ecb128  ldr x21,[x21, #0xcf8]
+00ecb12c  cbnz w8,0x00ecb138
+00ecb130  bl 0x00b0798c
+00ecb134  ldr x0,[x20]
+00ecb138  ldr x8,[x0, #0xb8]
+00ecb13c  ldr x0,[x21]
+00ecb140  ldr x20,[x8, #0x10]
+00ecb144  bl 0x00b079a0
+00ecb148  cbz x0,0x00ecb1b8
+00ecb14c  adrp x8,0x3344000
+00ecb150  ldr x8,[x8, #0x180]
+00ecb154  mov x1,x19
+00ecb158  mov x3,xzr
+00ecb15c  mov x21,x0
+00ecb160  ldr x2,[x8]
+00ecb164  bl 0x020d5760
+00ecb168  cbz x20,0x00ecb1b8
+00ecb16c  mov x0,x20
+00ecb170  mov x1,x21
+00ecb174  mov x2,xzr
+00ecb178  bl 0x00e07280
+00ecb17c  mov x20,x19
+00ecb180  str xzr,[x20, #0x18]!
+00ecb184  mov x0,x20
+00ecb188  mov x1,xzr
+00ecb18c  bl 0x00b07850
+00ecb190  ldr x0,[x20, #0x8]
+00ecb194  cbz x0,0x00ecb1b8
+00ecb198  mov x1,xzr
+00ecb19c  bl 0x0250c290
+00ecb1a0  ldr x0,[x19, #0x20]
+00ecb1a4  cbz x0,0x00ecb1b8
+00ecb1a8  ldp x19,x30,[sp, #0x10]
+00ecb1ac  mov x1,xzr
+00ecb1b0  ldp x21,x20,[sp], #0x20
+00ecb1b4  b 0x0250bf68
+00ecb1b8  bl 0x00b079b0

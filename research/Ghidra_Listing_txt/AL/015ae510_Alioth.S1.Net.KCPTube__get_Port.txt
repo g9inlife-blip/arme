@@ -1,0 +1,41 @@
+Function: Alioth.S1.Net.KCPTube$$get_Port @ 015ae510
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$Update @ 015af650
+
+--- Listing ---
+015ae510  stp x21,x20,[sp, #-0x20]!
+015ae514  stp x19,x30,[sp, #0x10]
+015ae518  adrp x21,0x3577000
+015ae51c  adrp x20,0x3350000
+015ae520  ldrb w8,[x21, #0x95]
+015ae524  ldr x20,[x20, #0x8c8]
+015ae528  mov x19,x0
+015ae52c  tbnz w8,#0x0,0x015ae544
+015ae530  adrp x0,0x3350000
+015ae534  ldr x0,[x0, #0x8c8]
+015ae538  bl 0x00b0789c
+015ae53c  mov w8,#0x1
+015ae540  strb w8,[x21, #0x95]
+015ae544  ldr x0,[x20]
+015ae548  ldr w8,[x0, #0xe0]
+015ae54c  cbnz w8,0x015ae558
+015ae550  bl 0x00b0798c
+015ae554  ldr x0,[x20]
+015ae558  ldr x8,[x0, #0xb8]
+015ae55c  ldr x0,[x8, #0x68]
+015ae560  cbz x0,0x015ae578
+015ae564  mov x1,x19
+015ae568  ldp x19,x30,[sp, #0x10]
+015ae56c  mov x2,xzr
+015ae570  ldp x21,x20,[sp], #0x20
+015ae574  b 0x01060c2c
+015ae578  ldr w0,[x19, #0x78]
+015ae57c  ldp x19,x30,[sp, #0x10]
+015ae580  ldp x21,x20,[sp], #0x20
+015ae584  ret

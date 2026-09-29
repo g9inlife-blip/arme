@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.QuaternionExtensions$$GetRelativeRotationFrom @ 016b14b0
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.Matrix4x4Extension$$GetRotation @ 016af60c
+
+--- Calls IN ---
+
+--- Listing ---
+016b14b0  sub sp,sp,#0x70
+016b14b4  stp d11,d10,[sp, #0x40]
+016b14b8  stp d9,d8,[sp, #0x50]
+016b14bc  str x30,[sp, #0x60]
+016b14c0  mov v8.16B,v3.16B
+016b14c4  mov v9.16B,v2.16B
+016b14c8  mov v10.16B,v1.16B
+016b14cc  mov v11.16B,v0.16B
+016b14d0  ldp q1,q0,[x0, #0x20]
+016b14d4  ldp q3,q2,[x0]
+016b14d8  mov x0,sp
+016b14dc  stp q1,q0,[sp, #0x20]
+016b14e0  stp q3,q2,[sp]
+016b14e4  bl 0x016af60c
+016b14e8  fmul s4,s11,s3
+016b14ec  fmul s5,s8,s0
+016b14f0  fmul s6,s9,s1
+016b14f4  fmul s7,s10,s2
+016b14f8  fmul s16,s10,s3
+016b14fc  fmul s17,s8,s1
+016b1500  fmul s18,s11,s2
+016b1504  fmul s19,s9,s0
+016b1508  fmul s20,s10,s0
+016b150c  fmul s0,s11,s0
+016b1510  fmul s21,s11,s1
+016b1514  fmul s1,s10,s1
+016b1518  fmul s22,s9,s3
+016b151c  fmul s3,s8,s3
+016b1520  fmul s23,s8,s2
+016b1524  fmul s24,s9,s2
+016b1528  ldr x30,[sp, #0x60]
+016b152c  ldp d9,d8,[sp, #0x50]
+016b1530  ldp d11,d10,[sp, #0x40]
+016b1534  fadd s2,s4,s5
+016b1538  fadd s4,s16,s17
+016b153c  fadd s5,s22,s23
+016b1540  fsub s0,s3,s0
+016b1544  fadd s2,s6,s2
+016b1548  fadd s3,s18,s4
+016b154c  fadd s4,s20,s5
+016b1550  fsub s5,s0,s1
+016b1554  fsub s0,s2,s7
+016b1558  fsub s1,s3,s19
+016b155c  fsub s2,s4,s21
+016b1560  fsub s3,s5,s24
+016b1564  add sp,sp,#0x70
+016b1568  ret

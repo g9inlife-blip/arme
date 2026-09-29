@@ -1,0 +1,50 @@
+Function: RewardManager.<>c$$<VItemGroup>b__40_0 @ 00e2f9a8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e2f9a8  str x20,[sp, #-0x20]!
+00e2f9ac  stp x19,x30,[sp, #0x10]
+00e2f9b0  adrp x20,0x3572000
+00e2f9b4  ldrb w8,[x20, #0x763]
+00e2f9b8  mov w19,w1
+00e2f9bc  tbnz w8,#0x0,0x00e2f9e0
+00e2f9c0  adrp x0,0x335c000
+00e2f9c4  ldr x0,[x0, #0x400]
+00e2f9c8  bl 0x00b0789c
+00e2f9cc  adrp x0,0x335f000
+00e2f9d0  ldr x0,[x0, #0x20]
+00e2f9d4  bl 0x00b0789c
+00e2f9d8  mov w8,#0x1
+00e2f9dc  strb w8,[x20, #0x763]
+00e2f9e0  cmp w19,#0x1
+00e2f9e4  b.lt 0x00e2fa30
+00e2f9e8  adrp x20,0x335f000
+00e2f9ec  ldr x20,[x20, #0x20]
+00e2f9f0  ldr x0,[x20]
+00e2f9f4  ldr w8,[x0, #0xe0]
+00e2f9f8  cbnz w8,0x00e2fa04
+00e2f9fc  bl 0x00b0798c
+00e2fa00  ldr x0,[x20]
+00e2fa04  ldr x8,[x0, #0xb8]
+00e2fa08  ldr x0,[x8, #0x10]
+00e2fa0c  cbz x0,0x00e2fa40
+00e2fa10  adrp x8,0x335c000
+00e2fa14  ldr x8,[x8, #0x400]
+00e2fa18  mov w1,w19
+00e2fa1c  ldr x2,[x8]
+00e2fa20  bl 0x01736d60
+00e2fa24  cbz x0,0x00e2fa40
+00e2fa28  ldr w0,[x0, #0x74]
+00e2fa2c  b 0x00e2fa34
+00e2fa30  mov w0,#0x7fffffff
+00e2fa34  ldp x19,x30,[sp, #0x10]
+00e2fa38  ldr x20,[sp], #0x20
+00e2fa3c  ret
+00e2fa40  bl 0x00b079b0

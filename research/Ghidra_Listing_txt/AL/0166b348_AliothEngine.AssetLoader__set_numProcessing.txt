@@ -1,0 +1,41 @@
+Function: AliothEngine.AssetLoader$$set_numProcessing @ 0166b348
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+
+--- Listing ---
+0166b348  str x22,[sp, #-0x30]!
+0166b34c  stp x21,x20,[sp, #0x10]
+0166b350  stp x19,x30,[sp, #0x20]
+0166b354  adrp x21,0x3577000
+0166b358  adrp x22,0x331c000
+0166b35c  ldrb w8,[x21, #0x92a]
+0166b360  ldr x22,[x22, #0xda8]
+0166b364  mov w19,w1
+0166b368  mov x20,x0
+0166b36c  tbnz w8,#0x0,0x0166b384
+0166b370  adrp x0,0x331c000
+0166b374  ldr x0,[x0, #0xda8]
+0166b378  bl 0x00b0789c
+0166b37c  mov w8,#0x1
+0166b380  strb w8,[x21, #0x92a]
+0166b384  ldr x8,[x22]
+0166b388  ldr x8,[x8, #0xb8]
+0166b38c  ldr x0,[x8, #0x18]
+0166b390  cbz x0,0x0166b3b0
+0166b394  mov x1,x20
+0166b398  mov w2,w19
+0166b39c  ldp x19,x30,[sp, #0x20]
+0166b3a0  ldp x21,x20,[sp, #0x10]
+0166b3a4  mov x3,xzr
+0166b3a8  ldr x22,[sp], #0x30
+0166b3ac  b 0x0106155c
+0166b3b0  str w19,[x20, #0x44]
+0166b3b4  ldp x19,x30,[sp, #0x20]
+0166b3b8  ldp x21,x20,[sp, #0x10]
+0166b3bc  ldr x22,[sp], #0x30
+0166b3c0  ret

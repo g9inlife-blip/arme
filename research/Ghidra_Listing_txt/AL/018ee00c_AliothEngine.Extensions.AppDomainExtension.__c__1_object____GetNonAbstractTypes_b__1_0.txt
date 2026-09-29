@@ -1,0 +1,19 @@
+Function: AliothEngine.Extensions.AppDomainExtension.<>c__1<object>$$<GetNonAbstractTypes>b__1_0 @ 018ee00c
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Type$$get_IsAbstract @ 0216ae98
+
+--- Calls IN ---
+
+--- Listing ---
+018ee00c  str x30,[sp, #-0x10]!
+018ee010  cbz x1,0x018ee030
+018ee014  mov x0,x1
+018ee018  mov x1,xzr
+018ee01c  bl 0x0216ae98
+018ee020  mvn w8,w0
+018ee024  and w0,w8,#0x1
+018ee028  ldr x30,[sp], #0x10
+018ee02c  ret
+018ee030  bl 0x00b079b0

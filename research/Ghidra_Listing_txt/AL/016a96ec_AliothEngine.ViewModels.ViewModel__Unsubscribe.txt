@@ -1,0 +1,32 @@
+Function: AliothEngine.ViewModels.ViewModel$$Unsubscribe @ 016a96ec
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List<object>$$Remove @ 01c02014
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a96ec  stp x21,x20,[sp, #-0x20]!
+016a96f0  stp x19,x30,[sp, #0x10]
+016a96f4  adrp x21,0x3577000
+016a96f8  ldrb w8,[x21, #0xba1]
+016a96fc  mov x19,x1
+016a9700  mov x20,x0
+016a9704  tbnz w8,#0x0,0x016a971c
+016a9708  adrp x0,0x3316000
+016a970c  ldr x0,[x0, #0x878]
+016a9710  bl 0x00b0789c
+016a9714  mov w8,#0x1
+016a9718  strb w8,[x21, #0xba1]
+016a971c  ldr x0,[x20, #0x10]
+016a9720  cbz x0,0x016a9740
+016a9724  adrp x8,0x3316000
+016a9728  ldr x8,[x8, #0x878]
+016a972c  mov x1,x19
+016a9730  ldp x19,x30,[sp, #0x10]
+016a9734  ldr x2,[x8]
+016a9738  ldp x21,x20,[sp], #0x20
+016a973c  b 0x01c02014
+016a9740  bl 0x00b079b0

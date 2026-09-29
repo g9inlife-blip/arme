@@ -1,0 +1,46 @@
+Function: AliothEngine.StoreManager$$get_Store @ 01659908
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp808 @ 010c96a8
+
+--- Calls IN ---
+  <- Ali$$GetLocalizedPrice @ 00e0c648
+  <- Ali$$Charge @ 00e0dae4
+  <- GlobalUIManager$$Awake @ 00f1c5d8
+  <- Ali$$PurchaseProduct @ 00e0d350
+  <- Ali$$StoreLoadProductList @ 00e0bebc
+  <- Ali$$StoreCanUsed @ 00e0bda8
+  <- Ali$$ChargeError @ 00e0deac
+  <- GlobalUIManager$$OnDestroy @ 00f1cbf8
+  <- XLua.CSObjectWrap.AliothEngineStoreManagerWrap$$_g_get_Store @ 0116102c
+  <- Ali.<>c__DisplayClass268_0$$<Charge>b__1 @ 00e11efc
+  <- Ali.<>c$$<Charge>b__268_0 @ 00e1177c
+
+--- Listing ---
+01659908  stp x21,x20,[sp, #-0x20]!
+0165990c  stp x19,x30,[sp, #0x10]
+01659910  adrp x20,0x3577000
+01659914  adrp x21,0x3334000
+01659918  ldrb w8,[x20, #0x84f]
+0165991c  ldr x21,[x21, #0x178]
+01659920  mov x19,x0
+01659924  tbnz w8,#0x0,0x0165993c
+01659928  adrp x0,0x3334000
+0165992c  ldr x0,[x0, #0x178]
+01659930  bl 0x00b0789c
+01659934  mov w8,#0x1
+01659938  strb w8,[x20, #0x84f]
+0165993c  ldr x8,[x21]
+01659940  ldr x8,[x8, #0xb8]
+01659944  ldr x0,[x8]
+01659948  cbz x0,0x01659960
+0165994c  mov x1,x19
+01659950  ldp x19,x30,[sp, #0x10]
+01659954  mov x2,xzr
+01659958  ldp x21,x20,[sp], #0x20
+0165995c  b 0x010c96a8
+01659960  ldr x0,[x19, #0x20]
+01659964  ldp x19,x30,[sp, #0x10]
+01659968  ldp x21,x20,[sp], #0x20
+0165996c  ret

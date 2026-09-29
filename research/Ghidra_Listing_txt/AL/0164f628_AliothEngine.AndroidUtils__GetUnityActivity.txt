@@ -1,0 +1,99 @@
+Function: AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.AndroidJavaClass$$.ctor @ 024aa2ec
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.AndroidJavaObject$$GetStatic<object> @ 01738968
+
+--- Calls IN ---
+  <- AliothEngine.AndroidUtils$$GetSignatureMD5Hash @ 01651cf4
+  <- AliothEngine.AndroidUtils$$GetVersionName @ 016502b0
+  <- AliothEngine.AndroidUtils$$CheckPermission @ 01650bec
+  <- AliothEngine.MemoryCallback$$Subscribe @ 01655db0
+  <- AliothEngine.AndroidUtils$$AndroidFinish @ 0164e654
+  <- AliothEngine.AndroidUtils$$_ShowAndroidToastMessage @ 01650928
+  <- AliothEngine.AndroidUtils$$GetVersionCode @ 01650440
+  <- AliothEngine.AndroidUtils$$GetCurrentPackageName @ 0164fc7c
+  <- AliothEngine.AndroidUtils$$StartActivity @ 016505a4
+  <- AliothEngine.Android.VasDollyHelper$$GetChannel @ 016a857c
+  <- AliothEngine.AndroidUtils$$ShouldShowRequestAndroidPermissionRationale @ 01651074
+  <- AliothEngine.MemoryCallback$$UnSubscribe @ 01655ff8
+  <- AliothEngine.AndroidUtils$$GetCurrentApplicationLabel @ 0164f820
+  <- AliothEngine.AndroidUtils$$LaunchApplicationDetailsSettings @ 01651234
+  <- AliothEngine.AndroidUtils$$PerformanceLog @ 0165010c
+  <- AliothEngine.AndroidUtils$$ShowAlert @ 01652bf4
+  <- AliothEngine.AndroidUtils$$GetPackageInfo @ 0164fe30
+  <- AliothEngine.AndroidUtils$$RequestPermissions @ 01650e58
+
+--- Listing ---
+0164f628  str x20,[sp, #-0x20]!
+0164f62c  stp x19,x30,[sp, #0x10]
+0164f630  adrp x19,0x3577000
+0164f634  adrp x20,0x3339000
+0164f638  ldrb w8,[x19, #0x7e4]
+0164f63c  ldr x20,[x20, #0xed0]
+0164f640  tbnz w8,#0x0,0x0164f688
+0164f644  adrp x0,0x3364000
+0164f648  ldr x0,[x0, #0x98]
+0164f64c  bl 0x00b0789c
+0164f650  adrp x0,0x3348000
+0164f654  ldr x0,[x0, #0xb40]
+0164f658  bl 0x00b0789c
+0164f65c  adrp x0,0x3339000
+0164f660  ldr x0,[x0, #0xed0]
+0164f664  bl 0x00b0789c
+0164f668  adrp x0,0x331a000
+0164f66c  ldr x0,[x0, #0xe80]
+0164f670  bl 0x00b0789c
+0164f674  adrp x0,0x333c000
+0164f678  ldr x0,[x0, #0x738]
+0164f67c  bl 0x00b0789c
+0164f680  mov w8,#0x1
+0164f684  strb w8,[x19, #0x7e4]
+0164f688  ldr x8,[x20]
+0164f68c  ldr x8,[x8, #0xb8]
+0164f690  ldr x8,[x8]
+0164f694  cbnz x8,0x0164f704
+0164f698  adrp x8,0x3364000
+0164f69c  ldr x8,[x8, #0x98]
+0164f6a0  ldr x0,[x8]
+0164f6a4  bl 0x00b079a0
+    ; [PRE] try { // try from 0164f6a4 to 0164f6c7 has its CatchHandler @ 0164f724
+0164f6a8  mov x19,x0
+0164f6ac  cbz x0,0x0164f71c
+0164f6b0  adrp x8,0x331a000
+0164f6b4  ldr x8,[x8, #0xe80]
+0164f6b8  ldr x1,[x8]
+0164f6bc  mov x0,x19
+0164f6c0  mov x2,xzr
+0164f6c4  bl 0x024aa2ec
+    ; [POST] } // end try from 0164f6a4 to 0164f6c7
+0164f6c8  adrp x8,0x333c000
+0164f6cc  ldr x8,[x8, #0x738]
+0164f6d0  adrp x9,0x3348000
+0164f6d4  ldr x9,[x9, #0xb40]
+0164f6d8  ldr x1,[x8]
+0164f6dc  ldr x2,[x9]
+0164f6e0  mov x0,x19
+    ; [PRE] try { // try from 0164f6e0 to 0164f703 has its CatchHandler @ 0164f720
+0164f6e4  bl 0x01738968
+0164f6e8  mov x1,x0
+0164f6ec  ldr x8,[x20]
+0164f6f0  ldr x8,[x8, #0xb8]
+0164f6f4  str x1,[x8]
+0164f6f8  ldr x8,[x20]
+0164f6fc  ldr x0,[x8, #0xb8]
+0164f700  bl 0x00b07850
+    ; [POST] } // end try from 0164f6e0 to 0164f703
+0164f704  ldr x8,[x20]
+0164f708  ldp x19,x30,[sp, #0x10]
+0164f70c  ldr x8,[x8, #0xb8]
+0164f710  ldr x0,[x8]
+0164f714  ldr x20,[sp], #0x20
+0164f718  ret
+0164f71c  bl 0x00b079b0
+    ; [PRE] try { // try from 0164f71c to 0164f71f has its CatchHandler @ 0164f724
+    ; [POST] } // end try from 0164f71c to 0164f71f

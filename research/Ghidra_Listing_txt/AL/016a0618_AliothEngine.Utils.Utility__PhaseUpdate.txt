@@ -1,0 +1,17 @@
+Function: AliothEngine.Utils.Utility$$PhaseUpdate @ 016a0618
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016a0618  fsub s0,s1,s0
+016a061c  fmov s1,0x3f800000
+016a0620  fadd s0,s0,s1
+016a0624  frintm s2,s0
+016a0628  fsub s0,s0,s2
+016a062c  fmin s1,s0,s1
+016a0630  fcmp s0,#0.0
+016a0634  fmov s0,wzr
+016a0638  fcsel s0,s1,s0,pl
+016a063c  ret

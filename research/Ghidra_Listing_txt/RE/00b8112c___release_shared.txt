@@ -1,0 +1,40 @@
+Function: __release_shared @ 00b8112c
+FuncComment: std::__ndk1::__shared_weak_count::__release_shared()
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+00b8112c  stp x20,x19,[sp, #-0x20]!
+    ; [PLATE] std::__ndk1::__shared_weak_count::__release_shared()
+00b81130  stp x29,x30,[sp, #0x10]
+00b81134  add x29,sp,#0x10
+00b81138  mov x19,x0
+00b8113c  add x8,x0,#0x8
+00b81140  ldaxr x9,[x8]
+00b81144  sub x10,x9,#0x1
+00b81148  stlxr w11,x10,[x8]
+00b8114c  cbnz w11,0x00b81140
+00b81150  cbz x9,0x00b81160
+00b81154  ldp x29,x30,[sp, #0x10]
+00b81158  ldp x20,x19,[sp], #0x20
+00b8115c  ret
+00b81160  mov x20,x19
+00b81164  ldr x8,[x20], #0x10
+00b81168  mov x0,x19
+00b8116c  ldr x8,[x8, #0x10]
+00b81170  blr x8
+00b81174  ldar x8,[x20]
+00b81178  cbz x8,0x00b81190
+00b8117c  ldaxr x8,[x20]
+00b81180  sub x9,x8,#0x1
+00b81184  stlxr w10,x9,[x20]
+00b81188  cbnz w10,0x00b8117c
+00b8118c  cbnz x8,0x00b81154
+00b81190  ldr x8,[x19]
+00b81194  ldp x29,x30,[sp, #0x10]
+00b81198  mov x0,x19
+00b8119c  ldr x1,[x8, #0x20]
+00b811a0  ldp x20,x19,[sp], #0x20
+00b811a4  br x1

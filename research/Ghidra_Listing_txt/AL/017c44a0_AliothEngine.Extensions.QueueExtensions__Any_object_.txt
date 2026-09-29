@@ -1,0 +1,20 @@
+Function: AliothEngine.Extensions.QueueExtensions$$Any<object> @ 017c44a0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions.<SelfAndAllChildren>d__4$$MoveNext @ 016bb464
+
+--- Listing ---
+017c44a0  str x30,[sp, #-0x10]!
+017c44a4  cbz x0,0x017c44c8
+017c44a8  ldr x8,[x1, #0x38]
+017c44ac  ldr x1,[x8, #0x8]
+017c44b0  ldr x8,[x1, #0x8]
+017c44b4  blr x8
+017c44b8  cmp w0,#0x0
+017c44bc  cset w0,gt
+017c44c0  ldr x30,[sp], #0x10
+017c44c4  ret
+017c44c8  bl 0x00b079b0

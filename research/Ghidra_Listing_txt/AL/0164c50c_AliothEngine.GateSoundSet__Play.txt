@@ -1,0 +1,43 @@
+Function: AliothEngine.GateSoundSet$$Play @ 0164c50c
+
+--- Calls OUT ---
+  -> AliothEngine.GateSoundSet$$Play @ 0164d648
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GateSoundManager$$PlayButtonClick @ 0164c494
+  <- AliothEngine.GateSoundManager$$PlayButtonPress @ 0164c584
+
+--- Listing ---
+0164c50c  stp x23,x22,[sp, #-0x30]!
+0164c510  stp x21,x20,[sp, #0x10]
+0164c514  stp x19,x30,[sp, #0x20]
+0164c518  adrp x22,0x3577000
+0164c51c  adrp x23,0x3377000
+0164c520  ldrb w8,[x22, #0x7ce]
+0164c524  ldr x23,[x23, #0x988]
+0164c528  mov x19,x2
+0164c52c  mov x20,x1
+0164c530  mov x21,x0
+0164c534  tbnz w8,#0x0,0x0164c54c
+0164c538  adrp x0,0x3377000
+0164c53c  ldr x0,[x0, #0x988]
+0164c540  bl 0x00b0789c
+0164c544  mov w8,#0x1
+0164c548  strb w8,[x22, #0x7ce]
+0164c54c  ldr x0,[x23]
+0164c550  bl 0x01e0894c
+0164c554  cbz x0,0x0164c580
+0164c558  ldr s0,[x0, #0x1c]
+0164c55c  mov x0,x21
+0164c560  mov x1,x20
+0164c564  mov x2,x19
+0164c568  ldp x19,x30,[sp, #0x20]
+0164c56c  ldp x21,x20,[sp, #0x10]
+0164c570  mov w4,#0x1
+0164c574  mov w3,wzr
+0164c578  ldp x23,x22,[sp], #0x30
+0164c57c  b 0x0164d648
+0164c580  bl 0x00b079b0

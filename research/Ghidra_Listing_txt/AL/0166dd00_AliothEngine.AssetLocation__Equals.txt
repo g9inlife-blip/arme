@@ -1,0 +1,41 @@
+Function: AliothEngine.AssetLocation$$Equals @ 0166dd00
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetLocation$$Equals @ 0166dcb0
+
+--- Calls IN ---
+
+--- Listing ---
+0166dd00  stp x21,x20,[sp, #-0x20]!
+0166dd04  stp x19,x30,[sp, #0x10]
+0166dd08  adrp x21,0x3577000
+0166dd0c  ldrb w8,[x21, #0x94f]
+0166dd10  mov x20,x1
+0166dd14  mov x19,x0
+0166dd18  tbnz w8,#0x0,0x0166dd30
+0166dd1c  adrp x0,0x3347000
+0166dd20  ldr x0,[x0, #0xc28]
+0166dd24  bl 0x00b0789c
+0166dd28  mov w8,#0x1
+0166dd2c  strb w8,[x21, #0x94f]
+0166dd30  cbz x20,0x0166dd54
+0166dd34  adrp x8,0x3347000
+0166dd38  ldr x8,[x8, #0xc28]
+0166dd3c  ldr x9,[x20]
+0166dd40  ldr x8,[x8]
+0166dd44  ldrb w11,[x9, #0x12c]
+0166dd48  ldrb w10,[x8, #0x12c]
+0166dd4c  cmp w11,w10
+0166dd50  b.cs 0x0166dd5c
+0166dd54  mov x1,xzr
+0166dd58  b 0x0166dd70
+0166dd5c  ldr x9,[x9, #0xc8]
+0166dd60  add x9,x9,x10, LSL #0x3
+0166dd64  ldur x9,[x9, #-0x8]
+0166dd68  cmp x9,x8
+0166dd6c  csel x1,x20,xzr,eq
+0166dd70  mov x0,x19
+0166dd74  ldp x19,x30,[sp, #0x10]
+0166dd78  ldp x21,x20,[sp], #0x20
+0166dd7c  b 0x0166dcb0

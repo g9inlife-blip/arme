@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.TransformExtensions$$ResetRotation @ 016bae40
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$set_rotation @ 024f3bac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$Reset @ 016baf20
+
+--- Listing ---
+016bae40  str x20,[sp, #-0x20]!
+016bae44  stp x19,x30,[sp, #0x10]
+016bae48  adrp x20,0x3570000
+016bae4c  ldrb w8,[x20, #0xf0d]
+016bae50  mov x19,x0
+016bae54  cbnz w8,0x016bae6c
+016bae58  adrp x0,0x3352000
+016bae5c  ldr x0,[x0, #0xd40]
+016bae60  bl 0x00b0789c
+016bae64  mov w8,#0x1
+016bae68  strb w8,[x20, #0xf0d]
+016bae6c  cbz x19,0x016bae9c
+016bae70  adrp x8,0x3352000
+016bae74  ldr x8,[x8, #0xd40]
+016bae78  mov x0,x19
+016bae7c  ldp x19,x30,[sp, #0x10]
+016bae80  mov x1,xzr
+016bae84  ldr x8,[x8]
+016bae88  ldr x8,[x8, #0xb8]
+016bae8c  ldp s0,s1,[x8]
+016bae90  ldp s2,s3,[x8, #0x8]
+016bae94  ldr x20,[sp], #0x20
+016bae98  b 0x024f3bac
+016bae9c  bl 0x00b079b0

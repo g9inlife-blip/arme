@@ -1,0 +1,73 @@
+Function: AliothEngine.AssetHolder$$remove_OnUnload @ 01662454
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_e_OnUnload @ 0113aa0c
+
+--- Listing ---
+01662454  str x22,[sp, #-0x30]!
+01662458  stp x21,x20,[sp, #0x10]
+0166245c  stp x19,x30,[sp, #0x20]
+01662460  adrp x22,0x3577000
+01662464  adrp x21,0x3312000
+01662468  ldrb w8,[x22, #0x8c5]
+0166246c  ldr x21,[x21, #0x428]
+01662470  mov x19,x1
+01662474  mov x20,x0
+01662478  tbnz w8,#0x0,0x0166249c
+0166247c  adrp x0,0x3348000
+01662480  ldr x0,[x0, #0xcf8]
+01662484  bl 0x00b0789c
+01662488  adrp x0,0x3312000
+0166248c  ldr x0,[x0, #0x428]
+01662490  bl 0x00b0789c
+01662494  mov w8,#0x1
+01662498  strb w8,[x22, #0x8c5]
+0166249c  ldr x0,[x21]
+016624a0  ldr w8,[x0, #0xe0]
+016624a4  cbnz w8,0x016624b0
+016624a8  bl 0x00b0798c
+016624ac  ldr x0,[x21]
+016624b0  ldr x8,[x0, #0xb8]
+016624b4  ldr x0,[x8, #0x38]
+016624b8  cbz x0,0x016624d8
+016624bc  mov x1,x20
+016624c0  mov x2,x19
+016624c4  ldp x19,x30,[sp, #0x20]
+016624c8  ldp x21,x20,[sp, #0x10]
+016624cc  mov x3,xzr
+016624d0  ldr x22,[sp], #0x30
+016624d4  b 0x0106125c
+016624d8  adrp x22,0x3348000
+016624dc  ldr x21,[x20, #0x28]!
+016624e0  ldr x22,[x22, #0xcf8]
+016624e4  mov x0,x21
+016624e8  mov x1,x19
+016624ec  mov x2,xzr
+016624f0  bl 0x02197a1c
+016624f4  mov x8,x0
+016624f8  cbz x0,0x0166250c
+016624fc  ldr x1,[x22]
+01662500  ldr x9,[x8]
+01662504  cmp x9,x1
+01662508  b.ne 0x01662538
+0166250c  mov x0,x20
+01662510  mov x1,x8
+01662514  mov x2,x21
+01662518  bl 0x00ae526c
+0166251c  cmp x21,x0
+01662520  mov x21,x0
+01662524  b.ne 0x016624e4
+01662528  ldp x19,x30,[sp, #0x20]
+0166252c  ldp x21,x20,[sp, #0x10]
+01662530  ldr x22,[sp], #0x30
+01662534  ret
+01662538  mov x0,x8
+0166253c  bl 0x00b07c6c

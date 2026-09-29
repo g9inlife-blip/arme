@@ -1,0 +1,48 @@
+Function: AliothEngine.Utils.Utility$$ParseFloat @ 0169fff0
+
+--- Calls OUT ---
+  -> System.Single$$TryParse @ 02163d00
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Globalization.CultureInfo$$get_InvariantCulture @ 02117234
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$ReadFloat @ 0169ffe0
+  <- AliothEngine.Utils.Utility$$ReadArray @ 016a007c
+
+--- Listing ---
+0169fff0  sub sp,sp,#0x30
+0169fff4  stp x21,x20,[sp, #0x10]
+0169fff8  stp x19,x30,[sp, #0x20]
+0169fffc  adrp x21,0x3577000
+016a0000  adrp x20,0x3360000
+016a0004  ldrb w8,[x21, #0xb5a]
+016a0008  ldr x20,[x20, #0x28]
+016a000c  mov x19,x0
+016a0010  tbnz w8,#0x0,0x016a0028
+016a0014  adrp x0,0x3360000
+016a0018  ldr x0,[x0, #0x28]
+016a001c  bl 0x00b0789c
+016a0020  mov w8,#0x1
+016a0024  strb w8,[x21, #0xb5a]
+016a0028  ldr x0,[x20]
+016a002c  str wzr,[sp, #0xc]
+016a0030  ldr w8,[x0, #0xe0]
+016a0034  cbnz w8,0x016a003c
+016a0038  bl 0x00b0798c
+016a003c  mov x0,xzr
+016a0040  bl 0x02117234
+016a0044  mov x2,x0
+016a0048  add x3,sp,#0xc
+016a004c  mov w1,#0xa7
+016a0050  mov x0,x19
+016a0054  mov x4,xzr
+016a0058  bl 0x02163d00
+016a005c  ldr s0,[sp, #0xc]
+016a0060  ldp x19,x30,[sp, #0x20]
+016a0064  ldp x21,x20,[sp, #0x10]
+016a0068  tst w0,#0x1
+016a006c  fmov s1,wzr
+016a0070  fcsel s0,s0,s1,ne
+016a0074  add sp,sp,#0x30
+016a0078  ret

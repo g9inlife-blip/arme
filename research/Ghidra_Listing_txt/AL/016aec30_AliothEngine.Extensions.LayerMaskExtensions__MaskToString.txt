@@ -1,0 +1,32 @@
+Function: AliothEngine.Extensions.LayerMaskExtensions$$MaskToString @ 016aec30
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.LayerMaskExtensions$$MaskToNames @ 016aead4
+  -> System.String$$Join @ 01fdfb84
+
+--- Calls IN ---
+
+--- Listing ---
+016aec30  stp x21,x20,[sp, #-0x20]!
+016aec34  stp x19,x30,[sp, #0x10]
+016aec38  adrp x20,0x3577000
+016aec3c  adrp x21,0x3310000
+016aec40  ldrb w8,[x20, #0xbd2]
+016aec44  ldr x21,[x21, #0xe98]
+016aec48  mov x19,x0
+016aec4c  tbnz w8,#0x0,0x016aec64
+016aec50  adrp x0,0x3310000
+016aec54  ldr x0,[x0, #0xe98]
+016aec58  bl 0x00b0789c
+016aec5c  mov w8,#0x1
+016aec60  strb w8,[x20, #0xbd2]
+016aec64  ldr x20,[x21]
+016aec68  and x0,x19,#0xffffffff
+016aec6c  bl 0x016aead4
+016aec70  ldp x19,x30,[sp, #0x10]
+016aec74  mov x1,x0
+016aec78  mov x0,x20
+016aec7c  mov x2,xzr
+016aec80  ldp x21,x20,[sp], #0x20
+016aec84  b 0x01fdfb84

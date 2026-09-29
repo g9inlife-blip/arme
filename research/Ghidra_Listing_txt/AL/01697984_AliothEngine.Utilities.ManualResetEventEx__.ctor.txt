@@ -1,0 +1,32 @@
+Function: AliothEngine.Utilities.ManualResetEventEx$$.ctor @ 01697984
+
+--- Calls OUT ---
+  -> System.Threading.ManualResetEventSlim$$.ctor @ 021b59b4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01697984  stp x21,x20,[sp, #-0x20]!
+01697988  stp x19,x30,[sp, #0x10]
+0169798c  adrp x20,0x3577000
+01697990  adrp x21,0x3344000
+01697994  ldrb w8,[x20, #0xb16]
+01697998  ldr x21,[x21, #0xe38]
+0169799c  mov x19,x0
+016979a0  tbnz w8,#0x0,0x016979b8
+016979a4  adrp x0,0x3344000
+016979a8  ldr x0,[x0, #0xe38]
+016979ac  bl 0x00b0789c
+016979b0  mov w8,#0x1
+016979b4  strb w8,[x20, #0xb16]
+016979b8  ldr x0,[x21]
+016979bc  ldr w8,[x0, #0xe0]
+016979c0  cbnz w8,0x016979c8
+016979c4  bl 0x00b0798c
+016979c8  mov x0,x19
+016979cc  ldp x19,x30,[sp, #0x10]
+016979d0  mov x1,xzr
+016979d4  ldp x21,x20,[sp], #0x20
+016979d8  b 0x021b59b4

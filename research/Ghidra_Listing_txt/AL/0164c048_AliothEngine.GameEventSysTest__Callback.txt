@@ -1,0 +1,36 @@
+Function: AliothEngine.GameEventSysTest$$Callback @ 0164c048
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+
+--- Listing ---
+0164c048  str x20,[sp, #-0x20]!
+0164c04c  stp x19,x30,[sp, #0x10]
+0164c050  adrp x20,0x3577000
+0164c054  adrp x19,0x336b000
+0164c058  ldrb w8,[x20, #0x7ba]
+0164c05c  ldr x19,[x19, #0x7d0]
+0164c060  tbnz w8,#0x0,0x0164c084
+0164c064  adrp x0,0x336b000
+0164c068  ldr x0,[x0, #0x7d0]
+0164c06c  bl 0x00b0789c
+0164c070  adrp x0,0x3365000
+0164c074  ldr x0,[x0, #0x8d0]
+0164c078  bl 0x00b0789c
+0164c07c  mov w8,#0x1
+0164c080  strb w8,[x20, #0x7ba]
+0164c084  ldr x0,[x19]
+0164c088  adrp x19,0x3365000
+0164c08c  ldr w8,[x0, #0xe0]
+0164c090  ldr x19,[x19, #0x8d0]
+0164c094  cbnz w8,0x0164c09c
+0164c098  bl 0x00b0798c
+0164c09c  ldr x0,[x19]
+0164c0a0  ldp x19,x30,[sp, #0x10]
+0164c0a4  mov x1,xzr
+0164c0a8  ldr x20,[sp], #0x20
+0164c0ac  b 0x024c0104

@@ -1,0 +1,42 @@
+Function: AliothEngine.GUIScreenManager$$get_BGEffName @ 0167a154
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_g_get_BGEffName @ 0114ff64
+  <- AliothEngine.GUIScreenManager$$SetSetBGEff_ @ 0167a55c
+
+--- Listing ---
+0167a154  stp x21,x20,[sp, #-0x20]!
+0167a158  stp x19,x30,[sp, #0x10]
+0167a15c  adrp x21,0x3577000
+0167a160  adrp x20,0x337b000
+0167a164  ldrb w8,[x21, #0x9f0]
+0167a168  ldr x20,[x20, #0xb98]
+0167a16c  mov x19,x0
+0167a170  tbnz w8,#0x0,0x0167a188
+0167a174  adrp x0,0x337b000
+0167a178  ldr x0,[x0, #0xb98]
+0167a17c  bl 0x00b0789c
+0167a180  mov w8,#0x1
+0167a184  strb w8,[x21, #0x9f0]
+0167a188  ldr x0,[x20]
+0167a18c  ldr w8,[x0, #0xe0]
+0167a190  cbnz w8,0x0167a19c
+0167a194  bl 0x00b0798c
+0167a198  ldr x0,[x20]
+0167a19c  ldr x8,[x0, #0xb8]
+0167a1a0  ldr x0,[x8, #0x298]
+0167a1a4  cbz x0,0x0167a1bc
+0167a1a8  mov x1,x19
+0167a1ac  ldp x19,x30,[sp, #0x10]
+0167a1b0  mov x2,xzr
+0167a1b4  ldp x21,x20,[sp], #0x20
+0167a1b8  b 0x01061abc
+0167a1bc  ldr x0,[x19, #0x78]
+0167a1c0  ldp x19,x30,[sp, #0x10]
+0167a1c4  ldp x21,x20,[sp], #0x20
+0167a1c8  ret

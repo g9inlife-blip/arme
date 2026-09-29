@@ -1,0 +1,76 @@
+Function: AliothEngine.Extensions.Matrix4x4Extension$$GetRight @ 016af9cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Matrix4x4$$get_Item @ 024e7a78
+
+--- Calls IN ---
+
+--- Listing ---
+016af9cc  str d10,[sp, #-0x30]!
+016af9d0  stp d9,d8,[sp, #0x8]
+016af9d4  str x20,[sp, #0x18]
+016af9d8  stp x19,x30,[sp, #0x20]
+016af9dc  mov w1,wzr
+016af9e0  mov x2,xzr
+016af9e4  mov x19,x0
+016af9e8  bl 0x024e7a78
+016af9ec  mov w1,#0x1
+016af9f0  mov x0,x19
+016af9f4  mov x2,xzr
+016af9f8  mov v8.16B,v0.16B
+016af9fc  mov w20,#0x1
+016afa00  bl 0x024e7a78
+016afa04  mov w1,#0x2
+016afa08  mov x0,x19
+016afa0c  mov x2,xzr
+016afa10  mov v9.16B,v0.16B
+016afa14  bl 0x024e7a78
+016afa18  adrp x19,0x3570000
+016afa1c  ldrb w8,[x19, #0xf11]
+016afa20  mov v10.16B,v0.16B
+016afa24  cbnz w8,0x016afa38
+016afa28  adrp x0,0x332c000
+016afa2c  ldr x0,[x0, #0x5a8]
+016afa30  bl 0x00b0789c
+016afa34  strb w20,[x19, #0xf11]
+016afa38  adrp x8,0x332c000
+016afa3c  ldr x8,[x8, #0x5a8]
+016afa40  ldr x0,[x8]
+016afa44  ldr w8,[x0, #0xe0]
+016afa48  cbnz w8,0x016afa50
+016afa4c  bl 0x00b0798c
+016afa50  fmul s0,s8,s8
+016afa54  fmul s1,s9,s9
+016afa58  adrp x8,0x26db000
+016afa5c  fadd s0,s0,s1
+016afa60  ldr s1,[x8, #0x148]
+016afa64  fmul s2,s10,s10
+016afa68  fadd s0,s2,s0
+016afa6c  fsqrt s2,s0
+016afa70  fcmp s2,s1
+016afa74  b.le 0x016afa88
+016afa78  fdiv s0,s8,s2
+016afa7c  fdiv s1,s9,s2
+016afa80  fdiv s2,s10,s2
+016afa84  b 0x016afac0
+016afa88  adrp x19,0x3570000
+016afa8c  ldrb w8,[x19, #0xf0c]
+016afa90  cbnz w8,0x016afaa8
+016afa94  adrp x0,0x3368000
+016afa98  ldr x0,[x0, #0x9b8]
+016afa9c  bl 0x00b0789c
+016afaa0  mov w8,#0x1
+016afaa4  strb w8,[x19, #0xf0c]
+016afaa8  adrp x8,0x3368000
+016afaac  ldr x8,[x8, #0x9b8]
+016afab0  ldr x8,[x8]
+016afab4  ldr x8,[x8, #0xb8]
+016afab8  ldp s0,s1,[x8]
+016afabc  ldr s2,[x8, #0x8]
+016afac0  ldp x19,x30,[sp, #0x20]
+016afac4  ldr x20,[sp, #0x18]
+016afac8  ldp d9,d8,[sp, #0x8]
+016afacc  ldr d10,[sp], #0x30
+016afad0  ret

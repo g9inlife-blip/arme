@@ -1,0 +1,29 @@
+Function: AliothEngine.NotificationManager$$.ctor @ 016578d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+  <- AliothEngine.NotificationManager_None$$.ctor @ 01657f40
+  <- AliothEngine.NotificationManager_Android$$.ctor @ 01657ee4
+
+--- Listing ---
+016578d4  stp x21,x20,[sp, #-0x20]!
+016578d8  stp x19,x30,[sp, #0x10]
+016578dc  adrp x20,0x3577000
+016578e0  adrp x21,0x3343000
+016578e4  ldrb w8,[x20, #0x825]
+016578e8  ldr x21,[x21, #0xbf8]
+016578ec  mov x19,x0
+016578f0  tbnz w8,#0x0,0x01657908
+016578f4  adrp x0,0x3343000
+016578f8  ldr x0,[x0, #0xbf8]
+016578fc  bl 0x00b0789c
+01657900  mov w8,#0x1
+01657904  strb w8,[x20, #0x825]
+01657908  ldr x1,[x21]
+0165790c  mov x0,x19
+01657910  ldp x19,x30,[sp, #0x10]
+01657914  ldp x21,x20,[sp], #0x20
+01657918  b 0x01e09460

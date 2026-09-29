@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$SetLocalPosition @ 016b4414
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_localPosition @ 024f37bc
+  -> UnityEngine.Transform$$set_localPosition @ 024f385c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b4414  stp d9,d8,[sp, #-0x20]!
+016b4418  stp x19,x30,[sp, #0x10]
+016b441c  cbz x0,0x016b4450
+016b4420  mov x1,xzr
+016b4424  mov v8.16B,v1.16B
+016b4428  mov v9.16B,v0.16B
+016b442c  mov x19,x0
+016b4430  bl 0x024f37bc
+016b4434  mov x0,x19
+016b4438  ldp x19,x30,[sp, #0x10]
+016b443c  mov v0.16B,v9.16B
+016b4440  mov v1.16B,v8.16B
+016b4444  mov x1,xzr
+016b4448  ldp d9,d8,[sp], #0x20
+016b444c  b 0x024f385c
+016b4450  bl 0x00b079b0

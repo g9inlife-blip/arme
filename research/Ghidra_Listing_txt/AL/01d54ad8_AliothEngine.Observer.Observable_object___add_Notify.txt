@@ -1,0 +1,55 @@
+Function: AliothEngine.Observer.Observable<object>$$add_Notify @ 01d54ad8
+
+--- Calls OUT ---
+  -> System.Delegate$$Combine @ 02197810
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00ae526c @ 00ae526c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01d54ad8  str x24,[sp, #-0x40]!
+01d54adc  stp x23,x22,[sp, #0x10]
+01d54ae0  stp x21,x20,[sp, #0x20]
+01d54ae4  stp x19,x30,[sp, #0x30]
+01d54ae8  mov x20,x0
+01d54aec  ldr x22,[x20, #0x10]!
+01d54af0  mov x19,x2
+01d54af4  mov x21,x1
+01d54af8  mov x0,x22
+01d54afc  mov x1,x21
+01d54b00  mov x2,xzr
+01d54b04  bl 0x02197810
+01d54b08  ldr x8,[x19, #0x20]
+01d54b0c  mov x24,x0
+01d54b10  ldr x8,[x8, #0xc0]
+01d54b14  ldr x23,[x8]
+01d54b18  ldrb w8,[x23, #0x132]
+01d54b1c  tbnz w8,#0x0,0x01d54b2c
+01d54b20  mov x0,x23
+01d54b24  bl 0x00b2ac40
+01d54b28  mov x23,x0
+01d54b2c  cbz x24,0x01d54b48
+01d54b30  mov x0,x24
+01d54b34  mov x1,x23
+01d54b38  bl 0x00b07990
+01d54b3c  mov x1,x0
+01d54b40  cbnz x0,0x01d54b4c
+01d54b44  b 0x01d54b78
+01d54b48  mov x1,xzr
+01d54b4c  mov x0,x20
+01d54b50  mov x2,x22
+01d54b54  bl 0x00ae526c
+01d54b58  cmp x22,x0
+01d54b5c  mov x22,x0
+01d54b60  b.ne 0x01d54af8
+01d54b64  ldp x19,x30,[sp, #0x30]
+01d54b68  ldp x21,x20,[sp, #0x20]
+01d54b6c  ldp x23,x22,[sp, #0x10]
+01d54b70  ldr x24,[sp], #0x40
+01d54b74  ret
+01d54b78  mov x0,x24
+01d54b7c  mov x1,x23
+01d54b80  bl 0x00b07c6c

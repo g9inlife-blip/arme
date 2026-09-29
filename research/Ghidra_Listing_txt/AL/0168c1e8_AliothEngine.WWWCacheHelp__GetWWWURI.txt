@@ -1,0 +1,47 @@
+Function: AliothEngine.WWWCacheHelp$$GetWWWURI @ 0168c1e8
+
+--- Calls OUT ---
+  -> UnityEngine.Application$$get_platform @ 024f2b84
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+
+--- Calls IN ---
+
+--- Listing ---
+0168c1e8  str x20,[sp, #-0x20]!
+0168c1ec  stp x19,x30,[sp, #0x10]
+0168c1f0  adrp x20,0x3577000
+0168c1f4  ldrb w8,[x20, #0xaac]
+0168c1f8  mov x19,x0
+0168c1fc  tbnz w8,#0x0,0x0168c22c
+0168c200  adrp x0,0x3376000
+0168c204  ldr x0,[x0, #0x170]
+0168c208  bl 0x00b0789c
+0168c20c  adrp x0,0x3368000
+0168c210  ldr x0,[x0, #0x938]
+0168c214  bl 0x00b0789c
+0168c218  adrp x0,0x335a000
+0168c21c  ldr x0,[x0, #0xc50]
+0168c220  bl 0x00b0789c
+0168c224  mov w8,#0x1
+0168c228  strb w8,[x20, #0xaac]
+0168c22c  mov x0,xzr
+0168c230  bl 0x024f2b84
+0168c234  adrp x8,0x3376000
+0168c238  ldr x8,[x8, #0x170]
+0168c23c  cbz w0,0x0168c264
+0168c240  adrp x9,0x3368000
+0168c244  ldr x9,[x9, #0x938]
+0168c248  adrp x10,0x335a000
+0168c24c  ldr x10,[x10, #0xc50]
+0168c250  sub w11,w0,#0x7
+0168c254  cmp w11,#0x4
+0168c258  csel x8,x9,x8,eq
+0168c25c  cmp w11,#0x0
+0168c260  csel x8,x10,x8,eq
+0168c264  ldr x0,[x8]
+0168c268  mov x1,x19
+0168c26c  ldp x19,x30,[sp, #0x10]
+0168c270  mov x2,xzr
+0168c274  ldr x20,[sp], #0x20
+0168c278  b 0x01fd2850

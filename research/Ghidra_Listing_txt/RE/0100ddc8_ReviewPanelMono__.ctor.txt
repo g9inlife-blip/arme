@@ -1,0 +1,39 @@
+Function: ReviewPanelMono$$.ctor @ 0100ddc8
+
+--- Calls OUT ---
+  -> GUIScreenBaseMono$$.ctor @ 00f1c130
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ReviewPanelMonoWrap$$__CreateInstance @ 01378afc
+
+--- Listing ---
+0100ddc8  stp x21,x20,[sp, #-0x20]!
+0100ddcc  stp x19,x30,[sp, #0x10]
+0100ddd0  adrp x21,0x3574000
+0100ddd4  adrp x20,0x3380000
+0100ddd8  ldrb w8,[x21, #0x456]
+0100dddc  ldr x20,[x20, #0xa78]
+0100dde0  mov x19,x0
+0100dde4  tbnz w8,#0x0,0x0100ddfc
+0100dde8  adrp x0,0x3380000
+0100ddec  ldr x0,[x0, #0xa78]
+0100ddf0  bl 0x00b0789c
+0100ddf4  mov w8,#0x1
+0100ddf8  strb w8,[x21, #0x456]
+0100ddfc  mov x0,x19
+0100de00  mov x1,xzr
+0100de04  bl 0x00f1c130
+0100de08  ldr x8,[x20]
+0100de0c  ldr x8,[x8, #0xb8]
+0100de10  ldr x0,[x8, #0x30]
+0100de14  cbz x0,0x0100de2c
+0100de18  mov x1,x19
+0100de1c  ldp x19,x30,[sp, #0x10]
+0100de20  mov x2,xzr
+0100de24  ldp x21,x20,[sp], #0x20
+0100de28  b 0x01060dac
+0100de2c  ldp x19,x30,[sp, #0x10]
+0100de30  ldp x21,x20,[sp], #0x20
+0100de34  ret

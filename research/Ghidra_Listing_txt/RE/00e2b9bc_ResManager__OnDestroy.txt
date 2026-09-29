@@ -1,0 +1,40 @@
+Function: ResManager$$OnDestroy @ 00e2b9bc
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> ResManager$$DisposeLua @ 00e2b6c0
+  -> UnityEngine.MonoBehaviour$$StopAllCoroutines @ 024e446c
+
+--- Calls IN ---
+
+--- Listing ---
+00e2b9bc  stp x21,x20,[sp, #-0x20]!
+00e2b9c0  stp x19,x30,[sp, #0x10]
+00e2b9c4  adrp x20,0x3572000
+00e2b9c8  adrp x21,0x337e000
+00e2b9cc  ldrb w8,[x20, #0x733]
+00e2b9d0  ldr x21,[x21, #0x4c8]
+00e2b9d4  mov x19,x0
+00e2b9d8  tbnz w8,#0x0,0x00e2b9f0
+00e2b9dc  adrp x0,0x337e000
+00e2b9e0  ldr x0,[x0, #0x4c8]
+00e2b9e4  bl 0x00b0789c
+00e2b9e8  mov w8,#0x1
+00e2b9ec  strb w8,[x20, #0x733]
+00e2b9f0  ldr x8,[x21]
+00e2b9f4  ldr x8,[x8, #0xb8]
+00e2b9f8  ldr x0,[x8, #0xb8]
+00e2b9fc  cbz x0,0x00e2ba14
+00e2ba00  mov x1,x19
+00e2ba04  ldp x19,x30,[sp, #0x10]
+00e2ba08  mov x2,xzr
+00e2ba0c  ldp x21,x20,[sp], #0x20
+00e2ba10  b 0x01060dac
+00e2ba14  mov x0,x19
+00e2ba18  mov x1,xzr
+00e2ba1c  bl 0x024e446c
+00e2ba20  mov x0,x19
+00e2ba24  ldp x19,x30,[sp, #0x10]
+00e2ba28  ldp x21,x20,[sp], #0x20
+00e2ba2c  b 0x00e2b6c0

@@ -1,0 +1,57 @@
+Function: AliothEngine.GUIScreenLoaderParams$$add_LoadCompleteCallback @ 01673274
+
+--- Calls OUT ---
+  -> System.Delegate$$Combine @ 02197810
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_LoadScreen @ 01673958
+
+--- Listing ---
+01673274  str x24,[sp, #-0x40]!
+01673278  stp x23,x22,[sp, #0x10]
+0167327c  stp x21,x20,[sp, #0x20]
+01673280  stp x19,x30,[sp, #0x30]
+01673284  adrp x21,0x3577000
+01673288  ldrb w8,[x21, #0x9a5]
+0167328c  mov x19,x1
+01673290  mov x20,x0
+01673294  tbnz w8,#0x0,0x016732ac
+01673298  adrp x0,0x334a000
+0167329c  ldr x0,[x0, #0xf38]
+016732a0  bl 0x00b0789c
+016732a4  mov w8,#0x1
+016732a8  strb w8,[x21, #0x9a5]
+016732ac  adrp x24,0x334a000
+016732b0  ldr x21,[x20, #0x28]!
+016732b4  ldr x24,[x24, #0xf38]
+016732b8  mov x0,x21
+016732bc  mov x1,x19
+016732c0  mov x2,xzr
+016732c4  bl 0x02197810
+016732c8  cbz x0,0x016732e8
+016732cc  ldr x23,[x24]
+016732d0  mov x22,x0
+016732d4  mov x1,x23
+016732d8  bl 0x00b07990
+016732dc  mov x1,x0
+016732e0  cbnz x0,0x016732ec
+016732e4  b 0x01673318
+016732e8  mov x1,xzr
+016732ec  mov x0,x20
+016732f0  mov x2,x21
+016732f4  bl 0x00ae526c
+016732f8  cmp x21,x0
+016732fc  mov x21,x0
+01673300  b.ne 0x016732b8
+01673304  ldp x19,x30,[sp, #0x30]
+01673308  ldp x21,x20,[sp, #0x20]
+0167330c  ldp x23,x22,[sp, #0x10]
+01673310  ldr x24,[sp], #0x40
+01673314  ret
+01673318  mov x0,x22
+0167331c  mov x1,x23
+01673320  bl 0x00b07c6c

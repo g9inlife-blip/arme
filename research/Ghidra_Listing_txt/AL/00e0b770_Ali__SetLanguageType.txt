@@ -1,0 +1,73 @@
+Function: Ali$$SetLanguageType @ 00e0b770
+
+--- Calls OUT ---
+  -> Ali$$get_language @ 00e00888
+  -> Ali$$set_language @ 00e009e0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Enum$$ToString @ 02186100
+  -> GamePlayerInfomation$$set_LanguageType @ 00e37940
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp373 @ 0108f9a8
+
+--- Calls IN ---
+  <- Ali$$InitGetValidLanguages @ 00e0f5c0
+  <- XLua.CSObjectWrap.AliWrap$$_m_SetLanguageType @ 011997d4
+  <- LanguagePanelMono$$OnClickOK @ 00f83c74
+
+--- Listing ---
+00e0b770  sub sp,sp,#0x50
+00e0b774  str x22,[sp, #0x20]
+00e0b778  stp x21,x20,[sp, #0x30]
+00e0b77c  stp x19,x30,[sp, #0x40]
+00e0b780  adrp x22,0x3572000
+00e0b784  adrp x21,0x335f000
+00e0b788  ldrb w8,[x22, #0x59b]
+00e0b78c  ldr x21,[x21, #0x20]
+00e0b790  mov w20,w1
+00e0b794  mov x19,x0
+00e0b798  tbnz w8,#0x0,0x00e0b7bc
+00e0b79c  adrp x0,0x335f000
+00e0b7a0  ldr x0,[x0, #0x20]
+00e0b7a4  bl 0x00b0789c
+00e0b7a8  adrp x0,0x3375000
+00e0b7ac  ldr x0,[x0, #0x180]
+00e0b7b0  bl 0x00b0789c
+00e0b7b4  mov w8,#0x1
+00e0b7b8  strb w8,[x22, #0x59b]
+00e0b7bc  ldr x0,[x21]
+00e0b7c0  ldr w8,[x0, #0xe0]
+00e0b7c4  cbnz w8,0x00e0b7d0
+00e0b7c8  bl 0x00b0798c
+00e0b7cc  ldr x0,[x21]
+00e0b7d0  ldr x8,[x0, #0xb8]
+00e0b7d4  ldr x0,[x8, #0x480]
+00e0b7d8  cbz x0,0x00e0b7fc
+00e0b7dc  mov x1,x19
+00e0b7e0  mov w2,w20
+00e0b7e4  ldp x19,x30,[sp, #0x40]
+00e0b7e8  ldp x21,x20,[sp, #0x30]
+00e0b7ec  ldr x22,[sp, #0x20]
+00e0b7f0  mov x3,xzr
+00e0b7f4  add sp,sp,#0x50
+00e0b7f8  b 0x0108f9a8
+00e0b7fc  adrp x21,0x3375000
+00e0b800  ldr x21,[x21, #0x180]
+00e0b804  mov x0,x19
+00e0b808  mov w1,w20
+00e0b80c  bl 0x00e009e0
+00e0b810  mov x0,x19
+00e0b814  bl 0x00e00888
+00e0b818  ldr x8,[x21]
+00e0b81c  mov x9,#-0x1
+00e0b820  str w0,[sp, #0x18]
+00e0b824  add x0,sp,#0x8
+00e0b828  mov x1,xzr
+00e0b82c  stp x8,x9,[sp, #0x8]
+00e0b830  bl 0x02186100
+00e0b834  mov x1,xzr
+00e0b838  bl 0x00e37940
+00e0b83c  ldp x19,x30,[sp, #0x40]
+00e0b840  ldp x21,x20,[sp, #0x30]
+00e0b844  ldr x22,[sp, #0x20]
+00e0b848  add sp,sp,#0x50
+00e0b84c  ret

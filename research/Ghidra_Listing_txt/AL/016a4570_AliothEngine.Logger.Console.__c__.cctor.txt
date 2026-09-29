@@ -1,0 +1,40 @@
+Function: AliothEngine.Logger.Console.<>c$$.cctor @ 016a4570
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016a4570  str x20,[sp, #-0x20]!
+016a4574  stp x19,x30,[sp, #0x10]
+016a4578  adrp x19,0x3577000
+016a457c  adrp x20,0x337d000
+016a4580  ldrb w8,[x19, #0xb84]
+016a4584  ldr x20,[x20, #0x2f0]
+016a4588  tbnz w8,#0x0,0x016a45a0
+016a458c  adrp x0,0x337d000
+016a4590  ldr x0,[x0, #0x2f0]
+016a4594  bl 0x00b0789c
+016a4598  mov w8,#0x1
+016a459c  strb w8,[x19, #0xb84]
+016a45a0  ldr x0,[x20]
+016a45a4  bl 0x00b079a0
+016a45a8  cbz x0,0x016a45dc
+016a45ac  mov x1,xzr
+016a45b0  mov x19,x0
+016a45b4  bl 0x02194104
+016a45b8  ldr x8,[x20]
+016a45bc  mov x1,x19
+016a45c0  ldr x8,[x8, #0xb8]
+016a45c4  str x19,[x8]
+016a45c8  ldr x8,[x20]
+016a45cc  ldp x19,x30,[sp, #0x10]
+016a45d0  ldr x0,[x8, #0xb8]
+016a45d4  ldr x20,[sp], #0x20
+016a45d8  b 0x00b07850
+016a45dc  bl 0x00b079b0

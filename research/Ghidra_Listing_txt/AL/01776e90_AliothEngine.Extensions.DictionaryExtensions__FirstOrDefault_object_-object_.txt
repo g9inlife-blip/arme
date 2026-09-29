@@ -1,0 +1,38 @@
+Function: AliothEngine.Extensions.DictionaryExtensions$$FirstOrDefault<object,-object> @ 01776e90
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary.Enumerator<object,-object>$$MoveNext @ 01a4cb84
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01776e90  sub sp,sp,#0x70
+01776e94  stp x19,x30,[sp, #0x60]
+01776e98  movi v0.2D,#0x0
+01776e9c  str xzr,[sp, #0x50]
+01776ea0  stp q0,q0,[sp, #0x30]
+01776ea4  cbz x0,0x01776f00
+01776ea8  ldr x8,[x1, #0x38]
+01776eac  mov x19,x1
+01776eb0  ldr x1,[x8, #0x8]
+01776eb4  add x8,sp,#0x8
+01776eb8  ldr x9,[x1, #0x8]
+01776ebc  blr x9
+01776ec0  ldur q0,[sp, #0x8]
+01776ec4  ldur q1,[sp, #0x18]
+01776ec8  ldr x8,[sp, #0x28]
+01776ecc  add x0,sp,#0x30
+01776ed0  stp q0,q1,[sp, #0x30]
+01776ed4  str x8,[sp, #0x50]
+01776ed8  ldr x8,[x19, #0x38]
+01776edc  ldr x1,[x8, #0x10]
+01776ee0  bl 0x01a4cb84
+01776ee4  ldp x8,x9,[sp, #0x40]
+01776ee8  ldp x19,x30,[sp, #0x60]
+01776eec  tst w0,#0x1
+01776ef0  csel x0,x8,xzr,ne
+01776ef4  csel x1,x9,xzr,ne
+01776ef8  add sp,sp,#0x70
+01776efc  ret
+01776f00  bl 0x00b079b0

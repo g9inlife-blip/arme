@@ -1,0 +1,45 @@
+Function: ReplayKitVideoShareResult$$.ctor @ 00d235c8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- ISN_ReplayKit$$OnSaveResult @ 00d234f4
+
+--- Listing ---
+00d235c8  str x22,[sp, #-0x30]!
+00d235cc  stp x21,x20,[sp, #0x10]
+00d235d0  stp x19,x30,[sp, #0x20]
+00d235d4  adrp x21,0x3571000
+00d235d8  adrp x22,0x3308000
+00d235dc  ldrb w8,[x21, #0xc5b]
+00d235e0  ldr x22,[x22, #0x9a8]
+00d235e4  mov x19,x1
+00d235e8  mov x20,x0
+00d235ec  tbnz w8,#0x0,0x00d23604
+00d235f0  adrp x0,0x3308000
+00d235f4  ldr x0,[x0, #0x9a8]
+00d235f8  bl 0x00b0789c
+00d235fc  mov w8,#0x1
+00d23600  strb w8,[x21, #0xc5b]
+00d23604  ldr x0,[x22]
+00d23608  mov w1,wzr
+00d2360c  bl 0x00b078f8
+00d23610  mov x21,x20
+00d23614  str x0,[x21, #0x10]!
+00d23618  mov x1,x0
+00d2361c  mov x0,x21
+00d23620  bl 0x00b07850
+00d23624  mov x0,x20
+00d23628  mov x1,xzr
+00d2362c  bl 0x02194104
+00d23630  str x19,[x21]
+00d23634  mov x0,x21
+00d23638  mov x1,x19
+00d2363c  ldp x19,x30,[sp, #0x20]
+00d23640  ldp x21,x20,[sp, #0x10]
+00d23644  ldr x22,[sp], #0x30
+00d23648  b 0x00b07850

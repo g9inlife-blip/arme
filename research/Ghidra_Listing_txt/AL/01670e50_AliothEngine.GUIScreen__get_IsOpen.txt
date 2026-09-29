@@ -1,0 +1,43 @@
+Function: AliothEngine.GUIScreen$$get_IsOpen @ 01670e50
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreen$$get_m_isOpen @ 01670b5c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- ItemAppearPanelMono$$Demand @ 00ea5ba0
+  <- MenuPanelMono$$OnClickQuit @ 00f9f498
+  <- ShopNewPanelMono$$DemandOpen @ 0102ab80
+  <- BattleEndWinPanelMono.<ReadyPlayExpUp>d__28$$MoveNext @ 00e76ae0
+  <- DevAniPlayPanelMono$$Demand @ 00ebd4a8
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_g_get_IsOpen @ 011557bc
+  <- AliothEngine.GUIScreen$$Update @ 0167158c
+
+--- Listing ---
+01670e50  stp x21,x20,[sp, #-0x20]!
+01670e54  stp x19,x30,[sp, #0x10]
+01670e58  adrp x20,0x3577000
+01670e5c  adrp x21,0x3364000
+01670e60  ldrb w8,[x20, #0x976]
+01670e64  ldr x21,[x21, #0xd28]
+01670e68  mov x19,x0
+01670e6c  tbnz w8,#0x0,0x01670e84
+01670e70  adrp x0,0x3364000
+01670e74  ldr x0,[x0, #0xd28]
+01670e78  bl 0x00b0789c
+01670e7c  mov w8,#0x1
+01670e80  strb w8,[x20, #0x976]
+01670e84  ldr x8,[x21]
+01670e88  ldr x8,[x8, #0xb8]
+01670e8c  ldr x0,[x8, #0x28]
+01670e90  cbz x0,0x01670ea8
+01670e94  mov x1,x19
+01670e98  ldp x19,x30,[sp, #0x10]
+01670e9c  mov x2,xzr
+01670ea0  ldp x21,x20,[sp], #0x20
+01670ea4  b 0x01060aac
+01670ea8  mov x0,x19
+01670eac  ldp x19,x30,[sp, #0x10]
+01670eb0  ldp x21,x20,[sp], #0x20
+01670eb4  b 0x01670b5c

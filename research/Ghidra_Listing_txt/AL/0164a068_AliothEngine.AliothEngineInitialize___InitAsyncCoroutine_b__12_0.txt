@@ -1,0 +1,56 @@
+Function: AliothEngine.AliothEngineInitialize$$<InitAsyncCoroutine>b__12_0 @ 0164a068
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$LogException @ 024c0d10
+
+--- Calls IN ---
+
+--- Listing ---
+0164a068  str x22,[sp, #-0x30]!
+0164a06c  stp x21,x20,[sp, #0x10]
+0164a070  stp x19,x30,[sp, #0x20]
+0164a074  adrp x22,0x3577000
+0164a078  adrp x21,0x336b000
+0164a07c  ldrb w8,[x22, #0x7a0]
+0164a080  ldr x21,[x21, #0x7d0]
+0164a084  mov x20,x1
+0164a088  mov x19,x0
+0164a08c  tbnz w8,#0x0,0x0164a0b0
+0164a090  adrp x0,0x336b000
+0164a094  ldr x0,[x0, #0x7d0]
+0164a098  bl 0x00b0789c
+0164a09c  adrp x0,0x3345000
+0164a0a0  ldr x0,[x0, #0xa80]
+0164a0a4  bl 0x00b0789c
+0164a0a8  mov w8,#0x1
+0164a0ac  strb w8,[x22, #0x7a0]
+0164a0b0  ldr x0,[x21]
+0164a0b4  adrp x21,0x3345000
+0164a0b8  ldr w8,[x0, #0xe0]
+0164a0bc  ldr x21,[x21, #0xa80]
+0164a0c0  cbnz w8,0x0164a0c8
+0164a0c4  bl 0x00b0798c
+0164a0c8  ldr x0,[x21]
+0164a0cc  mov x1,xzr
+0164a0d0  bl 0x024c0830
+0164a0d4  mov x0,x20
+0164a0d8  mov x1,xzr
+0164a0dc  bl 0x024c0d10
+0164a0e0  cbz x20,0x0164a110
+0164a0e4  ldr x8,[x20]
+0164a0e8  mov x0,x20
+0164a0ec  ldp x9,x1,[x8, #0x188]
+0164a0f0  blr x9
+0164a0f4  str x0,[x19, #0x20]!
+0164a0f8  mov x1,x0
+0164a0fc  mov x0,x19
+0164a100  ldp x19,x30,[sp, #0x20]
+0164a104  ldp x21,x20,[sp, #0x10]
+0164a108  ldr x22,[sp], #0x30
+0164a10c  b 0x00b07850
+0164a110  bl 0x00b079b0

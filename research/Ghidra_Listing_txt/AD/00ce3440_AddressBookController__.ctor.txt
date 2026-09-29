@@ -1,0 +1,52 @@
+Function: AddressBookController$$.ctor @ 00ce3440
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> SA.Common.Pattern.Singleton<object>$$.ctor @ 01e0a43c
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00ce3440  stp x21,x20,[sp, #-0x20]!
+00ce3444  stp x19,x30,[sp, #0x10]
+00ce3448  adrp x20,0x3571000
+00ce344c  adrp x21,0x3361000
+00ce3450  ldrb w8,[x20, #0x8f3]
+00ce3454  ldr x21,[x21, #0xd50]
+00ce3458  mov x19,x0
+00ce345c  tbnz w8,#0x0,0x00ce348c
+00ce3460  adrp x0,0x336f000
+00ce3464  ldr x0,[x0, #0x460]
+00ce3468  bl 0x00b0789c
+00ce346c  adrp x0,0x3361000
+00ce3470  ldr x0,[x0, #0xd50]
+00ce3474  bl 0x00b0789c
+00ce3478  adrp x0,0x3370000
+00ce347c  ldr x0,[x0, #0xae0]
+00ce3480  bl 0x00b0789c
+00ce3484  mov w8,#0x1
+00ce3488  strb w8,[x20, #0x8f3]
+00ce348c  ldr x0,[x21]
+00ce3490  bl 0x00b079a0
+00ce3494  cbz x0,0x00ce34d8
+00ce3498  adrp x8,0x336f000
+00ce349c  ldr x8,[x8, #0x460]
+00ce34a0  adrp x21,0x3370000
+00ce34a4  mov x20,x0
+00ce34a8  ldr x1,[x8]
+00ce34ac  ldr x21,[x21, #0xae0]
+00ce34b0  bl 0x01bffe10
+00ce34b4  mov x0,x19
+00ce34b8  str x20,[x0, #0x18]!
+00ce34bc  mov x1,x20
+00ce34c0  bl 0x00b07850
+00ce34c4  ldr x1,[x21]
+00ce34c8  mov x0,x19
+00ce34cc  ldp x19,x30,[sp, #0x10]
+00ce34d0  ldp x21,x20,[sp], #0x20
+00ce34d4  b 0x01e0a43c
+00ce34d8  bl 0x00b079b0

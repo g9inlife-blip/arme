@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$FindChild @ 016b0768
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> UnityEngine.Transform$$Find @ 024f5790
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.MonoBehaviourExtensions$$FindChild @ 016b07a0
+
+--- Listing ---
+016b0768  stp x19,x30,[sp, #-0x10]!
+016b076c  cbz x0,0x016b079c
+016b0770  mov x19,x1
+016b0774  mov x1,xzr
+016b0778  bl 0x024e4e98
+016b077c  cbz x0,0x016b079c
+016b0780  mov x1,x19
+016b0784  mov x2,xzr
+016b0788  bl 0x024f5790
+016b078c  cbz x0,0x016b079c
+016b0790  mov x1,xzr
+016b0794  ldp x19,x30,[sp], #0x10
+016b0798  b 0x024e4ed4
+016b079c  bl 0x00b079b0

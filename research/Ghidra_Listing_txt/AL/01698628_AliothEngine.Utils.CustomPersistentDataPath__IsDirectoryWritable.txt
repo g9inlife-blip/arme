@@ -1,0 +1,99 @@
+Function: AliothEngine.Utils.CustomPersistentDataPath$$IsDirectoryWritable @ 01698628
+
+--- Calls OUT ---
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.IO.File$$Delete @ 020afd48
+  -> System.IO.Directory$$Exists @ 020ae0e8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.Path$$GetRandomFileName @ 020c2f74
+  -> System.IO.File$$Create @ 020afcc8
+
+--- Calls IN ---
+  <- AliothEngine.Utils.CustomPersistentDataPath$$GetPersistentDataPath @ 0169839c
+
+--- Listing ---
+01698628  str x20,[sp, #-0x20]!
+0169862c  stp x19,x30,[sp, #0x10]
+01698630  adrp x20,0x3577000
+01698634  ldrb w8,[x20, #0xb21]
+01698638  mov x19,x0
+0169863c  tbnz w8,#0x0,0x01698660
+01698640  adrp x0,0x337d000
+01698644  ldr x0,[x0, #0x848]
+01698648  bl 0x00b0789c
+0169864c  adrp x0,0x336c000
+01698650  ldr x0,[x0, #0x318]
+01698654  bl 0x00b0789c
+01698658  mov w8,#0x1
+0169865c  strb w8,[x20, #0xb21]
+01698660  mov x0,x19
+    ; [PRE] try { // try from 01698660 to 0169866b has its CatchHandler @ 01698744
+01698664  mov x1,xzr
+01698668  bl 0x020ae0e8
+    ; [POST] } // end try from 01698660 to 0169866b
+0169866c  tbz w0,#0x0,0x0169877c
+01698670  adrp x8,0x336c000
+01698674  ldr x8,[x8, #0x318]
+01698678  ldr x0,[x8]
+0169867c  ldr w8,[x0, #0xe0]
+01698680  cbnz w8,0x01698688
+01698684  bl 0x00b0798c
+    ; [PRE] try { // try from 01698684 to 01698687 has its CatchHandler @ 0169872c
+    ; [POST] } // end try from 01698684 to 01698687
+01698688  mov x0,xzr
+    ; [PRE] try { // try from 01698688 to 01698693 has its CatchHandler @ 0169873c
+0169868c  bl 0x020c2f74
+01698690  mov x1,x0
+    ; [POST] } // end try from 01698688 to 01698693
+01698694  mov x0,x19
+    ; [PRE] try { // try from 01698694 to 0169869f has its CatchHandler @ 01698738
+01698698  mov x2,xzr
+0169869c  bl 0x020b2e1c
+    ; [POST] } // end try from 01698694 to 0169869f
+016986a0  mov x19,x0
+016986a4  mov w1,#0x1
+    ; [PRE] try { // try from 016986a4 to 016986af has its CatchHandler @ 01698734
+016986a8  mov x2,xzr
+016986ac  bl 0x020afcc8
+    ; [POST] } // end try from 016986a4 to 016986af
+016986b0  mov x20,x0
+016986b4  cbz x0,0x01698718
+016986b8  adrp x10,0x337d000
+016986bc  ldr x8,[x20]
+016986c0  ldr x10,[x10, #0x848]
+016986c4  ldrh w9,[x8, #0x12a]
+016986c8  ldr x1,[x10]
+016986cc  cbz x9,0x016986f0
+016986d0  ldr x10,[x8, #0xb0]
+016986d4  add x10,x10,#0x8
+016986d8  ldur x11,[x10, #-0x8]
+016986dc  cmp x11,x1
+016986e0  b.eq 0x01698700
+016986e4  subs x9,x9,#0x1
+016986e8  add x10,x10,#0x10
+016986ec  b.ne 0x016986d8
+016986f0  mov x0,x20
+    ; [PRE] try { // try from 016986f0 to 01698717 has its CatchHandler @ 01698740
+016986f4  mov w2,wzr
+016986f8  bl 0x00b2ae24
+016986fc  b 0x0169870c
+01698700  ldrsw x9,[x10]
+01698704  add x8,x8,x9, LSL #0x4
+01698708  add x0,x8,#0x138
+0169870c  ldp x8,x1,[x0]
+01698710  mov x0,x20
+01698714  blr x8
+    ; [POST] } // end try from 016986f0 to 01698717
+01698718  mov x0,x19
+    ; [PRE] try { // try from 01698718 to 01698723 has its CatchHandler @ 01698730
+0169871c  mov x1,xzr
+01698720  bl 0x020afd48
+    ; [POST] } // end try from 01698718 to 01698723
+01698724  mov w0,#0x1
+01698728  b 0x01698780
+0169877c  mov w0,wzr
+01698780  ldp x19,x30,[sp, #0x10]
+01698784  ldr x20,[sp], #0x20
+01698788  ret

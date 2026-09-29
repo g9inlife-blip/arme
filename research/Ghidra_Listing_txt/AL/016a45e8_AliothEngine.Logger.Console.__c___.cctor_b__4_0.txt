@@ -1,0 +1,33 @@
+Function: AliothEngine.Logger.Console.<>c$$<.cctor>b__4_0 @ 016a45e8
+
+--- Calls OUT ---
+  -> UnityEngine.Debug$$LogException @ 024c0e18
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016a45e8  stp x21,x20,[sp, #-0x20]!
+016a45ec  stp x19,x30,[sp, #0x10]
+016a45f0  adrp x20,0x3577000
+016a45f4  adrp x21,0x336b000
+016a45f8  ldrb w8,[x20, #0xb85]
+016a45fc  ldr x21,[x21, #0x7d0]
+016a4600  mov x19,x1
+016a4604  tbnz w8,#0x0,0x016a461c
+016a4608  adrp x0,0x336b000
+016a460c  ldr x0,[x0, #0x7d0]
+016a4610  bl 0x00b0789c
+016a4614  mov w8,#0x1
+016a4618  strb w8,[x20, #0xb85]
+016a461c  ldr x0,[x21]
+016a4620  ldr w8,[x0, #0xe0]
+016a4624  cbnz w8,0x016a462c
+016a4628  bl 0x00b0798c
+016a462c  mov x0,x19
+016a4630  ldp x19,x30,[sp, #0x10]
+016a4634  mov x1,xzr
+016a4638  mov x2,xzr
+016a463c  ldp x21,x20,[sp], #0x20
+016a4640  b 0x024c0e18

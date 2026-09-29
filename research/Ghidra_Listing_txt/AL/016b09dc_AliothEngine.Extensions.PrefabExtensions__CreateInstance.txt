@@ -1,0 +1,92 @@
+Function: AliothEngine.Extensions.PrefabExtensions$$CreateInstance @ 016b09dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Object$$Instantiate<object> @ 017a970c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> System.Exception$$.ctor @ 021876ac
+  -> UnityEngine.Resources$$Load<object> @ 017c585c
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.PrefabExtensions$$CreateInstance<object> @ 017c407c
+
+--- Listing ---
+016b09dc  str x22,[sp, #-0x30]!
+016b09e0  stp x21,x20,[sp, #0x10]
+016b09e4  stp x19,x30,[sp, #0x20]
+016b09e8  adrp x20,0x3577000
+016b09ec  adrp x22,0x3334000
+016b09f0  adrp x21,0x3321000
+016b09f4  ldrb w8,[x20, #0xbdb]
+016b09f8  ldr x22,[x22, #0x6b0]
+016b09fc  ldr x21,[x21, #0xca8]
+016b0a00  mov x19,x0
+016b0a04  tbnz w8,#0x0,0x016b0a34
+016b0a08  adrp x0,0x333f000
+016b0a0c  ldr x0,[x0, #0x1b8]
+016b0a10  bl 0x00b0789c
+016b0a14  adrp x0,0x3321000
+016b0a18  ldr x0,[x0, #0xca8]
+016b0a1c  bl 0x00b0789c
+016b0a20  adrp x0,0x3334000
+016b0a24  ldr x0,[x0, #0x6b0]
+016b0a28  bl 0x00b0789c
+016b0a2c  mov w8,#0x1
+016b0a30  strb w8,[x20, #0xbdb]
+016b0a34  ldr x1,[x22]
+016b0a38  mov x0,x19
+016b0a3c  bl 0x017c585c
+016b0a40  ldr x8,[x21]
+016b0a44  mov x20,x0
+016b0a48  ldr w9,[x8, #0xe0]
+016b0a4c  cbnz w9,0x016b0a58
+016b0a50  mov x0,x8
+016b0a54  bl 0x00b0798c
+016b0a58  mov x0,x20
+016b0a5c  mov x1,xzr
+016b0a60  mov x2,xzr
+016b0a64  bl 0x024c8180
+016b0a68  tst w0,#0x1
+016b0a6c  csel x20,xzr,x20,ne
+016b0a70  tbnz w0,#0x0,0x016b0aa4
+016b0a74  ldr x0,[x21]
+016b0a78  adrp x19,0x333f000
+016b0a7c  ldr w8,[x0, #0xe0]
+016b0a80  ldr x19,[x19, #0x1b8]
+016b0a84  cbnz w8,0x016b0a8c
+016b0a88  bl 0x00b0798c
+016b0a8c  ldr x1,[x19]
+016b0a90  mov x0,x20
+016b0a94  ldp x19,x30,[sp, #0x20]
+016b0a98  ldp x21,x20,[sp, #0x10]
+016b0a9c  ldr x22,[sp], #0x30
+016b0aa0  b 0x017a970c
+016b0aa4  adrp x0,0x3376000
+016b0aa8  ldr x0,[x0, #0x710]
+016b0aac  bl 0x00b078a0
+016b0ab0  mov x1,x19
+016b0ab4  mov x2,xzr
+016b0ab8  bl 0x01fd2850
+016b0abc  mov x19,x0
+016b0ac0  adrp x0,0x334a000
+016b0ac4  ldr x0,[x0, #0xbb0]
+016b0ac8  bl 0x00b078a0
+016b0acc  bl 0x00b079a0
+016b0ad0  mov x20,x0
+016b0ad4  bl 0x008d74f8
+016b0ad8  mov x0,x20
+016b0adc  mov x1,x19
+016b0ae0  mov x2,xzr
+016b0ae4  bl 0x021876ac
+016b0ae8  adrp x0,0x3344000
+016b0aec  ldr x0,[x0, #0x190]
+016b0af0  bl 0x00b078a0
+016b0af4  mov x1,x0
+016b0af8  mov x0,x20
+016b0afc  bl 0x00b07978

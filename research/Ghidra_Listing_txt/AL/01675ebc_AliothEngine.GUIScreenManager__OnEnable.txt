@@ -1,0 +1,51 @@
+Function: AliothEngine.GUIScreenManager$$OnEnable @ 01675ebc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreenManager$$_FlushOperation @ 01675f54
+
+--- Calls IN ---
+
+--- Listing ---
+01675ebc  stp x21,x20,[sp, #-0x20]!
+01675ec0  stp x19,x30,[sp, #0x10]
+01675ec4  adrp x21,0x3577000
+01675ec8  adrp x20,0x337b000
+01675ecc  ldrb w8,[x21, #0x9bc]
+01675ed0  ldr x20,[x20, #0xb98]
+01675ed4  mov x19,x0
+01675ed8  tbnz w8,#0x0,0x01675ef0
+01675edc  adrp x0,0x337b000
+01675ee0  ldr x0,[x0, #0xb98]
+01675ee4  bl 0x00b0789c
+01675ee8  mov w8,#0x1
+01675eec  strb w8,[x21, #0x9bc]
+01675ef0  ldr x0,[x20]
+01675ef4  ldr w8,[x0, #0xe0]
+01675ef8  cbnz w8,0x01675f04
+01675efc  bl 0x00b0798c
+01675f00  ldr x0,[x20]
+01675f04  ldr x8,[x0, #0xb8]
+01675f08  ldr x0,[x8, #0xf8]
+01675f0c  cbz x0,0x01675f24
+01675f10  mov x1,x19
+01675f14  ldp x19,x30,[sp, #0x10]
+01675f18  mov x2,xzr
+01675f1c  ldp x21,x20,[sp], #0x20
+01675f20  b 0x01060dac
+01675f24  mov x0,x19
+01675f28  bl 0x01675f54
+01675f2c  mov x1,x0
+01675f30  mov x0,x19
+01675f34  mov x2,xzr
+01675f38  bl 0x024e4070
+01675f3c  str x0,[x19, #0x68]!
+01675f40  mov x1,x0
+01675f44  mov x0,x19
+01675f48  ldp x19,x30,[sp, #0x10]
+01675f4c  ldp x21,x20,[sp], #0x20
+01675f50  b 0x00b07850

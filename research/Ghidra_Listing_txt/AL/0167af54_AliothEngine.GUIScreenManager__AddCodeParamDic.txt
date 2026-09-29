@@ -1,0 +1,65 @@
+Function: AliothEngine.GUIScreenManager$$AddCodeParamDic @ 0167af54
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp840 @ 010cdd14
+  -> System.Collections.Generic.Dictionary<Int16Enum,-object>$$set_Item @ 0191bdf4
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_AddCodeParamDic_xlua_st_ @ 0114ea44
+  <- AliothEngine.GUIScreenLoaderS1$$IsSendRequest @ 01693710
+
+--- Listing ---
+0167af54  str x22,[sp, #-0x30]!
+0167af58  stp x21,x20,[sp, #0x10]
+0167af5c  stp x19,x30,[sp, #0x20]
+0167af60  adrp x22,0x3577000
+0167af64  adrp x21,0x337b000
+0167af68  ldrb w8,[x22, #0x9fb]
+0167af6c  ldr x21,[x21, #0xb98]
+0167af70  mov x19,x1
+0167af74  mov w20,w0
+0167af78  tbnz w8,#0x0,0x0167af9c
+0167af7c  adrp x0,0x3376000
+0167af80  ldr x0,[x0, #0x40]
+0167af84  bl 0x00b0789c
+0167af88  adrp x0,0x337b000
+0167af8c  ldr x0,[x0, #0xb98]
+0167af90  bl 0x00b0789c
+0167af94  mov w8,#0x1
+0167af98  strb w8,[x22, #0x9fb]
+0167af9c  ldr x0,[x21]
+0167afa0  ldr w8,[x0, #0xe0]
+0167afa4  cbnz w8,0x0167afb0
+0167afa8  bl 0x00b0798c
+0167afac  ldr x0,[x21]
+0167afb0  ldr x9,[x0, #0xb8]
+0167afb4  ldr x8,[x9, #0x2f0]
+0167afb8  cbz x8,0x0167afdc
+0167afbc  mov w1,w20
+0167afc0  mov x2,x19
+0167afc4  ldp x19,x30,[sp, #0x20]
+0167afc8  ldp x21,x20,[sp, #0x10]
+0167afcc  mov x0,x8
+0167afd0  mov x3,xzr
+0167afd4  ldr x22,[sp], #0x30
+0167afd8  b 0x010cdd14
+0167afdc  ldr w8,[x0, #0xe0]
+0167afe0  cbnz w8,0x0167aff0
+0167afe4  bl 0x00b0798c
+0167afe8  ldr x8,[x21]
+0167afec  ldr x9,[x8, #0xb8]
+0167aff0  ldr x0,[x9, #0x48]
+0167aff4  cbz x0,0x0167b01c
+0167aff8  adrp x8,0x3376000
+0167affc  ldr x8,[x8, #0x40]
+0167b000  mov w1,w20
+0167b004  mov x2,x19
+0167b008  ldp x19,x30,[sp, #0x20]
+0167b00c  ldr x3,[x8]
+0167b010  ldp x21,x20,[sp, #0x10]
+0167b014  ldr x22,[sp], #0x30
+0167b018  b 0x0191bdf4
+0167b01c  bl 0x00b079b0

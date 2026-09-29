@@ -1,0 +1,33 @@
+Function: AliothEngine.Scheduler$$EndTask @ 016872b4
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StopCoroutine @ 024e42ec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016872b4  stp x21,x20,[sp, #-0x20]!
+016872b8  stp x19,x30,[sp, #0x10]
+016872bc  adrp x20,0x3577000
+016872c0  adrp x21,0x336c000
+016872c4  ldrb w8,[x20, #0xa6d]
+016872c8  ldr x21,[x21, #0x370]
+016872cc  mov x19,x0
+016872d0  tbnz w8,#0x0,0x016872e8
+016872d4  adrp x0,0x336c000
+016872d8  ldr x0,[x0, #0x370]
+016872dc  bl 0x00b0789c
+016872e0  mov w8,#0x1
+016872e4  strb w8,[x20, #0xa6d]
+016872e8  ldr x0,[x21]
+016872ec  bl 0x01e0894c
+016872f0  cbz x0,0x01687308
+016872f4  mov x1,x19
+016872f8  ldp x19,x30,[sp, #0x10]
+016872fc  mov x2,xzr
+01687300  ldp x21,x20,[sp], #0x20
+01687304  b 0x024e42ec
+01687308  bl 0x00b079b0

@@ -1,0 +1,161 @@
+Function: AliothEngine.FileUtility$$DirectoryCopy @ 0168f408
+
+--- Calls OUT ---
+  -> System.IO.FileInfo$$CopyTo @ 020b1cf8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.IO.DirectoryInfo$$GetFiles @ 020af09c
+  -> AliothEngine.FileUtility$$DirectoryCopy @ 0168f408
+  -> System.IO.DirectoryInfo$$.ctor @ 020adebc
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.Directory$$Exists @ 020ae0e8
+  -> System.IO.Directory$$CreateDirectory @ 020adf44
+  -> System.IO.DirectoryInfo$$GetDirectories @ 020af4b8
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.String$$EndsWith @ 01fddcec
+
+--- Calls IN ---
+  <- AliothEngine.FileUtility$$DirectoryCopy @ 0168f408
+
+--- Listing ---
+0168f408  str x26,[sp, #-0x50]!
+0168f40c  stp x25,x24,[sp, #0x10]
+0168f410  stp x23,x22,[sp, #0x20]
+0168f414  stp x21,x20,[sp, #0x30]
+0168f418  stp x19,x30,[sp, #0x40]
+0168f41c  adrp x20,0x3577000
+0168f420  adrp x22,0x336c000
+0168f424  ldrb w8,[x20, #0xad3]
+0168f428  ldr x22,[x22, #0x858]
+0168f42c  mov x19,x1
+0168f430  mov x21,x0
+0168f434  tbnz w8,#0x0,0x0168f464
+0168f438  adrp x0,0x336c000
+0168f43c  ldr x0,[x0, #0x858]
+0168f440  bl 0x00b0789c
+0168f444  adrp x0,0x336c000
+0168f448  ldr x0,[x0, #0x318]
+0168f44c  bl 0x00b0789c
+0168f450  adrp x0,0x337c000
+0168f454  ldr x0,[x0, #0xdc8]
+0168f458  bl 0x00b0789c
+0168f45c  mov w8,#0x1
+0168f460  strb w8,[x20, #0xad3]
+0168f464  ldr x0,[x22]
+0168f468  bl 0x00b079a0
+0168f46c  cbz x0,0x0168f62c
+0168f470  mov x1,x21
+0168f474  mov x2,xzr
+0168f478  mov x20,x0
+0168f47c  bl 0x020adebc
+0168f480  ldr x8,[x20]
+0168f484  mov x0,x20
+0168f488  ldp x9,x1,[x8, #0x1d8]
+0168f48c  blr x9
+0168f490  tbz w0,#0x0,0x0168f614
+0168f494  mov x0,x19
+0168f498  mov x1,xzr
+0168f49c  bl 0x020ae0e8
+0168f4a0  tbnz w0,#0x0,0x0168f4b0
+0168f4a4  mov x0,x19
+0168f4a8  mov x1,xzr
+0168f4ac  bl 0x020adf44
+0168f4b0  mov x0,x20
+0168f4b4  mov x1,xzr
+0168f4b8  bl 0x020af09c
+0168f4bc  cbz x0,0x0168f62c
+0168f4c0  ldr w8,[x0, #0x18]
+0168f4c4  adrp x24,0x336c000
+0168f4c8  ldr x24,[x24, #0x318]
+0168f4cc  mov x21,x0
+0168f4d0  cmp w8,#0x1
+0168f4d4  b.lt 0x0168f578
+0168f4d8  adrp x26,0x337c000
+0168f4dc  ldr x26,[x26, #0xdc8]
+0168f4e0  mov w25,wzr
+0168f4e4  cmp w25,w8
+0168f4e8  b.cs 0x0168f630
+0168f4ec  add x8,x21,w25, SXTW  #0x3
+0168f4f0  ldr x22,[x8, #0x20]
+0168f4f4  cbz x22,0x0168f62c
+0168f4f8  ldr x8,[x22]
+0168f4fc  mov x0,x22
+0168f500  ldp x9,x1,[x8, #0x1b8]
+0168f504  blr x9
+0168f508  cbz x0,0x0168f62c
+0168f50c  ldr x1,[x26]
+0168f510  mov x2,xzr
+0168f514  bl 0x01fddcec
+0168f518  tbnz w0,#0x0,0x0168f568
+0168f51c  ldr x8,[x22]
+0168f520  mov x0,x22
+0168f524  ldp x9,x1,[x8, #0x1c8]
+0168f528  blr x9
+0168f52c  ldr x8,[x24]
+0168f530  mov x23,x0
+0168f534  ldr w9,[x8, #0xe0]
+0168f538  cbnz w9,0x0168f544
+0168f53c  mov x0,x8
+0168f540  bl 0x00b0798c
+0168f544  mov x0,x19
+0168f548  mov x1,x23
+0168f54c  mov x2,xzr
+0168f550  bl 0x020b2e1c
+0168f554  mov x1,x0
+0168f558  mov x0,x22
+0168f55c  mov w2,wzr
+0168f560  mov x3,xzr
+0168f564  bl 0x020b1cf8
+0168f568  ldr w8,[x21, #0x18]
+0168f56c  add w25,w25,#0x1
+0168f570  cmp w25,w8
+0168f574  b.lt 0x0168f4e4
+0168f578  mov x0,x20
+0168f57c  mov x1,xzr
+0168f580  bl 0x020af4b8
+0168f584  cbz x0,0x0168f62c
+0168f588  ldr w8,[x0, #0x18]
+0168f58c  mov x20,x0
+0168f590  cmp w8,#0x1
+0168f594  b.lt 0x0168f614
+0168f598  mov w23,wzr
+0168f59c  cmp w23,w8
+0168f5a0  b.cs 0x0168f630
+0168f5a4  add x8,x20,w23, SXTW  #0x3
+0168f5a8  ldr x21,[x8, #0x20]
+0168f5ac  cbz x21,0x0168f62c
+0168f5b0  ldr x8,[x21]
+0168f5b4  mov x0,x21
+0168f5b8  ldp x9,x1,[x8, #0x1c8]
+0168f5bc  blr x9
+0168f5c0  ldr x8,[x24]
+0168f5c4  mov x22,x0
+0168f5c8  ldr w9,[x8, #0xe0]
+0168f5cc  cbnz w9,0x0168f5d8
+0168f5d0  mov x0,x8
+0168f5d4  bl 0x00b0798c
+0168f5d8  mov x0,x19
+0168f5dc  mov x1,x22
+0168f5e0  mov x2,xzr
+0168f5e4  bl 0x020b2e1c
+0168f5e8  ldr x8,[x21]
+0168f5ec  mov x22,x0
+0168f5f0  mov x0,x21
+0168f5f4  ldp x9,x1,[x8, #0x1b8]
+0168f5f8  blr x9
+0168f5fc  mov x1,x22
+0168f600  bl 0x0168f408
+0168f604  ldr w8,[x20, #0x18]
+0168f608  add w23,w23,#0x1
+0168f60c  cmp w23,w8
+0168f610  b.lt 0x0168f59c
+0168f614  ldp x19,x30,[sp, #0x40]
+0168f618  ldp x21,x20,[sp, #0x30]
+0168f61c  ldp x23,x22,[sp, #0x20]
+0168f620  ldp x25,x24,[sp, #0x10]
+0168f624  ldr x26,[sp], #0x50
+0168f628  ret
+0168f62c  bl 0x00b079b0
+0168f630  bl 0x00b079b8

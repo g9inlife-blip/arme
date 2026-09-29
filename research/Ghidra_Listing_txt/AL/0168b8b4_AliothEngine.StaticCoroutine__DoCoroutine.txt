@@ -1,0 +1,49 @@
+Function: AliothEngine.StaticCoroutine$$DoCoroutine @ 0168b8b4
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.StaticCoroutine$$Perform @ 0168b7e8
+
+--- Calls IN ---
+  <- AliothS1Loading$$CheckLoadingReady @ 00ecaff4
+  <- AliothEngine.PlatformTools$$PlayMovie @ 01657f44
+  <- GUIScreenBaseMono$$CheckLoadReady @ 00f20dfc
+
+--- Listing ---
+0168b8b4  str x22,[sp, #-0x30]!
+0168b8b8  stp x21,x20,[sp, #0x10]
+0168b8bc  stp x19,x30,[sp, #0x20]
+0168b8c0  adrp x22,0x3577000
+0168b8c4  adrp x21,0x332b000
+0168b8c8  ldrb w8,[x22, #0xaa3]
+0168b8cc  ldr x21,[x21, #0x100]
+0168b8d0  mov x19,x1
+0168b8d4  mov x20,x0
+0168b8d8  tbnz w8,#0x0,0x0168b8f0
+0168b8dc  adrp x0,0x332b000
+0168b8e0  ldr x0,[x0, #0x100]
+0168b8e4  bl 0x00b0789c
+0168b8e8  mov w8,#0x1
+0168b8ec  strb w8,[x22, #0xaa3]
+0168b8f0  ldr x0,[x21]
+0168b8f4  bl 0x01e0894c
+0168b8f8  ldr x8,[x21]
+0168b8fc  mov x21,x0
+0168b900  mov x0,x8
+0168b904  bl 0x01e0894c
+0168b908  cbz x0,0x0168b938
+0168b90c  mov x1,x20
+0168b910  mov x2,x19
+0168b914  bl 0x0168b7e8
+0168b918  cbz x21,0x0168b938
+0168b91c  mov x1,x0
+0168b920  mov x0,x21
+0168b924  ldp x19,x30,[sp, #0x20]
+0168b928  ldp x21,x20,[sp, #0x10]
+0168b92c  mov x2,xzr
+0168b930  ldr x22,[sp], #0x30
+0168b934  b 0x024e4070
+0168b938  bl 0x00b079b0

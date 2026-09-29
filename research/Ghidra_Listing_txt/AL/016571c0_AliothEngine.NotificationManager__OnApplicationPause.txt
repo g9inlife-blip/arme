@@ -1,0 +1,85 @@
+Function: AliothEngine.NotificationManager$$OnApplicationPause @ 016571c0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.NotificationManager$$LocalLog @ 01657078
+  -> thunk_FUN_00aedffc @ 00b079d4
+
+--- Calls IN ---
+
+--- Listing ---
+016571c0  str x24,[sp, #-0x40]!
+016571c4  stp x23,x22,[sp, #0x10]
+016571c8  stp x21,x20,[sp, #0x20]
+016571cc  stp x19,x30,[sp, #0x30]
+016571d0  adrp x21,0x3577000
+016571d4  adrp x24,0x3370000
+016571d8  adrp x23,0x337c000
+016571dc  ldrb w8,[x21, #0x81c]
+016571e0  ldr x24,[x24, #0x778]
+016571e4  ldr x23,[x23, #0xf70]
+016571e8  mov w20,w1
+016571ec  mov x19,x0
+016571f0  and w22,w1,#0x1
+016571f4  tbnz w8,#0x0,0x01657224
+016571f8  adrp x0,0x337c000
+016571fc  ldr x0,[x0, #0xf70]
+01657200  bl 0x00b0789c
+01657204  adrp x0,0x3370000
+01657208  ldr x0,[x0, #0x778]
+0165720c  bl 0x00b0789c
+01657210  adrp x0,0x333f000
+01657214  ldr x0,[x0, #0x440]
+01657218  bl 0x00b0789c
+0165721c  mov w8,#0x1
+01657220  strb w8,[x21, #0x81c]
+01657224  ldr x0,[x24]
+01657228  mov w1,#0x1
+0165722c  bl 0x00b078f8
+01657230  mov x21,x0
+01657234  ldr x0,[x23]
+01657238  add x1,sp,#0xc
+0165723c  strb w22,[sp, #0xc]
+01657240  bl 0x00b07994
+01657244  cbz x21,0x016572bc
+01657248  mov x22,x0
+0165724c  cbz x0,0x01657264
+01657250  ldr x8,[x21]
+01657254  mov x0,x22
+01657258  ldr x1,[x8, #0x40]
+0165725c  bl 0x00b07990
+01657260  cbz x0,0x016572c4
+01657264  ldr w8,[x21, #0x18]
+01657268  cbz w8,0x016572c0
+0165726c  adrp x23,0x333f000
+01657270  ldr x23,[x23, #0x440]
+01657274  mov x0,x21
+01657278  str x22,[x0, #0x20]!
+0165727c  mov x1,x22
+01657280  bl 0x00b07850
+01657284  ldr x0,[x23]
+01657288  mov x1,x21
+0165728c  bl 0x01657078
+01657290  ldr x8,[x19]
+01657294  and w1,w20,#0x1
+01657298  mov x0,x19
+0165729c  ldr x9,[x8, #0x218]
+016572a0  ldr x2,[x8, #0x220]
+016572a4  blr x9
+016572a8  ldp x19,x30,[sp, #0x30]
+016572ac  ldp x21,x20,[sp, #0x20]
+016572b0  ldp x23,x22,[sp, #0x10]
+016572b4  ldr x24,[sp], #0x40
+016572b8  ret
+016572bc  bl 0x00b079b0
+016572c0  bl 0x00b079b8
+016572c4  bl 0x00b079d4
+016572c8  mov x1,xzr
+016572cc  bl 0x00b07978

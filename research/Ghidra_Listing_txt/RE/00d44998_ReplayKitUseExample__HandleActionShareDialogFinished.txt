@@ -1,0 +1,78 @@
+Function: ReplayKitUseExample$$HandleActionShareDialogFinished @ 00d44998
+
+--- Calls OUT ---
+  -> IOSNativePopUpManager$$showMessage @ 00d25960
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00d44998  stp x23,x22,[sp, #-0x30]!
+00d4499c  stp x21,x20,[sp, #0x10]
+00d449a0  stp x19,x30,[sp, #0x20]
+00d449a4  adrp x20,0x3571000
+00d449a8  ldrb w8,[x20, #0xdbb]
+00d449ac  mov x19,x1
+00d449b0  tbnz w8,#0x0,0x00d449ec
+00d449b4  adrp x0,0x336e000
+00d449b8  ldr x0,[x0, #0x298]
+00d449bc  bl 0x00b0789c
+00d449c0  adrp x0,0x337c000
+00d449c4  ldr x0,[x0, #0xb8]
+00d449c8  bl 0x00b0789c
+00d449cc  adrp x0,0x3350000
+00d449d0  ldr x0,[x0, #0xb70]
+00d449d4  bl 0x00b0789c
+00d449d8  adrp x0,0x3381000
+00d449dc  ldr x0,[x0, #0x138]
+00d449e0  bl 0x00b0789c
+00d449e4  mov w8,#0x1
+00d449e8  strb w8,[x20, #0xdbb]
+00d449ec  cbz x19,0x00d44a9c
+00d449f0  ldr x19,[x19, #0x10]
+00d449f4  cbz x19,0x00d44a9c
+00d449f8  ldr x8,[x19, #0x18]
+00d449fc  cbz x8,0x00d44a6c
+00d44a00  cmp w8,#0x1
+00d44a04  b.lt 0x00d44a5c
+00d44a08  adrp x21,0x3381000
+00d44a0c  adrp x22,0x337c000
+00d44a10  ldr x21,[x21, #0x138]
+00d44a14  ldr x22,[x22, #0xb8]
+00d44a18  mov x20,xzr
+00d44a1c  add x23,x19,#0x20
+00d44a20  cmp x20,w8, UXTW 
+00d44a24  b.cs 0x00d44a98
+00d44a28  ldr x1,[x23, x20, LSL #0x3]
+00d44a2c  ldr x0,[x21]
+00d44a30  mov x2,xzr
+00d44a34  bl 0x01fd2850
+00d44a38  ldr x8,[x22]
+00d44a3c  mov x1,x0
+00d44a40  mov x2,xzr
+00d44a44  mov x0,x8
+00d44a48  bl 0x00d25960
+00d44a4c  ldr w8,[x19, #0x18]
+00d44a50  add x20,x20,#0x1
+00d44a54  cmp x20,w8, SXTW 
+00d44a58  b.lt 0x00d44a20
+00d44a5c  ldp x19,x30,[sp, #0x20]
+00d44a60  ldp x21,x20,[sp, #0x10]
+00d44a64  ldp x23,x22,[sp], #0x30
+00d44a68  ret
+00d44a6c  adrp x8,0x336e000
+00d44a70  adrp x9,0x3350000
+00d44a74  ldr x8,[x8, #0x298]
+00d44a78  ldr x9,[x9, #0xb70]
+00d44a7c  ldp x19,x30,[sp, #0x20]
+00d44a80  ldp x21,x20,[sp, #0x10]
+00d44a84  ldr x0,[x8]
+00d44a88  ldr x1,[x9]
+00d44a8c  mov x2,xzr
+00d44a90  ldp x23,x22,[sp], #0x30
+00d44a94  b 0x00d25960
+00d44a98  bl 0x00b079b8
+00d44a9c  bl 0x00b079b0

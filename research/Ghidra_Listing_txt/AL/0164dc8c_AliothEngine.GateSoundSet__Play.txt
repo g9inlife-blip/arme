@@ -1,0 +1,23 @@
+Function: AliothEngine.GateSoundSet$$Play @ 0164dc8c
+
+--- Calls OUT ---
+  -> UnityEngine.AudioSource$$Play @ 024bbbe0
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GateSoundSet$$SetupAudioSource @ 0164dcbc
+
+--- Calls IN ---
+  <- AliothEngine.GateSoundSet$$Play @ 0164d9b4
+
+--- Listing ---
+0164dc8c  stp x19,x30,[sp, #-0x10]!
+0164dc90  mov x19,x1
+0164dc94  bl 0x0164dcbc
+0164dc98  tbz w0,#0x0,0x0164dcb0
+0164dc9c  cbz x19,0x0164dcb8
+0164dca0  mov x0,x19
+0164dca4  mov x1,xzr
+0164dca8  ldp x19,x30,[sp], #0x10
+0164dcac  b 0x024bbbe0
+0164dcb0  ldp x19,x30,[sp], #0x10
+0164dcb4  ret
+0164dcb8  bl 0x00b079b0

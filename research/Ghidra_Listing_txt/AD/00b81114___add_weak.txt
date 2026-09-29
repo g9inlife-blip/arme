@@ -1,0 +1,15 @@
+Function: __add_weak @ 00b81114
+FuncComment: std::__ndk1::__shared_weak_count::__add_weak()
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+00b81114  add x8,x0,#0x10
+    ; [PLATE] std::__ndk1::__shared_weak_count::__add_weak()
+00b81118  ldxr x9,[x8]
+00b8111c  add x9,x9,#0x1
+00b81120  stxr w10,x9,[x8]
+00b81124  cbnz w10,0x00b81118
+00b81128  ret

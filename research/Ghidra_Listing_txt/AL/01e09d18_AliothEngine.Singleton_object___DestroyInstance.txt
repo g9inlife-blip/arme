@@ -1,0 +1,52 @@
+Function: AliothEngine.Singleton<object>$$DestroyInstance @ 01e09d18
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e09d18  stp x19,x30,[sp, #-0x10]!
+01e09d1c  mov x19,x0
+01e09d20  ldr x0,[x0, #0x20]
+01e09d24  ldrb w8,[x0, #0x132]
+01e09d28  tbnz w8,#0x0,0x01e09d30
+01e09d2c  bl 0x00b2ac40
+01e09d30  ldr x8,[x0, #0xc0]
+01e09d34  ldr x0,[x8, #0x8]
+01e09d38  ldrb w8,[x0, #0x132]
+01e09d3c  tbnz w8,#0x0,0x01e09d44
+01e09d40  bl 0x00b2ac40
+01e09d44  ldr x8,[x0, #0xb8]
+01e09d48  ldr x8,[x8]
+01e09d4c  cbz x8,0x01e09db8
+01e09d50  ldr x0,[x19, #0x20]
+01e09d54  ldrb w8,[x0, #0x132]
+01e09d58  tbnz w8,#0x0,0x01e09d60
+01e09d5c  bl 0x00b2ac40
+01e09d60  ldr x8,[x0, #0xc0]
+01e09d64  ldr x0,[x8, #0x8]
+01e09d68  ldrb w8,[x0, #0x132]
+01e09d6c  tbnz w8,#0x0,0x01e09d74
+01e09d70  bl 0x00b2ac40
+01e09d74  ldr x8,[x0, #0xb8]
+01e09d78  ldr x0,[x8]
+01e09d7c  cbz x0,0x01e09dc0
+01e09d80  ldr x8,[x0]
+01e09d84  ldp x9,x1,[x8, #0x188]
+01e09d88  blr x9
+01e09d8c  ldr x0,[x19, #0x20]
+01e09d90  ldrb w8,[x0, #0x132]
+01e09d94  tbnz w8,#0x0,0x01e09d9c
+01e09d98  bl 0x00b2ac40
+01e09d9c  ldr x8,[x0, #0xc0]
+01e09da0  ldr x0,[x8, #0x8]
+01e09da4  ldrb w8,[x0, #0x132]
+01e09da8  tbnz w8,#0x0,0x01e09db0
+01e09dac  bl 0x00b2ac40
+01e09db0  ldr x8,[x0, #0xb8]
+01e09db4  str xzr,[x8]
+01e09db8  ldp x19,x30,[sp], #0x10
+01e09dbc  ret
+01e09dc0  bl 0x00b079b0

@@ -1,0 +1,76 @@
+Function: read @ 00b4ab8c
+FuncComment: std::__ndk1::basic_istream<char, std::__ndk1::char_traits<char> >::read(char*, long)
+
+--- Calls OUT ---
+  -> FUN_00b53a58 @ 00b53a58
+  -> FUN_00af5708 @ 00af5708
+
+--- Calls IN ---
+
+--- Listing ---
+00b4ab8c  str x21,[sp, #-0x30]!
+    ; [PLATE] std::__ndk1::basic_istream<char, std::__ndk1::char_traits<char> >::read(char*, long)
+00b4ab90  stp x20,x19,[sp, #0x10]
+00b4ab94  stp x29,x30,[sp, #0x20]
+00b4ab98  add x29,sp,#0x20
+00b4ab9c  ldr x8,[x0]
+00b4aba0  str xzr,[x0, #0x8]
+00b4aba4  mov x19,x0
+00b4aba8  ldur x8,[x8, #-0x18]
+00b4abac  add x9,x0,x8
+00b4abb0  ldr w10,[x9, #0x20]
+00b4abb4  cbz w10,0x00b4abe4
+00b4abb8  ldr x8,[x9, #0x28]
+00b4abbc  cmp x8,#0x0
+00b4abc0  ldr w8,[x9, #0x24]
+00b4abc4  cset w11,eq
+00b4abc8  orr w10,w10,w11
+00b4abcc  orr w10,w10,#0x4
+00b4abd0  tst w10,w8
+00b4abd4  str w10,[x9, #0x20]
+00b4abd8  b.ne 0x00b4ac7c
+00b4abdc  mov w8,#0x4
+00b4abe0  b 0x00b4ac38
+00b4abe4  ldr x0,[x9, #0x88]
+00b4abe8  mov x20,x2
+00b4abec  mov x21,x1
+00b4abf0  cbz x0,0x00b4ac0c
+00b4abf4  bl 0x00af5708
+00b4abf8  ldr x8,[x19]
+00b4abfc  ldur x8,[x8, #-0x18]
+00b4ac00  add x9,x19,x8
+00b4ac04  ldr w9,[x9, #0x20]
+00b4ac08  cbnz w9,0x00b4abdc
+00b4ac0c  add x8,x19,x8
+00b4ac10  ldr x0,[x8, #0x28]
+00b4ac14  ldr x8,[x0]
+00b4ac18  ldr x8,[x8, #0x40]
+00b4ac1c  mov x1,x21
+    ; [PRE] try { // try from 00b4ac1c to 00b4ac27 has its CatchHandler @ 00b4ac88
+00b4ac20  mov x2,x20
+00b4ac24  blr x8
+    ; [POST] } // end try from 00b4ac1c to 00b4ac27
+00b4ac28  cmp x0,x20
+00b4ac2c  mov w8,#0x6
+00b4ac30  str x0,[x19, #0x8]
+00b4ac34  csel w8,wzr,w8,eq
+00b4ac38  ldr x9,[x19]
+00b4ac3c  ldur x9,[x9, #-0x18]
+00b4ac40  add x9,x19,x9
+00b4ac44  ldr x11,[x9, #0x28]
+00b4ac48  ldp w10,w12,[x9, #0x20]
+00b4ac4c  cmp x11,#0x0
+00b4ac50  orr w8,w10,w8
+00b4ac54  cset w10,eq
+00b4ac58  orr w8,w8,w10
+00b4ac5c  tst w8,w12
+00b4ac60  str w8,[x9, #0x20]
+00b4ac64  b.ne 0x00b4ac7c
+00b4ac68  mov x0,x19
+00b4ac6c  ldp x29,x30,[sp, #0x20]
+00b4ac70  ldp x20,x19,[sp, #0x10]
+00b4ac74  ldr x21,[sp], #0x30
+00b4ac78  ret
+00b4ac7c  adrp x0,0x2a07000
+00b4ac80  add x0,x0,#0xcf4
+00b4ac84  bl 0x00b53a58

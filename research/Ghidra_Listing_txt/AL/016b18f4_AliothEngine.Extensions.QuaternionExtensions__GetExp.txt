@@ -1,0 +1,66 @@
+Function: AliothEngine.Extensions.QuaternionExtensions$$GetExp @ 016b18f4
+
+--- Calls OUT ---
+  -> sincos @ 008d4640
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016b18f4  sub sp,sp,#0x50
+016b18f8  stp d11,d10,[sp, #0x10]
+016b18fc  stp d9,d8,[sp, #0x20]
+016b1900  str x20,[sp, #0x30]
+016b1904  stp x19,x30,[sp, #0x40]
+016b1908  adrp x19,0x3577000
+016b190c  adrp x20,0x332c000
+016b1910  ldrb w8,[x19, #0xbe3]
+016b1914  ldr x20,[x20, #0x5a8]
+016b1918  mov v8.16B,v2.16B
+016b191c  mov v9.16B,v1.16B
+016b1920  mov v10.16B,v0.16B
+016b1924  tbnz w8,#0x0,0x016b193c
+016b1928  adrp x0,0x332c000
+016b192c  ldr x0,[x0, #0x5a8]
+016b1930  bl 0x00b0789c
+016b1934  mov w8,#0x1
+016b1938  strb w8,[x19, #0xbe3]
+016b193c  ldr x0,[x20]
+016b1940  ldr w8,[x0, #0xe0]
+016b1944  cbnz w8,0x016b194c
+016b1948  bl 0x00b0798c
+016b194c  adrp x19,0x3570000
+016b1950  fmul s0,s10,s10
+016b1954  fmul s1,s9,s9
+016b1958  ldrb w8,[x19, #0xf0d]
+016b195c  fadd s0,s0,s1
+016b1960  fmul s1,s8,s8
+016b1964  fadd s0,s1,s0
+016b1968  fsqrt s11,s0
+016b196c  cbnz w8,0x016b1984
+016b1970  adrp x0,0x3352000
+016b1974  ldr x0,[x0, #0xd40]
+016b1978  bl 0x00b0789c
+016b197c  mov w8,#0x1
+016b1980  strb w8,[x19, #0xf0d]
+016b1984  fcvt d0,s11
+016b1988  add x0,sp,#0x38
+016b198c  add x1,sp,#0x8
+016b1990  bl 0x008d4640
+016b1994  ldr d0,[sp, #0x38]
+016b1998  ldr d3,[sp, #0x8]
+016b199c  ldp x19,x30,[sp, #0x40]
+016b19a0  ldr x20,[sp, #0x30]
+016b19a4  fcvt s0,d0
+016b19a8  fmul s1,s10,s0
+016b19ac  fmul s2,s9,s0
+016b19b0  fmul s4,s8,s0
+016b19b4  fdiv s0,s1,s11
+016b19b8  fdiv s1,s2,s11
+016b19bc  fdiv s2,s4,s11
+016b19c0  ldp d9,d8,[sp, #0x20]
+016b19c4  ldp d11,d10,[sp, #0x10]
+016b19c8  fcvt s3,d3
+016b19cc  add sp,sp,#0x50
+016b19d0  ret

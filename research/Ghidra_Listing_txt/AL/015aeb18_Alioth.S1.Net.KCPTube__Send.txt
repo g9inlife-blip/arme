@@ -1,0 +1,83 @@
+Function: Alioth.S1.Net.KCPTube$$Send @ 015aeb18
+
+--- Calls OUT ---
+  -> Alioth.S1.Net.KCPTube$$get_IsWorking @ 015ae170
+  -> Alioth.S1.Core.KCP$$Send @ 015aec24
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp205 @ 01079b8c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Net.KCPTube$$get_kcp @ 015ae1f4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1NetKCPTubeWrap$$_m_Send @ 0116f244
+
+--- Listing ---
+015aeb18  str x24,[sp, #-0x40]!
+015aeb1c  stp x23,x22,[sp, #0x10]
+015aeb20  stp x21,x20,[sp, #0x20]
+015aeb24  stp x19,x30,[sp, #0x30]
+015aeb28  adrp x24,0x3577000
+015aeb2c  adrp x23,0x3350000
+015aeb30  ldrb w8,[x24, #0x9e]
+015aeb34  ldr x23,[x23, #0x8c8]
+015aeb38  mov w20,w3
+015aeb3c  mov w21,w2
+015aeb40  mov x22,x1
+015aeb44  mov x19,x0
+015aeb48  tbnz w8,#0x0,0x015aeb6c
+015aeb4c  adrp x0,0x336f000
+015aeb50  ldr x0,[x0, #0xdc8]
+015aeb54  bl 0x00b0789c
+015aeb58  adrp x0,0x3350000
+015aeb5c  ldr x0,[x0, #0x8c8]
+015aeb60  bl 0x00b0789c
+015aeb64  mov w8,#0x1
+015aeb68  strb w8,[x24, #0x9e]
+015aeb6c  ldr x0,[x23]
+015aeb70  ldr w8,[x0, #0xe0]
+015aeb74  cbnz w8,0x015aeb80
+015aeb78  bl 0x00b0798c
+015aeb7c  ldr x0,[x23]
+015aeb80  ldr x8,[x0, #0xb8]
+015aeb84  ldr x0,[x8, #0xb0]
+015aeb88  cbz x0,0x015aebb4
+015aeb8c  mov x1,x19
+015aeb90  mov x2,x22
+015aeb94  mov w3,w21
+015aeb98  mov w4,w20
+015aeb9c  ldp x19,x30,[sp, #0x30]
+015aeba0  ldp x21,x20,[sp, #0x20]
+015aeba4  ldp x23,x22,[sp, #0x10]
+015aeba8  mov x5,xzr
+015aebac  ldr x24,[sp], #0x40
+015aebb0  b 0x01079b8c
+015aebb4  mov x0,x19
+015aebb8  bl 0x015ae170
+015aebbc  tbz w0,#0x0,0x015aec0c
+015aebc0  mov x0,x19
+015aebc4  bl 0x015ae1f4
+015aebc8  cbz x0,0x015aec0c
+015aebcc  mov x0,x19
+015aebd0  bl 0x015ae1f4
+015aebd4  cbz x0,0x015aec20
+015aebd8  adrp x23,0x336f000
+015aebdc  ldr x23,[x23, #0xdc8]
+015aebe0  mov x1,x22
+015aebe4  mov w2,w21
+015aebe8  mov w3,w20
+015aebec  bl 0x015aec24
+015aebf0  ldr x0,[x23]
+015aebf4  ldr w8,[x0, #0xe0]
+015aebf8  cbnz w8,0x015aec00
+015aebfc  bl 0x00b0798c
+015aec00  mov x0,xzr
+015aec04  bl 0x02133d48
+015aec08  str x0,[x19, #0x40]
+015aec0c  ldp x19,x30,[sp, #0x30]
+015aec10  ldp x21,x20,[sp, #0x20]
+015aec14  ldp x23,x22,[sp, #0x10]
+015aec18  ldr x24,[sp], #0x40
+015aec1c  ret
+015aec20  bl 0x00b079b0

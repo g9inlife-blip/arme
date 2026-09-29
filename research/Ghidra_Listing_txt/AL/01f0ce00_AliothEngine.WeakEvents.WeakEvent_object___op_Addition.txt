@@ -1,0 +1,76 @@
+Function: AliothEngine.WeakEvents.WeakEvent<object>$$op_Addition @ 01f0ce00
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01f0ce00  str x22,[sp, #-0x30]!
+01f0ce04  stp x21,x20,[sp, #0x10]
+01f0ce08  stp x19,x30,[sp, #0x20]
+01f0ce0c  mov x20,x2
+01f0ce10  mov x19,x1
+01f0ce14  mov x21,x0
+01f0ce18  cbnz x0,0x01f0ce9c
+01f0ce1c  ldr x0,[x20, #0x20]
+01f0ce20  ldrb w8,[x0, #0x132]
+01f0ce24  tbnz w8,#0x0,0x01f0ce2c
+01f0ce28  bl 0x00b2ac40
+01f0ce2c  ldr x8,[x0, #0xc0]
+01f0ce30  ldr x0,[x8]
+01f0ce34  ldrb w8,[x0, #0x132]
+01f0ce38  tbnz w8,#0x0,0x01f0ce40
+01f0ce3c  bl 0x00b2ac40
+01f0ce40  bl 0x00b079a0
+01f0ce44  cbz x0,0x01f0cf04
+01f0ce48  ldr x8,[x20, #0x20]
+01f0ce4c  mov x21,x0
+01f0ce50  ldrh w9,[x8, #0x132]
+01f0ce54  tbnz w9,#0x0,0x01f0ce6c
+01f0ce58  mov x0,x8
+01f0ce5c  bl 0x00b2ac40
+01f0ce60  ldr x8,[x20, #0x20]
+01f0ce64  ldrh w9,[x8, #0x132]
+01f0ce68  b 0x01f0ce70
+01f0ce6c  mov x0,x8
+01f0ce70  ldr x10,[x0, #0xc0]
+01f0ce74  ldr x10,[x10, #0x8]
+01f0ce78  ldr x22,[x10, #0x8]
+01f0ce7c  tbnz w9,#0x0,0x01f0ce8c
+01f0ce80  mov x0,x8
+01f0ce84  bl 0x00b2ac40
+01f0ce88  mov x8,x0
+01f0ce8c  ldr x8,[x8, #0xc0]
+01f0ce90  mov x0,x21
+01f0ce94  ldr x1,[x8, #0x8]
+01f0ce98  blr x22
+01f0ce9c  ldr x8,[x20, #0x20]
+01f0cea0  ldrh w9,[x8, #0x132]
+01f0cea4  tbnz w9,#0x0,0x01f0cebc
+01f0cea8  mov x0,x8
+01f0ceac  bl 0x00b2ac40
+01f0ceb0  ldr x8,[x20, #0x20]
+01f0ceb4  ldrh w9,[x8, #0x132]
+01f0ceb8  b 0x01f0cec0
+01f0cebc  mov x0,x8
+01f0cec0  ldr x10,[x0, #0xc0]
+01f0cec4  ldr x10,[x10, #0x10]
+01f0cec8  ldr x20,[x10, #0x8]
+01f0cecc  tbnz w9,#0x0,0x01f0cedc
+01f0ced0  mov x0,x8
+01f0ced4  bl 0x00b2ac40
+01f0ced8  mov x8,x0
+01f0cedc  ldr x8,[x8, #0xc0]
+01f0cee0  mov x0,x21
+01f0cee4  mov x1,x19
+01f0cee8  ldr x2,[x8, #0x10]
+01f0ceec  blr x20
+01f0cef0  mov x0,x21
+01f0cef4  ldp x19,x30,[sp, #0x20]
+01f0cef8  ldp x21,x20,[sp, #0x10]
+01f0cefc  ldr x22,[sp], #0x30
+01f0cf00  ret
+01f0cf04  bl 0x00b079b0

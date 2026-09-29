@@ -1,0 +1,65 @@
+Function: AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- GamePlayerInfomation$$isShowNewNotice @ 00e368cc
+  <- LoginGateMono$$OnGet_AllinOne @ 00f92068
+  <- AliothEngine.LogManager$$get_UILogger @ 0168a490
+  <- AliothEngine.LogManager$$get_NetworkLogger @ 0168a4e0
+  <- AliothEngine.LogManager$$get_AssetBundleLogger @ 0168a620
+  <- GamePlayerInfomation$$SaveNoticeTime @ 00e369f0
+  <- AliothEngine.LogManager$$get_AssetLogger @ 0168a530
+  <- AliothEngine.GameUpdateService$$isAssetNeedUpdate_CheckCacheAndBuild @ 0167f2f0
+  <- PayPanelMono$$OnClickVX @ 0100accc
+  <- PayPanelMono$$OnClickZFB @ 0100ae3c
+  <- AliothEngine.LogManager$$get_DefaultLogger @ 0168a3f0
+  <- AliothEngine.AssetDownloader.<>c__DisplayClass19_0$$<ProcessDownload>b__0 @ 0165fb0c
+  <- AliothEngine.GameEventSysTest$$EventManger @ 0164bf6c
+  <- AliothEngine.LogManager$$get_DownloadLogger @ 0168a580
+  <- ProtocolGame_HttpRequest$$AppleQuWanZhuanQian @ 00dd8470
+  <- ServerConst$$GetURLByRemote @ 016dbbf4
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- AliothEngine.GameUpdateService$$get_ServerVersionManifest @ 0167d050
+  <- AliothEngine.AssetLocation$$get_version @ 0166db64
+  <- AliothEngine.FrameSynchr$$SetNetAccIPAndPort @ 0164b538
+  <- LoadingYieldInstruction$$.ctor @ 00e39a5c
+  <- AliothEngine.FrameSynchr$$UpdatePing @ 0164afac
+  <- AliothEngine.LogManager$$get_AILogger @ 0168a440
+  <- LoginGateMono$$get_m_resAllin1 @ 00f8f5f8
+  <- AliothEngine.FrameSynchr$$RealPing @ 0164b5d8
+  <- AliothEngine.LogManager$$get_UpdateLogger @ 0168a5d0
+  <- AliothEngine.StoreManager_ChinaPay$$get_PayType @ 0165b1fc
+  <- AliothEngine.GameUpdateService$$CleaupCache @ 0167edf8
+  <- ReviewPanelMono$$OnClickOK @ 0100dbe8
+  <- PayPanelMono$$Start @ 0100a9f4
+  <- AliothEngine.FrameSynchr$$onRelaySvrPingMsg @ 0164b054
+
+--- Listing ---
+01e09a6c  sub sp,sp,#0x20
+01e09a70  stp x19,x30,[sp, #0x10]
+01e09a74  ldr x8,[x0, #0x20]
+01e09a78  ldrh w9,[x8, #0x132]
+01e09a7c  tbnz w9,#0x0,0x01e09a98
+01e09a80  mov x19,x0
+01e09a84  mov x0,x8
+01e09a88  bl 0x00b2ac40
+01e09a8c  ldr x8,[x19, #0x20]
+01e09a90  ldrh w9,[x8, #0x132]
+01e09a94  b 0x01e09a9c
+01e09a98  mov x0,x8
+01e09a9c  ldr x10,[x0, #0xc0]
+01e09aa0  ldr x10,[x10]
+01e09aa4  ldr x1,[x10, #0x8]
+01e09aa8  tbnz w9,#0x0,0x01e09ac0
+01e09aac  mov x0,x8
+01e09ab0  str x1,[sp, #0x8]
+01e09ab4  bl 0x00b2ac40
+01e09ab8  ldr x1,[sp, #0x8]
+01e09abc  mov x8,x0
+01e09ac0  ldr x8,[x8, #0xc0]
+01e09ac4  ldp x19,x30,[sp, #0x10]
+01e09ac8  ldr x0,[x8]
+01e09acc  add sp,sp,#0x20
+01e09ad0  br x1

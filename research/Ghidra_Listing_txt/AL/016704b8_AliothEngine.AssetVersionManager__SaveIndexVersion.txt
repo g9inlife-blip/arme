@@ -1,0 +1,21 @@
+Function: AliothEngine.AssetVersionManager$$SaveIndexVersion @ 016704b8
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetInt @ 024be4d0
+  -> UnityEngine.PlayerPrefs$$Save @ 024be8f4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetVersionManager.<>c__DisplayClass38_0$$<DownloadAssetIndex>b__0 @ 016708b4
+
+--- Listing ---
+016704b8  str x30,[sp, #-0x10]!
+016704bc  cbz x1,0x016704dc
+016704c0  ldr x0,[x1, #0x10]
+016704c4  ldr w1,[x1, #0x18]
+016704c8  mov x2,xzr
+016704cc  bl 0x024be4d0
+016704d0  mov x0,xzr
+016704d4  ldr x30,[sp], #0x10
+016704d8  b 0x024be8f4
+016704dc  bl 0x00b079b0

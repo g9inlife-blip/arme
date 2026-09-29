@@ -1,0 +1,20 @@
+Function: AliothEngine.Extensions.ActionExtensions$$SafeInvoke<bool> @ 017369a8
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- AliothEngine.AssetVersionManager$$UpdateVersion @ 0166fd3c
+  <- AliothEngine.AliothEngineInitialize$$Initialize @ 01649934
+  <- AliothEngine.AssetVersionManager.<>c__DisplayClass37_0$$<LoadAssetIndex>b__0 @ 01670830
+  <- AliothEngine.AssetVersionManager.<>c__DisplayClass38_0$$<DownloadAssetIndex>b__0 @ 016708b4
+  <- AliothEngine.GameUpdateService.<>c__DisplayClass56_0$$<DownloadUpdateAssetBundles>b__0 @ 016817a4
+  <- AliothEngine.AssetVersionManager$$LoadAssetIndex @ 01670104
+
+--- Listing ---
+017369a8  cbz x0,0x017369c0
+017369ac  ldr x8,[x2, #0x38]
+017369b0  and w1,w1,#0x1
+017369b4  ldr x2,[x8, #0x8]
+017369b8  ldr x3,[x2, #0x8]
+017369bc  br x3
+017369c0  ret

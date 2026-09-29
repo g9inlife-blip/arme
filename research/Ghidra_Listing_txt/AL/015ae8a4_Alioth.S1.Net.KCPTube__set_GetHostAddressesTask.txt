@@ -1,0 +1,49 @@
+Function: Alioth.S1.Net.KCPTube$$set_GetHostAddressesTask @ 015ae8a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$Update @ 015af650
+
+--- Listing ---
+015ae8a4  str x22,[sp, #-0x30]!
+015ae8a8  stp x21,x20,[sp, #0x10]
+015ae8ac  stp x19,x30,[sp, #0x20]
+015ae8b0  adrp x22,0x3577000
+015ae8b4  adrp x21,0x3350000
+015ae8b8  ldrb w8,[x22, #0x9c]
+015ae8bc  ldr x21,[x21, #0x8c8]
+015ae8c0  mov x19,x1
+015ae8c4  mov x20,x0
+015ae8c8  tbnz w8,#0x0,0x015ae8e0
+015ae8cc  adrp x0,0x3350000
+015ae8d0  ldr x0,[x0, #0x8c8]
+015ae8d4  bl 0x00b0789c
+015ae8d8  mov w8,#0x1
+015ae8dc  strb w8,[x22, #0x9c]
+015ae8e0  ldr x0,[x21]
+015ae8e4  ldr w8,[x0, #0xe0]
+015ae8e8  cbnz w8,0x015ae8f4
+015ae8ec  bl 0x00b0798c
+015ae8f0  ldr x0,[x21]
+015ae8f4  ldr x8,[x0, #0xb8]
+015ae8f8  ldr x0,[x8, #0xa0]
+015ae8fc  cbz x0,0x015ae91c
+015ae900  mov x1,x20
+015ae904  mov x2,x19
+015ae908  ldp x19,x30,[sp, #0x20]
+015ae90c  ldp x21,x20,[sp, #0x10]
+015ae910  mov x3,xzr
+015ae914  ldr x22,[sp], #0x30
+015ae918  b 0x0106125c
+015ae91c  str x19,[x20, #0x90]!
+015ae920  mov x0,x20
+015ae924  mov x1,x19
+015ae928  ldp x19,x30,[sp, #0x20]
+015ae92c  ldp x21,x20,[sp, #0x10]
+015ae930  ldr x22,[sp], #0x30
+015ae934  b 0x00b07850

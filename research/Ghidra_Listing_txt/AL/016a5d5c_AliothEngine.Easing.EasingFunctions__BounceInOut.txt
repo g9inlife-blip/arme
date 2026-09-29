@@ -1,0 +1,55 @@
+Function: AliothEngine.Easing.EasingFunctions$$BounceInOut @ 016a5d5c
+
+--- Calls OUT ---
+  -> AliothEngine.Easing.EasingFunctions$$BounceOut @ 016a5c6c
+
+--- Calls IN ---
+
+--- Listing ---
+016a5d5c  str d12,[sp, #-0x30]!
+016a5d60  stp d11,d10,[sp, #0x8]
+016a5d64  stp d9,d8,[sp, #0x18]
+016a5d68  str x30,[sp, #0x28]
+016a5d6c  mov v8.16B,v0.16B
+016a5d70  fmov s0,wzr
+016a5d74  fcmp s2,#0.0
+016a5d78  fmov s9,0x3f800000
+016a5d7c  b.mi 0x016a5d90
+016a5d80  fcmp s2,s9
+016a5d84  mov v0.16B,v2.16B
+016a5d88  b.le 0x016a5d90
+016a5d8c  mov v0.16B,v9.16B
+016a5d90  fabd s2,s8,s1
+016a5d94  fcmp s8,s1
+016a5d98  fmov s11,0x3f000000
+016a5d9c  fneg s1,s2
+016a5da0  fcsel s10,s1,s2,gt
+016a5da4  fcmp s0,s11
+016a5da8  fadd s0,s0,s0
+016a5dac  b.pl 0x016a5de0
+016a5db0  fmin s1,s0,s9
+016a5db4  fsub s1,s9,s1
+016a5db8  fcmp s0,#0.0
+016a5dbc  fcsel s2,s1,s9,pl
+016a5dc0  fmov s0,wzr
+016a5dc4  mov v1.16B,v9.16B
+016a5dc8  fmov s12,wzr
+016a5dcc  bl 0x016a5c6c
+016a5dd0  fsub s0,s9,s0
+016a5dd4  fadd s0,s0,s12
+016a5dd8  fmul s0,s0,s11
+016a5ddc  b 0x016a5dfc
+016a5de0  fmov s1,0xbf800000
+016a5de4  fadd s2,s0,s1
+016a5de8  fmov s1,0x3f800000
+016a5dec  fmov s0,wzr
+016a5df0  bl 0x016a5c6c
+016a5df4  fmul s0,s0,s11
+016a5df8  fadd s0,s0,s11
+016a5dfc  fmul s0,s10,s0
+016a5e00  fadd s0,s0,s8
+016a5e04  ldr x30,[sp, #0x28]
+016a5e08  ldp d9,d8,[sp, #0x18]
+016a5e0c  ldp d11,d10,[sp, #0x8]
+016a5e10  ldr d12,[sp], #0x30
+016a5e14  ret

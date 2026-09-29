@@ -1,0 +1,45 @@
+Function: AliothEngine.Utils.Utility$$Normalise @ 016a01c8
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a01c8  str x30,[sp, #-0x10]!
+016a01cc  ldr x9,[x0]
+016a01d0  cbz x9,0x016a0254
+016a01d4  ldr w8,[x9, #0x18]
+016a01d8  lsl x10,x8,#0x20
+016a01dc  cmp x10,#0x1
+016a01e0  b.lt 0x016a0218
+016a01e4  mov x10,xzr
+016a01e8  sxtw x11,w8
+016a01ec  add x12,x9,#0x20
+016a01f0  fmov s0,wzr
+016a01f4  cmp x10,x8
+016a01f8  b.cs 0x016a0250
+016a01fc  ldr s1,[x12,x10, lsl #2]
+016a0200  add x10,x10,#0x1
+016a0204  cmp x10,x11
+016a0208  fabs s1,s1
+016a020c  fadd s0,s0,s1
+016a0210  b.lt 0x016a01f4
+016a0214  b 0x016a021c
+016a0218  fmov s0,wzr
+016a021c  fcmp s0,#0.0
+016a0220  b.eq 0x016a0248
+016a0224  cmp w8,#0x1
+016a0228  b.lt 0x016a0248
+016a022c  add x9,x9,#0x20
+016a0230  ldr s1,[x9]
+016a0234  subs x8,x8,#0x1
+016a0238  fabs s1,s1
+016a023c  fdiv s1,s1,s0
+016a0240  str s1,[x9], #0x4
+016a0244  b.ne 0x016a0230
+016a0248  ldr x30,[sp], #0x10
+016a024c  ret
+016a0250  bl 0x00b079b8
+016a0254  bl 0x00b079b0

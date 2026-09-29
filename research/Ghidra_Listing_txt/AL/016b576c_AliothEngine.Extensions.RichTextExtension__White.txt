@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.RichTextExtension$$White @ 016b576c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.RichTextExtension$$Color @ 016b5170
+
+--- Calls IN ---
+  <- PositionTargetWithRole$$ToString @ 00ec0320
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteLabel @ 016b5dbc
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteBoldLabel @ 016b5df8
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteLargeBoldLabel @ 016b5e20
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteMiniLabel @ 016b5de4
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteLargeLabel @ 016b5dd0
+  <- PositionTargetWithEnemy$$ToString @ 00ebf440
+  <- AliothEngine.Extensions.RichTextExtension$$WhiteMiniBoldLabel @ 016b5e0c
+
+--- Listing ---
+016b576c  stp x21,x20,[sp, #-0x20]!
+016b5770  stp x19,x30,[sp, #0x10]
+016b5774  adrp x20,0x3577000
+016b5778  adrp x21,0x333f000
+016b577c  ldrb w8,[x20, #0xc05]
+016b5780  ldr x21,[x21, #0x588]
+016b5784  mov x19,x0
+016b5788  tbnz w8,#0x0,0x016b57a0
+016b578c  adrp x0,0x333f000
+016b5790  ldr x0,[x0, #0x588]
+016b5794  bl 0x00b0789c
+016b5798  mov w8,#0x1
+016b579c  strb w8,[x20, #0xc05]
+016b57a0  ldr x1,[x21]
+016b57a4  mov x0,x19
+016b57a8  ldp x19,x30,[sp, #0x10]
+016b57ac  ldp x21,x20,[sp], #0x20
+016b57b0  b 0x016b5170

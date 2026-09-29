@@ -1,0 +1,47 @@
+Function: Alioth.S1.Net.KCPTube$$get_IsWorking @ 015ae170
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+  -> Alioth.S1.Net.KCPTube$$get_State @ 015ade60
+
+--- Calls IN ---
+  <- Alioth.S1.Net.KCPTube$$Send @ 015aeb18
+  <- Alioth.S1.Net.KCPTube$$Send @ 015aeddc
+  <- XLua.CSObjectWrap.AliothS1NetKCPTubeWrap$$_g_get_IsWorking @ 0116fdac
+
+--- Listing ---
+015ae170  stp x21,x20,[sp, #-0x20]!
+015ae174  stp x19,x30,[sp, #0x10]
+015ae178  adrp x21,0x3577000
+015ae17c  adrp x20,0x3350000
+015ae180  ldrb w8,[x21, #0x8e]
+015ae184  ldr x20,[x20, #0x8c8]
+015ae188  mov x19,x0
+015ae18c  tbnz w8,#0x0,0x015ae1a4
+015ae190  adrp x0,0x3350000
+015ae194  ldr x0,[x0, #0x8c8]
+015ae198  bl 0x00b0789c
+015ae19c  mov w8,#0x1
+015ae1a0  strb w8,[x21, #0x8e]
+015ae1a4  ldr x0,[x20]
+015ae1a8  ldr w8,[x0, #0xe0]
+015ae1ac  cbnz w8,0x015ae1b8
+015ae1b0  bl 0x00b0798c
+015ae1b4  ldr x0,[x20]
+015ae1b8  ldr x8,[x0, #0xb8]
+015ae1bc  ldr x0,[x8, #0x30]
+015ae1c0  cbz x0,0x015ae1d8
+015ae1c4  mov x1,x19
+015ae1c8  ldp x19,x30,[sp, #0x10]
+015ae1cc  mov x2,xzr
+015ae1d0  ldp x21,x20,[sp], #0x20
+015ae1d4  b 0x01060aac
+015ae1d8  mov x0,x19
+015ae1dc  bl 0x015ade60
+015ae1e0  ldp x19,x30,[sp, #0x10]
+015ae1e4  cmp w0,#0x3
+015ae1e8  cset w0,eq
+015ae1ec  ldp x21,x20,[sp], #0x20
+015ae1f0  ret

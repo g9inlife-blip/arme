@@ -1,0 +1,53 @@
+Function: AliothEngine.DataStructures.HashableWeakRef<object>$$.ctor @ 01b0847c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.WeakReference$$.ctor @ 021ad6b4
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01b0847c  str x22,[sp, #-0x30]!
+01b08480  stp x21,x20,[sp, #0x10]
+01b08484  stp x19,x30,[sp, #0x20]
+01b08488  adrp x22,0x3578000
+01b0848c  adrp x21,0x3345000
+01b08490  ldrb w8,[x22, #0xa41]
+01b08494  ldr x21,[x21, #0x868]
+01b08498  mov x20,x1
+01b0849c  mov x19,x0
+01b084a0  tbnz w8,#0x0,0x01b084b8
+01b084a4  adrp x0,0x3345000
+01b084a8  ldr x0,[x0, #0x868]
+01b084ac  bl 0x00b0789c
+01b084b0  mov w8,#0x1
+01b084b4  strb w8,[x22, #0xa41]
+01b084b8  mov x0,x19
+01b084bc  mov x1,xzr
+01b084c0  bl 0x02194104
+01b084c4  ldr x0,[x21]
+01b084c8  bl 0x00b079a0
+01b084cc  cbz x0,0x01b08518
+01b084d0  mov x1,x20
+01b084d4  mov x2,xzr
+01b084d8  mov x21,x0
+01b084dc  bl 0x021ad6b4
+01b084e0  mov x0,x19
+01b084e4  str x21,[x0, #0x18]!
+01b084e8  mov x1,x21
+01b084ec  bl 0x00b07850
+01b084f0  cbz x20,0x01b08518
+01b084f4  ldr x8,[x20]
+01b084f8  mov x0,x20
+01b084fc  ldp x9,x1,[x8, #0x158]
+01b08500  blr x9
+01b08504  str w0,[x19, #0x10]
+01b08508  ldp x19,x30,[sp, #0x20]
+01b0850c  ldp x21,x20,[sp, #0x10]
+01b08510  ldr x22,[sp], #0x30
+01b08514  ret
+01b08518  bl 0x00b079b0

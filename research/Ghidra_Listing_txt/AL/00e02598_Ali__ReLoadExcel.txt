@@ -1,0 +1,58 @@
+Function: Ali$$ReLoadExcel @ 00e02598
+
+--- Calls OUT ---
+  -> Ali$$set_act @ 00e01768
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> ResManager$$InitExcelData @ 00e2b464
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_resManager @ 00e02500
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_ReLoadExcel @ 01190a6c
+  <- GameUpdatePanelMono.<GameStart>d__30$$MoveNext @ 010404fc
+
+--- Listing ---
+00e02598  str x22,[sp, #-0x30]!
+00e0259c  stp x21,x20,[sp, #0x10]
+00e025a0  stp x19,x30,[sp, #0x20]
+00e025a4  adrp x22,0x3572000
+00e025a8  adrp x21,0x335f000
+00e025ac  ldrb w8,[x22, #0x53f]
+00e025b0  ldr x21,[x21, #0x20]
+00e025b4  mov x20,x1
+00e025b8  mov x19,x0
+00e025bc  tbnz w8,#0x0,0x00e025d4
+00e025c0  adrp x0,0x335f000
+00e025c4  ldr x0,[x0, #0x20]
+00e025c8  bl 0x00b0789c
+00e025cc  mov w8,#0x1
+00e025d0  strb w8,[x22, #0x53f]
+00e025d4  ldr x0,[x21]
+00e025d8  ldr w8,[x0, #0xe0]
+00e025dc  cbnz w8,0x00e025e8
+00e025e0  bl 0x00b0798c
+00e025e4  ldr x0,[x21]
+00e025e8  ldr x8,[x0, #0xb8]
+00e025ec  ldr x0,[x8, #0x190]
+00e025f0  cbz x0,0x00e02610
+00e025f4  mov x1,x19
+00e025f8  mov x2,x20
+00e025fc  ldp x19,x30,[sp, #0x20]
+00e02600  ldp x21,x20,[sp, #0x10]
+00e02604  mov x3,xzr
+00e02608  ldr x22,[sp], #0x30
+00e0260c  b 0x0106125c
+00e02610  mov x0,x19
+00e02614  mov x1,x20
+00e02618  bl 0x00e01768
+00e0261c  mov x0,x19
+00e02620  bl 0x00e02500
+00e02624  cbz x0,0x00e0263c
+00e02628  ldp x19,x30,[sp, #0x20]
+00e0262c  ldp x21,x20,[sp, #0x10]
+00e02630  mov x1,xzr
+00e02634  ldr x22,[sp], #0x30
+00e02638  b 0x00e2b464
+00e0263c  bl 0x00b079b0

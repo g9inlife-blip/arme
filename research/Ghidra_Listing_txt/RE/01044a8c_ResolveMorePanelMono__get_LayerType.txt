@@ -1,0 +1,35 @@
+Function: ResolveMorePanelMono$$get_LayerType @ 01044a8c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp491 @ 0109f3ac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01044a8c  stp x21,x20,[sp, #-0x20]!
+01044a90  stp x19,x30,[sp, #0x10]
+01044a94  adrp x20,0x3574000
+01044a98  adrp x21,0x3378000
+01044a9c  ldrb w8,[x20, #0x5fa]
+01044aa0  ldr x21,[x21, #0x490]
+01044aa4  mov x19,x0
+01044aa8  tbnz w8,#0x0,0x01044ac0
+01044aac  adrp x0,0x3378000
+01044ab0  ldr x0,[x0, #0x490]
+01044ab4  bl 0x00b0789c
+01044ab8  mov w8,#0x1
+01044abc  strb w8,[x20, #0x5fa]
+01044ac0  ldr x8,[x21]
+01044ac4  ldr x8,[x8, #0xb8]
+01044ac8  ldr x0,[x8, #0x8]
+01044acc  cbz x0,0x01044ae4
+01044ad0  mov x1,x19
+01044ad4  ldp x19,x30,[sp, #0x10]
+01044ad8  mov x2,xzr
+01044adc  ldp x21,x20,[sp], #0x20
+01044ae0  b 0x0109f3ac
+01044ae4  ldp x19,x30,[sp, #0x10]
+01044ae8  mov w0,#0x3
+01044aec  ldp x21,x20,[sp], #0x20
+01044af0  ret

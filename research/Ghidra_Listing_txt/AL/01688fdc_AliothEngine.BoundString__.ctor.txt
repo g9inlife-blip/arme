@@ -1,0 +1,27 @@
+Function: AliothEngine.BoundString$$.ctor @ 01688fdc
+
+--- Calls OUT ---
+  -> AliothEngine.BoundProperty<object>$$.ctor @ 01f41984
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01688fdc  stp x21,x20,[sp, #-0x20]!
+01688fe0  stp x19,x30,[sp, #0x10]
+01688fe4  adrp x20,0x3577000
+01688fe8  adrp x21,0x335d000
+01688fec  ldrb w8,[x20, #0xa7d]
+01688ff0  ldr x21,[x21, #0xa58]
+01688ff4  mov x19,x0
+01688ff8  tbnz w8,#0x0,0x01689010
+01688ffc  adrp x0,0x335d000
+01689000  ldr x0,[x0, #0xa58]
+01689004  bl 0x00b0789c
+01689008  mov w8,#0x1
+0168900c  strb w8,[x20, #0xa7d]
+01689010  ldr x1,[x21]
+01689014  mov x0,x19
+01689018  ldp x19,x30,[sp, #0x10]
+0168901c  ldp x21,x20,[sp], #0x20
+01689020  b 0x01f41984

@@ -1,0 +1,22 @@
+Function: AliothEngine.Extensions.TypeExtensions$$GetCecilFullname @ 016bb9f8
+
+--- Calls OUT ---
+  -> System.String$$Replace @ 01fe0600
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016bb9f8  str x30,[sp, #-0x10]!
+016bb9fc  cbz x0,0x016bba28
+016bba00  ldr x8,[x0]
+016bba04  ldr x9,[x8, #0x2c8]
+016bba08  ldr x1,[x8, #0x2d0]
+016bba0c  blr x9
+016bba10  cbz x0,0x016bba28
+016bba14  mov w1,#0x2b
+016bba18  mov w2,#0x2f
+016bba1c  mov x3,xzr
+016bba20  ldr x30,[sp], #0x10
+016bba24  b 0x01fe0600
+016bba28  bl 0x00b079b0

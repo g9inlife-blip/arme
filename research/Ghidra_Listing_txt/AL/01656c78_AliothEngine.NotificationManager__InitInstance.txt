@@ -1,0 +1,77 @@
+Function: AliothEngine.NotificationManager$$InitInstance @ 01656c78
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Application$$get_platform @ 024f2b84
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$.ctor @ 024ded14
+  -> UnityEngine.GameObject$$AddComponent<object> @ 01794da8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AliothEngineInitialize$$InitSingleton @ 01649c30
+
+--- Listing ---
+01656c78  str x22,[sp, #-0x30]!
+01656c7c  stp x21,x20,[sp, #0x10]
+01656c80  stp x19,x30,[sp, #0x20]
+01656c84  adrp x19,0x3577000
+01656c88  adrp x20,0x3310000
+01656c8c  ldrb w8,[x19, #0x81a]
+01656c90  ldr x20,[x20, #0xe40]
+01656c94  tbnz w8,#0x0,0x01656cdc
+01656c98  adrp x0,0x332e000
+01656c9c  ldr x0,[x0, #0xc18]
+01656ca0  bl 0x00b0789c
+01656ca4  adrp x0,0x3347000
+01656ca8  ldr x0,[x0, #0x5e0]
+01656cac  bl 0x00b0789c
+01656cb0  adrp x0,0x3310000
+01656cb4  ldr x0,[x0, #0xe40]
+01656cb8  bl 0x00b0789c
+01656cbc  adrp x0,0x3381000
+01656cc0  ldr x0,[x0, #0xfa8]
+01656cc4  bl 0x00b0789c
+01656cc8  adrp x0,0x3311000
+01656ccc  ldr x0,[x0, #0xc38]
+01656cd0  bl 0x00b0789c
+01656cd4  mov w8,#0x1
+01656cd8  strb w8,[x19, #0x81a]
+01656cdc  ldr x0,[x20]
+01656ce0  bl 0x00b079a0
+01656ce4  cbz x0,0x01656d6c
+01656ce8  adrp x8,0x3311000
+01656cec  ldr x8,[x8, #0xc38]
+01656cf0  adrp x20,0x332e000
+01656cf4  adrp x21,0x3347000
+01656cf8  adrp x22,0x3381000
+01656cfc  ldr x1,[x8]
+01656d00  ldr x20,[x20, #0xc18]
+01656d04  ldr x21,[x21, #0x5e0]
+01656d08  ldr x22,[x22, #0xfa8]
+01656d0c  mov x2,xzr
+01656d10  mov x19,x0
+01656d14  bl 0x024ded14
+01656d18  mov x0,xzr
+01656d1c  bl 0x024f2b84
+01656d20  cmp w0,#0xb
+01656d24  csel x8,x20,x21,eq
+01656d28  ldr x1,[x8]
+01656d2c  mov x0,x19
+01656d30  bl 0x01794da8
+01656d34  ldr x8,[x22]
+01656d38  mov x1,x0
+01656d3c  ldr x8,[x8, #0xb8]
+01656d40  str x0,[x8]
+01656d44  ldr x8,[x22]
+01656d48  ldr x0,[x8, #0xb8]
+01656d4c  bl 0x00b07850
+01656d50  ldr x8,[x22]
+01656d54  ldp x19,x30,[sp, #0x20]
+01656d58  ldp x21,x20,[sp, #0x10]
+01656d5c  ldr x8,[x8, #0xb8]
+01656d60  ldr x0,[x8]
+01656d64  ldr x22,[sp], #0x30
+01656d68  ret
+01656d6c  bl 0x00b079b0

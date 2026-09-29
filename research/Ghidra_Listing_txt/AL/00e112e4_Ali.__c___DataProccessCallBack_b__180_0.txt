@@ -1,0 +1,40 @@
+Function: Ali.<>c$$<DataProccessCallBack>b__180_0 @ 00e112e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GUIScreenManager$$ShowScreen @ 0167a614
+
+--- Calls IN ---
+
+--- Listing ---
+00e112e4  str x20,[sp, #-0x20]!
+00e112e8  stp x19,x30,[sp, #0x10]
+00e112ec  adrp x20,0x3572000
+00e112f0  adrp x19,0x337b000
+00e112f4  ldrb w8,[x20, #0x5c8]
+00e112f8  ldr x19,[x19, #0xb98]
+00e112fc  tbnz w8,#0x0,0x00e11320
+00e11300  adrp x0,0x337b000
+00e11304  ldr x0,[x0, #0xb98]
+00e11308  bl 0x00b0789c
+00e1130c  adrp x0,0x334a000
+00e11310  ldr x0,[x0, #0x840]
+00e11314  bl 0x00b0789c
+00e11318  mov w8,#0x1
+00e1131c  strb w8,[x20, #0x5c8]
+00e11320  ldr x0,[x19]
+00e11324  adrp x19,0x334a000
+00e11328  ldr w8,[x0, #0xe0]
+00e1132c  ldr x19,[x19, #0x840]
+00e11330  cbnz w8,0x00e11338
+00e11334  bl 0x00b0798c
+00e11338  ldr x0,[x19]
+00e1133c  ldp x19,x30,[sp, #0x10]
+00e11340  mov x1,xzr
+00e11344  mov x2,xzr
+00e11348  mov w3,wzr
+00e1134c  mov w4,wzr
+00e11350  mov x5,xzr
+00e11354  ldr x20,[sp], #0x20
+00e11358  b 0x0167a614

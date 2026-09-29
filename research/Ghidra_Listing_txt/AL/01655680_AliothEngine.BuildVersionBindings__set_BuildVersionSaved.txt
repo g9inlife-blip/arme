@@ -1,0 +1,29 @@
+Function: AliothEngine.BuildVersionBindings$$set_BuildVersionSaved @ 01655680
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetString @ 024be710
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$SaveLatestVersion @ 0167daa0
+
+--- Listing ---
+01655680  stp x21,x20,[sp, #-0x20]!
+01655684  stp x19,x30,[sp, #0x10]
+01655688  adrp x20,0x3577000
+0165568c  adrp x21,0x3359000
+01655690  ldrb w8,[x20, #0x803]
+01655694  ldr x21,[x21, #0xb30]
+01655698  mov x19,x0
+0165569c  tbnz w8,#0x0,0x016556b4
+016556a0  adrp x0,0x3359000
+016556a4  ldr x0,[x0, #0xb30]
+016556a8  bl 0x00b0789c
+016556ac  mov w8,#0x1
+016556b0  strb w8,[x20, #0x803]
+016556b4  ldr x0,[x21]
+016556b8  mov x1,x19
+016556bc  ldp x19,x30,[sp, #0x10]
+016556c0  mov x2,xzr
+016556c4  ldp x21,x20,[sp], #0x20
+016556c8  b 0x024be710

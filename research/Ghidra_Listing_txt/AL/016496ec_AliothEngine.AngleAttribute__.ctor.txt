@@ -1,0 +1,34 @@
+Function: AliothEngine.AngleAttribute$$.ctor @ 016496ec
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.AngleAttribute$$.ctor @ 01649618
+
+--- Calls IN ---
+  <- AliothEngine.AngleAttribute$$.ctor @ 01649744
+  <- AliothEngine.AngleAttribute$$.ctor @ 016497ac
+  <- AliothEngine.AngleAttribute$$.ctor @ 01649770
+
+--- Listing ---
+016496ec  stp d11,d10,[sp, #-0x40]!
+016496f0  stp d9,d8,[sp, #0x10]
+016496f4  str x20,[sp, #0x20]
+016496f8  stp x19,x30,[sp, #0x30]
+016496fc  mov v8.16B,v5.16B
+01649700  mov v9.16B,v4.16B
+01649704  mov v10.16B,v3.16B
+01649708  mov v11.16B,v2.16B
+0164970c  mov x19,x1
+01649710  mov x20,x0
+01649714  bl 0x01649618
+01649718  str x19,[x20, #0x20]!
+0164971c  mov x0,x20
+01649720  mov x1,x19
+01649724  bl 0x00b07850
+01649728  stp s11,s10,[x20, #0x8]
+0164972c  stp s9,s8,[x20, #0x10]
+01649730  ldp x19,x30,[sp, #0x30]
+01649734  ldr x20,[sp, #0x20]
+01649738  ldp d9,d8,[sp, #0x10]
+0164973c  ldp d11,d10,[sp], #0x40
+01649740  ret

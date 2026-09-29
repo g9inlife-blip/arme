@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.ListExtensions$$CheckBounds<object> @ 0179dcb8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+
+--- Calls IN ---
+
+--- Listing ---
+0179dcb8  str x22,[sp, #-0x30]!
+0179dcbc  stp x21,x20,[sp, #0x10]
+0179dcc0  stp x19,x30,[sp, #0x20]
+0179dcc4  adrp x22,0x3578000
+0179dcc8  ldrb w8,[x22, #0x177]
+0179dccc  mov x20,x2
+0179dcd0  mov w19,w1
+0179dcd4  mov x21,x0
+0179dcd8  tbnz w8,#0x0,0x0179dcfc
+0179dcdc  adrp x0,0x336b000
+0179dce0  ldr x0,[x0, #0x7d0]
+0179dce4  bl 0x00b0789c
+0179dce8  adrp x0,0x337a000
+0179dcec  ldr x0,[x0, #0xde8]
+0179dcf0  bl 0x00b0789c
+0179dcf4  mov w8,#0x1
+0179dcf8  strb w8,[x22, #0x177]
+0179dcfc  cbz x21,0x0179dd2c
+0179dd00  ldr x8,[x20, #0x38]
+0179dd04  mov x0,x21
+0179dd08  ldr x1,[x8, #0x8]
+0179dd0c  ldr x8,[x1, #0x8]
+0179dd10  blr x8
+0179dd14  cmp w0,w19
+0179dd18  cset w8,gt
+0179dd1c  cmp w19,#0x0
+0179dd20  cset w9,ge
+0179dd24  and w0,w9,w8
+0179dd28  b 0x0179dd5c
+0179dd2c  adrp x8,0x336b000
+0179dd30  ldr x8,[x8, #0x7d0]
+0179dd34  adrp x19,0x337a000
+0179dd38  ldr x0,[x8]
+0179dd3c  ldr w8,[x0, #0xe0]
+0179dd40  ldr x19,[x19, #0xde8]
+0179dd44  cbnz w8,0x0179dd4c
+0179dd48  bl 0x00b0798c
+0179dd4c  ldr x0,[x19]
+0179dd50  mov x1,xzr
+0179dd54  bl 0x024c0830
+0179dd58  mov w0,wzr
+0179dd5c  ldp x19,x30,[sp, #0x20]
+0179dd60  ldp x21,x20,[sp, #0x10]
+0179dd64  ldr x22,[sp], #0x30
+0179dd68  ret

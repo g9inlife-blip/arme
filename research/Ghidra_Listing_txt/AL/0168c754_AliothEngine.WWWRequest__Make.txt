@@ -1,0 +1,64 @@
+Function: AliothEngine.WWWRequest$$Make @ 0168c754
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$.ctor @ 024ded14
+  -> UnityEngine.GameObject$$AddComponent<object> @ 01794da8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- BattleSectionMono$$InitOther @ 00e52004
+  <- WWWCacheSample.<SampleCoroutine>d__4$$MoveNext @ 00dbff74
+  <- WWWCacheSample$$SampleCallback @ 00dbfc04
+
+--- Listing ---
+0168c754  str x22,[sp, #-0x30]!
+0168c758  stp x21,x20,[sp, #0x10]
+0168c75c  stp x19,x30,[sp, #0x20]
+0168c760  adrp x21,0x3577000
+0168c764  adrp x22,0x3310000
+0168c768  ldrb w8,[x21, #0xab4]
+0168c76c  ldr x22,[x22, #0xe40]
+0168c770  mov w20,w1
+0168c774  mov x19,x0
+0168c778  tbnz w8,#0x0,0x0168c7a8
+0168c77c  adrp x0,0x3380000
+0168c780  ldr x0,[x0, #0x8f8]
+0168c784  bl 0x00b0789c
+0168c788  adrp x0,0x3310000
+0168c78c  ldr x0,[x0, #0xe40]
+0168c790  bl 0x00b0789c
+0168c794  adrp x0,0x337b000
+0168c798  ldr x0,[x0, #0x4c0]
+0168c79c  bl 0x00b0789c
+0168c7a0  mov w8,#0x1
+0168c7a4  strb w8,[x21, #0xab4]
+0168c7a8  ldr x0,[x22]
+0168c7ac  bl 0x00b079a0
+0168c7b0  cbz x0,0x0168c810
+0168c7b4  adrp x8,0x337b000
+0168c7b8  ldr x8,[x8, #0x4c0]
+0168c7bc  adrp x22,0x3380000
+0168c7c0  mov x2,xzr
+0168c7c4  mov x21,x0
+0168c7c8  ldr x1,[x8]
+0168c7cc  ldr x22,[x22, #0x8f8]
+0168c7d0  bl 0x024ded14
+0168c7d4  ldr x1,[x22]
+0168c7d8  mov x0,x21
+0168c7dc  bl 0x01794da8
+0168c7e0  cbz x0,0x0168c810
+0168c7e4  mov x21,x0
+0168c7e8  str x19,[x0, #0x18]!
+0168c7ec  mov x1,x19
+0168c7f0  and w20,w20,#0x1
+0168c7f4  bl 0x00b07850
+0168c7f8  strb w20,[x21, #0x20]
+0168c7fc  mov x0,x21
+0168c800  ldp x19,x30,[sp, #0x20]
+0168c804  ldp x21,x20,[sp, #0x10]
+0168c808  ldr x22,[sp], #0x30
+0168c80c  ret
+0168c810  bl 0x00b079b0

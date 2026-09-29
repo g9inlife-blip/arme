@@ -1,0 +1,23 @@
+Function: AliothEngine.Extensions.CameraExtensions$$LayerCullingToggle @ 016aa0c4
+
+--- Calls OUT ---
+  -> UnityEngine.LayerMask$$NameToLayer @ 024e0bcc
+  -> AliothEngine.Extensions.CameraExtensions$$LayerCullingToggle @ 016aa048
+
+--- Calls IN ---
+
+--- Listing ---
+016aa0c4  str x20,[sp, #-0x20]!
+016aa0c8  stp x19,x30,[sp, #0x10]
+016aa0cc  mov x20,x0
+016aa0d0  mov x0,x1
+016aa0d4  mov x1,xzr
+016aa0d8  mov w19,w2
+016aa0dc  bl 0x024e0bcc
+016aa0e0  and w2,w19,#0x1
+016aa0e4  ldp x19,x30,[sp, #0x10]
+016aa0e8  mov w8,#0x1
+016aa0ec  lsl w1,w8,w0
+016aa0f0  mov x0,x20
+016aa0f4  ldr x20,[sp], #0x20
+016aa0f8  b 0x016aa048

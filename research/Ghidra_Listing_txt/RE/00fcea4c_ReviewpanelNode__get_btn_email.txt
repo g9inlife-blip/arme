@@ -1,0 +1,29 @@
+Function: ReviewpanelNode$$get_btn_email @ 00fcea4c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReviewPanelMono$$Awake @ 0100d554
+
+--- Listing ---
+00fcea4c  stp x21,x20,[sp, #-0x20]!
+00fcea50  stp x19,x30,[sp, #0x10]
+00fcea54  adrp x20,0x3573000
+00fcea58  adrp x21,0x3315000
+00fcea5c  ldrb w8,[x20, #0xe99]
+00fcea60  ldr x21,[x21, #0x1e0]
+00fcea64  mov x19,x0
+00fcea68  tbnz w8,#0x0,0x00fcea80
+00fcea6c  adrp x0,0x3315000
+00fcea70  ldr x0,[x0, #0x1e0]
+00fcea74  bl 0x00b0789c
+00fcea78  mov w8,#0x1
+00fcea7c  strb w8,[x20, #0xe99]
+00fcea80  ldr x1,[x21]
+00fcea84  mov x0,x19
+00fcea88  ldp x19,x30,[sp, #0x10]
+00fcea8c  mov x2,xzr
+00fcea90  ldp x21,x20,[sp], #0x20
+00fcea94  b 0x00dc06f8

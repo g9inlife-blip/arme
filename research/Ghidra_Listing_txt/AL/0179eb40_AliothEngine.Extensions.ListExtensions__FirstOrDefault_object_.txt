@@ -1,0 +1,34 @@
+Function: AliothEngine.Extensions.ListExtensions$$FirstOrDefault<object> @ 0179eb40
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- BattleMapMono$$InitChapters @ 00e4e080
+  <- ActiveShowPanelMono$$get_PreloadAssets @ 0101a5b0
+
+--- Listing ---
+0179eb40  str x20,[sp, #-0x20]!
+0179eb44  stp x19,x30,[sp, #0x10]
+0179eb48  cbz x0,0x0179eb9c
+0179eb4c  ldr x8,[x1, #0x38]
+0179eb50  mov x20,x1
+0179eb54  mov x19,x0
+0179eb58  ldr x1,[x8, #0x8]
+0179eb5c  ldr x8,[x1, #0x8]
+0179eb60  blr x8
+0179eb64  cmp w0,#0x1
+0179eb68  b.lt 0x0179eb8c
+0179eb6c  ldr x8,[x20, #0x38]
+0179eb70  mov x0,x19
+0179eb74  ldp x19,x30,[sp, #0x10]
+0179eb78  mov w1,wzr
+0179eb7c  ldr x2,[x8, #0x10]
+0179eb80  ldr x3,[x2, #0x8]
+0179eb84  ldr x20,[sp], #0x20
+0179eb88  br x3
+0179eb8c  ldp x19,x30,[sp, #0x10]
+0179eb90  mov x0,xzr
+0179eb94  ldr x20,[sp], #0x20
+0179eb98  ret
+0179eb9c  bl 0x00b079b0

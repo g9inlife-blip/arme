@@ -1,0 +1,42 @@
+Function: AliothEngine.GameUpdateService$$get_isReady @ 0167ce80
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- GameUpdatePanelMono$$OnUpdate @ 0103ec78
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_g_get_isReady @ 01142234
+  <- AliothEngine.GameUpdateService.<CheckAssets>d__75$$MoveNext @ 01682de8
+  <- AliothEngine.GameUpdateService.<StartAssetCheck>d__49$$MoveNext @ 01680560
+  <- GameUpdatePanelMono.<Start>d__18$$MoveNext @ 0103fb00
+  <- AliothEngine.GameUpdateService.<StartVersionCheck>d__48$$MoveNext @ 01680178
+  <- AliothEngine.GameUpdateService.<StartDownLoadAsset>d__50$$MoveNext @ 016807a8
+
+--- Listing ---
+0167ce80  stp x21,x20,[sp, #-0x20]!
+0167ce84  stp x19,x30,[sp, #0x10]
+0167ce88  adrp x20,0x3577000
+0167ce8c  adrp x21,0x3352000
+0167ce90  ldrb w8,[x20, #0xa11]
+0167ce94  ldr x21,[x21, #0x2a8]
+0167ce98  mov x19,x0
+0167ce9c  tbnz w8,#0x0,0x0167ceb4
+0167cea0  adrp x0,0x3352000
+0167cea4  ldr x0,[x0, #0x2a8]
+0167cea8  bl 0x00b0789c
+0167ceac  mov w8,#0x1
+0167ceb0  strb w8,[x20, #0xa11]
+0167ceb4  ldr x8,[x21]
+0167ceb8  ldr x8,[x8, #0xb8]
+0167cebc  ldr x0,[x8]
+0167cec0  cbz x0,0x0167ced8
+0167cec4  mov x1,x19
+0167cec8  ldp x19,x30,[sp, #0x10]
+0167cecc  mov x2,xzr
+0167ced0  ldp x21,x20,[sp], #0x20
+0167ced4  b 0x01060aac
+0167ced8  ldrb w0,[x19, #0x19]
+0167cedc  ldp x19,x30,[sp, #0x10]
+0167cee0  ldp x21,x20,[sp], #0x20
+0167cee4  ret

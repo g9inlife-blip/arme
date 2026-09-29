@@ -1,0 +1,37 @@
+Function: Alioth.S1.Net.Request$$get_IsClientProccessed @ 015b4b60
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- Alioth.S1.Net.RequestExtensions.<>c__DisplayClass0_0$$<WaitClientProcessFinished>b__0 @ 015b548c
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_g_get_IsClientProccessed @ 01172520
+
+--- Listing ---
+015b4b60  stp x21,x20,[sp, #-0x20]!
+015b4b64  stp x19,x30,[sp, #0x10]
+015b4b68  adrp x20,0x3577000
+015b4b6c  adrp x21,0x3374000
+015b4b70  ldrb w8,[x20, #0xbe]
+015b4b74  ldr x21,[x21, #0x470]
+015b4b78  mov x19,x0
+015b4b7c  tbnz w8,#0x0,0x015b4b94
+015b4b80  adrp x0,0x3374000
+015b4b84  ldr x0,[x0, #0x470]
+015b4b88  bl 0x00b0789c
+015b4b8c  mov w8,#0x1
+015b4b90  strb w8,[x20, #0xbe]
+015b4b94  ldr x8,[x21]
+015b4b98  ldr x8,[x8, #0xb8]
+015b4b9c  ldr x0,[x8, #0x10]
+015b4ba0  cbz x0,0x015b4bb8
+015b4ba4  mov x1,x19
+015b4ba8  ldp x19,x30,[sp, #0x10]
+015b4bac  mov x2,xzr
+015b4bb0  ldp x21,x20,[sp], #0x20
+015b4bb4  b 0x01060aac
+015b4bb8  ldrb w0,[x19, #0x14]
+015b4bbc  ldp x19,x30,[sp, #0x10]
+015b4bc0  ldp x21,x20,[sp], #0x20
+015b4bc4  ret

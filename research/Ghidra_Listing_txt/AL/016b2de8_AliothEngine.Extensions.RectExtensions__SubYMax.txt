@@ -1,0 +1,28 @@
+Function: AliothEngine.Extensions.RectExtensions$$SubYMax @ 016b2de8
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_yMax @ 024db058
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+
+--- Calls IN ---
+
+--- Listing ---
+016b2de8  sub sp,sp,#0x20
+016b2dec  str d8,[sp, #0x10]
+016b2df0  str x30,[sp, #0x18]
+016b2df4  mov x0,sp
+016b2df8  mov x1,xzr
+016b2dfc  mov v8.16B,v4.16B
+016b2e00  stp s0,s1,[sp]
+016b2e04  stp s2,s3,[sp, #0x8]
+016b2e08  bl 0x024db024
+016b2e0c  fsub s0,s0,s8
+016b2e10  mov x0,sp
+016b2e14  mov x1,xzr
+016b2e18  bl 0x024db058
+016b2e1c  ldp s0,s1,[sp]
+016b2e20  ldp s2,s3,[sp, #0x8]
+016b2e24  ldr x30,[sp, #0x18]
+016b2e28  ldr d8,[sp, #0x10]
+016b2e2c  add sp,sp,#0x20
+016b2e30  ret

@@ -1,0 +1,37 @@
+Function: AliothEngine.AliothEngineInitialize$$get_isReady @ 01649884
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetInfoManager$$get_isReady @ 01667fa4
+
+--- Calls IN ---
+  <- Main.<Start>d__1$$MoveNext @ 00e3a070
+  <- EntranceScript.<Start>d__1$$MoveNext @ 00ebc84c
+  <- AliothEngine.UpdateSystemSample.<Start>d__0$$MoveNext @ 0168310c
+  <- AliothEngine.GameUpdateService.<Start>d__68$$MoveNext @ 01682410
+
+--- Listing ---
+01649884  str x20,[sp, #-0x20]!
+01649888  stp x19,x30,[sp, #0x10]
+0164988c  adrp x19,0x3577000
+01649890  adrp x20,0x332a000
+01649894  ldrb w8,[x19, #0x798]
+01649898  ldr x20,[x20, #0xb98]
+0164989c  tbnz w8,#0x0,0x016498b4
+016498a0  adrp x0,0x332a000
+016498a4  ldr x0,[x0, #0xb98]
+016498a8  bl 0x00b0789c
+016498ac  mov w8,#0x1
+016498b0  strb w8,[x19, #0x798]
+016498b4  ldr x8,[x20]
+016498b8  ldr x8,[x8, #0xb8]
+016498bc  ldrb w8,[x8]
+016498c0  cbz w8,0x016498d4
+016498c4  ldp x19,x30,[sp, #0x10]
+016498c8  mov x0,xzr
+016498cc  ldr x20,[sp], #0x20
+016498d0  b 0x01667fa4
+016498d4  ldp x19,x30,[sp, #0x10]
+016498d8  mov w0,wzr
+016498dc  ldr x20,[sp], #0x20
+016498e0  ret

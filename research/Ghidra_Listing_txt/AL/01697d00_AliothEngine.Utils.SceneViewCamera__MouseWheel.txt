@@ -1,0 +1,52 @@
+Function: AliothEngine.Utils.SceneViewCamera$$MouseWheel @ 01697d00
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$get_forward @ 024f3f0c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> UnityEngine.Transform$$set_position @ 024f3724
+
+--- Calls IN ---
+  <- AliothEngine.Utils.SceneViewCamera$$MouseUpdate @ 01697c58
+
+--- Listing ---
+01697d00  stp d11,d10,[sp, #-0x40]!
+01697d04  stp d9,d8,[sp, #0x10]
+01697d08  str x20,[sp, #0x20]
+01697d0c  stp x19,x30,[sp, #0x30]
+01697d10  mov x1,xzr
+01697d14  mov v8.16B,v0.16B
+01697d18  mov x20,x0
+01697d1c  bl 0x024e4e98
+01697d20  cbz x0,0x01697d98
+01697d24  mov x1,xzr
+01697d28  mov x19,x0
+01697d2c  bl 0x024f3684
+01697d30  mov x0,x20
+01697d34  mov x1,xzr
+01697d38  mov v9.16B,v0.16B
+01697d3c  mov v10.16B,v1.16B
+01697d40  mov v11.16B,v2.16B
+01697d44  bl 0x024e4e98
+01697d48  cbz x0,0x01697d98
+01697d4c  mov x1,xzr
+01697d50  bl 0x024f3f0c
+01697d54  ldr s3,[x20, #0x18]
+01697d58  fmul s0,s0,s8
+01697d5c  fmul s1,s1,s8
+01697d60  fmul s2,s2,s8
+01697d64  fmul s0,s3,s0
+01697d68  fadd s0,s9,s0
+01697d6c  mov x0,x19
+01697d70  ldp x19,x30,[sp, #0x30]
+01697d74  ldr x20,[sp, #0x20]
+01697d78  ldp d9,d8,[sp, #0x10]
+01697d7c  fmul s1,s3,s1
+01697d80  fmul s2,s3,s2
+01697d84  fadd s1,s10,s1
+01697d88  fadd s2,s11,s2
+01697d8c  mov x1,xzr
+01697d90  ldp d11,d10,[sp], #0x40
+01697d94  b 0x024f3724
+01697d98  bl 0x00b079b0

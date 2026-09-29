@@ -1,0 +1,60 @@
+Function: AliothEngine.GateSoundGroup$$.ctor @ 0164d004
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0164d004  str x22,[sp, #-0x30]!
+0164d008  stp x21,x20,[sp, #0x10]
+0164d00c  stp x19,x30,[sp, #0x20]
+0164d010  adrp x21,0x3577000
+0164d014  adrp x22,0x332c000
+0164d018  adrp x20,0x3357000
+0164d01c  ldrb w8,[x21, #0x7c9]
+0164d020  ldr x22,[x22, #0x2c0]
+0164d024  ldr x20,[x20, #0x280]
+0164d028  mov x19,x0
+0164d02c  tbnz w8,#0x0,0x0164d05c
+0164d030  adrp x0,0x3351000
+0164d034  ldr x0,[x0, #0x320]
+0164d038  bl 0x00b0789c
+0164d03c  adrp x0,0x3357000
+0164d040  ldr x0,[x0, #0x280]
+0164d044  bl 0x00b0789c
+0164d048  adrp x0,0x332c000
+0164d04c  ldr x0,[x0, #0x2c0]
+0164d050  bl 0x00b0789c
+0164d054  mov w8,#0x1
+0164d058  strb w8,[x21, #0x7c9]
+0164d05c  ldr x1,[x22]
+0164d060  mov x0,x19
+0164d064  str x1,[x0, #0x10]!
+0164d068  bl 0x00b07850
+0164d06c  ldr x0,[x20]
+0164d070  bl 0x00b079a0
+0164d074  cbz x0,0x0164d0bc
+0164d078  adrp x8,0x3351000
+0164d07c  ldr x8,[x8, #0x320]
+0164d080  mov x20,x0
+0164d084  ldr x1,[x8]
+0164d088  bl 0x01bffe10
+0164d08c  mov x0,x19
+0164d090  str x20,[x0, #0x18]!
+0164d094  mov x1,x20
+0164d098  bl 0x00b07850
+0164d09c  mov w8,#0x3f800000
+0164d0a0  str w8,[x19, #0x20]
+0164d0a4  mov x0,x19
+0164d0a8  ldp x19,x30,[sp, #0x20]
+0164d0ac  ldp x21,x20,[sp, #0x10]
+0164d0b0  mov x1,xzr
+0164d0b4  ldr x22,[sp], #0x30
+0164d0b8  b 0x02194104
+0164d0bc  bl 0x00b079b0

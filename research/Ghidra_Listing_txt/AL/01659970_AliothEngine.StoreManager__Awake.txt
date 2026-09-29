@@ -1,0 +1,50 @@
+Function: AliothEngine.StoreManager$$Awake @ 01659970
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.StoreManager$$InitIStore @ 01659a08
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$Awake @ 01e090dc
+
+--- Calls IN ---
+
+--- Listing ---
+01659970  stp x21,x20,[sp, #-0x20]!
+01659974  stp x19,x30,[sp, #0x10]
+01659978  adrp x20,0x3577000
+0165997c  adrp x21,0x3334000
+01659980  ldrb w8,[x20, #0x850]
+01659984  ldr x21,[x21, #0x178]
+01659988  mov x19,x0
+0165998c  tbnz w8,#0x0,0x016599b0
+01659990  adrp x0,0x3346000
+01659994  ldr x0,[x0, #0x20]
+01659998  bl 0x00b0789c
+0165999c  adrp x0,0x3334000
+016599a0  ldr x0,[x0, #0x178]
+016599a4  bl 0x00b0789c
+016599a8  mov w8,#0x1
+016599ac  strb w8,[x20, #0x850]
+016599b0  ldr x8,[x21]
+016599b4  ldr x8,[x8, #0xb8]
+016599b8  ldr x0,[x8, #0x8]
+016599bc  cbz x0,0x016599d4
+016599c0  mov x1,x19
+016599c4  ldp x19,x30,[sp, #0x10]
+016599c8  mov x2,xzr
+016599cc  ldp x21,x20,[sp], #0x20
+016599d0  b 0x01060dac
+016599d4  adrp x8,0x3346000
+016599d8  ldr x8,[x8, #0x20]
+016599dc  mov x0,x19
+016599e0  ldr x1,[x8]
+016599e4  bl 0x01e090dc
+016599e8  mov x0,x19
+016599ec  bl 0x01659a08
+016599f0  str x0,[x19, #0x20]!
+016599f4  mov x1,x0
+016599f8  mov x0,x19
+016599fc  ldp x19,x30,[sp, #0x10]
+01659a00  ldp x21,x20,[sp], #0x20
+01659a04  b 0x00b07850

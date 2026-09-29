@@ -1,0 +1,17 @@
+Function: ~recursive_mutex @ 00b81470
+FuncComment: std::__ndk1::recursive_mutex::~recursive_mutex()
+
+--- Calls OUT ---
+  -> pthread_mutex_destroy @ 008d4f10
+
+--- Calls IN ---
+
+--- Listing ---
+00b81470  stp x29,x30,[sp, #-0x10]!
+    ; [PLATE] std::__ndk1::recursive_mutex::~recursive_mutex()
+00b81474  mov x29,sp
+00b81478  bl 0x008d4f10
+    ; [PRE] try { // try from 00b81478 to 00b8147b has its CatchHandler @ 00b81484
+    ; [POST] } // end try from 00b81478 to 00b8147b
+00b8147c  ldp x29,x30,[sp], #0x10
+00b81480  ret

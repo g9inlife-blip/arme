@@ -1,0 +1,39 @@
+Function: AliothEngine.Extensions.VectorExtensions$$GetRelativePositionTo @ 016bc52c
+
+--- Calls OUT ---
+  -> UnityEngine.Matrix4x4$$get_inverse @ 024e8f7c
+  -> UnityEngine.Matrix4x4$$MultiplyPoint @ 024e8444
+
+--- Calls IN ---
+
+--- Listing ---
+016bc52c  sub sp,sp,#0xa0
+016bc530  str d10,[sp, #0x80]
+016bc534  stp d9,d8,[sp, #0x88]
+016bc538  str x30,[sp, #0x98]
+016bc53c  mov v10.16B,v0.16B
+016bc540  movi v0.2D,#0x0
+016bc544  mov x8,sp
+016bc548  mov x1,xzr
+016bc54c  mov v8.16B,v2.16B
+016bc550  mov v9.16B,v1.16B
+016bc554  stp q0,q0,[sp, #0x60]
+016bc558  stp q0,q0,[sp, #0x40]
+016bc55c  bl 0x024e8f7c
+016bc560  ldp q2,q0,[sp, #0x10]
+016bc564  ldr q1,[sp]
+016bc568  ldr q3,[sp, #0x30]
+016bc56c  add x0,sp,#0x40
+016bc570  stp q2,q0,[sp, #0x50]
+016bc574  str q1,[sp, #0x40]
+016bc578  mov v0.16B,v10.16B
+016bc57c  mov v1.16B,v9.16B
+016bc580  mov v2.16B,v8.16B
+016bc584  mov x1,xzr
+016bc588  str q3,[sp, #0x70]
+016bc58c  bl 0x024e8444
+016bc590  ldr x30,[sp, #0x98]
+016bc594  ldp d9,d8,[sp, #0x88]
+016bc598  ldr d10,[sp, #0x80]
+016bc59c  add sp,sp,#0xa0
+016bc5a0  ret

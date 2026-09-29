@@ -1,0 +1,19 @@
+Function: AliothEngine.IntRange$$GetNormalisedValue @ 016865b4
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016865b4  ldp w8,w9,[x0, #0x10]
+016865b8  fmov s0,0x3f800000
+016865bc  sub w10,w1,w8
+016865c0  sub w8,w9,w8
+016865c4  scvtf s1,w10
+016865c8  scvtf s2,w8
+016865cc  fdiv s1,s1,s2
+016865d0  fmin s0,s1,s0
+016865d4  fcmp s1,#0.0
+016865d8  fmov s1,wzr
+016865dc  fcsel s0,s0,s1,pl
+016865e0  ret

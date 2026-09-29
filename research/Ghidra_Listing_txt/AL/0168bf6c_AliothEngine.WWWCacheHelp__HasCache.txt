@@ -1,0 +1,29 @@
+Function: AliothEngine.WWWCacheHelp$$HasCache @ 0168bf6c
+
+--- Calls OUT ---
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> AliothEngine.WWWCacheHelp$$DeleteCache @ 0168c058
+  -> AliothEngine.WWWCacheHelp$$isFileOutOfDate @ 0168bfac
+  -> AliothEngine.WWWCacheHelp$$UrlToCachePath @ 0168be14
+
+--- Calls IN ---
+  <- AliothEngine.WWWRequest.<Start>d__7$$MoveNext @ 0168ca00
+  <- AliothEngine.WWWRequest$$get_HasCache @ 0168c9d8
+
+--- Listing ---
+0168bf6c  stp x19,x30,[sp, #-0x10]!
+0168bf70  bl 0x0168be14
+0168bf74  mov x1,xzr
+0168bf78  mov x19,x0
+0168bf7c  bl 0x020a6ae4
+0168bf80  tbz w0,#0x0,0x0168bf98
+0168bf84  mov x0,x19
+0168bf88  bl 0x0168bfac
+0168bf8c  tbz w0,#0x0,0x0168bfa0
+0168bf90  mov x0,x19
+0168bf94  bl 0x0168c058
+0168bf98  mov w0,wzr
+0168bf9c  b 0x0168bfa4
+0168bfa0  mov w0,#0x1
+0168bfa4  ldp x19,x30,[sp], #0x10
+0168bfa8  ret

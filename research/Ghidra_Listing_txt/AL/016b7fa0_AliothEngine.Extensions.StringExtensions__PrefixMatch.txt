@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.StringExtensions$$PrefixMatch @ 016b7fa0
+
+--- Calls OUT ---
+  -> System.String$$get_Chars @ 01fda110
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b7fa0  str x24,[sp, #-0x40]!
+016b7fa4  stp x23,x22,[sp, #0x10]
+016b7fa8  stp x21,x20,[sp, #0x20]
+016b7fac  stp x19,x30,[sp, #0x30]
+016b7fb0  cbz x0,0x016b8038
+016b7fb4  mov x19,x1
+016b7fb8  cbz x1,0x016b8038
+016b7fbc  ldr w22,[x0, #0x10]
+016b7fc0  mov x20,x0
+016b7fc4  mov w21,wzr
+016b7fc8  cmp w22,#0x1
+016b7fcc  b.lt 0x016b8020
+016b7fd0  ldr w23,[x19, #0x10]
+016b7fd4  cmp w23,#0x1
+016b7fd8  b.lt 0x016b8020
+016b7fdc  mov w21,wzr
+016b7fe0  mov x0,x20
+016b7fe4  mov w1,w21
+016b7fe8  mov x2,xzr
+016b7fec  bl 0x01fda110
+016b7ff0  and w24,w0,#0xffff
+016b7ff4  mov x0,x19
+016b7ff8  mov w1,w21
+016b7ffc  mov x2,xzr
+016b8000  bl 0x01fda110
+016b8004  cmp w24,w0, UXTH 
+016b8008  b.ne 0x016b8020
+016b800c  add w21,w21,#0x1
+016b8010  cmp w21,w22
+016b8014  b.ge 0x016b8020
+016b8018  cmp w21,w23
+016b801c  b.lt 0x016b7fe0
+016b8020  mov w0,w21
+016b8024  ldp x19,x30,[sp, #0x30]
+016b8028  ldp x21,x20,[sp, #0x20]
+016b802c  ldp x23,x22,[sp, #0x10]
+016b8030  ldr x24,[sp], #0x40
+016b8034  ret
+016b8038  bl 0x00b079b0

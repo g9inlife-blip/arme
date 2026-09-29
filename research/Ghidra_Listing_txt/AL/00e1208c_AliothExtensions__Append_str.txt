@@ -1,0 +1,52 @@
+Function: AliothExtensions$$Append_str @ 00e1208c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp416 @ 010951ac
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothExtensions$$Append @ 00e0f52c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothExtensionsWrap$$_m_Append_str_xlua_st_ @ 0116a0f4
+
+--- Listing ---
+00e1208c  str x22,[sp, #-0x30]!
+00e12090  stp x21,x20,[sp, #0x10]
+00e12094  stp x19,x30,[sp, #0x20]
+00e12098  adrp x22,0x3572000
+00e1209c  adrp x21,0x3348000
+00e120a0  ldrb w8,[x22, #0x5dc]
+00e120a4  ldr x21,[x21, #0x138]
+00e120a8  mov x19,x1
+00e120ac  mov x20,x0
+00e120b0  tbnz w8,#0x0,0x00e120c8
+00e120b4  adrp x0,0x3348000
+00e120b8  ldr x0,[x0, #0x138]
+00e120bc  bl 0x00b0789c
+00e120c0  mov w8,#0x1
+00e120c4  strb w8,[x22, #0x5dc]
+00e120c8  ldr x0,[x21]
+00e120cc  ldr w8,[x0, #0xe0]
+00e120d0  cbnz w8,0x00e120dc
+00e120d4  bl 0x00b0798c
+00e120d8  ldr x0,[x21]
+00e120dc  ldr x8,[x0, #0xb8]
+00e120e0  ldr x8,[x8, #0x20]
+00e120e4  cbz x8,0x00e12108
+00e120e8  mov x1,x20
+00e120ec  mov x2,x19
+00e120f0  ldp x19,x30,[sp, #0x20]
+00e120f4  ldp x21,x20,[sp, #0x10]
+00e120f8  mov x0,x8
+00e120fc  mov x3,xzr
+00e12100  ldr x22,[sp], #0x30
+00e12104  b 0x010951ac
+00e12108  ldr w8,[x0, #0xe0]
+00e1210c  cbnz w8,0x00e12114
+00e12110  bl 0x00b0798c
+00e12114  mov x0,x20
+00e12118  mov x1,x19
+00e1211c  ldp x19,x30,[sp, #0x20]
+00e12120  ldp x21,x20,[sp, #0x10]
+00e12124  ldr x22,[sp], #0x30
+00e12128  b 0x00e0f52c

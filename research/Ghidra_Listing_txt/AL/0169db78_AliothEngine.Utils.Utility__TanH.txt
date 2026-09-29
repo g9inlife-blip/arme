@@ -1,0 +1,21 @@
+Function: AliothEngine.Utils.Utility$$TanH @ 0169db78
+
+--- Calls OUT ---
+  -> expf @ 008d4510
+
+--- Calls IN ---
+
+--- Listing ---
+0169db78  stp d9,d8,[sp, #-0x20]!
+0169db7c  str x30,[sp, #0x10]
+0169db80  mov v8.16B,v0.16B
+0169db84  bl 0x008d4510
+0169db88  mov v9.16B,v0.16B
+0169db8c  fneg s0,s8
+0169db90  bl 0x008d4510
+0169db94  ldr x30,[sp, #0x10]
+0169db98  fsub s1,s9,s0
+0169db9c  fadd s0,s9,s0
+0169dba0  fdiv s0,s1,s0
+0169dba4  ldp d9,d8,[sp], #0x20
+0169dba8  ret

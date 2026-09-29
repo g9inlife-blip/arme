@@ -1,0 +1,42 @@
+Function: AliothEngine.ScreenUtils$$isChange @ 01690fcc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> UnityEngine.Screen$$get_height @ 024d2684
+
+--- Calls IN ---
+  <- Ali$$get_Slate_CINEBOX_SIZE @ 00e0ac0c
+
+--- Listing ---
+01690fcc  str x20,[sp, #-0x20]!
+01690fd0  stp x19,x30,[sp, #0x10]
+01690fd4  adrp x20,0x3577000
+01690fd8  adrp x19,0x3345000
+01690fdc  ldrb w8,[x20, #0xae2]
+01690fe0  ldr x19,[x19, #0xee0]
+01690fe4  tbnz w8,#0x0,0x01690ffc
+01690fe8  adrp x0,0x3345000
+01690fec  ldr x0,[x0, #0xee0]
+01690ff0  bl 0x00b0789c
+01690ff4  mov w8,#0x1
+01690ff8  strb w8,[x20, #0xae2]
+01690ffc  ldr x8,[x19]
+01691000  mov x0,xzr
+01691004  ldr x8,[x8, #0xb8]
+01691008  ldr w20,[x8]
+0169100c  bl 0x024d265c
+01691010  cmp w20,w0
+01691014  b.ne 0x01691038
+01691018  ldr x8,[x19]
+0169101c  mov x0,xzr
+01691020  ldr x8,[x8, #0xb8]
+01691024  ldr w19,[x8, #0x4]
+01691028  bl 0x024d2684
+0169102c  cmp w19,w0
+01691030  cset w0,ne
+01691034  b 0x0169103c
+01691038  mov w0,#0x1
+0169103c  ldp x19,x30,[sp, #0x10]
+01691040  ldr x20,[sp], #0x20
+01691044  ret

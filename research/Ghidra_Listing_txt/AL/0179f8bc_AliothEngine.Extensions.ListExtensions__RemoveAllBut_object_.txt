@@ -1,0 +1,61 @@
+Function: AliothEngine.Extensions.ListExtensions$$RemoveAllBut<object> @ 0179f8bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0179f8bc  str x22,[sp, #-0x30]!
+0179f8c0  stp x21,x20,[sp, #0x10]
+0179f8c4  stp x19,x30,[sp, #0x20]
+0179f8c8  ldr x8,[x2, #0x38]
+0179f8cc  mov x19,x2
+0179f8d0  mov x22,x1
+0179f8d4  mov x20,x0
+0179f8d8  ldr x8,[x8]
+0179f8dc  ldrb w9,[x8, #0x132]
+0179f8e0  tbnz w9,#0x0,0x0179f8f0
+0179f8e4  mov x0,x8
+0179f8e8  bl 0x00b2ac40
+0179f8ec  mov x8,x0
+0179f8f0  mov x0,x8
+0179f8f4  bl 0x00b079a0
+0179f8f8  cbz x0,0x0179f980
+0179f8fc  ldr x8,[x19, #0x38]
+0179f900  mov x21,x0
+0179f904  ldr x1,[x8, #0x8]
+0179f908  ldr x8,[x1, #0x8]
+0179f90c  blr x8
+0179f910  mov x0,x21
+0179f914  str x22,[x0, #0x10]!
+0179f918  mov x1,x22
+0179f91c  bl 0x00b07850
+0179f920  ldr x8,[x19, #0x38]
+0179f924  ldr x0,[x8, #0x18]
+0179f928  ldrb w8,[x0, #0x132]
+0179f92c  tbnz w8,#0x0,0x0179f934
+0179f930  bl 0x00b2ac40
+0179f934  bl 0x00b079a0
+0179f938  cbz x0,0x0179f980
+0179f93c  ldr x8,[x19, #0x38]
+0179f940  mov x1,x21
+0179f944  mov x22,x0
+0179f948  ldr x3,[x8, #0x20]
+0179f94c  ldr x2,[x8, #0x10]
+0179f950  ldr x9,[x3, #0x8]
+0179f954  blr x9
+0179f958  cbz x20,0x0179f980
+0179f95c  ldr x8,[x19, #0x38]
+0179f960  mov x0,x20
+0179f964  ldp x19,x30,[sp, #0x20]
+0179f968  ldp x21,x20,[sp, #0x10]
+0179f96c  ldr x2,[x8, #0x30]
+0179f970  mov x1,x22
+0179f974  ldr x3,[x2, #0x8]
+0179f978  ldr x22,[sp], #0x30
+0179f97c  br x3
+0179f980  bl 0x00b079b0

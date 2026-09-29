@@ -1,0 +1,248 @@
+Function: AliothEngine.Utils.Utility$$GetNormal @ 0169f388
+
+--- Calls OUT ---
+  -> UnityEngine.Collider$$get_isTrigger @ 0253b6a8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b74
+  -> UnityEngine.RaycastHit$$get_point @ 0253a9dc
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.RaycastHit$$get_collider @ 0253a930
+  -> UnityEngine.RaycastHit$$get_normal @ 0253a9e8
+  -> UnityEngine.Physics$$RaycastAll @ 02539db0
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169f388  sub sp,sp,#0x80
+0169f38c  stp d15,d14,[sp, #0x10]
+0169f390  stp d13,d12,[sp, #0x20]
+0169f394  stp d11,d10,[sp, #0x30]
+0169f398  stp d9,d8,[sp, #0x40]
+0169f39c  stp x23,x22,[sp, #0x50]
+0169f3a0  stp x21,x20,[sp, #0x60]
+0169f3a4  stp x19,x30,[sp, #0x70]
+0169f3a8  adrp x23,0x3576000
+0169f3ac  ldrb w8,[x23, #0x982]
+0169f3b0  mov x19,x0
+0169f3b4  mov v8.16B,v2.16B
+0169f3b8  mov v9.16B,v1.16B
+0169f3bc  mov v10.16B,v0.16B
+0169f3c0  cbnz w8,0x0169f3d8
+0169f3c4  adrp x0,0x3368000
+0169f3c8  ldr x0,[x0, #0x9b8]
+0169f3cc  bl 0x00b0789c
+0169f3d0  mov w8,#0x1
+0169f3d4  strb w8,[x23, #0x982]
+0169f3d8  adrp x21,0x3368000
+0169f3dc  ldr x21,[x21, #0x9b8]
+0169f3e0  adrp x22,0x3570000
+0169f3e4  ldrb w9,[x22, #0xffe]
+0169f3e8  ldr x8,[x21]
+0169f3ec  ldr x8,[x8, #0xb8]
+0169f3f0  ldp s0,s1,[x8, #0x24]
+0169f3f4  ldr s2,[x8, #0x2c]
+0169f3f8  str s8,[sp, #0xc]
+0169f3fc  fadd s13,s10,s0
+0169f400  fadd s12,s9,s1
+0169f404  fadd s11,s8,s2
+0169f408  cbnz w9,0x0169f424
+0169f40c  mov x0,x21
+0169f410  bl 0x00b0789c
+0169f414  ldr x8,[x21]
+0169f418  mov w9,#0x1
+0169f41c  strb w9,[x22, #0xffe]
+0169f420  ldr x8,[x8, #0xb8]
+0169f424  ldp s14,s15,[x8, #0x18]
+0169f428  ldr s8,[x8, #0x20]
+0169f42c  and x20,x19,#0xffffffff
+0169f430  mov x0,x20
+0169f434  mov x1,xzr
+0169f438  bl 0x024e0b74
+0169f43c  mov w8,#0x7f800000
+0169f440  fmov s6,w8
+0169f444  mov v0.16B,v13.16B
+0169f448  mov v1.16B,v12.16B
+0169f44c  mov v2.16B,v11.16B
+0169f450  mov v3.16B,v14.16B
+0169f454  mov v4.16B,v15.16B
+0169f458  mov v5.16B,v8.16B
+0169f45c  mov x1,xzr
+0169f460  bl 0x02539db0
+0169f464  ldrb w8,[x22, #0xffe]
+0169f468  mov x19,x0
+0169f46c  cbnz w8,0x0169f484
+0169f470  adrp x0,0x3368000
+0169f474  ldr x0,[x0, #0x9b8]
+0169f478  bl 0x00b0789c
+0169f47c  mov w8,#0x1
+0169f480  strb w8,[x22, #0xffe]
+0169f484  ldr x8,[x21]
+0169f488  ldrb w9,[x23, #0x982]
+0169f48c  ldr x8,[x8, #0xb8]
+0169f490  ldp s0,s1,[x8, #0x18]
+0169f494  ldr s2,[x8, #0x20]
+0169f498  fadd s10,s10,s0
+0169f49c  ldr s0,[sp, #0xc]
+0169f4a0  fadd s9,s9,s1
+0169f4a4  fadd s8,s0,s2
+0169f4a8  cbnz w9,0x0169f4c4
+0169f4ac  mov x0,x21
+0169f4b0  bl 0x00b0789c
+0169f4b4  ldr x8,[x21]
+0169f4b8  mov w9,#0x1
+0169f4bc  strb w9,[x23, #0x982]
+0169f4c0  ldr x8,[x8, #0xb8]
+0169f4c4  ldp s11,s12,[x8, #0x24]
+0169f4c8  ldr s13,[x8, #0x2c]
+0169f4cc  mov x0,x20
+0169f4d0  mov x1,xzr
+0169f4d4  bl 0x024e0b74
+0169f4d8  mov w8,#0x7f800000
+0169f4dc  fmov s6,w8
+0169f4e0  mov v0.16B,v10.16B
+0169f4e4  mov v1.16B,v9.16B
+0169f4e8  mov v2.16B,v8.16B
+0169f4ec  mov v3.16B,v11.16B
+0169f4f0  mov v4.16B,v12.16B
+0169f4f4  mov v5.16B,v13.16B
+0169f4f8  mov x1,xzr
+0169f4fc  bl 0x02539db0
+0169f500  cbz x19,0x0169f724
+0169f504  ldr x8,[x19, #0x18]
+0169f508  mov x20,x0
+0169f50c  cbnz x8,0x0169f51c
+0169f510  cbz x20,0x0169f724
+0169f514  ldr x8,[x20, #0x18]
+0169f518  cbz x8,0x0169f6c4
+0169f51c  ldrb w8,[x22, #0xffe]
+0169f520  cbnz w8,0x0169f538
+0169f524  adrp x0,0x3368000
+0169f528  ldr x0,[x0, #0x9b8]
+0169f52c  bl 0x00b0789c
+0169f530  mov w8,#0x1
+0169f534  strb w8,[x22, #0xffe]
+0169f538  cbz x20,0x0169f724
+0169f53c  ldr x8,[x21]
+0169f540  ldr x9,[x8, #0xb8]
+0169f544  ldr x8,[x20, #0x18]
+0169f548  ldp s9,s10,[x9, #0x1c]
+0169f54c  ldr s8,[x9, #0x18]
+0169f550  cmp w8,#0x1
+0169f554  b.lt 0x0169f608
+0169f558  mov w9,#0xff7fffff
+0169f55c  mov x22,xzr
+0169f560  and x8,x8,#0xffffffff
+0169f564  add x21,x20,#0x20
+0169f568  fmov s11,w9
+0169f56c  cmp x22,w8, UXTW 
+0169f570  b.cs 0x0169f720
+0169f574  mov x0,x21
+0169f578  mov x1,xzr
+0169f57c  bl 0x0253a9dc
+0169f580  fcmp s1,s11
+0169f584  b.le 0x0169f5f0
+0169f588  ldr w8,[x20, #0x18]
+0169f58c  cmp x22,x8
+0169f590  b.cs 0x0169f720
+0169f594  mov x0,x21
+0169f598  mov x1,xzr
+0169f59c  bl 0x0253a930
+0169f5a0  cbz x0,0x0169f724
+0169f5a4  mov x1,xzr
+0169f5a8  bl 0x0253b6a8
+0169f5ac  tbnz w0,#0x0,0x0169f5f0
+0169f5b0  ldr w8,[x20, #0x18]
+0169f5b4  cmp x22,x8
+0169f5b8  b.cs 0x0169f720
+0169f5bc  mov x0,x21
+0169f5c0  mov x1,xzr
+0169f5c4  bl 0x0253a9dc
+0169f5c8  ldr w8,[x20, #0x18]
+0169f5cc  cmp x22,x8
+0169f5d0  b.cs 0x0169f720
+0169f5d4  mov x0,x21
+0169f5d8  mov x1,xzr
+0169f5dc  mov v11.16B,v1.16B
+0169f5e0  bl 0x0253a9e8
+0169f5e4  mov v8.16B,v0.16B
+0169f5e8  mov v9.16B,v1.16B
+0169f5ec  mov v10.16B,v2.16B
+0169f5f0  ldr w8,[x20, #0x18]
+0169f5f4  add x22,x22,#0x1
+0169f5f8  add x21,x21,#0x2c
+0169f5fc  cmp x22,w8, SXTW 
+0169f600  b.lt 0x0169f56c
+0169f604  b 0x0169f610
+0169f608  mov w8,#0xff7fffff
+0169f60c  fmov s11,w8
+0169f610  ldr x8,[x19, #0x18]
+0169f614  cmp w8,#0x1
+0169f618  b.lt 0x0169f6f0
+0169f61c  mov x21,xzr
+0169f620  and x8,x8,#0xffffffff
+0169f624  add x20,x19,#0x20
+0169f628  cmp x21,w8, UXTW 
+0169f62c  b.cs 0x0169f720
+0169f630  mov x0,x20
+0169f634  mov x1,xzr
+0169f638  bl 0x0253a9dc
+0169f63c  fcmp s1,s11
+0169f640  b.le 0x0169f6ac
+0169f644  ldr w8,[x19, #0x18]
+0169f648  cmp x21,x8
+0169f64c  b.cs 0x0169f720
+0169f650  mov x0,x20
+0169f654  mov x1,xzr
+0169f658  bl 0x0253a930
+0169f65c  cbz x0,0x0169f724
+0169f660  mov x1,xzr
+0169f664  bl 0x0253b6a8
+0169f668  tbnz w0,#0x0,0x0169f6ac
+0169f66c  ldr w8,[x19, #0x18]
+0169f670  cmp x21,x8
+0169f674  b.cs 0x0169f720
+0169f678  mov x0,x20
+0169f67c  mov x1,xzr
+0169f680  bl 0x0253a9dc
+0169f684  ldr w8,[x19, #0x18]
+0169f688  cmp x21,x8
+0169f68c  b.cs 0x0169f720
+0169f690  mov x0,x20
+0169f694  mov x1,xzr
+0169f698  mov v11.16B,v1.16B
+0169f69c  bl 0x0253a9e8
+0169f6a0  mov v8.16B,v0.16B
+0169f6a4  mov v9.16B,v1.16B
+0169f6a8  mov v10.16B,v2.16B
+0169f6ac  ldr w8,[x19, #0x18]
+0169f6b0  add x21,x21,#0x1
+0169f6b4  add x20,x20,#0x2c
+0169f6b8  cmp x21,w8, SXTW 
+0169f6bc  b.lt 0x0169f628
+0169f6c0  b 0x0169f6f0
+0169f6c4  ldrb w8,[x22, #0xffe]
+0169f6c8  cbnz w8,0x0169f6e0
+0169f6cc  adrp x0,0x3368000
+0169f6d0  ldr x0,[x0, #0x9b8]
+0169f6d4  bl 0x00b0789c
+0169f6d8  mov w8,#0x1
+0169f6dc  strb w8,[x22, #0xffe]
+0169f6e0  ldr x8,[x21]
+0169f6e4  ldr x8,[x8, #0xb8]
+0169f6e8  ldp s8,s9,[x8, #0x18]
+0169f6ec  ldr s10,[x8, #0x20]
+0169f6f0  mov v0.16B,v8.16B
+0169f6f4  mov v1.16B,v9.16B
+0169f6f8  mov v2.16B,v10.16B
+0169f6fc  ldp x19,x30,[sp, #0x70]
+0169f700  ldp x21,x20,[sp, #0x60]
+0169f704  ldp x23,x22,[sp, #0x50]
+0169f708  ldp d9,d8,[sp, #0x40]
+0169f70c  ldp d11,d10,[sp, #0x30]
+0169f710  ldp d13,d12,[sp, #0x20]
+0169f714  ldp d15,d14,[sp, #0x10]
+0169f718  add sp,sp,#0x80
+0169f71c  ret
+0169f720  bl 0x00b079b8
+0169f724  bl 0x00b079b0

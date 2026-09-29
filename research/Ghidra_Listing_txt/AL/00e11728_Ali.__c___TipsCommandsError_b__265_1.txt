@@ -1,0 +1,32 @@
+Function: Ali.<>c$$<TipsCommandsError>b__265_1 @ 00e11728
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> SDKManager$$LogOut @ 00dec3fc
+
+--- Calls IN ---
+
+--- Listing ---
+00e11728  str x20,[sp, #-0x20]!
+00e1172c  stp x19,x30,[sp, #0x10]
+00e11730  adrp x19,0x3572000
+00e11734  adrp x20,0x334a000
+00e11738  ldrb w8,[x19, #0x5cf]
+00e1173c  ldr x20,[x20, #0x550]
+00e11740  tbnz w8,#0x0,0x00e11758
+00e11744  adrp x0,0x334a000
+00e11748  ldr x0,[x0, #0x550]
+00e1174c  bl 0x00b0789c
+00e11750  mov w8,#0x1
+00e11754  strb w8,[x19, #0x5cf]
+00e11758  ldr x0,[x20]
+00e1175c  bl 0x01e0894c
+00e11760  cbz x0,0x00e11778
+00e11764  ldp x19,x30,[sp, #0x10]
+00e11768  mov w1,wzr
+00e1176c  mov x2,xzr
+00e11770  ldr x20,[sp], #0x20
+00e11774  b 0x00dec3fc
+00e11778  bl 0x00b079b0

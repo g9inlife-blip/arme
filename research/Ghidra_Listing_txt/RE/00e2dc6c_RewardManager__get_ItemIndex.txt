@@ -1,0 +1,36 @@
+Function: RewardManager$$get_ItemIndex @ 00e2dc6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+  <- RewardManager$$ShowItem @ 00e2e2f4
+
+--- Listing ---
+00e2dc6c  stp x21,x20,[sp, #-0x20]!
+00e2dc70  stp x19,x30,[sp, #0x10]
+00e2dc74  adrp x20,0x3572000
+00e2dc78  adrp x21,0x331f000
+00e2dc7c  ldrb w8,[x20, #0x74c]
+00e2dc80  ldr x21,[x21, #0x418]
+00e2dc84  mov x19,x0
+00e2dc88  tbnz w8,#0x0,0x00e2dca0
+00e2dc8c  adrp x0,0x331f000
+00e2dc90  ldr x0,[x0, #0x418]
+00e2dc94  bl 0x00b0789c
+00e2dc98  mov w8,#0x1
+00e2dc9c  strb w8,[x20, #0x74c]
+00e2dca0  ldr x8,[x21]
+00e2dca4  ldr x8,[x8, #0xb8]
+00e2dca8  ldr x0,[x8, #0x50]
+00e2dcac  cbz x0,0x00e2dcc4
+00e2dcb0  mov x1,x19
+00e2dcb4  ldp x19,x30,[sp, #0x10]
+00e2dcb8  mov x2,xzr
+00e2dcbc  ldp x21,x20,[sp], #0x20
+00e2dcc0  b 0x01060c2c
+00e2dcc4  ldr w0,[x19, #0x58]
+00e2dcc8  ldp x19,x30,[sp, #0x10]
+00e2dccc  ldp x21,x20,[sp], #0x20
+00e2dcd0  ret

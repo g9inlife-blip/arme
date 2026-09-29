@@ -1,0 +1,40 @@
+Function: AliothEngine.WeakEvents.WeakEvent$$op_Addition @ 0169730c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.WeakEvents.WeakEvent$$.ctor @ 0169737c
+  -> AliothEngine.WeakEvents.WeakEvent$$Add @ 0169749c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169730c  stp x21,x20,[sp, #-0x20]!
+01697310  stp x19,x30,[sp, #0x10]
+01697314  adrp x21,0x3577000
+01697318  ldrb w8,[x21, #0xb0f]
+0169731c  mov x19,x1
+01697320  mov x20,x0
+01697324  tbnz w8,#0x0,0x0169733c
+01697328  adrp x0,0x3344000
+0169732c  ldr x0,[x0, #0xe80]
+01697330  bl 0x00b0789c
+01697334  mov w8,#0x1
+01697338  strb w8,[x21, #0xb0f]
+0169733c  cbnz x20,0x0169735c
+01697340  adrp x8,0x3344000
+01697344  ldr x8,[x8, #0xe80]
+01697348  ldr x0,[x8]
+0169734c  bl 0x00b079a0
+01697350  cbz x0,0x01697378
+01697354  mov x20,x0
+01697358  bl 0x0169737c
+0169735c  mov x0,x20
+01697360  mov x1,x19
+01697364  bl 0x0169749c
+01697368  ldp x19,x30,[sp, #0x10]
+0169736c  mov x0,x20
+01697370  ldp x21,x20,[sp], #0x20
+01697374  ret
+01697378  bl 0x00b079b0

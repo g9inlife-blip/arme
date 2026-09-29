@@ -1,0 +1,54 @@
+Function: AliothEngine.AssetHolder$$get_AssetName @ 0166264c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- RoleMono$$<PerLoadRes>b__119_0 @ 014ad6a8
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_g_get_AssetName @ 01139c7c
+  <- ResManager$$AssetRelease @ 00e2a998
+  <- Ali$$<AddChild>b__200_0 @ 00e10da0
+  <- AliothExtensions$$SpriteRendererComplete @ 00e15138
+  <- AliothEngine.AssetLoader$$Dump @ 0166c11c
+  <- AliothEngine.CacheAssetBundleHolder.<Load>d__4$$MoveNext @ 01664508
+  <- ResManager.<>c__DisplayClass21_0$$<LoadSingleExcel>b__0 @ 00e2c634
+  <- ResManager.<>c__DisplayClass29_0$$<AliothLoadExcel>b__0 @ 00e2d020
+  <- AssetCount$$UnLoadImage @ 00e19f58
+  <- GUIScreenBaseMono$$PreloadAssetsLoadEnd @ 00f22b94
+  <- AliothExtensions$$ImageComplete @ 00e15644
+  <- ResManager.<>c__DisplayClass30_0$$<AliothLoadRes>b__0 @ 00e2d48c
+  <- ResManager.<ReleaseConfirm>d__16$$MoveNext @ 00e2c2cc
+
+--- Listing ---
+0166264c  stp x21,x20,[sp, #-0x20]!
+01662650  stp x19,x30,[sp, #0x10]
+01662654  adrp x21,0x3577000
+01662658  adrp x20,0x3312000
+0166265c  ldrb w8,[x21, #0x8c8]
+01662660  ldr x20,[x20, #0x428]
+01662664  mov x19,x0
+01662668  tbnz w8,#0x0,0x01662680
+0166266c  adrp x0,0x3312000
+01662670  ldr x0,[x0, #0x428]
+01662674  bl 0x00b0789c
+01662678  mov w8,#0x1
+0166267c  strb w8,[x21, #0x8c8]
+01662680  ldr x0,[x20]
+01662684  ldr w8,[x0, #0xe0]
+01662688  cbnz w8,0x01662694
+0166268c  bl 0x00b0798c
+01662690  ldr x0,[x20]
+01662694  ldr x8,[x0, #0xb8]
+01662698  ldr x0,[x8, #0x50]
+0166269c  cbz x0,0x016626b4
+016626a0  mov x1,x19
+016626a4  ldp x19,x30,[sp, #0x10]
+016626a8  mov x2,xzr
+016626ac  ldp x21,x20,[sp], #0x20
+016626b0  b 0x01061abc
+016626b4  ldr x0,[x19, #0x38]
+016626b8  ldp x19,x30,[sp, #0x10]
+016626bc  ldp x21,x20,[sp], #0x20
+016626c0  ret

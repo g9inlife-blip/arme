@@ -1,0 +1,34 @@
+Function: AliothEngine.StaticCoroutine$$_DoStopCoroutine @ 0168ba5c
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StopCoroutine @ 024e42ec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.StaticCoroutine$$DoStopCoroutine @ 0168ba08
+
+--- Listing ---
+0168ba5c  stp x21,x20,[sp, #-0x20]!
+0168ba60  stp x19,x30,[sp, #0x10]
+0168ba64  adrp x20,0x3577000
+0168ba68  adrp x21,0x332b000
+0168ba6c  ldrb w8,[x20, #0xaa6]
+0168ba70  ldr x21,[x21, #0x100]
+0168ba74  mov x19,x1
+0168ba78  tbnz w8,#0x0,0x0168ba90
+0168ba7c  adrp x0,0x332b000
+0168ba80  ldr x0,[x0, #0x100]
+0168ba84  bl 0x00b0789c
+0168ba88  mov w8,#0x1
+0168ba8c  strb w8,[x20, #0xaa6]
+0168ba90  ldr x0,[x21]
+0168ba94  bl 0x01e0894c
+0168ba98  cbz x0,0x0168bab0
+0168ba9c  mov x1,x19
+0168baa0  ldp x19,x30,[sp, #0x10]
+0168baa4  mov x2,xzr
+0168baa8  ldp x21,x20,[sp], #0x20
+0168baac  b 0x024e42ec
+0168bab0  bl 0x00b079b0

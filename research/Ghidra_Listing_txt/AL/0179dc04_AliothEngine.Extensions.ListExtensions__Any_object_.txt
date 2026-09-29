@@ -1,0 +1,53 @@
+Function: AliothEngine.Extensions.ListExtensions$$Any<object> @ 0179dc04
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0179dc04  str x22,[sp, #-0x30]!
+0179dc08  stp x21,x20,[sp, #0x10]
+0179dc0c  stp x19,x30,[sp, #0x20]
+0179dc10  cbz x1,0x0179dc98
+0179dc14  mov x21,x0
+0179dc18  cbz x0,0x0179dcb4
+0179dc1c  ldr x8,[x2, #0x38]
+0179dc20  mov x20,x1
+0179dc24  mov x0,x21
+0179dc28  mov x19,x2
+0179dc2c  ldr x1,[x8, #0x20]
+0179dc30  ldr x8,[x1, #0x8]
+0179dc34  blr x8
+0179dc38  cmp w0,#0x1
+0179dc3c  b.lt 0x0179dc98
+0179dc40  mov w22,wzr
+0179dc44  ldr x8,[x19, #0x38]
+0179dc48  mov x0,x21
+0179dc4c  mov w1,w22
+0179dc50  ldr x2,[x8, #0x8]
+0179dc54  ldr x8,[x2, #0x8]
+0179dc58  blr x8
+0179dc5c  ldr x8,[x19, #0x38]
+0179dc60  mov x1,x0
+0179dc64  mov x0,x20
+0179dc68  ldr x2,[x8, #0x18]
+0179dc6c  ldr x8,[x2, #0x8]
+0179dc70  blr x8
+0179dc74  tbnz w0,#0x0,0x0179dcac
+0179dc78  ldr x8,[x19, #0x38]
+0179dc7c  mov x0,x21
+0179dc80  add w22,w22,#0x1
+0179dc84  ldr x1,[x8, #0x20]
+0179dc88  ldr x8,[x1, #0x8]
+0179dc8c  blr x8
+0179dc90  cmp w22,w0
+0179dc94  b.lt 0x0179dc44
+0179dc98  mov w0,wzr
+0179dc9c  ldp x19,x30,[sp, #0x20]
+0179dca0  ldp x21,x20,[sp, #0x10]
+0179dca4  ldr x22,[sp], #0x30
+0179dca8  ret
+0179dcac  mov w0,#0x1
+0179dcb0  b 0x0179dc9c
+0179dcb4  bl 0x00b079b0

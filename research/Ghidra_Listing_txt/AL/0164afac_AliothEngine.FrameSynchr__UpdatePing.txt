@@ -1,0 +1,56 @@
+Function: AliothEngine.FrameSynchr$$UpdatePing @ 0164afac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Time$$get_realtimeSinceStartup @ 024dc3a8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Ping$$get_isDone @ 024c41f8
+
+--- Calls IN ---
+  <- AliothEngine.FrameSynchr$$UpdateFrame @ 0164af78
+
+--- Listing ---
+0164afac  str x20,[sp, #-0x20]!
+0164afb0  stp x19,x30,[sp, #0x10]
+0164afb4  adrp x20,0x3577000
+0164afb8  adrp x19,0x3370000
+0164afbc  ldrb w8,[x20, #0x7b0]
+0164afc0  ldr x19,[x19, #0x40]
+0164afc4  tbnz w8,#0x0,0x0164afdc
+0164afc8  adrp x0,0x3370000
+0164afcc  ldr x0,[x0, #0x40]
+0164afd0  bl 0x00b0789c
+0164afd4  mov w8,#0x1
+0164afd8  strb w8,[x20, #0x7b0]
+0164afdc  ldr x0,[x19]
+0164afe0  bl 0x01e09a6c
+0164afe4  cbz x0,0x0164b050
+0164afe8  ldr x8,[x0, #0xd8]
+0164afec  cbz x8,0x0164b044
+0164aff0  ldr x0,[x19]
+0164aff4  bl 0x01e09a6c
+0164aff8  cbz x0,0x0164b050
+0164affc  ldr x0,[x0, #0xd8]
+0164b000  cbz x0,0x0164b050
+0164b004  mov x1,xzr
+0164b008  bl 0x024c41f8
+0164b00c  tbz w0,#0x0,0x0164b044
+0164b010  mov x0,xzr
+0164b014  bl 0x024dc3a8
+0164b018  ldr x0,[x19]
+0164b01c  bl 0x01e09a6c
+0164b020  cbz x0,0x0164b050
+0164b024  ldr x0,[x19]
+0164b028  bl 0x01e09a6c
+0164b02c  cbz x0,0x0164b050
+0164b030  str xzr,[x0, #0xd8]!
+0164b034  ldp x19,x30,[sp, #0x10]
+0164b038  mov x1,xzr
+0164b03c  ldr x20,[sp], #0x20
+0164b040  b 0x00b07850
+0164b044  ldp x19,x30,[sp, #0x10]
+0164b048  ldr x20,[sp], #0x20
+0164b04c  ret
+0164b050  bl 0x00b079b0

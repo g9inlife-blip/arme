@@ -1,0 +1,43 @@
+Function: Ali$$Show_QA_EN @ 00e10a50
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> WebViewUIShow$$ShowYattaQAWeb @ 010523a8
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- SysSettingPanelMono$$OnClickType2 @ 00f7835c
+  <- XLua.CSObjectWrap.AliWrap$$_m_Show_QA_EN @ 0119d4bc
+
+--- Listing ---
+00e10a50  stp x21,x20,[sp, #-0x20]!
+00e10a54  stp x19,x30,[sp, #0x10]
+00e10a58  adrp x21,0x3572000
+00e10a5c  adrp x20,0x335f000
+00e10a60  ldrb w8,[x21, #0x5c0]
+00e10a64  ldr x20,[x20, #0x20]
+00e10a68  mov x19,x0
+00e10a6c  tbnz w8,#0x0,0x00e10a84
+00e10a70  adrp x0,0x335f000
+00e10a74  ldr x0,[x0, #0x20]
+00e10a78  bl 0x00b0789c
+00e10a7c  mov w8,#0x1
+00e10a80  strb w8,[x21, #0x5c0]
+00e10a84  ldr x0,[x20]
+00e10a88  ldr w8,[x0, #0xe0]
+00e10a8c  cbnz w8,0x00e10a98
+00e10a90  bl 0x00b0798c
+00e10a94  ldr x0,[x20]
+00e10a98  ldr x8,[x0, #0xb8]
+00e10a9c  ldr x0,[x8, #0x5a8]
+00e10aa0  cbz x0,0x00e10ab8
+00e10aa4  mov x1,x19
+00e10aa8  ldp x19,x30,[sp, #0x10]
+00e10aac  mov x2,xzr
+00e10ab0  ldp x21,x20,[sp], #0x20
+00e10ab4  b 0x01060dac
+00e10ab8  ldp x19,x30,[sp, #0x10]
+00e10abc  mov x1,xzr
+00e10ac0  ldp x21,x20,[sp], #0x20
+00e10ac4  b 0x010523a8

@@ -1,0 +1,62 @@
+Function: AliothEngine.DataStructures.MaxStack<object>$$Peek @ 01d0f368
+
+--- Calls OUT ---
+  -> System.InvalidOperationException$$.ctor @ 02150474
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$PeekLastPushScreen @ 01677864
+
+--- Listing ---
+01d0f368  str x20,[sp, #-0x20]!
+01d0f36c  stp x19,x30,[sp, #0x10]
+01d0f370  mov x20,x0
+01d0f374  ldr x0,[x0, #0x18]
+01d0f378  cbz x0,0x01d0f3d8
+01d0f37c  ldr x8,[x1, #0x20]
+01d0f380  mov x19,x1
+01d0f384  ldr x8,[x8, #0xc0]
+01d0f388  ldr x1,[x8, #0x10]
+01d0f38c  ldr x8,[x1, #0x8]
+01d0f390  blr x8
+01d0f394  cmp w0,#0x1
+01d0f398  b.lt 0x01d0f3dc
+01d0f39c  ldr x0,[x20, #0x18]
+01d0f3a0  cbz x0,0x01d0f3d8
+01d0f3a4  ldr x8,[x19, #0x20]
+01d0f3a8  ldr x8,[x8, #0xc0]
+01d0f3ac  ldr x1,[x8, #0x28]
+01d0f3b0  ldr x8,[x1, #0x8]
+01d0f3b4  blr x8
+01d0f3b8  cbz x0,0x01d0f3d8
+01d0f3bc  ldr x8,[x19, #0x20]
+01d0f3c0  ldp x19,x30,[sp, #0x10]
+01d0f3c4  ldr x8,[x8, #0xc0]
+01d0f3c8  ldr x1,[x8, #0x38]
+01d0f3cc  ldr x2,[x1, #0x8]
+01d0f3d0  ldr x20,[sp], #0x20
+01d0f3d4  br x2
+01d0f3d8  bl 0x00b079b0
+01d0f3dc  adrp x0,0x331f000
+01d0f3e0  ldr x0,[x0, #0x10]
+01d0f3e4  bl 0x00b078a0
+01d0f3e8  bl 0x00b079a0
+01d0f3ec  mov x19,x0
+01d0f3f0  bl 0x008d74f8
+01d0f3f4  adrp x0,0x3321000
+01d0f3f8  ldr x0,[x0, #0x5a8]
+01d0f3fc  bl 0x00b078a0
+01d0f400  mov x1,x0
+01d0f404  mov x0,x19
+01d0f408  mov x2,xzr
+01d0f40c  bl 0x02150474
+01d0f410  adrp x0,0x332c000
+01d0f414  ldr x0,[x0, #0xab8]
+01d0f418  bl 0x00b078a0
+01d0f41c  mov x1,x0
+01d0f420  mov x0,x19
+01d0f424  bl 0x00b07978

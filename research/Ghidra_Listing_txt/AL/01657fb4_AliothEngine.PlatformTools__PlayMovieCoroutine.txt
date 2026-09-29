@@ -1,0 +1,36 @@
+Function: AliothEngine.PlatformTools$$PlayMovieCoroutine @ 01657fb4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.PlatformTools$$PlayMovie @ 01657f44
+
+--- Listing ---
+01657fb4  str x20,[sp, #-0x20]!
+01657fb8  stp x19,x30,[sp, #0x10]
+01657fbc  adrp x19,0x3577000
+01657fc0  adrp x20,0x3354000
+01657fc4  ldrb w8,[x19, #0x82b]
+01657fc8  ldr x20,[x20, #0x848]
+01657fcc  tbnz w8,#0x0,0x01657fe4
+01657fd0  adrp x0,0x3354000
+01657fd4  ldr x0,[x0, #0x848]
+01657fd8  bl 0x00b0789c
+01657fdc  mov w8,#0x1
+01657fe0  strb w8,[x19, #0x82b]
+01657fe4  ldr x0,[x20]
+01657fe8  bl 0x00b079a0
+01657fec  cbz x0,0x01658010
+01657ff0  mov x1,xzr
+01657ff4  mov x19,x0
+01657ff8  bl 0x02194104
+01657ffc  str wzr,[x19, #0x10]
+01658000  mov x0,x19
+01658004  ldp x19,x30,[sp, #0x10]
+01658008  ldr x20,[sp], #0x20
+0165800c  ret
+01658010  bl 0x00b079b0

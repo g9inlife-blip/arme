@@ -1,0 +1,60 @@
+Function: AliothExtensions$$GetScaleOrthographicSize @ 00e175a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp32 @ 01063698
+  -> UnityEngine.Screen$$get_height @ 024d2684
+
+--- Calls IN ---
+  <- AliothEngine.ScaleCamera$$SetCameraSize @ 0168b734
+  <- ReadyMono$$InitReady @ 00e5dec0
+  <- ExploreMainPanelMono$$InitBackGround @ 00ef7ba0
+
+--- Listing ---
+00e175a4  stp x21,x20,[sp, #-0x20]!
+00e175a8  stp x19,x30,[sp, #0x10]
+00e175ac  adrp x21,0x3572000
+00e175b0  adrp x20,0x3348000
+00e175b4  ldrb w8,[x21, #0x60a]
+00e175b8  ldr x20,[x20, #0x138]
+00e175bc  mov x19,x0
+00e175c0  tbnz w8,#0x0,0x00e175d8
+00e175c4  adrp x0,0x3348000
+00e175c8  ldr x0,[x0, #0x138]
+00e175cc  bl 0x00b0789c
+00e175d0  mov w8,#0x1
+00e175d4  strb w8,[x21, #0x60a]
+00e175d8  ldr x0,[x20]
+00e175dc  ldr w8,[x0, #0xe0]
+00e175e0  cbnz w8,0x00e175ec
+00e175e4  bl 0x00b0798c
+00e175e8  ldr x0,[x20]
+00e175ec  ldr x8,[x0, #0xb8]
+00e175f0  ldr x0,[x8, #0x1b0]
+00e175f4  cbz x0,0x00e1760c
+00e175f8  mov x1,x19
+00e175fc  ldp x19,x30,[sp, #0x10]
+00e17600  mov x2,xzr
+00e17604  ldp x21,x20,[sp], #0x20
+00e17608  b 0x01063698
+00e1760c  bl 0x024d265c
+00e17610  mov w19,w0
+00e17614  mov x0,xzr
+00e17618  bl 0x024d2684
+00e1761c  adrp x8,0x26db000
+00e17620  ldr s0,[x8, #0xc58]
+00e17624  scvtf s1,w19
+00e17628  scvtf s2,w0
+00e1762c  fdiv s1,s1,s2
+00e17630  fcmp s1,s0
+00e17634  b.gt 0x00e17648
+00e17638  fdiv s0,s0,s1
+00e1763c  fmov s1,0x40700000
+00e17640  fmul s0,s0,s1
+00e17644  b 0x00e1764c
+00e17648  fmov s0,0x40700000
+00e1764c  ldp x19,x30,[sp, #0x10]
+00e17650  ldp x21,x20,[sp], #0x20
+00e17654  ret

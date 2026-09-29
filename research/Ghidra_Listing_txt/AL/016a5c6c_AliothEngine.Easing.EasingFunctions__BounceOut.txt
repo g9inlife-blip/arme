@@ -1,0 +1,69 @@
+Function: AliothEngine.Easing.EasingFunctions$$BounceOut @ 016a5c6c
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- AliothEngine.Easing.EasingFunctions$$BounceInOut @ 016a5d5c
+  <- AliothEngine.Easing.EasingFunctions$$BounceIn @ 016a5c10
+
+--- Listing ---
+016a5c6c  fcmp s2,#0.0
+016a5c70  fmov s3,wzr
+016a5c74  b.mi 0x016a5c8c
+016a5c78  fmov s4,0x3f800000
+016a5c7c  fcmp s2,s4
+016a5c80  mov v3.16B,v2.16B
+016a5c84  b.le 0x016a5c8c
+016a5c88  mov v3.16B,v4.16B
+016a5c8c  adrp x8,0x26db000
+016a5c90  ldr s4,[x8, #0x540]
+016a5c94  fabd s2,s0,s1
+016a5c98  fneg s5,s2
+016a5c9c  fcmp s0,s1
+016a5ca0  fcsel s1,s5,s2,gt
+016a5ca4  fcmp s3,s4
+016a5ca8  b.pl 0x016a5cc0
+016a5cac  mov w8,#0x40f20000
+016a5cb0  fmov s2,w8
+016a5cb4  fmul s2,s3,s2
+016a5cb8  fmul s2,s3,s2
+016a5cbc  b 0x016a5d50
+016a5cc0  adrp x8,0x26db000
+016a5cc4  ldr s2,[x8, #0x544]
+016a5cc8  fcmp s3,s2
+016a5ccc  b.pl 0x016a5cf4
+016a5cd0  adrp x8,0x26db000
+016a5cd4  ldr s2,[x8, #0x550]
+016a5cd8  mov w8,#0x40f20000
+016a5cdc  fmov s4,w8
+016a5ce0  fadd s2,s3,s2
+016a5ce4  fmul s3,s2,s4
+016a5ce8  fmul s2,s2,s3
+016a5cec  fmov s3,0x3f400000
+016a5cf0  b 0x016a5d4c
+016a5cf4  adrp x8,0x26dc000
+016a5cf8  ldr s2,[x8, #0xc00]
+016a5cfc  fcmp s3,s2
+016a5d00  b.pl 0x016a5d28
+016a5d04  adrp x8,0x26db000
+016a5d08  ldr s2,[x8, #0x54c]
+016a5d0c  mov w8,#0x40f20000
+016a5d10  fmov s4,w8
+016a5d14  fadd s2,s3,s2
+016a5d18  fmul s3,s2,s4
+016a5d1c  fmul s2,s2,s3
+016a5d20  fmov s3,0x3f700000
+016a5d24  b 0x016a5d4c
+016a5d28  adrp x8,0x26db000
+016a5d2c  ldr s2,[x8, #0x548]
+016a5d30  mov w8,#0x40f20000
+016a5d34  fmov s4,w8
+016a5d38  mov w8,#0x3f7c0000
+016a5d3c  fadd s2,s3,s2
+016a5d40  fmul s3,s2,s4
+016a5d44  fmul s2,s2,s3
+016a5d48  fmov s3,w8
+016a5d4c  fadd s2,s2,s3
+016a5d50  fmul s1,s1,s2
+016a5d54  fadd s0,s1,s0
+016a5d58  ret

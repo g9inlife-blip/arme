@@ -1,0 +1,170 @@
+Function: CryptoPrefs$$Encrypt @ 00dc6030
+
+--- Calls OUT ---
+  -> System.Security.Cryptography.CryptoStream$$.ctor @ 02005eb4
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Convert$$FromBase64String @ 020e4acc
+  -> System.Security.Cryptography.RijndaelManaged$$.ctor @ 0200fef4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.IO.MemoryStream$$.ctor @ 020a3bd8
+  -> System.Convert$$ToBase64String @ 020e3f88
+  -> System.Text.Encoding$$get_UTF8 @ 01ff8ca0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Security.Cryptography.CryptoStream$$FlushFinalBlock @ 02006338
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- CryptoPrefs$$SetInt @ 00dc5e68
+  <- CryptoPrefs$$SetString @ 00dc650c
+  <- CryptoPrefs$$SetFloat @ 00dc63ec
+
+--- Listing ---
+00dc6030  str x24,[sp, #-0x40]!
+00dc6034  stp x23,x22,[sp, #0x10]
+00dc6038  stp x21,x20,[sp, #0x20]
+00dc603c  stp x19,x30,[sp, #0x30]
+00dc6040  adrp x20,0x3572000
+00dc6044  adrp x21,0x336a000
+00dc6048  ldrb w8,[x20, #0x1b8]
+00dc604c  ldr x21,[x21, #0xfc0]
+00dc6050  mov x19,x0
+00dc6054  tbnz w8,#0x0,0x00dc609c
+00dc6058  adrp x0,0x3362000
+00dc605c  ldr x0,[x0, #0xe28]
+00dc6060  bl 0x00b0789c
+00dc6064  adrp x0,0x3341000
+00dc6068  ldr x0,[x0, #0x490]
+00dc606c  bl 0x00b0789c
+00dc6070  adrp x0,0x3322000
+00dc6074  ldr x0,[x0, #0x688]
+00dc6078  bl 0x00b0789c
+00dc607c  adrp x0,0x3368000
+00dc6080  ldr x0,[x0, #0xf58]
+00dc6084  bl 0x00b0789c
+00dc6088  adrp x0,0x336a000
+00dc608c  ldr x0,[x0, #0xfc0]
+00dc6090  bl 0x00b0789c
+00dc6094  mov w8,#0x1
+00dc6098  strb w8,[x20, #0x1b8]
+00dc609c  ldr x0,[x21]
+00dc60a0  bl 0x00b079a0
+00dc60a4  cbz x0,0x00dc6280
+00dc60a8  adrp x22,0x3341000
+00dc60ac  ldr x22,[x22, #0x490]
+00dc60b0  mov x1,xzr
+00dc60b4  mov x20,x0
+00dc60b8  bl 0x0200fef4
+00dc60bc  ldr x8,[x20]
+00dc60c0  mov w1,#0x3
+00dc60c4  mov x0,x20
+00dc60c8  ldr x9,[x8, #0x268]
+00dc60cc  ldr x2,[x8, #0x270]
+00dc60d0  blr x9
+00dc60d4  ldr x8,[x20]
+00dc60d8  mov w1,#0x1
+00dc60dc  mov x0,x20
+00dc60e0  ldr x9,[x8, #0x248]
+00dc60e4  ldr x2,[x8, #0x250]
+00dc60e8  blr x9
+00dc60ec  ldr x8,[x20]
+00dc60f0  mov w1,#0x80
+00dc60f4  mov x0,x20
+00dc60f8  ldr x9,[x8, #0x228]
+00dc60fc  ldr x2,[x8, #0x230]
+00dc6100  blr x9
+00dc6104  ldr x8,[x20]
+00dc6108  mov w1,#0x80
+00dc610c  mov x0,x20
+00dc6110  ldp x9,x2,[x8, #0x1a8]
+00dc6114  blr x9
+00dc6118  mov x0,xzr
+00dc611c  bl 0x01ff8ca0
+00dc6120  ldr x8,[x22]
+00dc6124  mov x21,x0
+00dc6128  ldr w9,[x8, #0xe0]
+00dc612c  cbnz w9,0x00dc6138
+00dc6130  mov x0,x8
+00dc6134  bl 0x00b0798c
+00dc6138  cbz x21,0x00dc6280
+00dc613c  ldr x8,[x22]
+00dc6140  ldr x9,[x21]
+00dc6144  adrp x24,0x3362000
+00dc6148  adrp x23,0x3368000
+00dc614c  ldr x8,[x8, #0xb8]
+00dc6150  ldr x10,[x9, #0x268]
+00dc6154  ldr x2,[x9, #0x270]
+00dc6158  mov x0,x21
+00dc615c  ldr x1,[x8]
+00dc6160  ldr x24,[x24, #0xe28]
+00dc6164  ldr x23,[x23, #0xf58]
+00dc6168  blr x10
+00dc616c  ldr x9,[x22]
+00dc6170  ldr x8,[x24]
+00dc6174  mov x21,x0
+00dc6178  ldr x9,[x9, #0xb8]
+00dc617c  ldr w10,[x8, #0xe0]
+00dc6180  ldr x22,[x9, #0x8]
+00dc6184  cbnz w10,0x00dc6190
+00dc6188  mov x0,x8
+00dc618c  bl 0x00b0798c
+00dc6190  mov x0,x22
+00dc6194  mov x1,xzr
+00dc6198  bl 0x020e4acc
+00dc619c  ldr x8,[x20]
+00dc61a0  mov x2,x0
+00dc61a4  mov x0,x20
+00dc61a8  mov x1,x21
+00dc61ac  ldr x9,[x8, #0x288]
+00dc61b0  ldr x3,[x8, #0x290]
+00dc61b4  blr x9
+00dc61b8  ldr x8,[x23]
+00dc61bc  mov x22,x0
+00dc61c0  mov x0,x8
+00dc61c4  bl 0x00b079a0
+00dc61c8  cbz x0,0x00dc6280
+00dc61cc  adrp x21,0x3322000
+00dc61d0  ldr x21,[x21, #0x688]
+00dc61d4  mov x1,xzr
+00dc61d8  mov x20,x0
+00dc61dc  bl 0x020a3bd8
+00dc61e0  ldr x0,[x21]
+00dc61e4  bl 0x00b079a0
+00dc61e8  cbz x0,0x00dc6280
+00dc61ec  mov w3,#0x1
+00dc61f0  mov x1,x20
+00dc61f4  mov x2,x22
+00dc61f8  mov x4,xzr
+00dc61fc  mov x21,x0
+00dc6200  bl 0x02005eb4
+00dc6204  mov x0,xzr
+00dc6208  bl 0x01ff8ca0
+00dc620c  cbz x0,0x00dc6280
+00dc6210  ldr x8,[x0]
+00dc6214  mov x1,x19
+00dc6218  ldr x9,[x8, #0x268]
+00dc621c  ldr x2,[x8, #0x270]
+00dc6220  blr x9
+00dc6224  cbz x0,0x00dc6280
+00dc6228  ldr x8,[x21]
+00dc622c  ldr w3,[x0, #0x18]
+00dc6230  mov x1,x0
+00dc6234  mov x0,x21
+00dc6238  ldr x9,[x8, #0x368]
+00dc623c  ldr x4,[x8, #0x370]
+00dc6240  mov w2,wzr
+00dc6244  blr x9
+00dc6248  mov x0,x21
+00dc624c  mov x1,xzr
+00dc6250  bl 0x02006338
+00dc6254  ldr x8,[x20]
+00dc6258  mov x0,x20
+00dc625c  ldr x9,[x8, #0x3c8]
+00dc6260  ldr x1,[x8, #0x3d0]
+00dc6264  blr x9
+00dc6268  ldp x19,x30,[sp, #0x30]
+00dc626c  ldp x21,x20,[sp, #0x20]
+00dc6270  ldp x23,x22,[sp, #0x10]
+00dc6274  mov x1,xzr
+00dc6278  ldr x24,[sp], #0x40
+00dc627c  b 0x020e3f88
+00dc6280  bl 0x00b079b0

@@ -1,0 +1,34 @@
+Function: AliothEngine.StoreManager_ChinaPay$$get_IsRestoreTransactionsSupported @ 0165b3fc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+
+--- Listing ---
+0165b3fc  stp x21,x20,[sp, #-0x20]!
+0165b400  stp x19,x30,[sp, #0x10]
+0165b404  adrp x20,0x3577000
+0165b408  adrp x21,0x333d000
+0165b40c  ldrb w8,[x20, #0x86b]
+0165b410  ldr x21,[x21, #0xe50]
+0165b414  mov x19,x0
+0165b418  tbnz w8,#0x0,0x0165b430
+0165b41c  adrp x0,0x333d000
+0165b420  ldr x0,[x0, #0xe50]
+0165b424  bl 0x00b0789c
+0165b428  mov w8,#0x1
+0165b42c  strb w8,[x20, #0x86b]
+0165b430  ldr x8,[x21]
+0165b434  ldr x8,[x8, #0xb8]
+0165b438  ldr x0,[x8, #0x18]
+0165b43c  cbz x0,0x0165b454
+0165b440  mov x1,x19
+0165b444  ldp x19,x30,[sp, #0x10]
+0165b448  mov x2,xzr
+0165b44c  ldp x21,x20,[sp], #0x20
+0165b450  b 0x01060aac
+0165b454  ldp x19,x30,[sp, #0x10]
+0165b458  ldp x21,x20,[sp], #0x20
+0165b45c  ret

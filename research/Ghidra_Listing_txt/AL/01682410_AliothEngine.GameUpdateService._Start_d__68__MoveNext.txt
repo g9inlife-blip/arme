@@ -1,0 +1,96 @@
+Function: AliothEngine.GameUpdateService.<Start>d__68$$MoveNext @ 01682410
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.GameUpdateService$$set_UpdateStepDescription @ 0167d434
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AliothEngineInitialize$$get_isReady @ 01649884
+  -> AliothEngine.GameUpdateService$$SetupAsync @ 0167dbbc
+
+--- Calls IN ---
+
+--- Listing ---
+01682410  str x20,[sp, #-0x20]!
+01682414  stp x19,x30,[sp, #0x10]
+01682418  adrp x20,0x3577000
+0168241c  ldrb w8,[x20, #0xa55]
+01682420  mov x19,x0
+01682424  tbnz w8,#0x0,0x01682454
+01682428  adrp x0,0x3351000
+0168242c  ldr x0,[x0, #0x1d0]
+01682430  bl 0x00b0789c
+01682434  adrp x0,0x335a000
+01682438  ldr x0,[x0, #0x320]
+0168243c  bl 0x00b0789c
+01682440  adrp x0,0x336d000
+01682444  ldr x0,[x0, #0x1f8]
+01682448  bl 0x00b0789c
+0168244c  mov w8,#0x1
+01682450  strb w8,[x20, #0xa55]
+01682454  ldr w8,[x19, #0x10]
+01682458  ldr x20,[x19, #0x20]
+0168245c  cmp w8,#0x2
+01682460  b.eq 0x016824f8
+01682464  cmp w8,#0x1
+01682468  b.eq 0x01682494
+0168246c  cbnz w8,0x01682528
+01682470  mov w8,#0xffffffff
+01682474  str w8,[x19, #0x10]
+01682478  cbz x20,0x01682554
+0168247c  adrp x8,0x3351000
+01682480  ldr x8,[x8, #0x1d0]
+01682484  mov x0,x20
+01682488  ldr x1,[x8]
+0168248c  bl 0x0167d434
+01682490  b 0x0168249c
+01682494  mov w8,#0xffffffff
+01682498  str w8,[x19, #0x10]
+0168249c  mov x0,xzr
+016824a0  bl 0x01649884
+016824a4  tbz w0,#0x0,0x01682530
+016824a8  cbz x20,0x01682554
+016824ac  adrp x8,0x335a000
+016824b0  ldr x8,[x8, #0x320]
+016824b4  mov x0,x20
+016824b8  ldr x1,[x8]
+016824bc  bl 0x0167d434
+016824c0  mov x0,x20
+016824c4  bl 0x0167dbbc
+016824c8  mov x1,x0
+016824cc  mov x0,x20
+016824d0  mov x2,xzr
+016824d4  bl 0x024e4070
+016824d8  str x0,[x19, #0x18]!
+016824dc  mov x1,x0
+016824e0  mov x0,x19
+016824e4  bl 0x00b07850
+016824e8  mov w8,#0x2
+016824ec  stur w8,[x19, #-0x8]
+016824f0  mov w0,#0x1
+016824f4  b 0x01682548
+016824f8  mov w8,#0xffffffff
+016824fc  str w8,[x19, #0x10]
+01682500  cbz x20,0x01682554
+01682504  adrp x8,0x336d000
+01682508  ldr x8,[x8, #0x1f8]
+0168250c  mov x0,x20
+01682510  ldr x1,[x8]
+01682514  bl 0x0167d434
+01682518  mov w0,wzr
+0168251c  mov w8,#0x1
+01682520  strb w8,[x20, #0x19]
+01682524  b 0x01682548
+01682528  mov w0,wzr
+0168252c  b 0x01682548
+01682530  str xzr,[x19, #0x18]!
+01682534  mov x0,x19
+01682538  mov x1,xzr
+0168253c  bl 0x00b07850
+01682540  mov w0,#0x1
+01682544  stur w0,[x19, #-0x8]
+01682548  ldp x19,x30,[sp, #0x10]
+0168254c  ldr x20,[sp], #0x20
+01682550  ret
+01682554  bl 0x00b079b0

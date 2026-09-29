@@ -1,0 +1,74 @@
+Function: AliothEngine.GUIScreenManager$$ResourceLoadSync @ 01677c18
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp166 @ 01074a94
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$ResourceLoadSyncIE @ 01677b6c
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_ResourceLoadSync @ 0114b004
+
+--- Listing ---
+01677c18  stp x23,x22,[sp, #-0x30]!
+01677c1c  stp x21,x20,[sp, #0x10]
+01677c20  stp x19,x30,[sp, #0x20]
+01677c24  adrp x23,0x3577000
+01677c28  adrp x22,0x337b000
+01677c2c  ldrb w8,[x23, #0x9d3]
+01677c30  ldr x22,[x22, #0xb98]
+01677c34  mov x19,x2
+01677c38  mov x20,x1
+01677c3c  mov x21,x0
+01677c40  tbnz w8,#0x0,0x01677c64
+01677c44  adrp x0,0x337b000
+01677c48  ldr x0,[x0, #0xb98]
+01677c4c  bl 0x00b0789c
+01677c50  adrp x0,0x3359000
+01677c54  ldr x0,[x0, #0x898]
+01677c58  bl 0x00b0789c
+01677c5c  mov w8,#0x1
+01677c60  strb w8,[x23, #0x9d3]
+01677c64  ldr x0,[x22]
+01677c68  ldr w8,[x0, #0xe0]
+01677c6c  cbnz w8,0x01677c78
+01677c70  bl 0x00b0798c
+01677c74  ldr x0,[x22]
+01677c78  ldr x8,[x0, #0xb8]
+01677c7c  ldr x0,[x8, #0x1b0]
+01677c80  cbz x0,0x01677ca4
+01677c84  mov x1,x21
+01677c88  mov x2,x20
+01677c8c  mov x3,x19
+01677c90  ldp x19,x30,[sp, #0x20]
+01677c94  ldp x21,x20,[sp, #0x10]
+01677c98  mov x4,xzr
+01677c9c  ldp x23,x22,[sp], #0x30
+01677ca0  b 0x01074a94
+01677ca4  adrp x8,0x3359000
+01677ca8  ldr x8,[x8, #0x898]
+01677cac  ldr x0,[x8]
+01677cb0  bl 0x00b079a0
+01677cb4  cbz x0,0x01677cfc
+01677cb8  mov x1,xzr
+01677cbc  mov x21,x0
+01677cc0  bl 0x02194104
+01677cc4  mov x0,x21
+01677cc8  str wzr,[x21, #0x10]
+01677ccc  str x20,[x0, #0x20]!
+01677cd0  mov x1,x20
+01677cd4  bl 0x00b07850
+01677cd8  mov x0,x21
+01677cdc  str x19,[x0, #0x28]!
+01677ce0  mov x1,x19
+01677ce4  bl 0x00b07850
+01677ce8  mov x0,x21
+01677cec  ldp x19,x30,[sp, #0x20]
+01677cf0  ldp x21,x20,[sp, #0x10]
+01677cf4  ldp x23,x22,[sp], #0x30
+01677cf8  ret
+01677cfc  bl 0x00b079b0

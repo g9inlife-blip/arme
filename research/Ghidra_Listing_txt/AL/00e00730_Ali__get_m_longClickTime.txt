@@ -1,0 +1,45 @@
+Function: Ali$$get_m_longClickTime @ 00e00730
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp32 @ 01063698
+
+--- Calls IN ---
+  <- UIEventListener.<TimeStart>d__26$$MoveNext @ 00e35e70
+  <- UIEventListener$$OnPointerClick @ 00e34c48
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_m_longClickTime @ 0119de10
+  <- UIEventListener$$OnPointerUp @ 00e35674
+  <- TerrainEvent.<LongClickTerrain>d__32$$MoveNext @ 016c7cd4
+
+--- Listing ---
+00e00730  stp x21,x20,[sp, #-0x20]!
+00e00734  stp x19,x30,[sp, #0x10]
+00e00738  adrp x21,0x3572000
+00e0073c  adrp x20,0x335f000
+00e00740  ldrb w8,[x21, #0x51d]
+00e00744  ldr x20,[x20, #0x20]
+00e00748  mov x19,x0
+00e0074c  tbnz w8,#0x0,0x00e00764
+00e00750  adrp x0,0x335f000
+00e00754  ldr x0,[x0, #0x20]
+00e00758  bl 0x00b0789c
+00e0075c  mov w8,#0x1
+00e00760  strb w8,[x21, #0x51d]
+00e00764  ldr x0,[x20]
+00e00768  ldr w8,[x0, #0xe0]
+00e0076c  cbnz w8,0x00e00778
+00e00770  bl 0x00b0798c
+00e00774  ldr x0,[x20]
+00e00778  ldr x8,[x0, #0xb8]
+00e0077c  ldr x0,[x8, #0x80]
+00e00780  cbz x0,0x00e00798
+00e00784  mov x1,x19
+00e00788  ldp x19,x30,[sp, #0x10]
+00e0078c  mov x2,xzr
+00e00790  ldp x21,x20,[sp], #0x20
+00e00794  b 0x01063698
+00e00798  ldr s0,[x19, #0x2c]
+00e0079c  ldp x19,x30,[sp, #0x10]
+00e007a0  ldp x21,x20,[sp], #0x20
+00e007a4  ret

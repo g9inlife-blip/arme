@@ -1,0 +1,77 @@
+Function: AliothEngine.Pool.ObjectPool<object>$$Release @ 01d54194
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01d54194  str x22,[sp, #-0x30]!
+01d54198  stp x21,x20,[sp, #0x10]
+01d5419c  stp x19,x30,[sp, #0x20]
+01d541a0  adrp x22,0x3578000
+01d541a4  ldrb w8,[x22, #0xcc6]
+01d541a8  mov x20,x2
+01d541ac  mov x19,x1
+01d541b0  mov x21,x0
+01d541b4  tbnz w8,#0x0,0x01d541d8
+01d541b8  adrp x0,0x336b000
+01d541bc  ldr x0,[x0, #0x7d0]
+01d541c0  bl 0x00b0789c
+01d541c4  adrp x0,0x3349000
+01d541c8  ldr x0,[x0, #0x6e0]
+01d541cc  bl 0x00b0789c
+01d541d0  mov w8,#0x1
+01d541d4  strb w8,[x22, #0xcc6]
+01d541d8  ldr x0,[x21, #0x10]
+01d541dc  cbz x0,0x01d54298
+01d541e0  ldr x8,[x20, #0x20]
+01d541e4  ldr x8,[x8, #0xc0]
+01d541e8  ldr x1,[x8, #0x18]
+01d541ec  ldr x8,[x1, #0x8]
+01d541f0  blr x8
+01d541f4  cmp w0,#0x1
+01d541f8  b.lt 0x01d5424c
+01d541fc  ldr x0,[x21, #0x10]
+01d54200  cbz x0,0x01d54298
+01d54204  ldr x8,[x20, #0x20]
+01d54208  ldr x8,[x8, #0xc0]
+01d5420c  ldr x1,[x8, #0x50]
+01d54210  ldr x8,[x1, #0x8]
+01d54214  blr x8
+01d54218  cmp x0,x19
+01d5421c  b.ne 0x01d5424c
+01d54220  adrp x8,0x336b000
+01d54224  ldr x8,[x8, #0x7d0]
+01d54228  adrp x22,0x3349000
+01d5422c  ldr x0,[x8]
+01d54230  ldr w8,[x0, #0xe0]
+01d54234  ldr x22,[x22, #0x6e0]
+01d54238  cbnz w8,0x01d54240
+01d5423c  bl 0x00b0798c
+01d54240  ldr x0,[x22]
+01d54244  mov x1,xzr
+01d54248  bl 0x024c0830
+01d5424c  ldr x0,[x21, #0x20]
+01d54250  cbz x0,0x01d5426c
+01d54254  ldr x8,[x20, #0x20]
+01d54258  mov x1,x19
+01d5425c  ldr x8,[x8, #0xc0]
+01d54260  ldr x2,[x8, #0x48]
+01d54264  ldr x8,[x2, #0x8]
+01d54268  blr x8
+01d5426c  ldr x0,[x21, #0x10]
+01d54270  cbz x0,0x01d54298
+01d54274  ldr x8,[x20, #0x20]
+01d54278  mov x1,x19
+01d5427c  ldp x19,x30,[sp, #0x20]
+01d54280  ldp x21,x20,[sp, #0x10]
+01d54284  ldr x8,[x8, #0xc0]
+01d54288  ldr x2,[x8, #0x60]
+01d5428c  ldr x3,[x2, #0x8]
+01d54290  ldr x22,[sp], #0x30
+01d54294  br x3
+01d54298  bl 0x00b079b0

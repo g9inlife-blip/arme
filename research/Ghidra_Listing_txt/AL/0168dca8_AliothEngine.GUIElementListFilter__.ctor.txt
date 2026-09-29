@@ -1,0 +1,59 @@
+Function: AliothEngine.GUIElementListFilter$$.ctor @ 0168dca8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.MonoBehaviour$$.ctor @ 024e45bc
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168dca8  str x22,[sp, #-0x30]!
+0168dcac  stp x21,x20,[sp, #0x10]
+0168dcb0  stp x19,x30,[sp, #0x20]
+0168dcb4  adrp x20,0x3577000
+0168dcb8  adrp x21,0x3326000
+0168dcbc  ldrb w8,[x20, #0xac3]
+0168dcc0  ldr x21,[x21, #0x640]
+0168dcc4  mov x19,x0
+0168dcc8  tbnz w8,#0x0,0x0168dcec
+0168dccc  adrp x0,0x333d000
+0168dcd0  ldr x0,[x0, #0xa60]
+0168dcd4  bl 0x00b0789c
+0168dcd8  adrp x0,0x3326000
+0168dcdc  ldr x0,[x0, #0x640]
+0168dce0  bl 0x00b0789c
+0168dce4  mov w8,#0x1
+0168dce8  strb w8,[x20, #0xac3]
+0168dcec  ldr x0,[x21]
+0168dcf0  bl 0x00b079a0
+0168dcf4  cbz x0,0x0168dd5c
+0168dcf8  adrp x22,0x333d000
+0168dcfc  ldr x22,[x22, #0xa60]
+0168dd00  mov x20,x0
+0168dd04  ldr x1,[x22]
+0168dd08  bl 0x01bffe10
+0168dd0c  mov x0,x19
+0168dd10  str x20,[x0, #0x38]!
+0168dd14  mov x1,x20
+0168dd18  bl 0x00b07850
+0168dd1c  ldr x0,[x21]
+0168dd20  bl 0x00b079a0
+0168dd24  cbz x0,0x0168dd5c
+0168dd28  ldr x1,[x22]
+0168dd2c  mov x20,x0
+0168dd30  bl 0x01bffe10
+0168dd34  mov x0,x19
+0168dd38  str x20,[x0, #0x40]!
+0168dd3c  mov x1,x20
+0168dd40  bl 0x00b07850
+0168dd44  mov x0,x19
+0168dd48  ldp x19,x30,[sp, #0x20]
+0168dd4c  ldp x21,x20,[sp, #0x10]
+0168dd50  mov x1,xzr
+0168dd54  ldr x22,[sp], #0x30
+0168dd58  b 0x024e45bc
+0168dd5c  bl 0x00b079b0

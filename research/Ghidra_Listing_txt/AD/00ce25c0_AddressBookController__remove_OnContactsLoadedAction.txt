@@ -1,0 +1,69 @@
+Function: AddressBookController$$remove_OnContactsLoadedAction @ 00ce25c0
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- AddressBookExample$$OnContactsLoaded @ 00cf8664
+  <- AnOtherFeaturesPreview$$OnContactsLoaded @ 00cfa444
+  <- SA.AN.NATIVE_API.NativeApiTab$$OnContactsLoaded @ 00cb60b0
+
+--- Listing ---
+00ce25c0  stp x23,x22,[sp, #-0x30]!
+00ce25c4  stp x21,x20,[sp, #0x10]
+00ce25c8  stp x19,x30,[sp, #0x20]
+00ce25cc  adrp x20,0x3571000
+00ce25d0  adrp x22,0x3345000
+00ce25d4  ldrb w8,[x20, #0x8ec]
+00ce25d8  ldr x22,[x22, #0xcd8]
+00ce25dc  mov x19,x0
+00ce25e0  tbnz w8,#0x0,0x00ce2604
+00ce25e4  adrp x0,0x3348000
+00ce25e8  ldr x0,[x0, #0xcf8]
+00ce25ec  bl 0x00b0789c
+00ce25f0  adrp x0,0x3345000
+00ce25f4  ldr x0,[x0, #0xcd8]
+00ce25f8  bl 0x00b0789c
+00ce25fc  mov w8,#0x1
+00ce2600  strb w8,[x20, #0x8ec]
+00ce2604  ldr x0,[x22]
+00ce2608  ldr w8,[x0, #0xe0]
+00ce260c  cbnz w8,0x00ce2618
+00ce2610  bl 0x00b0798c
+00ce2614  ldr x0,[x22]
+00ce2618  ldr x8,[x0, #0xb8]
+00ce261c  adrp x23,0x3348000
+00ce2620  ldr x20,[x8]
+00ce2624  ldr x23,[x23, #0xcf8]
+00ce2628  mov x0,x20
+00ce262c  mov x1,x19
+00ce2630  mov x2,xzr
+00ce2634  bl 0x02197a1c
+00ce2638  mov x21,x0
+00ce263c  cbz x0,0x00ce2650
+00ce2640  ldr x1,[x23]
+00ce2644  ldr x8,[x21]
+00ce2648  cmp x8,x1
+00ce264c  b.ne 0x00ce2690
+00ce2650  ldr x0,[x22]
+00ce2654  ldr w8,[x0, #0xe0]
+00ce2658  cbnz w8,0x00ce2664
+00ce265c  bl 0x00b0798c
+00ce2660  ldr x0,[x22]
+00ce2664  ldr x0,[x0, #0xb8]
+00ce2668  mov x1,x21
+00ce266c  mov x2,x20
+00ce2670  bl 0x00ae526c
+00ce2674  cmp x20,x0
+00ce2678  mov x20,x0
+00ce267c  b.ne 0x00ce2628
+00ce2680  ldp x19,x30,[sp, #0x20]
+00ce2684  ldp x21,x20,[sp, #0x10]
+00ce2688  ldp x23,x22,[sp], #0x30
+00ce268c  ret
+00ce2690  mov x0,x21
+00ce2694  bl 0x00b07c6c

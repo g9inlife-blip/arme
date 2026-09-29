@@ -1,0 +1,41 @@
+Function: Alioth.S1.Net.TCPTube$$get_IsWorking @ 015b5af8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Net.TCPTube$$get_State @ 015b5828
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- Alioth.S1.Net.TCPTube$$Send @ 015b61c8
+  <- XLua.CSObjectWrap.AliothS1NetTCPTubeWrap$$_g_get_IsWorking @ 01174648
+
+--- Listing ---
+015b5af8  stp x21,x20,[sp, #-0x20]!
+015b5afc  stp x19,x30,[sp, #0x10]
+015b5b00  adrp x20,0x3577000
+015b5b04  adrp x21,0x3317000
+015b5b08  ldrb w8,[x20, #0xda]
+015b5b0c  ldr x21,[x21, #0x178]
+015b5b10  mov x19,x0
+015b5b14  tbnz w8,#0x0,0x015b5b2c
+015b5b18  adrp x0,0x3317000
+015b5b1c  ldr x0,[x0, #0x178]
+015b5b20  bl 0x00b0789c
+015b5b24  mov w8,#0x1
+015b5b28  strb w8,[x20, #0xda]
+015b5b2c  ldr x8,[x21]
+015b5b30  ldr x8,[x8, #0xb8]
+015b5b34  ldr x0,[x8, #0x28]
+015b5b38  cbz x0,0x015b5b50
+015b5b3c  mov x1,x19
+015b5b40  ldp x19,x30,[sp, #0x10]
+015b5b44  mov x2,xzr
+015b5b48  ldp x21,x20,[sp], #0x20
+015b5b4c  b 0x01060aac
+015b5b50  mov x0,x19
+015b5b54  bl 0x015b5828
+015b5b58  ldp x19,x30,[sp, #0x10]
+015b5b5c  cmp w0,#0x3
+015b5b60  cset w0,eq
+015b5b64  ldp x21,x20,[sp], #0x20
+015b5b68  ret

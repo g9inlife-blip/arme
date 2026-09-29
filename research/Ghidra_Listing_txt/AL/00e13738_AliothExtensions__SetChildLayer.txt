@@ -1,0 +1,103 @@
+Function: AliothExtensions$$SetChildLayer @ 00e13738
+
+--- Calls OUT ---
+  -> UnityEngine.GameObject$$set_layer @ 024de7a8
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.LayerMask$$NameToLayer @ 024e0bcc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.Component$$GetComponentsInChildren<object> @ 0176d07c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.UnityEngineGameObjectWrap$$_m_SetChildLayer @ 01476e54
+  <- TerrainMono$$HideAttackTip @ 016ca0ac
+  <- TerrainMono$$ShowSkillTip @ 016c9638
+  <- TerrainMono$$TipsSortOrder @ 016c8e08
+
+--- Listing ---
+00e13738  str x22,[sp, #-0x30]!
+00e1373c  stp x21,x20,[sp, #0x10]
+00e13740  stp x19,x30,[sp, #0x20]
+00e13744  adrp x22,0x3572000
+00e13748  adrp x21,0x3348000
+00e1374c  ldrb w8,[x22, #0x5f1]
+00e13750  ldr x21,[x21, #0x138]
+00e13754  mov x19,x1
+00e13758  mov x20,x0
+00e1375c  tbnz w8,#0x0,0x00e13780
+00e13760  adrp x0,0x3348000
+00e13764  ldr x0,[x0, #0x138]
+00e13768  bl 0x00b0789c
+00e1376c  adrp x0,0x336b000
+00e13770  ldr x0,[x0, #0xb80]
+00e13774  bl 0x00b0789c
+00e13778  mov w8,#0x1
+00e1377c  strb w8,[x22, #0x5f1]
+00e13780  ldr x0,[x21]
+00e13784  ldr w8,[x0, #0xe0]
+00e13788  cbnz w8,0x00e13794
+00e1378c  bl 0x00b0798c
+00e13790  ldr x0,[x21]
+00e13794  ldr x8,[x0, #0xb8]
+00e13798  ldr x0,[x8, #0xc8]
+00e1379c  cbz x0,0x00e137bc
+00e137a0  mov x1,x20
+00e137a4  mov x2,x19
+00e137a8  ldp x19,x30,[sp, #0x20]
+00e137ac  ldp x21,x20,[sp, #0x10]
+00e137b0  mov x3,xzr
+00e137b4  ldr x22,[sp], #0x30
+00e137b8  b 0x0106125c
+00e137bc  mov x0,x19
+00e137c0  mov x1,xzr
+00e137c4  bl 0x024e0bcc
+00e137c8  cbz x20,0x00e13878
+00e137cc  mov w1,w0
+00e137d0  mov x0,x20
+00e137d4  mov x2,xzr
+00e137d8  bl 0x024de7a8
+00e137dc  mov x0,x20
+00e137e0  mov x1,xzr
+00e137e4  bl 0x024de730
+00e137e8  cbz x0,0x00e13878
+00e137ec  adrp x8,0x336b000
+00e137f0  ldr x8,[x8, #0xb80]
+00e137f4  mov w1,#0x1
+00e137f8  ldr x2,[x8]
+00e137fc  bl 0x0176d07c
+00e13800  cbz x0,0x00e13878
+00e13804  ldr w8,[x0, #0x18]
+00e13808  mov x20,x0
+00e1380c  cmp w8,#0x1
+00e13810  b.lt 0x00e13868
+00e13814  mov w22,wzr
+00e13818  cmp w22,w8
+00e1381c  b.cs 0x00e1387c
+00e13820  add x8,x20,w22, SXTW  #0x3
+00e13824  ldr x0,[x8, #0x20]
+00e13828  cbz x0,0x00e13878
+00e1382c  mov x1,xzr
+00e13830  bl 0x024e4ed4
+00e13834  mov x21,x0
+00e13838  mov x0,x19
+00e1383c  mov x1,xzr
+00e13840  bl 0x024e0bcc
+00e13844  cbz x21,0x00e13878
+00e13848  mov w1,w0
+00e1384c  mov x0,x21
+00e13850  mov x2,xzr
+00e13854  bl 0x024de7a8
+00e13858  ldr w8,[x20, #0x18]
+00e1385c  add w22,w22,#0x1
+00e13860  cmp w22,w8
+00e13864  b.lt 0x00e13818
+00e13868  ldp x19,x30,[sp, #0x20]
+00e1386c  ldp x21,x20,[sp, #0x10]
+00e13870  ldr x22,[sp], #0x30
+00e13874  ret
+00e13878  bl 0x00b079b0
+00e1387c  bl 0x00b079b8

@@ -1,0 +1,112 @@
+Function: AliothEngine.Extensions.ColorExtensions$$HexToColor @ 016ab80c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> System.Byte$$Parse @ 020dae80
+  -> System.String$$Substring @ 01fe0458
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- ItemAppearPanelMono$$.ctor @ 00ea6548
+  <- AliothExtensions$$SetOutText @ 00e13e30
+  <- RoleMono$$GhostAndPlay @ 014acc64
+  <- TextColorConst$$get_NormalGray @ 016dbdec
+  <- BattleChallengePanelMono$$Init @ 00e67204
+  <- TextColorConst$$get_NormalBlack @ 016dbd50
+
+--- Listing ---
+016ab80c  str x22,[sp, #-0x30]!
+016ab810  stp x21,x20,[sp, #0x10]
+016ab814  stp x19,x30,[sp, #0x20]
+016ab818  adrp x20,0x3577000
+016ab81c  ldrb w8,[x20, #0xbb6]
+016ab820  mov x19,x0
+016ab824  tbnz w8,#0x0,0x016ab848
+016ab828  adrp x0,0x3329000
+016ab82c  ldr x0,[x0, #0x758]
+016ab830  bl 0x00b0789c
+016ab834  adrp x0,0x332c000
+016ab838  ldr x0,[x0, #0x2c0]
+016ab83c  bl 0x00b0789c
+016ab840  mov w8,#0x1
+016ab844  strb w8,[x20, #0xbb6]
+016ab848  cbz x19,0x016ab980
+016ab84c  ldr w8,[x19, #0x10]
+016ab850  cmp w8,#0x6
+016ab854  b.lt 0x016ab924
+016ab858  adrp x8,0x3329000
+016ab85c  adrp x9,0x332c000
+016ab860  ldr x8,[x8, #0x758]
+016ab864  ldr x9,[x9, #0x2c0]
+016ab868  mov x0,x19
+016ab86c  mov x3,xzr
+016ab870  ldr x1,[x8]
+016ab874  ldr x2,[x9]
+016ab878  bl 0x01fe06d8
+016ab87c  cbz x0,0x016ab980
+016ab880  mov w2,#0x2
+016ab884  mov w1,wzr
+016ab888  mov x3,xzr
+016ab88c  mov x20,x0
+016ab890  bl 0x01fe0458
+016ab894  mov w1,#0x203
+016ab898  mov x2,xzr
+016ab89c  bl 0x020dae80
+016ab8a0  mov w19,w0
+016ab8a4  mov w1,#0x2
+016ab8a8  mov w2,#0x2
+016ab8ac  mov x0,x20
+016ab8b0  mov x3,xzr
+016ab8b4  bl 0x01fe0458
+016ab8b8  mov w1,#0x203
+016ab8bc  mov x2,xzr
+016ab8c0  bl 0x020dae80
+016ab8c4  mov w21,w0
+016ab8c8  mov w1,#0x4
+016ab8cc  mov w2,#0x2
+016ab8d0  mov x0,x20
+016ab8d4  mov x3,xzr
+016ab8d8  bl 0x01fe0458
+016ab8dc  mov w1,#0x203
+016ab8e0  mov x2,xzr
+016ab8e4  bl 0x020dae80
+016ab8e8  ldr w8,[x20, #0x10]
+016ab8ec  mov w22,w0
+016ab8f0  cmp w8,#0x8
+016ab8f4  b.ne 0x016ab938
+016ab8f8  mov w1,#0x6
+016ab8fc  mov w2,#0x2
+016ab900  mov x0,x20
+016ab904  mov x3,xzr
+016ab908  bl 0x01fe0458
+016ab90c  mov w1,#0x203
+016ab910  mov x2,xzr
+016ab914  bl 0x020dae80
+016ab918  and w8,w0,#0xff
+016ab91c  ucvtf s3,w8
+016ab920  b 0x016ab940
+016ab924  fmov s0,0x3f800000
+016ab928  fmov s1,wzr
+016ab92c  mov v2.16B,v0.16B
+016ab930  mov v3.16B,v0.16B
+016ab934  b 0x016ab970
+016ab938  mov w8,#0x437f0000
+016ab93c  fmov s3,w8
+016ab940  and w8,w19,#0xff
+016ab944  mov w9,#0x437f0000
+016ab948  and w10,w21,#0xff
+016ab94c  and w11,w22,#0xff
+016ab950  ucvtf s0,w8
+016ab954  fmov s4,w9
+016ab958  ucvtf s1,w10
+016ab95c  ucvtf s2,w11
+016ab960  fdiv s0,s0,s4
+016ab964  fdiv s1,s1,s4
+016ab968  fdiv s2,s2,s4
+016ab96c  fdiv s3,s3,s4
+016ab970  ldp x19,x30,[sp, #0x20]
+016ab974  ldp x21,x20,[sp, #0x10]
+016ab978  ldr x22,[sp], #0x30
+016ab97c  ret
+016ab980  bl 0x00b079b0

@@ -1,0 +1,47 @@
+Function: AliothEngine.Extensions.ListExtensions$$FirstOrDefault<object> @ 0179eba0
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0179eba0  sub sp,sp,#0x60
+0179eba4  str x20,[sp, #0x40]
+0179eba8  stp x19,x30,[sp, #0x50]
+0179ebac  stp xzr,xzr,[sp, #0x28]
+0179ebb0  str xzr,[sp, #0x20]
+0179ebb4  cbz x0,0x0179ec34
+0179ebb8  ldr x8,[x2, #0x38]
+0179ebbc  mov x20,x1
+0179ebc0  mov x19,x2
+0179ebc4  ldr x1,[x8, #0x8]
+0179ebc8  add x8,sp,#0x8
+0179ebcc  ldr x9,[x1, #0x8]
+0179ebd0  blr x9
+0179ebd4  ldur q0,[sp, #0x8]
+0179ebd8  ldr x8,[sp, #0x18]
+0179ebdc  str q0,[sp, #0x20]
+0179ebe0  str x8,[sp, #0x30]
+0179ebe4  ldr x8,[x19, #0x38]
+0179ebe8  add x0,sp,#0x20
+0179ebec  ldr x1,[x8, #0x28]
+0179ebf0  bl 0x01a070ec
+0179ebf4  tbz w0,#0x0,0x0179ec20
+0179ebf8  cbz x20,0x0179ec34
+0179ebfc  ldr x8,[x19, #0x38]
+0179ec00  ldr x1,[sp, #0x30]
+0179ec04  mov x0,x20
+0179ec08  ldr x2,[x8, #0x20]
+0179ec0c  ldr x8,[x2, #0x8]
+0179ec10  blr x8
+0179ec14  tbz w0,#0x0,0x0179ebe4
+0179ec18  ldr x0,[sp, #0x30]
+0179ec1c  b 0x0179ec24
+0179ec20  mov x0,xzr
+0179ec24  ldp x19,x30,[sp, #0x50]
+0179ec28  ldr x20,[sp, #0x40]
+0179ec2c  add sp,sp,#0x60
+0179ec30  ret
+0179ec34  bl 0x00b079b0

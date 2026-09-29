@@ -1,0 +1,25 @@
+Function: AliothEngine.Extensions.TransformExtensions$$SetLocalRotationX @ 016bad8c
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$set_localRotation @ 024f3cb8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Quaternion$$Internal_FromEulerRad @ 024edef8
+
+--- Calls IN ---
+
+--- Listing ---
+016bad8c  stp x19,x30,[sp, #-0x10]!
+016bad90  adrp x8,0x26db000
+016bad94  ldr s1,[x8, #0x144]
+016bad98  mov x19,x0
+016bad9c  fmov s2,wzr
+016bada0  mov x0,xzr
+016bada4  fmul s0,s0,s1
+016bada8  fmov s1,wzr
+016badac  bl 0x024edef8
+016badb0  cbz x19,0x016badc4
+016badb4  mov x0,x19
+016badb8  mov x1,xzr
+016badbc  ldp x19,x30,[sp], #0x10
+016badc0  b 0x024f3cb8
+016badc4  bl 0x00b079b0

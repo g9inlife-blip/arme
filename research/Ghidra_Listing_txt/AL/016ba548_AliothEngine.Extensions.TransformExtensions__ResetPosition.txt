@@ -1,0 +1,35 @@
+Function: AliothEngine.Extensions.TransformExtensions$$ResetPosition @ 016ba548
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_position @ 024f3724
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.TransformExtensions$$Reset @ 016baf20
+
+--- Listing ---
+016ba548  str x20,[sp, #-0x20]!
+016ba54c  stp x19,x30,[sp, #0x10]
+016ba550  adrp x20,0x3570000
+016ba554  ldrb w8,[x20, #0xf0c]
+016ba558  mov x19,x0
+016ba55c  cbnz w8,0x016ba574
+016ba560  adrp x0,0x3368000
+016ba564  ldr x0,[x0, #0x9b8]
+016ba568  bl 0x00b0789c
+016ba56c  mov w8,#0x1
+016ba570  strb w8,[x20, #0xf0c]
+016ba574  cbz x19,0x016ba5a4
+016ba578  adrp x8,0x3368000
+016ba57c  ldr x8,[x8, #0x9b8]
+016ba580  mov x0,x19
+016ba584  ldp x19,x30,[sp, #0x10]
+016ba588  mov x1,xzr
+016ba58c  ldr x8,[x8]
+016ba590  ldr x8,[x8, #0xb8]
+016ba594  ldp s0,s1,[x8]
+016ba598  ldr s2,[x8, #0x8]
+016ba59c  ldr x20,[sp], #0x20
+016ba5a0  b 0x024f3724
+016ba5a4  bl 0x00b079b0

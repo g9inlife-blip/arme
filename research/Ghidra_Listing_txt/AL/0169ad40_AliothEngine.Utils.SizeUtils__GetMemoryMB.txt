@@ -1,0 +1,46 @@
+Function: AliothEngine.Utils.SizeUtils$$GetMemoryMB @ 0169ad40
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> System.Single$$ToString @ 021633b8
+
+--- Calls IN ---
+
+--- Listing ---
+0169ad40  str x22,[sp, #-0x30]!
+0169ad44  stp x21,x20,[sp, #0x10]
+0169ad48  stp x19,x30,[sp, #0x20]
+0169ad4c  adrp x22,0x3577000
+0169ad50  adrp x21,0x333e000
+0169ad54  adrp x20,0x336a000
+0169ad58  ldrb w8,[x22, #0xb2f]
+0169ad5c  ldr x21,[x21, #0x38]
+0169ad60  ldr x20,[x20, #0xeb8]
+0169ad64  mov w19,w0
+0169ad68  tbnz w8,#0x0,0x0169ad8c
+0169ad6c  adrp x0,0x336a000
+0169ad70  ldr x0,[x0, #0xeb8]
+0169ad74  bl 0x00b0789c
+0169ad78  adrp x0,0x333e000
+0169ad7c  ldr x0,[x0, #0x38]
+0169ad80  bl 0x00b0789c
+0169ad84  mov w8,#0x1
+0169ad88  strb w8,[x22, #0xb2f]
+0169ad8c  ldr x1,[x21]
+0169ad90  ucvtf d0,w19
+0169ad94  mov w8,#0x35800000
+0169ad98  fcvt s0,d0
+0169ad9c  fmov s1,w8
+0169ada0  fmul s0,s0,s1
+0169ada4  add x0,sp,#0xc
+0169ada8  mov x2,xzr
+0169adac  str s0,[sp, #0xc]
+0169adb0  bl 0x021633b8
+0169adb4  ldr x1,[x20]
+0169adb8  mov x2,xzr
+0169adbc  bl 0x01fd2850
+0169adc0  ldp x19,x30,[sp, #0x20]
+0169adc4  ldp x21,x20,[sp, #0x10]
+0169adc8  ldr x22,[sp], #0x30
+0169adcc  ret

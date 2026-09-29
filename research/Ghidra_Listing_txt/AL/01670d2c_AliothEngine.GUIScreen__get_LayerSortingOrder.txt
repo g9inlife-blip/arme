@@ -1,0 +1,67 @@
+Function: AliothEngine.GUIScreen$$get_LayerSortingOrder @ 01670d2c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+  -> AliothEngine.GUIScreenManager$$GetLayerSortingOrder @ 01670dd4
+
+--- Calls IN ---
+  <- SkillPoseMono$$SkillPoseSet @ 00e9239c
+  <- ExamResultPanelMono$$SpineCard @ 00eeb648
+  <- HomePanelMono$$onGUILayerTypeChanged @ 00f6bd30
+  <- DialogMono$$Start @ 00eb7ae8
+  <- CallPanelMono$$ShowHeroNormal @ 00ea24d8
+  <- ExamLoadingPanelMono$$Refresh @ 00ee579c
+  <- HomePanelMono.<>c__DisplayClass71_0$$<ChangePicture>b__0 @ 00f70a58
+  <- DialogMono$$RoleAni @ 00eb9910
+  <- CallPanelMono$$PreloadAssetComplete @ 00ea1df4
+  <- ExamLoadingPanelMono$$PreloadAssetComplete @ 00ee5604
+  <- LoginGateMono$$InitSpineShow @ 00f9115c
+  <- GUIScreenBaseMono$$SortOrderParticle @ 00f21b4c
+  <- ExamLoadingPanelMono.<>c__DisplayClass15_0$$<SpineCard>b__0 @ 00ee6a74
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_g_get_LayerSortingOrder @ 01155608
+
+--- Listing ---
+01670d2c  stp x21,x20,[sp, #-0x20]!
+01670d30  stp x19,x30,[sp, #0x10]
+01670d34  adrp x20,0x3577000
+01670d38  adrp x21,0x3364000
+01670d3c  ldrb w8,[x20, #0x975]
+01670d40  ldr x21,[x21, #0xd28]
+01670d44  mov x19,x0
+01670d48  tbnz w8,#0x0,0x01670d6c
+01670d4c  adrp x0,0x337b000
+01670d50  ldr x0,[x0, #0xb98]
+01670d54  bl 0x00b0789c
+01670d58  adrp x0,0x3364000
+01670d5c  ldr x0,[x0, #0xd28]
+01670d60  bl 0x00b0789c
+01670d64  mov w8,#0x1
+01670d68  strb w8,[x20, #0x975]
+01670d6c  ldr x8,[x21]
+01670d70  ldr x8,[x8, #0xb8]
+01670d74  ldr x0,[x8, #0x20]
+01670d78  cbz x0,0x01670d90
+01670d7c  mov x1,x19
+01670d80  ldp x19,x30,[sp, #0x10]
+01670d84  mov x2,xzr
+01670d88  ldp x21,x20,[sp], #0x20
+01670d8c  b 0x01060c2c
+01670d90  ldr x8,[x19]
+01670d94  adrp x20,0x337b000
+01670d98  mov x0,x19
+01670d9c  ldr x9,[x8, #0x208]
+01670da0  ldr x1,[x8, #0x210]
+01670da4  ldr x20,[x20, #0xb98]
+01670da8  blr x9
+01670dac  ldr x8,[x20]
+01670db0  mov w19,w0
+01670db4  ldr w9,[x8, #0xe0]
+01670db8  cbnz w9,0x01670dc4
+01670dbc  mov x0,x8
+01670dc0  bl 0x00b0798c
+01670dc4  mov w0,w19
+01670dc8  ldp x19,x30,[sp, #0x10]
+01670dcc  ldp x21,x20,[sp], #0x20
+01670dd0  b 0x01670dd4

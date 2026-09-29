@@ -1,0 +1,60 @@
+Function: AliothEngine.GUIScreenManager$$ChangeScreenParent @ 01672990
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> AliothEngine.GUIScreenManager$$ChangeScreenParent @ 01675b54
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- TipsTextPanelMono$$TipsShow @ 00f16ed8
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_ChangeScreenParent @ 01149c60
+  <- AliothEngine.GUIScreen$$ShowScreen @ 016728ac
+  <- AliothEngine.GUIScreenManager$$_PushScreen @ 01673d28
+
+--- Listing ---
+01672990  str x22,[sp, #-0x30]!
+01672994  stp x21,x20,[sp, #0x10]
+01672998  stp x19,x30,[sp, #0x20]
+0167299c  adrp x22,0x3577000
+016729a0  adrp x21,0x337b000
+016729a4  ldrb w8,[x22, #0x9b9]
+016729a8  ldr x21,[x21, #0xb98]
+016729ac  mov x19,x1
+016729b0  mov x20,x0
+016729b4  tbnz w8,#0x0,0x016729cc
+016729b8  adrp x0,0x337b000
+016729bc  ldr x0,[x0, #0xb98]
+016729c0  bl 0x00b0789c
+016729c4  mov w8,#0x1
+016729c8  strb w8,[x22, #0x9b9]
+016729cc  ldr x0,[x21]
+016729d0  ldr w8,[x0, #0xe0]
+016729d4  cbnz w8,0x016729e0
+016729d8  bl 0x00b0798c
+016729dc  ldr x0,[x21]
+016729e0  ldr x8,[x0, #0xb8]
+016729e4  ldr x0,[x8, #0xe0]
+016729e8  cbz x0,0x01672a08
+016729ec  mov x1,x20
+016729f0  mov x2,x19
+016729f4  ldp x19,x30,[sp, #0x20]
+016729f8  ldp x21,x20,[sp, #0x10]
+016729fc  mov x3,xzr
+01672a00  ldr x22,[sp], #0x30
+01672a04  b 0x0106125c
+01672a08  cbz x19,0x01672a3c
+01672a0c  ldr x8,[x19]
+01672a10  mov x0,x19
+01672a14  ldr x9,[x8, #0x208]
+01672a18  ldr x1,[x8, #0x210]
+01672a1c  blr x9
+01672a20  mov w2,w0
+01672a24  mov x0,x20
+01672a28  mov x1,x19
+01672a2c  ldp x19,x30,[sp, #0x20]
+01672a30  ldp x21,x20,[sp, #0x10]
+01672a34  ldr x22,[sp], #0x30
+01672a38  b 0x01675b54
+01672a3c  bl 0x00b079b0

@@ -1,0 +1,87 @@
+Function: Alioth.S1.Net.Request$$get_Res @ 015b4f10
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp755 @ 010c31c4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- DamageMetersPanelMono$$get_m_reports @ 00ee3214
+  <- BattleEndWinPanelMono$$GetAddDataStr @ 00e74828
+  <- Alioth.S1.Net.Request$$IsFinished @ 015b50e0
+  <- BattleEndWinPanelMono$$RewardShow @ 00e72338
+  <- RankCVCPanelMono$$OnClickMyGroupRank @ 00ef0404
+  <- WeaponUpgradePanelMono$$OnUpgradeResetCallback @ 00f61aec
+  <- DamageMetersPanelMono$$get_m_exam @ 00ee3070
+  <- RankCVCPanelMono$$GetExamFriendRankBack @ 00ef0d5c
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_g_get_Res @ 01172dd8
+  <- HeroPartFashionMono$$FashionBack @ 00f4675c
+  <- FriendPanel$$FriendFindBack @ 00f02ef8
+  <- RankCVCPanelMono$$GetExamTotalRankBack @ 00ef0b30
+  <- ExamResultPanelMono$$CloseSetting @ 00eec660
+  <- CSBehaviour$$OnNCStatusChanged @ 016dd174
+  <- Alioth.S1.Net.Request$$ToString @ 015b5154
+  <- YingyuanPanelMono$$ReadBackData @ 01053e70
+  <- DevAniPlayPanelMono$$Demand @ 00ebd4a8
+  <- BattleManager$$NetCloseBatlle @ 0117bc74
+  <- ExamResultPanelMono.<PlayResule>d__31$$MoveNext @ 00eed958
+  <- Ali$$SaveExamReq @ 00e043b0
+  <- Ali$$ShowReward @ 00e068f8
+  <- BattleManager$$PlayAniEnd @ 0117c534
+  <- ExamResultPanelMono$$examRes @ 00eeae68
+  <- GoToBattleMono$$get_m_rival @ 00e59d3c
+  <- LoginManager$$OnLoginSucceedAction @ 00dd5d94
+  <- BattleEndWinPanelMono$$ShowPage @ 00e74b04
+  <- TipsNormalPanelMono$$OnOpenBox @ 00f12c3c
+  <- ExamResultPanelMono$$get_m_finalBelt @ 00eea98c
+  <- DamageMetersPanelMono$$get_m_rival @ 00ee30f8
+  <- ExamPanelMono$$get_m_rival @ 00ee79d8
+  <- BattleEndWinPanelMono$$OnClickDetails @ 00e7516c
+  <- OpenBoxShowPanelMono$$DemandOpen @ 00e9cdbc
+  <- MailMono$$InitOldMailsDatas @ 00f9aaac
+  <- BattleEndTwoBtnGroupMono$$GetExamBack @ 00e712a4
+  <- BaseExtensions$$OpenSection @ 00e1bcec
+  <- FriendPanel$$FriendRecommendBack @ 00f028c0
+  <- GoToBattleMono$$CreateBatle4ExamBack @ 00e5b248
+  <- ExamPanelMono$$OnOpened @ 00ee9d28
+  <- ExamResultPanelMono$$Init @ 00eeba88
+  <- GoToBattleMono$$SetEnemyHero @ 00e5baf8
+  <- YingyuanYYPanelMono$$SupportHeroShowBack @ 01058cc8
+  <- OpenBoxMono$$OnOpenBox @ 00e9c81c
+  <- ExamPanelMono$$get_m_exam @ 00ee72fc
+  <- YingyuanYYPanelMono$$SupportHeroByItemBack @ 0105876c
+  <- SplitModelPanelMono$$EquipLockUnlockBack @ 01047d74
+  <- YingyuanYYPanelMono$$SupportHeroByFreeBack @ 01058a18
+  <- BattleEndFailPanelMono$$GetAddDataStr @ 00e6b8bc
+  <- FUN_00eeb00c @ 00eeb00c
+  <- GoToBattleMono$$get_m_exam @ 00e59e00
+  <- DamageMetersPanelMono$$get_BattleReport @ 00ee3180
+  <- ExploreMainPanelMono$$ExploreFloorRewardBack @ 00efcccc
+  <- Ali$$DataProccessCallBack @ 00e03dd4
+
+--- Listing ---
+015b4f10  stp x21,x20,[sp, #-0x20]!
+015b4f14  stp x19,x30,[sp, #0x10]
+015b4f18  adrp x20,0x3577000
+015b4f1c  adrp x21,0x3374000
+015b4f20  ldrb w8,[x20, #0xc8]
+015b4f24  ldr x21,[x21, #0x470]
+015b4f28  mov x19,x0
+015b4f2c  tbnz w8,#0x0,0x015b4f44
+015b4f30  adrp x0,0x3374000
+015b4f34  ldr x0,[x0, #0x470]
+015b4f38  bl 0x00b0789c
+015b4f3c  mov w8,#0x1
+015b4f40  strb w8,[x20, #0xc8]
+015b4f44  ldr x8,[x21]
+015b4f48  ldr x8,[x8, #0xb8]
+015b4f4c  ldr x0,[x8, #0x60]
+015b4f50  cbz x0,0x015b4f68
+015b4f54  mov x1,x19
+015b4f58  ldp x19,x30,[sp, #0x10]
+015b4f5c  mov x2,xzr
+015b4f60  ldp x21,x20,[sp], #0x20
+015b4f64  b 0x010c31c4
+015b4f68  ldr x0,[x19, #0x38]
+015b4f6c  ldp x19,x30,[sp, #0x10]
+015b4f70  ldp x21,x20,[sp], #0x20
+015b4f74  ret

@@ -1,0 +1,56 @@
+Function: AliothEngine.NotificationManager$$remove_devicePushIdReceivedEvent @ 01656908
+
+--- Calls OUT ---
+  -> System.Delegate$$Remove @ 02197a1c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+
+--- Listing ---
+01656908  str x24,[sp, #-0x40]!
+0165690c  stp x23,x22,[sp, #0x10]
+01656910  stp x21,x20,[sp, #0x20]
+01656914  stp x19,x30,[sp, #0x30]
+01656918  adrp x21,0x3577000
+0165691c  ldrb w8,[x21, #0x815]
+01656920  mov x19,x1
+01656924  mov x20,x0
+01656928  tbnz w8,#0x0,0x01656940
+0165692c  adrp x0,0x3365000
+01656930  ldr x0,[x0, #0x1f8]
+01656934  bl 0x00b0789c
+01656938  mov w8,#0x1
+0165693c  strb w8,[x21, #0x815]
+01656940  adrp x24,0x3365000
+01656944  ldr x21,[x20, #0x20]!
+01656948  ldr x24,[x24, #0x1f8]
+0165694c  mov x0,x21
+01656950  mov x1,x19
+01656954  mov x2,xzr
+01656958  bl 0x02197a1c
+0165695c  cbz x0,0x0165697c
+01656960  ldr x23,[x24]
+01656964  mov x22,x0
+01656968  mov x1,x23
+0165696c  bl 0x00b07990
+01656970  mov x1,x0
+01656974  cbnz x0,0x01656980
+01656978  b 0x016569ac
+0165697c  mov x1,xzr
+01656980  mov x0,x20
+01656984  mov x2,x21
+01656988  bl 0x00ae526c
+0165698c  cmp x21,x0
+01656990  mov x21,x0
+01656994  b.ne 0x0165694c
+01656998  ldp x19,x30,[sp, #0x30]
+0165699c  ldp x21,x20,[sp, #0x20]
+016569a0  ldp x23,x22,[sp, #0x10]
+016569a4  ldr x24,[sp], #0x40
+016569a8  ret
+016569ac  mov x0,x22
+016569b0  mov x1,x23
+016569b4  bl 0x00b07c6c

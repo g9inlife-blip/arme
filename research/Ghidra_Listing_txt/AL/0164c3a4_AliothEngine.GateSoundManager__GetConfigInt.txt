@@ -1,0 +1,27 @@
+Function: AliothEngine.GateSoundManager$$GetConfigInt @ 0164c3a4
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetInt @ 024be4d0
+  -> UnityEngine.PlayerPrefs$$GetInt @ 024be5a8
+  -> UnityEngine.PlayerPrefs$$HasKey @ 024be854
+
+--- Calls IN ---
+  <- AliothEngine.GateSoundManager$$Awake @ 0164c158
+
+--- Listing ---
+0164c3a4  stp x19,x30,[sp, #-0x10]!
+0164c3a8  mov x1,xzr
+0164c3ac  mov x19,x0
+0164c3b0  bl 0x024be854
+0164c3b4  tbz w0,#0x0,0x0164c3c8
+0164c3b8  mov x0,x19
+0164c3bc  mov x1,xzr
+0164c3c0  ldp x19,x30,[sp], #0x10
+0164c3c4  b 0x024be5a8
+0164c3c8  mov x0,x19
+0164c3cc  mov w1,wzr
+0164c3d0  mov x2,xzr
+0164c3d4  bl 0x024be4d0
+0164c3d8  mov w0,wzr
+0164c3dc  ldp x19,x30,[sp], #0x10
+0164c3e0  ret

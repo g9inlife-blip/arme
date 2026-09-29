@@ -1,0 +1,30 @@
+Function: ReadypanelNode$$get_repeat_choosed @ 00fce060
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$ShowRepeat @ 00e60560
+  <- ReadyMono$$OnClickRepeat @ 00e60358
+
+--- Listing ---
+00fce060  stp x21,x20,[sp, #-0x20]!
+00fce064  stp x19,x30,[sp, #0x10]
+00fce068  adrp x20,0x3573000
+00fce06c  adrp x21,0x334e000
+00fce070  ldrb w8,[x20, #0xe78]
+00fce074  ldr x21,[x21, #0xc58]
+00fce078  mov x19,x0
+00fce07c  tbnz w8,#0x0,0x00fce094
+00fce080  adrp x0,0x334e000
+00fce084  ldr x0,[x0, #0xc58]
+00fce088  bl 0x00b0789c
+00fce08c  mov w8,#0x1
+00fce090  strb w8,[x20, #0xe78]
+00fce094  ldr x1,[x21]
+00fce098  mov x0,x19
+00fce09c  ldp x19,x30,[sp, #0x10]
+00fce0a0  mov x2,xzr
+00fce0a4  ldp x21,x20,[sp], #0x20
+00fce0a8  b 0x00dc06f8

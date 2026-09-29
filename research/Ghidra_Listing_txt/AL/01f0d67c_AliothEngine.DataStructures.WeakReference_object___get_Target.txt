@@ -1,0 +1,54 @@
+Function: AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.WeakReference$$get_Target @ 021ad870
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- Ali$$get_battleCenter @ 00e02a6c
+  <- AliothEngine.Context.ContextNotifier$$NotifyFrameworkInitialized @ 016968e0
+  <- Ali$$get_nodeManager @ 00e02bb4
+  <- AliothEngine.WeakEvents.WeakActionBase$$Invoke_Internal @ 01697144
+  <- Ali$$get_GlobalUIManager @ 00e02d94
+  <- Ali$$get_resManager @ 00e02500
+  <- Ali$$get_soundManager @ 00e0293c
+  <- AliothEngine.ViewModels.ViewModel.<>c__DisplayClass16_0$$<Remove>b__0 @ 016a98b4
+  <- Ali$$get_effManager @ 00e029d4
+  <- Ali$$get_battleManager @ 00e027f4
+  <- AliothEngine.Context.ContextNotifier$$NotifyFrameworkDeinitialized @ 016966bc
+  <- Ali$$get_rewardManager @ 00e02cfc
+  <- AliothEngine.ViewModels.ViewModel$$Dump @ 016a8ef4
+  <- AliothEngine.WeakEvents.WeakActionBase$$IsMatch @ 01697280
+
+--- Listing ---
+01f0d67c  str x20,[sp, #-0x20]!
+01f0d680  stp x19,x30,[sp, #0x10]
+01f0d684  cbz x0,0x01f0d6e8
+01f0d688  mov x19,x1
+01f0d68c  mov x1,xzr
+01f0d690  bl 0x021ad870
+01f0d694  ldr x8,[x19, #0x20]
+01f0d698  mov x20,x0
+01f0d69c  ldr x8,[x8, #0xc0]
+01f0d6a0  ldr x19,[x8, #0x8]
+01f0d6a4  ldrb w8,[x19, #0x132]
+01f0d6a8  tbnz w8,#0x0,0x01f0d6b8
+01f0d6ac  mov x0,x19
+01f0d6b0  bl 0x00b2ac40
+01f0d6b4  mov x19,x0
+01f0d6b8  cbz x20,0x01f0d6d8
+01f0d6bc  mov x0,x20
+01f0d6c0  mov x1,x19
+01f0d6c4  bl 0x00b07990
+01f0d6c8  cbnz x0,0x01f0d6dc
+01f0d6cc  mov x0,x20
+01f0d6d0  mov x1,x19
+01f0d6d4  bl 0x00b07c6c
+01f0d6d8  mov x0,xzr
+01f0d6dc  ldp x19,x30,[sp, #0x10]
+01f0d6e0  ldr x20,[sp], #0x20
+01f0d6e4  ret
+01f0d6e8  bl 0x00b079b0

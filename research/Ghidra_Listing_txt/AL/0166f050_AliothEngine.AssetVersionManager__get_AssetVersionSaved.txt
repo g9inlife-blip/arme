@@ -1,0 +1,40 @@
+Function: AliothEngine.AssetVersionManager$$get_AssetVersionSaved @ 0166f050
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.PlayerPrefs$$GetString @ 024be7a4
+
+--- Calls IN ---
+  <- ProtocolGame_HttpRequest$$QuestionSubmit @ 00dd8818
+  <- AliothEngine.GameUpdateService$$isAssetNeedUpdate_CheckCacheAndBuild @ 0167f2f0
+  <- AliothEngine.AssetVersionManager$$get_LatestVersion @ 0166ef90
+  <- ProtocolGame_HttpRequest$$get_assetVerion @ 00ddcb18
+  <- AliothEngine.GameUpdateService$$isAssetNeedUpdate_OnlyCheckVerion @ 0167f218
+  <- AliothEngine.GameUpdateService.<SetupAsync>d__53$$MoveNext @ 01680a70
+  <- ProtocolGame_SendRequest$$Ping @ 00dde904
+  <- AliothEngine.AssetVersionManager$$get_BuildAssetVerion @ 0166f974
+
+--- Listing ---
+0166f050  stp x21,x20,[sp, #-0x20]!
+0166f054  stp x19,x30,[sp, #0x10]
+0166f058  adrp x19,0x3577000
+0166f05c  adrp x20,0x333b000
+0166f060  adrp x21,0x3353000
+0166f064  ldrb w8,[x19, #0x95f]
+0166f068  ldr x20,[x20, #0x400]
+0166f06c  ldr x21,[x21, #0x7b0]
+0166f070  tbnz w8,#0x0,0x0166f094
+0166f074  adrp x0,0x3353000
+0166f078  ldr x0,[x0, #0x7b0]
+0166f07c  bl 0x00b0789c
+0166f080  adrp x0,0x333b000
+0166f084  ldr x0,[x0, #0x400]
+0166f088  bl 0x00b0789c
+0166f08c  mov w8,#0x1
+0166f090  strb w8,[x19, #0x95f]
+0166f094  ldr x0,[x20]
+0166f098  ldr x1,[x21]
+0166f09c  ldp x19,x30,[sp, #0x10]
+0166f0a0  mov x2,xzr
+0166f0a4  ldp x21,x20,[sp], #0x20
+0166f0a8  b 0x024be7a4

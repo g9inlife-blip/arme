@@ -1,0 +1,60 @@
+Function: Alioth.S1.Core.Segment$$.ctor @ 015b7d74
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$Send @ 015aec24
+  <- Alioth.S1.Core.KCP$$Flush @ 015b8f84
+  <- Alioth.S1.Core.KCP$$Input @ 015b1b48
+
+--- Listing ---
+015b7d74  stp x23,x22,[sp, #-0x30]!
+015b7d78  stp x21,x20,[sp, #0x10]
+015b7d7c  stp x19,x30,[sp, #0x20]
+015b7d80  adrp x23,0x3577000
+015b7d84  adrp x22,0x334f000
+015b7d88  adrp x21,0x3359000
+015b7d8c  ldrb w8,[x23, #0xf6]
+015b7d90  ldr x22,[x22, #0x28]
+015b7d94  ldr x21,[x21, #0xe70]
+015b7d98  mov w19,w1
+015b7d9c  mov x20,x0
+015b7da0  tbnz w8,#0x0,0x015b7dc4
+015b7da4  adrp x0,0x334f000
+015b7da8  ldr x0,[x0, #0x28]
+015b7dac  bl 0x00b0789c
+015b7db0  adrp x0,0x3359000
+015b7db4  ldr x0,[x0, #0xe70]
+015b7db8  bl 0x00b0789c
+015b7dbc  mov w8,#0x1
+015b7dc0  strb w8,[x23, #0xf6]
+015b7dc4  mov x0,x20
+015b7dc8  mov x1,xzr
+015b7dcc  bl 0x02194104
+015b7dd0  ldr x0,[x22]
+015b7dd4  mov w1,w19
+015b7dd8  bl 0x00b078f8
+015b7ddc  mov x1,x0
+015b7de0  mov x0,x20
+015b7de4  str x1,[x0, #0x40]!
+015b7de8  bl 0x00b07850
+015b7dec  ldr x8,[x21]
+015b7df0  ldr x8,[x8, #0xb8]
+015b7df4  ldr x0,[x8]
+015b7df8  cbz x0,0x015b7e18
+015b7dfc  mov x1,x20
+015b7e00  mov w2,w19
+015b7e04  ldp x19,x30,[sp, #0x20]
+015b7e08  ldp x21,x20,[sp, #0x10]
+015b7e0c  mov x3,xzr
+015b7e10  ldp x23,x22,[sp], #0x30
+015b7e14  b 0x0106155c
+015b7e18  ldp x19,x30,[sp, #0x20]
+015b7e1c  ldp x21,x20,[sp, #0x10]
+015b7e20  ldp x23,x22,[sp], #0x30
+015b7e24  ret

@@ -1,0 +1,56 @@
+Function: AliothEngine.AssetBundleInfoList$$Remove @ 01666a88
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List<object>$$Remove @ 01c02014
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetBundleInfoList$$TryGetByAssetBundleName @ 01666678
+  -> System.Collections.Generic.Dictionary<object,-object>$$Remove @ 0196fa1c
+
+--- Calls IN ---
+
+--- Listing ---
+01666a88  sub sp,sp,#0x30
+01666a8c  stp x21,x20,[sp, #0x10]
+01666a90  stp x19,x30,[sp, #0x20]
+01666a94  adrp x21,0x3577000
+01666a98  ldrb w8,[x21, #0x8fd]
+01666a9c  mov x19,x1
+01666aa0  mov x20,x0
+01666aa4  tbnz w8,#0x0,0x01666ac8
+01666aa8  adrp x0,0x3334000
+01666aac  ldr x0,[x0, #0xa48]
+01666ab0  bl 0x00b0789c
+01666ab4  adrp x0,0x3367000
+01666ab8  ldr x0,[x0, #0x8c0]
+01666abc  bl 0x00b0789c
+01666ac0  mov w8,#0x1
+01666ac4  strb w8,[x21, #0x8fd]
+01666ac8  add x2,sp,#0x8
+01666acc  mov x0,x20
+01666ad0  mov x1,x19
+01666ad4  str xzr,[sp, #0x8]
+01666ad8  bl 0x01666678
+01666adc  tbz w0,#0x0,0x01666b20
+01666ae0  ldr x0,[x20, #0x18]
+01666ae4  cbz x0,0x01666b34
+01666ae8  adrp x8,0x3367000
+01666aec  ldr x8,[x8, #0x8c0]
+01666af0  ldr x1,[sp, #0x8]
+01666af4  ldr x2,[x8]
+01666af8  bl 0x01c02014
+01666afc  ldr x0,[x20, #0x20]
+01666b00  cbz x0,0x01666b34
+01666b04  adrp x8,0x3334000
+01666b08  ldr x8,[x8, #0xa48]
+01666b0c  mov x1,x19
+01666b10  ldr x2,[x8]
+01666b14  bl 0x0196fa1c
+01666b18  mov w0,#0x1
+01666b1c  b 0x01666b24
+01666b20  mov w0,wzr
+01666b24  ldp x19,x30,[sp, #0x20]
+01666b28  ldp x21,x20,[sp, #0x10]
+01666b2c  add sp,sp,#0x30
+01666b30  ret
+01666b34  bl 0x00b079b0

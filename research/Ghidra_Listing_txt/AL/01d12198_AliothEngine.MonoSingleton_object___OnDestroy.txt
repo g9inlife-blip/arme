@@ -1,0 +1,26 @@
+Function: AliothEngine.MonoSingleton<object>$$OnDestroy @ 01d12198
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01d12198  stp x19,x30,[sp, #-0x10]!
+01d1219c  ldr x8,[x1, #0x20]
+01d121a0  mov x19,x1
+01d121a4  ldr x8,[x8, #0xc0]
+01d121a8  ldr x1,[x8, #0x38]
+01d121ac  ldr x8,[x1, #0x8]
+01d121b0  blr x8
+01d121b4  tbz w0,#0x0,0x01d121d8
+01d121b8  ldr x8,[x19, #0x20]
+01d121bc  ldr x8,[x8, #0xc0]
+01d121c0  ldr x0,[x8, #0x8]
+01d121c4  ldrb w8,[x0, #0x132]
+01d121c8  tbnz w8,#0x0,0x01d121d0
+01d121cc  bl 0x00b2ac40
+01d121d0  ldr x8,[x0, #0xb8]
+01d121d4  str xzr,[x8]
+01d121d8  ldp x19,x30,[sp], #0x10
+01d121dc  ret

@@ -1,0 +1,69 @@
+Function: AliothEngine.Extensions.ListExtensions$$Clear<object> @ 0179dd6c
+
+--- Calls OUT ---
+  -> System.Collections.Generic.List.Enumerator<object>$$Dispose @ 01a070e8
+  -> FUN_00aaac8c @ 00aaac8c
+  -> System.Collections.Generic.List.Enumerator<object>$$MoveNext @ 01a070ec
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0179dd6c  sub sp,sp,#0x70
+0179dd70  str x22,[sp, #0x40]
+0179dd74  stp x21,x20,[sp, #0x50]
+0179dd78  stp x19,x30,[sp, #0x60]
+0179dd7c  stp xzr,xzr,[sp, #0x28]
+0179dd80  str xzr,[sp, #0x20]
+0179dd84  cbz x0,0x0179de30
+0179dd88  ldr x8,[x2, #0x38]
+0179dd8c  mov x21,x1
+0179dd90  mov x19,x2
+0179dd94  mov x20,x0
+0179dd98  ldr x1,[x8, #0x8]
+0179dd9c  add x8,sp,#0x8
+0179dda0  ldr x9,[x1, #0x8]
+0179dda4  blr x9
+0179dda8  ldur q0,[sp, #0x8]
+0179ddac  ldr x8,[sp, #0x18]
+0179ddb0  str q0,[sp, #0x20]
+0179ddb4  str x8,[sp, #0x30]
+0179ddb8  ldr x8,[x19, #0x38]
+0179ddbc  ldr x1,[x8, #0x28]
+0179ddc0  add x0,sp,#0x20
+    ; [PRE] try { // try from 0179ddc0 to 0179ddc7 has its CatchHandler @ 0179de44
+0179ddc4  bl 0x01a070ec
+    ; [POST] } // end try from 0179ddc0 to 0179ddc7
+0179ddc8  tbz w0,#0x0,0x0179ddec
+0179ddcc  cbz x21,0x0179de2c
+0179ddd0  ldr x8,[x19, #0x38]
+0179ddd4  ldr x1,[sp, #0x30]
+0179ddd8  ldr x2,[x8, #0x20]
+0179dddc  ldr x8,[x2, #0x8]
+0179dde0  mov x0,x21
+    ; [PRE] try { // try from 0179dde0 to 0179dde7 has its CatchHandler @ 0179de40
+0179dde4  blr x8
+    ; [POST] } // end try from 0179dde0 to 0179dde7
+0179dde8  b 0x0179ddb8
+0179ddec  mov x21,xzr
+0179ddf0  ldr x8,[x19, #0x38]
+0179ddf4  add x0,sp,#0x20
+0179ddf8  ldr x1,[x8, #0x38]
+0179ddfc  bl 0x01a070e8
+0179de00  cbnz x21,0x0179de34
+0179de04  ldr x8,[x19, #0x38]
+0179de08  mov x0,x20
+0179de0c  ldr x1,[x8, #0x40]
+0179de10  ldr x8,[x1, #0x8]
+0179de14  blr x8
+0179de18  ldp x19,x30,[sp, #0x60]
+0179de1c  ldp x21,x20,[sp, #0x50]
+0179de20  ldr x22,[sp, #0x40]
+0179de24  add sp,sp,#0x70
+0179de28  ret
+0179de2c  bl 0x00b079b0
+    ; [PRE] try { // try from 0179de2c to 0179de2f has its CatchHandler @ 0179de3c
+    ; [POST] } // end try from 0179de2c to 0179de2f
+0179de30  bl 0x00b079b0
+0179de34  mov x0,x21
+0179de38  bl 0x00aaac8c

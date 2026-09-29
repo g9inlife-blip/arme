@@ -1,0 +1,153 @@
+Function: AliothEngine.AndroidUtils$$ShowAlert @ 01652bf4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.AndroidJavaRunnable$$.ctor @ 024a9ea8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> System.Object$$.ctor @ 02194104
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.AndroidJavaObject$$Call @ 024acea8
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> UnityEngine.Application$$get_platform @ 024f2b84
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+  <- AndroidFix$$ShowGetAppDetailSetting @ 00ecb568
+  <- AndroidFix$$ShowRefuseTips @ 00ecb690
+  <- AndroidFix$$ShowAndroidPermissionTips @ 00ecb7b8
+
+--- Listing ---
+01652bf4  str x26,[sp, #-0x50]!
+01652bf8  stp x25,x24,[sp, #0x10]
+01652bfc  stp x23,x22,[sp, #0x20]
+01652c00  stp x21,x20,[sp, #0x30]
+01652c04  stp x19,x30,[sp, #0x40]
+01652c08  adrp x19,0x3577000
+01652c0c  adrp x26,0x3352000
+01652c10  ldrb w8,[x19, #0x7f9]
+01652c14  ldr x26,[x26, #0x878]
+01652c18  mov x22,x5
+01652c1c  mov x20,x4
+01652c20  mov x21,x3
+01652c24  mov x23,x2
+01652c28  mov x24,x1
+01652c2c  mov x25,x0
+01652c30  tbnz w8,#0x0,0x01652c78
+01652c34  adrp x0,0x335a000
+01652c38  ldr x0,[x0, #0x488]
+01652c3c  bl 0x00b0789c
+01652c40  adrp x0,0x3370000
+01652c44  ldr x0,[x0, #0x778]
+01652c48  bl 0x00b0789c
+01652c4c  adrp x0,0x3315000
+01652c50  ldr x0,[x0, #0xc60]
+01652c54  bl 0x00b0789c
+01652c58  adrp x0,0x3352000
+01652c5c  ldr x0,[x0, #0x878]
+01652c60  bl 0x00b0789c
+01652c64  adrp x0,0x3331000
+01652c68  ldr x0,[x0, #0xab8]
+01652c6c  bl 0x00b0789c
+01652c70  mov w8,#0x1
+01652c74  strb w8,[x19, #0x7f9]
+01652c78  ldr x0,[x26]
+01652c7c  bl 0x00b079a0
+01652c80  cbz x0,0x01652de4
+01652c84  mov x1,xzr
+01652c88  mov x19,x0
+01652c8c  bl 0x02194104
+01652c90  mov x0,x19
+01652c94  str x25,[x0, #0x18]!
+01652c98  mov x1,x25
+01652c9c  bl 0x00b07850
+01652ca0  mov x0,x19
+01652ca4  str x24,[x0, #0x20]!
+01652ca8  mov x1,x24
+01652cac  bl 0x00b07850
+01652cb0  mov x0,x19
+01652cb4  str x23,[x0, #0x28]!
+01652cb8  mov x1,x23
+01652cbc  bl 0x00b07850
+01652cc0  mov x0,x19
+01652cc4  str x22,[x0, #0x30]!
+01652cc8  mov x1,x22
+01652ccc  bl 0x00b07850
+01652cd0  mov x0,x19
+01652cd4  str x21,[x0, #0x38]!
+01652cd8  mov x1,x21
+01652cdc  bl 0x00b07850
+01652ce0  mov x0,x19
+01652ce4  str x20,[x0, #0x40]!
+01652ce8  mov x1,x20
+01652cec  bl 0x00b07850
+01652cf0  mov x0,xzr
+01652cf4  bl 0x024f2b84
+01652cf8  cmp w0,#0xb
+01652cfc  b.ne 0x01652dcc
+01652d00  adrp x21,0x3370000
+01652d04  adrp x22,0x335a000
+01652d08  ldr x21,[x21, #0x778]
+01652d0c  ldr x22,[x22, #0x488]
+01652d10  bl 0x0164f628
+01652d14  mov x20,x19
+01652d18  str x0,[x20, #0x10]!
+01652d1c  mov x1,x0
+01652d20  mov x0,x20
+01652d24  bl 0x00b07850
+01652d28  ldr x0,[x21]
+01652d2c  ldr x20,[x20]
+01652d30  mov w1,#0x1
+01652d34  bl 0x00b078f8
+01652d38  ldr x8,[x22]
+01652d3c  mov x21,x0
+01652d40  mov x0,x8
+01652d44  bl 0x00b079a0
+01652d48  cbz x0,0x01652de4
+01652d4c  adrp x8,0x3315000
+01652d50  ldr x8,[x8, #0xc60]
+01652d54  mov x1,x19
+01652d58  mov x3,xzr
+01652d5c  mov x22,x0
+01652d60  ldr x2,[x8]
+01652d64  bl 0x024a9ea8
+01652d68  cbz x21,0x01652de4
+01652d6c  ldr x8,[x21]
+01652d70  mov x0,x22
+01652d74  ldr x1,[x8, #0x40]
+01652d78  bl 0x00b07990
+01652d7c  cbz x0,0x01652de8
+01652d80  ldr w8,[x21, #0x18]
+01652d84  cbz w8,0x01652df4
+01652d88  mov x0,x21
+01652d8c  str x22,[x0, #0x20]!
+01652d90  mov x1,x22
+01652d94  bl 0x00b07850
+01652d98  cbz x20,0x01652de4
+01652d9c  adrp x8,0x3331000
+01652da0  ldr x8,[x8, #0xab8]
+01652da4  mov x0,x20
+01652da8  mov x2,x21
+01652dac  ldp x19,x30,[sp, #0x40]
+01652db0  ldr x1,[x8]
+01652db4  ldp x21,x20,[sp, #0x30]
+01652db8  ldp x23,x22,[sp, #0x20]
+01652dbc  ldp x25,x24,[sp, #0x10]
+01652dc0  mov x3,xzr
+01652dc4  ldr x26,[sp], #0x50
+01652dc8  b 0x024acea8
+01652dcc  ldp x19,x30,[sp, #0x40]
+01652dd0  ldp x21,x20,[sp, #0x30]
+01652dd4  ldp x23,x22,[sp, #0x20]
+01652dd8  ldp x25,x24,[sp, #0x10]
+01652ddc  ldr x26,[sp], #0x50
+01652de0  ret
+01652de4  bl 0x00b079b0
+01652de8  bl 0x00b079d4
+01652dec  mov x1,xzr
+01652df0  bl 0x00b07978
+01652df4  bl 0x00b079b8

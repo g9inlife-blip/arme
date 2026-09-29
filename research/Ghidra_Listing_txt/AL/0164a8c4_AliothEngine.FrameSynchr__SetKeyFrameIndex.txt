@@ -1,0 +1,19 @@
+Function: AliothEngine.FrameSynchr$$SetKeyFrameIndex @ 0164a8c4
+
+--- Calls OUT ---
+  -> AliothEngine.FrameSynchr$$CalcBackstepTimeSinceStart @ 0164a8f0
+
+--- Calls IN ---
+
+--- Listing ---
+0164a8c4  str x30,[sp, #-0x10]!
+0164a8c8  ldr w8,[x0, #0x24]
+0164a8cc  ldr w9,[x0, #0x34]
+0164a8d0  str w1,[x0, #0x30]
+0164a8d4  add w8,w8,w1
+0164a8d8  mul w8,w9,w8
+0164a8dc  str w8,[x0, #0x108]
+0164a8e0  bl 0x0164a8f0
+0164a8e4  mov w0,#0x1
+0164a8e8  ldr x30,[sp], #0x10
+0164a8ec  ret

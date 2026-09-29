@@ -1,0 +1,557 @@
+Function: AliothEngine.FileUtility$$SynchronizeDirectory_IgoreMeta @ 0168f8ec
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.IO.DirectoryInfo$$.ctor @ 020adebc
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.HashSet<object>$$GetEnumerator @ 01b02778
+  -> System.IO.Directory$$Delete @ 020aeb88
+  -> System.DateTime$$op_GreaterThan @ 0213572c
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> System.IO.FileInfo$$.ctor @ 020b12c4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Func<object,-object>$$.ctor @ 01ae8f80
+  -> System.IO.Directory$$CreateDirectory @ 020adf44
+  -> System.Linq.Enumerable$$ToHashSet<object> @ 0178d700
+  -> System.Collections.Generic.HashSet<object>$$Contains @ 01b022cc
+  -> System.IO.FileSystemInfo$$get_LastWriteTime @ 020b461c
+  -> System.IO.FileInfo$$CopyTo @ 020b1cf0
+  -> System.String$$EndsWith @ 01fddcec
+  -> System.String$$op_Equality @ 01fd05b0
+  -> System.IO.FileInfo$$CopyTo @ 020b1cf8
+  -> AliothEngine.FileUtility$$SynchronizeDirectory @ 016901cc
+  -> System.Linq.Enumerable$$Select<object,-object> @ 0178839c
+  -> System.IO.File$$Delete @ 020afd48
+  -> System.IO.DirectoryInfo$$GetFiles @ 020af09c
+  -> System.Collections.Generic.HashSet<object>$$Remove @ 01b024b0
+  -> System.Collections.Generic.HashSet.Enumerator<object>$$Dispose @ 01a06aa8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.IO.DirectoryInfo$$GetDirectories @ 020af4b8
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.Collections.Generic.HashSet.Enumerator<object>$$MoveNext @ 01a06aac
+
+--- Calls IN ---
+
+--- Listing ---
+0168f8ec  sub sp,sp,#0xa0
+0168f8f0  stp x28,x27,[sp, #0x40]
+0168f8f4  stp x26,x25,[sp, #0x50]
+0168f8f8  stp x24,x23,[sp, #0x60]
+0168f8fc  stp x22,x21,[sp, #0x70]
+0168f900  stp x20,x19,[sp, #0x80]
+0168f904  stp x29,x30,[sp, #0x90]
+0168f908  adrp x20,0x3577000
+0168f90c  adrp x22,0x336c000
+0168f910  ldrb w8,[x20, #0xad6]
+0168f914  ldr x22,[x22, #0x858]
+0168f918  mov x21,x1
+0168f91c  mov x19,x0
+0168f920  tbnz w8,#0x0,0x0168fa10
+0168f924  adrp x0,0x336f000
+0168f928  ldr x0,[x0, #0xdc8]
+0168f92c  bl 0x00b0789c
+0168f930  adrp x0,0x336c000
+0168f934  ldr x0,[x0, #0x858]
+0168f938  bl 0x00b0789c
+0168f93c  adrp x0,0x3340000
+0168f940  ldr x0,[x0, #0x8c0]
+0168f944  bl 0x00b0789c
+0168f948  adrp x0,0x3373000
+0168f94c  ldr x0,[x0, #0x458]
+0168f950  bl 0x00b0789c
+0168f954  adrp x0,0x3317000
+0168f958  ldr x0,[x0, #0xea8]
+0168f95c  bl 0x00b0789c
+0168f960  adrp x0,0x3358000
+0168f964  ldr x0,[x0, #0xfe8]
+0168f968  bl 0x00b0789c
+0168f96c  adrp x0,0x3312000
+0168f970  ldr x0,[x0, #0x3b8]
+0168f974  bl 0x00b0789c
+0168f978  adrp x0,0x3375000
+0168f97c  ldr x0,[x0, #0x498]
+0168f980  bl 0x00b0789c
+0168f984  adrp x0,0x3319000
+0168f988  ldr x0,[x0, #0xee8]
+0168f98c  bl 0x00b0789c
+0168f990  adrp x0,0x3336000
+0168f994  ldr x0,[x0, #0x750]
+0168f998  bl 0x00b0789c
+0168f99c  adrp x0,0x3352000
+0168f9a0  ldr x0,[x0, #0xe48]
+0168f9a4  bl 0x00b0789c
+0168f9a8  adrp x0,0x330e000
+0168f9ac  ldr x0,[x0, #0x4a0]
+0168f9b0  bl 0x00b0789c
+0168f9b4  adrp x0,0x3334000
+0168f9b8  ldr x0,[x0, #0xe18]
+0168f9bc  bl 0x00b0789c
+0168f9c0  adrp x0,0x3339000
+0168f9c4  ldr x0,[x0, #0x388]
+0168f9c8  bl 0x00b0789c
+0168f9cc  adrp x0,0x336c000
+0168f9d0  ldr x0,[x0, #0x318]
+0168f9d4  bl 0x00b0789c
+0168f9d8  adrp x0,0x3354000
+0168f9dc  ldr x0,[x0, #0x278]
+0168f9e0  bl 0x00b0789c
+0168f9e4  adrp x0,0x3320000
+0168f9e8  ldr x0,[x0, #0x80]
+0168f9ec  bl 0x00b0789c
+0168f9f0  adrp x0,0x3379000
+0168f9f4  ldr x0,[x0, #0x820]
+0168f9f8  bl 0x00b0789c
+0168f9fc  adrp x0,0x337c000
+0168fa00  ldr x0,[x0, #0xdc8]
+0168fa04  bl 0x00b0789c
+0168fa08  mov w8,#0x1
+0168fa0c  strb w8,[x20, #0xad6]
+0168fa10  ldr x0,[x22]
+0168fa14  stp xzr,xzr,[sp, #0x28]
+0168fa18  str xzr,[sp, #0x20]
+0168fa1c  bl 0x00b079a0
+0168fa20  cbz x0,0x016900b4
+0168fa24  mov x1,x19
+0168fa28  mov x2,xzr
+0168fa2c  mov x20,x0
+0168fa30  bl 0x020adebc
+0168fa34  ldr x0,[x22]
+0168fa38  bl 0x00b079a0
+0168fa3c  cbz x0,0x016900b4
+0168fa40  mov x1,x21
+0168fa44  mov x2,xzr
+0168fa48  mov x19,x0
+0168fa4c  bl 0x020adebc
+0168fa50  ldr x8,[x20]
+0168fa54  mov x0,x20
+0168fa58  ldp x9,x1,[x8, #0x1b8]
+0168fa5c  blr x9
+0168fa60  ldr x8,[x19]
+0168fa64  mov x21,x0
+0168fa68  mov x0,x19
+0168fa6c  ldp x9,x1,[x8, #0x1b8]
+0168fa70  blr x9
+0168fa74  mov x1,x0
+0168fa78  mov x0,x21
+0168fa7c  mov x2,xzr
+0168fa80  bl 0x01fd05b0
+0168fa84  tbnz w0,#0x0,0x01690094
+0168fa88  ldr x8,[x20]
+0168fa8c  mov x0,x20
+0168fa90  ldp x9,x1,[x8, #0x1d8]
+0168fa94  blr x9
+0168fa98  tbz w0,#0x0,0x01690094
+0168fa9c  ldr x8,[x19]
+0168faa0  adrp x24,0x3379000
+0168faa4  mov x0,x19
+0168faa8  ldp x9,x1,[x8, #0x1d8]
+0168faac  ldr x24,[x24, #0x820]
+0168fab0  blr x9
+0168fab4  tbnz w0,#0x0,0x0168fad0
+0168fab8  ldr x8,[x19]
+0168fabc  mov x0,x19
+0168fac0  ldp x9,x1,[x8, #0x1b8]
+0168fac4  blr x9
+0168fac8  mov x1,xzr
+0168facc  bl 0x020adf44
+0168fad0  mov x0,x19
+0168fad4  mov x1,xzr
+0168fad8  bl 0x020af09c
+0168fadc  ldr x8,[x24]
+0168fae0  mov x21,x0
+0168fae4  ldr w9,[x8, #0xe0]
+0168fae8  cbnz w9,0x0168faf8
+0168faec  mov x0,x8
+0168faf0  bl 0x00b0798c
+0168faf4  ldr x8,[x24]
+0168faf8  ldr x9,[x8, #0xb8]
+0168fafc  ldr x22,[x9, #0x8]
+0168fb00  cbnz x22,0x0168fb64
+0168fb04  adrp x22,0x3336000
+0168fb08  ldr w9,[x8, #0xe0]
+0168fb0c  ldr x22,[x22, #0x750]
+0168fb10  cbnz w9,0x0168fb20
+0168fb14  mov x0,x8
+0168fb18  bl 0x00b0798c
+0168fb1c  ldr x8,[x24]
+0168fb20  ldr x8,[x8, #0xb8]
+0168fb24  ldr x0,[x22]
+0168fb28  ldr x23,[x8]
+0168fb2c  bl 0x00b079a0
+0168fb30  cbz x0,0x016900b4
+0168fb34  adrp x8,0x3354000
+0168fb38  ldr x8,[x8, #0x278]
+0168fb3c  mov x1,x23
+0168fb40  mov x3,xzr
+0168fb44  mov x22,x0
+0168fb48  ldr x2,[x8]
+0168fb4c  bl 0x01ae8f80
+0168fb50  ldr x8,[x24]
+0168fb54  mov x1,x22
+0168fb58  ldr x0,[x8, #0xb8]
+0168fb5c  str x22,[x0, #0x8]!
+0168fb60  bl 0x00b07850
+0168fb64  adrp x8,0x3373000
+0168fb68  ldr x8,[x8, #0x458]
+0168fb6c  adrp x23,0x3317000
+0168fb70  mov x0,x21
+0168fb74  mov x1,x22
+0168fb78  ldr x2,[x8]
+0168fb7c  ldr x23,[x23, #0xea8]
+0168fb80  bl 0x0178839c
+0168fb84  ldr x1,[x23]
+0168fb88  bl 0x0178d700
+0168fb8c  mov x21,x0
+0168fb90  mov x0,x20
+0168fb94  mov x1,xzr
+0168fb98  bl 0x020af09c
+0168fb9c  cbz x0,0x016900b4
+0168fba0  ldr w8,[x0, #0x18]
+0168fba4  adrp x28,0x336c000
+0168fba8  ldr x28,[x28, #0x318]
+0168fbac  mov x22,x0
+0168fbb0  cmp w8,#0x1
+0168fbb4  b.lt 0x0168fd5c
+0168fbb8  adrp x29,0x3319000
+0168fbbc  ldr x29,[x29, #0xee8]
+0168fbc0  mov w27,wzr
+0168fbc4  cmp w27,w8
+0168fbc8  b.cs 0x016900b8
+0168fbcc  add x8,x22,w27, SXTW  #0x3
+0168fbd0  ldr x23,[x8, #0x20]
+0168fbd4  cbz x23,0x016900b4
+0168fbd8  ldr x8,[x23]
+0168fbdc  mov x0,x23
+0168fbe0  ldp x9,x1,[x8, #0x1c8]
+0168fbe4  blr x9
+0168fbe8  cbz x21,0x016900b4
+0168fbec  adrp x8,0x330e000
+0168fbf0  ldr x8,[x8, #0x4a0]
+0168fbf4  mov x1,x0
+0168fbf8  mov x0,x21
+0168fbfc  ldr x2,[x8]
+0168fc00  bl 0x01b022cc
+0168fc04  tbz w0,#0x0,0x0168fc30
+0168fc08  ldr x8,[x23]
+0168fc0c  mov x0,x23
+0168fc10  ldp x9,x1,[x8, #0x1c8]
+0168fc14  blr x9
+0168fc18  adrp x8,0x3339000
+0168fc1c  ldr x8,[x8, #0x388]
+0168fc20  mov x1,x0
+0168fc24  mov x0,x21
+0168fc28  ldr x2,[x8]
+0168fc2c  bl 0x01b024b0
+0168fc30  ldr x8,[x19]
+0168fc34  mov x0,x19
+0168fc38  ldp x9,x1,[x8, #0x1b8]
+0168fc3c  blr x9
+0168fc40  ldr x8,[x23]
+0168fc44  mov x24,x0
+0168fc48  mov x0,x23
+0168fc4c  ldp x9,x1,[x8, #0x1c8]
+0168fc50  blr x9
+0168fc54  ldr x8,[x28]
+0168fc58  mov x25,x0
+0168fc5c  ldr w9,[x8, #0xe0]
+0168fc60  cbnz w9,0x0168fc6c
+0168fc64  mov x0,x8
+0168fc68  bl 0x00b0798c
+0168fc6c  mov x0,x24
+0168fc70  mov x1,x25
+0168fc74  mov x2,xzr
+0168fc78  bl 0x020b2e1c
+0168fc7c  ldr x8,[x29]
+0168fc80  mov x25,x0
+0168fc84  mov x0,x8
+0168fc88  bl 0x00b079a0
+0168fc8c  cbz x0,0x016900b4
+0168fc90  mov x1,x25
+0168fc94  mov x2,xzr
+0168fc98  mov x24,x0
+0168fc9c  bl 0x020b12c4
+0168fca0  ldr x8,[x24]
+0168fca4  mov x0,x24
+0168fca8  ldp x9,x1,[x8, #0x1d8]
+0168fcac  blr x9
+0168fcb0  tbz w0,#0x0,0x0168fd2c
+0168fcb4  mov x0,x23
+0168fcb8  mov x1,xzr
+0168fcbc  bl 0x020b461c
+0168fcc0  mov x25,x0
+0168fcc4  mov x0,x24
+0168fcc8  mov x1,xzr
+0168fccc  bl 0x020b461c
+0168fcd0  adrp x8,0x336f000
+0168fcd4  ldr x8,[x8, #0xdc8]
+0168fcd8  mov x26,x0
+0168fcdc  ldr x8,[x8]
+0168fce0  ldr w9,[x8, #0xe0]
+0168fce4  cbnz w9,0x0168fcf0
+0168fce8  mov x0,x8
+0168fcec  bl 0x00b0798c
+0168fcf0  mov x0,x25
+0168fcf4  mov x1,x26
+0168fcf8  mov x2,xzr
+0168fcfc  bl 0x0213572c
+0168fd00  tbz w0,#0x0,0x0168fd4c
+0168fd04  ldr x8,[x24]
+0168fd08  mov x0,x24
+0168fd0c  ldp x9,x1,[x8, #0x1b8]
+0168fd10  blr x9
+0168fd14  mov x1,x0
+0168fd18  mov w2,#0x1
+0168fd1c  mov x0,x23
+0168fd20  mov x3,xzr
+0168fd24  bl 0x020b1cf8
+0168fd28  b 0x0168fd4c
+0168fd2c  ldr x8,[x24]
+0168fd30  mov x0,x24
+0168fd34  ldp x9,x1,[x8, #0x1b8]
+0168fd38  blr x9
+0168fd3c  mov x1,x0
+0168fd40  mov x0,x23
+0168fd44  mov x2,xzr
+0168fd48  bl 0x020b1cf0
+0168fd4c  ldr w8,[x22, #0x18]
+0168fd50  add w27,w27,#0x1
+0168fd54  cmp w27,w8
+0168fd58  b.lt 0x0168fbc4
+0168fd5c  cbz x21,0x016900b4
+0168fd60  adrp x25,0x3334000
+0168fd64  ldr x25,[x25, #0xe18]
+0168fd68  adrp x26,0x3312000
+0168fd6c  adrp x23,0x337c000
+0168fd70  adrp x24,0x3340000
+0168fd74  ldr x26,[x26, #0x3b8]
+0168fd78  ldr x23,[x23, #0xdc8]
+0168fd7c  ldr x24,[x24, #0x8c0]
+0168fd80  ldr x1,[x25]
+0168fd84  add x8,sp,#0x8
+0168fd88  mov x0,x21
+0168fd8c  bl 0x01b02778
+0168fd90  ldur q0,[sp, #0x8]
+0168fd94  ldr x8,[sp, #0x18]
+0168fd98  adrp x29,0x336c000
+0168fd9c  adrp x27,0x3379000
+0168fda0  str q0,[sp, #0x20]
+0168fda4  str x8,[sp, #0x30]
+0168fda8  ldr x29,[x29, #0x858]
+0168fdac  ldr x27,[x27, #0x820]
+0168fdb0  ldr x1,[x26]
+0168fdb4  add x0,sp,#0x20
+    ; [PRE] try { // try from 0168fdb4 to 0168fdbb has its CatchHandler @ 016900e0
+0168fdb8  bl 0x01a06aac
+    ; [POST] } // end try from 0168fdb4 to 0168fdbb
+0168fdbc  tbz w0,#0x0,0x0168fe1c
+0168fdc0  ldr x21,[sp, #0x30]
+0168fdc4  cbz x21,0x016900bc
+0168fdc8  ldr x1,[x23]
+0168fdcc  mov x0,x21
+    ; [PRE] try { // try from 0168fdcc to 0168fdd7 has its CatchHandler @ 016900d4
+0168fdd0  mov x2,xzr
+0168fdd4  bl 0x01fddcec
+    ; [POST] } // end try from 0168fdcc to 0168fdd7
+0168fdd8  tbnz w0,#0x0,0x0168fdb0
+0168fddc  ldr x8,[x19]
+0168fde0  ldp x9,x1,[x8, #0x1b8]
+0168fde4  mov x0,x19
+    ; [PRE] try { // try from 0168fde4 to 0168fdeb has its CatchHandler @ 016900cc
+0168fde8  blr x9
+    ; [POST] } // end try from 0168fde4 to 0168fdeb
+0168fdec  mov x22,x0
+0168fdf0  ldr x0,[x28]
+0168fdf4  ldr w8,[x0, #0xe0]
+0168fdf8  cbnz w8,0x0168fe00
+0168fdfc  bl 0x00b0798c
+    ; [PRE] try { // try from 0168fdfc to 0168fdff has its CatchHandler @ 016900c4
+    ; [POST] } // end try from 0168fdfc to 0168fdff
+0168fe00  mov x0,x22
+    ; [PRE] try { // try from 0168fe00 to 0168fe17 has its CatchHandler @ 016900d8
+0168fe04  mov x1,x21
+0168fe08  mov x2,xzr
+0168fe0c  bl 0x020b2e1c
+0168fe10  mov x1,xzr
+0168fe14  bl 0x020afd48
+    ; [POST] } // end try from 0168fe00 to 0168fe17
+0168fe18  b 0x0168fdb0
+0168fe1c  adrp x8,0x3358000
+0168fe20  ldr x8,[x8, #0xfe8]
+0168fe24  add x0,sp,#0x20
+0168fe28  ldr x1,[x8]
+0168fe2c  bl 0x01a06aa8
+0168fe30  mov x0,x19
+0168fe34  mov x1,xzr
+0168fe38  bl 0x020af4b8
+0168fe3c  ldr x8,[x27]
+0168fe40  mov x21,x0
+0168fe44  ldr w9,[x8, #0xe0]
+0168fe48  cbnz w9,0x0168fe58
+0168fe4c  mov x0,x8
+0168fe50  bl 0x00b0798c
+0168fe54  ldr x8,[x27]
+0168fe58  ldr x9,[x8, #0xb8]
+0168fe5c  ldr x22,[x9, #0x10]
+0168fe60  cbnz x22,0x0168fec4
+0168fe64  ldr w9,[x8, #0xe0]
+0168fe68  cbnz w9,0x0168fe78
+0168fe6c  mov x0,x8
+0168fe70  bl 0x00b0798c
+0168fe74  ldr x8,[x27]
+0168fe78  ldr x8,[x8, #0xb8]
+0168fe7c  ldr x23,[x8]
+0168fe80  adrp x8,0x3352000
+0168fe84  ldr x8,[x8, #0xe48]
+0168fe88  ldr x0,[x8]
+0168fe8c  bl 0x00b079a0
+0168fe90  cbz x0,0x016900b4
+0168fe94  adrp x8,0x3320000
+0168fe98  ldr x8,[x8, #0x80]
+0168fe9c  mov x1,x23
+0168fea0  mov x3,xzr
+0168fea4  mov x22,x0
+0168fea8  ldr x2,[x8]
+0168feac  bl 0x01ae8f80
+0168feb0  ldr x8,[x27]
+0168feb4  mov x1,x22
+0168feb8  ldr x0,[x8, #0xb8]
+0168febc  str x22,[x0, #0x10]!
+0168fec0  bl 0x00b07850
+0168fec4  ldr x2,[x24]
+0168fec8  mov x0,x21
+0168fecc  mov x1,x22
+0168fed0  bl 0x0178839c
+0168fed4  adrp x8,0x3317000
+0168fed8  ldr x8,[x8, #0xea8]
+0168fedc  ldr x1,[x8]
+0168fee0  bl 0x0178d700
+0168fee4  mov x21,x0
+0168fee8  mov x0,x20
+0168feec  mov x1,xzr
+0168fef0  bl 0x020af4b8
+0168fef4  cbz x0,0x016900b4
+0168fef8  ldr w8,[x0, #0x18]
+0168fefc  mov x20,x0
+0168ff00  cmp w8,#0x1
+0168ff04  b.lt 0x01690004
+0168ff08  mov w27,wzr
+0168ff0c  cmp w27,w8
+0168ff10  b.cs 0x016900b8
+0168ff14  add x8,x20,w27, SXTW  #0x3
+0168ff18  ldr x22,[x8, #0x20]
+0168ff1c  cbz x22,0x016900b4
+0168ff20  ldr x8,[x22]
+0168ff24  mov x0,x22
+0168ff28  ldp x9,x1,[x8, #0x1c8]
+0168ff2c  blr x9
+0168ff30  cbz x21,0x016900b4
+0168ff34  adrp x8,0x330e000
+0168ff38  ldr x8,[x8, #0x4a0]
+0168ff3c  mov x1,x0
+0168ff40  mov x0,x21
+0168ff44  ldr x2,[x8]
+0168ff48  bl 0x01b022cc
+0168ff4c  tbz w0,#0x0,0x0168ff78
+0168ff50  ldr x8,[x22]
+0168ff54  mov x0,x22
+0168ff58  ldp x9,x1,[x8, #0x1c8]
+0168ff5c  blr x9
+0168ff60  adrp x8,0x3339000
+0168ff64  ldr x8,[x8, #0x388]
+0168ff68  mov x1,x0
+0168ff6c  mov x0,x21
+0168ff70  ldr x2,[x8]
+0168ff74  bl 0x01b024b0
+0168ff78  ldr x8,[x19]
+0168ff7c  mov x0,x19
+0168ff80  ldp x9,x1,[x8, #0x1b8]
+0168ff84  blr x9
+0168ff88  ldr x8,[x22]
+0168ff8c  mov x23,x0
+0168ff90  mov x0,x22
+0168ff94  ldp x9,x1,[x8, #0x1c8]
+0168ff98  blr x9
+0168ff9c  ldr x8,[x28]
+0168ffa0  mov x24,x0
+0168ffa4  ldr w9,[x8, #0xe0]
+0168ffa8  cbnz w9,0x0168ffb4
+0168ffac  mov x0,x8
+0168ffb0  bl 0x00b0798c
+0168ffb4  mov x0,x23
+0168ffb8  mov x1,x24
+0168ffbc  mov x2,xzr
+0168ffc0  bl 0x020b2e1c
+0168ffc4  ldr x8,[x29]
+0168ffc8  mov x24,x0
+0168ffcc  mov x0,x8
+0168ffd0  bl 0x00b079a0
+0168ffd4  cbz x0,0x016900b4
+0168ffd8  mov x1,x24
+0168ffdc  mov x2,xzr
+0168ffe0  mov x23,x0
+0168ffe4  bl 0x020adebc
+0168ffe8  mov x0,x22
+0168ffec  mov x1,x23
+0168fff0  bl 0x016901cc
+0168fff4  ldr w8,[x20, #0x18]
+0168fff8  add w27,w27,#0x1
+0168fffc  cmp w27,w8
+01690000  b.lt 0x0168ff0c
+01690004  cbz x21,0x016900b4
+01690008  ldr x1,[x25]
+0169000c  add x8,sp,#0x8
+01690010  mov x0,x21
+01690014  bl 0x01b02778
+01690018  ldur q0,[sp, #0x8]
+0169001c  ldr x8,[sp, #0x18]
+01690020  str q0,[sp, #0x20]
+01690024  str x8,[sp, #0x30]
+01690028  ldr x1,[x26]
+0169002c  add x0,sp,#0x20
+    ; [PRE] try { // try from 0169002c to 01690033 has its CatchHandler @ 016900dc
+01690030  bl 0x01a06aac
+    ; [POST] } // end try from 0169002c to 01690033
+01690034  tbz w0,#0x0,0x01690080
+01690038  ldr x8,[x19]
+0169003c  ldr x20,[sp, #0x30]
+01690040  ldp x9,x1,[x8, #0x1b8]
+01690044  mov x0,x19
+    ; [PRE] try { // try from 01690044 to 0169004b has its CatchHandler @ 016900d0
+01690048  blr x9
+    ; [POST] } // end try from 01690044 to 0169004b
+0169004c  mov x21,x0
+01690050  ldr x0,[x28]
+01690054  ldr w8,[x0, #0xe0]
+01690058  cbnz w8,0x01690060
+0169005c  bl 0x00b0798c
+    ; [PRE] try { // try from 0169005c to 0169005f has its CatchHandler @ 016900c8
+    ; [POST] } // end try from 0169005c to 0169005f
+01690060  mov x0,x21
+    ; [PRE] try { // try from 01690060 to 0169007b has its CatchHandler @ 01690158
+01690064  mov x1,x20
+01690068  mov x2,xzr
+0169006c  bl 0x020b2e1c
+01690070  mov w1,#0x1
+01690074  mov x2,xzr
+01690078  bl 0x020aeb88
+    ; [POST] } // end try from 01690060 to 0169007b
+0169007c  b 0x01690028
+01690080  adrp x8,0x3358000
+01690084  ldr x8,[x8, #0xfe8]
+01690088  add x0,sp,#0x20
+0169008c  ldr x1,[x8]
+01690090  bl 0x01a06aa8
+01690094  ldp x29,x30,[sp, #0x90]
+01690098  ldp x20,x19,[sp, #0x80]
+0169009c  ldp x22,x21,[sp, #0x70]
+016900a0  ldp x24,x23,[sp, #0x60]
+016900a4  ldp x26,x25,[sp, #0x50]
+016900a8  ldp x28,x27,[sp, #0x40]
+016900ac  add sp,sp,#0xa0
+016900b0  ret
+016900b4  bl 0x00b079b0
+016900b8  bl 0x00b079b8
+016900bc  bl 0x00b079b0
+    ; [PRE] try { // try from 016900bc to 016900bf has its CatchHandler @ 016900c0
+    ; [POST] } // end try from 016900bc to 016900bf

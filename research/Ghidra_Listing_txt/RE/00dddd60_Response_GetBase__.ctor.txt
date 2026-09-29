@@ -1,0 +1,39 @@
+Function: Response_GetBase$$.ctor @ 00dddd60
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_GetBaseWrap$$__CreateInstance @ 0136c648
+
+--- Listing ---
+00dddd60  stp x21,x20,[sp, #-0x20]!
+00dddd64  stp x19,x30,[sp, #0x10]
+00dddd68  adrp x21,0x3572000
+00dddd6c  adrp x20,0x332d000
+00dddd70  ldrb w8,[x21, #0x2de]
+00dddd74  ldr x20,[x20, #0x4d8]
+00dddd78  mov x19,x0
+00dddd7c  tbnz w8,#0x0,0x00dddd94
+00dddd80  adrp x0,0x332d000
+00dddd84  ldr x0,[x0, #0x4d8]
+00dddd88  bl 0x00b0789c
+00dddd8c  mov w8,#0x1
+00dddd90  strb w8,[x21, #0x2de]
+00dddd94  mov x0,x19
+00dddd98  mov x1,xzr
+00dddd9c  bl 0x02194104
+00dddda0  ldr x8,[x20]
+00dddda4  ldr x8,[x8, #0xb8]
+00dddda8  ldr x0,[x8]
+00ddddac  cbz x0,0x00ddddc4
+00ddddb0  mov x1,x19
+00ddddb4  ldp x19,x30,[sp, #0x10]
+00ddddb8  mov x2,xzr
+00ddddbc  ldp x21,x20,[sp], #0x20
+00ddddc0  b 0x01060dac
+00ddddc4  ldp x19,x30,[sp, #0x10]
+00ddddc8  ldp x21,x20,[sp], #0x20
+00ddddcc  ret

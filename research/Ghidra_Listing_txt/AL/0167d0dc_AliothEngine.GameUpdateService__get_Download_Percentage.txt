@@ -1,0 +1,43 @@
+Function: AliothEngine.GameUpdateService$$get_Download_Percentage @ 0167d0dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp32 @ 01063698
+
+--- Calls IN ---
+  <- GameUpdatePanelMono$$OnUpdate @ 0103ec78
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_g_get_Download_Percentage @ 01142864
+  <- AliothEngine.GameUpdateService$$CalDownloadInfo @ 0167e3dc
+
+--- Listing ---
+0167d0dc  stp x21,x20,[sp, #-0x20]!
+0167d0e0  stp x19,x30,[sp, #0x10]
+0167d0e4  adrp x20,0x3577000
+0167d0e8  adrp x21,0x3352000
+0167d0ec  ldrb w8,[x20, #0xa16]
+0167d0f0  ldr x21,[x21, #0x2a8]
+0167d0f4  mov x19,x0
+0167d0f8  tbnz w8,#0x0,0x0167d110
+0167d0fc  adrp x0,0x3352000
+0167d100  ldr x0,[x0, #0x2a8]
+0167d104  bl 0x00b0789c
+0167d108  mov w8,#0x1
+0167d10c  strb w8,[x20, #0xa16]
+0167d110  ldr x8,[x21]
+0167d114  ldr x8,[x8, #0xb8]
+0167d118  ldr x0,[x8, #0x28]
+0167d11c  cbz x0,0x0167d134
+0167d120  mov x1,x19
+0167d124  ldp x19,x30,[sp, #0x10]
+0167d128  mov x2,xzr
+0167d12c  ldp x21,x20,[sp], #0x20
+0167d130  b 0x01063698
+0167d134  ldr s1,[x19, #0x40]
+0167d138  fmov s0,wzr
+0167d13c  fcmp s1,#0.0
+0167d140  b.mi 0x0167d14c
+0167d144  fmov s0,0x3f800000
+0167d148  fmin s0,s1,s0
+0167d14c  ldp x19,x30,[sp, #0x10]
+0167d150  ldp x21,x20,[sp], #0x20
+0167d154  ret

@@ -1,0 +1,96 @@
+Function: AliothEngine.Utils.Utility$$Interpolate @ 0169de48
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+
+--- Listing ---
+0169de48  str d8,[sp, #-0x30]!
+0169de4c  stp x21,x20,[sp, #0x10]
+0169de50  stp x19,x30,[sp, #0x20]
+0169de54  adrp x21,0x3577000
+0169de58  ldrb w8,[x21, #0xb50]
+0169de5c  mov v8.16B,v0.16B
+0169de60  mov x19,x1
+0169de64  mov x20,x0
+0169de68  tbnz w8,#0x0,0x0169de98
+0169de6c  adrp x0,0x336b000
+0169de70  ldr x0,[x0, #0x7d0]
+0169de74  bl 0x00b0789c
+0169de78  adrp x0,0x3338000
+0169de7c  ldr x0,[x0, #0x780]
+0169de80  bl 0x00b0789c
+0169de84  adrp x0,0x336b000
+0169de88  ldr x0,[x0, #0xfb8]
+0169de8c  bl 0x00b0789c
+0169de90  mov w8,#0x1
+0169de94  strb w8,[x21, #0xb50]
+0169de98  cbz x20,0x0169df90
+0169de9c  cbz x19,0x0169df90
+0169dea0  ldr w1,[x20, #0x18]
+0169dea4  ldr w8,[x19, #0x18]
+0169dea8  cmp w1,w8
+0169deac  b.ne 0x0169df4c
+0169deb0  adrp x8,0x3338000
+0169deb4  ldr x8,[x8, #0x780]
+0169deb8  ldr x0,[x8]
+0169debc  bl 0x00b078f8
+0169dec0  cbz x0,0x0169df90
+0169dec4  ldr w8,[x0, #0x18]
+0169dec8  fmov s1,0x3f800000
+0169decc  fmin s0,s8,s1
+0169ded0  fcmp s8,#0.0
+0169ded4  fmov s2,wzr
+0169ded8  lsl x9,x8,#0x20
+0169dedc  fcsel s0,s0,s2,pl
+0169dee0  cmp x9,#0x1
+0169dee4  b.lt 0x0169df44
+0169dee8  ldr w11,[x20, #0x18]
+0169deec  mov x9,xzr
+0169def0  fsub s1,s1,s0
+0169def4  sxtw x10,w8
+0169def8  add x12,x0,#0x20
+0169defc  add x13,x19,#0x20
+0169df00  add x14,x20,#0x20
+0169df04  cmp x9,x11
+0169df08  b.cs 0x0169df8c
+0169df0c  ldr w15,[x19, #0x18]
+0169df10  cmp x9,x15
+0169df14  b.cs 0x0169df8c
+0169df18  cmp x9,x8
+0169df1c  b.cs 0x0169df8c
+0169df20  ldr s2,[x13,x9, lsl #2]
+0169df24  ldr s3,[x14,x9, lsl #2]
+0169df28  fmul s2,s0,s2
+0169df2c  fmul s3,s1,s3
+0169df30  fadd s2,s2,s3
+0169df34  str s2,[x12,x9, lsl #2]
+0169df38  add x9,x9,#0x1
+0169df3c  cmp x9,x10
+0169df40  b.lt 0x0169df04
+0169df44  mov x20,x0
+0169df48  b 0x0169df78
+0169df4c  adrp x8,0x336b000
+0169df50  ldr x8,[x8, #0x7d0]
+0169df54  adrp x19,0x336b000
+0169df58  ldr x0,[x8]
+0169df5c  ldr w8,[x0, #0xe0]
+0169df60  ldr x19,[x19, #0xfb8]
+0169df64  cbnz w8,0x0169df6c
+0169df68  bl 0x00b0798c
+0169df6c  ldr x0,[x19]
+0169df70  mov x1,xzr
+0169df74  bl 0x024c0104
+0169df78  mov x0,x20
+0169df7c  ldp x19,x30,[sp, #0x20]
+0169df80  ldp x21,x20,[sp, #0x10]
+0169df84  ldr d8,[sp], #0x30
+0169df88  ret
+0169df8c  bl 0x00b079b8
+0169df90  bl 0x00b079b0

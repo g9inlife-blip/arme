@@ -1,0 +1,50 @@
+Function: AliothEngine.AssetDownloader$$set_CachePath @ 0165ddac
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetDownloaderWrap$$_s_set_CachePath @ 0113554c
+  <- AliothEngine.AssetDownloader$$Awake @ 0165de40
+
+--- Listing ---
+0165ddac  str x22,[sp, #-0x30]!
+0165ddb0  stp x21,x20,[sp, #0x10]
+0165ddb4  stp x19,x30,[sp, #0x20]
+0165ddb8  adrp x22,0x3577000
+0165ddbc  adrp x21,0x3337000
+0165ddc0  ldrb w8,[x22, #0x899]
+0165ddc4  ldr x21,[x21, #0x5c8]
+0165ddc8  mov x19,x1
+0165ddcc  mov x20,x0
+0165ddd0  tbnz w8,#0x0,0x0165dde8
+0165ddd4  adrp x0,0x3337000
+0165ddd8  ldr x0,[x0, #0x5c8]
+0165dddc  bl 0x00b0789c
+0165dde0  mov w8,#0x1
+0165dde4  strb w8,[x22, #0x899]
+0165dde8  ldr x0,[x21]
+0165ddec  ldr w8,[x0, #0xe0]
+0165ddf0  cbnz w8,0x0165ddfc
+0165ddf4  bl 0x00b0798c
+0165ddf8  ldr x0,[x21]
+0165ddfc  ldr x8,[x0, #0xb8]
+0165de00  ldr x0,[x8, #0x20]
+0165de04  cbz x0,0x0165de24
+0165de08  mov x1,x20
+0165de0c  mov x2,x19
+0165de10  ldp x19,x30,[sp, #0x20]
+0165de14  ldp x21,x20,[sp, #0x10]
+0165de18  mov x3,xzr
+0165de1c  ldr x22,[sp], #0x30
+0165de20  b 0x0106125c
+0165de24  str x19,[x20, #0x38]!
+0165de28  mov x0,x20
+0165de2c  mov x1,x19
+0165de30  ldp x19,x30,[sp, #0x20]
+0165de34  ldp x21,x20,[sp, #0x10]
+0165de38  ldr x22,[sp], #0x30
+0165de3c  b 0x00b07850

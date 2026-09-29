@@ -1,0 +1,64 @@
+Function: RepressMono$$.ctor @ 00e65d3c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> BaseMono$$.ctor @ 00e1c6b4
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.RepressMonoWrap$$__CreateInstance @ 013571f4
+
+--- Listing ---
+00e65d3c  stp x21,x20,[sp, #-0x20]!
+00e65d40  stp x19,x30,[sp, #0x10]
+00e65d44  adrp x20,0x3572000
+00e65d48  adrp x21,0x3316000
+00e65d4c  ldrb w8,[x20, #0x989]
+00e65d50  ldr x21,[x21, #0xff8]
+00e65d54  mov x19,x0
+00e65d58  tbnz w8,#0x0,0x00e65d88
+00e65d5c  adrp x0,0x3373000
+00e65d60  ldr x0,[x0, #0xbe0]
+00e65d64  bl 0x00b0789c
+00e65d68  adrp x0,0x3316000
+00e65d6c  ldr x0,[x0, #0xff8]
+00e65d70  bl 0x00b0789c
+00e65d74  adrp x0,0x3378000
+00e65d78  ldr x0,[x0, #0xb90]
+00e65d7c  bl 0x00b0789c
+00e65d80  mov w8,#0x1
+00e65d84  strb w8,[x20, #0x989]
+00e65d88  ldr x0,[x21]
+00e65d8c  bl 0x00b079a0
+00e65d90  cbz x0,0x00e65dfc
+00e65d94  adrp x8,0x3373000
+00e65d98  ldr x8,[x8, #0xbe0]
+00e65d9c  adrp x21,0x3378000
+00e65da0  mov x20,x0
+00e65da4  ldr x1,[x8]
+00e65da8  ldr x21,[x21, #0xb90]
+00e65dac  bl 0x01bffe10
+00e65db0  mov x0,x19
+00e65db4  str x20,[x0, #0x60]!
+00e65db8  mov x1,x20
+00e65dbc  bl 0x00b07850
+00e65dc0  mov x0,x19
+00e65dc4  mov x1,xzr
+00e65dc8  bl 0x00e1c6b4
+00e65dcc  ldr x8,[x21]
+00e65dd0  ldr x8,[x8, #0xb8]
+00e65dd4  ldr x0,[x8, #0x20]
+00e65dd8  cbz x0,0x00e65df0
+00e65ddc  mov x1,x19
+00e65de0  ldp x19,x30,[sp, #0x10]
+00e65de4  mov x2,xzr
+00e65de8  ldp x21,x20,[sp], #0x20
+00e65dec  b 0x01060dac
+00e65df0  ldp x19,x30,[sp, #0x10]
+00e65df4  ldp x21,x20,[sp], #0x20
+00e65df8  ret
+00e65dfc  bl 0x00b079b0

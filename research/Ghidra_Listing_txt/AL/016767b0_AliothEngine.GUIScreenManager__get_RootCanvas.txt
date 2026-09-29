@@ -1,0 +1,52 @@
+Function: AliothEngine.GUIScreenManager$$get_RootCanvas @ 016767b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp831 @ 010ccba8
+
+--- Calls IN ---
+  <- ParticleFixByScreen$$GetCurrentY @ 00e460f4
+  <- AliothEngine.GUIScreenManager$$get_BGSprite @ 01679040
+  <- AliothEngine.GUIScreenManager$$_InitSubCanvas @ 0167730c
+  <- AliothEngine.GUIScreenManager$$get_BGMask @ 01679198
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_g_get_RootCanvas @ 0114f298
+  <- AliothEngine.GUIScreenManager$$_InitRoot @ 01677154
+  <- AliothEngine.GUIScreenManager$$get_BlackMask @ 016792f0
+  <- AliothEngine.GUIScreenManager$$get_GUI_Camera @ 016768d0
+
+--- Listing ---
+016767b0  str x20,[sp, #-0x20]!
+016767b4  stp x19,x30,[sp, #0x10]
+016767b8  adrp x20,0x3577000
+016767bc  adrp x19,0x337b000
+016767c0  ldrb w8,[x20, #0x9c3]
+016767c4  ldr x19,[x19, #0xb98]
+016767c8  tbnz w8,#0x0,0x016767e0
+016767cc  adrp x0,0x337b000
+016767d0  ldr x0,[x0, #0xb98]
+016767d4  bl 0x00b0789c
+016767d8  mov w8,#0x1
+016767dc  strb w8,[x20, #0x9c3]
+016767e0  ldr x0,[x19]
+016767e4  ldr w8,[x0, #0xe0]
+016767e8  cbnz w8,0x016767f4
+016767ec  bl 0x00b0798c
+016767f0  ldr x0,[x19]
+016767f4  ldr x9,[x0, #0xb8]
+016767f8  ldr x8,[x9, #0x130]
+016767fc  cbz x8,0x01676814
+01676800  ldp x19,x30,[sp, #0x10]
+01676804  mov x0,x8
+01676808  mov x1,xzr
+0167680c  ldr x20,[sp], #0x20
+01676810  b 0x010ccba8
+01676814  ldr w8,[x0, #0xe0]
+01676818  cbnz w8,0x01676828
+0167681c  bl 0x00b0798c
+01676820  ldr x8,[x19]
+01676824  ldr x9,[x8, #0xb8]
+01676828  ldr x0,[x9, #0x8]
+0167682c  ldp x19,x30,[sp, #0x10]
+01676830  ldr x20,[sp], #0x20
+01676834  ret

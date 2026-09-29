@@ -1,0 +1,38 @@
+Function: AliothEngine.Utils.Utility$$RotateAround @ 0169e004
+
+--- Calls OUT ---
+  -> UnityEngine.Quaternion$$op_Multiply @ 024ee4b4
+  -> UnityEngine.Quaternion$$AngleAxis @ 024ee0dc
+
+--- Calls IN ---
+
+--- Listing ---
+0169e004  stp d13,d12,[sp, #-0x40]!
+0169e008  stp d11,d10,[sp, #0x10]
+0169e00c  stp d9,d8,[sp, #0x20]
+0169e010  str x30,[sp, #0x30]
+0169e014  mov v9.16B,v4.16B
+0169e018  ldr s4,[sp, #0x50]
+0169e01c  mov v10.16B,v3.16B
+0169e020  mov v11.16B,v2.16B
+0169e024  mov v12.16B,v1.16B
+0169e028  ldp s1,s2,[sp, #0x40]
+0169e02c  ldr s3,[sp, #0x48]
+0169e030  mov v13.16B,v0.16B
+0169e034  mov v0.16B,v4.16B
+0169e038  mov x0,xzr
+0169e03c  mov v8.16B,v5.16B
+0169e040  bl 0x024ee0dc
+0169e044  fsub s4,s13,s10
+0169e048  fsub s5,s12,s9
+0169e04c  fsub s6,s11,s8
+0169e050  mov x0,xzr
+0169e054  bl 0x024ee4b4
+0169e058  fadd s2,s11,s2
+0169e05c  ldr x30,[sp, #0x30]
+0169e060  ldp d9,d8,[sp, #0x20]
+0169e064  ldp d11,d10,[sp, #0x10]
+0169e068  fadd s0,s13,s0
+0169e06c  fadd s1,s12,s1
+0169e070  ldp d13,d12,[sp], #0x40
+0169e074  ret

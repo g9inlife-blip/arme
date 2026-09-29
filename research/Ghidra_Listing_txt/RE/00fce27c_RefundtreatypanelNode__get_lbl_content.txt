@@ -1,0 +1,29 @@
+Function: RefundtreatypanelNode$$get_lbl_content @ 00fce27c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- RefundTreatyPanelMono$$ShowContent @ 00f0a2b4
+
+--- Listing ---
+00fce27c  stp x21,x20,[sp, #-0x20]!
+00fce280  stp x19,x30,[sp, #0x10]
+00fce284  adrp x20,0x3573000
+00fce288  adrp x21,0x330e000
+00fce28c  ldrb w8,[x20, #0xe7f]
+00fce290  ldr x21,[x21, #0x928]
+00fce294  mov x19,x0
+00fce298  tbnz w8,#0x0,0x00fce2b0
+00fce29c  adrp x0,0x330e000
+00fce2a0  ldr x0,[x0, #0x928]
+00fce2a4  bl 0x00b0789c
+00fce2a8  mov w8,#0x1
+00fce2ac  strb w8,[x20, #0xe7f]
+00fce2b0  ldr x1,[x21]
+00fce2b4  mov x0,x19
+00fce2b8  ldp x19,x30,[sp, #0x10]
+00fce2bc  mov x2,xzr
+00fce2c0  ldp x21,x20,[sp], #0x20
+00fce2c4  b 0x00dc06f8

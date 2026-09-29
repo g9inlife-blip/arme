@@ -1,0 +1,44 @@
+Function: AliothEngine.WWWCacheHelp$$base64ToStr @ 0168c27c
+
+--- Calls OUT ---
+  -> System.Convert$$FromBase64String @ 020e4acc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Text.Encoding$$get_UTF8 @ 01ff8ca0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168c27c  stp x21,x20,[sp, #-0x20]!
+0168c280  stp x19,x30,[sp, #0x10]
+0168c284  adrp x20,0x3577000
+0168c288  adrp x21,0x3362000
+0168c28c  ldrb w8,[x20, #0xaae]
+0168c290  ldr x21,[x21, #0xe28]
+0168c294  mov x19,x0
+0168c298  tbnz w8,#0x0,0x0168c2b0
+0168c29c  adrp x0,0x3362000
+0168c2a0  ldr x0,[x0, #0xe28]
+0168c2a4  bl 0x00b0789c
+0168c2a8  mov w8,#0x1
+0168c2ac  strb w8,[x20, #0xaae]
+0168c2b0  ldr x0,[x21]
+0168c2b4  ldr w8,[x0, #0xe0]
+0168c2b8  cbnz w8,0x0168c2c0
+0168c2bc  bl 0x00b0798c
+0168c2c0  mov x0,x19
+0168c2c4  mov x1,xzr
+0168c2c8  bl 0x020e4acc
+0168c2cc  mov x19,x0
+0168c2d0  mov x0,xzr
+0168c2d4  bl 0x01ff8ca0
+0168c2d8  cbz x0,0x0168c2f8
+0168c2dc  ldr x8,[x0]
+0168c2e0  mov x1,x19
+0168c2e4  ldp x19,x30,[sp, #0x10]
+0168c2e8  ldr x3,[x8, #0x378]
+0168c2ec  ldr x2,[x8, #0x380]
+0168c2f0  ldp x21,x20,[sp], #0x20
+0168c2f4  br x3
+0168c2f8  bl 0x00b079b0

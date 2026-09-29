@@ -1,0 +1,87 @@
+Function: AliothEngine.AssetFileInfoListScriptableObject$$GetAllFilePath @ 01667bb0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Linq.Enumerable$$Select<object,-object> @ 0178839c
+  -> System.Func<object,-object>$$.ctor @ 01ae8f80
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Linq.Enumerable$$ToList<object> @ 0178daf8
+
+--- Calls IN ---
+
+--- Listing ---
+01667bb0  str x22,[sp, #-0x30]!
+01667bb4  stp x21,x20,[sp, #0x10]
+01667bb8  stp x19,x30,[sp, #0x20]
+01667bbc  adrp x20,0x3577000
+01667bc0  adrp x22,0x3348000
+01667bc4  ldrb w8,[x20, #0x905]
+01667bc8  ldr x22,[x22, #0x868]
+01667bcc  mov x19,x0
+01667bd0  tbnz w8,#0x0,0x01667c18
+01667bd4  adrp x0,0x336c000
+01667bd8  ldr x0,[x0, #0x7e0]
+01667bdc  bl 0x00b0789c
+01667be0  adrp x0,0x3375000
+01667be4  ldr x0,[x0, #0x688]
+01667be8  bl 0x00b0789c
+01667bec  adrp x0,0x332f000
+01667bf0  ldr x0,[x0, #0x508]
+01667bf4  bl 0x00b0789c
+01667bf8  adrp x0,0x335b000
+01667bfc  ldr x0,[x0, #0xa8]
+01667c00  bl 0x00b0789c
+01667c04  adrp x0,0x3348000
+01667c08  ldr x0,[x0, #0x868]
+01667c0c  bl 0x00b0789c
+01667c10  mov w8,#0x1
+01667c14  strb w8,[x20, #0x905]
+01667c18  ldr x0,[x22]
+01667c1c  ldr x19,[x19, #0x18]
+01667c20  ldr w8,[x0, #0xe0]
+01667c24  cbnz w8,0x01667c30
+01667c28  bl 0x00b0798c
+01667c2c  ldr x0,[x22]
+01667c30  ldr x8,[x0, #0xb8]
+01667c34  ldr x20,[x8, #0x8]
+01667c38  cbnz x20,0x01667c98
+01667c3c  adrp x20,0x332f000
+01667c40  ldr w8,[x0, #0xe0]
+01667c44  ldr x20,[x20, #0x508]
+01667c48  cbnz w8,0x01667c54
+01667c4c  bl 0x00b0798c
+01667c50  ldr x0,[x22]
+01667c54  ldr x8,[x0, #0xb8]
+01667c58  ldr x0,[x20]
+01667c5c  ldr x21,[x8]
+01667c60  bl 0x00b079a0
+01667c64  cbz x0,0x01667ccc
+01667c68  adrp x8,0x335b000
+01667c6c  ldr x8,[x8, #0xa8]
+01667c70  mov x1,x21
+01667c74  mov x3,xzr
+01667c78  mov x20,x0
+01667c7c  ldr x2,[x8]
+01667c80  bl 0x01ae8f80
+01667c84  ldr x8,[x22]
+01667c88  mov x1,x20
+01667c8c  ldr x0,[x8, #0xb8]
+01667c90  str x20,[x0, #0x8]!
+01667c94  bl 0x00b07850
+01667c98  adrp x8,0x336c000
+01667c9c  ldr x8,[x8, #0x7e0]
+01667ca0  adrp x21,0x3375000
+01667ca4  mov x0,x19
+01667ca8  mov x1,x20
+01667cac  ldr x2,[x8]
+01667cb0  ldr x21,[x21, #0x688]
+01667cb4  bl 0x0178839c
+01667cb8  ldr x1,[x21]
+01667cbc  ldp x19,x30,[sp, #0x20]
+01667cc0  ldp x21,x20,[sp, #0x10]
+01667cc4  ldr x22,[sp], #0x30
+01667cc8  b 0x0178daf8
+01667ccc  bl 0x00b079b0

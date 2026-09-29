@@ -1,0 +1,29 @@
+Function: ReviewpanelNode$$get_lbl_cancel @ 00fce91c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReviewPanelMono$$Awake @ 0100d554
+
+--- Listing ---
+00fce91c  stp x21,x20,[sp, #-0x20]!
+00fce920  stp x19,x30,[sp, #0x10]
+00fce924  adrp x20,0x3573000
+00fce928  adrp x21,0x3354000
+00fce92c  ldrb w8,[x20, #0xe95]
+00fce930  ldr x21,[x21, #0xa88]
+00fce934  mov x19,x0
+00fce938  tbnz w8,#0x0,0x00fce950
+00fce93c  adrp x0,0x3354000
+00fce940  ldr x0,[x0, #0xa88]
+00fce944  bl 0x00b0789c
+00fce948  mov w8,#0x1
+00fce94c  strb w8,[x20, #0xe95]
+00fce950  ldr x1,[x21]
+00fce954  mov x0,x19
+00fce958  ldp x19,x30,[sp, #0x10]
+00fce95c  mov x2,xzr
+00fce960  ldp x21,x20,[sp], #0x20
+00fce964  b 0x00dc06f8

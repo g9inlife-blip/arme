@@ -1,0 +1,112 @@
+Function: AliothExtensions$$Skill @ 00e12978
+
+--- Calls OUT ---
+  -> HeroInfo$$get_WeaponInfomation @ 016ef3b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothExtensions$$Main @ 00e12ad8
+  -> Ali$$GetExcelData<object> @ 01736d60
+  -> WeaponInfo$$get_SkillLevel @ 00dd39e4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp420 @ 0109598c
+
+--- Calls IN ---
+  <- BattleMainMono$$RefreshMyHead @ 00e82bf8
+  <- ReadyMono$$CheckHeroCurrentBreakType @ 00e62bc4
+  <- BattleMoreFightTipsPanelMono$$CheckHeroCurrentBreakType @ 00e87e40
+  <- XLua.CSObjectWrap.WeaponDataWrap$$_m_Skill @ 015060b8
+  <- DownHeroPartMono$$SetDetails @ 00f3189c
+  <- ReadyMono$$RefreshMyNameStyle @ 00e615a4
+  <- TipsWeaponMono$$ShowTips @ 00f10094
+  <- LineUpPanelMono$$SetDetails @ 00f8baac
+  <- HeroPartEquipMono$$RefreshWeapon @ 00f4214c
+
+--- Listing ---
+00e12978  stp x23,x22,[sp, #-0x30]!
+00e1297c  stp x21,x20,[sp, #0x10]
+00e12980  stp x19,x30,[sp, #0x20]
+00e12984  adrp x22,0x3572000
+00e12988  adrp x21,0x3348000
+00e1298c  ldrb w8,[x22, #0x5e6]
+00e12990  ldr x21,[x21, #0x138]
+00e12994  mov x19,x1
+00e12998  mov x20,x0
+00e1299c  tbnz w8,#0x0,0x00e129cc
+00e129a0  adrp x0,0x3351000
+00e129a4  ldr x0,[x0, #0x10]
+00e129a8  bl 0x00b0789c
+00e129ac  adrp x0,0x335f000
+00e129b0  ldr x0,[x0, #0x20]
+00e129b4  bl 0x00b0789c
+00e129b8  adrp x0,0x3348000
+00e129bc  ldr x0,[x0, #0x138]
+00e129c0  bl 0x00b0789c
+00e129c4  mov w8,#0x1
+00e129c8  strb w8,[x22, #0x5e6]
+00e129cc  ldr x0,[x21]
+00e129d0  ldr w8,[x0, #0xe0]
+00e129d4  cbnz w8,0x00e129e0
+00e129d8  bl 0x00b0798c
+00e129dc  ldr x0,[x21]
+00e129e0  ldr x8,[x0, #0xb8]
+00e129e4  ldr x0,[x8, #0x70]
+00e129e8  cbz x0,0x00e12a08
+00e129ec  mov x1,x20
+00e129f0  mov x2,x19
+00e129f4  ldp x19,x30,[sp, #0x20]
+00e129f8  ldp x21,x20,[sp, #0x10]
+00e129fc  mov x3,xzr
+00e12a00  ldp x23,x22,[sp], #0x30
+00e12a04  b 0x0109598c
+00e12a08  cbz x20,0x00e12ad4
+00e12a0c  ldr w22,[x20, #0x88]
+00e12a10  cmp w22,#0x1
+00e12a14  b.lt 0x00e12ac0
+00e12a18  adrp x23,0x335f000
+00e12a1c  ldr x23,[x23, #0x20]
+00e12a20  ldr x0,[x23]
+00e12a24  ldr w8,[x0, #0xe0]
+00e12a28  cbnz w8,0x00e12a38
+00e12a2c  bl 0x00b0798c
+00e12a30  ldr x0,[x23]
+00e12a34  ldr w22,[x20, #0x88]
+00e12a38  ldr x8,[x0, #0xb8]
+00e12a3c  ldr x20,[x8, #0x10]
+00e12a40  cbz x19,0x00e12a74
+00e12a44  mov x0,x19
+00e12a48  mov x1,xzr
+00e12a4c  bl 0x016ef3b0
+00e12a50  cbz x0,0x00e12a74
+00e12a54  mov x0,x19
+00e12a58  mov x1,xzr
+00e12a5c  bl 0x016ef3b0
+00e12a60  cbz x0,0x00e12ad4
+00e12a64  mov x1,xzr
+00e12a68  bl 0x00dd39e4
+00e12a6c  cbnz x20,0x00e12a7c
+00e12a70  b 0x00e12ad4
+00e12a74  mov w0,#0x1
+00e12a78  cbz x20,0x00e12ad4
+00e12a7c  adrp x8,0x3351000
+00e12a80  ldr x8,[x8, #0x10]
+00e12a84  add w1,w0,w22
+00e12a88  mov x0,x20
+00e12a8c  ldr x2,[x8]
+00e12a90  bl 0x01736d60
+00e12a94  ldr x8,[x21]
+00e12a98  mov x19,x0
+00e12a9c  ldr w9,[x8, #0xe0]
+00e12aa0  cbnz w9,0x00e12aac
+00e12aa4  mov x0,x8
+00e12aa8  bl 0x00b0798c
+00e12aac  mov x0,x19
+00e12ab0  ldp x19,x30,[sp, #0x20]
+00e12ab4  ldp x21,x20,[sp, #0x10]
+00e12ab8  ldp x23,x22,[sp], #0x30
+00e12abc  b 0x00e12ad8
+00e12ac0  ldp x19,x30,[sp, #0x20]
+00e12ac4  ldp x21,x20,[sp, #0x10]
+00e12ac8  mov x0,xzr
+00e12acc  ldp x23,x22,[sp], #0x30
+00e12ad0  ret
+00e12ad4  bl 0x00b079b0

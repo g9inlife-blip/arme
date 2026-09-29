@@ -1,0 +1,75 @@
+Function: Ali$$GetDefaultLanguage @ 00e01908
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp372 @ 0108f7f0
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.SingletonScriptableObject<object>$$get_Instance @ 01e09560
+  -> UnityEngine.Application$$get_systemLanguage @ 024f2bac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetDefaultLanguage @ 01190698
+  <- Ali$$Init @ 00e019f8
+
+--- Listing ---
+00e01908  stp x21,x20,[sp, #-0x20]!
+00e0190c  stp x19,x30,[sp, #0x10]
+00e01910  adrp x21,0x3572000
+00e01914  adrp x20,0x335f000
+00e01918  ldrb w8,[x21, #0x53d]
+00e0191c  ldr x20,[x20, #0x20]
+00e01920  mov x19,x0
+00e01924  tbnz w8,#0x0,0x00e01948
+00e01928  adrp x0,0x335f000
+00e0192c  ldr x0,[x0, #0x20]
+00e01930  bl 0x00b0789c
+00e01934  adrp x0,0x333f000
+00e01938  ldr x0,[x0, #0x50]
+00e0193c  bl 0x00b0789c
+00e01940  mov w8,#0x1
+00e01944  strb w8,[x21, #0x53d]
+00e01948  ldr x0,[x20]
+00e0194c  ldr w8,[x0, #0xe0]
+00e01950  cbnz w8,0x00e0195c
+00e01954  bl 0x00b0798c
+00e01958  ldr x0,[x20]
+00e0195c  ldr x8,[x0, #0xb8]
+00e01960  ldr x0,[x8, #0x180]
+00e01964  cbz x0,0x00e0197c
+00e01968  mov x1,x19
+00e0196c  ldp x19,x30,[sp, #0x10]
+00e01970  mov x2,xzr
+00e01974  ldp x21,x20,[sp], #0x20
+00e01978  b 0x0108f7f0
+00e0197c  bl 0x024f2bac
+00e01980  mov w8,w0
+00e01984  cmp w0,#0x16
+00e01988  mov w0,wzr
+00e0198c  b.le 0x00e019b0
+00e01990  cmp w8,#0x17
+00e01994  b.eq 0x00e019c8
+00e01998  cmp w8,#0x28
+00e0199c  b.eq 0x00e019e8
+00e019a0  cmp w8,#0x29
+00e019a4  b.ne 0x00e019d0
+00e019a8  mov w0,#0x1
+00e019ac  b 0x00e019e8
+00e019b0  cmp w8,#0x6
+00e019b4  b.eq 0x00e019e8
+00e019b8  cmp w8,#0x16
+00e019bc  b.ne 0x00e019d0
+00e019c0  mov w0,#0x3
+00e019c4  b 0x00e019e8
+00e019c8  mov w0,#0x4
+00e019cc  b 0x00e019e8
+00e019d0  adrp x8,0x333f000
+00e019d4  ldr x8,[x8, #0x50]
+00e019d8  ldr x0,[x8]
+00e019dc  bl 0x01e09560
+00e019e0  cbz x0,0x00e019f4
+00e019e4  ldr w0,[x0, #0x40]
+00e019e8  ldp x19,x30,[sp, #0x10]
+00e019ec  ldp x21,x20,[sp], #0x20
+00e019f0  ret
+00e019f4  bl 0x00b079b0

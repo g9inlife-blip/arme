@@ -1,0 +1,38 @@
+Function: Ali.<>c$$<GetRechargeLimit>b__287_0 @ 00e11be8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> Ali$$VersionOpen @ 00e001d0
+
+--- Calls IN ---
+
+--- Listing ---
+00e11be8  stp x21,x20,[sp, #-0x20]!
+00e11bec  stp x19,x30,[sp, #0x10]
+00e11bf0  adrp x21,0x3572000
+00e11bf4  adrp x20,0x335f000
+00e11bf8  ldrb w8,[x21, #0x5d6]
+00e11bfc  ldr x20,[x20, #0x20]
+00e11c00  mov x19,x1
+00e11c04  tbnz w8,#0x0,0x00e11c1c
+00e11c08  adrp x0,0x335f000
+00e11c0c  ldr x0,[x0, #0x20]
+00e11c10  bl 0x00b0789c
+00e11c14  mov w8,#0x1
+00e11c18  strb w8,[x21, #0x5d6]
+00e11c1c  ldr x0,[x20]
+00e11c20  ldr w8,[x0, #0xe0]
+00e11c24  cbnz w8,0x00e11c30
+00e11c28  bl 0x00b0798c
+00e11c2c  ldr x0,[x20]
+00e11c30  cbz x19,0x00e11c50
+00e11c34  ldr x8,[x0, #0xb8]
+00e11c38  ldr x0,[x8, #0x10]
+00e11c3c  cbz x0,0x00e11c50
+00e11c40  ldr x1,[x19, #0x98]
+00e11c44  ldp x19,x30,[sp, #0x10]
+00e11c48  ldp x21,x20,[sp], #0x20
+00e11c4c  b 0x00e001d0
+00e11c50  bl 0x00b079b0

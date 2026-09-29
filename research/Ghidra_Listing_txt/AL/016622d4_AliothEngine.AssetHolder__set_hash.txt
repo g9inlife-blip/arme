@@ -1,0 +1,49 @@
+Function: AliothEngine.AssetHolder$$set_hash @ 016622d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- AliothEngine.AssetHolder$$SetHash @ 01662b8c
+
+--- Listing ---
+016622d4  str x22,[sp, #-0x30]!
+016622d8  stp x21,x20,[sp, #0x10]
+016622dc  stp x19,x30,[sp, #0x20]
+016622e0  adrp x22,0x3577000
+016622e4  adrp x21,0x3312000
+016622e8  ldrb w8,[x22, #0x8c3]
+016622ec  ldr x21,[x21, #0x428]
+016622f0  mov x19,x1
+016622f4  mov x20,x0
+016622f8  tbnz w8,#0x0,0x01662310
+016622fc  adrp x0,0x3312000
+01662300  ldr x0,[x0, #0x428]
+01662304  bl 0x00b0789c
+01662308  mov w8,#0x1
+0166230c  strb w8,[x22, #0x8c3]
+01662310  ldr x0,[x21]
+01662314  ldr w8,[x0, #0xe0]
+01662318  cbnz w8,0x01662324
+0166231c  bl 0x00b0798c
+01662320  ldr x0,[x21]
+01662324  ldr x8,[x0, #0xb8]
+01662328  ldr x0,[x8, #0x28]
+0166232c  cbz x0,0x0166234c
+01662330  mov x1,x20
+01662334  mov x2,x19
+01662338  ldp x19,x30,[sp, #0x20]
+0166233c  ldp x21,x20,[sp, #0x10]
+01662340  mov x3,xzr
+01662344  ldr x22,[sp], #0x30
+01662348  b 0x0106125c
+0166234c  str x19,[x20, #0x20]!
+01662350  mov x0,x20
+01662354  mov x1,x19
+01662358  ldp x19,x30,[sp, #0x20]
+0166235c  ldp x21,x20,[sp, #0x10]
+01662360  ldr x22,[sp], #0x30
+01662364  b 0x00b07850

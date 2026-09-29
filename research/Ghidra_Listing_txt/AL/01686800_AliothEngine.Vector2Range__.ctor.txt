@@ -1,0 +1,34 @@
+Function: AliothEngine.Vector2Range$$.ctor @ 01686800
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+01686800  str x20,[sp, #-0x20]!
+01686804  stp x19,x30,[sp, #0x10]
+01686808  mov x1,xzr
+0168680c  mov x19,x0
+01686810  bl 0x02194104
+01686814  adrp x20,0x3570000
+01686818  ldrb w8,[x20, #0xffd]
+0168681c  cbnz w8,0x01686834
+01686820  adrp x0,0x3365000
+01686824  ldr x0,[x0, #0x108]
+01686828  bl 0x00b0789c
+0168682c  mov w8,#0x1
+01686830  strb w8,[x20, #0xffd]
+01686834  adrp x8,0x3365000
+01686838  ldr x8,[x8, #0x108]
+0168683c  ldr x8,[x8]
+01686840  ldr x9,[x8, #0xb8]
+01686844  ldr x9,[x9]
+01686848  str x9,[x19, #0x10]
+0168684c  ldr x8,[x8, #0xb8]
+01686850  ldr x8,[x8]
+01686854  str x8,[x19, #0x18]
+01686858  ldp x19,x30,[sp, #0x10]
+0168685c  ldr x20,[sp], #0x20
+01686860  ret

@@ -1,0 +1,86 @@
+Function: AliothEngine.GUIScreenManager$$ResourceLoad @ 01677d28
+
+--- Calls OUT ---
+  -> UnityEngine.Resources$$Load @ 024f198c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.ActionExtensions$$SafeInvoke<object> @ 017369dc
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+  -> UnityEngine.Object$$Instantiate @ 024dfb48
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_ResourceLoad @ 0114b230
+
+--- Listing ---
+01677d28  stp x23,x22,[sp, #-0x30]!
+01677d2c  stp x21,x20,[sp, #0x10]
+01677d30  stp x19,x30,[sp, #0x20]
+01677d34  adrp x23,0x3577000
+01677d38  adrp x22,0x337b000
+01677d3c  ldrb w8,[x23, #0x9d4]
+01677d40  ldr x22,[x22, #0xb98]
+01677d44  mov x19,x2
+01677d48  mov x20,x1
+01677d4c  mov x21,x0
+01677d50  tbnz w8,#0x0,0x01677d8c
+01677d54  adrp x0,0x3373000
+01677d58  ldr x0,[x0, #0x148]
+01677d5c  bl 0x00b0789c
+01677d60  adrp x0,0x337b000
+01677d64  ldr x0,[x0, #0xb98]
+01677d68  bl 0x00b0789c
+01677d6c  adrp x0,0x3310000
+01677d70  ldr x0,[x0, #0xe40]
+01677d74  bl 0x00b0789c
+01677d78  adrp x0,0x3321000
+01677d7c  ldr x0,[x0, #0xca8]
+01677d80  bl 0x00b0789c
+01677d84  mov w8,#0x1
+01677d88  strb w8,[x23, #0x9d4]
+01677d8c  ldr x0,[x22]
+01677d90  ldr w8,[x0, #0xe0]
+01677d94  cbnz w8,0x01677da0
+01677d98  bl 0x00b0798c
+01677d9c  ldr x0,[x22]
+01677da0  ldr x8,[x0, #0xb8]
+01677da4  ldr x0,[x8, #0x1b8]
+01677da8  cbz x0,0x01677dcc
+01677dac  mov x1,x21
+01677db0  mov x2,x20
+01677db4  mov x3,x19
+01677db8  ldp x19,x30,[sp, #0x20]
+01677dbc  ldp x21,x20,[sp, #0x10]
+01677dc0  mov x4,xzr
+01677dc4  ldp x23,x22,[sp], #0x30
+01677dc8  b 0x010670b0
+01677dcc  adrp x21,0x3321000
+01677dd0  ldr x21,[x21, #0xca8]
+01677dd4  mov x0,x20
+01677dd8  mov x1,xzr
+01677ddc  bl 0x024f198c
+01677de0  ldr x8,[x21]
+01677de4  mov x20,x0
+01677de8  ldr w9,[x8, #0xe0]
+01677dec  cbnz w9,0x01677df8
+01677df0  mov x0,x8
+01677df4  bl 0x00b0798c
+01677df8  adrp x21,0x3373000
+01677dfc  ldr x21,[x21, #0x148]
+01677e00  mov x0,x20
+01677e04  mov x1,xzr
+01677e08  bl 0x024dfb48
+01677e0c  cbz x0,0x01677e2c
+01677e10  adrp x8,0x3310000
+01677e14  ldr x8,[x8, #0xe40]
+01677e18  ldr x9,[x0]
+01677e1c  ldr x8,[x8]
+01677e20  cmp x9,x8
+01677e24  csel x1,x0,xzr,eq
+01677e28  b 0x01677e30
+01677e2c  mov x1,xzr
+01677e30  ldr x2,[x21]
+01677e34  mov x0,x19
+01677e38  ldp x19,x30,[sp, #0x20]
+01677e3c  ldp x21,x20,[sp, #0x10]
+01677e40  ldp x23,x22,[sp], #0x30
+01677e44  b 0x017369dc

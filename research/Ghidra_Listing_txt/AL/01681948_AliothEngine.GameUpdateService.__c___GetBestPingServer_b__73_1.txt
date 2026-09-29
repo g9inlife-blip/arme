@@ -1,0 +1,38 @@
+Function: AliothEngine.GameUpdateService.<>c$$<GetBestPingServer>b__73_1 @ 01681948
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01681948  str x20,[sp, #-0x20]!
+0168194c  stp x19,x30,[sp, #0x10]
+01681950  adrp x20,0x3577000
+01681954  ldrb w8,[x20, #0xa4e]
+01681958  mov x19,x1
+0168195c  tbnz w8,#0x0,0x01681974
+01681960  adrp x0,0x3348000
+01681964  ldr x0,[x0, #0x4b8]
+01681968  bl 0x00b0789c
+0168196c  mov w8,#0x1
+01681970  strb w8,[x20, #0xa4e]
+01681974  cbz x19,0x016819b0
+01681978  adrp x8,0x3348000
+0168197c  ldr x8,[x8, #0x4b8]
+01681980  ldr x19,[x19, #0x20]
+01681984  ldr x0,[x8]
+01681988  bl 0x01e0894c
+0168198c  cbz x0,0x016819b0
+01681990  ldr x8,[x0, #0x38]
+01681994  cbz x8,0x016819b0
+01681998  ldr x1,[x8, #0x18]
+0168199c  mov x0,x19
+016819a0  ldp x19,x30,[sp, #0x10]
+016819a4  mov x2,xzr
+016819a8  ldr x20,[sp], #0x20
+016819ac  b 0x01fd05b0
+016819b0  bl 0x00b079b0

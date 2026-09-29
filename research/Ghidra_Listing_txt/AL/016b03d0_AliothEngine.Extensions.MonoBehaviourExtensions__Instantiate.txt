@@ -1,0 +1,66 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate @ 016b03d0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.Object$$Instantiate<object> @ 017a970c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_parent @ 024f4364
+  -> AliothEngine.Extensions.TransformExtensions$$ResetLocal @ 016baf00
+
+--- Calls IN ---
+
+--- Listing ---
+016b03d0  str x22,[sp, #-0x30]!
+016b03d4  stp x21,x20,[sp, #0x10]
+016b03d8  stp x19,x30,[sp, #0x20]
+016b03dc  adrp x22,0x3577000
+016b03e0  adrp x21,0x3321000
+016b03e4  ldrb w8,[x22, #0xbd8]
+016b03e8  ldr x21,[x21, #0xca8]
+016b03ec  mov x19,x1
+016b03f0  mov x20,x0
+016b03f4  tbnz w8,#0x0,0x016b0418
+016b03f8  adrp x0,0x333f000
+016b03fc  ldr x0,[x0, #0x1b8]
+016b0400  bl 0x00b0789c
+016b0404  adrp x0,0x3321000
+016b0408  ldr x0,[x0, #0xca8]
+016b040c  bl 0x00b0789c
+016b0410  mov w8,#0x1
+016b0414  strb w8,[x22, #0xbd8]
+016b0418  ldr x0,[x21]
+016b041c  adrp x21,0x333f000
+016b0420  ldr w8,[x0, #0xe0]
+016b0424  ldr x21,[x21, #0x1b8]
+016b0428  cbnz w8,0x016b0430
+016b042c  bl 0x00b0798c
+016b0430  ldr x1,[x21]
+016b0434  mov x0,x20
+016b0438  bl 0x017a970c
+016b043c  cbz x0,0x016b049c
+016b0440  mov x1,xzr
+016b0444  mov x20,x0
+016b0448  bl 0x024de730
+016b044c  cbz x19,0x016b049c
+016b0450  mov x21,x0
+016b0454  mov x0,x19
+016b0458  mov x1,xzr
+016b045c  bl 0x024de730
+016b0460  cbz x21,0x016b049c
+016b0464  mov x1,x0
+016b0468  mov x0,x21
+016b046c  mov x2,xzr
+016b0470  bl 0x024f4364
+016b0474  mov x0,x20
+016b0478  mov x1,xzr
+016b047c  bl 0x024de730
+016b0480  mov x1,xzr
+016b0484  bl 0x016baf00
+016b0488  mov x0,x20
+016b048c  ldp x19,x30,[sp, #0x20]
+016b0490  ldp x21,x20,[sp, #0x10]
+016b0494  ldr x22,[sp], #0x30
+016b0498  ret
+016b049c  bl 0x00b079b0

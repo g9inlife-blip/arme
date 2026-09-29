@@ -1,0 +1,27 @@
+Function: AliothEngine.DataStructures.WeakReference<object>$$get_IsValid @ 01f0d638
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakActionBase$$Invoke_Internal @ 01697144
+  <- AliothEngine.WeakEvents.WeakActionBase$$get_IsValid @ 01697230
+
+--- Listing ---
+01f0d638  stp x19,x30,[sp, #-0x10]!
+01f0d63c  ldr x8,[x1, #0x20]
+01f0d640  mov x19,x0
+01f0d644  ldr x8,[x8, #0xc0]
+01f0d648  ldr x1,[x8]
+01f0d64c  ldr x8,[x1, #0x8]
+01f0d650  blr x8
+01f0d654  cbz x0,0x01f0d670
+01f0d658  cbz x19,0x01f0d678
+01f0d65c  ldr x8,[x19]
+01f0d660  mov x0,x19
+01f0d664  ldp x2,x1,[x8, #0x188]
+01f0d668  ldp x19,x30,[sp], #0x10
+01f0d66c  br x2
+01f0d670  ldp x19,x30,[sp], #0x10
+01f0d674  ret
+01f0d678  bl 0x00b079b0

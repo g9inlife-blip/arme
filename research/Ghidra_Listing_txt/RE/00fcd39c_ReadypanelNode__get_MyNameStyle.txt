@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_MyNameStyle @ 00fcd39c
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$GetMyName @ 00e5d1f8
+
+--- Listing ---
+00fcd39c  stp x21,x20,[sp, #-0x20]!
+00fcd3a0  stp x19,x30,[sp, #0x10]
+00fcd3a4  adrp x20,0x3573000
+00fcd3a8  adrp x21,0x334b000
+00fcd3ac  ldrb w8,[x20, #0xe4d]
+00fcd3b0  ldr x21,[x21, #0x550]
+00fcd3b4  mov x19,x0
+00fcd3b8  tbnz w8,#0x0,0x00fcd3d0
+00fcd3bc  adrp x0,0x334b000
+00fcd3c0  ldr x0,[x0, #0x550]
+00fcd3c4  bl 0x00b0789c
+00fcd3c8  mov w8,#0x1
+00fcd3cc  strb w8,[x20, #0xe4d]
+00fcd3d0  ldr x1,[x21]
+00fcd3d4  mov x0,x19
+00fcd3d8  ldp x19,x30,[sp, #0x10]
+00fcd3dc  mov x2,xzr
+00fcd3e0  ldp x21,x20,[sp], #0x20
+00fcd3e4  b 0x00dc06f8

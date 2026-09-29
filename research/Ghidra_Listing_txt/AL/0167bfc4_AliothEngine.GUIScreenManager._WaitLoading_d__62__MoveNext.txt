@@ -1,0 +1,147 @@
+Function: AliothEngine.GUIScreenManager.<WaitLoading>d__62$$MoveNext @ 0167bfc4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> LoadingYieldInstruction$$.ctor @ 00e39a5c
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> Ali$$Notify @ 00e039c4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GUIScreenManager$$get_isScreenAllReady @ 01677914
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0167bfc4  stp x21,x20,[sp, #-0x20]!
+0167bfc8  stp x19,x30,[sp, #0x10]
+0167bfcc  adrp x20,0x3577000
+0167bfd0  ldrb w8,[x20, #0xa06]
+0167bfd4  mov x19,x0
+0167bfd8  tbnz w8,#0x0,0x0167c020
+0167bfdc  adrp x0,0x335f000
+0167bfe0  ldr x0,[x0, #0x20]
+0167bfe4  bl 0x00b0789c
+0167bfe8  adrp x0,0x335b000
+0167bfec  ldr x0,[x0, #0x650]
+0167bff0  bl 0x00b0789c
+0167bff4  adrp x0,0x333c000
+0167bff8  ldr x0,[x0, #0xb0]
+0167bffc  bl 0x00b0789c
+0167c000  adrp x0,0x337f000
+0167c004  ldr x0,[x0, #0x958]
+0167c008  bl 0x00b0789c
+0167c00c  adrp x0,0x331b000
+0167c010  ldr x0,[x0, #0x2f8]
+0167c014  bl 0x00b0789c
+0167c018  mov w8,#0x1
+0167c01c  strb w8,[x20, #0xa06]
+0167c020  ldr w8,[x19, #0x10]
+0167c024  adrp x21,0x335f000
+0167c028  adrp x20,0x335b000
+0167c02c  ldr x21,[x21, #0x20]
+0167c030  ldr x20,[x20, #0x650]
+0167c034  sub w9,w8,#0x1
+0167c038  cmp w9,#0x2
+0167c03c  b.cs 0x0167c0d8
+0167c040  ldr x0,[x19, #0x20]
+0167c044  mov w8,#0xffffffff
+0167c048  str w8,[x19, #0x10]
+0167c04c  cbz x0,0x0167c1cc
+0167c050  bl 0x01677914
+0167c054  tbz w0,#0x0,0x0167c1a4
+0167c058  ldr x8,[x21]
+0167c05c  ldr w9,[x8, #0xe0]
+0167c060  cbnz w9,0x0167c070
+0167c064  mov x0,x8
+0167c068  bl 0x00b0798c
+0167c06c  ldr x8,[x21]
+0167c070  ldr x20,[x20]
+0167c074  ldr x8,[x8, #0xb8]
+0167c078  ldr x9,[x20, #0x38]
+0167c07c  ldr x19,[x8, #0x10]
+0167c080  ldr x0,[x9]
+0167c084  ldrb w9,[x0, #0x132]
+0167c088  tbnz w9,#0x0,0x0167c090
+0167c08c  bl 0x00b2ac40
+0167c090  ldr w8,[x0, #0xe0]
+0167c094  cbnz w8,0x0167c09c
+0167c098  bl 0x00b0798c
+0167c09c  ldr x8,[x20, #0x38]
+0167c0a0  ldr x0,[x8]
+0167c0a4  ldrb w8,[x0, #0x132]
+0167c0a8  tbnz w8,#0x0,0x0167c0b0
+0167c0ac  bl 0x00b2ac40
+0167c0b0  cbz x19,0x0167c1cc
+0167c0b4  adrp x9,0x337f000
+0167c0b8  ldr x8,[x0, #0xb8]
+0167c0bc  ldr x9,[x9, #0x958]
+0167c0c0  mov x0,x19
+0167c0c4  mov x3,xzr
+0167c0c8  ldr x2,[x8]
+0167c0cc  ldr x1,[x9]
+0167c0d0  bl 0x00e039c4
+0167c0d4  b 0x0167c19c
+0167c0d8  cbnz w8,0x0167c19c
+0167c0dc  mov w8,#0xffffffff
+0167c0e0  str w8,[x19, #0x10]
+0167c0e4  ldr x8,[x21]
+0167c0e8  ldr w9,[x8, #0xe0]
+0167c0ec  cbnz w9,0x0167c0fc
+0167c0f0  mov x0,x8
+0167c0f4  bl 0x00b0798c
+0167c0f8  ldr x8,[x21]
+0167c0fc  ldr x21,[x20]
+0167c100  ldr x8,[x8, #0xb8]
+0167c104  ldr x9,[x21, #0x38]
+0167c108  ldr x20,[x8, #0x10]
+0167c10c  ldr x0,[x9]
+0167c110  ldrb w9,[x0, #0x132]
+0167c114  tbnz w9,#0x0,0x0167c11c
+0167c118  bl 0x00b2ac40
+0167c11c  ldr w8,[x0, #0xe0]
+0167c120  cbnz w8,0x0167c128
+0167c124  bl 0x00b0798c
+0167c128  ldr x8,[x21, #0x38]
+0167c12c  ldr x0,[x8]
+0167c130  ldrb w8,[x0, #0x132]
+0167c134  tbnz w8,#0x0,0x0167c13c
+0167c138  bl 0x00b2ac40
+0167c13c  cbz x20,0x0167c1cc
+0167c140  adrp x9,0x331b000
+0167c144  ldr x8,[x0, #0xb8]
+0167c148  ldr x9,[x9, #0x2f8]
+0167c14c  adrp x21,0x333c000
+0167c150  mov x0,x20
+0167c154  ldr x2,[x8]
+0167c158  ldr x1,[x9]
+0167c15c  ldr x21,[x21, #0xb0]
+0167c160  mov x3,xzr
+0167c164  bl 0x00e039c4
+0167c168  ldr x0,[x21]
+0167c16c  bl 0x00b079a0
+0167c170  cbz x0,0x0167c1cc
+0167c174  mov x1,xzr
+0167c178  mov x20,x0
+0167c17c  bl 0x00e39a5c
+0167c180  str x20,[x19, #0x18]!
+0167c184  mov x0,x19
+0167c188  mov x1,x20
+0167c18c  bl 0x00b07850
+0167c190  mov w0,#0x1
+0167c194  stur w0,[x19, #-0x8]
+0167c198  b 0x0167c1c0
+0167c19c  mov w0,wzr
+0167c1a0  b 0x0167c1c0
+0167c1a4  str xzr,[x19, #0x18]!
+0167c1a8  mov x0,x19
+0167c1ac  mov x1,xzr
+0167c1b0  bl 0x00b07850
+0167c1b4  mov w8,#0x2
+0167c1b8  stur w8,[x19, #-0x8]
+0167c1bc  mov w0,#0x1
+0167c1c0  ldp x19,x30,[sp, #0x10]
+0167c1c4  ldp x21,x20,[sp], #0x20
+0167c1c8  ret
+0167c1cc  bl 0x00b079b0

@@ -1,0 +1,79 @@
+Function: AliothEngine.Net.HttpRequest.<CheckConnection>d__52$$MoveNext @ 01695600
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Networking.UnityWebRequest$$.ctor @ 026d544c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Networking.UnityWebRequest$$get_error @ 026d5fcc
+  -> UnityEngine.Networking.UnityWebRequest$$SendWebRequest @ 026d5c58
+
+--- Calls IN ---
+
+--- Listing ---
+01695600  stp x21,x20,[sp, #-0x20]!
+01695604  stp x19,x30,[sp, #0x10]
+01695608  adrp x20,0x3577000
+0169560c  ldrb w8,[x20, #0xaf3]
+01695610  mov x19,x0
+01695614  tbnz w8,#0x0,0x0169562c
+01695618  adrp x0,0x3309000
+0169561c  ldr x0,[x0, #0xb00]
+01695620  bl 0x00b0789c
+01695624  mov w8,#0x1
+01695628  strb w8,[x20, #0xaf3]
+0169562c  ldr w8,[x19, #0x10]
+01695630  cmp w8,#0x1
+01695634  b.eq 0x016956ac
+01695638  cbnz w8,0x016956f0
+0169563c  adrp x8,0x3309000
+01695640  ldr x8,[x8, #0xb00]
+01695644  mov w9,#0xffffffff
+01695648  str w9,[x19, #0x10]
+0169564c  ldr x21,[x19, #0x20]
+01695650  ldr x0,[x8]
+01695654  bl 0x00b079a0
+01695658  cbz x0,0x01695700
+0169565c  mov x1,x21
+01695660  mov x2,xzr
+01695664  mov x20,x0
+01695668  bl 0x026d544c
+0169566c  mov x21,x19
+01695670  str x20,[x21, #0x30]!
+01695674  mov x0,x21
+01695678  mov x1,x20
+0169567c  bl 0x00b07850
+01695680  ldr x0,[x21]
+01695684  cbz x0,0x01695700
+01695688  mov x1,xzr
+0169568c  bl 0x026d5c58
+01695690  str x0,[x19, #0x18]!
+01695694  mov x1,x0
+01695698  mov x0,x19
+0169569c  bl 0x00b07850
+016956a0  mov w0,#0x1
+016956a4  stur w0,[x19, #-0x8]
+016956a8  b 0x016956f4
+016956ac  ldr x0,[x19, #0x30]
+016956b0  mov w8,#0xffffffff
+016956b4  str w8,[x19, #0x10]
+016956b8  cbz x0,0x01695700
+016956bc  mov x1,xzr
+016956c0  bl 0x026d5fcc
+016956c4  ldr x10,[x19, #0x28]
+016956c8  cbz x10,0x01695700
+016956cc  mov x8,x0
+016956d0  ldr x9,[x10, #0x18]
+016956d4  ldr x0,[x10, #0x40]
+016956d8  ldr x2,[x10, #0x28]
+016956dc  cbz x8,0x016956e8
+016956e0  mov w1,wzr
+016956e4  b 0x016956ec
+016956e8  mov w1,#0x1
+016956ec  blr x9
+016956f0  mov w0,wzr
+016956f4  ldp x19,x30,[sp, #0x10]
+016956f8  ldp x21,x20,[sp], #0x20
+016956fc  ret
+01695700  bl 0x00b079b0

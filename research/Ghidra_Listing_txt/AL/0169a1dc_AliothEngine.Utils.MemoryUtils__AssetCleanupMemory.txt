@@ -1,0 +1,104 @@
+Function: AliothEngine.Utils.MemoryUtils$$AssetCleanupMemory @ 0169a1dc
+
+--- Calls OUT ---
+  -> AliothEngine.AssetLoader$$UnloadUnusedAssets @ 0166c6a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> ResManager$$CheckAssetInvalidRef @ 00e2a56c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> Ali$$get_resManager @ 00e02500
+  -> UnityEngine.Application$$get_isPlaying @ 024f2968
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+  -> AliothEngine.Utils.MemoryUtils$$CleanupMemory @ 0169a17c
+
+--- Calls IN ---
+  <- AliothEngine.MemoryCallback$$CleanupMemory @ 01655cc4
+
+--- Listing ---
+0169a1dc  str x20,[sp, #-0x20]!
+0169a1e0  stp x19,x30,[sp, #0x10]
+0169a1e4  adrp x19,0x3577000
+0169a1e8  ldrb w8,[x19, #0xb2a]
+0169a1ec  tbnz w8,#0x0,0x0169a234
+0169a1f0  adrp x0,0x335f000
+0169a1f4  ldr x0,[x0, #0x20]
+0169a1f8  bl 0x00b0789c
+0169a1fc  adrp x0,0x336b000
+0169a200  ldr x0,[x0, #0x7d0]
+0169a204  bl 0x00b0789c
+0169a208  adrp x0,0x3321000
+0169a20c  ldr x0,[x0, #0xca8]
+0169a210  bl 0x00b0789c
+0169a214  adrp x0,0x335d000
+0169a218  ldr x0,[x0, #0x6e0]
+0169a21c  bl 0x00b0789c
+0169a220  adrp x0,0x334b000
+0169a224  ldr x0,[x0, #0x5d8]
+0169a228  bl 0x00b0789c
+0169a22c  mov w8,#0x1
+0169a230  strb w8,[x19, #0xb2a]
+0169a234  mov x0,xzr
+0169a238  bl 0x024f2968
+0169a23c  tbz w0,#0x0,0x0169a2f4
+0169a240  adrp x20,0x335f000
+0169a244  ldr x20,[x20, #0x20]
+0169a248  ldr x0,[x20]
+0169a24c  ldr w8,[x0, #0xe0]
+0169a250  cbnz w8,0x0169a25c
+0169a254  bl 0x00b0798c
+0169a258  ldr x0,[x20]
+0169a25c  ldr x8,[x0, #0xb8]
+0169a260  ldr x0,[x8, #0x10]
+0169a264  cbz x0,0x0169a32c
+0169a268  adrp x19,0x3321000
+0169a26c  ldr x19,[x19, #0xca8]
+0169a270  mov x1,xzr
+0169a274  bl 0x00e02500
+0169a278  ldr x8,[x19]
+0169a27c  mov x19,x0
+0169a280  ldr w9,[x8, #0xe0]
+0169a284  cbnz w9,0x0169a290
+0169a288  mov x0,x8
+0169a28c  bl 0x00b0798c
+0169a290  mov x0,x19
+0169a294  mov x1,xzr
+0169a298  mov x2,xzr
+0169a29c  bl 0x024de30c
+0169a2a0  tbz w0,#0x0,0x0169a2d8
+0169a2a4  ldr x0,[x20]
+0169a2a8  ldr w8,[x0, #0xe0]
+0169a2ac  cbnz w8,0x0169a2b8
+0169a2b0  bl 0x00b0798c
+0169a2b4  ldr x0,[x20]
+0169a2b8  ldr x8,[x0, #0xb8]
+0169a2bc  ldr x0,[x8, #0x10]
+0169a2c0  cbz x0,0x0169a32c
+0169a2c4  mov x1,xzr
+0169a2c8  bl 0x00e02500
+0169a2cc  cbz x0,0x0169a32c
+0169a2d0  mov x1,xzr
+0169a2d4  bl 0x00e2a56c
+0169a2d8  adrp x8,0x335d000
+0169a2dc  ldr x8,[x8, #0x6e0]
+0169a2e0  ldr x0,[x8]
+0169a2e4  bl 0x01e0894c
+0169a2e8  cbz x0,0x0169a32c
+0169a2ec  mov x1,xzr
+0169a2f0  bl 0x0166c6a0
+0169a2f4  adrp x8,0x336b000
+0169a2f8  ldr x8,[x8, #0x7d0]
+0169a2fc  adrp x19,0x334b000
+0169a300  ldr x0,[x8]
+0169a304  ldr w8,[x0, #0xe0]
+0169a308  ldr x19,[x19, #0x5d8]
+0169a30c  cbnz w8,0x0169a314
+0169a310  bl 0x00b0798c
+0169a314  ldr x0,[x19]
+0169a318  mov x1,xzr
+0169a31c  bl 0x024c0104
+0169a320  ldp x19,x30,[sp, #0x10]
+0169a324  ldr x20,[sp], #0x20
+0169a328  b 0x0169a17c
+0169a32c  bl 0x00b079b0

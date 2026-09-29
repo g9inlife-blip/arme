@@ -1,0 +1,63 @@
+Function: AliothEngine.GameEventSys<Int32Enum>$$CheckValidAdd @ 01af209c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$op_Equality @ 02168d68
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$GetType @ 021948fc
+
+--- Calls IN ---
+
+--- Listing ---
+01af209c  stp x23,x22,[sp, #-0x30]!
+01af20a0  stp x21,x20,[sp, #0x10]
+01af20a4  stp x19,x30,[sp, #0x20]
+01af20a8  adrp x23,0x3578000
+01af20ac  ldrb w8,[x23, #0x9fb]
+01af20b0  mov x21,x3
+01af20b4  mov x19,x2
+01af20b8  mov w20,w1
+01af20bc  mov x22,x0
+01af20c0  tbnz w8,#0x0,0x01af20d8
+01af20c4  adrp x0,0x3347000
+01af20c8  ldr x0,[x0, #0xd68]
+01af20cc  bl 0x00b0789c
+01af20d0  mov w8,#0x1
+01af20d4  strb w8,[x23, #0x9fb]
+01af20d8  ldr x8,[x21, #0x20]
+01af20dc  mov x0,x22
+01af20e0  mov w1,w20
+01af20e4  ldr x8,[x8, #0xc0]
+01af20e8  ldr x2,[x8]
+01af20ec  ldr x8,[x2, #0x8]
+01af20f0  blr x8
+01af20f4  cbz x0,0x01af2150
+01af20f8  mov x1,xzr
+01af20fc  bl 0x021948fc
+01af2100  cbz x19,0x01af2164
+01af2104  adrp x21,0x3347000
+01af2108  ldr x21,[x21, #0xd68]
+01af210c  mov x20,x0
+01af2110  mov x0,x19
+01af2114  mov x1,xzr
+01af2118  bl 0x021948fc
+01af211c  ldr x8,[x21]
+01af2120  mov x19,x0
+01af2124  ldr w9,[x8, #0xe0]
+01af2128  cbnz w9,0x01af2134
+01af212c  mov x0,x8
+01af2130  bl 0x00b0798c
+01af2134  mov x0,x20
+01af2138  mov x1,x19
+01af213c  ldp x19,x30,[sp, #0x20]
+01af2140  ldp x21,x20,[sp, #0x10]
+01af2144  mov x2,xzr
+01af2148  ldp x23,x22,[sp], #0x30
+01af214c  b 0x02168d68
+01af2150  ldp x19,x30,[sp, #0x20]
+01af2154  ldp x21,x20,[sp, #0x10]
+01af2158  mov w0,#0x1
+01af215c  ldp x23,x22,[sp], #0x30
+01af2160  ret
+01af2164  bl 0x00b079b0

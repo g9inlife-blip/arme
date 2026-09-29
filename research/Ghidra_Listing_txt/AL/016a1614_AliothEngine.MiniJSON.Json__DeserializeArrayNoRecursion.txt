@@ -1,0 +1,80 @@
+Function: AliothEngine.MiniJSON.Json$$DeserializeArrayNoRecursion @ 016a1614
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseArrayOnly @ 016a17a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.MiniJSON.Json.Parser$$.ctor @ 016a171c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe80
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016a1614  str x20,[sp, #-0x20]!
+016a1618  stp x19,x30,[sp, #0x10]
+016a161c  adrp x20,0x3577000
+016a1620  ldrb w8,[x20, #0xb67]
+016a1624  mov x19,x0
+016a1628  tbnz w8,#0x0,0x016a1670
+016a162c  adrp x0,0x334a000
+016a1630  ldr x0,[x0, #0xd0]
+016a1634  bl 0x00b0789c
+016a1638  adrp x0,0x3319000
+016a163c  ldr x0,[x0, #0xc58]
+016a1640  bl 0x00b0789c
+016a1644  adrp x0,0x3321000
+016a1648  ldr x0,[x0, #0x258]
+016a164c  bl 0x00b0789c
+016a1650  adrp x0,0x3319000
+016a1654  ldr x0,[x0, #0x4b8]
+016a1658  bl 0x00b0789c
+016a165c  adrp x0,0x332c000
+016a1660  ldr x0,[x0, #0x2c0]
+016a1664  bl 0x00b0789c
+016a1668  mov w8,#0x1
+016a166c  strb w8,[x20, #0xb67]
+016a1670  cbz x19,0x016a16d8
+016a1674  adrp x8,0x332c000
+016a1678  ldr x8,[x8, #0x2c0]
+016a167c  mov x0,x19
+016a1680  mov x2,xzr
+016a1684  ldr x1,[x8]
+016a1688  bl 0x01fd05b0
+016a168c  tbnz w0,#0x0,0x016a16ac
+016a1690  adrp x8,0x3319000
+016a1694  ldr x8,[x8, #0x4b8]
+016a1698  mov x0,x19
+016a169c  mov x2,xzr
+016a16a0  ldr x1,[x8]
+016a16a4  bl 0x01fd05b0
+016a16a8  tbz w0,#0x0,0x016a16e8
+016a16ac  adrp x8,0x3319000
+016a16b0  ldr x8,[x8, #0xc58]
+016a16b4  ldr x0,[x8]
+016a16b8  bl 0x00b079a0
+016a16bc  cbz x0,0x016a1718
+016a16c0  adrp x8,0x334a000
+016a16c4  ldr x8,[x8, #0xd0]
+016a16c8  mov w1,wzr
+016a16cc  mov x19,x0
+016a16d0  ldr x2,[x8]
+016a16d4  bl 0x01bffe80
+016a16d8  mov x0,x19
+016a16dc  ldp x19,x30,[sp, #0x10]
+016a16e0  ldr x20,[sp], #0x20
+016a16e4  ret
+016a16e8  adrp x8,0x3321000
+016a16ec  ldr x8,[x8, #0x258]
+016a16f0  ldr x0,[x8]
+016a16f4  bl 0x00b079a0
+016a16f8  cbz x0,0x016a1718
+016a16fc  mov x1,x19
+016a1700  mov x20,x0
+016a1704  bl 0x016a171c
+016a1708  ldp x19,x30,[sp, #0x10]
+016a170c  mov x0,x20
+016a1710  ldr x20,[sp], #0x20
+016a1714  b 0x016a17a0
+016a1718  bl 0x00b079b0

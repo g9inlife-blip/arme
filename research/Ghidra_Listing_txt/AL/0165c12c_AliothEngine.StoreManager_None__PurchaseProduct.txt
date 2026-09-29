@@ -1,0 +1,28 @@
+Function: AliothEngine.StoreManager_None$$PurchaseProduct @ 0165c12c
+
+--- Calls OUT ---
+  -> AliothEngine.IStoreManager$$HandlePurchaseProductFailed @ 016592bc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0165c12c  stp x21,x20,[sp, #-0x20]!
+0165c130  stp x19,x30,[sp, #0x10]
+0165c134  adrp x20,0x3577000
+0165c138  adrp x21,0x333a000
+0165c13c  ldrb w8,[x20, #0x877]
+0165c140  ldr x21,[x21, #0x9a8]
+0165c144  mov x19,x0
+0165c148  tbnz w8,#0x0,0x0165c160
+0165c14c  adrp x0,0x333a000
+0165c150  ldr x0,[x0, #0x9a8]
+0165c154  bl 0x00b0789c
+0165c158  mov w8,#0x1
+0165c15c  strb w8,[x20, #0x877]
+0165c160  ldr x2,[x21]
+0165c164  mov x0,x19
+0165c168  ldp x19,x30,[sp, #0x10]
+0165c16c  mov w1,#0xffffffff
+0165c170  ldp x21,x20,[sp], #0x20
+0165c174  b 0x016592bc

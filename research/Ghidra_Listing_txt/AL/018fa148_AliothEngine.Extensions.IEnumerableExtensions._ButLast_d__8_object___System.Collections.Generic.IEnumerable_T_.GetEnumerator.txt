@@ -1,0 +1,51 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<ButLast>d__8<object>$$System.Collections.Generic.IEnumerable<T>.GetEnumerator @ 018fa148
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+  -> System.Environment$$get_CurrentManagedThreadId @ 02197f70
+
+--- Calls IN ---
+
+--- Listing ---
+018fa148  stp x21,x20,[sp, #-0x20]!
+018fa14c  stp x19,x30,[sp, #0x10]
+018fa150  ldr w8,[x0, #0x10]
+018fa154  mov x19,x0
+018fa158  mov x20,x1
+018fa15c  cmn w8,#0x2
+018fa160  b.ne 0x018fa184
+018fa164  ldr w21,[x19, #0x20]
+018fa168  mov x0,xzr
+018fa16c  bl 0x02197f70
+018fa170  cmp w21,w0
+018fa174  b.ne 0x018fa184
+018fa178  str wzr,[x19, #0x10]
+018fa17c  mov x21,x19
+018fa180  b 0x018fa1c0
+018fa184  ldr x8,[x20, #0x20]
+018fa188  ldr x8,[x8, #0xc0]
+018fa18c  ldr x0,[x8, #0x38]
+018fa190  ldrb w8,[x0, #0x132]
+018fa194  tbnz w8,#0x0,0x018fa19c
+018fa198  bl 0x00b2ac40
+018fa19c  bl 0x00b079a0
+018fa1a0  cbz x0,0x018fa1e0
+018fa1a4  ldr x8,[x20, #0x20]
+018fa1a8  mov w1,wzr
+018fa1ac  mov x21,x0
+018fa1b0  ldr x8,[x8, #0xc0]
+018fa1b4  ldr x2,[x8, #0x40]
+018fa1b8  ldr x8,[x2, #0x8]
+018fa1bc  blr x8
+018fa1c0  ldr x1,[x19, #0x30]
+018fa1c4  mov x0,x21
+018fa1c8  str x1,[x0, #0x28]!
+018fa1cc  bl 0x00b07850
+018fa1d0  ldp x19,x30,[sp, #0x10]
+018fa1d4  mov x0,x21
+018fa1d8  ldp x21,x20,[sp], #0x20
+018fa1dc  ret
+018fa1e0  bl 0x00b079b0

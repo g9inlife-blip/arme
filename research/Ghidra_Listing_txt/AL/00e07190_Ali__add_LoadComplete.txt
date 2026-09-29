@@ -1,0 +1,75 @@
+Function: Ali$$add_LoadComplete @ 00e07190
+
+--- Calls OUT ---
+  -> System.Delegate$$Combine @ 02197810
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_e_LoadComplete @ 011a68f8
+  <- AliothS1Loading$$StartCheck @ 00ecaebc
+
+--- Listing ---
+00e07190  str x22,[sp, #-0x30]!
+00e07194  stp x21,x20,[sp, #0x10]
+00e07198  stp x19,x30,[sp, #0x20]
+00e0719c  adrp x22,0x3572000
+00e071a0  adrp x21,0x335f000
+00e071a4  ldrb w8,[x22, #0x57c]
+00e071a8  ldr x21,[x21, #0x20]
+00e071ac  mov x19,x1
+00e071b0  mov x20,x0
+00e071b4  tbnz w8,#0x0,0x00e071d8
+00e071b8  adrp x0,0x3348000
+00e071bc  ldr x0,[x0, #0xcf8]
+00e071c0  bl 0x00b0789c
+00e071c4  adrp x0,0x335f000
+00e071c8  ldr x0,[x0, #0x20]
+00e071cc  bl 0x00b0789c
+00e071d0  mov w8,#0x1
+00e071d4  strb w8,[x22, #0x57c]
+00e071d8  ldr x0,[x21]
+00e071dc  ldr w8,[x0, #0xe0]
+00e071e0  cbnz w8,0x00e071ec
+00e071e4  bl 0x00b0798c
+00e071e8  ldr x0,[x21]
+00e071ec  ldr x8,[x0, #0xb8]
+00e071f0  ldr x0,[x8, #0x388]
+00e071f4  cbz x0,0x00e07214
+00e071f8  mov x1,x20
+00e071fc  mov x2,x19
+00e07200  ldp x19,x30,[sp, #0x20]
+00e07204  ldp x21,x20,[sp, #0x10]
+00e07208  mov x3,xzr
+00e0720c  ldr x22,[sp], #0x30
+00e07210  b 0x0106125c
+00e07214  adrp x22,0x3348000
+00e07218  ldr x21,[x20, #0x130]
+00e0721c  ldr x22,[x22, #0xcf8]
+00e07220  add x20,x20,#0x130
+00e07224  mov x0,x21
+00e07228  mov x1,x19
+00e0722c  mov x2,xzr
+00e07230  bl 0x02197810
+00e07234  mov x8,x0
+00e07238  cbz x0,0x00e0724c
+00e0723c  ldr x1,[x22]
+00e07240  ldr x9,[x8]
+00e07244  cmp x9,x1
+00e07248  b.ne 0x00e07278
+00e0724c  mov x0,x20
+00e07250  mov x1,x8
+00e07254  mov x2,x21
+00e07258  bl 0x00ae526c
+00e0725c  cmp x21,x0
+00e07260  mov x21,x0
+00e07264  b.ne 0x00e07224
+00e07268  ldp x19,x30,[sp, #0x20]
+00e0726c  ldp x21,x20,[sp, #0x10]
+00e07270  ldr x22,[sp], #0x30
+00e07274  ret
+00e07278  mov x0,x8
+00e0727c  bl 0x00b07c6c

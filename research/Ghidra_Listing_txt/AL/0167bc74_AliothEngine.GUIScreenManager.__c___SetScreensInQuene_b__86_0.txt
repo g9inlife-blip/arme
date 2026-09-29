@@ -1,0 +1,52 @@
+Function: AliothEngine.GUIScreenManager.<>c$$<SetScreensInQuene>b__86_0 @ 0167bc74
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+
+--- Calls IN ---
+
+--- Listing ---
+0167bc74  stp x21,x20,[sp, #-0x20]!
+0167bc78  stp x19,x30,[sp, #0x10]
+0167bc7c  adrp x20,0x3577000
+0167bc80  ldrb w8,[x20, #0xa04]
+0167bc84  mov x19,x1
+0167bc88  tbnz w8,#0x0,0x0167bcac
+0167bc8c  adrp x0,0x336b000
+0167bc90  ldr x0,[x0, #0x7d0]
+0167bc94  bl 0x00b0789c
+0167bc98  adrp x0,0x3322000
+0167bc9c  ldr x0,[x0, #0x410]
+0167bca0  bl 0x00b0789c
+0167bca4  mov w8,#0x1
+0167bca8  strb w8,[x20, #0xa04]
+0167bcac  cbz x19,0x0167bd0c
+0167bcb0  adrp x20,0x3322000
+0167bcb4  adrp x21,0x336b000
+0167bcb8  ldr x20,[x20, #0x410]
+0167bcbc  ldr x21,[x21, #0x7d0]
+0167bcc0  mov x0,x19
+0167bcc4  mov x1,xzr
+0167bcc8  bl 0x024c9a1c
+0167bccc  ldr x8,[x20]
+0167bcd0  mov x1,x0
+0167bcd4  mov x2,xzr
+0167bcd8  mov x0,x8
+0167bcdc  bl 0x01fd2850
+0167bce0  ldr x8,[x21]
+0167bce4  mov x19,x0
+0167bce8  ldr w9,[x8, #0xe0]
+0167bcec  cbnz w9,0x0167bcf8
+0167bcf0  mov x0,x8
+0167bcf4  bl 0x00b0798c
+0167bcf8  mov x0,x19
+0167bcfc  ldp x19,x30,[sp, #0x10]
+0167bd00  mov x1,xzr
+0167bd04  ldp x21,x20,[sp], #0x20
+0167bd08  b 0x024c0104
+0167bd0c  bl 0x00b079b0

@@ -1,0 +1,61 @@
+Function: AliothEngine.AndroidUtils$$GetVersionName @ 016502b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.AndroidJavaObject$$Get<object> @ 01738948
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> AliothEngine.AndroidUtils$$GetPackageInfo @ 0164fe30
+
+--- Calls IN ---
+
+--- Listing ---
+016502b0  stp x21,x20,[sp, #-0x20]!
+016502b4  stp x19,x30,[sp, #0x10]
+016502b8  adrp x20,0x3577000
+016502bc  adrp x21,0x331d000
+016502c0  ldrb w8,[x20, #0x7e9]
+016502c4  ldr x21,[x21, #0x7c8]
+016502c8  mov x19,x0
+016502cc  tbnz w8,#0x0,0x016502fc
+016502d0  adrp x0,0x3309000
+016502d4  ldr x0,[x0, #0x140]
+016502d8  bl 0x00b0789c
+016502dc  adrp x0,0x331d000
+016502e0  ldr x0,[x0, #0x7c8]
+016502e4  bl 0x00b0789c
+016502e8  adrp x0,0x3315000
+016502ec  ldr x0,[x0, #0xae0]
+016502f0  bl 0x00b0789c
+016502f4  mov w8,#0x1
+016502f8  strb w8,[x20, #0x7e9]
+016502fc  ldr x20,[x21]
+01650300  bl 0x0164f628
+01650304  cbz x0,0x01650344
+01650308  mov x0,x19
+0165030c  mov x1,xzr
+01650310  bl 0x01fdf3a0
+01650314  tbnz w0,#0x0,0x01650344
+01650318  mov x0,x19
+    ; [PRE] try { // try from 01650318 to 0165031f has its CatchHandler @ 0165035c
+0165031c  bl 0x0164fe30
+    ; [POST] } // end try from 01650318 to 0165031f
+01650320  cbz x0,0x01650354
+01650324  adrp x8,0x3315000
+01650328  ldr x8,[x8, #0xae0]
+0165032c  adrp x9,0x3309000
+01650330  ldr x9,[x9, #0x140]
+01650334  ldr x1,[x8]
+01650338  ldr x2,[x9]
+0165033c  bl 0x01738948
+    ; [PRE] try { // try from 0165033c to 0165033f has its CatchHandler @ 01650358
+    ; [POST] } // end try from 0165033c to 0165033f
+01650340  mov x20,x0
+01650344  ldp x19,x30,[sp, #0x10]
+01650348  mov x0,x20
+0165034c  ldp x21,x20,[sp], #0x20
+01650350  ret
+01650354  bl 0x00b079b0
+    ; [PRE] try { // try from 01650354 to 01650357 has its CatchHandler @ 0165035c
+    ; [POST] } // end try from 01650354 to 01650357

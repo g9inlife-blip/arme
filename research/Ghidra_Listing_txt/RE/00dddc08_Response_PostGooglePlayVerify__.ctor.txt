@@ -1,0 +1,39 @@
+Function: Response_PostGooglePlayVerify$$.ctor @ 00dddc08
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_PostGooglePlayVerifyWrap$$__CreateInstance @ 013724d4
+
+--- Listing ---
+00dddc08  stp x21,x20,[sp, #-0x20]!
+00dddc0c  stp x19,x30,[sp, #0x10]
+00dddc10  adrp x21,0x3572000
+00dddc14  adrp x20,0x335d000
+00dddc18  ldrb w8,[x21, #0x2db]
+00dddc1c  ldr x20,[x20, #0xf48]
+00dddc20  mov x19,x0
+00dddc24  tbnz w8,#0x0,0x00dddc3c
+00dddc28  adrp x0,0x335d000
+00dddc2c  ldr x0,[x0, #0xf48]
+00dddc30  bl 0x00b0789c
+00dddc34  mov w8,#0x1
+00dddc38  strb w8,[x21, #0x2db]
+00dddc3c  mov x0,x19
+00dddc40  mov x1,xzr
+00dddc44  bl 0x02194104
+00dddc48  ldr x8,[x20]
+00dddc4c  ldr x8,[x8, #0xb8]
+00dddc50  ldr x0,[x8]
+00dddc54  cbz x0,0x00dddc6c
+00dddc58  mov x1,x19
+00dddc5c  ldp x19,x30,[sp, #0x10]
+00dddc60  mov x2,xzr
+00dddc64  ldp x21,x20,[sp], #0x20
+00dddc68  b 0x01060dac
+00dddc6c  ldp x19,x30,[sp, #0x10]
+00dddc70  ldp x21,x20,[sp], #0x20
+00dddc74  ret

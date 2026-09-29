@@ -1,0 +1,18 @@
+Function: AliothEngine.DataStructures.FasterListEnumerator<object>$$System.Collections.IEnumerator.Reset @ 01adb4dc
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01adb4dc  stp x19,x30,[sp, #-0x10]!
+01adb4e0  ldr x8,[x1, #0x20]
+01adb4e4  mov x19,x0
+01adb4e8  ldrb w9,[x8, #0x132]
+01adb4ec  tbnz w9,#0x0,0x01adb4f8
+01adb4f0  mov x0,x8
+01adb4f4  bl 0x00b2ac40
+01adb4f8  str wzr,[x19, #0x8]
+01adb4fc  ldp x19,x30,[sp], #0x10
+01adb500  ret

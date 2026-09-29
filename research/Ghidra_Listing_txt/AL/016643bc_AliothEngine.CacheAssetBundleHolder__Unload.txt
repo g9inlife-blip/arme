@@ -1,0 +1,97 @@
+Function: AliothEngine.CacheAssetBundleHolder$$Unload @ 016643bc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> AliothEngine.AssetHolder$$Unload @ 01662c1c
+  -> System.String$$Format @ 01fd0378
+  -> AliothEngine.AssetHolder$$get_logger @ 01662de4
+  -> AssetBundles.AssetBundleManager$$UnloadAssetBundle @ 01644b68
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016643bc  str x22,[sp, #-0x30]!
+016643c0  stp x21,x20,[sp, #0x10]
+016643c4  stp x19,x30,[sp, #0x20]
+016643c8  adrp x21,0x3577000
+016643cc  adrp x20,0x335c000
+016643d0  ldrb w8,[x21, #0x8e4]
+016643d4  ldr x20,[x20, #0x858]
+016643d8  mov x19,x0
+016643dc  tbnz w8,#0x0,0x01664418
+016643e0  adrp x0,0x331a000
+016643e4  ldr x0,[x0, #0x8b0]
+016643e8  bl 0x00b0789c
+016643ec  adrp x0,0x334a000
+016643f0  ldr x0,[x0, #0xc98]
+016643f4  bl 0x00b0789c
+016643f8  adrp x0,0x3320000
+016643fc  ldr x0,[x0, #0x920]
+01664400  bl 0x00b0789c
+01664404  adrp x0,0x335c000
+01664408  ldr x0,[x0, #0x858]
+0166440c  bl 0x00b0789c
+01664410  mov w8,#0x1
+01664414  strb w8,[x21, #0x8e4]
+01664418  mov x0,x19
+0166441c  bl 0x01662de4
+01664420  ldr x8,[x20]
+01664424  ldr x1,[x19, #0x60]
+01664428  mov x20,x0
+0166442c  mov x2,xzr
+01664430  mov x0,x8
+01664434  bl 0x01fd0378
+01664438  cbz x20,0x01664500
+0166443c  adrp x9,0x334a000
+01664440  adrp x10,0x3320000
+01664444  ldr x8,[x20]
+01664448  ldr x9,[x9, #0xc98]
+0166444c  ldr x10,[x10, #0x920]
+01664450  mov x21,x0
+01664454  ldr x1,[x9]
+01664458  ldrh w9,[x8, #0x12a]
+0166445c  ldr x22,[x10]
+01664460  cbz x9,0x01664484
+01664464  ldr x10,[x8, #0xb0]
+01664468  add x10,x10,#0x8
+0166446c  ldur x11,[x10, #-0x8]
+01664470  cmp x11,x1
+01664474  b.eq 0x01664494
+01664478  subs x9,x9,#0x1
+0166447c  add x10,x10,#0x10
+01664480  b.ne 0x0166446c
+01664484  mov w2,#0x9
+01664488  mov x0,x20
+0166448c  bl 0x00b2ae24
+01664490  b 0x016644a4
+01664494  ldr w9,[x10]
+01664498  add w9,w9,#0x9
+0166449c  add x8,x8,w9, SXTW  #0x4
+016644a0  add x0,x8,#0x138
+016644a4  ldp x8,x3,[x0]
+016644a8  mov x0,x20
+016644ac  mov x1,x22
+016644b0  mov x2,x21
+016644b4  blr x8
+016644b8  ldr x20,[x19, #0x60]
+016644bc  cbz x20,0x016644ec
+016644c0  ldrb w8,[x19, #0x58]
+016644c4  cbnz w8,0x016644ec
+016644c8  adrp x8,0x331a000
+016644cc  ldr x8,[x8, #0x8b0]
+016644d0  ldr x0,[x8]
+016644d4  ldr w8,[x0, #0xe0]
+016644d8  cbnz w8,0x016644e0
+016644dc  bl 0x00b0798c
+016644e0  mov x0,x20
+016644e4  mov x1,xzr
+016644e8  bl 0x01644b68
+016644ec  mov x0,x19
+016644f0  ldp x19,x30,[sp, #0x20]
+016644f4  ldp x21,x20,[sp, #0x10]
+016644f8  ldr x22,[sp], #0x30
+016644fc  b 0x01662c1c
+01664500  bl 0x00b079b0

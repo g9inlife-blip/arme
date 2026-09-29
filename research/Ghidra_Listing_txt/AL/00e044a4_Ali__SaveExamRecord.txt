@@ -1,0 +1,54 @@
+Function: Ali$$SaveExamRecord @ 00e044a4
+
+--- Calls OUT ---
+  -> DataCache$$set_m_examRecordReq @ 00e25d40
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Ali$$get_dataCache @ 00e014f4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- Ali$$DataProccessCallBack @ 00e03dd4
+
+--- Listing ---
+00e044a4  str x22,[sp, #-0x30]!
+00e044a8  stp x21,x20,[sp, #0x10]
+00e044ac  stp x19,x30,[sp, #0x20]
+00e044b0  adrp x22,0x3572000
+00e044b4  adrp x21,0x335f000
+00e044b8  ldrb w8,[x22, #0x562]
+00e044bc  ldr x21,[x21, #0x20]
+00e044c0  mov x19,x1
+00e044c4  mov x20,x0
+00e044c8  tbnz w8,#0x0,0x00e044e0
+00e044cc  adrp x0,0x335f000
+00e044d0  ldr x0,[x0, #0x20]
+00e044d4  bl 0x00b0789c
+00e044d8  mov w8,#0x1
+00e044dc  strb w8,[x22, #0x562]
+00e044e0  ldr x0,[x21]
+00e044e4  ldr w8,[x0, #0xe0]
+00e044e8  cbnz w8,0x00e044f4
+00e044ec  bl 0x00b0798c
+00e044f0  ldr x0,[x21]
+00e044f4  ldr x8,[x0, #0xb8]
+00e044f8  ldr x0,[x8, #0x2b8]
+00e044fc  cbz x0,0x00e0451c
+00e04500  mov x1,x20
+00e04504  mov x2,x19
+00e04508  ldp x19,x30,[sp, #0x20]
+00e0450c  ldp x21,x20,[sp, #0x10]
+00e04510  mov x3,xzr
+00e04514  ldr x22,[sp], #0x30
+00e04518  b 0x0106125c
+00e0451c  mov x0,x20
+00e04520  bl 0x00e014f4
+00e04524  cbz x0,0x00e04540
+00e04528  mov x1,x19
+00e0452c  ldp x19,x30,[sp, #0x20]
+00e04530  ldp x21,x20,[sp, #0x10]
+00e04534  mov x2,xzr
+00e04538  ldr x22,[sp], #0x30
+00e0453c  b 0x00e25d40
+00e04540  bl 0x00b079b0

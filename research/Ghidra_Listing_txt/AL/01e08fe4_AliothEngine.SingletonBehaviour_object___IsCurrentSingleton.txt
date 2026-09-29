@@ -1,0 +1,76 @@
+Function: AliothEngine.SingletonBehaviour<object>$$IsCurrentSingleton @ 01e08fe4
+
+--- Calls OUT ---
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Object$$GetInstanceID @ 024df0fc
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e08fe4  stp x21,x20,[sp, #-0x20]!
+01e08fe8  stp x19,x30,[sp, #0x10]
+01e08fec  adrp x21,0x3578000
+01e08ff0  ldrb w8,[x21, #0xeb2]
+01e08ff4  mov x20,x1
+01e08ff8  mov x19,x0
+01e08ffc  tbnz w8,#0x0,0x01e09014
+01e09000  adrp x0,0x3321000
+01e09004  ldr x0,[x0, #0xca8]
+01e09008  bl 0x00b0789c
+01e0900c  mov w8,#0x1
+01e09010  strb w8,[x21, #0xeb2]
+01e09014  ldr x8,[x20, #0x20]
+01e09018  adrp x21,0x3321000
+01e0901c  ldr x8,[x8, #0xc0]
+01e09020  ldr x0,[x8]
+01e09024  ldrb w8,[x0, #0x132]
+01e09028  ldr x21,[x21, #0xca8]
+01e0902c  tbnz w8,#0x0,0x01e09034
+01e09030  bl 0x00b2ac40
+01e09034  ldr x8,[x21]
+01e09038  ldr x9,[x0, #0xb8]
+01e0903c  ldr w10,[x8, #0xe0]
+01e09040  ldr x21,[x9]
+01e09044  cbnz w10,0x01e09050
+01e09048  mov x0,x8
+01e0904c  bl 0x00b0798c
+01e09050  mov x0,x21
+01e09054  mov x1,xzr
+01e09058  mov x2,xzr
+01e0905c  bl 0x024c8180
+01e09060  tbz w0,#0x0,0x01e0906c
+01e09064  mov w0,wzr
+01e09068  b 0x01e090cc
+01e0906c  ldr x8,[x20, #0x20]
+01e09070  ldr x8,[x8, #0xc0]
+01e09074  ldr x0,[x8]
+01e09078  ldrb w8,[x0, #0x132]
+01e0907c  tbnz w8,#0x0,0x01e09084
+01e09080  bl 0x00b2ac40
+01e09084  ldr x8,[x0, #0xb8]
+01e09088  ldr x0,[x8]
+01e0908c  cbz x0,0x01e090d8
+01e09090  mov x1,xzr
+01e09094  bl 0x024e4ed4
+01e09098  cbz x0,0x01e090d8
+01e0909c  mov x1,xzr
+01e090a0  bl 0x024df0fc
+01e090a4  cbz x19,0x01e090d8
+01e090a8  mov w20,w0
+01e090ac  mov x0,x19
+01e090b0  mov x1,xzr
+01e090b4  bl 0x024e4ed4
+01e090b8  cbz x0,0x01e090d8
+01e090bc  mov x1,xzr
+01e090c0  bl 0x024df0fc
+01e090c4  cmp w20,w0
+01e090c8  cset w0,eq
+01e090cc  ldp x19,x30,[sp, #0x10]
+01e090d0  ldp x21,x20,[sp], #0x20
+01e090d4  ret
+01e090d8  bl 0x00b079b0

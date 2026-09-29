@@ -1,0 +1,89 @@
+Function: AliothEngine.GameUpdateService$$SaveLatestVersion @ 0167daa0
+
+--- Calls OUT ---
+  -> AliothEngine.AssetVersionManager$$set_AssetVersionSaved @ 0166f928
+  -> AliothEngine.AssetInfoManager$$get_AssetBundleInfos @ 016694d0
+  -> AliothEngine.GameUpdateService$$get_BuildVersion @ 0167d4b8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.BuildVersionBindings$$set_BuildVersionSaved @ 01655680
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService.<_OnUpdateSuccessIE>d__66$$MoveNext @ 01682128
+
+--- Listing ---
+0167daa0  stp x21,x20,[sp, #-0x20]!
+0167daa4  stp x19,x30,[sp, #0x10]
+0167daa8  adrp x20,0x3577000
+0167daac  adrp x21,0x3352000
+0167dab0  ldrb w8,[x20, #0xa25]
+0167dab4  ldr x21,[x21, #0x2a8]
+0167dab8  mov x19,x0
+0167dabc  tbnz w8,#0x0,0x0167daf8
+0167dac0  adrp x0,0x336b000
+0167dac4  ldr x0,[x0, #0x7d0]
+0167dac8  bl 0x00b0789c
+0167dacc  adrp x0,0x3352000
+0167dad0  ldr x0,[x0, #0x2a8]
+0167dad4  bl 0x00b0789c
+0167dad8  adrp x0,0x3310000
+0167dadc  ldr x0,[x0, #0x630]
+0167dae0  bl 0x00b0789c
+0167dae4  adrp x0,0x3377000
+0167dae8  ldr x0,[x0, #0x4f0]
+0167daec  bl 0x00b0789c
+0167daf0  mov w8,#0x1
+0167daf4  strb w8,[x20, #0xa25]
+0167daf8  ldr x8,[x21]
+0167dafc  ldr x8,[x8, #0xb8]
+0167db00  ldr x0,[x8, #0xa0]
+0167db04  cbz x0,0x0167db1c
+0167db08  mov x1,x19
+0167db0c  ldp x19,x30,[sp, #0x10]
+0167db10  mov x2,xzr
+0167db14  ldp x21,x20,[sp], #0x20
+0167db18  b 0x01060dac
+0167db1c  mov x0,x19
+0167db20  bl 0x0167d4b8
+0167db24  cbz x0,0x0167dbb8
+0167db28  ldr x8,[x0]
+0167db2c  adrp x19,0x3310000
+0167db30  ldp x9,x1,[x8, #0x168]
+0167db34  ldr x19,[x19, #0x630]
+0167db38  blr x9
+0167db3c  mov x1,xzr
+0167db40  bl 0x01655680
+0167db44  ldr x0,[x19]
+0167db48  bl 0x01e0894c
+0167db4c  cbz x0,0x0167dbb8
+0167db50  mov x1,xzr
+0167db54  bl 0x016694d0
+0167db58  cbz x0,0x0167db84
+0167db5c  ldr x0,[x19]
+0167db60  bl 0x01e0894c
+0167db64  cbz x0,0x0167dbb8
+0167db68  mov x1,xzr
+0167db6c  bl 0x016694d0
+0167db70  cbz x0,0x0167dbb8
+0167db74  ldr x0,[x0, #0x10]
+0167db78  ldp x19,x30,[sp, #0x10]
+0167db7c  ldp x21,x20,[sp], #0x20
+0167db80  b 0x0166f928
+0167db84  adrp x8,0x336b000
+0167db88  ldr x8,[x8, #0x7d0]
+0167db8c  adrp x19,0x3377000
+0167db90  ldr x0,[x8]
+0167db94  ldr w8,[x0, #0xe0]
+0167db98  ldr x19,[x19, #0x4f0]
+0167db9c  cbnz w8,0x0167dba4
+0167dba0  bl 0x00b0798c
+0167dba4  ldr x0,[x19]
+0167dba8  ldp x19,x30,[sp, #0x10]
+0167dbac  mov x1,xzr
+0167dbb0  ldp x21,x20,[sp], #0x20
+0167dbb4  b 0x024c0830
+0167dbb8  bl 0x00b079b0

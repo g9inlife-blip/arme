@@ -1,0 +1,42 @@
+Function: AliothEngine.WWWRequest$$DestroySelf @ 0168c4f8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.WWWRequest.<Start>d__7$$MoveNext @ 0168ca00
+
+--- Listing ---
+0168c4f8  stp x21,x20,[sp, #-0x20]!
+0168c4fc  stp x19,x30,[sp, #0x10]
+0168c500  adrp x20,0x3577000
+0168c504  adrp x21,0x3364000
+0168c508  ldrb w8,[x20, #0xab2]
+0168c50c  ldr x21,[x21, #0x6f0]
+0168c510  mov x19,x0
+0168c514  tbnz w8,#0x0,0x0168c52c
+0168c518  adrp x0,0x3364000
+0168c51c  ldr x0,[x0, #0x6f0]
+0168c520  bl 0x00b0789c
+0168c524  mov w8,#0x1
+0168c528  strb w8,[x20, #0xab2]
+0168c52c  ldr x0,[x21]
+0168c530  bl 0x00b079a0
+0168c534  cbz x0,0x0168c568
+0168c538  mov x1,xzr
+0168c53c  mov x20,x0
+0168c540  bl 0x02194104
+0168c544  mov x0,x20
+0168c548  str wzr,[x20, #0x10]
+0168c54c  str x19,[x0, #0x20]!
+0168c550  mov x1,x19
+0168c554  bl 0x00b07850
+0168c558  ldp x19,x30,[sp, #0x10]
+0168c55c  mov x0,x20
+0168c560  ldp x21,x20,[sp], #0x20
+0168c564  ret
+0168c568  bl 0x00b079b0

@@ -1,0 +1,81 @@
+Function: AliothEngine.UIGrayScaleHelper$$get_UIGrayScaleMaterial @ 0168cfd0
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Material$$.ctor @ 024d2b98
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Shader$$Find @ 024d2900
+
+--- Calls IN ---
+  <- AliothEngine.UIGrayScaleHelper$$SetDefaultUIGrayScale @ 0168d0d4
+
+--- Listing ---
+0168cfd0  stp x21,x20,[sp, #-0x20]!
+0168cfd4  stp x19,x30,[sp, #0x10]
+0168cfd8  adrp x20,0x3577000
+0168cfdc  adrp x21,0x3315000
+0168cfe0  adrp x19,0x3321000
+0168cfe4  ldrb w8,[x20, #0xabb]
+0168cfe8  ldr x21,[x21, #0xd30]
+0168cfec  ldr x19,[x19, #0xca8]
+0168cff0  tbnz w8,#0x0,0x0168d02c
+0168cff4  adrp x0,0x337f000
+0168cff8  ldr x0,[x0, #0x840]
+0168cffc  bl 0x00b0789c
+0168d000  adrp x0,0x3321000
+0168d004  ldr x0,[x0, #0xca8]
+0168d008  bl 0x00b0789c
+0168d00c  adrp x0,0x3315000
+0168d010  ldr x0,[x0, #0xd30]
+0168d014  bl 0x00b0789c
+0168d018  adrp x0,0x3382000
+0168d01c  ldr x0,[x0, #0xe08]
+0168d020  bl 0x00b0789c
+0168d024  mov w8,#0x1
+0168d028  strb w8,[x20, #0xabb]
+0168d02c  ldr x8,[x21]
+0168d030  ldr x0,[x19]
+0168d034  ldr x8,[x8, #0xb8]
+0168d038  ldr w9,[x0, #0xe0]
+0168d03c  ldr x19,[x8]
+0168d040  cbnz w9,0x0168d048
+0168d044  bl 0x00b0798c
+0168d048  mov x0,x19
+0168d04c  mov x1,xzr
+0168d050  mov x2,xzr
+0168d054  bl 0x024c8180
+0168d058  tbz w0,#0x0,0x0168d0b8
+0168d05c  adrp x8,0x3382000
+0168d060  ldr x8,[x8, #0xe08]
+0168d064  adrp x19,0x337f000
+0168d068  mov x1,xzr
+0168d06c  ldr x0,[x8]
+0168d070  ldr x19,[x19, #0x840]
+0168d074  bl 0x024d2900
+0168d078  ldr x8,[x19]
+0168d07c  mov x20,x0
+0168d080  mov x0,x8
+0168d084  bl 0x00b079a0
+0168d088  cbz x0,0x0168d0d0
+0168d08c  mov x1,x20
+0168d090  mov x2,xzr
+0168d094  mov x19,x0
+0168d098  bl 0x024d2b98
+0168d09c  ldr x8,[x21]
+0168d0a0  mov x1,x19
+0168d0a4  ldr x8,[x8, #0xb8]
+0168d0a8  str x19,[x8]
+0168d0ac  ldr x8,[x21]
+0168d0b0  ldr x0,[x8, #0xb8]
+0168d0b4  bl 0x00b07850
+0168d0b8  ldr x8,[x21]
+0168d0bc  ldp x19,x30,[sp, #0x10]
+0168d0c0  ldr x8,[x8, #0xb8]
+0168d0c4  ldr x0,[x8]
+0168d0c8  ldp x21,x20,[sp], #0x20
+0168d0cc  ret
+0168d0d0  bl 0x00b079b0

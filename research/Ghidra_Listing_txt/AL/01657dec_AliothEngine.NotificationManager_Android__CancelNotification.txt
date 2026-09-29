@@ -1,0 +1,33 @@
+Function: AliothEngine.NotificationManager_Android$$CancelNotification @ 01657dec
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Android.LocalNotification$$CancelNotification @ 016a7ec4
+
+--- Calls IN ---
+  <- AliothEngine.NotificationManager_Android$$DoClearLocalNotification @ 01657dd0
+
+--- Listing ---
+01657dec  stp x21,x20,[sp, #-0x20]!
+01657df0  stp x19,x30,[sp, #0x10]
+01657df4  adrp x20,0x3577000
+01657df8  adrp x21,0x3373000
+01657dfc  ldrb w8,[x20, #0x828]
+01657e00  ldr x21,[x21, #0x508]
+01657e04  mov w19,w1
+01657e08  tbnz w8,#0x0,0x01657e20
+01657e0c  adrp x0,0x3373000
+01657e10  ldr x0,[x0, #0x508]
+01657e14  bl 0x00b0789c
+01657e18  mov w8,#0x1
+01657e1c  strb w8,[x20, #0x828]
+01657e20  ldr x0,[x21]
+01657e24  ldr w8,[x0, #0xe0]
+01657e28  cbnz w8,0x01657e30
+01657e2c  bl 0x00b0798c
+01657e30  mov w0,w19
+01657e34  ldp x19,x30,[sp, #0x10]
+01657e38  mov x1,xzr
+01657e3c  ldp x21,x20,[sp], #0x20
+01657e40  b 0x016a7ec4

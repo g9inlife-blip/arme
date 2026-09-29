@@ -1,0 +1,129 @@
+Function: AliothEngine.Scheduler.<ForEachTask>d__18<object>$$MoveNext @ 018fc800
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018fc800  str x22,[sp, #-0x30]!
+018fc804  stp x21,x20,[sp, #0x10]
+018fc808  stp x19,x30,[sp, #0x20]
+018fc80c  ldr w8,[x0, #0x10]
+018fc810  mov x19,x0
+018fc814  mov x20,x1
+018fc818  cmp w8,#0x1
+018fc81c  b.eq 0x018fc894
+018fc820  cbnz w8,0x018fc9a4
+018fc824  ldr x21,[x19, #0x20]
+018fc828  mov w8,#0xffffffff
+018fc82c  str w8,[x19, #0x10]
+018fc830  str wzr,[x19, #0x40]
+018fc834  cbz x21,0x018fc9d4
+018fc838  ldr x8,[x20, #0x20]
+018fc83c  ldr x8,[x8, #0xc0]
+018fc840  ldr x1,[x8]
+018fc844  ldrb w8,[x1, #0x132]
+018fc848  tbnz w8,#0x0,0x018fc858
+018fc84c  mov x0,x1
+018fc850  bl 0x00b2ac40
+018fc854  mov x1,x0
+018fc858  ldr x8,[x21]
+018fc85c  ldrh w9,[x8, #0x12a]
+018fc860  cbz x9,0x018fc884
+018fc864  ldr x10,[x8, #0xb0]
+018fc868  add x10,x10,#0x8
+018fc86c  ldur x11,[x10, #-0x8]
+018fc870  cmp x11,x1
+018fc874  b.eq 0x018fc8a4
+018fc878  subs x9,x9,#0x1
+018fc87c  add x10,x10,#0x10
+018fc880  b.ne 0x018fc86c
+018fc884  mov x0,x21
+018fc888  mov w2,wzr
+018fc88c  bl 0x00b2ae24
+018fc890  b 0x018fc8b0
+018fc894  ldp w8,w0,[x19, #0x40]
+018fc898  mov w9,#0xffffffff
+018fc89c  str w9,[x19, #0x10]
+018fc8a0  b 0x018fc97c
+018fc8a4  ldrsw x9,[x10]
+018fc8a8  add x8,x8,x9, LSL #0x4
+018fc8ac  add x0,x8,#0x138
+018fc8b0  ldp x8,x1,[x0]
+018fc8b4  mov x0,x21
+018fc8b8  blr x8
+018fc8bc  ldr w21,[x19, #0x40]
+018fc8c0  str w0,[x19, #0x44]
+018fc8c4  b 0x018fc984
+018fc8c8  ldr x22,[x19, #0x20]
+018fc8cc  cbz x22,0x018fc9d4
+018fc8d0  ldr x8,[x20, #0x20]
+018fc8d4  ldr x8,[x8, #0xc0]
+018fc8d8  ldr x1,[x8, #0x10]
+018fc8dc  ldrb w8,[x1, #0x132]
+018fc8e0  tbnz w8,#0x0,0x018fc8f0
+018fc8e4  mov x0,x1
+018fc8e8  bl 0x00b2ac40
+018fc8ec  mov x1,x0
+018fc8f0  ldr x8,[x22]
+018fc8f4  ldrh w9,[x8, #0x12a]
+018fc8f8  cbz x9,0x018fc91c
+018fc8fc  ldr x10,[x8, #0xb0]
+018fc900  add x10,x10,#0x8
+018fc904  ldur x11,[x10, #-0x8]
+018fc908  cmp x11,x1
+018fc90c  b.eq 0x018fc92c
+018fc910  subs x9,x9,#0x1
+018fc914  add x10,x10,#0x10
+018fc918  b.ne 0x018fc904
+018fc91c  mov x0,x22
+018fc920  mov w2,wzr
+018fc924  bl 0x00b2ae24
+018fc928  b 0x018fc938
+018fc92c  ldrsw x9,[x10]
+018fc930  add x8,x8,x9, LSL #0x4
+018fc934  add x0,x8,#0x138
+018fc938  ldp x8,x2,[x0]
+018fc93c  mov x0,x22
+018fc940  mov w1,w21
+018fc944  blr x8
+018fc948  ldr x8,[x19, #0x28]
+018fc94c  cbz x8,0x018fc9d4
+018fc950  ldr x9,[x20, #0x20]
+018fc954  mov x1,x0
+018fc958  mov x0,x8
+018fc95c  ldr x9,[x9, #0xc0]
+018fc960  ldr x2,[x9, #0x28]
+018fc964  ldr x9,[x2, #0x8]
+018fc968  blr x9
+018fc96c  ldp w8,w0,[x19, #0x40]
+018fc970  sub w9,w0,#0x1
+018fc974  cmp w8,w9
+018fc978  b.lt 0x018fc9ac
+018fc97c  add w21,w8,#0x1
+018fc980  str w21,[x19, #0x40]
+018fc984  cmp w21,w0
+018fc988  b.lt 0x018fc8c8
+018fc98c  ldr x8,[x19, #0x38]
+018fc990  cbz x8,0x018fc9a4
+018fc994  ldr x9,[x8, #0x18]
+018fc998  ldr x0,[x8, #0x40]
+018fc99c  ldr x1,[x8, #0x28]
+018fc9a0  blr x9
+018fc9a4  mov w0,wzr
+018fc9a8  b 0x018fc9c4
+018fc9ac  ldr x1,[x19, #0x30]
+018fc9b0  str x1,[x19, #0x18]!
+018fc9b4  mov x0,x19
+018fc9b8  bl 0x00b07850
+018fc9bc  mov w0,#0x1
+018fc9c0  stur w0,[x19, #-0x8]
+018fc9c4  ldp x19,x30,[sp, #0x20]
+018fc9c8  ldp x21,x20,[sp, #0x10]
+018fc9cc  ldr x22,[sp], #0x30
+018fc9d0  ret
+018fc9d4  bl 0x00b079b0

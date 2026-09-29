@@ -1,0 +1,75 @@
+Function: AliothEngine.SafeEvent$$SafeRaise @ 01688aa8
+
+--- Calls OUT ---
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01688aa8  stp x25,x24,[sp, #-0x40]!
+01688aac  stp x23,x22,[sp, #0x10]
+01688ab0  stp x21,x20,[sp, #0x20]
+01688ab4  stp x19,x30,[sp, #0x30]
+01688ab8  adrp x20,0x3577000
+01688abc  ldrb w8,[x20, #0xa77]
+01688ac0  mov x19,x0
+01688ac4  tbnz w8,#0x0,0x01688adc
+01688ac8  adrp x0,0x3348000
+01688acc  ldr x0,[x0, #0xcf8]
+01688ad0  bl 0x00b0789c
+01688ad4  mov w8,#0x1
+01688ad8  strb w8,[x20, #0xa77]
+01688adc  cbz x19,0x01688bdc
+01688ae0  ldr x8,[x19]
+01688ae4  mov x0,x19
+01688ae8  ldp x9,x1,[x8, #0x1d8]
+01688aec  blr x9
+01688af0  cbz x0,0x01688bf0
+01688af4  ldr x8,[x0, #0x18]
+01688af8  cmp w8,#0x1
+01688afc  b.lt 0x01688bdc
+01688b00  adrp x24,0x3348000
+01688b04  adrp x20,0x334a000
+01688b08  adrp x21,0x3319000
+01688b0c  ldr x24,[x24, #0xcf8]
+01688b10  ldr x20,[x20, #0xbb0]
+01688b14  ldr x21,[x21, #0x10]
+01688b18  mov x23,xzr
+01688b1c  and x25,x8,#0xffffffff
+01688b20  ldr x8,[x19]
+01688b24  mov x0,x19
+01688b28  ldp x9,x1,[x8, #0x1d8]
+01688b2c  blr x9
+01688b30  cbz x0,0x01688bf0
+01688b34  ldr w8,[x0, #0x18]
+01688b38  cmp x23,x8
+01688b3c  b.cs 0x01688bf4
+01688b40  add x8,x0,x23, LSL #0x3
+01688b44  ldr x0,[x8, #0x20]
+01688b48  cbz x0,0x01688b70
+01688b4c  ldr x1,[x24]
+01688b50  ldr x8,[x0]
+01688b54  cmp x8,x1
+01688b58  b.ne 0x01688bf8
+01688b5c  ldr x1,[x0, #0x28]
+01688b60  ldr x9,[x0, #0x18]
+01688b64  ldr x8,[x0, #0x40]
+01688b68  mov x0,x8
+    ; [PRE] try { // try from 01688b68 to 01688b6f has its CatchHandler @ 01688b80
+01688b6c  blr x9
+    ; [POST] } // end try from 01688b68 to 01688b6f
+01688b70  add x23,x23,#0x1
+01688b74  cmp x25,x23
+01688b78  b.ne 0x01688b20
+01688b7c  b 0x01688bdc
+01688bdc  ldp x19,x30,[sp, #0x30]
+01688be0  ldp x21,x20,[sp, #0x20]
+01688be4  ldp x23,x22,[sp, #0x10]
+01688be8  ldp x25,x24,[sp], #0x40
+01688bec  ret
+01688bf0  bl 0x00b079b0
+01688bf4  bl 0x00b079b8
+01688bf8  bl 0x00b07c6c

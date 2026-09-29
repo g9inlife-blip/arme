@@ -1,0 +1,45 @@
+Function: ReadOnlyDictionary<object,-object>$$get_Values @ 01df9d50
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01df9d50  stp x19,x30,[sp, #-0x10]!
+01df9d54  ldr x19,[x0, #0x10]
+01df9d58  cbz x19,0x01df9dd8
+01df9d5c  ldr x8,[x1, #0x20]
+01df9d60  ldr x8,[x8, #0xc0]
+01df9d64  ldr x1,[x8, #0x10]
+01df9d68  ldrb w8,[x1, #0x132]
+01df9d6c  tbnz w8,#0x0,0x01df9d7c
+01df9d70  mov x0,x1
+01df9d74  bl 0x00b2ac40
+01df9d78  mov x1,x0
+01df9d7c  ldr x8,[x19]
+01df9d80  ldrh w9,[x8, #0x12a]
+01df9d84  cbz x9,0x01df9da8
+01df9d88  ldr x10,[x8, #0xb0]
+01df9d8c  add x10,x10,#0x8
+01df9d90  ldur x11,[x10, #-0x8]
+01df9d94  cmp x11,x1
+01df9d98  b.eq 0x01df9db8
+01df9d9c  subs x9,x9,#0x1
+01df9da0  add x10,x10,#0x10
+01df9da4  b.ne 0x01df9d90
+01df9da8  mov w2,#0x3
+01df9dac  mov x0,x19
+01df9db0  bl 0x00b2ae24
+01df9db4  b 0x01df9dc8
+01df9db8  ldr w9,[x10]
+01df9dbc  add w9,w9,#0x3
+01df9dc0  add x8,x8,w9, SXTW  #0x4
+01df9dc4  add x0,x8,#0x138
+01df9dc8  ldp x2,x1,[x0]
+01df9dcc  mov x0,x19
+01df9dd0  ldp x19,x30,[sp], #0x10
+01df9dd4  br x2
+01df9dd8  bl 0x00b079b0

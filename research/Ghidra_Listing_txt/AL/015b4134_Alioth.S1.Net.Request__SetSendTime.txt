@@ -1,0 +1,59 @@
+Function: Alioth.S1.Net.Request$$SetSendTime @ 015b4134
+
+--- Calls OUT ---
+  -> Alioth.S1.Net.Request$$get_RetryTimes @ 015b4ffc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Net.Request$$set_SendAt @ 015b4d2c
+  -> Alioth.S1.Net.Request$$set_RetryTimes @ 015b5064
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_m_SetSendTime @ 01171d20
+  <- Alioth.S1.Net.NetworkCenter$$TrySendRequest @ 015b3df8
+
+--- Listing ---
+015b4134  stp x21,x20,[sp, #-0x20]!
+015b4138  stp x19,x30,[sp, #0x10]
+015b413c  adrp x20,0x3577000
+015b4140  adrp x21,0x3374000
+015b4144  ldrb w8,[x20, #0xcf]
+015b4148  ldr x21,[x21, #0x470]
+015b414c  mov x19,x0
+015b4150  tbnz w8,#0x0,0x015b4174
+015b4154  adrp x0,0x336f000
+015b4158  ldr x0,[x0, #0xdc8]
+015b415c  bl 0x00b0789c
+015b4160  adrp x0,0x3374000
+015b4164  ldr x0,[x0, #0x470]
+015b4168  bl 0x00b0789c
+015b416c  mov w8,#0x1
+015b4170  strb w8,[x20, #0xcf]
+015b4174  ldr x8,[x21]
+015b4178  ldr x8,[x8, #0xb8]
+015b417c  ldr x0,[x8, #0x98]
+015b4180  cbz x0,0x015b4198
+015b4184  mov x1,x19
+015b4188  ldp x19,x30,[sp, #0x10]
+015b418c  mov x2,xzr
+015b4190  ldp x21,x20,[sp], #0x20
+015b4194  b 0x01060dac
+015b4198  adrp x8,0x336f000
+015b419c  ldr x8,[x8, #0xdc8]
+015b41a0  ldr x0,[x8]
+015b41a4  ldr w8,[x0, #0xe0]
+015b41a8  cbnz w8,0x015b41b0
+015b41ac  bl 0x00b0798c
+015b41b0  mov x0,xzr
+015b41b4  bl 0x02133d48
+015b41b8  mov x1,x0
+015b41bc  mov x0,x19
+015b41c0  bl 0x015b4d2c
+015b41c4  mov x0,x19
+015b41c8  bl 0x015b4ffc
+015b41cc  add w1,w0,#0x1
+015b41d0  mov x0,x19
+015b41d4  ldp x19,x30,[sp, #0x10]
+015b41d8  ldp x21,x20,[sp], #0x20
+015b41dc  b 0x015b5064

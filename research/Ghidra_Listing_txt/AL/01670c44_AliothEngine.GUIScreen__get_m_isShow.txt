@@ -1,0 +1,40 @@
+Function: AliothEngine.GUIScreen$$get_m_isShow @ 01670c44
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenWrap$$_g_get_m_isShow @ 01155454
+  <- TipsTextPanelMono$$get_IsShow @ 00f14b88
+  <- GlobalUIManager$$Update @ 00f1cec4
+  <- TipsNormalPanelMono$$get_IsShow @ 00f0e46c
+  <- AliothEngine.GUIScreen$$get_IsShow @ 01671140
+
+--- Listing ---
+01670c44  stp x21,x20,[sp, #-0x20]!
+01670c48  stp x19,x30,[sp, #0x10]
+01670c4c  adrp x20,0x3577000
+01670c50  adrp x21,0x3364000
+01670c54  ldrb w8,[x20, #0x973]
+01670c58  ldr x21,[x21, #0xd28]
+01670c5c  mov x19,x0
+01670c60  tbnz w8,#0x0,0x01670c78
+01670c64  adrp x0,0x3364000
+01670c68  ldr x0,[x0, #0xd28]
+01670c6c  bl 0x00b0789c
+01670c70  mov w8,#0x1
+01670c74  strb w8,[x20, #0x973]
+01670c78  ldr x8,[x21]
+01670c7c  ldr x8,[x8, #0xb8]
+01670c80  ldr x0,[x8, #0x10]
+01670c84  cbz x0,0x01670c9c
+01670c88  mov x1,x19
+01670c8c  ldp x19,x30,[sp, #0x10]
+01670c90  mov x2,xzr
+01670c94  ldp x21,x20,[sp], #0x20
+01670c98  b 0x01060aac
+01670c9c  ldrb w0,[x19, #0x39]
+01670ca0  ldp x19,x30,[sp, #0x10]
+01670ca4  ldp x21,x20,[sp], #0x20
+01670ca8  ret

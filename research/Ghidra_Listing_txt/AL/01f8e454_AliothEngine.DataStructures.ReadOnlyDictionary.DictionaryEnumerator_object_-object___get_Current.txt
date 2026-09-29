@@ -1,0 +1,48 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary.DictionaryEnumerator<object,-object>$$get_Current @ 01f8e454
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_009b2640 @ 009b2640
+
+--- Listing ---
+01f8e454  stp x19,x30,[sp, #-0x10]!
+01f8e458  ldr x19,[x0]
+01f8e45c  cbz x19,0x01f8e4e4
+01f8e460  ldr x0,[x1, #0x20]
+01f8e464  ldrb w8,[x0, #0x132]
+01f8e468  tbnz w8,#0x0,0x01f8e470
+01f8e46c  bl 0x00b2ac40
+01f8e470  ldr x8,[x0, #0xc0]
+01f8e474  ldr x1,[x8]
+01f8e478  ldrb w8,[x1, #0x132]
+01f8e47c  tbnz w8,#0x0,0x01f8e48c
+01f8e480  mov x0,x1
+01f8e484  bl 0x00b2ac40
+01f8e488  mov x1,x0
+01f8e48c  ldr x8,[x19]
+01f8e490  ldrh w9,[x8, #0x12a]
+01f8e494  cbz x9,0x01f8e4b8
+01f8e498  ldr x10,[x8, #0xb0]
+01f8e49c  add x10,x10,#0x8
+01f8e4a0  ldur x11,[x10, #-0x8]
+01f8e4a4  cmp x11,x1
+01f8e4a8  b.eq 0x01f8e4c8
+01f8e4ac  subs x9,x9,#0x1
+01f8e4b0  add x10,x10,#0x10
+01f8e4b4  b.ne 0x01f8e4a0
+01f8e4b8  mov x0,x19
+01f8e4bc  mov w2,wzr
+01f8e4c0  bl 0x00b2ae24
+01f8e4c4  b 0x01f8e4d4
+01f8e4c8  ldrsw x9,[x10]
+01f8e4cc  add x8,x8,x9, LSL #0x4
+01f8e4d0  add x0,x8,#0x138
+01f8e4d4  ldp x2,x1,[x0]
+01f8e4d8  mov x0,x19
+01f8e4dc  ldp x19,x30,[sp], #0x10
+01f8e4e0  br x2
+01f8e4e4  bl 0x00b079b0

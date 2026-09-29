@@ -1,0 +1,58 @@
+Function: Alioth.S1.Net.NetworkCenter$$Run @ 015b3d24
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- CSBehaviour.<NCRun>d__30$$MoveNext @ 016ddca8
+  <- XLua.CSObjectWrap.AliothS1NetNetworkCenterWrap$$_m_Run @ 01170ab4
+
+--- Listing ---
+015b3d24  stp x21,x20,[sp, #-0x20]!
+015b3d28  stp x19,x30,[sp, #0x10]
+015b3d2c  adrp x20,0x3577000
+015b3d30  adrp x21,0x330b000
+015b3d34  ldrb w8,[x20, #0xb6]
+015b3d38  ldr x21,[x21, #0x520]
+015b3d3c  mov x19,x0
+015b3d40  tbnz w8,#0x0,0x015b3d64
+015b3d44  adrp x0,0x330b000
+015b3d48  ldr x0,[x0, #0x520]
+015b3d4c  bl 0x00b0789c
+015b3d50  adrp x0,0x337f000
+015b3d54  ldr x0,[x0, #0xf8]
+015b3d58  bl 0x00b0789c
+015b3d5c  mov w8,#0x1
+015b3d60  strb w8,[x20, #0xb6]
+015b3d64  ldr x8,[x21]
+015b3d68  ldr x8,[x8, #0xb8]
+015b3d6c  ldr x0,[x8, #0x70]
+015b3d70  cbz x0,0x015b3d88
+015b3d74  mov x1,x19
+015b3d78  ldp x19,x30,[sp, #0x10]
+015b3d7c  mov x2,xzr
+015b3d80  ldp x21,x20,[sp], #0x20
+015b3d84  b 0x01066218
+015b3d88  adrp x8,0x337f000
+015b3d8c  ldr x8,[x8, #0xf8]
+015b3d90  ldr x0,[x8]
+015b3d94  bl 0x00b079a0
+015b3d98  cbz x0,0x015b3dcc
+015b3d9c  mov x1,xzr
+015b3da0  mov x20,x0
+015b3da4  bl 0x02194104
+015b3da8  mov x0,x20
+015b3dac  str wzr,[x20, #0x10]
+015b3db0  str x19,[x0, #0x20]!
+015b3db4  mov x1,x19
+015b3db8  bl 0x00b07850
+015b3dbc  ldp x19,x30,[sp, #0x10]
+015b3dc0  mov x0,x20
+015b3dc4  ldp x21,x20,[sp], #0x20
+015b3dc8  ret
+015b3dcc  bl 0x00b079b0

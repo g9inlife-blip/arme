@@ -1,0 +1,14 @@
+Function: Alioth.S1.Common.ProtoChapter$$IsBoxReceived @ 015acfe8
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- ChapBoxMono$$LayBoxItem @ 00e55c80
+  <- BattleMapMono$$LayChapterItem @ 00e4f918
+  <- BattleSectionMono$$SetStageBoxAndBar @ 00e53380
+
+--- Listing ---
+015acfe8  ldr w8,[x0, #0x1c]
+015acfec  tst w8,w1
+015acff0  cset w0,ne
+015acff4  ret

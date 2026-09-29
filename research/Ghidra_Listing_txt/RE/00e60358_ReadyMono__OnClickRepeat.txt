@@ -1,0 +1,150 @@
+Function: ReadyMono$$OnClickRepeat @ 00e60358
+
+--- Calls OUT ---
+  -> ReadyMono$$get_m_allStar @ 00e5cebc
+  -> AliothExtensions$$SetActiveCheck @ 00e13880
+  -> BattleConfigExtra$$get_m_repeat @ 00ed5458
+  -> BaseMono$$TextTips @ 00e1b538
+  -> BattleConfigExtra$$set_m_repeat @ 00ed54c0
+  -> Ali$$get_m_battleConfigExtra @ 00e0066c
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> ReadypanelNode$$get_repeat_choosed @ 00fce060
+  -> ReadyMono$$get_m_node @ 00e5cc94
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+00e60358  str x22,[sp, #-0x30]!
+00e6035c  stp x21,x20,[sp, #0x10]
+00e60360  stp x19,x30,[sp, #0x20]
+00e60364  adrp x21,0x3572000
+00e60368  adrp x22,0x333c000
+00e6036c  ldrb w8,[x21, #0x967]
+00e60370  ldr x22,[x22, #0x628]
+00e60374  mov x20,x1
+00e60378  mov x19,x0
+00e6037c  tbnz w8,#0x0,0x00e603b8
+00e60380  adrp x0,0x335f000
+00e60384  ldr x0,[x0, #0x20]
+00e60388  bl 0x00b0789c
+00e6038c  adrp x0,0x3348000
+00e60390  ldr x0,[x0, #0x138]
+00e60394  bl 0x00b0789c
+00e60398  adrp x0,0x335b000
+00e6039c  ldr x0,[x0, #0x650]
+00e603a0  bl 0x00b0789c
+00e603a4  adrp x0,0x333c000
+00e603a8  ldr x0,[x0, #0x628]
+00e603ac  bl 0x00b0789c
+00e603b0  mov w8,#0x1
+00e603b4  strb w8,[x21, #0x967]
+00e603b8  ldr x8,[x22]
+00e603bc  ldr x8,[x8, #0xb8]
+00e603c0  ldr x0,[x8, #0x98]
+00e603c4  cbz x0,0x00e603e4
+00e603c8  mov x1,x19
+00e603cc  mov x2,x20
+00e603d0  ldp x19,x30,[sp, #0x20]
+00e603d4  ldp x21,x20,[sp, #0x10]
+00e603d8  mov x3,xzr
+00e603dc  ldr x22,[sp], #0x30
+00e603e0  b 0x0106125c
+00e603e4  mov x0,x19
+00e603e8  bl 0x00e5cebc
+00e603ec  tbz w0,#0x0,0x00e604e4
+00e603f0  adrp x21,0x335f000
+00e603f4  ldr x21,[x21, #0x20]
+00e603f8  ldr x0,[x21]
+00e603fc  ldr w8,[x0, #0xe0]
+00e60400  cbnz w8,0x00e6040c
+00e60404  bl 0x00b0798c
+00e60408  ldr x0,[x21]
+00e6040c  ldr x8,[x0, #0xb8]
+00e60410  ldr x0,[x8, #0x10]
+00e60414  cbz x0,0x00e6055c
+00e60418  mov x1,xzr
+00e6041c  bl 0x00e0066c
+00e60420  ldr x8,[x21]
+00e60424  ldr x8,[x8, #0xb8]
+00e60428  ldr x8,[x8, #0x10]
+00e6042c  cbz x8,0x00e6055c
+00e60430  mov x20,x0
+00e60434  mov x0,x8
+00e60438  mov x1,xzr
+00e6043c  bl 0x00e0066c
+00e60440  cbz x0,0x00e6055c
+00e60444  mov x1,xzr
+00e60448  bl 0x00ed5458
+00e6044c  cbz x20,0x00e6055c
+00e60450  mvn w8,w0
+00e60454  and w1,w8,#0x1
+00e60458  mov x0,x20
+00e6045c  mov x2,xzr
+00e60460  bl 0x00ed54c0
+00e60464  mov x0,x19
+00e60468  bl 0x00e5cc94
+00e6046c  cbz x0,0x00e6055c
+00e60470  mov x1,xzr
+00e60474  bl 0x00fce060
+00e60478  cbz x0,0x00e6055c
+00e6047c  ldr x8,[x21]
+00e60480  ldr x8,[x8, #0xb8]
+00e60484  ldr x8,[x8, #0x10]
+00e60488  cbz x8,0x00e6055c
+00e6048c  ldr x19,[x0, #0x18]
+00e60490  mov x0,x8
+00e60494  mov x1,xzr
+00e60498  bl 0x00e0066c
+00e6049c  cbz x0,0x00e6055c
+00e604a0  adrp x20,0x3348000
+00e604a4  ldr x20,[x20, #0x138]
+00e604a8  mov x1,xzr
+00e604ac  bl 0x00ed5458
+00e604b0  ldr x8,[x20]
+00e604b4  mov w20,w0
+00e604b8  ldr w9,[x8, #0xe0]
+00e604bc  cbnz w9,0x00e604c8
+00e604c0  mov x0,x8
+00e604c4  bl 0x00b0798c
+00e604c8  and w1,w20,#0x1
+00e604cc  mov x0,x19
+00e604d0  ldp x19,x30,[sp, #0x20]
+00e604d4  ldp x21,x20,[sp, #0x10]
+00e604d8  mov x2,xzr
+00e604dc  ldr x22,[sp], #0x30
+00e604e0  b 0x00e13880
+00e604e4  adrp x8,0x335b000
+00e604e8  ldr x8,[x8, #0x650]
+00e604ec  ldr x20,[x8]
+00e604f0  ldr x8,[x20, #0x38]
+00e604f4  ldr x0,[x8]
+00e604f8  ldrb w8,[x0, #0x132]
+00e604fc  tbnz w8,#0x0,0x00e60504
+00e60500  bl 0x00b2ac40
+00e60504  ldr w8,[x0, #0xe0]
+00e60508  cbnz w8,0x00e60510
+00e6050c  bl 0x00b0798c
+00e60510  ldr x8,[x20, #0x38]
+00e60514  ldr x0,[x8]
+00e60518  ldrb w8,[x0, #0x132]
+00e6051c  tbnz w8,#0x0,0x00e60524
+00e60520  bl 0x00b2ac40
+00e60524  ldr x8,[x0, #0xb8]
+00e60528  mov x0,x19
+00e6052c  ldp x19,x30,[sp, #0x20]
+00e60530  ldp x21,x20,[sp, #0x10]
+00e60534  ldr x6,[x8]
+00e60538  mov w1,#0xbdcd
+00e6053c  movk w1,#0x4c4, LSL #16
+00e60540  mov w4,#0xffffffff
+00e60544  mov w2,wzr
+00e60548  mov x3,xzr
+00e6054c  mov w5,wzr
+00e60550  mov x7,xzr
+00e60554  ldr x22,[sp], #0x30
+00e60558  b 0x00e1b538
+00e6055c  bl 0x00b079b0

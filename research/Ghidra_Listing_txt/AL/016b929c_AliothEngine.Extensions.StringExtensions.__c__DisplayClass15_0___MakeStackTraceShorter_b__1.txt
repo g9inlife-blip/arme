@@ -1,0 +1,21 @@
+Function: AliothEngine.Extensions.StringExtensions.<>c__DisplayClass15_0$$<MakeStackTraceShorter>b__1 @ 016b929c
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$StartsWith @ 01fde68c
+
+--- Calls IN ---
+
+--- Listing ---
+016b929c  str x30,[sp, #-0x10]!
+016b92a0  cbz x1,0x016b92c8
+016b92a4  mov x8,x1
+016b92a8  ldr x1,[x0, #0x10]
+016b92ac  mov x0,x8
+016b92b0  mov x2,xzr
+016b92b4  bl 0x01fde68c
+016b92b8  mvn w8,w0
+016b92bc  and w0,w8,#0x1
+016b92c0  ldr x30,[sp], #0x10
+016b92c4  ret
+016b92c8  bl 0x00b079b0

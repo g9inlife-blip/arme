@@ -1,0 +1,46 @@
+Function: AliothEngine.SingletonScriptableObject<object>$$get_hasInstance @ 01e095c8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01e095c8  str x20,[sp, #-0x20]!
+01e095cc  stp x19,x30,[sp, #0x10]
+01e095d0  adrp x20,0x3578000
+01e095d4  ldrb w8,[x20, #0xeb5]
+01e095d8  mov x19,x0
+01e095dc  tbnz w8,#0x0,0x01e095f4
+01e095e0  adrp x0,0x3321000
+01e095e4  ldr x0,[x0, #0xca8]
+01e095e8  bl 0x00b0789c
+01e095ec  mov w8,#0x1
+01e095f0  strb w8,[x20, #0xeb5]
+01e095f4  ldr x0,[x19, #0x20]
+01e095f8  ldrb w8,[x0, #0x132]
+01e095fc  tbnz w8,#0x0,0x01e09604
+01e09600  bl 0x00b2ac40
+01e09604  ldr x8,[x0, #0xc0]
+01e09608  adrp x19,0x3321000
+01e0960c  ldr x0,[x8, #0x10]
+01e09610  ldrb w8,[x0, #0x132]
+01e09614  ldr x19,[x19, #0xca8]
+01e09618  tbnz w8,#0x0,0x01e09620
+01e0961c  bl 0x00b2ac40
+01e09620  ldr x8,[x19]
+01e09624  ldr x9,[x0, #0xb8]
+01e09628  ldr w10,[x8, #0xe0]
+01e0962c  ldr x19,[x9]
+01e09630  cbnz w10,0x01e0963c
+01e09634  mov x0,x8
+01e09638  bl 0x00b0798c
+01e0963c  mov x0,x19
+01e09640  ldp x19,x30,[sp, #0x10]
+01e09644  mov x1,xzr
+01e09648  mov x2,xzr
+01e0964c  ldr x20,[sp], #0x20
+01e09650  b 0x024de30c

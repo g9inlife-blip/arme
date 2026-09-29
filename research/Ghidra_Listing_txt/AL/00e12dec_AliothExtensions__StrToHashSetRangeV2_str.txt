@@ -1,0 +1,52 @@
+Function: AliothExtensions$$StrToHashSetRangeV2_str @ 00e12dec
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp421 @ 01095bec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothExtensions$$StrToHashSetRangeV2 @ 00e12bc0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothExtensionsWrap$$_m_StrToHashSetRangeV2_str_xlua_st_ @ 0116a584
+
+--- Listing ---
+00e12dec  str x22,[sp, #-0x30]!
+00e12df0  stp x21,x20,[sp, #0x10]
+00e12df4  stp x19,x30,[sp, #0x20]
+00e12df8  adrp x22,0x3572000
+00e12dfc  adrp x21,0x3348000
+00e12e00  ldrb w8,[x22, #0x5e9]
+00e12e04  ldr x21,[x21, #0x138]
+00e12e08  mov w20,w1
+00e12e0c  mov x19,x0
+00e12e10  tbnz w8,#0x0,0x00e12e28
+00e12e14  adrp x0,0x3348000
+00e12e18  ldr x0,[x0, #0x138]
+00e12e1c  bl 0x00b0789c
+00e12e20  mov w8,#0x1
+00e12e24  strb w8,[x22, #0x5e9]
+00e12e28  ldr x0,[x21]
+00e12e2c  ldr w8,[x0, #0xe0]
+00e12e30  cbnz w8,0x00e12e3c
+00e12e34  bl 0x00b0798c
+00e12e38  ldr x0,[x21]
+00e12e3c  ldr x8,[x0, #0xb8]
+00e12e40  ldr x8,[x8, #0x88]
+00e12e44  cbz x8,0x00e12e68
+00e12e48  and w2,w20,#0x1
+00e12e4c  mov x1,x19
+00e12e50  ldp x19,x30,[sp, #0x20]
+00e12e54  ldp x21,x20,[sp, #0x10]
+00e12e58  mov x0,x8
+00e12e5c  mov x3,xzr
+00e12e60  ldr x22,[sp], #0x30
+00e12e64  b 0x01095bec
+00e12e68  ldr w8,[x0, #0xe0]
+00e12e6c  cbnz w8,0x00e12e74
+00e12e70  bl 0x00b0798c
+00e12e74  and w1,w20,#0x1
+00e12e78  mov x0,x19
+00e12e7c  ldp x19,x30,[sp, #0x20]
+00e12e80  ldp x21,x20,[sp, #0x10]
+00e12e84  ldr x22,[sp], #0x30
+00e12e88  b 0x00e12bc0

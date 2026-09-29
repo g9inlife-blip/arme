@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.VectorExtensions$$Rotate @ 016bbfbc
+
+--- Calls OUT ---
+  -> sincosf @ 008d4720
+
+--- Calls IN ---
+
+--- Listing ---
+016bbfbc  stp d9,d8,[sp, #-0x20]!
+016bbfc0  str x30,[sp, #0x10]
+016bbfc4  mov v9.16B,v0.16B
+016bbfc8  add x0,sp,#0x1c
+016bbfcc  add x1,sp,#0x18
+016bbfd0  mov v0.16B,v2.16B
+016bbfd4  mov v8.16B,v1.16B
+016bbfd8  bl 0x008d4720
+016bbfdc  ldp s1,s0,[sp, #0x18]
+016bbfe0  ldr x30,[sp, #0x10]
+016bbfe4  fmul s2,s9,s0
+016bbfe8  fmul s3,s8,s1
+016bbfec  fmul s4,s9,s1
+016bbff0  fmul s0,s8,s0
+016bbff4  fadd s1,s2,s3
+016bbff8  fsub s0,s4,s0
+016bbffc  ldp d9,d8,[sp], #0x20
+016bc000  ret

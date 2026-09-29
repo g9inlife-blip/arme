@@ -1,0 +1,76 @@
+Function: AliothEngine.RefAction<object>$$.ctor @ 01dfedf8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aed804 @ 00b079c0
+  -> FUN_009a0508 @ 009a0508
+  -> FUN_009a0490 @ 009a0490
+  -> FUN_00b07910 @ 00b07910
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_009a0534 @ 009a0534
+  -> thunk_FUN_00afcc14 @ 00b07984
+  -> FUN_009a04f8 @ 009a04f8
+  -> FUN_009a04d8 @ 009a04d8
+
+--- Calls IN ---
+  <- AliothEngine.GameEventSysTest$$AddEvent @ 0164bbf4
+  <- AliothEngine.GameEventSysTest$$RmvEvent @ 0164bdf4
+
+--- Listing ---
+01dfedf8  str x22,[sp, #-0x30]!
+01dfedfc  stp x21,x20,[sp, #0x10]
+01dfee00  stp x19,x30,[sp, #0x20]
+01dfee04  mov x19,x0
+01dfee08  mov x0,x2
+01dfee0c  mov x21,x2
+01dfee10  mov x20,x1
+01dfee14  bl 0x00b07984
+01dfee18  str x0,[x19, #0x10]
+01dfee1c  mov x0,x19
+01dfee20  str x21,[x19, #0x28]
+01dfee24  str x20,[x0, #0x20]!
+01dfee28  mov x1,x20
+01dfee2c  bl 0x00b07850
+01dfee30  ldrb w22,[x21, #0x52]
+01dfee34  mov x0,x21
+01dfee38  str x19,[x19, #0x40]
+01dfee3c  bl 0x00b07910
+01dfee40  tbz w0,#0x0,0x01dfee60
+01dfee44  ldrb w8,[x21, #0x53]
+01dfee48  tbnz w8,#0x4,0x01dfee7c
+01dfee4c  cmp w22,#0x1
+01dfee50  b.ne 0x01dfee68
+01dfee54  adrp x8,0x9a0000
+01dfee58  add x8,x8,#0x4f8
+01dfee5c  b 0x01dfeea4
+01dfee60  cbz w22,0x01dfee90
+01dfee64  cbz x20,0x01dfeec4
+01dfee68  ldr x8,[x19, #0x10]
+01dfee6c  ldr x9,[x19, #0x20]
+01dfee70  str x8,[x19, #0x18]
+01dfee74  str x9,[x19, #0x40]
+01dfee78  b 0x01dfeea8
+01dfee7c  cmp w22,#0x1
+01dfee80  b.ne 0x01dfee9c
+01dfee84  adrp x8,0x9a0000
+01dfee88  add x8,x8,#0x508
+01dfee8c  b 0x01dfeea4
+01dfee90  adrp x8,0x9a0000
+01dfee94  add x8,x8,#0x4d8
+01dfee98  b 0x01dfeea4
+01dfee9c  adrp x8,0x9a0000
+01dfeea0  add x8,x8,#0x534
+01dfeea4  str x8,[x19, #0x18]
+01dfeea8  adrp x8,0x9a0000
+01dfeeac  add x8,x8,#0x490
+01dfeeb0  str x8,[x19, #0x38]
+01dfeeb4  ldp x19,x30,[sp, #0x20]
+01dfeeb8  ldp x21,x20,[sp, #0x10]
+01dfeebc  ldr x22,[sp], #0x30
+01dfeec0  ret
+01dfeec4  adrp x1,0x26db000
+01dfeec8  add x1,x1,#0xd9
+01dfeecc  mov x0,xzr
+01dfeed0  bl 0x00b079c0
+01dfeed4  mov x1,xzr
+01dfeed8  bl 0x00b07978

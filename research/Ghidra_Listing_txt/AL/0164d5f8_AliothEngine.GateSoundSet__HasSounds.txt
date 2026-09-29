@@ -1,0 +1,31 @@
+Function: AliothEngine.GateSoundSet$$HasSounds @ 0164d5f8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.GateSoundSet$$Play @ 0164d9b4
+  <- AliothEngine.GateSoundSet$$SetupAudioSource @ 0164dcbc
+
+--- Listing ---
+0164d5f8  str x20,[sp, #-0x20]!
+0164d5fc  stp x19,x30,[sp, #0x10]
+0164d600  adrp x20,0x3577000
+0164d604  ldrb w8,[x20, #0x7cd]
+0164d608  mov x19,x0
+0164d60c  tbnz w8,#0x0,0x0164d624
+0164d610  adrp x0,0x3349000
+0164d614  ldr x0,[x0, #0xb20]
+0164d618  bl 0x00b0789c
+0164d61c  mov w8,#0x1
+0164d620  strb w8,[x20, #0x7cd]
+0164d624  ldr x8,[x19, #0x18]
+0164d628  cbz x8,0x0164d644
+0164d62c  ldr w8,[x8, #0x18]
+0164d630  ldp x19,x30,[sp, #0x10]
+0164d634  cmp w8,#0x0
+0164d638  cset w0,gt
+0164d63c  ldr x20,[sp], #0x20
+0164d640  ret
+0164d644  bl 0x00b079b0

@@ -1,0 +1,71 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions$$MaxOrDefault<object> @ 0179aa9c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0179aa9c  str x22,[sp, #-0x30]!
+0179aaa0  stp x21,x20,[sp, #0x10]
+0179aaa4  stp x19,x30,[sp, #0x20]
+0179aaa8  ldr x8,[x2, #0x38]
+0179aaac  mov x19,x2
+0179aab0  mov x22,x1
+0179aab4  mov x20,x0
+0179aab8  ldr x8,[x8]
+0179aabc  ldrb w9,[x8, #0x132]
+0179aac0  tbnz w9,#0x0,0x0179aad0
+0179aac4  mov x0,x8
+0179aac8  bl 0x00b2ac40
+0179aacc  mov x8,x0
+0179aad0  mov x0,x8
+0179aad4  bl 0x00b079a0
+0179aad8  cbz x0,0x0179ab88
+0179aadc  ldr x8,[x19, #0x38]
+0179aae0  mov x21,x0
+0179aae4  ldr x1,[x8, #0x8]
+0179aae8  ldr x8,[x1, #0x8]
+0179aaec  blr x8
+0179aaf0  mov x0,x21
+0179aaf4  str x22,[x0, #0x10]!
+0179aaf8  mov x1,x22
+0179aafc  bl 0x00b07850
+0179ab00  ldr x8,[x19, #0x38]
+0179ab04  mov x0,x20
+0179ab08  ldr x1,[x8, #0x10]
+0179ab0c  ldr x8,[x1, #0x8]
+0179ab10  blr x8
+0179ab14  tbz w0,#0x0,0x0179ab74
+0179ab18  ldr x8,[x19, #0x38]
+0179ab1c  ldr x0,[x8, #0x20]
+0179ab20  ldrb w8,[x0, #0x132]
+0179ab24  tbnz w8,#0x0,0x0179ab2c
+0179ab28  bl 0x00b2ac40
+0179ab2c  bl 0x00b079a0
+0179ab30  cbz x0,0x0179ab88
+0179ab34  ldr x8,[x19, #0x38]
+0179ab38  mov x1,x21
+0179ab3c  mov x22,x0
+0179ab40  ldr x3,[x8, #0x28]
+0179ab44  ldr x2,[x8, #0x18]
+0179ab48  ldr x9,[x3, #0x8]
+0179ab4c  blr x9
+0179ab50  ldr x8,[x19, #0x38]
+0179ab54  mov x0,x20
+0179ab58  ldp x19,x30,[sp, #0x20]
+0179ab5c  ldp x21,x20,[sp, #0x10]
+0179ab60  ldr x2,[x8, #0x30]
+0179ab64  mov x1,x22
+0179ab68  ldr x3,[x2, #0x8]
+0179ab6c  ldr x22,[sp], #0x30
+0179ab70  br x3
+0179ab74  ldp x19,x30,[sp, #0x20]
+0179ab78  ldp x21,x20,[sp, #0x10]
+0179ab7c  mov x0,xzr
+0179ab80  ldr x22,[sp], #0x30
+0179ab84  ret
+0179ab88  bl 0x00b079b0

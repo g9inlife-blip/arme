@@ -1,0 +1,116 @@
+Function: AliothEngine.Extensions.TransformExtensions$$OverridePosition @ 016bb158
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> UnityEngine.Transform$$SetParent @ 024f44b4
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> UnityEngine.Transform$$DetachChildren @ 024f55b4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.Transform$$set_position @ 024f3724
+
+--- Calls IN ---
+
+--- Listing ---
+016bb158  str d10,[sp, #-0x50]!
+016bb15c  stp d9,d8,[sp, #0x8]
+016bb160  str x24,[sp, #0x18]
+016bb164  stp x23,x22,[sp, #0x20]
+016bb168  stp x21,x20,[sp, #0x30]
+016bb16c  stp x19,x30,[sp, #0x40]
+016bb170  adrp x20,0x3577000
+016bb174  ldrb w8,[x20, #0xc31]
+016bb178  mov v8.16B,v2.16B
+016bb17c  mov v9.16B,v1.16B
+016bb180  mov v10.16B,v0.16B
+016bb184  mov x19,x0
+016bb188  tbnz w8,#0x0,0x016bb1a0
+016bb18c  adrp x0,0x3349000
+016bb190  ldr x0,[x0, #0xbc8]
+016bb194  bl 0x00b0789c
+016bb198  mov w8,#0x1
+016bb19c  strb w8,[x20, #0xc31]
+016bb1a0  cbz x19,0x016bb2c8
+016bb1a4  adrp x20,0x3349000
+016bb1a8  ldr x20,[x20, #0xbc8]
+016bb1ac  mov x0,x19
+016bb1b0  mov x1,xzr
+016bb1b4  bl 0x024f5578
+016bb1b8  ldr x8,[x20]
+016bb1bc  mov w1,w0
+016bb1c0  mov x0,x8
+016bb1c4  bl 0x00b078f8
+016bb1c8  cbz x0,0x016bb2c8
+016bb1cc  ldr w8,[x0, #0x18]
+016bb1d0  mov x20,x0
+016bb1d4  cmp w8,#0x1
+016bb1d8  b.lt 0x016bb244
+016bb1dc  mov x21,xzr
+016bb1e0  add x22,x20,#0x20
+016bb1e4  mov x0,x19
+016bb1e8  mov w1,w21
+016bb1ec  mov x2,xzr
+016bb1f0  bl 0x024f5bec
+016bb1f4  mov x23,x0
+016bb1f8  cbz x0,0x016bb210
+016bb1fc  ldr x8,[x20]
+016bb200  mov x0,x23
+016bb204  ldr x1,[x8, #0x40]
+016bb208  bl 0x00b07990
+016bb20c  cbz x0,0x016bb2cc
+016bb210  ldr w8,[x20, #0x18]
+016bb214  cmp x21,x8
+016bb218  b.cs 0x016bb2c4
+016bb21c  mov x24,x22
+016bb220  mov x0,x22
+016bb224  mov x1,x23
+016bb228  str x23,[x24], #0x8
+016bb22c  bl 0x00b07850
+016bb230  ldrsw x8,[x20, #0x18]
+016bb234  add x21,x21,#0x1
+016bb238  mov x22,x24
+016bb23c  cmp x21,x8
+016bb240  b.lt 0x016bb1e4
+016bb244  mov x0,x19
+016bb248  mov x1,xzr
+016bb24c  bl 0x024f55b4
+016bb250  mov x0,x19
+016bb254  mov v0.16B,v10.16B
+016bb258  mov v1.16B,v9.16B
+016bb25c  mov v2.16B,v8.16B
+016bb260  mov x1,xzr
+016bb264  bl 0x024f3724
+016bb268  ldr x8,[x20, #0x18]
+016bb26c  cmp w8,#0x1
+016bb270  b.lt 0x016bb2a8
+016bb274  mov x21,xzr
+016bb278  add x22,x20,#0x20
+016bb27c  cmp w21,w8
+016bb280  b.cs 0x016bb2c4
+016bb284  ldr x0,[x22, x21, LSL #0x3]
+016bb288  cbz x0,0x016bb2c8
+016bb28c  mov x1,x19
+016bb290  mov x2,xzr
+016bb294  bl 0x024f44b4
+016bb298  ldr x8,[x20, #0x18]
+016bb29c  add x21,x21,#0x1
+016bb2a0  cmp w21,w8
+016bb2a4  b.lt 0x016bb27c
+016bb2a8  ldp x19,x30,[sp, #0x40]
+016bb2ac  ldp x21,x20,[sp, #0x30]
+016bb2b0  ldp x23,x22,[sp, #0x20]
+016bb2b4  ldr x24,[sp, #0x18]
+016bb2b8  ldp d9,d8,[sp, #0x8]
+016bb2bc  ldr d10,[sp], #0x50
+016bb2c0  ret
+016bb2c4  bl 0x00b079b8
+016bb2c8  bl 0x00b079b0
+016bb2cc  bl 0x00b079d4
+016bb2d0  mov x1,xzr
+016bb2d4  bl 0x00b07978

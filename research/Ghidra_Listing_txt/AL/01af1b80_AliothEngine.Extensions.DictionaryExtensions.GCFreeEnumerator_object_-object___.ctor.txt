@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.DictionaryExtensions.GCFreeEnumerator<object,-object>$$.ctor @ 01af1b80
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.DictionaryExtensions$$Each<object,-object> @ 01776e10
+  <- FUN_0098989c @ 0098989c
+
+--- Listing ---
+01af1b80  sub sp,sp,#0x80
+01af1b84  stp x21,x20,[sp, #0x60]
+01af1b88  stp x19,x30,[sp, #0x70]
+01af1b8c  cbz x1,0x01af1c28
+01af1b90  ldr x8,[x2, #0x20]
+01af1b94  mov x21,x2
+01af1b98  mov x20,x1
+01af1b9c  mov x19,x0
+01af1ba0  ldrh w9,[x8, #0x132]
+01af1ba4  tbnz w9,#0x0,0x01af1bbc
+01af1ba8  mov x0,x8
+01af1bac  bl 0x00b2ac40
+01af1bb0  ldr x8,[x21, #0x20]
+01af1bb4  ldrh w9,[x8, #0x132]
+01af1bb8  b 0x01af1bc0
+01af1bbc  mov x0,x8
+01af1bc0  ldr x10,[x0, #0xc0]
+01af1bc4  ldr x10,[x10, #0x10]
+01af1bc8  ldr x21,[x10, #0x8]
+01af1bcc  tbnz w9,#0x0,0x01af1bdc
+01af1bd0  mov x0,x8
+01af1bd4  bl 0x00b2ac40
+01af1bd8  mov x8,x0
+01af1bdc  ldr x8,[x8, #0xc0]
+01af1be0  mov x0,x20
+01af1be4  ldr x1,[x8, #0x10]
+01af1be8  add x8,sp,#0x8
+01af1bec  blr x21
+01af1bf0  ldr x8,[sp, #0x28]
+01af1bf4  ldur q0,[sp, #0x18]
+01af1bf8  ldur q1,[sp, #0x8]
+01af1bfc  mov x0,x19
+01af1c00  mov x1,xzr
+01af1c04  str x8,[sp, #0x50]
+01af1c08  stp q1,q0,[sp, #0x30]
+01af1c0c  str x8,[x19, #0x20]
+01af1c10  stp q1,q0,[x19]
+01af1c14  bl 0x00b07850
+01af1c18  ldp x19,x30,[sp, #0x70]
+01af1c1c  ldp x21,x20,[sp, #0x60]
+01af1c20  add sp,sp,#0x80
+01af1c24  ret
+01af1c28  bl 0x00b079b0

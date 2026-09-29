@@ -1,0 +1,64 @@
+Function: AliothEngine.Extensions.PrefabExtensions$$CreateInstance @ 016b0ba0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Object$$op_Implicit @ 024d0ab0
+  -> UnityEngine.Object$$Instantiate<object> @ 017a970c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> AliothEngine.Extensions.ReparentingExtensions$$Reparent @ 016b0c6c
+
+--- Calls IN ---
+
+--- Listing ---
+016b0ba0  str x22,[sp, #-0x30]!
+016b0ba4  stp x21,x20,[sp, #0x10]
+016b0ba8  stp x19,x30,[sp, #0x20]
+016b0bac  adrp x21,0x3577000
+016b0bb0  adrp x22,0x3321000
+016b0bb4  ldrb w8,[x21, #0xbdd]
+016b0bb8  ldr x22,[x22, #0xca8]
+016b0bbc  mov x19,x1
+016b0bc0  mov x20,x0
+016b0bc4  tbnz w8,#0x0,0x016b0be8
+016b0bc8  adrp x0,0x333f000
+016b0bcc  ldr x0,[x0, #0x1b8]
+016b0bd0  bl 0x00b0789c
+016b0bd4  adrp x0,0x3321000
+016b0bd8  ldr x0,[x0, #0xca8]
+016b0bdc  bl 0x00b0789c
+016b0be0  mov w8,#0x1
+016b0be4  strb w8,[x21, #0xbdd]
+016b0be8  ldr x0,[x22]
+016b0bec  ldr w8,[x0, #0xe0]
+016b0bf0  cbnz w8,0x016b0bf8
+016b0bf4  bl 0x00b0798c
+016b0bf8  mov x0,x20
+016b0bfc  mov x1,xzr
+016b0c00  mov x2,xzr
+016b0c04  bl 0x024c8180
+016b0c08  mov x21,xzr
+016b0c0c  tbnz w0,#0x0,0x016b0c58
+016b0c10  ldr x0,[x22]
+016b0c14  adrp x21,0x333f000
+016b0c18  ldr w8,[x0, #0xe0]
+016b0c1c  ldr x21,[x21, #0x1b8]
+016b0c20  cbnz w8,0x016b0c28
+016b0c24  bl 0x00b0798c
+016b0c28  ldr x1,[x21]
+016b0c2c  mov x0,x20
+016b0c30  bl 0x017a970c
+016b0c34  mov x21,x0
+016b0c38  mov x0,x19
+016b0c3c  mov x1,xzr
+016b0c40  bl 0x024d0ab0
+016b0c44  tbz w0,#0x0,0x016b0c58
+016b0c48  mov w2,#0x2
+016b0c4c  mov x0,x21
+016b0c50  mov x1,x19
+016b0c54  bl 0x016b0c6c
+016b0c58  mov x0,x21
+016b0c5c  ldp x19,x30,[sp, #0x20]
+016b0c60  ldp x21,x20,[sp, #0x10]
+016b0c64  ldr x22,[sp], #0x30
+016b0c68  ret

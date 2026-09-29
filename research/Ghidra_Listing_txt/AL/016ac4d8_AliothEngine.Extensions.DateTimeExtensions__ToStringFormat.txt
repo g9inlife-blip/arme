@@ -1,0 +1,75 @@
+Function: AliothEngine.Extensions.DateTimeExtensions$$ToStringFormat @ 016ac4d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> System.String$$Format @ 01fdf7e8
+  -> System.TimeSpan$$get_Seconds @ 02167bc0
+  -> System.TimeSpan$$get_TotalHours @ 02167c24
+  -> System.TimeSpan$$get_Minutes @ 02167b78
+
+--- Calls IN ---
+  <- ShopNewPanelMono.<ShowRefreshTime>d__55$$MoveNext @ 0102ef8c
+
+--- Listing ---
+016ac4d8  sub sp,sp,#0x40
+016ac4dc  stp x22,x0,[sp, #0x10]
+016ac4e0  stp x21,x20,[sp, #0x20]
+016ac4e4  stp x19,x30,[sp, #0x30]
+016ac4e8  adrp x20,0x3577000
+016ac4ec  adrp x19,0x3310000
+016ac4f0  adrp x22,0x3332000
+016ac4f4  adrp x21,0x3331000
+016ac4f8  ldrb w8,[x20, #0xbc0]
+016ac4fc  ldr x19,[x19, #0x6f0]
+016ac500  ldr x22,[x22, #0x38]
+016ac504  ldr x21,[x21, #0xa00]
+016ac508  tbnz w8,#0x0,0x016ac538
+016ac50c  adrp x0,0x3310000
+016ac510  ldr x0,[x0, #0x6f0]
+016ac514  bl 0x00b0789c
+016ac518  adrp x0,0x3332000
+016ac51c  ldr x0,[x0, #0x38]
+016ac520  bl 0x00b0789c
+016ac524  adrp x0,0x3331000
+016ac528  ldr x0,[x0, #0xa00]
+016ac52c  bl 0x00b0789c
+016ac530  mov w8,#0x1
+016ac534  strb w8,[x20, #0xbc0]
+016ac538  add x0,sp,#0x18
+016ac53c  mov x1,xzr
+016ac540  bl 0x02167c24
+016ac544  ldr x0,[x19]
+016ac548  add x1,sp,#0x8
+016ac54c  str d0,[sp, #0x8]
+016ac550  bl 0x00b07994
+016ac554  mov x19,x0
+016ac558  add x0,sp,#0x18
+016ac55c  mov x1,xzr
+016ac560  bl 0x02167b78
+016ac564  ldr x8,[x22]
+016ac568  str w0,[sp, #0x4]
+016ac56c  add x1,sp,#0x4
+016ac570  mov x0,x8
+016ac574  bl 0x00b07994
+016ac578  mov x20,x0
+016ac57c  add x0,sp,#0x18
+016ac580  mov x1,xzr
+016ac584  bl 0x02167bc0
+016ac588  ldr x8,[x22]
+016ac58c  str w0,[sp]
+016ac590  mov x1,sp
+016ac594  mov x0,x8
+016ac598  bl 0x00b07994
+016ac59c  ldr x8,[x21]
+016ac5a0  mov x3,x0
+016ac5a4  mov x1,x19
+016ac5a8  mov x2,x20
+016ac5ac  mov x0,x8
+016ac5b0  mov x4,xzr
+016ac5b4  bl 0x01fdf7e8
+016ac5b8  ldp x19,x30,[sp, #0x30]
+016ac5bc  ldp x21,x20,[sp, #0x20]
+016ac5c0  ldr x22,[sp, #0x10]
+016ac5c4  add sp,sp,#0x40
+016ac5c8  ret

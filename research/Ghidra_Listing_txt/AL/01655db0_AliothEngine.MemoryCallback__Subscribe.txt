@@ -1,0 +1,131 @@
+Function: AliothEngine.MemoryCallback$$Subscribe @ 01655db0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> UnityEngine.Application$$add_lowMemory @ 024f2bfc
+  -> UnityEngine.Application.LowMemoryCallback$$.ctor @ 024f3498
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> AliothEngine.Android_ProxyPool$$CallStatic @ 01653bc4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$GetUnityActivity @ 0164f628
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+  <- AliothEngine.MemoryCallback$$Start @ 01655d38
+
+--- Listing ---
+01655db0  stp x23,x22,[sp, #-0x30]!
+01655db4  stp x21,x20,[sp, #0x10]
+01655db8  stp x19,x30,[sp, #0x20]
+01655dbc  adrp x20,0x3577000
+01655dc0  adrp x21,0x330c000
+01655dc4  ldrb w8,[x20, #0x80a]
+01655dc8  ldr x21,[x21, #0x9b8]
+01655dcc  mov x19,x0
+01655dd0  tbnz w8,#0x0,0x01655e24
+01655dd4  adrp x0,0x335f000
+01655dd8  ldr x0,[x0, #0x3f8]
+01655ddc  bl 0x00b0789c
+01655de0  adrp x0,0x330a000
+01655de4  ldr x0,[x0, #0xaf0]
+01655de8  bl 0x00b0789c
+01655dec  adrp x0,0x3350000
+01655df0  ldr x0,[x0, #0xb00]
+01655df4  bl 0x00b0789c
+01655df8  adrp x0,0x330c000
+01655dfc  ldr x0,[x0, #0x9b8]
+01655e00  bl 0x00b0789c
+01655e04  adrp x0,0x3370000
+01655e08  ldr x0,[x0, #0x778]
+01655e0c  bl 0x00b0789c
+01655e10  adrp x0,0x330f000
+01655e14  ldr x0,[x0, #0x1c0]
+01655e18  bl 0x00b0789c
+01655e1c  mov w8,#0x1
+01655e20  strb w8,[x20, #0x80a]
+01655e24  ldr x0,[x21]
+01655e28  ldr w8,[x0, #0xe0]
+01655e2c  cbnz w8,0x01655e38
+01655e30  bl 0x00b0798c
+01655e34  ldr x0,[x21]
+01655e38  ldr x8,[x0, #0xb8]
+01655e3c  ldr x0,[x8, #0x28]
+01655e40  cbz x0,0x01655e5c
+01655e44  mov x1,x19
+01655e48  ldp x19,x30,[sp, #0x20]
+01655e4c  ldp x21,x20,[sp, #0x10]
+01655e50  mov x2,xzr
+01655e54  ldp x23,x22,[sp], #0x30
+01655e58  b 0x01060dac
+01655e5c  adrp x8,0x330a000
+01655e60  ldr x8,[x8, #0xaf0]
+01655e64  ldr x0,[x8]
+01655e68  bl 0x00b079a0
+01655e6c  cbz x0,0x01655f4c
+01655e70  adrp x8,0x3350000
+01655e74  ldr x8,[x8, #0xb00]
+01655e78  adrp x22,0x3370000
+01655e7c  mov x1,x19
+01655e80  mov x3,xzr
+01655e84  ldr x2,[x8]
+01655e88  ldr x22,[x22, #0x778]
+01655e8c  mov x20,x0
+01655e90  bl 0x024f3498
+01655e94  mov x0,x20
+01655e98  mov x1,xzr
+01655e9c  bl 0x024f2bfc
+01655ea0  ldr x0,[x21]
+01655ea4  ldr w8,[x0, #0xe0]
+01655ea8  cbnz w8,0x01655eb4
+01655eac  bl 0x00b0798c
+01655eb0  ldr x0,[x21]
+01655eb4  ldr x8,[x0, #0xb8]
+01655eb8  ldr x0,[x22]
+01655ebc  mov w1,#0x1
+01655ec0  ldr x19,[x8]
+01655ec4  bl 0x00b078f8
+01655ec8  mov x20,x0
+01655ecc  mov x0,xzr
+01655ed0  bl 0x0164f628
+01655ed4  cbz x20,0x01655f4c
+01655ed8  mov x21,x0
+01655edc  cbz x0,0x01655ef4
+01655ee0  ldr x8,[x20]
+01655ee4  mov x0,x21
+01655ee8  ldr x1,[x8, #0x40]
+01655eec  bl 0x00b07990
+01655ef0  cbz x0,0x01655f54
+01655ef4  ldr w8,[x20, #0x18]
+01655ef8  cbz w8,0x01655f50
+01655efc  adrp x23,0x335f000
+01655f00  adrp x22,0x330f000
+01655f04  ldr x23,[x23, #0x3f8]
+01655f08  ldr x22,[x22, #0x1c0]
+01655f0c  mov x0,x20
+01655f10  str x21,[x0, #0x20]!
+01655f14  mov x1,x21
+01655f18  bl 0x00b07850
+01655f1c  ldr x0,[x23]
+01655f20  ldr w8,[x0, #0xe0]
+01655f24  cbnz w8,0x01655f2c
+01655f28  bl 0x00b0798c
+01655f2c  ldr x1,[x22]
+01655f30  mov x0,x19
+01655f34  mov x2,x20
+01655f38  ldp x19,x30,[sp, #0x20]
+01655f3c  ldp x21,x20,[sp, #0x10]
+01655f40  mov x3,xzr
+01655f44  ldp x23,x22,[sp], #0x30
+01655f48  b 0x01653bc4
+01655f4c  bl 0x00b079b0
+01655f50  bl 0x00b079b8
+01655f54  bl 0x00b079d4
+01655f58  mov x1,xzr
+01655f5c  bl 0x00b07978

@@ -1,0 +1,139 @@
+Function: replace @ 00b84464
+FuncComment: std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, wchar_t const*, unsigned long)
+
+--- Calls OUT ---
+  -> FUN_00a8f54c @ 00a8f54c
+  -> __grow_by_and_replace @ 008d4ad0
+  -> wmemmove @ 008d5660
+
+--- Calls IN ---
+  <- replace @ 008d58e0
+
+--- Listing ---
+00b84464  str x27,[sp, #-0x60]!
+    ; [PLATE] std::__ndk1::basic_string<wchar_t, std::__ndk1::char_traits<wchar_t>, std::__ndk1::allocator<wchar_t> >::replace(unsigned long, unsigned long, wchar_t const*, unsigned long)
+00b84468  stp x26,x25,[sp, #0x10]
+00b8446c  stp x24,x23,[sp, #0x20]
+00b84470  stp x22,x21,[sp, #0x30]
+00b84474  stp x20,x19,[sp, #0x40]
+00b84478  stp x29,x30,[sp, #0x50]
+00b8447c  add x29,sp,#0x50
+00b84480  ldrb w8,[x0]
+00b84484  mov x20,x4
+00b84488  mov x23,x3
+00b8448c  mov x19,x0
+00b84490  mov x24,x1
+00b84494  tbnz w8,#0x0,0x00b844ac
+00b84498  lsr x21,x8,#0x1
+00b8449c  subs x9,x21,x24
+00b844a0  b.cs 0x00b844b8
+00b844a4  mov x0,x19
+00b844a8  bl 0x00a8f54c
+00b844ac  ldr x21,[x19, #0x8]
+00b844b0  subs x9,x21,x24
+00b844b4  b.cc 0x00b844a4
+00b844b8  cmp x9,x2
+00b844bc  csel x22,x9,x2,cc
+00b844c0  tbnz w8,#0x0,0x00b844cc
+00b844c4  mov w1,#0x4
+00b844c8  b 0x00b844d8
+00b844cc  ldr x10,[x19]
+00b844d0  and x10,x10,#-0x2
+00b844d4  sub x1,x10,#0x1
+00b844d8  sub x10,x22,x21
+00b844dc  add x10,x10,x1
+00b844e0  cmp x10,x20
+00b844e4  b.cs 0x00b84514
+00b844e8  add x8,x21,x20
+00b844ec  sub x8,x8,x22
+00b844f0  sub x2,x8,x1
+00b844f4  mov x0,x19
+00b844f8  mov x3,x21
+00b844fc  mov x4,x24
+00b84500  mov x5,x22
+00b84504  mov x6,x20
+00b84508  mov x7,x23
+00b8450c  bl 0x008d4ad0
+00b84510  b 0x00b84614
+00b84514  tbnz w8,#0x0,0x00b84560
+00b84518  add x27,x19,#0x4
+00b8451c  cmp x22,x20
+00b84520  b.eq 0x00b8456c
+00b84524  subs x25,x9,x22
+00b84528  b.eq 0x00b845dc
+00b8452c  cmp x22,x20
+00b84530  add x26,x27,x24, LSL #0x2
+00b84534  b.ls 0x00b84578
+00b84538  cbz x20,0x00b8454c
+00b8453c  mov x0,x26
+    ; [PRE] try { // try from 00b8453c to 00b8454b has its CatchHandler @ 00b84638
+00b84540  mov x1,x23
+00b84544  mov x2,x20
+00b84548  bl 0x008d5660
+    ; [POST] } // end try from 00b8453c to 00b8454b
+00b8454c  add x0,x26,x20, LSL #0x2
+00b84550  add x1,x26,x22, LSL #0x2
+00b84554  mov x2,x25
+    ; [PRE] try { // try from 00b84554 to 00b8455b has its CatchHandler @ 00b84640
+00b84558  bl 0x008d5660
+    ; [POST] } // end try from 00b84554 to 00b8455b
+00b8455c  b 0x00b845f0
+00b84560  ldr x27,[x19, #0x10]
+00b84564  cmp x22,x20
+00b84568  b.ne 0x00b84524
+00b8456c  mov x22,x20
+00b84570  cbnz x20,0x00b845e0
+00b84574  b 0x00b845f0
+00b84578  cmp x26,x23
+00b8457c  b.cs 0x00b845c8
+00b84580  add x8,x27,x21, LSL #0x2
+00b84584  cmp x8,x23
+00b84588  b.ls 0x00b845c8
+00b8458c  add x8,x26,x22, LSL #0x2
+00b84590  cmp x8,x23
+00b84594  b.ls 0x00b845c0
+00b84598  cbz x22,0x00b845ac
+00b8459c  mov x0,x26
+    ; [PRE] try { // try from 00b8459c to 00b845ab has its CatchHandler @ 00b84634
+00b845a0  mov x1,x23
+00b845a4  mov x2,x22
+00b845a8  bl 0x008d5660
+    ; [POST] } // end try from 00b8459c to 00b845ab
+00b845ac  add x24,x22,x24
+00b845b0  add x23,x23,x20, LSL #0x2
+00b845b4  sub x20,x20,x22
+00b845b8  mov x22,xzr
+00b845bc  b 0x00b845c8
+00b845c0  sub x8,x20,x22
+00b845c4  add x23,x23,x8, LSL #0x2
+00b845c8  add x8,x27,x24, LSL #0x2
+00b845cc  add x0,x8,x20, LSL #0x2
+00b845d0  add x1,x8,x22, LSL #0x2
+00b845d4  mov x2,x25
+    ; [PRE] try { // try from 00b845d4 to 00b845db has its CatchHandler @ 00b8463c
+00b845d8  bl 0x008d5660
+    ; [POST] } // end try from 00b845d4 to 00b845db
+00b845dc  cbz x20,0x00b845f0
+00b845e0  add x0,x27,x24, LSL #0x2
+00b845e4  mov x1,x23
+    ; [PRE] try { // try from 00b845e4 to 00b845ef has its CatchHandler @ 00b84644
+00b845e8  mov x2,x20
+00b845ec  bl 0x008d5660
+    ; [POST] } // end try from 00b845e4 to 00b845ef
+00b845f0  ldrb w9,[x19]
+00b845f4  sub x8,x20,x22
+00b845f8  add x8,x8,x21
+00b845fc  tbnz w9,#0x0,0x00b8460c
+00b84600  lsl w9,w8,#0x1
+00b84604  strb w9,[x19]
+00b84608  b 0x00b84610
+00b8460c  str x8,[x19, #0x8]
+00b84610  str wzr,[x27, x8, LSL #0x2]
+00b84614  mov x0,x19
+00b84618  ldp x29,x30,[sp, #0x50]
+00b8461c  ldp x20,x19,[sp, #0x40]
+00b84620  ldp x22,x21,[sp, #0x30]
+00b84624  ldp x24,x23,[sp, #0x20]
+00b84628  ldp x26,x25,[sp, #0x10]
+00b8462c  ldr x27,[sp], #0x60
+00b84630  ret

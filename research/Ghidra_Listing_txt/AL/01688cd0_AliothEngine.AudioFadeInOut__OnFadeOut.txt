@@ -1,0 +1,25 @@
+Function: AliothEngine.AudioFadeInOut$$OnFadeOut @ 01688cd0
+
+--- Calls OUT ---
+  -> UnityEngine.AudioSource$$get_volume @ 024bb904
+  -> UnityEngine.Time$$get_time @ 024dbfa8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01688cd0  stp x19,x30,[sp, #-0x10]!
+01688cd4  mov x19,x0
+01688cd8  ldr x0,[x0, #0x30]
+01688cdc  mov w8,#0x2
+01688ce0  str w8,[x19, #0x38]
+01688ce4  cbz x0,0x01688d08
+01688ce8  mov x1,xzr
+01688cec  bl 0x024bb904
+01688cf0  mov x0,xzr
+01688cf4  str s0,[x19, #0x40]
+01688cf8  bl 0x024dbfa8
+01688cfc  str s0,[x19, #0x44]
+01688d00  ldp x19,x30,[sp], #0x10
+01688d04  ret
+01688d08  bl 0x00b079b0

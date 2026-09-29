@@ -1,0 +1,27 @@
+Function: AliothEngine.AliothEngineInitialize$$.ctor @ 0164a020
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$.ctor @ 01e09460
+
+--- Calls IN ---
+
+--- Listing ---
+0164a020  stp x21,x20,[sp, #-0x20]!
+0164a024  stp x19,x30,[sp, #0x10]
+0164a028  adrp x20,0x3577000
+0164a02c  adrp x21,0x3366000
+0164a030  ldrb w8,[x20, #0x79f]
+0164a034  ldr x21,[x21, #0x738]
+0164a038  mov x19,x0
+0164a03c  tbnz w8,#0x0,0x0164a054
+0164a040  adrp x0,0x3366000
+0164a044  ldr x0,[x0, #0x738]
+0164a048  bl 0x00b0789c
+0164a04c  mov w8,#0x1
+0164a050  strb w8,[x20, #0x79f]
+0164a054  ldr x1,[x21]
+0164a058  mov x0,x19
+0164a05c  ldp x19,x30,[sp, #0x10]
+0164a060  ldp x21,x20,[sp], #0x20
+0164a064  b 0x01e09460

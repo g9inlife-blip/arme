@@ -1,0 +1,62 @@
+Function: AliothEngine.PlatformTools$$get_persistentDataPath @ 0165803c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Debug$$LogError @ 024c0830
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> UnityEngine.Application$$get_persistentDataPath @ 024f2a30
+  -> AliothEngine.Utils.CustomPersistentDataPath$$get_persistentDataPath @ 016980e0
+
+--- Calls IN ---
+  <- AliothEngine.WWWCacheHelp$$UrlToCachePath @ 0168be14
+  <- AliothEngine.AssetDownloader$$Awake @ 0165de40
+
+--- Listing ---
+0165803c  str x20,[sp, #-0x20]!
+01658040  stp x19,x30,[sp, #0x10]
+01658044  adrp x19,0x3577000
+01658048  adrp x20,0x332c000
+0165804c  ldrb w8,[x19, #0x82c]
+01658050  ldr x20,[x20, #0x2c0]
+01658054  tbnz w8,#0x0,0x01658084
+01658058  adrp x0,0x336b000
+0165805c  ldr x0,[x0, #0x7d0]
+01658060  bl 0x00b0789c
+01658064  adrp x0,0x332c000
+01658068  ldr x0,[x0, #0x2c0]
+0165806c  bl 0x00b0789c
+01658070  adrp x0,0x333a000
+01658074  ldr x0,[x0, #0x550]
+01658078  bl 0x00b0789c
+0165807c  mov w8,#0x1
+01658080  strb w8,[x19, #0x82c]
+01658084  ldr x19,[x20]
+01658088  mov x0,xzr
+    ; [PRE] try { // try from 01658088 to 0165808f has its CatchHandler @ 016580f0
+0165808c  bl 0x024f2a30
+    ; [POST] } // end try from 01658088 to 0165808f
+01658090  mov x19,x0
+01658094  mov x0,x19
+01658098  mov x1,xzr
+0165809c  bl 0x01fdf3a0
+016580a0  tbz w0,#0x0,0x016580e0
+016580a4  adrp x8,0x336b000
+016580a8  ldr x8,[x8, #0x7d0]
+016580ac  adrp x19,0x333a000
+016580b0  ldr x0,[x8]
+016580b4  ldr w8,[x0, #0xe0]
+016580b8  ldr x19,[x19, #0x550]
+016580bc  cbnz w8,0x016580c4
+016580c0  bl 0x00b0798c
+016580c4  ldr x0,[x19]
+016580c8  mov x1,xzr
+016580cc  bl 0x024c0830
+016580d0  ldp x19,x30,[sp, #0x10]
+016580d4  mov x0,xzr
+016580d8  ldr x20,[sp], #0x20
+016580dc  b 0x016980e0
+016580e0  mov x0,x19
+016580e4  ldp x19,x30,[sp, #0x10]
+016580e8  ldr x20,[sp], #0x20
+016580ec  ret

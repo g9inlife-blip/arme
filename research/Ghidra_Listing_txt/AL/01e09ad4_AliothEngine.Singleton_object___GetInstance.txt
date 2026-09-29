@@ -1,0 +1,59 @@
+Function: AliothEngine.Singleton<object>$$GetInstance @ 01e09ad4
+
+--- Calls OUT ---
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.PostEventWrapper<object>$$.ctor @ 01d5eccc
+  <- AliothEngine.AliothEngineInitialize$$InitSingleton @ 01649c30
+  <- AliothEngine.GameEventSys<Int32Enum>$$UpdateEvent @ 01af24c4
+
+--- Listing ---
+01e09ad4  str x20,[sp, #-0x20]!
+01e09ad8  stp x19,x30,[sp, #0x10]
+01e09adc  mov x19,x0
+01e09ae0  ldr x0,[x0, #0x20]
+01e09ae4  ldrb w8,[x0, #0x132]
+01e09ae8  tbnz w8,#0x0,0x01e09af0
+01e09aec  bl 0x00b2ac40
+01e09af0  ldr x8,[x0, #0xc0]
+01e09af4  ldr x0,[x8, #0x8]
+01e09af8  ldrb w8,[x0, #0x132]
+01e09afc  tbnz w8,#0x0,0x01e09b04
+01e09b00  bl 0x00b2ac40
+01e09b04  ldr x8,[x0, #0xb8]
+01e09b08  ldr x8,[x8]
+01e09b0c  cbnz x8,0x01e09b5c
+01e09b10  ldr x8,[x19, #0x20]
+01e09b14  ldrh w9,[x8, #0x132]
+01e09b18  tbnz w9,#0x0,0x01e09b30
+01e09b1c  mov x0,x8
+01e09b20  bl 0x00b2ac40
+01e09b24  ldr x8,[x19, #0x20]
+01e09b28  ldrh w9,[x8, #0x132]
+01e09b2c  b 0x01e09b34
+01e09b30  mov x0,x8
+01e09b34  ldr x10,[x0, #0xc0]
+01e09b38  ldr x10,[x10, #0x18]
+01e09b3c  ldr x20,[x10, #0x8]
+01e09b40  tbnz w9,#0x0,0x01e09b50
+01e09b44  mov x0,x8
+01e09b48  bl 0x00b2ac40
+01e09b4c  mov x8,x0
+01e09b50  ldr x8,[x8, #0xc0]
+01e09b54  ldr x0,[x8, #0x18]
+01e09b58  blr x20
+01e09b5c  ldr x0,[x19, #0x20]
+01e09b60  ldrb w8,[x0, #0x132]
+01e09b64  tbnz w8,#0x0,0x01e09b6c
+01e09b68  bl 0x00b2ac40
+01e09b6c  ldr x8,[x0, #0xc0]
+01e09b70  ldr x0,[x8, #0x8]
+01e09b74  ldrb w8,[x0, #0x132]
+01e09b78  tbnz w8,#0x0,0x01e09b80
+01e09b7c  bl 0x00b2ac40
+01e09b80  ldr x8,[x0, #0xb8]
+01e09b84  ldp x19,x30,[sp, #0x10]
+01e09b88  ldr x0,[x8]
+01e09b8c  ldr x20,[sp], #0x20
+01e09b90  ret

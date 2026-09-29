@@ -1,0 +1,27 @@
+Function: __release_shared @ 00b810b8
+FuncComment: std::__ndk1::__shared_count::__release_shared()
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- __release_shared @ 008d54a0
+
+--- Listing ---
+00b810b8  stp x29,x30,[sp, #-0x10]!
+    ; [PLATE] std::__ndk1::__shared_count::__release_shared()
+00b810bc  mov x29,sp
+00b810c0  add x8,x0,#0x8
+00b810c4  ldaxr x9,[x8]
+00b810c8  sub x10,x9,#0x1
+00b810cc  stlxr w11,x10,[x8]
+00b810d0  cbnz w11,0x00b810c4
+00b810d4  cbz x9,0x00b810e4
+00b810d8  mov w0,wzr
+00b810dc  ldp x29,x30,[sp], #0x10
+00b810e0  ret
+00b810e4  ldr x8,[x0]
+00b810e8  ldr x8,[x8, #0x10]
+00b810ec  blr x8
+00b810f0  mov w0,#0x1
+00b810f4  ldp x29,x30,[sp], #0x10
+00b810f8  ret

@@ -1,0 +1,35 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$System.Collections.Generic.IEnumerable<T>.GetEnumerator @ 01adeaa8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01adeaa8  sub sp,sp,#0x50
+01adeaac  stp x19,x30,[sp, #0x40]
+01adeab0  ldr x8,[x1, #0x20]
+01adeab4  mov x19,x1
+01adeab8  ldr x8,[x8, #0xc0]
+01adeabc  ldr x1,[x8, #0x108]
+01adeac0  mov x8,sp
+01adeac4  ldr x9,[x1, #0x8]
+01adeac8  blr x9
+01adeacc  ldr x8,[sp, #0x10]
+01adead0  ldr q0,[sp]
+01adead4  str x8,[sp, #0x30]
+01adead8  str q0,[sp, #0x20]
+01adeadc  str q0,[sp]
+01adeae0  str x8,[sp, #0x10]
+01adeae4  ldr x8,[x19, #0x20]
+01adeae8  ldr x8,[x8, #0xc0]
+01adeaec  ldr x0,[x8, #0xb0]
+01adeaf0  ldrb w8,[x0, #0x132]
+01adeaf4  tbnz w8,#0x0,0x01adeafc
+01adeaf8  bl 0x00b2ac40
+01adeafc  mov x1,sp
+01adeb00  bl 0x00b07994
+01adeb04  ldp x19,x30,[sp, #0x40]
+01adeb08  add sp,sp,#0x50
+01adeb0c  ret

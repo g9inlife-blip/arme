@@ -1,0 +1,37 @@
+Function: AliothEngine.Extensions.MonoBehaviourExtensions$$Instantiate @ 016b02a0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$Instantiate<object> @ 017a970c
+
+--- Calls IN ---
+
+--- Listing ---
+016b02a0  stp x21,x20,[sp, #-0x20]!
+016b02a4  stp x19,x30,[sp, #0x10]
+016b02a8  adrp x21,0x3577000
+016b02ac  adrp x20,0x3321000
+016b02b0  ldrb w8,[x21, #0xbd6]
+016b02b4  ldr x20,[x20, #0xca8]
+016b02b8  mov x19,x0
+016b02bc  tbnz w8,#0x0,0x016b02e0
+016b02c0  adrp x0,0x333f000
+016b02c4  ldr x0,[x0, #0x1b8]
+016b02c8  bl 0x00b0789c
+016b02cc  adrp x0,0x3321000
+016b02d0  ldr x0,[x0, #0xca8]
+016b02d4  bl 0x00b0789c
+016b02d8  mov w8,#0x1
+016b02dc  strb w8,[x21, #0xbd6]
+016b02e0  ldr x0,[x20]
+016b02e4  adrp x20,0x333f000
+016b02e8  ldr w8,[x0, #0xe0]
+016b02ec  ldr x20,[x20, #0x1b8]
+016b02f0  cbnz w8,0x016b02f8
+016b02f4  bl 0x00b0798c
+016b02f8  ldr x1,[x20]
+016b02fc  mov x0,x19
+016b0300  ldp x19,x30,[sp, #0x10]
+016b0304  ldp x21,x20,[sp], #0x20
+016b0308  b 0x017a970c

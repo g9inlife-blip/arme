@@ -1,0 +1,44 @@
+Function: AliothEngine.Extensions.RectExtensions$$Center @ 016b35d4
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_width @ 024db068
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RectExtensions$$ToBounds @ 016b3948
+
+--- Listing ---
+016b35d4  sub sp,sp,#0x30
+016b35d8  str d10,[sp, #0x10]
+016b35dc  stp d9,d8,[sp, #0x18]
+016b35e0  str x30,[sp, #0x28]
+016b35e4  mov x0,sp
+016b35e8  mov x1,xzr
+016b35ec  stp s0,s1,[sp]
+016b35f0  stp s2,s3,[sp, #0x8]
+016b35f4  bl 0x024db014
+016b35f8  mov x0,sp
+016b35fc  mov x1,xzr
+016b3600  mov v8.16B,v0.16B
+016b3604  bl 0x024db068
+016b3608  mov x0,sp
+016b360c  mov x1,xzr
+016b3610  mov v9.16B,v0.16B
+016b3614  bl 0x024db024
+016b3618  mov x0,sp
+016b361c  mov x1,xzr
+016b3620  mov v10.16B,v0.16B
+016b3624  bl 0x024db078
+016b3628  fmov s1,0x3f000000
+016b362c  fmul s2,s9,s1
+016b3630  fmul s1,s0,s1
+016b3634  fsub s0,s8,s2
+016b3638  fsub s2,s10,s1
+016b363c  ldr x30,[sp, #0x28]
+016b3640  ldp d9,d8,[sp, #0x18]
+016b3644  ldr d10,[sp, #0x10]
+016b3648  fmov s1,wzr
+016b364c  add sp,sp,#0x30
+016b3650  ret

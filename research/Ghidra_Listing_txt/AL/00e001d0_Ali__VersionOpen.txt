@@ -1,0 +1,139 @@
+Function: Ali$$VersionOpen @ 00e001d0
+
+--- Calls OUT ---
+  -> SDKManager$$get_Internal_Retail @ 00deb874
+  -> System.Collections.Generic.List<object>$$Contains @ 01c00a80
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.String$$Split @ 01fe0d68
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> System.Int32$$ToString @ 0214dc44
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.Linq.Enumerable$$ToList<object> @ 0178daf8
+  -> System.String$$Equals @ 01fde08c
+
+--- Calls IN ---
+  <- ChangeFashionMono$$<ShowDetail>b__37_0 @ 00f2d830
+  <- Ali.<>c$$<InitGetValidLanguages>b__282_0 @ 00e11a88
+  <- LoginGateMono.<>c$$<get_PreloadAssets>b__26_0 @ 00f94424
+  <- SysSettingPanelMono$$Start @ 00f724b0
+  <- Ali$$isSysconfOn @ 00e0b4f0
+  <- HomePanelMono.<>c$$<get_BGEffName>b__6_0 @ 00f70470
+  <- EntranceScript$$OpenNext @ 00ebbfc4
+  <- StiMarkDetailsPanelMono.<>c$$<InitData>b__27_0 @ 00f52848
+  <- StigmataInfo.<>c__DisplayClass13_0$$<CheckChain>b__0 @ 00dd1604
+  <- Ali.<>c$$<GetRechargeLimit>b__287_0 @ 00e11be8
+  <- StiMarkDevPanelMono.<>c$$<InitData>b__24_0 @ 00ee0d40
+  <- EquipDevMono.<>c$$<InitData>b__31_0 @ 00edab98
+  <- BaseExtensions$$IsOpenChapter @ 00e1bf8c
+  <- FUN_016e0008 @ 016e0008
+  <- UIEventListener$$Get @ 00e343a8
+  <- CVPanelMono.<>c$$<InitToggles>b__12_0 @ 00f82ce8
+  <- Ali$$CheckShowReview @ 00e0f0d8
+  <- WearStiChainMono.<>c$$<InitData>b__12_0 @ 00f65778
+  <- DataCenter$$CheckTaskState @ 016e75cc
+  <- UserInfoPanelMono.<>c$$<ShowHeadPanel>b__24_0 @ 00f819ac
+  <- XLua.CSObjectWrap.AliWrap$$_m_VersionOpen @ 0118ff04
+  <- LanguagePanelMono.<>c$$<InitToggles>b__12_0 @ 00f83fa0
+  <- Ali.<>c$$<InitGetValidLanguagesCV>b__283_0 @ 00e11b38
+  <- HeroPartFashionMono$$<ShowList>b__23_0 @ 00f48f30
+  <- Ali$$CheckOnceLocalNotification @ 00e07488
+  <- HeroInfoPanelMono$$<ShowUnlockWeapon>b__42_0 @ 00f286a4
+  <- WeaponPanelMono$$<Init>b__31_0 @ 00f5d924
+  <- Ali$$CheckPauseLocalNotification @ 00e08690
+  <- TaoFaPanelMono.<>c$$<RefreshData>b__65_0 @ 0103a404
+  <- TaskNewPanelMono.<>c$$<RefreshData>b__30_0 @ 00f7deec
+
+--- Listing ---
+00e001d0  str x22,[sp, #-0x30]!
+00e001d4  stp x21,x20,[sp, #0x10]
+00e001d8  stp x19,x30,[sp, #0x20]
+00e001dc  adrp x22,0x3572000
+00e001e0  adrp x21,0x335f000
+00e001e4  ldrb w8,[x22, #0x516]
+00e001e8  ldr x21,[x21, #0x20]
+00e001ec  mov x19,x1
+00e001f0  mov x20,x0
+00e001f4  tbnz w8,#0x0,0x00e0023c
+00e001f8  adrp x0,0x335f000
+00e001fc  ldr x0,[x0, #0x20]
+00e00200  bl 0x00b0789c
+00e00204  adrp x0,0x3375000
+00e00208  ldr x0,[x0, #0x688]
+00e0020c  bl 0x00b0789c
+00e00210  adrp x0,0x3329000
+00e00214  ldr x0,[x0, #0x50]
+00e00218  bl 0x00b0789c
+00e0021c  adrp x0,0x334a000
+00e00220  ldr x0,[x0, #0x550]
+00e00224  bl 0x00b0789c
+00e00228  adrp x0,0x334c000
+00e0022c  ldr x0,[x0, #0x6c8]
+00e00230  bl 0x00b0789c
+00e00234  mov w8,#0x1
+00e00238  strb w8,[x22, #0x516]
+00e0023c  ldr x0,[x21]
+00e00240  str wzr,[sp, #0xc]
+00e00244  ldr w8,[x0, #0xe0]
+00e00248  cbnz w8,0x00e00254
+00e0024c  bl 0x00b0798c
+00e00250  ldr x0,[x21]
+00e00254  ldr x8,[x0, #0xb8]
+00e00258  ldr x0,[x8, #0x48]
+00e0025c  cbz x0,0x00e00274
+00e00260  mov x1,x20
+00e00264  mov x2,x19
+00e00268  mov x3,xzr
+00e0026c  bl 0x01065a14
+00e00270  b 0x00e00320
+00e00274  mov x0,x19
+00e00278  mov x1,xzr
+00e0027c  bl 0x01fdf3a0
+00e00280  tbnz w0,#0x0,0x00e002a4
+00e00284  cbz x19,0x00e00334
+00e00288  adrp x8,0x334c000
+00e0028c  ldr x8,[x8, #0x6c8]
+00e00290  mov x0,x19
+00e00294  mov x2,xzr
+00e00298  ldr x1,[x8]
+00e0029c  bl 0x01fde08c
+00e002a0  tbz w0,#0x0,0x00e002ac
+00e002a4  mov w0,wzr
+00e002a8  b 0x00e00320
+00e002ac  adrp x20,0x3375000
+00e002b0  adrp x21,0x334a000
+00e002b4  ldr x20,[x20, #0x688]
+00e002b8  ldr x21,[x21, #0x550]
+00e002bc  mov w1,#0x7c
+00e002c0  mov x0,x19
+00e002c4  mov w2,wzr
+00e002c8  mov x3,xzr
+00e002cc  bl 0x01fe0d68
+00e002d0  ldr x1,[x20]
+00e002d4  bl 0x0178daf8
+00e002d8  ldr x8,[x21]
+00e002dc  mov x19,x0
+00e002e0  mov x0,x8
+00e002e4  bl 0x01e0894c
+00e002e8  cbz x0,0x00e00334
+00e002ec  mov x1,xzr
+00e002f0  bl 0x00deb874
+00e002f4  str w0,[sp, #0xc]
+00e002f8  add x0,sp,#0xc
+00e002fc  mov x1,xzr
+00e00300  bl 0x0214dc44
+00e00304  cbz x19,0x00e00334
+00e00308  adrp x8,0x3329000
+00e0030c  ldr x8,[x8, #0x50]
+00e00310  mov x1,x0
+00e00314  mov x0,x19
+00e00318  ldr x2,[x8]
+00e0031c  bl 0x01c00a80
+00e00320  ldp x19,x30,[sp, #0x20]
+00e00324  ldp x21,x20,[sp, #0x10]
+00e00328  and w0,w0,#0x1
+00e0032c  ldr x22,[sp], #0x30
+00e00330  ret
+00e00334  bl 0x00b079b0

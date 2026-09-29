@@ -1,0 +1,175 @@
+Function: AliothEngine.AndroidEscape$$ShowAlert @ 0164e318
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> UnityEngine.AndroidJavaRunnable$$.ctor @ 024a9ea8
+  -> UnityEngine.AndroidJavaClass$$.ctor @ 024aa2ec
+  -> AliothEngine.AndroidEscape$$set_IsExistAlert @ 0164e1b4
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AndroidEscape$$get_IsExistAlert @ 0164e14c
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> System.Object$$.ctor @ 02194104
+  -> UnityEngine.AndroidJavaObject$$GetStatic<object> @ 01738968
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.AndroidJavaObject$$Call @ 024acea8
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAndroidEscapeWrap$$_m_ShowAlert @ 01132840
+  <- AliothEngine.AndroidEscape$$ShowExitAlert @ 0164e234
+
+--- Listing ---
+0164e318  str x24,[sp, #-0x40]!
+0164e31c  stp x23,x22,[sp, #0x10]
+0164e320  stp x21,x20,[sp, #0x20]
+0164e324  stp x19,x30,[sp, #0x30]
+0164e328  adrp x20,0x3577000
+0164e32c  adrp x21,0x3336000
+0164e330  ldrb w8,[x20, #0x7d9]
+0164e334  ldr x21,[x21, #0xa38]
+0164e338  mov x19,x0
+0164e33c  tbnz w8,#0x0,0x0164e3c0
+0164e340  adrp x0,0x3336000
+0164e344  ldr x0,[x0, #0xa38]
+0164e348  bl 0x00b0789c
+0164e34c  adrp x0,0x3364000
+0164e350  ldr x0,[x0, #0x98]
+0164e354  bl 0x00b0789c
+0164e358  adrp x0,0x3348000
+0164e35c  ldr x0,[x0, #0xb40]
+0164e360  bl 0x00b0789c
+0164e364  adrp x0,0x335a000
+0164e368  ldr x0,[x0, #0x488]
+0164e36c  bl 0x00b0789c
+0164e370  adrp x0,0x3370000
+0164e374  ldr x0,[x0, #0x778]
+0164e378  bl 0x00b0789c
+0164e37c  adrp x0,0x331c000
+0164e380  ldr x0,[x0, #0xcc8]
+0164e384  bl 0x00b0789c
+0164e388  adrp x0,0x3333000
+0164e38c  ldr x0,[x0, #0x930]
+0164e390  bl 0x00b0789c
+0164e394  adrp x0,0x331a000
+0164e398  ldr x0,[x0, #0xe80]
+0164e39c  bl 0x00b0789c
+0164e3a0  adrp x0,0x3331000
+0164e3a4  ldr x0,[x0, #0xab8]
+0164e3a8  bl 0x00b0789c
+0164e3ac  adrp x0,0x333c000
+0164e3b0  ldr x0,[x0, #0x738]
+0164e3b4  bl 0x00b0789c
+0164e3b8  mov w8,#0x1
+0164e3bc  strb w8,[x20, #0x7d9]
+0164e3c0  ldr x8,[x21]
+0164e3c4  ldr x8,[x8, #0xb8]
+0164e3c8  ldr x0,[x8, #0x18]
+0164e3cc  cbz x0,0x0164e3ec
+0164e3d0  mov x1,x19
+0164e3d4  ldp x19,x30,[sp, #0x30]
+0164e3d8  ldp x21,x20,[sp, #0x20]
+0164e3dc  ldp x23,x22,[sp, #0x10]
+0164e3e0  mov x2,xzr
+0164e3e4  ldr x24,[sp], #0x40
+0164e3e8  b 0x01060dac
+0164e3ec  adrp x8,0x3333000
+0164e3f0  ldr x8,[x8, #0x930]
+0164e3f4  ldr x0,[x8]
+0164e3f8  bl 0x00b079a0
+0164e3fc  cbz x0,0x0164e558
+0164e400  mov x1,xzr
+0164e404  mov x20,x0
+0164e408  bl 0x02194104
+0164e40c  mov x0,x20
+0164e410  str x19,[x0, #0x18]!
+0164e414  mov x1,x19
+0164e418  bl 0x00b07850
+0164e41c  mov x0,x19
+0164e420  bl 0x0164e14c
+0164e424  tbz w0,#0x0,0x0164e43c
+0164e428  ldp x19,x30,[sp, #0x30]
+0164e42c  ldp x21,x20,[sp, #0x20]
+0164e430  ldp x23,x22,[sp, #0x10]
+0164e434  ldr x24,[sp], #0x40
+0164e438  ret
+0164e43c  adrp x21,0x3364000
+0164e440  ldr x21,[x21, #0x98]
+0164e444  mov w1,#0x1
+0164e448  mov x0,x19
+0164e44c  bl 0x0164e1b4
+0164e450  ldr x0,[x21]
+0164e454  bl 0x00b079a0
+0164e458  cbz x0,0x0164e558
+0164e45c  adrp x8,0x331a000
+0164e460  ldr x8,[x8, #0xe80]
+0164e464  adrp x21,0x333c000
+0164e468  ldr x21,[x21, #0x738]
+0164e46c  adrp x22,0x3348000
+0164e470  ldr x1,[x8]
+0164e474  adrp x23,0x3370000
+0164e478  adrp x24,0x335a000
+0164e47c  ldr x22,[x22, #0xb40]
+0164e480  ldr x23,[x23, #0x778]
+0164e484  ldr x24,[x24, #0x488]
+0164e488  mov x2,xzr
+0164e48c  mov x19,x0
+0164e490  bl 0x024aa2ec
+0164e494  ldr x1,[x21]
+0164e498  ldr x2,[x22]
+0164e49c  mov x0,x19
+0164e4a0  bl 0x01738968
+0164e4a4  mov x19,x20
+0164e4a8  str x0,[x19, #0x10]!
+0164e4ac  mov x1,x0
+0164e4b0  mov x0,x19
+0164e4b4  bl 0x00b07850
+0164e4b8  ldr x0,[x23]
+0164e4bc  ldr x19,[x19]
+0164e4c0  mov w1,#0x1
+0164e4c4  bl 0x00b078f8
+0164e4c8  ldr x8,[x24]
+0164e4cc  mov x21,x0
+0164e4d0  mov x0,x8
+0164e4d4  bl 0x00b079a0
+0164e4d8  cbz x0,0x0164e558
+0164e4dc  adrp x8,0x331c000
+0164e4e0  ldr x8,[x8, #0xcc8]
+0164e4e4  mov x1,x20
+0164e4e8  mov x3,xzr
+0164e4ec  mov x22,x0
+0164e4f0  ldr x2,[x8]
+0164e4f4  bl 0x024a9ea8
+0164e4f8  cbz x21,0x0164e558
+0164e4fc  ldr x8,[x21]
+0164e500  mov x0,x22
+0164e504  ldr x1,[x8, #0x40]
+0164e508  bl 0x00b07990
+0164e50c  cbz x0,0x0164e55c
+0164e510  ldr w8,[x21, #0x18]
+0164e514  cbz w8,0x0164e568
+0164e518  mov x0,x21
+0164e51c  str x22,[x0, #0x20]!
+0164e520  mov x1,x22
+0164e524  bl 0x00b07850
+0164e528  cbz x19,0x0164e558
+0164e52c  adrp x8,0x3331000
+0164e530  ldr x8,[x8, #0xab8]
+0164e534  mov x0,x19
+0164e538  mov x2,x21
+0164e53c  ldp x19,x30,[sp, #0x30]
+0164e540  ldr x1,[x8]
+0164e544  ldp x21,x20,[sp, #0x20]
+0164e548  ldp x23,x22,[sp, #0x10]
+0164e54c  mov x3,xzr
+0164e550  ldr x24,[sp], #0x40
+0164e554  b 0x024acea8
+0164e558  bl 0x00b079b0
+0164e55c  bl 0x00b079d4
+0164e560  mov x1,xzr
+0164e564  bl 0x00b07978
+0164e568  bl 0x00b079b8

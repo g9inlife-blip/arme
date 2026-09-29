@@ -1,0 +1,165 @@
+Function: AliothEngine.Utils.Utility$$FilterValueField @ 0169fcfc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> System.String$$Contains @ 01fe31fc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.Utility$$ReadInt @ 0169fcec
+  <- AliothEngine.Utils.Utility$$ReadFloat @ 0169ffe0
+  <- AliothEngine.Utils.Utility$$ReadArray @ 016a007c
+
+--- Listing ---
+0169fcfc  stp x21,x20,[sp, #-0x20]!
+0169fd00  stp x19,x30,[sp, #0x10]
+0169fd04  adrp x20,0x3577000
+0169fd08  ldrb w8,[x20, #0xb58]
+0169fd0c  mov x19,x0
+0169fd10  tbnz w8,#0x0,0x0169fdac
+0169fd14  adrp x0,0x3370000
+0169fd18  ldr x0,[x0, #0xe68]
+0169fd1c  bl 0x00b0789c
+0169fd20  adrp x0,0x3323000
+0169fd24  ldr x0,[x0, #0x7f0]
+0169fd28  bl 0x00b0789c
+0169fd2c  adrp x0,0x3309000
+0169fd30  ldr x0,[x0, #0xe78]
+0169fd34  bl 0x00b0789c
+0169fd38  adrp x0,0x3379000
+0169fd3c  ldr x0,[x0, #0xbc8]
+0169fd40  bl 0x00b0789c
+0169fd44  adrp x0,0x336e000
+0169fd48  ldr x0,[x0, #0x650]
+0169fd4c  bl 0x00b0789c
+0169fd50  adrp x0,0x3373000
+0169fd54  ldr x0,[x0, #0x7d8]
+0169fd58  bl 0x00b0789c
+0169fd5c  adrp x0,0x3349000
+0169fd60  ldr x0,[x0, #0x1d8]
+0169fd64  bl 0x00b0789c
+0169fd68  adrp x0,0x331b000
+0169fd6c  ldr x0,[x0, #0x240]
+0169fd70  bl 0x00b0789c
+0169fd74  adrp x0,0x3322000
+0169fd78  ldr x0,[x0, #0xeb8]
+0169fd7c  bl 0x00b0789c
+0169fd80  adrp x0,0x3371000
+0169fd84  ldr x0,[x0, #0x9a8]
+0169fd88  bl 0x00b0789c
+0169fd8c  adrp x0,0x3347000
+0169fd90  ldr x0,[x0, #0x220]
+0169fd94  bl 0x00b0789c
+0169fd98  adrp x0,0x3308000
+0169fd9c  ldr x0,[x0, #0xb10]
+0169fda0  bl 0x00b0789c
+0169fda4  mov w8,#0x1
+0169fda8  strb w8,[x20, #0xb58]
+0169fdac  cbz x19,0x0169ff44
+0169fdb0  adrp x20,0x3373000
+0169fdb4  adrp x21,0x3370000
+0169fdb8  ldr x20,[x20, #0x7d8]
+0169fdbc  ldr x21,[x21, #0xe68]
+0169fdc0  ldr x1,[x20]
+0169fdc4  mov x0,x19
+0169fdc8  mov x2,xzr
+0169fdcc  bl 0x01fe31fc
+0169fdd0  tbz w0,#0x0,0x0169fdf4
+0169fdd4  ldr x1,[x20]
+0169fdd8  ldr x2,[x21]
+0169fddc  mov x0,x19
+0169fde0  mov x3,xzr
+0169fde4  bl 0x01fe06d8
+0169fde8  mov x19,x0
+0169fdec  cbnz x0,0x0169fdc0
+0169fdf0  b 0x0169ff44
+0169fdf4  adrp x20,0x3323000
+0169fdf8  adrp x21,0x336e000
+0169fdfc  ldr x20,[x20, #0x7f0]
+0169fe00  ldr x21,[x21, #0x650]
+0169fe04  ldr x1,[x20]
+0169fe08  mov x0,x19
+0169fe0c  mov x2,xzr
+0169fe10  bl 0x01fe31fc
+0169fe14  tbz w0,#0x0,0x0169fe38
+0169fe18  ldr x1,[x20]
+0169fe1c  ldr x2,[x21]
+0169fe20  mov x0,x19
+0169fe24  mov x3,xzr
+0169fe28  bl 0x01fe06d8
+0169fe2c  mov x19,x0
+0169fe30  cbnz x0,0x0169fe04
+0169fe34  b 0x0169ff44
+0169fe38  adrp x20,0x3322000
+0169fe3c  adrp x21,0x3308000
+0169fe40  ldr x20,[x20, #0xeb8]
+0169fe44  ldr x21,[x21, #0xb10]
+0169fe48  ldr x1,[x20]
+0169fe4c  mov x0,x19
+0169fe50  mov x2,xzr
+0169fe54  bl 0x01fe31fc
+0169fe58  tbz w0,#0x0,0x0169fe7c
+0169fe5c  ldr x1,[x20]
+0169fe60  ldr x2,[x21]
+0169fe64  mov x0,x19
+0169fe68  mov x3,xzr
+0169fe6c  bl 0x01fe06d8
+0169fe70  mov x19,x0
+0169fe74  cbnz x0,0x0169fe48
+0169fe78  b 0x0169ff44
+0169fe7c  adrp x20,0x3349000
+0169fe80  adrp x21,0x331b000
+0169fe84  ldr x20,[x20, #0x1d8]
+0169fe88  ldr x21,[x21, #0x240]
+0169fe8c  ldr x1,[x20]
+0169fe90  mov x0,x19
+0169fe94  mov x2,xzr
+0169fe98  bl 0x01fe31fc
+0169fe9c  tbz w0,#0x0,0x0169fec0
+0169fea0  ldr x1,[x20]
+0169fea4  ldr x2,[x21]
+0169fea8  mov x0,x19
+0169feac  mov x3,xzr
+0169feb0  bl 0x01fe06d8
+0169feb4  mov x19,x0
+0169feb8  cbnz x0,0x0169fe8c
+0169febc  b 0x0169ff44
+0169fec0  adrp x20,0x3347000
+0169fec4  adrp x21,0x3371000
+0169fec8  ldr x20,[x20, #0x220]
+0169fecc  ldr x21,[x21, #0x9a8]
+0169fed0  ldr x1,[x20]
+0169fed4  mov x0,x19
+0169fed8  mov x2,xzr
+0169fedc  bl 0x01fe31fc
+0169fee0  tbz w0,#0x0,0x0169ff04
+0169fee4  ldr x1,[x20]
+0169fee8  ldr x2,[x21]
+0169feec  mov x0,x19
+0169fef0  mov x3,xzr
+0169fef4  bl 0x01fe06d8
+0169fef8  mov x19,x0
+0169fefc  cbnz x0,0x0169fed0
+0169ff00  b 0x0169ff44
+0169ff04  adrp x20,0x3309000
+0169ff08  adrp x21,0x3379000
+0169ff0c  ldr x20,[x20, #0xe78]
+0169ff10  ldr x21,[x21, #0xbc8]
+0169ff14  ldr x1,[x20]
+0169ff18  mov x0,x19
+0169ff1c  mov x2,xzr
+0169ff20  bl 0x01fe31fc
+0169ff24  tbz w0,#0x0,0x0169ff48
+0169ff28  ldr x1,[x20]
+0169ff2c  ldr x2,[x21]
+0169ff30  mov x0,x19
+0169ff34  mov x3,xzr
+0169ff38  bl 0x01fe06d8
+0169ff3c  mov x19,x0
+0169ff40  cbnz x0,0x0169ff14
+0169ff44  bl 0x00b079b0
+0169ff48  mov x0,x19
+0169ff4c  ldp x19,x30,[sp, #0x10]
+0169ff50  ldp x21,x20,[sp], #0x20
+0169ff54  ret

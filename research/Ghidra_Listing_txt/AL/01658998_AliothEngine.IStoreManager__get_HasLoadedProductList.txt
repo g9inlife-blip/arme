@@ -1,0 +1,37 @@
+Function: AliothEngine.IStoreManager$$get_HasLoadedProductList @ 01658998
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- Ali$$StoreCanUsed @ 00e0bda8
+  <- XLua.CSObjectWrap.AliothEngineIStoreManagerWrap$$_g_get_HasLoadedProductList @ 0115c780
+
+--- Listing ---
+01658998  stp x21,x20,[sp, #-0x20]!
+0165899c  stp x19,x30,[sp, #0x10]
+016589a0  adrp x20,0x3577000
+016589a4  adrp x21,0x336f000
+016589a8  ldrb w8,[x20, #0x83a]
+016589ac  ldr x21,[x21, #0x1e8]
+016589b0  mov x19,x0
+016589b4  tbnz w8,#0x0,0x016589cc
+016589b8  adrp x0,0x336f000
+016589bc  ldr x0,[x0, #0x1e8]
+016589c0  bl 0x00b0789c
+016589c4  mov w8,#0x1
+016589c8  strb w8,[x20, #0x83a]
+016589cc  ldr x8,[x21]
+016589d0  ldr x8,[x8, #0xb8]
+016589d4  ldr x0,[x8, #0x10]
+016589d8  cbz x0,0x016589f0
+016589dc  mov x1,x19
+016589e0  ldp x19,x30,[sp, #0x10]
+016589e4  mov x2,xzr
+016589e8  ldp x21,x20,[sp], #0x20
+016589ec  b 0x01060aac
+016589f0  ldrb w0,[x19, #0x41]
+016589f4  ldp x19,x30,[sp, #0x10]
+016589f8  ldp x21,x20,[sp], #0x20
+016589fc  ret

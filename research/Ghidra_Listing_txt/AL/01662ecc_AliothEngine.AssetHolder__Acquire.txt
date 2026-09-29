@@ -1,0 +1,56 @@
+Function: AliothEngine.AssetHolder$$Acquire @ 01662ecc
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoadingContext$$Finish @ 0166bb5c
+  <- AliothEngine.AssetLoader$$GetAndAcquireLoadedAsset @ 016692d0
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_m_Acquire @ 011385ac
+  <- AliothEngine.AssetLoader$$LoadAsset @ 0166847c
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass14_0$$<LoadDownloadAssetInfo>b__0 @ 01669eb4
+  <- AliothEngine.AssetHolderAutoRelease$$Set @ 01664160
+  <- ResManager.<>c__DisplayClass30_0$$<AliothLoadRes>b__0 @ 00e2d48c
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass24_0$$<LoadAssetBundleInfo>b__0 @ 0166a228
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass25_0$$<LoadAssetBundleManifest>b__0 @ 0166a4cc
+
+--- Listing ---
+01662ecc  str x22,[sp, #-0x30]!
+01662ed0  stp x21,x20,[sp, #0x10]
+01662ed4  stp x19,x30,[sp, #0x20]
+01662ed8  adrp x22,0x3577000
+01662edc  adrp x21,0x3312000
+01662ee0  ldrb w8,[x22, #0x8ce]
+01662ee4  ldr x21,[x21, #0x428]
+01662ee8  mov x20,x1
+01662eec  mov x19,x0
+01662ef0  tbnz w8,#0x0,0x01662f08
+01662ef4  adrp x0,0x3312000
+01662ef8  ldr x0,[x0, #0x428]
+01662efc  bl 0x00b0789c
+01662f00  mov w8,#0x1
+01662f04  strb w8,[x22, #0x8ce]
+01662f08  ldr x0,[x21]
+01662f0c  ldr w8,[x0, #0xe0]
+01662f10  cbnz w8,0x01662f1c
+01662f14  bl 0x00b0798c
+01662f18  ldr x0,[x21]
+01662f1c  ldr x8,[x0, #0xb8]
+01662f20  ldr x0,[x8, #0x80]
+01662f24  cbz x0,0x01662f44
+01662f28  mov x1,x19
+01662f2c  mov x2,x20
+01662f30  ldp x19,x30,[sp, #0x20]
+01662f34  ldp x21,x20,[sp, #0x10]
+01662f38  mov x3,xzr
+01662f3c  ldr x22,[sp], #0x30
+01662f40  b 0x0106125c
+01662f44  ldr w8,[x19, #0x10]
+01662f48  add w8,w8,#0x1
+01662f4c  str w8,[x19, #0x10]
+01662f50  ldp x19,x30,[sp, #0x20]
+01662f54  ldp x21,x20,[sp, #0x10]
+01662f58  ldr x22,[sp], #0x30
+01662f5c  ret

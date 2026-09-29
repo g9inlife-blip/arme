@@ -1,0 +1,58 @@
+Function: AliothEngine.Scheduler.<DoUntilTask>d__16$$MoveNext @ 0168885c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Scheduler$$DoUntilTask @ 0168703c
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168885c  str x20,[sp, #-0x20]!
+01688860  stp x19,x30,[sp, #0x10]
+01688864  ldr w8,[x0, #0x10]
+01688868  mov x19,x0
+0168886c  cmp w8,#0x1
+01688870  b.eq 0x0168889c
+01688874  cbnz w8,0x01688904
+01688878  ldr x1,[x19, #0x20]
+0168887c  mov w8,#0xffffffff
+01688880  str x1,[x19, #0x18]!
+01688884  mov x0,x19
+01688888  stur w8,[x19, #-0x8]
+0168888c  bl 0x00b07850
+01688890  mov w0,#0x1
+01688894  stur w0,[x19, #-0x8]
+01688898  b 0x01688908
+0168889c  ldr x8,[x19, #0x28]
+016888a0  ldr x20,[x19, #0x38]
+016888a4  mov w9,#0xffffffff
+016888a8  str w9,[x19, #0x10]
+016888ac  cbz x8,0x01688914
+016888b0  ldr x9,[x8, #0x18]
+016888b4  ldr x0,[x8, #0x40]
+016888b8  ldr x1,[x8, #0x28]
+016888bc  blr x9
+016888c0  ldr x8,[x19, #0x30]
+016888c4  cbz x8,0x016888dc
+016888c8  ldr x9,[x8, #0x18]
+016888cc  ldr x0,[x8, #0x40]
+016888d0  ldr x1,[x8, #0x28]
+016888d4  blr x9
+016888d8  tbnz w0,#0x0,0x01688904
+016888dc  cbz x20,0x01688914
+016888e0  ldp x1,x2,[x19, #0x28]
+016888e4  ldr x3,[x19, #0x20]
+016888e8  mov x0,x20
+016888ec  mov x4,xzr
+016888f0  bl 0x0168703c
+016888f4  mov x1,x0
+016888f8  mov x0,x20
+016888fc  mov x2,xzr
+01688900  bl 0x024e4070
+01688904  mov w0,wzr
+01688908  ldp x19,x30,[sp, #0x10]
+0168890c  ldr x20,[sp], #0x20
+01688910  ret
+01688914  bl 0x00b079b0

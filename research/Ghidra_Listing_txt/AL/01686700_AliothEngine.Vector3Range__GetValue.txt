@@ -1,0 +1,24 @@
+Function: AliothEngine.Vector3Range$$GetValue @ 01686700
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+01686700  ldr d1,[x0, #0x10]
+01686704  ldur d3,[x0, #0x1c]
+01686708  ldr s2,[x0, #0x18]
+0168670c  ldr s4,[x0, #0x24]
+01686710  fmov s5,0x3f800000
+01686714  fcmp s0,#0.0
+01686718  fmin s0,s0,s5
+0168671c  fmov s5,wzr
+01686720  fcsel s0,s0,s5,pl
+01686724  fsub v3.2S,v3.2S,v1.2S
+01686728  fsub s4,s4,s2
+0168672c  fmul v3.2S,v3.2S,v0.S[0x0]
+01686730  fmul s4,s0,s4
+01686734  fadd v0.2S,v1.2S,v3.2S
+01686738  fadd s2,s2,s4
+0168673c  dup s1,v0.S[0x1]
+01686740  ret

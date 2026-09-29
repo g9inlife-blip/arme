@@ -1,0 +1,27 @@
+Function: ReplayKitUseExample$$HandleActionRecordDiscard @ 00d44d34
+
+--- Calls OUT ---
+  -> ISN_Logger$$Log @ 00d198ec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00d44d34  str x20,[sp, #-0x20]!
+00d44d38  stp x19,x30,[sp, #0x10]
+00d44d3c  adrp x19,0x3571000
+00d44d40  adrp x20,0x3374000
+00d44d44  ldrb w8,[x19, #0xdbe]
+00d44d48  ldr x20,[x20, #0xae8]
+00d44d4c  tbnz w8,#0x0,0x00d44d64
+00d44d50  adrp x0,0x3374000
+00d44d54  ldr x0,[x0, #0xae8]
+00d44d58  bl 0x00b0789c
+00d44d5c  mov w8,#0x1
+00d44d60  strb w8,[x19, #0xdbe]
+00d44d64  ldr x0,[x20]
+00d44d68  ldp x19,x30,[sp, #0x10]
+00d44d6c  mov w1,#0x3
+00d44d70  mov x2,xzr
+00d44d74  ldr x20,[sp], #0x20
+00d44d78  b 0x00d198ec

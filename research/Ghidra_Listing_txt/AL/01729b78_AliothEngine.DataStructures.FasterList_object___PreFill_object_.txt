@@ -1,0 +1,113 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$PreFill<object> @ 01729b78
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01729b78  stp x25,x24,[sp, #-0x40]!
+01729b7c  stp x23,x22,[sp, #0x10]
+01729b80  stp x21,x20,[sp, #0x20]
+01729b84  stp x19,x30,[sp, #0x30]
+01729b88  ldr x8,[x1, #0x20]
+01729b8c  mov x19,x1
+01729b90  mov w20,w0
+01729b94  ldrb w9,[x8, #0x132]
+01729b98  tbnz w9,#0x0,0x01729ba8
+01729b9c  mov x0,x8
+01729ba0  bl 0x00b2ac40
+01729ba4  mov x8,x0
+01729ba8  ldr x8,[x8, #0xc0]
+01729bac  ldr x0,[x8, #0x20]
+01729bb0  ldrb w8,[x0, #0x132]
+01729bb4  tbnz w8,#0x0,0x01729bbc
+01729bb8  bl 0x00b2ac40
+01729bbc  bl 0x00b079a0
+01729bc0  cbz x0,0x01729d08
+01729bc4  ldr x8,[x19, #0x20]
+01729bc8  mov x21,x0
+01729bcc  ldrh w9,[x8, #0x132]
+01729bd0  tbnz w9,#0x0,0x01729be8
+01729bd4  mov x0,x8
+01729bd8  bl 0x00b2ac40
+01729bdc  ldr x8,[x19, #0x20]
+01729be0  ldrh w9,[x8, #0x132]
+01729be4  b 0x01729bec
+01729be8  mov x0,x8
+01729bec  ldr x10,[x0, #0xc0]
+01729bf0  ldr x10,[x10, #0x40]
+01729bf4  ldr x22,[x10, #0x8]
+01729bf8  tbnz w9,#0x0,0x01729c08
+01729bfc  mov x0,x8
+01729c00  bl 0x00b2ac40
+01729c04  mov x8,x0
+01729c08  ldr x8,[x8, #0xc0]
+01729c0c  mov x0,x21
+01729c10  mov w1,w20
+01729c14  ldr x2,[x8, #0x40]
+01729c18  blr x22
+01729c1c  cmp w20,#0x1
+01729c20  b.lt 0x01729ce0
+01729c24  ldr x8,[x19, #0x38]
+01729c28  ldr x0,[x8]
+01729c2c  ldr x8,[x0, #0x8]
+01729c30  blr x8
+01729c34  ldr x8,[x19, #0x20]
+01729c38  mov x22,x0
+01729c3c  ldrh w9,[x8, #0x132]
+01729c40  tbnz w9,#0x0,0x01729c58
+01729c44  mov x0,x8
+01729c48  bl 0x00b2ac40
+01729c4c  ldr x8,[x19, #0x20]
+01729c50  ldrh w9,[x8, #0x132]
+01729c54  b 0x01729c5c
+01729c58  mov x0,x8
+01729c5c  ldr x10,[x0, #0xc0]
+01729c60  ldr x10,[x10, #0x50]
+01729c64  ldr x25,[x10, #0x8]
+01729c68  tbnz w9,#0x0,0x01729c78
+01729c6c  mov x0,x8
+01729c70  bl 0x00b2ac40
+01729c74  mov x8,x0
+01729c78  ldr x8,[x8, #0xc0]
+01729c7c  ldr x24,[x8, #0x48]
+01729c80  ldrb w8,[x24, #0x132]
+01729c84  tbnz w8,#0x0,0x01729c94
+01729c88  mov x0,x24
+01729c8c  bl 0x00b2ac40
+01729c90  mov x24,x0
+01729c94  cbz x22,0x01729cb0
+01729c98  mov x0,x22
+01729c9c  mov x1,x24
+01729ca0  bl 0x00b07990
+01729ca4  mov x23,x0
+01729ca8  cbnz x0,0x01729cb4
+01729cac  b 0x01729cfc
+01729cb0  mov x23,xzr
+01729cb4  ldr x0,[x19, #0x20]
+01729cb8  ldrb w8,[x0, #0x132]
+01729cbc  tbnz w8,#0x0,0x01729cc4
+01729cc0  bl 0x00b2ac40
+01729cc4  ldr x8,[x0, #0xc0]
+01729cc8  mov x0,x21
+01729ccc  mov x1,x23
+01729cd0  ldr x2,[x8, #0x50]
+01729cd4  blr x25
+01729cd8  subs w20,w20,#0x1
+01729cdc  b.ne 0x01729c24
+01729ce0  str wzr,[x21, #0x18]
+01729ce4  mov x0,x21
+01729ce8  ldp x19,x30,[sp, #0x30]
+01729cec  ldp x21,x20,[sp, #0x20]
+01729cf0  ldp x23,x22,[sp, #0x10]
+01729cf4  ldp x25,x24,[sp], #0x40
+01729cf8  ret
+01729cfc  mov x0,x22
+01729d00  mov x1,x24
+01729d04  bl 0x00b07c6c
+01729d08  bl 0x00b079b0

@@ -1,0 +1,77 @@
+Function: AliothEngine.WeakEvents.WeakActionBase$$Invoke_Internal @ 01697144
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_IsValid @ 01f0d638
+  -> System.Reflection.MethodBase$$Invoke @ 0208bbe0
+  -> AliothEngine.DataStructures.WeakReference<object>$$get_Target @ 01f0d67c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Logger.Console$$LogWarning @ 016a3f98
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakAction$$Invoke @ 0169713c
+  <- AliothEngine.WeakEvents.WeakAction<object>$$Invoke @ 01f0cc1c
+  <- AliothEngine.WeakEvents.WeakAction<object,-object>$$Invoke @ 01f0cd44
+  <- AliothEngine.WeakEvents.WeakEvent$$InvokeDelegate @ 016978c8
+
+--- Listing ---
+01697144  stp x21,x20,[sp, #-0x20]!
+01697148  stp x19,x30,[sp, #0x10]
+0169714c  adrp x21,0x3577000
+01697150  ldrb w8,[x21, #0xb0d]
+01697154  mov x19,x1
+01697158  mov x20,x0
+0169715c  tbnz w8,#0x0,0x01697198
+01697160  adrp x0,0x3319000
+01697164  ldr x0,[x0, #0x10]
+01697168  bl 0x00b0789c
+0169716c  adrp x0,0x3330000
+01697170  ldr x0,[x0, #0xf00]
+01697174  bl 0x00b0789c
+01697178  adrp x0,0x336b000
+0169717c  ldr x0,[x0, #0x970]
+01697180  bl 0x00b0789c
+01697184  adrp x0,0x3312000
+01697188  ldr x0,[x0, #0xec8]
+0169718c  bl 0x00b0789c
+01697190  mov w8,#0x1
+01697194  strb w8,[x21, #0xb0d]
+01697198  ldr x0,[x20, #0x10]
+0169719c  cbz x0,0x0169722c
+016971a0  adrp x8,0x3330000
+016971a4  ldr x8,[x8, #0xf00]
+016971a8  ldr x1,[x8]
+016971ac  bl 0x01f0d638
+016971b0  tbz w0,#0x0,0x016971f0
+016971b4  ldr x0,[x20, #0x10]
+016971b8  cbz x0,0x0169722c
+016971bc  adrp x8,0x336b000
+016971c0  ldr x8,[x8, #0x970]
+016971c4  ldr x20,[x20, #0x18]
+016971c8  ldr x1,[x8]
+016971cc  bl 0x01f0d67c
+016971d0  cbz x20,0x0169722c
+016971d4  mov x1,x0
+016971d8  mov x0,x20
+016971dc  mov x2,x19
+016971e0  mov x3,xzr
+016971e4  bl 0x0208bbe0
+016971e8  mov w0,#0x1
+016971ec  b 0x01697220
+016971f0  adrp x8,0x3319000
+016971f4  ldr x8,[x8, #0x10]
+016971f8  adrp x19,0x3312000
+016971fc  ldr x0,[x8]
+01697200  ldr w8,[x0, #0xe0]
+01697204  ldr x19,[x19, #0xec8]
+01697208  cbnz w8,0x01697210
+0169720c  bl 0x00b0798c
+01697210  ldr x0,[x19]
+01697214  mov x1,xzr
+01697218  bl 0x016a3f98
+0169721c  mov w0,wzr
+01697220  ldp x19,x30,[sp, #0x10]
+01697224  ldp x21,x20,[sp], #0x20
+01697228  ret
+0169722c  bl 0x00b079b0

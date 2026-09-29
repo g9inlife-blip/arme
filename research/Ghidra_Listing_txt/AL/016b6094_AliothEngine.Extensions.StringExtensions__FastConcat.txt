@@ -1,0 +1,140 @@
+Function: AliothEngine.Extensions.StringExtensions$$FastConcat @ 016b6094
+
+--- Calls OUT ---
+  -> System.Text.StringBuilder$$set_Length @ 01fe8fcc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> System.Threading.Monitor$$Exit @ 021b887c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Text.StringBuilder$$Append @ 01fe9960
+  -> System.Threading.Monitor$$Enter @ 021b5c90
+
+--- Calls IN ---
+
+--- Listing ---
+016b6094  str x24,[sp, #-0x40]!
+016b6098  stp x23,x22,[sp, #0x10]
+016b609c  stp x21,x20,[sp, #0x20]
+016b60a0  stp x19,x30,[sp, #0x30]
+016b60a4  adrp x19,0x3577000
+016b60a8  adrp x24,0x335b000
+016b60ac  ldrb w8,[x19, #0xc0b]
+016b60b0  ldr x24,[x24, #0x4b0]
+016b60b4  mov x20,x3
+016b60b8  mov x21,x2
+016b60bc  mov x22,x1
+016b60c0  mov x23,x0
+016b60c4  tbnz w8,#0x0,0x016b60dc
+016b60c8  adrp x0,0x335b000
+016b60cc  ldr x0,[x0, #0x4b0]
+016b60d0  bl 0x00b0789c
+016b60d4  mov w8,#0x1
+016b60d8  strb w8,[x19, #0xc0b]
+016b60dc  ldr x0,[x24]
+016b60e0  strb wzr,[sp, #0xc]
+016b60e4  ldr w8,[x0, #0xe0]
+016b60e8  cbnz w8,0x016b60f4
+016b60ec  bl 0x00b0798c
+016b60f0  ldr x0,[x24]
+016b60f4  ldr x8,[x0, #0xb8]
+016b60f8  ldr x19,[x8]
+016b60fc  strb wzr,[sp, #0xc]
+016b6100  add x1,sp,#0xc
+    ; [PRE] try { // try from 016b6100 to 016b611f has its CatchHandler @ 016b624c
+016b6104  mov x0,x19
+016b6108  mov x2,xzr
+016b610c  bl 0x021b5c90
+016b6110  ldr x0,[x24]
+016b6114  ldr w8,[x0, #0xe0]
+016b6118  cbnz w8,0x016b6124
+016b611c  bl 0x00b0798c
+    ; [POST] } // end try from 016b6100 to 016b611f
+016b6120  ldr x0,[x24]
+016b6124  ldr x8,[x0, #0xb8]
+016b6128  ldr x0,[x8]
+016b612c  cbz x0,0x016b6208
+016b6130  mov w1,wzr
+    ; [PRE] try { // try from 016b6130 to 016b613b has its CatchHandler @ 016b6248
+016b6134  mov x2,xzr
+016b6138  bl 0x01fe8fcc
+    ; [POST] } // end try from 016b6130 to 016b613b
+016b613c  ldr x8,[x24]
+016b6140  ldr x8,[x8, #0xb8]
+016b6144  ldr x0,[x8]
+016b6148  cbz x0,0x016b620c
+016b614c  mov x1,x23
+    ; [PRE] try { // try from 016b614c to 016b6157 has its CatchHandler @ 016b6244
+016b6150  mov x2,xzr
+016b6154  bl 0x01fe9960
+    ; [POST] } // end try from 016b614c to 016b6157
+016b6158  ldr x8,[x24]
+016b615c  ldr x8,[x8, #0xb8]
+016b6160  ldr x0,[x8]
+016b6164  cbz x0,0x016b6210
+016b6168  mov x1,x22
+    ; [PRE] try { // try from 016b6168 to 016b6173 has its CatchHandler @ 016b6240
+016b616c  mov x2,xzr
+016b6170  bl 0x01fe9960
+    ; [POST] } // end try from 016b6168 to 016b6173
+016b6174  ldr x8,[x24]
+016b6178  ldr x8,[x8, #0xb8]
+016b617c  ldr x0,[x8]
+016b6180  cbz x0,0x016b6214
+016b6184  mov x1,x21
+    ; [PRE] try { // try from 016b6184 to 016b618f has its CatchHandler @ 016b623c
+016b6188  mov x2,xzr
+016b618c  bl 0x01fe9960
+    ; [POST] } // end try from 016b6184 to 016b618f
+016b6190  ldr x8,[x24]
+016b6194  ldr x8,[x8, #0xb8]
+016b6198  ldr x0,[x8]
+016b619c  cbz x0,0x016b6218
+016b61a0  mov x1,x20
+    ; [PRE] try { // try from 016b61a0 to 016b61ab has its CatchHandler @ 016b6238
+016b61a4  mov x2,xzr
+016b61a8  bl 0x01fe9960
+    ; [POST] } // end try from 016b61a0 to 016b61ab
+016b61ac  ldr x8,[x24]
+016b61b0  ldr x8,[x8, #0xb8]
+016b61b4  ldr x0,[x8]
+016b61b8  cbz x0,0x016b621c
+016b61bc  ldr x8,[x0]
+016b61c0  ldp x9,x1,[x8, #0x168]
+016b61c4  blr x9
+    ; [PRE] try { // try from 016b61c4 to 016b61c7 has its CatchHandler @ 016b6234
+    ; [POST] } // end try from 016b61c4 to 016b61c7
+016b61c8  mov x20,x0
+016b61cc  mov x21,xzr
+016b61d0  ldrb w8,[sp, #0xc]
+016b61d4  cbz w8,0x016b61e4
+016b61d8  mov x0,x19
+016b61dc  mov x1,xzr
+016b61e0  bl 0x021b887c
+016b61e4  cbnz x21,0x016b6200
+016b61e8  mov x0,x20
+016b61ec  ldp x19,x30,[sp, #0x30]
+016b61f0  ldp x21,x20,[sp, #0x20]
+016b61f4  ldp x23,x22,[sp, #0x10]
+016b61f8  ldr x24,[sp], #0x40
+016b61fc  ret
+016b6200  mov x0,x21
+016b6204  bl 0x00aaac8c
+016b6208  bl 0x00b079b0
+    ; [PRE] try { // try from 016b6208 to 016b620b has its CatchHandler @ 016b6248
+    ; [POST] } // end try from 016b6208 to 016b620b
+016b620c  bl 0x00b079b0
+    ; [PRE] try { // try from 016b620c to 016b620f has its CatchHandler @ 016b6230
+    ; [POST] } // end try from 016b620c to 016b620f
+016b6210  bl 0x00b079b0
+    ; [PRE] try { // try from 016b6210 to 016b6213 has its CatchHandler @ 016b622c
+    ; [POST] } // end try from 016b6210 to 016b6213
+016b6214  bl 0x00b079b0
+    ; [PRE] try { // try from 016b6214 to 016b6217 has its CatchHandler @ 016b6228
+    ; [POST] } // end try from 016b6214 to 016b6217
+016b6218  bl 0x00b079b0
+    ; [PRE] try { // try from 016b6218 to 016b621b has its CatchHandler @ 016b6224
+    ; [POST] } // end try from 016b6218 to 016b621b
+016b621c  bl 0x00b079b0
+    ; [PRE] try { // try from 016b621c to 016b621f has its CatchHandler @ 016b6220
+    ; [POST] } // end try from 016b621c to 016b621f

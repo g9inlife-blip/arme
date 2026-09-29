@@ -1,0 +1,119 @@
+Function: AliothEngine.ResourcesAssetHolder$$LoadImmediate @ 0166566c
+
+--- Calls OUT ---
+  -> AliothEngine.AssetHolder$$OnLoadSuccessed @ 01662e58
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> AliothEngine.AssetHolder$$get_logger @ 01662de4
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetHolder$$get_error @ 01662540
+  -> AliothEngine.AssetHolder$$OnLoadFailed @ 01662ca4
+  -> UnityEngine.Resources$$Load @ 024f198c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.AssetHolder$$get_asset @ 01662150
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fd0378
+  -> AliothEngine.AssetHolder$$set_asset @ 016621c8
+
+--- Calls IN ---
+
+--- Listing ---
+0166566c  str x22,[sp, #-0x30]!
+01665670  stp x21,x20,[sp, #0x10]
+01665674  stp x19,x30,[sp, #0x20]
+01665678  adrp x22,0x3577000
+0166567c  adrp x21,0x3321000
+01665680  ldrb w8,[x22, #0x8f0]
+01665684  ldr x21,[x21, #0xca8]
+01665688  mov x20,x1
+0166568c  mov x19,x0
+01665690  tbnz w8,#0x0,0x016656cc
+01665694  adrp x0,0x334a000
+01665698  ldr x0,[x0, #0xc98]
+0166569c  bl 0x00b0789c
+016656a0  adrp x0,0x3321000
+016656a4  ldr x0,[x0, #0xca8]
+016656a8  bl 0x00b0789c
+016656ac  adrp x0,0x334a000
+016656b0  ldr x0,[x0, #0x1d0]
+016656b4  bl 0x00b0789c
+016656b8  adrp x0,0x3320000
+016656bc  ldr x0,[x0, #0x920]
+016656c0  bl 0x00b0789c
+016656c4  mov w8,#0x1
+016656c8  strb w8,[x22, #0x8f0]
+016656cc  ldr x0,[x19, #0x58]
+016656d0  mov x1,xzr
+016656d4  bl 0x024f198c
+016656d8  mov x1,x0
+016656dc  mov x0,x19
+016656e0  bl 0x016621c8
+016656e4  mov x0,x19
+016656e8  bl 0x01662150
+016656ec  ldr x8,[x21]
+016656f0  mov x21,x0
+016656f4  ldr w9,[x8, #0xe0]
+016656f8  cbnz w9,0x01665704
+016656fc  mov x0,x8
+01665700  bl 0x00b0798c
+01665704  mov x0,x21
+01665708  mov x1,xzr
+0166570c  mov x2,xzr
+01665710  bl 0x024c8180
+01665714  tbz w0,#0x0,0x0166579c
+01665718  adrp x21,0x334a000
+0166571c  ldr x21,[x21, #0x1d0]
+01665720  mov x0,x19
+01665724  bl 0x01662de4
+01665728  ldr x8,[x21]
+0166572c  mov x21,x0
+01665730  mov x1,x20
+01665734  mov x2,xzr
+01665738  mov x0,x8
+0166573c  bl 0x01fd0378
+01665740  cbz x21,0x016657f4
+01665744  adrp x9,0x334a000
+01665748  adrp x10,0x3320000
+0166574c  ldr x8,[x21]
+01665750  ldr x9,[x9, #0xc98]
+01665754  ldr x10,[x10, #0x920]
+01665758  mov x20,x0
+0166575c  ldr x1,[x9]
+01665760  ldrh w9,[x8, #0x12a]
+01665764  ldr x22,[x10]
+01665768  cbz x9,0x0166578c
+0166576c  ldr x10,[x8, #0xb0]
+01665770  add x10,x10,#0x8
+01665774  ldur x11,[x10, #-0x8]
+01665778  cmp x11,x1
+0166577c  b.eq 0x016657b0
+01665780  subs x9,x9,#0x1
+01665784  add x10,x10,#0x10
+01665788  b.ne 0x01665774
+0166578c  mov w2,#0xb
+01665790  mov x0,x21
+01665794  bl 0x00b2ae24
+01665798  b 0x016657c0
+0166579c  mov x0,x19
+016657a0  ldp x19,x30,[sp, #0x20]
+016657a4  ldp x21,x20,[sp, #0x10]
+016657a8  ldr x22,[sp], #0x30
+016657ac  b 0x01662e58
+016657b0  ldr w9,[x10]
+016657b4  add w9,w9,#0xb
+016657b8  add x8,x8,w9, SXTW  #0x4
+016657bc  add x0,x8,#0x138
+016657c0  ldp x8,x3,[x0]
+016657c4  mov x0,x21
+016657c8  mov x1,x22
+016657cc  mov x2,x20
+016657d0  blr x8
+016657d4  mov x0,x19
+016657d8  bl 0x01662540
+016657dc  mov x1,x0
+016657e0  mov x0,x19
+016657e4  ldp x19,x30,[sp, #0x20]
+016657e8  ldp x21,x20,[sp, #0x10]
+016657ec  ldr x22,[sp], #0x30
+016657f0  b 0x01662ca4
+016657f4  bl 0x00b079b0

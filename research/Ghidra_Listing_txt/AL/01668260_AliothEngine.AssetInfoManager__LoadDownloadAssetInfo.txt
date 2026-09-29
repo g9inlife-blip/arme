@@ -1,0 +1,155 @@
+Function: AliothEngine.AssetInfoManager$$LoadDownloadAssetInfo @ 01668260
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp816 @ 010ca834
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.AssetLoader$$LoadAsset @ 0166847c
+  -> AliothEngine.AssetLocation$$AssetBundle @ 0166747c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> AliothEngine.SingletonBehaviour<object>$$GetInstance @ 01e08f7c
+  -> System.String$$ToLower @ 01fe2b10
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_m_LoadDownloadAssetInfo @ 0113bb40
+  <- AliothEngine.AssetInfoManager.<LoadAssetHostInfo>d__27$$MoveNext @ 0166ad70
+
+--- Listing ---
+01668260  str x24,[sp, #-0x40]!
+01668264  stp x23,x22,[sp, #0x10]
+01668268  stp x21,x20,[sp, #0x20]
+0166826c  stp x19,x30,[sp, #0x30]
+01668270  adrp x20,0x3577000
+01668274  adrp x22,0x334f000
+01668278  ldrb w8,[x20, #0x90e]
+0166827c  ldr x22,[x22, #0xaf8]
+01668280  mov x19,x1
+01668284  mov x21,x0
+01668288  tbnz w8,#0x0,0x0166830c
+0166828c  adrp x0,0x3351000
+01668290  ldr x0,[x0, #0xc78]
+01668294  bl 0x00b0789c
+01668298  adrp x0,0x331d000
+0166829c  ldr x0,[x0, #0x8d8]
+016682a0  bl 0x00b0789c
+016682a4  adrp x0,0x334f000
+016682a8  ldr x0,[x0, #0xaf8]
+016682ac  bl 0x00b0789c
+016682b0  adrp x0,0x3365000
+016682b4  ldr x0,[x0, #0xe88]
+016682b8  bl 0x00b0789c
+016682bc  adrp x0,0x3347000
+016682c0  ldr x0,[x0, #0xd68]
+016682c4  bl 0x00b0789c
+016682c8  adrp x0,0x3373000
+016682cc  ldr x0,[x0, #0x548]
+016682d0  bl 0x00b0789c
+016682d4  adrp x0,0x3309000
+016682d8  ldr x0,[x0, #0x780]
+016682dc  bl 0x00b0789c
+016682e0  adrp x0,0x3352000
+016682e4  ldr x0,[x0, #0x730]
+016682e8  bl 0x00b0789c
+016682ec  adrp x0,0x3312000
+016682f0  ldr x0,[x0, #0xd00]
+016682f4  bl 0x00b0789c
+016682f8  adrp x0,0x3366000
+016682fc  ldr x0,[x0, #0x578]
+01668300  bl 0x00b0789c
+01668304  mov w8,#0x1
+01668308  strb w8,[x20, #0x90e]
+0166830c  ldr x8,[x22]
+01668310  ldr x8,[x8, #0xb8]
+01668314  ldr x0,[x8, #0x40]
+01668318  cbz x0,0x0166833c
+0166831c  mov x1,x21
+01668320  mov x2,x19
+01668324  ldp x19,x30,[sp, #0x30]
+01668328  ldp x21,x20,[sp, #0x20]
+0166832c  ldp x23,x22,[sp, #0x10]
+01668330  mov x3,xzr
+01668334  ldr x24,[sp], #0x40
+01668338  b 0x010ca834
+0166833c  adrp x8,0x3309000
+01668340  ldr x8,[x8, #0x780]
+01668344  ldr x0,[x8]
+01668348  bl 0x00b079a0
+0166834c  cbz x0,0x01668470
+01668350  adrp x22,0x3366000
+01668354  ldr x22,[x22, #0x578]
+01668358  mov x1,xzr
+0166835c  mov x20,x0
+01668360  bl 0x02194104
+01668364  mov x0,x20
+01668368  str x21,[x0, #0x10]!
+0166836c  mov x1,x21
+01668370  bl 0x00b07850
+01668374  mov x0,x20
+01668378  str x19,[x0, #0x18]!
+0166837c  mov x1,x19
+01668380  bl 0x00b07850
+01668384  ldr x0,[x22]
+01668388  cbz x0,0x01668470
+0166838c  adrp x19,0x331d000
+01668390  adrp x21,0x3347000
+01668394  adrp x24,0x3312000
+01668398  adrp x23,0x3365000
+0166839c  adrp x22,0x3351000
+016683a0  ldr x19,[x19, #0x8d8]
+016683a4  ldr x21,[x21, #0xd68]
+016683a8  ldr x24,[x24, #0xd00]
+016683ac  ldr x23,[x23, #0xe88]
+016683b0  ldr x22,[x22, #0xc78]
+016683b4  mov x1,xzr
+016683b8  bl 0x01fe2b10
+016683bc  ldr x8,[x21]
+016683c0  ldr x21,[x19]
+016683c4  mov x19,x0
+016683c8  ldr w9,[x8, #0xe0]
+016683cc  cbnz w9,0x016683d8
+016683d0  mov x0,x8
+016683d4  bl 0x00b0798c
+016683d8  mov x0,x21
+016683dc  mov x1,xzr
+016683e0  bl 0x0215f900
+016683e4  ldr x1,[x24]
+016683e8  mov x2,x0
+016683ec  mov x0,x19
+016683f0  mov w3,wzr
+016683f4  bl 0x0166747c
+016683f8  ldr x8,[x23]
+016683fc  mov x19,x0
+01668400  mov x0,x8
+01668404  bl 0x01e08f7c
+01668408  ldr x8,[x22]
+0166840c  mov x21,x0
+01668410  mov x0,x8
+01668414  bl 0x00b079a0
+01668418  cbz x0,0x01668470
+0166841c  adrp x8,0x3373000
+01668420  ldr x8,[x8, #0x548]
+01668424  mov x1,x20
+01668428  mov x3,xzr
+0166842c  mov x22,x0
+01668430  ldr x2,[x8]
+01668434  bl 0x01909b80
+01668438  cbz x21,0x01668470
+0166843c  adrp x8,0x3352000
+01668440  ldr x8,[x8, #0x730]
+01668444  mov x0,x21
+01668448  mov x1,x19
+0166844c  mov x2,x22
+01668450  ldr x3,[x8]
+01668454  ldp x19,x30,[sp, #0x30]
+01668458  ldp x21,x20,[sp, #0x20]
+0166845c  ldp x23,x22,[sp, #0x10]
+01668460  mov w4,wzr
+01668464  mov w5,wzr
+01668468  ldr x24,[sp], #0x40
+0166846c  b 0x0166847c
+01668470  bl 0x00b079b0

@@ -1,0 +1,60 @@
+Function: AliothEngine.AssetInfoManager$$LoadFinish @ 01669414
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetHolder$$RequestRelease @ 01663394
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$LoadAsset @ 016690c0
+  <- AliothEngine.AssetInfoManager.<>c__DisplayClass18_0$$<LoadAsset>b__0 @ 0166a0d0
+
+--- Listing ---
+01669414  stp x23,x22,[sp, #-0x30]!
+01669418  stp x21,x20,[sp, #0x10]
+0166941c  stp x19,x30,[sp, #0x20]
+01669420  adrp x22,0x3577000
+01669424  adrp x23,0x334f000
+01669428  ldrb w8,[x22, #0x913]
+0166942c  ldr x23,[x23, #0xaf8]
+01669430  mov x20,x2
+01669434  mov x19,x1
+01669438  mov x21,x0
+0166943c  tbnz w8,#0x0,0x01669460
+01669440  adrp x0,0x334f000
+01669444  ldr x0,[x0, #0xaf8]
+01669448  bl 0x00b0789c
+0166944c  adrp x0,0x3352000
+01669450  ldr x0,[x0, #0x730]
+01669454  bl 0x00b0789c
+01669458  mov w8,#0x1
+0166945c  strb w8,[x22, #0x913]
+01669460  ldr x8,[x23]
+01669464  ldr x8,[x8, #0xb8]
+01669468  ldr x0,[x8, #0x68]
+0166946c  cbz x0,0x01669490
+01669470  mov x1,x21
+01669474  mov x2,x19
+01669478  mov x3,x20
+0166947c  ldp x19,x30,[sp, #0x20]
+01669480  ldp x21,x20,[sp, #0x10]
+01669484  mov x4,xzr
+01669488  ldp x23,x22,[sp], #0x30
+0166948c  b 0x010670b0
+01669490  cbz x20,0x016694a8
+01669494  ldr x8,[x20, #0x18]
+01669498  ldr x0,[x20, #0x40]
+0166949c  ldr x2,[x20, #0x28]
+016694a0  mov x1,x19
+016694a4  blr x8
+016694a8  cbz x19,0x016694cc
+016694ac  adrp x8,0x3352000
+016694b0  ldr x8,[x8, #0x730]
+016694b4  mov x0,x19
+016694b8  ldp x19,x30,[sp, #0x20]
+016694bc  ldp x21,x20,[sp, #0x10]
+016694c0  ldr x1,[x8]
+016694c4  ldp x23,x22,[sp], #0x30
+016694c8  b 0x01663394
+016694cc  bl 0x00b079b0

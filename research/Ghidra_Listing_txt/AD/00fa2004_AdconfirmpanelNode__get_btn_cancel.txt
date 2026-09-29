@@ -1,0 +1,28 @@
+Function: AdconfirmpanelNode$$get_btn_cancel @ 00fa2004
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fa2004  stp x21,x20,[sp, #-0x20]!
+00fa2008  stp x19,x30,[sp, #0x10]
+00fa200c  adrp x20,0x3573000
+00fa2010  adrp x21,0x3312000
+00fa2014  ldrb w8,[x20, #0x577]
+00fa2018  ldr x21,[x21, #0x200]
+00fa201c  mov x19,x0
+00fa2020  tbnz w8,#0x0,0x00fa2038
+00fa2024  adrp x0,0x3312000
+00fa2028  ldr x0,[x0, #0x200]
+00fa202c  bl 0x00b0789c
+00fa2030  mov w8,#0x1
+00fa2034  strb w8,[x20, #0x577]
+00fa2038  ldr x1,[x21]
+00fa203c  mov x0,x19
+00fa2040  ldp x19,x30,[sp, #0x10]
+00fa2044  mov x2,xzr
+00fa2048  ldp x21,x20,[sp], #0x20
+00fa204c  b 0x00dc06f8

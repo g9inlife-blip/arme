@@ -1,0 +1,36 @@
+Function: ReadyMono$$get_m_allStar @ 00e5cebc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- ReadyMono$$OnClickRepeat @ 00e60358
+
+--- Listing ---
+00e5cebc  stp x21,x20,[sp, #-0x20]!
+00e5cec0  stp x19,x30,[sp, #0x10]
+00e5cec4  adrp x20,0x3572000
+00e5cec8  adrp x21,0x333c000
+00e5cecc  ldrb w8,[x20, #0x956]
+00e5ced0  ldr x21,[x21, #0x628]
+00e5ced4  mov x19,x0
+00e5ced8  tbnz w8,#0x0,0x00e5cef0
+00e5cedc  adrp x0,0x333c000
+00e5cee0  ldr x0,[x0, #0x628]
+00e5cee4  bl 0x00b0789c
+00e5cee8  mov w8,#0x1
+00e5ceec  strb w8,[x20, #0x956]
+00e5cef0  ldr x8,[x21]
+00e5cef4  ldr x8,[x8, #0xb8]
+00e5cef8  ldr x0,[x8, #0x10]
+00e5cefc  cbz x0,0x00e5cf14
+00e5cf00  mov x1,x19
+00e5cf04  ldp x19,x30,[sp, #0x10]
+00e5cf08  mov x2,xzr
+00e5cf0c  ldp x21,x20,[sp], #0x20
+00e5cf10  b 0x01060aac
+00e5cf14  ldrb w0,[x19, #0xd0]
+00e5cf18  ldp x19,x30,[sp, #0x10]
+00e5cf1c  ldp x21,x20,[sp], #0x20
+00e5cf20  ret

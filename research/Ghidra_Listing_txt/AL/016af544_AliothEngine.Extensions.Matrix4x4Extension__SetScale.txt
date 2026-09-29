@@ -1,0 +1,60 @@
+Function: AliothEngine.Extensions.Matrix4x4Extension$$SetScale @ 016af544
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.Matrix4x4Extension$$GetRotation @ 016af60c
+  -> UnityEngine.Matrix4x4$$TRS @ 024e8d58
+  -> UnityEngine.Matrix4x4$$GetPosition @ 024e83d0
+
+--- Calls IN ---
+
+--- Listing ---
+016af544  sub sp,sp,#0x120
+016af548  stp d13,d12,[sp, #0xd0]
+016af54c  stp d11,d10,[sp, #0xe0]
+016af550  stp d9,d8,[sp, #0xf0]
+016af554  str x28,[sp, #0x100]
+016af558  stp x19,x30,[sp, #0x110]
+016af55c  mov x1,xzr
+016af560  mov v8.16B,v2.16B
+016af564  mov v9.16B,v1.16B
+016af568  mov v10.16B,v0.16B
+016af56c  mov x19,x0
+016af570  bl 0x024e83d0
+016af574  mov v11.16B,v0.16B
+016af578  mov v12.16B,v1.16B
+016af57c  mov v13.16B,v2.16B
+016af580  ldp q1,q0,[x19]
+016af584  ldp q3,q2,[x19, #0x20]
+016af588  add x0,sp,#0x90
+016af58c  stp q1,q0,[sp, #0x90]
+016af590  stp q3,q2,[sp, #0xb0]
+016af594  bl 0x016af60c
+016af598  mov v4.16B,v0.16B
+016af59c  mov v5.16B,v1.16B
+016af5a0  mov v6.16B,v2.16B
+016af5a4  mov v7.16B,v3.16B
+016af5a8  add x8,sp,#0x10
+016af5ac  mov v0.16B,v11.16B
+016af5b0  mov v1.16B,v12.16B
+016af5b4  mov v2.16B,v13.16B
+016af5b8  mov v3.16B,v4.16B
+016af5bc  mov v4.16B,v5.16B
+016af5c0  mov v5.16B,v6.16B
+016af5c4  mov v6.16B,v7.16B
+016af5c8  mov x0,xzr
+016af5cc  stp s9,s8,[sp, #0x4]
+016af5d0  str s10,[sp]
+016af5d4  bl 0x024e8d58
+016af5d8  ldp q2,q0,[sp, #0x30]
+016af5dc  ldp q3,q1,[sp, #0x10]
+016af5e0  stp q2,q0,[sp, #0x70]
+016af5e4  stp q3,q1,[sp, #0x50]
+016af5e8  stp q2,q0,[x19, #0x20]
+016af5ec  stp q3,q1,[x19]
+016af5f0  ldp x19,x30,[sp, #0x110]
+016af5f4  ldr x28,[sp, #0x100]
+016af5f8  ldp d9,d8,[sp, #0xf0]
+016af5fc  ldp d11,d10,[sp, #0xe0]
+016af600  ldp d13,d12,[sp, #0xd0]
+016af604  add sp,sp,#0x120
+016af608  ret

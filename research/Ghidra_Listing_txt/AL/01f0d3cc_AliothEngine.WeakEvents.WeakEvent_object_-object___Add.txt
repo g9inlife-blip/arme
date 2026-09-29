@@ -1,0 +1,53 @@
+Function: AliothEngine.WeakEvents.WeakEvent<object,-object>$$Add @ 01f0d3cc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.DataStructures.FasterList<object>$$Add @ 01addf30
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01f0d3cc  str x22,[sp, #-0x30]!
+01f0d3d0  stp x21,x20,[sp, #0x10]
+01f0d3d4  stp x19,x30,[sp, #0x20]
+01f0d3d8  adrp x22,0x3579000
+01f0d3dc  ldrb w8,[x22, #0x2ee]
+01f0d3e0  mov x20,x2
+01f0d3e4  mov x19,x1
+01f0d3e8  mov x21,x0
+01f0d3ec  tbnz w8,#0x0,0x01f0d404
+01f0d3f0  adrp x0,0x336a000
+01f0d3f4  ldr x0,[x0, #0x6e0]
+01f0d3f8  bl 0x00b0789c
+01f0d3fc  mov w8,#0x1
+01f0d400  strb w8,[x22, #0x2ee]
+01f0d404  ldr x8,[x20, #0x20]
+01f0d408  ldr x21,[x21, #0x10]
+01f0d40c  ldr x8,[x8, #0xc0]
+01f0d410  ldr x0,[x8, #0x10]
+01f0d414  ldrb w8,[x0, #0x132]
+01f0d418  tbnz w8,#0x0,0x01f0d420
+01f0d41c  bl 0x00b2ac40
+01f0d420  bl 0x00b079a0
+01f0d424  cbz x0,0x01f0d46c
+01f0d428  ldr x8,[x20, #0x20]
+01f0d42c  mov x1,x19
+01f0d430  mov x22,x0
+01f0d434  ldr x8,[x8, #0xc0]
+01f0d438  ldr x2,[x8, #0x18]
+01f0d43c  ldr x8,[x2, #0x8]
+01f0d440  blr x8
+01f0d444  cbz x21,0x01f0d46c
+01f0d448  adrp x8,0x336a000
+01f0d44c  ldr x8,[x8, #0x6e0]
+01f0d450  mov x0,x21
+01f0d454  ldp x19,x30,[sp, #0x20]
+01f0d458  ldp x21,x20,[sp, #0x10]
+01f0d45c  ldr x2,[x8]
+01f0d460  mov x1,x22
+01f0d464  ldr x22,[sp], #0x30
+01f0d468  b 0x01addf30
+01f0d46c  bl 0x00b079b0

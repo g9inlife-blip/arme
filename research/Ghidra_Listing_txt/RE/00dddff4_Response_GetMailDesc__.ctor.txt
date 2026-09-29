@@ -1,0 +1,39 @@
+Function: Response_GetMailDesc$$.ctor @ 00dddff4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_GetMailDescWrap$$__CreateInstance @ 01370648
+
+--- Listing ---
+00dddff4  stp x21,x20,[sp, #-0x20]!
+00dddff8  stp x19,x30,[sp, #0x10]
+00dddffc  adrp x21,0x3572000
+00dde000  adrp x20,0x3347000
+00dde004  ldrb w8,[x21, #0x2e4]
+00dde008  ldr x20,[x20, #0x168]
+00dde00c  mov x19,x0
+00dde010  tbnz w8,#0x0,0x00dde028
+00dde014  adrp x0,0x3347000
+00dde018  ldr x0,[x0, #0x168]
+00dde01c  bl 0x00b0789c
+00dde020  mov w8,#0x1
+00dde024  strb w8,[x21, #0x2e4]
+00dde028  mov x0,x19
+00dde02c  mov x1,xzr
+00dde030  bl 0x02194104
+00dde034  ldr x8,[x20]
+00dde038  ldr x8,[x8, #0xb8]
+00dde03c  ldr x0,[x8]
+00dde040  cbz x0,0x00dde058
+00dde044  mov x1,x19
+00dde048  ldp x19,x30,[sp, #0x10]
+00dde04c  mov x2,xzr
+00dde050  ldp x21,x20,[sp], #0x20
+00dde054  b 0x01060dac
+00dde058  ldp x19,x30,[sp, #0x10]
+00dde05c  ldp x21,x20,[sp], #0x20
+00dde060  ret

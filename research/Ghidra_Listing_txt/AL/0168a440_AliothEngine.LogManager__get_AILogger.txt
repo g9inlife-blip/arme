@@ -1,0 +1,84 @@
+Function: AliothEngine.LogManager$$get_AILogger @ 0168a440
+
+--- Calls OUT ---
+  -> AliothEngine.Singleton<object>$$get_Instance @ 01e09a6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.LogManager$$GetLogger @ 0168995c
+
+--- Calls IN ---
+  <- Condition_Unit_Skill_Usable$$OnCheck @ 00dca090
+  <- AICommander$$OnBattleEndNext @ 00ec2e7c
+  <- Condition_Unit_isSkillUsePathFinding$$OnCheck @ 00dca7a8
+  <- Condition_Unit_CanUseSkill_NextRound$$OnCheck @ 00dc9bfc
+  <- AICommander$$OnBattle_Unit_Change @ 00ec2d38
+  <- SkillTargetInfo.<>c$$<GetPositionTarget>b__5_0 @ 013104e8
+  <- Condition_Unit_Has_AI_Tendency$$OnCheck @ 00dcaaec
+  <- AITendencySelector$$<SelectTarget>b__4_6 @ 00ec72ec
+  <- Action_Unit_AITendencySelector$$OnExecute @ 00dc74c4
+  <- Action_Unit_Get_Skill_WantMovePosition$$OnExecute @ 00dc7e84
+  <- Action_Unit_Get_RoleData$$OnExecute @ 00dc97e0
+  <- AIUnit$$TurnAroundToTarget @ 00eca3f4
+  <- Condition_Unit_isDead$$OnCheck @ 00dca66c
+  <- AIUnit$$GetPathFindingCanMovePosition @ 00ec9340
+  <- Action_Unit_MoveToPosition$$OnExecute @ 00dc8414
+  <- Action_Unit_ReadyFor_MoveSpecial$$OnExecute @ 00dc99bc
+  <- AITendencySelector$$<SelectTarget>b__4_5 @ 00ec6fb4
+  <- AICommander$$<RefreshGetALL_AIUnits>b__16_1 @ 00ec3220
+  <- AIUnit$$OnDestroy @ 00ec8430
+  <- Action_Unit_AITendencySelector_Default$$OnExecute @ 00dc7770
+  <- AIUnit$$BehaviourTreeFinishCallBack @ 00ec8794
+  <- AICommander$$OnUnitAIStart @ 00ec2900
+  <- AICommander$$AIStart @ 00ec1f40
+  <- SkillTargetInfo$$GetPositionTarget @ 0130efd0
+  <- Condition_Unit_CanUseNotNeedMove$$OnCheck @ 00dcabf8
+  <- AICommander$$StopAI @ 00ec0e88
+  <- AIUnit$$TryMoveToPosition @ 00ec90f0
+  <- AICommander$$NextAIGo @ 00ec20b8
+  <- Action_Unit_UseSkill$$OnExecute @ 00dc9088
+  <- SkillTargetInfo$$isCanUseNoTarget @ 0130f8f8
+  <- AITendencySelector$$GetValueInt @ 00ec6d40
+  <- AICommander$$OnUnitAIEnd @ 00ec2abc
+  <- Condition_Unit_CanUse_Skill$$OnCheck @ 00dc9d6c
+  <- Action_Unit_DecisionChange$$OnExecute @ 00dc7c48
+  <- Condition_Unit_isSKill_HasTargetInRange$$OnCheck @ 00dca8e4
+  <- SkillTargetInfo$$GetWantToMoveOutofRangePosition @ 0130fd7c
+  <- Action_Unit_AITendencySelector_CurrentPosition$$OnExecute @ 00dc95a0
+  <- Condition_Unit_HasMakeDecision$$OnCheck @ 00dca394
+  <- RoleNewsExt$$GetOutMovableIndexs @ 0130df28
+  <- AIUnit$$StopAIBehavior @ 00ec2f9c
+  <- Action_Unit_UseSkill$$OnUseSkill_Finish @ 00dc93f8
+  <- PositionTargetHelper$$RandomBestTargetSelect @ 00fdc0d4
+  <- AICommander$$AIEnd @ 00ec2294
+  <- AIUnit$$StartAIBehavior @ 00ec2560
+  <- AITendencySelector$$SelectTarget @ 00ec473c
+  <- AIUnit$$CalNewAIATKInfo @ 00ec9864
+  <- AIUnit$$TurnBestDirection @ 00eca634
+  <- Action_Unit_ReadyFor_SkillATK$$OnExecute @ 00dc88ec
+  <- Condition_Unit_HasEnoughActionTimes$$OnCheck @ 00dca200
+  <- Condition_Unit_HasTargetPosition$$OnCheck @ 00dca4fc
+  <- Action_Unit_TurnAround$$OnExecute @ 00dc8e5c
+  <- Action_Unit_ReadyFor_NormalATK$$OnExecute @ 00dc876c
+  <- AITendencySelector$$<SelectTarget>b__4_14 @ 00ec7624
+
+--- Listing ---
+0168a440  str x20,[sp, #-0x20]!
+0168a444  stp x19,x30,[sp, #0x10]
+0168a448  adrp x19,0x3577000
+0168a44c  adrp x20,0x3377000
+0168a450  ldrb w8,[x19, #0xa8e]
+0168a454  ldr x20,[x20, #0x898]
+0168a458  tbnz w8,#0x0,0x0168a470
+0168a45c  adrp x0,0x3377000
+0168a460  ldr x0,[x0, #0x898]
+0168a464  bl 0x00b0789c
+0168a468  mov w8,#0x1
+0168a46c  strb w8,[x19, #0xa8e]
+0168a470  ldr x0,[x20]
+0168a474  bl 0x01e09a6c
+0168a478  cbz x0,0x0168a48c
+0168a47c  ldp x19,x30,[sp, #0x10]
+0168a480  mov w1,#0x5
+0168a484  ldr x20,[sp], #0x20
+0168a488  b 0x0168995c
+0168a48c  bl 0x00b079b0

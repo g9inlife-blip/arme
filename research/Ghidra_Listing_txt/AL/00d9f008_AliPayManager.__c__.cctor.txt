@@ -1,0 +1,40 @@
+Function: AliPayManager.<>c$$.cctor @ 00d9f008
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00d9f008  str x20,[sp, #-0x20]!
+00d9f00c  stp x19,x30,[sp, #0x10]
+00d9f010  adrp x19,0x3572000
+00d9f014  adrp x20,0x3311000
+00d9f018  ldrb w8,[x19, #0x34]
+00d9f01c  ldr x20,[x20, #0x140]
+00d9f020  tbnz w8,#0x0,0x00d9f038
+00d9f024  adrp x0,0x3311000
+00d9f028  ldr x0,[x0, #0x140]
+00d9f02c  bl 0x00b0789c
+00d9f030  mov w8,#0x1
+00d9f034  strb w8,[x19, #0x34]
+00d9f038  ldr x0,[x20]
+00d9f03c  bl 0x00b079a0
+00d9f040  cbz x0,0x00d9f074
+00d9f044  mov x1,xzr
+00d9f048  mov x19,x0
+00d9f04c  bl 0x02194104
+00d9f050  ldr x8,[x20]
+00d9f054  mov x1,x19
+00d9f058  ldr x8,[x8, #0xb8]
+00d9f05c  str x19,[x8]
+00d9f060  ldr x8,[x20]
+00d9f064  ldp x19,x30,[sp, #0x10]
+00d9f068  ldr x0,[x8, #0xb8]
+00d9f06c  ldr x20,[sp], #0x20
+00d9f070  b 0x00b07850
+00d9f074  bl 0x00b079b0

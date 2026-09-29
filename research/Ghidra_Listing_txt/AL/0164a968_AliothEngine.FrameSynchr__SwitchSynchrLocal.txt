@@ -1,0 +1,13 @@
+Function: AliothEngine.FrameSynchr$$SwitchSynchrLocal @ 0164a968
+
+--- Calls OUT ---
+  -> AliothEngine.FrameSynchr$$ResetStartTime @ 0164a63c
+
+--- Calls IN ---
+
+--- Listing ---
+0164a968  ldrb w8,[x0, #0x10]
+0164a96c  cbz w8,0x0164a978
+0164a970  strb wzr,[x0, #0x10]
+0164a974  b 0x0164a63c
+0164a978  ret

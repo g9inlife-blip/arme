@@ -1,0 +1,112 @@
+Function: Ali$$LetterboxGUIDelegate @ 00e0ada8
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.CameraExtensions$$GetScaleRect @ 016aa944
+  -> UnityEngine.Rect$$MinMaxRect @ 024daf28
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Camera$$set_rect @ 024d78e8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Slate.DirectorCamera$$get_cam @ 015d25d4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp20 @ 01061c3c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> Slate.DirectorCamera$$get_current @ 015d2418
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_LetterboxGUIDelegate @ 01198cac
+
+--- Listing ---
+00e0ada8  stp d11,d10,[sp, #-0x40]!
+00e0adac  stp d9,d8,[sp, #0x10]
+00e0adb0  stp x21,x20,[sp, #0x20]
+00e0adb4  stp x19,x30,[sp, #0x30]
+00e0adb8  adrp x21,0x3572000
+00e0adbc  adrp x20,0x335f000
+00e0adc0  ldrb w8,[x21, #0x595]
+00e0adc4  ldr x20,[x20, #0x20]
+00e0adc8  mov v8.16B,v0.16B
+00e0adcc  mov x19,x0
+00e0add0  tbnz w8,#0x0,0x00e0adf4
+00e0add4  adrp x0,0x335f000
+00e0add8  ldr x0,[x0, #0x20]
+00e0addc  bl 0x00b0789c
+00e0ade0  adrp x0,0x3321000
+00e0ade4  ldr x0,[x0, #0xca8]
+00e0ade8  bl 0x00b0789c
+00e0adec  mov w8,#0x1
+00e0adf0  strb w8,[x21, #0x595]
+00e0adf4  ldr x0,[x20]
+00e0adf8  ldr w8,[x0, #0xe0]
+00e0adfc  cbnz w8,0x00e0ae08
+00e0ae00  bl 0x00b0798c
+00e0ae04  ldr x0,[x20]
+00e0ae08  ldr x8,[x0, #0xb8]
+00e0ae0c  ldr x0,[x8, #0x450]
+00e0ae10  cbz x0,0x00e0ae34
+00e0ae14  mov x1,x19
+00e0ae18  mov v0.16B,v8.16B
+00e0ae1c  ldp x19,x30,[sp, #0x30]
+00e0ae20  ldp x21,x20,[sp, #0x20]
+00e0ae24  ldp d9,d8,[sp, #0x10]
+00e0ae28  mov x2,xzr
+00e0ae2c  ldp d11,d10,[sp], #0x40
+00e0ae30  b 0x01061c3c
+00e0ae34  bl 0x015d2418
+00e0ae38  fcmp s8,#0.0
+00e0ae3c  mov x19,x0
+00e0ae40  b.ne 0x00e0ae7c
+00e0ae44  cbz x19,0x00e0af1c
+00e0ae48  mov x0,x19
+00e0ae4c  mov x1,xzr
+00e0ae50  bl 0x015d25d4
+00e0ae54  fmov s2,0x3f800000
+00e0ae58  mov x19,x0
+00e0ae5c  fmov s0,wzr
+00e0ae60  fmov s1,wzr
+00e0ae64  mov v3.16B,v2.16B
+00e0ae68  mov x0,xzr
+00e0ae6c  bl 0x024daf28
+00e0ae70  cbz x19,0x00e0af1c
+00e0ae74  mov x0,x19
+00e0ae78  b 0x00e0aef0
+00e0ae7c  adrp x8,0x3321000
+00e0ae80  ldr x8,[x8, #0xca8]
+00e0ae84  ldr x0,[x8]
+00e0ae88  ldr w8,[x0, #0xe0]
+00e0ae8c  cbnz w8,0x00e0ae94
+00e0ae90  bl 0x00b0798c
+00e0ae94  mov x0,x19
+00e0ae98  mov x1,xzr
+00e0ae9c  mov x2,xzr
+00e0aea0  bl 0x024de30c
+00e0aea4  tbz w0,#0x0,0x00e0af08
+00e0aea8  adrp x8,0x26db000
+00e0aeac  ldr s0,[x8, #0xc54]
+00e0aeb0  mov x0,xzr
+00e0aeb4  bl 0x016aa944
+00e0aeb8  mov x0,xzr
+00e0aebc  mov v8.16B,v0.16B
+00e0aec0  mov v9.16B,v1.16B
+00e0aec4  mov v10.16B,v2.16B
+00e0aec8  mov v11.16B,v3.16B
+00e0aecc  bl 0x015d2418
+00e0aed0  cbz x0,0x00e0af1c
+00e0aed4  mov x1,xzr
+00e0aed8  bl 0x015d25d4
+00e0aedc  cbz x0,0x00e0af1c
+00e0aee0  mov v0.16B,v8.16B
+00e0aee4  mov v1.16B,v9.16B
+00e0aee8  mov v2.16B,v10.16B
+00e0aeec  mov v3.16B,v11.16B
+00e0aef0  ldp x19,x30,[sp, #0x30]
+00e0aef4  ldp x21,x20,[sp, #0x20]
+00e0aef8  ldp d9,d8,[sp, #0x10]
+00e0aefc  mov x1,xzr
+00e0af00  ldp d11,d10,[sp], #0x40
+00e0af04  b 0x024d78e8
+00e0af08  ldp x19,x30,[sp, #0x30]
+00e0af0c  ldp x21,x20,[sp, #0x20]
+00e0af10  ldp d9,d8,[sp, #0x10]
+00e0af14  ldp d11,d10,[sp], #0x40
+00e0af18  ret
+00e0af1c  bl 0x00b079b0

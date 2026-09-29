@@ -1,0 +1,32 @@
+Function: AliothEngine.Extensions.ListExtensions$$Enlarge<object> @ 0179e320
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0179e320  stp x21,x20,[sp, #-0x20]!
+0179e324  stp x19,x30,[sp, #0x10]
+0179e328  cbz x0,0x0179e37c
+0179e32c  mov x19,x2
+0179e330  mov w20,w1
+0179e334  mov x21,x0
+0179e338  ldr x8,[x19, #0x38]
+0179e33c  mov x0,x21
+0179e340  ldr x1,[x8, #0x10]
+0179e344  ldr x8,[x1, #0x8]
+0179e348  blr x8
+0179e34c  cmp w0,w20
+0179e350  b.ge 0x0179e370
+0179e354  ldr x8,[x19, #0x38]
+0179e358  mov x0,x21
+0179e35c  mov x1,xzr
+0179e360  ldr x2,[x8, #0x8]
+0179e364  ldr x8,[x2, #0x8]
+0179e368  blr x8
+0179e36c  b 0x0179e338
+0179e370  ldp x19,x30,[sp, #0x10]
+0179e374  ldp x21,x20,[sp], #0x20
+0179e378  ret
+0179e37c  bl 0x00b079b0

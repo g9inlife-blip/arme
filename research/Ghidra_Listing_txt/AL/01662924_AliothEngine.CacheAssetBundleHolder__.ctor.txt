@@ -1,0 +1,50 @@
+Function: AliothEngine.CacheAssetBundleHolder$$.ctor @ 01662924
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetHolder$$.ctor @ 01663ef4
+
+--- Calls IN ---
+  <- AliothEngine.AssetHolder$$Create @ 01662758
+
+--- Listing ---
+01662924  str x24,[sp, #-0x40]!
+01662928  stp x23,x22,[sp, #0x10]
+0166292c  stp x21,x20,[sp, #0x20]
+01662930  stp x19,x30,[sp, #0x30]
+01662934  adrp x24,0x3577000
+01662938  adrp x23,0x3312000
+0166293c  ldrb w8,[x24, #0x8e1]
+01662940  ldr x23,[x23, #0x428]
+01662944  mov x20,x2
+01662948  mov x21,x1
+0166294c  mov x19,x0
+01662950  and w22,w3,#0x1
+01662954  tbnz w8,#0x0,0x0166296c
+01662958  adrp x0,0x3312000
+0166295c  ldr x0,[x0, #0x428]
+01662960  bl 0x00b0789c
+01662964  mov w8,#0x1
+01662968  strb w8,[x24, #0x8e1]
+0166296c  ldr x0,[x23]
+01662970  ldr w8,[x0, #0xe0]
+01662974  cbnz w8,0x0166297c
+01662978  bl 0x00b0798c
+0166297c  mov x0,x19
+01662980  bl 0x01663ef4
+01662984  mov x0,x19
+01662988  str x21,[x0, #0x60]!
+0166298c  mov x1,x21
+01662990  bl 0x00b07850
+01662994  str x20,[x19, #0x68]!
+01662998  mov x0,x19
+0166299c  mov x1,x20
+016629a0  bl 0x00b07850
+016629a4  sturb w22,[x19, #-0x10]
+016629a8  ldp x19,x30,[sp, #0x30]
+016629ac  ldp x21,x20,[sp, #0x20]
+016629b0  ldp x23,x22,[sp, #0x10]
+016629b4  ldr x24,[sp], #0x40
+016629b8  ret

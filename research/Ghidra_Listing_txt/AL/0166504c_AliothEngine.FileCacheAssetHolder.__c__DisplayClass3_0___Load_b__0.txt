@@ -1,0 +1,24 @@
+Function: AliothEngine.FileCacheAssetHolder.<>c__DisplayClass3_0$$<Load>b__0 @ 0166504c
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0166504c  stp x21,x20,[sp, #-0x20]!
+01665050  stp x19,x30,[sp, #0x10]
+01665054  mov x19,x0
+01665058  ldr x0,[x0, #0x10]
+0166505c  cbz x0,0x01665084
+01665060  ldr x8,[x0]
+01665064  ldr x1,[x19, #0x18]
+01665068  ldp x9,x2,[x8, #0x188]
+0166506c  blr x9
+    ; [PRE] try { // try from 0166506c to 01665087 has its CatchHandler @ 01665088
+01665070  mov w8,#0x1
+01665074  strb w8,[x19, #0x20]
+01665078  ldp x19,x30,[sp, #0x10]
+0166507c  ldp x21,x20,[sp], #0x20
+01665080  ret
+01665084  bl 0x00b079b0

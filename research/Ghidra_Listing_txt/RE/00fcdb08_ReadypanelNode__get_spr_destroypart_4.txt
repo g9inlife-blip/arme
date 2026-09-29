@@ -1,0 +1,28 @@
+Function: ReadypanelNode$$get_spr_destroypart_4 @ 00fcdb08
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fcdb08  stp x21,x20,[sp, #-0x20]!
+00fcdb0c  stp x19,x30,[sp, #0x10]
+00fcdb10  adrp x20,0x3573000
+00fcdb14  adrp x21,0x3383000
+00fcdb18  ldrb w8,[x20, #0xe66]
+00fcdb1c  ldr x21,[x21, #0x210]
+00fcdb20  mov x19,x0
+00fcdb24  tbnz w8,#0x0,0x00fcdb3c
+00fcdb28  adrp x0,0x3383000
+00fcdb2c  ldr x0,[x0, #0x210]
+00fcdb30  bl 0x00b0789c
+00fcdb34  mov w8,#0x1
+00fcdb38  strb w8,[x20, #0xe66]
+00fcdb3c  ldr x1,[x21]
+00fcdb40  mov x0,x19
+00fcdb44  ldp x19,x30,[sp, #0x10]
+00fcdb48  mov x2,xzr
+00fcdb4c  ldp x21,x20,[sp], #0x20
+00fcdb50  b 0x00dc06f8

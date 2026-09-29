@@ -1,0 +1,55 @@
+Function: AliothEngine.AssetLocation$$AssetBundle @ 0166747c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.AssetLocation$$.ctor @ 0166dbe0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetFileInfo$$GetAssetLocation @ 016673e0
+  <- AliothEngine.AssetInfoManager$$LoadDownloadAssetInfo @ 01668260
+  <- AliothEngine.GameUpdateService$$DownloadUpdateAssetBundles @ 0167de88
+
+--- Listing ---
+0166747c  str x24,[sp, #-0x40]!
+01667480  stp x23,x22,[sp, #0x10]
+01667484  stp x21,x20,[sp, #0x20]
+01667488  stp x19,x30,[sp, #0x30]
+0166748c  adrp x23,0x3577000
+01667490  adrp x24,0x3347000
+01667494  ldrb w8,[x23, #0x952]
+01667498  ldr x24,[x24, #0xc28]
+0166749c  mov w19,w3
+016674a0  mov x20,x2
+016674a4  mov x21,x1
+016674a8  mov x22,x0
+016674ac  tbnz w8,#0x0,0x016674d0
+016674b0  adrp x0,0x3347000
+016674b4  ldr x0,[x0, #0xc28]
+016674b8  bl 0x00b0789c
+016674bc  adrp x0,0x332c000
+016674c0  ldr x0,[x0, #0x2c0]
+016674c4  bl 0x00b0789c
+016674c8  mov w8,#0x1
+016674cc  strb w8,[x23, #0x952]
+016674d0  ldr x0,[x24]
+016674d4  bl 0x00b079a0
+016674d8  cbz x0,0x0166751c
+016674dc  adrp x8,0x332c000
+016674e0  ldr x8,[x8, #0x2c0]
+016674e4  mov w1,#0x1
+016674e8  mov x3,x22
+016674ec  mov x4,x21
+016674f0  ldr x2,[x8]
+016674f4  mov x5,x20
+016674f8  mov w6,w19
+016674fc  mov x23,x0
+01667500  bl 0x0166dbe0
+01667504  mov x0,x23
+01667508  ldp x19,x30,[sp, #0x30]
+0166750c  ldp x21,x20,[sp, #0x20]
+01667510  ldp x23,x22,[sp, #0x10]
+01667514  ldr x24,[sp], #0x40
+01667518  ret
+0166751c  bl 0x00b079b0

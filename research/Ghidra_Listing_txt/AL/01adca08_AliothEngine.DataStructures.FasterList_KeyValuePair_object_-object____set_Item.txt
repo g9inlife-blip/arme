@@ -1,0 +1,25 @@
+Function: AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$set_Item @ 01adca08
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01adca08  str x30,[sp, #-0x10]!
+01adca0c  ldr x8,[x0, #0x10]
+01adca10  cbz x8,0x01adca3c
+01adca14  ldr w9,[x8, #0x18]
+01adca18  cmp w9,w1
+01adca1c  b.ls 0x01adca40
+01adca20  sxtw x9,w1
+01adca24  add x0,x8,x9, LSL #0x4
+01adca28  str x2,[x0, #0x20]!
+01adca2c  str x3,[x0, #0x8]
+01adca30  mov x1,xzr
+01adca34  ldr x30,[sp], #0x10
+01adca38  b 0x00b07850
+01adca3c  bl 0x00b079b0
+01adca40  bl 0x00b079b8

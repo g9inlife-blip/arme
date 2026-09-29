@@ -1,0 +1,31 @@
+Function: Ali.<>c$$<CheckPauseLocalNotification>b__222_0 @ 00e114ec
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00e114ec  str x20,[sp, #-0x20]!
+00e114f0  stp x19,x30,[sp, #0x10]
+00e114f4  adrp x20,0x3572000
+00e114f8  ldrb w8,[x20, #0x5cb]
+00e114fc  mov x19,x1
+00e11500  tbnz w8,#0x0,0x00e11518
+00e11504  adrp x0,0x337e000
+00e11508  ldr x0,[x0, #0xf98]
+00e1150c  bl 0x00b0789c
+00e11510  mov w8,#0x1
+00e11514  strb w8,[x20, #0x5cb]
+00e11518  cbz x19,0x00e1153c
+00e1151c  adrp x8,0x337e000
+00e11520  ldr x8,[x8, #0xf98]
+00e11524  ldr x0,[x19, #0x78]
+00e11528  ldp x19,x30,[sp, #0x10]
+00e1152c  mov x2,xzr
+00e11530  ldr x1,[x8]
+00e11534  ldr x20,[sp], #0x20
+00e11538  b 0x01fd05b0
+00e1153c  bl 0x00b079b0

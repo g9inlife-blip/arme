@@ -1,0 +1,83 @@
+Function: AliothEngine.Utils.Utility$$ProjectCollision @ 0169e078
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.LayerMask$$op_Implicit @ 024e0b74
+  -> UnityEngine.RaycastHit$$get_point @ 0253a9dc
+  -> UnityEngine.Physics$$Raycast @ 025390cc
+
+--- Calls IN ---
+
+--- Listing ---
+0169e078  sub sp,sp,#0x90
+0169e07c  stp d15,d14,[sp, #0x30]
+0169e080  stp d13,d12,[sp, #0x40]
+0169e084  stp d11,d10,[sp, #0x50]
+0169e088  stp d9,d8,[sp, #0x60]
+0169e08c  str x20,[sp, #0x70]
+0169e090  stp x19,x30,[sp, #0x80]
+0169e094  adrp x20,0x3570000
+0169e098  ldrb w8,[x20, #0xf11]
+0169e09c  mov x19,x0
+0169e0a0  mov v9.16B,v5.16B
+0169e0a4  mov v8.16B,v4.16B
+0169e0a8  mov v10.16B,v3.16B
+0169e0ac  mov v11.16B,v2.16B
+0169e0b0  mov v12.16B,v1.16B
+0169e0b4  mov v13.16B,v0.16B
+0169e0b8  movi v0.2D,#0x0
+0169e0bc  stur q0,[sp, #0x1c]
+0169e0c0  stp q0,q0,[sp]
+0169e0c4  cbnz w8,0x0169e0dc
+0169e0c8  adrp x0,0x332c000
+0169e0cc  ldr x0,[x0, #0x5a8]
+0169e0d0  bl 0x00b0789c
+0169e0d4  mov w8,#0x1
+0169e0d8  strb w8,[x20, #0xf11]
+0169e0dc  adrp x8,0x332c000
+0169e0e0  ldr x8,[x8, #0x5a8]
+0169e0e4  fsub s15,s10,s13
+0169e0e8  fsub s14,s9,s11
+0169e0ec  ldr x0,[x8]
+0169e0f0  ldr w8,[x0, #0xe0]
+0169e0f4  stp s8,s9,[sp, #0x78]
+0169e0f8  fsub s8,s8,s12
+0169e0fc  cbnz w8,0x0169e104
+0169e100  bl 0x00b0798c
+0169e104  fmul s0,s15,s15
+0169e108  fmul s1,s8,s8
+0169e10c  fmul s2,s14,s14
+0169e110  fadd s0,s0,s1
+0169e114  fadd s0,s2,s0
+0169e118  and x0,x19,#0xffffffff
+0169e11c  mov x1,xzr
+0169e120  fsqrt s9,s0
+0169e124  bl 0x024e0b74
+0169e128  mov w1,w0
+0169e12c  mov x0,sp
+0169e130  mov v0.16B,v13.16B
+0169e134  mov v1.16B,v12.16B
+0169e138  mov v2.16B,v11.16B
+0169e13c  mov v3.16B,v15.16B
+0169e140  mov v4.16B,v8.16B
+0169e144  mov v5.16B,v14.16B
+0169e148  mov v6.16B,v9.16B
+0169e14c  mov x2,xzr
+0169e150  bl 0x025390cc
+0169e154  tbz w0,#0x0,0x0169e16c
+0169e158  mov x0,sp
+0169e15c  mov x1,xzr
+0169e160  bl 0x0253a9dc
+0169e164  mov v10.16B,v0.16B
+0169e168  b 0x0169e170
+0169e16c  ldp s1,s2,[sp, #0x78]
+0169e170  mov v0.16B,v10.16B
+0169e174  ldp x19,x30,[sp, #0x80]
+0169e178  ldr x20,[sp, #0x70]
+0169e17c  ldp d9,d8,[sp, #0x60]
+0169e180  ldp d11,d10,[sp, #0x50]
+0169e184  ldp d13,d12,[sp, #0x40]
+0169e188  ldp d15,d14,[sp, #0x30]
+0169e18c  add sp,sp,#0x90
+0169e190  ret

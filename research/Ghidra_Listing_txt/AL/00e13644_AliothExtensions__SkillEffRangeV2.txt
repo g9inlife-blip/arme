@@ -1,0 +1,76 @@
+Function: AliothExtensions$$SkillEffRangeV2 @ 00e13644
+
+--- Calls OUT ---
+  -> BattleCache$$GetSkillEffCache @ 00eccaac
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp421 @ 01095bec
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> BaseData$$get_id @ 00df3164
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.SkilleffDataWrap$$_m_SkillEffRangeV2 @ 013df178
+  <- AliothExtensions$$SkillEffRangeV2_noex @ 00e135a4
+
+--- Listing ---
+00e13644  str x22,[sp, #-0x30]!
+00e13648  stp x21,x20,[sp, #0x10]
+00e1364c  stp x19,x30,[sp, #0x20]
+00e13650  adrp x22,0x3572000
+00e13654  adrp x21,0x3348000
+00e13658  ldrb w8,[x22, #0x5f0]
+00e1365c  ldr x21,[x21, #0x138]
+00e13660  mov w19,w1
+00e13664  mov x20,x0
+00e13668  tbnz w8,#0x0,0x00e1368c
+00e1366c  adrp x0,0x3348000
+00e13670  ldr x0,[x0, #0x138]
+00e13674  bl 0x00b0789c
+00e13678  adrp x0,0x334e000
+00e1367c  ldr x0,[x0, #0xf08]
+00e13680  bl 0x00b0789c
+00e13684  mov w8,#0x1
+00e13688  strb w8,[x22, #0x5f0]
+00e1368c  ldr x0,[x21]
+00e13690  ldr w8,[x0, #0xe0]
+00e13694  cbnz w8,0x00e136a0
+00e13698  bl 0x00b0798c
+00e1369c  ldr x0,[x21]
+00e136a0  ldr x8,[x0, #0xb8]
+00e136a4  ldr x0,[x8, #0xc0]
+00e136a8  cbz x0,0x00e136c8
+00e136ac  and w2,w19,#0x1
+00e136b0  mov x1,x20
+00e136b4  ldp x19,x30,[sp, #0x20]
+00e136b8  ldp x21,x20,[sp, #0x10]
+00e136bc  mov x3,xzr
+00e136c0  ldr x22,[sp], #0x30
+00e136c4  b 0x01095bec
+00e136c8  adrp x21,0x334e000
+00e136cc  ldr x21,[x21, #0xf08]
+00e136d0  ldr x0,[x21]
+00e136d4  ldr w8,[x0, #0xe0]
+00e136d8  cbnz w8,0x00e136e4
+00e136dc  bl 0x00b0798c
+00e136e0  ldr x0,[x21]
+00e136e4  cbz x20,0x00e13734
+00e136e8  ldr x8,[x0, #0xb8]
+00e136ec  mov x0,x20
+00e136f0  mov x1,xzr
+00e136f4  ldr x21,[x8]
+00e136f8  bl 0x00df3164
+00e136fc  cbz x21,0x00e13734
+00e13700  mov w1,w0
+00e13704  mov x0,x21
+00e13708  mov x2,xzr
+00e1370c  bl 0x00eccaac
+00e13710  cbz x0,0x00e13734
+00e13714  tbz w19,#0x0,0x00e13720
+00e13718  ldr x0,[x0, #0x18]
+00e1371c  b 0x00e13724
+00e13720  ldr x0,[x0, #0x20]
+00e13724  ldp x19,x30,[sp, #0x20]
+00e13728  ldp x21,x20,[sp, #0x10]
+00e1372c  ldr x22,[sp], #0x30
+00e13730  ret
+00e13734  bl 0x00b079b0

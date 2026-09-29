@@ -1,0 +1,64 @@
+Function: AliothEngine.DataStructures.LockFreeQueue<object>$$.ctor @ 01d0a1e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01d0a1e4  str x22,[sp, #-0x30]!
+01d0a1e8  stp x21,x20,[sp, #0x10]
+01d0a1ec  stp x19,x30,[sp, #0x20]
+01d0a1f0  mov x20,x1
+01d0a1f4  mov x1,xzr
+01d0a1f8  mov x19,x0
+01d0a1fc  bl 0x02194104
+01d0a200  ldr x8,[x20, #0x20]
+01d0a204  ldr x8,[x8, #0xc0]
+01d0a208  ldr x0,[x8]
+01d0a20c  ldrb w8,[x0, #0x132]
+01d0a210  tbnz w8,#0x0,0x01d0a218
+01d0a214  bl 0x00b2ac40
+01d0a218  bl 0x00b079a0
+01d0a21c  cbz x0,0x01d0a2b0
+01d0a220  ldr x8,[x20, #0x20]
+01d0a224  mov x21,x0
+01d0a228  ldr x8,[x8, #0xc0]
+01d0a22c  ldr x1,[x8, #0x8]
+01d0a230  ldr x8,[x1, #0x8]
+01d0a234  blr x8
+01d0a238  mov x22,x19
+01d0a23c  str x21,[x22, #0x10]!
+01d0a240  mov x0,x22
+01d0a244  mov x1,x21
+01d0a248  bl 0x00b07850
+01d0a24c  ldr x1,[x22]
+01d0a250  mov x0,x19
+01d0a254  str x1,[x0, #0x18]!
+01d0a258  bl 0x00b07850
+01d0a25c  ldr x8,[x20, #0x20]
+01d0a260  ldr x8,[x8, #0xc0]
+01d0a264  ldr x0,[x8, #0x10]
+01d0a268  ldrb w8,[x0, #0x132]
+01d0a26c  tbnz w8,#0x0,0x01d0a274
+01d0a270  bl 0x00b2ac40
+01d0a274  bl 0x00b079a0
+01d0a278  cbz x0,0x01d0a2b0
+01d0a27c  ldr x8,[x20, #0x20]
+01d0a280  mov x21,x0
+01d0a284  ldr x8,[x8, #0xc0]
+01d0a288  ldr x1,[x8, #0x18]
+01d0a28c  ldr x8,[x1, #0x8]
+01d0a290  blr x8
+01d0a294  str x21,[x19, #0x20]!
+01d0a298  mov x0,x19
+01d0a29c  mov x1,x21
+01d0a2a0  ldp x19,x30,[sp, #0x20]
+01d0a2a4  ldp x21,x20,[sp, #0x10]
+01d0a2a8  ldr x22,[sp], #0x30
+01d0a2ac  b 0x00b07850
+01d0a2b0  bl 0x00b079b0

@@ -1,0 +1,64 @@
+Function: ResolveMorePanelMono$$.ctor @ 01045ae8
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> GUIScreenBaseMono$$.ctor @ 00f1c130
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.List<int>$$.ctor @ 01bed61c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ResolveMorePanelMonoWrap$$__CreateInstance @ 0135b90c
+
+--- Listing ---
+01045ae8  stp x21,x20,[sp, #-0x20]!
+01045aec  stp x19,x30,[sp, #0x10]
+01045af0  adrp x20,0x3574000
+01045af4  adrp x21,0x3322000
+01045af8  ldrb w8,[x20, #0x608]
+01045afc  ldr x21,[x21, #0xf78]
+01045b00  mov x19,x0
+01045b04  tbnz w8,#0x0,0x01045b34
+01045b08  adrp x0,0x3314000
+01045b0c  ldr x0,[x0, #0x2d0]
+01045b10  bl 0x00b0789c
+01045b14  adrp x0,0x3322000
+01045b18  ldr x0,[x0, #0xf78]
+01045b1c  bl 0x00b0789c
+01045b20  adrp x0,0x3378000
+01045b24  ldr x0,[x0, #0x490]
+01045b28  bl 0x00b0789c
+01045b2c  mov w8,#0x1
+01045b30  strb w8,[x20, #0x608]
+01045b34  ldr x0,[x21]
+01045b38  bl 0x00b079a0
+01045b3c  cbz x0,0x01045ba8
+01045b40  adrp x8,0x3314000
+01045b44  ldr x8,[x8, #0x2d0]
+01045b48  adrp x21,0x3378000
+01045b4c  mov x20,x0
+01045b50  ldr x1,[x8]
+01045b54  ldr x21,[x21, #0x490]
+01045b58  bl 0x01bed61c
+01045b5c  mov x0,x19
+01045b60  str x20,[x0, #0xd0]!
+01045b64  mov x1,x20
+01045b68  bl 0x00b07850
+01045b6c  mov x0,x19
+01045b70  mov x1,xzr
+01045b74  bl 0x00f1c130
+01045b78  ldr x8,[x21]
+01045b7c  ldr x8,[x8, #0xb8]
+01045b80  ldr x0,[x8, #0x78]
+01045b84  cbz x0,0x01045b9c
+01045b88  mov x1,x19
+01045b8c  ldp x19,x30,[sp, #0x10]
+01045b90  mov x2,xzr
+01045b94  ldp x21,x20,[sp], #0x20
+01045b98  b 0x01060dac
+01045b9c  ldp x19,x30,[sp, #0x10]
+01045ba0  ldp x21,x20,[sp], #0x20
+01045ba4  ret
+01045ba8  bl 0x00b079b0

@@ -1,0 +1,17 @@
+Function: AliothEngine.AssetLocation$$GetHashCode @ 0166dd80
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetLocation$$get_hash @ 0165f060
+
+--- Calls IN ---
+
+--- Listing ---
+0166dd80  str x30,[sp, #-0x10]!
+0166dd84  bl 0x0165f060
+0166dd88  cbz x0,0x0166dd9c
+0166dd8c  ldr x8,[x0]
+0166dd90  ldp x2,x1,[x8, #0x158]
+0166dd94  ldr x30,[sp], #0x10
+0166dd98  br x2
+0166dd9c  bl 0x00b079b0

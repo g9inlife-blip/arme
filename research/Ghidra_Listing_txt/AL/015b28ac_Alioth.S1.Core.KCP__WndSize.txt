@@ -1,0 +1,65 @@
+Function: Alioth.S1.Core.KCP$$WndSize @ 015b28ac
+
+--- Calls OUT ---
+  -> System.Math$$Max @ 02151068
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp772 @ 010c4f20
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1CoreKCPWrap$$_m_WndSize @ 0116e34c
+  <- Alioth.S1.Net.KCPTube$$Handshake2 @ 015b1f68
+
+--- Listing ---
+015b28ac  stp x23,x22,[sp, #-0x30]!
+015b28b0  stp x21,x20,[sp, #0x10]
+015b28b4  stp x19,x30,[sp, #0x20]
+015b28b8  adrp x22,0x3577000
+015b28bc  adrp x23,0x333d000
+015b28c0  ldrb w8,[x22, #0x113]
+015b28c4  ldr x23,[x23, #0xfc0]
+015b28c8  mov w20,w2
+015b28cc  mov w21,w1
+015b28d0  mov x19,x0
+015b28d4  tbnz w8,#0x0,0x015b28f8
+015b28d8  adrp x0,0x333d000
+015b28dc  ldr x0,[x0, #0xfc0]
+015b28e0  bl 0x00b0789c
+015b28e4  adrp x0,0x332c000
+015b28e8  ldr x0,[x0, #0x5a8]
+015b28ec  bl 0x00b0789c
+015b28f0  mov w8,#0x1
+015b28f4  strb w8,[x22, #0x113]
+015b28f8  ldr x8,[x23]
+015b28fc  ldr x8,[x8, #0xb8]
+015b2900  ldr x0,[x8, #0xe0]
+015b2904  cbz x0,0x015b2928
+015b2908  mov x1,x19
+015b290c  mov w2,w21
+015b2910  mov w3,w20
+015b2914  ldp x19,x30,[sp, #0x20]
+015b2918  ldp x21,x20,[sp, #0x10]
+015b291c  mov x4,xzr
+015b2920  ldp x23,x22,[sp], #0x30
+015b2924  b 0x010c4f20
+015b2928  adrp x8,0x332c000
+015b292c  ldr x8,[x8, #0x5a8]
+015b2930  ldr x0,[x8]
+015b2934  ldr w8,[x0, #0xe0]
+015b2938  cbnz w8,0x015b2940
+015b293c  bl 0x00b0798c
+015b2940  mov w1,#0x20
+015b2944  mov w0,w21
+015b2948  mov x2,xzr
+015b294c  bl 0x02151068
+015b2950  str w0,[x19, #0x40]
+015b2954  mov w1,#0x20
+015b2958  mov w0,w20
+015b295c  mov x2,xzr
+015b2960  bl 0x02151068
+015b2964  str w0,[x19, #0x44]
+015b2968  ldp x19,x30,[sp, #0x20]
+015b296c  ldp x21,x20,[sp, #0x10]
+015b2970  mov w0,wzr
+015b2974  ldp x23,x22,[sp], #0x30
+015b2978  ret

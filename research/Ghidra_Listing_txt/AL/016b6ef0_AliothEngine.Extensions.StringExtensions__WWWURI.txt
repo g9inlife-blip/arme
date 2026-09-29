@@ -1,0 +1,72 @@
+Function: AliothEngine.Extensions.StringExtensions$$WWWURI @ 016b6ef0
+
+--- Calls OUT ---
+  -> UnityEngine.Application$$get_platform @ 024f2b84
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$StartsWith @ 01fde68c
+
+--- Calls IN ---
+  <- AssetBundles.AssetBundleManager$$get_EditorAssetBundlesDirectory @ 01646bdc
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- AliothEngine.WWWRequest$$get_CacheUrl @ 0168c970
+  <- AliothEngine.AssetVersionManager$$get_AssetHostDomain @ 0166f9f0
+  <- AssetBundles.AssetBundleManager$$GetStreamingAssetsPath @ 0164257c
+
+--- Listing ---
+016b6ef0  str x20,[sp, #-0x20]!
+016b6ef4  stp x19,x30,[sp, #0x10]
+016b6ef8  adrp x20,0x3577000
+016b6efc  ldrb w8,[x20, #0xc14]
+016b6f00  mov x19,x0
+016b6f04  tbnz w8,#0x0,0x016b6f34
+016b6f08  adrp x0,0x3376000
+016b6f0c  ldr x0,[x0, #0x170]
+016b6f10  bl 0x00b0789c
+016b6f14  adrp x0,0x3368000
+016b6f18  ldr x0,[x0, #0x938]
+016b6f1c  bl 0x00b0789c
+016b6f20  adrp x0,0x335a000
+016b6f24  ldr x0,[x0, #0xc50]
+016b6f28  bl 0x00b0789c
+016b6f2c  mov w8,#0x1
+016b6f30  strb w8,[x20, #0xc14]
+016b6f34  mov x0,xzr
+016b6f38  bl 0x024f2b84
+016b6f3c  adrp x8,0x3376000
+016b6f40  ldr x8,[x8, #0x170]
+016b6f44  cbz w0,0x016b6f84
+016b6f48  cmp w0,#0x2
+016b6f4c  b.ne 0x016b6f60
+016b6f50  adrp x8,0x335a000
+016b6f54  ldr x8,[x8, #0xc50]
+016b6f58  cbnz x19,0x016b6f88
+016b6f5c  b 0x016b6fc8
+016b6f60  adrp x9,0x3368000
+016b6f64  ldr x9,[x9, #0x938]
+016b6f68  adrp x10,0x335a000
+016b6f6c  ldr x10,[x10, #0xc50]
+016b6f70  sub w11,w0,#0x7
+016b6f74  cmp w11,#0x4
+016b6f78  csel x8,x9,x8,eq
+016b6f7c  cmp w11,#0x0
+016b6f80  csel x8,x10,x8,eq
+016b6f84  cbz x19,0x016b6fc8
+016b6f88  ldr x20,[x8]
+016b6f8c  mov x0,x19
+016b6f90  mov x2,xzr
+016b6f94  mov x1,x20
+016b6f98  bl 0x01fde68c
+016b6f9c  tbz w0,#0x0,0x016b6fb0
+016b6fa0  mov x0,x19
+016b6fa4  ldp x19,x30,[sp, #0x10]
+016b6fa8  ldr x20,[sp], #0x20
+016b6fac  ret
+016b6fb0  mov x1,x19
+016b6fb4  ldp x19,x30,[sp, #0x10]
+016b6fb8  mov x0,x20
+016b6fbc  mov x2,xzr
+016b6fc0  ldr x20,[sp], #0x20
+016b6fc4  b 0x01fd2850
+016b6fc8  bl 0x00b079b0

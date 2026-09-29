@@ -1,0 +1,50 @@
+Function: AliothEngine.Utils.Utility$$GetGUIRect @ 0169fc4c
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> UnityEngine.Screen$$get_height @ 024d2684
+
+--- Calls IN ---
+
+--- Listing ---
+0169fc4c  sub sp,sp,#0x50
+0169fc50  stp d11,d10,[sp, #0x10]
+0169fc54  stp d9,d8,[sp, #0x20]
+0169fc58  stp x21,x20,[sp, #0x30]
+0169fc5c  stp x19,x30,[sp, #0x40]
+0169fc60  mov x0,xzr
+0169fc64  mov v8.16B,v3.16B
+0169fc68  mov v9.16B,v2.16B
+0169fc6c  mov v10.16B,v1.16B
+0169fc70  mov v11.16B,v0.16B
+0169fc74  bl 0x024d265c
+0169fc78  mov w19,w0
+0169fc7c  mov x0,xzr
+0169fc80  bl 0x024d2684
+0169fc84  mov w20,w0
+0169fc88  mov x0,xzr
+0169fc8c  bl 0x024d265c
+0169fc90  mov w21,w0
+0169fc94  mov x0,xzr
+0169fc98  bl 0x024d2684
+0169fc9c  scvtf s0,w19
+0169fca0  scvtf s1,w20
+0169fca4  scvtf s2,w21
+0169fca8  scvtf s3,w0
+0169fcac  fmul s0,s0,s11
+0169fcb0  fmul s1,s1,s10
+0169fcb4  fmul s2,s2,s9
+0169fcb8  fmul s3,s3,s8
+0169fcbc  mov x0,sp
+0169fcc0  mov x1,xzr
+0169fcc4  stp xzr,xzr,[sp]
+0169fcc8  bl 0x024daef0
+0169fccc  ldp s0,s1,[sp]
+0169fcd0  ldp s2,s3,[sp, #0x8]
+0169fcd4  ldp x19,x30,[sp, #0x40]
+0169fcd8  ldp x21,x20,[sp, #0x30]
+0169fcdc  ldp d9,d8,[sp, #0x20]
+0169fce0  ldp d11,d10,[sp, #0x10]
+0169fce4  add sp,sp,#0x50
+0169fce8  ret

@@ -1,0 +1,142 @@
+Function: Ali$$Notify @ 00e039c4
+
+--- Calls OUT ---
+  -> NotifyEvent$$Notify @ 00e28084
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp392 @ 010923c0
+  -> System.Collections.Generic.Dictionary<object,-object>$$ContainsKey @ 0196e6d8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Item @ 0196e450
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- RoleNews$$ShieldChange @ 00fe2898
+  <- BattleCenter$$HideUICamera @ 00ed3358
+  <- GameUpdatePanelMono.<>c$$<GameStart>b__30_0 @ 010403c8
+  <- Main.<>c$$<Start>b__1_0 @ 00e39f24
+  <- HighLightShowMono$$GuideClick @ 01003f30
+  <- AliothEngine.GUIScreenManager$$_LoadScreen @ 01673958
+  <- YPCShareSDK$$OnBindCannel @ 00e43924
+  <- TerrainNews$$UpdateTerrain @ 016cbeb8
+  <- YPCShareSDK$$FirebaseEvent @ 00e42968
+  <- DownHeroPartMono$$OnClickHero @ 00f31e74
+  <- SDKHandler_None$$OnBind @ 00de57d0
+  <- Ali.<>c$$<Charge>b__268_0 @ 00e1177c
+  <- GlobalUIManager$$OnPurchaseProductFailed @ 00f1f1c0
+  <- OpeningCutScene$$Start @ 00e3a300
+  <- PartNews$$AttackPart @ 013212dc
+  <- ShopNewPanelMono$$OnGetCharge @ 0102a618
+  <- DataCenter$$UpdateHeroInfo @ 016e4ba4
+  <- DataCenter$$ProccessRequestRes @ 016e203c
+  <- BaseMono$$FeedBackTips @ 00e20b94
+  <- HighLightShowMono$$OnDestroy @ 010040dc
+  <- DataCenter$$Merge<long,-object> @ 017708c4
+  <- Ali$$OpenGuide @ 00e0e778
+  <- UnityEngine.UI.LoopScrollSendIndexSource$$ProvideData @ 015bcaf0
+  <- QuickSDKListener_S1$$onInitSuccess @ 00db7d74
+  <- PositionTargetManager$$DebugShowPTW @ 00dcbe08
+  <- GlobalUIManager$$CheckAssets @ 00f1f518
+  <- DataCenter$$Merge<int,-object> @ 017704a0
+  <- Ali$$TipsTextWithCustomText @ 00e06d40
+  <- SetGameNamePanelMono$$ClickDoNameChange @ 00f95e98
+  <- Ali$$TipsText @ 00e04544
+  <- LoginManager$$ShowGameLoginUI @ 00dd6d20
+  <- RoleNews$$ChangeBody @ 00fed94c
+  <- SetGameNamePanelMono$$OnNameChangeBack @ 00f9616c
+  <- DataCenter$$ConfirmCallHero @ 016e61cc
+  <- AliothEngine.GUIScreenManager.<WaitLoading>d__62$$MoveNext @ 0167bfc4
+  <- Ali$$CheckGameNeedUpdate @ 00e102b0
+  <- LoginManager$$SaveLoginToken @ 00dd64a0
+  <- LoginManager$$HideGameLoginUI @ 00dd6b44
+  <- SDKHandler_QuickSDK$$OnResponseCreateQuickSDKPayOrder @ 00de73a8
+  <- SDKManager$$Charge @ 00dec4f0
+  <- AliothEngine.IStoreManager$$HandleProductListLoaded @ 01658e20
+  <- OpeningCutScene$$PlayAniDialogEnd @ 00e3aa2c
+  <- Gaa.GaaIapResultListener$$HandleError @ 015a6120
+  <- DataCenter$$Merge<object,-object> @ 01770ce4
+  <- YPCShareSDK$$OnBindError @ 00e43ae8
+  <- UnityEngine.UI.LoopScrollArraySource<object>$$ProvideData @ 01d0cb60
+  <- XLua.CSObjectWrap.AliWrap$$_m_Notify @ 01191734
+  <- BattleCache$$set_isActing @ 00eccf38
+  <- BaseSkillEff$$ExecuteAll @ 015e4118
+  <- YPCShareSDK$$OnBindSucess @ 00e43760
+  <- AICommander$$AIEnd @ 00ec2294
+  <- OpeningCutScene$$CutSceneEnd @ 00e3a678
+  <- Slate.ActionClips.PlayTalk$$OnEnter @ 0161a37c
+  <- BaseMono$$Notify @ 00e1d098
+  <- EntranceScript.<Start>d__1$$MoveNext @ 00ebc84c
+  <- AliothEngine.GUIScreenManager.<>c__DisplayClass61_0$$<_LoadScreen>b__0 @ 0167bd10
+  <- Ali$$PurchaseProduct @ 00e0d350
+  <- SDKHandler_Steam$$OnResponseCreateSteamPayOrder @ 00de9ad4
+  <- BattleManager$$BattleEnd @ 01182178
+  <- BattleCenter$$ShowUICamera @ 00ed35fc
+  <- Ali$$DataProccessCallBack @ 00e03dd4
+  <- Ali.<>c__DisplayClass268_0$$<Charge>b__1 @ 00e11efc
+  <- RoleNews$$HPChange @ 00fe237c
+
+--- Listing ---
+00e039c4  stp x23,x22,[sp, #-0x30]!
+00e039c8  stp x21,x20,[sp, #0x10]
+00e039cc  stp x19,x30,[sp, #0x20]
+00e039d0  adrp x23,0x3572000
+00e039d4  adrp x22,0x335f000
+00e039d8  ldrb w8,[x23, #0x55d]
+00e039dc  ldr x22,[x22, #0x20]
+00e039e0  mov x19,x2
+00e039e4  mov x20,x1
+00e039e8  mov x21,x0
+00e039ec  tbnz w8,#0x0,0x00e03a1c
+00e039f0  adrp x0,0x335f000
+00e039f4  ldr x0,[x0, #0x20]
+00e039f8  bl 0x00b0789c
+00e039fc  adrp x0,0x3359000
+00e03a00  ldr x0,[x0, #0xaa8]
+00e03a04  bl 0x00b0789c
+00e03a08  adrp x0,0x337f000
+00e03a0c  ldr x0,[x0, #0xc38]
+00e03a10  bl 0x00b0789c
+00e03a14  mov w8,#0x1
+00e03a18  strb w8,[x23, #0x55d]
+00e03a1c  ldr x0,[x22]
+00e03a20  ldr w8,[x0, #0xe0]
+00e03a24  cbnz w8,0x00e03a30
+00e03a28  bl 0x00b0798c
+00e03a2c  ldr x0,[x22]
+00e03a30  ldr x8,[x0, #0xb8]
+00e03a34  ldr x0,[x8, #0x290]
+00e03a38  cbz x0,0x00e03a5c
+00e03a3c  mov x1,x21
+00e03a40  mov x2,x20
+00e03a44  mov x3,x19
+00e03a48  ldp x19,x30,[sp, #0x20]
+00e03a4c  ldp x21,x20,[sp, #0x10]
+00e03a50  mov x4,xzr
+00e03a54  ldp x23,x22,[sp], #0x30
+00e03a58  b 0x010923c0
+00e03a5c  ldr x0,[x21, #0x110]
+00e03a60  cbz x0,0x00e03ac4
+00e03a64  adrp x8,0x3359000
+00e03a68  ldr x8,[x8, #0xaa8]
+00e03a6c  mov x1,x20
+00e03a70  ldr x2,[x8]
+00e03a74  bl 0x0196e6d8
+00e03a78  tbz w0,#0x0,0x00e03ab4
+00e03a7c  ldr x0,[x21, #0x110]
+00e03a80  cbz x0,0x00e03ac4
+00e03a84  adrp x8,0x337f000
+00e03a88  ldr x8,[x8, #0xc38]
+00e03a8c  mov x1,x20
+00e03a90  ldr x2,[x8]
+00e03a94  bl 0x0196e450
+00e03a98  cbz x0,0x00e03ac4
+00e03a9c  mov x1,x19
+00e03aa0  ldp x19,x30,[sp, #0x20]
+00e03aa4  ldp x21,x20,[sp, #0x10]
+00e03aa8  mov x2,xzr
+00e03aac  ldp x23,x22,[sp], #0x30
+00e03ab0  b 0x00e28084
+00e03ab4  ldp x19,x30,[sp, #0x20]
+00e03ab8  ldp x21,x20,[sp, #0x10]
+00e03abc  ldp x23,x22,[sp], #0x30
+00e03ac0  ret
+00e03ac4  bl 0x00b079b0

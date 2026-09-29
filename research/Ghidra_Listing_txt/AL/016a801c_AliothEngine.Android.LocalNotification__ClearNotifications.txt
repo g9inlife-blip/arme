@@ -1,0 +1,79 @@
+Function: AliothEngine.Android.LocalNotification$$ClearNotifications @ 016a801c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.AndroidJavaClass$$.ctor @ 024aa2ec
+  -> UnityEngine.AndroidJavaObject$$CallStatic @ 024acfe8
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.NotificationManager_Android$$CancelAllNotifications @ 01657e48
+
+--- Listing ---
+016a801c  stp x21,x20,[sp, #-0x20]!
+016a8020  stp x19,x30,[sp, #0x10]
+016a8024  adrp x20,0x3577000
+016a8028  adrp x19,0x3373000
+016a802c  ldrb w8,[x20, #0xb96]
+016a8030  ldr x19,[x19, #0x508]
+016a8034  tbnz w8,#0x0,0x016a8070
+016a8038  adrp x0,0x3364000
+016a803c  ldr x0,[x0, #0x98]
+016a8040  bl 0x00b0789c
+016a8044  adrp x0,0x335b000
+016a8048  ldr x0,[x0, #0x650]
+016a804c  bl 0x00b0789c
+016a8050  adrp x0,0x3373000
+016a8054  ldr x0,[x0, #0x508]
+016a8058  bl 0x00b0789c
+016a805c  adrp x0,0x335b000
+016a8060  ldr x0,[x0, #0x498]
+016a8064  bl 0x00b0789c
+016a8068  mov w8,#0x1
+016a806c  strb w8,[x20, #0xb96]
+016a8070  ldr x0,[x19]
+016a8074  adrp x21,0x3364000
+016a8078  ldr w8,[x0, #0xe0]
+016a807c  ldr x21,[x21, #0x98]
+016a8080  cbnz w8,0x016a808c
+016a8084  bl 0x00b0798c
+016a8088  ldr x0,[x19]
+016a808c  ldr x8,[x0, #0xb8]
+016a8090  ldr x0,[x21]
+016a8094  ldr x20,[x8]
+016a8098  bl 0x00b079a0
+016a809c  cbz x0,0x016a8118
+016a80a0  adrp x21,0x335b000
+016a80a4  ldr x21,[x21, #0x650]
+016a80a8  mov x1,x20
+016a80ac  mov x2,xzr
+016a80b0  mov x19,x0
+016a80b4  bl 0x024aa2ec
+016a80b8  ldr x20,[x21]
+016a80bc  ldr x8,[x20, #0x38]
+016a80c0  ldr x0,[x8]
+016a80c4  ldrb w8,[x0, #0x132]
+016a80c8  tbnz w8,#0x0,0x016a80d0
+016a80cc  bl 0x00b2ac40
+016a80d0  ldr w8,[x0, #0xe0]
+016a80d4  cbnz w8,0x016a80dc
+016a80d8  bl 0x00b0798c
+016a80dc  ldr x8,[x20, #0x38]
+016a80e0  adrp x20,0x335b000
+016a80e4  ldr x0,[x8]
+016a80e8  ldrb w8,[x0, #0x132]
+016a80ec  ldr x20,[x20, #0x498]
+016a80f0  tbnz w8,#0x0,0x016a80f8
+016a80f4  bl 0x00b2ac40
+016a80f8  ldr x8,[x0, #0xb8]
+016a80fc  ldr x1,[x20]
+016a8100  mov x0,x19
+016a8104  ldp x19,x30,[sp, #0x10]
+016a8108  ldr x2,[x8]
+016a810c  mov x3,xzr
+016a8110  ldp x21,x20,[sp], #0x20
+016a8114  b 0x024acfe8
+016a8118  bl 0x00b079b0

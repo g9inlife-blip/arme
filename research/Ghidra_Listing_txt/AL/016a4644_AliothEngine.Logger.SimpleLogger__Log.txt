@@ -1,0 +1,80 @@
+Function: AliothEngine.Logger.SimpleLogger$$Log @ 016a4644
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.Logger.Console$$SystemLog @ 016a41f4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.Extensions.StringExtensions$$FastConcat<object> @ 017d3548
+
+--- Calls IN ---
+
+--- Listing ---
+016a4644  str x22,[sp, #-0x30]!
+016a4648  stp x21,x20,[sp, #0x10]
+016a464c  stp x19,x30,[sp, #0x20]
+016a4650  adrp x22,0x3577000
+016a4654  ldrb w8,[x22, #0xb86]
+016a4658  mov w21,w3
+016a465c  mov x20,x2
+016a4660  mov x19,x1
+016a4664  tbnz w8,#0x0,0x016a46a0
+016a4668  adrp x0,0x3319000
+016a466c  ldr x0,[x0, #0x10]
+016a4670  bl 0x00b0789c
+016a4674  adrp x0,0x3312000
+016a4678  ldr x0,[x0, #0x9a8]
+016a467c  bl 0x00b0789c
+016a4680  adrp x0,0x335b000
+016a4684  ldr x0,[x0, #0x4b0]
+016a4688  bl 0x00b0789c
+016a468c  adrp x0,0x3362000
+016a4690  ldr x0,[x0, #0x890]
+016a4694  bl 0x00b0789c
+016a4698  mov w8,#0x1
+016a469c  strb w8,[x22, #0xb86]
+016a46a0  cmp w21,#0x3
+016a46a4  b.hi 0x016a4718
+016a46a8  adrp x10,0x26dd000
+016a46ac  adrp x8,0x335b000
+016a46b0  adrp x22,0x3312000
+016a46b4  mov w9,w21
+016a46b8  add x10,x10,#0x79
+016a46bc  adrp x21,0x3319000
+016a46c0  ldr x8,[x8, #0x4b0]
+016a46c4  ldr x22,[x22, #0x9a8]
+016a46c8  adr x11,0x16a46dc
+016a46cc  ldrb w12,[x10, x9, LSL ]
+016a46d0  add x11,x11,x12, LSL #0x2
+016a46d4  ldr x21,[x21, #0x10]
+016a46d8  br x11
+016a46dc  cbz x20,0x016a4704
+016a46e0  ldr x0,[x8]
+016a46e4  ldr w8,[x0, #0xe0]
+016a46e8  cbnz w8,0x016a46f0
+016a46ec  bl 0x00b0798c
+016a46f0  ldr x2,[x22]
+016a46f4  mov x0,x19
+016a46f8  mov x1,x20
+016a46fc  bl 0x017d3548
+016a4700  mov x19,x0
+016a4704  ldr x0,[x21]
+016a4708  ldr w8,[x0, #0xe0]
+016a470c  cbnz w8,0x016a4744
+016a4710  bl 0x00b0798c
+016a4714  b 0x016a4744
+016a4718  ldp x19,x30,[sp, #0x20]
+016a471c  ldp x21,x20,[sp, #0x10]
+016a4720  ldr x22,[sp], #0x30
+016a4724  ret
+016a4728  ldr x0,[x21]
+016a472c  adrp x19,0x3362000
+016a4730  ldr w8,[x0, #0xe0]
+016a4734  ldr x19,[x19, #0x890]
+016a4738  cbnz w8,0x016a4740
+016a473c  bl 0x00b0798c
+016a4740  ldr x19,[x19]
+016a4744  mov x0,x19
+016a4748  ldp x19,x30,[sp, #0x20]
+016a474c  ldp x21,x20,[sp, #0x10]
+016a4750  ldr x22,[sp], #0x30
+016a4754  b 0x016a41f4

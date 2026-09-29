@@ -1,0 +1,44 @@
+Function: AliothEngine.WeakEvents.WeakEvent$$InvokeDelegate @ 016978c8
+
+--- Calls OUT ---
+  -> FUN_00b07c6c @ 00b07c6c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.WeakEvents.WeakActionBase$$Invoke_Internal @ 01697144
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016978c8  str x20,[sp, #-0x20]!
+016978cc  stp x19,x30,[sp, #0x10]
+016978d0  adrp x20,0x3577000
+016978d4  ldrb w8,[x20, #0xb12]
+016978d8  mov x19,x1
+016978dc  tbnz w8,#0x0,0x016978f4
+016978e0  adrp x0,0x3366000
+016978e4  ldr x0,[x0, #0x38]
+016978e8  bl 0x00b0789c
+016978ec  mov w8,#0x1
+016978f0  strb w8,[x20, #0xb12]
+016978f4  cbz x19,0x01697948
+016978f8  adrp x9,0x3366000
+016978fc  ldr x9,[x9, #0x38]
+01697900  ldr x8,[x19]
+01697904  ldr x1,[x9]
+01697908  ldrb w10,[x8, #0x12c]
+0169790c  ldrb w9,[x1, #0x12c]
+01697910  cmp w10,w9
+01697914  b.cc 0x01697940
+01697918  ldr x8,[x8, #0xc8]
+0169791c  add x8,x8,x9, LSL #0x3
+01697920  ldur x8,[x8, #-0x8]
+01697924  cmp x8,x1
+01697928  b.ne 0x01697940
+0169792c  mov x0,x19
+01697930  ldp x19,x30,[sp, #0x10]
+01697934  mov x1,xzr
+01697938  ldr x20,[sp], #0x20
+0169793c  b 0x01697144
+01697940  mov x0,x19
+01697944  bl 0x00b07c6c
+01697948  bl 0x00b079b0

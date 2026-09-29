@@ -1,0 +1,53 @@
+Function: AliothExtensions$$Gray @ 00e12248
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fd0378
+
+--- Calls IN ---
+  <- StiMarkDevPanelMono$$RefreshEquipDevItem @ 00edfc50
+  <- TipsEquipMono$$ShowTips @ 00f0ac6c
+  <- AliothExtensions$$Gray_str @ 00e122dc
+  <- TipsWeaponMono$$ShowTips @ 00f10094
+  <- EquipDevMono$$RefreshEquipDevItem @ 00ed9530
+
+--- Listing ---
+00e12248  stp x21,x20,[sp, #-0x20]!
+00e1224c  stp x19,x30,[sp, #0x10]
+00e12250  adrp x21,0x3572000
+00e12254  adrp x20,0x3348000
+00e12258  ldrb w8,[x21, #0x5df]
+00e1225c  ldr x20,[x20, #0x138]
+00e12260  mov x19,x0
+00e12264  tbnz w8,#0x0,0x00e12288
+00e12268  adrp x0,0x3348000
+00e1226c  ldr x0,[x0, #0x138]
+00e12270  bl 0x00b0789c
+00e12274  adrp x0,0x336b000
+00e12278  ldr x0,[x0, #0x9f0]
+00e1227c  bl 0x00b0789c
+00e12280  mov w8,#0x1
+00e12284  strb w8,[x21, #0x5df]
+00e12288  ldr x0,[x20]
+00e1228c  ldr w8,[x0, #0xe0]
+00e12290  cbnz w8,0x00e1229c
+00e12294  bl 0x00b0798c
+00e12298  ldr x0,[x20]
+00e1229c  ldr x8,[x0, #0xb8]
+00e122a0  ldr x0,[x8, #0x38]
+00e122a4  cbz x0,0x00e122bc
+00e122a8  mov x1,x19
+00e122ac  ldp x19,x30,[sp, #0x10]
+00e122b0  mov x2,xzr
+00e122b4  ldp x21,x20,[sp], #0x20
+00e122b8  b 0x01061abc
+00e122bc  adrp x8,0x336b000
+00e122c0  ldr x8,[x8, #0x9f0]
+00e122c4  mov x1,x19
+00e122c8  ldp x19,x30,[sp, #0x10]
+00e122cc  mov x2,xzr
+00e122d0  ldr x0,[x8]
+00e122d4  ldp x21,x20,[sp], #0x20
+00e122d8  b 0x01fd0378

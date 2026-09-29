@@ -1,0 +1,28 @@
+Function: AliothEngine.DataStructures.FasterListEnumerator<KeyValuePair<object,-object>>$$System.Collections.IEnumerator.get_Current @ 01adb2e4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977c88 @ 00977c88
+
+--- Listing ---
+01adb2e4  sub sp,sp,#0x20
+01adb2e8  str x30,[sp, #0x10]
+01adb2ec  ldr q0,[x0, #0x10]
+01adb2f0  str q0,[sp]
+01adb2f4  ldr x0,[x1, #0x20]
+01adb2f8  ldrb w8,[x0, #0x132]
+01adb2fc  tbnz w8,#0x0,0x01adb304
+01adb300  bl 0x00b2ac40
+01adb304  ldr x8,[x0, #0xc0]
+01adb308  ldr x0,[x8]
+01adb30c  ldrb w8,[x0, #0x132]
+01adb310  tbnz w8,#0x0,0x01adb318
+01adb314  bl 0x00b2ac40
+01adb318  mov x1,sp
+01adb31c  bl 0x00b07994
+01adb320  ldr x30,[sp, #0x10]
+01adb324  add sp,sp,#0x20
+01adb328  ret

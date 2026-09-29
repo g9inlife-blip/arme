@@ -1,0 +1,35 @@
+Function: AliothEngine.AssetHolderAutoRelease$$OnDestroy @ 01664100
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetHolder$$Release @ 01662f60
+
+--- Calls IN ---
+
+--- Listing ---
+01664100  str x20,[sp, #-0x20]!
+01664104  stp x19,x30,[sp, #0x10]
+01664108  adrp x20,0x3577000
+0166410c  ldrb w8,[x20, #0x8df]
+01664110  mov x19,x0
+01664114  tbnz w8,#0x0,0x0166412c
+01664118  adrp x0,0x3332000
+0166411c  ldr x0,[x0, #0x628]
+01664120  bl 0x00b0789c
+01664124  mov w8,#0x1
+01664128  strb w8,[x20, #0x8df]
+0166412c  ldr x0,[x19, #0x18]!
+01664130  cbz x0,0x0166415c
+01664134  adrp x8,0x3332000
+01664138  ldr x8,[x8, #0x628]
+0166413c  ldr x1,[x8]
+01664140  bl 0x01662f60
+01664144  str xzr,[x19]
+01664148  mov x0,x19
+0166414c  ldp x19,x30,[sp, #0x10]
+01664150  mov x1,xzr
+01664154  ldr x20,[sp], #0x20
+01664158  b 0x00b07850
+0166415c  bl 0x00b079b0

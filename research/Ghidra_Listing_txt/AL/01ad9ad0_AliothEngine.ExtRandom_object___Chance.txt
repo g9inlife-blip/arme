@@ -1,0 +1,17 @@
+Function: AliothEngine.ExtRandom<object>$$Chance @ 01ad9ad0
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+
+--- Calls IN ---
+
+--- Listing ---
+01ad9ad0  stp x19,x30,[sp, #-0x10]!
+01ad9ad4  mov w19,w0
+01ad9ad8  mov w0,wzr
+01ad9adc  mov x2,xzr
+01ad9ae0  bl 0x024d63b0
+01ad9ae4  cmp w0,w19
+01ad9ae8  cset w0,lt
+01ad9aec  ldp x19,x30,[sp], #0x10
+01ad9af0  ret

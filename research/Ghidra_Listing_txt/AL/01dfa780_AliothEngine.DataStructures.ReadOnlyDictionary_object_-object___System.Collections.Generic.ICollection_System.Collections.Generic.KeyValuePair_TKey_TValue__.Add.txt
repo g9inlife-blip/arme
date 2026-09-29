@@ -1,0 +1,29 @@
+Function: AliothEngine.DataStructures.ReadOnlyDictionary<object,-object>$$System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Add @ 01dfa780
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.NotSupportedException$$.ctor @ 021525a8
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+
+--- Calls IN ---
+  <- FUN_0099fb00 @ 0099fb00
+
+--- Listing ---
+01dfa780  stp x19,x30,[sp, #-0x10]!
+01dfa784  adrp x0,0x335a000
+01dfa788  ldr x0,[x0, #0xb88]
+01dfa78c  bl 0x00b078a0
+01dfa790  bl 0x00b079a0
+01dfa794  mov x19,x0
+01dfa798  bl 0x008d74f8
+01dfa79c  mov x0,x19
+01dfa7a0  mov x1,xzr
+01dfa7a4  bl 0x021525a8
+01dfa7a8  adrp x0,0x333c000
+01dfa7ac  ldr x0,[x0, #0x630]
+01dfa7b0  bl 0x00b078a0
+01dfa7b4  mov x1,x0
+01dfa7b8  mov x0,x19
+01dfa7bc  bl 0x00b07978

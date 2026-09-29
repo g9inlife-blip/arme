@@ -1,0 +1,84 @@
+Function: Alioth.S1.Net.Request$$.ctor @ 015b3c1c
+
+--- Calls OUT ---
+  -> Alioth.S1.Net.Request$$set_FinishAt @ 015b4e10
+  -> Alioth.S1.Net.Request$$set_CreateAt @ 015b4cb0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> Alioth.S1.Net.Request$$set_ID @ 015b4ae4
+  -> Alioth.S1.Net.Request$$set_Req @ 015b4e8c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter$$Send @ 015b3764
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$__CreateInstance @ 011716a0
+
+--- Listing ---
+015b3c1c  str x22,[sp, #-0x30]!
+015b3c20  stp x21,x20,[sp, #0x10]
+015b3c24  stp x19,x30,[sp, #0x20]
+015b3c28  adrp x22,0x3577000
+015b3c2c  adrp x21,0x336f000
+015b3c30  ldrb w8,[x22, #0xcc]
+015b3c34  ldr x21,[x21, #0xdc8]
+015b3c38  mov x20,x1
+015b3c3c  mov x19,x0
+015b3c40  tbnz w8,#0x0,0x015b3c64
+015b3c44  adrp x0,0x336f000
+015b3c48  ldr x0,[x0, #0xdc8]
+015b3c4c  bl 0x00b0789c
+015b3c50  adrp x0,0x3374000
+015b3c54  ldr x0,[x0, #0x470]
+015b3c58  bl 0x00b0789c
+015b3c5c  mov w8,#0x1
+015b3c60  strb w8,[x22, #0xcc]
+015b3c64  mov x0,x19
+015b3c68  mov x1,xzr
+015b3c6c  bl 0x02194104
+015b3c70  ldr x0,[x21]
+015b3c74  ldr w8,[x0, #0xe0]
+015b3c78  cbnz w8,0x015b3c80
+015b3c7c  bl 0x00b0798c
+015b3c80  adrp x22,0x3374000
+015b3c84  ldr x22,[x22, #0x470]
+015b3c88  mov x0,xzr
+015b3c8c  bl 0x02133d48
+015b3c90  mov x1,x0
+015b3c94  mov x0,x19
+015b3c98  bl 0x015b4cb0
+015b3c9c  ldr x8,[x21]
+015b3ca0  mov x0,x19
+015b3ca4  ldr x8,[x8, #0xb8]
+015b3ca8  ldr x1,[x8, #0x10]
+015b3cac  bl 0x015b4e10
+015b3cb0  cbz x20,0x015b3ce8
+015b3cb4  ldr w1,[x20, #0x10]
+015b3cb8  mov x0,x19
+015b3cbc  bl 0x015b4ae4
+015b3cc0  mov x0,x19
+015b3cc4  mov x1,x20
+015b3cc8  bl 0x015b4e8c
+015b3ccc  ldr x8,[x22]
+015b3cd0  ldr x8,[x8, #0xb8]
+015b3cd4  ldr x0,[x8, #0x80]
+015b3cd8  cbz x0,0x015b3d14
+015b3cdc  mov x1,x19
+015b3ce0  mov x2,x20
+015b3ce4  b 0x015b3d00
+015b3ce8  ldr x8,[x22]
+015b3cec  ldr x8,[x8, #0xb8]
+015b3cf0  ldr x0,[x8, #0x80]
+015b3cf4  cbz x0,0x015b3d14
+015b3cf8  mov x1,x19
+015b3cfc  mov x2,xzr
+015b3d00  ldp x19,x30,[sp, #0x20]
+015b3d04  ldp x21,x20,[sp, #0x10]
+015b3d08  mov x3,xzr
+015b3d0c  ldr x22,[sp], #0x30
+015b3d10  b 0x0106125c
+015b3d14  ldp x19,x30,[sp, #0x20]
+015b3d18  ldp x21,x20,[sp, #0x10]
+015b3d1c  ldr x22,[sp], #0x30
+015b3d20  ret

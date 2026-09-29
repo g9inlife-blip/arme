@@ -1,0 +1,56 @@
+Function: AliothEngine.GUIScreenManager$$ResourceLoadSyncIE @ 01677b6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+  -> AliothEngine.GUIScreenManager$$ResourceLoadSync @ 01677c18
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGUIScreenManagerWrap$$_m_ResourceLoadSyncIE @ 0114adf4
+
+--- Listing ---
+01677b6c  stp x23,x22,[sp, #-0x30]!
+01677b70  stp x21,x20,[sp, #0x10]
+01677b74  stp x19,x30,[sp, #0x20]
+01677b78  adrp x23,0x3577000
+01677b7c  adrp x22,0x337b000
+01677b80  ldrb w8,[x23, #0x9d2]
+01677b84  ldr x22,[x22, #0xb98]
+01677b88  mov x20,x2
+01677b8c  mov x21,x1
+01677b90  mov x19,x0
+01677b94  tbnz w8,#0x0,0x01677bac
+01677b98  adrp x0,0x337b000
+01677b9c  ldr x0,[x0, #0xb98]
+01677ba0  bl 0x00b0789c
+01677ba4  mov w8,#0x1
+01677ba8  strb w8,[x23, #0x9d2]
+01677bac  ldr x0,[x22]
+01677bb0  ldr w8,[x0, #0xe0]
+01677bb4  cbnz w8,0x01677bc0
+01677bb8  bl 0x00b0798c
+01677bbc  ldr x0,[x22]
+01677bc0  ldr x8,[x0, #0xb8]
+01677bc4  ldr x0,[x8, #0x1a8]
+01677bc8  cbz x0,0x01677bec
+01677bcc  mov x1,x19
+01677bd0  mov x2,x21
+01677bd4  mov x3,x20
+01677bd8  ldp x19,x30,[sp, #0x20]
+01677bdc  ldp x21,x20,[sp, #0x10]
+01677be0  mov x4,xzr
+01677be4  ldp x23,x22,[sp], #0x30
+01677be8  b 0x010670b0
+01677bec  mov x0,x19
+01677bf0  mov x1,x21
+01677bf4  mov x2,x20
+01677bf8  bl 0x01677c18
+01677bfc  mov x1,x0
+01677c00  mov x0,x19
+01677c04  ldp x19,x30,[sp, #0x20]
+01677c08  ldp x21,x20,[sp, #0x10]
+01677c0c  mov x2,xzr
+01677c10  ldp x23,x22,[sp], #0x30
+01677c14  b 0x024e4070

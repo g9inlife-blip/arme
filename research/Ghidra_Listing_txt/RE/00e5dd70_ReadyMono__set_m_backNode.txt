@@ -1,0 +1,44 @@
+Function: ReadyMono$$set_m_backNode @ 00e5dd70
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- ReadyMono$$InitReady @ 00e5dec0
+
+--- Listing ---
+00e5dd70  str x22,[sp, #-0x30]!
+00e5dd74  stp x21,x20,[sp, #0x10]
+00e5dd78  stp x19,x30,[sp, #0x20]
+00e5dd7c  adrp x21,0x3572000
+00e5dd80  adrp x22,0x333c000
+00e5dd84  ldrb w8,[x21, #0x964]
+00e5dd88  ldr x22,[x22, #0x628]
+00e5dd8c  mov x19,x1
+00e5dd90  mov x20,x0
+00e5dd94  tbnz w8,#0x0,0x00e5ddac
+00e5dd98  adrp x0,0x333c000
+00e5dd9c  ldr x0,[x0, #0x628]
+00e5dda0  bl 0x00b0789c
+00e5dda4  mov w8,#0x1
+00e5dda8  strb w8,[x21, #0x964]
+00e5ddac  ldr x8,[x22]
+00e5ddb0  ldr x8,[x8, #0xb8]
+00e5ddb4  ldr x0,[x8, #0x80]
+00e5ddb8  cbz x0,0x00e5ddd8
+00e5ddbc  mov x1,x20
+00e5ddc0  mov x2,x19
+00e5ddc4  ldp x19,x30,[sp, #0x20]
+00e5ddc8  ldp x21,x20,[sp, #0x10]
+00e5ddcc  mov x3,xzr
+00e5ddd0  ldr x22,[sp], #0x30
+00e5ddd4  b 0x0106125c
+00e5ddd8  str x19,[x20, #0x138]
+00e5dddc  add x0,x20,#0x138
+00e5dde0  mov x1,x19
+00e5dde4  ldp x19,x30,[sp, #0x20]
+00e5dde8  ldp x21,x20,[sp, #0x10]
+00e5ddec  ldr x22,[sp], #0x30
+00e5ddf0  b 0x00b07850

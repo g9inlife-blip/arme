@@ -1,0 +1,44 @@
+Function: AliothEngine.AssetInfoManager$$set_EnableEditorAsset @ 01667f20
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$SetInt @ 024be4d0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp404 @ 01093d3c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineAssetInfoManagerWrap$$_s_set_EnableEditorAsset @ 0113da94
+
+--- Listing ---
+01667f20  stp x21,x20,[sp, #-0x20]!
+01667f24  stp x19,x30,[sp, #0x10]
+01667f28  adrp x20,0x3577000
+01667f2c  adrp x21,0x334f000
+01667f30  ldrb w8,[x20, #0x909]
+01667f34  ldr x21,[x21, #0xaf8]
+01667f38  mov w19,w0
+01667f3c  tbnz w8,#0x0,0x01667f60
+01667f40  adrp x0,0x334f000
+01667f44  ldr x0,[x0, #0xaf8]
+01667f48  bl 0x00b0789c
+01667f4c  adrp x0,0x3329000
+01667f50  ldr x0,[x0, #0x178]
+01667f54  bl 0x00b0789c
+01667f58  mov w8,#0x1
+01667f5c  strb w8,[x20, #0x909]
+01667f60  ldr x8,[x21]
+01667f64  ldr x8,[x8, #0xb8]
+01667f68  ldr x0,[x8, #0x18]
+01667f6c  cbz x0,0x01667f84
+01667f70  and w1,w19,#0x1
+01667f74  ldp x19,x30,[sp, #0x10]
+01667f78  mov x2,xzr
+01667f7c  ldp x21,x20,[sp], #0x20
+01667f80  b 0x01093d3c
+01667f84  adrp x8,0x3329000
+01667f88  ldr x8,[x8, #0x178]
+01667f8c  and w1,w19,#0x1
+01667f90  ldp x19,x30,[sp, #0x10]
+01667f94  mov x2,xzr
+01667f98  ldr x0,[x8]
+01667f9c  ldp x21,x20,[sp], #0x20
+01667fa0  b 0x024be4d0

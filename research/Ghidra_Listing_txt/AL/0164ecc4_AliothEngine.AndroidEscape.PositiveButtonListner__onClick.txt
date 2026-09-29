@@ -1,0 +1,124 @@
+Function: AliothEngine.AndroidEscape.PositiveButtonListner$$onClick @ 0164ecc4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> System.Int32$$ToString @ 0214dc44
+  -> AliothEngine.AndroidEscape$$set_IsExistAlert @ 0164e1b4
+  -> System.String$$Concat @ 01fd2850
+  -> UnityMainThreadDispatcher$$Enqueue @ 00dbf3c4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Debug$$Log @ 024c0104
+  -> System.Action$$.ctor @ 020d5760
+
+--- Calls IN ---
+
+--- Listing ---
+0164ecc4  sub sp,sp,#0x40
+0164ecc8  stp x23,x22,[sp, #0x10]
+0164eccc  stp x21,x20,[sp, #0x20]
+0164ecd0  stp x19,x30,[sp, #0x30]
+0164ecd4  adrp x22,0x3577000
+0164ecd8  str w2,[sp, #0xc]
+0164ecdc  adrp x21,0x3339000
+0164ece0  adrp x20,0x336b000
+0164ece4  ldrb w8,[x22, #0x7de]
+0164ece8  ldr x21,[x21, #0x540]
+0164ecec  ldr x20,[x20, #0x7d0]
+0164ecf0  mov x19,x0
+0164ecf4  tbnz w8,#0x0,0x0164ed48
+0164ecf8  adrp x0,0x3348000
+0164ecfc  ldr x0,[x0, #0xcf8]
+0164ed00  bl 0x00b0789c
+0164ed04  adrp x0,0x336b000
+0164ed08  ldr x0,[x0, #0x7d0]
+0164ed0c  bl 0x00b0789c
+0164ed10  adrp x0,0x332c000
+0164ed14  ldr x0,[x0, #0x448]
+0164ed18  bl 0x00b0789c
+0164ed1c  adrp x0,0x332e000
+0164ed20  ldr x0,[x0, #0xb00]
+0164ed24  bl 0x00b0789c
+0164ed28  adrp x0,0x3372000
+0164ed2c  ldr x0,[x0, #0x370]
+0164ed30  bl 0x00b0789c
+0164ed34  adrp x0,0x3339000
+0164ed38  ldr x0,[x0, #0x540]
+0164ed3c  bl 0x00b0789c
+0164ed40  mov w8,#0x1
+0164ed44  strb w8,[x22, #0x7de]
+0164ed48  adrp x22,0x332c000
+0164ed4c  adrp x23,0x3372000
+0164ed50  ldr x22,[x22, #0x448]
+0164ed54  ldr x23,[x23, #0x370]
+0164ed58  add x0,sp,#0xc
+0164ed5c  mov x1,xzr
+0164ed60  bl 0x0214dc44
+0164ed64  ldr x8,[x21]
+0164ed68  mov x1,x0
+0164ed6c  mov x2,xzr
+0164ed70  mov x0,x8
+0164ed74  bl 0x01fd2850
+0164ed78  ldr x8,[x20]
+0164ed7c  mov x20,x0
+0164ed80  ldr w9,[x8, #0xe0]
+0164ed84  cbnz w9,0x0164ed90
+0164ed88  mov x0,x8
+0164ed8c  bl 0x00b0798c
+0164ed90  mov x0,x20
+0164ed94  mov x1,xzr
+0164ed98  bl 0x024c0104
+0164ed9c  ldr x0,[x22]
+0164eda0  bl 0x01e0894c
+0164eda4  ldr x8,[x23]
+0164eda8  mov x20,x0
+0164edac  ldr w9,[x8, #0xe0]
+0164edb0  cbnz w9,0x0164edc0
+0164edb4  mov x0,x8
+0164edb8  bl 0x00b0798c
+0164edbc  ldr x8,[x23]
+0164edc0  ldr x9,[x8, #0xb8]
+0164edc4  ldr x21,[x9, #0x8]
+0164edc8  cbnz x21,0x0164ee2c
+0164edcc  adrp x21,0x3348000
+0164edd0  ldr w9,[x8, #0xe0]
+0164edd4  ldr x21,[x21, #0xcf8]
+0164edd8  cbnz w9,0x0164ede8
+0164eddc  mov x0,x8
+0164ede0  bl 0x00b0798c
+0164ede4  ldr x8,[x23]
+0164ede8  ldr x8,[x8, #0xb8]
+0164edec  ldr x0,[x21]
+0164edf0  ldr x22,[x8]
+0164edf4  bl 0x00b079a0
+0164edf8  cbz x0,0x0164ee64
+0164edfc  adrp x8,0x332e000
+0164ee00  ldr x8,[x8, #0xb00]
+0164ee04  mov x1,x22
+0164ee08  mov x3,xzr
+0164ee0c  mov x21,x0
+0164ee10  ldr x2,[x8]
+0164ee14  bl 0x020d5760
+0164ee18  ldr x8,[x23]
+0164ee1c  mov x1,x21
+0164ee20  ldr x0,[x8, #0xb8]
+0164ee24  str x21,[x0, #0x8]!
+0164ee28  bl 0x00b07850
+0164ee2c  cbz x20,0x0164ee64
+0164ee30  mov x0,x20
+0164ee34  mov x1,x21
+0164ee38  mov x2,xzr
+0164ee3c  bl 0x00dbf3c4
+0164ee40  ldr x0,[x19, #0x20]
+0164ee44  cbz x0,0x0164ee64
+0164ee48  mov w1,wzr
+0164ee4c  bl 0x0164e1b4
+0164ee50  ldp x19,x30,[sp, #0x30]
+0164ee54  ldp x21,x20,[sp, #0x20]
+0164ee58  ldp x23,x22,[sp, #0x10]
+0164ee5c  add sp,sp,#0x40
+0164ee60  ret
+0164ee64  bl 0x00b079b0

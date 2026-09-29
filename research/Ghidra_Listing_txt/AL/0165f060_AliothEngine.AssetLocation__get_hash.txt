@@ -1,0 +1,85 @@
+Function: AliothEngine.AssetLocation$$get_hash @ 0165f060
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> StringOperationUtil.OptimizedStringOperation$$get_i @ 015ba1b8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> StringOperationUtil.OptimizedStringOperation$$op_Implicit @ 015ba854
+  -> StringOperationUtil.OptimizedStringOperation$$op_Addition @ 015ba9a8
+  -> AliothEngine.AssetLocation$$get_url @ 0165e31c
+
+--- Calls IN ---
+  <- AliothEngine.AssetHolder$$Create @ 01662758
+  <- AliothEngine.AssetLocation$$GetHashCode @ 0166dd80
+  <- AliothEngine.AssetLoader$$GetAndAcquireLoadedAsset @ 016692d0
+  <- AliothEngine.AssetLoader$$LoadAsset @ 0166847c
+  <- AliothEngine.AssetLocation$$CompareTo @ 0166dc70
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+  <- AliothEngine.AssetDownloadingContext$$get_hash @ 01660ab0
+  <- AliothEngine.AssetDownloader$$RequestDownload @ 0165ea9c
+  <- AliothEngine.AssetLocation$$Equals @ 0166dcb0
+
+--- Listing ---
+0165f060  stp x21,x20,[sp, #-0x20]!
+0165f064  stp x19,x30,[sp, #0x10]
+0165f068  adrp x19,0x3577000
+0165f06c  ldrb w8,[x19, #0x948]
+0165f070  mov x20,x0
+0165f074  tbnz w8,#0x0,0x0165f08c
+0165f078  adrp x0,0x3336000
+0165f07c  ldr x0,[x0, #0xc90]
+0165f080  bl 0x00b0789c
+0165f084  mov w8,#0x1
+0165f088  strb w8,[x19, #0x948]
+0165f08c  mov x19,x20
+0165f090  ldr x0,[x19, #0x30]!
+0165f094  cbnz x0,0x0165f14c
+0165f098  adrp x8,0x3336000
+0165f09c  ldr x8,[x8, #0xc90]
+0165f0a0  ldr x0,[x8]
+0165f0a4  ldr w8,[x0, #0xe0]
+0165f0a8  cbnz w8,0x0165f0b0
+0165f0ac  bl 0x00b0798c
+0165f0b0  mov x0,xzr
+0165f0b4  bl 0x015ba1b8
+0165f0b8  mov x21,x0
+0165f0bc  mov x0,x20
+0165f0c0  bl 0x0165e31c
+0165f0c4  mov x1,x0
+0165f0c8  mov x0,x21
+0165f0cc  mov x2,xzr
+0165f0d0  bl 0x015ba9a8
+0165f0d4  ldr x1,[x20, #0x50]
+0165f0d8  mov x2,xzr
+0165f0dc  bl 0x015ba9a8
+0165f0e0  ldr x1,[x20, #0x40]
+0165f0e4  mov x2,xzr
+0165f0e8  bl 0x015ba9a8
+0165f0ec  adrp x21,0x3577000
+0165f0f0  ldrb w8,[x21, #0x957]
+0165f0f4  mov x20,x0
+0165f0f8  cbnz w8,0x0165f110
+0165f0fc  adrp x0,0x331b000
+0165f100  ldr x0,[x0, #0x6c8]
+0165f104  bl 0x00b0789c
+0165f108  mov w8,#0x1
+0165f10c  strb w8,[x21, #0x957]
+0165f110  adrp x8,0x331b000
+0165f114  ldr x8,[x8, #0x6c8]
+0165f118  mov x0,x20
+0165f11c  mov x2,xzr
+0165f120  ldr x8,[x8]
+0165f124  ldr x8,[x8, #0xb8]
+0165f128  ldr x1,[x8]
+0165f12c  bl 0x015ba9a8
+0165f130  mov x1,xzr
+0165f134  bl 0x015ba854
+0165f138  mov x1,x0
+0165f13c  str x0,[x19]
+0165f140  mov x0,x19
+0165f144  bl 0x00b07850
+0165f148  ldr x0,[x19]
+0165f14c  ldp x19,x30,[sp, #0x10]
+0165f150  ldp x21,x20,[sp], #0x20
+0165f154  ret

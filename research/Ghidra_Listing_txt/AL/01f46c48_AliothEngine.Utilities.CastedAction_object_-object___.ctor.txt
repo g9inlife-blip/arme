@@ -1,0 +1,63 @@
+Function: AliothEngine.Utilities.CastedAction<object,-object>$$.ctor @ 01f46c48
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01f46c48  str x22,[sp, #-0x30]!
+01f46c4c  stp x21,x20,[sp, #0x10]
+01f46c50  stp x19,x30,[sp, #0x20]
+01f46c54  ldr x8,[x2, #0x20]
+01f46c58  mov x19,x1
+01f46c5c  mov x21,x2
+01f46c60  mov x20,x0
+01f46c64  ldr x8,[x8, #0xc0]
+01f46c68  ldr x1,[x8]
+01f46c6c  ldr x8,[x1, #0x8]
+01f46c70  blr x8
+01f46c74  ldr x8,[x21, #0x20]
+01f46c78  ldr x8,[x8, #0xc0]
+01f46c7c  ldr x22,[x8, #0x10]
+01f46c80  ldrb w8,[x22, #0x132]
+01f46c84  tbnz w8,#0x0,0x01f46c94
+01f46c88  mov x0,x22
+01f46c8c  bl 0x00b2ac40
+01f46c90  mov x22,x0
+01f46c94  cbz x19,0x01f46cb4
+01f46c98  mov x0,x19
+01f46c9c  mov x1,x22
+01f46ca0  bl 0x00b07990
+01f46ca4  cbnz x0,0x01f46cb8
+01f46ca8  mov x0,x19
+01f46cac  mov x1,x22
+01f46cb0  bl 0x00b07c6c
+01f46cb4  mov x0,xzr
+01f46cb8  str x0,[x20, #0x10]!
+01f46cbc  ldr x8,[x21, #0x20]
+01f46cc0  ldr x8,[x8, #0xc0]
+01f46cc4  ldr x21,[x8, #0x10]
+01f46cc8  ldrb w8,[x21, #0x132]
+01f46ccc  tbnz w8,#0x0,0x01f46cdc
+01f46cd0  mov x0,x21
+01f46cd4  bl 0x00b2ac40
+01f46cd8  mov x21,x0
+01f46cdc  cbz x19,0x01f46d00
+01f46ce0  mov x0,x19
+01f46ce4  mov x1,x21
+01f46ce8  bl 0x00b07990
+01f46cec  mov x1,x0
+01f46cf0  cbnz x0,0x01f46d04
+01f46cf4  mov x0,x19
+01f46cf8  mov x1,x21
+01f46cfc  bl 0x00b07c6c
+01f46d00  mov x1,xzr
+01f46d04  mov x0,x20
+01f46d08  ldp x19,x30,[sp, #0x20]
+01f46d0c  ldp x21,x20,[sp, #0x10]
+01f46d10  ldr x22,[sp], #0x30
+01f46d14  b 0x00b07850

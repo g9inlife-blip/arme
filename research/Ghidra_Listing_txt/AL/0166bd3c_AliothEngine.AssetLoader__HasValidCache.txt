@@ -1,0 +1,56 @@
+Function: AliothEngine.AssetLoader$$HasValidCache @ 0166bd3c
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp51 @ 01065a14
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetLocation$$get_isCached @ 0166c030
+  -> AliothEngine.AssetLocation$$get_isExistStreamingAssets @ 0166c084
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$TryLoadImmediate @ 0166ba4c
+  <- AliothEngine.AssetLoader.<ProcessLoad>d__23$$MoveNext @ 0166cb68
+
+--- Listing ---
+0166bd3c  str x22,[sp, #-0x30]!
+0166bd40  stp x21,x20,[sp, #0x10]
+0166bd44  stp x19,x30,[sp, #0x20]
+0166bd48  adrp x21,0x3577000
+0166bd4c  adrp x22,0x331c000
+0166bd50  ldrb w8,[x21, #0x937]
+0166bd54  ldr x22,[x22, #0xda8]
+0166bd58  mov x19,x1
+0166bd5c  mov x20,x0
+0166bd60  tbnz w8,#0x0,0x0166bd78
+0166bd64  adrp x0,0x331c000
+0166bd68  ldr x0,[x0, #0xda8]
+0166bd6c  bl 0x00b0789c
+0166bd70  mov w8,#0x1
+0166bd74  strb w8,[x21, #0x937]
+0166bd78  ldr x8,[x22]
+0166bd7c  ldr x8,[x8, #0xb8]
+0166bd80  ldr x0,[x8, #0x80]
+0166bd84  cbz x0,0x0166bda4
+0166bd88  mov x1,x20
+0166bd8c  mov x2,x19
+0166bd90  ldp x19,x30,[sp, #0x20]
+0166bd94  ldp x21,x20,[sp, #0x10]
+0166bd98  mov x3,xzr
+0166bd9c  ldr x22,[sp], #0x30
+0166bda0  b 0x01065a14
+0166bda4  cbz x19,0x0166bde0
+0166bda8  ldr x0,[x19, #0x38]
+0166bdac  cbz x0,0x0166bde0
+0166bdb0  bl 0x0166c030
+0166bdb4  ldr x8,[x19, #0x38]
+0166bdb8  cbz x8,0x0166bde0
+0166bdbc  mov w19,w0
+0166bdc0  mov x0,x8
+0166bdc4  bl 0x0166c084
+0166bdc8  orr w8,w19,w0
+0166bdcc  ldp x19,x30,[sp, #0x20]
+0166bdd0  ldp x21,x20,[sp, #0x10]
+0166bdd4  and w0,w8,#0x1
+0166bdd8  ldr x22,[sp], #0x30
+0166bddc  ret
+0166bde0  bl 0x00b079b0

@@ -1,0 +1,96 @@
+Function: Ali$$get_dataManager @ 00e0277c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp381 @ 01090b0c
+
+--- Calls IN ---
+  <- HeroPartEquipMono$$IsActiveSuitPart @ 00f43f08
+  <- MenuPanelMono$$HeadNameRefresh @ 00f9db6c
+  <- DataCenter$$GetHeroIntimacy @ 016e6548
+  <- DataCenter$$MergeSectionSnapShot @ 016e5908
+  <- ResManager$$InitExcelData @ 00e2b464
+  <- Ali$$CheckAllLocalNotification @ 00e085b8
+  <- BoxShopMonoNew$$ConfigBuyItemContents @ 00e98b44
+  <- DataCenter$$IsSectionOpening @ 016e7f08
+  <- BaseMono$$SetItemObject @ 00e1f72c
+  <- DataCenter$$InitDataCenter @ 016dfb3c
+  <- DataCenter$$MergeItem @ 016e4700
+  <- GUIScreenBaseMono$$GuideCheck @ 00f21384
+  <- EquipDevMono$$OnClickDev @ 00ed9fe4
+  <- ResManager.<>c__DisplayClass29_0$$<AliothLoadExcel>b__0 @ 00e2d020
+  <- GUIScreenBaseMono$$OnShowing @ 00f215fc
+  <- DataCenter$$IsActivityOpening @ 016e852c
+  <- ResManager$$InitLanguageExcel @ 00e2ae9c
+  <- RewardManager$$IsOpenAni @ 00e2e8dc
+  <- HeroInfo$$FinalUpgradeHero @ 016e07d4
+  <- Ali$$ExcelDataInitComplete @ 00e03204
+  <- DataCenter$$UpdateHeroInfo @ 016e4ba4
+  <- BaseExtensions$$TurnTo @ 00e1ae08
+  <- DataCenter$$GetDefaultAIPlan @ 016e8cd8
+  <- DataCenter$$ProccessRequestRes @ 016e203c
+  <- XLua.CSObjectWrap.AliWrap$$_g_get_dataManager @ 0119ff44
+  <- Ali$$CheckOnceLocalNotification @ 00e07488
+  <- EquipInfo$$CheckProperty @ 016ed298
+  <- FUN_00e5c00c @ 00e5c00c
+  <- StiMarkDevPanelMono$$OnClickDev @ 00ee0524
+  <- DataTool$$ToListByGroup @ 016e6ecc
+  <- ShopNewPanelMono$$ConfigShopContents @ 01025bac
+  <- BoxShopMonoNew$$OnClickBuyBox @ 00e999f8
+  <- StigmataInfo$$CheckProperty @ 00dd0034
+  <- TipsItemMono$$ShowTips @ 00f0ced4
+  <- Ali$$GetExcelDic<object> @ 01737100
+  <- HeroInfo$$SuitUp @ 016efefc
+  <- GUIScreenBaseMono$$UIGuideCheck @ 00f21088
+  <- RoleNews$$CheckRange @ 00fe8670
+  <- ResManager.<>c__DisplayClass21_0$$<LoadSingleExcel>b__0 @ 00e2c634
+  <- DataCenter$$GetXCount @ 016defb0
+  <- DataCenter$$GetCountByType<object> @ 01770084
+  <- Ali$$GetExcelData<object> @ 01736d60
+  <- DataCenter$$MergeEquip @ 016e4348
+  <- DataTool$$ToNoticeString @ 016ebccc
+  <- TipsNormalPanelMono$$TipsNormalShow @ 00f0f5b0
+  <- DataCenter$$MergeWeapon @ 016e5be4
+  <- HeroInfo$$SuitUp @ 016f0354
+  <- BattleCache$$CheckEffId @ 00ece638
+  <- ItemShowNormalMono$$SetItem @ 00eb0ddc
+  <- FUN_016e0008 @ 016e0008
+  <- EditorTipsPanel$$ShowDetail @ 00e58578
+  <- GlobalUIManager$$NotifyChargeSuccess @ 00f1da04
+  <- Ali$$GetBaseData @ 00e035d4
+  <- RoleMono$$AniAtkEventCheck @ 014a3254
+  <- AliothExtensions$$GetSplitedMaterial @ 00e17b94
+  <- ShopNewPanelMono$$ClickShopItem @ 01026f40
+
+--- Listing ---
+00e0277c  stp x21,x20,[sp, #-0x20]!
+00e02780  stp x19,x30,[sp, #0x10]
+00e02784  adrp x21,0x3572000
+00e02788  adrp x20,0x335f000
+00e0278c  ldrb w8,[x21, #0x543]
+00e02790  ldr x20,[x20, #0x20]
+00e02794  mov x19,x0
+00e02798  tbnz w8,#0x0,0x00e027b0
+00e0279c  adrp x0,0x335f000
+00e027a0  ldr x0,[x0, #0x20]
+00e027a4  bl 0x00b0789c
+00e027a8  mov w8,#0x1
+00e027ac  strb w8,[x21, #0x543]
+00e027b0  ldr x0,[x20]
+00e027b4  ldr w8,[x0, #0xe0]
+00e027b8  cbnz w8,0x00e027c4
+00e027bc  bl 0x00b0798c
+00e027c0  ldr x0,[x20]
+00e027c4  ldr x8,[x0, #0xb8]
+00e027c8  ldr x0,[x8, #0x1b0]
+00e027cc  cbz x0,0x00e027e4
+00e027d0  mov x1,x19
+00e027d4  ldp x19,x30,[sp, #0x10]
+00e027d8  mov x2,xzr
+00e027dc  ldp x21,x20,[sp], #0x20
+00e027e0  b 0x01090b0c
+00e027e4  ldr x0,[x19, #0xc0]
+00e027e8  ldp x19,x30,[sp, #0x10]
+00e027ec  ldp x21,x20,[sp], #0x20
+00e027f0  ret

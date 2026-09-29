@@ -1,0 +1,44 @@
+Function: AliothEngine.GameUpdateService$$_OnUpdateSuccess @ 0167ea4c
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GameUpdateService$$_OnUpdateSuccessIE @ 0167eac4
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService.<StartUpdateAssetBundle>d__60$$MoveNext @ 01681cdc
+  <- AliothEngine.GameUpdateService.<StartVersionCheck>d__48$$MoveNext @ 01680178
+  <- AliothEngine.GameUpdateService.<StartDownLoadAsset>d__50$$MoveNext @ 016807a8
+
+--- Listing ---
+0167ea4c  stp x21,x20,[sp, #-0x20]!
+0167ea50  stp x19,x30,[sp, #0x10]
+0167ea54  adrp x20,0x3577000
+0167ea58  adrp x21,0x3352000
+0167ea5c  ldrb w8,[x20, #0xa32]
+0167ea60  ldr x21,[x21, #0x2a8]
+0167ea64  mov x19,x0
+0167ea68  tbnz w8,#0x0,0x0167ea80
+0167ea6c  adrp x0,0x3352000
+0167ea70  ldr x0,[x0, #0x2a8]
+0167ea74  bl 0x00b0789c
+0167ea78  mov w8,#0x1
+0167ea7c  strb w8,[x20, #0xa32]
+0167ea80  ldr x8,[x21]
+0167ea84  ldr x8,[x8, #0xb8]
+0167ea88  ldr x0,[x8, #0x108]
+0167ea8c  cbz x0,0x0167eaa4
+0167ea90  mov x1,x19
+0167ea94  ldp x19,x30,[sp, #0x10]
+0167ea98  mov x2,xzr
+0167ea9c  ldp x21,x20,[sp], #0x20
+0167eaa0  b 0x01060dac
+0167eaa4  mov x0,x19
+0167eaa8  bl 0x0167eac4
+0167eaac  mov x1,x0
+0167eab0  mov x0,x19
+0167eab4  ldp x19,x30,[sp, #0x10]
+0167eab8  mov x2,xzr
+0167eabc  ldp x21,x20,[sp], #0x20
+0167eac0  b 0x024e4070

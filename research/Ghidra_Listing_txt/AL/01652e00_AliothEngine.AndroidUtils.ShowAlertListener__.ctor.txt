@@ -1,0 +1,47 @@
+Function: AliothEngine.AndroidUtils.ShowAlertListener$$.ctor @ 01652e00
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.AndroidJavaProxy$$.ctor @ 024aa24c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.AndroidUtils.<>c__DisplayClass29_0$$<ShowAlert>b__0 @ 016530c8
+
+--- Listing ---
+01652e00  str x22,[sp, #-0x30]!
+01652e04  stp x21,x20,[sp, #0x10]
+01652e08  stp x19,x30,[sp, #0x20]
+01652e0c  adrp x22,0x3577000
+01652e10  adrp x21,0x3317000
+01652e14  ldrb w8,[x22, #0x7fa]
+01652e18  ldr x21,[x21, #0xa78]
+01652e1c  mov x19,x1
+01652e20  mov x20,x0
+01652e24  tbnz w8,#0x0,0x01652e48
+01652e28  adrp x0,0x3317000
+01652e2c  ldr x0,[x0, #0xa78]
+01652e30  bl 0x00b0789c
+01652e34  adrp x0,0x3315000
+01652e38  ldr x0,[x0, #0x6d0]
+01652e3c  bl 0x00b0789c
+01652e40  mov w8,#0x1
+01652e44  strb w8,[x22, #0x7fa]
+01652e48  ldr x0,[x21]
+01652e4c  adrp x21,0x3315000
+01652e50  ldr w8,[x0, #0xe0]
+01652e54  ldr x21,[x21, #0x6d0]
+01652e58  cbnz w8,0x01652e60
+01652e5c  bl 0x00b0798c
+01652e60  ldr x1,[x21]
+01652e64  mov x0,x20
+01652e68  mov x2,xzr
+01652e6c  bl 0x024aa24c
+01652e70  str x19,[x20, #0x20]!
+01652e74  mov x0,x20
+01652e78  mov x1,x19
+01652e7c  ldp x19,x30,[sp, #0x20]
+01652e80  ldp x21,x20,[sp, #0x10]
+01652e84  ldr x22,[sp], #0x30
+01652e88  b 0x00b07850

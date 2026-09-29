@@ -1,0 +1,61 @@
+Function: Ali$$Log @ 00e03560
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- SDKHandler_QuickSDK$$OnResponseQuickSDKLogin @ 00de6fdc
+  <- NoviceGuidePanelMono$$GuideEnd @ 01005a30
+  <- Ali$$FinalInitCallBack @ 00e0345c
+  <- RoleNews$$ShowCanAttackMoveRange @ 00ff2038
+  <- BattleManager$$SkillPlayEnd @ 0118d550
+  <- FUN_00e9e004 @ 00e9e004
+  <- Ali$$StoreLoadProductList @ 00e0bebc
+  <- BattleManager$$HitFly @ 01188a70
+  <- GlobalUIManager$$NotifyChargeSuccess @ 00f1da04
+  <- NoviceGuidePanelMono$$GetShowUI @ 01004f08
+  <- ShopConfirmTipsMono$$OnClickOK @ 0102408c
+  <- AliothEngine.GUIScreenManager$$_ShowScreen @ 0167a6fc
+  <- RoleNews$$NormalRoleInit @ 00fde618
+  <- GlobalUIManager$$NotifyChargeFailed @ 00f1e04c
+  <- Ali$$LocalNotification @ 00e08464
+  <- BattleManager$$RoundEnd2 @ 01182820
+  <- AliothEngine.GUIScreenManager$$ShowScreen2 @ 0167a9c4
+  <- QuickSDKListener_S1$$showLog @ 00db7c28
+  <- RoleNews$$UseSkillAndPlayAni @ 00fefc68
+  <- RoleNews$$TriggerSetting @ 00fee50c
+  <- BattleManager.<BattleEnd2>d__203$$MoveNext @ 01311274
+  <- InitializeGamingServices$$OnSuccess @ 00e45e1c
+
+--- Listing ---
+00e03560  stp x21,x20,[sp, #-0x20]!
+00e03564  stp x19,x30,[sp, #0x10]
+00e03568  adrp x21,0x3572000
+00e0356c  adrp x20,0x335f000
+00e03570  ldrb w8,[x21, #0x5c3]
+00e03574  ldr x20,[x20, #0x20]
+00e03578  mov x19,x0
+00e0357c  tbnz w8,#0x0,0x00e03594
+00e03580  adrp x0,0x335f000
+00e03584  ldr x0,[x0, #0x20]
+00e03588  bl 0x00b0789c
+00e0358c  mov w8,#0x1
+00e03590  strb w8,[x21, #0x5c3]
+00e03594  ldr x0,[x20]
+00e03598  ldr w8,[x0, #0xe0]
+00e0359c  cbnz w8,0x00e035a8
+00e035a0  bl 0x00b0798c
+00e035a4  ldr x0,[x20]
+00e035a8  ldr x8,[x0, #0xb8]
+00e035ac  ldr x0,[x8, #0x5c0]
+00e035b0  cbz x0,0x00e035c8
+00e035b4  mov x1,x19
+00e035b8  ldp x19,x30,[sp, #0x10]
+00e035bc  mov x2,xzr
+00e035c0  ldp x21,x20,[sp], #0x20
+00e035c4  b 0x01060dac
+00e035c8  ldp x19,x30,[sp, #0x10]
+00e035cc  ldp x21,x20,[sp], #0x20
+00e035d0  ret

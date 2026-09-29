@@ -1,0 +1,31 @@
+Function: AddressBookController$$get_isLoaded @ 00ce33e8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00ce33e8  str x20,[sp, #-0x20]!
+00ce33ec  stp x19,x30,[sp, #0x10]
+00ce33f0  adrp x20,0x3571000
+00ce33f4  adrp x19,0x3345000
+00ce33f8  ldrb w8,[x20, #0x8f2]
+00ce33fc  ldr x19,[x19, #0xcd8]
+00ce3400  tbnz w8,#0x0,0x00ce3418
+00ce3404  adrp x0,0x3345000
+00ce3408  ldr x0,[x0, #0xcd8]
+00ce340c  bl 0x00b0789c
+00ce3410  mov w8,#0x1
+00ce3414  strb w8,[x20, #0x8f2]
+00ce3418  ldr x0,[x19]
+00ce341c  ldr w8,[x0, #0xe0]
+00ce3420  cbnz w8,0x00ce342c
+00ce3424  bl 0x00b0798c
+00ce3428  ldr x0,[x19]
+00ce342c  ldr x8,[x0, #0xb8]
+00ce3430  ldp x19,x30,[sp, #0x10]
+00ce3434  ldrb w0,[x8, #0x8]
+00ce3438  ldr x20,[sp], #0x20
+00ce343c  ret

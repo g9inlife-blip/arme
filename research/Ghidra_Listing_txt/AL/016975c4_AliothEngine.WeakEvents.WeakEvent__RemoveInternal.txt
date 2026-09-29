@@ -1,0 +1,104 @@
+Function: AliothEngine.WeakEvents.WeakEvent$$RemoveInternal @ 016975c4
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.FasterList<object>$$UnorderedRemoveAt @ 01ade998
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.KeyValuePair<object,-object>$$.ctor @ 01b95438
+  -> AliothEngine.DataStructures.FasterList<object>$$get_Item @ 01addecc
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.DataStructures.FasterList<KeyValuePair<object,-object>>$$Add @ 01adca44
+  -> AliothEngine.WeakEvents.WeakActionBase$$IsMatch @ 01697280
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakEvent$$InternalInvoke @ 01697724
+  <- AliothEngine.WeakEvents.WeakEvent$$Remove @ 0169754c
+  <- AliothEngine.WeakEvents.WeakEvent<object,-object>$$Remove @ 01f0d470
+  <- AliothEngine.WeakEvents.WeakEvent<object>$$Remove @ 01f0d02c
+
+--- Listing ---
+016975c4  sub sp,sp,#0x50
+016975c8  str x24,[sp, #0x10]
+016975cc  stp x23,x22,[sp, #0x20]
+016975d0  stp x21,x20,[sp, #0x30]
+016975d4  stp x19,x30,[sp, #0x40]
+016975d8  adrp x22,0x3577000
+016975dc  ldrb w8,[x22, #0xb14]
+016975e0  mov x19,x2
+016975e4  mov x20,x1
+016975e8  mov x21,x0
+016975ec  tbnz w8,#0x0,0x01697634
+016975f0  adrp x0,0x337d000
+016975f4  ldr x0,[x0, #0x440]
+016975f8  bl 0x00b0789c
+016975fc  adrp x0,0x335f000
+01697600  ldr x0,[x0, #0x700]
+01697604  bl 0x00b0789c
+01697608  adrp x0,0x3331000
+0169760c  ldr x0,[x0, #0x9f8]
+01697610  bl 0x00b0789c
+01697614  adrp x0,0x3361000
+01697618  ldr x0,[x0, #0x570]
+0169761c  bl 0x00b0789c
+01697620  adrp x0,0x3353000
+01697624  ldr x0,[x0, #0x678]
+01697628  bl 0x00b0789c
+0169762c  mov w8,#0x1
+01697630  strb w8,[x22, #0xb14]
+01697634  ldrb w8,[x21, #0x20]
+01697638  cbz w8,0x01697680
+0169763c  adrp x8,0x3353000
+01697640  ldr x8,[x8, #0x678]
+01697644  ldr x21,[x21, #0x18]
+01697648  mov x0,sp
+0169764c  mov x1,x20
+01697650  ldr x3,[x8]
+01697654  mov x2,x19
+01697658  stp xzr,xzr,[sp]
+0169765c  bl 0x01b95438
+01697660  cbz x21,0x01697718
+01697664  adrp x8,0x337d000
+01697668  ldr x8,[x8, #0x440]
+0169766c  ldp x1,x2,[sp]
+01697670  mov x0,x21
+01697674  ldr x3,[x8]
+01697678  bl 0x01adca44
+0169767c  b 0x016976d8
+01697680  ldr x0,[x21, #0x10]
+01697684  cbz x0,0x01697718
+01697688  adrp x24,0x3361000
+0169768c  adrp x23,0x335f000
+01697690  ldr x24,[x24, #0x570]
+01697694  ldr x23,[x23, #0x700]
+01697698  mov w22,wzr
+0169769c  ldr w8,[x0, #0x18]
+016976a0  cmp w22,w8
+016976a4  b.ge 0x016976d8
+016976a8  ldr x2,[x24]
+016976ac  mov w1,w22
+016976b0  bl 0x01addecc
+016976b4  cbz x0,0x01697718
+016976b8  mov x1,x20
+016976bc  mov x2,x19
+016976c0  bl 0x01697280
+016976c4  tbnz w0,#0x0,0x016976f0
+016976c8  ldr x0,[x21, #0x10]
+016976cc  add w22,w22,#0x1
+016976d0  cbnz x0,0x0169769c
+016976d4  b 0x01697718
+016976d8  ldp x19,x30,[sp, #0x40]
+016976dc  ldp x21,x20,[sp, #0x30]
+016976e0  ldp x23,x22,[sp, #0x20]
+016976e4  ldr x24,[sp, #0x10]
+016976e8  add sp,sp,#0x50
+016976ec  ret
+016976f0  ldr x0,[x21, #0x10]
+016976f4  cbz x0,0x01697718
+016976f8  ldr x2,[x23]
+016976fc  mov w1,w22
+01697700  ldp x19,x30,[sp, #0x40]
+01697704  ldp x21,x20,[sp, #0x30]
+01697708  ldp x23,x22,[sp, #0x20]
+0169770c  ldr x24,[sp, #0x10]
+01697710  add sp,sp,#0x50
+01697714  b 0x01ade998
+01697718  bl 0x00b079b0

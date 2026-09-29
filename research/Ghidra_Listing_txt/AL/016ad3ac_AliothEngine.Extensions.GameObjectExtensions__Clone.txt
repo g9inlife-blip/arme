@@ -1,0 +1,56 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad3ac
+
+--- Calls OUT ---
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> UnityEngine.Object$$get_name @ 024c9a1c
+  -> UnityEngine.Transform$$get_rotation @ 024f3b24
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.GameObjectExtensions$$Clone @ 016ad1c4
+
+--- Calls IN ---
+
+--- Listing ---
+016ad3ac  str d14,[sp, #-0x60]!
+016ad3b0  stp d13,d12,[sp, #0x10]
+016ad3b4  stp d11,d10,[sp, #0x20]
+016ad3b8  stp d9,d8,[sp, #0x30]
+016ad3bc  stp x21,x20,[sp, #0x40]
+016ad3c0  stp x19,x30,[sp, #0x50]
+016ad3c4  cbz x0,0x016ad458
+016ad3c8  mov x19,x1
+016ad3cc  mov x1,xzr
+016ad3d0  mov w20,w2
+016ad3d4  mov v8.16B,v2.16B
+016ad3d8  mov v9.16B,v1.16B
+016ad3dc  mov v10.16B,v0.16B
+016ad3e0  mov x21,x0
+016ad3e4  bl 0x024de730
+016ad3e8  cbz x0,0x016ad458
+016ad3ec  mov x1,xzr
+016ad3f0  bl 0x024f3b24
+016ad3f4  mov x0,x21
+016ad3f8  mov x1,xzr
+016ad3fc  mov v11.16B,v0.16B
+016ad400  mov v12.16B,v1.16B
+016ad404  mov v13.16B,v2.16B
+016ad408  mov v14.16B,v3.16B
+016ad40c  bl 0x024c9a1c
+016ad410  and w3,w20,#0x1
+016ad414  mov x1,x0
+016ad418  mov x0,x21
+016ad41c  mov v0.16B,v10.16B
+016ad420  mov v1.16B,v9.16B
+016ad424  mov v2.16B,v8.16B
+016ad428  mov v3.16B,v11.16B
+016ad42c  mov v4.16B,v12.16B
+016ad430  mov v5.16B,v13.16B
+016ad434  mov x2,x19
+016ad438  ldp x19,x30,[sp, #0x50]
+016ad43c  ldp x21,x20,[sp, #0x40]
+016ad440  ldp d9,d8,[sp, #0x30]
+016ad444  ldp d11,d10,[sp, #0x20]
+016ad448  ldp d13,d12,[sp, #0x10]
+016ad44c  mov v6.16B,v14.16B
+016ad450  ldr d14,[sp], #0x60
+016ad454  b 0x016ad1c4
+016ad458  bl 0x00b079b0

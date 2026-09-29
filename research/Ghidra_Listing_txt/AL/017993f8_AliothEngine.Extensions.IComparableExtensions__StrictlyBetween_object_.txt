@@ -1,0 +1,86 @@
+Function: AliothEngine.Extensions.IComparableExtensions$$StrictlyBetween<object> @ 017993f8
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+017993f8  str x22,[sp, #-0x30]!
+017993fc  stp x21,x20,[sp, #0x10]
+01799400  stp x19,x30,[sp, #0x20]
+01799404  cbz x0,0x01799524
+01799408  ldr x8,[x3, #0x38]
+0179940c  mov x22,x1
+01799410  mov x21,x3
+01799414  mov x19,x2
+01799418  ldr x1,[x8, #0x8]
+0179941c  mov x20,x0
+01799420  ldrb w8,[x1, #0x132]
+01799424  tbnz w8,#0x0,0x01799434
+01799428  mov x0,x1
+0179942c  bl 0x00b2ac40
+01799430  mov x1,x0
+01799434  ldr x8,[x20]
+01799438  ldrh w9,[x8, #0x12a]
+0179943c  cbz x9,0x01799460
+01799440  ldr x10,[x8, #0xb0]
+01799444  add x10,x10,#0x8
+01799448  ldur x11,[x10, #-0x8]
+0179944c  cmp x11,x1
+01799450  b.eq 0x01799470
+01799454  subs x9,x9,#0x1
+01799458  add x10,x10,#0x10
+0179945c  b.ne 0x01799448
+01799460  mov x0,x20
+01799464  mov w2,wzr
+01799468  bl 0x00b2ae24
+0179946c  b 0x0179947c
+01799470  ldrsw x9,[x10]
+01799474  add x8,x8,x9, LSL #0x4
+01799478  add x0,x8,#0x138
+0179947c  ldp x8,x2,[x0]
+01799480  mov x0,x20
+01799484  mov x1,x22
+01799488  blr x8
+0179948c  cmp w0,#0x1
+01799490  b.lt 0x017994ec
+01799494  ldr x8,[x21, #0x38]
+01799498  ldr x1,[x8, #0x8]
+0179949c  ldrb w8,[x1, #0x132]
+017994a0  tbnz w8,#0x0,0x017994b0
+017994a4  mov x0,x1
+017994a8  bl 0x00b2ac40
+017994ac  mov x1,x0
+017994b0  ldr x8,[x20]
+017994b4  ldrh w9,[x8, #0x12a]
+017994b8  cbz x9,0x017994dc
+017994bc  ldr x10,[x8, #0xb0]
+017994c0  add x10,x10,#0x8
+017994c4  ldur x11,[x10, #-0x8]
+017994c8  cmp x11,x1
+017994cc  b.eq 0x017994f4
+017994d0  subs x9,x9,#0x1
+017994d4  add x10,x10,#0x10
+017994d8  b.ne 0x017994c4
+017994dc  mov x0,x20
+017994e0  mov w2,wzr
+017994e4  bl 0x00b2ae24
+017994e8  b 0x01799500
+017994ec  mov w0,wzr
+017994f0  b 0x01799514
+017994f4  ldrsw x9,[x10]
+017994f8  add x8,x8,x9, LSL #0x4
+017994fc  add x0,x8,#0x138
+01799500  ldp x8,x2,[x0]
+01799504  mov x0,x20
+01799508  mov x1,x19
+0179950c  blr x8
+01799510  lsr w0,w0,#0x1f
+01799514  ldp x19,x30,[sp, #0x20]
+01799518  ldp x21,x20,[sp, #0x10]
+0179951c  ldr x22,[sp], #0x30
+01799520  ret
+01799524  bl 0x00b079b0

@@ -1,0 +1,99 @@
+Function: AliothEngine.GUIScreenManager$$Awake @ 01675ce8
+
+--- Calls OUT ---
+  -> AliothEngine.GUIScreenManager$$Init @ 01675e34
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Action<object,-object>$$.ctor @ 019104fc
+  -> AliothEngine.SingletonBehaviour<object>$$Awake @ 01e090dc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01675ce8  str x22,[sp, #-0x30]!
+01675cec  stp x21,x20,[sp, #0x10]
+01675cf0  stp x19,x30,[sp, #0x20]
+01675cf4  adrp x20,0x3577000
+01675cf8  adrp x22,0x337b000
+01675cfc  ldrb w8,[x20, #0x9bb]
+01675d00  ldr x22,[x22, #0xb98]
+01675d04  mov x19,x0
+01675d08  tbnz w8,#0x0,0x01675d50
+01675d0c  adrp x0,0x3370000
+01675d10  ldr x0,[x0, #0xea8]
+01675d14  bl 0x00b0789c
+01675d18  adrp x0,0x3375000
+01675d1c  ldr x0,[x0, #0x730]
+01675d20  bl 0x00b0789c
+01675d24  adrp x0,0x335f000
+01675d28  ldr x0,[x0, #0x20]
+01675d2c  bl 0x00b0789c
+01675d30  adrp x0,0x337b000
+01675d34  ldr x0,[x0, #0xb98]
+01675d38  bl 0x00b0789c
+01675d3c  adrp x0,0x337e000
+01675d40  ldr x0,[x0, #0xcf8]
+01675d44  bl 0x00b0789c
+01675d48  mov w8,#0x1
+01675d4c  strb w8,[x20, #0x9bb]
+01675d50  ldr x0,[x22]
+01675d54  ldr w8,[x0, #0xe0]
+01675d58  cbnz w8,0x01675d64
+01675d5c  bl 0x00b0798c
+01675d60  ldr x0,[x22]
+01675d64  ldr x8,[x0, #0xb8]
+01675d68  ldr x0,[x8, #0xf0]
+01675d6c  cbz x0,0x01675d88
+01675d70  mov x1,x19
+01675d74  ldp x19,x30,[sp, #0x20]
+01675d78  ldp x21,x20,[sp, #0x10]
+01675d7c  mov x2,xzr
+01675d80  ldr x22,[sp], #0x30
+01675d84  b 0x01060dac
+01675d88  adrp x8,0x337e000
+01675d8c  ldr x8,[x8, #0xcf8]
+01675d90  adrp x21,0x335f000
+01675d94  adrp x20,0x3370000
+01675d98  mov x0,x19
+01675d9c  ldr x1,[x8]
+01675da0  ldr x21,[x21, #0x20]
+01675da4  ldr x20,[x20, #0xea8]
+01675da8  bl 0x01e090dc
+01675dac  ldr x0,[x21]
+01675db0  ldr w8,[x0, #0xe0]
+01675db4  cbnz w8,0x01675dc0
+01675db8  bl 0x00b0798c
+01675dbc  ldr x0,[x21]
+01675dc0  ldr x8,[x0, #0xb8]
+01675dc4  ldr x0,[x20]
+01675dc8  ldr x21,[x8, #0x10]
+01675dcc  bl 0x00b079a0
+01675dd0  cbz x0,0x01675e30
+01675dd4  adrp x8,0x3375000
+01675dd8  ldr x8,[x8, #0x730]
+01675ddc  mov x1,x21
+01675de0  mov x3,xzr
+01675de4  mov x20,x0
+01675de8  ldr x2,[x8]
+01675dec  bl 0x019104fc
+01675df0  ldr x0,[x22]
+01675df4  ldr w8,[x0, #0xe0]
+01675df8  cbnz w8,0x01675e04
+01675dfc  bl 0x00b0798c
+01675e00  ldr x0,[x22]
+01675e04  ldr x8,[x0, #0xb8]
+01675e08  mov x1,x20
+01675e0c  str x20,[x8]
+01675e10  ldr x8,[x22]
+01675e14  ldr x0,[x8, #0xb8]
+01675e18  bl 0x00b07850
+01675e1c  mov x0,x19
+01675e20  ldp x19,x30,[sp, #0x20]
+01675e24  ldp x21,x20,[sp, #0x10]
+01675e28  ldr x22,[sp], #0x30
+01675e2c  b 0x01675e34
+01675e30  bl 0x00b079b0

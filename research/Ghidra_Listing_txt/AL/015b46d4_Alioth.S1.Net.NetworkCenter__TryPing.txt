@@ -1,0 +1,81 @@
+Function: Alioth.S1.Net.NetworkCenter$$TryPing @ 015b46d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.DateTime$$op_Subtraction @ 021356d4
+  -> Alioth.S1.Net.NetworkCenter$$Send @ 015b3764
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.TimeSpan$$get_TotalSeconds @ 02167c88
+  -> Alioth.S1.Net.NetworkCenter$$get_LastActivateTime @ 015b2da0
+
+--- Calls IN ---
+  <- Alioth.S1.Net.NetworkCenter.<Run>d__30$$MoveNext @ 015b4854
+
+--- Listing ---
+015b46d4  sub sp,sp,#0x30
+015b46d8  stp x21,x20,[sp, #0x10]
+015b46dc  stp x19,x30,[sp, #0x20]
+015b46e0  adrp x21,0x3577000
+015b46e4  adrp x20,0x330b000
+015b46e8  ldrb w8,[x21, #0xb9]
+015b46ec  ldr x20,[x20, #0x520]
+015b46f0  mov x19,x0
+015b46f4  tbnz w8,#0x0,0x015b4724
+015b46f8  adrp x0,0x336f000
+015b46fc  ldr x0,[x0, #0xdc8]
+015b4700  bl 0x00b0789c
+015b4704  adrp x0,0x330b000
+015b4708  ldr x0,[x0, #0x520]
+015b470c  bl 0x00b0789c
+015b4710  adrp x0,0x3366000
+015b4714  ldr x0,[x0, #0x350]
+015b4718  bl 0x00b0789c
+015b471c  mov w8,#0x1
+015b4720  strb w8,[x21, #0xb9]
+015b4724  ldr x8,[x20]
+015b4728  str xzr,[sp, #0x8]
+015b472c  ldr x8,[x8, #0xb8]
+015b4730  ldr x0,[x8, #0x88]
+015b4734  cbz x0,0x015b4748
+015b4738  mov x1,x19
+015b473c  mov x2,xzr
+015b4740  bl 0x01060dac
+015b4744  b 0x015b47c0
+015b4748  ldr x8,[x19, #0x18]
+015b474c  cbz x8,0x015b47d0
+015b4750  ldr w8,[x8, #0x20]
+015b4754  cbnz w8,0x015b47c0
+015b4758  adrp x8,0x336f000
+015b475c  ldr x8,[x8, #0xdc8]
+015b4760  ldr x0,[x8]
+015b4764  ldr w8,[x0, #0xe0]
+015b4768  cbnz w8,0x015b4770
+015b476c  bl 0x00b0798c
+015b4770  mov x0,xzr
+015b4774  bl 0x02133d48
+015b4778  mov x20,x0
+015b477c  mov x0,x19
+015b4780  bl 0x015b2da0
+015b4784  mov x1,x0
+015b4788  mov x0,x20
+015b478c  mov x2,xzr
+015b4790  bl 0x021356d4
+015b4794  str x0,[sp, #0x8]
+015b4798  add x0,sp,#0x8
+015b479c  mov x1,xzr
+015b47a0  bl 0x02167c88
+015b47a4  mov x8,#0x404e000000000000
+015b47a8  fmov d1,x8
+015b47ac  fcmp d0,d1
+015b47b0  b.mi 0x015b47c0
+015b47b4  ldr x1,[x19, #0x48]
+015b47b8  mov x0,x19
+015b47bc  bl 0x015b3764
+015b47c0  ldp x19,x30,[sp, #0x20]
+015b47c4  ldp x21,x20,[sp, #0x10]
+015b47c8  add sp,sp,#0x30
+015b47cc  ret
+015b47d0  bl 0x00b079b0

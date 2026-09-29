@@ -1,0 +1,43 @@
+Function: Alioth.S1.Net.Request$$get_Req @ 015b3bb4
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp755 @ 010c31c4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- HeroPartFashionMono$$FashionBack @ 00f4675c
+  <- ChangeFashionMono$$FashionBack @ 00f2b0e0
+  <- Alioth.S1.Net.NetworkCenter$$TrySendRequest @ 015b3df8
+  <- Alioth.S1.Net.NetworkCenter$$Send @ 015b3764
+  <- LoginManager$$OperationRequestError @ 00dd7574
+  <- LoginGateMono$$OperationRequestError @ 00f92850
+  <- XLua.CSObjectWrap.AliothS1NetRequestWrap$$_g_get_Req @ 01172c34
+  <- Alioth.S1.Net.Request$$ToString @ 015b5154
+
+--- Listing ---
+015b3bb4  stp x21,x20,[sp, #-0x20]!
+015b3bb8  stp x19,x30,[sp, #0x10]
+015b3bbc  adrp x20,0x3577000
+015b3bc0  adrp x21,0x3374000
+015b3bc4  ldrb w8,[x20, #0xc6]
+015b3bc8  ldr x21,[x21, #0x470]
+015b3bcc  mov x19,x0
+015b3bd0  tbnz w8,#0x0,0x015b3be8
+015b3bd4  adrp x0,0x3374000
+015b3bd8  ldr x0,[x0, #0x470]
+015b3bdc  bl 0x00b0789c
+015b3be0  mov w8,#0x1
+015b3be4  strb w8,[x20, #0xc6]
+015b3be8  ldr x8,[x21]
+015b3bec  ldr x8,[x8, #0xb8]
+015b3bf0  ldr x0,[x8, #0x50]
+015b3bf4  cbz x0,0x015b3c0c
+015b3bf8  mov x1,x19
+015b3bfc  ldp x19,x30,[sp, #0x10]
+015b3c00  mov x2,xzr
+015b3c04  ldp x21,x20,[sp], #0x20
+015b3c08  b 0x010c31c4
+015b3c0c  ldr x0,[x19, #0x30]
+015b3c10  ldp x19,x30,[sp, #0x10]
+015b3c14  ldp x21,x20,[sp], #0x20
+015b3c18  ret

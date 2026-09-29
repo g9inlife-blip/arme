@@ -1,0 +1,40 @@
+Function: AliothEngine.AssetBundleInfoList$$TryGetByAssetBundleName @ 01666678
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<object,-object>$$TryGetValue @ 0196fd30
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.AssetBundleInfoList$$Remove @ 01666a88
+  <- AliothEngine.GameUpdateService$$<StartGetAssetNeedUpdate>b__58_0 @ 0167fd60
+  <- AliothEngine.GameUpdateService$$CalDownloadInfo @ 0167e3dc
+  <- AliothEngine.AssetBundleInfoList$$TouchNew @ 01666b38
+
+--- Listing ---
+01666678  str x22,[sp, #-0x30]!
+0166667c  stp x21,x20,[sp, #0x10]
+01666680  stp x19,x30,[sp, #0x20]
+01666684  adrp x22,0x3577000
+01666688  ldrb w8,[x22, #0x8fa]
+0166668c  mov x19,x2
+01666690  mov x20,x1
+01666694  mov x21,x0
+01666698  tbnz w8,#0x0,0x016666b0
+0166669c  adrp x0,0x3380000
+016666a0  ldr x0,[x0, #0x9c8]
+016666a4  bl 0x00b0789c
+016666a8  mov w8,#0x1
+016666ac  strb w8,[x22, #0x8fa]
+016666b0  ldr x0,[x21, #0x20]
+016666b4  cbz x0,0x016666dc
+016666b8  adrp x8,0x3380000
+016666bc  ldr x8,[x8, #0x9c8]
+016666c0  mov x1,x20
+016666c4  mov x2,x19
+016666c8  ldp x19,x30,[sp, #0x20]
+016666cc  ldr x3,[x8]
+016666d0  ldp x21,x20,[sp, #0x10]
+016666d4  ldr x22,[sp], #0x30
+016666d8  b 0x0196fd30
+016666dc  bl 0x00b079b0

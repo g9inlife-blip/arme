@@ -1,0 +1,53 @@
+Function: AliothEngine.StaticCoroutine$$_DoCoroutine @ 0168b93c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0168b93c  stp x23,x22,[sp, #-0x30]!
+0168b940  stp x21,x20,[sp, #0x10]
+0168b944  stp x19,x30,[sp, #0x20]
+0168b948  adrp x22,0x3577000
+0168b94c  adrp x23,0x3347000
+0168b950  ldrb w8,[x22, #0xaa4]
+0168b954  ldr x23,[x23, #0x8d8]
+0168b958  mov x19,x2
+0168b95c  mov x20,x1
+0168b960  mov x21,x0
+0168b964  tbnz w8,#0x0,0x0168b97c
+0168b968  adrp x0,0x3347000
+0168b96c  ldr x0,[x0, #0x8d8]
+0168b970  bl 0x00b0789c
+0168b974  mov w8,#0x1
+0168b978  strb w8,[x22, #0xaa4]
+0168b97c  ldr x0,[x23]
+0168b980  bl 0x00b079a0
+0168b984  cbz x0,0x0168b9dc
+0168b988  mov x1,xzr
+0168b98c  mov x22,x0
+0168b990  bl 0x02194104
+0168b994  mov x0,x22
+0168b998  str wzr,[x22, #0x10]
+0168b99c  str x21,[x0, #0x20]!
+0168b9a0  mov x1,x21
+0168b9a4  bl 0x00b07850
+0168b9a8  mov x0,x22
+0168b9ac  str x20,[x0, #0x28]!
+0168b9b0  mov x1,x20
+0168b9b4  bl 0x00b07850
+0168b9b8  mov x0,x22
+0168b9bc  str x19,[x0, #0x30]!
+0168b9c0  mov x1,x19
+0168b9c4  bl 0x00b07850
+0168b9c8  ldp x19,x30,[sp, #0x20]
+0168b9cc  ldp x21,x20,[sp, #0x10]
+0168b9d0  mov x0,x22
+0168b9d4  ldp x23,x22,[sp], #0x30
+0168b9d8  ret
+0168b9dc  bl 0x00b079b0

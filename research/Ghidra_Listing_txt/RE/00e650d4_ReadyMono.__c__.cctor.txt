@@ -1,0 +1,40 @@
+Function: ReadyMono.<>c$$.cctor @ 00e650d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+00e650d4  str x20,[sp, #-0x20]!
+00e650d8  stp x19,x30,[sp, #0x10]
+00e650dc  adrp x19,0x3572000
+00e650e0  adrp x20,0x3316000
+00e650e4  ldrb w8,[x19, #0x981]
+00e650e8  ldr x20,[x20, #0x608]
+00e650ec  tbnz w8,#0x0,0x00e65104
+00e650f0  adrp x0,0x3316000
+00e650f4  ldr x0,[x0, #0x608]
+00e650f8  bl 0x00b0789c
+00e650fc  mov w8,#0x1
+00e65100  strb w8,[x19, #0x981]
+00e65104  ldr x0,[x20]
+00e65108  bl 0x00b079a0
+00e6510c  cbz x0,0x00e65140
+00e65110  mov x1,xzr
+00e65114  mov x19,x0
+00e65118  bl 0x02194104
+00e6511c  ldr x8,[x20]
+00e65120  mov x1,x19
+00e65124  ldr x8,[x8, #0xb8]
+00e65128  str x19,[x8]
+00e6512c  ldr x8,[x20]
+00e65130  ldp x19,x30,[sp, #0x10]
+00e65134  ldr x0,[x8, #0xb8]
+00e65138  ldr x20,[sp], #0x20
+00e6513c  b 0x00b07850
+00e65140  bl 0x00b079b0

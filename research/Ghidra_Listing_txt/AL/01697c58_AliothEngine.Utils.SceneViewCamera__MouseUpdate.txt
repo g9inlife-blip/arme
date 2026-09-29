@@ -1,0 +1,56 @@
+Function: AliothEngine.Utils.SceneViewCamera$$MouseUpdate @ 01697c58
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Input$$GetAxis @ 0252f670
+  -> UnityEngine.Input$$get_mousePosition @ 0252f9e0
+  -> AliothEngine.Utils.SceneViewCamera$$MouseDrag @ 01697d9c
+  -> AliothEngine.Utils.SceneViewCamera$$MouseWheel @ 01697d00
+  -> UnityEngine.Input$$GetMouseButtonDown @ 0252f7d8
+
+--- Calls IN ---
+  <- AliothEngine.Utils.SceneViewCamera$$Update @ 01697c54
+
+--- Listing ---
+01697c58  stp x21,x20,[sp, #-0x20]!
+01697c5c  stp x19,x30,[sp, #0x10]
+01697c60  adrp x20,0x3577000
+01697c64  adrp x21,0x332d000
+01697c68  ldrb w8,[x20, #0xb18]
+01697c6c  ldr x21,[x21, #0xde0]
+01697c70  mov x19,x0
+01697c74  tbnz w8,#0x0,0x01697c8c
+01697c78  adrp x0,0x332d000
+01697c7c  ldr x0,[x0, #0xde0]
+01697c80  bl 0x00b0789c
+01697c84  mov w8,#0x1
+01697c88  strb w8,[x20, #0xb18]
+01697c8c  ldr x0,[x21]
+01697c90  mov x1,xzr
+01697c94  bl 0x0252f670
+01697c98  fcmp s0,#0.0
+01697c9c  b.eq 0x01697ca8
+01697ca0  mov x0,x19
+01697ca4  bl 0x01697d00
+01697ca8  mov w0,wzr
+01697cac  mov x1,xzr
+01697cb0  bl 0x0252f7d8
+01697cb4  tbnz w0,#0x0,0x01697cd8
+01697cb8  mov w0,#0x1
+01697cbc  mov x1,xzr
+01697cc0  bl 0x0252f7d8
+01697cc4  tbnz w0,#0x0,0x01697cd8
+01697cc8  mov w0,#0x2
+01697ccc  mov x1,xzr
+01697cd0  bl 0x0252f7d8
+01697cd4  tbz w0,#0x0,0x01697ce8
+01697cd8  mov x0,xzr
+01697cdc  bl 0x0252f9e0
+01697ce0  stp s0,s1,[x19, #0x24]
+01697ce4  str s2,[x19, #0x2c]
+01697ce8  mov x0,xzr
+01697cec  bl 0x0252f9e0
+01697cf0  mov x0,x19
+01697cf4  ldp x19,x30,[sp, #0x10]
+01697cf8  ldp x21,x20,[sp], #0x20
+01697cfc  b 0x01697d9c

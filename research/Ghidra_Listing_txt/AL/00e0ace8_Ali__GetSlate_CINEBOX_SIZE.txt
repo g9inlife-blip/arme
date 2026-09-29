@@ -1,0 +1,62 @@
+Function: Ali$$GetSlate_CINEBOX_SIZE @ 00e0ace8
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp407 @ 01094228
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Screen$$get_width @ 024d265c
+  -> UnityEngine.Screen$$get_height @ 024d2684
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_GetSlate_CINEBOX_SIZE_xlua_st_ @ 01198b64
+  <- Ali$$get_Slate_CINEBOX_SIZE @ 00e0ac0c
+
+--- Listing ---
+00e0ace8  str d8,[sp, #-0x20]!
+00e0acec  str x20,[sp, #0x8]
+00e0acf0  stp x19,x30,[sp, #0x10]
+00e0acf4  adrp x20,0x3572000
+00e0acf8  adrp x19,0x335f000
+00e0acfc  ldrb w8,[x20, #0x594]
+00e0ad00  ldr x19,[x19, #0x20]
+00e0ad04  tbnz w8,#0x0,0x00e0ad1c
+00e0ad08  adrp x0,0x335f000
+00e0ad0c  ldr x0,[x0, #0x20]
+00e0ad10  bl 0x00b0789c
+00e0ad14  mov w8,#0x1
+00e0ad18  strb w8,[x20, #0x594]
+00e0ad1c  ldr x0,[x19]
+00e0ad20  ldr w8,[x0, #0xe0]
+00e0ad24  cbnz w8,0x00e0ad30
+00e0ad28  bl 0x00b0798c
+00e0ad2c  ldr x0,[x19]
+00e0ad30  ldr x8,[x0, #0xb8]
+00e0ad34  ldr x0,[x8, #0x448]
+00e0ad38  cbz x0,0x00e0ad50
+00e0ad3c  ldp x19,x30,[sp, #0x10]
+00e0ad40  ldr x20,[sp, #0x8]
+00e0ad44  mov x1,xzr
+00e0ad48  ldr d8,[sp], #0x20
+00e0ad4c  b 0x01094228
+00e0ad50  bl 0x024d265c
+00e0ad54  mov w19,w0
+00e0ad58  mov x0,xzr
+00e0ad5c  bl 0x024d2684
+00e0ad60  adrp x8,0x26db000
+00e0ad64  ldr s0,[x8, #0xc50]
+00e0ad68  scvtf s1,w19
+00e0ad6c  scvtf s2,w0
+00e0ad70  fdiv s1,s1,s2
+00e0ad74  mov x0,xzr
+00e0ad78  fdiv s8,s1,s0
+00e0ad7c  bl 0x024d2684
+00e0ad80  fmov s1,0x3f800000
+00e0ad84  ldp x19,x30,[sp, #0x10]
+00e0ad88  ldr x20,[sp, #0x8]
+00e0ad8c  scvtf s0,w0
+00e0ad90  fadd s1,s8,s1
+00e0ad94  fmul s0,s1,s0
+00e0ad98  fmov s1,0x3f000000
+00e0ad9c  fmul s0,s0,s1
+00e0ada0  ldr d8,[sp], #0x20
+00e0ada4  ret

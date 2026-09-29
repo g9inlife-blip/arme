@@ -1,0 +1,48 @@
+Function: AliothEngine.FileUtility$$SynchronizeDirectory @ 01690a48
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.FileUtility$$SynchronizeDirectory @ 016901cc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.DirectoryInfo$$.ctor @ 020adebc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01690a48  str x22,[sp, #-0x30]!
+01690a4c  stp x21,x20,[sp, #0x10]
+01690a50  stp x19,x30,[sp, #0x20]
+01690a54  adrp x20,0x3577000
+01690a58  adrp x22,0x336c000
+01690a5c  ldrb w8,[x20, #0xad7]
+01690a60  ldr x22,[x22, #0x858]
+01690a64  mov x19,x1
+01690a68  mov x21,x0
+01690a6c  tbnz w8,#0x0,0x01690a84
+01690a70  adrp x0,0x336c000
+01690a74  ldr x0,[x0, #0x858]
+01690a78  bl 0x00b0789c
+01690a7c  mov w8,#0x1
+01690a80  strb w8,[x20, #0xad7]
+01690a84  ldr x0,[x22]
+01690a88  bl 0x00b079a0
+01690a8c  cbz x0,0x01690ad4
+01690a90  mov x1,x21
+01690a94  mov x2,xzr
+01690a98  mov x20,x0
+01690a9c  bl 0x020adebc
+01690aa0  ldr x0,[x22]
+01690aa4  bl 0x00b079a0
+01690aa8  cbz x0,0x01690ad4
+01690aac  mov x1,x19
+01690ab0  mov x2,xzr
+01690ab4  mov x21,x0
+01690ab8  bl 0x020adebc
+01690abc  mov x0,x20
+01690ac0  mov x1,x21
+01690ac4  ldp x19,x30,[sp, #0x20]
+01690ac8  ldp x21,x20,[sp, #0x10]
+01690acc  ldr x22,[sp], #0x30
+01690ad0  b 0x016901cc
+01690ad4  bl 0x00b079b0

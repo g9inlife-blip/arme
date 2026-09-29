@@ -1,0 +1,69 @@
+Function: AliothEngine.AssetLoadingContext$$.ctor @ 0166d670
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.LinkedList<object>$$.ctor @ 01b9ab4c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoadingContext$$.cctor @ 0166da50
+
+--- Listing ---
+0166d670  stp x21,x20,[sp, #-0x20]!
+0166d674  stp x19,x30,[sp, #0x10]
+0166d678  adrp x20,0x3577000
+0166d67c  adrp x21,0x3331000
+0166d680  ldrb w8,[x20, #0x93f]
+0166d684  ldr x21,[x21, #0x9c0]
+0166d688  mov x19,x0
+0166d68c  tbnz w8,#0x0,0x0166d6c8
+0166d690  adrp x0,0x335f000
+0166d694  ldr x0,[x0, #0x1d8]
+0166d698  bl 0x00b0789c
+0166d69c  adrp x0,0x337c000
+0166d6a0  ldr x0,[x0, #0xf40]
+0166d6a4  bl 0x00b0789c
+0166d6a8  adrp x0,0x331a000
+0166d6ac  ldr x0,[x0, #0xe40]
+0166d6b0  bl 0x00b0789c
+0166d6b4  adrp x0,0x3331000
+0166d6b8  ldr x0,[x0, #0x9c0]
+0166d6bc  bl 0x00b0789c
+0166d6c0  mov w8,#0x1
+0166d6c4  strb w8,[x20, #0x93f]
+0166d6c8  ldr x0,[x21]
+0166d6cc  bl 0x00b079a0
+0166d6d0  cbz x0,0x0166d744
+0166d6d4  adrp x8,0x331a000
+0166d6d8  ldr x8,[x8, #0xe40]
+0166d6dc  adrp x21,0x337c000
+0166d6e0  mov x20,x0
+0166d6e4  ldr x1,[x8]
+0166d6e8  ldr x21,[x21, #0xf40]
+0166d6ec  bl 0x01bffe10
+0166d6f0  mov x0,x19
+0166d6f4  str x20,[x0, #0x10]!
+0166d6f8  mov x1,x20
+0166d6fc  bl 0x00b07850
+0166d700  ldr x0,[x21]
+0166d704  bl 0x00b079a0
+0166d708  cbz x0,0x0166d744
+0166d70c  adrp x8,0x335f000
+0166d710  ldr x8,[x8, #0x1d8]
+0166d714  mov x20,x0
+0166d718  ldr x1,[x8]
+0166d71c  bl 0x01b9ab4c
+0166d720  mov x0,x19
+0166d724  str x20,[x0, #0x18]!
+0166d728  mov x1,x20
+0166d72c  bl 0x00b07850
+0166d730  mov x0,x19
+0166d734  ldp x19,x30,[sp, #0x10]
+0166d738  mov x1,xzr
+0166d73c  ldp x21,x20,[sp], #0x20
+0166d740  b 0x02194104
+0166d744  bl 0x00b079b0

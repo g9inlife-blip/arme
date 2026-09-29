@@ -1,0 +1,96 @@
+Function: AliothEngine.UIGrayScaleHelper$$SetDefaultUIGrayScale @ 0168d304
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.UIGrayScaleHelper$$SetDefaultUIGrayScale @ 0168d0d4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.Component$$GetComponentsInChildren<object> @ 0176d07c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+  <- ShopNewPanelMono$$SetRechargeSpeicalItem @ 0102c73c
+  <- ShopNewPanelMono$$SetItemInfo @ 0102688c
+  <- HeroPartEquipMono$$RefreshShow @ 00f41fac
+
+--- Listing ---
+0168d304  stp x23,x22,[sp, #-0x30]!
+0168d308  stp x21,x20,[sp, #0x10]
+0168d30c  stp x19,x30,[sp, #0x20]
+0168d310  adrp x22,0x3577000
+0168d314  ldrb w8,[x22, #0xabd]
+0168d318  mov w21,w2
+0168d31c  mov w19,w1
+0168d320  mov x20,x0
+0168d324  tbnz w8,#0x0,0x0168d354
+0168d328  adrp x0,0x3322000
+0168d32c  ldr x0,[x0, #0x408]
+0168d330  bl 0x00b0789c
+0168d334  adrp x0,0x3378000
+0168d338  ldr x0,[x0, #0xbf8]
+0168d33c  bl 0x00b0789c
+0168d340  adrp x0,0x3321000
+0168d344  ldr x0,[x0, #0xca8]
+0168d348  bl 0x00b0789c
+0168d34c  mov w8,#0x1
+0168d350  strb w8,[x22, #0xabd]
+0168d354  tbz w21,#0x0,0x0168d3bc
+0168d358  cbz x20,0x0168d438
+0168d35c  adrp x8,0x3378000
+0168d360  ldr x8,[x8, #0xbf8]
+0168d364  mov w1,#0x1
+0168d368  mov x0,x20
+0168d36c  ldr x2,[x8]
+0168d370  bl 0x0176d07c
+0168d374  cbz x0,0x0168d438
+0168d378  ldr x8,[x0, #0x18]
+0168d37c  mov x21,x0
+0168d380  cmp w8,#0x1
+0168d384  b.lt 0x0168d3bc
+0168d388  mov x22,xzr
+0168d38c  and x8,x8,#0xffffffff
+0168d390  add x23,x21,#0x20
+0168d394  cmp x22,w8, UXTW 
+0168d398  b.cs 0x0168d434
+0168d39c  ldr x0,[x23, x22, LSL #0x3]
+0168d3a0  and w1,w19,#0x1
+0168d3a4  mov w2,wzr
+0168d3a8  bl 0x0168d0d4
+0168d3ac  ldr w8,[x21, #0x18]
+0168d3b0  add x22,x22,#0x1
+0168d3b4  cmp x22,w8, SXTW 
+0168d3b8  b.lt 0x0168d394
+0168d3bc  cbz x20,0x0168d438
+0168d3c0  adrp x8,0x3322000
+0168d3c4  ldr x8,[x8, #0x408]
+0168d3c8  adrp x21,0x3321000
+0168d3cc  mov x0,x20
+0168d3d0  ldr x1,[x8]
+0168d3d4  ldr x21,[x21, #0xca8]
+0168d3d8  bl 0x0176cbf8
+0168d3dc  ldr x8,[x21]
+0168d3e0  mov x20,x0
+0168d3e4  ldr w9,[x8, #0xe0]
+0168d3e8  cbnz w9,0x0168d3f4
+0168d3ec  mov x0,x8
+0168d3f0  bl 0x00b0798c
+0168d3f4  mov x0,x20
+0168d3f8  mov x1,xzr
+0168d3fc  mov x2,xzr
+0168d400  bl 0x024de30c
+0168d404  tbz w0,#0x0,0x0168d424
+0168d408  and w1,w19,#0x1
+0168d40c  mov x0,x20
+0168d410  ldp x19,x30,[sp, #0x20]
+0168d414  ldp x21,x20,[sp, #0x10]
+0168d418  mov w2,wzr
+0168d41c  ldp x23,x22,[sp], #0x30
+0168d420  b 0x0168d0d4
+0168d424  ldp x19,x30,[sp, #0x20]
+0168d428  ldp x21,x20,[sp, #0x10]
+0168d42c  ldp x23,x22,[sp], #0x30
+0168d430  ret
+0168d434  bl 0x00b079b8
+0168d438  bl 0x00b079b0

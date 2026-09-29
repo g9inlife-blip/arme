@@ -1,0 +1,69 @@
+Function: AliothEngine.AssetVersionManager$$set_AssetHostDomain @ 0166fa9c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.String$$EndsWith @ 01fddcec
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+
+--- Listing ---
+0166fa9c  stp x21,x20,[sp, #-0x20]!
+0166faa0  stp x19,x30,[sp, #0x10]
+0166faa4  adrp x21,0x3577000
+0166faa8  adrp x20,0x332e000
+0166faac  ldrb w8,[x21, #0x963]
+0166fab0  ldr x20,[x20, #0x690]
+0166fab4  mov x19,x0
+0166fab8  tbnz w8,#0x0,0x0166fadc
+0166fabc  adrp x0,0x332e000
+0166fac0  ldr x0,[x0, #0x690]
+0166fac4  bl 0x00b0789c
+0166fac8  adrp x0,0x3321000
+0166facc  ldr x0,[x0, #0x9e0]
+0166fad0  bl 0x00b0789c
+0166fad4  mov w8,#0x1
+0166fad8  strb w8,[x21, #0x963]
+0166fadc  ldr x8,[x20]
+0166fae0  mov x1,x19
+0166fae4  ldr x0,[x8, #0xb8]
+0166fae8  str x19,[x0, #0x8]!
+0166faec  bl 0x00b07850
+0166faf0  ldr x8,[x20]
+0166faf4  mov x1,xzr
+0166faf8  ldr x8,[x8, #0xb8]
+0166fafc  ldr x0,[x8, #0x8]
+0166fb00  bl 0x01fdf3a0
+0166fb04  tbnz w0,#0x0,0x0166fb30
+0166fb08  ldr x8,[x20]
+0166fb0c  ldr x8,[x8, #0xb8]
+0166fb10  ldr x0,[x8, #0x8]
+0166fb14  cbz x0,0x0166fb74
+0166fb18  adrp x19,0x3321000
+0166fb1c  ldr x19,[x19, #0x9e0]
+0166fb20  mov x2,xzr
+0166fb24  ldr x1,[x19]
+0166fb28  bl 0x01fddcec
+0166fb2c  tbz w0,#0x0,0x0166fb3c
+0166fb30  ldp x19,x30,[sp, #0x10]
+0166fb34  ldp x21,x20,[sp], #0x20
+0166fb38  ret
+0166fb3c  ldr x8,[x20]
+0166fb40  ldr x1,[x19]
+0166fb44  mov x2,xzr
+0166fb48  ldr x8,[x8, #0xb8]
+0166fb4c  ldr x0,[x8, #0x8]
+0166fb50  bl 0x01fd2850
+0166fb54  ldr x8,[x20]
+0166fb58  mov x1,x0
+0166fb5c  ldr x8,[x8, #0xb8]
+0166fb60  str x0,[x8, #0x8]!
+0166fb64  ldp x19,x30,[sp, #0x10]
+0166fb68  mov x0,x8
+0166fb6c  ldp x21,x20,[sp], #0x20
+0166fb70  b 0x00b07850
+0166fb74  bl 0x00b079b0

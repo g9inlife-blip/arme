@@ -1,0 +1,47 @@
+Function: ResourcesRecord$$.ctor @ 00df140c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> UnityEngine.ScriptableObject$$.ctor @ 024e277c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00df140c  stp x21,x20,[sp, #-0x20]!
+00df1410  stp x19,x30,[sp, #0x10]
+00df1414  adrp x20,0x3572000
+00df1418  adrp x21,0x3361000
+00df141c  ldrb w8,[x20, #0x45d]
+00df1420  ldr x21,[x21, #0xb90]
+00df1424  mov x19,x0
+00df1428  tbnz w8,#0x0,0x00df144c
+00df142c  adrp x0,0x333a000
+00df1430  ldr x0,[x0, #0x8a0]
+00df1434  bl 0x00b0789c
+00df1438  adrp x0,0x3361000
+00df143c  ldr x0,[x0, #0xb90]
+00df1440  bl 0x00b0789c
+00df1444  mov w8,#0x1
+00df1448  strb w8,[x20, #0x45d]
+00df144c  ldr x0,[x21]
+00df1450  bl 0x00b079a0
+00df1454  cbz x0,0x00df1490
+00df1458  adrp x8,0x333a000
+00df145c  ldr x8,[x8, #0x8a0]
+00df1460  mov x20,x0
+00df1464  ldr x1,[x8]
+00df1468  bl 0x01bffe10
+00df146c  mov x0,x19
+00df1470  str x20,[x0, #0x18]!
+00df1474  mov x1,x20
+00df1478  bl 0x00b07850
+00df147c  mov x0,x19
+00df1480  ldp x19,x30,[sp, #0x10]
+00df1484  mov x1,xzr
+00df1488  ldp x21,x20,[sp], #0x20
+00df148c  b 0x024e277c
+00df1490  bl 0x00b079b0

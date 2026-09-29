@@ -1,0 +1,167 @@
+Function: AliothEngine.DataStructures.ThreadSafeQueue.<GetEnumerator>d__5<object>$$MoveNext @ 018fe97c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Threading.ReaderWriterLockSlim$$ExitReadLock @ 0223def4
+  -> System.Collections.Generic.Queue.Enumerator<object>$$get_Current @ 01a075fc
+  -> FUN_00aaac8c @ 00aaac8c
+  -> System.Collections.Generic.Queue.Enumerator<object>$$MoveNext @ 01a07508
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Threading.ReaderWriterLockSlim$$EnterReadLock @ 0223ccf4
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+018fe97c  sub sp,sp,#0x90
+018fe980  stp x22,x0,[sp, #0x60]
+018fe984  stp x21,x20,[sp, #0x70]
+018fe988  stp x19,x30,[sp, #0x80]
+018fe98c  add x8,sp,#0x58
+018fe990  add x9,sp,#0x68
+018fe994  stp x9,x1,[sp, #0x50]
+018fe998  stp xzr,x8,[sp, #0x40]
+018fe99c  ldr w8,[x0, #0x10]
+018fe9a0  cmp w8,#0x1
+018fe9a4  b.eq 0x018feaa0
+018fe9a8  cbnz w8,0x018feb94
+018fe9ac  ldr x21,[x0, #0x20]
+018fe9b0  mov w8,#0xffffffff
+018fe9b4  str w8,[x0, #0x10]
+018fe9b8  cbz x21,0x018feb2c
+018fe9bc  ldr x0,[x21, #0x18]
+018fe9c0  cbz x0,0x018feb30
+018fe9c4  mov x1,xzr
+    ; [PRE] try { // try from 018fe9c4 to 018fe9cb has its CatchHandler @ 018feb68
+018fe9c8  bl 0x0223ccf4
+    ; [POST] } // end try from 018fe9c4 to 018fe9cb
+018fe9cc  ldr x8,[sp, #0x58]
+018fe9d0  ldr x20,[x21, #0x10]
+018fe9d4  ldr x8,[x8, #0x20]
+018fe9d8  ldr x8,[x8, #0xc0]
+018fe9dc  ldr x0,[x8, #0x8]
+018fe9e0  ldrb w8,[x0, #0x132]
+018fe9e4  tbnz w8,#0x0,0x018fe9ec
+018fe9e8  bl 0x00b2ac40
+    ; [PRE] try { // try from 018fe9e8 to 018fea17 has its CatchHandler @ 018febf4
+018fe9ec  bl 0x00b079a0
+018fe9f0  mov x19,x0
+018fe9f4  cbz x0,0x018feb38
+018fe9f8  ldr x8,[sp, #0x58]
+018fe9fc  ldr x8,[x8, #0x20]
+018fea00  ldr x8,[x8, #0xc0]
+018fea04  ldr x2,[x8, #0x10]
+018fea08  ldr x8,[x2, #0x8]
+018fea0c  mov x0,x19
+018fea10  mov x1,x20
+018fea14  blr x8
+    ; [POST] } // end try from 018fe9e8 to 018fea17
+018fea18  mov x20,xzr
+018fea1c  mov w22,#0x5
+018fea20  ldr x0,[x21, #0x18]
+018fea24  cbz x0,0x018feb34
+018fea28  mov x1,xzr
+    ; [PRE] try { // try from 018fea28 to 018fea2f has its CatchHandler @ 018feb64
+018fea2c  bl 0x0223def4
+    ; [POST] } // end try from 018fea28 to 018fea2f
+018fea30  cbnz x20,0x018feb3c
+018fea34  cmp w22,#0x5
+018fea38  b.eq 0x018fea40
+018fea3c  cbnz w22,0x018feb94
+018fea40  cbz x19,0x018feb44
+018fea44  ldr x8,[sp, #0x58]
+018fea48  ldr x8,[x8, #0x20]
+018fea4c  ldr x8,[x8, #0xc0]
+018fea50  ldr x1,[x8, #0x18]
+018fea54  ldr x9,[x1, #0x8]
+018fea58  add x8,sp,#0x8
+    ; [PRE] try { // try from 018fea58 to 018fea63 has its CatchHandler @ 018feb54
+018fea5c  mov x0,x19
+018fea60  blr x9
+    ; [POST] } // end try from 018fea58 to 018fea63
+018fea64  ldr x9,[sp, #0x68]
+018fea68  ldur q0,[sp, #0x8]
+018fea6c  ldr x8,[sp, #0x18]
+018fea70  add x0,x9,#0x28
+018fea74  str q0,[sp, #0x20]
+018fea78  str x8,[sp, #0x30]
+018fea7c  str x8,[x9, #0x38]
+018fea80  stur q0,[x9, #0x28]
+018fea84  mov x1,xzr
+    ; [PRE] try { // try from 018fea84 to 018fea8b has its CatchHandler @ 018feb50
+018fea88  bl 0x00b07850
+    ; [POST] } // end try from 018fea84 to 018fea8b
+018fea8c  ldr x0,[sp, #0x68]
+018fea90  mov w8,#0xfffffffd
+018fea94  str w8,[x0, #0x10]
+018fea98  ldr x1,[sp, #0x58]
+018fea9c  b 0x018feaa8
+018feaa0  mov w8,#0xfffffffd
+018feaa4  str w8,[x0, #0x10]
+018feaa8  ldr x8,[x1, #0x20]
+018feaac  add x0,x0,#0x28
+018feab0  ldr x8,[x8, #0xc0]
+018feab4  ldr x1,[x8, #0x28]
+018feab8  bl 0x01a07508
+    ; [PRE] try { // try from 018feab8 to 018feabb has its CatchHandler @ 018feb6c
+    ; [POST] } // end try from 018feab8 to 018feabb
+018feabc  tbz w0,#0x0,0x018feafc
+018feac0  ldr x8,[sp, #0x58]
+018feac4  ldr x9,[sp, #0x68]
+018feac8  ldr x8,[x8, #0x20]
+018feacc  add x0,x9,#0x28
+018fead0  ldr x8,[x8, #0xc0]
+018fead4  ldr x1,[x8, #0x20]
+018fead8  bl 0x01a075fc
+    ; [PRE] try { // try from 018fead8 to 018feadf has its CatchHandler @ 018feb60
+018feadc  mov x1,x0
+    ; [POST] } // end try from 018fead8 to 018feadf
+018feae0  ldr x0,[sp, #0x68]
+018feae4  str x1,[x0, #0x18]!
+018feae8  bl 0x00b07850
+    ; [PRE] try { // try from 018feae8 to 018feaeb has its CatchHandler @ 018feb58
+    ; [POST] } // end try from 018feae8 to 018feaeb
+018feaec  ldr x8,[sp, #0x68]
+018feaf0  mov w0,#0x1
+018feaf4  str w0,[x8, #0x10]
+018feaf8  b 0x018feb98
+018feafc  ldr x8,[sp, #0x58]
+018feb00  ldr x0,[sp, #0x68]
+018feb04  ldr x8,[x8, #0x20]
+018feb08  ldr x8,[x8, #0xc0]
+018feb0c  ldr x1,[x8]
+018feb10  ldr x8,[x1, #0x8]
+018feb14  blr x8
+    ; [PRE] try { // try from 018feb14 to 018feb17 has its CatchHandler @ 018feb5c
+    ; [POST] } // end try from 018feb14 to 018feb17
+018feb18  ldr x8,[sp, #0x68]
+018feb1c  mov w0,wzr
+018feb20  stp xzr,xzr,[x8, #0x28]
+018feb24  str xzr,[x8, #0x38]
+018feb28  b 0x018feb98
+018feb2c  bl 0x00b079b0
+    ; [PRE] try { // try from 018feb2c to 018feb2f has its CatchHandler @ 018feb4c
+    ; [POST] } // end try from 018feb2c to 018feb2f
+018feb30  bl 0x00b079b0
+    ; [PRE] try { // try from 018feb30 to 018feb33 has its CatchHandler @ 018feb68
+    ; [POST] } // end try from 018feb30 to 018feb33
+018feb34  bl 0x00b079b0
+    ; [PRE] try { // try from 018feb34 to 018feb37 has its CatchHandler @ 018feb64
+    ; [POST] } // end try from 018feb34 to 018feb37
+018feb38  bl 0x00b079b0
+    ; [PRE] try { // try from 018feb38 to 018feb3b has its CatchHandler @ 018febf4
+    ; [POST] } // end try from 018feb38 to 018feb3b
+018feb3c  mov x0,x20
+    ; [PRE] try { // try from 018feb3c to 018feb43 has its CatchHandler @ 018feb64
+018feb40  bl 0x00aaac8c
+    ; [POST] } // end try from 018feb3c to 018feb43
+018feb44  bl 0x00b079b0
+    ; [PRE] try { // try from 018feb44 to 018feb47 has its CatchHandler @ 018feb48
+    ; [POST] } // end try from 018feb44 to 018feb47
+018feb94  mov w0,wzr
+018feb98  ldp x19,x30,[sp, #0x80]
+018feb9c  ldp x21,x20,[sp, #0x70]
+018feba0  ldr x22,[sp, #0x60]
+018feba4  add sp,sp,#0x90
+018feba8  ret

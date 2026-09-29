@@ -1,0 +1,22 @@
+Function: AliothEngine.Net.HttpRequest$$Dispose @ 0169496c
+
+--- Calls OUT ---
+  -> UnityEngine.Networking.UnityWebRequest$$Dispose @ 026d5b08
+
+--- Calls IN ---
+  <- HttpPingManager$$ClearAllRequest @ 00e392b0
+  <- HttpPingManager$$OnPingDone @ 00e3901c
+
+--- Listing ---
+0169496c  stp x19,x30,[sp, #-0x10]!
+01694970  mov x19,x0
+01694974  ldr x0,[x0, #0x38]
+01694978  cbz x0,0x01694994
+0169497c  ldrb w8,[x19, #0x6c]
+01694980  cbnz w8,0x01694994
+01694984  mov x1,xzr
+01694988  bl 0x026d5b08
+0169498c  mov w8,#0x1
+01694990  strb w8,[x19, #0x6c]
+01694994  ldp x19,x30,[sp], #0x10
+01694998  ret

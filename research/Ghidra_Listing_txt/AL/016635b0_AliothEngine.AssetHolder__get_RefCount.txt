@@ -1,0 +1,43 @@
+Function: AliothEngine.AssetHolder$$get_RefCount @ 016635b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$Dump @ 0166c11c
+  <- AliothEngine.AssetLoader$$UnloadUnusedAssets @ 0166c6a0
+  <- XLua.CSObjectWrap.AliothEngineAssetHolderWrap$$_g_get_RefCount @ 01139e30
+
+--- Listing ---
+016635b0  stp x21,x20,[sp, #-0x20]!
+016635b4  stp x19,x30,[sp, #0x10]
+016635b8  adrp x21,0x3577000
+016635bc  adrp x20,0x3312000
+016635c0  ldrb w8,[x21, #0x8d1]
+016635c4  ldr x20,[x20, #0x428]
+016635c8  mov x19,x0
+016635cc  tbnz w8,#0x0,0x016635e4
+016635d0  adrp x0,0x3312000
+016635d4  ldr x0,[x0, #0x428]
+016635d8  bl 0x00b0789c
+016635dc  mov w8,#0x1
+016635e0  strb w8,[x21, #0x8d1]
+016635e4  ldr x0,[x20]
+016635e8  ldr w8,[x0, #0xe0]
+016635ec  cbnz w8,0x016635f8
+016635f0  bl 0x00b0798c
+016635f4  ldr x0,[x20]
+016635f8  ldr x8,[x0, #0xb8]
+016635fc  ldr x0,[x8, #0x98]
+01663600  cbz x0,0x01663618
+01663604  mov x1,x19
+01663608  ldp x19,x30,[sp, #0x10]
+0166360c  mov x2,xzr
+01663610  ldp x21,x20,[sp], #0x20
+01663614  b 0x01060c2c
+01663618  ldr w0,[x19, #0x10]
+0166361c  ldp x19,x30,[sp, #0x10]
+01663620  ldp x21,x20,[sp], #0x20
+01663624  ret

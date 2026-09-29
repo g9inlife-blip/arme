@@ -1,0 +1,17 @@
+Function: AliothEngine.DataStructures.SyncMethods$$CAS<object> @ 017d9070
+
+--- Calls OUT ---
+  -> FUN_00ae526c @ 00ae526c
+
+--- Calls IN ---
+
+--- Listing ---
+017d9070  stp x19,x30,[sp, #-0x10]!
+017d9074  mov x19,x1
+017d9078  mov x1,x2
+017d907c  mov x2,x19
+017d9080  bl 0x00ae526c
+017d9084  cmp x0,x19
+017d9088  cset w0,eq
+017d908c  ldp x19,x30,[sp], #0x10
+017d9090  ret

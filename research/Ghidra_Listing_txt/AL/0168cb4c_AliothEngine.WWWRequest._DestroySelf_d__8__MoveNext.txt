@@ -1,0 +1,73 @@
+Function: AliothEngine.WWWRequest.<DestroySelf>d__8$$MoveNext @ 0168cb4c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.WaitForSeconds$$.ctor @ 024dd340
+  -> UnityEngine.Object$$Destroy @ 024dfed4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0168cb4c  str x20,[sp, #-0x20]!
+0168cb50  stp x19,x30,[sp, #0x10]
+0168cb54  adrp x20,0x3577000
+0168cb58  ldrb w8,[x20, #0xab8]
+0168cb5c  mov x19,x0
+0168cb60  tbnz w8,#0x0,0x0168cb84
+0168cb64  adrp x0,0x3321000
+0168cb68  ldr x0,[x0, #0xca8]
+0168cb6c  bl 0x00b0789c
+0168cb70  adrp x0,0x3380000
+0168cb74  ldr x0,[x0, #0xea8]
+0168cb78  bl 0x00b0789c
+0168cb7c  mov w8,#0x1
+0168cb80  strb w8,[x20, #0xab8]
+0168cb84  ldr w8,[x19, #0x10]
+0168cb88  cmp w8,#0x1
+0168cb8c  b.eq 0x0168cbdc
+0168cb90  cbnz w8,0x0168cc20
+0168cb94  adrp x8,0x3380000
+0168cb98  ldr x8,[x8, #0xea8]
+0168cb9c  mov w9,#0xffffffff
+0168cba0  str w9,[x19, #0x10]
+0168cba4  ldr x0,[x8]
+0168cba8  bl 0x00b079a0
+0168cbac  cbz x0,0x0168cc30
+0168cbb0  fmov s0,0x3f800000
+0168cbb4  mov x1,xzr
+0168cbb8  mov x20,x0
+0168cbbc  bl 0x024dd340
+0168cbc0  str x20,[x19, #0x18]!
+0168cbc4  mov x0,x19
+0168cbc8  mov x1,x20
+0168cbcc  bl 0x00b07850
+0168cbd0  mov w0,#0x1
+0168cbd4  stur w0,[x19, #-0x8]
+0168cbd8  b 0x0168cc24
+0168cbdc  ldr x0,[x19, #0x20]
+0168cbe0  mov w8,#0xffffffff
+0168cbe4  str w8,[x19, #0x10]
+0168cbe8  cbz x0,0x0168cc30
+0168cbec  adrp x19,0x3321000
+0168cbf0  ldr x19,[x19, #0xca8]
+0168cbf4  mov x1,xzr
+0168cbf8  bl 0x024e4ed4
+0168cbfc  ldr x8,[x19]
+0168cc00  mov x19,x0
+0168cc04  ldr w9,[x8, #0xe0]
+0168cc08  cbnz w9,0x0168cc14
+0168cc0c  mov x0,x8
+0168cc10  bl 0x00b0798c
+0168cc14  mov x0,x19
+0168cc18  mov x1,xzr
+0168cc1c  bl 0x024dfed4
+0168cc20  mov w0,wzr
+0168cc24  ldp x19,x30,[sp, #0x10]
+0168cc28  ldr x20,[sp], #0x20
+0168cc2c  ret
+0168cc30  bl 0x00b079b0

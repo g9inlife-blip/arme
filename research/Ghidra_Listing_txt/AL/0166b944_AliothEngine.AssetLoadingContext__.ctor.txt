@@ -1,0 +1,81 @@
+Function: AliothEngine.AssetLoadingContext$$.ctor @ 0166b944
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.LinkedList<object>$$.ctor @ 01b9ab4c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$LoadAsset @ 0166847c
+
+--- Listing ---
+0166b944  stp x23,x22,[sp, #-0x30]!
+0166b948  stp x21,x20,[sp, #0x10]
+0166b94c  stp x19,x30,[sp, #0x20]
+0166b950  adrp x22,0x3577000
+0166b954  adrp x23,0x3331000
+0166b958  ldrb w8,[x22, #0x940]
+0166b95c  ldr x23,[x23, #0x9c0]
+0166b960  mov x19,x2
+0166b964  mov x21,x1
+0166b968  mov x20,x0
+0166b96c  tbnz w8,#0x0,0x0166b9a8
+0166b970  adrp x0,0x335f000
+0166b974  ldr x0,[x0, #0x1d8]
+0166b978  bl 0x00b0789c
+0166b97c  adrp x0,0x337c000
+0166b980  ldr x0,[x0, #0xf40]
+0166b984  bl 0x00b0789c
+0166b988  adrp x0,0x331a000
+0166b98c  ldr x0,[x0, #0xe40]
+0166b990  bl 0x00b0789c
+0166b994  adrp x0,0x3331000
+0166b998  ldr x0,[x0, #0x9c0]
+0166b99c  bl 0x00b0789c
+0166b9a0  mov w8,#0x1
+0166b9a4  strb w8,[x22, #0x940]
+0166b9a8  ldr x0,[x23]
+0166b9ac  bl 0x00b079a0
+0166b9b0  cbz x0,0x0166ba48
+0166b9b4  adrp x8,0x331a000
+0166b9b8  ldr x8,[x8, #0xe40]
+0166b9bc  adrp x23,0x337c000
+0166b9c0  mov x22,x0
+0166b9c4  ldr x1,[x8]
+0166b9c8  ldr x23,[x23, #0xf40]
+0166b9cc  bl 0x01bffe10
+0166b9d0  mov x0,x20
+0166b9d4  str x22,[x0, #0x10]!
+0166b9d8  mov x1,x22
+0166b9dc  bl 0x00b07850
+0166b9e0  ldr x0,[x23]
+0166b9e4  bl 0x00b079a0
+0166b9e8  cbz x0,0x0166ba48
+0166b9ec  adrp x8,0x335f000
+0166b9f0  ldr x8,[x8, #0x1d8]
+0166b9f4  mov x22,x0
+0166b9f8  ldr x1,[x8]
+0166b9fc  bl 0x01b9ab4c
+0166ba00  mov x0,x20
+0166ba04  str x22,[x0, #0x18]!
+0166ba08  mov x1,x22
+0166ba0c  bl 0x00b07850
+0166ba10  mov x0,x20
+0166ba14  mov x1,xzr
+0166ba18  bl 0x02194104
+0166ba1c  mov x0,x20
+0166ba20  str x21,[x0, #0x38]!
+0166ba24  mov x1,x21
+0166ba28  bl 0x00b07850
+0166ba2c  str x19,[x20, #0x30]!
+0166ba30  mov x0,x20
+0166ba34  mov x1,x19
+0166ba38  ldp x19,x30,[sp, #0x20]
+0166ba3c  ldp x21,x20,[sp, #0x10]
+0166ba40  ldp x23,x22,[sp], #0x30
+0166ba44  b 0x00b07850
+0166ba48  bl 0x00b079b0

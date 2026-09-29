@@ -1,0 +1,69 @@
+Function: AliothEngine.Types.HSBColor$$FromColor @ 016a4954
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- AliothEngine.Types.HSBColor$$.ctor @ 016a4938
+  <- FUN_0095f8ec @ 0095f8ec
+
+--- Listing ---
+016a4954  fcmp s1,s2
+016a4958  fcsel s5,s1,s2,gt
+016a495c  fcmp s0,s5
+016a4960  fcsel s7,s0,s5,gt
+016a4964  fmov s4,wzr
+016a4968  fcmp s7,#0.0
+016a496c  fmov s5,wzr
+016a4970  fmov s6,wzr
+016a4974  b.ls 0x016a4a08
+016a4978  fcmp s1,s2
+016a497c  fcsel s4,s1,s2,mi
+016a4980  fcmp s0,s4
+016a4984  fcsel s4,s0,s4,mi
+016a4988  fsub s5,s7,s4
+016a498c  fcmp s7,s4
+016a4990  fmov s4,wzr
+016a4994  b.le 0x016a49f4
+016a4998  fcmp s1,s7
+016a499c  b.ne 0x016a49b8
+016a49a0  fsub s0,s2,s0
+016a49a4  mov w8,#0x42700000
+016a49a8  fdiv s0,s0,s5
+016a49ac  fmov s1,w8
+016a49b0  mov w8,#0x42f00000
+016a49b4  b 0x016a49d4
+016a49b8  fcmp s2,s7
+016a49bc  b.ne 0x016a4a18
+016a49c0  fsub s0,s0,s1
+016a49c4  mov w8,#0x42700000
+016a49c8  fdiv s0,s0,s5
+016a49cc  fmov s1,w8
+016a49d0  mov w8,#0x43700000
+016a49d4  fmul s0,s0,s1
+016a49d8  fmov s1,w8
+016a49dc  fadd s4,s0,s1
+016a49e0  fcmp s4,#0.0
+016a49e4  b.pl 0x016a49f4
+016a49e8  mov w8,#0x43b40000
+016a49ec  fmov s0,w8
+016a49f0  fadd s4,s4,s0
+016a49f4  adrp x8,0x26dd000
+016a49f8  ldr s0,[x8, #0x84]
+016a49fc  fdiv s5,s5,s7
+016a4a00  mov v6.16B,v7.16B
+016a4a04  fmul s4,s4,s0
+016a4a08  mov v0.16B,v4.16B
+016a4a0c  mov v1.16B,v5.16B
+016a4a10  mov v2.16B,v6.16B
+016a4a14  ret
+016a4a18  fsub s0,s1,s2
+016a4a1c  mov w8,#0x42700000
+016a4a20  fdiv s0,s0,s5
+016a4a24  fmov s4,w8
+016a4a28  fcmp s1,s2
+016a4a2c  fmul s4,s0,s4
+016a4a30  b.pl 0x016a49e0
+016a4a34  mov w8,#0x43b40000
+016a4a38  fmov s0,w8
+016a4a3c  fadd s4,s4,s0
+016a4a40  b 0x016a49e0

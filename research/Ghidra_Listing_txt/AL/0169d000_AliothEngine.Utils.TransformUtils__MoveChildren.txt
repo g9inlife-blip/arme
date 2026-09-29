@@ -1,0 +1,139 @@
+Function: AliothEngine.Utils.TransformUtils$$MoveChildren @ 0169d000
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> UnityEngine.Transform$$set_position @ 024f3724
+  -> UnityEngine.Transform$$set_parent @ 024f4364
+
+--- Calls IN ---
+
+--- Listing ---
+0169d000  stp d13,d12,[sp, #-0x70]!
+0169d004  stp d11,d10,[sp, #0x10]
+0169d008  stp d9,d8,[sp, #0x20]
+0169d00c  str x24,[sp, #0x30]
+0169d010  stp x23,x22,[sp, #0x40]
+0169d014  stp x21,x20,[sp, #0x50]
+0169d018  stp x19,x30,[sp, #0x60]
+0169d01c  adrp x20,0x3577000
+0169d020  ldrb w8,[x20, #0xb48]
+0169d024  mov v11.16B,v2.16B
+0169d028  mov v12.16B,v1.16B
+0169d02c  mov v13.16B,v0.16B
+0169d030  mov x19,x0
+0169d034  tbnz w8,#0x0,0x0169d04c
+0169d038  adrp x0,0x3349000
+0169d03c  ldr x0,[x0, #0xbc8]
+0169d040  bl 0x00b0789c
+0169d044  mov w8,#0x1
+0169d048  strb w8,[x20, #0xb48]
+0169d04c  cbz x19,0x0169d1c4
+0169d050  adrp x20,0x3349000
+0169d054  ldr x20,[x20, #0xbc8]
+0169d058  mov x0,x19
+0169d05c  mov x1,xzr
+0169d060  bl 0x024f3684
+0169d064  mov x0,x19
+0169d068  mov x1,xzr
+0169d06c  mov v8.16B,v0.16B
+0169d070  mov v9.16B,v1.16B
+0169d074  mov v10.16B,v2.16B
+0169d078  bl 0x024f3684
+0169d07c  fadd s0,s13,s0
+0169d080  fadd s1,s12,s1
+0169d084  fadd s2,s11,s2
+0169d088  mov x0,x19
+0169d08c  mov x1,xzr
+0169d090  bl 0x024f3724
+0169d094  mov x0,x19
+0169d098  mov x1,xzr
+0169d09c  bl 0x024f5578
+0169d0a0  ldr x8,[x20]
+0169d0a4  mov w21,w0
+0169d0a8  mov w1,w21
+0169d0ac  mov x0,x8
+0169d0b0  bl 0x00b078f8
+0169d0b4  cmp w21,#0x1
+0169d0b8  mov x20,x0
+0169d0bc  b.lt 0x0169d13c
+0169d0c0  mov x23,xzr
+0169d0c4  mov w24,w21
+0169d0c8  add x21,x20,#0x20
+0169d0cc  mov x0,x19
+0169d0d0  mov w1,wzr
+0169d0d4  mov x2,xzr
+0169d0d8  bl 0x024f5bec
+0169d0dc  cbz x20,0x0169d1c4
+0169d0e0  mov x22,x0
+0169d0e4  cbz x0,0x0169d0fc
+0169d0e8  ldr x8,[x20]
+0169d0ec  mov x0,x22
+0169d0f0  ldr x1,[x8, #0x40]
+0169d0f4  bl 0x00b07990
+0169d0f8  cbz x0,0x0169d1cc
+0169d0fc  ldr w8,[x20, #0x18]
+0169d100  cmp x23,x8
+0169d104  b.cs 0x0169d1c8
+0169d108  mov x0,x21
+0169d10c  mov x1,x22
+0169d110  str x22,[x21]
+0169d114  bl 0x00b07850
+0169d118  cbz x22,0x0169d1c4
+0169d11c  mov x0,x22
+0169d120  mov x1,xzr
+0169d124  mov x2,xzr
+0169d128  bl 0x024f4364
+0169d12c  add x23,x23,#0x1
+0169d130  cmp x24,x23
+0169d134  add x21,x21,#0x8
+0169d138  b.ne 0x0169d0cc
+0169d13c  mov x0,x19
+0169d140  mov x1,xzr
+0169d144  bl 0x024e4e98
+0169d148  cbz x0,0x0169d1c4
+0169d14c  mov v0.16B,v8.16B
+0169d150  mov v1.16B,v9.16B
+0169d154  mov v2.16B,v10.16B
+0169d158  mov x1,xzr
+0169d15c  bl 0x024f3724
+0169d160  cbz x20,0x0169d1c4
+0169d164  ldr w8,[x20, #0x18]
+0169d168  cmp w8,#0x1
+0169d16c  b.lt 0x0169d1a4
+0169d170  mov w21,wzr
+0169d174  cmp w21,w8
+0169d178  b.cs 0x0169d1c8
+0169d17c  add x8,x20,w21, SXTW  #0x3
+0169d180  ldr x0,[x8, #0x20]
+0169d184  cbz x0,0x0169d1c4
+0169d188  mov x1,x19
+0169d18c  mov x2,xzr
+0169d190  bl 0x024f4364
+0169d194  ldr w8,[x20, #0x18]
+0169d198  add w21,w21,#0x1
+0169d19c  cmp w21,w8
+0169d1a0  b.lt 0x0169d174
+0169d1a4  ldp x19,x30,[sp, #0x60]
+0169d1a8  ldp x21,x20,[sp, #0x50]
+0169d1ac  ldp x23,x22,[sp, #0x40]
+0169d1b0  ldr x24,[sp, #0x30]
+0169d1b4  ldp d9,d8,[sp, #0x20]
+0169d1b8  ldp d11,d10,[sp, #0x10]
+0169d1bc  ldp d13,d12,[sp], #0x70
+0169d1c0  ret
+0169d1c4  bl 0x00b079b0
+0169d1c8  bl 0x00b079b8
+0169d1cc  bl 0x00b079d4
+0169d1d0  mov x1,xzr
+0169d1d4  bl 0x00b07978

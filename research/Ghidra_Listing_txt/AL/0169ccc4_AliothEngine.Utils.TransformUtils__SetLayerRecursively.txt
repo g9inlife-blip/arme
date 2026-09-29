@@ -1,0 +1,47 @@
+Function: AliothEngine.Utils.TransformUtils$$SetLayerRecursively @ 0169ccc4
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_childCount @ 024f5578
+  -> UnityEngine.GameObject$$set_layer @ 024de7a8
+  -> UnityEngine.Transform$$GetChild @ 024f5bec
+  -> UnityEngine.Component$$get_gameObject @ 024e4ed4
+  -> AliothEngine.Utils.TransformUtils$$SetLayerRecursively @ 0169ccc4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.Utils.TransformUtils$$SetLayerRecursively @ 0169ccc4
+
+--- Listing ---
+0169ccc4  stp x21,x20,[sp, #-0x20]!
+0169ccc8  stp x19,x30,[sp, #0x10]
+0169cccc  cbz x0,0x0169cd44
+0169ccd0  mov w19,w1
+0169ccd4  mov x1,xzr
+0169ccd8  mov x20,x0
+0169ccdc  bl 0x024e4ed4
+0169cce0  cbz x0,0x0169cd44
+0169cce4  mov w1,w19
+0169cce8  mov x2,xzr
+0169ccec  bl 0x024de7a8
+0169ccf0  mov x0,x20
+0169ccf4  mov x1,xzr
+0169ccf8  bl 0x024f5578
+0169ccfc  cmp w0,#0x1
+0169cd00  b.lt 0x0169cd38
+0169cd04  mov w21,wzr
+0169cd08  mov x0,x20
+0169cd0c  mov w1,w21
+0169cd10  mov x2,xzr
+0169cd14  bl 0x024f5bec
+0169cd18  mov w1,w19
+0169cd1c  bl 0x0169ccc4
+0169cd20  mov x0,x20
+0169cd24  mov x1,xzr
+0169cd28  add w21,w21,#0x1
+0169cd2c  bl 0x024f5578
+0169cd30  cmp w21,w0
+0169cd34  b.lt 0x0169cd08
+0169cd38  ldp x19,x30,[sp, #0x10]
+0169cd3c  ldp x21,x20,[sp], #0x20
+0169cd40  ret
+0169cd44  bl 0x00b079b0

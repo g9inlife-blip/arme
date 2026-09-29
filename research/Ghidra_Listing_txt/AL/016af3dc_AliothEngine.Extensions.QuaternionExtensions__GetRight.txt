@@ -1,0 +1,40 @@
+Function: AliothEngine.Extensions.QuaternionExtensions$$GetRight @ 016af3dc
+
+--- Calls OUT ---
+  -> UnityEngine.Quaternion$$op_Multiply @ 024ee4b4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.Matrix4x4Extension$$SetRotation @ 016af298
+
+--- Listing ---
+016af3dc  stp d11,d10,[sp, #-0x30]!
+016af3e0  stp d9,d8,[sp, #0x10]
+016af3e4  stp x19,x30,[sp, #0x20]
+016af3e8  adrp x19,0x3570000
+016af3ec  ldrb w8,[x19, #0xf13]
+016af3f0  mov v8.16B,v3.16B
+016af3f4  mov v9.16B,v2.16B
+016af3f8  mov v10.16B,v1.16B
+016af3fc  mov v11.16B,v0.16B
+016af400  cbnz w8,0x016af418
+016af404  adrp x0,0x3368000
+016af408  ldr x0,[x0, #0x9b8]
+016af40c  bl 0x00b0789c
+016af410  mov w8,#0x1
+016af414  strb w8,[x19, #0xf13]
+016af418  adrp x8,0x3368000
+016af41c  ldr x8,[x8, #0x9b8]
+016af420  mov v2.16B,v9.16B
+016af424  mov v3.16B,v8.16B
+016af428  ldp x19,x30,[sp, #0x20]
+016af42c  ldr x8,[x8]
+016af430  ldp d9,d8,[sp, #0x10]
+016af434  mov v0.16B,v11.16B
+016af438  mov v1.16B,v10.16B
+016af43c  ldr x8,[x8, #0xb8]
+016af440  mov x0,xzr
+016af444  ldp s4,s5,[x8, #0x3c]
+016af448  ldr s6,[x8, #0x44]
+016af44c  ldp d11,d10,[sp], #0x30
+016af450  b 0x024ee4b4

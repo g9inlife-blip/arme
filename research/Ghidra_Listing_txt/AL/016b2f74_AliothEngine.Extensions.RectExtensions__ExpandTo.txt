@@ -1,0 +1,64 @@
+Function: AliothEngine.Extensions.RectExtensions$$ExpandTo @ 016b2f74
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$set_yMax @ 024db058
+  -> UnityEngine.Rect$$set_yMin @ 024dafe8
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_xMin @ 024dafa0
+  -> UnityEngine.Rect$$set_xMin @ 024dafcc
+  -> UnityEngine.Rect$$set_xMax @ 024db048
+  -> UnityEngine.Rect$$get_yMin @ 024dafa8
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+
+--- Listing ---
+016b2f74  sub sp,sp,#0x30
+016b2f78  stp d9,d8,[sp, #0x10]
+016b2f7c  str x30,[sp, #0x20]
+016b2f80  mov x0,sp
+016b2f84  mov x1,xzr
+016b2f88  mov v8.16B,v5.16B
+016b2f8c  mov v9.16B,v4.16B
+016b2f90  stp s0,s1,[sp]
+016b2f94  stp s2,s3,[sp, #0x8]
+016b2f98  bl 0x024dafa0
+016b2f9c  mov x0,sp
+016b2fa0  fcmp s9,s0
+016b2fa4  b.pl 0x016b2fb8
+016b2fa8  mov v0.16B,v9.16B
+016b2fac  mov x1,xzr
+016b2fb0  bl 0x024dafcc
+016b2fb4  b 0x016b2fd8
+016b2fb8  mov x1,xzr
+016b2fbc  bl 0x024db014
+016b2fc0  fcmp s9,s0
+016b2fc4  b.le 0x016b2fd8
+016b2fc8  mov x0,sp
+016b2fcc  mov v0.16B,v9.16B
+016b2fd0  mov x1,xzr
+016b2fd4  bl 0x024db048
+016b2fd8  mov x0,sp
+016b2fdc  mov x1,xzr
+016b2fe0  bl 0x024dafa8
+016b2fe4  mov x0,sp
+016b2fe8  fcmp s8,s0
+016b2fec  b.pl 0x016b3000
+016b2ff0  mov v0.16B,v8.16B
+016b2ff4  mov x1,xzr
+016b2ff8  bl 0x024dafe8
+016b2ffc  b 0x016b3020
+016b3000  mov x1,xzr
+016b3004  bl 0x024db024
+016b3008  fcmp s8,s0
+016b300c  b.le 0x016b3020
+016b3010  mov x0,sp
+016b3014  mov v0.16B,v8.16B
+016b3018  mov x1,xzr
+016b301c  bl 0x024db058
+016b3020  ldp s0,s1,[sp]
+016b3024  ldp s2,s3,[sp, #0x8]
+016b3028  ldr x30,[sp, #0x20]
+016b302c  ldp d9,d8,[sp, #0x10]
+016b3030  add sp,sp,#0x30
+016b3034  ret

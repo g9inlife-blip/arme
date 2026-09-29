@@ -1,0 +1,49 @@
+Function: AliothEngine.WeakEvents.WeakEvent$$Add @ 0169749c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> AliothEngine.WeakEvents.WeakActionBase$$.ctor @ 01696f00
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.DataStructures.FasterList<object>$$Add @ 01addf30
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AliothEngine.WeakEvents.WeakEvent$$op_Addition @ 0169730c
+
+--- Listing ---
+0169749c  str x22,[sp, #-0x30]!
+016974a0  stp x21,x20,[sp, #0x10]
+016974a4  stp x19,x30,[sp, #0x20]
+016974a8  adrp x22,0x3577000
+016974ac  adrp x21,0x3366000
+016974b0  ldrb w8,[x22, #0xb10]
+016974b4  ldr x21,[x21, #0x38]
+016974b8  mov x19,x1
+016974bc  mov x20,x0
+016974c0  tbnz w8,#0x0,0x016974e4
+016974c4  adrp x0,0x336a000
+016974c8  ldr x0,[x0, #0x6e0]
+016974cc  bl 0x00b0789c
+016974d0  adrp x0,0x3366000
+016974d4  ldr x0,[x0, #0x38]
+016974d8  bl 0x00b0789c
+016974dc  mov w8,#0x1
+016974e0  strb w8,[x22, #0xb10]
+016974e4  ldr x0,[x21]
+016974e8  ldr x20,[x20, #0x10]
+016974ec  bl 0x00b079a0
+016974f0  cbz x0,0x01697528
+016974f4  mov x1,x19
+016974f8  mov x21,x0
+016974fc  bl 0x01696f00
+01697500  cbz x20,0x01697528
+01697504  adrp x8,0x336a000
+01697508  ldr x8,[x8, #0x6e0]
+0169750c  mov x0,x20
+01697510  mov x1,x21
+01697514  ldp x19,x30,[sp, #0x20]
+01697518  ldr x2,[x8]
+0169751c  ldp x21,x20,[sp, #0x10]
+01697520  ldr x22,[sp], #0x30
+01697524  b 0x01addf30
+01697528  bl 0x00b079b0

@@ -1,0 +1,48 @@
+Function: AliothEngine.GameUpdateService$$get_logger @ 0167d368
+
+--- Calls OUT ---
+  -> AliothEngine.LogManager$$get_DefaultLogger @ 0168a3f0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp283 @ 01083dd8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.GameUpdateService$$<StartVersionCheckUpdate>b__57_1 @ 0167fbd8
+  <- AliothEngine.GameUpdateService$$<StartVersionCheckUpdate>b__57_0 @ 0167fa00
+  <- AliothEngine.GameUpdateService$$_OnUpdateFail @ 0167eb98
+  <- AliothEngine.GameUpdateService.<_OnUpdateSuccessIE>d__66$$MoveNext @ 01682128
+  <- AliothEngine.GameUpdateService$$isAssetNeedUpdate_CheckCacheAndBuild @ 0167f2f0
+  <- AliothEngine.GameUpdateService$$<_OnUpdateSuccessIE>b__66_0 @ 0167ffec
+  <- AliothEngine.GameUpdateService$$<StartDownLoadAssetBundleMainfest>b__62_0 @ 0167fe58
+  <- AliothEngine.GameUpdateService.<>c__DisplayClass75_0$$<CheckAssets>b__0 @ 01682a9c
+  <- AliothEngine.GameUpdateService.<SetupAsync>d__53$$MoveNext @ 01680a70
+  <- AliothEngine.GameUpdateService.<VersionCheckUpdate>d__54$$MoveNext @ 01680e68
+  <- AliothEngine.GameUpdateService$$set_UpdateSteping @ 0167d1c0
+  <- AliothEngine.GameUpdateService.<StartVersionCheck>d__48$$MoveNext @ 01680178
+  <- AliothEngine.GameUpdateService.<StartDownLoadAsset>d__50$$MoveNext @ 016807a8
+
+--- Listing ---
+0167d368  stp x21,x20,[sp, #-0x20]!
+0167d36c  stp x19,x30,[sp, #0x10]
+0167d370  adrp x20,0x3577000
+0167d374  adrp x21,0x3352000
+0167d378  ldrb w8,[x20, #0xa36]
+0167d37c  ldr x21,[x21, #0x2a8]
+0167d380  mov x19,x0
+0167d384  tbnz w8,#0x0,0x0167d39c
+0167d388  adrp x0,0x3352000
+0167d38c  ldr x0,[x0, #0x2a8]
+0167d390  bl 0x00b0789c
+0167d394  mov w8,#0x1
+0167d398  strb w8,[x20, #0xa36]
+0167d39c  ldr x8,[x21]
+0167d3a0  ldr x8,[x8, #0xb8]
+0167d3a4  ldr x0,[x8, #0x128]
+0167d3a8  cbz x0,0x0167d3c0
+0167d3ac  mov x1,x19
+0167d3b0  ldp x19,x30,[sp, #0x10]
+0167d3b4  mov x2,xzr
+0167d3b8  ldp x21,x20,[sp], #0x20
+0167d3bc  b 0x01083dd8
+0167d3c0  ldp x19,x30,[sp, #0x10]
+0167d3c4  ldp x21,x20,[sp], #0x20
+0167d3c8  b 0x0168a3f0

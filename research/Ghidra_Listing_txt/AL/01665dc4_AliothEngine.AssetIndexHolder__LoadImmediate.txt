@@ -1,0 +1,89 @@
+Function: AliothEngine.AssetIndexHolder$$LoadImmediate @ 01665dc4
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.ScriptableObject$$CreateInstance<object> @ 017ce730
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.File$$ReadAllBytes @ 020b0614
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.AssetHolder$$set_asset @ 016621c8
+  -> AliothEngine.AssetDownloader$$GetCachePath @ 0165e144
+  -> President.MsgPackSerializer$$Deserialize<object> @ 017a8b18
+
+--- Calls IN ---
+
+--- Listing ---
+01665dc4  str x22,[sp, #-0x30]!
+01665dc8  stp x21,x20,[sp, #0x10]
+01665dcc  stp x19,x30,[sp, #0x20]
+01665dd0  adrp x22,0x3577000
+01665dd4  adrp x21,0x3337000
+01665dd8  ldrb w8,[x22, #0x8f4]
+01665ddc  ldr x21,[x21, #0x5c8]
+01665de0  mov x20,x1
+01665de4  mov x19,x0
+01665de8  tbnz w8,#0x0,0x01665e24
+01665dec  adrp x0,0x3337000
+01665df0  ldr x0,[x0, #0x5c8]
+01665df4  bl 0x00b0789c
+01665df8  adrp x0,0x334e000
+01665dfc  ldr x0,[x0, #0x428]
+01665e00  bl 0x00b0789c
+01665e04  adrp x0,0x332c000
+01665e08  ldr x0,[x0, #0x318]
+01665e0c  bl 0x00b0789c
+01665e10  adrp x0,0x3317000
+01665e14  ldr x0,[x0, #0x438]
+01665e18  bl 0x00b0789c
+01665e1c  mov w8,#0x1
+01665e20  strb w8,[x22, #0x8f4]
+01665e24  ldr x0,[x21]
+01665e28  adrp x21,0x3317000
+01665e2c  ldr w8,[x0, #0xe0]
+01665e30  ldr x21,[x21, #0x438]
+01665e34  cbnz w8,0x01665e3c
+01665e38  bl 0x00b0798c
+01665e3c  mov x0,x20
+01665e40  bl 0x0165e144
+01665e44  mov x1,xzr
+01665e48  bl 0x020b0614
+01665e4c  ldr x8,[x21]
+01665e50  mov x20,x0
+01665e54  ldr w9,[x8, #0xe0]
+01665e58  cbnz w9,0x01665e68
+01665e5c  mov x0,x8
+    ; [PRE] try { // try from 01665e5c to 01665e63 has its CatchHandler @ 01665ed4
+01665e60  bl 0x00b0798c
+    ; [POST] } // end try from 01665e5c to 01665e63
+01665e64  ldr x8,[x21]
+01665e68  ldr x8,[x8, #0xb8]
+01665e6c  ldr x0,[x8, #0x10]
+01665e70  cbz x0,0x01665ecc
+01665e74  adrp x8,0x334e000
+01665e78  ldr x8,[x8, #0x428]
+01665e7c  ldr x2,[x8]
+01665e80  mov x1,x20
+    ; [PRE] try { // try from 01665e80 to 01665e87 has its CatchHandler @ 01665ed8
+01665e84  bl 0x017a8b18
+    ; [POST] } // end try from 01665e80 to 01665e87
+01665e88  mov x20,x0
+01665e8c  adrp x8,0x332c000
+01665e90  ldr x8,[x8, #0x318]
+01665e94  ldr x0,[x8]
+01665e98  bl 0x017ce730
+01665e9c  cbz x0,0x01665ec8
+01665ea0  mov x21,x0
+01665ea4  str x20,[x0, #0x18]!
+01665ea8  mov x1,x20
+01665eac  bl 0x00b07850
+01665eb0  mov x0,x19
+01665eb4  mov x1,x21
+01665eb8  ldp x19,x30,[sp, #0x20]
+01665ebc  ldp x21,x20,[sp, #0x10]
+01665ec0  ldr x22,[sp], #0x30
+01665ec4  b 0x016621c8
+01665ec8  bl 0x00b079b0
+01665ecc  bl 0x00b079b0
+    ; [PRE] try { // try from 01665ecc to 01665ecf has its CatchHandler @ 01665ed0
+    ; [POST] } // end try from 01665ecc to 01665ecf

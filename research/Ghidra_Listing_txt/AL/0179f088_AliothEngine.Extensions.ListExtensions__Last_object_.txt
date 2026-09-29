@@ -1,0 +1,40 @@
+Function: AliothEngine.Extensions.ListExtensions$$Last<object> @ 0179f088
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- HomePanelMono$$Start @ 00f67adc
+  <- DataCenter$$get_NextEquipMax @ 016de648
+  <- DataCenter$$get_EquipMax @ 016de7cc
+  <- DataCenter$$get_CurrentEquipMax @ 016de53c
+
+--- Listing ---
+0179f088  str x20,[sp, #-0x20]!
+0179f08c  stp x19,x30,[sp, #0x10]
+0179f090  cbz x0,0x0179f0f4
+0179f094  ldr x8,[x1, #0x38]
+0179f098  mov x20,x1
+0179f09c  mov x19,x0
+0179f0a0  ldr x1,[x8, #0x8]
+0179f0a4  ldr x8,[x1, #0x8]
+0179f0a8  blr x8
+0179f0ac  cbz w0,0x0179f0e4
+0179f0b0  ldr x8,[x20, #0x38]
+0179f0b4  mov x0,x19
+0179f0b8  ldr x1,[x8, #0x8]
+0179f0bc  ldr x8,[x1, #0x8]
+0179f0c0  blr x8
+0179f0c4  ldr x8,[x20, #0x38]
+0179f0c8  sub w1,w0,#0x1
+0179f0cc  mov x0,x19
+0179f0d0  ldp x19,x30,[sp, #0x10]
+0179f0d4  ldr x2,[x8, #0x10]
+0179f0d8  ldr x3,[x2, #0x8]
+0179f0dc  ldr x20,[sp], #0x20
+0179f0e0  br x3
+0179f0e4  ldp x19,x30,[sp, #0x10]
+0179f0e8  mov x0,xzr
+0179f0ec  ldr x20,[sp], #0x20
+0179f0f0  ret
+0179f0f4  bl 0x00b079b0

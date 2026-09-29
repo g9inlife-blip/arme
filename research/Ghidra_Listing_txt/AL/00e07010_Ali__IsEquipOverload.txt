@@ -1,0 +1,115 @@
+Function: Ali$$IsEquipOverload @ 00e07010
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary.ValueCollection<object,-object>$$get_Count @ 01e7f5a4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$TipsText @ 00e04544
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Values @ 0196e348
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+  -> DataCenter$$get_EquipMax @ 016de7cc
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliWrap$$_m_IsEquipOverload @ 011967e8
+  <- GoToBattleMono$$SendGoFight @ 00e5a318
+
+--- Listing ---
+00e07010  stp x21,x20,[sp, #-0x20]!
+00e07014  stp x19,x30,[sp, #0x10]
+00e07018  adrp x21,0x3572000
+00e0701c  adrp x20,0x335f000
+00e07020  ldrb w8,[x21, #0x57b]
+00e07024  ldr x20,[x20, #0x20]
+00e07028  mov x19,x0
+00e0702c  tbnz w8,#0x0,0x00e07074
+00e07030  adrp x0,0x335f000
+00e07034  ldr x0,[x0, #0x20]
+00e07038  bl 0x00b0789c
+00e0703c  adrp x0,0x335b000
+00e07040  ldr x0,[x0, #0x650]
+00e07044  bl 0x00b0789c
+00e07048  adrp x0,0x3314000
+00e0704c  ldr x0,[x0, #0xca8]
+00e07050  bl 0x00b0789c
+00e07054  adrp x0,0x3347000
+00e07058  ldr x0,[x0, #0x410]
+00e0705c  bl 0x00b0789c
+00e07060  adrp x0,0x3336000
+00e07064  ldr x0,[x0, #0xc68]
+00e07068  bl 0x00b0789c
+00e0706c  mov w8,#0x1
+00e07070  strb w8,[x21, #0x57b]
+00e07074  ldr x0,[x20]
+00e07078  ldr w8,[x0, #0xe0]
+00e0707c  cbnz w8,0x00e07088
+00e07080  bl 0x00b0798c
+00e07084  ldr x0,[x20]
+00e07088  ldr x8,[x0, #0xb8]
+00e0708c  ldr x0,[x8, #0x380]
+00e07090  cbz x0,0x00e070a8
+00e07094  mov x1,x19
+00e07098  ldp x19,x30,[sp, #0x10]
+00e0709c  mov x2,xzr
+00e070a0  ldp x21,x20,[sp], #0x20
+00e070a4  b 0x01060aac
+00e070a8  adrp x20,0x3347000
+00e070ac  ldr x20,[x20, #0x410]
+00e070b0  ldr x0,[x20]
+00e070b4  bl 0x01e0894c
+00e070b8  cbz x0,0x00e0718c
+00e070bc  ldr x0,[x0, #0x38]
+00e070c0  cbz x0,0x00e0718c
+00e070c4  adrp x8,0x3314000
+00e070c8  ldr x8,[x8, #0xca8]
+00e070cc  ldr x1,[x8]
+00e070d0  bl 0x0196e348
+00e070d4  cbz x0,0x00e0718c
+00e070d8  adrp x8,0x3336000
+00e070dc  ldr x8,[x8, #0xc68]
+00e070e0  ldr x1,[x8]
+00e070e4  bl 0x01e7f5a4
+00e070e8  ldr x8,[x20]
+00e070ec  mov w20,w0
+00e070f0  mov x0,x8
+00e070f4  bl 0x01e0894c
+00e070f8  cbz x0,0x00e0718c
+00e070fc  mov x1,xzr
+00e07100  bl 0x016de7cc
+00e07104  cmp w20,w0
+00e07108  b.ge 0x00e07114
+00e0710c  mov w0,#0x1
+00e07110  b 0x00e07180
+00e07114  adrp x8,0x335b000
+00e07118  ldr x8,[x8, #0x650]
+00e0711c  ldr x20,[x8]
+00e07120  ldr x8,[x20, #0x38]
+00e07124  ldr x0,[x8]
+00e07128  ldrb w8,[x0, #0x132]
+00e0712c  tbnz w8,#0x0,0x00e07134
+00e07130  bl 0x00b2ac40
+00e07134  ldr w8,[x0, #0xe0]
+00e07138  cbnz w8,0x00e07140
+00e0713c  bl 0x00b0798c
+00e07140  ldr x8,[x20, #0x38]
+00e07144  ldr x0,[x8]
+00e07148  ldrb w8,[x0, #0x132]
+00e0714c  tbnz w8,#0x0,0x00e07154
+00e07150  bl 0x00b2ac40
+00e07154  ldr x8,[x0, #0xb8]
+00e07158  mov w1,#0x4c1a
+00e0715c  movk w1,#0x4c7, LSL #16
+00e07160  mov w4,#0xffffffff
+00e07164  ldr x6,[x8]
+00e07168  mov x0,x19
+00e0716c  mov w2,wzr
+00e07170  mov x3,xzr
+00e07174  mov w5,wzr
+00e07178  bl 0x00e04544
+00e0717c  mov w0,wzr
+00e07180  ldp x19,x30,[sp, #0x10]
+00e07184  ldp x21,x20,[sp], #0x20
+00e07188  ret
+00e0718c  bl 0x00b079b0

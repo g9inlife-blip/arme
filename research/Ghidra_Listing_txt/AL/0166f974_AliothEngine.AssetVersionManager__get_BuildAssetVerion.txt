@@ -1,0 +1,42 @@
+Function: AliothEngine.AssetVersionManager$$get_BuildAssetVerion @ 0166f974
+
+--- Calls OUT ---
+  -> System.String$$Concat @ 01fdf3bc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> ProtocolGame_HttpRequest$$get_buildVerion @ 00dd90bc
+  -> AliothEngine.AssetVersionManager$$get_AssetVersionSaved @ 0166f050
+
+--- Calls IN ---
+  <- LoginGateMono$$Start @ 00f90038
+  <- GameUpdatePanelMono.<Start>d__18$$MoveNext @ 0103fb00
+
+--- Listing ---
+0166f974  stp x21,x20,[sp, #-0x20]!
+0166f978  stp x19,x30,[sp, #0x10]
+0166f97c  adrp x19,0x3577000
+0166f980  adrp x20,0x332f000
+0166f984  adrp x21,0x3382000
+0166f988  ldrb w8,[x19, #0x961]
+0166f98c  ldr x20,[x20, #0xb60]
+0166f990  ldr x21,[x21, #0x698]
+0166f994  tbnz w8,#0x0,0x0166f9b8
+0166f998  adrp x0,0x332f000
+0166f99c  ldr x0,[x0, #0xb60]
+0166f9a0  bl 0x00b0789c
+0166f9a4  adrp x0,0x3382000
+0166f9a8  ldr x0,[x0, #0x698]
+0166f9ac  bl 0x00b0789c
+0166f9b0  mov w8,#0x1
+0166f9b4  strb w8,[x19, #0x961]
+0166f9b8  mov x0,xzr
+0166f9bc  bl 0x00dd90bc
+0166f9c0  mov x19,x0
+0166f9c4  bl 0x0166f050
+0166f9c8  ldr x1,[x20]
+0166f9cc  ldr x3,[x21]
+0166f9d0  mov x2,x0
+0166f9d4  mov x0,x19
+0166f9d8  ldp x19,x30,[sp, #0x10]
+0166f9dc  mov x4,xzr
+0166f9e0  ldp x21,x20,[sp], #0x20
+0166f9e4  b 0x01fdf3bc

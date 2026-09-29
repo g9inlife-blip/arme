@@ -1,0 +1,58 @@
+Function: AliothEngine.GameUpdateService$$StartDownLoadAsset @ 0167d924
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp55 @ 01066218
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- GameUpdatePanelMono$$OnClickStartAssetUpdate @ 0103f93c
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_m_StartDownLoadAsset @ 0114105c
+
+--- Listing ---
+0167d924  stp x21,x20,[sp, #-0x20]!
+0167d928  stp x19,x30,[sp, #0x10]
+0167d92c  adrp x20,0x3577000
+0167d930  adrp x21,0x3352000
+0167d934  ldrb w8,[x20, #0xa23]
+0167d938  ldr x21,[x21, #0x2a8]
+0167d93c  mov x19,x0
+0167d940  tbnz w8,#0x0,0x0167d964
+0167d944  adrp x0,0x3352000
+0167d948  ldr x0,[x0, #0x2a8]
+0167d94c  bl 0x00b0789c
+0167d950  adrp x0,0x337d000
+0167d954  ldr x0,[x0, #0x328]
+0167d958  bl 0x00b0789c
+0167d95c  mov w8,#0x1
+0167d960  strb w8,[x20, #0xa23]
+0167d964  ldr x8,[x21]
+0167d968  ldr x8,[x8, #0xb8]
+0167d96c  ldr x0,[x8, #0x90]
+0167d970  cbz x0,0x0167d988
+0167d974  mov x1,x19
+0167d978  ldp x19,x30,[sp, #0x10]
+0167d97c  mov x2,xzr
+0167d980  ldp x21,x20,[sp], #0x20
+0167d984  b 0x01066218
+0167d988  adrp x8,0x337d000
+0167d98c  ldr x8,[x8, #0x328]
+0167d990  ldr x0,[x8]
+0167d994  bl 0x00b079a0
+0167d998  cbz x0,0x0167d9cc
+0167d99c  mov x1,xzr
+0167d9a0  mov x20,x0
+0167d9a4  bl 0x02194104
+0167d9a8  mov x0,x20
+0167d9ac  str wzr,[x20, #0x10]
+0167d9b0  str x19,[x0, #0x20]!
+0167d9b4  mov x1,x19
+0167d9b8  bl 0x00b07850
+0167d9bc  ldp x19,x30,[sp, #0x10]
+0167d9c0  mov x0,x20
+0167d9c4  ldp x21,x20,[sp], #0x20
+0167d9c8  ret
+0167d9cc  bl 0x00b079b0

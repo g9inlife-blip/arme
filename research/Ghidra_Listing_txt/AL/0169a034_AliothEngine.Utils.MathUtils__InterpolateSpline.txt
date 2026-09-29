@@ -1,0 +1,47 @@
+Function: AliothEngine.Utils.MathUtils$$InterpolateSpline @ 0169a034
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+0169a034  ldr s19,[sp, #0x20]
+0169a038  ldp s18,s17,[sp, #0x4]
+0169a03c  ldr s20,[sp]
+0169a040  fmov s21,0x40400000
+0169a044  fmul s23,s19,s19
+0169a048  fmul s24,s23,s19
+0169a04c  fmul s21,s23,s21
+0169a050  fadd s25,s23,s23
+0169a054  fadd s26,s24,s24
+0169a058  ldp s7,s6,[sp, #0x14]
+0169a05c  ldr s16,[sp, #0x10]
+0169a060  fmov s22,0x3f800000
+0169a064  fsub s25,s24,s25
+0169a068  fsub s23,s24,s23
+0169a06c  fsub s24,s26,s21
+0169a070  fsub s21,s21,s26
+0169a074  fadd s22,s24,s22
+0169a078  fadd s19,s25,s19
+0169a07c  fmul s20,s20,s21
+0169a080  fmul s18,s18,s21
+0169a084  fmul s17,s17,s21
+0169a088  fmul s0,s0,s22
+0169a08c  fmul s1,s1,s22
+0169a090  fmul s2,s2,s22
+0169a094  fmul s3,s3,s19
+0169a098  fmul s4,s4,s19
+0169a09c  fmul s5,s5,s19
+0169a0a0  fadd s0,s20,s0
+0169a0a4  fadd s1,s18,s1
+0169a0a8  fadd s2,s17,s2
+0169a0ac  fmul s16,s16,s23
+0169a0b0  fmul s7,s7,s23
+0169a0b4  fmul s6,s6,s23
+0169a0b8  fadd s0,s3,s0
+0169a0bc  fadd s1,s4,s1
+0169a0c0  fadd s2,s5,s2
+0169a0c4  fadd s0,s16,s0
+0169a0c8  fadd s1,s7,s1
+0169a0cc  fadd s2,s6,s2
+0169a0d0  ret

@@ -1,0 +1,42 @@
+Function: ResolveMorePanelMono$$OnClickQuality1 @ 010459e8
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> ResolveMorePanelMono$$QualityClick @ 010452ac
+
+--- Calls IN ---
+
+--- Listing ---
+010459e8  str x22,[sp, #-0x30]!
+010459ec  stp x21,x20,[sp, #0x10]
+010459f0  stp x19,x30,[sp, #0x20]
+010459f4  adrp x21,0x3574000
+010459f8  adrp x22,0x3378000
+010459fc  ldrb w8,[x21, #0x604]
+01045a00  ldr x22,[x22, #0x490]
+01045a04  mov x20,x1
+01045a08  mov x19,x0
+01045a0c  tbnz w8,#0x0,0x01045a24
+01045a10  adrp x0,0x3378000
+01045a14  ldr x0,[x0, #0x490]
+01045a18  bl 0x00b0789c
+01045a1c  mov w8,#0x1
+01045a20  strb w8,[x21, #0x604]
+01045a24  ldr x8,[x22]
+01045a28  ldr x8,[x8, #0xb8]
+01045a2c  ldr x0,[x8, #0x58]
+01045a30  cbz x0,0x01045a50
+01045a34  mov x1,x19
+01045a38  mov x2,x20
+01045a3c  ldp x19,x30,[sp, #0x20]
+01045a40  ldp x21,x20,[sp, #0x10]
+01045a44  mov x3,xzr
+01045a48  ldr x22,[sp], #0x30
+01045a4c  b 0x0106125c
+01045a50  mov x0,x19
+01045a54  ldp x19,x30,[sp, #0x20]
+01045a58  ldp x21,x20,[sp, #0x10]
+01045a5c  mov w1,#0x1
+01045a60  ldr x22,[sp], #0x30
+01045a64  b 0x010452ac

@@ -1,0 +1,40 @@
+Function: AliothEngine.DataStructures.FasterReadOnlyList<KeyValuePair<object,-object>>$$get_Count @ 01adf6dc
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977eac @ 00977eac
+
+--- Listing ---
+01adf6dc  str x20,[sp, #-0x20]!
+01adf6e0  stp x19,x30,[sp, #0x10]
+01adf6e4  ldr x19,[x0]
+01adf6e8  cbz x19,0x01adf750
+01adf6ec  ldr x8,[x1, #0x20]
+01adf6f0  mov x20,x1
+01adf6f4  ldrh w9,[x8, #0x132]
+01adf6f8  tbnz w9,#0x0,0x01adf710
+01adf6fc  mov x0,x8
+01adf700  bl 0x00b2ac40
+01adf704  ldr x8,[x20, #0x20]
+01adf708  ldrh w9,[x8, #0x132]
+01adf70c  b 0x01adf714
+01adf710  mov x0,x8
+01adf714  ldr x10,[x0, #0xc0]
+01adf718  ldr x10,[x10, #0x8]
+01adf71c  ldr x2,[x10, #0x8]
+01adf720  tbnz w9,#0x0,0x01adf738
+01adf724  mov x0,x8
+01adf728  str x2,[sp, #0x8]
+01adf72c  bl 0x00b2ac40
+01adf730  ldr x2,[sp, #0x8]
+01adf734  mov x8,x0
+01adf738  ldr x8,[x8, #0xc0]
+01adf73c  mov x0,x19
+01adf740  ldp x19,x30,[sp, #0x10]
+01adf744  ldr x1,[x8, #0x8]
+01adf748  ldr x20,[sp], #0x20
+01adf74c  br x2
+01adf750  bl 0x00b079b0

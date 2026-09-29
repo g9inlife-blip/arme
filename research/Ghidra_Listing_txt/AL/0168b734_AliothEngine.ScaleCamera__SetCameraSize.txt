@@ -1,0 +1,41 @@
+Function: AliothEngine.ScaleCamera$$SetCameraSize @ 0168b734
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothExtensions$$GetScaleOrthographicSize @ 00e175a4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Camera$$set_orthographicSize @ 024d7280
+
+--- Calls IN ---
+  <- AliothEngine.ScaleCamera$$Awake @ 0168b6d4
+
+--- Listing ---
+0168b734  stp x21,x20,[sp, #-0x20]!
+0168b738  stp x19,x30,[sp, #0x10]
+0168b73c  adrp x21,0x3577000
+0168b740  adrp x20,0x3348000
+0168b744  ldrb w8,[x21, #0xaa1]
+0168b748  ldr x20,[x20, #0x138]
+0168b74c  mov x19,x0
+0168b750  tbnz w8,#0x0,0x0168b768
+0168b754  adrp x0,0x3348000
+0168b758  ldr x0,[x0, #0x138]
+0168b75c  bl 0x00b0789c
+0168b760  mov w8,#0x1
+0168b764  strb w8,[x21, #0xaa1]
+0168b768  ldr x0,[x20]
+0168b76c  ldr x19,[x19, #0x18]
+0168b770  ldr w8,[x0, #0xe0]
+0168b774  cbnz w8,0x0168b77c
+0168b778  bl 0x00b0798c
+0168b77c  mov x0,x19
+0168b780  mov x1,xzr
+0168b784  bl 0x00e175a4
+0168b788  cbz x19,0x0168b7a0
+0168b78c  mov x0,x19
+0168b790  ldp x19,x30,[sp, #0x10]
+0168b794  mov x1,xzr
+0168b798  ldp x21,x20,[sp], #0x20
+0168b79c  b 0x024d7280
+0168b7a0  bl 0x00b079b0

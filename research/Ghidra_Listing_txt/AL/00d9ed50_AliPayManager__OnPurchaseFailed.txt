@@ -1,0 +1,54 @@
+Function: AliPayManager$$OnPurchaseFailed @ 00d9ed50
+
+--- Calls OUT ---
+  -> AliPayManager$$TryParse @ 00d9eb40
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Enum$$ToString @ 02186100
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+00d9ed50  sub sp,sp,#0x50
+00d9ed54  str x22,[sp, #0x20]
+00d9ed58  stp x21,x20,[sp, #0x30]
+00d9ed5c  stp x19,x30,[sp, #0x40]
+00d9ed60  adrp x22,0x3572000
+00d9ed64  adrp x21,0x3308000
+00d9ed68  ldrb w8,[x22, #0x30]
+00d9ed6c  ldr x21,[x21, #0x8b8]
+00d9ed70  mov x20,x1
+00d9ed74  mov x19,x0
+00d9ed78  tbnz w8,#0x0,0x00d9ed90
+00d9ed7c  adrp x0,0x3308000
+00d9ed80  ldr x0,[x0, #0x8b8]
+00d9ed84  bl 0x00b0789c
+00d9ed88  mov w8,#0x1
+00d9ed8c  strb w8,[x22, #0x30]
+00d9ed90  mov w8,#0xffffffff
+00d9ed94  add x2,sp,#0x2c
+00d9ed98  mov x1,x20
+00d9ed9c  str w8,[sp, #0x2c]
+00d9eda0  bl 0x00d9eb40
+00d9eda4  ldr x20,[x19, #0x28]
+00d9eda8  ldr x8,[x21]
+00d9edac  ldr w19,[sp, #0x2c]
+00d9edb0  mov x9,#-0x1
+00d9edb4  add x0,sp,#0x8
+00d9edb8  mov x1,xzr
+00d9edbc  stp x8,x9,[sp, #0x8]
+00d9edc0  str w19,[sp, #0x18]
+00d9edc4  bl 0x02186100
+00d9edc8  cbz x20,0x00d9edf8
+00d9edcc  mov x2,x0
+00d9edd0  ldr x8,[x20, #0x18]
+00d9edd4  ldr x0,[x20, #0x40]
+00d9edd8  ldr x3,[x20, #0x28]
+00d9eddc  mov w1,w19
+00d9ede0  blr x8
+00d9ede4  ldp x19,x30,[sp, #0x40]
+00d9ede8  ldp x21,x20,[sp, #0x30]
+00d9edec  ldr x22,[sp, #0x20]
+00d9edf0  add sp,sp,#0x50
+00d9edf4  ret
+00d9edf8  bl 0x00b079b0

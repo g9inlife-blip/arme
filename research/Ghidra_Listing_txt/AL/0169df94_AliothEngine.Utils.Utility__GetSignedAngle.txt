@@ -1,0 +1,36 @@
+Function: AliothEngine.Utils.Utility$$GetSignedAngle @ 0169df94
+
+--- Calls OUT ---
+  -> atan2f @ 008d5240
+
+--- Calls IN ---
+
+--- Listing ---
+0169df94  str x30,[sp, #-0x10]!
+0169df98  ldp s7,s6,[sp, #0x14]
+0169df9c  ldr s16,[sp, #0x10]
+0169dfa0  fmul s17,s1,s5
+0169dfa4  fmul s18,s2,s4
+0169dfa8  fmul s19,s2,s3
+0169dfac  fmul s20,s0,s4
+0169dfb0  fmul s4,s1,s4
+0169dfb4  fmul s1,s1,s3
+0169dfb8  fmul s3,s0,s3
+0169dfbc  fmul s0,s0,s5
+0169dfc0  fmul s2,s2,s5
+0169dfc4  fsub s5,s17,s18
+0169dfc8  fsub s0,s19,s0
+0169dfcc  fsub s1,s20,s1
+0169dfd0  fadd s3,s3,s4
+0169dfd4  fmul s4,s16,s5
+0169dfd8  fmul s0,s7,s0
+0169dfdc  fmul s1,s6,s1
+0169dfe0  fadd s0,s4,s0
+0169dfe4  fadd s0,s1,s0
+0169dfe8  fadd s1,s2,s3
+0169dfec  bl 0x008d5240
+0169dff0  adrp x8,0x26db000
+0169dff4  ldr s1,[x8, #0x140]
+0169dff8  fmul s0,s0,s1
+0169dffc  ldr x30,[sp], #0x10
+0169e000  ret

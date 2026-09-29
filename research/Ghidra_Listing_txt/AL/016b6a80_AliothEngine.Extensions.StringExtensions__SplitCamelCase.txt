@@ -1,0 +1,55 @@
+Function: AliothEngine.Extensions.StringExtensions$$SplitCamelCase @ 016b6a80
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Text.RegularExpressions.Regex$$Replace @ 02327510
+
+--- Calls IN ---
+
+--- Listing ---
+016b6a80  str x22,[sp, #-0x30]!
+016b6a84  stp x21,x20,[sp, #0x10]
+016b6a88  stp x19,x30,[sp, #0x20]
+016b6a8c  adrp x21,0x3577000
+016b6a90  adrp x20,0x3367000
+016b6a94  ldrb w8,[x21, #0xc10]
+016b6a98  ldr x20,[x20, #0x250]
+016b6a9c  mov x19,x0
+016b6aa0  tbnz w8,#0x0,0x016b6adc
+016b6aa4  adrp x0,0x3367000
+016b6aa8  ldr x0,[x0, #0x250]
+016b6aac  bl 0x00b0789c
+016b6ab0  adrp x0,0x334c000
+016b6ab4  ldr x0,[x0, #0x690]
+016b6ab8  bl 0x00b0789c
+016b6abc  adrp x0,0x3308000
+016b6ac0  ldr x0,[x0, #0x850]
+016b6ac4  bl 0x00b0789c
+016b6ac8  adrp x0,0x3310000
+016b6acc  ldr x0,[x0, #0x948]
+016b6ad0  bl 0x00b0789c
+016b6ad4  mov w8,#0x1
+016b6ad8  strb w8,[x21, #0xc10]
+016b6adc  ldr x0,[x20]
+016b6ae0  adrp x22,0x334c000
+016b6ae4  adrp x20,0x3308000
+016b6ae8  adrp x21,0x3310000
+016b6aec  ldr w8,[x0, #0xe0]
+016b6af0  ldr x22,[x22, #0x690]
+016b6af4  ldr x20,[x20, #0x850]
+016b6af8  ldr x21,[x21, #0x948]
+016b6afc  cbnz w8,0x016b6b04
+016b6b00  bl 0x00b0798c
+016b6b04  ldr x1,[x22]
+016b6b08  ldr x2,[x20]
+016b6b0c  mov x0,x19
+016b6b10  mov x3,xzr
+016b6b14  bl 0x02327510
+016b6b18  ldr x1,[x21]
+016b6b1c  ldr x2,[x20]
+016b6b20  ldp x19,x30,[sp, #0x20]
+016b6b24  ldp x21,x20,[sp, #0x10]
+016b6b28  mov x3,xzr
+016b6b2c  ldr x22,[sp], #0x30
+016b6b30  b 0x02327510

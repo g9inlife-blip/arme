@@ -1,0 +1,29 @@
+Function: ReadypanelNode$$get_EnemyNameStyle @ 00fcd6e0
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$GetEnemyNameStyle @ 00e5d548
+
+--- Listing ---
+00fcd6e0  stp x21,x20,[sp, #-0x20]!
+00fcd6e4  stp x19,x30,[sp, #0x10]
+00fcd6e8  adrp x20,0x3573000
+00fcd6ec  adrp x21,0x3320000
+00fcd6f0  ldrb w8,[x20, #0xe58]
+00fcd6f4  ldr x21,[x21, #0xd48]
+00fcd6f8  mov x19,x0
+00fcd6fc  tbnz w8,#0x0,0x00fcd714
+00fcd700  adrp x0,0x3320000
+00fcd704  ldr x0,[x0, #0xd48]
+00fcd708  bl 0x00b0789c
+00fcd70c  mov w8,#0x1
+00fcd710  strb w8,[x20, #0xe58]
+00fcd714  ldr x1,[x21]
+00fcd718  mov x0,x19
+00fcd71c  ldp x19,x30,[sp, #0x10]
+00fcd720  mov x2,xzr
+00fcd724  ldp x21,x20,[sp], #0x20
+00fcd728  b 0x00dc06f8

@@ -1,0 +1,124 @@
+Function: AliothEngine.Extensions.LightExtensions$$CreateThreePointLights @ 016af09c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> AliothEngine.Extensions.LightExtensions$$CreateDirectionalLight @ 016aecac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.LightExtensions$$CreatePointLight @ 016aeee4
+  -> thunk_FUN_00aedffc @ 00b079d4
+
+--- Calls IN ---
+
+--- Listing ---
+016af09c  sub sp,sp,#0x30
+016af0a0  stp x21,x20,[sp, #0x10]
+016af0a4  stp x19,x30,[sp, #0x20]
+016af0a8  adrp x19,0x3577000
+016af0ac  adrp x21,0x337d000
+016af0b0  ldrb w8,[x19, #0xbd3]
+016af0b4  ldr x21,[x21, #0xe10]
+016af0b8  mov x20,x0
+016af0bc  tbnz w8,#0x0,0x016af0d4
+016af0c0  adrp x0,0x337d000
+016af0c4  ldr x0,[x0, #0xe10]
+016af0c8  bl 0x00b0789c
+016af0cc  mov w8,#0x1
+016af0d0  strb w8,[x19, #0xbd3]
+016af0d4  ldr x0,[x21]
+016af0d8  mov w1,#0x3
+016af0dc  bl 0x00b078f8
+016af0e0  fmov s1,0x3f800000
+016af0e4  mov x19,x0
+016af0e8  fmov s0,0xbf800000
+016af0ec  fmov s2,wzr
+016af0f0  mov w1,#0x2
+016af0f4  mov v3.16B,v1.16B
+016af0f8  mov v4.16B,v1.16B
+016af0fc  mov v5.16B,v1.16B
+016af100  mov v6.16B,v1.16B
+016af104  mov x0,x20
+016af108  mov v7.16B,v1.16B
+016af10c  bl 0x016aecac
+016af110  cbz x19,0x016af244
+016af114  mov x21,x0
+016af118  cbz x0,0x016af130
+016af11c  ldr x8,[x19]
+016af120  mov x0,x21
+016af124  ldr x1,[x8, #0x40]
+016af128  bl 0x00b07990
+016af12c  cbz x0,0x016af238
+016af130  ldr w8,[x19, #0x18]
+016af134  cbz w8,0x016af234
+016af138  mov x0,x19
+016af13c  str x21,[x0, #0x20]!
+016af140  mov x1,x21
+016af144  bl 0x00b07850
+016af148  adrp x9,0x26dc000
+016af14c  ldr s5,[x9, #0x8c0]
+016af150  adrp x9,0x26dc000
+016af154  ldr s6,[x9, #0x8c4]
+016af158  fmov s0,0xc0000000
+016af15c  fmov s4,0x3f800000
+016af160  mov w8,#0x3e800000
+016af164  fmov s3,0x40400000
+016af168  fmov s2,wzr
+016af16c  mov v1.16B,v0.16B
+016af170  mov v7.16B,v4.16B
+016af174  mov x0,x20
+016af178  mov w1,wzr
+016af17c  str w8,[sp]
+016af180  bl 0x016aeee4
+016af184  mov x21,x0
+016af188  cbz x0,0x016af1a0
+016af18c  ldr x8,[x19]
+016af190  mov x0,x21
+016af194  ldr x1,[x8, #0x40]
+016af198  bl 0x00b07990
+016af19c  cbz x0,0x016af238
+016af1a0  ldr w8,[x19, #0x18]
+016af1a4  cmp w8,#0x1
+016af1a8  b.ls 0x016af234
+016af1ac  mov x0,x19
+016af1b0  str x21,[x0, #0x28]!
+016af1b4  mov x1,x21
+016af1b8  bl 0x00b07850
+016af1bc  fmov s0,0x3f800000
+016af1c0  fmov s1,0xbf800000
+016af1c4  fmov s2,wzr
+016af1c8  mov w1,#0x2
+016af1cc  mov v3.16B,v0.16B
+016af1d0  mov v4.16B,v0.16B
+016af1d4  mov v5.16B,v0.16B
+016af1d8  mov v6.16B,v0.16B
+016af1dc  mov x0,x20
+016af1e0  mov v7.16B,v0.16B
+016af1e4  bl 0x016aecac
+016af1e8  mov x20,x0
+016af1ec  cbz x0,0x016af204
+016af1f0  ldr x8,[x19]
+016af1f4  mov x0,x20
+016af1f8  ldr x1,[x8, #0x40]
+016af1fc  bl 0x00b07990
+016af200  cbz x0,0x016af238
+016af204  ldr w8,[x19, #0x18]
+016af208  cmp w8,#0x2
+016af20c  b.ls 0x016af234
+016af210  mov x0,x19
+016af214  str x20,[x0, #0x30]!
+016af218  mov x1,x20
+016af21c  bl 0x00b07850
+016af220  mov x0,x19
+016af224  ldp x19,x30,[sp, #0x20]
+016af228  ldp x21,x20,[sp, #0x10]
+016af22c  add sp,sp,#0x30
+016af230  ret
+016af234  bl 0x00b079b8
+016af238  bl 0x00b079d4
+016af23c  mov x1,xzr
+016af240  bl 0x00b07978
+016af244  bl 0x00b079b0

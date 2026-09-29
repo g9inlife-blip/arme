@@ -1,0 +1,53 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$AddZ @ 016aceec
+
+--- Calls OUT ---
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> UnityEngine.Transform$$set_position @ 024f3724
+
+--- Calls IN ---
+
+--- Listing ---
+016aceec  str d10,[sp, #-0x30]!
+016acef0  stp d9,d8,[sp, #0x8]
+016acef4  str x20,[sp, #0x18]
+016acef8  stp x19,x30,[sp, #0x20]
+016acefc  cbz x0,0x016acf90
+016acf00  mov x1,xzr
+016acf04  mov v8.16B,v0.16B
+016acf08  mov x20,x0
+016acf0c  bl 0x024de730
+016acf10  mov x19,x0
+016acf14  mov x0,x20
+016acf18  mov x1,xzr
+016acf1c  bl 0x024de730
+016acf20  cbz x0,0x016acf90
+016acf24  mov x1,xzr
+016acf28  bl 0x024f3684
+016acf2c  mov x0,x20
+016acf30  mov x1,xzr
+016acf34  mov v9.16B,v0.16B
+016acf38  bl 0x024de730
+016acf3c  cbz x0,0x016acf90
+016acf40  mov x1,xzr
+016acf44  bl 0x024f3684
+016acf48  mov x0,x20
+016acf4c  mov x1,xzr
+016acf50  mov v10.16B,v1.16B
+016acf54  bl 0x024de730
+016acf58  cbz x0,0x016acf90
+016acf5c  mov x1,xzr
+016acf60  bl 0x024f3684
+016acf64  cbz x19,0x016acf90
+016acf68  fadd s2,s2,s8
+016acf6c  mov x0,x19
+016acf70  mov v0.16B,v9.16B
+016acf74  ldp x19,x30,[sp, #0x20]
+016acf78  ldr x20,[sp, #0x18]
+016acf7c  ldp d9,d8,[sp, #0x8]
+016acf80  mov v1.16B,v10.16B
+016acf84  mov x1,xzr
+016acf88  ldr d10,[sp], #0x30
+016acf8c  b 0x024f3724
+016acf90  bl 0x00b079b0

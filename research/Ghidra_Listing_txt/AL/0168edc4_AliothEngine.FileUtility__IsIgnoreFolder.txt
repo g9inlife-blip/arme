@@ -1,0 +1,61 @@
+Function: AliothEngine.FileUtility$$IsIgnoreFolder @ 0168edc4
+
+--- Calls OUT ---
+  -> System.String$$op_Equality @ 01fd05b0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> System.IO.Path$$GetFileName @ 020b1478
+
+--- Calls IN ---
+
+--- Listing ---
+0168edc4  str x22,[sp, #-0x30]!
+0168edc8  stp x21,x20,[sp, #0x10]
+0168edcc  stp x19,x30,[sp, #0x20]
+0168edd0  adrp x21,0x3577000
+0168edd4  ldrb w8,[x21, #0xace]
+0168edd8  mov x19,x1
+0168eddc  mov x20,x0
+0168ede0  tbnz w8,#0x0,0x0168edf8
+0168ede4  adrp x0,0x336c000
+0168ede8  ldr x0,[x0, #0x318]
+0168edec  bl 0x00b0789c
+0168edf0  mov w8,#0x1
+0168edf4  strb w8,[x21, #0xace]
+0168edf8  cbz x19,0x0168ee68
+0168edfc  adrp x8,0x336c000
+0168ee00  ldr x8,[x8, #0x318]
+0168ee04  ldr x0,[x8]
+0168ee08  ldr w8,[x0, #0xe0]
+0168ee0c  cbnz w8,0x0168ee14
+0168ee10  bl 0x00b0798c
+0168ee14  mov x0,x20
+0168ee18  mov x1,xzr
+0168ee1c  bl 0x020b1478
+0168ee20  ldr x8,[x19, #0x18]
+0168ee24  cmp w8,#0x1
+0168ee28  b.lt 0x0168ee68
+0168ee2c  mov x20,x0
+0168ee30  mov x21,xzr
+0168ee34  and x8,x8,#0xffffffff
+0168ee38  add x22,x19,#0x20
+0168ee3c  cmp x21,w8, UXTW 
+0168ee40  b.cs 0x0168ee84
+0168ee44  ldr x1,[x22, x21, LSL #0x3]
+0168ee48  mov x0,x20
+0168ee4c  mov x2,xzr
+0168ee50  bl 0x01fd05b0
+0168ee54  tbnz w0,#0x0,0x0168ee7c
+0168ee58  ldr w8,[x19, #0x18]
+0168ee5c  add x21,x21,#0x1
+0168ee60  cmp x21,w8, SXTW 
+0168ee64  b.lt 0x0168ee3c
+0168ee68  mov w0,wzr
+0168ee6c  ldp x19,x30,[sp, #0x20]
+0168ee70  ldp x21,x20,[sp, #0x10]
+0168ee74  ldr x22,[sp], #0x30
+0168ee78  ret
+0168ee7c  mov w0,#0x1
+0168ee80  b 0x0168ee6c
+0168ee84  bl 0x00b079b8

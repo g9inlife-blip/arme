@@ -1,0 +1,101 @@
+Function: AliPayManager$$SetSandBoxEnable @ 00d9e834
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> AliothEngine.Android_ProxyPool$$Call @ 016536b4
+
+--- Calls IN ---
+
+--- Listing ---
+00d9e834  sub sp,sp,#0x40
+00d9e838  stp x23,x22,[sp, #0x10]
+00d9e83c  stp x21,x20,[sp, #0x20]
+00d9e840  stp x19,x30,[sp, #0x30]
+00d9e844  adrp x20,0x3572000
+00d9e848  adrp x19,0x331f000
+00d9e84c  ldrb w8,[x20, #0x2e]
+00d9e850  ldr x19,[x19, #0x770]
+00d9e854  and w21,w1,#0x1
+00d9e858  tbnz w8,#0x0,0x00d9e8a0
+00d9e85c  adrp x0,0x331f000
+00d9e860  ldr x0,[x0, #0x770]
+00d9e864  bl 0x00b0789c
+00d9e868  adrp x0,0x335f000
+00d9e86c  ldr x0,[x0, #0x3f8]
+00d9e870  bl 0x00b0789c
+00d9e874  adrp x0,0x337c000
+00d9e878  ldr x0,[x0, #0xf70]
+00d9e87c  bl 0x00b0789c
+00d9e880  adrp x0,0x3370000
+00d9e884  ldr x0,[x0, #0x778]
+00d9e888  bl 0x00b0789c
+00d9e88c  adrp x0,0x3355000
+00d9e890  ldr x0,[x0, #0x3a8]
+00d9e894  bl 0x00b0789c
+00d9e898  mov w8,#0x1
+00d9e89c  strb w8,[x20, #0x2e]
+00d9e8a0  ldr x0,[x19]
+00d9e8a4  adrp x20,0x3370000
+00d9e8a8  adrp x22,0x337c000
+00d9e8ac  ldr w8,[x0, #0xe0]
+00d9e8b0  ldr x20,[x20, #0x778]
+00d9e8b4  ldr x22,[x22, #0xf70]
+00d9e8b8  cbnz w8,0x00d9e8c4
+00d9e8bc  bl 0x00b0798c
+00d9e8c0  ldr x0,[x19]
+00d9e8c4  ldr x8,[x0, #0xb8]
+00d9e8c8  ldr x0,[x20]
+00d9e8cc  mov w1,#0x1
+00d9e8d0  ldr x19,[x8]
+00d9e8d4  bl 0x00b078f8
+00d9e8d8  mov x20,x0
+00d9e8dc  ldr x0,[x22]
+00d9e8e0  add x1,sp,#0xc
+00d9e8e4  strb w21,[sp, #0xc]
+00d9e8e8  bl 0x00b07994
+00d9e8ec  cbz x20,0x00d9e96c
+00d9e8f0  mov x21,x0
+00d9e8f4  cbz x0,0x00d9e90c
+00d9e8f8  ldr x8,[x20]
+00d9e8fc  mov x0,x21
+00d9e900  ldr x1,[x8, #0x40]
+00d9e904  bl 0x00b07990
+00d9e908  cbz x0,0x00d9e974
+00d9e90c  ldr w8,[x20, #0x18]
+00d9e910  cbz w8,0x00d9e970
+00d9e914  adrp x23,0x335f000
+00d9e918  adrp x22,0x3355000
+00d9e91c  ldr x23,[x23, #0x3f8]
+00d9e920  ldr x22,[x22, #0x3a8]
+00d9e924  mov x0,x20
+00d9e928  str x21,[x0, #0x20]!
+00d9e92c  mov x1,x21
+00d9e930  bl 0x00b07850
+00d9e934  ldr x0,[x23]
+00d9e938  ldr w8,[x0, #0xe0]
+00d9e93c  cbnz w8,0x00d9e944
+00d9e940  bl 0x00b0798c
+00d9e944  ldr x1,[x22]
+00d9e948  mov x0,x19
+00d9e94c  mov x2,x20
+00d9e950  mov x3,xzr
+00d9e954  bl 0x016536b4
+00d9e958  ldp x19,x30,[sp, #0x30]
+00d9e95c  ldp x21,x20,[sp, #0x20]
+00d9e960  ldp x23,x22,[sp, #0x10]
+00d9e964  add sp,sp,#0x40
+00d9e968  ret
+00d9e96c  bl 0x00b079b0
+00d9e970  bl 0x00b079b8
+00d9e974  bl 0x00b079d4
+00d9e978  mov x1,xzr
+00d9e97c  bl 0x00b07978

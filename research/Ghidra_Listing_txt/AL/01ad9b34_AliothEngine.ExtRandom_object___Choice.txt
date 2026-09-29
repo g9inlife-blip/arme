@@ -1,0 +1,69 @@
+Function: AliothEngine.ExtRandom<object>$$Choice @ 01ad9b34
+
+--- Calls OUT ---
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.ExtRandomTest$$ChoiceTestList @ 01683c6c
+
+--- Listing ---
+01ad9b34  sub sp,sp,#0x30
+01ad9b38  stp x21,x20,[sp, #0x10]
+01ad9b3c  stp x19,x30,[sp, #0x20]
+01ad9b40  cbz x0,0x01ad9c18
+01ad9b44  ldr x8,[x1, #0x20]
+01ad9b48  mov x20,x1
+01ad9b4c  mov x19,x0
+01ad9b50  ldrh w9,[x8, #0x132]
+01ad9b54  tbnz w9,#0x0,0x01ad9b6c
+01ad9b58  mov x0,x8
+01ad9b5c  bl 0x00b2ac40
+01ad9b60  ldr x8,[x20, #0x20]
+01ad9b64  ldrh w9,[x8, #0x132]
+01ad9b68  b 0x01ad9b70
+01ad9b6c  mov x0,x8
+01ad9b70  ldr x10,[x0, #0xc0]
+01ad9b74  ldr x10,[x10, #0x8]
+01ad9b78  ldr x21,[x10, #0x8]
+01ad9b7c  tbnz w9,#0x0,0x01ad9b8c
+01ad9b80  mov x0,x8
+01ad9b84  bl 0x00b2ac40
+01ad9b88  mov x8,x0
+01ad9b8c  ldr x8,[x8, #0xc0]
+01ad9b90  mov x0,x19
+01ad9b94  ldr x1,[x8, #0x8]
+01ad9b98  blr x21
+01ad9b9c  mov w1,w0
+01ad9ba0  mov w0,wzr
+01ad9ba4  mov x2,xzr
+01ad9ba8  bl 0x024d63b0
+01ad9bac  ldr x8,[x20, #0x20]
+01ad9bb0  mov w21,w0
+01ad9bb4  ldrh w9,[x8, #0x132]
+01ad9bb8  tbnz w9,#0x0,0x01ad9bd0
+01ad9bbc  mov x0,x8
+01ad9bc0  bl 0x00b2ac40
+01ad9bc4  ldr x8,[x20, #0x20]
+01ad9bc8  ldrh w9,[x8, #0x132]
+01ad9bcc  b 0x01ad9bd4
+01ad9bd0  mov x0,x8
+01ad9bd4  ldr x10,[x0, #0xc0]
+01ad9bd8  ldr x10,[x10, #0x10]
+01ad9bdc  ldr x3,[x10, #0x8]
+01ad9be0  tbnz w9,#0x0,0x01ad9bf8
+01ad9be4  mov x0,x8
+01ad9be8  str x3,[sp, #0x8]
+01ad9bec  bl 0x00b2ac40
+01ad9bf0  ldr x3,[sp, #0x8]
+01ad9bf4  mov x8,x0
+01ad9bf8  ldr x8,[x8, #0xc0]
+01ad9bfc  mov x0,x19
+01ad9c00  mov w1,w21
+01ad9c04  ldp x19,x30,[sp, #0x20]
+01ad9c08  ldr x2,[x8, #0x10]
+01ad9c0c  ldp x21,x20,[sp, #0x10]
+01ad9c10  add sp,sp,#0x30
+01ad9c14  br x3
+01ad9c18  bl 0x00b079b0

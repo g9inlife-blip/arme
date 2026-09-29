@@ -1,0 +1,110 @@
+Function: AliothEngine.GameUpdateService$$<_OnUpdateSuccessIE>b__66_0 @ 0167ffec
+
+--- Calls OUT ---
+  -> AliothEngine.GameUpdateService$$get_logger @ 0167d368
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.GameUpdateService$$_OnUpdateFail @ 0167eb98
+
+--- Calls IN ---
+
+--- Listing ---
+0167ffec  str x24,[sp, #-0x40]!
+0167fff0  stp x23,x22,[sp, #0x10]
+0167fff4  stp x21,x20,[sp, #0x20]
+0167fff8  stp x19,x30,[sp, #0x30]
+0167fffc  adrp x21,0x3577000
+01680000  ldrb w8,[x21, #0xa43]
+01680004  mov x20,x1
+01680008  mov x19,x0
+0168000c  tbnz w8,#0x0,0x0168003c
+01680010  adrp x0,0x334a000
+01680014  ldr x0,[x0, #0xc98]
+01680018  bl 0x00b0789c
+0168001c  adrp x0,0x330f000
+01680020  ldr x0,[x0, #0x4d8]
+01680024  bl 0x00b0789c
+01680028  adrp x0,0x3383000
+0168002c  ldr x0,[x0, #0x768]
+01680030  bl 0x00b0789c
+01680034  mov w8,#0x1
+01680038  strb w8,[x21, #0xa43]
+0168003c  mov x0,x19
+01680040  bl 0x0167d368
+01680044  cbz x0,0x01680170
+01680048  adrp x24,0x334a000
+0168004c  adrp x9,0x330f000
+01680050  adrp x10,0x3383000
+01680054  ldr x24,[x24, #0xc98]
+01680058  ldr x9,[x9, #0x4d8]
+0168005c  ldr x8,[x0]
+01680060  ldr x10,[x10, #0x768]
+01680064  ldr x1,[x24]
+01680068  ldr x22,[x9]
+0168006c  ldrh w9,[x8, #0x12a]
+01680070  ldr x23,[x10]
+01680074  mov x21,x0
+01680078  cbz x9,0x0168009c
+0168007c  ldr x10,[x8, #0xb0]
+01680080  add x10,x10,#0x8
+01680084  ldur x11,[x10, #-0x8]
+01680088  cmp x11,x1
+0168008c  b.eq 0x016800ac
+01680090  subs x9,x9,#0x1
+01680094  add x10,x10,#0x10
+01680098  b.ne 0x01680084
+0168009c  mov w2,#0xb
+016800a0  mov x0,x21
+016800a4  bl 0x00b2ae24
+016800a8  b 0x016800bc
+016800ac  ldr w9,[x10]
+016800b0  add w9,w9,#0xb
+016800b4  add x8,x8,w9, SXTW  #0x4
+016800b8  add x0,x8,#0x138
+016800bc  ldp x8,x3,[x0]
+016800c0  mov x0,x21
+016800c4  mov x1,x22
+016800c8  mov x2,x23
+016800cc  blr x8
+016800d0  mov x0,x19
+016800d4  bl 0x0167d368
+016800d8  cbz x0,0x01680170
+016800dc  ldr x8,[x0]
+016800e0  ldr x1,[x24]
+016800e4  mov x21,x0
+016800e8  ldrh w9,[x8, #0x12a]
+016800ec  cbz x9,0x01680110
+016800f0  ldr x10,[x8, #0xb0]
+016800f4  add x10,x10,#0x8
+016800f8  ldur x11,[x10, #-0x8]
+016800fc  cmp x11,x1
+01680100  b.eq 0x01680120
+01680104  subs x9,x9,#0x1
+01680108  add x10,x10,#0x10
+0168010c  b.ne 0x016800f8
+01680110  mov w2,#0xd
+01680114  mov x0,x21
+01680118  bl 0x00b2ae24
+0168011c  b 0x01680130
+01680120  ldr w9,[x10]
+01680124  add w9,w9,#0xd
+01680128  add x8,x8,w9, SXTW  #0x4
+0168012c  add x0,x8,#0x138
+01680130  ldp x8,x2,[x0]
+01680134  mov x0,x21
+01680138  mov x1,x20
+0168013c  blr x8
+01680140  cbz x20,0x01680170
+01680144  ldr x8,[x20]
+01680148  mov x0,x20
+0168014c  ldp x9,x1,[x8, #0x188]
+01680150  blr x9
+01680154  mov x1,x0
+01680158  mov x0,x19
+0168015c  ldp x19,x30,[sp, #0x30]
+01680160  ldp x21,x20,[sp, #0x20]
+01680164  ldp x23,x22,[sp, #0x10]
+01680168  ldr x24,[sp], #0x40
+0168016c  b 0x0167eb98
+01680170  bl 0x00b079b0

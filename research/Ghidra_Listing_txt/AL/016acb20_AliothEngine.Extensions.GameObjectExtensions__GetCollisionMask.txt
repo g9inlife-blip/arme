@@ -1,0 +1,37 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$GetCollisionMask @ 016acb20
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.GameObject$$get_layer @ 024de76c
+  -> UnityEngine.Physics$$GetIgnoreLayerCollision @ 02538a00
+
+--- Calls IN ---
+
+--- Listing ---
+016acb20  stp x21,x20,[sp, #-0x20]!
+016acb24  stp x19,x30,[sp, #0x10]
+016acb28  mov w19,w1
+016acb2c  cmn w1,#0x1
+016acb30  b.ne 0x016acb44
+016acb34  cbz x0,0x016acb88
+016acb38  mov x1,xzr
+016acb3c  bl 0x024de76c
+016acb40  mov w19,w0
+016acb44  mov w20,wzr
+016acb48  mov w21,wzr
+016acb4c  mov w0,w19
+016acb50  mov w1,w21
+016acb54  mov x2,xzr
+016acb58  bl 0x02538a00
+016acb5c  mvn w8,w0
+016acb60  and w8,w8,#0x1
+016acb64  lsl w8,w8,w21
+016acb68  add w21,w21,#0x1
+016acb6c  cmp w21,#0x20
+016acb70  orr w20,w8,w20
+016acb74  b.ne 0x016acb4c
+016acb78  ldp x19,x30,[sp, #0x10]
+016acb7c  mov w0,w20
+016acb80  ldp x21,x20,[sp], #0x20
+016acb84  ret
+016acb88  bl 0x00b079b0

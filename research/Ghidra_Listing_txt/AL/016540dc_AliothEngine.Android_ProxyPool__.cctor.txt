@@ -1,0 +1,50 @@
+Function: AliothEngine.Android_ProxyPool$$.cctor @ 016540dc
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.Dictionary<object,-object>$$.ctor @ 0196dbb0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016540dc  str x20,[sp, #-0x20]!
+016540e0  stp x19,x30,[sp, #0x10]
+016540e4  adrp x19,0x3577000
+016540e8  adrp x20,0x3350000
+016540ec  ldrb w8,[x19, #0x7ff]
+016540f0  ldr x20,[x20, #0xca0]
+016540f4  tbnz w8,#0x0,0x01654124
+016540f8  adrp x0,0x335f000
+016540fc  ldr x0,[x0, #0x3f8]
+01654100  bl 0x00b0789c
+01654104  adrp x0,0x3361000
+01654108  ldr x0,[x0, #0x1a8]
+0165410c  bl 0x00b0789c
+01654110  adrp x0,0x3350000
+01654114  ldr x0,[x0, #0xca0]
+01654118  bl 0x00b0789c
+0165411c  mov w8,#0x1
+01654120  strb w8,[x19, #0x7ff]
+01654124  ldr x0,[x20]
+01654128  bl 0x00b079a0
+0165412c  cbz x0,0x01654170
+01654130  adrp x8,0x3361000
+01654134  ldr x8,[x8, #0x1a8]
+01654138  adrp x20,0x335f000
+0165413c  mov x19,x0
+01654140  ldr x1,[x8]
+01654144  ldr x20,[x20, #0x3f8]
+01654148  bl 0x0196dbb0
+0165414c  ldr x8,[x20]
+01654150  mov x1,x19
+01654154  ldr x8,[x8, #0xb8]
+01654158  str x19,[x8]
+0165415c  ldr x8,[x20]
+01654160  ldp x19,x30,[sp, #0x10]
+01654164  ldr x0,[x8, #0xb8]
+01654168  ldr x20,[sp], #0x20
+0165416c  b 0x00b07850
+01654170  bl 0x00b079b0

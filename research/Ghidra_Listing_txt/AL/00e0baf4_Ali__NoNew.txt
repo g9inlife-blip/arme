@@ -1,0 +1,64 @@
+Function: Ali$$NoNew @ 00e0baf4
+
+--- Calls OUT ---
+  -> UnityEngine.PlayerPrefs$$DeleteKey @ 024be890
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> UnityEngine.PlayerPrefs$$HasKey @ 024be854
+  -> Ali$$NewKey @ 00e0b928
+
+--- Calls IN ---
+  <- WareHousePanelMono$$SetGoodsItemByInfo @ 0104dd38
+  <- XLua.CSObjectWrap.AliWrap$$_m_NoNew @ 01199e6c
+  <- SplitModelPanelMono$$SetGoodsItemByInfo @ 01048dc8
+
+--- Listing ---
+00e0baf4  str x22,[sp, #-0x30]!
+00e0baf8  stp x21,x20,[sp, #0x10]
+00e0bafc  stp x19,x30,[sp, #0x20]
+00e0bb00  adrp x22,0x3572000
+00e0bb04  adrp x21,0x335f000
+00e0bb08  ldrb w8,[x22, #0x59f]
+00e0bb0c  ldr x21,[x21, #0x20]
+00e0bb10  mov x19,x1
+00e0bb14  mov x20,x0
+00e0bb18  tbnz w8,#0x0,0x00e0bb30
+00e0bb1c  adrp x0,0x335f000
+00e0bb20  ldr x0,[x0, #0x20]
+00e0bb24  bl 0x00b0789c
+00e0bb28  mov w8,#0x1
+00e0bb2c  strb w8,[x22, #0x59f]
+00e0bb30  ldr x0,[x21]
+00e0bb34  ldr w8,[x0, #0xe0]
+00e0bb38  cbnz w8,0x00e0bb44
+00e0bb3c  bl 0x00b0798c
+00e0bb40  ldr x0,[x21]
+00e0bb44  ldr x8,[x0, #0xb8]
+00e0bb48  ldr x0,[x8, #0x4a0]
+00e0bb4c  cbz x0,0x00e0bb6c
+00e0bb50  mov x1,x20
+00e0bb54  mov x2,x19
+00e0bb58  ldp x19,x30,[sp, #0x20]
+00e0bb5c  ldp x21,x20,[sp, #0x10]
+00e0bb60  mov x3,xzr
+00e0bb64  ldr x22,[sp], #0x30
+00e0bb68  b 0x0106125c
+00e0bb6c  mov x0,x20
+00e0bb70  mov x1,x19
+00e0bb74  bl 0x00e0b928
+00e0bb78  mov x1,xzr
+00e0bb7c  bl 0x024be854
+00e0bb80  tbz w0,#0x0,0x00e0bba4
+00e0bb84  mov x0,x20
+00e0bb88  mov x1,x19
+00e0bb8c  bl 0x00e0b928
+00e0bb90  ldp x19,x30,[sp, #0x20]
+00e0bb94  ldp x21,x20,[sp, #0x10]
+00e0bb98  mov x1,xzr
+00e0bb9c  ldr x22,[sp], #0x30
+00e0bba0  b 0x024be890
+00e0bba4  ldp x19,x30,[sp, #0x20]
+00e0bba8  ldp x21,x20,[sp, #0x10]
+00e0bbac  ldr x22,[sp], #0x30
+00e0bbb0  ret

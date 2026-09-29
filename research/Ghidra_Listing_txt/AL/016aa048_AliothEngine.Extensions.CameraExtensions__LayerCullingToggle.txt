@@ -1,0 +1,43 @@
+Function: AliothEngine.Extensions.CameraExtensions$$LayerCullingToggle @ 016aa048
+
+--- Calls OUT ---
+  -> UnityEngine.Camera$$get_cullingMask @ 024d745c
+  -> AliothEngine.Extensions.CameraExtensions$$LayerCullingShow @ 016a9eb8
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Extensions.CameraExtensions$$LayerCullingHide @ 016a9f18
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.CameraExtensions$$LayerCullingToggle @ 016aa0c4
+
+--- Listing ---
+016aa048  stp x21,x20,[sp, #-0x20]!
+016aa04c  stp x19,x30,[sp, #0x10]
+016aa050  cbz x0,0x016aa0c0
+016aa054  mov w19,w1
+016aa058  mov x1,xzr
+016aa05c  mov w21,w2
+016aa060  mov x20,x0
+016aa064  bl 0x024d745c
+016aa068  tst w0,w19
+016aa06c  eor w8,w21,#0x1
+016aa070  b.gt 0x016aa08c
+016aa074  tbnz w8,#0x0,0x016aa08c
+016aa078  mov w1,w19
+016aa07c  ldp x19,x30,[sp, #0x10]
+016aa080  mov x0,x20
+016aa084  ldp x21,x20,[sp], #0x20
+016aa088  b 0x016a9eb8
+016aa08c  and w9,w0,w19
+016aa090  cmp w9,#0x1
+016aa094  cset w9,lt
+016aa098  orn w8,w9,w8
+016aa09c  tbnz w8,#0x0,0x016aa0b4
+016aa0a0  mov w1,w19
+016aa0a4  ldp x19,x30,[sp, #0x10]
+016aa0a8  mov x0,x20
+016aa0ac  ldp x21,x20,[sp], #0x20
+016aa0b0  b 0x016a9f18
+016aa0b4  ldp x19,x30,[sp, #0x10]
+016aa0b8  ldp x21,x20,[sp], #0x20
+016aa0bc  ret
+016aa0c0  bl 0x00b079b0

@@ -1,0 +1,43 @@
+Function: AliothEngine.Extensions.StringExtensions$$BeforeLast @ 016b7e1c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Substring @ 01fe0458
+  -> System.String$$LastIndexOf @ 01fe3efc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b7e1c  stp x21,x20,[sp, #-0x20]!
+016b7e20  stp x19,x30,[sp, #0x10]
+016b7e24  adrp x21,0x3577000
+016b7e28  ldrb w8,[x21, #0xc1f]
+016b7e2c  mov x20,x1
+016b7e30  mov x19,x0
+016b7e34  tbnz w8,#0x0,0x016b7e4c
+016b7e38  adrp x0,0x332c000
+016b7e3c  ldr x0,[x0, #0x2c0]
+016b7e40  bl 0x00b0789c
+016b7e44  mov w8,#0x1
+016b7e48  strb w8,[x21, #0xc1f]
+016b7e4c  cbz x19,0x016b7e98
+016b7e50  mov x0,x19
+016b7e54  mov x1,x20
+016b7e58  mov x2,xzr
+016b7e5c  bl 0x01fe3efc
+016b7e60  tbnz w0,#0x1f,0x016b7e80
+016b7e64  mov w2,w0
+016b7e68  mov x0,x19
+016b7e6c  ldp x19,x30,[sp, #0x10]
+016b7e70  mov w1,wzr
+016b7e74  mov x3,xzr
+016b7e78  ldp x21,x20,[sp], #0x20
+016b7e7c  b 0x01fe0458
+016b7e80  adrp x8,0x332c000
+016b7e84  ldr x8,[x8, #0x2c0]
+016b7e88  ldp x19,x30,[sp, #0x10]
+016b7e8c  ldr x0,[x8]
+016b7e90  ldp x21,x20,[sp], #0x20
+016b7e94  ret
+016b7e98  bl 0x00b079b0

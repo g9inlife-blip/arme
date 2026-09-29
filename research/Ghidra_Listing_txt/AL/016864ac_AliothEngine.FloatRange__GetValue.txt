@@ -1,0 +1,17 @@
+Function: AliothEngine.FloatRange$$GetValue @ 016864ac
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016864ac  ldp s1,s2,[x0, #0x10]
+016864b0  fmov s3,0x3f800000
+016864b4  fmin s3,s0,s3
+016864b8  fcmp s0,#0.0
+016864bc  fmov s0,wzr
+016864c0  fcsel s0,s3,s0,pl
+016864c4  fsub s2,s2,s1
+016864c8  fmul s0,s0,s2
+016864cc  fadd s0,s1,s0
+016864d0  ret

@@ -1,0 +1,44 @@
+Function: Alioth.S1.Common.DH64$$.ctor @ 015aa138
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Random$$.ctor @ 0216133c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- Alioth.S1.Net.TCPTube$$.ctor @ 015b3544
+  <- Alioth.S1.Net.KCPTube$$.ctor @ 015ae938
+
+--- Listing ---
+015aa138  stp x21,x20,[sp, #-0x20]!
+015aa13c  stp x19,x30,[sp, #0x10]
+015aa140  adrp x21,0x3577000
+015aa144  adrp x20,0x3355000
+015aa148  ldrb w8,[x21, #0x78]
+015aa14c  ldr x20,[x20, #0x1e8]
+015aa150  mov x19,x0
+015aa154  tbnz w8,#0x0,0x015aa16c
+015aa158  adrp x0,0x3355000
+015aa15c  ldr x0,[x0, #0x1e8]
+015aa160  bl 0x00b0789c
+015aa164  mov w8,#0x1
+015aa168  strb w8,[x21, #0x78]
+015aa16c  mov x0,x19
+015aa170  mov x1,xzr
+015aa174  bl 0x02194104
+015aa178  ldr x0,[x20]
+015aa17c  bl 0x00b079a0
+015aa180  cbz x0,0x015aa1a8
+015aa184  mov x1,xzr
+015aa188  mov x20,x0
+015aa18c  bl 0x0216133c
+015aa190  str x20,[x19, #0x10]!
+015aa194  mov x0,x19
+015aa198  ldp x19,x30,[sp, #0x10]
+015aa19c  mov x1,x20
+015aa1a0  ldp x21,x20,[sp], #0x20
+015aa1a4  b 0x00b07850
+015aa1a8  bl 0x00b079b0

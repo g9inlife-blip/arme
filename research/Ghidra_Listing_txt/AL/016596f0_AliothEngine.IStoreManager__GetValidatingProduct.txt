@@ -1,0 +1,55 @@
+Function: AliothEngine.IStoreManager$$GetValidatingProduct @ 016596f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.Dictionary<object,-object>$$TryGetValue @ 0196fd30
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp807 @ 010c93e4
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineIStoreManagerWrap$$_m_GetValidatingProduct @ 0115c3c0
+
+--- Listing ---
+016596f0  stp x23,x22,[sp, #-0x30]!
+016596f4  stp x21,x20,[sp, #0x10]
+016596f8  stp x19,x30,[sp, #0x20]
+016596fc  adrp x22,0x3577000
+01659700  adrp x23,0x336f000
+01659704  ldrb w8,[x22, #0x84c]
+01659708  ldr x23,[x23, #0x1e8]
+0165970c  mov x19,x2
+01659710  mov x20,x1
+01659714  mov x21,x0
+01659718  tbnz w8,#0x0,0x0165973c
+0165971c  adrp x0,0x336a000
+01659720  ldr x0,[x0, #0xfd8]
+01659724  bl 0x00b0789c
+01659728  adrp x0,0x336f000
+0165972c  ldr x0,[x0, #0x1e8]
+01659730  bl 0x00b0789c
+01659734  mov w8,#0x1
+01659738  strb w8,[x22, #0x84c]
+0165973c  ldr x8,[x23]
+01659740  ldr x8,[x8, #0xb8]
+01659744  ldr x0,[x8, #0xa0]
+01659748  cbz x0,0x0165976c
+0165974c  mov x1,x21
+01659750  mov x2,x20
+01659754  mov x3,x19
+01659758  ldp x19,x30,[sp, #0x20]
+0165975c  ldp x21,x20,[sp, #0x10]
+01659760  mov x4,xzr
+01659764  ldp x23,x22,[sp], #0x30
+01659768  b 0x010c93e4
+0165976c  ldr x0,[x21, #0x48]
+01659770  cbz x0,0x01659798
+01659774  adrp x8,0x336a000
+01659778  ldr x8,[x8, #0xfd8]
+0165977c  mov x1,x20
+01659780  mov x2,x19
+01659784  ldp x19,x30,[sp, #0x20]
+01659788  ldr x3,[x8]
+0165978c  ldp x21,x20,[sp, #0x10]
+01659790  ldp x23,x22,[sp], #0x30
+01659794  b 0x0196fd30
+01659798  bl 0x00b079b0

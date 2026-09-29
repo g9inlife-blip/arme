@@ -1,0 +1,51 @@
+Function: AliothExtensions$$SkillNameColor @ 00e1212c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp19 @ 01061abc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Format @ 01fd0378
+
+--- Calls IN ---
+  <- TipsEquipMono$$ShowTips @ 00f0ac6c
+  <- AliothExtensions$$SkillNameColor_str @ 00e121c0
+  <- TipsWeaponMono$$ShowTips @ 00f10094
+
+--- Listing ---
+00e1212c  stp x21,x20,[sp, #-0x20]!
+00e12130  stp x19,x30,[sp, #0x10]
+00e12134  adrp x21,0x3572000
+00e12138  adrp x20,0x3348000
+00e1213c  ldrb w8,[x21, #0x5dd]
+00e12140  ldr x20,[x20, #0x138]
+00e12144  mov x19,x0
+00e12148  tbnz w8,#0x0,0x00e1216c
+00e1214c  adrp x0,0x3348000
+00e12150  ldr x0,[x0, #0x138]
+00e12154  bl 0x00b0789c
+00e12158  adrp x0,0x332f000
+00e1215c  ldr x0,[x0, #0xd90]
+00e12160  bl 0x00b0789c
+00e12164  mov w8,#0x1
+00e12168  strb w8,[x21, #0x5dd]
+00e1216c  ldr x0,[x20]
+00e12170  ldr w8,[x0, #0xe0]
+00e12174  cbnz w8,0x00e12180
+00e12178  bl 0x00b0798c
+00e1217c  ldr x0,[x20]
+00e12180  ldr x8,[x0, #0xb8]
+00e12184  ldr x0,[x8, #0x28]
+00e12188  cbz x0,0x00e121a0
+00e1218c  mov x1,x19
+00e12190  ldp x19,x30,[sp, #0x10]
+00e12194  mov x2,xzr
+00e12198  ldp x21,x20,[sp], #0x20
+00e1219c  b 0x01061abc
+00e121a0  adrp x8,0x332f000
+00e121a4  ldr x8,[x8, #0xd90]
+00e121a8  mov x1,x19
+00e121ac  ldp x19,x30,[sp, #0x10]
+00e121b0  mov x2,xzr
+00e121b4  ldr x0,[x8]
+00e121b8  ldp x21,x20,[sp], #0x20
+00e121bc  b 0x01fd0378

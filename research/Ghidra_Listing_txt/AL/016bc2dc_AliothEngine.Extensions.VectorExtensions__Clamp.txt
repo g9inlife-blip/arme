@@ -1,0 +1,22 @@
+Function: AliothEngine.Extensions.VectorExtensions$$Clamp @ 016bc2dc
+
+--- Calls OUT ---
+
+--- Calls IN ---
+
+--- Listing ---
+016bc2dc  ldr s7,[sp]
+016bc2e0  fcmp s0,s3
+016bc2e4  ldp s16,s6,[sp, #0x4]
+016bc2e8  fcsel s0,s3,s0,mi
+016bc2ec  fcmp s0,s7
+016bc2f0  fcsel s0,s7,s0,gt
+016bc2f4  fcmp s1,s4
+016bc2f8  fcsel s1,s4,s1,mi
+016bc2fc  fcmp s1,s16
+016bc300  fcsel s1,s16,s1,gt
+016bc304  fcmp s2,s5
+016bc308  fcsel s2,s5,s2,mi
+016bc30c  fcmp s2,s6
+016bc310  fcsel s2,s6,s2,gt
+016bc314  ret

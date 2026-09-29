@@ -1,0 +1,36 @@
+Function: Ali.<>c$$<LoginEnd>b__275_0 @ 00e118c8
+
+--- Calls OUT ---
+  -> UnityEngine.SceneManagement.SceneManager$$LoadScene @ 02502014
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00e118c8  str x20,[sp, #-0x20]!
+00e118cc  stp x19,x30,[sp, #0x10]
+00e118d0  adrp x20,0x3572000
+00e118d4  adrp x19,0x3365000
+00e118d8  ldrb w8,[x20, #0x5d1]
+00e118dc  ldr x19,[x19, #0x7e0]
+00e118e0  tbnz w8,#0x0,0x00e11904
+00e118e4  adrp x0,0x3365000
+00e118e8  ldr x0,[x0, #0x7e0]
+00e118ec  bl 0x00b0789c
+00e118f0  adrp x0,0x3337000
+00e118f4  ldr x0,[x0, #0xbe8]
+00e118f8  bl 0x00b0789c
+00e118fc  mov w8,#0x1
+00e11900  strb w8,[x20, #0x5d1]
+00e11904  ldr x0,[x19]
+00e11908  adrp x19,0x3337000
+00e1190c  ldr w8,[x0, #0xe0]
+00e11910  ldr x19,[x19, #0xbe8]
+00e11914  cbnz w8,0x00e1191c
+00e11918  bl 0x00b0798c
+00e1191c  ldr x0,[x19]
+00e11920  ldp x19,x30,[sp, #0x10]
+00e11924  mov x1,xzr
+00e11928  ldr x20,[sp], #0x20
+00e1192c  b 0x02502014

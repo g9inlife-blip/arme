@@ -1,0 +1,71 @@
+Function: AliothEngine.WWWCacheHelp$$UrlToCachePath @ 0168be14
+
+--- Calls OUT ---
+  -> System.IO.Path$$Combine @ 020b2e1c
+  -> System.IO.File$$Exists @ 020a6ae4
+  -> AliothEngine.WWWCacheHelp$$strToBase64 @ 0168bee8
+  -> AliothEngine.PlatformTools$$get_persistentDataPath @ 0165803c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.IO.Directory$$CreateDirectory @ 020adf44
+
+--- Calls IN ---
+  <- AliothEngine.WWWCacheHelp$$DeleteCache @ 0168c058
+  <- AliothEngine.WWWCacheHelp$$HasCache @ 0168bf6c
+  <- AliothEngine.WWWCacheHelp$$WriteCache @ 0168c124
+  <- AliothEngine.WWWRequest$$get_CacheUrl @ 0168c970
+
+--- Listing ---
+0168be14  str x22,[sp, #-0x30]!
+0168be18  stp x21,x20,[sp, #0x10]
+0168be1c  stp x19,x30,[sp, #0x20]
+0168be20  adrp x20,0x3577000
+0168be24  adrp x21,0x336c000
+0168be28  ldrb w8,[x20, #0xaaa]
+0168be2c  ldr x21,[x21, #0x318]
+0168be30  mov x19,x0
+0168be34  tbnz w8,#0x0,0x0168be58
+0168be38  adrp x0,0x336c000
+0168be3c  ldr x0,[x0, #0x318]
+0168be40  bl 0x00b0789c
+0168be44  adrp x0,0x3384000
+0168be48  ldr x0,[x0, #0x90]
+0168be4c  bl 0x00b0789c
+0168be50  mov w8,#0x1
+0168be54  strb w8,[x20, #0xaaa]
+0168be58  adrp x22,0x3384000
+0168be5c  ldr x22,[x22, #0x90]
+0168be60  mov x0,xzr
+0168be64  bl 0x0165803c
+0168be68  ldr x8,[x21]
+0168be6c  mov x20,x0
+0168be70  ldr w9,[x8, #0xe0]
+0168be74  cbnz w9,0x0168be80
+0168be78  mov x0,x8
+0168be7c  bl 0x00b0798c
+0168be80  ldr x1,[x22]
+0168be84  mov x0,x20
+0168be88  mov x2,xzr
+0168be8c  bl 0x020b2e1c
+0168be90  mov x1,xzr
+0168be94  mov x20,x0
+0168be98  bl 0x020a6ae4
+0168be9c  tbnz w0,#0x0,0x0168beac
+0168bea0  mov x0,x20
+0168bea4  mov x1,xzr
+0168bea8  bl 0x020adf44
+0168beac  mov x0,x19
+0168beb0  bl 0x0168bee8
+0168beb4  ldr x8,[x21]
+0168beb8  mov x19,x0
+0168bebc  ldr w9,[x8, #0xe0]
+0168bec0  cbnz w9,0x0168becc
+0168bec4  mov x0,x8
+0168bec8  bl 0x00b0798c
+0168becc  mov x0,x20
+0168bed0  mov x1,x19
+0168bed4  ldp x19,x30,[sp, #0x20]
+0168bed8  ldp x21,x20,[sp, #0x10]
+0168bedc  mov x2,xzr
+0168bee0  ldr x22,[sp], #0x30
+0168bee4  b 0x020b2e1c

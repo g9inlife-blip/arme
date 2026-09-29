@@ -1,0 +1,60 @@
+Function: AliothEngine.Extensions.StringExtensions$$SeparateCamelCase @ 016b6b34
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Trim @ 01fe2e10
+  -> System.Text.RegularExpressions.Regex$$Replace @ 02327510
+
+--- Calls IN ---
+
+--- Listing ---
+016b6b34  stp x23,x22,[sp, #-0x30]!
+016b6b38  stp x21,x20,[sp, #0x10]
+016b6b3c  stp x19,x30,[sp, #0x20]
+016b6b40  adrp x23,0x3577000
+016b6b44  adrp x22,0x3328000
+016b6b48  adrp x21,0x3367000
+016b6b4c  ldrb w8,[x23, #0xc11]
+016b6b50  ldr x22,[x22, #0x7a0]
+016b6b54  ldr x21,[x21, #0x250]
+016b6b58  mov x20,x1
+016b6b5c  mov x19,x0
+016b6b60  tbnz w8,#0x0,0x016b6b90
+016b6b64  adrp x0,0x3367000
+016b6b68  ldr x0,[x0, #0x250]
+016b6b6c  bl 0x00b0789c
+016b6b70  adrp x0,0x3328000
+016b6b74  ldr x0,[x0, #0x7a0]
+016b6b78  bl 0x00b0789c
+016b6b7c  adrp x0,0x3351000
+016b6b80  ldr x0,[x0, #0x728]
+016b6b84  bl 0x00b0789c
+016b6b88  mov w8,#0x1
+016b6b8c  strb w8,[x23, #0xc11]
+016b6b90  ldr x1,[x22]
+016b6b94  adrp x22,0x3351000
+016b6b98  ldr x22,[x22, #0x728]
+016b6b9c  mov x0,x20
+016b6ba0  mov x2,xzr
+016b6ba4  bl 0x01fd2850
+016b6ba8  ldr x8,[x21]
+016b6bac  mov x20,x0
+016b6bb0  ldr w9,[x8, #0xe0]
+016b6bb4  cbnz w9,0x016b6bc0
+016b6bb8  mov x0,x8
+016b6bbc  bl 0x00b0798c
+016b6bc0  ldr x1,[x22]
+016b6bc4  mov x0,x19
+016b6bc8  mov x2,x20
+016b6bcc  mov x3,xzr
+016b6bd0  bl 0x02327510
+016b6bd4  cbz x0,0x016b6bec
+016b6bd8  ldp x19,x30,[sp, #0x20]
+016b6bdc  ldp x21,x20,[sp, #0x10]
+016b6be0  mov x1,xzr
+016b6be4  ldp x23,x22,[sp], #0x30
+016b6be8  b 0x01fe2e10
+016b6bec  bl 0x00b079b0

@@ -1,0 +1,29 @@
+Function: ResolvemorepanelNode$$get_btn_cannel @ 00fce798
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ResolveMorePanelMono$$Start @ 01044b74
+
+--- Listing ---
+00fce798  stp x21,x20,[sp, #-0x20]!
+00fce79c  stp x19,x30,[sp, #0x10]
+00fce7a0  adrp x20,0x3573000
+00fce7a4  adrp x21,0x336f000
+00fce7a8  ldrb w8,[x20, #0xe90]
+00fce7ac  ldr x21,[x21, #0x70]
+00fce7b0  mov x19,x0
+00fce7b4  tbnz w8,#0x0,0x00fce7cc
+00fce7b8  adrp x0,0x336f000
+00fce7bc  ldr x0,[x0, #0x70]
+00fce7c0  bl 0x00b0789c
+00fce7c4  mov w8,#0x1
+00fce7c8  strb w8,[x20, #0xe90]
+00fce7cc  ldr x1,[x21]
+00fce7d0  mov x0,x19
+00fce7d4  ldp x19,x30,[sp, #0x10]
+00fce7d8  mov x2,xzr
+00fce7dc  ldp x21,x20,[sp], #0x20
+00fce7e0  b 0x00dc06f8

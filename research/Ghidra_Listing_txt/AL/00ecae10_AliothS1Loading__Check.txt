@@ -1,0 +1,57 @@
+Function: AliothS1Loading$$Check @ 00ecae10
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothS1Loading$$StartCheck @ 00ecaebc
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> UnityEngine.Events.UnityEvent$$AddListener @ 0250c124
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- LoadingYieldInstruction$$.ctor @ 00e39a5c
+  <- XLua.CSObjectWrap.AliothS1LoadingWrap$$_m_Check @ 0116cb14
+
+--- Listing ---
+00ecae10  str x22,[sp, #-0x30]!
+00ecae14  stp x21,x20,[sp, #0x10]
+00ecae18  stp x19,x30,[sp, #0x20]
+00ecae1c  adrp x21,0x3572000
+00ecae20  adrp x22,0x3322000
+00ecae24  ldrb w8,[x21, #0xd68]
+00ecae28  ldr x22,[x22, #0x6d0]
+00ecae2c  mov x20,x1
+00ecae30  mov x19,x0
+00ecae34  tbnz w8,#0x0,0x00ecae4c
+00ecae38  adrp x0,0x3322000
+00ecae3c  ldr x0,[x0, #0x6d0]
+00ecae40  bl 0x00b0789c
+00ecae44  mov w8,#0x1
+00ecae48  strb w8,[x21, #0xd68]
+00ecae4c  ldr x8,[x22]
+00ecae50  ldr x8,[x8, #0xb8]
+00ecae54  ldr x0,[x8, #0x10]
+00ecae58  cbz x0,0x00ecae78
+00ecae5c  mov x1,x19
+00ecae60  mov x2,x20
+00ecae64  ldp x19,x30,[sp, #0x20]
+00ecae68  ldp x21,x20,[sp, #0x10]
+00ecae6c  mov x3,xzr
+00ecae70  ldr x22,[sp], #0x30
+00ecae74  b 0x0106125c
+00ecae78  ldr x0,[x19, #0x20]
+00ecae7c  cbz x0,0x00ecaeb8
+00ecae80  mov x1,x20
+00ecae84  mov x2,xzr
+00ecae88  bl 0x0250c124
+00ecae8c  ldrb w8,[x19, #0x28]
+00ecae90  cbz w8,0x00ecaea4
+00ecae94  ldp x19,x30,[sp, #0x20]
+00ecae98  ldp x21,x20,[sp, #0x10]
+00ecae9c  ldr x22,[sp], #0x30
+00ecaea0  ret
+00ecaea4  mov x0,x19
+00ecaea8  ldp x19,x30,[sp, #0x20]
+00ecaeac  ldp x21,x20,[sp, #0x10]
+00ecaeb0  ldr x22,[sp], #0x30
+00ecaeb4  b 0x00ecaebc
+00ecaeb8  bl 0x00b079b0

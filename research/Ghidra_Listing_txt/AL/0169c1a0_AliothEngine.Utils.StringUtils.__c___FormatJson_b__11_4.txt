@@ -1,0 +1,49 @@
+Function: AliothEngine.Utils.StringUtils.<>c$$<FormatJson>b__11_4 @ 0169c1a0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169c1a0  str x20,[sp, #-0x20]!
+0169c1a4  stp x19,x30,[sp, #0x10]
+0169c1a8  adrp x20,0x3577000
+0169c1ac  ldrb w8,[x20, #0xb3e]
+0169c1b0  mov x19,x1
+0169c1b4  tbnz w8,#0x0,0x0169c1fc
+0169c1b8  adrp x0,0x336f000
+0169c1bc  ldr x0,[x0, #0x370]
+0169c1c0  bl 0x00b0789c
+0169c1c4  adrp x0,0x3328000
+0169c1c8  ldr x0,[x0, #0xbb8]
+0169c1cc  bl 0x00b0789c
+0169c1d0  adrp x0,0x3335000
+0169c1d4  ldr x0,[x0, #0xcc8]
+0169c1d8  bl 0x00b0789c
+0169c1dc  adrp x0,0x3336000
+0169c1e0  ldr x0,[x0, #0x3d8]
+0169c1e4  bl 0x00b0789c
+0169c1e8  adrp x0,0x330c000
+0169c1ec  ldr x0,[x0, #0x68]
+0169c1f0  bl 0x00b0789c
+0169c1f4  mov w8,#0x1
+0169c1f8  strb w8,[x20, #0xb3e]
+0169c1fc  cbz x19,0x0169c23c
+0169c200  ldr x8,[x19, #0x10]
+0169c204  cbz x8,0x0169c23c
+0169c208  ldr x9,[x8, #0x10]
+0169c20c  cbz x9,0x0169c23c
+0169c210  ldr x0,[x9, #0x18]
+0169c214  cbnz x0,0x0169c230
+0169c218  ldr x0,[x8, #0x18]
+0169c21c  cbz x0,0x0169c23c
+0169c220  ldr w8,[x0, #0x10]
+0169c224  cmp w8,#0x1
+0169c228  b.gt 0x0169c230
+0169c22c  ldr x0,[x19, #0x18]
+0169c230  ldp x19,x30,[sp, #0x10]
+0169c234  ldr x20,[sp], #0x20
+0169c238  ret
+0169c23c  bl 0x00b079b0

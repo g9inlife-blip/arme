@@ -1,0 +1,34 @@
+Function: AliothEngine.StoreManager_AliPay$$get_IsRestoreTransactionsSupported @ 01659ce0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+
+--- Listing ---
+01659ce0  stp x21,x20,[sp, #-0x20]!
+01659ce4  stp x19,x30,[sp, #0x10]
+01659ce8  adrp x20,0x3577000
+01659cec  adrp x21,0x334a000
+01659cf0  ldrb w8,[x20, #0x856]
+01659cf4  ldr x21,[x21, #0x9c0]
+01659cf8  mov x19,x0
+01659cfc  tbnz w8,#0x0,0x01659d14
+01659d00  adrp x0,0x334a000
+01659d04  ldr x0,[x0, #0x9c0]
+01659d08  bl 0x00b0789c
+01659d0c  mov w8,#0x1
+01659d10  strb w8,[x20, #0x856]
+01659d14  ldr x8,[x21]
+01659d18  ldr x8,[x8, #0xb8]
+01659d1c  ldr x0,[x8, #0x10]
+01659d20  cbz x0,0x01659d38
+01659d24  mov x1,x19
+01659d28  ldp x19,x30,[sp, #0x10]
+01659d2c  mov x2,xzr
+01659d30  ldp x21,x20,[sp], #0x20
+01659d34  b 0x01060aac
+01659d38  ldp x19,x30,[sp, #0x10]
+01659d3c  ldp x21,x20,[sp], #0x20
+01659d40  ret

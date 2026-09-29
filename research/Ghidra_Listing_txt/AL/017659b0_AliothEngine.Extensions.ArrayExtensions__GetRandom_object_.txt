@@ -1,0 +1,58 @@
+Function: AliothEngine.Extensions.ArrayExtensions$$GetRandom<object> @ 017659b0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.ArgumentException$$.ctor @ 020cf900
+  -> UnityEngine.Random$$Range @ 024d63b0
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+017659b0  str x20,[sp, #-0x20]!
+017659b4  stp x19,x30,[sp, #0x10]
+017659b8  cbz x0,0x017659f4
+017659bc  ldr x1,[x0, #0x18]
+017659c0  mov x19,x0
+017659c4  cbz x1,0x017659f8
+017659c8  mov w0,wzr
+017659cc  mov x2,xzr
+017659d0  bl 0x024d63b0
+017659d4  ldr w8,[x19, #0x18]
+017659d8  cmp w0,w8
+017659dc  b.cs 0x01765a58
+017659e0  add x8,x19,w0, SXTW  #0x3
+017659e4  ldr x0,[x8, #0x20]
+017659e8  ldp x19,x30,[sp, #0x10]
+017659ec  ldr x20,[sp], #0x20
+017659f0  ret
+017659f4  bl 0x00b079b0
+017659f8  adrp x0,0x3367000
+017659fc  ldr x0,[x0, #0x168]
+01765a00  bl 0x00b078a0
+01765a04  bl 0x00b079a0
+01765a08  mov x19,x0
+01765a0c  bl 0x008d74f8
+01765a10  adrp x0,0x3368000
+01765a14  ldr x0,[x0, #0xfa0]
+01765a18  bl 0x00b078a0
+01765a1c  mov x20,x0
+01765a20  adrp x0,0x337e000
+01765a24  ldr x0,[x0, #0x2e0]
+01765a28  bl 0x00b078a0
+01765a2c  mov x2,x0
+01765a30  mov x0,x19
+01765a34  mov x1,x20
+01765a38  mov x3,xzr
+01765a3c  bl 0x020cf900
+01765a40  adrp x0,0x336f000
+01765a44  ldr x0,[x0, #0xba8]
+01765a48  bl 0x00b078a0
+01765a4c  mov x1,x0
+01765a50  mov x0,x19
+01765a54  bl 0x00b07978
+01765a58  bl 0x00b079b8

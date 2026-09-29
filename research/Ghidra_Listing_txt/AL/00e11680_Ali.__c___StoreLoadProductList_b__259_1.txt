@@ -1,0 +1,31 @@
+Function: Ali.<>c$$<StoreLoadProductList>b__259_1 @ 00e11680
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothExtensions$$ProductIdentifier @ 00e0c5a8
+
+--- Calls IN ---
+
+--- Listing ---
+00e11680  stp x21,x20,[sp, #-0x20]!
+00e11684  stp x19,x30,[sp, #0x10]
+00e11688  adrp x20,0x3572000
+00e1168c  adrp x21,0x3348000
+00e11690  ldrb w8,[x20, #0x5cd]
+00e11694  ldr x21,[x21, #0x138]
+00e11698  mov x19,x1
+00e1169c  tbnz w8,#0x0,0x00e116b4
+00e116a0  adrp x0,0x3348000
+00e116a4  ldr x0,[x0, #0x138]
+00e116a8  bl 0x00b0789c
+00e116ac  mov w8,#0x1
+00e116b0  strb w8,[x20, #0x5cd]
+00e116b4  ldr x0,[x21]
+00e116b8  ldr w8,[x0, #0xe0]
+00e116bc  cbnz w8,0x00e116c4
+00e116c0  bl 0x00b0798c
+00e116c4  mov x0,x19
+00e116c8  ldp x19,x30,[sp, #0x10]
+00e116cc  ldp x21,x20,[sp], #0x20
+00e116d0  b 0x00e0c5a8

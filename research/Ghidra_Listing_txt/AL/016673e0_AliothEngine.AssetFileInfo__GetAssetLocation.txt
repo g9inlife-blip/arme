@@ -1,0 +1,53 @@
+Function: AliothEngine.AssetFileInfo$$GetAssetLocation @ 016673e0
+
+--- Calls OUT ---
+  -> AliothEngine.AssetLocation$$AssetBundle @ 0166747c
+  -> AliothEngine.AssetLocation$$FileCache @ 016675f0
+  -> AliothEngine.AssetLocation$$Resources @ 01667520
+  -> AliothEngine.AssetFileInfo$$get_AssetType @ 016672d0
+  -> AliothEngine.AssetLocation$$Unknown @ 01667680
+  -> AliothEngine.AssetVersionManager$$get_CacheFolderName @ 0166f9e8
+
+--- Calls IN ---
+  <- AliothEngine.AssetInfoManager$$LoadOneAsset @ 01668ac0
+
+--- Listing ---
+016673e0  stp x21,x20,[sp, #-0x20]!
+016673e4  stp x19,x30,[sp, #0x10]
+016673e8  mov w21,w1
+016673ec  mov x20,x0
+016673f0  bl 0x016672d0
+016673f4  cmp w21,#0x3
+016673f8  mov x19,x0
+016673fc  b.eq 0x0166742c
+01667400  cmp w21,#0x2
+01667404  b.eq 0x0166744c
+01667408  cmp w21,#0x1
+0166740c  b.ne 0x01667464
+01667410  ldr x0,[x20, #0x38]
+01667414  ldr x1,[x20, #0x18]
+01667418  mov x2,x19
+0166741c  ldp x19,x30,[sp, #0x10]
+01667420  mov w3,#0x2
+01667424  ldp x21,x20,[sp], #0x20
+01667428  b 0x0166747c
+0166742c  mov x0,xzr
+01667430  bl 0x0166f9e8
+01667434  ldr x1,[x20, #0x10]
+01667438  mov x2,x19
+0166743c  ldp x19,x30,[sp, #0x10]
+01667440  mov w3,#0x2
+01667444  ldp x21,x20,[sp], #0x20
+01667448  b 0x016675f0
+0166744c  ldr x0,[x20, #0x48]
+01667450  mov x1,x19
+01667454  ldp x19,x30,[sp, #0x10]
+01667458  mov w2,#0x2
+0166745c  ldp x21,x20,[sp], #0x20
+01667460  b 0x01667520
+01667464  ldr x0,[x20, #0x30]
+01667468  mov x1,x19
+0166746c  ldp x19,x30,[sp, #0x10]
+01667470  mov w2,#0x2
+01667474  ldp x21,x20,[sp], #0x20
+01667478  b 0x01667680

@@ -1,0 +1,78 @@
+Function: AliothEngine.Extensions.ListExtensions$$Peek<object> @ 0179f510
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.GUIScreenManager$$_PopScreen @ 01674368
+
+--- Listing ---
+0179f510  str x20,[sp, #-0x20]!
+0179f514  stp x19,x30,[sp, #0x10]
+0179f518  cbz x0,0x0179f618
+0179f51c  ldr x8,[x1, #0x38]
+0179f520  mov x20,x1
+0179f524  mov x19,x0
+0179f528  ldr x1,[x8]
+0179f52c  ldrb w8,[x1, #0x132]
+0179f530  tbnz w8,#0x0,0x0179f540
+0179f534  mov x0,x1
+0179f538  bl 0x00b2ac40
+0179f53c  mov x1,x0
+0179f540  ldr x8,[x19]
+0179f544  ldrh w9,[x8, #0x12a]
+0179f548  cbz x9,0x0179f56c
+0179f54c  ldr x10,[x8, #0xb0]
+0179f550  add x10,x10,#0x8
+0179f554  ldur x11,[x10, #-0x8]
+0179f558  cmp x11,x1
+0179f55c  b.eq 0x0179f57c
+0179f560  subs x9,x9,#0x1
+0179f564  add x10,x10,#0x10
+0179f568  b.ne 0x0179f554
+0179f56c  mov x0,x19
+0179f570  mov w2,wzr
+0179f574  bl 0x00b2ae24
+0179f578  b 0x0179f588
+0179f57c  ldrsw x9,[x10]
+0179f580  add x8,x8,x9, LSL #0x4
+0179f584  add x0,x8,#0x138
+0179f588  ldp x8,x1,[x0]
+0179f58c  mov x0,x19
+0179f590  blr x8
+0179f594  ldr x8,[x20, #0x38]
+0179f598  mov w20,w0
+0179f59c  ldr x1,[x8, #0x10]
+0179f5a0  ldrb w8,[x1, #0x132]
+0179f5a4  tbnz w8,#0x0,0x0179f5b4
+0179f5a8  mov x0,x1
+0179f5ac  bl 0x00b2ac40
+0179f5b0  mov x1,x0
+0179f5b4  ldr x8,[x19]
+0179f5b8  sub w20,w20,#0x1
+0179f5bc  ldrh w9,[x8, #0x12a]
+0179f5c0  cbz x9,0x0179f5e4
+0179f5c4  ldr x10,[x8, #0xb0]
+0179f5c8  add x10,x10,#0x8
+0179f5cc  ldur x11,[x10, #-0x8]
+0179f5d0  cmp x11,x1
+0179f5d4  b.eq 0x0179f5f4
+0179f5d8  subs x9,x9,#0x1
+0179f5dc  add x10,x10,#0x10
+0179f5e0  b.ne 0x0179f5cc
+0179f5e4  mov x0,x19
+0179f5e8  mov w2,wzr
+0179f5ec  bl 0x00b2ae24
+0179f5f0  b 0x0179f600
+0179f5f4  ldrsw x9,[x10]
+0179f5f8  add x8,x8,x9, LSL #0x4
+0179f5fc  add x0,x8,#0x138
+0179f600  ldp x3,x2,[x0]
+0179f604  mov x0,x19
+0179f608  ldp x19,x30,[sp, #0x10]
+0179f60c  mov w1,w20
+0179f610  ldr x20,[sp], #0x20
+0179f614  br x3
+0179f618  bl 0x00b079b0

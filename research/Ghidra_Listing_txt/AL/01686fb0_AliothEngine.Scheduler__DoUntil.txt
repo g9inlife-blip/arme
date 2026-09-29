@@ -1,0 +1,47 @@
+Function: AliothEngine.Scheduler$$DoUntil @ 01686fb0
+
+--- Calls OUT ---
+  -> AliothEngine.Scheduler$$DoUntilTask @ 0168703c
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.SingletonBehaviour<object>$$get_Instance @ 01e0894c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01686fb0  str x22,[sp, #-0x30]!
+01686fb4  stp x21,x20,[sp, #0x10]
+01686fb8  stp x19,x30,[sp, #0x20]
+01686fbc  adrp x22,0x3577000
+01686fc0  adrp x21,0x336c000
+01686fc4  ldrb w8,[x22, #0xa6a]
+01686fc8  ldr x21,[x21, #0x370]
+01686fcc  mov x19,x1
+01686fd0  mov x20,x0
+01686fd4  tbnz w8,#0x0,0x01686fec
+01686fd8  adrp x0,0x336c000
+01686fdc  ldr x0,[x0, #0x370]
+01686fe0  bl 0x00b0789c
+01686fe4  mov w8,#0x1
+01686fe8  strb w8,[x22, #0xa6a]
+01686fec  ldr x0,[x21]
+01686ff0  bl 0x01e0894c
+01686ff4  ldr x8,[x21]
+01686ff8  mov x21,x0
+01686ffc  mov x0,x8
+01687000  bl 0x01e0894c
+01687004  cbz x0,0x01687038
+01687008  mov x1,x20
+0168700c  mov x2,x19
+01687010  mov x3,xzr
+01687014  bl 0x0168703c
+01687018  cbz x21,0x01687038
+0168701c  mov x1,x0
+01687020  mov x0,x21
+01687024  ldp x19,x30,[sp, #0x20]
+01687028  ldp x21,x20,[sp, #0x10]
+0168702c  mov x2,xzr
+01687030  ldr x22,[sp], #0x30
+01687034  b 0x024e4070
+01687038  bl 0x00b079b0

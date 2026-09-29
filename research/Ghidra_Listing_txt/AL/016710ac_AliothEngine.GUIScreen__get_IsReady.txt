@@ -1,0 +1,46 @@
+Function: AliothEngine.GUIScreen$$get_IsReady @ 016710ac
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+
+--- Listing ---
+016710ac  stp x21,x20,[sp, #-0x20]!
+016710b0  stp x19,x30,[sp, #0x10]
+016710b4  adrp x20,0x3577000
+016710b8  adrp x21,0x3364000
+016710bc  ldrb w8,[x20, #0x97b]
+016710c0  ldr x21,[x21, #0xd28]
+016710c4  mov x19,x0
+016710c8  tbnz w8,#0x0,0x016710e0
+016710cc  adrp x0,0x3364000
+016710d0  ldr x0,[x0, #0xd28]
+016710d4  bl 0x00b0789c
+016710d8  mov w8,#0x1
+016710dc  strb w8,[x20, #0x97b]
+016710e0  ldr x8,[x21]
+016710e4  ldr x8,[x8, #0xb8]
+016710e8  ldr x0,[x8, #0x50]
+016710ec  cbz x0,0x01671104
+016710f0  mov x1,x19
+016710f4  ldp x19,x30,[sp, #0x10]
+016710f8  mov x2,xzr
+016710fc  ldp x21,x20,[sp], #0x20
+01671100  b 0x01060aac
+01671104  ldr x8,[x19]
+01671108  mov x0,x19
+0167110c  ldp x9,x1,[x8, #0x1d8]
+01671110  blr x9
+01671114  ldrb w8,[x19, #0x49]
+01671118  tbz w0,#0x0,0x01671124
+0167111c  cbz w8,0x01671130
+01671120  ldrb w8,[x19, #0x4a]
+01671124  cmp w8,#0x0
+01671128  cset w0,ne
+0167112c  b 0x01671134
+01671130  mov w0,wzr
+01671134  ldp x19,x30,[sp, #0x10]
+01671138  ldp x21,x20,[sp], #0x20
+0167113c  ret

@@ -1,0 +1,77 @@
+Function: AliothEngine.Extensions.IEnumerableExtensions.<>c__DisplayClass10_0<object>$$<MinBy>b__0 @ 018ef064
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+018ef064  stp x23,x22,[sp, #-0x30]!
+018ef068  stp x21,x20,[sp, #0x10]
+018ef06c  stp x19,x30,[sp, #0x20]
+018ef070  adrp x23,0x3578000
+018ef074  ldrb w8,[x23, #0x594]
+018ef078  mov x22,x3
+018ef07c  mov x19,x2
+018ef080  mov x20,x1
+018ef084  mov x21,x0
+018ef088  tbnz w8,#0x0,0x018ef0a0
+018ef08c  adrp x0,0x3350000
+018ef090  ldr x0,[x0, #0xa78]
+018ef094  bl 0x00b0789c
+018ef098  mov w8,#0x1
+018ef09c  strb w8,[x23, #0x594]
+018ef0a0  ldr x0,[x21, #0x10]
+018ef0a4  cbz x0,0x018ef16c
+018ef0a8  ldr x8,[x22, #0x20]
+018ef0ac  mov x1,x20
+018ef0b0  ldr x8,[x8, #0xc0]
+018ef0b4  ldr x2,[x8, #0x8]
+018ef0b8  ldr x8,[x2, #0x8]
+018ef0bc  blr x8
+018ef0c0  ldr x8,[x21, #0x10]
+018ef0c4  cbz x8,0x018ef16c
+018ef0c8  ldr x9,[x22, #0x20]
+018ef0cc  mov x21,x0
+018ef0d0  mov x0,x8
+018ef0d4  mov x1,x19
+018ef0d8  ldr x9,[x9, #0xc0]
+018ef0dc  ldr x2,[x9, #0x8]
+018ef0e0  ldr x9,[x2, #0x8]
+018ef0e4  blr x9
+018ef0e8  cbz x21,0x018ef16c
+018ef0ec  adrp x10,0x3350000
+018ef0f0  ldr x8,[x21]
+018ef0f4  ldr x10,[x10, #0xa78]
+018ef0f8  mov x22,x0
+018ef0fc  ldrh w9,[x8, #0x12a]
+018ef100  ldr x1,[x10]
+018ef104  cbz x9,0x018ef128
+018ef108  ldr x10,[x8, #0xb0]
+018ef10c  add x10,x10,#0x8
+018ef110  ldur x11,[x10, #-0x8]
+018ef114  cmp x11,x1
+018ef118  b.eq 0x018ef138
+018ef11c  subs x9,x9,#0x1
+018ef120  add x10,x10,#0x10
+018ef124  b.ne 0x018ef110
+018ef128  mov x0,x21
+018ef12c  mov w2,wzr
+018ef130  bl 0x00b2ae24
+018ef134  b 0x018ef144
+018ef138  ldrsw x9,[x10]
+018ef13c  add x8,x8,x9, LSL #0x4
+018ef140  add x0,x8,#0x138
+018ef144  ldp x8,x2,[x0]
+018ef148  mov x0,x21
+018ef14c  mov x1,x22
+018ef150  blr x8
+018ef154  cmp w0,#0x0
+018ef158  csel x0,x19,x20,ge
+018ef15c  ldp x19,x30,[sp, #0x20]
+018ef160  ldp x21,x20,[sp, #0x10]
+018ef164  ldp x23,x22,[sp], #0x30
+018ef168  ret
+018ef16c  bl 0x00b079b0

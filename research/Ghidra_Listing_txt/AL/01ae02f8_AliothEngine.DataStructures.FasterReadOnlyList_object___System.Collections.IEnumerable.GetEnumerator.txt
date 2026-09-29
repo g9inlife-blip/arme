@@ -1,0 +1,46 @@
+Function: AliothEngine.DataStructures.FasterReadOnlyList<object>$$System.Collections.IEnumerable.GetEnumerator @ 01ae02f8
+
+--- Calls OUT ---
+  -> AliothEngine.DataStructures.FasterReadOnlyList<object>$$GetEnumerator @ 01adfef8
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_00977ff4 @ 00977ff4
+
+--- Listing ---
+01ae02f8  sub sp,sp,#0x50
+01ae02fc  str x20,[sp, #0x30]
+01ae0300  stp x19,x30,[sp, #0x40]
+01ae0304  ldr x8,[x1, #0x20]
+01ae0308  mov x19,x1
+01ae030c  mov x20,x0
+01ae0310  ldrb w9,[x8, #0x132]
+01ae0314  tbnz w9,#0x0,0x01ae0324
+01ae0318  mov x0,x8
+01ae031c  bl 0x00b2ac40
+01ae0320  mov x8,x0
+01ae0324  ldr x8,[x8, #0xc0]
+01ae0328  mov x0,x20
+01ae032c  ldr x1,[x8, #0x38]
+01ae0330  add x8,sp,#0x18
+01ae0334  bl 0x01adfef8
+01ae0338  ldr x8,[sp, #0x28]
+01ae033c  ldur q0,[sp, #0x18]
+01ae0340  str x8,[sp, #0x10]
+01ae0344  str q0,[sp]
+01ae0348  ldr x0,[x19, #0x20]
+01ae034c  ldrb w8,[x0, #0x132]
+01ae0350  tbnz w8,#0x0,0x01ae0358
+01ae0354  bl 0x00b2ac40
+01ae0358  ldr x8,[x0, #0xc0]
+01ae035c  ldr x0,[x8, #0x40]
+01ae0360  ldrb w8,[x0, #0x132]
+01ae0364  tbnz w8,#0x0,0x01ae036c
+01ae0368  bl 0x00b2ac40
+01ae036c  mov x1,sp
+01ae0370  bl 0x00b07994
+01ae0374  ldp x19,x30,[sp, #0x40]
+01ae0378  ldr x20,[sp, #0x30]
+01ae037c  add sp,sp,#0x50
+01ae0380  ret

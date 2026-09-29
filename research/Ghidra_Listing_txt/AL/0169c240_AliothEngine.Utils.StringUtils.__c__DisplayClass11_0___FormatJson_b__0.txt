@@ -1,0 +1,49 @@
+Function: AliothEngine.Utils.StringUtils.<>c__DisplayClass11_0$$<FormatJson>b__0 @ 0169c240
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> <>f__AnonymousType0<char,-int>$$.ctor @ 018f7fd4
+
+--- Calls IN ---
+
+--- Listing ---
+0169c240  stp x21,x20,[sp, #-0x20]!
+0169c244  stp x19,x30,[sp, #0x10]
+0169c248  adrp x20,0x3577000
+0169c24c  ldrb w8,[x20, #0xb3f]
+0169c250  mov w19,w1
+0169c254  mov x21,x0
+0169c258  tbnz w8,#0x0,0x0169c27c
+0169c25c  adrp x0,0x3319000
+0169c260  ldr x0,[x0, #0xcc0]
+0169c264  bl 0x00b0789c
+0169c268  adrp x0,0x3356000
+0169c26c  ldr x0,[x0, #0x448]
+0169c270  bl 0x00b0789c
+0169c274  mov w8,#0x1
+0169c278  strb w8,[x20, #0xb3f]
+0169c27c  and w8,w19,#0xffff
+0169c280  cmp w8,#0x22
+0169c284  adrp x8,0x3356000
+0169c288  ldr w20,[x21, #0x10]
+0169c28c  ldr x8,[x8, #0x448]
+0169c290  b.ne 0x0169c29c
+0169c294  add w9,w20,#0x1
+0169c298  str w9,[x21, #0x10]
+0169c29c  ldr x0,[x8]
+0169c2a0  bl 0x00b079a0
+0169c2a4  cbz x0,0x0169c2d4
+0169c2a8  adrp x8,0x3319000
+0169c2ac  ldr x8,[x8, #0xcc0]
+0169c2b0  mov w1,w19
+0169c2b4  mov w2,w20
+0169c2b8  mov x21,x0
+0169c2bc  ldr x3,[x8]
+0169c2c0  bl 0x018f7fd4
+0169c2c4  ldp x19,x30,[sp, #0x10]
+0169c2c8  mov x0,x21
+0169c2cc  ldp x21,x20,[sp], #0x20
+0169c2d0  ret
+0169c2d4  bl 0x00b079b0

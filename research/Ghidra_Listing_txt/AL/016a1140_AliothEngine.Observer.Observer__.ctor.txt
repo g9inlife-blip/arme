@@ -1,0 +1,91 @@
+Function: AliothEngine.Observer.Observer$$.ctor @ 016a1140
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> AliothEngine.Observer.Observable$$add_Notify @ 016a0fe4
+  -> System.Action$$.ctor @ 020d5760
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016a1140  stp x23,x22,[sp, #-0x30]!
+016a1144  stp x21,x20,[sp, #0x10]
+016a1148  stp x19,x30,[sp, #0x20]
+016a114c  adrp x20,0x3577000
+016a1150  adrp x22,0x3353000
+016a1154  ldrb w8,[x20, #0xb63]
+016a1158  ldr x22,[x22, #0xa8]
+016a115c  mov x21,x1
+016a1160  mov x19,x0
+016a1164  tbnz w8,#0x0,0x016a11a0
+016a1168  adrp x0,0x3348000
+016a116c  ldr x0,[x0, #0xcf8]
+016a1170  bl 0x00b0789c
+016a1174  adrp x0,0x3329000
+016a1178  ldr x0,[x0, #0x230]
+016a117c  bl 0x00b0789c
+016a1180  adrp x0,0x3309000
+016a1184  ldr x0,[x0, #0x288]
+016a1188  bl 0x00b0789c
+016a118c  adrp x0,0x3353000
+016a1190  ldr x0,[x0, #0xa8]
+016a1194  bl 0x00b0789c
+016a1198  mov w8,#0x1
+016a119c  strb w8,[x20, #0xb63]
+016a11a0  ldr x0,[x22]
+016a11a4  bl 0x00b079a0
+016a11a8  cbz x0,0x016a1270
+016a11ac  adrp x23,0x3348000
+016a11b0  ldr x23,[x23, #0xcf8]
+016a11b4  mov x1,xzr
+016a11b8  mov x20,x0
+016a11bc  bl 0x02194104
+016a11c0  mov x22,x20
+016a11c4  str x21,[x22, #0x10]!
+016a11c8  mov x0,x22
+016a11cc  mov x1,x21
+016a11d0  bl 0x00b07850
+016a11d4  mov x0,x19
+016a11d8  mov x1,xzr
+016a11dc  bl 0x02194104
+016a11e0  mov x0,x20
+016a11e4  str x19,[x0, #0x18]!
+016a11e8  mov x1,x19
+016a11ec  bl 0x00b07850
+016a11f0  ldr x0,[x23]
+016a11f4  ldr x21,[x22]
+016a11f8  bl 0x00b079a0
+016a11fc  cbz x0,0x016a1270
+016a1200  adrp x8,0x3329000
+016a1204  ldr x8,[x8, #0x230]
+016a1208  mov x1,x19
+016a120c  mov x3,xzr
+016a1210  mov x22,x0
+016a1214  ldr x2,[x8]
+016a1218  bl 0x020d5760
+016a121c  cbz x21,0x016a1270
+016a1220  mov x0,x21
+016a1224  mov x1,x22
+016a1228  bl 0x016a0fe4
+016a122c  ldr x0,[x23]
+016a1230  bl 0x00b079a0
+016a1234  cbz x0,0x016a1270
+016a1238  adrp x8,0x3309000
+016a123c  ldr x8,[x8, #0x288]
+016a1240  mov x1,x20
+016a1244  mov x3,xzr
+016a1248  mov x21,x0
+016a124c  ldr x2,[x8]
+016a1250  bl 0x020d5760
+016a1254  str x21,[x19, #0x18]!
+016a1258  mov x0,x19
+016a125c  mov x1,x21
+016a1260  ldp x19,x30,[sp, #0x20]
+016a1264  ldp x21,x20,[sp, #0x10]
+016a1268  ldp x23,x22,[sp], #0x30
+016a126c  b 0x00b07850
+016a1270  bl 0x00b079b0

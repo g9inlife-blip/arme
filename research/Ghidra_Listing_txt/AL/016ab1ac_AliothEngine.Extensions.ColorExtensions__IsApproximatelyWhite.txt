@@ -1,0 +1,39 @@
+Function: AliothEngine.Extensions.ColorExtensions$$IsApproximatelyWhite @ 016ab1ac
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+016ab1ac  str d10,[sp, #-0x30]!
+016ab1b0  stp d9,d8,[sp, #0x8]
+016ab1b4  str x20,[sp, #0x18]
+016ab1b8  stp x19,x30,[sp, #0x20]
+016ab1bc  adrp x19,0x3577000
+016ab1c0  adrp x20,0x3318000
+016ab1c4  ldrb w8,[x19, #0xbb1]
+016ab1c8  ldr x20,[x20, #0x558]
+016ab1cc  mov v8.16B,v2.16B
+016ab1d0  mov v9.16B,v1.16B
+016ab1d4  mov v10.16B,v0.16B
+016ab1d8  tbnz w8,#0x0,0x016ab1f0
+016ab1dc  adrp x0,0x3318000
+016ab1e0  ldr x0,[x0, #0x558]
+016ab1e4  bl 0x00b0789c
+016ab1e8  mov w8,#0x1
+016ab1ec  strb w8,[x19, #0xbb1]
+016ab1f0  ldr x8,[x20]
+016ab1f4  fadd s1,s10,s9
+016ab1f8  fadd s1,s8,s1
+016ab1fc  fmov s2,0x3f800000
+016ab200  ldr x8,[x8, #0xb8]
+016ab204  ldp x19,x30,[sp, #0x20]
+016ab208  ldr x20,[sp, #0x18]
+016ab20c  ldp d9,d8,[sp, #0x8]
+016ab210  ldr s0,[x8]
+016ab214  fsub s0,s2,s0
+016ab218  fcmp s1,s0
+016ab21c  cset w0,ge
+016ab220  ldr d10,[sp], #0x30
+016ab224  ret

@@ -1,0 +1,59 @@
+Function: AliothEngine.AssetDownloader.<ProcessDownload>d__19$$<>m__Finally1 @ 01660a08
+
+--- Calls OUT ---
+  -> AliothEngine.AssetDownloader$$get_numProcessing @ 0165dc30
+  -> AliothEngine.AssetDownloadingContext$$get_hash @ 01660ab0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AssetDownloadingContext$$Finish @ 01660b34
+  -> AliothEngine.AssetDownloader$$set_numProcessing @ 0165dca8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<object,-object>$$Remove @ 0196fa1c
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader.<ProcessDownload>d__19$$System.IDisposable.Dispose @ 0165fcb0
+  <- FUN_0095f51c @ 0095f51c
+  <- AliothEngine.AssetDownloader.<ProcessDownload>d__19$$MoveNext @ 0165fcdc
+
+--- Listing ---
+01660a08  stp x21,x20,[sp, #-0x20]!
+01660a0c  stp x19,x30,[sp, #0x10]
+01660a10  adrp x20,0x3577000
+01660a14  ldrb w8,[x20, #0x8aa]
+01660a18  mov x19,x0
+01660a1c  tbnz w8,#0x0,0x01660a34
+01660a20  adrp x0,0x3323000
+01660a24  ldr x0,[x0, #0x250]
+01660a28  bl 0x00b0789c
+01660a2c  mov w8,#0x1
+01660a30  strb w8,[x20, #0x8aa]
+01660a34  ldr x20,[x19, #0x28]
+01660a38  mov w8,#0xffffffff
+01660a3c  str w8,[x19, #0x10]
+01660a40  cbz x20,0x01660aac
+01660a44  ldr x8,[x19, #0x30]
+01660a48  cbz x8,0x01660aac
+01660a4c  ldr x0,[x8, #0x10]
+01660a50  cbz x0,0x01660aac
+01660a54  ldr x21,[x20, #0x20]
+01660a58  bl 0x01660ab0
+01660a5c  cbz x21,0x01660aac
+01660a60  adrp x8,0x3323000
+01660a64  ldr x8,[x8, #0x250]
+01660a68  mov x1,x0
+01660a6c  mov x0,x21
+01660a70  ldr x2,[x8]
+01660a74  bl 0x0196fa1c
+01660a78  mov x0,x20
+01660a7c  bl 0x0165dc30
+01660a80  sub w1,w0,#0x1
+01660a84  mov x0,x20
+01660a88  bl 0x0165dca8
+01660a8c  ldr x8,[x19, #0x30]
+01660a90  cbz x8,0x01660aac
+01660a94  ldr x0,[x8, #0x10]
+01660a98  cbz x0,0x01660aac
+01660a9c  ldrb w1,[x8, #0x18]
+01660aa0  ldp x19,x30,[sp, #0x10]
+01660aa4  ldp x21,x20,[sp], #0x20
+01660aa8  b 0x01660b34
+01660aac  bl 0x00b079b0

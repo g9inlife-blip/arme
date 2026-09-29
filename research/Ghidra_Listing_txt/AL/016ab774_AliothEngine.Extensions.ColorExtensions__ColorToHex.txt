@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.ColorExtensions$$ColorToHex @ 016ab774
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Byte$$ToString @ 020db3dc
+  -> System.String$$Concat @ 01fdebb8
+
+--- Calls IN ---
+
+--- Listing ---
+016ab774  str x22,[sp, #-0x30]!
+016ab778  stp x21,x20,[sp, #0x10]
+016ab77c  stp x19,x30,[sp, #0x20]
+016ab780  adrp x19,0x3577000
+016ab784  str w0,[sp, #0x8]
+016ab788  adrp x21,0x3323000
+016ab78c  ldrb w8,[x19, #0xbb5]
+016ab790  ldr x21,[x21, #0x1b8]
+016ab794  tbnz w8,#0x0,0x016ab7ac
+016ab798  adrp x0,0x3323000
+016ab79c  ldr x0,[x0, #0x1b8]
+016ab7a0  bl 0x00b0789c
+016ab7a4  mov w8,#0x1
+016ab7a8  strb w8,[x19, #0xbb5]
+016ab7ac  ldr x1,[x21]
+016ab7b0  add x0,sp,#0x8
+016ab7b4  mov x2,xzr
+016ab7b8  add x22,sp,#0x8
+016ab7bc  bl 0x020db3dc
+016ab7c0  ldr x1,[x21]
+016ab7c4  mov x19,x0
+016ab7c8  orr x0,x22,#0x1
+016ab7cc  mov x2,xzr
+016ab7d0  bl 0x020db3dc
+016ab7d4  ldr x1,[x21]
+016ab7d8  mov x20,x0
+016ab7dc  orr x0,x22,#0x2
+016ab7e0  mov x2,xzr
+016ab7e4  bl 0x020db3dc
+016ab7e8  mov x2,x0
+016ab7ec  mov x0,x19
+016ab7f0  mov x1,x20
+016ab7f4  mov x3,xzr
+016ab7f8  bl 0x01fdebb8
+016ab7fc  ldp x19,x30,[sp, #0x20]
+016ab800  ldp x21,x20,[sp, #0x10]
+016ab804  ldr x22,[sp], #0x30
+016ab808  ret

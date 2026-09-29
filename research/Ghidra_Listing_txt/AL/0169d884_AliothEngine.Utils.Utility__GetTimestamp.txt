@@ -1,0 +1,30 @@
+Function: AliothEngine.Utils.Utility$$GetTimestamp @ 0169d884
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Now @ 02133d48
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0169d884  str x20,[sp, #-0x20]!
+0169d888  stp x19,x30,[sp, #0x10]
+0169d88c  adrp x19,0x3577000
+0169d890  adrp x20,0x336f000
+0169d894  ldrb w8,[x19, #0xb4e]
+0169d898  ldr x20,[x20, #0xdc8]
+0169d89c  tbnz w8,#0x0,0x0169d8b4
+0169d8a0  adrp x0,0x336f000
+0169d8a4  ldr x0,[x0, #0xdc8]
+0169d8a8  bl 0x00b0789c
+0169d8ac  mov w8,#0x1
+0169d8b0  strb w8,[x19, #0xb4e]
+0169d8b4  ldr x0,[x20]
+0169d8b8  ldr w8,[x0, #0xe0]
+0169d8bc  cbnz w8,0x0169d8c4
+0169d8c0  bl 0x00b0798c
+0169d8c4  ldp x19,x30,[sp, #0x10]
+0169d8c8  mov x0,xzr
+0169d8cc  ldr x20,[sp], #0x20
+0169d8d0  b 0x02133d48

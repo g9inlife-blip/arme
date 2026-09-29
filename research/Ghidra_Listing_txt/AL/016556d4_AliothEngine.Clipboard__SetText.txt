@@ -1,0 +1,143 @@
+Function: AliothEngine.Clipboard$$SetText @ 016556d4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.AndroidJavaRunnable$$.ctor @ 024a9ea8
+  -> UnityEngine.AndroidJavaClass$$.ctor @ 024aa2ec
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> System.Object$$.ctor @ 02194104
+  -> UnityEngine.AndroidJavaObject$$GetStatic<object> @ 01738968
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.AndroidJavaObject$$Call @ 024acea8
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+
+--- Calls IN ---
+
+--- Listing ---
+016556d4  str x24,[sp, #-0x40]!
+016556d8  stp x23,x22,[sp, #0x10]
+016556dc  stp x21,x20,[sp, #0x20]
+016556e0  stp x19,x30,[sp, #0x30]
+016556e4  adrp x19,0x3577000
+016556e8  adrp x21,0x3333000
+016556ec  ldrb w8,[x19, #0x804]
+016556f0  ldr x21,[x21, #0xd38]
+016556f4  mov x20,x0
+016556f8  tbnz w8,#0x0,0x01655770
+016556fc  adrp x0,0x3364000
+01655700  ldr x0,[x0, #0x98]
+01655704  bl 0x00b0789c
+01655708  adrp x0,0x3348000
+0165570c  ldr x0,[x0, #0xb40]
+01655710  bl 0x00b0789c
+01655714  adrp x0,0x335a000
+01655718  ldr x0,[x0, #0x488]
+0165571c  bl 0x00b0789c
+01655720  adrp x0,0x3370000
+01655724  ldr x0,[x0, #0x778]
+01655728  bl 0x00b0789c
+0165572c  adrp x0,0x3353000
+01655730  ldr x0,[x0, #0x970]
+01655734  bl 0x00b0789c
+01655738  adrp x0,0x3333000
+0165573c  ldr x0,[x0, #0xd38]
+01655740  bl 0x00b0789c
+01655744  adrp x0,0x331a000
+01655748  ldr x0,[x0, #0xe80]
+0165574c  bl 0x00b0789c
+01655750  adrp x0,0x3331000
+01655754  ldr x0,[x0, #0xab8]
+01655758  bl 0x00b0789c
+0165575c  adrp x0,0x333c000
+01655760  ldr x0,[x0, #0x738]
+01655764  bl 0x00b0789c
+01655768  mov w8,#0x1
+0165576c  strb w8,[x19, #0x804]
+01655770  ldr x0,[x21]
+01655774  bl 0x00b079a0
+01655778  cbz x0,0x016558a8
+0165577c  adrp x21,0x3364000
+01655780  ldr x21,[x21, #0x98]
+01655784  mov x1,xzr
+01655788  mov x19,x0
+0165578c  bl 0x02194104
+01655790  mov x0,x19
+01655794  str x20,[x0, #0x18]!
+01655798  mov x1,x20
+0165579c  bl 0x00b07850
+016557a0  ldr x0,[x21]
+016557a4  bl 0x00b079a0
+016557a8  cbz x0,0x016558a8
+016557ac  adrp x8,0x331a000
+016557b0  ldr x8,[x8, #0xe80]
+016557b4  adrp x21,0x333c000
+016557b8  ldr x21,[x21, #0x738]
+016557bc  adrp x22,0x3348000
+016557c0  ldr x1,[x8]
+016557c4  adrp x23,0x3370000
+016557c8  adrp x24,0x335a000
+016557cc  ldr x22,[x22, #0xb40]
+016557d0  ldr x23,[x23, #0x778]
+016557d4  ldr x24,[x24, #0x488]
+016557d8  mov x2,xzr
+016557dc  mov x20,x0
+016557e0  bl 0x024aa2ec
+016557e4  ldr x1,[x21]
+016557e8  ldr x2,[x22]
+016557ec  mov x0,x20
+016557f0  bl 0x01738968
+016557f4  mov x20,x19
+016557f8  str x0,[x20, #0x10]!
+016557fc  mov x1,x0
+01655800  mov x0,x20
+01655804  bl 0x00b07850
+01655808  ldr x0,[x23]
+0165580c  ldr x20,[x20]
+01655810  mov w1,#0x1
+01655814  bl 0x00b078f8
+01655818  ldr x8,[x24]
+0165581c  mov x21,x0
+01655820  mov x0,x8
+01655824  bl 0x00b079a0
+01655828  cbz x0,0x016558a8
+0165582c  adrp x8,0x3353000
+01655830  ldr x8,[x8, #0x970]
+01655834  mov x1,x19
+01655838  mov x3,xzr
+0165583c  mov x22,x0
+01655840  ldr x2,[x8]
+01655844  bl 0x024a9ea8
+01655848  cbz x21,0x016558a8
+0165584c  ldr x8,[x21]
+01655850  mov x0,x22
+01655854  ldr x1,[x8, #0x40]
+01655858  bl 0x00b07990
+0165585c  cbz x0,0x016558ac
+01655860  ldr w8,[x21, #0x18]
+01655864  cbz w8,0x016558b8
+01655868  mov x0,x21
+0165586c  str x22,[x0, #0x20]!
+01655870  mov x1,x22
+01655874  bl 0x00b07850
+01655878  cbz x20,0x016558a8
+0165587c  adrp x8,0x3331000
+01655880  ldr x8,[x8, #0xab8]
+01655884  mov x0,x20
+01655888  mov x2,x21
+0165588c  ldp x19,x30,[sp, #0x30]
+01655890  ldr x1,[x8]
+01655894  ldp x21,x20,[sp, #0x20]
+01655898  ldp x23,x22,[sp, #0x10]
+0165589c  mov x3,xzr
+016558a0  ldr x24,[sp], #0x40
+016558a4  b 0x024acea8
+016558a8  bl 0x00b079b0
+016558ac  bl 0x00b079d4
+016558b0  mov x1,xzr
+016558b4  bl 0x00b07978
+016558b8  bl 0x00b079b8

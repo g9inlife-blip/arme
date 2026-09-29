@@ -1,0 +1,35 @@
+Function: AliothEngine.GUIScreen$$get_SingleInstance @ 01671344
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+
+--- Listing ---
+01671344  stp x21,x20,[sp, #-0x20]!
+01671348  stp x19,x30,[sp, #0x10]
+0167134c  adrp x20,0x3577000
+01671350  adrp x21,0x3364000
+01671354  ldrb w8,[x20, #0x981]
+01671358  ldr x21,[x21, #0xd28]
+0167135c  mov x19,x0
+01671360  tbnz w8,#0x0,0x01671378
+01671364  adrp x0,0x3364000
+01671368  ldr x0,[x0, #0xd28]
+0167136c  bl 0x00b0789c
+01671370  mov w8,#0x1
+01671374  strb w8,[x20, #0x981]
+01671378  ldr x8,[x21]
+0167137c  ldr x8,[x8, #0xb8]
+01671380  ldr x0,[x8, #0x80]
+01671384  cbz x0,0x0167139c
+01671388  mov x1,x19
+0167138c  ldp x19,x30,[sp, #0x10]
+01671390  mov x2,xzr
+01671394  ldp x21,x20,[sp], #0x20
+01671398  b 0x01060aac
+0167139c  ldp x19,x30,[sp, #0x10]
+016713a0  mov w0,#0x1
+016713a4  ldp x21,x20,[sp], #0x20
+016713a8  ret

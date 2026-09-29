@@ -1,0 +1,49 @@
+Function: AliothEngine.GameUpdateService$$StartCheckAssets @ 0167f024
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp16 @ 0106155c
+  -> AliothEngine.GameUpdateService$$CheckAssets @ 0167f0b4
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothEngineGameUpdateServiceWrap$$_m_StartCheckAssets @ 01141964
+  <- GlobalUIManager$$OnCheckAssets @ 00f1f684
+
+--- Listing ---
+0167f024  str x22,[sp, #-0x30]!
+0167f028  stp x21,x20,[sp, #0x10]
+0167f02c  stp x19,x30,[sp, #0x20]
+0167f030  adrp x21,0x3577000
+0167f034  adrp x22,0x3352000
+0167f038  ldrb w8,[x21, #0xa39]
+0167f03c  ldr x22,[x22, #0x2a8]
+0167f040  mov w20,w1
+0167f044  mov x19,x0
+0167f048  tbnz w8,#0x0,0x0167f060
+0167f04c  adrp x0,0x3352000
+0167f050  ldr x0,[x0, #0x2a8]
+0167f054  bl 0x00b0789c
+0167f058  mov w8,#0x1
+0167f05c  strb w8,[x21, #0xa39]
+0167f060  ldr x8,[x22]
+0167f064  ldr x8,[x8, #0xb8]
+0167f068  ldr x0,[x8, #0x140]
+0167f06c  cbz x0,0x0167f08c
+0167f070  mov x1,x19
+0167f074  mov w2,w20
+0167f078  ldp x19,x30,[sp, #0x20]
+0167f07c  ldp x21,x20,[sp, #0x10]
+0167f080  mov x3,xzr
+0167f084  ldr x22,[sp], #0x30
+0167f088  b 0x0106155c
+0167f08c  mov x0,x19
+0167f090  mov w1,w20
+0167f094  bl 0x0167f0b4
+0167f098  mov x1,x0
+0167f09c  mov x0,x19
+0167f0a0  ldp x19,x30,[sp, #0x20]
+0167f0a4  ldp x21,x20,[sp, #0x10]
+0167f0a8  mov x2,xzr
+0167f0ac  ldr x22,[sp], #0x30
+0167f0b0  b 0x024e4070

@@ -1,0 +1,64 @@
+Function: AliothEngine.FileUtility$$AbsoluteToRelativePath @ 0168e530
+
+--- Calls OUT ---
+  -> System.Uri$$MakeRelativeUri @ 022feb68
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Uri$$UnescapeDataString @ 023055f4
+  -> System.Uri$$.ctor @ 022f9e50
+
+--- Calls IN ---
+
+--- Listing ---
+0168e530  str x22,[sp, #-0x30]!
+0168e534  stp x21,x20,[sp, #0x10]
+0168e538  stp x19,x30,[sp, #0x20]
+0168e53c  adrp x20,0x3577000
+0168e540  adrp x22,0x3351000
+0168e544  ldrb w8,[x20, #0xac9]
+0168e548  ldr x22,[x22, #0x588]
+0168e54c  mov x21,x1
+0168e550  mov x19,x0
+0168e554  tbnz w8,#0x0,0x0168e56c
+0168e558  adrp x0,0x3351000
+0168e55c  ldr x0,[x0, #0x588]
+0168e560  bl 0x00b0789c
+0168e564  mov w8,#0x1
+0168e568  strb w8,[x20, #0xac9]
+0168e56c  ldr x0,[x22]
+0168e570  bl 0x00b079a0
+0168e574  cbz x0,0x0168e5f4
+0168e578  mov x1,x21
+0168e57c  mov x2,xzr
+0168e580  mov x20,x0
+0168e584  bl 0x022f9e50
+0168e588  ldr x0,[x22]
+0168e58c  bl 0x00b079a0
+0168e590  cbz x0,0x0168e5f4
+0168e594  mov x1,x19
+0168e598  mov x2,xzr
+0168e59c  mov x21,x0
+0168e5a0  bl 0x022f9e50
+0168e5a4  mov x0,x21
+0168e5a8  mov x1,x20
+0168e5ac  mov x2,xzr
+0168e5b0  bl 0x022feb68
+0168e5b4  cbz x0,0x0168e5f4
+0168e5b8  ldr x8,[x0]
+0168e5bc  ldp x9,x1,[x8, #0x168]
+0168e5c0  blr x9
+0168e5c4  ldr x8,[x22]
+0168e5c8  mov x19,x0
+0168e5cc  ldr w9,[x8, #0xe0]
+0168e5d0  cbnz w9,0x0168e5dc
+0168e5d4  mov x0,x8
+0168e5d8  bl 0x00b0798c
+0168e5dc  mov x0,x19
+0168e5e0  ldp x19,x30,[sp, #0x20]
+0168e5e4  ldp x21,x20,[sp, #0x10]
+0168e5e8  mov x1,xzr
+0168e5ec  ldr x22,[sp], #0x30
+0168e5f0  b 0x023055f4
+0168e5f4  bl 0x00b079b0

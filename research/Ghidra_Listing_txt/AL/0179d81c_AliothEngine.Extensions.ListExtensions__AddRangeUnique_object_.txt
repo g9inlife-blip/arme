@@ -1,0 +1,181 @@
+Function: AliothEngine.Extensions.ListExtensions$$AddRangeUnique<object> @ 0179d81c
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+0179d81c  str x24,[sp, #-0x40]!
+0179d820  stp x23,x22,[sp, #0x10]
+0179d824  stp x21,x20,[sp, #0x20]
+0179d828  stp x19,x30,[sp, #0x30]
+0179d82c  cbz x1,0x0179dac4
+0179d830  ldr x8,[x2, #0x38]
+0179d834  mov x20,x1
+0179d838  mov x19,x2
+0179d83c  mov x21,x0
+0179d840  ldr x1,[x8]
+0179d844  ldrb w8,[x1, #0x132]
+0179d848  tbnz w8,#0x0,0x0179d858
+0179d84c  mov x0,x1
+0179d850  bl 0x00b2ac40
+0179d854  mov x1,x0
+0179d858  ldr x8,[x20]
+0179d85c  ldrh w9,[x8, #0x12a]
+0179d860  cbz x9,0x0179d884
+0179d864  ldr x10,[x8, #0xb0]
+0179d868  add x10,x10,#0x8
+0179d86c  ldur x11,[x10, #-0x8]
+0179d870  cmp x11,x1
+0179d874  b.eq 0x0179d894
+0179d878  subs x9,x9,#0x1
+0179d87c  add x10,x10,#0x10
+0179d880  b.ne 0x0179d86c
+0179d884  mov x0,x20
+0179d888  mov w2,wzr
+0179d88c  bl 0x00b2ae24
+0179d890  b 0x0179d8a0
+0179d894  ldrsw x9,[x10]
+0179d898  add x8,x8,x9, LSL #0x4
+0179d89c  add x0,x8,#0x138
+0179d8a0  ldp x8,x1,[x0]
+0179d8a4  mov x0,x20
+0179d8a8  blr x8
+0179d8ac  cmp w0,#0x1
+0179d8b0  b.lt 0x0179dab0
+0179d8b4  mov w22,w0
+0179d8b8  mov w23,wzr
+0179d8bc  ldr x8,[x19, #0x38]
+0179d8c0  ldr x1,[x8, #0x10]
+0179d8c4  ldrb w8,[x1, #0x132]
+0179d8c8  tbnz w8,#0x0,0x0179d8d8
+0179d8cc  mov x0,x1
+0179d8d0  bl 0x00b2ac40
+0179d8d4  mov x1,x0
+0179d8d8  ldr x8,[x20]
+0179d8dc  ldrh w9,[x8, #0x12a]
+0179d8e0  cbz x9,0x0179d904
+0179d8e4  ldr x10,[x8, #0xb0]
+0179d8e8  add x10,x10,#0x8
+0179d8ec  ldur x11,[x10, #-0x8]
+0179d8f0  cmp x11,x1
+0179d8f4  b.eq 0x0179d914
+0179d8f8  subs x9,x9,#0x1
+0179d8fc  add x10,x10,#0x10
+0179d900  b.ne 0x0179d8ec
+0179d904  mov x0,x20
+0179d908  mov w2,wzr
+0179d90c  bl 0x00b2ae24
+0179d910  b 0x0179d920
+0179d914  ldrsw x9,[x10]
+0179d918  add x8,x8,x9, LSL #0x4
+0179d91c  add x0,x8,#0x138
+0179d920  ldp x8,x2,[x0]
+0179d924  mov x0,x20
+0179d928  mov w1,w23
+0179d92c  blr x8
+0179d930  cbz x21,0x0179dac4
+0179d934  ldr x8,[x19, #0x38]
+0179d938  mov x24,x0
+0179d93c  ldr x1,[x8]
+0179d940  ldrb w8,[x1, #0x132]
+0179d944  tbnz w8,#0x0,0x0179d954
+0179d948  mov x0,x1
+0179d94c  bl 0x00b2ac40
+0179d950  mov x1,x0
+0179d954  ldr x8,[x21]
+0179d958  ldrh w9,[x8, #0x12a]
+0179d95c  cbz x9,0x0179d980
+0179d960  ldr x10,[x8, #0xb0]
+0179d964  add x10,x10,#0x8
+0179d968  ldur x11,[x10, #-0x8]
+0179d96c  cmp x11,x1
+0179d970  b.eq 0x0179d990
+0179d974  subs x9,x9,#0x1
+0179d978  add x10,x10,#0x10
+0179d97c  b.ne 0x0179d968
+0179d980  mov w2,#0x4
+0179d984  mov x0,x21
+0179d988  bl 0x00b2ae24
+0179d98c  b 0x0179d9a0
+0179d990  ldr w9,[x10]
+0179d994  add w9,w9,#0x4
+0179d998  add x8,x8,w9, SXTW  #0x4
+0179d99c  add x0,x8,#0x138
+0179d9a0  ldp x8,x2,[x0]
+0179d9a4  mov x0,x21
+0179d9a8  mov x1,x24
+0179d9ac  blr x8
+0179d9b0  tbnz w0,#0x0,0x0179daa4
+0179d9b4  ldr x8,[x19, #0x38]
+0179d9b8  ldr x1,[x8, #0x10]
+0179d9bc  ldrb w8,[x1, #0x132]
+0179d9c0  tbnz w8,#0x0,0x0179d9d0
+0179d9c4  mov x0,x1
+0179d9c8  bl 0x00b2ac40
+0179d9cc  mov x1,x0
+0179d9d0  ldr x8,[x20]
+0179d9d4  ldrh w9,[x8, #0x12a]
+0179d9d8  cbz x9,0x0179d9fc
+0179d9dc  ldr x10,[x8, #0xb0]
+0179d9e0  add x10,x10,#0x8
+0179d9e4  ldur x11,[x10, #-0x8]
+0179d9e8  cmp x11,x1
+0179d9ec  b.eq 0x0179da0c
+0179d9f0  subs x9,x9,#0x1
+0179d9f4  add x10,x10,#0x10
+0179d9f8  b.ne 0x0179d9e4
+0179d9fc  mov x0,x20
+0179da00  mov w2,wzr
+0179da04  bl 0x00b2ae24
+0179da08  b 0x0179da18
+0179da0c  ldrsw x9,[x10]
+0179da10  add x8,x8,x9, LSL #0x4
+0179da14  add x0,x8,#0x138
+0179da18  ldp x8,x2,[x0]
+0179da1c  mov x0,x20
+0179da20  mov w1,w23
+0179da24  blr x8
+0179da28  ldr x8,[x19, #0x38]
+0179da2c  mov x24,x0
+0179da30  ldr x1,[x8]
+0179da34  ldrb w8,[x1, #0x132]
+0179da38  tbnz w8,#0x0,0x0179da48
+0179da3c  mov x0,x1
+0179da40  bl 0x00b2ac40
+0179da44  mov x1,x0
+0179da48  ldr x8,[x21]
+0179da4c  ldrh w9,[x8, #0x12a]
+0179da50  cbz x9,0x0179da74
+0179da54  ldr x10,[x8, #0xb0]
+0179da58  add x10,x10,#0x8
+0179da5c  ldur x11,[x10, #-0x8]
+0179da60  cmp x11,x1
+0179da64  b.eq 0x0179da84
+0179da68  subs x9,x9,#0x1
+0179da6c  add x10,x10,#0x10
+0179da70  b.ne 0x0179da5c
+0179da74  mov w2,#0x2
+0179da78  mov x0,x21
+0179da7c  bl 0x00b2ae24
+0179da80  b 0x0179da94
+0179da84  ldr w9,[x10]
+0179da88  add w9,w9,#0x2
+0179da8c  add x8,x8,w9, SXTW  #0x4
+0179da90  add x0,x8,#0x138
+0179da94  ldp x8,x2,[x0]
+0179da98  mov x0,x21
+0179da9c  mov x1,x24
+0179daa0  blr x8
+0179daa4  add w23,w23,#0x1
+0179daa8  cmp w23,w22
+0179daac  b.ne 0x0179d8bc
+0179dab0  ldp x19,x30,[sp, #0x30]
+0179dab4  ldp x21,x20,[sp, #0x20]
+0179dab8  ldp x23,x22,[sp, #0x10]
+0179dabc  ldr x24,[sp], #0x40
+0179dac0  ret
+0179dac4  bl 0x00b079b0

@@ -1,0 +1,121 @@
+Function: AliothEngine.NotificationManager$$ClearLocalNotification @ 01657360
+
+--- Calls OUT ---
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> thunk_FUN_00aedffc @ 00b079d4
+  -> AliothEngine.NotificationManager$$LocalLogError @ 0165711c
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.SingletonBehaviour<object>$$get_hasInstance @ 01e088c0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> AliothEngine.NotificationManager$$LocalLog @ 01657078
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- Ali$$CheckOnceLocalNotification @ 00e07488
+  <- Ali$$CheckPauseLocalNotification @ 00e08690
+
+--- Listing ---
+01657360  str x22,[sp, #-0x30]!
+01657364  stp x21,x20,[sp, #0x10]
+01657368  stp x19,x30,[sp, #0x20]
+0165736c  adrp x20,0x3577000
+01657370  adrp x21,0x333b000
+01657374  ldrb w8,[x20, #0x81e]
+01657378  ldr x21,[x21, #0x378]
+0165737c  mov x19,x0
+01657380  tbnz w8,#0x0,0x016573d4
+01657384  adrp x0,0x335b000
+01657388  ldr x0,[x0, #0x650]
+0165738c  bl 0x00b0789c
+01657390  adrp x0,0x3370000
+01657394  ldr x0,[x0, #0x778]
+01657398  bl 0x00b0789c
+0165739c  adrp x0,0x333b000
+016573a0  ldr x0,[x0, #0x378]
+016573a4  bl 0x00b0789c
+016573a8  adrp x0,0x3381000
+016573ac  ldr x0,[x0, #0xfa8]
+016573b0  bl 0x00b0789c
+016573b4  adrp x0,0x3353000
+016573b8  ldr x0,[x0, #0xb8]
+016573bc  bl 0x00b0789c
+016573c0  adrp x0,0x3379000
+016573c4  ldr x0,[x0, #0x308]
+016573c8  bl 0x00b0789c
+016573cc  mov w8,#0x1
+016573d0  strb w8,[x20, #0x81e]
+016573d4  ldr x0,[x21]
+016573d8  bl 0x01e088c0
+016573dc  tbz w0,#0x0,0x01657474
+016573e0  adrp x8,0x3370000
+016573e4  ldr x8,[x8, #0x778]
+016573e8  mov w1,#0x1
+016573ec  ldr x0,[x8]
+016573f0  bl 0x00b078f8
+016573f4  cbz x0,0x016574d8
+016573f8  mov x20,x0
+016573fc  cbz x19,0x01657414
+01657400  ldr x8,[x20]
+01657404  mov x0,x19
+01657408  ldr x1,[x8, #0x40]
+0165740c  bl 0x00b07990
+01657410  cbz x0,0x016574e0
+01657414  ldr w8,[x20, #0x18]
+01657418  cbz w8,0x016574dc
+0165741c  adrp x21,0x3353000
+01657420  adrp x22,0x3381000
+01657424  ldr x21,[x21, #0xb8]
+01657428  ldr x22,[x22, #0xfa8]
+0165742c  mov x0,x20
+01657430  str x19,[x0, #0x20]!
+01657434  mov x1,x19
+01657438  bl 0x00b07850
+0165743c  ldr x0,[x21]
+01657440  mov x1,x20
+01657444  bl 0x01657078
+01657448  ldr x8,[x22]
+0165744c  ldr x8,[x8, #0xb8]
+01657450  ldr x0,[x8]
+01657454  cbz x0,0x016574d8
+01657458  ldr x8,[x0]
+0165745c  mov x1,x19
+01657460  ldp x19,x30,[sp, #0x20]
+01657464  ldp x21,x20,[sp, #0x10]
+01657468  ldp x3,x2,[x8, #0x1b8]
+0165746c  ldr x22,[sp], #0x30
+01657470  br x3
+01657474  adrp x8,0x335b000
+01657478  ldr x8,[x8, #0x650]
+0165747c  ldr x19,[x8]
+01657480  ldr x8,[x19, #0x38]
+01657484  ldr x0,[x8]
+01657488  ldrb w8,[x0, #0x132]
+0165748c  tbnz w8,#0x0,0x01657494
+01657490  bl 0x00b2ac40
+01657494  ldr w8,[x0, #0xe0]
+01657498  cbnz w8,0x016574a0
+0165749c  bl 0x00b0798c
+016574a0  ldr x8,[x19, #0x38]
+016574a4  adrp x19,0x3379000
+016574a8  ldr x0,[x8]
+016574ac  ldrb w8,[x0, #0x132]
+016574b0  ldr x19,[x19, #0x308]
+016574b4  tbnz w8,#0x0,0x016574bc
+016574b8  bl 0x00b2ac40
+016574bc  ldr x8,[x0, #0xb8]
+016574c0  ldr x0,[x19]
+016574c4  ldp x19,x30,[sp, #0x20]
+016574c8  ldp x21,x20,[sp, #0x10]
+016574cc  ldr x1,[x8]
+016574d0  ldr x22,[sp], #0x30
+016574d4  b 0x0165711c
+016574d8  bl 0x00b079b0
+016574dc  bl 0x00b079b8
+016574e0  bl 0x00b079d4
+016574e4  mov x1,xzr
+016574e8  bl 0x00b07978

@@ -1,0 +1,28 @@
+Function: AdconfirmpanelNode$$get_btn_submit @ 00fa1fb8
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00fa1fb8  stp x21,x20,[sp, #-0x20]!
+00fa1fbc  stp x19,x30,[sp, #0x10]
+00fa1fc0  adrp x20,0x3573000
+00fa1fc4  adrp x21,0x3328000
+00fa1fc8  ldrb w8,[x20, #0x576]
+00fa1fcc  ldr x21,[x21, #0xec0]
+00fa1fd0  mov x19,x0
+00fa1fd4  tbnz w8,#0x0,0x00fa1fec
+00fa1fd8  adrp x0,0x3328000
+00fa1fdc  ldr x0,[x0, #0xec0]
+00fa1fe0  bl 0x00b0789c
+00fa1fe4  mov w8,#0x1
+00fa1fe8  strb w8,[x20, #0x576]
+00fa1fec  ldr x1,[x21]
+00fa1ff0  mov x0,x19
+00fa1ff4  ldp x19,x30,[sp, #0x10]
+00fa1ff8  mov x2,xzr
+00fa1ffc  ldp x21,x20,[sp], #0x20
+00fa2000  b 0x00dc06f8

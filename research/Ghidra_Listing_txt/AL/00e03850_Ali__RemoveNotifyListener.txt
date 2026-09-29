@@ -1,0 +1,114 @@
+Function: Ali$$RemoveNotifyListener @ 00e03850
+
+--- Calls OUT ---
+  -> NotifyEvent$$remove_execute @ 00e27fa8
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Collections.Generic.Dictionary<object,-object>$$get_Item @ 0196e450
+  -> System.Collections.Generic.Dictionary<object,-object>$$ContainsKey @ 0196e6d8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+  -> System.String$$Concat @ 01fdebb8
+
+--- Calls IN ---
+  <- LoginManager$$OnDestroy @ 00dd50e8
+  <- XLua.CSObjectWrap.AliWrap$$_m_RemoveNotifyListener @ 01191524
+  <- AIPTWDebug$$OnDestroy @ 00df8bf0
+  <- BaseMono$$RemoveAllNotify @ 00e1d154
+  <- AICommander$$OnDisable @ 00ec1584
+
+--- Listing ---
+00e03850  stp x23,x22,[sp, #-0x30]!
+00e03854  stp x21,x20,[sp, #0x10]
+00e03858  stp x19,x30,[sp, #0x20]
+00e0385c  adrp x23,0x3572000
+00e03860  adrp x22,0x335f000
+00e03864  ldrb w8,[x23, #0x55c]
+00e03868  ldr x22,[x22, #0x20]
+00e0386c  mov x19,x2
+00e03870  mov x20,x1
+00e03874  mov x21,x0
+00e03878  tbnz w8,#0x0,0x00e038cc
+00e0387c  adrp x0,0x335f000
+00e03880  ldr x0,[x0, #0x20]
+00e03884  bl 0x00b0789c
+00e03888  adrp x0,0x336b000
+00e0388c  ldr x0,[x0, #0x7d0]
+00e03890  bl 0x00b0789c
+00e03894  adrp x0,0x3359000
+00e03898  ldr x0,[x0, #0xaa8]
+00e0389c  bl 0x00b0789c
+00e038a0  adrp x0,0x337f000
+00e038a4  ldr x0,[x0, #0xc38]
+00e038a8  bl 0x00b0789c
+00e038ac  adrp x0,0x3315000
+00e038b0  ldr x0,[x0, #0x9b0]
+00e038b4  bl 0x00b0789c
+00e038b8  adrp x0,0x3365000
+00e038bc  ldr x0,[x0, #0xab8]
+00e038c0  bl 0x00b0789c
+00e038c4  mov w8,#0x1
+00e038c8  strb w8,[x23, #0x55c]
+00e038cc  ldr x0,[x22]
+00e038d0  ldr w8,[x0, #0xe0]
+00e038d4  cbnz w8,0x00e038e0
+00e038d8  bl 0x00b0798c
+00e038dc  ldr x0,[x22]
+00e038e0  ldr x8,[x0, #0xb8]
+00e038e4  ldr x0,[x8, #0x288]
+00e038e8  cbz x0,0x00e0390c
+00e038ec  mov x1,x21
+00e038f0  mov x2,x20
+00e038f4  mov x3,x19
+00e038f8  ldp x19,x30,[sp, #0x20]
+00e038fc  ldp x21,x20,[sp, #0x10]
+00e03900  mov x4,xzr
+00e03904  ldp x23,x22,[sp], #0x30
+00e03908  b 0x010670b0
+00e0390c  ldr x0,[x21, #0x110]
+00e03910  cbz x0,0x00e039c0
+00e03914  adrp x8,0x3359000
+00e03918  ldr x8,[x8, #0xaa8]
+00e0391c  mov x1,x20
+00e03920  ldr x2,[x8]
+00e03924  bl 0x0196e6d8
+00e03928  tbz w0,#0x0,0x00e03964
+00e0392c  ldr x0,[x21, #0x110]
+00e03930  cbz x0,0x00e039c0
+00e03934  adrp x8,0x337f000
+00e03938  ldr x8,[x8, #0xc38]
+00e0393c  mov x1,x20
+00e03940  ldr x2,[x8]
+00e03944  bl 0x0196e450
+00e03948  cbz x0,0x00e039c0
+00e0394c  mov x1,x19
+00e03950  ldp x19,x30,[sp, #0x20]
+00e03954  ldp x21,x20,[sp, #0x10]
+00e03958  mov x2,xzr
+00e0395c  ldp x23,x22,[sp], #0x30
+00e03960  b 0x00e27fa8
+00e03964  adrp x8,0x3315000
+00e03968  adrp x9,0x3365000
+00e0396c  ldr x8,[x8, #0x9b0]
+00e03970  ldr x9,[x9, #0xab8]
+00e03974  adrp x19,0x336b000
+00e03978  mov x1,x20
+00e0397c  ldr x0,[x8]
+00e03980  ldr x2,[x9]
+00e03984  ldr x19,[x19, #0x7d0]
+00e03988  mov x3,xzr
+00e0398c  bl 0x01fdebb8
+00e03990  ldr x8,[x19]
+00e03994  mov x19,x0
+00e03998  ldr w9,[x8, #0xe0]
+00e0399c  cbnz w9,0x00e039a8
+00e039a0  mov x0,x8
+00e039a4  bl 0x00b0798c
+00e039a8  mov x0,x19
+00e039ac  ldp x19,x30,[sp, #0x20]
+00e039b0  ldp x21,x20,[sp, #0x10]
+00e039b4  mov x1,xzr
+00e039b8  ldp x23,x22,[sp], #0x30
+00e039bc  b 0x024c0f2c
+00e039c0  bl 0x00b079b0

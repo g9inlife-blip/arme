@@ -1,0 +1,37 @@
+Function: AliothEngine.AndroidEscape$$get_IsExistAlert @ 0164e14c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- AliothEngine.AndroidEscape$$ShowAlert @ 0164e318
+  <- XLua.CSObjectWrap.AliothEngineAndroidEscapeWrap$$_g_get_IsExistAlert @ 01132c00
+
+--- Listing ---
+0164e14c  stp x21,x20,[sp, #-0x20]!
+0164e150  stp x19,x30,[sp, #0x10]
+0164e154  adrp x20,0x3577000
+0164e158  adrp x21,0x3336000
+0164e15c  ldrb w8,[x20, #0x7d6]
+0164e160  ldr x21,[x21, #0xa38]
+0164e164  mov x19,x0
+0164e168  tbnz w8,#0x0,0x0164e180
+0164e16c  adrp x0,0x3336000
+0164e170  ldr x0,[x0, #0xa38]
+0164e174  bl 0x00b0789c
+0164e178  mov w8,#0x1
+0164e17c  strb w8,[x20, #0x7d6]
+0164e180  ldr x8,[x21]
+0164e184  ldr x8,[x8, #0xb8]
+0164e188  ldr x0,[x8]
+0164e18c  cbz x0,0x0164e1a4
+0164e190  mov x1,x19
+0164e194  ldp x19,x30,[sp, #0x10]
+0164e198  mov x2,xzr
+0164e19c  ldp x21,x20,[sp], #0x20
+0164e1a0  b 0x01060aac
+0164e1a4  ldrb w0,[x19, #0x40]
+0164e1a8  ldp x19,x30,[sp, #0x10]
+0164e1ac  ldp x21,x20,[sp], #0x20
+0164e1b0  ret

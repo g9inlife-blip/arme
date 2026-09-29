@@ -1,0 +1,67 @@
+Function: ResManager$$InitExcelData @ 00e2b464
+
+--- Calls OUT ---
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_dataManager @ 00e0277c
+  -> DataManager$$ClearAllData @ 00df4d38
+  -> FUN_00b079b0 @ 00b079b0
+  -> ResManager$$LoadExcel @ 00e2b528
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ResManagerWrap$$_m_InitExcelData @ 01359600
+  <- Ali$$ReLoadExcel @ 00e02598
+  <- Ali$$Init @ 00e019f8
+
+--- Listing ---
+00e2b464  stp x21,x20,[sp, #-0x20]!
+00e2b468  stp x19,x30,[sp, #0x10]
+00e2b46c  adrp x20,0x3572000
+00e2b470  adrp x21,0x337e000
+00e2b474  ldrb w8,[x20, #0x72c]
+00e2b478  ldr x21,[x21, #0x4c8]
+00e2b47c  mov x19,x0
+00e2b480  tbnz w8,#0x0,0x00e2b4a4
+00e2b484  adrp x0,0x335f000
+00e2b488  ldr x0,[x0, #0x20]
+00e2b48c  bl 0x00b0789c
+00e2b490  adrp x0,0x337e000
+00e2b494  ldr x0,[x0, #0x4c8]
+00e2b498  bl 0x00b0789c
+00e2b49c  mov w8,#0x1
+00e2b4a0  strb w8,[x20, #0x72c]
+00e2b4a4  ldr x8,[x21]
+00e2b4a8  ldr x8,[x8, #0xb8]
+00e2b4ac  ldr x0,[x8, #0x80]
+00e2b4b0  cbz x0,0x00e2b4c8
+00e2b4b4  mov x1,x19
+00e2b4b8  ldp x19,x30,[sp, #0x10]
+00e2b4bc  mov x2,xzr
+00e2b4c0  ldp x21,x20,[sp], #0x20
+00e2b4c4  b 0x01060dac
+00e2b4c8  adrp x20,0x335f000
+00e2b4cc  ldr x20,[x20, #0x20]
+00e2b4d0  ldr x0,[x20]
+00e2b4d4  ldr w8,[x0, #0xe0]
+00e2b4d8  cbnz w8,0x00e2b4e4
+00e2b4dc  bl 0x00b0798c
+00e2b4e0  ldr x0,[x20]
+00e2b4e4  ldr x8,[x0, #0xb8]
+00e2b4e8  ldr x0,[x8, #0x10]
+00e2b4ec  cbz x0,0x00e2b524
+00e2b4f0  mov x1,xzr
+00e2b4f4  bl 0x00e0277c
+00e2b4f8  cbz x0,0x00e2b524
+00e2b4fc  mov x1,xzr
+00e2b500  bl 0x00df4d38
+00e2b504  mov x0,x19
+00e2b508  bl 0x00e2b528
+00e2b50c  mov x1,x0
+00e2b510  mov x0,x19
+00e2b514  ldp x19,x30,[sp, #0x10]
+00e2b518  mov x2,xzr
+00e2b51c  ldp x21,x20,[sp], #0x20
+00e2b520  b 0x024e4070
+00e2b524  bl 0x00b079b0

@@ -1,0 +1,46 @@
+Function: AliothEngine.AssetLocation$$get_url @ 0165e31c
+
+--- Calls OUT ---
+  -> AliothEngine.AssetDownloader$$GetURL @ 0165dee0
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.AssetDownloader.<ProcessDownloadByUnityCache>d__20$$MoveNext @ 01660c70
+  <- AliothEngine.AssetDownloader$$GetCachePath @ 0165e144
+  <- AliothEngine.AssetLocation$$get_isExistStreamingAssets @ 0166c084
+  <- AliothEngine.AssetDownloader$$RequestDownload @ 0165ea9c
+  <- AliothEngine.AssetLocation$$get_hash @ 0165f060
+
+--- Listing ---
+0165e31c  str x20,[sp, #-0x20]!
+0165e320  stp x19,x30,[sp, #0x10]
+0165e324  adrp x20,0x3577000
+0165e328  ldrb w8,[x20, #0x94d]
+0165e32c  mov x19,x0
+0165e330  tbnz w8,#0x0,0x0165e348
+0165e334  adrp x0,0x3337000
+0165e338  ldr x0,[x0, #0x5c8]
+0165e33c  bl 0x00b0789c
+0165e340  mov w8,#0x1
+0165e344  strb w8,[x20, #0x94d]
+0165e348  mov x20,x19
+0165e34c  ldr x0,[x20, #0x28]!
+0165e350  cbnz x0,0x0165e388
+0165e354  adrp x8,0x3337000
+0165e358  ldr x8,[x8, #0x5c8]
+0165e35c  ldr x0,[x8]
+0165e360  ldr w8,[x0, #0xe0]
+0165e364  cbnz w8,0x0165e36c
+0165e368  bl 0x00b0798c
+0165e36c  mov x0,x19
+0165e370  bl 0x0165dee0
+0165e374  mov x1,x0
+0165e378  str x0,[x19, #0x28]
+0165e37c  mov x0,x20
+0165e380  bl 0x00b07850
+0165e384  ldr x0,[x19, #0x28]
+0165e388  ldp x19,x30,[sp, #0x10]
+0165e38c  ldr x20,[sp], #0x20
+0165e390  ret

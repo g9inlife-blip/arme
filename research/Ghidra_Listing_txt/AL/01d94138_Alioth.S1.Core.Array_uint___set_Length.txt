@@ -1,0 +1,67 @@
+Function: Alioth.S1.Core.Array<uint>$$set_Length @ 01d94138
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$Invoke @ 010ceff0
+  -> XLua.DelegateBridge$$InvokeSessionEnd @ 010cf0d4
+  -> XLua.DelegateBridge$$InParam<int> @ 017759d0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$InvokeSessionStart @ 010cef38
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01d94138  stp x23,x22,[sp, #-0x30]!
+01d9413c  stp x21,x20,[sp, #0x10]
+01d94140  stp x19,x30,[sp, #0x20]
+01d94144  adrp x22,0x3578000
+01d94148  ldrb w8,[x22, #0xcf8]
+01d9414c  mov x21,x2
+01d94150  mov w19,w1
+01d94154  mov x20,x0
+01d94158  tbnz w8,#0x0,0x01d94170
+01d9415c  adrp x0,0x334c000
+01d94160  ldr x0,[x0, #0xec0]
+01d94164  bl 0x00b0789c
+01d94168  mov w8,#0x1
+01d9416c  strb w8,[x22, #0xcf8]
+01d94170  ldr x8,[x21, #0x20]
+01d94174  ldr x8,[x8, #0xc0]
+01d94178  ldr x0,[x8]
+01d9417c  ldrb w8,[x0, #0x132]
+01d94180  tbnz w8,#0x0,0x01d94188
+01d94184  bl 0x00b2ac40
+01d94188  ldr x8,[x0, #0xb8]
+01d9418c  ldr x22,[x8, #0x10]
+01d94190  cbz x22,0x01d941fc
+01d94194  adrp x23,0x334c000
+01d94198  ldr x23,[x23, #0xec0]
+01d9419c  mov x0,x22
+01d941a0  mov x1,xzr
+01d941a4  bl 0x010cef38
+01d941a8  ldr x8,[x21, #0x20]
+01d941ac  mov x0,x22
+01d941b0  mov x1,x20
+01d941b4  ldr x8,[x8, #0xc0]
+01d941b8  ldr x2,[x8, #0x8]
+01d941bc  ldr x8,[x2, #0x8]
+01d941c0  blr x8
+01d941c4  ldr x2,[x23]
+01d941c8  mov x0,x22
+01d941cc  mov w1,w19
+01d941d0  bl 0x017759d0
+01d941d4  mov x0,x22
+01d941d8  mov w1,wzr
+01d941dc  mov x2,xzr
+01d941e0  bl 0x010ceff0
+01d941e4  ldp x19,x30,[sp, #0x20]
+01d941e8  ldp x21,x20,[sp, #0x10]
+01d941ec  mov x0,x22
+01d941f0  mov x1,xzr
+01d941f4  ldp x23,x22,[sp], #0x30
+01d941f8  b 0x010cf0d4
+01d941fc  str w19,[x20, #0x18]
+01d94200  ldp x19,x30,[sp, #0x20]
+01d94204  ldp x21,x20,[sp, #0x10]
+01d94208  ldp x23,x22,[sp], #0x30
+01d9420c  ret

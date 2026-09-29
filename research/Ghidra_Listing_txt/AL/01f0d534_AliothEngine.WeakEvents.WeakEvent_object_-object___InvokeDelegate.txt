@@ -1,0 +1,73 @@
+Function: AliothEngine.WeakEvents.WeakEvent<object,-object>$$InvokeDelegate @ 01f0d534
+
+--- Calls OUT ---
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01f0d534  str x22,[sp, #-0x30]!
+01f0d538  stp x21,x20,[sp, #0x10]
+01f0d53c  stp x19,x30,[sp, #0x20]
+01f0d540  ldr x8,[x2, #0x20]
+01f0d544  ldp x22,x21,[x0, #0x30]
+01f0d548  mov x19,x2
+01f0d54c  mov x20,x1
+01f0d550  ldr x8,[x8, #0xc0]
+01f0d554  ldr x8,[x8, #0x10]
+01f0d558  ldrb w9,[x8, #0x132]
+01f0d55c  tbnz w9,#0x0,0x01f0d56c
+01f0d560  mov x0,x8
+01f0d564  bl 0x00b2ac40
+01f0d568  mov x8,x0
+01f0d56c  cbz x20,0x01f0d62c
+01f0d570  ldr x9,[x20]
+01f0d574  ldrb w10,[x8, #0x12c]
+01f0d578  ldrb w11,[x9, #0x12c]
+01f0d57c  cmp w11,w10
+01f0d580  b.cc 0x01f0d618
+01f0d584  ldr x9,[x9, #0xc8]
+01f0d588  add x9,x9,x10, LSL #0x3
+01f0d58c  ldur x9,[x9, #-0x8]
+01f0d590  cmp x9,x8
+01f0d594  b.ne 0x01f0d618
+01f0d598  ldr x8,[x19, #0x20]
+01f0d59c  ldr x8,[x8, #0xc0]
+01f0d5a0  ldr x1,[x8, #0x10]
+01f0d5a4  ldr x8,[x8, #0x28]
+01f0d5a8  ldrb w9,[x1, #0x132]
+01f0d5ac  ldr x4,[x8, #0x8]
+01f0d5b0  tbnz w9,#0x0,0x01f0d5c8
+01f0d5b4  mov x0,x1
+01f0d5b8  str x4,[sp, #0x8]
+01f0d5bc  bl 0x00b2ac40
+01f0d5c0  ldr x4,[sp, #0x8]
+01f0d5c4  mov x1,x0
+01f0d5c8  ldr x8,[x20]
+01f0d5cc  ldrb w9,[x1, #0x12c]
+01f0d5d0  ldrb w10,[x8, #0x12c]
+01f0d5d4  cmp w10,w9
+01f0d5d8  b.cc 0x01f0d624
+01f0d5dc  ldr x8,[x8, #0xc8]
+01f0d5e0  add x8,x8,x9, LSL #0x3
+01f0d5e4  ldur x8,[x8, #-0x8]
+01f0d5e8  cmp x8,x1
+01f0d5ec  b.ne 0x01f0d624
+01f0d5f0  ldr x8,[x19, #0x20]
+01f0d5f4  mov x0,x20
+01f0d5f8  mov x2,x21
+01f0d5fc  ldp x19,x30,[sp, #0x20]
+01f0d600  ldr x8,[x8, #0xc0]
+01f0d604  ldp x21,x20,[sp, #0x10]
+01f0d608  mov x1,x22
+01f0d60c  ldr x3,[x8, #0x28]
+01f0d610  ldr x22,[sp], #0x30
+01f0d614  br x4
+01f0d618  mov x0,x20
+01f0d61c  mov x1,x8
+01f0d620  bl 0x00b07c6c
+01f0d624  mov x0,x20
+01f0d628  bl 0x00b07c6c
+01f0d62c  bl 0x00b079b0

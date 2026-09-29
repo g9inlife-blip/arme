@@ -1,0 +1,42 @@
+Function: AliothEngine.Extensions.MeshExtensions$$FlipNormals @ 016b0224
+
+--- Calls OUT ---
+  -> FUN_00b079b8 @ 00b079b8
+  -> UnityEngine.Mesh$$get_normals @ 024c8fa8
+  -> UnityEngine.Mesh$$set_normals @ 024c8ff4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b0224  stp x19,x30,[sp, #-0x10]!
+016b0228  cbz x0,0x016b029c
+016b022c  mov x1,xzr
+016b0230  mov x19,x0
+016b0234  bl 0x024c8fa8
+016b0238  cbz x0,0x016b029c
+016b023c  ldr w8,[x0, #0x18]
+016b0240  mov x1,x0
+016b0244  lsl x9,x8,#0x20
+016b0248  cmp x9,#0x1
+016b024c  b.lt 0x016b0288
+016b0250  mov x9,xzr
+016b0254  sxtw x10,w8
+016b0258  add x11,x1,#0x28
+016b025c  cmp x9,x8
+016b0260  b.cs 0x016b0298
+016b0264  ldur d0,[x11, #-0x8]
+016b0268  ldr s1,[x11]
+016b026c  add x9,x9,#0x1
+016b0270  cmp x9,x10
+016b0274  fneg v0.2S,v0.2S
+016b0278  fneg s1,s1
+016b027c  stur d0,[x11, #-0x8]
+016b0280  str s1,[x11], #0xc
+016b0284  b.lt 0x016b025c
+016b0288  mov x0,x19
+016b028c  mov x2,xzr
+016b0290  ldp x19,x30,[sp], #0x10
+016b0294  b 0x024c8ff4
+016b0298  bl 0x00b079b8
+016b029c  bl 0x00b079b0

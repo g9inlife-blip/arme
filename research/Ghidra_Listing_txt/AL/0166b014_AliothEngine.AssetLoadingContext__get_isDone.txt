@@ -1,0 +1,46 @@
+Function: AliothEngine.AssetLoadingContext$$get_isDone @ 0166b014
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$Dump @ 0166c11c
+  <- AliothEngine.AssetInfoManager.<LoadAssetHostInfo>d__27$$MoveNext @ 0166ad70
+  <- AliothEngine.AssetLoadingContext$$MoveNext @ 0166da34
+
+--- Listing ---
+0166b014  str x20,[sp, #-0x20]!
+0166b018  stp x19,x30,[sp, #0x10]
+0166b01c  adrp x20,0x3577000
+0166b020  ldrb w8,[x20, #0x93e]
+0166b024  mov x19,x0
+0166b028  tbnz w8,#0x0,0x0166b040
+0166b02c  adrp x0,0x3349000
+0166b030  ldr x0,[x0, #0x30]
+0166b034  bl 0x00b0789c
+0166b038  mov w8,#0x1
+0166b03c  strb w8,[x20, #0x93e]
+0166b040  ldr s1,[x19, #0x2c]
+0166b044  fmov s0,0x3f800000
+0166b048  fcmp s1,s0
+0166b04c  b.ne 0x0166b05c
+0166b050  ldr s1,[x19, #0x20]
+0166b054  fcmp s1,s0
+0166b058  b.eq 0x0166b08c
+0166b05c  adrp x20,0x3349000
+0166b060  ldr x20,[x20, #0x30]
+0166b064  ldr x0,[x20]
+0166b068  ldr w8,[x0, #0xe0]
+0166b06c  cbnz w8,0x0166b078
+0166b070  bl 0x00b0798c
+0166b074  ldr x0,[x20]
+0166b078  ldr x8,[x0, #0xb8]
+0166b07c  ldr x8,[x8]
+0166b080  cmp x19,x8
+0166b084  cset w0,eq
+0166b088  b 0x0166b090
+0166b08c  mov w0,#0x1
+0166b090  ldp x19,x30,[sp, #0x10]
+0166b094  ldr x20,[sp], #0x20
+0166b098  ret

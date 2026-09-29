@@ -1,0 +1,41 @@
+Function: AliothEngine.FrameRandom$$fRandom @ 0164a4d8
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> AliothEngine.FrameRandom$$Random @ 0164a458
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+0164a4d8  str x20,[sp, #-0x20]!
+0164a4dc  stp x19,x30,[sp, #0x10]
+0164a4e0  adrp x20,0x3577000
+0164a4e4  adrp x19,0x332a000
+0164a4e8  ldrb w8,[x20, #0x7a6]
+0164a4ec  ldr x19,[x19, #0xda8]
+0164a4f0  tbnz w8,#0x0,0x0164a508
+0164a4f4  adrp x0,0x332a000
+0164a4f8  ldr x0,[x0, #0xda8]
+0164a4fc  bl 0x00b0789c
+0164a500  mov w8,#0x1
+0164a504  strb w8,[x20, #0x7a6]
+0164a508  ldr x0,[x19]
+0164a50c  ldr w8,[x0, #0xe0]
+0164a510  cbnz w8,0x0164a51c
+0164a514  bl 0x00b0798c
+0164a518  ldr x0,[x19]
+0164a51c  ldr x8,[x0, #0xb8]
+0164a520  mov w0,#0x10000
+0164a524  ldr w9,[x8, #0x4]
+0164a528  add w9,w9,#0x1
+0164a52c  str w9,[x8, #0x4]
+0164a530  bl 0x0164a458
+0164a534  ldp x19,x30,[sp, #0x10]
+0164a538  and w8,w0,#0xffff
+0164a53c  mov w9,#0x37800000
+0164a540  ucvtf s0,w8
+0164a544  fmov s1,w9
+0164a548  fmul s0,s0,s1
+0164a54c  ldr x20,[sp], #0x20
+0164a550  ret

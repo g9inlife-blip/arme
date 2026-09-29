@@ -1,0 +1,38 @@
+Function: rethrow_nested @ 00b47380
+FuncComment: std::nested_exception::rethrow_nested() const
+
+--- Calls OUT ---
+  -> terminate @ 008d3b90
+  -> rethrow_exception @ 008d4f60
+  -> _Unwind_Resume @ 008d4870
+  -> __cxa_decrement_exception_refcount @ 008d39b0
+  -> __cxa_increment_exception_refcount @ 008d3d60
+
+--- Calls IN ---
+
+--- Listing ---
+00b47380  sub sp,sp,#0x30
+    ; [PLATE] std::nested_exception::rethrow_nested() const
+00b47384  stp x20,x19,[sp, #0x10]
+00b47388  stp x29,x30,[sp, #0x20]
+00b4738c  add x29,sp,#0x20
+00b47390  ldr x20,[x0, #0x8]
+00b47394  mov x19,x0
+00b47398  mov x0,xzr
+00b4739c  bl 0x008d39b0
+00b473a0  cbnz x20,0x00b473a8
+00b473a4  bl 0x008d3b90
+00b473a8  ldr x19,[x19, #0x8]
+00b473ac  mov x0,x19
+00b473b0  str x19,[sp, #0x8]
+00b473b4  bl 0x008d3d60
+00b473b8  add x0,sp,#0x8
+    ; [PRE] try { // try from 00b473b8 to 00b473bf has its CatchHandler @ 00b473c0
+00b473bc  bl 0x008d4f60
+    ; [POST] } // end try from 00b473b8 to 00b473bf
+00b473c0  mov x20,x0
+    ; [PRE] catch() { ... } // from try @ 00b473b8 with catch @ 00b473c0
+00b473c4  mov x0,x19
+00b473c8  bl 0x008d39b0
+00b473cc  mov x0,x20
+00b473d0  bl 0x008d4870

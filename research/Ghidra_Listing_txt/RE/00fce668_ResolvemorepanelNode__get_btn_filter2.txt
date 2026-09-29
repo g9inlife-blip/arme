@@ -1,0 +1,30 @@
+Function: ResolvemorepanelNode$$get_btn_filter2 @ 00fce668
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ResolveMorePanelMono$$Start @ 01044b74
+  <- ResolveMorePanelMono$$ShowQualityBtn @ 01045018
+
+--- Listing ---
+00fce668  stp x21,x20,[sp, #-0x20]!
+00fce66c  stp x19,x30,[sp, #0x10]
+00fce670  adrp x20,0x3573000
+00fce674  adrp x21,0x3330000
+00fce678  ldrb w8,[x20, #0xe8c]
+00fce67c  ldr x21,[x21, #0x400]
+00fce680  mov x19,x0
+00fce684  tbnz w8,#0x0,0x00fce69c
+00fce688  adrp x0,0x3330000
+00fce68c  ldr x0,[x0, #0x400]
+00fce690  bl 0x00b0789c
+00fce694  mov w8,#0x1
+00fce698  strb w8,[x20, #0xe8c]
+00fce69c  ldr x1,[x21]
+00fce6a0  mov x0,x19
+00fce6a4  ldp x19,x30,[sp, #0x10]
+00fce6a8  mov x2,xzr
+00fce6ac  ldp x21,x20,[sp], #0x20
+00fce6b0  b 0x00dc06f8

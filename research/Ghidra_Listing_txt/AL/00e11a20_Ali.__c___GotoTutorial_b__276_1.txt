@@ -1,0 +1,36 @@
+Function: Ali.<>c$$<GotoTutorial>b__276_1 @ 00e11a20
+
+--- Calls OUT ---
+  -> UnityEngine.SceneManagement.SceneManager$$LoadScene @ 02502014
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+00e11a20  str x20,[sp, #-0x20]!
+00e11a24  stp x19,x30,[sp, #0x10]
+00e11a28  adrp x20,0x3572000
+00e11a2c  adrp x19,0x3365000
+00e11a30  ldrb w8,[x20, #0x5d3]
+00e11a34  ldr x19,[x19, #0x7e0]
+00e11a38  tbnz w8,#0x0,0x00e11a5c
+00e11a3c  adrp x0,0x3365000
+00e11a40  ldr x0,[x0, #0x7e0]
+00e11a44  bl 0x00b0789c
+00e11a48  adrp x0,0x3369000
+00e11a4c  ldr x0,[x0, #0xf90]
+00e11a50  bl 0x00b0789c
+00e11a54  mov w8,#0x1
+00e11a58  strb w8,[x20, #0x5d3]
+00e11a5c  ldr x0,[x19]
+00e11a60  adrp x19,0x3369000
+00e11a64  ldr w8,[x0, #0xe0]
+00e11a68  ldr x19,[x19, #0xf90]
+00e11a6c  cbnz w8,0x00e11a74
+00e11a70  bl 0x00b0798c
+00e11a74  ldr x0,[x19]
+00e11a78  ldp x19,x30,[sp, #0x10]
+00e11a7c  mov x1,xzr
+00e11a80  ldr x20,[sp], #0x20
+00e11a84  b 0x02502014

@@ -1,0 +1,22 @@
+Function: AliothEngine.NullHolder.<Load>d__0$$MoveNext @ 0166551c
+
+--- Calls OUT ---
+  -> AliothEngine.AssetHolder$$OnLoadSuccessed @ 01662e58
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0166551c  str x30,[sp, #-0x10]!
+01665520  ldr w8,[x0, #0x10]
+01665524  cbnz w8,0x01665540
+01665528  ldr x8,[x0, #0x20]
+0166552c  mov w9,#0xffffffff
+01665530  str w9,[x0, #0x10]
+01665534  cbz x8,0x0166554c
+01665538  mov x0,x8
+0166553c  bl 0x01662e58
+01665540  mov w0,wzr
+01665544  ldr x30,[sp], #0x10
+01665548  ret
+0166554c  bl 0x00b079b0

@@ -1,0 +1,31 @@
+Function: AliothEngine.Observer.InterNamespace.Observer<object,-object>$$OnObservableDispatched @ 01d552a0
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+01d552a0  str x20,[sp, #-0x20]!
+01d552a4  stp x19,x30,[sp, #0x10]
+01d552a8  str xzr,[sp, #0x8]
+01d552ac  ldr x8,[x0, #0x10]
+01d552b0  cbz x8,0x01d552ec
+01d552b4  ldr x8,[x0]
+01d552b8  mov x19,x2
+01d552bc  mov x20,x0
+01d552c0  ldp x9,x2,[x8, #0x1a8]
+01d552c4  blr x9
+01d552c8  str x0,[sp, #0x8]
+01d552cc  ldr x0,[x20, #0x10]
+01d552d0  cbz x0,0x01d552f8
+01d552d4  ldr x8,[x19, #0x20]
+01d552d8  add x1,sp,#0x8
+01d552dc  ldr x8,[x8, #0xc0]
+01d552e0  ldr x2,[x8, #0x58]
+01d552e4  ldr x8,[x2, #0x8]
+01d552e8  blr x8
+01d552ec  ldp x19,x30,[sp, #0x10]
+01d552f0  ldr x20,[sp], #0x20
+01d552f4  ret
+01d552f8  bl 0x00b079b0

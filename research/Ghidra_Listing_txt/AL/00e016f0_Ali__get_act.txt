@@ -1,0 +1,42 @@
+Function: Ali$$get_act @ 00e016f0
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp133 @ 010701c8
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- Ali$$FinalInitCallBack @ 00e0345c
+  <- Ali$$LanguageInitComplete @ 00e03158
+
+--- Listing ---
+00e016f0  stp x21,x20,[sp, #-0x20]!
+00e016f4  stp x19,x30,[sp, #0x10]
+00e016f8  adrp x21,0x3572000
+00e016fc  adrp x20,0x335f000
+00e01700  ldrb w8,[x21, #0x539]
+00e01704  ldr x20,[x20, #0x20]
+00e01708  mov x19,x0
+00e0170c  tbnz w8,#0x0,0x00e01724
+00e01710  adrp x0,0x335f000
+00e01714  ldr x0,[x0, #0x20]
+00e01718  bl 0x00b0789c
+00e0171c  mov w8,#0x1
+00e01720  strb w8,[x21, #0x539]
+00e01724  ldr x0,[x20]
+00e01728  ldr w8,[x0, #0xe0]
+00e0172c  cbnz w8,0x00e01738
+00e01730  bl 0x00b0798c
+00e01734  ldr x0,[x20]
+00e01738  ldr x8,[x0, #0xb8]
+00e0173c  ldr x0,[x8, #0x160]
+00e01740  cbz x0,0x00e01758
+00e01744  mov x1,x19
+00e01748  ldp x19,x30,[sp, #0x10]
+00e0174c  mov x2,xzr
+00e01750  ldp x21,x20,[sp], #0x20
+00e01754  b 0x010701c8
+00e01758  ldr x0,[x19, #0x88]
+00e0175c  ldp x19,x30,[sp, #0x10]
+00e01760  ldp x21,x20,[sp], #0x20
+00e01764  ret

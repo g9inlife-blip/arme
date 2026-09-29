@@ -1,0 +1,63 @@
+Function: ReplayKitUseExample$$HandleActionRecordStoped @ 00d448d4
+
+--- Calls OUT ---
+  -> IOSNativePopUpManager$$showMessage @ 00d25960
+  -> SA.Common.Pattern.Singleton<object>$$get_Instance @ 01e09dd4
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> SA.Common.Models.Result$$get_IsSucceeded @ 00c88a30
+  -> ISN_ReplayKit$$ShowVideoShareDialog @ 00d230bc
+
+--- Calls IN ---
+
+--- Listing ---
+00d448d4  str x20,[sp, #-0x20]!
+00d448d8  stp x19,x30,[sp, #0x10]
+00d448dc  adrp x20,0x3571000
+00d448e0  ldrb w8,[x20, #0xdba]
+00d448e4  mov x19,x1
+00d448e8  tbnz w8,#0x0,0x00d44918
+00d448ec  adrp x0,0x3342000
+00d448f0  ldr x0,[x0, #0xec0]
+00d448f4  bl 0x00b0789c
+00d448f8  adrp x0,0x336e000
+00d448fc  ldr x0,[x0, #0x298]
+00d44900  bl 0x00b0789c
+00d44904  adrp x0,0x3335000
+00d44908  ldr x0,[x0, #0xf88]
+00d4490c  bl 0x00b0789c
+00d44910  mov w8,#0x1
+00d44914  strb w8,[x20, #0xdba]
+00d44918  cbz x19,0x00d44994
+00d4491c  mov x0,x19
+00d44920  mov x1,xzr
+00d44924  bl 0x00c88a30
+00d44928  tbz w0,#0x0,0x00d44950
+00d4492c  adrp x8,0x3342000
+00d44930  ldr x8,[x8, #0xec0]
+00d44934  ldr x0,[x8]
+00d44938  bl 0x01e09dd4
+00d4493c  cbz x0,0x00d44994
+00d44940  ldp x19,x30,[sp, #0x10]
+00d44944  mov x1,xzr
+00d44948  ldr x20,[sp], #0x20
+00d4494c  b 0x00d230bc
+00d44950  ldr x8,[x19, #0x10]
+00d44954  cbz x8,0x00d44994
+00d44958  adrp x9,0x3335000
+00d4495c  ldr x9,[x9, #0xf88]
+00d44960  ldr x1,[x8, #0x18]
+00d44964  adrp x19,0x336e000
+00d44968  mov x2,xzr
+00d4496c  ldr x0,[x9]
+00d44970  ldr x19,[x19, #0x298]
+00d44974  bl 0x01fd2850
+00d44978  ldr x8,[x19]
+00d4497c  ldp x19,x30,[sp, #0x10]
+00d44980  mov x1,x0
+00d44984  mov x2,xzr
+00d44988  mov x0,x8
+00d4498c  ldr x20,[sp], #0x20
+00d44990  b 0x00d25960
+00d44994  bl 0x00b079b0

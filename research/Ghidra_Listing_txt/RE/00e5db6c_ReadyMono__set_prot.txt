@@ -1,0 +1,64 @@
+Function: ReadyMono$$set_prot @ 00e5db6c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Ali$$get_dataCache @ 00e014f4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+  -> FUN_00b079b0 @ 00b079b0
+  -> DataCache$$set_m_protoTeam @ 00e2507c
+
+--- Calls IN ---
+  <- ReadyMono$$GetTeamBack @ 00e5ff34
+  <- ReadyMono$$SaveTeamBack @ 00e63c80
+
+--- Listing ---
+00e5db6c  str x22,[sp, #-0x30]!
+00e5db70  stp x21,x20,[sp, #0x10]
+00e5db74  stp x19,x30,[sp, #0x20]
+00e5db78  adrp x21,0x3572000
+00e5db7c  adrp x22,0x333c000
+00e5db80  ldrb w8,[x21, #0x960]
+00e5db84  ldr x22,[x22, #0x628]
+00e5db88  mov x19,x1
+00e5db8c  mov x20,x0
+00e5db90  tbnz w8,#0x0,0x00e5dbb4
+00e5db94  adrp x0,0x335f000
+00e5db98  ldr x0,[x0, #0x20]
+00e5db9c  bl 0x00b0789c
+00e5dba0  adrp x0,0x333c000
+00e5dba4  ldr x0,[x0, #0x628]
+00e5dba8  bl 0x00b0789c
+00e5dbac  mov w8,#0x1
+00e5dbb0  strb w8,[x21, #0x960]
+00e5dbb4  ldr x8,[x22]
+00e5dbb8  ldr x8,[x8, #0xb8]
+00e5dbbc  ldr x0,[x8, #0x60]
+00e5dbc0  cbz x0,0x00e5dbe0
+00e5dbc4  mov x1,x20
+00e5dbc8  mov x2,x19
+00e5dbcc  ldp x19,x30,[sp, #0x20]
+00e5dbd0  ldp x21,x20,[sp, #0x10]
+00e5dbd4  mov x3,xzr
+00e5dbd8  ldr x22,[sp], #0x30
+00e5dbdc  b 0x0106125c
+00e5dbe0  adrp x20,0x335f000
+00e5dbe4  ldr x20,[x20, #0x20]
+00e5dbe8  ldr x0,[x20]
+00e5dbec  ldr w8,[x0, #0xe0]
+00e5dbf0  cbnz w8,0x00e5dbfc
+00e5dbf4  bl 0x00b0798c
+00e5dbf8  ldr x0,[x20]
+00e5dbfc  ldr x8,[x0, #0xb8]
+00e5dc00  ldr x0,[x8, #0x10]
+00e5dc04  cbz x0,0x00e5dc2c
+00e5dc08  mov x1,xzr
+00e5dc0c  bl 0x00e014f4
+00e5dc10  cbz x0,0x00e5dc2c
+00e5dc14  mov x1,x19
+00e5dc18  ldp x19,x30,[sp, #0x20]
+00e5dc1c  ldp x21,x20,[sp, #0x10]
+00e5dc20  mov x2,xzr
+00e5dc24  ldr x22,[sp], #0x30
+00e5dc28  b 0x00e2507c
+00e5dc2c  bl 0x00b079b0

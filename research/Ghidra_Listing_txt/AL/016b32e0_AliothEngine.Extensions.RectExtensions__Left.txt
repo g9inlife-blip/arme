@@ -1,0 +1,32 @@
+Function: AliothEngine.Extensions.RectExtensions$$Left @ 016b32e0
+
+--- Calls OUT ---
+  -> AliothEngine.Extensions.RectExtensions$$Right @ 016b3284
+  -> AliothEngine.Extensions.RectExtensions$$Left @ 016b322c
+
+--- Calls IN ---
+
+--- Listing ---
+016b32e0  str d12,[sp, #-0x40]!
+016b32e4  stp d11,d10,[sp, #0x10]
+016b32e8  stp d9,d8,[sp, #0x20]
+016b32ec  stp x19,x30,[sp, #0x30]
+016b32f0  mov x19,x0
+016b32f4  mov v8.16B,v4.16B
+016b32f8  mov v9.16B,v3.16B
+016b32fc  mov v10.16B,v2.16B
+016b3300  mov v11.16B,v1.16B
+016b3304  mov v12.16B,v0.16B
+016b3308  bl 0x016b322c
+016b330c  stp s0,s1,[x19]
+016b3310  stp s2,s3,[x19, #0x8]
+016b3314  fneg s4,s8
+016b3318  mov v1.16B,v11.16B
+016b331c  mov v2.16B,v10.16B
+016b3320  mov v3.16B,v9.16B
+016b3324  ldp x19,x30,[sp, #0x30]
+016b3328  ldp d9,d8,[sp, #0x20]
+016b332c  ldp d11,d10,[sp, #0x10]
+016b3330  mov v0.16B,v12.16B
+016b3334  ldr d12,[sp], #0x40
+016b3338  b 0x016b3284

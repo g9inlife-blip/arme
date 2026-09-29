@@ -1,0 +1,36 @@
+Function: AliothS1Loading$$get_CheckComplete @ 00ecacf0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp9 @ 01060aac
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothS1LoadingWrap$$_g_get_CheckComplete @ 0116ce98
+
+--- Listing ---
+00ecacf0  stp x21,x20,[sp, #-0x20]!
+00ecacf4  stp x19,x30,[sp, #0x10]
+00ecacf8  adrp x20,0x3572000
+00ecacfc  adrp x21,0x3322000
+00ecad00  ldrb w8,[x20, #0xd66]
+00ecad04  ldr x21,[x21, #0x6d0]
+00ecad08  mov x19,x0
+00ecad0c  tbnz w8,#0x0,0x00ecad24
+00ecad10  adrp x0,0x3322000
+00ecad14  ldr x0,[x0, #0x6d0]
+00ecad18  bl 0x00b0789c
+00ecad1c  mov w8,#0x1
+00ecad20  strb w8,[x20, #0xd66]
+00ecad24  ldr x8,[x21]
+00ecad28  ldr x8,[x8, #0xb8]
+00ecad2c  ldr x0,[x8]
+00ecad30  cbz x0,0x00ecad48
+00ecad34  mov x1,x19
+00ecad38  ldp x19,x30,[sp, #0x10]
+00ecad3c  mov x2,xzr
+00ecad40  ldp x21,x20,[sp], #0x20
+00ecad44  b 0x01060aac
+00ecad48  ldrb w0,[x19, #0x10]
+00ecad4c  ldp x19,x30,[sp, #0x10]
+00ecad50  ldp x21,x20,[sp], #0x20
+00ecad54  ret

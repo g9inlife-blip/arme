@@ -1,0 +1,75 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$ParseByToken @ 016a2168
+
+--- Calls OUT ---
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseObject @ 016a1af8
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseNumber @ 016a2250
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseString @ 016a1de0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.MiniJSON.Json.Parser$$ParseArray @ 016a2040
+  -> thunk_FUN_00ace368 @ 00b07994
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json.Parser$$ParseObject @ 016a1af8
+  <- AliothEngine.MiniJSON.Json.Parser$$Parse @ 016a1478
+  <- AliothEngine.MiniJSON.Json.Parser$$ParseArray @ 016a2040
+  <- AliothEngine.MiniJSON.Json.Parser$$ParseValue @ 016a1aac
+
+--- Listing ---
+016a2168  sub sp,sp,#0x30
+016a216c  stp x21,x20,[sp, #0x10]
+016a2170  stp x19,x30,[sp, #0x20]
+016a2174  adrp x21,0x3577000
+016a2178  ldrb w8,[x21, #0xb6e]
+016a217c  mov w20,w1
+016a2180  mov x19,x0
+016a2184  tbnz w8,#0x0,0x016a219c
+016a2188  adrp x0,0x337c000
+016a218c  ldr x0,[x0, #0xf70]
+016a2190  bl 0x00b0789c
+016a2194  mov w8,#0x1
+016a2198  strb w8,[x21, #0xb6e]
+016a219c  sub w8,w20,#0x1
+016a21a0  cmp w8,#0x9
+016a21a4  mov x0,xzr
+016a21a8  b.hi 0x016a2240
+016a21ac  adrp x9,0x26dd000
+016a21b0  add x9,x9,#0x69
+016a21b4  adr x10,0x16a21cc
+016a21b8  ldrb w11,[x9, x8, LSL ]
+016a21bc  add x10,x10,x11, LSL #0x2
+016a21c0  adrp x8,0x337c000
+016a21c4  ldr x8,[x8, #0xf70]
+016a21c8  br x10
+016a21cc  mov x0,x19
+016a21d0  ldp x19,x30,[sp, #0x20]
+016a21d4  ldp x21,x20,[sp, #0x10]
+016a21d8  add sp,sp,#0x30
+016a21dc  b 0x016a1af8
+016a21e0  mov x0,x19
+016a21e4  ldp x19,x30,[sp, #0x20]
+016a21e8  ldp x21,x20,[sp, #0x10]
+016a21ec  add sp,sp,#0x30
+016a21f0  b 0x016a2040
+016a21f4  mov x0,x19
+016a21f8  ldp x19,x30,[sp, #0x20]
+016a21fc  ldp x21,x20,[sp, #0x10]
+016a2200  add sp,sp,#0x30
+016a2204  b 0x016a1de0
+016a2208  mov x0,x19
+016a220c  ldp x19,x30,[sp, #0x20]
+016a2210  ldp x21,x20,[sp, #0x10]
+016a2214  add sp,sp,#0x30
+016a2218  b 0x016a2250
+016a221c  ldr x0,[x8]
+016a2220  mov w8,#0x1
+016a2224  strb w8,[sp, #0xc]
+016a2228  add x1,sp,#0xc
+016a222c  b 0x016a223c
+016a2230  ldr x0,[x8]
+016a2234  add x1,sp,#0x8
+016a2238  strb wzr,[sp, #0x8]
+016a223c  bl 0x00b07994
+016a2240  ldp x19,x30,[sp, #0x20]
+016a2244  ldp x21,x20,[sp, #0x10]
+016a2248  add sp,sp,#0x30
+016a224c  ret

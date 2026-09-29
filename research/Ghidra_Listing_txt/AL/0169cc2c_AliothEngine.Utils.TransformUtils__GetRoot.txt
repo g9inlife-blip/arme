@@ -1,0 +1,50 @@
+Function: AliothEngine.Utils.TransformUtils$$GetRoot @ 0169cc2c
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_parent @ 024f42ec
+  -> UnityEngine.Object$$op_Implicit @ 024d0ab0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+0169cc2c  stp x23,x22,[sp, #-0x30]!
+0169cc30  stp x21,x20,[sp, #0x10]
+0169cc34  stp x19,x30,[sp, #0x20]
+0169cc38  adrp x19,0x3321000
+0169cc3c  ldr x19,[x19, #0xca8]
+0169cc40  mov x20,x0
+0169cc44  adrp x22,0x3577000
+0169cc48  mov w23,#0x1
+0169cc4c  ldrb w8,[x22, #0xb46]
+0169cc50  tbnz w8,#0x0,0x0169cc60
+0169cc54  mov x0,x19
+0169cc58  bl 0x00b0789c
+0169cc5c  strb w23,[x22, #0xb46]
+0169cc60  cbz x20,0x0169ccc0
+0169cc64  mov x0,x20
+0169cc68  mov x1,xzr
+0169cc6c  bl 0x024f42ec
+0169cc70  ldr x8,[x19]
+0169cc74  mov x21,x0
+0169cc78  ldr w9,[x8, #0xe0]
+0169cc7c  cbnz w9,0x0169cc88
+0169cc80  mov x0,x8
+0169cc84  bl 0x00b0798c
+0169cc88  mov x0,x21
+0169cc8c  mov x1,xzr
+0169cc90  bl 0x024d0ab0
+0169cc94  tbz w0,#0x0,0x0169ccac
+0169cc98  mov x0,x20
+0169cc9c  mov x1,xzr
+0169cca0  bl 0x024f42ec
+0169cca4  mov x20,x0
+0169cca8  b 0x0169cc4c
+0169ccac  mov x0,x20
+0169ccb0  ldp x19,x30,[sp, #0x20]
+0169ccb4  ldp x21,x20,[sp, #0x10]
+0169ccb8  ldp x23,x22,[sp], #0x30
+0169ccbc  ret
+0169ccc0  bl 0x00b079b0

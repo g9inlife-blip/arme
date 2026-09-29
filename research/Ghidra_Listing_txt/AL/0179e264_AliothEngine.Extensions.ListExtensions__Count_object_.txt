@@ -1,0 +1,56 @@
+Function: AliothEngine.Extensions.ListExtensions$$Count<object> @ 0179e264
+
+--- Calls OUT ---
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- PositionTargetHelper$$MaxContainTargetSelect @ 00fdbbb8
+
+--- Listing ---
+0179e264  stp x23,x22,[sp, #-0x30]!
+0179e268  stp x21,x20,[sp, #0x10]
+0179e26c  stp x19,x30,[sp, #0x20]
+0179e270  cbz x1,0x0179e304
+0179e274  mov x21,x0
+0179e278  cbz x0,0x0179e31c
+0179e27c  ldr x8,[x2, #0x38]
+0179e280  mov x20,x1
+0179e284  mov x0,x21
+0179e288  mov x19,x2
+0179e28c  ldr x1,[x8, #0x20]
+0179e290  ldr x8,[x1, #0x8]
+0179e294  blr x8
+0179e298  cmp w0,#0x1
+0179e29c  b.lt 0x0179e304
+0179e2a0  mov w23,wzr
+0179e2a4  mov w22,wzr
+0179e2a8  ldr x8,[x19, #0x38]
+0179e2ac  mov x0,x21
+0179e2b0  mov w1,w23
+0179e2b4  ldr x2,[x8, #0x8]
+0179e2b8  ldr x8,[x2, #0x8]
+0179e2bc  blr x8
+0179e2c0  ldr x8,[x19, #0x38]
+0179e2c4  mov x1,x0
+0179e2c8  mov x0,x20
+0179e2cc  ldr x2,[x8, #0x18]
+0179e2d0  ldr x8,[x2, #0x8]
+0179e2d4  blr x8
+0179e2d8  ldr x8,[x19, #0x38]
+0179e2dc  and w9,w0,#0x1
+0179e2e0  mov x0,x21
+0179e2e4  add w22,w22,w9
+0179e2e8  ldr x1,[x8, #0x20]
+0179e2ec  add w23,w23,#0x1
+0179e2f0  ldr x8,[x1, #0x8]
+0179e2f4  blr x8
+0179e2f8  cmp w23,w0
+0179e2fc  b.lt 0x0179e2a8
+0179e300  b 0x0179e308
+0179e304  mov w22,wzr
+0179e308  ldp x19,x30,[sp, #0x20]
+0179e30c  ldp x21,x20,[sp, #0x10]
+0179e310  mov w0,w22
+0179e314  ldp x23,x22,[sp], #0x30
+0179e318  ret
+0179e31c  bl 0x00b079b0

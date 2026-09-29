@@ -1,0 +1,41 @@
+Function: AliothEngine.WWWRequest$$Start @ 0168c45c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0168c45c  stp x21,x20,[sp, #-0x20]!
+0168c460  stp x19,x30,[sp, #0x10]
+0168c464  adrp x20,0x3577000
+0168c468  adrp x21,0x3350000
+0168c46c  ldrb w8,[x20, #0xab1]
+0168c470  ldr x21,[x21, #0xd98]
+0168c474  mov x19,x0
+0168c478  tbnz w8,#0x0,0x0168c490
+0168c47c  adrp x0,0x3350000
+0168c480  ldr x0,[x0, #0xd98]
+0168c484  bl 0x00b0789c
+0168c488  mov w8,#0x1
+0168c48c  strb w8,[x20, #0xab1]
+0168c490  ldr x0,[x21]
+0168c494  bl 0x00b079a0
+0168c498  cbz x0,0x0168c4cc
+0168c49c  mov x1,xzr
+0168c4a0  mov x20,x0
+0168c4a4  bl 0x02194104
+0168c4a8  mov x0,x20
+0168c4ac  str wzr,[x20, #0x10]
+0168c4b0  str x19,[x0, #0x20]!
+0168c4b4  mov x1,x19
+0168c4b8  bl 0x00b07850
+0168c4bc  ldp x19,x30,[sp, #0x10]
+0168c4c0  mov x0,x20
+0168c4c4  ldp x21,x20,[sp], #0x20
+0168c4c8  ret
+0168c4cc  bl 0x00b079b0

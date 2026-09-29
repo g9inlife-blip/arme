@@ -1,0 +1,51 @@
+Function: AliothEngine.Utils.ApplicationUtils$$ApplicationQuit @ 0169804c
+
+--- Calls OUT ---
+  -> UnityEngine.Debug$$LogWarning @ 024c0f2c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.AndroidUtils$$AndroidFinish @ 0164e654
+  -> AliothEngine.AndroidUtils$$AndroidQuit @ 0164e7d4
+  -> AliothEngine.AndroidUtils$$IsRunningOnAndroid @ 0164e638
+  -> UnityEngine.Application$$Quit @ 024f2938
+
+--- Calls IN ---
+
+--- Listing ---
+0169804c  str x20,[sp, #-0x20]!
+01698050  stp x19,x30,[sp, #0x10]
+01698054  adrp x20,0x3577000
+01698058  adrp x19,0x336b000
+0169805c  ldrb w8,[x20, #0xb19]
+01698060  ldr x19,[x19, #0x7d0]
+01698064  tbnz w8,#0x0,0x01698088
+01698068  adrp x0,0x336b000
+0169806c  ldr x0,[x0, #0x7d0]
+01698070  bl 0x00b0789c
+01698074  adrp x0,0x334e000
+01698078  ldr x0,[x0, #0xa0]
+0169807c  bl 0x00b0789c
+01698080  mov w8,#0x1
+01698084  strb w8,[x20, #0xb19]
+01698088  ldr x0,[x19]
+0169808c  adrp x19,0x334e000
+01698090  ldr w8,[x0, #0xe0]
+01698094  ldr x19,[x19, #0xa0]
+01698098  cbnz w8,0x016980a0
+0169809c  bl 0x00b0798c
+016980a0  ldr x0,[x19]
+016980a4  mov x1,xzr
+016980a8  bl 0x024c0f2c
+016980ac  mov x0,xzr
+016980b0  bl 0x0164e638
+016980b4  tbz w0,#0x0,0x016980d0
+016980b8  mov x0,xzr
+016980bc  bl 0x0164e654
+016980c0  ldp x19,x30,[sp, #0x10]
+016980c4  mov x0,xzr
+016980c8  ldr x20,[sp], #0x20
+016980cc  b 0x0164e7d4
+016980d0  ldp x19,x30,[sp, #0x10]
+016980d4  mov x0,xzr
+016980d8  ldr x20,[sp], #0x20
+016980dc  b 0x024f2938

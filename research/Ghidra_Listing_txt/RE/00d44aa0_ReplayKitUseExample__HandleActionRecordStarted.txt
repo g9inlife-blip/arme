@@ -1,0 +1,110 @@
+Function: ReplayKitUseExample$$HandleActionRecordStarted @ 00d44aa0
+
+--- Calls OUT ---
+  -> ISN_Logger$$Log @ 00d198ec
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> IOSNativePopUpManager$$showMessage @ 00d25960
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> ISN_ReplayKit$$remove_ActionRecordStarted @ 00d225f4
+  -> SA.Common.Models.Result$$get_IsSucceeded @ 00c88a30
+
+--- Calls IN ---
+
+--- Listing ---
+00d44aa0  stp x21,x20,[sp, #-0x20]!
+00d44aa4  stp x19,x30,[sp, #0x10]
+00d44aa8  adrp x21,0x3571000
+00d44aac  ldrb w8,[x21, #0xdbc]
+00d44ab0  mov x20,x1
+00d44ab4  mov x19,x0
+00d44ab8  tbnz w8,#0x0,0x00d44b24
+00d44abc  adrp x0,0x3369000
+00d44ac0  ldr x0,[x0, #0x800]
+00d44ac4  bl 0x00b0789c
+00d44ac8  adrp x0,0x3310000
+00d44acc  ldr x0,[x0, #0xa8]
+00d44ad0  bl 0x00b0789c
+00d44ad4  adrp x0,0x336f000
+00d44ad8  ldr x0,[x0, #0x898]
+00d44adc  bl 0x00b0789c
+00d44ae0  adrp x0,0x336e000
+00d44ae4  ldr x0,[x0, #0x298]
+00d44ae8  bl 0x00b0789c
+00d44aec  adrp x0,0x3358000
+00d44af0  ldr x0,[x0, #0xe68]
+00d44af4  bl 0x00b0789c
+00d44af8  adrp x0,0x3327000
+00d44afc  ldr x0,[x0, #0x368]
+00d44b00  bl 0x00b0789c
+00d44b04  adrp x0,0x337c000
+00d44b08  ldr x0,[x0, #0xb8]
+00d44b0c  bl 0x00b0789c
+00d44b10  adrp x0,0x3335000
+00d44b14  ldr x0,[x0, #0xf88]
+00d44b18  bl 0x00b0789c
+00d44b1c  mov w8,#0x1
+00d44b20  strb w8,[x21, #0xdbc]
+00d44b24  cbz x20,0x00d44c10
+00d44b28  mov x0,x20
+00d44b2c  mov x1,xzr
+00d44b30  bl 0x00c88a30
+00d44b34  tbz w0,#0x0,0x00d44b50
+00d44b38  adrp x8,0x3327000
+00d44b3c  ldr x8,[x8, #0x368]
+00d44b40  ldr x1,[x8]
+00d44b44  adrp x8,0x337c000
+00d44b48  ldr x8,[x8, #0xb8]
+00d44b4c  b 0x00d44ba8
+00d44b50  ldr x8,[x20, #0x10]
+00d44b54  cbz x8,0x00d44c10
+00d44b58  adrp x9,0x3358000
+00d44b5c  ldr x9,[x9, #0xe68]
+00d44b60  ldr x1,[x8, #0x18]
+00d44b64  mov x2,xzr
+00d44b68  ldr x0,[x9]
+00d44b6c  bl 0x01fd2850
+00d44b70  mov w1,#0x3
+00d44b74  mov x2,xzr
+00d44b78  bl 0x00d198ec
+00d44b7c  ldr x8,[x20, #0x10]
+00d44b80  cbz x8,0x00d44c10
+00d44b84  adrp x9,0x3335000
+00d44b88  ldr x9,[x9, #0xf88]
+00d44b8c  ldr x1,[x8, #0x18]
+00d44b90  mov x2,xzr
+00d44b94  ldr x0,[x9]
+00d44b98  bl 0x01fd2850
+00d44b9c  adrp x8,0x336e000
+00d44ba0  ldr x8,[x8, #0x298]
+00d44ba4  mov x1,x0
+00d44ba8  ldr x0,[x8]
+00d44bac  adrp x20,0x3369000
+00d44bb0  ldr x20,[x20, #0x800]
+00d44bb4  mov x2,xzr
+00d44bb8  bl 0x00d25960
+00d44bbc  ldr x0,[x20]
+00d44bc0  bl 0x00b079a0
+00d44bc4  cbz x0,0x00d44c10
+00d44bc8  adrp x8,0x336f000
+00d44bcc  ldr x8,[x8, #0x898]
+00d44bd0  adrp x21,0x3310000
+00d44bd4  mov x1,x19
+00d44bd8  mov x3,xzr
+00d44bdc  ldr x2,[x8]
+00d44be0  ldr x21,[x21, #0xa8]
+00d44be4  mov x20,x0
+00d44be8  bl 0x01909b80
+00d44bec  ldr x0,[x21]
+00d44bf0  ldr w8,[x0, #0xe0]
+00d44bf4  cbnz w8,0x00d44bfc
+00d44bf8  bl 0x00b0798c
+00d44bfc  ldp x19,x30,[sp, #0x10]
+00d44c00  mov x0,x20
+00d44c04  mov x1,xzr
+00d44c08  ldp x21,x20,[sp], #0x20
+00d44c0c  b 0x00d225f4
+00d44c10  bl 0x00b079b0

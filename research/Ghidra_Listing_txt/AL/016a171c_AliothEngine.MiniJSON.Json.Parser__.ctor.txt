@@ -1,0 +1,48 @@
+Function: AliothEngine.MiniJSON.Json.Parser$$.ctor @ 016a171c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.IO.StringReader$$.ctor @ 020bbe14
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- AliothEngine.MiniJSON.Json$$DeserializeArrayNoRecursion @ 016a1614
+  <- AliothEngine.MiniJSON.Json.Parser$$Parse @ 016a1478
+
+--- Listing ---
+016a171c  str x22,[sp, #-0x30]!
+016a1720  stp x21,x20,[sp, #0x10]
+016a1724  stp x19,x30,[sp, #0x20]
+016a1728  adrp x22,0x3577000
+016a172c  adrp x21,0x333f000
+016a1730  ldrb w8,[x22, #0xb69]
+016a1734  ldr x21,[x21, #0xc28]
+016a1738  mov x20,x1
+016a173c  mov x19,x0
+016a1740  tbnz w8,#0x0,0x016a1758
+016a1744  adrp x0,0x333f000
+016a1748  ldr x0,[x0, #0xc28]
+016a174c  bl 0x00b0789c
+016a1750  mov w8,#0x1
+016a1754  strb w8,[x22, #0xb69]
+016a1758  mov x0,x19
+016a175c  mov x1,xzr
+016a1760  bl 0x02194104
+016a1764  ldr x0,[x21]
+016a1768  bl 0x00b079a0
+016a176c  cbz x0,0x016a179c
+016a1770  mov x1,x20
+016a1774  mov x2,xzr
+016a1778  mov x21,x0
+016a177c  bl 0x020bbe14
+016a1780  str x21,[x19, #0x10]!
+016a1784  mov x0,x19
+016a1788  mov x1,x21
+016a178c  ldp x19,x30,[sp, #0x20]
+016a1790  ldp x21,x20,[sp, #0x10]
+016a1794  ldr x22,[sp], #0x30
+016a1798  b 0x00b07850
+016a179c  bl 0x00b079b0

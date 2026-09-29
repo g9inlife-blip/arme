@@ -1,0 +1,80 @@
+Function: Ali$$.cctor @ 00e10c98
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.WaitForSeconds$$.ctor @ 024dd340
+  -> Ali$$.ctor @ 00dff78c
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.WaitForEndOfFrame$$.ctor @ 024dd328
+
+--- Calls IN ---
+
+--- Listing ---
+00e10c98  stp x21,x20,[sp, #-0x20]!
+00e10c9c  stp x19,x30,[sp, #0x10]
+00e10ca0  adrp x19,0x3572000
+00e10ca4  adrp x20,0x3380000
+00e10ca8  ldrb w8,[x19, #0x5c5]
+00e10cac  ldr x20,[x20, #0xea8]
+00e10cb0  tbnz w8,#0x0,0x00e10ce0
+00e10cb4  adrp x0,0x335f000
+00e10cb8  ldr x0,[x0, #0x20]
+00e10cbc  bl 0x00b0789c
+00e10cc0  adrp x0,0x3345000
+00e10cc4  ldr x0,[x0, #0x228]
+00e10cc8  bl 0x00b0789c
+00e10ccc  adrp x0,0x3380000
+00e10cd0  ldr x0,[x0, #0xea8]
+00e10cd4  bl 0x00b0789c
+00e10cd8  mov w8,#0x1
+00e10cdc  strb w8,[x19, #0x5c5]
+00e10ce0  ldr x0,[x20]
+00e10ce4  bl 0x00b079a0
+00e10ce8  cbz x0,0x00e10d9c
+00e10cec  adrp x20,0x335f000
+00e10cf0  adrp x21,0x3345000
+00e10cf4  ldr x20,[x20, #0x20]
+00e10cf8  ldr x21,[x21, #0x228]
+00e10cfc  fmov s0,0x3e800000
+00e10d00  mov x1,xzr
+00e10d04  mov x19,x0
+00e10d08  bl 0x024dd340
+00e10d0c  ldr x8,[x20]
+00e10d10  mov x1,x19
+00e10d14  ldr x8,[x8, #0xb8]
+00e10d18  str x19,[x8]
+00e10d1c  ldr x8,[x20]
+00e10d20  ldr x0,[x8, #0xb8]
+00e10d24  bl 0x00b07850
+00e10d28  ldr x0,[x21]
+00e10d2c  bl 0x00b079a0
+00e10d30  cbz x0,0x00e10d9c
+00e10d34  mov x1,xzr
+00e10d38  mov x19,x0
+00e10d3c  bl 0x024dd328
+00e10d40  ldr x8,[x20]
+00e10d44  mov x1,x19
+00e10d48  ldr x0,[x8, #0xb8]
+00e10d4c  str x19,[x0, #0x8]!
+00e10d50  bl 0x00b07850
+00e10d54  ldr x0,[x20]
+00e10d58  bl 0x00b079a0
+00e10d5c  cbz x0,0x00e10d9c
+00e10d60  mov x19,x0
+00e10d64  bl 0x00dff78c
+00e10d68  ldr x8,[x20]
+00e10d6c  mov x1,x19
+00e10d70  ldr x0,[x8, #0xb8]
+00e10d74  str x19,[x0, #0x10]!
+00e10d78  bl 0x00b07850
+00e10d7c  ldr x8,[x20]
+00e10d80  mov w9,#0xbf800000
+00e10d84  ldr x8,[x8, #0xb8]
+00e10d88  strb wzr,[x8, #0x18]
+00e10d8c  str w9,[x8, #0x1c]
+00e10d90  ldp x19,x30,[sp, #0x10]
+00e10d94  ldp x21,x20,[sp], #0x20
+00e10d98  ret
+00e10d9c  bl 0x00b079b0

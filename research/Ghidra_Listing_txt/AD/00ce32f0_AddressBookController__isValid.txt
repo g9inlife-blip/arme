@@ -1,0 +1,32 @@
+Function: AddressBookController$$isValid @ 00ce32f0
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Contains @ 01fe31fc
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- AddressBookController$$parseContacts @ 00ce28a0
+
+--- Listing ---
+00ce32f0  str x20,[sp, #-0x20]!
+00ce32f4  stp x19,x30,[sp, #0x10]
+00ce32f8  adrp x20,0x3571000
+00ce32fc  ldrb w8,[x20, #0x8f0]
+00ce3300  mov x19,x1
+00ce3304  tbnz w8,#0x0,0x00ce331c
+00ce3308  adrp x0,0x3372000
+00ce330c  ldr x0,[x0, #0x650]
+00ce3310  bl 0x00b0789c
+00ce3314  mov w8,#0x1
+00ce3318  strb w8,[x20, #0x8f0]
+00ce331c  cbz x19,0x00ce3340
+00ce3320  adrp x8,0x3372000
+00ce3324  ldr x8,[x8, #0x650]
+00ce3328  mov x0,x19
+00ce332c  ldp x19,x30,[sp, #0x10]
+00ce3330  mov x2,xzr
+00ce3334  ldr x1,[x8]
+00ce3338  ldr x20,[sp], #0x20
+00ce333c  b 0x01fe31fc
+00ce3340  bl 0x00b079b0

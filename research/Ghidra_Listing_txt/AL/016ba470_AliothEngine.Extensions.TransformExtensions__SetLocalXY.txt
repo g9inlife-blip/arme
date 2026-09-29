@@ -1,0 +1,26 @@
+Function: AliothEngine.Extensions.TransformExtensions$$SetLocalXY @ 016ba470
+
+--- Calls OUT ---
+  -> UnityEngine.Transform$$get_localPosition @ 024f37bc
+  -> UnityEngine.Transform$$set_localPosition @ 024f385c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016ba470  stp d9,d8,[sp, #-0x20]!
+016ba474  stp x19,x30,[sp, #0x10]
+016ba478  cbz x0,0x016ba4ac
+016ba47c  mov x1,xzr
+016ba480  mov v8.16B,v1.16B
+016ba484  mov v9.16B,v0.16B
+016ba488  mov x19,x0
+016ba48c  bl 0x024f37bc
+016ba490  mov x0,x19
+016ba494  ldp x19,x30,[sp, #0x10]
+016ba498  mov v0.16B,v9.16B
+016ba49c  mov v1.16B,v8.16B
+016ba4a0  mov x1,xzr
+016ba4a4  ldp d9,d8,[sp], #0x20
+016ba4a8  b 0x024f385c
+016ba4ac  bl 0x00b079b0

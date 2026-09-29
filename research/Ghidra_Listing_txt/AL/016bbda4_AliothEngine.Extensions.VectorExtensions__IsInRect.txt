@@ -1,0 +1,44 @@
+Function: AliothEngine.Extensions.VectorExtensions$$IsInRect @ 016bbda4
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_yMax @ 024db024
+  -> UnityEngine.Rect$$get_xMin @ 024dafa0
+  -> UnityEngine.Rect$$get_yMin @ 024dafa8
+  -> UnityEngine.Rect$$get_xMax @ 024db014
+
+--- Calls IN ---
+
+--- Listing ---
+016bbda4  sub sp,sp,#0x30
+016bbda8  stp d9,d8,[sp, #0x10]
+016bbdac  str x30,[sp, #0x20]
+016bbdb0  mov x0,sp
+016bbdb4  mov x1,xzr
+016bbdb8  mov v8.16B,v1.16B
+016bbdbc  mov v9.16B,v0.16B
+016bbdc0  stp s2,s3,[sp]
+016bbdc4  stp s4,s5,[sp, #0x8]
+016bbdc8  bl 0x024dafa0
+016bbdcc  fcmp s9,s0
+016bbdd0  b.lt 0x016bbdfc
+016bbdd4  mov x0,sp
+016bbdd8  mov x1,xzr
+016bbddc  bl 0x024db014
+016bbde0  fcmp s9,s0
+016bbde4  b.hi 0x016bbdfc
+016bbde8  mov x0,sp
+016bbdec  mov x1,xzr
+016bbdf0  bl 0x024dafa8
+016bbdf4  fcmp s8,s0
+016bbdf8  b.ge 0x016bbe10
+016bbdfc  mov w0,wzr
+016bbe00  ldr x30,[sp, #0x20]
+016bbe04  ldp d9,d8,[sp, #0x10]
+016bbe08  add sp,sp,#0x30
+016bbe0c  ret
+016bbe10  mov x0,sp
+016bbe14  mov x1,xzr
+016bbe18  bl 0x024db024
+016bbe1c  fcmp s8,s0
+016bbe20  cset w0,ls
+016bbe24  b 0x016bbe00

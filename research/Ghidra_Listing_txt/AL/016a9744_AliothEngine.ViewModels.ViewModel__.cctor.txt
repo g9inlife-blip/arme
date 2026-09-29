@@ -1,0 +1,67 @@
+Function: AliothEngine.ViewModels.ViewModel$$.cctor @ 016a9744
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Collections.Generic.List<object>$$.ctor @ 01bffe10
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+016a9744  stp x21,x20,[sp, #-0x20]!
+016a9748  stp x19,x30,[sp, #0x10]
+016a974c  adrp x19,0x3577000
+016a9750  adrp x20,0x3356000
+016a9754  ldrb w8,[x19, #0xba2]
+016a9758  ldr x20,[x20, #0xda8]
+016a975c  tbnz w8,#0x0,0x016a9798
+016a9760  adrp x0,0x3310000
+016a9764  ldr x0,[x0, #0x700]
+016a9768  bl 0x00b0789c
+016a976c  adrp x0,0x332e000
+016a9770  ldr x0,[x0, #0xc30]
+016a9774  bl 0x00b0789c
+016a9778  adrp x0,0x3356000
+016a977c  ldr x0,[x0, #0xda8]
+016a9780  bl 0x00b0789c
+016a9784  adrp x0,0x3352000
+016a9788  ldr x0,[x0, #0xf38]
+016a978c  bl 0x00b0789c
+016a9790  mov w8,#0x1
+016a9794  strb w8,[x19, #0xba2]
+016a9798  ldr x0,[x20]
+016a979c  bl 0x00b079a0
+016a97a0  cbz x0,0x016a9818
+016a97a4  adrp x20,0x3352000
+016a97a8  adrp x21,0x332e000
+016a97ac  ldr x20,[x20, #0xf38]
+016a97b0  ldr x21,[x21, #0xc30]
+016a97b4  mov x1,xzr
+016a97b8  mov x19,x0
+016a97bc  bl 0x02194104
+016a97c0  ldr x8,[x20]
+016a97c4  mov x1,x19
+016a97c8  ldr x8,[x8, #0xb8]
+016a97cc  str x19,[x8]
+016a97d0  ldr x8,[x20]
+016a97d4  ldr x0,[x8, #0xb8]
+016a97d8  bl 0x00b07850
+016a97dc  ldr x0,[x21]
+016a97e0  bl 0x00b079a0
+016a97e4  cbz x0,0x016a9818
+016a97e8  adrp x8,0x3310000
+016a97ec  ldr x8,[x8, #0x700]
+016a97f0  mov x19,x0
+016a97f4  ldr x1,[x8]
+016a97f8  bl 0x01bffe10
+016a97fc  ldr x8,[x20]
+016a9800  mov x1,x19
+016a9804  ldr x0,[x8, #0xb8]
+016a9808  str x19,[x0, #0x8]!
+016a980c  ldp x19,x30,[sp, #0x10]
+016a9810  ldp x21,x20,[sp], #0x20
+016a9814  b 0x00b07850
+016a9818  bl 0x00b079b0

@@ -1,0 +1,30 @@
+Function: AliothEngine.Extensions.GameObjectExtensions$$SetPosition @ 016acb8c
+
+--- Calls OUT ---
+  -> UnityEngine.GameObject$$get_transform @ 024de730
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Transform$$set_position @ 024f3724
+
+--- Calls IN ---
+  <- Unitilities.Pools.Pool$$Spawn @ 0163de9c
+
+--- Listing ---
+016acb8c  str d10,[sp, #-0x20]!
+016acb90  stp d9,d8,[sp, #0x8]
+016acb94  str x30,[sp, #0x18]
+016acb98  cbz x0,0x016acbd4
+016acb9c  mov x1,xzr
+016acba0  mov v8.16B,v2.16B
+016acba4  mov v9.16B,v1.16B
+016acba8  mov v10.16B,v0.16B
+016acbac  bl 0x024de730
+016acbb0  cbz x0,0x016acbd4
+016acbb4  mov v1.16B,v9.16B
+016acbb8  mov v2.16B,v8.16B
+016acbbc  ldr x30,[sp, #0x18]
+016acbc0  ldp d9,d8,[sp, #0x8]
+016acbc4  mov v0.16B,v10.16B
+016acbc8  mov x1,xzr
+016acbcc  ldr d10,[sp], #0x20
+016acbd0  b 0x024f3724
+016acbd4  bl 0x00b079b0

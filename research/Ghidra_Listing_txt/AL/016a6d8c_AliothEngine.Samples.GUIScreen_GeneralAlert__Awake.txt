@@ -1,0 +1,104 @@
+Function: AliothEngine.Samples.GUIScreen_GeneralAlert$$Awake @ 016a6d8c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> AliothEngine.Extensions.TransformExtensions$$FindRecursively @ 016b9afc
+  -> UnityEngine.Component$$get_transform @ 024e4e98
+  -> AliothEngine.GUIScreen$$Awake @ 01671504
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Events.UnityEvent$$AddListener @ 0250c124
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Events.UnityAction$$.ctor @ 0250c024
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+
+--- Listing ---
+016a6d8c  stp x21,x20,[sp, #-0x20]!
+016a6d90  stp x19,x30,[sp, #0x10]
+016a6d94  adrp x21,0x3577000
+016a6d98  adrp x20,0x3319000
+016a6d9c  ldrb w8,[x21, #0xb8e]
+016a6da0  ldr x20,[x20, #0xb20]
+016a6da4  mov x19,x0
+016a6da8  tbnz w8,#0x0,0x016a6dfc
+016a6dac  adrp x0,0x3373000
+016a6db0  ldr x0,[x0, #0xf78]
+016a6db4  bl 0x00b0789c
+016a6db8  adrp x0,0x3378000
+016a6dbc  ldr x0,[x0, #0x1e8]
+016a6dc0  bl 0x00b0789c
+016a6dc4  adrp x0,0x3319000
+016a6dc8  ldr x0,[x0, #0xf18]
+016a6dcc  bl 0x00b0789c
+016a6dd0  adrp x0,0x3363000
+016a6dd4  ldr x0,[x0, #0xd60]
+016a6dd8  bl 0x00b0789c
+016a6ddc  adrp x0,0x3364000
+016a6de0  ldr x0,[x0, #0xc90]
+016a6de4  bl 0x00b0789c
+016a6de8  adrp x0,0x3319000
+016a6dec  ldr x0,[x0, #0xb20]
+016a6df0  bl 0x00b0789c
+016a6df4  mov w8,#0x1
+016a6df8  strb w8,[x21, #0xb8e]
+016a6dfc  mov x0,x19
+016a6e00  mov x1,xzr
+016a6e04  bl 0x01671504
+016a6e08  mov x0,x19
+016a6e0c  mov x1,xzr
+016a6e10  bl 0x024e4e98
+016a6e14  ldr x1,[x20]
+016a6e18  mov x2,xzr
+016a6e1c  bl 0x016b9afc
+016a6e20  cbz x0,0x016a6ee4
+016a6e24  adrp x8,0x3378000
+016a6e28  ldr x8,[x8, #0x1e8]
+016a6e2c  adrp x20,0x3364000
+016a6e30  ldr x1,[x8]
+016a6e34  ldr x20,[x20, #0xc90]
+016a6e38  bl 0x0176cbf8
+016a6e3c  mov x1,x0
+016a6e40  mov x0,x19
+016a6e44  str x1,[x0, #0x90]!
+016a6e48  bl 0x00b07850
+016a6e4c  mov x0,x19
+016a6e50  mov x1,xzr
+016a6e54  bl 0x024e4e98
+016a6e58  ldr x1,[x20]
+016a6e5c  mov x2,xzr
+016a6e60  bl 0x016b9afc
+016a6e64  cbz x0,0x016a6ee4
+016a6e68  adrp x8,0x3373000
+016a6e6c  ldr x8,[x8, #0xf78]
+016a6e70  ldr x1,[x8]
+016a6e74  bl 0x0176cbf8
+016a6e78  mov x20,x19
+016a6e7c  str x0,[x20, #0x98]!
+016a6e80  mov x1,x0
+016a6e84  mov x0,x20
+016a6e88  bl 0x00b07850
+016a6e8c  ldr x8,[x20]
+016a6e90  cbz x8,0x016a6ee4
+016a6e94  adrp x9,0x3363000
+016a6e98  ldr x9,[x9, #0xd60]
+016a6e9c  ldr x20,[x8, #0xf8]
+016a6ea0  ldr x0,[x9]
+016a6ea4  bl 0x00b079a0
+016a6ea8  cbz x0,0x016a6ee4
+016a6eac  adrp x8,0x3319000
+016a6eb0  ldr x8,[x8, #0xf18]
+016a6eb4  mov x1,x19
+016a6eb8  mov x3,xzr
+016a6ebc  mov x21,x0
+016a6ec0  ldr x2,[x8]
+016a6ec4  bl 0x0250c024
+016a6ec8  cbz x20,0x016a6ee4
+016a6ecc  ldp x19,x30,[sp, #0x10]
+016a6ed0  mov x0,x20
+016a6ed4  mov x1,x21
+016a6ed8  mov x2,xzr
+016a6edc  ldp x21,x20,[sp], #0x20
+016a6ee0  b 0x0250c124
+016a6ee4  bl 0x00b079b0

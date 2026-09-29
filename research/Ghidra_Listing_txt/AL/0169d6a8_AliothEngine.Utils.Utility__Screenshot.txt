@@ -1,0 +1,90 @@
+Function: AliothEngine.Utils.Utility$$Screenshot @ 0169d6a8
+
+--- Calls OUT ---
+  -> UnityEngine.ImageConversion$$EncodeToPNG @ 0250f5d8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.Texture2D$$Apply @ 024cc40c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Rect$$.ctor @ 024daef0
+  -> System.String$$Concat @ 01fd2850
+  -> AliothEngine.Utils.Utility$$Destroy @ 0169d7c8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.IO.File$$WriteAllBytes @ 020b0d44
+  -> UnityEngine.Texture2D$$.ctor @ 024cbfdc
+  -> UnityEngine.Texture2D$$ReadPixels @ 024cc63c
+
+--- Calls IN ---
+
+--- Listing ---
+0169d6a8  sub sp,sp,#0x50
+0169d6ac  stp x25,x24,[sp, #0x10]
+0169d6b0  stp x23,x22,[sp, #0x20]
+0169d6b4  stp x21,x20,[sp, #0x30]
+0169d6b8  stp x19,x30,[sp, #0x40]
+0169d6bc  adrp x20,0x3577000
+0169d6c0  adrp x25,0x332b000
+0169d6c4  ldrb w8,[x20, #0xb4d]
+0169d6c8  ldr x25,[x25, #0xf70]
+0169d6cc  mov w21,w4
+0169d6d0  mov w22,w3
+0169d6d4  mov w23,w2
+0169d6d8  mov w24,w1
+0169d6dc  mov x19,x0
+0169d6e0  tbnz w8,#0x0,0x0169d704
+0169d6e4  adrp x0,0x332b000
+0169d6e8  ldr x0,[x0, #0xf70]
+0169d6ec  bl 0x00b0789c
+0169d6f0  adrp x0,0x3363000
+0169d6f4  ldr x0,[x0, #0x18]
+0169d6f8  bl 0x00b0789c
+0169d6fc  mov w8,#0x1
+0169d700  strb w8,[x20, #0xb4d]
+0169d704  ldr x0,[x25]
+0169d708  bl 0x00b079a0
+0169d70c  cbz x0,0x0169d7c4
+0169d710  adrp x25,0x3363000
+0169d714  ldr x25,[x25, #0x18]
+0169d718  mov w1,w22
+0169d71c  mov w2,w21
+0169d720  mov x3,xzr
+0169d724  mov x20,x0
+0169d728  bl 0x024cbfdc
+0169d72c  scvtf s0,w24
+0169d730  scvtf s1,w23
+0169d734  scvtf s2,w22
+0169d738  scvtf s3,w21
+0169d73c  mov x0,sp
+0169d740  mov x1,xzr
+0169d744  stp xzr,xzr,[sp]
+0169d748  bl 0x024daef0
+0169d74c  ldp s0,s1,[sp]
+0169d750  ldp s2,s3,[sp, #0x8]
+0169d754  mov x0,x20
+0169d758  mov w1,wzr
+0169d75c  mov w2,wzr
+0169d760  mov x3,xzr
+0169d764  bl 0x024cc63c
+0169d768  mov x0,x20
+0169d76c  mov x1,xzr
+0169d770  bl 0x024cc40c
+0169d774  mov x0,x20
+0169d778  mov x1,xzr
+0169d77c  bl 0x0250f5d8
+0169d780  ldr x1,[x25]
+0169d784  mov x21,x0
+0169d788  mov x0,x19
+0169d78c  mov x2,xzr
+0169d790  bl 0x01fd2850
+0169d794  mov x1,x21
+0169d798  mov x2,xzr
+0169d79c  bl 0x020b0d44
+0169d7a0  mov w1,#0x1
+0169d7a4  mov x0,x20
+0169d7a8  bl 0x0169d7c8
+0169d7ac  ldp x19,x30,[sp, #0x40]
+0169d7b0  ldp x21,x20,[sp, #0x30]
+0169d7b4  ldp x23,x22,[sp, #0x20]
+0169d7b8  ldp x25,x24,[sp, #0x10]
+0169d7bc  add sp,sp,#0x50
+0169d7c0  ret
+0169d7c4  bl 0x00b079b0

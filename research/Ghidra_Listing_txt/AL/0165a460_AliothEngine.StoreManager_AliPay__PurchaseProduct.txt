@@ -1,0 +1,55 @@
+Function: AliothEngine.StoreManager_AliPay$$PurchaseProduct @ 0165a460
+
+--- Calls OUT ---
+  -> ProtocolGame_HttpRequest$$V3_POST_Order_Create @ 00ddc2dc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Int32$$TryParse @ 0214e358
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp62 @ 010670b0
+
+--- Calls IN ---
+
+--- Listing ---
+0165a460  stp x23,x22,[sp, #-0x30]!
+0165a464  stp x21,x20,[sp, #0x10]
+0165a468  stp x19,x30,[sp, #0x20]
+0165a46c  adrp x22,0x3577000
+0165a470  adrp x23,0x334a000
+0165a474  ldrb w8,[x22, #0x85e]
+0165a478  ldr x23,[x23, #0x9c0]
+0165a47c  mov x20,x2
+0165a480  mov x19,x1
+0165a484  mov x21,x0
+0165a488  tbnz w8,#0x0,0x0165a4ac
+0165a48c  adrp x0,0x334a000
+0165a490  ldr x0,[x0, #0x9c0]
+0165a494  bl 0x00b0789c
+0165a498  adrp x0,0x330e000
+0165a49c  ldr x0,[x0, #0x888]
+0165a4a0  bl 0x00b0789c
+0165a4a4  mov w8,#0x1
+0165a4a8  strb w8,[x22, #0x85e]
+0165a4ac  ldr x8,[x23]
+0165a4b0  ldr x8,[x8, #0xb8]
+0165a4b4  ldr x0,[x8, #0x50]
+0165a4b8  cbz x0,0x0165a4dc
+0165a4bc  mov x1,x21
+0165a4c0  mov x2,x19
+0165a4c4  mov x3,x20
+0165a4c8  ldp x19,x30,[sp, #0x20]
+0165a4cc  ldp x21,x20,[sp, #0x10]
+0165a4d0  mov x4,xzr
+0165a4d4  ldp x23,x22,[sp], #0x30
+0165a4d8  b 0x010670b0
+0165a4dc  adrp x20,0x330e000
+0165a4e0  ldr x20,[x20, #0x888]
+0165a4e4  add x1,x21,#0x60
+0165a4e8  mov x0,x19
+0165a4ec  mov x2,xzr
+0165a4f0  bl 0x0214e358
+0165a4f4  ldr x1,[x20]
+0165a4f8  mov x0,x19
+0165a4fc  ldp x19,x30,[sp, #0x20]
+0165a500  ldp x21,x20,[sp, #0x10]
+0165a504  mov x2,xzr
+0165a508  ldp x23,x22,[sp], #0x30
+0165a50c  b 0x00ddc2dc

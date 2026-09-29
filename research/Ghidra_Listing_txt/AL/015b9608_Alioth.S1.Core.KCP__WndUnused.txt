@@ -1,0 +1,58 @@
+Function: Alioth.S1.Core.KCP$$WndUnused @ 015b9608
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Alioth.S1.Core.Array<object>$$get_Length @ 01d9337c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp10 @ 01060c2c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- Alioth.S1.Core.KCP$$Flush @ 015b8f84
+
+--- Listing ---
+015b9608  stp x21,x20,[sp, #-0x20]!
+015b960c  stp x19,x30,[sp, #0x10]
+015b9610  adrp x20,0x3577000
+015b9614  adrp x21,0x333d000
+015b9618  ldrb w8,[x20, #0x111]
+015b961c  ldr x21,[x21, #0xfc0]
+015b9620  mov x19,x0
+015b9624  tbnz w8,#0x0,0x015b9648
+015b9628  adrp x0,0x331e000
+015b962c  ldr x0,[x0, #0xfe8]
+015b9630  bl 0x00b0789c
+015b9634  adrp x0,0x333d000
+015b9638  ldr x0,[x0, #0xfc0]
+015b963c  bl 0x00b0789c
+015b9640  mov w8,#0x1
+015b9644  strb w8,[x20, #0x111]
+015b9648  ldr x8,[x21]
+015b964c  ldr x8,[x8, #0xb8]
+015b9650  ldr x0,[x8, #0xd0]
+015b9654  cbz x0,0x015b966c
+015b9658  mov x1,x19
+015b965c  ldp x19,x30,[sp, #0x10]
+015b9660  mov x2,xzr
+015b9664  ldp x21,x20,[sp], #0x20
+015b9668  b 0x01060c2c
+015b966c  ldr x0,[x19, #0x88]
+015b9670  cbz x0,0x015b96bc
+015b9674  adrp x20,0x331e000
+015b9678  ldr x20,[x20, #0xfe8]
+015b967c  ldr x1,[x20]
+015b9680  bl 0x01d9337c
+015b9684  ldr w21,[x19, #0x44]
+015b9688  sxtw x8,w0
+015b968c  cmp x8,x21
+015b9690  b.ge 0x015b96ac
+015b9694  ldr x0,[x19, #0x88]
+015b9698  cbz x0,0x015b96bc
+015b969c  ldr x1,[x20]
+015b96a0  bl 0x01d9337c
+015b96a4  sub w0,w21,w0
+015b96a8  b 0x015b96b0
+015b96ac  mov w0,wzr
+015b96b0  ldp x19,x30,[sp, #0x10]
+015b96b4  ldp x21,x20,[sp], #0x20
+015b96b8  ret
+015b96bc  bl 0x00b079b0

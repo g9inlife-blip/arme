@@ -1,0 +1,71 @@
+Function: AliothExtensions$$get_CurrentUISence @ 00e18bf4
+
+--- Calls OUT ---
+  -> UnityEngine.SceneManagement.Scene$$get_name @ 02502c9c
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.SceneManagement.SceneManager$$GetActiveScene @ 02502730
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp40 @ 010643f0
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.String$$Equals @ 01fde08c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.AliothExtensionsWrap$$_g_get_CurrentUISence @ 0116bbe0
+  <- TipsStigmataMono$$ShowTips @ 00f1150c
+  <- BattleChallengePanelMono$$Init @ 00e67204
+  <- BattleChallengePanelMono$$RegisterCallBack @ 00e67d74
+
+--- Listing ---
+00e18bf4  str x20,[sp, #-0x20]!
+00e18bf8  stp x19,x30,[sp, #0x10]
+00e18bfc  adrp x20,0x3572000
+00e18c00  adrp x19,0x3348000
+00e18c04  ldrb w8,[x20, #0x613]
+00e18c08  ldr x19,[x19, #0x138]
+00e18c0c  tbnz w8,#0x0,0x00e18c3c
+00e18c10  adrp x0,0x3348000
+00e18c14  ldr x0,[x0, #0x138]
+00e18c18  bl 0x00b0789c
+00e18c1c  adrp x0,0x3365000
+00e18c20  ldr x0,[x0, #0x7e0]
+00e18c24  bl 0x00b0789c
+00e18c28  adrp x0,0x3337000
+00e18c2c  ldr x0,[x0, #0xbe8]
+00e18c30  bl 0x00b0789c
+00e18c34  mov w8,#0x1
+00e18c38  strb w8,[x20, #0x613]
+00e18c3c  ldr x0,[x19]
+00e18c40  str wzr,[sp, #0x8]
+00e18c44  ldr w8,[x0, #0xe0]
+00e18c48  cbnz w8,0x00e18c54
+00e18c4c  bl 0x00b0798c
+00e18c50  ldr x0,[x19]
+00e18c54  ldr x8,[x0, #0xb8]
+00e18c58  ldr x0,[x8, #0x1f8]
+00e18c5c  cbz x0,0x00e18c6c
+00e18c60  mov x1,xzr
+00e18c64  bl 0x010643f0
+00e18c68  b 0x00e18cb4
+00e18c6c  adrp x8,0x3365000
+00e18c70  ldr x8,[x8, #0x7e0]
+00e18c74  ldr x0,[x8]
+00e18c78  ldr w8,[x0, #0xe0]
+00e18c7c  cbnz w8,0x00e18c84
+00e18c80  bl 0x00b0798c
+00e18c84  mov x0,xzr
+00e18c88  bl 0x02502730
+00e18c8c  str w0,[sp, #0x8]
+00e18c90  add x0,sp,#0x8
+00e18c94  mov x1,xzr
+00e18c98  bl 0x02502c9c
+00e18c9c  cbz x0,0x00e18cc4
+00e18ca0  adrp x8,0x3337000
+00e18ca4  ldr x8,[x8, #0xbe8]
+00e18ca8  mov x2,xzr
+00e18cac  ldr x1,[x8]
+00e18cb0  bl 0x01fde08c
+00e18cb4  ldp x19,x30,[sp, #0x10]
+00e18cb8  and w0,w0,#0x1
+00e18cbc  ldr x20,[sp], #0x20
+00e18cc0  ret
+00e18cc4  bl 0x00b079b0

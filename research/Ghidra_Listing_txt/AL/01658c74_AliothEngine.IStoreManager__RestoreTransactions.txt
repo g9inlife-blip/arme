@@ -1,0 +1,42 @@
+Function: AliothEngine.IStoreManager$$RestoreTransactions @ 01658c74
+
+--- Calls OUT ---
+  -> AliothEngine.IStoreManager$$HandleRestoreTransactionsFailed @ 01658cf4
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01658c74  stp x21,x20,[sp, #-0x20]!
+01658c78  stp x19,x30,[sp, #0x10]
+01658c7c  adrp x20,0x3577000
+01658c80  adrp x21,0x336f000
+01658c84  ldrb w8,[x20, #0x841]
+01658c88  ldr x21,[x21, #0x1e8]
+01658c8c  mov x19,x0
+01658c90  tbnz w8,#0x0,0x01658cb4
+01658c94  adrp x0,0x336f000
+01658c98  ldr x0,[x0, #0x1e8]
+01658c9c  bl 0x00b0789c
+01658ca0  adrp x0,0x3327000
+01658ca4  ldr x0,[x0, #0x270]
+01658ca8  bl 0x00b0789c
+01658cac  mov w8,#0x1
+01658cb0  strb w8,[x20, #0x841]
+01658cb4  ldr x8,[x21]
+01658cb8  ldr x8,[x8, #0xb8]
+01658cbc  ldr x0,[x8, #0x48]
+01658cc0  cbz x0,0x01658cd8
+01658cc4  mov x1,x19
+01658cc8  ldp x19,x30,[sp, #0x10]
+01658ccc  mov x2,xzr
+01658cd0  ldp x21,x20,[sp], #0x20
+01658cd4  b 0x01060dac
+01658cd8  adrp x8,0x3327000
+01658cdc  ldr x8,[x8, #0x270]
+01658ce0  mov x0,x19
+01658ce4  ldp x19,x30,[sp, #0x10]
+01658ce8  ldr x1,[x8]
+01658cec  ldp x21,x20,[sp], #0x20
+01658cf0  b 0x01658cf4

@@ -1,0 +1,35 @@
+Function: AliothEngine.GateSoundManager$$LoadAndPlayGameAmb @ 0164c7a4
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+
+--- Listing ---
+0164c7a4  str x20,[sp, #-0x20]!
+0164c7a8  stp x19,x30,[sp, #0x10]
+0164c7ac  adrp x19,0x3577000
+0164c7b0  adrp x20,0x3330000
+0164c7b4  ldrb w8,[x19, #0x7c1]
+0164c7b8  ldr x20,[x20, #0x230]
+0164c7bc  tbnz w8,#0x0,0x0164c7d4
+0164c7c0  adrp x0,0x3330000
+0164c7c4  ldr x0,[x0, #0x230]
+0164c7c8  bl 0x00b0789c
+0164c7cc  mov w8,#0x1
+0164c7d0  strb w8,[x19, #0x7c1]
+0164c7d4  ldr x0,[x20]
+0164c7d8  bl 0x00b079a0
+0164c7dc  cbz x0,0x0164c800
+0164c7e0  mov x1,xzr
+0164c7e4  mov x19,x0
+0164c7e8  bl 0x02194104
+0164c7ec  str wzr,[x19, #0x10]
+0164c7f0  mov x0,x19
+0164c7f4  ldp x19,x30,[sp, #0x10]
+0164c7f8  ldr x20,[sp], #0x20
+0164c7fc  ret
+0164c800  bl 0x00b079b0

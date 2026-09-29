@@ -1,0 +1,35 @@
+Function: AliothEngine.DataStructures.BetterQueue<object>$$.ctor @ 01f41778
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- AliothEngine.AssetLoader$$AcquireQueue @ 0166b820
+  <- AliothEngine.AssetDownloader$$RequestDownload @ 0165ea9c
+
+--- Listing ---
+01f41778  str x20,[sp, #-0x20]!
+01f4177c  stp x19,x30,[sp, #0x10]
+01f41780  ldr x8,[x1, #0x20]
+01f41784  mov x19,x1
+01f41788  mov x20,x0
+01f4178c  ldr x8,[x8, #0xc0]
+01f41790  ldr x8,[x8, #0x20]
+01f41794  ldrb w9,[x8, #0x132]
+01f41798  tbnz w9,#0x0,0x01f417a8
+01f4179c  mov x0,x8
+01f417a0  bl 0x00b2ac40
+01f417a4  mov x8,x0
+01f417a8  ldr w9,[x8, #0xe0]
+01f417ac  cbnz w9,0x01f417b8
+01f417b0  mov x0,x8
+01f417b4  bl 0x00b0798c
+01f417b8  ldr x8,[x19, #0x20]
+01f417bc  ldp x19,x30,[sp, #0x10]
+01f417c0  mov x0,x20
+01f417c4  ldr x8,[x8, #0xc0]
+01f417c8  ldr x1,[x8, #0x18]
+01f417cc  ldr x2,[x1, #0x8]
+01f417d0  ldr x20,[sp], #0x20
+01f417d4  br x2

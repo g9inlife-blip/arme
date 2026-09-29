@@ -1,0 +1,30 @@
+Function: ReadypanelNode$$get_btn_achievementDetail @ 00fcddb4
+
+--- Calls OUT ---
+  -> BaseNode$$GetUINode @ 00dc06f8
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- ReadyMono$$ShowAchieves @ 00e5f484
+  <- ReadyMono$$InitReady @ 00e5dec0
+
+--- Listing ---
+00fcddb4  stp x21,x20,[sp, #-0x20]!
+00fcddb8  stp x19,x30,[sp, #0x10]
+00fcddbc  adrp x20,0x3573000
+00fcddc0  adrp x21,0x3375000
+00fcddc4  ldrb w8,[x20, #0xe6f]
+00fcddc8  ldr x21,[x21, #0x478]
+00fcddcc  mov x19,x0
+00fcddd0  tbnz w8,#0x0,0x00fcdde8
+00fcddd4  adrp x0,0x3375000
+00fcddd8  ldr x0,[x0, #0x478]
+00fcdddc  bl 0x00b0789c
+00fcdde0  mov w8,#0x1
+00fcdde4  strb w8,[x20, #0xe6f]
+00fcdde8  ldr x1,[x21]
+00fcddec  mov x0,x19
+00fcddf0  ldp x19,x30,[sp, #0x10]
+00fcddf4  mov x2,xzr
+00fcddf8  ldp x21,x20,[sp], #0x20
+00fcddfc  b 0x00dc06f8

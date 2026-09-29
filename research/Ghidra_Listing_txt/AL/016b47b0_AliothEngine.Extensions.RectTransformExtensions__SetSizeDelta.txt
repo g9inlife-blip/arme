@@ -1,0 +1,84 @@
+Function: AliothEngine.Extensions.RectTransformExtensions$$SetSizeDelta @ 016b47b0
+
+--- Calls OUT ---
+  -> UnityEngine.RectTransform$$set_offsetMin @ 024f6830
+  -> UnityEngine.RectTransform$$get_rect @ 024f6150
+  -> UnityEngine.Rect$$get_size @ 024db088
+  -> UnityEngine.RectTransform$$get_offsetMax @ 024f6924
+  -> UnityEngine.RectTransform$$set_offsetMax @ 024f69c4
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.RectTransform$$get_pivot @ 024f665c
+  -> UnityEngine.RectTransform$$get_offsetMin @ 024f67dc
+
+--- Calls IN ---
+  <- AliothEngine.Extensions.RectTransformExtensions$$SetWidth @ 016b48bc
+  <- AliothEngine.Extensions.RectTransformExtensions$$SetHeight @ 016b4914
+
+--- Listing ---
+016b47b0  sub sp,sp,#0x50
+016b47b4  str d12,[sp, #0x10]
+016b47b8  stp d11,d10,[sp, #0x20]
+016b47bc  stp d9,d8,[sp, #0x30]
+016b47c0  stp x19,x30,[sp, #0x40]
+016b47c4  stp xzr,xzr,[sp]
+016b47c8  cbz x0,0x016b48b8
+016b47cc  mov x1,xzr
+016b47d0  mov v8.16B,v1.16B
+016b47d4  mov v9.16B,v0.16B
+016b47d8  mov x19,x0
+016b47dc  bl 0x024f6150
+016b47e0  mov x0,sp
+016b47e4  mov x1,xzr
+016b47e8  stp s0,s1,[sp]
+016b47ec  stp s2,s3,[sp, #0x8]
+016b47f0  bl 0x024db088
+016b47f4  mov x0,x19
+016b47f8  mov x1,xzr
+016b47fc  fsub s11,s9,s0
+016b4800  fsub s12,s8,s1
+016b4804  bl 0x024f67dc
+016b4808  mov x0,x19
+016b480c  mov x1,xzr
+016b4810  mov v8.16B,v0.16B
+016b4814  mov v9.16B,v1.16B
+016b4818  bl 0x024f665c
+016b481c  mov x0,x19
+016b4820  mov x1,xzr
+016b4824  mov v10.16B,v0.16B
+016b4828  bl 0x024f665c
+016b482c  fmul s0,s11,s10
+016b4830  fmul s1,s12,s1
+016b4834  fsub s0,s8,s0
+016b4838  fsub s1,s9,s1
+016b483c  mov x0,x19
+016b4840  mov x1,xzr
+016b4844  bl 0x024f6830
+016b4848  mov x0,x19
+016b484c  mov x1,xzr
+016b4850  bl 0x024f6924
+016b4854  mov x0,x19
+016b4858  mov x1,xzr
+016b485c  mov v8.16B,v0.16B
+016b4860  mov v9.16B,v1.16B
+016b4864  bl 0x024f665c
+016b4868  mov x0,x19
+016b486c  mov x1,xzr
+016b4870  mov v10.16B,v0.16B
+016b4874  bl 0x024f665c
+016b4878  fmov s0,0x3f800000
+016b487c  fsub s2,s0,s10
+016b4880  fsub s0,s0,s1
+016b4884  fmul s1,s11,s2
+016b4888  fmul s2,s12,s0
+016b488c  fadd s0,s8,s1
+016b4890  fadd s1,s9,s2
+016b4894  mov x0,x19
+016b4898  mov x1,xzr
+016b489c  bl 0x024f69c4
+016b48a0  ldp x19,x30,[sp, #0x40]
+016b48a4  ldp d9,d8,[sp, #0x30]
+016b48a8  ldp d11,d10,[sp, #0x20]
+016b48ac  ldr d12,[sp, #0x10]
+016b48b0  add sp,sp,#0x50
+016b48b4  ret
+016b48b8  bl 0x00b079b0

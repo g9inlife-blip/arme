@@ -1,0 +1,24 @@
+Function: AliothEngine.NotificationManager_None$$DoGetRegistrationId @ 01657efc
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+
+--- Listing ---
+01657efc  str x20,[sp, #-0x20]!
+01657f00  stp x19,x30,[sp, #0x10]
+01657f04  adrp x19,0x3577000
+01657f08  adrp x20,0x332c000
+01657f0c  ldrb w8,[x19, #0x82a]
+01657f10  ldr x20,[x20, #0x2c0]
+01657f14  tbnz w8,#0x0,0x01657f2c
+01657f18  adrp x0,0x332c000
+01657f1c  ldr x0,[x0, #0x2c0]
+01657f20  bl 0x00b0789c
+01657f24  mov w8,#0x1
+01657f28  strb w8,[x19, #0x82a]
+01657f2c  ldr x0,[x20]
+01657f30  ldp x19,x30,[sp, #0x10]
+01657f34  ldr x20,[sp], #0x20
+01657f38  ret

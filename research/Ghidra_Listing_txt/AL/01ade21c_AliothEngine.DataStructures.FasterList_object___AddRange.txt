@@ -1,0 +1,88 @@
+Function: AliothEngine.DataStructures.FasterList<object>$$AddRange @ 01ade21c
+
+--- Calls OUT ---
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+
+--- Listing ---
+01ade21c  str x22,[sp, #-0x30]!
+01ade220  stp x21,x20,[sp, #0x10]
+01ade224  stp x19,x30,[sp, #0x20]
+01ade228  cbz x1,0x01ade350
+01ade22c  ldr x8,[x2, #0x20]
+01ade230  mov x21,x1
+01ade234  mov x20,x2
+01ade238  mov x19,x0
+01ade23c  ldr x8,[x8, #0xc0]
+01ade240  ldr x1,[x8, #0x58]
+01ade244  ldrb w8,[x1, #0x132]
+01ade248  tbnz w8,#0x0,0x01ade258
+01ade24c  mov x0,x1
+01ade250  bl 0x00b2ac40
+01ade254  mov x1,x0
+01ade258  ldr x8,[x21]
+01ade25c  ldrh w9,[x8, #0x12a]
+01ade260  cbz x9,0x01ade284
+01ade264  ldr x10,[x8, #0xb0]
+01ade268  add x10,x10,#0x8
+01ade26c  ldur x11,[x10, #-0x8]
+01ade270  cmp x11,x1
+01ade274  b.eq 0x01ade294
+01ade278  subs x9,x9,#0x1
+01ade27c  add x10,x10,#0x10
+01ade280  b.ne 0x01ade26c
+01ade284  mov x0,x21
+01ade288  mov w2,wzr
+01ade28c  bl 0x00b2ae24
+01ade290  b 0x01ade2a0
+01ade294  ldrsw x9,[x10]
+01ade298  add x8,x8,x9, LSL #0x4
+01ade29c  add x0,x8,#0x138
+01ade2a0  ldp x8,x1,[x0]
+01ade2a4  mov x0,x21
+01ade2a8  blr x8
+01ade2ac  ldr x8,[x20, #0x20]
+01ade2b0  mov x22,x0
+01ade2b4  ldr x8,[x8, #0xc0]
+01ade2b8  ldr x1,[x8, #0x8]
+01ade2bc  ldrb w8,[x1, #0x132]
+01ade2c0  tbnz w8,#0x0,0x01ade2d0
+01ade2c4  mov x0,x1
+01ade2c8  bl 0x00b2ac40
+01ade2cc  mov x1,x0
+01ade2d0  ldr x8,[x21]
+01ade2d4  ldrh w9,[x8, #0x12a]
+01ade2d8  cbz x9,0x01ade2fc
+01ade2dc  ldr x10,[x8, #0xb0]
+01ade2e0  add x10,x10,#0x8
+01ade2e4  ldur x11,[x10, #-0x8]
+01ade2e8  cmp x11,x1
+01ade2ec  b.eq 0x01ade30c
+01ade2f0  subs x9,x9,#0x1
+01ade2f4  add x10,x10,#0x10
+01ade2f8  b.ne 0x01ade2e4
+01ade2fc  mov x0,x21
+01ade300  mov w2,wzr
+01ade304  bl 0x00b2ae24
+01ade308  b 0x01ade318
+01ade30c  ldrsw x9,[x10]
+01ade310  add x8,x8,x9, LSL #0x4
+01ade314  add x0,x8,#0x138
+01ade318  ldp x8,x1,[x0]
+01ade31c  mov x0,x21
+01ade320  blr x8
+01ade324  ldr x8,[x20, #0x20]
+01ade328  mov w2,w0
+01ade32c  mov x0,x19
+01ade330  ldp x19,x30,[sp, #0x20]
+01ade334  ldr x8,[x8, #0xc0]
+01ade338  ldp x21,x20,[sp, #0x10]
+01ade33c  mov x1,x22
+01ade340  ldr x3,[x8, #0x68]
+01ade344  ldr x4,[x3, #0x8]
+01ade348  ldr x22,[sp], #0x30
+01ade34c  br x4
+01ade350  bl 0x00b079b0

@@ -1,0 +1,71 @@
+Function: AliothEngine.AssetIndexHolder.<>c__DisplayClass0_0$$<Load>b__0 @ 01666088
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b0 @ 00b079b0
+  -> President.MsgPackSerializer$$Deserialize<object> @ 017a8b18
+
+--- Calls IN ---
+
+--- Listing ---
+01666088  stp x21,x20,[sp, #-0x20]!
+0166608c  stp x19,x30,[sp, #0x10]
+01666090  adrp x20,0x3577000
+01666094  ldrb w8,[x20, #0x8f7]
+01666098  mov x19,x0
+0166609c  tbnz w8,#0x0,0x016660c0
+016660a0  adrp x0,0x334e000
+016660a4  ldr x0,[x0, #0x428]
+016660a8  bl 0x00b0789c
+016660ac  adrp x0,0x3317000
+016660b0  ldr x0,[x0, #0x438]
+016660b4  bl 0x00b0789c
+016660b8  mov w8,#0x1
+016660bc  strb w8,[x20, #0x8f7]
+016660c0  ldr x8,[x19, #0x18]
+016660c4  cbz x8,0x01666144
+016660c8  mov x20,x19
+016660cc  str xzr,[x20, #0x10]!
+016660d0  mov x0,x20
+    ; [PRE] try { // try from 016660d0 to 016660db has its CatchHandler @ 0166615c
+016660d4  mov x1,xzr
+016660d8  bl 0x00b07850
+    ; [POST] } // end try from 016660d0 to 016660db
+016660dc  ldr x8,[x20]
+016660e0  cbnz x8,0x01666130
+016660e4  adrp x21,0x3317000
+016660e8  ldr x21,[x21, #0x438]
+016660ec  ldr x0,[x21]
+016660f0  ldr w8,[x0, #0xe0]
+016660f4  cbnz w8,0x01666100
+016660f8  bl 0x00b0798c
+    ; [PRE] try { // try from 016660f8 to 016660fb has its CatchHandler @ 01666154
+    ; [POST] } // end try from 016660f8 to 016660fb
+016660fc  ldr x0,[x21]
+01666100  ldr x8,[x0, #0xb8]
+01666104  ldr x0,[x8, #0x10]
+01666108  cbz x0,0x01666148
+0166610c  adrp x8,0x334e000
+01666110  ldr x8,[x8, #0x428]
+01666114  ldr x1,[x19, #0x20]
+01666118  ldr x2,[x8]
+0166611c  bl 0x017a8b18
+    ; [PRE] try { // try from 0166611c to 0166612f has its CatchHandler @ 01666158
+01666120  mov x1,x0
+01666124  str x1,[x20]
+01666128  mov x0,x20
+0166612c  bl 0x00b07850
+    ; [POST] } // end try from 0166611c to 0166612f
+01666130  mov w8,#0x1
+01666134  strb w8,[x19, #0x28]
+01666138  ldp x19,x30,[sp, #0x10]
+0166613c  ldp x21,x20,[sp], #0x20
+01666140  ret
+01666144  bl 0x00b079b0
+    ; [PRE] try { // try from 01666144 to 01666147 has its CatchHandler @ 01666150
+    ; [POST] } // end try from 01666144 to 01666147
+01666148  bl 0x00b079b0
+    ; [PRE] try { // try from 01666148 to 0166614b has its CatchHandler @ 0166614c
+    ; [POST] } // end try from 01666148 to 0166614b

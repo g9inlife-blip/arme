@@ -1,0 +1,41 @@
+Function: AliothEngine.Extensions.StringExtensions.<>c$$<MakeStackTraceShorter>b__15_0 @ 016b9154
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.String$$Replace @ 01fe06d8
+  -> System.String$$Trim @ 01fe2e10
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+
+--- Listing ---
+016b9154  str x20,[sp, #-0x20]!
+016b9158  stp x19,x30,[sp, #0x10]
+016b915c  adrp x20,0x3577000
+016b9160  ldrb w8,[x20, #0xc25]
+016b9164  mov x19,x1
+016b9168  tbnz w8,#0x0,0x016b918c
+016b916c  adrp x0,0x333b000
+016b9170  ldr x0,[x0, #0xee8]
+016b9174  bl 0x00b0789c
+016b9178  adrp x0,0x332c000
+016b917c  ldr x0,[x0, #0x2c0]
+016b9180  bl 0x00b0789c
+016b9184  mov w8,#0x1
+016b9188  strb w8,[x20, #0xc25]
+016b918c  cbz x19,0x016b91c8
+016b9190  mov x0,x19
+016b9194  mov x1,xzr
+016b9198  bl 0x01fe2e10
+016b919c  cbz x0,0x016b91c8
+016b91a0  adrp x8,0x333b000
+016b91a4  adrp x9,0x332c000
+016b91a8  ldr x8,[x8, #0xee8]
+016b91ac  ldr x9,[x9, #0x2c0]
+016b91b0  ldp x19,x30,[sp, #0x10]
+016b91b4  mov x3,xzr
+016b91b8  ldr x1,[x8]
+016b91bc  ldr x2,[x9]
+016b91c0  ldr x20,[sp], #0x20
+016b91c4  b 0x01fe06d8
+016b91c8  bl 0x00b079b0

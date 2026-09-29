@@ -1,0 +1,48 @@
+Function: AliothEngine.Extensions.RectExtensions$$SplitVertical @ 016b23b0
+
+--- Calls OUT ---
+  -> UnityEngine.Rect$$get_height @ 024db078
+  -> UnityEngine.Rect$$set_height @ 024db080
+  -> UnityEngine.Rect$$get_y @ 024daf44
+  -> UnityEngine.Rect$$set_y @ 024daf4c
+
+--- Calls IN ---
+
+--- Listing ---
+016b23b0  sub sp,sp,#0x30
+016b23b4  str x20,[sp, #0x10]
+016b23b8  stp x19,x30,[sp, #0x20]
+016b23bc  mov w19,w1
+016b23c0  mov w20,w0
+016b23c4  mov x0,sp
+016b23c8  mov x1,xzr
+016b23cc  stp s0,s1,[sp]
+016b23d0  stp s2,s3,[sp, #0x8]
+016b23d4  bl 0x024db078
+016b23d8  scvtf s1,w19
+016b23dc  mov w8,#0x7f800000
+016b23e0  fdiv s0,s0,s1
+016b23e4  fmov s1,w8
+016b23e8  fcvtzs w8,s0
+016b23ec  fcmp s0,s1
+016b23f0  mov w9,#0x80000000
+016b23f4  csel w19,w9,w8,eq
+016b23f8  scvtf s0,w19
+016b23fc  mov x0,sp
+016b2400  mov x1,xzr
+016b2404  bl 0x024db080
+016b2408  mov x0,sp
+016b240c  mov x1,xzr
+016b2410  bl 0x024daf44
+016b2414  mul w8,w19,w20
+016b2418  scvtf s1,w8
+016b241c  fadd s0,s0,s1
+016b2420  mov x0,sp
+016b2424  mov x1,xzr
+016b2428  bl 0x024daf4c
+016b242c  ldp s0,s1,[sp]
+016b2430  ldp s2,s3,[sp, #0x8]
+016b2434  ldp x19,x30,[sp, #0x20]
+016b2438  ldr x20,[sp, #0x10]
+016b243c  add sp,sp,#0x30
+016b2440  ret

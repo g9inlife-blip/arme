@@ -1,0 +1,39 @@
+Function: Response_CreatePayOrder$$.ctor @ 00dddc78
+
+--- Calls OUT ---
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.Response_CreatePayOrderWrap$$__CreateInstance @ 0136a3ac
+
+--- Listing ---
+00dddc78  stp x21,x20,[sp, #-0x20]!
+00dddc7c  stp x19,x30,[sp, #0x10]
+00dddc80  adrp x21,0x3572000
+00dddc84  adrp x20,0x334a000
+00dddc88  ldrb w8,[x21, #0x2dc]
+00dddc8c  ldr x20,[x20, #0xf98]
+00dddc90  mov x19,x0
+00dddc94  tbnz w8,#0x0,0x00dddcac
+00dddc98  adrp x0,0x334a000
+00dddc9c  ldr x0,[x0, #0xf98]
+00dddca0  bl 0x00b0789c
+00dddca4  mov w8,#0x1
+00dddca8  strb w8,[x21, #0x2dc]
+00dddcac  mov x0,x19
+00dddcb0  mov x1,xzr
+00dddcb4  bl 0x02194104
+00dddcb8  ldr x8,[x20]
+00dddcbc  ldr x8,[x8, #0xb8]
+00dddcc0  ldr x0,[x8]
+00dddcc4  cbz x0,0x00dddcdc
+00dddcc8  mov x1,x19
+00dddccc  ldp x19,x30,[sp, #0x10]
+00dddcd0  mov x2,xzr
+00dddcd4  ldp x21,x20,[sp], #0x20
+00dddcd8  b 0x01060dac
+00dddcdc  ldp x19,x30,[sp, #0x10]
+00dddce0  ldp x21,x20,[sp], #0x20
+00dddce4  ret

@@ -1,0 +1,91 @@
+Function: AliothEngine.GameUpdateService.<StartVersionCheckUpdate>d__57$$MoveNext @ 01681a0c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Action<object>$$.ctor @ 01909b80
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.MonoBehaviour$$StartCoroutine @ 024e4070
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> AliothEngine.GameUpdateService$$VersionCheckUpdate @ 0167dc90
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Action<Int32Enum>$$.ctor @ 019093b8
+
+--- Calls IN ---
+
+--- Listing ---
+01681a0c  str x22,[sp, #-0x30]!
+01681a10  stp x21,x20,[sp, #0x10]
+01681a14  stp x19,x30,[sp, #0x20]
+01681a18  adrp x20,0x3577000
+01681a1c  ldrb w8,[x20, #0xa50]
+01681a20  mov x19,x0
+01681a24  tbnz w8,#0x0,0x01681a60
+01681a28  adrp x0,0x3309000
+01681a2c  ldr x0,[x0, #0xd98]
+01681a30  bl 0x00b0789c
+01681a34  adrp x0,0x3377000
+01681a38  ldr x0,[x0, #0x8f8]
+01681a3c  bl 0x00b0789c
+01681a40  adrp x0,0x3380000
+01681a44  ldr x0,[x0, #0x2f8]
+01681a48  bl 0x00b0789c
+01681a4c  adrp x0,0x3360000
+01681a50  ldr x0,[x0, #0x850]
+01681a54  bl 0x00b0789c
+01681a58  mov w8,#0x1
+01681a5c  strb w8,[x20, #0xa50]
+01681a60  ldr w8,[x19, #0x10]
+01681a64  mov w0,wzr
+01681a68  cmp w8,#0x1
+01681a6c  b.eq 0x01681b20
+01681a70  cbnz w8,0x01681b28
+01681a74  adrp x8,0x3309000
+01681a78  ldr x8,[x8, #0xd98]
+01681a7c  mov w9,#0xffffffff
+01681a80  str w9,[x19, #0x10]
+01681a84  ldr x20,[x19, #0x20]
+01681a88  ldr x0,[x8]
+01681a8c  bl 0x00b079a0
+01681a90  cbz x0,0x01681b38
+01681a94  adrp x8,0x3380000
+01681a98  ldr x8,[x8, #0x2f8]
+01681a9c  adrp x22,0x3377000
+01681aa0  mov x1,x20
+01681aa4  mov x3,xzr
+01681aa8  ldr x2,[x8]
+01681aac  ldr x22,[x22, #0x8f8]
+01681ab0  mov x21,x0
+01681ab4  bl 0x019093b8
+01681ab8  ldr x0,[x22]
+01681abc  bl 0x00b079a0
+01681ac0  cbz x0,0x01681b38
+01681ac4  adrp x8,0x3360000
+01681ac8  ldr x8,[x8, #0x850]
+01681acc  mov x1,x20
+01681ad0  mov x3,xzr
+01681ad4  mov x22,x0
+01681ad8  ldr x2,[x8]
+01681adc  bl 0x01909b80
+01681ae0  cbz x20,0x01681b38
+01681ae4  mov x0,x20
+01681ae8  mov x1,x21
+01681aec  mov x2,x22
+01681af0  bl 0x0167dc90
+01681af4  mov x1,x0
+01681af8  mov x0,x20
+01681afc  mov x2,xzr
+01681b00  bl 0x024e4070
+01681b04  mov x1,x0
+01681b08  mov x0,x19
+01681b0c  str x1,[x0, #0x18]!
+01681b10  bl 0x00b07850
+01681b14  mov w8,#0x1
+01681b18  mov w0,#0x1
+01681b1c  b 0x01681b24
+01681b20  mov w8,#0xffffffff
+01681b24  str w8,[x19, #0x10]
+01681b28  ldp x19,x30,[sp, #0x20]
+01681b2c  ldp x21,x20,[sp, #0x10]
+01681b30  ldr x22,[sp], #0x30
+01681b34  ret
+01681b38  bl 0x00b079b0
