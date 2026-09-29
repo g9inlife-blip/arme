@@ -1,7 +1,7 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.4
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.5
  *
- * v4.4: String.Join(string,string[]) 후킹으로 Sign 실제 Join 배열 추적 + MD5HashString 최종 입력 검증
+ * v4.5: V4_POST_Login → UnityWebRequest 생성/헤더/body → SendWebRequest 실제 전송 추적
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -13,6 +13,8 @@
  *  - ProtocolGame_HttpRequest.Sign(content, apiName)
  *  - ProtocolGame_HttpRequest.GetDefaultParams()
  *  - ProtocolGame_HttpRequest.V3_POST_AllInOne(app_key)
+ *  - UnityEngine.Networking.UnityWebRequest constructor / SetRequestHeader / SendWebRequest
+ *  - UnityEngine.Networking.UploadHandler.get_data (Send 시 POST body 확인)
  *
  * Usage:
  *   frida -U -p <PID> -l justice_hook.js
@@ -452,6 +454,34 @@ function findMethodAnywhereTyped(className, methodName, paramCount, preferredSec
     return null;
 }
 
+function findMethodAnywhereExact(className, methodName, expectedTypes) {
+    const domain=api.domain_get(), cp=Memory.alloc(Process.pointerSize);
+    const assemblies=api.domain_get_assemblies(domain,cp), count=cp.readU32();
+    const dot=className.lastIndexOf('.'), ns=dot>=0?className.substring(0,dot):'', cn=dot>=0?className.substring(dot+1):className;
+    const nsp=Memory.allocUtf8String(ns), cnp=Memory.allocUtf8String(cn);
+    for(let i=0;i<count;i++) try {
+        const img=api.assembly_get_image(assemblies.add(i*Process.pointerSize).readPointer());
+        const klass=api.class_from_name(img,nsp,cnp); if(klass.isNull()) continue;
+        const it=Memory.alloc(Process.pointerSize); it.writePointer(ptr(0));
+        while(true){ const m=api.class_get_methods(klass,it); if(m.isNull()) break;
+            if(api.method_get_name(m).readCString()!==methodName || api.method_get_param_count(m)!==expectedTypes.length) continue;
+            let exact=true, types=[]; for(let p=0;p<expectedTypes.length;p++){let t='?';try{t=api.type_get_name(api.method_get_param(m,p)).readCString();}catch(e){} types.push(t);if(t!==expectedTypes[p])exact=false;}
+            if(!exact)continue; let ret='?';try{ret=api.type_get_name(api.method_get_return_type(m)).readCString();}catch(e){}
+            console.log('[+] Found '+className+'.'+methodName+'('+types.join(', ')+') -> '+ret+' @ '+m.readPointer());
+            return {fnPtr:m.readPointer(),typeNames:types,retName:ret};
+        }
+    } catch(e){}
+    return null;
+}
+function findMethodAnywhereNoParams(className,methodName){return findMethodAnywhereExact(className,methodName,[]);}
+function readIl2cppByteArray(arrPtr,maxBytes){
+    if(arrPtr.isNull())return{length:0,text:'',hex:''};
+    try{const len=arrPtr.add(24).readU32(),n=Math.min(len,maxBytes||65536);let hex='',bytes=[];
+        for(let i=0;i<n;i++){const b=arrPtr.add(32+i).readU8();bytes.push(b);hex+=b.toString(16).padStart(2,'0');}
+        let textValue='';try{textValue=Memory.readUtf8String(arrPtr.add(32),n)||'';}catch(e){try{textValue=String.fromCharCode.apply(null,bytes);}catch(e2){}}
+        return{length:len,text:textValue,hex,truncated:len>n};
+    }catch(e){return{length:-1,text:'<byte[] read failed: '+e.message+'>',hex:''};}
+}
 function waitForIl2cpp() {
     return new Promise((resolve) => {
         const timer = setInterval(() => {
@@ -514,13 +544,48 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.4 starting...');
+    console.log('[*] justice_hook v4.5 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
     console.log('[*] Installing hooks...\n');
 
     let hookCount = 0;
+
+    // Login HTTP trace state.
+    let loginTraceUntil=0, loginTraceSeq=0;
+    const requestMeta=new Map();
+    let uwrGetUrl=null, uwrGetMethod=null, uwrGetUploadHandler=null, uploadGetData=null;
+    const loginTraceActive=()=>Date.now()<=loginTraceUntil;
+    function describeUnityWebRequest(req){
+        const out={url:'',method:'',body:null};
+        try{if(uwrGetUrl)out.url=readIl2cppString(uwrGetUrl(req));}catch(e){out.url='<url read failed: '+e.message+'>';}
+        try{if(uwrGetMethod)out.method=readIl2cppString(uwrGetMethod(req));}catch(e){out.method='<method read failed: '+e.message+'>';}
+        try{if(uwrGetUploadHandler){const uh=uwrGetUploadHandler(req);if(!uh.isNull()&&uploadGetData)out.body=readIl2cppByteArray(uploadGetData(uh),65536);}}catch(e){out.body={length:-1,text:'<body read failed: '+e.message+'>',hex:''};}
+        return out;
+    }
+    try{
+        const U='UnityEngine.Networking.UnityWebRequest',H='UnityEngine.Networking.UploadHandler';
+        const u=findMethodAnywhereNoParams(U,'get_url'),m=findMethodAnywhereNoParams(U,'get_method'),h=findMethodAnywhereNoParams(U,'get_uploadHandler'),d=findMethodAnywhereNoParams(H,'get_data');
+        if(u)uwrGetUrl=new NativeFunction(u.fnPtr,'pointer',['pointer']);
+        if(m)uwrGetMethod=new NativeFunction(m.fnPtr,'pointer',['pointer']);
+        if(h)uwrGetUploadHandler=new NativeFunction(h.fnPtr,'pointer',['pointer']);
+        if(d)uploadGetData=new NativeFunction(d.fnPtr,'pointer',['pointer']);
+        console.log('[*] UnityWebRequest accessors ready.');
+    }catch(e){console.log('[!] UnityWebRequest accessor resolution failed: '+e.message);}
+    try{
+        const ctor=findMethodAnywhereExact('UnityEngine.Networking.UnityWebRequest','.ctor',['System.String','System.String']);
+        if(ctor){Interceptor.attach(ctor.fnPtr,{onEnter(args){if(!loginTraceActive())return;const id=++loginTraceSeq,url=readIl2cppString(args[1]),method=readIl2cppString(args[2]);requestMeta.set(String(args[0]),{id,url,method,headers:[]});console.log('\n[HTTP_CREATE] UnityWebRequest #'+id);console.log('  url: '+JSON.stringify(trunc(url,4000)));console.log('  method: '+JSON.stringify(method));console.log('  request_ptr: '+args[0]);}});hookCount++;}else console.log('[!] UnityWebRequest .ctor(string,string) not found');
+    }catch(e){console.log('[!] UnityWebRequest ctor hook failed: '+e.message);}
+    try{
+        const sh=findMethodAnywhereExact('UnityEngine.Networking.UnityWebRequest','SetRequestHeader',['System.String','System.String']);
+        if(sh){Interceptor.attach(sh.fnPtr,{onEnter(args){if(!loginTraceActive())return;const meta=requestMeta.get(String(args[0]));if(!meta)return;const name=readIl2cppString(args[1]),value=readIl2cppString(args[2]);meta.headers.push({name,value});console.log('[HTTP_HEADER] #'+meta.id+' '+name+': '+trunc(value,2000));}});hookCount++;}else console.log('[!] UnityWebRequest.SetRequestHeader(string,string) not found');
+    }catch(e){console.log('[!] SetRequestHeader hook failed: '+e.message);}
+    try{
+        const send=findMethodAnywhereNoParams('UnityEngine.Networking.UnityWebRequest','SendWebRequest');
+        if(send){Interceptor.attach(send.fnPtr,{onEnter(args){if(!loginTraceActive())return;const meta=requestMeta.get(String(args[0])),snap=describeUnityWebRequest(args[0]);console.log('\n[HTTP_SEND] '+(meta?'UnityWebRequest #'+meta.id:'UnityWebRequest'));console.log('  url: '+JSON.stringify(trunc(snap.url,4000)));console.log('  method: '+JSON.stringify(snap.method));if(meta)console.log('  headers: '+JSON.stringify(meta.headers));if(snap.body){console.log('  body_len: '+snap.body.length+(snap.body.truncated?' (truncated)':''));console.log('  body_utf8: '+JSON.stringify(trunc(snap.body.text,20000)));console.log('  body_hex: '+trunc(snap.body.hex,4000));}else console.log('  body: <none>');console.log('  request_ptr: '+args[0]);console.log('[HTTP_SEND END]\n');}});hookCount++;}else console.log('[!] UnityWebRequest.SendWebRequest() not found');
+    }catch(e){console.log('[!] SendWebRequest hook failed: '+e.message);}
+
 
     // V4_POST_Login (static, 3 params)
     try {
@@ -534,6 +599,8 @@ async function main() {
                         console.log(`  ${names[i]}: ${trunc(readIl2cppString(args[i]))}`);
                     }
                     this.callTime = Date.now();
+                    loginTraceUntil = Date.now() + 10000;
+                    console.log('  [HTTP_TRACE] login request trace window opened (10s)');
                 },
                 onLeave(retval) {
                     console.log(`  [return after ${Date.now() - this.callTime}ms]`);
@@ -702,7 +769,7 @@ async function main() {
     } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
 
     console.log(`\n[*] ${hookCount} hooks installed. Trigger a login in the game...`);
-    console.log('[*] Look for [SIGN_DATA], [JOIN_DATA], [MD5_DATA] and [B64] lines.\n');
+    console.log('[*] Look for [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
 }
 
 main();
