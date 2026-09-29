@@ -1,7 +1,7 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.6
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.7
  *
- * v4.6: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적
+ * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -73,6 +73,21 @@ function trunc(s, maxLen) {
         return s.substring(0, maxLen) + `...[truncated ${s.length} chars total]`;
     }
     return s;
+}
+
+// Token fingerprint: never print authentication token plaintext.
+// Uses length + FNV-1a over UTF-16 code units for runtime correlation.
+// This is a correlation aid, not a cryptographic identity.
+function tokenFingerprint(value) {
+    if (value === null || value === undefined) return '(null)';
+    const s = String(value);
+    if (s === '(null)' || s.startsWith('<')) return s;
+    let hash = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) {
+        hash ^= s.charCodeAt(i);
+        hash = Math.imul(hash, 0x01000193);
+    }
+    return 'len=' + s.length + ',fnv1a32=' + (hash >>> 0).toString(16).padStart(8, '0');
 }
 
 function readIl2cppArrayStrings(arrPtr, maxItems) {
@@ -201,7 +216,7 @@ function resolveElfExport(modulePath, baseAddr, symbolName) {
 let api = null;
 let il2cppBase = null;
 // Token flow correlation: last token passed to SaveLoginToken(arg[1]).
-let lastSavedLoginToken = null;
+let lastSavedLoginTokenFingerprint = null;
 
 function initApi() {
     const mod = findModuleBase(LIB_NAME);
@@ -780,8 +795,9 @@ async function main() {
         }
     } catch (e) { console.log(`[!] V3_POST_AllInOne hook failed: ${e.message}`); }
 
-    // Login token flow: compare SaveLoginToken inputs with ProtocolGame_HttpRequest.get_Token().
-    // Static analysis shows OnGetLoginToken -> Response_GetLoginToken -> SaveLoginToken.
+    // Login token flow: compare SaveLoginToken(arg[1]) with ProtocolGame_HttpRequest.get_Token().
+    // IMPORTANT: authentication token plaintext is never printed or retained.
+    // Static analysis: OnGetLoginToken -> Response_GetLoginToken -> SaveLoginToken.
     try {
         const save = findMethodAnywhereTyped('LoginManager', 'SaveLoginToken', 5, null);
         if (save) {
@@ -799,8 +815,15 @@ async function main() {
                             else if (type.indexOf('Int64') >= 0) value = args[i + 1].toString();
                             else value = args[i + 1];
                         } catch (e) { value = '<read failed: ' + e.message + '>'; }
-                        console.log('  arg[' + i + '] ' + type + ': ' + JSON.stringify(trunc(value, 5000)));
-                        if (i === 1 && type.indexOf('System.String') >= 0) lastSavedLoginToken = String(value);
+
+                        // SaveLoginToken's second parameter is the authentication token.
+                        if (i === 1 && type.indexOf('System.String') >= 0) {
+                            const fp = tokenFingerprint(value);
+                            lastSavedLoginTokenFingerprint = fp;
+                            console.log('  arg[' + i + '] ' + type + ': <TOKEN_REDACTED> [' + fp + ']');
+                        } else {
+                            console.log('  arg[' + i + '] ' + type + ': ' + JSON.stringify(trunc(value, 1000)));
+                        }
                     }
                     console.log('  [TOKEN_SAVE END]');
                 }
@@ -818,9 +841,12 @@ async function main() {
                 onLeave(retval) {
                     let value = '<null>';
                     try { value = readIl2cppString(retval); } catch (e) { value = '<read failed: ' + e.message + '>'; }
-                    console.log('[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> ' + JSON.stringify(trunc(value, 10000)));
-                    if (lastSavedLoginToken !== null && value !== '<null>' && !String(value).startsWith('<')) {
-                        console.log('[TOKEN_COMPARE] get_Token == last SaveLoginToken(arg[1]) : ' + (String(value) === lastSavedLoginToken ? 'MATCH' : 'MISMATCH'));
+                    const fp = tokenFingerprint(value);
+                    console.log('[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> <TOKEN_REDACTED> [' + fp + ']');
+                    if (lastSavedLoginTokenFingerprint !== null &&
+                        fp !== '(null)' && !String(fp).startsWith('<')) {
+                        console.log('[TOKEN_COMPARE] get_Token == last SaveLoginToken(arg[1]) : ' +
+                            (fp === lastSavedLoginTokenFingerprint ? 'MATCH' : 'MISMATCH'));
                     }
                 }
             });
@@ -898,20 +924,3 @@ async function main() {
                 },
                 onLeave(retval) {
                     try {
-                        const s = readIl2cppString(retval);
-                        if (s && s.length > 100)
-                            console.log(`[B64] => output len=${s.length} head=${s.substring(0, 40)}...`);
-                    } catch (e) {}
-                }
-            });
-            hookCount++;
-        } else {
-            console.log('[!] System.Convert.ToBase64String not found');
-        }
-    } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
-
-    console.log(`\n[*] ${hookCount} hooks installed. Trigger a login in the game...`);
-    console.log('[*] Look for [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
-}
-
-main();
