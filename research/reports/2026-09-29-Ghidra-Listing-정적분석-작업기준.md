@@ -546,3 +546,128 @@ Sign 자체는 현재 추가 분석 우선순위가 낮다. 다음은 GetDefault
 이번 분석도 **ARM64 실기기 + hook-patched APK**를 기준으로 한다. LDPlayer/x86 에뮬레이터를 현재 hook 실행 환경으로 사용하지 않는다.
 
 정적 원본은 `research/Ghidra_Listing_txt`이며, 합본 `PR.txt`는 `### FILE:` 단위로 함수별 Listing을 찾아 AL/AD/CR/RE 등의 개별 Listing과 동일한 방식으로 분석한다.
+
+
+## 22. Ghidra Listing 합본 파일명 규칙 확정
+
+2026-09-29 기준으로 `research/Ghidra_Listing_txt`의 Listing 합본 파일은 **실제 클래스/함수명의 시작 문자열 2글자**를 기준으로 분류한다.
+
+예:
+
+```text
+ProtocolGame_HttpRequest...
+    → PR.txt
+
+Ali...
+    → AL.txt
+
+AppConst...
+    → AP.txt
+```
+
+또한 Ghidra에서 실제 함수명에 `$$`, `<`, `>` 등 파일명에 사용할 수 없는 문자가 포함될 수 있으므로, **파일명에서는 해당 문자를 `_`로 치환한다.**
+
+예:
+
+```text
+실제 함수명:
+ProtocolGame_HttpRequest$$get_Token
+
+Listing 파일명:
+00dd9534_ProtocolGame_HttpRequest__get_Token.txt
+```
+
+여기서 `$$`가 파일명에서는 `__`로 변환된다.
+
+따라서 합본 파일에서 함수를 찾을 때는 다음 순서를 사용한다.
+
+1. 실제 클래스/함수명의 앞 2글자로 합본 파일을 결정한다.
+2. 해당 합본 TXT의 `### FILE:` 구분자를 검색한다.
+3. `### FILE:` 뒤의 치환된 파일명으로 원본 Listing 블록을 확인한다.
+4. 블록 내부의 함수 시작 주소와 Listing을 확인한다.
+
+**중요:** 특정 주소가 일반 GitHub 검색에서 검색되지 않는다는 이유만으로 함수가 없다고 판단하지 않는다. 합본 TXT 내부의 `### FILE:` 블록을 확인한 뒤 존재 여부를 판단한다.
+
+## 23. GetDefaultParams helper 주소와 검색 위치
+
+현재 `GetDefaultParams @ 00ddbf58`에서 확인된 helper는 다음과 같다.
+
+| 주소 | 실제 함수명 | 검색 대상 |
+|---|---|---|
+| `00dd9534` | `ProtocolGame_HttpRequest$$get_Token` | `PR.txt` |
+| `00dd90bc` | `ProtocolGame_HttpRequest$$get_buildVerion` | `PR.txt` |
+| `00dd949c` | `ProtocolGame_HttpRequest$$get_retailID` | `PR.txt` |
+| `016dacf8` | `AppConst$$get_Mark` | `AP.txt` |
+| `00e0a494` | `Ali$$get_advertisingIdentifier` | `AL.txt` |
+| `00e0a148` | `Ali$$get_deviceUniqueIdentifier` | `AL.txt` |
+
+이전 분석에서 일부 주소를 개별 검색 결과만으로 '함수 자체가 없다'고 판단했던 내용은 폐기한다. 합본 파일 구조를 고려하면 **해당 2글자 TXT의 `### FILE:` 블록을 기준으로 존재 여부를 확인해야 한다.**
+
+## 24. GetDefaultParams 값 추적 목표
+
+현재 runtime에서 확인된 기본 파라미터는 다음과 같다.
+
+```text
+n=639262781542097130
+d=cbcfdf10d56e57a89f7cb19a491d139e
+r=7
+v=3.1.0
+m=official
+t=jLDohEUPbopnwARSF4L/ERqOUc1bvMSJCWDvIQqHkF0Qjn/S2xt/5CAoaxoYsTQ0oEeS7l1xEy8U2TNzM+r9wJ8qGD8B/3ItbtOa7IDcauHiZnHoKIUnDAQQGbUdLia3D1BNXW70lzjbVmA/0+RuQUpa1n6Gj881gOEgtovFxkbYptUVUEByYWgkhJcuqW/Vv25Pm95ikRUXVXKlAGJq9G5Demi43jfStGJBdE3F692g3JaBkfGRoDgH/92BIT7s/I/9Tt7jDH6p0uJdHr9GEVVwMlfnlL+WhfthrijayY6GyziOg6Qhn7NjK1NkHYxoOE125o5gV9e1Dr4qsgC60Q==
+```
+
+정적 분석상 `GetDefaultParams`는 `DateTime.Now → Ticks → ToString`, deviceUniqueIdentifier, advertisingIdentifier, retailID, buildVersion, AppConst.Mark, Token 등의 helper를 호출한다.
+
+다음 분석에서는 단순히 함수 존재 여부를 확인하는 것이 아니라 **각 helper의 반환값이 GetDefaultParams의 어떤 값으로 연결되는지**를 확정한다.
+
+특히 `t`는 매우 긴 Base64 문자열이므로 단순한 일반적인 광고 ID 문자열로 단정하지 않는다. `get_Token` 및 `get_advertisingIdentifier`의 실제 Listing과 반환 데이터 흐름을 확인한 후 의미를 확정한다.
+
+## 25. 새 분석 세션 시작 기준
+
+새 창에서 작업을 이어갈 때는 이 문서를 기준 문서로 사용한다.
+
+현재 확정된 범위:
+
+```text
+V4_POST_Login
+    ↓
+GetDefaultParams
+    ↓
+Dictionary 구성
+    ↓
+Sign
+    ↓
+HttpRequestManager.PostRequest
+    ↓
+HttpRequestManager.CreateHttpRequest
+    ↓
+HttpRequest.AddRangeData
+    ↓
+WWWForm.AddField
+    ↓
+HttpRequest.RequestCoroutine
+    ↓
+UnityWebRequest.Post
+    ↓
+UploadHandlerRaw
+    ↓
+실제 POST body
+```
+
+다음 정적 분석의 1차 목표:
+
+```text
+PR.txt
+ ├─ get_Token @ 00dd9534
+ ├─ get_buildVerion @ 00dd90bc
+ └─ get_retailID @ 00dd949c
+
+AL.txt
+ ├─ get_advertisingIdentifier @ 00e0a494
+ └─ get_deviceUniqueIdentifier @ 00e0a148
+
+AP.txt
+ └─ get_Mark @ 016dacf8
+```
+
+이 6개 helper를 확인한 후 `n/d/r/v/m/t`의 생성 원인을 확정하고, 이후 로그인 request의 PCAP byte-level 대응 및 response 처리로 진행한다.
