@@ -289,3 +289,104 @@ blob = bd493ddd01015b8be144cae4cdea09c29092c48a
 ```
 
 이 순서로 진행하면 `t`의 의미뿐 아니라 **어느 로그인 단계에서 최초로 서버가 token을 반환하고, 어느 객체가 그 값을 보관하여 다음 요청에 재사용하는지**까지 연결할 수 있다.
+
+## 16. 2026-09-29 Runtime Token 흐름 검증 결과
+
+이번 runtime hook에서 로그인 전후의 Token 흐름을 직접 관찰했다.
+
+### 16.1 로그인 요청 직전
+
+```text
+V4_POST_Login
+  -> GetDefaultParams
+       -> ProtocolGame_HttpRequest.get_Token()
+       -> t 항목 생성
+  -> Sign
+  -> UnityWebRequest 생성
+  -> POST /v5/account/login
+```
+
+로그에서 GetDefaultParams 시점의 get_Token()은 비어 있지 않은 기존 Token을 반환했고, 같은 값이 t에 들어간 뒤 Sign 입력과 HTTP form body에 포함되었다.
+
+즉 **이번 로그인 요청의 t는 이번 요청의 response로 새로 저장되는 Token이 아니다.** 요청보다 먼저 존재하던 Token이다.
+
+### 16.2 로그인 응답 이후
+
+로그인 HTTP 요청 전송 직후 다음 호출이 관찰되었다.
+
+`LoginManager.SaveLoginToken(System.String, System.String, System.Int32, System.Boolean, SDKLoginType)`
+
+runtime 인자 구조:
+
+```text
+arg[0] = 사용자 식별 문자열
+arg[1] = 새로 저장되는 Token 문자열
+arg[2] = logout_ex_time 계열 정수
+arg[3] = First 계열 boolean
+arg[4] = SDKLoginType
+```
+
+arg[1]은 앞서 요청의 GetDefaultParams().t와 **다른 문자열**이었다.
+
+따라서 다음과 같이 구분해야 한다.
+
+```text
+[기존 상태]
+ProtocolGame_HttpRequest.get_Token()
+        |
+        +--> GetDefaultParams()['t']
+        |
+        +--> Sign
+        |
+        +--> /v5/account/login request
+
+[서버 응답 처리]
+login response
+        |
+        +--> Response_GetLoginToken
+        |
+        +--> LoginManager.SaveLoginToken(..., arg[1], ...)
+                         |
+                         +--> 새 Token 저장
+```
+
+### 16.3 현재 확정된 것과 미확정인 것
+
+| 항목 | 결과 |
+|---|---|
+| t가 get_Token() 반환값인가 | 확정 |
+| 로그인 request의 t가 request 전에 존재한 값인가 | 이번 runtime에서 확인 |
+| SaveLoginToken(arg[1])이 response에서 전달된 새 Token인가 | 매우 강하게 연결됨; response field 매핑 정적 확인 필요 |
+| SaveLoginToken(arg[1])과 request의 t가 동일한가 | **아님** |
+| 이후 get_Token()이 SaveLoginToken(arg[1])을 반환하는가 | 아직 runtime 미확인 |
+| get_Token +0x100과 SaveLoginToken 저장 위치가 동일한가 | 정적 write XREF 필요 |
+
+### 16.4 다음 검증의 의미
+
+이제 단순히 Token = login response Token이라고 가정해서는 안 된다. 정확한 모델은 다음 두 단계일 가능성이 높다.
+
+```text
+기존 로그인 상태 Token
+        -> login request의 t
+        -> 서버 인증
+        -> login response의 새 Token
+        -> SaveLoginToken
+        -> 이후 게임 요청에서 재사용
+```
+
+따라서 다음 요청이 발생한 시점에 get_Token()을 다시 관찰하면 가장 중요한 연결고리를 확인할 수 있다.
+
+SaveLoginToken.arg[1] == 이후 get_Token() 반환값
+
+동일하다면 **서버가 반환한 새 Token → LoginManager 저장 → ProtocolGame_HttpRequest.get_Token() → 다음 요청의 t** 흐름을 runtime에서 확정할 수 있다.
+
+## 17. 다음 작업 우선순위
+
+1. LoginManager.SaveLoginToken @ 00dd64a0 Listing에서 실제 field write 확인
+2. Response_GetLoginToken의 Token field와 SaveLoginToken.arg[1]의 대응 확인
+3. ProtocolGame_HttpRequest.get_Token @ 00dd9534의 singleton +0x100 write XREF 확인
+4. 로그인 완료 후 다음 API 호출에서 get_Token() 재호출을 잡아 SaveLoginToken.arg[1]과 동일성 확인
+5. 동일성이 확인되면 다음 요청의 t와 Sign 입력까지 연결
+6. 마지막으로 PCAP에서 request/response bytes를 대조
+
+**주의:** runtime 로그에 실제 인증 Token이 출력되므로 보고서에는 실제 Token 문자열을 기록하지 않는다. 비교가 필요한 경우 로컬에서만 값의 길이/해시 또는 동일성으로 확인한다.
