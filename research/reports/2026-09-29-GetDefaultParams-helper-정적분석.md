@@ -510,3 +510,35 @@ LoginManager +0x20 -> object +0x28
 특히 현재 hook에서 로그인 직후 AssetBundle 요청들이 보였으므로, **그 다음 `GetDefaultParams`/`get_Token` 호출이 발생하는 로그를 확보하는 것이 다음 핵심 검증**이다.
 
 실제 Token 문자열은 보고서에 기록하지 않고, 로컬 runtime에서는 동일성만 확인하는 방식이 적절하다.
+
+
+## 19. 2026-09-30 작업 이어서 — Token 저장/조회 동일성 검증 준비
+
+현재 로그인 분석의 다음 단계는 Token의 저장 원천과 이후 조회값의 동일성을 확정하는 것이다.
+
+정적 분석상 SaveLoginToken @ 00dd64a0은 x2(arg[1])을 LoginManager +0x20이 가리키는 객체의 +0x28에 저장한다. get_Token @ 00dd9534의 fallback도 +0x20 → +0x28 구조를 읽는다. 따라서 동일 저장 슬롯일 가능성이 높지만, 동일 객체라는 사실은 아직 runtime으로 확정하지 않는다.
+
+현재 research/justice_hook.js에는 이미 비교 기능이 있다. SaveLoginToken의 arg[1]을 fingerprint로 저장하고, 이후 get_Token() 반환값을 fingerprint로 비교하여 MATCH/MISMATCH만 출력한다. 실제 인증 Token plaintext는 출력하지 않는다.
+
+### 다음 검증
+
+실기기 + 현재 hook-patched APK에서 로그인 후 다음 일반 API 요청까지 관찰한다.
+
+검증 목표:
+
+SaveLoginToken(arg[1]) fingerprint = 이후 get_Token() fingerprint = 다음 GetDefaultParams()['t']의 Token fingerprint
+
+MATCH가 확인되면 다음 흐름을 runtime에서 연결할 수 있다.
+
+login response → SaveLoginToken(arg[1]) → LoginManager +0x20/+0x28 → get_Token() → GetDefaultParams()['t'] → Sign → 다음 HTTP request
+
+단, MATCH만으로 Response_GetLoginToken의 정확한 JSON field 이름까지 확정하지 않는다. 그 부분은 SDKHandler_None.OnGetLoginToken @ 00de4e68의 field read와 SaveLoginToken 인자 전달을 추가로 대조한다.
+
+### 병행 정적 분석 대상
+
+1. SDKHandler_None.OnGetLoginToken @ 00de4e68
+2. Response_GetLoginToken의 실제 field 접근
+3. SaveLoginToken 호출 직전 field read
+4. get_Token의 global pointer와 LoginManager singleton의 동일성
+
+함수명이나 동일 offset만으로 의미를 확정하지 않고 Listing + argument mapping + field offset + runtime fingerprint + 다음 request를 함께 사용한다. 실제 인증 Token 문자열은 보고서에 기록하지 않는다.
