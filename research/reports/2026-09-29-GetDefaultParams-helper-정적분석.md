@@ -542,3 +542,74 @@ login response → SaveLoginToken(arg[1]) → LoginManager +0x20/+0x28 → get_T
 4. get_Token의 global pointer와 LoginManager singleton의 동일성
 
 함수명이나 동일 offset만으로 의미를 확정하지 않고 Listing + argument mapping + field offset + runtime fingerprint + 다음 request를 함께 사용한다. 실제 인증 Token 문자열은 보고서에 기록하지 않는다.
+
+
+## 20. 2026-09-30 OnGetLoginToken 인자 대응 추가 확정
+
+`SDKHandler_None$$OnGetLoginToken @ 00de4e68` 전체 Listing을 다시 확인했다. 로그인 응답 객체는 `x19`에 유지되며, 성공 경로에서 다음 값들이 직접 읽힌다.
+
+- `x19 + 0x18` → `Int64.ToString()` → `SaveLoginToken` 첫 번째 String 인자
+- `x19 + 0x20` → `SaveLoginToken` 두 번째 String 인자
+- `x19 + 0x30` → `SaveLoginToken` 세 번째 Int32 인자
+- `w20` → `SDKManager.GetSDKLoginType()` 결과 → `SaveLoginToken` 다섯 번째 인자
+- 네 번째 Boolean 인자는 `0`
+
+핵심 Listing:
+
+`00de5200 add x0,x19,#0x18`
+
+`00de5204 mov x1,xzr`
+
+`00de5208 bl 0x0214ed58`
+
+`00de5210 ldr w3,[x19,#0x30]`
+
+`00de5214 ldr x2,[x19,#0x20]`
+
+`00de521c mov x0,x21`
+
+`00de5220 mov w4,wzr`
+
+`00de5224 mov w5,w20`
+
+`00de5228 bl 0x00dd64a0`
+
+AArch64 호출 규약을 적용하면:
+
+`SaveLoginToken(x0=this, x1=String(x19+0x18), x2=String(x19+0x20), x3=Int32(x19+0x30), x4=false, x5=SDKLoginType)`
+
+이다.
+
+기존 `TASK-006-result.md`에서 `Response_GetLoginToken`의 모델 필드에 `Token`, `First`, `logout_ex_time` 등이 존재함을 확인했고, 이전 runtime에서 `SaveLoginToken`의 두 번째 String 인자(arg[1])가 서버 응답 후 새 Token으로 관찰되었다. 따라서 현재 가장 강한 정적/런타임 대응은:
+
+`Response_GetLoginToken +0x20 → SaveLoginToken(arg[1]) → LoginManager 저장 슬롯`
+
+이다.
+
+`+0x18`은 `logout_ex_time` 계열 값과 일치하는 후보이며, `+0x30`의 정확한 response field 명칭은 별도 field layout 증거가 추가되기 전까지 확정하지 않는다.
+
+### 현재 Token 증거 사슬
+
+`HTTPS login response`
+
+→ `DownloadHandler.get_text`
+
+→ `JsonUtility.FromJson<Response_GetLoginToken>`
+
+→ `Response_GetLoginToken 객체`
+
+→ `x19 + 0x20`
+
+→ `SaveLoginToken(arg[1])`
+
+→ `LoginManager +0x20 → object +0x28`
+
+→ 이후 `get_Token()` 후보 저장값
+
+→ `GetDefaultParams()['t']`
+
+→ `Sign`
+
+→ 다음 HTTP request
+
+여기서 마지막 `SaveLoginToken(arg[1]) → 이후 get_Token()`만 runtime MATCH로 확정하면 Token의 저장/재사용 경계가 완성된다.
