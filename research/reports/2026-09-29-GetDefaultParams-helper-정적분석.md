@@ -208,3 +208,84 @@ Ghidra Listing
 가 일치하는 경우에만 확정한다.
 
 이번 단계에서는 특히 `t`를 `get_Token()`으로 확정한 것이 핵심 진전이다.
+
+
+## 13. Token 응답 경로 추가 확인
+
+### SDKHandler_None.OnGetLoginToken @ 00de4e68
+
+Listing에서 로그인 토큰 HTTP 응답 처리 흐름이 확인된다.
+
+```text
+UnityWebRequest / HttpRequest response
+    |
+    +-- responseCode == 200
+    |
+    +-- DownloadHandler.get_text
+    |
+    +-- JsonUtility.FromJson<Response_GetLoginToken>
+    |
+    +-- Response_GetLoginToken 객체 생성
+    |
+    +-- LoginManager.SaveLoginToken @ 00dd64a0
+    |
+    +-- LoginManager.LoginGameServer @ 00dd6910
+```
+
+`OnGetLoginToken`에서 `DownloadHandler.get_text @ 026d7308`, `JsonUtility.FromJson<object> @ 0179cfb4`, `UnityWebRequest.get_responseCode @ 026d61ac`, `LoginManager.SaveLoginToken @ 00dd64a0`가 직접 연결된다.
+
+따라서 현재 분석에서는 `t`를 단순히 로컬에서 새로 생성되는 문자열로 볼 근거가 없다. **로그인 토큰 응답 모델 → 저장 → 이후 GetDefaultParams에서 사용**이라는 흐름을 우선 가설로 둔다.
+
+### Response_GetLoginToken
+
+`Response_GetLoginToken @ 00ddddd0`는 별도의 response model이며 `TASK-006-result.md`에서 다음 필드가 확인되어 있다.
+
+```text
+Status
+UserId
+Desc
+First
+method
+BindFacebook
+BindGoogle
+BindGameCenter
+RealName
+FCMStatus
+logout_ex_time
+...
+```
+
+`OnGetLoginToken`에서 `JsonUtility.FromJson<Response_GetLoginToken>` 결과를 여러 field offset으로 읽은 뒤 `SaveLoginToken`에 넘기는 구조가 확인된다.
+
+현재 단계에서 **response JSON의 어느 field가 `get_Token()`의 `+0x100` field와 정확히 동일한지는 아직 확정하지 않는다.** 다음 정적 분석 대상은 `SaveLoginToken`의 인자 대응과 `ProtocolGame_HttpRequest` singleton `+0x100`에 대한 write XREF다.
+
+## 14. PCAP 분석 상태
+
+대상 PCAP은 GitHub repository에 존재하는 것을 확인했다.
+
+```text
+research/PCAP/PCAPdroid_29_9월_11_12_23_어플시작_로그인_메인까지.pcap
+size = 92,018 bytes
+blob = bd493ddd01015b8be144cae4cdea09c29092c48a
+```
+
+현재 GitHub connector는 binary blob 자체를 UTF-8 파일로 읽을 수 없기 때문에 이 단계에서는 PCAP 내부 packet bytes를 직접 추출하지 못했다. 따라서 **PCAP request/response byte-level 대조는 아직 미실행** 상태로 유지한다. PCAP 파일이 로컬 분석 환경에 제공되면 기존 `pcap_dh_validator.py`/TCP reassembly 방식으로 바로 이어갈 수 있다.
+
+## 15. 다음 정적 분석 우선순위 변경
+
+```text
+1. SaveLoginToken @ 00dd64a0 인자 의미 확정
+        |
+2. Response_GetLoginToken 각 field와 인자 대응
+        |
+3. LoginManager에 저장되는 Last_SaveLoginInfo / UserId / token 관계 확인
+        |
+4. ProtocolGame_HttpRequest.get_Token @ 00dd9534의 singleton +0x100
+   write XREF 확인
+        |
+5. 동일 값인지 runtime hook으로 검증
+        |
+6. PCAP login request/response byte-level 대조
+```
+
+이 순서로 진행하면 `t`의 의미뿐 아니라 **어느 로그인 단계에서 최초로 서버가 token을 반환하고, 어느 객체가 그 값을 보관하여 다음 요청에 재사용하는지**까지 연결할 수 있다.
