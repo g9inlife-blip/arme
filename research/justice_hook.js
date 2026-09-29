@@ -924,3 +924,21 @@ async function main() {
                 },
                 onLeave(retval) {
                     try {
+                        const value = readIl2cppString(retval);
+                        if (value && value.length > 100)
+                            console.log(`[B64] => output len=${value.length} head=${value.substring(0, 40)}...`);
+                    } catch (e) {}
+                }
+            });
+            hookCount++;
+        } else {
+            console.log('[!] System.Convert.ToBase64String not found');
+        }
+    } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
+
+    console.log(`\n[*] ${hookCount} hooks installed.`);
+    console.log('[*] Trigger login, then make a real game API request after login.');
+    console.log('[*] Look for [TOKEN_SAVE], [TOKEN_GET], [TOKEN_COMPARE], [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
+}
+
+main();
