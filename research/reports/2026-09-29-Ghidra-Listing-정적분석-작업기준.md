@@ -445,3 +445,104 @@ PCAP
 를 Ghidra 코드 수준에서 연결하는 것이다.
 
 `Ghidra_Listing_txt`의 이름 있는 함수 묶음과 `FUN_.zip`을 이 작업의 정적 분석 원본으로 사용한다.
+
+
+---
+
+## 13. PR.txt 합본 Listing 분석 기준
+
+2026-09-29에 `research/Ghidra_Listing_txt/PR.txt`가 추가되었다. 이 파일은 여러 Ghidra Listing txt를 하나로 합친 합본이며 `### FILE:` 구분자를 기준으로 원본 파일 단위로 분석한다.
+
+예: `### FILE: 00dd5b48_ProtocolGame_HttpRequest__V4_POST_Login.txt` → `ProtocolGame_HttpRequest$$V4_POST_Login @ 00dd5b48`
+
+따라서 이후에는 PR.txt 전체를 다시 분리해 업로드할 필요 없이 `### FILE:` 블록을 함수 단위 Listing으로 취급한다.
+
+## 14. V4_POST_Login 정적 분석 확정
+
+`ProtocolGame_HttpRequest$$V4_POST_Login @ 00dd5b48`에서 다음 호출 관계가 확인되었다.
+
+`V4_POST_Login → ServerConst.GetURL → GetDefaultParams → 로그인 Dictionary 구성 → Sign → HttpRequestManager.PostRequest`
+
+핵심 Listing은 `00dd5c64 bl 0x016dbad8`(GetURL), `00dd5c6c bl 0x00ddbf58`(GetDefaultParams), `00dd5d40 bl 0x00dd95c0`(Sign), `00dd5d8c b 0x01695d9c`(PostRequest)이다.
+
+즉 로그인 함수에서 URL과 기본 파라미터를 준비하고, Sign으로 `sign`을 만든 뒤 PostRequest로 HTTP 전송을 시작한다.
+
+## 15. GetDefaultParams 정적 분석
+
+`ProtocolGame_HttpRequest$$GetDefaultParams @ 00ddbf58`에서 Dictionary 생성 및 다음 helper 호출이 확인되었다.
+
+- `DateTime.get_Now` / `DateTime.get_Ticks` / `Int64.ToString`
+- `Ali.get_deviceUniqueIdentifier @ 00e0a148`
+- `Ali.get_advertisingIdentifier @ 00e0a494`
+- `ProtocolGame_HttpRequest.get_retailID @ 00dd949c`
+- `ProtocolGame_HttpRequest.get_buildVerion @ 00dd90bc`
+- `AppConst.get_Mark @ 016dacf8`
+- `ProtocolGame_HttpRequest.get_Token @ 00dd9534`
+- `Dictionary.set_Item`
+
+현재 런타임에서 확보한 `n`, `d`, `r`, `v`, `m`, `t` 등의 값이 이 함수 또는 해당 helper 경로에서 생성된다. 각 값의 정확한 생성 원인은 helper Listing까지 내려가 최종 확정한다.
+
+## 16. Sign 정적 분석 확정
+
+`ProtocolGame_HttpRequest$$Sign @ 00dd95c0`에서 `Dictionary.get_Keys → Enumerable.OrderBy → Dictionary.get_Item → List → String.Join → MD5HashString → Dictionary.set_Item` 흐름이 확인되었다.
+
+핵심 주소는 `00dd97a8`의 Keys, `00dd9848`의 OrderBy, `00dd99a4`의 Dictionary.get_Item, `00dd9b4c`의 String.Join, `00dd9b54`의 MD5HashString, `00dd9b68`의 Dictionary.set_Item이다.
+
+따라서 Sign은 다음으로 확정된다.
+
+`Dictionary.Keys → key 정렬 → 각 key의 value 추출 → content 추가 → String.Join(".") → MD5HashString → dict["sign"]`
+
+key 이름 자체를 MD5 입력에 넣는 것이 아니라 정렬된 key의 value들을 사용한다. 빈 문자열 value도 유지되므로 해당 위치의 구분자 `.`가 보존된다.
+
+## 17. 현재 완성된 로그인 네트워크 경로
+
+`V4_POST_Login → GetDefaultParams → Dictionary 구성 → Sign → PostRequest → AddRangeData → WWWForm.AddField → RequestCoroutine → UnityWebRequest.Post → UploadHandlerRaw`
+
+이 경로는 Ghidra Listing과 ARM64 실기기 runtime hook 양쪽에서 확인되었다.
+
+실기기 runtime에서 실제 요청은 `POST https://ac.aliother.com/v5/account/login?778927`, `Content-Type: application/x-www-form-urlencoded`, body 551 bytes로 확인되었다.
+
+## 18. HttpRequest 정적 분석과의 연결
+
+- `AddData`: `HttpRequest + 0x50`의 WWWForm에 `WWWForm.AddField(key,value)` 호출
+- `AddRangeData`: Dictionary를 순회하면서 각 key/value를 WWWForm에 추가
+- `PostRequest`: `CreateHttpRequest → AddRangeData → Queue.Enqueue`
+- `CreateHttpRequest`: `HttpRequest.ctor → AddHeader → AddHeader`
+- `Request`: `RequestCoroutine → UnityWebRequest.Post(url, WWWForm)`
+
+따라서 Dictionary가 form data로 변환되어 UnityWebRequest POST body가 되는 전체 경로가 연결되었다.
+
+Unity WWWForm 자체의 내부 encoding 구현을 게임 Listing만으로 모두 복원한 것은 아니다. 다만 runtime의 UploadHandlerRaw에서 실제 551-byte `application/x-www-form-urlencoded` body가 확인되어 최종 serialization 결과는 검증되었다.
+
+## 19. 현재 검증 상태
+
+| 단계 | 정적 분석 | Runtime | 상태 |
+|---|---|---|---|
+| V4_POST_Login | 확인 | 확인 | 확정 |
+| GetDefaultParams | 확인 | 실제 값 확인 | 확정 |
+| Sign | 확인 | MD5 결과 일치 | 확정 |
+| PostRequest | 확인 | HTTP 생성 확인 | 확정 |
+| AddRangeData | 확인 | body 결과와 연결 | 확정 |
+| WWWForm.AddField | 확인 | form-urlencoded body 확인 | 확정 |
+| UnityWebRequest.Post | 확인 | POST 확인 | 확정 |
+| UploadHandlerRaw | 경로 확인 | 551 bytes 확인 | 확정 |
+| PCAP byte-level 대응 | 진행 예정 | runtime 확보 | 다음 단계 |
+
+## 20. 다음 분석 우선순위
+
+Sign 자체는 현재 추가 분석 우선순위가 낮다. 다음은 GetDefaultParams 내부 helper를 추적하여 실제 값 생성 원인을 확정하는 것이다.
+
+1. `get_Token @ 00dd9534`
+2. `get_buildVerion @ 00dd90bc`
+3. `get_retailID @ 00dd949c`
+4. `Ali.get_advertisingIdentifier @ 00e0a494`
+5. `Ali.get_deviceUniqueIdentifier @ 00e0a148`
+6. `AppConst.get_Mark @ 016dacf8`
+
+특히 긴 `t` 값의 생성 경로를 우선 추적한다. 이후 로그인 request를 PCAP과 byte 수준으로 대조하고 response 처리까지 연결한다.
+
+## 21. 분석 환경 기준
+
+이번 분석도 **ARM64 실기기 + hook-patched APK**를 기준으로 한다. LDPlayer/x86 에뮬레이터를 현재 hook 실행 환경으로 사용하지 않는다.
+
+정적 원본은 `research/Ghidra_Listing_txt`이며, 합본 `PR.txt`는 `### FILE:` 단위로 함수별 Listing을 찾아 AL/AD/CR/RE 등의 개별 Listing과 동일한 방식으로 분석한다.
