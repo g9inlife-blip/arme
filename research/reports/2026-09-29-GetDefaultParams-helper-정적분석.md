@@ -390,3 +390,123 @@ SaveLoginToken.arg[1] == 이후 get_Token() 반환값
 6. 마지막으로 PCAP에서 request/response bytes를 대조
 
 **주의:** runtime 로그에 실제 인증 Token이 출력되므로 보고서에는 실제 Token 문자열을 기록하지 않는다. 비교가 필요한 경우 로컬에서만 값의 길이/해시 또는 동일성으로 확인한다.
+
+## 18. SaveLoginToken 정적 Listing 추가 확인
+
+`LoginManager$$SaveLoginToken @ 00dd64a0`의 실제 ARM64 인자 및 field write를 확인했다.
+
+### 18.1 인자 매핑
+
+AArch64 호출 규약 기준으로:
+
+```text
+x0 = LoginManager this
+x1 = arg[0] System.String
+x2 = arg[1] System.String
+x3 = arg[2] Int32
+w4 = arg[3] Boolean
+w5 = arg[4] SDKLoginType
+```
+
+Listing 초반에서 다음과 같이 이동한다.
+
+```text
+00dd64c8  mov w22,w5      ; arg[4]
+00dd64cc  mov w24,w4      ; arg[3]
+00dd64d0  mov w20,w3      ; arg[2]
+00dd64d4  mov x25,x2      ; arg[1]  <-- Token 후보
+00dd64d8  mov x19,x1      ; arg[0]
+00dd64dc  mov x21,x0      ; this
+```
+
+따라서 runtime에서 관찰한 `SaveLoginToken arg[1]`은 정적으로도 두 번째 String 인자임이 확인된다.
+
+### 18.2 arg[1] 실제 저장 위치
+
+핵심 구간:
+
+```text
+00dd65b8  ldr x23,[x21, #0x20]
+...
+00dd65c4  str x25,[x26, #0x28]!
+```
+
+여기서 `x25 = arg[1]`이고 `x26 = x23`이므로:
+
+```text
+LoginManager +0x20 -> object
+object +0x28 <- arg[1]
+```
+
+즉 `SaveLoginToken`은 runtime에서 확인된 새 Token을 `LoginManager` 내부의 `+0x20` 객체가 가진 `+0x28` 필드에 저장한다.
+
+### 18.3 get_Token() fallback과의 구조적 일치
+
+앞서 분석한 `ProtocolGame_HttpRequest$$get_Token @ 00dd9534` fallback은 다음 구조였다.
+
+```text
+global/singleton object
+    +0x20 -> object
+              +0x28 -> Token
+```
+
+이번 `SaveLoginToken` Listing은 다음을 직접 확인했다.
+
+```text
+LoginManager
+    +0x20 -> object
+              +0x28 <- SaveLoginToken(arg[1])
+```
+
+따라서 **`SaveLoginToken(arg[1])`과 `get_Token()` fallback이 동일한 `+0x20 -> +0x28` Token 저장 구조를 가리킬 가능성이 매우 높다.** 다만 `get_Token()`의 global/singleton 포인터가 이 `LoginManager` 인스턴스와 정확히 동일한 포인터라는 마지막 1단계는 runtime 또는 get_Token Listing의 global field까지 교차 확인하여 확정한다.
+
+### 18.4 Token 흐름 현재 모델
+
+현재까지의 증거를 합치면 다음 구조가 가장 일관된다.
+
+```text
+[기존 저장 Token]
+LoginManager +0x20 -> object +0x28
+              |
+              +--> ProtocolGame_HttpRequest.get_Token()
+              |
+              +--> GetDefaultParams()['t']
+              |
+              +--> Sign
+              |
+              +--> /v5/account/login request
+
+[로그인 response]
+Response_GetLoginToken.Token
+              |
+              v
+LoginManager.SaveLoginToken(..., arg[1], ...)
+              |
+              v
+LoginManager +0x20 -> object +0x28
+              |
+              +--> 이후 get_Token()
+              +--> 이후 요청의 t
+```
+
+여기서 이번 runtime 로그가 보여준 `request t != SaveLoginToken arg[1]`은 오히려 이 모델과 일치한다. **로그인 요청은 기존 Token을 사용하고, 응답 후 새 Token으로 저장값을 갱신하는 형태**다.
+
+### 18.5 다음 runtime 검증 한 번이면 되는 것
+
+로그인 응답 직후 발생하는 다음 API 요청에서:
+
+```text
+[TOKEN_SAVE] arg[1]
+        |
+        +---- compare ----+
+                         |
+[TOKEN_GET] return       |
+                         v
+                    동일 여부
+```
+
+를 확인하면 된다.
+
+특히 현재 hook에서 로그인 직후 AssetBundle 요청들이 보였으므로, **그 다음 `GetDefaultParams`/`get_Token` 호출이 발생하는 로그를 확보하는 것이 다음 핵심 검증**이다.
+
+실제 Token 문자열은 보고서에 기록하지 않고, 로컬 runtime에서는 동일성만 확인하는 방식이 적절하다.
