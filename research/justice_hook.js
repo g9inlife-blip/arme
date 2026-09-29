@@ -1,7 +1,7 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.3
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.4
  *
- * v4.3: String.Join/MD5HashString 후킹으로 Sign 최종 입력 원문 추적 + namespace-aware System lookup
+ * v4.4: String.Join(string,string[]) 후킹으로 Sign 실제 Join 배열 추적 + MD5HashString 최종 입력 검증
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -514,7 +514,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.3 starting...');
+    console.log('[*] justice_hook v4.4 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -619,9 +619,9 @@ async function main() {
         }
     } catch (e) { console.log(`[!] V3_POST_AllInOne hook failed: ${e.message}`); }
 
-    // System.String.Join(string, object[]) — Sign이 MD5에 넘기는 원문 추적용
+    // System.String.Join(string, string[]) — Sign이 MD5에 넘기는 실제 Join 배열 추적용
     try {
-        const join = findMethodAnywhereTyped('System.String', 'Join', 2, 'System.Object[]');
+        const join = findMethodAnywhereTyped('System.String', 'Join', 2, 'System.String[]');
         if (join) {
             console.log('[+] Hooking System.String.Join(' + join.typeNames.join(', ') + ') @ ' + join.fnPtr);
             Interceptor.attach(join.fnPtr, {
@@ -643,7 +643,7 @@ async function main() {
                 }
             });
             hookCount++;
-        } else console.log('[!] System.String.Join(string, object[]) not found');
+        } else console.log('[!] System.String.Join(string, string[]) not found');
     } catch (e) { console.log('[!] String.Join hook failed: ' + e.message); }
 
     // AliothEngine.Encrypt.MD5HashString(string) — Sign 최종 입력/출력 확인
