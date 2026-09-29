@@ -1,7 +1,7 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.2
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.3
  *
- * v4.2: Sign 반환 타입명 출력 + retval 안전 덤프 + ToBase64String 후킹 (t 추적)
+ * v4.3: String.Join/MD5HashString 후킹으로 Sign 최종 입력 원문 추적 + namespace-aware System lookup
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -68,6 +68,21 @@ function trunc(s, maxLen) {
         return s.substring(0, maxLen) + `...[truncated ${s.length} chars total]`;
     }
     return s;
+}
+
+function readIl2cppArrayStrings(arrPtr, maxItems) {
+    const out = [];
+    try {
+        if (arrPtr.isNull()) return out;
+        const len = arrPtr.add(24).readU32();
+        const n = Math.min(len, maxItems || 100);
+        for (let i = 0; i < n; i++) {
+            const itemPtr = arrPtr.add(32 + i * Process.pointerSize).readPointer();
+            out.push(itemPtr.isNull() ? '(null)' : readIl2cppString(itemPtr));
+        }
+        if (len > n) out.push('(truncated ' + len + ' items total)');
+    } catch (e) { out.push('<array read failed: ' + e.message + '>'); }
+    return out;
 }
 
 // ---------- ELF-based export resolution ----------
@@ -207,6 +222,7 @@ function initApi() {
         class_get_field_from_name: new NativeFunction(exp('il2cpp_class_get_field_from_name'), 'pointer', ['pointer', 'pointer']),
         field_get_offset: new NativeFunction(exp('il2cpp_field_get_offset'), 'uint32', ['pointer']),
         object_get_class: new NativeFunction(exp('il2cpp_object_get_class'), 'pointer', ['pointer']),
+        class_get_name: new NativeFunction(exp('il2cpp_class_get_name'), 'pointer', ['pointer']),
     };
 }
 
@@ -370,12 +386,16 @@ function findMethodAnywhere(className, methodName, paramCount) {
     const countPtr = Memory.alloc(Process.pointerSize);
     const assemblies = api.domain_get_assemblies(domain, countPtr);
     const count = countPtr.readU32();
-    const emptyNs = Memory.allocUtf8String('');
+    const dot = className.lastIndexOf('.');
+    const namespaceName = dot >= 0 ? className.substring(0, dot) : '';
+    const shortClassName = dot >= 0 ? className.substring(dot + 1) : className;
+    const nsPtr = Memory.allocUtf8String(namespaceName);
+    const classPtr = Memory.allocUtf8String(shortClassName);
     for (let i = 0; i < count; i++) {
         try {
             const asm = assemblies.add(i * Process.pointerSize).readPointer();
             const img = api.assembly_get_image(asm);
-            const klass = api.class_from_name(img, emptyNs, Memory.allocUtf8String(className));
+            const klass = api.class_from_name(img, nsPtr, classPtr);
             if (klass.isNull()) continue;
             const iter = Memory.alloc(Process.pointerSize);
             iter.writePointer(ptr(0));
@@ -389,6 +409,47 @@ function findMethodAnywhere(className, methodName, paramCount) {
         } catch (e) { continue; }
     }
     return ptr(0);
+}
+
+function findMethodAnywhereTyped(className, methodName, paramCount, preferredSecondType) {
+    const domain = api.domain_get();
+    const countPtr = Memory.alloc(Process.pointerSize);
+    const assemblies = api.domain_get_assemblies(domain, countPtr);
+    const count = countPtr.readU32();
+    const dot = className.lastIndexOf('.');
+    const namespaceName = dot >= 0 ? className.substring(0, dot) : '';
+    const shortClassName = dot >= 0 ? className.substring(dot + 1) : className;
+    const nsPtr = Memory.allocUtf8String(namespaceName);
+    const classPtr = Memory.allocUtf8String(shortClassName);
+    for (let i = 0; i < count; i++) {
+        try {
+            const asm = assemblies.add(i * Process.pointerSize).readPointer();
+            const img = api.assembly_get_image(asm);
+            const klass = api.class_from_name(img, nsPtr, classPtr);
+            if (klass.isNull()) continue;
+            const iter = Memory.alloc(Process.pointerSize);
+            iter.writePointer(ptr(0));
+            while (true) {
+                const method = api.class_get_methods(klass, iter);
+                if (method.isNull()) break;
+                if (api.method_get_name(method).readCString() !== methodName) continue;
+                if (api.method_get_param_count(method) !== paramCount) continue;
+                const typeNames = [];
+                for (let pi = 0; pi < paramCount; pi++) {
+                    try { typeNames.push(api.type_get_name(api.method_get_param(method, pi)).readCString()); }
+                    catch (e) { typeNames.push('?'); }
+                }
+                let retName = '?';
+                try { retName = api.type_get_name(api.method_get_return_type(method)).readCString(); } catch (e) {}
+                console.log('[?] ' + className + '.' + methodName + ' overload: (' + typeNames.join(', ') + ') -> ' + retName + ' @ ' + method.readPointer());
+                if (!preferredSecondType || typeNames[1] === preferredSecondType ||
+                    (preferredSecondType === 'System.Object[]' && typeNames[1].indexOf('System.Object[]') >= 0)) {
+                    return { fnPtr: method.readPointer(), typeNames: typeNames, retName: retName };
+                }
+            }
+        } catch (e) { continue; }
+    }
+    return null;
 }
 
 function waitForIl2cpp() {
@@ -453,7 +514,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4 starting...');
+    console.log('[*] justice_hook v4.3 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -485,12 +546,14 @@ async function main() {
 
     // Sign (static, 2 params) — THE MOST IMPORTANT ONE
     // Actual signature: Sign(System.String, Dictionary<String,String>)
+    const signThreads = new Set();
     try {
         const sign = findMethodImpl(CLASS_NAME, 'Sign', 2);
         if (sign) {
             console.log(`[*] Sign return type: ${sign.retName}`);
             Interceptor.attach(sign.fnPtr, {
                 onEnter(args) {
+                    signThreads.add(Process.getCurrentThreadId());
                     console.log('\n---------- Sign called ----------');
                     const contentVal = readIl2cppString(args[0]);
                     this.inputs = { content: contentVal };
@@ -502,6 +565,7 @@ async function main() {
                     this.startTime = Date.now();
                 },
                 onLeave(retval) {
+                    signThreads.delete(Process.getCurrentThreadId());
                     const elapsed = Date.now() - this.startTime;
                     // Sign returns void - check if dict was modified in-place
                     let afterDict = '';
@@ -555,6 +619,54 @@ async function main() {
         }
     } catch (e) { console.log(`[!] V3_POST_AllInOne hook failed: ${e.message}`); }
 
+    // System.String.Join(string, object[]) — Sign이 MD5에 넘기는 원문 추적용
+    try {
+        const join = findMethodAnywhereTyped('System.String', 'Join', 2, 'System.Object[]');
+        if (join) {
+            console.log('[+] Hooking System.String.Join(' + join.typeNames.join(', ') + ') @ ' + join.fnPtr);
+            Interceptor.attach(join.fnPtr, {
+                onEnter(args) {
+                    if (!signThreads.has(Process.getCurrentThreadId())) return;
+                    this.inSign = true;
+                    const separator = readIl2cppString(args[0]);
+                    const values = readIl2cppArrayStrings(args[1], 100);
+                    console.log('\n[JOIN_DATA] String.Join called inside Sign');
+                    console.log('  separator: ' + JSON.stringify(separator));
+                    console.log('  count: ' + values.length);
+                    for (let i = 0; i < values.length; i++) console.log('  value[' + i + ']: ' + JSON.stringify(trunc(values[i], 2000)));
+                    console.log('  joined_preview: ' + JSON.stringify(trunc(values.join(separator), 10000)));
+                },
+                onLeave(retval) {
+                    if (!this.inSign) return;
+                    console.log('  joined_actual: ' + JSON.stringify(trunc(readIl2cppString(retval), 10000)));
+                    console.log('  [JOIN_DATA END]');
+                }
+            });
+            hookCount++;
+        } else console.log('[!] System.String.Join(string, object[]) not found');
+    } catch (e) { console.log('[!] String.Join hook failed: ' + e.message); }
+
+    // AliothEngine.Encrypt.MD5HashString(string) — Sign 최종 입력/출력 확인
+    try {
+        const md5 = findMethodAnywhereTyped('AliothEngine.Encrypt', 'MD5HashString', 1, null);
+        if (md5) {
+            console.log('[+] Hooking AliothEngine.Encrypt.MD5HashString(' + md5.typeNames.join(', ') + ') @ ' + md5.fnPtr);
+            Interceptor.attach(md5.fnPtr, {
+                onEnter(args) {
+                    if (!signThreads.has(Process.getCurrentThreadId())) return;
+                    this.inSign = true;
+                    this.input = readIl2cppString(args[0]);
+                    console.log('[MD5_DATA] input: ' + JSON.stringify(trunc(this.input, 10000)));
+                },
+                onLeave(retval) {
+                    if (!this.inSign) return;
+                    console.log('[MD5_DATA] output: ' + JSON.stringify(readIl2cppString(retval)));
+                }
+            });
+            hookCount++;
+        } else console.log('[!] AliothEngine.Encrypt.MD5HashString not found');
+    } catch (e) { console.log('[!] MD5HashString hook failed: ' + e.message); }
+
     // System.Convert.ToBase64String(byte[]) — t 생성 추적용
     try {
         const b64 = findMethodAnywhere('System.Convert', 'ToBase64String', 1);
@@ -590,7 +702,7 @@ async function main() {
     } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
 
     console.log(`\n[*] ${hookCount} hooks installed. Trigger a login in the game...`);
-    console.log('[*] Look for [SIGN_DATA] and [B64] lines.\n');
+    console.log('[*] Look for [SIGN_DATA], [JOIN_DATA], [MD5_DATA] and [B64] lines.\n');
 }
 
 main();
