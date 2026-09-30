@@ -1206,3 +1206,95 @@ protobuf field4 = BoxStatus          보류
 ```
 
 **현재 분석의 핵심 병목은 BoxStatus 값 자체가 아니라 protobuf field tag와 ProtoChapter 메모리 field의 대응 관계다.**
+
+## 29. 2026-09-30 ProtoChapter field mapping 재추적 결과
+
+### 29.1 ProtoChapter Listing 범위 확인
+
+Git의 `research/Ghidra_Listing_txt/AL`에서 `ProtoChapter$$`를 검색한 결과, 현재 저장된 Listing에는 다음 accessor/constructor가 확인된다.
+
+```
+get/set_Id
+get/set_Status
+get/set_Progress
+get/set_BoxStatus
+get/set_URL1
+get/set_URL2
+get/set_Readed
+get/set_Timeout
+get/set_OpeningTime
+IsBoxReceived
+.ctor
+```
+
+현재 Git Listing 검색 결과에는 `MergeFrom/ParseFrom/WriteTo/CalculateSize/Descriptor/Parser` 명시적 serializer 함수가 없다.
+
+### 29.2 현재 강한 정적 증거
+
+```
+Id         +0x10
+Status     +0x14
+Progress   +0x18
+BoxStatus  +0x1C
+```
+
+`get_BoxStatus`, `set_BoxStatus`, `IsBoxReceived` 모두 `+0x1C`를 직접 사용하므로 메모리 구조는 확정이다.
+
+반면 0x14 response Chapter snapshot은:
+
+```
+field 1 = 20000100
+field 3 = 12
+field 4 = 3
+field 9 = {1,15}
+field10 = {1,15}
+field11 = 1
+```
+
+이 값만으로 protobuf field tag와 C# property를 단순 1:1 대응시키면 안 된다.
+
+### 29.3 핵심 재평가
+
+가설 A는 `field 4 = BoxStatus`이지만, boxIndex=5의 단순 mask `1 << 5 = 0x20`과 field4=3이 직접 맞지 않는다.
+
+따라서 현재는 가설 B, 즉 protobuf field 번호와 메모리 offset/property 순서가 단순 대응하지 않을 가능성도 유지한다.
+
+### 29.4 0x14 이후 packet도 비교 대상
+
+Box request 이후:
+
+```
+frame 285  S→C  0x14 response
+frame 287  C→S
+frame 289  S→C
+frame 294  C→S
+frame 296  S→C
+```
+
+가 이어진다. 따라서 BoxStatus가 frame 285에서 즉시 반영되지 않고 후속 response에서 갱신될 가능성도 확인해야 한다.
+
+특히 `285 vs 289 vs 296`의 Chapter snapshot 변화가 중요하다.
+
+### 29.5 다음 정적 분석 목표
+
+1. `ProccessRequestRes @ 016e203c` 실제 Listing 확보
+2. response object의 Chapter collection 접근 확인
+3. Chapter 생성/병합 함수 확인
+4. 해당 함수의 `ProtoChapter.set_*` 또는 `+0x1C` write 확인
+5. `StarStatus`와 `BoxStatus`가 같은 merge 경로에서 갱신되는지 비교
+6. 0x14 후속 response의 Chapter snapshot 변화와 대조
+
+### 29.6 현재 상태
+
+```
+ProtoChapter +0x1C = BoxStatus              확정
+IsBoxReceived가 +0x1C를 읽음              확정
+0x14 request chapterId/boxIndex             확정
+0x14 response Chapter snapshot              확정
+protobuf field 4 = BoxStatus                미확정
+field 3/4/9/10/11 의미                     미확정
+0x14 response 직후 상태 갱신 시점            미확정
+serializer Listing 직접 확인                현재 Git 자료에 없음
+```
+
+**다음 실질 목표는 285 → 289 → 296의 Chapter snapshot을 비교하거나, 그 값을 생성하는 merge 함수에서 +0x1C write를 직접 잡는 것이다.**
