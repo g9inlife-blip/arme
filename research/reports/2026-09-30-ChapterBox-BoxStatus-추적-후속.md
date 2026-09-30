@@ -2682,3 +2682,34 @@ MergeSectionSnapShot → DataCenter +0x90     확인
 MergeSectionSnapShot → ProtoChapter +0x1C   미확인
 0x14 response → BoxStatus 갱신             미확정
 ```
+
+
+## 42. 2026-09-30 — Deserialize 이후 response object 전달점 재확인
+
+`NetworkCenter$$TryHandleResponse @ 015b41e0`에서 response object가 `sp+0x48`에 유지되고 `015b4434 bl 0x016e203c`로 `DataCenter.ProccessRequestRes`에 직접 전달된다. `Request$$SetResponse @ 015b461c`도 같은 response object를 callback 또는 `Request$$set_Res`로 전달한다.
+
+따라서 현재 네트워크 계층에서는 **Deserialize 결과 object → Request/Callback → TryHandleResponse → ProccessRequestRes** 연결이 확정된다.
+
+`ProtoBuf.Meta.MetaType$$GetFieldBoolean @ 021fdf7c` → `FUN_021fe00c`라는 generic metadata 경로도 확인했지만, 이를 `ProtoChapter` 특정 field와 연결하는 타입별 metadata 기록은 현재 Git Listing에 없다. 따라서 generic metadata를 ProtoChapter deserializer라고 명명하지 않는다.
+
+현재 확정 경계:
+
+```text
+KCP/TCP
+ ↓
+Deserialize<object> @ 017cec0c
+ ↓
+response object
+ ↓
+Request.SetResponse / callback
+ ↓
+NetworkCenter.TryHandleResponse @ 015b41e0
+ ↓
+DataCenter.ProccessRequestRes @ 016e203c
+```
+
+그 다음 `ProccessRequestRes → OpInfo.Chapters(+0xC0) → ProtoChapter(+0x1C)`는 아직 직접 Listing으로 연결되지 않았다.
+
+다음 우선순위는 generic FUN_022 검색 확대보다 `016e203c / 016e55dc / 016e5908` 주변 unnamed helper와 runtime `ProtoChapter$$set_BoxStatus @ 015acf8c` 관찰이다. runtime hook으로 setter 호출 여부 또는 backing-field 직접 write 여부를 판별할 수 있다.
+
+현재 상태: ProtoChapter +0x1C=BoxStatus **확정** / 신규 3개 PCAP f4 bitmask **확정** / f7=0-based **확정** / Deserialize→ProccessRequestRes **확정** / OpInfo +0xC0=Chapters **확정** / ProccessRequestRes→Chapters **미확정** / 0x14 response→+0x1C **미확정**.
