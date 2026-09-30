@@ -2193,3 +2193,70 @@ OpInfo.Chapters(+0xC0)
 ```
 
 따라서 다음 작업의 직접 목표는 **`OpInfo.Chapters(+0xC0)` 소비 지점을 찾아 ProtoChapter population을 확인하는 것**으로 유지한다.
+
+## 40. 2026-09-30 — MergeSections의 응답 merge 경로 재확인
+
+### 40.1 MergeSections는 응답 경로 후보에서 제외하지 않음
+
+`DataCenter$$MergeSections @ 016e55dc`의 Calls IN을 다시 대조했다.
+
+확인된 호출자는:
+- `DataCenter$$ProccessRequestRes @ 016e203c`
+- `Ali$$GetExcelData<object> @ 01736d60`
+
+즉 `MergeSections`는 초기 Excel 데이터 구성에도 사용되지만 **네트워크 응답 처리(`ProccessRequestRes`)에서도 실제 호출되는 함수**다.
+
+따라서 이전의 “Section collection 처리 성격이 강하므로 BoxStatus 1차 후보에서 하향”이라는 판단은 수정한다. 현재는 `MergeSections`를 **response snapshot merge 후보로 유지**한다.
+
+### 40.2 MergeSectionSnapShot도 DataCenter 상태와 직접 연결
+
+`DataCenter$$MergeSectionSnapShot @ 016e5908`의 Calls IN에는:
+- `DataCenter$$ProccessRequestRes @ 016e203c`
+- `DataCenter$$get_dataManager @ 00e0277c`
+
+가 확인된다.
+
+특히 `get_dataManager` Listing에서는 `MergeSectionSnapShot`이 실제 Calls IN으로 명시되어 있어, 이 함수가 단순 UI 함수가 아니라 DataCenter/DataManager 상태와 연결된 merge 함수임을 재확인했다.
+
+### 40.3 현재 구조 수정
+
+현재 가장 안전한 경로는:
+
+```text
+KCP/TCP response
+    ↓
+Deserialize<object>
+    ↓
+OpInfo
+    ↓
+ProccessRequestRes
+    ├─ MergeSections @ 016e55dc
+    └─ MergeSectionSnapShot @ 016e5908
+            ↓
+      Section/Chapter 관련 상태 반영 후보
+```
+
+단, 아직 두 함수의 **실제 `ProtoChapter +0x1C` write instruction은 확보되지 않았다.**
+
+### 40.4 다음 정적 분석 목표
+
+`MergeSections`와 `MergeSectionSnapShot` 자체 Listing 본문이 현재 Git 검색 인덱스에 노출되지 않는 상태이므로, 다음은 함수명을 더 검색하는 것이 아니라:
+
+1. 두 함수의 unnamed helper(`FUN_016/FUN_017`) 연결 확인
+2. 호출자 `ProccessRequestRes`에서 두 함수 직전의 객체/인자 관계 확인
+3. `ProtoSection`의 `StarStatus`와 `ProtoChapter`의 `BoxStatus`가 같은 snapshot에서 함께 갱신되는지 비교
+4. Chapter ID가 Section snapshot에서 어떤 collection/key로 전달되는지 확인
+
+순서로 좁힌다.
+
+현재까지의 핵심 미확정점은 그대로다.
+
+```text
+response Chapter snapshot
+        ↓
+ProtoChapter 객체
+        ↓
++0x1C BoxStatus
+```
+
+이 마지막 대입 지점을 직접 확보하는 것이 다음 목표다.
