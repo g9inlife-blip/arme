@@ -2569,3 +2569,116 @@ MergeSectionSnapShot → BoxStatus: 미확정
 285에서 즉시 상태 갱신: 미확정
 
 이번 단계에서는 잘못된 field 4 = BoxStatus 단순 매핑을 제거하고, protobuf tag → deserializer/merge → ProtoChapter memory offset의 3단계 연결을 직접 증명하는 방향으로 추적을 고정한다.
+
+## 31. 2026-09-30 — ProccessRequestRes 실제 병합 구간 재확인 및 Chapter 경로 분리
+
+### 31.1 ProccessRequestRes에서 직접 확인된 OpInfo 접근
+
+기존 보고서에 보존된 Assembly 구간을 다시 검증했다.
+
+```text
+016e29dc  ldr x0,[x20,#0x40]
+016e29e0  ldr x1,[x26,#0xa0]
+016e29e4  bl  0x016e414c        ; MergeWeapon
+
+016e29e8  ldr x0,[x20,#0x38]
+016e29ec  ldr x1,[x26,#0xa8]
+016e29f0  bl  0x016e4348        ; MergeEquip
+
+016e29f4  ldr x1,[x26,#0x98]
+016e29f8  mov x0,x20
+016e29fc  bl  0x016e4700        ; MergeItem
+
+016e2a00  mov x0,x20
+016e2a04  mov x1,x26
+016e2a08  bl  0x016e4ba4        ; UpdateHeroInfo
+
+016e2a1c  ldr x1,[x20,#0x50]
+016e2a20  ldr x2,[x26,#0xc8]
+016e2a24  mov x0,x20
+016e2a28  bl  0x016e55dc        ; MergeSections
+```
+
+여기서 `x26`은 OpInfo로 확인되며, +0x98 Items / +0xA0 Weapons / +0xA8 Equipments / +0xC8 Sections가 실제 merge 입력으로 사용된다.
+
+### 31.2 중요한 음성 증거: Chapters(+0xC0)는 같은 구간에서 직접 읽히지 않음
+
+위 확보 구간에는 `ldr ... [x26,#0xc0]`가 없다. 또한 개별 Listing 검색에서 `OpInfo$$get_Chapters @ 015aadec`의 Calls IN도 비어 있다.
+
+따라서 현재 증거로는:
+
+```text
+ProccessRequestRes
+  → OpInfo +0xC8 Sections → MergeSections      확인
+  → OpInfo +0xC0 Chapters → 직접 merge        미확인
+```
+
+으로 분리해야 한다.
+
+### 31.3 MergeSectionSnapShot도 ProtoChapter 경로와 분리
+
+확인된 호출:
+
+```text
+016e3804  ldr x1,[x20,#0x90]
+016e3808  ldr x2,[x28]
+016e380c  mov x0,x20
+016e3810  bl  0x016e5908        ; MergeSectionSnapShot
+```
+
+이 함수는 `DataCenter +0x90`의 `Dictionary<int,int>` 상태를 갱신하며, `IsSectionClear`에서 value == 1 여부가 사용된다.
+
+따라서 현재 근거만으로 `MergeSectionSnapShot → ProtoChapter +0x1C(BoxStatus)`라고 연결하지 않는다.
+
+### 31.4 StarStatus 비교 대상 정정
+
+기존 단계에서 `ProtoChapter.set_StarStatus @ 015ad948`를 비교 대상으로 언급한 부분은 주소/타입 기준으로 정정한다.
+
+`015ad948`는 실제로:
+
+```text
+Alioth.S1.Common.ProtoSection$$set_StarStatus
+015ad948  str w1,[x0,#0x1c]
+```
+
+이다.
+
+즉 `+0x1C`라는 동일 offset이 `ProtoSection.StarStatus`에도 존재할 수 있으므로, 단순 `+0x1C write` 검색만으로 Chapter BoxStatus를 식별하면 오인할 수 있다.
+
+### 31.5 현재 검색 기준 강화
+
+Chapter BoxStatus 후보는 다음 4개 조건을 함께 본다.
+
+1. 객체가 `ProtoChapter`와 연결되는 증거
+2. +0x10 / +0x14 / +0x18 / +0x1C 중 복수 필드 접근
+3. Chapters collection 또는 Chapter ID와 연결
+4. 0x14 response 또는 Chapter UI 경로와 연결
+
+따라서 단순 `str w?,[x?,#0x1c]` 단독 검색은 보조 증거로만 사용한다.
+
+### 31.6 다음 추적 지점
+
+현재 가장 가치 있는 미확정 연결은:
+
+```text
+0x14 response
+   ↓
+OpInfo +0xC0 Chapters
+   ↓
+ProtoChapter 객체 생성/병합
+   ↓
+ProtoChapter +0x1C BoxStatus
+```
+
+개별 함수 Listing이 없는 `016e203c / 016e5908`를 동일 방식으로 반복 검색하지 않고, 다음은 `ProtoBuf.Serializer.Deserialize<object> @ 017cec0c`와 protobuf metadata 계열에서 `ProtoChapter`의 field population 흔적을 우선 찾는다.
+
+### 31.7 현재 결론
+
+```text
+ProtoChapter +0x1C = BoxStatus             확정
+ProccessRequestRes → OpInfo +0xC8 Sections 확인
+ProccessRequestRes → OpInfo +0xC0 Chapters 직접 접근 미확인
+MergeSectionSnapShot → DataCenter +0x90     확인
+MergeSectionSnapShot → ProtoChapter +0x1C   미확인
+0x14 response → BoxStatus 갱신             미확정
+```
