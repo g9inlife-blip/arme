@@ -2974,3 +2974,60 @@ Deserialize → ProccessRequestRes           확정
 ProccessRequestRes → Chapters              미확정
 실제 direct +0x1C write 위치               미확정
 ```
+
+
+## 47. 2026-10-01 — runtime 추적용 justice_hook v4.8 추가
+
+정적 분석에서 protobuf-net의 direct backing-field write 가능성이 높아졌으므로 Git의 `research/justice_hook.js`에 runtime 관찰점을 추가했다.
+
+추가 hook:
+
+```text
+ProtoChapter.get_BoxStatus()
+ProtoChapter.set_BoxStatus(Int32)
+```
+
+출력에는 object 주소와 `+0x1C`의 실제 값을 함께 기록한다.
+
+목적은 setter가 실제 deserialize 과정에서 호출되는지를 다시 주장하는 것이 아니라, 다음을 구분하는 것이다.
+
+```text
+A. deserialize 과정에서 setter 진입
+B. setter는 전혀 호출되지 않고 다른 코드에서 +0x1C 직접 기록
+C. deserialize 직후 이미 +0x1C가 채워진 ProtoChapter 객체가 전달됨
+```
+
+특히 `set_BoxStatus` hook의 존재 자체는 direct write 증거가 아니다. setter가 호출되지 않는 경우가 핵심 관찰 결과다.
+
+Git 변경:
+- `research/justice_hook.js`
+- v4.8 runtime BoxStatus 관찰 hook 추가
+- commit `96d015fc66c111cdbe38c4f46659b803a9741ef1`
+
+### 47.1 정적 분석 결과와 runtime 분석의 역할 분리
+
+현재 정적 분석:
+
+```text
+ProtoChapter +0x1C = BoxStatus             확정
+MetaType FUN_021fe00c = generic helper     확정
+set_BoxStatus direct caller                추적 중단
+실제 direct +0x1C write 위치              미확정
+```
+
+runtime 분석의 목표:
+
+```text
+0x14 response 수신
+ ↓
+ProtoChapter 객체 생성/채움
+ ↓
+BoxStatus 값 1/5/7 관찰
+ ↓
+setter 호출 여부 확인
+ ↓
+객체 주소/값을 이용한 후속 메모리 추적
+```
+
+따라서 다음 실행에서는 Box 1/3/2 순서의 기존 실험과 동일한 상태 변화를 재현하면 가장 유용하다.
+
