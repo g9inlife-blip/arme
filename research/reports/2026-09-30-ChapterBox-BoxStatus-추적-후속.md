@@ -334,3 +334,83 @@ PCAP 파일 자체도 GitHub repository에 binary로 존재하지 않아 현재 
 현재 결론:
 
 **`OpInfo +0xC0 = Chapters` 확정 / `ProtoChapter +0x1C = BoxStatus` 확정 / `BattleMapMono.InitChapters` Chapter 소비 지점 확인 / `0x14 → BoxStatus` 미확정.**
+
+
+## 23. 2026-09-30 Chapter 전투 PCAP JSON 확보
+
+`research/PCAP/챕터선택_전투승리보상까지.json`이 push되어 실제 패킷 JSON을 직접 대조할 수 있게 되었다.
+
+### 23.1 확인 결과
+
+```text
+총 164 packet
+UDP/KCP: 10.215.173.1:33922 ↔ 182.92.62.79:8000
+```
+
+주요 application packet:
+
+```text
+89   client → server    77 bytes
+91   server → client   221 bytes
+93   client → server    77 bytes
+95   server → client   301 bytes
+137  client → server    93 bytes
+139  server → client   269 bytes
+146  client → server    77 bytes
+147  client → server    77 bytes
+149  server → client   237 bytes
+159  client → server   109 bytes
+162  server → client  1400 bytes
+163  server → client   481 bytes
+```
+
+162/163은 연속된 대형 서버 응답으로 확인되며 KCP fragment 재조립 대상으로 잡는다.
+
+### 23.2 Framing
+
+application packet 앞부분에 다음 공통 값이 반복된다.
+
+```text
+1eee45d6fd69e607
+51 ...  client → server
+52 ...  server → client
+```
+
+예:
+
+```text
+frame 139
+1eee45d6fd69e607 51 0020 00a6e338c2 0f000000 f1000000 ...
+
+frame 149
+1eee45d6fd69e607 51 0020 00e0ea38c2 10000000 d1000000 ...
+```
+
+따라서 framing 영역과 application 데이터 영역을 분리해서 추적할 수 있다.
+
+### 23.3 Chapter/BoxStatus 추적에 대한 의미
+
+현재 JSON에서 application 데이터 자체는 암호화된 형태이므로 plaintext `0x13/0x14`는 아직 직접 확인되지 않는다.
+
+따라서 현재 가장 중요한 후보 구간은:
+
+```text
+frame 159
+   ↓
+frame 162 + 163
+```
+
+이 구간을 기준으로 이후 `OpInfo.Chapters`와 `ProtoChapter.BoxStatus` 변화를 대조한다.
+
+단, 현재 단계에서 **162/163이 0x14 응답이라고 확정하지 않는다.**
+
+### 23.4 상태 갱신
+
+- PCAP JSON 확보: 확인
+- 164 packet 분석: 확인
+- KCP application packet 식별: 확인
+- 162+163 대형 응답 확인: 확인
+- plaintext opcode 0x13/0x14: 미확인
+- 0x14 → BoxStatus: 미확정
+
+다음은 159 → 162/163 구간의 실제 application message 복원과 `OpInfo.Chapters` 대조를 우선한다.
