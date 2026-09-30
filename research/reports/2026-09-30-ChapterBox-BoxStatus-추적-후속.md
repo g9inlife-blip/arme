@@ -2859,3 +2859,118 @@ ProccessRequestRes → Chapters      미확정
 Chapter population helper          미확정
 0x14 response → +0x1C write        미확정
 ```
+
+
+## 46. 2026-10-01 — protobuf-net 직접 backing-field write 전제로 추적 전략 전환
+
+### 46.1 MetaType 경로 제외
+
+`FUN_021fe00c @ 021fe00c`를 직접 디스어셈블리로 재검증했다.
+
+```asm
+021fe00c  ldr x8,[x9,#0x40]
+021fe010  ldr x9,[x1,#0x40]
+021fe014  cmp x8,x9
+021fe018  b.ne 0x021fe044
+021fe01c  bl 0x00b07998
+021fe020  ldrb w8,[x0]
+021fe024  strb w8,[x19]
+```
+
+이 함수는 두 객체의 `+0x40` 값을 비교한 뒤 결과의 byte를 복사하는 generic helper다.
+
+호출 중간의 `FUN_0220b8e8`도:
+
+```asm
+ldr x1,[x8]
+b 0x021fe00c
+```
+
+형태의 trampoline으로 확인됐다.
+
+따라서:
+
+```text
+MetaType$$GetFieldBoolean
+ → FUN_0220b8e8
+ → FUN_021fe00c
+```
+
+경로를 `ProtoChapter` 또는 `BoxStatus` field mapping으로 해석하지 않는다.
+
+### 46.2 set_BoxStatus 호출자 추적 중단
+
+`ProtoChapter$$set_BoxStatus @ 015acf8c`는:
+
+```asm
+015acf8c  str w1,[x0,#0x1c]
+015acf90  ret
+```
+
+뿐이다.
+
+현재 Calls IN이 비어 있는 것과 결합하면, setter 호출자 검색은 더 이상 핵심 추적점으로 사용하지 않는다.
+
+다만 **실제 ProtoChapter +0x1C 직접 write가 확인된 것은 아니다.**
+
+현재의 안전한 표현은:
+
+```text
+setter 호출 경로             미확인
+protobuf-net direct-field write 가능성 강함
+실제 ProtoChapter +0x1C store 위치 미확정
+```
+
+이다.
+
+### 46.3 추적 모델 변경
+
+기존:
+
+```text
+Deserialize
+ → set_BoxStatus
+ → ProtoChapter +0x1C
+```
+
+에서 다음으로 변경한다.
+
+```text
+Deserialize<object>
+        ↓
+protobuf-net field metadata
+        ↓
+concrete object allocation
+        ↓
+field offset 결정
+        ↓
+direct store
+        ↓
+ProtoChapter +0x1C
+```
+
+이때 가장 중요한 식별자는 단순 `+0x1C`가 아니라 **store 대상 객체가 ProtoChapter인지** 여부다.
+
+### 46.4 다음 정적 추적 기준
+
+다음 순서로 검색한다.
+
+1. protobuf-net deserializer에서 primitive/int field를 object offset에 기록하는 generic write helper
+2. field metadata가 실제 object offset을 결정하는 지점
+3. 해당 metadata가 `ProtoChapter` 타입과 연결되는 지점
+4. `str w?,[x?,#0x1c]` 주변에서 `+0x10/+0x14/+0x18` 또는 Chapter ID 처리가 함께 존재하는지 확인
+5. `OpInfo.Chapters(+0xc0)`와 concrete Chapter collection 연결
+6. 정적 연결이 막히면 runtime에서 `ProtoChapter` 객체의 `+0x1c` 값 변화를 관찰
+
+### 46.5 현재 상태
+
+```text
+MetaType generic helper → ProtoChapter     제외
+set_BoxStatus caller 추적                 중단
+ProtoChapter +0x1C = BoxStatus             확정
+f4 = BoxStatus bitmask                     확정
+f7 = 0-based boxIndex                      확정
+Deserialize → ProccessRequestRes           확정
+ProccessRequestRes → Chapters              미확정
+실제 direct +0x1C write 위치               미확정
+```
