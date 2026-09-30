@@ -1457,3 +1457,92 @@ low  32 = 수량/조건값 계열
 2. 후속 response의 Chapter 상태값 변화 확인
 3. 다른 boxIndex의 0x14 요청이 있으면 `1 << index`와 response 상태 비교
 4. 이후 `DataCenter.ProccessRequestRes @ 016e203c` Chapter merge 경로 재추적
+
+
+## 32. 2026-09-30 실제 0x14 응답 재복호화 확인
+
+추가 계정 PCAP blob을 직접 다시 읽어 `frame 285`를 DH64 복구 key로 AES-CBC 복호화했다.
+
+```text
+KCP frame 285
+  flag = 0x84
+  IV   = 945ec753adab00499a5cf5fd41f9cf42
+  opcode = 0x14
+```
+
+복호화 protobuf top-level:
+
+```text
+field 1 = serial
+field 2 = 0x14
+field 4 = nested request/result data
+field 6 = 20000100
+field 7 = 1
+field 43 = Chapter snapshot container
+```
+
+field43:
+
+```text
+field1 = 20000100
+field2 = ProtoChapter-like nested message
+```
+
+nested Chapter:
+
+```text
+field1  = 20000100
+field3  = 12
+field4  = 3
+field9  = { field1=1, field2=15 }
+field10 = { field1=1, field2=15 }
+field11 = 1
+```
+
+따라서 기존에 확인했던 `frame 285 / field43 / Chapter 20000100 / field4=3`은 단순 패킷 추측이 아니라 **실제 AES-CBC 복호화 결과**로 재확인됐다.
+
+### 32.1 중요한 추가 확인
+
+동일 PCAP의 후속 `frame 289`도 같은 key로 복호화했으며:
+
+```text
+opcode = 0x11
+field6 = 10000001
+field43 없음
+```
+
+이었다.
+
+즉 frame 285의 Chapter snapshot이 frame 289에서 그대로 반복되는 구조는 아니다.
+
+`frame 296`은 현재 동일 단일-fragment 복호화 방식으로 유효 protobuf가 나오지 않아, 별도 재검증 대상으로 남긴다.
+
+### 32.2 현재 BoxStatus 판단
+
+정적 분석은:
+
+```text
+ProtoChapter +0x1C = BoxStatus
+IsBoxReceived(i) = (BoxStatus & (1 << i)) != 0
+```
+
+를 확정한다.
+
+실제 0x14 request는:
+
+```text
+chapterId = 20000100
+boxIndex  = 5
+```
+
+이므로 기대되는 수령 bit는:
+
+```text
+1 << 5 = 0x20
+```
+
+하지만 0x14 response의 Chapter nested `field4=3`은 `0x20`이 아니다.
+
+따라서 현재 증거로는 **protobuf field4를 BoxStatus라고 매핑하면 모순**이다.
+
+현재 가장 중요한 다음 작업은 `DataCenter.ProccessRequestRes @ 016e203c`에서 `OpInfo.Chapters`가 실제 `ProtoChapter` 객체로 병합되는 지점을 찾고, `set_BoxStatus @ 015acf8c`에 도달하는 값을 확인하는 것이다.
