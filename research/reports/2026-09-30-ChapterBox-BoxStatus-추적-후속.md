@@ -751,42 +751,83 @@ serverPublic2 = 0xe187d59f859685ba
 
 ### 26.2 핵심 KCP application packet
 
-``
-frame 92  C→S  UDP 45186→8000  payload 61 bytes
-frame 93  S→C  ACK              payload 12 bytes
-frame 94  S→C  UDP 8000→45186  payload 365 bytes
-frame 95  C→S  ACK              payload 12 bytes
+```
+frame 92  C→S  UDP 45186→8000  UDP length 85
+frame 93  S→C  ACK              UDP length 36
+frame 94  S→C  UDP 8000→45186  UDP length 389
+frame 95  C→S  ACK              UDP length 36
 ```
 
-게임 KCP header 28 bytes를 제외하면:
+KCP header는 28 bytes이므로:
 
-``
-frame 92 data = 37?  ← 실제 UDP payload 기준 재계산 필요
-frame 94 data = 361? ← 실제 UDP payload 기준 재계산 필요
+```
+frame 92 KCP data length = 0x31 = 49 bytes
+frame 94 KCP data length = 0x161 = 353 bytes
 ```
 
-PCAP JSON의 UDP payload 자체를 기준으로 보면 KCP header는 28 bytes이고 application data는 각각 **57 bytes / 361 bytes가 아니라**, 실제 payload 길이와 KCP `Len` field를 함께 사용해야 한다. 다음 재분석에서 이 부분을 숫자 하나로 고정한다.
+frame 92 header:
+
+```
+conv = 0x43c7af942c0bf54d
+cmd  = 0x51
+frg  = 0
+wnd  = 0x0001
+sn   = 0x10
+una  = 0x13
+len  = 0x31
+```
+
+frame 94 header:
+
+```
+conv = 0x43c7af942c0bf54d
+cmd  = 0x51
+frg  = 0
+wnd  = 0x0020
+sn   = 0x11
+una  = 0x13
+len  = 0x161
+```
+
+즉 이번 캡처는 요청/응답 모두 단일 KCP segment이며 fragment 재조립은 필요 없다.
 
 ### 26.3 매우 중요한 암호화 framing 확인
 
-frame 92 KCP data의 첫 byte는 `0x80`이고, 전체 KCP data 길이는 `0x39`이다.
+frame 92의 KCP data 49 bytes는 정확히:
 
-``
+```
 0x80
 + 16-byte IV
 + 32-byte ciphertext
 = 49 bytes
 ```
 
-즉 기존에 확보한 `flag + IV16 + AES ciphertext` 구조와 정확히 맞는다.
+즉:
 
-frame 94 역시 KCP `Len=0x161`로, data 353? bytes가 아니라 PCAP JSON의 KCP Len을 기준으로 재확인해야 한다. 중요한 것은 **동일한 암호화 application framing을 사용하는 서버 응답 후보**라는 점이다.
+```
+flag = 0x80
+IV   = b3c9617c319f7d74ffe8d10b33d9bcae
+CT   = 32 bytes
+```
+
+frame 94도:
+
+```
+KCP data = 353 bytes
+flag     = 0xC4
+IV       = a51324f4b36f138fe67259daee379cd3
+CT       = 336 bytes
+```
+
+으로 `1 + 16 + (16 × N)` 구조가 정확히 성립한다.
+
+따라서 기존에 확보한 `flag + IV16 + AES/Rijndael ciphertext` 구조와 동일하다.
 
 ### 26.4 현재 Box reward 분석에서의 의미
 
 정적 분석으로 이미:
 
-``
+```
 ClickGetReward
  → GetChapterBoxReward @ 00ddeea8
  → opcode 0x14
@@ -799,7 +840,7 @@ ClickGetReward
 
 따라서 현재 가장 유력한 매칭은:
 
-``
+```
 frame 92  C→S  encrypted request  ← 0x14 후보
 frame 94  S→C  encrypted response ← 0x14 후보
 ```
