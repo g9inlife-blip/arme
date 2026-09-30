@@ -287,3 +287,50 @@ ProtoChapter.BoxStatus (+0x1C)
 다음은 `OpInfo$$get_Chapters` 호출자와 `ProccessRequestRes` 내부의 Chapters 처리 지점을 집중 추적한다.
 
 현재 결론: `OpInfo +0xC0 = Chapters` **확정**, `ProtoChapter +0x1C = BoxStatus` **확정**, `0x14 → BoxStatus`는 **미확정**.
+
+
+## 22. OpInfo.Chapters 상위 사용처 재추적
+
+이번 단계에서는 `get_Chapters`의 직접 호출자 확보를 다시 시도하고 Chapter UI 진입점과 대조했다.
+
+### 22.1 직접 setter/caller는 여전히 미확보
+
+`ProtoChapter$$set_Id`, `set_Status`, `set_Progress`, `set_BoxStatus` Function Listing은 모두 Calls IN이 비어 있다.
+
+따라서 현재 Listing 인덱스만으로는 Chapter 객체를 채우는 deserialize/merge 함수가 setter를 직접 호출한다고 볼 수 없다.
+
+### 22.2 Chapter 데이터의 실제 소비 지점은 확인
+
+`BattleMapMono$$InitChapters @ 00e4e080`가 `Chapters` 관련 처리의 핵심 UI 진입점으로 반복 확인된다.
+
+Calls IN 검색에서도 `BattleMapMono$$InitChapters`가 여러 UI/데이터 접근 함수에서 반복 참조된다. 따라서 `OpInfo.Chapters`가 최종적으로 Chapter 맵 UI 구성에 사용되는 구조는 뒷받침된다.
+
+현재 구조:
+
+```text
+OpInfo.Chapters (+0xC0)
+        ↓
+DataCenter 상태
+        ↓
+BattleMapMono.InitChapters @ 00e4e080
+        ↓
+Chapter/Box UI
+```
+
+### 22.3 중요한 제한
+
+`BattleMapMono.InitChapters`의 독립 Listing 본문은 현재 인덱스에서 확보되지 않았다. 따라서 이 함수가 `get_Chapters`를 직접 호출하는지, 별도 Chapter cache를 읽는지는 아직 확정하지 않는다.
+
+PCAP 파일 자체도 GitHub repository에 binary로 존재하지 않아 현재 GitHub connector만으로 `0x14` response payload bytes를 직접 대조할 수 없다.
+
+### 22.4 다음 우선순위
+
+1. `BattleMapMono.InitChapters @ 00e4e080` 실제 Listing 확보
+2. 내부의 `get_Chapters` / `ProtoChapter` / `BoxStatus` 접근 확인
+3. `new ProtoChapter` 또는 deserialize 코드 탐색
+4. `Id/Status/Progress/BoxStatus` 4개 field 동시 접근 코드 탐색
+5. 로컬 PCAP이 있으면 `0x13/0x14` response 직접 추출 및 상태 대조
+
+현재 결론:
+
+**`OpInfo +0xC0 = Chapters` 확정 / `ProtoChapter +0x1C = BoxStatus` 확정 / `BattleMapMono.InitChapters` Chapter 소비 지점 확인 / `0x14 → BoxStatus` 미확정.**
