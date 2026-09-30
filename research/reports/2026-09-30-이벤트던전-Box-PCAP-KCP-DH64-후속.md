@@ -7,52 +7,26 @@
 - 확인되지 않은 opcode/상태는 추측으로 확정하지 않음
 
 ## 1. 신규 통합 PCAP 확인
-
-신규 JSON은 총 **479 packet**이며, 기존 Box 전용 103 packet PCAP과 달리 로그인부터 여러 게임 행동을 하나의 세션 흐름으로 포함한다.
+신규 JSON은 총 **479 packet**이며 로그인부터 여러 게임 행동을 하나의 세션 흐름으로 포함한다.
 
 사용자 행동 순서:
 ```
-로그인
-→ 이벤트 메뉴/출석
-→ 출석
-→ 퀘스트/업적 수령
-→ 우편 2개 수령
-→ 토벌 일괄수령/퀘스트 수령
-→ 던전 진입/시작/승리/보상
-→ 무기 경험치 증가/레벨업
-→ 던전 업적 3개
-→ Box 보상 수령
-→ 무기 제작
-→ 영웅 경험치 강화/레벨업
+로그인 → 출석 → 퀘스트/업적 → 우편 → 토벌 → 던전
+→ 승리/보상 → 던전 업적 → Box 보상 → 무기 제작 → 강화
 ```
 
 ## 2. KCP DH64 / session key 확정
-
 Game Server UDP:
 ```
 10.215.173.1:40193 ↔ 182.92.62.79:8000
-```
-
-KCP handshake:
-- frame 180 C→S: client public #1/#2
-- frame 182 S→C: server public #1/#2
-
-정적 분석 및 PCAP 검증:
-```
-p = 2^64 - 59
-g = 5
-private = ((uint64)R1 << 32) | ((uint32)R2 + 1)
-public = 5^private mod p
 ```
 
 이번 세션:
 ```
 client private #1 = 0x20A728990271B002
 client private #2 = 0x237FCE167BB3CC9F
-
 secret1 = 0xFE15868045F4F544
 secret2 = 0x3F3287258010223F
-
 KCP key = 44f5f445808615fe1b2e224c5e05e718
 ```
 
@@ -61,66 +35,26 @@ frame 189 실제 application 복호화 성공으로 전체 경로가 검증되�
 ## 3. 0x14 Box request/response 확정
 
 ### frame 428 — C→S
-
 ```
 opcode = 0x14
 chapterId = 20,000,100
 boxIndex = 5
 ```
 
-복호화 protobuf:
-```
-08 e2 de df c0 09
-10 14
-22 0b
-  08 cc a2 c2 e9 e4 be cf 3f
-  10 05
-30 e4 da c4 09
-```
-
-정적 분석의:
-```
-GetChapterBoxReward
-→ opcode 0x14
-→ chapterId + boxIndex
-```
-와 실제 PCAP이 일치한다.
+정적 분석의 `GetChapterBoxReward @ 00ddeea8` 계약과 일치한다.
 
 ### frame 430 — S→C
-
-기존 분석에서 이미:
 ```
 flag = 0x84
-application length = 353
+application bytes = 353
 plaintext = 329 bytes
-field #2 = 0x14
-```
-가 확인되었다.
-
-## 4. frame 430이 analyzer에서 빠진 원인 확인
-
-Git의 생성 결과 `messages.txt`를 다시 확인한 결과:
-
-```
-packets=[430] ... bytes=353 flags=None decrypt=None
+opcode(field #2) = 0x14
 ```
 
-원인은 KCP 재조립 문제가 아니라 **암호화 flag 목록 누락**이었다.
+## 4. analyzer 수정
+frame 430 누락 원인은 KCP 재조립이 아니라 암호화 flag 목록에서 `0x84`가 빠져 있었던 것이다.
 
-기존:
-```
-ENC_FLAGS = {0x80, 0xC0, 0xC4}
-```
-
-frame 430은:
-```
-flag = 0x84
-```
-
-따라서 analyzer가 `decrypt_app()` 단계에서 0x84를 암호화 메시지로 인정하지 않고 그대로 반환했다.
-
-### 수정
-
+수정:
 ```
 ENC_FLAGS = {0x80, 0x84, 0xC0, 0xC4}
 ```
@@ -130,70 +64,105 @@ ENC_FLAGS = {0x80, 0x84, 0xC0, 0xC4}
 076e991f0513b9ace469553a1c87f13b3b6a688d
 ```
 
-이제 동일 PCAP을 다시 실행하면 frame 430도:
+현재 Git에는 수정 후 생성된:
 ```
-0x84
-→ IV16
-→ AES-128-CBC
-→ PKCS7
-→ 329-byte plaintext
-→ protobuf tree
+plaintext/000430_s2c.bin
 ```
-경로로 분석된다.
+이 존재하며 **실제 329-byte plaintext가 확인되었다.**
 
-## 5. ProtoChapter / BoxStatus 현재 상태
+## 5. frame 430 ProtoChapter 구조 확인
 
-Ghidra에서 확정:
+frame 430의 핵심 nested 구조:
+
 ```
-ProtoChapter +0x10 = Id
-ProtoChapter +0x14 = Status
-ProtoChapter +0x18 = Progress
-ProtoChapter +0x1C = BoxStatus
+field 43
+ └─ length 30
+    ├─ field 1 = 20,000,100
+    ├─ field 3 = 6
+    ├─ field 4 = 1
+    ├─ field 9 = { field1=1, field2=15 }
+    ├─ field10 = { field1=1, field2=15 }
+    └─ field11 = 1
 ```
 
+특히 field 43 내부의 **field 1 = 20,000,100**은 요청 chapterId와 정확히 일치한다.
+
+Ghidra에서 확인된 `ProtoChapter` 메모리 필드:
+```
++0x10 = Id
++0x14 = Status
++0x18 = Progress
++0x1C = BoxStatus
+```
+
+이에 따라 protobuf의 연속적인 Chapter 핵심 필드가:
+```
+protobuf field 1 → Id
+protobuf field 2 → Status
+protobuf field 3 → Progress
+protobuf field 4 → BoxStatus
+```
+로 대응하는 것이 **frame 430에서 직접 관측된 값과 일치한다.**
+
+따라서 이번 frame 430에서는:
+
+```
+ProtoChapter.Id        = 20,000,100
+ProtoChapter.Progress  = 6
+ProtoChapter.BoxStatus = 1
+```
+
+로 해석할 근거가 확보되었다.
+
+**중요:** field 4 → BoxStatus는 단순 이름 추측이 아니라, Ghidra의 필드 순서/offset과 frame 430의 Chapter 구조가 동시에 일치한 결과다. 다만 protobuf serializer/deserializer 함수 자체에서 field 번호를 직접 확인하면 최종 확정이 된다.
+
+## 6. BoxStatus 의미
 ```
 IsBoxReceived(mask)
 = (BoxStatus & mask) != 0
 ```
 
-또한:
+현재 frame 430:
 ```
-OpInfo +0xC0 = Chapters
-DataCenter.ProccessRequestRes
-→ OpInfo.Chapters
-→ MergeSectionSnapShot / MergeSections
+BoxStatus = 1
 ```
 
-그러나 **frame 430의 특정 nested protobuf를 ProtoChapter라고 확정하거나, 그 field가 BoxStatus라고 확정한 것은 아직 아니다.**
-
-## 6. 다음 분석
-
-수정된 analyzer로 통합 PCAP을 재실행한다.
-
+요청은:
 ```
-python research\\PCAP\\analyze_kcp_json.py "research\\PCAP\\로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화.json"
+boxIndex = 5
 ```
 
-우선 확인 대상:
+이므로 **BoxStatus=1이 boxIndex 5의 수령 완료를 직접 의미한다고 아직 해석하면 안 된다.**
+
+현재 확인된 것은:
+- opcode 0x14 요청에서 boxIndex=5가 서버로 전달됨
+- 같은 response의 chapterId=20,000,100 Chapter snapshot에 BoxStatus 후보값 1이 존재
+- 실제 BoxStatus는 bit mask이므로 boxIndex와 bit 위치의 매핑을 추가 확인해야 함
+
+## 7. 다음 추적 포인트
+
+다음은 frame 430 자체보다 **0x14 이전/이후의 동일 chapter snapshot 비교**가 중요하다.
+
+확인 순서:
 ```
-frame 430
-→ plaintext 329 bytes
-→ protobuf nested tree
-→ Id / Status / Progress / BoxStatus 후보
+1. chapterId=20,000,100인 field 43 검색
+2. BoxStatus 후보(field 4)의 이전 값 확인
+3. frame 428 boxIndex=5 요청
+4. frame 430 response의 field 4=1 확인
+5. boxIndex 5 ↔ BoxStatus bit 매핑 확인
+6. ProtoChapter protobuf serializer/deserializer에서 field 번호 직접 확인
 ```
 
-그 다음 frame 430 전후 snapshot과 비교하여 BoxStatus bit 변화 여부를 확인한다.
-
-현재 확정:
+현재 가장 중요한 확정 경로:
 ```
-PCAP
-→ KCP DH64
-→ session key
-→ AES decrypt
+frame 428
 → opcode 0x14
 → chapterId 20,000,100
 → boxIndex 5
-→ response plaintext 329 bytes
+→ server response frame 430
+→ field 43 Chapter snapshot
+→ Id=20,000,100
+→ Progress=6
+→ BoxStatus 후보/매핑 field=4
+→ 값=1
 ```
-
-**BoxStatus의 실제 protobuf field 번호는 재실행 결과 확인 전까지 확정하지 않는다.**
