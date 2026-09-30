@@ -950,3 +950,259 @@ boxIndex → mask 값                               미확정
 ```
 
 다음 세션은 다른 계정 PCAP의 Git 존재/복호화 → BoxStatus 전후 비교부터 재개한다.
+
+
+## 28. 2026-09-30 다른 계정 PCAP 복호화 및 실제 0x14 검증
+
+### 28.1 Git 파일 존재 및 DH endian 정정
+
+`research/PCAP/로그인부터던전2회이후box오픈_이후장비착용.json`은 Git blob으로 실제 존재한다.
+
+- packet: 306
+- blob SHA: `faeb47f64d76158c731c36abb741773e376e46a2`
+- KCP client port: `51943`
+- KCP server: `182.92.62.79:8000`
+
+기존 기록의 candidate key에는 **server public 8-byte LE 해석 오류**가 있었다.
+
+실제 KCP Handshake2 기준 offset 17/25의 raw bytes:
+
+```
+server public #1 raw = cb 43 ff 46 bc 8a d1 d4
+server public #2 raw = a8 59 ce f7 2e 5f cc a8
+```
+
+BitConverter.ToUInt64 기준 실제 정수:
+
+```
+serverPublic1 = 0xd4d18abc46ff43cb
+serverPublic2 = 0xa8cc5f2ef7ce59a8
+```
+
+client public raw:
+
+```
+a6 0f f3 68 ac df 81 d8
+ee c2 4e ec ff 6a c7 3b
+```
+
+실제 정수:
+
+```
+clientPublic1 = 0xd881dfac68f30fa6
+clientPublic2 = 0x3bc76affec4ec2ee
+```
+
+discrete log으로 검증된 client private:
+
+```
+private1 = 0x1021bdff42518bc9
+private2 = 0x1711d8ad4dc70e26
+```
+
+shared secret:
+
+```
+secret1 = 0x490b1c9b2ce9abdc
+secret2 = 0xcf8fdf34709590da
+```
+
+따라서 이번 세션의 실제 KCP key:
+
+```
+dcabe92c9b1c0b49da90957034df8fcf
+```
+
+이 key로 실제 application ciphertext의 CBC/PKCS7 복호화가 성공했다.
+
+### 28.2 복호화 성공으로 암호화 경로 재검증
+
+예:
+
+```
+frame 260 C→S
+flag = 0x80
+opcode = 0x16
+```
+
+plaintext:
+
+```
+field 1 = serial
+field 2 = 0x16
+field 6 = 20000100
+field 7 = 21000080
+```
+
+또한:
+
+```
+frame 273 C→S
+opcode = 0x17
+```
+
+까지 정상 복호화되었다.
+
+따라서 새 계정 PCAP에서도:
+
+```
+DH64
+ ↓
+16-byte key
+ ↓
+Rijndael CBC/PKCS7
+ ↓
+KCP encrypted application
+ ↓
+protobuf-like OpInfo
+```
+
+경로가 실제 bytes 수준에서 검증된다.
+
+### 28.3 실제 Box reward request 확정
+
+**frame 283 C→S**:
+
+```
+KCP cmd = 0x51
+encrypted flag = 0x80
+plaintext:
+field 1 = serial
+field 2 = 0x14
+field 4 = { field 1 = 20000100, field 2 = 5 }
+field 6 = 20000100
+field 7 = 1
+```
+
+따라서:
+
+```
+opcode = 0x14
+chapterId = 20,000,100
+boxIndex = 5
+```
+
+가 실제 PCAP plaintext로 직접 확정된다.
+
+이는 정적 분석의:
+
+```
+ChapBoxMono.ClickGetReward
+ ↓
+GetChapterBoxReward(chapter.id, UIData.data)
+ ↓
+opcode 0x14
+ ↓
+chapterId + boxIndex
+```
+
+와 정확히 일치한다.
+
+### 28.4 실제 Box reward response 확정
+
+**frame 285 S→C**도 정상 복호화된다.
+
+Top-level:
+
+```
+field 1 = serial
+field 2 = 0x14
+```
+
+그리고:
+
+```
+field 43
+ ├─ field 1 = 20000100
+ └─ field 2 = nested Chapter data
+```
+
+nested Chapter data:
+
+```
+field 1 = 20000100
+field 3 = 12
+field 4 = 3
+field 9 = { field1 = 1, field2 = 15 }
+field10 = { field1 = 1, field2 = 15 }
+field11 = 1
+```
+
+즉 **0x14 response에 chapterId=20000100인 Chapter snapshot이 실제 포함**되는 것은 확정이다.
+
+### 28.5 BoxStatus 해석은 여기서 보류
+
+정적 분석으로:
+
+```
+ProtoChapter +0x1C = BoxStatus
+IsBoxReceived(mask) = (BoxStatus & mask) != 0
+mask = 1 << boxIndex
+```
+
+가 확정되어 있다.
+
+frame 283의 boxIndex=5이므로 UI 코드 기준 검사 mask는:
+
+```
+1 << 5 = 0x20
+```
+
+그런데 frame 285의 nested Chapter data에서 field 4 값은:
+
+```
+3
+```
+
+이다.
+
+따라서 **nested protobuf field 4 = BoxStatus라고 지금 단정하면 안 된다.**
+
+현재 안전한 결론:
+
+- 0x14 request의 chapterId=20000100: 확정
+- 0x14 request의 boxIndex=5: 확정
+- 0x14 response의 동일 Chapter snapshot: 확정
+- ProtoChapter +0x1C = BoxStatus: 확정
+- boxIndex 5의 UI 검사 mask = 0x20: 확정
+- response nested field 4 = BoxStatus: **보류**
+- 0x14 response가 BoxStatus +0x1C를 갱신: **아직 미확정**
+
+특히 field 4=3은 mask 0x20과 직접 일치하지 않으므로, **protobuf field 번호와 ProtoChapter 메모리 field 번호를 동일하다고 가정했던 이전 해석은 폐기**한다.
+
+### 28.6 현재 가장 중요한 다음 작업
+
+이제 암호/PCAP은 병목이 아니다.
+
+다음은 **ProtoChapter protobuf field tag ↔ C# property/메모리 offset 매핑**을 직접 확보하는 것이다.
+
+우선순위:
+
+1. ProtoChapter deserialize/merge 코드에서 field tag 처리 확인
+2. field 1 → Id 여부 확인
+3. field 2 → Status 여부 확인
+4. field 3 → Progress 여부 확인
+5. field 4 → BoxStatus 여부 확인
+6. field 9/10/11의 실제 property 확인
+7. 0x14 response에서 +0x1C write가 발생하는지 확인
+8. 필요하면 frame 285 직후 runtime state를 별도 hook으로 비교
+
+### 28.7 이번 단계 최종 상태
+
+```
+다른 계정 PCAP Git 존재              확정
+DH64 endian 정정                     확정
+실제 KCP session key                 dcabe92c9b1c0b49da90957034df8fcf
+실제 PCAP CBC/PKCS7 복호화            성공
+frame 283 opcode 0x14                확정
+frame 283 chapterId 20000100         확정
+frame 283 boxIndex 5                 확정
+frame 285 opcode 0x14 response       확정
+frame 285 Chapter snapshot           확정
+ProtoChapter +0x1C = BoxStatus       확정
+boxIndex 5 → mask 0x20              확정
+protobuf field4 = BoxStatus          보류
+0x14 → BoxStatus write               미확정
+```
+
+**현재 분석의 핵심 병목은 BoxStatus 값 자체가 아니라 protobuf field tag와 ProtoChapter 메모리 field의 대응 관계다.**
