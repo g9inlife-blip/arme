@@ -1,7 +1,7 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.7
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.8
  *
- * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
+ * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -935,6 +935,65 @@ async function main() {
             console.log('[!] System.Convert.ToBase64String not found');
         }
     } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
+
+    // v4.8: ProtoChapter BoxStatus runtime observation.
+    // The setter itself is only a 2-instruction backing-field write, so this
+    // hook is a control observation point, not proof that protobuf-net calls it.
+    try {
+        const bsGet = findMethodAnywhereExact('Alioth.S1.Common.ProtoChapter', 'get_BoxStatus', []);
+        const bsSet = findMethodAnywhereExact('Alioth.S1.Common.ProtoChapter', 'set_BoxStatus', ['System.Int32']);
+        if (bsGet) {
+            Interceptor.attach(bsGet.fnPtr, {
+                onEnter(args) {
+                    this.obj = args[0];
+                },
+                onLeave(retval) {
+                    try {
+                        const v = retval.toInt32();
+                        const raw = this.obj.add(0x1c).readU32();
+                        console.log('[BOXSTATUS_GET] obj=' + this.obj +
+                            ' ret=' + v + ' raw+0x1c=' + raw);
+                    } catch (e) {
+                        console.log('[BOXSTATUS_GET] read failed: ' + e.message);
+                    }
+                }
+            });
+            hookCount++;
+            console.log('[+] Hooking ProtoChapter.get_BoxStatus @ ' + bsGet.fnPtr);
+        } else {
+            console.log('[!] ProtoChapter.get_BoxStatus not found');
+        }
+
+        if (bsSet) {
+            Interceptor.attach(bsSet.fnPtr, {
+                onEnter(args) {
+                    try {
+                        const oldValue = args[0].add(0x1c).readU32();
+                        console.log('[BOXSTATUS_SET] obj=' + args[0] +
+                            ' arg=' + args[1].toInt32() +
+                            ' old+0x1c=' + oldValue);
+                    } catch (e) {
+                        console.log('[BOXSTATUS_SET] read failed: ' + e.message);
+                    }
+                },
+                onLeave(retval) {
+                    try {
+                        const obj = this.context ? this.context.x0 : null;
+                        if (obj && !obj.isNull()) {
+                            console.log('[BOXSTATUS_SET_END] obj=' + obj +
+                                ' new+0x1c=' + obj.add(0x1c).readU32());
+                        }
+                    } catch (e) {}
+                }
+            });
+            hookCount++;
+            console.log('[+] Hooking ProtoChapter.set_BoxStatus @ ' + bsSet.fnPtr);
+        } else {
+            console.log('[!] ProtoChapter.set_BoxStatus not found');
+        }
+    } catch (e) {
+        console.log('[!] ProtoChapter BoxStatus hook failed: ' + e.message);
+    }
 
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
