@@ -1718,3 +1718,75 @@ field offset / Dictionary / OpInfo 접근
 그러나 현재 확인된 `FUN_016`의 직접 내용만으로는 BoxStatus 갱신점이 새로 확정되지는 않았다.
 
 다음 단계는 `FUN_016/FUN_017`의 DataCenter 인접 함수와 `FUN_019` Dictionary 처리 함수를 연결하여, `OpInfo.Chapters → ProtoChapter` 병합 객체가 생성되는 지점을 찾는다.
+
+
+## 34. 2026-09-30 — 신규 FUN_ 그룹핑 TXT 반영
+
+### 34.1 Git 반영 확인
+
+최근 Git 커밋에서 `research/Ghidra_Listing_txt/FUN_008.txt ~ FUN_026.txt` 그룹이 추가된 것을 확인했다.
+
+그룹 기준은 명명되지 않은 함수 `FUN_0xx...`이며, 기존 함수명 Listing과 병행해서 사용한다.
+
+### 34.2 BoxStatus 경로에 대입한 결과
+
+이번에 신규 FUN 그룹을 대상으로 다음 직접 호출 관계를 재검색했다.
+
+```
+ProtoChapter.IsBoxReceived @ 015acfe8
+ProtoChapter.set_BoxStatus @ 015acf8c
+ProtocolGame.SendRequest.GetChapterBoxReward @ 00ddeea8
+ChapBoxMono.ClickGetReward @ 00e5705c
+DataCenter.ProccessRequestRes @ 016e203c
+NetworkCenter.TryHandleResponse @ 015b41e0
+```
+
+현재 신규 `FUN_008~FUN_026` 그룹에서 위 Box 전용 함수들을 직접 호출하는 unnamed function은 확인되지 않았다.
+
+따라서 신규 FUN 그룹은 현재 BoxStatus의 직접 setter/caller를 찾는 핵심 증거는 아니며, **명명된 함수 내부에서 호출하는 unnamed helper를 역추적할 때 사용하는 보조 인덱스**로 판단한다.
+
+### 34.3 오히려 중요한 점
+
+`ProtoChapter$$set_BoxStatus` 자체의 Calls IN이 비어 있다는 기존 결과와 일치한다.
+
+즉 현재 구조는 다음 가능성이 높다.
+
+```
+Network response
+  ↓
+ProccessRequestRes
+  ↓
+protobuf/공통 deserialize 또는 객체 생성
+  ↓
+ProtoChapter 필드 직접 반영
+  ↓
+ProtoChapter.BoxStatus(+0x1C)
+```
+
+setter를 호출하는 일반적인 C# property 경로가 아니라 **deserialize 과정에서 backing field를 직접 채우는 구조**일 가능성을 우선 검토한다.
+
+### 34.4 다음 추적 포인트
+
+다음은 신규 FUN 파일을 무작정 전체 검색하지 않고, 다음 기준으로 좁힌다.
+
+1. `ProtoChapter`와 함께 사용되는 protobuf/serializer 함수
+2. Chapter 객체를 반환하는 Dictionary/List 검색 함수
+3. `Id + Status + Progress + BoxStatus`에 대응하는 연속 필드 접근
+4. `ProccessRequestRes`에서 호출되는 merge 함수 중 Chapter 계열
+5. response snapshot의 field 번호와 `ProtoChapter +0x10/+0x14/+0x18/+0x1C`의 대응 확인
+
+### 34.5 현재 판단
+
+`FUN_*` 그룹 추가로 unnamed function 추적 기반은 확보되었다.
+
+하지만 현재 BoxStatus 문제의 핵심 미확정점은 여전히:
+
+```
+response Chapter snapshot
+        ↓
+ProtoChapter 객체 생성/검색
+        ↓
++0x1C BoxStatus 반영
+```
+
+이다. 다음 단계는 **Chapter protobuf deserialize/merge 함수 식별**이다.
