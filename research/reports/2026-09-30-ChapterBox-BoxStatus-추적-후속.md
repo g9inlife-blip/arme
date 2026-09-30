@@ -260,3 +260,30 @@ Chapter BoxStatus를 찾기 위해 `MergeSections / MergeSectionSnapShot`를 계
 현재 결론은 그대로다.
 
 **`0x14 → BoxStatus`는 아직 미확정이며, Section merge 계열은 Chapter BoxStatus의 직접 갱신점이 아닌 것으로 범위를 좁혔다.**
+
+
+## 21. OpInfo.Chapters 진입점 재확인
+
+`OpInfo$$get_Chapters @ 015aadec`는 `[x0,#0xc0]`를 읽고, `set_Chapters @ 015aadf4`는 `[x0,#0xc0]`에 저장한다. 따라서 `OpInfo +0xC0 = Chapters`가 확정된다.
+
+`set_Chapters`의 Calls IN은 비어 있어 실제 deserialize 호출자는 아직 확인되지 않았다. `ProtoChapter` 검색에서도 상위 호출자가 거의 잡히지 않아, Chapter 객체를 직접 추적하기보다 **OpInfo.Chapters가 `ProccessRequestRes`로 넘어가는 지점**을 찾는 것이 더 효율적이다.
+
+`DataCenter$$RefreshBoxList @ 016e6c64`와 두 람다(`016ea0d4`, `016ea154`)도 확인했지만, 현재 참조는 `ItemData.isBoxItem` 및 Excel Item 데이터 처리 쪽이므로 `ProtoChapter.BoxStatus` 갱신점으로 연결할 근거가 없다.
+
+현재 흐름은 다음 수준까지 확정한다.
+
+```text
+Server response
+  ↓ deserialize
+OpInfo.Chapters (+0xC0)
+  ↓
+ProccessRequestRes
+  ↓
+Chapter 상태 저장/병합  ← 미확정
+  ↓
+ProtoChapter.BoxStatus (+0x1C)
+```
+
+다음은 `OpInfo$$get_Chapters` 호출자와 `ProccessRequestRes` 내부의 Chapters 처리 지점을 집중 추적한다.
+
+현재 결론: `OpInfo +0xC0 = Chapters` **확정**, `ProtoChapter +0x1C = BoxStatus` **확정**, `0x14 → BoxStatus`는 **미확정**.
