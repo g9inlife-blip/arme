@@ -6,38 +6,22 @@
 
 ### 14.1 setter 자체는 단순 field write
 
-`ProtoChapter$$set_BoxStatus @ 015acf8c`는 다음 한 줄이다.
+`ProtoChapter$$set_BoxStatus @ 015acf8c`:
 
 ```text
 015acf8c  str w1,[x0, #0x1c]
 015acf90  ret
 ```
 
-즉:
+즉 `ProtoChapter + 0x1C = BoxStatus`가 확정된다.
 
-```text
-ProtoChapter + 0x1C = BoxStatus
-```
+### 14.2 setter caller는 현재 Listing에서 직접 확보되지 않음
 
-가 확정된다.
+GitHub Ghidra Listing 검색에서는 `set_BoxStatus`의 Calls IN이 비어 있다. 따라서 현재 자료만으로 특정 response/merge 함수가 setter를 직접 호출한다고 단정할 수 없다.
 
-### 14.2 현재 Listing 인덱스의 한계
+특히 `DataCenter.ProccessRequestRes @ 016e203c`가 opcode `0x14` 처리 후 `set_BoxStatus`를 호출한다고 아직 확정하지 않는다.
 
-현재 GitHub의 Ghidra Listing 검색에서는 `set_BoxStatus`의 Calls IN이 비어 있고, `[x0,#0x1c]` 문자열 검색도 setter/getter 및 다른 unrelated property setter가 주로 반환된다.
-
-따라서 현재 자료만으로는:
-
-```text
-어떤 response/merge 함수
-    ↓
-ProtoChapter.BoxStatus 변경
-```
-
-의 직접 caller를 아직 확정할 수 없다.
-
-특히 `DataCenter.ProccessRequestRes @ 016e203c`가 opcode `0x14` 처리 후 setter를 호출한다고 현재 단계에서 단정하면 안 된다.
-
-### 14.3 오히려 확정된 중요한 연결
+### 14.3 BoxStatus 읽기 경로는 확정
 
 ```text
 ChapBoxMono.LayBoxItem @ 00e55c80
@@ -49,68 +33,100 @@ ProtoChapter.IsBoxReceived @ 015acfe8
 BoxStatus & mask
 ```
 
-이 세 UI 경로가 동일한 `BoxStatus` bitmask를 읽는다.
+Chapter Box UI와 Section Box UI가 동일한 `BoxStatus` bitmask를 사용한다.
 
-따라서 수령 여부의 실제 상태 저장값은 UI별 별도 flag가 아니라 `ProtoChapter.BoxStatus`로 보는 것이 확정적이다.
+## 15. Chapter 상태 merge 후보 재추적
 
-## 15. 다음 추적 방향 변경
+### 15.1 MergeSectionSnapShot
 
-직접 setter caller 검색이 막혀 있으므로 다음은 setter가 아니라 **BoxStatus를 입력으로 받는 상태 병합 경로**를 역으로 좁힌다.
+`DataCenter.MergeSectionSnapShot @ 016e5908`는 실제 함수 주소가 여러 Listing의 Calls IN에서 확인되지만, 현재 저장소에는 이 함수의 독립 Function Listing 본문이 없다.
 
-우선순위:
+따라서 현재 확인 가능한 것은 **함수 존재 및 DataManager 관련 참조**까지이며, 내부에서 `ProtoChapter +0x1C`를 쓰는지는 미확정이다.
 
-1. `MergeSectionSnapShot @ 016e5908`
-2. `MergeItem @ 016e4700`
-3. `MergeEquip @ 016e4348`
-4. `MergeWeapon @ 016e5be4`
-5. `DataCenter.ProccessRequestRes @ 016e203c` 주변 호출/분기
-6. `ProtoChapter` 객체를 생성/갱신하는 함수 검색
+### 15.2 MergeSections
 
-특히 Chapter snapshot 또는 protobuf deserialize 결과에서 `ProtoChapter`의 `+0x1C`가 복사되는 지점을 찾는 것이 핵심이다.
+`DataCenter.MergeSections @ 016e55dc`도 존재가 확인된다.
 
-## 16. 현재 Chapter Box 분석 확정/미확정
+검색 결과에서는 `Dictionary<int, object>` 계열 입력을 순회하는 구조라는 기존 분석 기록이 있으나, 현재 검색 결과만으로 `ProtoChapter.BoxStatus`와 직접 연결되는 field write는 확인되지 않았다.
 
-### 확정
-
-- Chapter reward 데이터는 `ChapterRecord.m_chapterReward`의 threshold → reward ID 구조를 사용한다.
-- `ChapBoxMono.TransferChapterData`가 이를 dictionary/list 형태로 분해한다.
-- `GetChapterBoxReward`는 opcode `0x14`를 사용한다.
-- `ProtoChapter.BoxStatus`는 `+0x1C`이다.
-- `IsBoxReceived(mask)`는 `BoxStatus & mask`를 검사한다.
-- Box UI들이 이 상태값을 공통 사용한다.
-
-### 미확정
-
-- `LayBoxItem`의 KeyValuePair Key/Value 방향
-- reward threshold와 box index의 정확한 매핑
-- Box index → BoxStatus bit 위치
-- opcode `0x14` response가 `BoxStatus`를 갱신하는 정확한 함수
-- 실제 PCAP에서 opcode `0x14` response와 상태 변경의 대응
-
-## 17. 다음 실행 작업
-
-다음 단계에서는 `DataCenter.ProccessRequestRes` 주변의 Chapter/Section 상태 merge를 더 좁히고, 동시에 `ProtoChapter` 관련 함수 목록에서 snapshot/update 계열을 검색한다.
-
-목표는:
+따라서:
 
 ```text
-GetChapterBoxReward(0x14)
+GetSections(0x13)
+ → MergeSections
+ → ProtoChapter
+```
+
+의 전체 연결은 아직 가설 단계로 유지한다.
+
+### 15.3 MergeItem / MergeEquip / MergeWeapon
+
+다음 함수들의 존재 및 DataManager 관계는 확인된다.
+
+```text
+MergeItem  @ 016e4700
+MergeEquip @ 016e4348
+MergeWeapon @ 016e5be4
+```
+
+하지만 현재 Listing 인덱스에는 독립 본문이 없어 Chapter BoxStatus와의 직접 관계는 확인되지 않았다.
+
+특히 `MergeItem`은 Chapter Box 수령 후 실제 아이템 보상이 추가되는 경로와 연결될 가능성은 있으나, 현재 증거만으로 opcode `0x14`의 보상 처리 함수라고 확정하지 않는다.
+
+## 16. ProccessRequestRes 주변의 현재 결론
+
+`NetworkCenter.TryHandleResponse @ 015b41e0`에서:
+
+```text
+Request.SetResponse(OpInfo)
         ↓
-TCP response
+callback
         ↓
-Decrypt / Deserialize
+DataCenter.ProccessRequestRes @ 016e203c
+```
+
+호출은 확정되어 있다.
+
+그러나 `ProccessRequestRes`의 독립 Listing 본문이 현재 저장소에 없기 때문에 opcode `0x14` 분기와 `BoxStatus` 갱신을 직접 확인하지 못했다.
+
+따라서 현재 가장 안전한 모델은:
+
+```text
+GetChapterBoxReward
+  opcode 0x14
         ↓
-OpInfo
+NetworkCenter / TCPTube
+        ↓
+Deserialize → OpInfo
         ↓
 ProccessRequestRes
         ↓
-Chapter state merge
+[Chapter state merge 지점 미확정]
         ↓
-ProtoChapter.BoxStatus (+0x1C)
-        ↓
-IsBoxReceived(mask)
+ProtoChapter.BoxStatus +0x1C
 ```
 
-까지 직접 연결하는 것이다.
+이다.
 
-현재 단계에서는 위 chain 중 `0x14 → BoxStatus write` 구간만 미확정으로 유지한다.
+## 17. 추가로 확인된 Section 상태 경로
+
+`GetSections @ 00ddea78`는 opcode `0x13`이고 u32 인자 1개를 전달한다.
+
+현재 `MergeSections @ 016e55dc`가 별도로 존재하므로 Section 목록 응답을 DataCenter 상태로 병합하는 후보로 볼 수 있다.
+
+다만 `MergeSections`와 `MergeSectionSnapShot` 중 어느 것이 특정 response opcode를 처리하는지는 현재 증거만으로 결정하지 않는다.
+
+## 18. 다음 작업
+
+다음 단계는 함수 이름 추정이 아니라 **ProtoChapter 타입/필드 자체를 역으로 추적**한다.
+
+우선순위:
+
+1. `ProtoChapter` 생성자/초기화 함수 검색
+2. `ProtoChapter.Id/Status/Progress/BoxStatus` setter의 Calls IN 비교
+3. `set_Progress`, `set_Status`, `set_Id`가 같은 함수에서 연속 호출되는지 검색
+4. 그 함수가 `MergeSections`, `MergeSectionSnapShot`, `ProccessRequestRes`와 연결되는지 확인
+5. 가능하면 원본 Ghidra Listing에서 `str w?,[x?,#0x1c]` 직접 검색
+6. 마지막으로 opcode `0x14` response와 BoxStatus bit 변경을 PCAP/runtime에서 검증
+
+현재는 `0x14 → BoxStatus`를 아직 미확정으로 유지한다.
