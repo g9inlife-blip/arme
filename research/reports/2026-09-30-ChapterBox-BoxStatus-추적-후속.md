@@ -1650,3 +1650,71 @@ response → ProtoChapter +0x1C write     미확정
 ```
 
 이번 단계에서는 새로운 BoxStatus write 지점을 확보하지 못했다. 다음은 **OpInfo.Chapters 사용처와 Chapter 객체 저장/병합 경로**를 직접 좁힌다.
+
+
+## 34. 2026-09-30 FUN_ 그룹 Listing 추가 반영
+
+사용자가 `research/Ghidra_Listing_txt`에 명명되지 않은 함수들을 주소 prefix 기준으로 `FUN_00X.txt` 그룹화한 자료를 추가했다.
+
+### 34.1 Git 반영 확인
+
+최근 commit:
+
+```
+822ba036a9d70605d304679e694ff8312283ca80
+message: FUN_ 추가
+```
+
+추가된 주요 그룹 파일은 `FUN_008.txt ~ FUN_026.txt`이며, 비교 결과 `FUN_015.txt`, `FUN_016.txt` 등에서 기존 개별 Listing에 없던 unnamed 함수 본문을 확인할 수 있다.
+
+### 34.2 Chapter Box 추적에 적용한 결과
+
+`FUN_015.txt`를 직접 확인했지만 `015a...~015e...` 영역의 unnamed 함수들은 NodeCanvas/FullSerializer/TCPTube/Asset 관련 helper가 대부분이며 `ProtoChapter` 상태 갱신과 직접 연결되는 함수는 현재 확인되지 않았다.
+
+`FUN_016.txt`에서는 `016e0008_FUN_016e0008`가 확인된다.
+
+이 함수는:
+
+```
+DataManager.TryGetAll
+→ Enumerable.ToDictionary
+→ Dictionary<int,object>
+→ WeaponInfo/HeroInfo/ProtoFashion
+→ DataManager
+```
+
+계열의 데이터 구성 함수이며, `ProtoChapter.BoxStatus` 갱신 함수로 볼 근거가 없다.
+
+따라서 이 그룹 파일을 추가했다고 해서 `016e...` unnamed 함수를 무조건 Chapter merge로 연결하지 않는다.
+
+### 34.3 중요한 분석 방법 변경
+
+이제부터 unnamed 함수 추적은 기존처럼 검색 인덱스에 노출되는 Calls IN/OUT만 의존하지 않고:
+
+```
+주소 → FUN_00X 그룹 파일
+        ↓
+Calls OUT
+        ↓
+상위 함수
+        ↓
+field offset / Dictionary / OpInfo 접근
+```
+
+순서로 직접 확인한다.
+
+특히 다음 주소군을 우선 대상으로 한다.
+
+1. `016e...` — DataCenter/상태 병합 주변
+2. `0177...` — DataManager generic Merge/Dictionary 계열
+3. `0192...` — Dictionary<int,object> 처리
+4. `01a4...` — Dictionary Enumerator
+5. `015a...` — Proto* accessor/serializer 인접 영역
+
+### 34.4 현재 결론
+
+이번 FUN 그룹 추가로 **이전에는 이름 없는 함수 본문을 직접 확인하기 어려웠던 부분을 추적할 수 있는 기반이 생겼다.**
+
+그러나 현재 확인된 `FUN_016`의 직접 내용만으로는 BoxStatus 갱신점이 새로 확정되지는 않았다.
+
+다음 단계는 `FUN_016/FUN_017`의 DataCenter 인접 함수와 `FUN_019` Dictionary 처리 함수를 연결하여, `OpInfo.Chapters → ProtoChapter` 병합 객체가 생성되는 지점을 찾는다.
