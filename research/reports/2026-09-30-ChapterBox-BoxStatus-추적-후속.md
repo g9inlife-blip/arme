@@ -2049,3 +2049,17 @@ chapterId + boxIndex request         확정
 0x3367000+0xD90 = Chapter Type       미확정
 0x14 response → BoxStatus 변경       미확정
 ```
+
+
+## 39. 2026-09-30 — AL 전체 검색에서 Chapter 직접 population 경로 재확인
+
+대형 `AL.txt` 전체를 직접 검색해 `ProtoChapter` 관련 문자열과 4개 연속 offset 패턴을 다시 대조했다.
+
+- `ProtoChapter` 직접 노출은 accessor/constructor 계열에 집중됨
+- `set_BoxStatus @ 015acf8c`의 별도 호출자는 현재 Listing에서 확인되지 않음
+- `+0x10/+0x14/+0x18/+0x1C`가 함께 등장하는 함수 18개를 추출했지만 `ProtoChapter` 또는 Chapter merge와 직접 연결되는 함수는 확인되지 않음
+- 따라서 offset 패턴만으로 Chapter population 함수를 특정할 수 없음을 재확인
+
+현재 가장 가치 있는 추가 자료는 `016e203c / 016e55dc / 016e5908`의 **Ghidra 원본 함수 Listing**이다.
+
+다음 단계는 이 세 함수의 원본 Listing이 추가되면 `OpInfo.Chapters → ProtoChapter`의 실제 대입 instruction부터 확인한다.
