@@ -2470,3 +2470,45 @@ field #1/#2/#3/#4
 ~~~
 
 이 경로를 우선 추적한다.
+
+
+## 41. 2026-09-30 — Chapter response 소비 경로 재평가
+
+이번 재검색에서 `OpInfo$$get_Chapters @ 015aadec`의 Calls IN은 여전히 비어 있고, 현재 확보된 `ProccessRequestRes` Assembly 구간에서도 `OpInfo +0xC0` 접근이 확인되지 않았다.
+
+반면 `BattleMapMono$$InitChapters @ 00e4e080`는 Chapter 데이터를 소비하는 UI 진입점으로 반복 확인된다. 다만 해당 함수의 독립 본문은 현재 Git export에서 확보되지 않아 `get_Chapters` 직접 호출 여부는 미확정이다.
+
+따라서 현재 Chapter Box 경로는 다음처럼 분리한다.
+
+```text
+0x14 response
+   ↓
+Deserialize → OpInfo
+   ├─ Items/Weapons/Equip/Sections
+   │      ↓
+   │  ProccessRequestRes merge 경로
+   │
+   └─ Chapters +0xC0
+          ↓
+      Chapter 소비/저장 경로 미확정
+          ↓
+      BattleMapMono.InitChapters
+          ↓
+      ProtoChapter
+          ↓
+      BoxStatus +0x1C
+```
+
+추가로 `ProtoChapter` accessor 전체를 재검색했지만 serializer/`MergeFrom`/`ParseFrom` 형태의 명시적 함수는 현재 Git Listing에서 발견되지 않았다. 따라서 protobuf field tag를 C# property와 직접 매핑하는 방식은 아직 증명되지 않았다.
+
+### 현재 결론
+
+```text
+OpInfo +0xC0 = Chapters                 확정
+ProtoChapter +0x1C = BoxStatus          확정
+BattleMapMono.InitChapters = Chapter 소비 지점 유력
+ProccessRequestRes → Chapters 직접 merge 미확인
+0x14 response → ProtoChapter +0x1C     미확정
+```
+
+**다음은 `BattleMapMono.LayChapterItem @ 00e4f918`의 Chapter 객체 입력 경로와 `InitChapters @ 00e4e080` 주변 unnamed helper를 `FUN_00E*` 기준으로 좁힌다.**
