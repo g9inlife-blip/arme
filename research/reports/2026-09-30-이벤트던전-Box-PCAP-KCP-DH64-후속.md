@@ -238,3 +238,84 @@ BoxStatus bitmask              확정
 BoxStatus 0→1 변화             미확정
 boxIndex 5 ↔ mask 1            미확정
 ```
+
+## 9. IsBoxReceived 실제 mask 생성 코드 확보
+
+이번 단계에서 호출부 Listing을 직접 확보했다.
+
+### 9.1 ChapBoxMono.LayBoxItem @ 00e55c80
+
+Box UI의 실제 index 값은 `w23`이며, `ProtoChapter.IsBoxReceived` 직전에:
+
+```text
+00e56024  ldr x0,[x19,#0xd8]
+00e56044  mov w8,#0x1
+00e56048  lsl w1,w8,w23
+00e56050  bl  0x015acfe8
+```
+
+즉:
+
+```text
+mask = 1 << boxIndex
+IsBoxReceived(chapter, mask)
+```
+
+### 9.2 BattleSectionMono.SetStageBoxAndBar @ 00e53380
+
+Section Box도 동일한 방식이다. `w23`을 0부터 증가시키며:
+
+```text
+00e5356c  mov w21,w0
+00e53570  lsl w1,w26,w23
+00e53574  mov x0,x8
+00e5357c  bl  0x015acfe8
+...
+00e53870  add x23,x23,#0x1
+00e53874  cmp w23,#0x3
+```
+
+여기서 `w26=1`이므로 역시 `mask = 1 << index`이다.
+
+### 9.3 중요한 PCAP 대조 결과
+
+기존 PCAP의 frame 428 요청은:
+
+```text
+opcode = 0x14
+chapterId = 20000100
+boxIndex = 5
+```
+
+따라서 UI/정적 코드 기준으로 해당 Box의 상태 검사 mask는:
+
+```text
+1 << 5 = 0x20
+```
+
+그런데 frame 430의 Chapter snapshot은 현재 파서 기준으로:
+
+```text
+field 1 = 20000100
+field 3 = 6
+field 4 = 1
+```
+
+이다.
+
+따라서 **field 4를 BoxStatus=1로 단정하면 boxIndex=5의 mask 0x20과 충돌한다.** 이 결과로 기존의 `field 4 = BoxStatus` 해석은 보류한다.
+
+현재 더 안전한 결론은:
+
+- `ProtoChapter +0x1C = BoxStatus`는 확정
+- `IsBoxReceived(mask) = BoxStatus & mask != 0`는 확정
+- Box UI index `i`의 검사 mask는 `1 << i`로 확정
+- frame 428의 `boxIndex=5`라면 검사 mask는 `0x20`
+- frame 430의 nested `field 4=1`은 **BoxStatus라고 아직 확정할 수 없음**
+
+### 9.4 다음 추적
+
+1. `ProtoChapter` protobuf field 번호를 serializer/deserializer에서 직접 확보
+2. frame 430 nested field 3/4의 실제 의미 확정
+3. frame 428의 boxIndex가 UI index와 동일한지 `GetChapterBoxReward @ 00ddeea8` 호출 인자까지 재검증
+4. `DataCenter.ProccessRequestRes @ 016e203c`의 0x14 응답 merge 경로 확보
