@@ -2341,3 +2341,132 @@ Chapters collection
 2. `FUN_*` 그룹에서 해당 주소 주변 unnamed helper가 새로 추가되는지 확인
 3. runtime에서 `ProtoChapter.get_BoxStatus @ 015acf84`를 기준으로 Chapter 객체 주소와 BoxStatus 값을 관찰
 4. boxIndex 5 오픈 전후 값 변화가 확인되면 `0x00 → 0x20` 가설을 실제 값으로 검증
+## 41. 2026-09-30 — 0930-8 재개: Chapter getter/setter 직접 caller 부재 재확인
+
+### 41.1 OpInfo.Chapters accessor도 직접 caller가 잡히지 않음
+
+Git의 개별 Listing을 다시 검색한 결과:
+
+~~~text
+OpInfo$$get_Chapters @ 015aadec
+OpInfo$$set_Chapters @ 015aadf4
+~~~
+
+두 함수 모두 실제 field 접근은 확인되지만, get_Chapters의 Calls IN은 비어 있고 set_Chapters 역시 현재 인덱스에서 직접 caller가 확인되지 않는다.
+
+따라서 현재 Listing export만으로:
+
+~~~text
+ProccessRequestRes
+ → OpInfo.get_Chapters()
+ → Chapter collection
+~~~
+
+처럼 일반 C# property accessor를 거치는 경로를 확정할 수 없다.
+
+### 41.2 ProtoChapter 4개 accessor도 동일한 패턴
+
+~~~text
+get_Id        @ 015acf54
+get_Status    @ 015acf64
+get_Progress  @ 015acf74
+get_BoxStatus @ 015acf84
+
+set_Id        @ 015acf5c
+set_Status    @ 015acf6c
+set_Progress  @ 015acf7c
+set_BoxStatus @ 015acf8c
+~~~
+
+현재 검색 인덱스에서는 이 accessor들의 직접 caller가 확인되지 않는다.
+
+따라서 현재까지의 증거는 **Chapter 객체의 네 필드가 property setter를 통해 채워진다고 볼 수 없는 상태**다.
+
+### 41.3 Deserialize 경로와 결합하면 의미가 커짐
+
+이미 다음 경로는 직접 Listing으로 확정되어 있다.
+
+~~~text
+KCP/TCP
+ ↓
+DecryptUnSafe
+ ↓
+DecompressUnSafe
+ ↓
+ProtoBuf.Serializer.Deserialize<object> @ 017cec0c
+ ↓
+response object
+ ↓
+NetworkCenter.TryHandleResponse @ 015b41e0
+ ↓
+DataCenter.ProccessRequestRes @ 016e203c
+~~~
+
+따라서 현재 가장 타당한 추적 방향은:
+
+~~~text
+protobuf Deserialize
+ ↓
+ProtoBuf 내부 reflection / generated metadata
+ ↓
+ProtoChapter 객체 생성 및 field population
+ ↓
+OpInfo.Chapters
+ ↓
+ProccessRequestRes
+~~~
+
+이다.
+
+단, **reflection/direct-field population이라고 아직 확정하지 않는다.** 현재는 setter caller 부재와 Deserialize 구조를 설명하는 유력 가설이다.
+
+### 41.4 중요한 분석 전환
+
+이제 다음 단계에서는 set_BoxStatus를 계속 검색하지 않는다.
+
+대신 다음 3개를 우선 확인한다.
+
+1. ProtoBuf.Serializer.Deserialize<object> @ 017cec0c 내부/Calls OUT의 타입 생성 helper
+2. ProtoChapter와 연결되는 protobuf metadata / field-number 처리 함수
+3. ProccessRequestRes @ 016e203c 직전 response object의 concrete type을 결정하는 코드
+
+특히 목표는 다음 관계를 직접 확보하는 것이다.
+
+~~~text
+protobuf field #N
+      ↓
+ProtoChapter backing field +0x1C
+~~~
+
+### 41.5 BoxStatus 현재 확정/미확정
+
+~~~text
+ProtoChapter +0x1C = BoxStatus       확정
+IsBoxReceived(mask)                  확정
+mask = 1 << UIData.data              확정
+boxIndex 5 → mask 0x20              확정
+0x14 request chapterId/boxIndex      확정
+0x14 response Chapter snapshot       확정
+
+protobuf field 4 = BoxStatus         미확정
+0x14 response → +0x1C write          미확정
+deserialize → ProtoChapter field map 미확정
+~~~
+
+이번 재개에서 새로 확보된 것은 **Chapter 관련 accessor들이 전반적으로 직접 caller를 잃고 있다는 패턴**이다. 이는 다음 분석을 protobuf/deserialize metadata 쪽으로 이동시키는 근거가 된다.
+
+### 41.6 다음 작업
+
+~~~text
+017cec0c Deserialize
+    ↓
+Calls OUT / helper
+    ↓
+ProtoChapter metadata
+    ↓
+field #1/#2/#3/#4
+    ↓
++0x10/+0x14/+0x18/+0x1C
+~~~
+
+이 경로를 우선 추적한다.
