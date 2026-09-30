@@ -2775,3 +2775,87 @@ BattleMapMono$$InitChapters @ 00e4e080 및 BattleMapMono$$LayChapterItem @ 00e4f
 정적 Listing만으로는 `Deserialize<object> → ProtoChapter`의 구체적 mapping을 아직 연결하지 못했다. 다음은 `ProccessRequestRes @ 016e203c`에서 `OpInfo.Chapters +0xC0`를 사용하는 unnamed helper 및 Chapter collection 객체의 실제 생성/대입을 찾는 방향이 우선이다.
 
 BoxStatus 의미는 이미 PCAP 1→5→7과 `IsBoxReceived`의 bitmask 로직으로 확정되어 있으므로, 이후 분석 목표는 의미 재확인이 아니라 실제 메모리 write 경로 확보다.
+
+
+## 45. 2026-10-01 — OpInfo.Chapters 사용처 재검색 및 Chapter UI 경로 정리
+
+### 45.1 Chapters accessor 직접 caller는 여전히 미확보
+
+Git Listing에서 다음을 재검색했다.
+
+```text
+OpInfo$$get_Chapters @ 015aadec
+OpInfo$$set_Chapters @ 015aadf4
+```
+
+`get_Chapters`는 Calls IN이 비어 있고, `set_Chapters`도 현재 인덱스에서 직접 caller가 확인되지 않는다.
+
+### 45.2 Chapter 소비 경로 재확인
+
+`BattleMapMono$$InitChapters @ 00e4e080`는 Chapter 관련 UI 초기화 진입점으로 반복 확인된다.
+
+`ProtoChapter$$IsBoxReceived @ 015acfe8`의 Calls IN에는:
+
+```text
+ChapBoxMono$$LayBoxItem
+BattleMapMono$$LayChapterItem
+BattleSectionMono$$SetStageBoxAndBar
+```
+
+가 확인된다.
+
+따라서 Chapter 객체가 UI로 전달된 뒤 `IsBoxReceived`가 BoxStatus를 소비하는 경로는 유지한다. 단, InitChapters/LayChapterItem의 독립 Assembly 본문이 현재 Git export에 없어 `get_Chapters` 직접 호출 여부는 미확정이다.
+
+### 45.3 Chapter 생성/채움 경로
+
+`ProtoChapter$$.ctor @ 015acff8`의 Calls IN은 없으며 생성자는 `System.Object$$.ctor`만 호출한다.
+
+현재 Git 검색에서도 `ProtoChapter`와 `Serializer/Deserialize/MergeFrom/ParseFrom`를 직접 연결하는 concrete 함수는 확인되지 않았다.
+
+따라서 현재는 다음 셋 중 어느 방식인지 미확정이다.
+
+```text
+A. protobuf reflection → backing field 직접 기록
+B. generic object population helper
+C. 별도 merge/cache 함수가 ProtoChapter 생성 후 기록
+```
+
+### 45.4 현재 정적 경계
+
+```text
+Deserialize<object> @ 017cec0c
+        ↓
+response object
+        ↓
+TryHandleResponse @ 015b41e0
+        ↓
+ProccessRequestRes @ 016e203c
+        ├─ +0x98 Items       확인
+        ├─ +0xa0 Weapons     확인
+        ├─ +0xa8 Equipments  확인
+        ├─ +0xc8 Sections    확인
+        └─ +0xc0 Chapters    미확인
+```
+
+따라서 남은 핵심은 `Chapters` 자체가 아니라 **Chapters를 실제로 생성/저장/소비하는 concrete helper**다.
+
+### 45.5 다음 우선순위
+
+1. `BattleMapMono$$InitChapters @ 00e4e080` 주변 `FUN_00E*` helper
+2. `BattleMapMono$$LayChapterItem @ 00e4f918` 주변 `FUN_00E*` helper
+3. `OpInfo +0xC0`와 함께 등장하는 unnamed 함수
+4. runtime `ProtoChapter$$set_BoxStatus @ 015acf8c` / `get_BoxStatus @ 015acf84`
+5. setter가 호출되지 않으면 `ProtoChapter +0x1C` 직접 write 추적
+
+### 45.6 현재 상태
+
+```text
+BoxStatus 의미/bitmask              확정
+f7 = 0-based boxIndex              확정
+OpInfo +0xC0 = Chapters             확정
+ProtoChapter +0x1C = BoxStatus      확정
+Deserialize → ProccessRequestRes    확정
+ProccessRequestRes → Chapters      미확정
+Chapter population helper          미확정
+0x14 response → +0x1C write        미확정
+```
