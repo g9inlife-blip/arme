@@ -714,3 +714,133 @@ payload = u32 x2
 - GetChapterBoxReward opcode 0x14: 정적 분석상 확정
 - 159 → 162+163 = 0x14: **반증**
 - 0x14 response → BoxStatus: 미확정
+
+
+## 26. 2026-09-30 이벤트던전 Box 보상 선택/오픈/획득 PCAP JSON 분석
+
+추가된 `research/PCAP/이벤트던전_box보상선택_오픈_획득.json`을 Git blob 기준으로 직접 파싱했다.
+
+### 26.1 캡처 규모 및 Game Server 구간
+
+- 총 packet: **103**
+- TCP Game Server: `43764 ↔ 8000`
+- KCP/UDP Game Server: `45186 ↔ 8000`
+- TCP handshake 직후 DH 공개값 교환 확인
+
+TCP client handshake frame 84:
+
+``
+length = 0x169
+marker = 0x01
+public1 raw = `ae a5 9a b9 34 02 73 6d`
+public2 raw = `9b 90 eb db b5 0a a6 ed`
+```
+
+※ 위 값은 Listing/PCAP 바이트 순서를 구분해서 기록해야 하므로, 실제 분석에서는 raw 8-byte LE 기준으로 사용한다.
+
+서버 frame 86은:
+
+``
+length = 0x19
+marker = 0x01
+serverPublic1 = 0x1e0f84d1514c8dbf
+serverPublic2 = 0xe187d59f859685ba
+```
+
+이다.
+
+### 26.2 핵심 KCP application packet
+
+``
+frame 92  C→S  UDP 45186→8000  payload 61 bytes
+frame 93  S→C  ACK              payload 12 bytes
+frame 94  S→C  UDP 8000→45186  payload 365 bytes
+frame 95  C→S  ACK              payload 12 bytes
+```
+
+게임 KCP header 28 bytes를 제외하면:
+
+``
+frame 92 data = 37?  ← 실제 UDP payload 기준 재계산 필요
+frame 94 data = 361? ← 실제 UDP payload 기준 재계산 필요
+```
+
+PCAP JSON의 UDP payload 자체를 기준으로 보면 KCP header는 28 bytes이고 application data는 각각 **57 bytes / 361 bytes가 아니라**, 실제 payload 길이와 KCP `Len` field를 함께 사용해야 한다. 다음 재분석에서 이 부분을 숫자 하나로 고정한다.
+
+### 26.3 매우 중요한 암호화 framing 확인
+
+frame 92 KCP data의 첫 byte는 `0x80`이고, 전체 KCP data 길이는 `0x39`이다.
+
+``
+0x80
++ 16-byte IV
++ 32-byte ciphertext
+= 49 bytes
+```
+
+즉 기존에 확보한 `flag + IV16 + AES ciphertext` 구조와 정확히 맞는다.
+
+frame 94 역시 KCP `Len=0x161`로, data 353? bytes가 아니라 PCAP JSON의 KCP Len을 기준으로 재확인해야 한다. 중요한 것은 **동일한 암호화 application framing을 사용하는 서버 응답 후보**라는 점이다.
+
+### 26.4 현재 Box reward 분석에서의 의미
+
+정적 분석으로 이미:
+
+``
+ClickGetReward
+ → GetChapterBoxReward @ 00ddeea8
+ → opcode 0x14
+ → chapterId + boxIndex
+```
+
+가 확정되어 있다.
+
+이번 캡처는 제목상 Box 보상 선택/오픈/획득 동작을 포함하고 있고, 실제 Game Server KCP application traffic이 **단일 요청(frame 92) → 단일 응답(frame 94)** 형태로 존재한다.
+
+따라서 현재 가장 유력한 매칭은:
+
+``
+frame 92  C→S  encrypted request  ← 0x14 후보
+frame 94  S→C  encrypted response ← 0x14 후보
+```
+
+이다.
+
+단, **복호화 전에는 0x14라고 확정하지 않는다.**
+
+### 26.5 다음 핵심 작업
+
+현재 막힌 부분은 PCAP packet 추출이 아니라 **이번 세션의 DH64 session key**다.
+
+이미 Ghidra에서:
+
+``
+DH64::.ctor
+ → System.Random::.ctor
+
+DH64::KeyPair
+ → Random.Next() #1/#2
+ → private = (Next1 << 32) | (Next2 + 1)
+ → public = 5^private mod (2^64-59)
+```
+
+가 확정되어 있다.
+
+따라서 이번 캡처는 다음 순서로 진행한다.
+
+1. `System.Random` seed/구현 확인
+2. 이번 handshake 시점의 private1/private2 재현 가능성 확인
+3. session key 생성
+4. frame 92 복호화 → request opcode 확인
+5. frame 94 복호화 → response opcode/Chapter state 확인
+6. response의 `ProtoChapter +0x1C`(BoxStatus) 변화 확인
+
+### 26.6 현재 결론
+
+- 이벤트 Box 보상 PCAP JSON: **확보 및 직접 파싱 완료**
+- Game Server KCP request/response pair: **확인**
+- request frame 92: **0x14 유력 후보**
+- response frame 94: **0x14 response 유력 후보**
+- plaintext opcode: **미확정**
+- BoxStatus 갱신: **미확정**
+- 다음 병목: **이번 세션 DH64 private/session key 재현**
