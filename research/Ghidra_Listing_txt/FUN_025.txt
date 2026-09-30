@@ -1,0 +1,966 @@
+================================================================================
+### FILE: 0255f008_FUN_0255f008.txt
+================================================================================
+Function: FUN_0255f008 @ 0255f008
+
+--- Calls OUT ---
+  -> UnityEngine.TextCore.Text.SpriteAsset$$SearchForSpriteByUnicodeInternal @ 0255f0c4
+  -> System.Collections.Generic.HashSet<int>$$Add @ 01afe974
+  -> System.Collections.Generic.HashSet<int>$$Clear @ 01afddac
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Object$$GetInstanceID @ 024df0fc
+
+--- Calls IN ---
+  <- FUN_0256463c @ 0256463c
+
+--- Listing ---
+0255efa0  mov x20,xzr
+0255efa4  mov w8,#0xffffffff
+0255efa8  str w8,[x19]
+0255efac  b 0x0255efcc
+0255efcc  mov x0,x20
+0255efd0  ldp x19,x30,[sp, #0x30]
+0255efd4  ldp x21,x20,[sp, #0x20]
+0255efd8  ldp x23,x22,[sp, #0x10]
+0255efdc  ldr x24,[sp], #0x40
+0255efe0  ret
+0255f008  bl 0x01afddac
+0255f00c  b 0x0255f054
+0255f054  mov x0,x20
+0255f058  mov x1,xzr
+0255f05c  bl 0x024df0fc
+0255f060  ldr x8,[x24]
+0255f064  ldr x8,[x8, #0xb8]
+0255f068  ldr x8,[x8]
+0255f06c  cbz x8,0x0255f0c0
+0255f070  adrp x9,0x3378000
+0255f074  ldr x9,[x9, #0xf58]
+0255f078  mov w1,w0
+0255f07c  mov x0,x8
+0255f080  ldr x2,[x9]
+0255f084  bl 0x01afe974
+0255f088  tbz w22,#0x0,0x0255efa0
+0255f08c  ldr x0,[x20, #0xd0]
+0255f090  cbz x0,0x0255efa0
+0255f094  ldr w8,[x0, #0x18]
+0255f098  cmp w8,#0x1
+0255f09c  b.lt 0x0255efa0
+0255f0a0  mov w1,w21
+0255f0a4  mov x3,x19
+0255f0a8  ldp x19,x30,[sp, #0x30]
+0255f0ac  ldp x21,x20,[sp, #0x20]
+0255f0b0  ldp x23,x22,[sp, #0x10]
+0255f0b4  mov w2,#0x1
+0255f0b8  ldr x24,[sp], #0x40
+0255f0bc  b 0x0255f0c4
+0255f0c0  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 0256463c_FUN_0256463c.txt
+================================================================================
+Function: FUN_0256463c @ 0256463c
+
+--- Calls OUT ---
+  -> FUN_0255f008 @ 0255f008
+
+--- Calls IN ---
+  <- UnityEngine.TextCore.Text.SpriteAsset$$SearchForSpriteByUnicode @ 0255eeec
+
+--- Listing ---
+0256463c  ldr x1,[x8]
+02564640  b 0x0255f008
+
+
+================================================================================
+### FILE: 02569008_FUN_02569008.txt
+================================================================================
+Function: FUN_02569008 @ 02569008
+
+--- Calls OUT ---
+  -> FUN_0256a3bc @ 0256a3bc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_02569008 @ 02569008
+
+--- Calls IN ---
+  <- FUN_0256a3bc @ 0256a3bc
+  <- FUN_02569008 @ 02569008
+
+--- Listing ---
+02568edc  sxtw x8,w27
+02568ee0  lsl x9,x8,#0x1
+02568ee4  lsl x10,x8,#0x3
+02568ee8  lsl x8,x8,#0x2
+02568eec  add x9,x9,w27, SXTW 
+02568ef0  str x13,[sp, #0x10]
+02568ef4  mov x28,xzr
+02568ef8  add x29,x10,#0x20
+02568efc  lsl x26,x9,#0x2
+02568f00  add x19,x8,#0x20
+02568f04  ldr x9,[sp, #0x18]
+02568f08  adrp x8,0x3570000
+02568f0c  ldrb w8,[x8, #0xf0c]
+02568f10  ldr x20,[x9]
+02568f14  cbnz w8,0x02568f38
+02568f18  adrp x0,0x3368000
+02568f1c  ldr x0,[x0, #0x9b8]
+02568f20  bl 0x00b0789c
+02568f24  adrp x14,0x3330000
+02568f28  ldr x14,[x14, #0xc20]
+02568f2c  adrp x8,0x3570000
+02568f30  mov w9,#0x1
+02568f34  strb w9,[x8, #0xf0c]
+02568f38  cbz x20,0x02569110
+02568f3c  ldr w8,[x20, #0x18]
+02568f40  add x24,x27,x28
+02568f44  cmp w24,w8
+02568f48  b.cs 0x02569114
+02568f4c  adrp x8,0x3368000
+02568f50  ldr x8,[x8, #0x9b8]
+02568f54  add x10,x20,x26
+02568f58  ldr x8,[x8]
+02568f5c  ldr x8,[x8, #0xb8]
+02568f60  ldr x9,[x8]
+02568f64  ldr w8,[x8, #0x8]
+02568f68  str x9,[x10, #0x20]
+02568f6c  str w8,[x10, #0x28]
+02568f70  adrp x8,0x3570000
+02568f74  ldrb w8,[x8, #0xffd]
+02568f78  ldr x20,[x21]
+02568f7c  cbnz w8,0x02568f9c
+02568f80  mov x0,x25
+02568f84  bl 0x00b0789c
+02568f88  adrp x14,0x3330000
+02568f8c  ldr x14,[x14, #0xc20]
+02568f90  mov w8,#0x1
+02568f94  adrp x9,0x3570000
+02568f98  strb w8,[x9, #0xffd]
+02568f9c  cbz x20,0x02569110
+02568fa0  ldr w8,[x20, #0x18]
+02568fa4  cmp w24,w8
+02568fa8  b.cs 0x02569114
+02568fac  ldr x8,[x25]
+02568fb0  add x9,x20,x29
+02568fb4  ldr x8,[x8, #0xb8]
+02568fb8  ldr x8,[x8]
+02568fbc  str x8,[x9, x28, LSL #0x3]
+02568fc0  ldr x8,[x22]
+02568fc4  cbz x8,0x02569110
+02568fc8  ldr w9,[x8, #0x18]
+02568fcc  cmp w24,w9
+02568fd0  b.cs 0x02569114
+02568fd4  ldr x9,[x25]
+02568fd8  add x8,x8,x29
+02568fdc  ldr x9,[x9, #0xb8]
+02568fe0  ldr x9,[x9]
+02568fe4  str x9,[x8, x28, LSL #0x3]
+02568fe8  ldr x0,[x14]
+02568fec  ldr x20,[x23]
+02568ff0  ldr w8,[x0, #0xe0]
+02568ff4  cbnz w8,0x02569008
+02568ff8  bl 0x00b0798c
+02568ffc  adrp x14,0x3330000
+02569000  ldr x14,[x14, #0xc20]
+02569004  b 0x0256a3bc
+02569008  cbz x20,0x02569110
+0256900c  ldr w8,[x20, #0x18]
+02569010  cmp w24,w8
+02569014  b.cs 0x02569114
+02569018  ldr x8,[x0, #0xb8]
+0256901c  add x9,x20,x19
+02569020  add x26,x26,#0xc
+02569024  ldr w8,[x8]
+02569028  str w8,[x9, x28, LSL #0x2]
+0256902c  add x28,x28,#0x1
+02569030  cmp x28,#0x4
+02569034  b.ne 0x02568f04
+02569038  ldr x8,[sp, #0x8]
+0256903c  ldr x8,[x8]
+02569040  cbz x8,0x02569110
+02569044  ldr w9,[x8, #0x18]
+02569048  ldr x13,[sp, #0x10]
+0256904c  cmp w13,w9
+02569050  b.cs 0x02569114
+02569054  sxtw x10,w13
+02569058  orr x10,x10,#0x1
+0256905c  add x11,x8,w13, SXTW  #0x2
+02569060  cmp w10,w9
+02569064  str w27,[x11, #0x20]
+02569068  b.cs 0x02569114
+0256906c  add w11,w13,#0x2
+02569070  orr w12,w27,#0x1
+02569074  add x10,x8,x10, LSL #0x2
+02569078  cmp w11,w9
+0256907c  str w12,[x10, #0x20]
+02569080  b.cs 0x02569114
+02569084  add x12,x8,w11, SXTW  #0x2
+02569088  add w11,w13,#0x3
+0256908c  orr w10,w27,#0x2
+02569090  cmp w11,w9
+02569094  str w10,[x12, #0x20]
+02569098  b.cs 0x02569114
+0256909c  add x12,x8,w11, SXTW  #0x2
+025690a0  add w11,w13,#0x4
+025690a4  cmp w11,w9
+025690a8  str w10,[x12, #0x20]
+025690ac  b.cs 0x02569114
+025690b0  add w10,w13,#0x5
+025690b4  orr w12,w27,#0x3
+025690b8  add x11,x8,w11, SXTW  #0x2
+025690bc  cmp w10,w9
+025690c0  str w12,[x11, #0x20]
+025690c4  b.cs 0x02569114
+025690c8  add x8,x8,w10, SXTW  #0x2
+025690cc  ldr w9,[sp, #0x4]
+025690d0  str w27,[x8, #0x20]
+025690d4  add x27,x27,#0x4
+025690d8  add w8,w27,#0x3
+025690dc  cmp w27,#0x0
+025690e0  csel w8,w8,w27,lt
+025690e4  cmp w9,w8, ASR #0x2
+025690e8  add w13,w13,#0x6
+025690ec  b.gt 0x02568edc
+025690f0  ldp x29,x30,[sp, #0x70]
+025690f4  ldp x20,x19,[sp, #0x60]
+025690f8  ldp x22,x21,[sp, #0x50]
+025690fc  ldp x24,x23,[sp, #0x40]
+02569100  ldp x26,x25,[sp, #0x30]
+02569104  ldp x28,x27,[sp, #0x20]
+02569108  add sp,sp,#0x80
+0256910c  ret
+02569110  bl 0x00b079b0
+02569114  bl 0x00b079b8
+
+
+================================================================================
+### FILE: 0256a004_FUN_0256a004.txt
+================================================================================
+Function: FUN_0256a004 @ 0256a004
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.TextCore.Text.UnicodeLineBreakingRules$$GetCharacters @ 0256a250
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.Resources$$Load<object> @ 017c585c
+  -> System.Collections.Generic.HashSet<uint>$$.ctor @ 01b03f18
+
+--- Calls IN ---
+  <- FUN_0256a3c4 @ 0256a3c4
+
+--- Listing ---
+0256a004  mov x0,x19
+0256a008  mov x1,xzr
+0256a00c  mov x2,xzr
+0256a010  bl 0x024de30c
+0256a014  tbz w0,#0x0,0x0256a048
+0256a018  ldr x0,[x20]
+0256a01c  ldr w8,[x0, #0xe0]
+0256a020  cbnz w8,0x0256a02c
+0256a024  bl 0x00b0798c
+0256a028  ldr x0,[x20]
+0256a02c  ldr x8,[x0, #0xb8]
+0256a030  ldr x8,[x8]
+0256a034  cbz x8,0x0256a1c4
+0256a038  ldr x0,[x8, #0x18]
+0256a03c  bl 0x0256a250
+0256a040  mov x19,x0
+0256a044  b 0x0256a060
+0256a048  ldr x0,[x24]
+0256a04c  bl 0x00b079a0
+0256a050  cbz x0,0x0256a1c4
+0256a054  ldr x1,[x23]
+0256a058  mov x19,x0
+0256a05c  bl 0x01b03f18
+0256a060  ldr x0,[x20]
+0256a064  ldr w8,[x0, #0xe0]
+0256a068  cbnz w8,0x0256a074
+0256a06c  bl 0x00b0798c
+0256a070  ldr x0,[x20]
+0256a074  ldr x0,[x0, #0xb8]
+0256a078  mov x1,x19
+0256a07c  str x19,[x0, #0x8]!
+0256a080  bl 0x00b07850
+0256a084  ldr x8,[x20]
+0256a088  ldr x8,[x8, #0xb8]
+0256a08c  ldr x8,[x8]
+0256a090  cbz x8,0x0256a1c4
+0256a094  ldr x0,[x21]
+0256a098  ldr x19,[x8, #0x20]
+0256a09c  ldr w9,[x0, #0xe0]
+0256a0a0  cbnz w9,0x0256a0a8
+0256a0a4  bl 0x00b0798c
+0256a0a8  mov x0,x19
+0256a0ac  mov x1,xzr
+0256a0b0  mov x2,xzr
+0256a0b4  bl 0x024c8180
+0256a0b8  tbz w0,#0x0,0x0256a100
+0256a0bc  ldr x0,[x20]
+0256a0c0  adrp x19,0x336e000
+0256a0c4  ldr w8,[x0, #0xe0]
+0256a0c8  ldr x19,[x19, #0xd20]
+0256a0cc  cbnz w8,0x0256a0d8
+0256a0d0  bl 0x00b0798c
+0256a0d4  ldr x0,[x20]
+0256a0d8  ldr x8,[x0, #0xb8]
+0256a0dc  ldr x0,[x19]
+0256a0e0  ldr x1,[x22]
+0256a0e4  ldr x19,[x8]
+0256a0e8  bl 0x017c585c
+0256a0ec  cbz x19,0x0256a1c4
+0256a0f0  str x0,[x19, #0x20]!
+0256a0f4  mov x1,x0
+0256a0f8  mov x0,x19
+0256a0fc  bl 0x00b07850
+0256a100  ldr x0,[x20]
+0256a104  ldr w8,[x0, #0xe0]
+0256a108  cbnz w8,0x0256a114
+0256a10c  bl 0x00b0798c
+0256a110  ldr x0,[x20]
+0256a114  ldr x8,[x0, #0xb8]
+0256a118  ldr x8,[x8]
+0256a11c  cbz x8,0x0256a1c4
+0256a120  ldr x0,[x21]
+0256a124  ldr x19,[x8, #0x20]
+0256a128  ldr w9,[x0, #0xe0]
+0256a12c  cbnz w9,0x0256a134
+0256a130  bl 0x00b0798c
+0256a134  mov x0,x19
+0256a138  mov x1,xzr
+0256a13c  mov x2,xzr
+0256a140  bl 0x024de30c
+0256a144  tbz w0,#0x0,0x0256a178
+0256a148  ldr x0,[x20]
+0256a14c  ldr w8,[x0, #0xe0]
+0256a150  cbnz w8,0x0256a15c
+0256a154  bl 0x00b0798c
+0256a158  ldr x0,[x20]
+0256a15c  ldr x8,[x0, #0xb8]
+0256a160  ldr x8,[x8]
+0256a164  cbz x8,0x0256a1c4
+0256a168  ldr x0,[x8, #0x20]
+0256a16c  bl 0x0256a250
+0256a170  mov x19,x0
+0256a174  b 0x0256a190
+0256a178  ldr x0,[x24]
+0256a17c  bl 0x00b079a0
+0256a180  cbz x0,0x0256a1c4
+0256a184  ldr x1,[x23]
+0256a188  mov x19,x0
+0256a18c  bl 0x01b03f18
+0256a190  ldr x0,[x20]
+0256a194  ldr w8,[x0, #0xe0]
+0256a198  cbnz w8,0x0256a1a4
+0256a19c  bl 0x00b0798c
+0256a1a0  ldr x0,[x20]
+0256a1a4  ldr x0,[x0, #0xb8]
+0256a1a8  mov x1,x19
+0256a1ac  str x19,[x0, #0x10]!
+0256a1b0  ldp x19,x30,[sp, #0x30]
+0256a1b4  ldp x21,x20,[sp, #0x20]
+0256a1b8  ldp x23,x22,[sp, #0x10]
+0256a1bc  ldr x24,[sp], #0x40
+0256a1c0  b 0x00b07850
+0256a1c4  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 0256a3bc_FUN_0256a3bc.txt
+================================================================================
+Function: FUN_0256a3bc @ 0256a3bc
+
+--- Calls OUT ---
+  -> FUN_02569008 @ 02569008
+
+--- Calls IN ---
+  <- FUN_02569008 @ 02569008
+
+--- Listing ---
+0256a3bc  ldr x0,[x14]
+0256a3c0  b 0x02569008
+
+
+================================================================================
+### FILE: 0256a3c4_FUN_0256a3c4.txt
+================================================================================
+Function: FUN_0256a3c4 @ 0256a3c4
+
+--- Calls OUT ---
+  -> FUN_0256a004 @ 0256a004
+
+--- Calls IN ---
+  <- UnityEngine.TextCore.Text.UnicodeLineBreakingRules$$LoadLineBreakingRules @ 02569e74
+
+--- Listing ---
+0256a3c4  ldr x23,[x23, #0xc88]
+0256a3c8  b 0x0256a004
+
+
+================================================================================
+### FILE: 0257d004_FUN_0257d004.txt
+================================================================================
+Function: FUN_0257d004 @ 0257d004
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> UnityEngine.UI.Graphic$$get_rectTransform @ 02578b90
+  -> FUN_02585f54 @ 02585f54
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.Comparison<object>$$.ctor @ 01f7b9a8
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.List<object>$$Sort @ 01c02688
+  -> UnityEngine.UI.Graphic$$get_canvasRenderer @ 02579460
+  -> System.Array$$Clear @ 02173bc0
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> UnityEngine.RectTransformUtility$$RectangleContainsScreenPoint @ 026cee04
+  -> UnityEngine.CanvasRenderer$$get_cull @ 026cfc14
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Camera$$WorldToScreenPoint @ 024d81a8
+  -> UnityEngine.Object$$op_Inequality @ 024de30c
+  -> UnityEngine.Camera$$get_farClipPlane @ 024d6fb4
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+  -> UnityEngine.Transform$$get_position @ 024f3684
+  -> UnityEngine.UI.Graphic$$get_depth @ 02579444
+
+--- Calls IN ---
+  <- FUN_02585f54 @ 02585f54
+
+--- Listing ---
+0257cf04  ldr x8,[x20]
+0257cf08  ldr x1,[x28]
+0257cf0c  ldrh w9,[x8, #0x12a]
+0257cf10  cbz x9,0x0257cf34
+0257cf14  ldr x10,[x8, #0xb0]
+0257cf18  add x10,x10,#0x8
+0257cf1c  ldur x11,[x10, #-0x8]
+0257cf20  cmp x11,x1
+0257cf24  b.eq 0x0257cf44
+0257cf28  subs x9,x9,#0x1
+0257cf2c  add x10,x10,#0x10
+0257cf30  b.ne 0x0257cf1c
+0257cf34  mov x0,x20
+0257cf38  mov w2,wzr
+0257cf3c  bl 0x00b2ae24
+0257cf40  b 0x0257cf50
+0257cf44  ldrsw x9,[x10]
+0257cf48  add x8,x8,x9, LSL #0x4
+0257cf4c  add x0,x8,#0x138
+0257cf50  ldp x8,x2,[x0]
+0257cf54  mov x0,x20
+0257cf58  mov w1,w23
+0257cf5c  blr x8
+0257cf60  cbz x0,0x0257d30c
+0257cf64  ldr x8,[x0]
+0257cf68  mov x24,x0
+0257cf6c  ldr x9,[x8, #0x2b8]
+0257cf70  ldr x1,[x8, #0x2c0]
+0257cf74  blr x9
+0257cf78  tbz w0,#0x0,0x0257d104
+0257cf7c  mov x0,x24
+0257cf80  bl 0x02579460
+0257cf84  cbz x0,0x0257d30c
+0257cf88  mov x1,xzr
+0257cf8c  bl 0x026cfc14
+0257cf90  tbnz w0,#0x0,0x0257d104
+0257cf94  mov x0,x24
+0257cf98  bl 0x02579444
+0257cf9c  cmn w0,#0x1
+0257cfa0  b.eq 0x0257d104
+0257cfa4  mov x0,x24
+0257cfa8  bl 0x02578b90
+0257cfac  ldr x8,[x29]
+0257cfb0  ldp s13,s11,[x24, #0x34]
+0257cfb4  ldp s12,s10,[x24, #0x3c]
+0257cfb8  mov x25,x0
+0257cfbc  ldr w9,[x8, #0xe0]
+0257cfc0  cbnz w9,0x0257cfcc
+0257cfc4  mov x0,x8
+0257cfc8  bl 0x00b0798c
+0257cfcc  mov x0,x25
+0257cfd0  mov v0.16B,v9.16B
+0257cfd4  mov v1.16B,v8.16B
+0257cfd8  mov x1,x21
+0257cfdc  mov v2.16B,v13.16B
+0257cfe0  mov v3.16B,v11.16B
+0257cfe4  mov v4.16B,v12.16B
+0257cfe8  mov v5.16B,v10.16B
+0257cfec  mov x2,xzr
+0257cff0  bl 0x026cee04
+0257cff4  tbz w0,#0x0,0x0257d104
+0257cff8  adrp x8,0x3321000
+0257cffc  ldr x8,[x8, #0xca8]
+0257d000  b 0x02585f54
+0257d004  ldr w8,[x0, #0xe0]
+0257d008  cbnz w8,0x0257d010
+0257d00c  bl 0x00b0798c
+0257d010  mov x0,x21
+0257d014  mov x1,xzr
+0257d018  mov x2,xzr
+0257d01c  bl 0x024de30c
+0257d020  tbz w0,#0x0,0x0257d060
+0257d024  mov x0,x24
+0257d028  bl 0x02578b90
+0257d02c  cbz x0,0x0257d30c
+0257d030  mov x1,xzr
+0257d034  bl 0x024f3684
+0257d038  cbz x21,0x0257d30c
+0257d03c  mov x0,x21
+0257d040  mov x1,xzr
+0257d044  bl 0x024d81a8
+0257d048  mov x0,x21
+0257d04c  mov x1,xzr
+0257d050  mov v10.16B,v2.16B
+0257d054  bl 0x024d6fb4
+0257d058  fcmp s10,s0
+0257d05c  b.gt 0x0257d104
+0257d060  ldr x8,[x24]
+0257d064  mov x0,x24
+0257d068  mov v0.16B,v9.16B
+0257d06c  mov v1.16B,v8.16B
+0257d070  ldr x9,[x8, #0x418]
+0257d074  ldr x2,[x8, #0x420]
+0257d078  mov x1,x21
+0257d07c  blr x9
+0257d080  tbz w0,#0x0,0x0257d104
+0257d084  ldr x0,[x26]
+0257d088  ldr w8,[x0, #0xe0]
+0257d08c  cbnz w8,0x0257d098
+0257d090  bl 0x00b0798c
+0257d094  ldr x0,[x26]
+0257d098  ldr x8,[x0, #0xb8]
+0257d09c  ldr x0,[x8]
+0257d0a0  cbz x0,0x0257d30c
+0257d0a4  ldr w10,[x0, #0x1c]
+0257d0a8  ldr x8,[x0, #0x10]
+0257d0ac  ldr x9,[x27]
+0257d0b0  add w10,w10,#0x1
+0257d0b4  str w10,[x0, #0x1c]
+0257d0b8  cbz x8,0x0257d30c
+0257d0bc  ldrsw x10,[x0, #0x18]
+0257d0c0  ldr w11,[x8, #0x18]
+0257d0c4  cmp w10,w11
+0257d0c8  b.cs 0x0257d0ec
+0257d0cc  add w9,w10,#0x1
+0257d0d0  add x8,x8,x10, LSL #0x3
+0257d0d4  str w9,[x0, #0x18]
+0257d0d8  str x24,[x8, #0x20]!
+0257d0dc  mov x0,x8
+0257d0e0  mov x1,x24
+0257d0e4  bl 0x00b07850
+0257d0e8  b 0x0257d104
+0257d0ec  ldr x8,[x9, #0x20]
+0257d0f0  mov x1,x24
+0257d0f4  ldr x8,[x8, #0xc0]
+0257d0f8  ldr x2,[x8, #0x58]
+0257d0fc  ldr x8,[x2, #0x8]
+0257d100  blr x8
+0257d104  add w23,w23,#0x1
+0257d108  cmp w23,w22
+0257d10c  b.ne 0x0257cf04
+0257d110  ldr x8,[x26]
+0257d114  adrp x23,0x336f000
+0257d118  ldr w9,[x8, #0xe0]
+0257d11c  ldr x23,[x23, #0xac8]
+0257d120  cbnz w9,0x0257d130
+0257d124  mov x0,x8
+0257d128  bl 0x00b0798c
+0257d12c  ldr x8,[x26]
+0257d130  ldr x0,[x23]
+0257d134  ldr x8,[x8, #0xb8]
+0257d138  ldr w9,[x0, #0xe0]
+0257d13c  ldr x20,[x8]
+0257d140  cbnz w9,0x0257d14c
+0257d144  bl 0x00b0798c
+0257d148  ldr x0,[x23]
+0257d14c  ldr x8,[x0, #0xb8]
+0257d150  ldr x21,[x8, #0x8]
+0257d154  cbnz x21,0x0257d1b4
+0257d158  adrp x21,0x336a000
+0257d15c  ldr w8,[x0, #0xe0]
+0257d160  ldr x21,[x21, #0x880]
+0257d164  cbnz w8,0x0257d170
+0257d168  bl 0x00b0798c
+0257d16c  ldr x0,[x23]
+0257d170  ldr x8,[x0, #0xb8]
+0257d174  ldr x0,[x21]
+0257d178  ldr x22,[x8]
+0257d17c  bl 0x00b079a0
+0257d180  cbz x0,0x0257d30c
+0257d184  adrp x8,0x331a000
+0257d188  ldr x8,[x8, #0xe90]
+0257d18c  mov x1,x22
+0257d190  mov x3,xzr
+0257d194  mov x21,x0
+0257d198  ldr x2,[x8]
+0257d19c  bl 0x01f7b9a8
+0257d1a0  ldr x8,[x23]
+0257d1a4  mov x1,x21
+0257d1a8  ldr x0,[x8, #0xb8]
+0257d1ac  str x21,[x0, #0x8]!
+0257d1b0  bl 0x00b07850
+0257d1b4  cbz x20,0x0257d30c
+0257d1b8  adrp x8,0x3354000
+0257d1bc  ldr x8,[x8, #0xb88]
+0257d1c0  mov x0,x20
+0257d1c4  mov x1,x21
+0257d1c8  ldr x2,[x8]
+0257d1cc  bl 0x01c02688
+0257d1d0  ldr x0,[x26]
+0257d1d4  ldr w8,[x0, #0xe0]
+0257d1d8  cbnz w8,0x0257d1e4
+0257d1dc  bl 0x00b0798c
+0257d1e0  ldr x0,[x26]
+0257d1e4  ldr x8,[x0, #0xb8]
+0257d1e8  ldr x8,[x8]
+0257d1ec  cbz x8,0x0257d30c
+0257d1f0  adrp x22,0x337b000
+0257d1f4  ldr w21,[x8, #0x18]
+0257d1f8  ldr x22,[x22, #0xfc8]
+0257d1fc  mov w20,wzr
+0257d200  ldr w8,[x0, #0xe0]
+0257d204  cbnz w8,0x0257d210
+0257d208  bl 0x00b0798c
+0257d20c  ldr x0,[x26]
+0257d210  ldr x8,[x0, #0xb8]
+0257d214  ldr x0,[x8]
+0257d218  cbz x0,0x0257d30c
+0257d21c  cmp w20,w21
+0257d220  b.ge 0x0257d29c
+0257d224  ldr x2,[x22]
+0257d228  mov w1,w20
+0257d22c  bl 0x01c00380
+0257d230  cbz x19,0x0257d30c
+0257d234  ldr w10,[x19, #0x1c]
+0257d238  ldr x8,[x19, #0x10]
+0257d23c  ldr x9,[x27]
+0257d240  add w10,w10,#0x1
+0257d244  str w10,[x19, #0x1c]
+0257d248  cbz x8,0x0257d30c
+0257d24c  ldrsw x10,[x19, #0x18]
+0257d250  ldr w11,[x8, #0x18]
+0257d254  mov x1,x0
+0257d258  cmp w10,w11
+0257d25c  b.cs 0x0257d278
+0257d260  add w9,w10,#0x1
+0257d264  add x0,x8,x10, LSL #0x3
+0257d268  str w9,[x19, #0x18]
+0257d26c  str x1,[x0, #0x20]!
+0257d270  bl 0x00b07850
+0257d274  b 0x0257d290
+0257d278  ldr x8,[x9, #0x20]
+0257d27c  mov x0,x19
+0257d280  ldr x8,[x8, #0xc0]
+0257d284  ldr x2,[x8, #0x58]
+0257d288  ldr x8,[x2, #0x8]
+0257d28c  blr x8
+0257d290  ldr x0,[x26]
+0257d294  add w20,w20,#0x1
+0257d298  b 0x0257d200
+0257d29c  ldp w2,w8,[x0, #0x18]
+0257d2a0  add w8,w8,#0x1
+0257d2a4  cmp w2,#0x1
+0257d2a8  stp wzr,w8,[x0, #0x18]
+0257d2ac  b.lt 0x0257d2e4
+0257d2b0  ldr x0,[x0, #0x10]
+0257d2b4  ldp x29,x30,[sp, #0x80]
+0257d2b8  ldp x20,x19,[sp, #0x70]
+0257d2bc  ldp x22,x21,[sp, #0x60]
+0257d2c0  ldp x24,x23,[sp, #0x50]
+0257d2c4  ldp x26,x25,[sp, #0x40]
+0257d2c8  ldp x28,x27,[sp, #0x30]
+0257d2cc  ldp d9,d8,[sp, #0x20]
+0257d2d0  ldp d11,d10,[sp, #0x10]
+0257d2d4  mov w1,wzr
+0257d2d8  mov x3,xzr
+0257d2dc  ldp d13,d12,[sp], #0x90
+0257d2e0  b 0x02173bc0
+0257d2e4  ldp x29,x30,[sp, #0x80]
+0257d2e8  ldp x20,x19,[sp, #0x70]
+0257d2ec  ldp x22,x21,[sp, #0x60]
+0257d2f0  ldp x24,x23,[sp, #0x50]
+0257d2f4  ldp x26,x25,[sp, #0x40]
+0257d2f8  ldp x28,x27,[sp, #0x30]
+0257d2fc  ldp d9,d8,[sp, #0x20]
+0257d300  ldp d11,d10,[sp, #0x10]
+0257d304  ldp d13,d12,[sp], #0x90
+0257d308  ret
+0257d30c  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 02585f54_FUN_02585f54.txt
+================================================================================
+Function: FUN_02585f54 @ 02585f54
+
+--- Calls OUT ---
+  -> FUN_0257d004 @ 0257d004
+
+--- Calls IN ---
+  <- FUN_0257d004 @ 0257d004
+
+--- Listing ---
+02585f54  ldr x0,[x8]
+02585f58  b 0x0257d004
+
+
+================================================================================
+### FILE: 0259a010_FUN_0259a010.txt
+================================================================================
+Function: FUN_0259a010 @ 0259a010
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.Pool.CollectionPool<object,-object>$$Release @ 01f4b4d8
+
+--- Calls IN ---
+  <- thunk_FUN_0259a010 @ 0259a008
+
+--- Listing ---
+0259a010  ldr x0,[x23]
+0259a014  adrp x21,0x3359000
+0259a018  ldr w8,[x0, #0xe0]
+0259a01c  ldr x21,[x21, #0xc50]
+0259a020  cbnz w8,0x0259a028
+0259a024  bl 0x00b0798c
+0259a028  ldr x1,[x21]
+0259a02c  adrp x21,0x3361000
+0259a030  ldr x21,[x21, #0x8d8]
+0259a034  mov x0,x20
+0259a038  bl 0x01f4b4d8
+0259a03c  ldr x0,[x24]
+0259a040  ldr w8,[x0, #0xe0]
+0259a044  cbnz w8,0x0259a04c
+0259a048  bl 0x00b0798c
+0259a04c  ldr x1,[x21]
+0259a050  mov x0,x19
+0259a054  bl 0x01f4b4d8
+0259a058  mov x0,x22
+0259a05c  ldp x29,x30,[sp, #0x50]
+0259a060  ldp x20,x19,[sp, #0x40]
+0259a064  ldp x22,x21,[sp, #0x30]
+0259a068  ldp x24,x23,[sp, #0x20]
+0259a06c  ldp x26,x25,[sp, #0x10]
+0259a070  ldp x28,x27,[sp], #0x60
+0259a074  ret
+
+
+================================================================================
+### FILE: 0259aa4c_FUN_0259aa4c.txt
+================================================================================
+Function: FUN_0259aa4c @ 0259aa4c
+
+--- Calls OUT ---
+  -> thunk_FUN_0259a010 @ 0259a008
+
+--- Calls IN ---
+  <- UnityEngine.UI.MaskUtilities$$GetRectMaskForClippable @ 02599d4c
+
+--- Listing ---
+0259aa4c  ldr x24,[x24, #0x758]
+0259aa50  b 0x0259a008
+
+
+================================================================================
+### FILE: 025bf008_FUN_025bf008.txt
+================================================================================
+Function: FUN_025bf008 @ 025bf008
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Collections.Generic.List<object>$$Contains @ 01c00a80
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_025c094c @ 025c094c
+
+--- Listing ---
+025bf008  bl 0x01c00a80
+025bf00c  tbz w0,#0x0,0x025bf01c
+025bf010  ldp x19,x30,[sp, #0x10]
+025bf014  ldp x21,x20,[sp], #0x20
+025bf018  ret
+025bf01c  ldr x0,[x20]
+025bf020  ldr w8,[x0, #0xe0]
+025bf024  cbnz w8,0x025bf030
+025bf028  bl 0x00b0798c
+025bf02c  ldr x0,[x20]
+025bf030  ldr x8,[x0, #0xb8]
+025bf034  ldr x0,[x8]
+025bf038  cbz x0,0x025bf0b0
+025bf03c  adrp x9,0x3315000
+025bf040  ldr x9,[x9, #0xa08]
+025bf044  ldr w10,[x0, #0x1c]
+025bf048  ldr x8,[x0, #0x10]
+025bf04c  ldr x9,[x9]
+025bf050  add w10,w10,#0x1
+025bf054  str w10,[x0, #0x1c]
+025bf058  cbz x8,0x025bf0b0
+025bf05c  ldrsw x10,[x0, #0x18]
+025bf060  ldr w11,[x8, #0x18]
+025bf064  cmp w10,w11
+025bf068  b.cs 0x025bf090
+025bf06c  add w9,w10,#0x1
+025bf070  add x8,x8,x10, LSL #0x3
+025bf074  str w9,[x0, #0x18]
+025bf078  str x19,[x8, #0x20]!
+025bf07c  mov x1,x19
+025bf080  ldp x19,x30,[sp, #0x10]
+025bf084  mov x0,x8
+025bf088  ldp x21,x20,[sp], #0x20
+025bf08c  b 0x00b07850
+025bf090  ldr x8,[x9, #0x20]
+025bf094  mov x1,x19
+025bf098  ldp x19,x30,[sp, #0x10]
+025bf09c  ldr x8,[x8, #0xc0]
+025bf0a0  ldr x2,[x8, #0x58]
+025bf0a4  ldr x3,[x2, #0x8]
+025bf0a8  ldp x21,x20,[sp], #0x20
+025bf0ac  br x3
+025bf0b0  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 025c094c_FUN_025c094c.txt
+================================================================================
+Function: FUN_025c094c @ 025c094c
+
+--- Calls OUT ---
+  -> FUN_025bf008 @ 025bf008
+
+--- Calls IN ---
+  <- UnityEngine.EventSystems.RaycasterManager$$AddRaycaster @ 025bef8c
+
+--- Listing ---
+025c094c  ldr x2,[x8]
+025c0950  b 0x025bf008
+
+
+================================================================================
+### FILE: 025d500c_FUN_025d500c.txt
+================================================================================
+Function: FUN_025d500c @ 025d500c
+
+--- Calls OUT ---
+  -> FUN_025d59c8 @ 025d59c8
+  -> System.Collections.Generic.List<object>$$get_Item @ 01c00380
+  -> FUN_00b079b0 @ 00b079b0
+  -> UnityEngine.UIElements.AtlasBase$$RepaintTexturedElements @ 025d4ac0
+
+--- Calls IN ---
+  <- FUN_025d59c8 @ 025d59c8
+
+--- Listing ---
+025d5008  b 0x025d59c8
+025d500c  mov w1,w20
+025d5010  bl 0x01c00380
+025d5014  bl 0x025d4ac0
+025d5018  cmp w21,w20
+025d501c  b.eq 0x025d5030
+025d5020  ldr x0,[x19, #0x38]
+025d5024  add w20,w20,#0x1
+025d5028  cbnz x0,0x025d5008
+025d502c  bl 0x00b079b0
+025d5030  ldp x19,x30,[sp, #0x20]
+025d5034  ldp x21,x20,[sp, #0x10]
+025d5038  ldr x22,[sp], #0x30
+025d503c  ret
+
+
+================================================================================
+### FILE: 025d59c8_FUN_025d59c8.txt
+================================================================================
+Function: FUN_025d59c8 @ 025d59c8
+
+--- Calls OUT ---
+  -> FUN_025d500c @ 025d500c
+
+--- Calls IN ---
+  <- FUN_025d500c @ 025d500c
+
+--- Listing ---
+025d59c8  ldr x2,[x22]
+025d59cc  b 0x025d500c
+
+
+================================================================================
+### FILE: 025e000c_FUN_025e000c.txt
+================================================================================
+Function: FUN_025e000c @ 025e000c
+
+--- Calls OUT ---
+  -> UnityEngine.UIElements.Manipulator$$get_target @ 02622d00
+  -> UnityEngine.UIElements.PointerCaptureHelper$$PreventCompatibilityMouseEvents @ 025d9b50
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> UnityEngine.UIElements.EventBase$$StopPropagation @ 02668748
+  -> UnityEngine.UIElements.VisualElement$$get_panel @ 025c53b4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_025ed1c8 @ 025ed1c8
+
+--- Listing ---
+025e000c  ldr w8,[x0, #0xe0]
+025e0010  cbnz w8,0x025e001c
+025e0014  bl 0x00b0798c
+025e0018  ldr x0,[x22]
+025e001c  ldr x8,[x0, #0xb8]
+025e0020  ldr w8,[x8, #0x8]
+025e0024  cmp w21,w8
+025e0028  b.ne 0x025e0074
+025e002c  mov x0,x20
+025e0030  mov x1,xzr
+025e0034  bl 0x02622d00
+025e0038  cbz x0,0x025e00b8
+025e003c  mov x1,xzr
+025e0040  bl 0x025c53b4
+025e0044  ldr w1,[x19, #0x7c]
+025e0048  bl 0x025d9b50
+025e004c  mov x0,x19
+025e0050  ldp x19,x30,[sp, #0x20]
+025e0054  ldp x21,x20,[sp, #0x10]
+025e0058  mov x1,xzr
+025e005c  ldr x22,[sp], #0x30
+025e0060  b 0x02668748
+025e0074  ldr x8,[x20]
+025e0078  ldp s0,s1,[x19, #0xa0]
+025e007c  mov x0,x20
+025e0080  mov x1,x19
+025e0084  ldp x9,x2,[x8, #0x1c8]
+025e0088  blr x9
+025e008c  mov x0,x20
+025e0090  mov x1,xzr
+025e0094  bl 0x02622d00
+025e0098  cbz x0,0x025e00b8
+025e009c  mov x1,xzr
+025e00a0  bl 0x025c53b4
+025e00a4  ldr w1,[x19, #0x7c]
+025e00a8  ldp x19,x30,[sp, #0x20]
+025e00ac  ldp x21,x20,[sp, #0x10]
+025e00b0  ldr x22,[sp], #0x30
+025e00b4  b 0x025d9b50
+025e00b8  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 025ed1c8_FUN_025ed1c8.txt
+================================================================================
+Function: FUN_025ed1c8 @ 025ed1c8
+
+--- Calls OUT ---
+  -> FUN_025e000c @ 025e000c
+
+--- Calls IN ---
+  <- UnityEngine.UIElements.Clickable$$OnPointerMove @ 025dffa4
+
+--- Listing ---
+025ed1c8  ldr x0,[x22]
+025ed1cc  b 0x025e000c
+
+

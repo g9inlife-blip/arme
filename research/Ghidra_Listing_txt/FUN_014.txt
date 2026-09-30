@@ -1,0 +1,467 @@
+================================================================================
+### FILE: 01404008_FUN_01404008.txt
+================================================================================
+Function: FUN_01404008 @ 01404008
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> Slate.ActionClips.OverlayText_Word$$.ctor @ 0161a05c
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.ObjectTranslator$$Push @ 010da6d4
+
+--- Calls IN ---
+  <- FUN_014150a0 @ 014150a0
+
+--- Listing ---
+01404008  bl 0x00b079a0
+    ; [PRE] try { // try from 01404008 to 0140401f has its CatchHandler @ 0140407c
+0140400c  mov x21,x0
+01404010  cbz x0,0x0140406c
+01404014  mov x0,x21
+01404018  mov x1,xzr
+0140401c  bl 0x0161a05c
+    ; [POST] } // end try from 01404008 to 0140401f
+01404020  cbz x20,0x01404070
+01404024  mov x0,x20
+    ; [PRE] try { // try from 01404024 to 01404037 has its CatchHandler @ 01404078
+01404028  mov x1,x19
+0140402c  mov x2,x21
+01404030  mov x3,xzr
+01404034  bl 0x010da6d4
+    ; [POST] } // end try from 01404024 to 01404037
+01404038  ldp x19,x30,[sp, #0x10]
+0140403c  mov w0,#0x1
+01404040  ldp x21,x20,[sp], #0x20
+01404044  ret
+0140406c  bl 0x00b079b0
+    ; [PRE] try { // try from 0140406c to 0140406f has its CatchHandler @ 0140407c
+    ; [POST] } // end try from 0140406c to 0140406f
+01404070  bl 0x00b079b0
+    ; [PRE] try { // try from 01404070 to 01404073 has its CatchHandler @ 01404078
+    ; [POST] } // end try from 01404070 to 01404073
+
+
+================================================================================
+### FILE: 014150a0_FUN_014150a0.txt
+================================================================================
+Function: FUN_014150a0 @ 014150a0
+
+--- Calls OUT ---
+  -> FUN_01404008 @ 01404008
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.SlateActionClipsOverlayText_WordWrap$$__CreateInstance @ 01403f94
+
+--- Listing ---
+014150a0  ldr x0,[x8]
+014150a4  b 0x01404008
+
+
+================================================================================
+### FILE: 0142700c_FUN_0142700c.txt
+================================================================================
+Function: FUN_0142700c @ 0142700c
+
+--- Calls OUT ---
+  -> XLua.Utils$$RegisterFunc @ 01101010
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.LuaDLL.lua_CSFunction$$.ctor @ 01106ac0
+  -> XLua.ObjectTranslatorPool$$Find @ 010fa6c8
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> XLua.Utils$$EndClassRegister @ 01101370
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.Utils$$BeginClassRegister @ 011011ac
+  -> XLua.Utils$$BeginObjectRegister @ 01100874
+  -> XLua.Utils$$EndObjectRegister @ 01100bec
+
+--- Calls IN ---
+  <- FUN_01437f90 @ 01437f90
+
+--- Listing ---
+0142700c  mov x1,x19
+01427010  mov x2,xzr
+01427014  bl 0x010fa6c8
+01427018  ldr x8,[x21]
+0142701c  ldr x21,[x20]
+01427020  mov x20,x0
+01427024  ldr w9,[x8, #0xe0]
+01427028  cbnz w9,0x01427034
+0142702c  mov x0,x8
+01427030  bl 0x00b0798c
+01427034  mov x0,x21
+01427038  mov x1,xzr
+0142703c  bl 0x0215f900
+01427040  mov w4,#0x2
+01427044  mov w5,#0x2
+01427048  mov w6,#0x2
+0142704c  mov w7,#0xffffffff
+01427050  mov x1,x19
+01427054  mov x2,x20
+01427058  mov w3,wzr
+0142705c  mov x21,x0
+01427060  str xzr,[sp]
+01427064  bl 0x01100874
+01427068  ldr x0,[x23]
+0142706c  bl 0x00b079a0
+01427070  cbz x0,0x014272a0
+01427074  adrp x8,0x3380000
+01427078  ldr x8,[x8, #0x448]
+0142707c  adrp x24,0x333e000
+01427080  mov x1,xzr
+01427084  mov x3,xzr
+01427088  ldr x2,[x8]
+0142708c  ldr x24,[x24, #0x558]
+01427090  mov x22,x0
+01427094  bl 0x01106ac0
+01427098  ldr x2,[x24]
+0142709c  mov w1,#0xfffffffd
+014270a0  mov x0,x19
+014270a4  mov x3,x22
+014270a8  mov x4,xzr
+014270ac  bl 0x01101010
+014270b0  ldr x0,[x23]
+014270b4  bl 0x00b079a0
+014270b8  cbz x0,0x014272a0
+014270bc  adrp x8,0x3348000
+014270c0  ldr x8,[x8, #0x978]
+014270c4  adrp x24,0x3321000
+014270c8  mov x1,xzr
+014270cc  mov x3,xzr
+014270d0  ldr x2,[x8]
+014270d4  ldr x24,[x24, #0x668]
+014270d8  mov x22,x0
+014270dc  bl 0x01106ac0
+014270e0  ldr x2,[x24]
+014270e4  mov w1,#0xfffffffd
+014270e8  mov x0,x19
+014270ec  mov x3,x22
+014270f0  mov x4,xzr
+014270f4  bl 0x01101010
+014270f8  ldr x0,[x23]
+014270fc  bl 0x00b079a0
+01427100  cbz x0,0x014272a0
+01427104  adrp x8,0x331c000
+01427108  ldr x8,[x8, #0xa70]
+0142710c  adrp x24,0x3366000
+01427110  mov x1,xzr
+01427114  mov x3,xzr
+01427118  ldr x2,[x8]
+0142711c  ldr x24,[x24, #0x6a8]
+01427120  mov x22,x0
+01427124  bl 0x01106ac0
+01427128  ldr x2,[x24]
+0142712c  mov w1,#0xfffffffe
+01427130  mov x0,x19
+01427134  mov x3,x22
+01427138  mov x4,xzr
+0142713c  bl 0x01101010
+01427140  ldr x0,[x23]
+01427144  bl 0x00b079a0
+01427148  cbz x0,0x014272a0
+0142714c  adrp x8,0x330e000
+01427150  ldr x8,[x8, #0xec0]
+01427154  adrp x25,0x332b000
+01427158  mov x1,xzr
+0142715c  mov x3,xzr
+01427160  ldr x2,[x8]
+01427164  ldr x25,[x25, #0xa10]
+01427168  mov x22,x0
+0142716c  bl 0x01106ac0
+01427170  ldr x2,[x25]
+01427174  mov w1,#0xfffffffe
+01427178  mov x0,x19
+0142717c  mov x3,x22
+01427180  mov x4,xzr
+01427184  bl 0x01101010
+01427188  ldr x0,[x23]
+0142718c  bl 0x00b079a0
+01427190  cbz x0,0x014272a0
+01427194  adrp x8,0x3378000
+01427198  ldr x8,[x8, #0xfb8]
+0142719c  mov x1,xzr
+014271a0  mov x3,xzr
+014271a4  mov x22,x0
+014271a8  ldr x2,[x8]
+014271ac  bl 0x01106ac0
+014271b0  ldr x2,[x24]
+014271b4  mov w1,#0xffffffff
+014271b8  mov x0,x19
+014271bc  mov x3,x22
+014271c0  mov x4,xzr
+014271c4  bl 0x01101010
+014271c8  ldr x0,[x23]
+014271cc  bl 0x00b079a0
+014271d0  cbz x0,0x014272a0
+014271d4  adrp x8,0x330f000
+014271d8  ldr x8,[x8, #0x840]
+014271dc  mov x1,xzr
+014271e0  mov x3,xzr
+014271e4  mov x22,x0
+014271e8  ldr x2,[x8]
+014271ec  bl 0x01106ac0
+014271f0  ldr x2,[x25]
+014271f4  mov w1,#0xffffffff
+014271f8  mov x0,x19
+014271fc  mov x3,x22
+01427200  mov x4,xzr
+01427204  bl 0x01101010
+01427208  mov x0,x21
+0142720c  mov x1,x19
+01427210  mov x2,x20
+01427214  mov x3,xzr
+01427218  mov x4,xzr
+0142721c  mov x5,xzr
+01427220  mov x6,xzr
+01427224  mov x7,xzr
+01427228  str xzr,[sp]
+0142722c  bl 0x01100bec
+01427230  ldr x0,[x23]
+01427234  bl 0x00b079a0
+01427238  cbz x0,0x014272a0
+0142723c  adrp x8,0x3335000
+01427240  ldr x8,[x8, #0x5e0]
+01427244  mov x1,xzr
+01427248  mov x3,xzr
+0142724c  mov x22,x0
+01427250  ldr x2,[x8]
+01427254  bl 0x01106ac0
+01427258  mov w3,#0x1
+0142725c  mov x0,x21
+01427260  mov x1,x19
+01427264  mov x2,x22
+01427268  mov w4,wzr
+0142726c  mov w5,wzr
+01427270  mov x6,xzr
+01427274  bl 0x011011ac
+01427278  mov x0,x21
+0142727c  mov x1,x19
+01427280  mov x2,x20
+01427284  ldp x19,x30,[sp, #0x40]
+01427288  ldp x21,x20,[sp, #0x30]
+0142728c  ldp x23,x22,[sp, #0x20]
+01427290  ldp x25,x24,[sp, #0x10]
+01427294  mov x3,xzr
+01427298  add sp,sp,#0x50
+0142729c  b 0x01101370
+014272a0  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 01437f90_FUN_01437f90.txt
+================================================================================
+Function: FUN_01437f90 @ 01437f90
+
+--- Calls OUT ---
+  -> FUN_0142700c @ 0142700c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.TargetInfoWrap$$__Register @ 01426f14
+
+--- Listing ---
+01437f90  ldr x23,[x23, #0x7c0]
+01437f94  b 0x0142700c
+
+
+================================================================================
+### FILE: 0148600c_FUN_0148600c.txt
+================================================================================
+Function: FUN_0148600c @ 0148600c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> FUN_00b079b0 @ 00b079b0
+  -> XLua.ObjectTranslator$$Push @ 010da6d4
+
+--- Calls IN ---
+  <- FUN_0149b534 @ 0149b534
+
+--- Listing ---
+0148600c  add x1,sp,#0x8
+    ; [PRE] try { // try from 0148600c to 0148602b has its CatchHandler @ 01486070
+01486010  bl 0x00b07994
+01486014  cbz x20,0x01486068
+01486018  mov x2,x0
+0148601c  mov x0,x20
+01486020  mov x1,x19
+01486024  mov x3,xzr
+01486028  bl 0x010da6d4
+    ; [POST] } // end try from 0148600c to 0148602b
+0148602c  mov w0,#0x1
+01486030  ldp x19,x30,[sp, #0x20]
+01486034  ldp x21,x20,[sp, #0x10]
+01486038  add sp,sp,#0x30
+0148603c  ret
+01486068  bl 0x00b079b0
+    ; [PRE] try { // try from 01486068 to 0148606b has its CatchHandler @ 01486070
+    ; [POST] } // end try from 01486068 to 0148606b
+
+
+================================================================================
+### FILE: 0149b534_FUN_0149b534.txt
+================================================================================
+Function: FUN_0149b534 @ 0149b534
+
+--- Calls OUT ---
+  -> FUN_0148600c @ 0148600c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.UnityEngineMathfWrap$$__CreateInstance @ 01485f90
+
+--- Listing ---
+0149b534  ldr x0,[x8]
+0149b538  b 0x0148600c
+
+
+================================================================================
+### FILE: 014a9008_FUN_014a9008.txt
+================================================================================
+Function: FUN_014a9008 @ 014a9008
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> RoleMono$$get_bodyMeshRenderer @ 0149eadc
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> UnityEngine.Renderer$$set_sortingOrder @ 024c697c
+  -> FUN_00b079b0 @ 00b079b0
+  -> RoleMono$$OrderEff @ 014a9084
+
+--- Calls IN ---
+  <- FUN_014b2c60 @ 014b2c60
+
+--- Listing ---
+014a9008  mov x19,x0
+014a900c  tbnz w8,#0x0,0x014a9024
+014a9010  adrp x0,0x335b000
+014a9014  ldr x0,[x0, #0xd10]
+014a9018  bl 0x00b0789c
+014a901c  mov w8,#0x1
+014a9020  strb w8,[x21, #0x7e6]
+014a9024  ldr x0,[x20]
+014a9028  ldr w8,[x0, #0xe0]
+014a902c  cbnz w8,0x014a9038
+014a9030  bl 0x00b0798c
+014a9034  ldr x0,[x20]
+014a9038  ldr x8,[x0, #0xb8]
+014a903c  ldr x0,[x8, #0x300]
+014a9040  cbz x0,0x014a9058
+014a9044  mov x1,x19
+014a9048  ldp x19,x30,[sp, #0x10]
+014a904c  mov x2,xzr
+014a9050  ldp x21,x20,[sp], #0x20
+014a9054  b 0x01060dac
+014a9058  mov x0,x19
+014a905c  bl 0x0149eadc
+014a9060  cbz x0,0x014a9080
+014a9064  mov w1,#0x1b26
+014a9068  mov x2,xzr
+014a906c  bl 0x024c697c
+014a9070  mov x0,x19
+014a9074  ldp x19,x30,[sp, #0x10]
+014a9078  ldp x21,x20,[sp], #0x20
+014a907c  b 0x014a9084
+014a9080  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 014b2c60_FUN_014b2c60.txt
+================================================================================
+Function: FUN_014b2c60 @ 014b2c60
+
+--- Calls OUT ---
+  -> FUN_014a9008 @ 014a9008
+
+--- Calls IN ---
+  <- RoleMono$$OrderBreak @ 014a8ff0
+
+--- Listing ---
+014b2c60  ldr x20,[x20, #0xd10]
+014b2c64  b 0x014a9008
+
+
+================================================================================
+### FILE: 014e7008_FUN_014e7008.txt
+================================================================================
+Function: FUN_014e7008 @ 014e7008
+
+--- Calls OUT ---
+  -> XLua.ObjectTranslator$$UpdateUnityEngineVector2 @ 010d2568
+  -> XLua.ObjectTranslator$$Get @ 010d18d8
+  -> XLua.ObjectTranslator$$Assignable<Vector2> @ 017aa1a0
+  -> XLua.LuaDLL.Lua$$luaL_error @ 011044f4
+  -> XLua.LuaDLL.Lua$$lua_pushboolean @ 01104508
+
+--- Calls IN ---
+  <- FUN_014fa59c @ 014fa59c
+
+--- Listing ---
+014e7008  mov w2,#0x2
+    ; [PRE] try { // try from 014e7008 to 014e7017 has its CatchHandler @ 014e716c
+014e700c  mov x0,x20
+014e7010  mov x1,x19
+014e7014  bl 0x017aa1a0
+    ; [POST] } // end try from 014e7008 to 014e7017
+014e7018  tbz w0,#0x0,0x014e707c
+014e701c  add x3,sp,#0x8
+    ; [PRE] try { // try from 014e701c to 014e7033 has its CatchHandler @ 014e7154
+014e7020  mov w2,#0x2
+014e7024  mov x0,x20
+014e7028  mov x1,x19
+014e702c  mov x4,xzr
+014e7030  bl 0x010d18d8
+    ; [POST] } // end try from 014e701c to 014e7033
+014e7034  ldp s0,s2,[sp, #0x8]
+014e7038  ldp s1,s3,[sp, #0x18]
+014e703c  fcmp s1,s0
+014e7040  cset w8,eq
+014e7044  fcmp s3,s2
+014e7048  cset w9,eq
+014e704c  and w1,w8,w9
+014e7050  mov x0,x19
+    ; [PRE] try { // try from 014e7050 to 014e705b has its CatchHandler @ 014e7150
+014e7054  mov x2,xzr
+014e7058  bl 0x01104508
+    ; [POST] } // end try from 014e7050 to 014e705b
+014e705c  ldp s0,s1,[sp, #0x18]
+014e7060  mov w21,#0x1
+014e7064  mov w2,#0x1
+    ; [PRE] try { // try from 014e7064 to 014e7077 has its CatchHandler @ 014e714c
+014e7068  mov x0,x20
+014e706c  mov x1,x19
+014e7070  mov x3,xzr
+014e7074  bl 0x010d2568
+    ; [POST] } // end try from 014e7064 to 014e7077
+014e7078  b 0x014e70f8
+014e707c  adrp x8,0x3340000
+014e7080  ldr x8,[x8, #0xe80]
+014e7084  ldr x1,[x8]
+014e7088  mov x0,x19
+014e708c  mov x2,xzr
+014e7090  bl 0x011044f4
+014e7094  mov w21,w0
+014e7098  b 0x014e70f8
+014e70f8  mov w0,w21
+014e70fc  ldp x19,x30,[sp, #0x30]
+014e7100  ldp x21,x20,[sp, #0x20]
+014e7104  ldr x22,[sp, #0x10]
+014e7108  add sp,sp,#0x40
+014e710c  ret
+
+
+================================================================================
+### FILE: 014fa59c_FUN_014fa59c.txt
+================================================================================
+Function: FUN_014fa59c @ 014fa59c
+
+--- Calls OUT ---
+  -> FUN_014e7008 @ 014e7008
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.UnityEngineVector2Wrap$$_m_Equals @ 014e6ec4
+
+--- Listing ---
+014fa59c  ldr x3,[x8]
+014fa5a0  b 0x014e7008
+
+

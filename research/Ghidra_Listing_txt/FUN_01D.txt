@@ -1,0 +1,85 @@
+================================================================================
+### FILE: 01d98004_FUN_01d98004.txt
+================================================================================
+Function: FUN_01d98004 @ 01d98004
+
+--- Calls OUT ---
+
+--- Calls IN ---
+  <- FUN_01db75d4 @ 01db75d4
+
+--- Listing ---
+01d98004  mov x0,x22
+01d98008  mov x1,x23
+01d9800c  add v0.2S,v0.2S,v1.2S
+01d98010  str d0,[x19, #0x20]
+01d98014  ldp x19,x30,[sp, #0x20]
+01d98018  ldp x21,x20,[sp, #0x10]
+01d9801c  ldp x23,x22,[sp], #0x30
+01d98020  ret
+
+
+================================================================================
+### FILE: 01d9d004_FUN_01d9d004.txt
+================================================================================
+Function: FUN_01d9d004 @ 01d9d004
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00ae526c @ 00ae526c
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Object$$.ctor @ 02194104
+
+--- Calls IN ---
+  <- FUN_01db75dc @ 01db75dc
+
+--- Listing ---
+01d9d004  bl 0x00b079a0
+01d9d008  cbz x0,0x01d9d068
+01d9d00c  mov x1,xzr
+01d9d010  mov x20,x0
+01d9d014  bl 0x02194104
+01d9d018  mov x0,x19
+01d9d01c  mov x1,x20
+01d9d020  mov x2,xzr
+01d9d024  bl 0x00ae526c
+01d9d028  b 0x01d9d058
+01d9d058  ldr x0,[x19]
+01d9d05c  ldp x19,x30,[sp, #0x10]
+01d9d060  ldp x21,x20,[sp], #0x20
+01d9d064  ret
+01d9d068  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 01db75d4_FUN_01db75d4.txt
+================================================================================
+Function: FUN_01db75d4 @ 01db75d4
+
+--- Calls OUT ---
+  -> FUN_01d98004 @ 01d98004
+
+--- Calls IN ---
+  <- System.Collections.Generic.Queue<EventDispatcher.EventRecord>$$Dequeue @ 01d97f74
+
+--- Listing ---
+01db75d4  ldr d1,[x8, #0x770]
+01db75d8  b 0x01d98004
+
+
+================================================================================
+### FILE: 01db75dc_FUN_01db75dc.txt
+================================================================================
+Function: FUN_01db75dc @ 01db75dc
+
+--- Calls OUT ---
+  -> FUN_01d9d004 @ 01d9d004
+
+--- Calls IN ---
+  <- System.Collections.ObjectModel.ReadOnlyCollection<KeyValuePair<int,-object>>$$System.Collections.ICollection.get_SyncRoot @ 01d9cf58
+
+--- Listing ---
+01db75dc  ldr x0,[x8]
+01db75e0  b 0x01d9d004
+
+

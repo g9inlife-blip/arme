@@ -1,0 +1,286 @@
+================================================================================
+### FILE: 01f5bdd0_FUN_01f5bdd0.txt
+================================================================================
+Function: FUN_01f5bdd0 @ 01f5bdd0
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> System.RuntimeType$$CreateInstanceForAnotherGenericParameter @ 021922a8
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- thunk_FUN_01f5bdd0 @ 01f5c008
+
+--- Listing ---
+01f5bdd0  ldr w9,[x0, #0xe0]
+01f5bdd4  ldr x21,[x8]
+01f5bdd8  cbnz w9,0x01f5bde0
+01f5bddc  bl 0x00b0798c
+01f5bde0  mov x0,x21
+01f5bde4  mov x1,xzr
+01f5bde8  bl 0x0215f900
+01f5bdec  ldr x8,[x23]
+01f5bdf0  mov x21,x0
+01f5bdf4  ldr w9,[x8, #0xe0]
+01f5bdf8  cbnz w9,0x01f5be04
+01f5bdfc  mov x0,x8
+01f5be00  bl 0x00b0798c
+01f5be04  mov x0,x21
+01f5be08  mov x1,x20
+01f5be0c  mov x2,xzr
+01f5be10  bl 0x021922a8
+01f5be14  ldr x8,[x19, #0x20]
+01f5be18  mov x20,x0
+01f5be1c  ldrb w9,[x8, #0x132]
+01f5be20  tbnz w9,#0x0,0x01f5be30
+01f5be24  mov x0,x8
+01f5be28  bl 0x00b2ac40
+01f5be2c  mov x8,x0
+01f5be30  ldr x8,[x8, #0xc0]
+01f5be34  ldr x1,[x8, #0x20]
+01f5be38  ldrb w8,[x1, #0x132]
+01f5be3c  tbnz w8,#0x0,0x01f5be4c
+01f5be40  mov x0,x1
+01f5be44  bl 0x00b2ac40
+01f5be48  mov x1,x0
+01f5be4c  cbz x20,0x01f5c08c
+01f5be50  ldr x8,[x20]
+01f5be54  ldrb w9,[x1, #0x12c]
+01f5be58  ldrb w10,[x8, #0x12c]
+01f5be5c  cmp w10,w9
+01f5be60  b.cc 0x01f5be78
+01f5be64  ldr x8,[x8, #0xc8]
+01f5be68  add x8,x8,x9, LSL #0x3
+01f5be6c  ldur x8,[x8, #-0x8]
+01f5be70  cmp x8,x1
+01f5be74  b.eq 0x01f5c08c
+01f5be78  mov x0,x20
+01f5be7c  bl 0x00b07c6c
+01f5c08c  mov x0,x20
+01f5c090  ldp x19,x30,[sp, #0x30]
+01f5c094  ldp x21,x20,[sp, #0x20]
+01f5c098  ldp x23,x22,[sp, #0x10]
+01f5c09c  ldr x24,[sp], #0x40
+01f5c0a0  ret
+
+
+================================================================================
+### FILE: 01f7f358_FUN_01f7f358.txt
+================================================================================
+Function: FUN_01f7f358 @ 01f7f358
+
+--- Calls OUT ---
+  -> thunk_FUN_01f5bdd0 @ 01f5c008
+
+--- Calls IN ---
+  <- System.Collections.Generic.Comparer<IntervalTreeNode>$$CreateComparer @ 01f5bc90
+
+--- Listing ---
+01f7f358  ldr x8,[x8, #0x3d0]
+01f7f35c  b 0x01f5c008
+
+
+================================================================================
+### FILE: 01fa500c_FUN_01fa500c.txt
+================================================================================
+Function: FUN_01fa500c @ 01fa500c
+
+--- Calls OUT ---
+  -> System.NotSupportedException$$.ctor @ 02152604
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> Mono.Security.X509.X509Crl$$VerifySignature @ 01fa4c1c
+  -> Mono.Security.X509.X509Crl$$VerifySignature @ 01fa4ee8
+
+--- Calls IN ---
+  <- FUN_01fae6a0 @ 01fae6a0
+
+--- Listing ---
+01fa500c  ldrb w9,[x8, #0x12c]
+01fa5010  ldrb w11,[x10, #0x12c]
+01fa5014  cmp w9,w11
+01fa5018  b.cc 0x01fa5030
+01fa501c  ldr x12,[x8, #0xc8]
+01fa5020  add x11,x12,x11, LSL #0x3
+01fa5024  ldur x11,[x11, #-0x8]
+01fa5028  cmp x11,x10
+01fa502c  b.eq 0x01fa5070
+01fa5030  adrp x10,0x3322000
+01fa5034  ldr x10,[x10, #0xfa8]
+01fa5038  ldr x10,[x10]
+01fa503c  ldrb w11,[x10, #0x12c]
+01fa5040  cmp w9,w11
+01fa5044  b.cc 0x01fa5084
+01fa5048  ldr x8,[x8, #0xc8]
+01fa504c  add x8,x8,x11, LSL #0x3
+01fa5050  ldur x8,[x8, #-0x8]
+01fa5054  cmp x8,x10
+01fa5058  b.ne 0x01fa5084
+01fa505c  mov x1,x19
+01fa5060  ldp x19,x30,[sp, #0x10]
+01fa5064  mov x0,x20
+01fa5068  ldp x21,x20,[sp], #0x20
+01fa506c  b 0x01fa4c1c
+01fa5070  mov x1,x19
+01fa5074  ldp x19,x30,[sp, #0x10]
+01fa5078  mov x0,x20
+01fa507c  ldp x21,x20,[sp], #0x20
+01fa5080  b 0x01fa4ee8
+01fa5084  mov x0,x19
+01fa5088  bl 0x008d74f8
+01fa508c  ldr x8,[x19]
+01fa5090  mov x0,x19
+01fa5094  ldp x9,x1,[x8, #0x168]
+01fa5098  blr x9
+01fa509c  mov x19,x0
+01fa50a0  adrp x0,0x3348000
+01fa50a4  ldr x0,[x0, #0xf00]
+01fa50a8  bl 0x00b078a0
+01fa50ac  mov x1,x19
+01fa50b0  mov x2,xzr
+01fa50b4  bl 0x01fd2850
+01fa50b8  mov x19,x0
+01fa50bc  adrp x0,0x335a000
+01fa50c0  ldr x0,[x0, #0xb88]
+01fa50c4  bl 0x00b078a0
+01fa50c8  bl 0x00b079a0
+01fa50cc  mov x20,x0
+01fa50d0  bl 0x008d74f8
+01fa50d4  mov x0,x20
+01fa50d8  mov x1,x19
+01fa50dc  mov x2,xzr
+01fa50e0  bl 0x02152604
+01fa50e4  adrp x0,0x3356000
+01fa50e8  ldr x0,[x0, #0x318]
+01fa50ec  bl 0x00b078a0
+01fa50f0  mov x1,x0
+01fa50f4  mov x0,x20
+01fa50f8  bl 0x00b07978
+
+
+================================================================================
+### FILE: 01fae6a0_FUN_01fae6a0.txt
+================================================================================
+Function: FUN_01fae6a0 @ 01fae6a0
+
+--- Calls OUT ---
+  -> FUN_01fa500c @ 01fa500c
+
+--- Calls IN ---
+  <- Mono.Security.X509.X509Crl$$VerifySignature @ 01fa4fbc
+
+--- Listing ---
+01fae6a0  ldr x10,[x9]
+01fae6a4  b 0x01fa500c
+
+
+================================================================================
+### FILE: 01fd4008_FUN_01fd4008.txt
+================================================================================
+Function: FUN_01fd4008 @ 01fd4008
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> Mono.Math.BigInteger$$op_Equality @ 01fd72c0
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> Mono.Math.BigInteger$$BitCount @ 01fd329c
+  -> FUN_00b078f8 @ 00b078f8
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_01fe6074 @ 01fe6074
+
+--- Listing ---
+01fd4008  mov x19,x0
+01fd400c  tbnz w8,#0x0,0x01fd4030
+01fd4010  adrp x0,0x3319000
+01fd4014  ldr x0,[x0, #0xf0]
+01fd4018  bl 0x00b0789c
+01fd401c  adrp x0,0x334f000
+01fd4020  ldr x0,[x0, #0x28]
+01fd4024  bl 0x00b0789c
+01fd4028  mov w8,#0x1
+01fd402c  strb w8,[x20, #0x6ac]
+01fd4030  ldr x0,[x21]
+01fd4034  ldr w8,[x0, #0xe0]
+01fd4038  cbnz w8,0x01fd4040
+01fd403c  bl 0x00b0798c
+01fd4040  adrp x20,0x334f000
+01fd4044  ldr x20,[x20, #0x28]
+01fd4048  mov x0,x19
+01fd404c  mov w1,wzr
+01fd4050  bl 0x01fd72c0
+01fd4054  tbz w0,#0x0,0x01fd406c
+01fd4058  ldr x0,[x20]
+01fd405c  ldp x19,x30,[sp, #0x10]
+01fd4060  mov w1,#0x1
+01fd4064  ldp x21,x20,[sp], #0x20
+01fd4068  b 0x00b078f8
+01fd406c  mov x0,x19
+01fd4070  bl 0x01fd329c
+01fd4074  ldr x8,[x20]
+01fd4078  asr w9,w0,#0x3
+01fd407c  tst w0,#0x7
+01fd4080  cinc w20,w9,ne
+01fd4084  mov x0,x8
+01fd4088  mov w1,w20
+01fd408c  bl 0x00b078f8
+01fd4090  ldr w8,[x19, #0x10]
+01fd4094  subs w9,w8,#0x1
+01fd4098  b.mi 0x01fd4108
+01fd409c  ands w10,w20,#0x3
+01fd40a0  mov w11,#0x4
+01fd40a4  mov w8,wzr
+01fd40a8  csel w10,w11,w10,eq
+01fd40ac  sxtw x9,w9
+01fd40b0  ldr x11,[x19, #0x18]
+01fd40b4  cbz x11,0x01fd4118
+01fd40b8  ldr w12,[x11, #0x18]
+01fd40bc  cmp x9,x12
+01fd40c0  b.cs 0x01fd4114
+01fd40c4  cbz x0,0x01fd4118
+01fd40c8  add x11,x11,x9, LSL #0x2
+01fd40cc  ldr w11,[x11, #0x20]
+01fd40d0  sub w12,w10,#0x1
+01fd40d4  ldr w14,[x0, #0x18]
+01fd40d8  add w13,w8,w12
+01fd40dc  cmp w13,w14
+01fd40e0  b.cs 0x01fd4114
+01fd40e4  add x13,x0,w13, SXTW 
+01fd40e8  subs w12,w12,#0x1
+01fd40ec  strb w11,[x13, #0x20]
+01fd40f0  lsr w11,w11,#0x8
+01fd40f4  b.pl 0x01fd40d4
+01fd40f8  add w8,w10,w8
+01fd40fc  sub x9,x9,#0x1
+01fd4100  mov w10,#0x4
+01fd4104  tbz w9,#0x1f,0x01fd40b0
+01fd4108  ldp x19,x30,[sp, #0x10]
+01fd410c  ldp x21,x20,[sp], #0x20
+01fd4110  ret
+01fd4114  bl 0x00b079b8
+01fd4118  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 01fe6074_FUN_01fe6074.txt
+================================================================================
+Function: FUN_01fe6074 @ 01fe6074
+
+--- Calls OUT ---
+  -> FUN_01fd4008 @ 01fd4008
+
+--- Calls IN ---
+  <- Mono.Math.BigInteger$$GetBytes @ 01fd3ff0
+
+--- Listing ---
+01fe6074  ldr x21,[x21, #0xf0]
+01fe6078  b 0x01fd4008
+
+

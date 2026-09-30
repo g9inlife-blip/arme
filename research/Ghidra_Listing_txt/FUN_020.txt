@@ -1,0 +1,1246 @@
+================================================================================
+### FILE: 02039008_FUN_02039008.txt
+================================================================================
+Function: FUN_02039008 @ 02039008
+
+--- Calls OUT ---
+  -> FUN_00b07ac8 @ 00b07ac8
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.Runtime.Remoting.RemotingServices$$GetMethodBaseFromName @ 0203927c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.Runtime.Remoting.RemotingException$$.ctor @ 0202b214
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> System.String$$Concat @ 01fdebb8
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_00a3b69c @ 00a3b69c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$op_Equality @ 02168d68
+
+--- Calls IN ---
+  <- FUN_02049cf4 @ 02049cf4
+
+--- Listing ---
+02039008  adrp x20,0x3347000
+0203900c  ldrh w9,[x8, #0x12a]
+02039010  ldr x1,[x21]
+02039014  ldr x20,[x20, #0xd68]
+02039018  cbz x9,0x0203903c
+0203901c  ldr x10,[x8, #0xb0]
+02039020  add x10,x10,#0x8
+02039024  ldur x11,[x10, #-0x8]
+02039028  cmp x11,x1
+0203902c  b.eq 0x0203904c
+02039030  subs x9,x9,#0x1
+02039034  add x10,x10,#0x10
+02039038  b.ne 0x02039024
+0203903c  mov w2,#0x6
+02039040  mov x0,x19
+02039044  bl 0x00b2ae24
+02039048  b 0x0203905c
+0203904c  ldr w9,[x10]
+02039050  add w9,w9,#0x6
+02039054  add x8,x8,w9, SXTW  #0x4
+02039058  add x0,x8,#0x138
+0203905c  ldp x8,x1,[x0]
+02039060  adrp x23,0x3330000
+02039064  adrp x22,0x3325000
+02039068  ldr x23,[x23, #0xe18]
+0203906c  ldr x22,[x22, #0x6c0]
+02039070  mov x0,x19
+02039074  blr x8
+02039078  ldr x8,[x20]
+0203907c  mov x20,x0
+02039080  ldr w9,[x8, #0xe0]
+02039084  cbnz w9,0x02039090
+02039088  mov x0,x8
+0203908c  bl 0x00b0798c
+02039090  ldr x1,[x23]
+02039094  ldr x2,[x22]
+02039098  mov x0,x20
+0203909c  bl 0x00b07ac8
+020390a0  mov x1,xzr
+020390a4  mov x2,xzr
+020390a8  mov x20,x0
+020390ac  bl 0x02168d68
+020390b0  tst w0,#0x1
+020390b4  csel x20,xzr,x20,ne
+020390b8  tbnz w0,#0x0,0x020391ec
+020390bc  ldr x8,[x19]
+020390c0  ldr x1,[x21]
+020390c4  ldrh w9,[x8, #0x12a]
+020390c8  cbz x9,0x020390ec
+020390cc  ldr x10,[x8, #0xb0]
+020390d0  add x10,x10,#0x8
+020390d4  ldur x11,[x10, #-0x8]
+020390d8  cmp x11,x1
+020390dc  b.eq 0x020390fc
+020390e0  subs x9,x9,#0x1
+020390e4  add x10,x10,#0x10
+020390e8  b.ne 0x020390d4
+020390ec  mov w2,#0x4
+020390f0  mov x0,x19
+020390f4  bl 0x00b2ae24
+020390f8  b 0x0203910c
+020390fc  ldr w9,[x10]
+02039100  add w9,w9,#0x4
+02039104  add x8,x8,w9, SXTW  #0x4
+02039108  add x0,x8,#0x138
+0203910c  ldp x8,x1,[x0]
+02039110  adrp x22,0x3335000
+02039114  ldr x22,[x22, #0xba0]
+02039118  mov x0,x19
+0203911c  blr x8
+02039120  ldr x8,[x19]
+02039124  ldr x1,[x21]
+02039128  mov x21,x0
+0203912c  ldrh w9,[x8, #0x12a]
+02039130  cbz x9,0x02039154
+02039134  ldr x10,[x8, #0xb0]
+02039138  add x10,x10,#0x8
+0203913c  ldur x11,[x10, #-0x8]
+02039140  cmp x11,x1
+02039144  b.eq 0x02039164
+02039148  subs x9,x9,#0x1
+0203914c  add x10,x10,#0x10
+02039150  b.ne 0x0203913c
+02039154  mov w2,#0x5
+02039158  mov x0,x19
+0203915c  bl 0x00b2ae24
+02039160  b 0x02039174
+02039164  ldr w9,[x10]
+02039168  add w9,w9,#0x5
+0203916c  add x8,x8,w9, SXTW  #0x4
+02039170  add x0,x8,#0x138
+02039174  ldp x8,x1,[x0]
+02039178  mov x0,x19
+0203917c  blr x8
+02039180  ldr x8,[x22]
+02039184  mov x19,x0
+02039188  ldr w9,[x8, #0xe0]
+0203918c  cbz w9,0x020391c0
+02039190  cbz x19,0x020391cc
+02039194  adrp x8,0x333e000
+02039198  ldr x8,[x8, #0x3d8]
+0203919c  mov x0,x19
+020391a0  ldr x22,[x8]
+020391a4  mov x1,x22
+020391a8  bl 0x00b07990
+020391ac  mov x2,x0
+020391b0  cbnz x0,0x020391d0
+020391b4  mov x0,x19
+020391b8  mov x1,x22
+020391bc  bl 0x00b07c6c
+020391c0  mov x0,x8
+020391c4  bl 0x00b0798c
+020391c8  cbnz x19,0x02039194
+020391cc  mov x2,xzr
+020391d0  mov x0,x20
+020391d4  mov x1,x21
+020391d8  ldp x19,x30,[sp, #0x20]
+020391dc  ldp x21,x20,[sp, #0x10]
+020391e0  ldp x23,x22,[sp], #0x30
+020391e4  b 0x0203927c
+020391ec  adrp x0,0x3354000
+020391f0  ldr x0,[x0, #0xc38]
+020391f4  bl 0x00b078a0
+020391f8  mov x1,x0
+020391fc  mov w0,#0x6
+02039200  mov x2,x19
+02039204  bl 0x00a3b69c
+02039208  mov x19,x0
+0203920c  adrp x0,0x3340000
+02039210  ldr x0,[x0, #0x238]
+02039214  bl 0x00b078a0
+02039218  mov x20,x0
+0203921c  adrp x0,0x3369000
+02039220  ldr x0,[x0, #0xbe8]
+02039224  bl 0x00b078a0
+02039228  mov x2,x0
+0203922c  mov x0,x20
+02039230  mov x1,x19
+02039234  mov x3,xzr
+02039238  bl 0x01fdebb8
+0203923c  mov x19,x0
+02039240  adrp x0,0x3336000
+02039244  ldr x0,[x0, #0xa88]
+02039248  bl 0x00b078a0
+0203924c  bl 0x00b079a0
+02039250  mov x20,x0
+02039254  bl 0x008d74f8
+02039258  mov x0,x20
+0203925c  mov x1,x19
+02039260  bl 0x0202b214
+02039264  adrp x0,0x3325000
+02039268  ldr x0,[x0, #0x6c0]
+0203926c  bl 0x00b078a0
+02039270  mov x1,x0
+02039274  mov x0,x20
+02039278  bl 0x00b07978
+
+
+================================================================================
+### FILE: 02049cf4_FUN_02049cf4.txt
+================================================================================
+Function: FUN_02049cf4 @ 02049cf4
+
+--- Calls OUT ---
+  -> FUN_02039008 @ 02039008
+
+--- Calls IN ---
+  <- System.Runtime.Remoting.RemotingServices$$GetMethodBaseFromMethodMessage @ 02038f8c
+
+--- Listing ---
+02049cf4  ldr x21,[x21, #0xc38]
+02049cf8  b 0x02039008
+
+
+================================================================================
+### FILE: 02089008_FUN_02089008.txt
+================================================================================
+Function: FUN_02089008 @ 02089008
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Decimal$$.ctor @ 021aea7c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> thunk_FUN_00ace368 @ 00b07994
+  -> System.Type$$op_Equality @ 02168d68
+  -> FUN_00b079b8 @ 00b079b8
+  -> FUN_00b078f8 @ 00b078f8
+  -> System.DateTime$$.ctor @ 02131ae4
+  -> System.Resources.ResourceReader$$DeserializeObject @ 02089510
+  -> FUN_00b079b0 @ 00b079b0
+  -> __stack_chk_fail @ 008d4c50
+
+--- Calls IN ---
+  <- FUN_02094be8 @ 02094be8
+
+--- Listing ---
+02088f94  blr x9
+02088f98  ldr x8,[x19]
+02088f9c  str w0,[sp, #0x18]
+02088fa0  b 0x0208905c
+02089008  ldr w9,[x0, #0xe0]
+0208900c  ldr x22,[x8]
+02089010  cbnz w9,0x02089018
+02089014  bl 0x00b0798c
+02089018  mov x0,x22
+0208901c  mov x1,xzr
+02089020  bl 0x0215f900
+02089024  mov x1,x0
+02089028  mov x0,x21
+0208902c  mov x2,xzr
+02089030  bl 0x02168d68
+02089034  tbz w0,#0x0,0x02089090
+02089038  ldr x0,[x19, #0x10]
+0208903c  cbz x0,0x02089504
+02089040  ldr x8,[x0]
+02089044  adrp x19,0x3378000
+02089048  ldp x9,x1,[x8, #0x1e8]
+0208904c  ldr x19,[x19, #0x2c8]
+02089050  blr x9
+02089054  ldr x8,[x19]
+02089058  strb w0,[sp, #0x18]
+0208905c  add x1,sp,#0x18
+02089060  mov x0,x8
+02089064  bl 0x00b07994
+02089068  ldr x8,[x23, #0x28]
+0208906c  ldr x9,[sp, #0x28]
+02089070  cmp x8,x9
+02089074  b.ne 0x02089508
+02089078  ldp x19,x30,[sp, #0x60]
+0208907c  ldp x21,x20,[sp, #0x50]
+02089080  ldp x23,x22,[sp, #0x40]
+02089084  ldr x24,[sp, #0x30]
+02089088  add sp,sp,#0x70
+0208908c  ret
+02089090  adrp x8,0x3374000
+02089094  ldr x0,[x24]
+02089098  ldr x8,[x8, #0x890]
+0208909c  ldr w9,[x0, #0xe0]
+020890a0  ldr x22,[x8]
+020890a4  cbnz w9,0x020890ac
+020890a8  bl 0x00b0798c
+020890ac  mov x0,x22
+020890b0  mov x1,xzr
+020890b4  bl 0x0215f900
+020890b8  mov x1,x0
+020890bc  mov x0,x21
+020890c0  mov x2,xzr
+020890c4  bl 0x02168d68
+020890c8  tbz w0,#0x0,0x020890f8
+020890cc  ldr x0,[x19, #0x10]
+020890d0  cbz x0,0x02089504
+020890d4  ldr x8,[x0]
+020890d8  adrp x19,0x335d000
+020890dc  ldr x9,[x8, #0x208]
+020890e0  ldr x1,[x8, #0x210]
+020890e4  ldr x19,[x19, #0x5c8]
+020890e8  blr x9
+020890ec  ldr x8,[x19]
+020890f0  strh w0,[sp, #0x18]
+020890f4  b 0x0208905c
+020890f8  adrp x8,0x334e000
+020890fc  ldr x0,[x24]
+02089100  ldr x8,[x8, #0xd40]
+02089104  ldr w9,[x0, #0xe0]
+02089108  ldr x22,[x8]
+0208910c  cbnz w9,0x02089114
+02089110  bl 0x00b0798c
+02089114  mov x0,x22
+02089118  mov x1,xzr
+0208911c  bl 0x0215f900
+02089120  mov x1,x0
+02089124  mov x0,x21
+02089128  mov x2,xzr
+0208912c  bl 0x02168d68
+02089130  tbz w0,#0x0,0x02089160
+02089134  ldr x0,[x19, #0x10]
+02089138  cbz x0,0x02089504
+0208913c  ldr x8,[x0]
+02089140  adrp x19,0x332b000
+02089144  ldr x9,[x8, #0x248]
+02089148  ldr x1,[x8, #0x250]
+0208914c  ldr x19,[x19, #0xb0]
+02089150  blr x9
+02089154  ldr x8,[x19]
+02089158  str x0,[sp, #0x18]
+0208915c  b 0x0208905c
+02089160  adrp x8,0x3362000
+02089164  ldr x0,[x24]
+02089168  ldr x8,[x8, #0x960]
+0208916c  ldr w9,[x0, #0xe0]
+02089170  ldr x22,[x8]
+02089174  cbnz w9,0x0208917c
+02089178  bl 0x00b0798c
+0208917c  mov x0,x22
+02089180  mov x1,xzr
+02089184  bl 0x0215f900
+02089188  mov x1,x0
+0208918c  mov x0,x21
+02089190  mov x2,xzr
+02089194  bl 0x02168d68
+02089198  tbz w0,#0x0,0x020891bc
+0208919c  ldr x0,[x19, #0x10]
+020891a0  cbz x0,0x02089504
+020891a4  ldr x8,[x0]
+020891a8  adrp x19,0x3348000
+020891ac  ldr x9,[x8, #0x218]
+020891b0  ldr x1,[x8, #0x220]
+020891b4  ldr x19,[x19, #0x238]
+020891b8  b 0x020890e8
+020891bc  adrp x8,0x3377000
+020891c0  ldr x0,[x24]
+020891c4  ldr x8,[x8, #0x320]
+020891c8  ldr w9,[x0, #0xe0]
+020891cc  ldr x22,[x8]
+020891d0  cbnz w9,0x020891d8
+020891d4  bl 0x00b0798c
+020891d8  mov x0,x22
+020891dc  mov x1,xzr
+020891e0  bl 0x0215f900
+020891e4  mov x1,x0
+020891e8  mov x0,x21
+020891ec  mov x2,xzr
+020891f0  bl 0x02168d68
+020891f4  tbz w0,#0x0,0x02089218
+020891f8  ldr x0,[x19, #0x10]
+020891fc  cbz x0,0x02089504
+02089200  ldr x8,[x0]
+02089204  adrp x19,0x335a000
+02089208  ldr x9,[x8, #0x238]
+0208920c  ldr x1,[x8, #0x240]
+02089210  ldr x19,[x19, #0x968]
+02089214  b 0x02088f94
+02089218  adrp x8,0x3368000
+0208921c  ldr x0,[x24]
+02089220  ldr x8,[x8, #0x1f0]
+02089224  ldr w9,[x0, #0xe0]
+02089228  ldr x22,[x8]
+0208922c  cbnz w9,0x02089234
+02089230  bl 0x00b0798c
+02089234  mov x0,x22
+02089238  mov x1,xzr
+0208923c  bl 0x0215f900
+02089240  mov x1,x0
+02089244  mov x0,x21
+02089248  mov x2,xzr
+0208924c  bl 0x02168d68
+02089250  tbz w0,#0x0,0x02089274
+02089254  ldr x0,[x19, #0x10]
+02089258  cbz x0,0x02089504
+0208925c  ldr x8,[x0]
+02089260  adrp x19,0x3364000
+02089264  ldr x9,[x8, #0x258]
+02089268  ldr x1,[x8, #0x260]
+0208926c  ldr x19,[x19, #0x4c0]
+02089270  b 0x02089150
+02089274  adrp x8,0x3317000
+02089278  ldr x0,[x24]
+0208927c  ldr x8,[x8, #0xfc0]
+02089280  ldr w9,[x0, #0xe0]
+02089284  ldr x22,[x8]
+02089288  cbnz w9,0x02089290
+0208928c  bl 0x00b0798c
+02089290  mov x0,x22
+02089294  mov x1,xzr
+02089298  bl 0x0215f900
+0208929c  mov x1,x0
+020892a0  mov x0,x21
+020892a4  mov x2,xzr
+020892a8  bl 0x02168d68
+020892ac  tbz w0,#0x0,0x020892dc
+020892b0  ldr x0,[x19, #0x10]
+020892b4  cbz x0,0x02089504
+020892b8  ldr x8,[x0]
+020892bc  adrp x19,0x3321000
+020892c0  ldr x9,[x8, #0x268]
+020892c4  ldr x1,[x8, #0x270]
+020892c8  ldr x19,[x19, #0xa60]
+020892cc  blr x9
+020892d0  ldr x0,[x19]
+020892d4  str s0,[sp, #0x18]
+020892d8  b 0x02089340
+020892dc  adrp x8,0x3367000
+020892e0  ldr x0,[x24]
+020892e4  ldr x8,[x8, #0x118]
+020892e8  ldr w9,[x0, #0xe0]
+020892ec  ldr x22,[x8]
+020892f0  cbnz w9,0x020892f8
+020892f4  bl 0x00b0798c
+020892f8  mov x0,x22
+020892fc  mov x1,xzr
+02089300  bl 0x0215f900
+02089304  mov x1,x0
+02089308  mov x0,x21
+0208930c  mov x2,xzr
+02089310  bl 0x02168d68
+02089314  tbz w0,#0x0,0x02089348
+02089318  ldr x0,[x19, #0x10]
+0208931c  cbz x0,0x02089504
+02089320  ldr x8,[x0]
+02089324  adrp x19,0x3310000
+02089328  ldr x9,[x8, #0x278]
+0208932c  ldr x1,[x8, #0x280]
+02089330  ldr x19,[x19, #0x6f0]
+02089334  blr x9
+02089338  ldr x0,[x19]
+0208933c  str d0,[sp, #0x18]
+02089340  add x1,sp,#0x18
+02089344  b 0x02089064
+02089348  adrp x8,0x333e000
+0208934c  ldr x0,[x24]
+02089350  ldr x8,[x8, #0x778]
+02089354  ldr w9,[x0, #0xe0]
+02089358  ldr x22,[x8]
+0208935c  cbnz w9,0x02089364
+02089360  bl 0x00b0798c
+02089364  mov x0,x22
+02089368  mov x1,xzr
+0208936c  bl 0x0215f900
+02089370  mov x1,x0
+02089374  mov x0,x21
+02089378  mov x2,xzr
+0208937c  bl 0x02168d68
+02089380  tbz w0,#0x0,0x020893cc
+02089384  ldr x0,[x19, #0x10]
+02089388  cbz x0,0x02089504
+0208938c  ldr x8,[x0]
+02089390  adrp x19,0x336f000
+02089394  ldr x9,[x8, #0x248]
+02089398  ldr x1,[x8, #0x250]
+0208939c  ldr x19,[x19, #0xdc8]
+020893a0  blr x9
+020893a4  mov x1,x0
+020893a8  add x0,sp,#0x18
+020893ac  mov x2,xzr
+020893b0  str xzr,[sp, #0x18]
+020893b4  bl 0x02131ae4
+020893b8  ldr x8,[sp, #0x18]
+020893bc  ldr x0,[x19]
+020893c0  str x8,[sp]
+020893c4  mov x1,sp
+020893c8  b 0x02089064
+020893cc  adrp x8,0x3326000
+020893d0  ldr x0,[x24]
+020893d4  ldr x8,[x8, #0x648]
+020893d8  ldr w9,[x0, #0xe0]
+020893dc  ldr x22,[x8]
+020893e0  cbnz w9,0x020893e8
+020893e4  bl 0x00b0798c
+020893e8  mov x0,x22
+020893ec  mov x1,xzr
+020893f0  bl 0x0215f900
+020893f4  mov x1,x0
+020893f8  mov x0,x21
+020893fc  mov x2,xzr
+02089400  bl 0x02168d68
+02089404  tbz w0,#0x0,0x02089428
+02089408  ldr x0,[x19, #0x10]
+0208940c  cbz x0,0x02089504
+02089410  ldr x8,[x0]
+02089414  adrp x19,0x3321000
+02089418  ldr x9,[x8, #0x248]
+0208941c  ldr x1,[x8, #0x250]
+02089420  ldr x19,[x19, #0xf68]
+02089424  b 0x02089150
+02089428  adrp x8,0x3346000
+0208942c  ldr x0,[x24]
+02089430  ldr x8,[x8, #0xe58]
+02089434  ldr w9,[x0, #0xe0]
+02089438  ldr x22,[x8]
+0208943c  cbnz w9,0x02089444
+02089440  bl 0x00b0798c
+02089444  mov x0,x22
+02089448  mov x1,xzr
+0208944c  bl 0x0215f900
+02089450  mov x1,x0
+02089454  mov x0,x21
+02089458  mov x2,xzr
+0208945c  bl 0x02168d68
+02089460  tbz w0,#0x0,0x020894f4
+02089464  adrp x8,0x3362000
+02089468  ldr x8,[x8, #0x290]
+0208946c  mov w1,#0x4
+02089470  ldr x0,[x8]
+02089474  bl 0x00b078f8
+02089478  cbz x0,0x02089504
+0208947c  ldr w8,[x0, #0x18]
+02089480  mov x20,x0
+02089484  cmp w8,#0x1
+02089488  b.lt 0x020894c8
+0208948c  mov x21,xzr
+02089490  add x22,x20,#0x20
+02089494  ldr x0,[x19, #0x10]
+02089498  cbz x0,0x02089504
+0208949c  ldr x8,[x0]
+020894a0  ldr x9,[x8, #0x228]
+020894a4  ldr x1,[x8, #0x230]
+020894a8  blr x9
+020894ac  ldr w8,[x20, #0x18]
+020894b0  cmp x21,x8
+020894b4  b.cs 0x0208950c
+020894b8  str w0,[x22, x21, LSL #0x2]
+020894bc  add x21,x21,#0x1
+020894c0  cmp x21,w8, SXTW 
+020894c4  b.lt 0x02089494
+020894c8  adrp x19,0x331a000
+020894cc  ldr x19,[x19, #0xd8]
+020894d0  add x0,sp,#0x18
+020894d4  mov x1,x20
+020894d8  mov x2,xzr
+020894dc  stp xzr,xzr,[sp, #0x18]
+020894e0  bl 0x021aea7c
+020894e4  ldur q0,[sp, #0x18]
+020894e8  ldr x0,[x19]
+020894ec  str q0,[sp]
+020894f0  b 0x020893c4
+020894f4  mov x0,x19
+020894f8  mov w1,w20
+020894fc  bl 0x02089510
+02089500  b 0x02089068
+02089504  bl 0x00b079b0
+02089508  bl 0x008d4c50
+0208950c  bl 0x00b079b8
+
+
+================================================================================
+### FILE: 02094be8_FUN_02094be8.txt
+================================================================================
+Function: FUN_02094be8 @ 02094be8
+
+--- Calls OUT ---
+  -> FUN_02089008 @ 02089008
+
+--- Calls IN ---
+  <- System.Resources.ResourceReader$$_LoadObjectV1 @ 02088cd8
+
+--- Listing ---
+02094be8  ldr x8,[x8, #0xd38]
+02094bec  b 0x02089008
+
+
+================================================================================
+### FILE: 020cd008_FUN_020cd008.txt
+================================================================================
+Function: FUN_020cd008 @ 020cd008
+
+--- Calls OUT ---
+  -> System.TimeZoneInfo$$TZif_ParsePosixFormat @ 020cd304
+  -> System.TimeZoneInfo$$TZif_ParseOffsetString @ 020cd594
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.TimeZoneInfo$$TZif_CreateTransitionTimeFromPosixRule @ 020cd78c
+  -> System.TimeZoneInfo.AdjustmentRule$$CreateAdjustmentRule @ 020ccbd0
+  -> System.TimeZoneInfo$$TZif_CalculateTransitionOffsetFromBase @ 020ccaf8
+  -> System.TimeSpan$$.ctor @ 02167920
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> System.Nullable<TimeSpan>$$get_Value @ 01d29cf0
+  -> System.String$$IsNullOrEmpty @ 01fdf3a0
+  -> System.TimeSpan$$Negate @ 0216822c
+
+--- Calls IN ---
+  <- FUN_020e5ca4 @ 020e5ca4
+
+--- Listing ---
+020cd008  mov x20,x2
+020cd00c  mov x19,x1
+020cd010  mov x21,x0
+020cd014  tbnz w8,#0x0,0x020cd05c
+020cd018  adrp x0,0x336f000
+020cd01c  ldr x0,[x0, #0xdc8]
+020cd020  bl 0x00b0789c
+020cd024  adrp x0,0x3380000
+020cd028  ldr x0,[x0, #0x350]
+020cd02c  bl 0x00b0789c
+020cd030  adrp x0,0x3356000
+020cd034  ldr x0,[x0, #0xc8]
+020cd038  bl 0x00b0789c
+020cd03c  adrp x0,0x3321000
+020cd040  ldr x0,[x0, #0xf68]
+020cd044  bl 0x00b0789c
+020cd048  adrp x0,0x3327000
+020cd04c  ldr x0,[x0, #0x288]
+020cd050  bl 0x00b0789c
+020cd054  mov w8,#0x1
+020cd058  strb w8,[x22, #0xe82]
+020cd05c  ldr x0,[x23]
+020cd060  str xzr,[sp, #0x118]
+020cd064  stp xzr,xzr,[sp, #0x100]
+020cd068  stp xzr,xzr,[sp, #0xf0]
+020cd06c  stp xzr,xzr,[sp, #0xe0]
+020cd070  stp xzr,xzr,[sp, #0xd0]
+020cd074  stp xzr,xzr,[sp, #0xc0]
+020cd078  stp xzr,xzr,[sp, #0xb0]
+020cd07c  stp xzr,xzr,[sp, #0xa0]
+020cd080  stp xzr,xzr,[sp, #0x90]
+020cd084  stp xzr,xzr,[sp, #0x80]
+020cd088  str xzr,[sp, #0x78]
+020cd08c  ldr w8,[x0, #0xe0]
+020cd090  cbnz w8,0x020cd098
+020cd094  bl 0x00b0798c
+020cd098  add x8,sp,#0xd8
+020cd09c  add x1,sp,#0x118
+020cd0a0  add x2,sp,#0x108
+020cd0a4  add x3,sp,#0x100
+020cd0a8  add x4,sp,#0xf8
+020cd0ac  add x5,sp,#0xf0
+020cd0b0  add x6,sp,#0xe8
+020cd0b4  add x7,sp,#0xe0
+020cd0b8  mov x0,x21
+020cd0bc  str x8,[sp]
+020cd0c0  bl 0x020cd304
+020cd0c4  tbz w0,#0x0,0x020cd1c4
+020cd0c8  ldr x0,[x23]
+020cd0cc  ldr x21,[sp, #0x108]
+020cd0d0  ldr w8,[x0, #0xe0]
+020cd0d4  cbnz w8,0x020cd0dc
+020cd0d8  bl 0x00b0798c
+020cd0dc  mov x0,x21
+020cd0e0  bl 0x020cd594
+020cd0e4  tst w0,#0xff
+020cd0e8  stp x0,x1,[sp, #0xc8]
+020cd0ec  b.eq 0x020cd1c4
+020cd0f0  adrp x25,0x3356000
+020cd0f4  ldr x25,[x25, #0xc8]
+020cd0f8  add x0,sp,#0xc8
+020cd0fc  ldr x1,[x25]
+020cd100  bl 0x01d29cf0
+020cd104  str x0,[sp, #0xc0]
+020cd108  add x0,sp,#0xc0
+020cd10c  mov x1,xzr
+020cd110  bl 0x0216822c
+020cd114  ldr x8,[x23]
+020cd118  mov x21,x0
+020cd11c  ldr w9,[x8, #0xe0]
+020cd120  cbnz w9,0x020cd12c
+020cd124  mov x0,x8
+020cd128  bl 0x00b0798c
+020cd12c  adrp x24,0x336f000
+020cd130  ldr x24,[x24, #0xdc8]
+020cd134  mov x0,x21
+020cd138  mov x1,x20
+020cd13c  bl 0x020ccaf8
+020cd140  ldr x8,[sp, #0x100]
+020cd144  mov x21,x0
+020cd148  mov x1,xzr
+020cd14c  mov x0,x8
+020cd150  bl 0x01fdf3a0
+020cd154  tbz w0,#0x0,0x020cd1cc
+020cd158  ldr x0,[x24]
+020cd15c  adrp x22,0x3321000
+020cd160  ldr w8,[x0, #0xe0]
+020cd164  ldr x22,[x22, #0xf68]
+020cd168  cbnz w8,0x020cd174
+020cd16c  bl 0x00b0798c
+020cd170  ldr x0,[x24]
+020cd174  ldr x8,[x22]
+020cd178  ldr x9,[x0, #0xb8]
+020cd17c  ldr w10,[x8, #0xe0]
+020cd180  ldr x20,[x9, #0x18]
+020cd184  cbnz w10,0x020cd194
+020cd188  mov x0,x8
+020cd18c  bl 0x00b0798c
+020cd190  ldr x8,[x22]
+020cd194  ldr x8,[x8, #0xb8]
+020cd198  add x3,sp,#0x28
+020cd19c  add x4,sp,#0x10
+020cd1a0  mov w6,#0x1
+020cd1a4  ldr x2,[x8]
+020cd1a8  mov x0,x19
+020cd1ac  mov x1,x20
+020cd1b0  mov x5,x21
+020cd1b4  stp xzr,xzr,[sp, #0x30]
+020cd1b8  stp xzr,xzr,[sp, #0x20]
+020cd1bc  stp xzr,xzr,[sp, #0x10]
+020cd1c0  b 0x020cd2e4
+020cd1c4  mov x0,xzr
+020cd1c8  b 0x020cd2e8
+020cd1cc  ldr x0,[x23]
+020cd1d0  ldr x22,[sp, #0xf8]
+020cd1d4  ldr w8,[x0, #0xe0]
+020cd1d8  cbnz w8,0x020cd1e0
+020cd1dc  bl 0x00b0798c
+020cd1e0  mov x0,x22
+020cd1e4  bl 0x020cd594
+020cd1e8  tst w0,#0xff
+020cd1ec  stp x0,x1,[sp, #0xb0]
+020cd1f0  b.eq 0x020cd24c
+020cd1f4  ldr x1,[x25]
+020cd1f8  add x0,sp,#0xb0
+020cd1fc  bl 0x01d29cf0
+020cd200  str x0,[sp, #0xc0]
+020cd204  add x0,sp,#0xc0
+020cd208  mov x1,xzr
+020cd20c  bl 0x0216822c
+020cd210  ldr x8,[x23]
+020cd214  str x0,[sp, #0xa8]
+020cd218  mov x22,x0
+020cd21c  ldr w9,[x8, #0xe0]
+020cd220  cbnz w9,0x020cd22c
+020cd224  mov x0,x8
+020cd228  bl 0x00b0798c
+020cd22c  mov x0,x22
+020cd230  mov x1,x20
+020cd234  bl 0x020ccaf8
+020cd238  mov x1,x21
+020cd23c  str x0,[sp, #0xa8]
+020cd240  bl 0x020ccaf8
+020cd244  str x0,[sp, #0xa8]
+020cd248  b 0x020cd264
+020cd24c  add x0,sp,#0xa8
+020cd250  mov w1,#0x1
+020cd254  mov w2,wzr
+020cd258  mov w3,wzr
+020cd25c  mov x4,xzr
+020cd260  bl 0x02167920
+020cd264  ldr x0,[x23]
+020cd268  ldp x22,x20,[sp, #0xe8]
+020cd26c  ldr w8,[x0, #0xe0]
+020cd270  cbnz w8,0x020cd278
+020cd274  bl 0x00b0798c
+020cd278  add x8,sp,#0x90
+020cd27c  mov x0,x20
+020cd280  mov x1,x22
+020cd284  bl 0x020cd78c
+020cd288  ldp x1,x0,[sp, #0xd8]
+020cd28c  add x8,sp,#0x78
+020cd290  bl 0x020cd78c
+020cd294  ldr x0,[x24]
+020cd298  ldr w8,[x0, #0xe0]
+020cd29c  cbnz w8,0x020cd2a8
+020cd2a0  bl 0x00b0798c
+020cd2a4  ldr x0,[x24]
+020cd2a8  ldr x8,[x0, #0xb8]
+020cd2ac  ldp x9,x2,[sp, #0xa0]
+020cd2b0  ldr q0,[sp, #0x90]
+020cd2b4  ldur q1,[sp, #0x78]
+020cd2b8  ldr x10,[sp, #0x88]
+020cd2bc  ldr x1,[x8, #0x18]
+020cd2c0  str q0,[sp, #0x60]
+020cd2c4  str x9,[sp, #0x70]
+020cd2c8  str q1,[sp, #0x40]
+020cd2cc  str x10,[sp, #0x50]
+020cd2d0  add x3,sp,#0x60
+020cd2d4  add x4,sp,#0x40
+020cd2d8  mov x0,x19
+020cd2dc  mov x5,x21
+020cd2e0  mov w6,wzr
+020cd2e4  bl 0x020ccbd0
+020cd2e8  ldp x19,x30,[sp, #0x150]
+020cd2ec  ldp x21,x20,[sp, #0x140]
+020cd2f0  ldp x23,x22,[sp, #0x130]
+020cd2f4  ldp x25,x24,[sp, #0x120]
+020cd2f8  ldr x28,[sp, #0x110]
+020cd2fc  add sp,sp,#0x160
+020cd300  ret
+
+
+================================================================================
+### FILE: 020d0004_FUN_020d0004.txt
+================================================================================
+Function: FUN_020d0004 @ 020d0004
+
+--- Calls OUT ---
+  -> System.TimeZoneInfo.AdjustmentRule$$IsEndDateMarkerForEndOfYear @ 020d1e44
+  -> System.TimeZoneInfo$$GetIsAmbiguousTime @ 020d20d4
+  -> System.DateTime$$op_Addition @ 02135594
+  -> System.TimeZoneInfo$$CheckIsDst @ 020d1ef4
+  -> System.DateTime$$IsAmbiguousDaylightSavingTime @ 02133c80
+  -> System.DateTime$$get_Year @ 02133f94
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.DateTime$$get_Kind @ 02133c94
+  -> System.DateTime$$AddTicks @ 02132a58
+  -> System.TimeZoneInfo.AdjustmentRule$$IsStartDateMarkerForBeginningOfYear @ 020d1d94
+  -> System.TimeSpan$$op_UnaryNegation @ 0216879c
+  -> System.TimeSpan$$op_GreaterThan @ 021688ac
+  -> System.DateTime$$.ctor @ 02131f34
+
+--- Calls IN ---
+  <- FUN_020e5cbc @ 020e5cbc
+
+--- Listing ---
+020d0004  add x0,sp,#0x48
+020d0008  mov x1,xzr
+020d000c  bl 0x02133c94
+020d0010  cmp w0,#0x2
+020d0014  b.ne 0x020d0068
+020d0018  mov x0,x19
+020d001c  bl 0x020d1d94
+020d0020  tbz w0,#0x0,0x020d00ec
+020d0024  mov x0,x20
+020d0028  mov x1,xzr
+020d002c  bl 0x02133f94
+020d0030  mov w1,w0
+020d0034  add x0,sp,#0x20
+020d0038  mov w2,#0x1
+020d003c  mov w3,#0x1
+020d0040  mov w4,wzr
+020d0044  mov w5,wzr
+020d0048  mov w6,wzr
+020d004c  mov x7,xzr
+020d0050  str xzr,[sp, #0x20]
+020d0054  bl 0x02131f34
+020d0058  ldr x21,[sp, #0x20]
+020d005c  b 0x020d0118
+020d0068  adrp x26,0x3321000
+020d006c  ldr x26,[x26, #0xf68]
+020d0070  mov x27,x19
+020d0074  ldr x21,[x27, #0x20]!
+020d0078  ldr x0,[x26]
+020d007c  ldr w8,[x0, #0xe0]
+020d0080  cbnz w8,0x020d008c
+020d0084  bl 0x00b0798c
+020d0088  ldr x0,[x26]
+020d008c  ldr x8,[x0, #0xb8]
+020d0090  mov x0,x21
+020d0094  mov x2,xzr
+020d0098  ldr x1,[x8]
+020d009c  bl 0x021688ac
+020d00a0  mov w22,w0
+020d00a4  mov x0,x19
+020d00a8  bl 0x020d1d94
+020d00ac  tbz w0,#0x0,0x020d012c
+020d00b0  mov x0,x20
+020d00b4  mov x1,xzr
+020d00b8  bl 0x02133f94
+020d00bc  mov w1,w0
+020d00c0  add x0,sp,#0x20
+020d00c4  mov w2,#0x1
+020d00c8  mov w3,#0x1
+020d00cc  mov w4,wzr
+020d00d0  mov w5,wzr
+020d00d4  mov w6,wzr
+020d00d8  mov x7,xzr
+020d00dc  str xzr,[sp, #0x20]
+020d00e0  bl 0x02131f34
+020d00e4  ldr x21,[sp, #0x20]
+020d00e8  b 0x020d0178
+020d00ec  ldr x0,[x25]
+020d00f0  ldr x21,[x20]
+020d00f4  ldr x22,[x20, #0x10]
+020d00f8  ldr w8,[x0, #0xe0]
+020d00fc  cbnz w8,0x020d0104
+020d0100  bl 0x00b0798c
+020d0104  mov x0,x21
+020d0108  mov x1,x22
+020d010c  mov x2,xzr
+020d0110  bl 0x02135594
+020d0114  mov x21,x0
+020d0118  mov x0,x19
+020d011c  bl 0x020d1e44
+020d0120  tbnz w0,#0x0,0x020d0184
+020d0124  ldr x22,[x20, #0x8]
+020d0128  b 0x020d0244
+020d012c  ldr x21,[x20]
+020d0130  mov x8,x27
+020d0134  tbnz w22,#0x0,0x020d0150
+020d0138  ldr x0,[x26]
+020d013c  ldr w8,[x0, #0xe0]
+020d0140  cbnz w8,0x020d014c
+020d0144  bl 0x00b0798c
+020d0148  ldr x0,[x26]
+020d014c  ldr x8,[x0, #0xb8]
+020d0150  ldr x0,[x25]
+020d0154  ldr x23,[x8]
+020d0158  ldr w9,[x0, #0xe0]
+020d015c  cbnz w9,0x020d0164
+020d0160  bl 0x00b0798c
+020d0164  mov x0,x21
+020d0168  mov x1,x23
+020d016c  mov x2,xzr
+020d0170  bl 0x02135594
+020d0174  mov x21,x0
+020d0178  mov x0,x19
+020d017c  bl 0x020d1e44
+020d0180  tbz w0,#0x0,0x020d01d4
+020d0184  add x0,x20,#0x8
+020d0188  mov x1,xzr
+020d018c  bl 0x02133f94
+020d0190  add w1,w0,#0x1
+020d0194  add x0,sp,#0x20
+020d0198  mov w2,#0x1
+020d019c  mov w3,#0x1
+020d01a0  mov w4,wzr
+020d01a4  mov w5,wzr
+020d01a8  mov w6,wzr
+020d01ac  mov x7,xzr
+020d01b0  str xzr,[sp, #0x20]
+020d01b4  bl 0x02131f34
+020d01b8  ldr x8,[sp, #0x20]
+020d01bc  add x0,sp,#0x40
+020d01c0  mov x1,#-0x1
+020d01c4  mov x2,xzr
+020d01c8  str x8,[sp, #0x40]
+020d01cc  bl 0x02132a58
+020d01d0  b 0x020d0240
+020d01d4  ldr x23,[x20, #0x8]
+020d01d8  tbz w22,#0x0,0x020d0204
+020d01dc  ldr x0,[x26]
+020d01e0  ldr x22,[x27]
+020d01e4  ldr w8,[x0, #0xe0]
+020d01e8  cbnz w8,0x020d01f0
+020d01ec  bl 0x00b0798c
+020d01f0  mov x0,x22
+020d01f4  mov x1,xzr
+020d01f8  bl 0x0216879c
+020d01fc  mov x22,x0
+020d0200  b 0x020d0220
+020d0204  ldr x0,[x26]
+020d0208  ldr w8,[x0, #0xe0]
+020d020c  cbnz w8,0x020d0218
+020d0210  bl 0x00b0798c
+020d0214  ldr x0,[x26]
+020d0218  ldr x8,[x0, #0xb8]
+020d021c  ldr x22,[x8]
+020d0220  ldr x0,[x25]
+020d0224  ldr w8,[x0, #0xe0]
+020d0228  cbnz w8,0x020d0230
+020d022c  bl 0x00b0798c
+020d0230  mov x0,x23
+020d0234  mov x1,x22
+020d0238  mov x2,xzr
+020d023c  bl 0x02135594
+020d0240  mov x22,x0
+020d0244  ldr x0,[x24]
+020d0248  ldr x23,[sp, #0x48]
+020d024c  ldr w8,[x0, #0xe0]
+020d0250  cbnz w8,0x020d0258
+020d0254  bl 0x00b0798c
+020d0258  mov x0,x21
+020d025c  mov x1,x23
+020d0260  mov x2,x22
+020d0264  mov w3,wzr
+020d0268  mov x4,x19
+020d026c  bl 0x020d1ef4
+020d0270  mov w8,w0
+020d0274  mov w0,wzr
+020d0278  tbz w8,#0x0,0x020d02ec
+020d027c  add x0,sp,#0x48
+020d0280  mov x1,xzr
+020d0284  bl 0x02133c94
+020d0288  cmp w0,#0x2
+020d028c  b.ne 0x020d02e8
+020d0290  ldr x8,[x20, #0x10]
+020d0294  ldr q0,[x20]
+020d0298  ldr x0,[x24]
+020d029c  ldr x20,[sp, #0x48]
+020d02a0  str x8,[sp, #0x30]
+020d02a4  str q0,[sp, #0x20]
+020d02a8  ldr w8,[x0, #0xe0]
+020d02ac  cbnz w8,0x020d02b4
+020d02b0  bl 0x00b0798c
+020d02b4  ldr q0,[sp, #0x20]
+020d02b8  ldr x8,[sp, #0x30]
+020d02bc  mov x2,sp
+020d02c0  mov x0,x20
+020d02c4  mov x1,x19
+020d02c8  str q0,[sp]
+020d02cc  str x8,[sp, #0x10]
+020d02d0  bl 0x020d20d4
+020d02d4  tbz w0,#0x0,0x020d02e8
+020d02d8  add x0,sp,#0x48
+020d02dc  mov x1,xzr
+020d02e0  bl 0x02133c80
+020d02e4  b 0x020d02ec
+020d02e8  mov w0,#0x1
+020d02ec  ldp x19,x30,[sp, #0x90]
+020d02f0  ldp x21,x20,[sp, #0x80]
+020d02f4  ldp x23,x22,[sp, #0x70]
+020d02f8  ldp x25,x24,[sp, #0x60]
+020d02fc  ldp x27,x26,[sp, #0x50]
+020d0300  and w0,w0,#0x1
+020d0304  add sp,sp,#0xa0
+020d0308  ret
+
+
+================================================================================
+### FILE: 020d5008_FUN_020d5008.txt
+================================================================================
+Function: FUN_020d5008 @ 020d5008
+
+--- Calls OUT ---
+  -> System.Runtime.Serialization.SerializationInfo$$GetValue @ 020644dc
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> thunk_FUN_00ace8b4 @ 00b07998
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_020e5cb4 @ 020e5cb4
+
+--- Listing ---
+020d5008  ldr x8,[x9, #0x40]
+020d500c  ldr x9,[x1, #0x40]
+020d5010  cmp x8,x9
+020d5014  b.ne 0x020d51f8
+020d5018  adrp x21,0x3349000
+020d501c  adrp x22,0x3368000
+020d5020  ldr x21,[x21, #0xf40]
+020d5024  ldr x22,[x22, #0xcf0]
+020d5028  bl 0x00b07998
+020d502c  ldr x8,[x0]
+020d5030  mov x1,xzr
+020d5034  str x8,[x19]
+020d5038  ldr x0,[x21]
+020d503c  bl 0x0215f900
+020d5040  ldr x1,[x22]
+020d5044  mov x2,x0
+020d5048  mov x0,x20
+020d504c  mov x3,xzr
+020d5050  bl 0x020644dc
+020d5054  cbz x0,0x020d51f4
+020d5058  adrp x22,0x331d000
+020d505c  ldr x22,[x22, #0x5c8]
+020d5060  ldr x8,[x0]
+020d5064  ldr x1,[x22]
+020d5068  ldr x8,[x8, #0x40]
+020d506c  ldr x9,[x1, #0x40]
+020d5070  cmp x8,x9
+020d5074  b.ne 0x020d51f8
+020d5078  adrp x23,0x3373000
+020d507c  ldr x23,[x23, #0xf80]
+020d5080  bl 0x00b07998
+020d5084  ldrb w8,[x0]
+020d5088  mov x1,xzr
+020d508c  strb w8,[x19, #0x8]
+020d5090  ldr x0,[x21]
+020d5094  bl 0x0215f900
+020d5098  ldr x1,[x23]
+020d509c  mov x2,x0
+020d50a0  mov x0,x20
+020d50a4  mov x3,xzr
+020d50a8  bl 0x020644dc
+020d50ac  cbz x0,0x020d51f4
+020d50b0  ldr x8,[x0]
+020d50b4  ldr x1,[x22]
+020d50b8  ldr x8,[x8, #0x40]
+020d50bc  ldr x9,[x1, #0x40]
+020d50c0  cmp x8,x9
+020d50c4  b.ne 0x020d51f8
+020d50c8  adrp x23,0x3364000
+020d50cc  ldr x23,[x23, #0x240]
+020d50d0  bl 0x00b07998
+020d50d4  ldrb w8,[x0]
+020d50d8  mov x1,xzr
+020d50dc  strb w8,[x19, #0x9]
+020d50e0  ldr x0,[x21]
+020d50e4  bl 0x0215f900
+020d50e8  ldr x1,[x23]
+020d50ec  mov x2,x0
+020d50f0  mov x0,x20
+020d50f4  mov x3,xzr
+020d50f8  bl 0x020644dc
+020d50fc  cbz x0,0x020d51f4
+020d5100  ldr x8,[x0]
+020d5104  ldr x1,[x22]
+020d5108  ldr x8,[x8, #0x40]
+020d510c  ldr x9,[x1, #0x40]
+020d5110  cmp x8,x9
+020d5114  b.ne 0x020d51f8
+020d5118  adrp x21,0x3362000
+020d511c  adrp x22,0x337f000
+020d5120  ldr x21,[x21, #0x690]
+020d5124  ldr x22,[x22, #0x4c8]
+020d5128  bl 0x00b07998
+020d512c  ldrb w8,[x0]
+020d5130  mov x1,xzr
+020d5134  strb w8,[x19, #0xa]
+020d5138  ldr x0,[x21]
+020d513c  bl 0x0215f900
+020d5140  ldr x1,[x22]
+020d5144  mov x2,x0
+020d5148  mov x0,x20
+020d514c  mov x3,xzr
+020d5150  bl 0x020644dc
+020d5154  cbz x0,0x020d51f4
+020d5158  adrp x8,0x3379000
+020d515c  ldr x8,[x8, #0x3c8]
+020d5160  ldr x9,[x0]
+020d5164  ldr x1,[x8]
+020d5168  ldr x8,[x9, #0x40]
+020d516c  ldr x9,[x1, #0x40]
+020d5170  cmp x8,x9
+020d5174  b.ne 0x020d51f8
+020d5178  adrp x21,0x3367000
+020d517c  adrp x22,0x334d000
+020d5180  ldr x21,[x21, #0x9f0]
+020d5184  ldr x22,[x22, #0x200]
+020d5188  bl 0x00b07998
+020d518c  ldr w8,[x0]
+020d5190  mov x1,xzr
+020d5194  str w8,[x19, #0xc]
+020d5198  ldr x0,[x21]
+020d519c  bl 0x0215f900
+020d51a0  ldr x1,[x22]
+020d51a4  mov x2,x0
+020d51a8  mov x0,x20
+020d51ac  mov x3,xzr
+020d51b0  bl 0x020644dc
+020d51b4  cbz x0,0x020d51f4
+020d51b8  adrp x8,0x337c000
+020d51bc  ldr x8,[x8, #0xf70]
+020d51c0  ldr x9,[x0]
+020d51c4  ldr x1,[x8]
+020d51c8  ldr x8,[x9, #0x40]
+020d51cc  ldr x9,[x1, #0x40]
+020d51d0  cmp x8,x9
+020d51d4  b.ne 0x020d51f8
+020d51d8  bl 0x00b07998
+020d51dc  ldrb w8,[x0]
+020d51e0  strb w8,[x19, #0x10]
+020d51e4  ldp x19,x30,[sp, #0x20]
+020d51e8  ldp x21,x20,[sp, #0x10]
+020d51ec  ldp x23,x22,[sp], #0x30
+020d51f0  ret
+020d51f4  bl 0x00b079b0
+020d51f8  bl 0x00b07c6c
+
+
+================================================================================
+### FILE: 020d7008_FUN_020d7008.txt
+================================================================================
+Function: FUN_020d7008 @ 020d7008
+
+--- Calls OUT ---
+  -> System.Exception$$.ctor @ 021876e4
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+
+--- Calls IN ---
+  <- FUN_020e5cac @ 020e5cac
+
+--- Listing ---
+020d7008  mov x20,x2
+020d700c  mov x21,x1
+020d7010  mov x19,x0
+020d7014  tbnz w8,#0x0,0x020d702c
+020d7018  adrp x0,0x334a000
+020d701c  ldr x0,[x0, #0xbb0]
+020d7020  bl 0x00b0789c
+020d7024  mov w8,#0x1
+020d7028  strb w8,[x22, #0xee4]
+020d702c  ldr x0,[x23]
+020d7030  ldr w8,[x0, #0xe0]
+020d7034  cbnz w8,0x020d703c
+020d7038  bl 0x00b0798c
+020d703c  mov x0,x19
+020d7040  mov x1,x21
+020d7044  mov x2,x20
+020d7048  mov x3,xzr
+020d704c  bl 0x021876e4
+020d7050  mov w8,#0x1600
+020d7054  movk w8,#0x8013, LSL #16
+020d7058  str w8,[x19, #0x60]
+020d705c  ldp x19,x30,[sp, #0x20]
+020d7060  ldp x21,x20,[sp, #0x10]
+020d7064  ldp x23,x22,[sp], #0x30
+020d7068  ret
+
+
+================================================================================
+### FILE: 020e5ca4_FUN_020e5ca4.txt
+================================================================================
+Function: FUN_020e5ca4 @ 020e5ca4
+
+--- Calls OUT ---
+  -> FUN_020cd008 @ 020cd008
+
+--- Calls IN ---
+  <- System.TimeZoneInfo$$TZif_CreateAdjustmentRuleForPosixFormat @ 020ccfe0
+
+--- Listing ---
+020e5ca4  ldr x23,[x23, #0x288]
+020e5ca8  b 0x020cd008
+
+
+================================================================================
+### FILE: 020e5cac_FUN_020e5cac.txt
+================================================================================
+Function: FUN_020e5cac @ 020e5cac
+
+--- Calls OUT ---
+  -> FUN_020d7008 @ 020d7008
+
+--- Calls IN ---
+  <- System.ApplicationException$$.ctor @ 020d6fec
+
+--- Listing ---
+020e5cac  ldr x23,[x23, #0xbb0]
+020e5cb0  b 0x020d7008
+
+
+================================================================================
+### FILE: 020e5cb4_FUN_020e5cb4.txt
+================================================================================
+Function: FUN_020e5cb4 @ 020e5cb4
+
+--- Calls OUT ---
+  -> FUN_020d5008 @ 020d5008
+
+--- Calls IN ---
+  <- System.TimeZoneInfo.TransitionTime$$.ctor @ 020d4ec8
+
+--- Listing ---
+020e5cb4  ldr x1,[x8]
+020e5cb8  b 0x020d5008
+
+
+================================================================================
+### FILE: 020e5cbc_FUN_020e5cbc.txt
+================================================================================
+Function: FUN_020e5cbc @ 020e5cbc
+
+--- Calls OUT ---
+  -> FUN_020d0004 @ 020d0004
+
+--- Calls IN ---
+  <- System.TimeZoneInfo$$GetIsDaylightSavings @ 020cff90
+
+--- Listing ---
+020e5cbc  ldr x24,[x24, #0x288]
+020e5cc0  b 0x020d0004
+
+

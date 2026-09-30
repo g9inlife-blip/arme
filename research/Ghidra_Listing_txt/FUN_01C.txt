@@ -1,0 +1,44 @@
+================================================================================
+### FILE: 01c3300c_FUN_01c3300c.txt
+================================================================================
+Function: FUN_01c3300c @ 01c3300c
+
+--- Calls OUT ---
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> System.ThrowHelper$$ThrowWrongValueTypeArgumentException @ 021719bc
+
+--- Calls IN ---
+  <- FUN_01c355f0 @ 01c355f0
+
+--- Listing ---
+01c3300c  bl 0x00b078a0
+01c33010  ldr w8,[x0, #0xe0]
+01c33014  cbnz w8,0x01c3301c
+01c33018  bl 0x00b0798c
+01c3301c  mov x0,x22
+01c33020  mov x1,xzr
+01c33024  bl 0x0215f900
+01c33028  mov x1,x0
+01c3302c  mov x0,x21
+01c33030  mov x2,xzr
+01c33034  bl 0x021719bc
+01c33038  b 0x01c32f88
+
+
+================================================================================
+### FILE: 01c355f0_FUN_01c355f0.txt
+================================================================================
+Function: FUN_01c355f0 @ 01c355f0
+
+--- Calls OUT ---
+  -> FUN_01c3300c @ 01c3300c
+
+--- Calls IN ---
+
+--- Listing ---
+01c355f0  ldr x0,[x0, #0xd68]
+01c355f4  b 0x01c3300c
+
+

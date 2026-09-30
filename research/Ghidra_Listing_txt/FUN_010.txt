@@ -1,0 +1,721 @@
+================================================================================
+### FILE: 0100a008_FUN_0100a008.txt
+================================================================================
+Function: FUN_0100a008 @ 0100a008
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp14 @ 0106125c
+
+--- Calls IN ---
+  <- FUN_0100f208 @ 0100f208
+
+--- Listing ---
+0100a008  mov x19,x1
+0100a00c  mov x20,x0
+0100a010  tbnz w8,#0x0,0x0100a028
+0100a014  adrp x0,0x332a000
+0100a018  ldr x0,[x0, #0x140]
+0100a01c  bl 0x00b0789c
+0100a020  mov w8,#0x1
+0100a024  strb w8,[x21, #0x422]
+0100a028  ldr x8,[x22]
+0100a02c  ldr x8,[x8, #0xb8]
+0100a030  ldr x0,[x8, #0x8]
+0100a034  cbz x0,0x0100a054
+0100a038  mov x1,x20
+0100a03c  mov x2,x19
+0100a040  ldp x19,x30,[sp, #0x20]
+0100a044  ldp x21,x20,[sp, #0x10]
+0100a048  mov x3,xzr
+0100a04c  ldr x22,[sp], #0x30
+0100a050  b 0x0106125c
+0100a054  str x19,[x20, #0x18]!
+0100a058  mov x0,x20
+0100a05c  mov x1,x19
+0100a060  ldp x19,x30,[sp, #0x20]
+0100a064  ldp x21,x20,[sp, #0x10]
+0100a068  ldr x22,[sp], #0x30
+0100a06c  b 0x00b07850
+
+
+================================================================================
+### FILE: 0100f208_FUN_0100f208.txt
+================================================================================
+Function: FUN_0100f208 @ 0100f208
+
+--- Calls OUT ---
+  -> FUN_0100a008 @ 0100a008
+
+--- Calls IN ---
+  <- UpdateClickPostion$$set_m_tf @ 01009fec
+
+--- Listing ---
+0100f208  ldr x22,[x22, #0x140]
+0100f20c  b 0x0100a008
+
+
+================================================================================
+### FILE: 0101900c_FUN_0101900c.txt
+================================================================================
+Function: FUN_0101900c @ 0101900c
+
+--- Calls OUT ---
+  -> UnityEngine.CanvasRenderer$$SetMesh @ 026d009c
+  -> thunk_FUN_00b079b0 @ 010190cc
+  -> UnityEngine.UI.Graphic$$UpdateMaterial @ 0257a0dc
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Collections.Generic.List<int>$$ToArray @ 01beff18
+  -> UnityEngine.Object$$op_Equality @ 024c8180
+  -> UnityEngine.Mesh$$set_triangles @ 024c9be0
+  -> UnityEngine.Component$$GetComponent<object> @ 0176cbf8
+
+--- Calls IN ---
+  <- FUN_0102d7a8 @ 0102d7a8
+
+--- Listing ---
+0101900c  bl 0x01beff18
+01019010  mov x1,x0
+01019014  mov x0,x20
+01019018  mov x2,xzr
+0101901c  bl 0x024c9be0
+01019020  adrp x8,0x3321000
+01019024  ldr x8,[x8, #0xca8]
+01019028  ldr x0,[x8]
+0101902c  ldr w8,[x0, #0xe0]
+01019030  cbnz w8,0x01019038
+01019034  bl 0x00b0798c
+01019038  mov x0,x20
+0101903c  mov x1,xzr
+01019040  mov x2,xzr
+01019044  bl 0x024c8180
+01019048  tbz w0,#0x0,0x0101906c
+0101904c  ldp x29,x30,[sp, #0x60]
+01019050  ldp x20,x19,[sp, #0x50]
+01019054  ldp x22,x21,[sp, #0x40]
+01019058  ldp x24,x23,[sp, #0x30]
+0101905c  ldp x26,x25,[sp, #0x20]
+01019060  ldp x28,x27,[sp, #0x10]
+01019064  add sp,sp,#0x70
+01019068  ret
+0101906c  adrp x8,0x3315000
+01019070  ldr x8,[x8, #0x1c0]
+01019074  mov x0,x19
+01019078  ldr x1,[x8]
+0101907c  bl 0x0176cbf8
+01019080  cbz x0,0x010190cc
+01019084  mov x1,x20
+01019088  mov x2,xzr
+0101908c  bl 0x026d009c
+01019090  adrp x8,0x3342000
+01019094  ldr x8,[x8, #0x70]
+01019098  mov x0,x19
+0101909c  ldr x1,[x8]
+010190a0  bl 0x0176cbf8
+010190a4  cbz x0,0x010190cc
+010190a8  ldp x29,x30,[sp, #0x60]
+010190ac  ldp x20,x19,[sp, #0x50]
+010190b0  ldp x22,x21,[sp, #0x40]
+010190b4  ldp x24,x23,[sp, #0x30]
+010190b8  ldp x26,x25,[sp, #0x20]
+010190bc  ldp x28,x27,[sp, #0x10]
+010190c0  mov x1,xzr
+010190c4  add sp,sp,#0x70
+010190c8  b 0x0257a0dc
+
+
+================================================================================
+### FILE: 0102d7a8_FUN_0102d7a8.txt
+================================================================================
+Function: FUN_0102d7a8 @ 0102d7a8
+
+--- Calls OUT ---
+  -> FUN_0101900c @ 0101900c
+
+--- Calls IN ---
+  <- SpriteGraphicManager$$DrawSprite @ 01018a60
+
+--- Listing ---
+0102d7a8  ldr x1,[x8]
+0102d7ac  b 0x0101900c
+
+
+================================================================================
+### FILE: 0103200c_FUN_0103200c.txt
+================================================================================
+Function: FUN_0103200c @ 0103200c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> FUN_00b079b0 @ 00b079b0
+  -> UIEventListener.VoidDelegate$$.ctor @ 00e35bd0
+
+--- Calls IN ---
+  <- FUN_01045bc0 @ 01045bc0
+
+--- Listing ---
+0103156c  bl 0x00b079b0
+0103200c  mov x0,x8
+01032010  bl 0x00b079a0
+01032014  cbz x0,0x0103156c
+01032018  ldr x2,[x22]
+0103201c  mov x1,x20
+01032020  mov x3,xzr
+01032024  mov x21,x0
+01032028  bl 0x00e35bd0
+0103202c  cbz x19,0x0103156c
+01032030  str x21,[x19, #0x38]!
+01032034  mov x0,x19
+01032038  mov x1,x21
+0103203c  bl 0x00b07850
+01032040  ldp x29,x30,[sp, #0xa0]
+01032044  ldp x20,x19,[sp, #0x90]
+01032048  ldp x22,x21,[sp, #0x80]
+0103204c  ldp x24,x23,[sp, #0x70]
+01032050  ldp x26,x25,[sp, #0x60]
+01032054  ldp x28,x27,[sp, #0x50]
+01032058  add sp,sp,#0xb0
+0103205c  ret
+
+
+================================================================================
+### FILE: 01045bc0_FUN_01045bc0.txt
+================================================================================
+Function: FUN_01045bc0 @ 01045bc0
+
+--- Calls OUT ---
+  -> FUN_0103200c @ 0103200c
+
+--- Calls IN ---
+  <- TaskHeadActivityMono$$InitItem @ 010312c8
+
+--- Listing ---
+01045bc0  ldr x8,[x8]
+01045bc4  b 0x0103200c
+
+
+================================================================================
+### FILE: 01072008_FUN_01072008.txt
+================================================================================
+Function: FUN_01072008 @ 01072008
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00b07c6c @ 00b07c6c
+  -> XLua.ObjectTranslator$$GetObject @ 010d97bc
+  -> FUN_00aaac8c @ 00aaac8c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> XLua.LuaDLL.Lua$$lua_settop @ 01107848
+  -> System.Threading.Monitor$$Exit @ 021b887c
+
+--- Calls IN ---
+  <- FUN_010cf2e4 @ 010cf2e4
+
+--- Listing ---
+01072008  cbnz w9,0x01072010
+0107200c  bl 0x00b0798c
+    ; [PRE] try { // try from 0107200c to 0107200f has its CatchHandler @ 010720dc
+    ; [POST] } // end try from 0107200c to 0107200f
+01072010  mov x0,x21
+    ; [PRE] try { // try from 01072010 to 0107201b has its CatchHandler @ 010720e8
+01072014  mov x1,xzr
+01072018  bl 0x0215f900
+    ; [POST] } // end try from 01072010 to 0107201b
+0107201c  mov x3,x0
+01072020  add w2,w22,#0x1
+01072024  mov x0,x24
+    ; [PRE] try { // try from 01072024 to 01072033 has its CatchHandler @ 010720e4
+01072028  mov x1,x20
+0107202c  mov x4,xzr
+01072030  bl 0x010d97bc
+    ; [POST] } // end try from 01072024 to 01072033
+01072034  mov x21,x0
+01072038  sub w1,w22,#0x1
+0107203c  mov x0,x20
+    ; [PRE] try { // try from 0107203c to 01072047 has its CatchHandler @ 010720e0
+01072040  mov x2,xzr
+01072044  bl 0x01107848
+    ; [POST] } // end try from 0107203c to 01072047
+01072048  cbz x21,0x01072080
+0107204c  adrp x9,0x336a000
+01072050  ldr x9,[x9, #0x988]
+01072054  ldr x8,[x21]
+01072058  ldr x1,[x9]
+0107205c  ldrb w10,[x8, #0x12c]
+01072060  ldrb w9,[x1, #0x12c]
+01072064  cmp w10,w9
+01072068  b.cc 0x010720b4
+0107206c  ldr x8,[x8, #0xc8]
+01072070  add x8,x8,x9, LSL #0x3
+01072074  ldur x8,[x8, #-0x8]
+01072078  cmp x8,x1
+0107207c  b.ne 0x010720b4
+01072080  mov x22,xzr
+01072084  ldrb w8,[sp, #0xc]
+01072088  cbz w8,0x01072098
+0107208c  mov x0,x19
+01072090  mov x1,xzr
+01072094  bl 0x021b887c
+01072098  cbnz x22,0x010720c0
+0107209c  mov x0,x21
+010720a0  ldp x19,x30,[sp, #0x30]
+010720a4  ldp x21,x20,[sp, #0x20]
+010720a8  ldp x23,x22,[sp, #0x10]
+010720ac  ldr x24,[sp], #0x40
+010720b0  ret
+010720b4  mov x0,x21
+    ; [PRE] try { // try from 010720b4 to 010720bb has its CatchHandler @ 010720e0
+010720b8  bl 0x00b07c6c
+    ; [POST] } // end try from 010720b4 to 010720bb
+010720c0  mov x0,x22
+010720c4  bl 0x00aaac8c
+
+
+================================================================================
+### FILE: 01092008_FUN_01092008.txt
+================================================================================
+Function: FUN_01092008 @ 01092008
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> XLua.ObjectTranslator$$GetObject @ 010d97bc
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> XLua.LuaDLL.Lua$$lua_settop @ 01107848
+  -> System.Threading.Monitor$$Exit @ 021b887c
+
+--- Calls IN ---
+  <- FUN_010cf2ec @ 010cf2ec
+
+--- Listing ---
+01092008  adrp x8,0x330b000
+0109200c  ldr x8,[x8, #0x688]
+01092010  ldr w9,[x0, #0xe0]
+01092014  ldr x21,[x8]
+01092018  cbnz w9,0x01092020
+0109201c  bl 0x00b0798c
+    ; [PRE] try { // try from 0109201c to 0109201f has its CatchHandler @ 010920ec
+    ; [POST] } // end try from 0109201c to 0109201f
+01092020  mov x0,x21
+    ; [PRE] try { // try from 01092020 to 0109202b has its CatchHandler @ 010920f8
+01092024  mov x1,xzr
+01092028  bl 0x0215f900
+    ; [POST] } // end try from 01092020 to 0109202b
+0109202c  mov x3,x0
+01092030  add w2,w22,#0x1
+01092034  mov x0,x24
+    ; [PRE] try { // try from 01092034 to 01092043 has its CatchHandler @ 010920f4
+01092038  mov x1,x20
+0109203c  mov x4,xzr
+01092040  bl 0x010d97bc
+    ; [POST] } // end try from 01092034 to 01092043
+01092044  mov x21,x0
+01092048  sub w1,w22,#0x1
+0109204c  mov x0,x20
+    ; [PRE] try { // try from 0109204c to 01092057 has its CatchHandler @ 010920f0
+01092050  mov x2,xzr
+01092054  bl 0x01107848
+    ; [POST] } // end try from 0109204c to 01092057
+01092058  cbz x21,0x01092090
+0109205c  adrp x9,0x331c000
+01092060  ldr x9,[x9, #0x880]
+01092064  ldr x8,[x21]
+01092068  ldr x1,[x9]
+0109206c  ldrb w10,[x8, #0x12c]
+01092070  ldrb w9,[x1, #0x12c]
+01092074  cmp w10,w9
+01092078  b.cc 0x010920c4
+0109207c  ldr x8,[x8, #0xc8]
+01092080  add x8,x8,x9, LSL #0x3
+01092084  ldur x8,[x8, #-0x8]
+01092088  cmp x8,x1
+0109208c  b.ne 0x010920c4
+01092090  mov x22,xzr
+01092094  ldrb w8,[sp, #0xc]
+01092098  cbz w8,0x010920a8
+0109209c  mov x0,x19
+010920a0  mov x1,xzr
+010920a4  bl 0x021b887c
+010920a8  cbnz x22,0x010920d0
+010920ac  mov x0,x21
+010920b0  ldp x19,x30,[sp, #0x30]
+010920b4  ldp x21,x20,[sp, #0x20]
+010920b8  ldp x23,x22,[sp, #0x10]
+010920bc  ldr x24,[sp], #0x40
+010920c0  ret
+010920c4  mov x0,x21
+    ; [PRE] try { // try from 010920c4 to 010920cb has its CatchHandler @ 010920f0
+010920c8  bl 0x00b07c6c
+    ; [POST] } // end try from 010920c4 to 010920cb
+010920d0  mov x0,x22
+010920d4  bl 0x00aaac8c
+
+
+================================================================================
+### FILE: 010af00c_FUN_010af00c.txt
+================================================================================
+Function: FUN_010af00c @ 010af00c
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> XLua.ObjectTranslator$$GetObject @ 010d97bc
+  -> FUN_00b07c6c @ 00b07c6c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> XLua.LuaDLL.Lua$$lua_settop @ 01107848
+  -> System.Threading.Monitor$$Exit @ 021b887c
+
+--- Calls IN ---
+  <- FUN_010cf2f4 @ 010cf2f4
+
+--- Listing ---
+010af00c  cbnz w9,0x010af014
+010af010  bl 0x00b0798c
+    ; [PRE] try { // try from 010af010 to 010af013 has its CatchHandler @ 010af0e0
+    ; [POST] } // end try from 010af010 to 010af013
+010af014  mov x0,x21
+    ; [PRE] try { // try from 010af014 to 010af01f has its CatchHandler @ 010af0ec
+010af018  mov x1,xzr
+010af01c  bl 0x0215f900
+    ; [POST] } // end try from 010af014 to 010af01f
+010af020  mov x3,x0
+010af024  add w2,w22,#0x1
+010af028  mov x0,x24
+    ; [PRE] try { // try from 010af028 to 010af037 has its CatchHandler @ 010af0e8
+010af02c  mov x1,x20
+010af030  mov x4,xzr
+010af034  bl 0x010d97bc
+    ; [POST] } // end try from 010af028 to 010af037
+010af038  mov x21,x0
+010af03c  sub w1,w22,#0x1
+010af040  mov x0,x20
+    ; [PRE] try { // try from 010af040 to 010af04b has its CatchHandler @ 010af0e4
+010af044  mov x2,xzr
+010af048  bl 0x01107848
+    ; [POST] } // end try from 010af040 to 010af04b
+010af04c  cbz x21,0x010af084
+010af050  adrp x9,0x3352000
+010af054  ldr x9,[x9, #0x738]
+010af058  ldr x8,[x21]
+010af05c  ldr x1,[x9]
+010af060  ldrb w10,[x8, #0x12c]
+010af064  ldrb w9,[x1, #0x12c]
+010af068  cmp w10,w9
+010af06c  b.cc 0x010af0b8
+010af070  ldr x8,[x8, #0xc8]
+010af074  add x8,x8,x9, LSL #0x3
+010af078  ldur x8,[x8, #-0x8]
+010af07c  cmp x8,x1
+010af080  b.ne 0x010af0b8
+010af084  mov x22,xzr
+010af088  ldrb w8,[sp, #0xc]
+010af08c  cbz w8,0x010af09c
+010af090  mov x0,x19
+010af094  mov x1,xzr
+010af098  bl 0x021b887c
+010af09c  cbnz x22,0x010af0c4
+010af0a0  mov x0,x21
+010af0a4  ldp x19,x30,[sp, #0x30]
+010af0a8  ldp x21,x20,[sp, #0x20]
+010af0ac  ldp x23,x22,[sp, #0x10]
+010af0b0  ldr x24,[sp], #0x40
+010af0b4  ret
+010af0b8  mov x0,x21
+    ; [PRE] try { // try from 010af0b8 to 010af0bf has its CatchHandler @ 010af0e4
+010af0bc  bl 0x00b07c6c
+    ; [POST] } // end try from 010af0b8 to 010af0bf
+010af0c4  mov x0,x22
+010af0c8  bl 0x00aaac8c
+
+
+================================================================================
+### FILE: 010bd004_FUN_010bd004.txt
+================================================================================
+Function: FUN_010bd004 @ 010bd004
+
+--- Calls OUT ---
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> FUN_00aaac8c @ 00aaac8c
+  -> XLua.ObjectTranslator$$GetObject @ 010d97bc
+  -> FUN_00b07c6c @ 00b07c6c
+  -> System.Type$$GetTypeFromHandle @ 0215f900
+  -> XLua.LuaDLL.Lua$$lua_settop @ 01107848
+  -> System.Threading.Monitor$$Exit @ 021b887c
+
+--- Calls IN ---
+  <- FUN_010cf2fc @ 010cf2fc
+
+--- Listing ---
+010bd004  adrp x8,0x3365000
+010bd008  ldr x8,[x8, #0x788]
+010bd00c  ldr w9,[x0, #0xe0]
+010bd010  ldr x21,[x8]
+010bd014  cbnz w9,0x010bd01c
+010bd018  bl 0x00b0798c
+    ; [PRE] try { // try from 010bd018 to 010bd01b has its CatchHandler @ 010bd0e8
+    ; [POST] } // end try from 010bd018 to 010bd01b
+010bd01c  mov x0,x21
+    ; [PRE] try { // try from 010bd01c to 010bd027 has its CatchHandler @ 010bd0f4
+010bd020  mov x1,xzr
+010bd024  bl 0x0215f900
+    ; [POST] } // end try from 010bd01c to 010bd027
+010bd028  mov x3,x0
+010bd02c  add w2,w22,#0x1
+010bd030  mov x0,x24
+    ; [PRE] try { // try from 010bd030 to 010bd03f has its CatchHandler @ 010bd0f0
+010bd034  mov x1,x20
+010bd038  mov x4,xzr
+010bd03c  bl 0x010d97bc
+    ; [POST] } // end try from 010bd030 to 010bd03f
+010bd040  mov x21,x0
+010bd044  sub w1,w22,#0x1
+010bd048  mov x0,x20
+    ; [PRE] try { // try from 010bd048 to 010bd053 has its CatchHandler @ 010bd0ec
+010bd04c  mov x2,xzr
+010bd050  bl 0x01107848
+    ; [POST] } // end try from 010bd048 to 010bd053
+010bd054  cbz x21,0x010bd08c
+010bd058  adrp x9,0x332d000
+010bd05c  ldr x9,[x9, #0xa30]
+010bd060  ldr x8,[x21]
+010bd064  ldr x1,[x9]
+010bd068  ldrb w10,[x8, #0x12c]
+010bd06c  ldrb w9,[x1, #0x12c]
+010bd070  cmp w10,w9
+010bd074  b.cc 0x010bd0c0
+010bd078  ldr x8,[x8, #0xc8]
+010bd07c  add x8,x8,x9, LSL #0x3
+010bd080  ldur x8,[x8, #-0x8]
+010bd084  cmp x8,x1
+010bd088  b.ne 0x010bd0c0
+010bd08c  mov x22,xzr
+010bd090  ldrb w8,[sp, #0xc]
+010bd094  cbz w8,0x010bd0a4
+010bd098  mov x0,x19
+010bd09c  mov x1,xzr
+010bd0a0  bl 0x021b887c
+010bd0a4  cbnz x22,0x010bd0cc
+010bd0a8  mov x0,x21
+010bd0ac  ldp x19,x30,[sp, #0x30]
+010bd0b0  ldp x21,x20,[sp, #0x20]
+010bd0b4  ldp x23,x22,[sp, #0x10]
+010bd0b8  ldr x24,[sp], #0x40
+010bd0bc  ret
+010bd0c0  mov x0,x21
+    ; [PRE] try { // try from 010bd0c0 to 010bd0c7 has its CatchHandler @ 010bd0ec
+010bd0c4  bl 0x00b07c6c
+    ; [POST] } // end try from 010bd0c0 to 010bd0c7
+010bd0cc  mov x0,x22
+010bd0d0  bl 0x00aaac8c
+
+
+================================================================================
+### FILE: 010cf2e4_FUN_010cf2e4.txt
+================================================================================
+Function: FUN_010cf2e4 @ 010cf2e4
+
+--- Calls OUT ---
+  -> FUN_01072008 @ 01072008
+
+--- Calls IN ---
+  <- XLua.DelegateBridge$$__Gen_Delegate_Imp146 @ 01071f18
+
+--- Listing ---
+010cf2e4  ldr x21,[x8]
+010cf2e8  b 0x01072008
+
+
+================================================================================
+### FILE: 010cf2ec_FUN_010cf2ec.txt
+================================================================================
+Function: FUN_010cf2ec @ 010cf2ec
+
+--- Calls OUT ---
+  -> FUN_01092008 @ 01092008
+
+--- Calls IN ---
+  <- XLua.DelegateBridge$$__Gen_Delegate_Imp390 @ 01091f28
+
+--- Listing ---
+010cf2ec  ldr x0,[x8]
+010cf2f0  b 0x01092008
+
+
+================================================================================
+### FILE: 010cf2f4_FUN_010cf2f4.txt
+================================================================================
+Function: FUN_010cf2f4 @ 010cf2f4
+
+--- Calls OUT ---
+  -> FUN_010af00c @ 010af00c
+
+--- Calls IN ---
+  <- XLua.DelegateBridge$$__Gen_Delegate_Imp606 @ 010aef1c
+
+--- Listing ---
+010cf2f4  ldr x21,[x8]
+010cf2f8  b 0x010af00c
+
+
+================================================================================
+### FILE: 010cf2fc_FUN_010cf2fc.txt
+================================================================================
+Function: FUN_010cf2fc @ 010cf2fc
+
+--- Calls OUT ---
+  -> FUN_010bd004 @ 010bd004
+
+--- Calls IN ---
+  <- XLua.DelegateBridge$$__Gen_Delegate_Imp709 @ 010bcf24
+
+--- Listing ---
+010cf2fc  ldr x0,[x8]
+010cf300  b 0x010bd004
+
+
+================================================================================
+### FILE: 010da004_FUN_010da004.txt
+================================================================================
+Function: FUN_010da004 @ 010da004
+
+--- Calls OUT ---
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> XLua.LuaDLL.Lua$$lua_pushint64 @ 01109764
+  -> XLua.LuaDLL.Lua$$lua_pushuint64 @ 011097e8
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> XLua.LuaDLL.Lua$$xlua_pushinteger @ 0110887c
+  -> System.Object$$GetType @ 021948fc
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> System.Convert$$ToUInt64 @ 020e2238
+  -> thunk_FUN_00ace8b4 @ 00b07998
+  -> System.Exception$$.ctor @ 021876ac
+  -> System.Convert$$ToInt64 @ 020e1d54
+  -> XLua.LuaDLL.Lua$$lua_pushboolean @ 01104508
+
+--- Calls IN ---
+  <- FUN_010ea9b4 @ 010ea9b4
+
+--- Listing ---
+010da004  cmp x8,x10
+010da008  b.eq 0x010da10c
+010da00c  adrp x10,0x332b000
+010da010  ldr x10,[x10, #0xb0]
+010da014  ldr x10,[x10]
+010da018  cmp x8,x10
+010da01c  b.eq 0x010da11c
+010da020  adrp x10,0x3364000
+010da024  ldr x10,[x10, #0x4c0]
+010da028  ldr x10,[x10]
+010da02c  cmp x8,x10
+010da030  b.eq 0x010da150
+010da034  adrp x9,0x337c000
+010da038  ldr x9,[x9, #0xf70]
+010da03c  mov x0,x20
+010da040  ldr x9,[x9]
+010da044  cmp x8,x9
+010da048  b.ne 0x010da188
+010da04c  bl 0x00b07998
+010da050  ldrb w1,[x0]
+010da054  mov x0,x19
+010da058  ldp x19,x30,[sp, #0x10]
+010da05c  mov x2,xzr
+010da060  ldp x21,x20,[sp], #0x20
+010da064  b 0x01104508
+010da088  mov x0,x19
+010da08c  ldp x19,x30,[sp, #0x10]
+010da090  mov x2,xzr
+010da094  ldp x21,x20,[sp], #0x20
+010da098  b 0x0110887c
+010da10c  mov x0,x20
+010da110  bl 0x00b07998
+010da114  ldrh w1,[x0]
+010da118  b 0x010da088
+010da11c  ldr x0,[x9]
+010da120  ldr w8,[x0, #0xe0]
+010da124  cbnz w8,0x010da12c
+010da128  bl 0x00b0798c
+010da12c  mov x0,x20
+010da130  mov x1,xzr
+010da134  bl 0x020e1d54
+010da138  mov x1,x0
+010da13c  mov x0,x19
+010da140  ldp x19,x30,[sp, #0x10]
+010da144  mov x2,xzr
+010da148  ldp x21,x20,[sp], #0x20
+010da14c  b 0x01109764
+010da150  ldr x0,[x9]
+010da154  ldr w8,[x0, #0xe0]
+010da158  cbnz w8,0x010da160
+010da15c  bl 0x00b0798c
+010da160  mov x0,x20
+010da164  mov x1,xzr
+010da168  bl 0x020e2238
+010da16c  mov x1,x0
+010da170  mov x0,x19
+010da174  ldp x19,x30,[sp, #0x10]
+010da178  mov x2,xzr
+010da17c  ldp x21,x20,[sp], #0x20
+010da180  b 0x011097e8
+010da188  mov x1,xzr
+010da18c  bl 0x021948fc
+010da190  mov x20,x0
+010da194  adrp x0,0x3330000
+010da198  ldr x0,[x0, #0xbe0]
+010da19c  bl 0x00b078a0
+010da1a0  cbnz x20,0x010da1b0
+010da1a4  mov x19,x0
+010da1a8  mov x1,xzr
+010da1ac  b 0x010da1d4
+010da1b0  adrp x0,0x3330000
+010da1b4  ldr x0,[x0, #0xbe0]
+010da1b8  bl 0x00b078a0
+010da1bc  ldr x8,[x20]
+010da1c0  mov x19,x0
+010da1c4  mov x0,x20
+010da1c8  ldp x9,x1,[x8, #0x168]
+010da1cc  blr x9
+010da1d0  mov x1,x0
+010da1d4  mov x0,x19
+010da1d8  mov x2,xzr
+010da1dc  bl 0x01fd2850
+010da1e0  mov x19,x0
+010da1e4  adrp x0,0x334a000
+010da1e8  ldr x0,[x0, #0xbb0]
+010da1ec  bl 0x00b078a0
+010da1f0  bl 0x00b079a0
+010da1f4  mov x20,x0
+010da1f8  bl 0x008d74f8
+010da1fc  mov x0,x20
+010da200  mov x1,x19
+010da204  mov x2,xzr
+010da208  bl 0x021876ac
+010da20c  adrp x0,0x333e000
+010da210  ldr x0,[x0, #0x7e8]
+010da214  bl 0x00b078a0
+010da218  mov x1,x0
+010da21c  mov x0,x20
+010da220  bl 0x00b07978
+
+
+================================================================================
+### FILE: 010ea9b4_FUN_010ea9b4.txt
+================================================================================
+Function: FUN_010ea9b4 @ 010ea9b4
+
+--- Calls OUT ---
+  -> FUN_010da004 @ 010da004
+
+--- Calls IN ---
+  <- XLua.ObjectTranslator$$pushPrimitive @ 010d9e68
+
+--- Listing ---
+010ea9b4  ldr x10,[x10]
+010ea9b8  b 0x010da004
+
+

@@ -1,0 +1,199 @@
+================================================================================
+### FILE: 0121d008_FUN_0121d008.txt
+================================================================================
+Function: FUN_0121d008 @ 0121d008
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> FUN_00b07c6c @ 00b07c6c
+
+--- Calls IN ---
+  <- FUN_01230960 @ 01230960
+
+--- Listing ---
+0121d008  ldrb w11,[x9, #0x12c]
+0121d00c  ldrb w10,[x1, #0x12c]
+0121d010  cmp w11,w10
+0121d014  b.cc 0x0121d05c
+0121d018  ldr x9,[x9, #0xc8]
+0121d01c  sub x10,x10,#0x1
+0121d020  ldr x11,[x9, x10, LSL #0x3]
+0121d024  cmp x11,x1
+0121d028  b.ne 0x0121d05c
+0121d02c  mov x8,x0
+0121d030  mov x0,x20
+0121d034  str x8,[x0, #0xc8]!
+0121d038  ldr x9,[x9, x10, LSL #0x3]
+0121d03c  cmp x9,x1
+0121d040  b.ne 0x0121d070
+0121d044  mov x1,x8
+0121d048  bl 0x00b07850
+0121d04c  ldp x19,x30,[sp, #0x10]
+0121d050  mov w0,wzr
+0121d054  ldp x21,x20,[sp], #0x20
+0121d058  ret
+0121d05c  mov x0,x20
+0121d060  bl 0x00b07c6c
+    ; [POST] } // end try from 0121cfe4 to 0121d063
+0121d070  mov x0,x20
+0121d074  bl 0x00b07c6c
+    ; [POST] } // end try from 0121d06c to 0121d077
+
+
+================================================================================
+### FILE: 0122f008_FUN_0122f008.txt
+================================================================================
+Function: FUN_0122f008 @ 0122f008
+
+--- Calls OUT ---
+  -> XLua.LuaDLL.Lua$$lua_pushstring @ 01108984
+  -> FUN_00b07c6c @ 00b07c6c
+
+--- Calls IN ---
+  <- FUN_01230958 @ 01230958
+
+--- Listing ---
+0122f008  ldrb w10,[x8, #0x12c]
+0122f00c  ldrb w9,[x1, #0x12c]
+0122f010  cmp w10,w9
+0122f014  b.cc 0x0122f04c
+0122f018  ldr x8,[x8, #0xc8]
+0122f01c  add x8,x8,x9, LSL #0x3
+0122f020  ldur x8,[x8, #-0x8]
+0122f024  cmp x8,x1
+0122f028  b.ne 0x0122f04c
+0122f02c  ldr x1,[x0, #0xa8]
+0122f030  mov x0,x19
+    ; [PRE] try { // try from 0122f030 to 0122f03b has its CatchHandler @ 0122f068
+0122f034  mov x2,xzr
+0122f038  bl 0x01108984
+    ; [POST] } // end try from 0122f030 to 0122f03b
+0122f03c  ldp x19,x30,[sp, #0x10]
+0122f040  mov w0,#0x1
+0122f044  ldp x21,x20,[sp], #0x20
+0122f048  ret
+0122f04c  bl 0x00b07c6c
+    ; [PRE] try { // try from 0122f04c to 0122f04f has its CatchHandler @ 0122f06c
+    ; [POST] } // end try from 0122f04c to 0122f04f
+
+
+================================================================================
+### FILE: 01230958_FUN_01230958.txt
+================================================================================
+Function: FUN_01230958 @ 01230958
+
+--- Calls OUT ---
+  -> FUN_0122f008 @ 0122f008
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ChapterDataWrap$$_g_get_includeMisson @ 0122ef9c
+
+--- Listing ---
+01230958  ldr x1,[x9]
+0123095c  b 0x0122f008
+
+
+================================================================================
+### FILE: 01230960_FUN_01230960.txt
+================================================================================
+Function: FUN_01230960 @ 01230960
+
+--- Calls OUT ---
+  -> FUN_0121d008 @ 0121d008
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.BoboScrollSnapWrap$$_s_set_OnDragBegin @ 0121cf68
+
+--- Listing ---
+01230960  ldr x1,[x10]
+01230964  b 0x0121d008
+
+
+================================================================================
+### FILE: 01242004_FUN_01242004.txt
+================================================================================
+Function: FUN_01242004 @ 01242004
+
+--- Calls OUT ---
+  -> XLua.LuaDLL.Lua$$luaL_error @ 011044f4
+
+--- Calls IN ---
+  <- FUN_01262d80 @ 01262d80
+
+--- Listing ---
+01242004  mov x0,x19
+01242008  ldp x19,x30,[sp, #0x10]
+0124200c  mov x2,xzr
+01242010  ldp x21,x20,[sp], #0x20
+01242014  b 0x011044f4
+
+
+================================================================================
+### FILE: 01262d80_FUN_01262d80.txt
+================================================================================
+Function: FUN_01262d80 @ 01262d80
+
+--- Calls OUT ---
+  -> FUN_01242004 @ 01242004
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.DataCacheWrap$$__CreateInstance @ 01241f44
+
+--- Listing ---
+01262d80  ldr x1,[x8]
+01262d84  b 0x01242004
+
+
+================================================================================
+### FILE: 0129a008_FUN_0129a008.txt
+================================================================================
+Function: FUN_0129a008 @ 0129a008
+
+--- Calls OUT ---
+  -> XLua.LuaDLL.Lua$$lua_pushstring @ 01108984
+  -> FUN_00b07c6c @ 00b07c6c
+
+--- Calls IN ---
+  <- FUN_012a72c8 @ 012a72c8
+
+--- Listing ---
+0129a008  ldrb w10,[x8, #0x12c]
+0129a00c  ldrb w9,[x1, #0x12c]
+0129a010  cmp w10,w9
+0129a014  b.cc 0x0129a04c
+0129a018  ldr x8,[x8, #0xc8]
+0129a01c  add x8,x8,x9, LSL #0x3
+0129a020  ldur x8,[x8, #-0x8]
+0129a024  cmp x8,x1
+0129a028  b.ne 0x0129a04c
+0129a02c  ldr x1,[x0, #0x80]
+0129a030  mov x0,x19
+    ; [PRE] try { // try from 0129a030 to 0129a03b has its CatchHandler @ 0129a068
+0129a034  mov x2,xzr
+0129a038  bl 0x01108984
+    ; [POST] } // end try from 0129a030 to 0129a03b
+0129a03c  ldp x19,x30,[sp, #0x10]
+0129a040  mov w0,#0x1
+0129a044  ldp x21,x20,[sp], #0x20
+0129a048  ret
+0129a04c  bl 0x00b07c6c
+    ; [PRE] try { // try from 0129a04c to 0129a04f has its CatchHandler @ 0129a06c
+    ; [POST] } // end try from 0129a04c to 0129a04f
+
+
+================================================================================
+### FILE: 012a72c8_FUN_012a72c8.txt
+================================================================================
+Function: FUN_012a72c8 @ 012a72c8
+
+--- Calls OUT ---
+  -> FUN_0129a008 @ 0129a008
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.FriendschallengeDataWrap$$_g_get_position @ 01299f9c
+
+--- Listing ---
+012a72c8  ldr x1,[x9]
+012a72cc  b 0x0129a008
+
+

@@ -1,0 +1,134 @@
+================================================================================
+### FILE: 0111200c_FUN_0111200c.txt
+================================================================================
+Function: FUN_0111200c @ 0111200c
+
+--- Calls OUT ---
+  -> FUN_00b07c6c @ 00b07c6c
+  -> XLua.LuaDLL.Lua$$xlua_pushinteger @ 0110887c
+
+--- Calls IN ---
+  <- FUN_01128644 @ 01128644
+
+--- Listing ---
+0111200c  ldrb w10,[x8, #0x12c]
+01112010  ldrb w9,[x1, #0x12c]
+01112014  cmp w10,w9
+01112018  b.cc 0x0111204c
+0111201c  ldr x8,[x8, #0xc8]
+01112020  add x8,x8,x9, LSL #0x3
+01112024  ldur x8,[x8, #-0x8]
+01112028  cmp x8,x1
+0111202c  b.ne 0x0111204c
+01112030  ldr w1,[x0, #0x8c]
+01112034  mov x0,x19
+    ; [PRE] try { // try from 01112034 to 0111203b has its CatchHandler @ 01112068
+01112038  bl 0x0110887c
+    ; [POST] } // end try from 01112034 to 0111203b
+0111203c  mov w0,#0x1
+01112040  ldp x19,x30,[sp, #0x10]
+01112044  ldp x21,x20,[sp], #0x20
+01112048  ret
+0111204c  bl 0x00b07c6c
+    ; [PRE] try { // try from 0111204c to 0111204f has its CatchHandler @ 0111206c
+    ; [POST] } // end try from 0111204c to 0111204f
+
+
+================================================================================
+### FILE: 01128644_FUN_01128644.txt
+================================================================================
+Function: FUN_01128644 @ 01128644
+
+--- Calls OUT ---
+  -> FUN_0111200c @ 0111200c
+
+--- Calls IN ---
+  <- XLua.CSObjectWrap.ActorbreachDataWrap$$_g_get_maxLevel @ 01111fa0
+
+--- Listing ---
+01128644  ldr x1,[x9]
+01128648  b 0x0111200c
+
+
+================================================================================
+### FILE: 01179004_FUN_01179004.txt
+================================================================================
+Function: FUN_01179004 @ 01179004
+
+--- Calls OUT ---
+  -> BattleManager$$get_m_mission @ 01175a94
+  -> XLua.DelegateBridge$$__Gen_Delegate_Imp11 @ 01060dac
+  -> System.String$$Split @ 01fe0d68
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> BattleManager$$HaveNextTollgate @ 011790b4
+  -> BattleManager$$set_tollgateIDs @ 01176e24
+  -> BattleManager$$set_m_wave @ 011756f4
+  -> BattleManager$$NextWave @ 011789d4
+  -> FUN_00b079b0 @ 00b079b0
+
+--- Calls IN ---
+  <- FUN_0118dfd8 @ 0118dfd8
+
+--- Listing ---
+01179004  mov x19,x0
+01179008  tbnz w8,#0x0,0x01179020
+0117900c  adrp x0,0x3371000
+01179010  ldr x0,[x0, #0xd88]
+01179014  bl 0x00b0789c
+01179018  mov w8,#0x1
+0117901c  strb w8,[x21, #0x1ba]
+01179020  ldr x8,[x20]
+01179024  str xzr,[sp, #0x8]
+01179028  ldr x8,[x8, #0xb8]
+0117902c  ldr x0,[x8, #0x238]
+01179030  cbz x0,0x01179044
+01179034  mov x1,x19
+01179038  mov x2,xzr
+0117903c  bl 0x01060dac
+01179040  b 0x011790a0
+01179044  mov x0,x19
+01179048  bl 0x01175a94
+0117904c  cbz x0,0x011790b0
+01179050  ldr x0,[x0, #0x98]
+01179054  cbz x0,0x011790b0
+01179058  mov w1,#0x7c
+0117905c  mov w2,wzr
+01179060  mov x3,xzr
+01179064  bl 0x01fe0d68
+01179068  mov x1,x0
+0117906c  mov x0,x19
+01179070  bl 0x01176e24
+01179074  fmov s0,wzr
+01179078  mov x0,x19
+0117907c  bl 0x011756f4
+01179080  add x1,sp,#0xc
+01179084  add x2,sp,#0x8
+01179088  mov x0,x19
+0117908c  str xzr,[sp, #0x8]
+01179090  bl 0x011790b4
+01179094  tbz w0,#0x0,0x011790a0
+01179098  mov x0,x19
+0117909c  bl 0x011789d4
+011790a0  ldp x19,x30,[sp, #0x20]
+011790a4  ldp x21,x20,[sp, #0x10]
+011790a8  add sp,sp,#0x30
+011790ac  ret
+011790b0  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 0118dfd8_FUN_0118dfd8.txt
+================================================================================
+Function: FUN_0118dfd8 @ 0118dfd8
+
+--- Calls OUT ---
+  -> FUN_01179004 @ 01179004
+
+--- Calls IN ---
+  <- BattleManager$$InitSenceNodeEnd @ 01178fe8
+
+--- Listing ---
+0118dfd8  ldr x20,[x20, #0xd88]
+0118dfdc  b 0x01179004
+
+

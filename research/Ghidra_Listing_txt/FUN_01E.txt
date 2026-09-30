@@ -1,0 +1,443 @@
+================================================================================
+### FILE: 01e10008_FUN_01e10008.txt
+================================================================================
+Function: FUN_01e10008 @ 01e10008
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> thunk_FUN_00ab76dc @ 00b078a0
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> System.ArgumentException$$.ctor @ 020cf900
+  -> thunk_FUN_00ace670 @ 00b07990
+  -> FUN_008d74f8 @ 008d74f8
+  -> FUN_00b07978 @ 00b07978
+  -> FUN_00b079b0 @ 00b079b0
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_01e18db8 @ 01e18db8
+
+--- Listing ---
+01e10008  bl 0x00b07990
+01e1000c  mov x23,x21
+01e10010  str x0,[x23, #0x18]!
+01e10014  ldr x1,[x24]
+01e10018  mov x0,x22
+01e1001c  bl 0x00b07990
+01e10020  mov x1,x0
+01e10024  mov x0,x23
+01e10028  bl 0x00b07850
+01e1002c  ldr x8,[x23]
+01e10030  cbz x8,0x01e1022c
+01e10034  ldr x8,[x20, #0x20]
+01e10038  ldr x8,[x8, #0xc0]
+01e1003c  ldr x0,[x8, #0x58]
+01e10040  ldrb w8,[x0, #0x132]
+01e10044  tbnz w8,#0x0,0x01e1004c
+01e10048  bl 0x00b2ac40
+    ; [PRE] try { // try from 01e10048 to 01e10077 has its CatchHandler @ 01e101f4
+01e1004c  bl 0x00b079a0
+01e10050  mov x22,x0
+01e10054  cbz x0,0x01e101ec
+01e10058  ldr x8,[x20, #0x20]
+01e1005c  ldr x8,[x8, #0xc0]
+01e10060  ldr x3,[x8, #0x190]
+01e10064  ldr x2,[x8, #0x1c0]
+01e10068  ldr x9,[x3, #0x8]
+01e1006c  mov x0,x22
+01e10070  mov x1,x21
+01e10074  blr x9
+    ; [POST] } // end try from 01e10048 to 01e10077
+01e10078  ldr x8,[x19]
+01e1007c  ldr x9,[x8, #0x278]
+01e10080  ldr x2,[x8, #0x280]
+01e10084  mov x0,x19
+    ; [PRE] try { // try from 01e10084 to 01e1008f has its CatchHandler @ 01e101f0
+01e10088  mov x1,x22
+01e1008c  blr x9
+    ; [POST] } // end try from 01e10084 to 01e1008f
+01e10090  ldp x19,x30,[sp, #0x30]
+01e10094  ldp x21,x20,[sp, #0x20]
+01e10098  ldp x23,x22,[sp, #0x10]
+01e1009c  ldr x24,[sp], #0x40
+01e100a0  ret
+01e101ec  bl 0x00b079b0
+    ; [PRE] try { // try from 01e101ec to 01e101ef has its CatchHandler @ 01e101f4
+    ; [POST] } // end try from 01e101ec to 01e101ef
+01e1022c  adrp x0,0x3367000
+01e10230  ldr x0,[x0, #0x168]
+01e10234  bl 0x00b078a0
+01e10238  bl 0x00b079a0
+01e1023c  mov x19,x0
+01e10240  bl 0x008d74f8
+01e10244  adrp x0,0x3351000
+01e10248  ldr x0,[x0, #0xb60]
+01e1024c  bl 0x00b078a0
+01e10250  mov x20,x0
+01e10254  adrp x0,0x337e000
+01e10258  ldr x0,[x0, #0x2e0]
+01e1025c  bl 0x00b078a0
+01e10260  mov x2,x0
+01e10264  mov x0,x19
+01e10268  mov x1,x20
+01e1026c  mov x3,xzr
+01e10270  bl 0x020cf900
+01e10274  adrp x0,0x334e000
+01e10278  ldr x0,[x0, #0xf58]
+01e1027c  bl 0x00b078a0
+01e10280  mov x1,x0
+01e10284  mov x0,x19
+01e10288  bl 0x00b07978
+
+
+================================================================================
+### FILE: 01e18db8_FUN_01e18db8.txt
+================================================================================
+Function: FUN_01e18db8 @ 01e18db8
+
+--- Calls OUT ---
+  -> FUN_01e10008 @ 01e10008
+
+--- Calls IN ---
+  <- System.Collections.Generic.SortedSet<KeyValuePair<object,-object>>$$System.Collections.ICollection.CopyTo @ 01e0feb4
+
+--- Listing ---
+01e18db8  ldr x1,[x24]
+01e18dbc  b 0x01e10008
+
+
+================================================================================
+### FILE: 01e2900c_FUN_01e2900c.txt
+================================================================================
+Function: FUN_01e2900c @ 01e2900c
+
+--- Calls OUT ---
+  -> thunk_FUN_00b381bc @ 00b07850
+  -> System.Threading.Tasks.DebuggerSupport$$TraceOperationCreation @ 021c709c
+  -> thunk_FUN_00ace75c @ 00b079a0
+  -> thunk_FUN_00aac4e0 @ 00b0798c
+  -> thunk_FUN_00ab76dc @ 00b0789c
+  -> FUN_00b2ae24 @ 00b2ae24
+  -> System.Threading.Tasks.DebuggerSupport$$get_LoggingOn @ 021c7094
+  -> System.Threading.Tasks.DebuggerSupport$$AddToActiveTasksNonInlined @ 021c7144
+  -> System.String$$Concat @ 01fd2850
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.AsyncCallback$$.ctor @ 020d7a78
+  -> FUN_00b2ac40 @ 00b2ac40
+
+--- Calls IN ---
+  <- FUN_01e31c8c @ 01e31c8c
+
+--- Listing ---
+01e2900c  tbnz w9,#0x0,0x01e2901c
+01e29010  mov x0,x8
+01e29014  bl 0x00b2ac40
+01e29018  mov x8,x0
+01e2901c  ldr x8,[x8, #0xc0]
+01e29020  mov x0,x26
+01e29024  mov x1,x22
+01e29028  mov w2,w21
+01e2902c  ldr x3,[x8, #0x50]
+01e29030  blr x27
+01e29034  mov x21,x20
+01e29038  str x26,[x21, #0x20]!
+01e2903c  mov x0,x21
+01e29040  mov x1,x26
+01e29044  bl 0x00b07850
+01e29048  ldr x0,[x28]
+01e2904c  ldr w8,[x0, #0xe0]
+01e29050  cbnz w8,0x01e29058
+01e29054  bl 0x00b0798c
+01e29058  mov x0,xzr
+01e2905c  bl 0x021c7094
+01e29060  tbz w0,#0x0,0x01e290c4
+01e29064  adrp x9,0x3375000
+01e29068  ldr x8,[x23]
+01e2906c  ldr x9,[x9, #0x3c0]
+01e29070  ldr x26,[x21]
+01e29074  mov x0,x23
+01e29078  ldr x27,[x9]
+01e2907c  ldp x9,x1,[x8, #0x168]
+01e29080  blr x9
+01e29084  mov x1,x0
+01e29088  mov x0,x27
+01e2908c  mov x2,xzr
+01e29090  bl 0x01fd2850
+01e29094  ldr x8,[x28]
+01e29098  mov x27,x0
+01e2909c  ldr w9,[x8, #0xe0]
+01e290a0  cbnz w9,0x01e290ac
+01e290a4  mov x0,x8
+01e290a8  bl 0x00b0798c
+01e290ac  mov w0,wzr
+01e290b0  mov x1,x26
+01e290b4  mov x2,x27
+01e290b8  mov x3,xzr
+01e290bc  mov x4,xzr
+01e290c0  bl 0x021c709c
+01e290c4  ldr x0,[x28]
+01e290c8  ldr x26,[x21]
+01e290cc  ldr w8,[x0, #0xe0]
+01e290d0  cbnz w8,0x01e290d8
+01e290d4  bl 0x00b0798c
+01e290d8  adrp x27,0x3578000
+01e290dc  ldrb w8,[x27, #0x56]
+01e290e0  cbnz w8,0x01e29104
+01e290e4  adrp x0,0x332b000
+01e290e8  ldr x0,[x0, #0x850]
+01e290ec  bl 0x00b0789c
+01e290f0  adrp x0,0x3359000
+01e290f4  ldr x0,[x0, #0x630]
+01e290f8  bl 0x00b0789c
+01e290fc  mov w8,#0x1
+01e29100  strb w8,[x27, #0x56]
+01e29104  adrp x27,0x3359000
+01e29108  ldr x27,[x27, #0x630]
+01e2910c  ldr x0,[x27]
+01e29110  ldr w8,[x0, #0xe0]
+01e29114  cbnz w8,0x01e29120
+01e29118  bl 0x00b0798c
+01e2911c  ldr x0,[x27]
+01e29120  ldr x8,[x0, #0xb8]
+01e29124  adrp x29,0x3345000
+01e29128  ldrb w8,[x8, #0x10]
+01e2912c  ldr x29,[x29, #0x970]
+01e29130  cbz w8,0x01e29150
+01e29134  ldr x0,[x28]
+01e29138  ldr w8,[x0, #0xe0]
+01e2913c  cbnz w8,0x01e29144
+01e29140  bl 0x00b0798c
+01e29144  mov x0,x26
+01e29148  mov x1,xzr
+01e2914c  bl 0x021c7144
+01e29150  ldr x0,[x29]
+01e29154  bl 0x00b079a0
+    ; [PRE] try { // try from 01e29154 to 01e29187 has its CatchHandler @ 01e29320
+01e29158  mov x26,x0
+01e2915c  cbz x0,0x01e292bc
+01e29160  ldr x0,[x19, #0x20]
+01e29164  ldrb w8,[x0, #0x132]
+01e29168  tbnz w8,#0x0,0x01e29170
+01e2916c  bl 0x00b2ac40
+01e29170  ldr x8,[x0, #0xc0]
+01e29174  ldr x2,[x8, #0x58]
+01e29178  mov x0,x26
+01e2917c  mov x1,x20
+01e29180  mov x3,xzr
+01e29184  bl 0x020d7a78
+    ; [POST] } // end try from 01e29154 to 01e29187
+01e29188  ldr x0,[x23, #0x40]
+01e2918c  ldr x8,[x23, #0x18]
+01e29190  ldr x3,[x23, #0x28]
+01e29194  mov x1,x26
+    ; [PRE] try { // try from 01e29194 to 01e2919f has its CatchHandler @ 01e29318
+01e29198  mov x2,x22
+01e2919c  blr x8
+    ; [POST] } // end try from 01e29194 to 01e2919f
+01e291a0  mov x22,x0
+01e291a4  cbz x0,0x01e292c0
+01e291a8  adrp x10,0x3325000
+01e291ac  ldr x8,[x22]
+01e291b0  ldr x10,[x10, #0x500]
+01e291b4  ldrh w9,[x8, #0x12a]
+01e291b8  ldr x1,[x10]
+01e291bc  cbz x9,0x01e291e0
+01e291c0  ldr x10,[x8, #0xb0]
+01e291c4  add x10,x10,#0x8
+01e291c8  ldur x11,[x10, #-0x8]
+01e291cc  cmp x11,x1
+01e291d0  b.eq 0x01e291f0
+01e291d4  subs x9,x9,#0x1
+01e291d8  add x10,x10,#0x10
+01e291dc  b.ne 0x01e291c8
+01e291e0  mov w2,#0x3
+    ; [PRE] try { // try from 01e291e0 to 01e2920b has its CatchHandler @ 01e2931c
+01e291e4  mov x0,x22
+01e291e8  bl 0x00b2ae24
+01e291ec  b 0x01e29200
+01e291f0  ldr w9,[x10]
+01e291f4  add w9,w9,#0x3
+01e291f8  add x8,x8,w9, SXTW  #0x4
+01e291fc  add x0,x8,#0x138
+01e29200  ldp x8,x1,[x0]
+01e29204  mov x0,x22
+01e29208  blr x8
+    ; [POST] } // end try from 01e291e0 to 01e2920b
+01e2920c  tbz w0,#0x0,0x01e29274
+01e29210  ldr x0,[x19, #0x20]
+01e29214  ldr x24,[x24]
+01e29218  ldr x23,[x25]
+01e2921c  ldr x25,[x21]
+01e29220  ldrh w9,[x0, #0x132]
+01e29224  tbnz w9,#0x0,0x01e2923c
+01e29228  bl 0x00b2ac40
+    ; [PRE] try { // try from 01e29228 to 01e29273 has its CatchHandler @ 01e29314
+01e2922c  mov x8,x0
+01e29230  ldr x0,[x19, #0x20]
+01e29234  ldrh w9,[x0, #0x132]
+01e29238  b 0x01e29240
+01e2923c  mov x8,x0
+01e29240  ldr x8,[x8, #0xc0]
+01e29244  ldr x8,[x8, #0x60]
+01e29248  ldr x26,[x8, #0x8]
+01e2924c  tbnz w9,#0x0,0x01e29254
+01e29250  bl 0x00b2ac40
+01e29254  ldr x8,[x0, #0xc0]
+01e29258  ldr x5,[x8, #0x60]
+01e2925c  mov x0,x22
+01e29260  mov x1,x24
+01e29264  mov x2,x23
+01e29268  mov x3,x25
+01e2926c  mov w4,wzr
+01e29270  blr x26
+    ; [POST] } // end try from 01e29228 to 01e29273
+01e29274  ldr x0,[x21]
+01e29278  ldp x29,x30,[sp, #0x50]
+01e2927c  ldp x20,x19,[sp, #0x40]
+01e29280  ldp x22,x21,[sp, #0x30]
+01e29284  ldp x24,x23,[sp, #0x20]
+01e29288  ldp x26,x25,[sp, #0x10]
+01e2928c  ldp x28,x27,[sp], #0x60
+01e29290  ret
+01e292bc  bl 0x00b079b0
+    ; [PRE] try { // try from 01e292bc to 01e292bf has its CatchHandler @ 01e29320
+    ; [POST] } // end try from 01e292bc to 01e292bf
+01e292c0  bl 0x00b079b0
+    ; [PRE] try { // try from 01e292c0 to 01e292c3 has its CatchHandler @ 01e29310
+    ; [POST] } // end try from 01e292c0 to 01e292c3
+
+
+================================================================================
+### FILE: 01e31c8c_FUN_01e31c8c.txt
+================================================================================
+Function: FUN_01e31c8c @ 01e31c8c
+
+--- Calls OUT ---
+  -> FUN_01e2900c @ 01e2900c
+
+--- Calls IN ---
+  <- System.Threading.Tasks.TaskFactory<object>$$FromAsyncImpl @ 01e28e64
+
+--- Listing ---
+01e31c8c  ldr x28,[x28, #0x850]
+01e31c90  b 0x01e2900c
+
+
+================================================================================
+### FILE: 01e5b238_FUN_01e5b238.txt
+================================================================================
+Function: FUN_01e5b238 @ 01e5b238
+
+--- Calls OUT ---
+  -> DG.Tweening.Core.Debugger$$LogWarning @ 01714b34
+
+--- Calls IN ---
+  <- thunk_FUN_01e5b238 @ 01e5b008
+
+--- Listing ---
+01e5b238  mov x1,xzr
+01e5b23c  bl 0x01714b34
+01e5b240  mov x0,x19
+01e5b244  ldp x19,x30,[sp, #0x30]
+01e5b248  ldp x21,x20,[sp, #0x20]
+01e5b24c  ldp x23,x22,[sp, #0x10]
+01e5b250  ldr d8,[sp], #0x40
+01e5b254  ret
+
+
+================================================================================
+### FILE: 01e6d970_FUN_01e6d970.txt
+================================================================================
+Function: FUN_01e6d970 @ 01e6d970
+
+--- Calls OUT ---
+  -> thunk_FUN_01e5b238 @ 01e5b008
+
+--- Calls IN ---
+  <- DG.Tweening.Core.TweenerCore<Rect,-Rect,-RectOptions>$$ChangeStartValue @ 01e5af5c
+
+--- Listing ---
+01e6d970  ldr x0,[x8]
+01e6d974  b 0x01e5b008
+
+
+================================================================================
+### FILE: 01ee900c_FUN_01ee900c.txt
+================================================================================
+Function: FUN_01ee900c @ 01ee900c
+
+--- Calls OUT ---
+  -> System.Collections.Generic.Dictionary<StylePropertyAnimationSystem.ElementPropertyPair,-Int32Enum>$$ContainsKey @ 019baf94
+  -> System.Collections.Generic.Dictionary<StylePropertyAnimationSystem.ElementPropertyPair,-Int32Enum>$$get_Item @ 019bacbc
+  -> System.Collections.Generic.Dictionary<StylePropertyAnimationSystem.ElementPropertyPair,-Int32Enum>$$set_Item @ 019bad64
+  -> FUN_00b079b0 @ 00b079b0
+  -> System.Collections.Generic.Dictionary<StylePropertyAnimationSystem.ElementPropertyPair,-Int32Enum>$$Add @ 019bad7c
+
+--- Calls IN ---
+  <- FUN_01eef90c @ 01eef90c
+
+--- Listing ---
+01ee900c  bl 0x019baf94
+01ee9010  ldr x8,[x20, #0x20]
+01ee9014  cbz x8,0x01ee90c0
+01ee9018  ldr x22,[x8, #0x10]
+01ee901c  cbz x22,0x01ee90c0
+01ee9020  ldp x24,x23,[sp, #0x10]
+01ee9024  tbz w0,#0x0,0x01ee9068
+01ee9028  adrp x8,0x3312000
+01ee902c  ldr x8,[x8, #0xc88]
+01ee9030  adrp x25,0x3378000
+01ee9034  mov x0,x22
+01ee9038  mov x1,x24
+01ee903c  ldr x3,[x8]
+01ee9040  ldr x25,[x25, #0x5c8]
+01ee9044  mov x2,x23
+01ee9048  bl 0x019bacbc
+01ee904c  ldr x4,[x25]
+01ee9050  orr w3,w0,#0x4
+01ee9054  mov x0,x22
+01ee9058  mov x1,x24
+01ee905c  mov x2,x23
+01ee9060  bl 0x019bad64
+01ee9064  b 0x01ee9088
+01ee9068  adrp x8,0x3347000
+01ee906c  ldr x8,[x8, #0xb90]
+01ee9070  mov w3,#0x4
+01ee9074  mov x0,x22
+01ee9078  mov x1,x24
+01ee907c  ldr x4,[x8]
+01ee9080  mov x2,x23
+01ee9084  bl 0x019bad7c
+01ee9088  ldr x8,[x19, #0x20]
+01ee908c  ldp x2,x3,[sp, #0x10]
+01ee9090  mov x0,x20
+01ee9094  mov x1,x21
+01ee9098  ldr x8,[x8, #0xc0]
+01ee909c  ldr x4,[x8, #0x50]
+01ee90a0  ldr x8,[x4, #0x8]
+01ee90a4  blr x8
+01ee90a8  ldp x19,x30,[sp, #0x50]
+01ee90ac  ldp x21,x20,[sp, #0x40]
+01ee90b0  ldp x23,x22,[sp, #0x30]
+01ee90b4  ldp x25,x24,[sp, #0x20]
+01ee90b8  add sp,sp,#0x60
+01ee90bc  ret
+01ee90c0  bl 0x00b079b0
+
+
+================================================================================
+### FILE: 01eef90c_FUN_01eef90c.txt
+================================================================================
+Function: FUN_01eef90c @ 01eef90c
+
+--- Calls OUT ---
+  -> FUN_01ee900c @ 01ee900c
+
+--- Calls IN ---
+  <- UnityEngine.UIElements.StylePropertyAnimationSystem.Values<Translate>$$QueueTransitionEndEvent @ 01ee8ee0
+
+--- Listing ---
+01eef90c  ldr x3,[x8]
+01eef910  b 0x01ee900c
+
+
