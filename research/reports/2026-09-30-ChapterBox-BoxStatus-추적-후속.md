@@ -2512,3 +2512,60 @@ ProccessRequestRes → Chapters 직접 merge 미확인
 ```
 
 **다음은 `BattleMapMono.LayChapterItem @ 00e4f918`의 Chapter 객체 입력 경로와 `InitChapters @ 00e4e080` 주변 unnamed helper를 `FUN_00E*` 기준으로 좁힌다.**
+
+## 30. 2026-09-30 0930-8 후속 — protobuf tag와 ProtoChapter offset을 분리해서 추적
+
+### 30.1 ProtoChapter 메모리 field는 확정 상태 유지
+
+Id +0x10 / Status +0x14 / Progress +0x18 / BoxStatus +0x1C
+
+각 accessor가 직접 해당 offset을 읽고/쓴다. 따라서 메모리 layout 자체에는 추가 의문이 없다.
+
+### 30.2 ProtoBuf.Meta 계열 코드 추가 확인
+
+`FUN_022.txt`에서 `ProtoBuf.Meta.MetaType$$GetFieldBoolean @ 021fdf7c`가 `FUN_021fe00c`를 호출하는 구조를 확인했다.
+
+동일 Listing 영역에는 field index를 증가시키면서 객체 내부 offset에 저장하는 반복 패턴도 존재한다.
+
+다만 현재 확보된 Listing만으로 이 반복 코드를 ProtoChapter serializer/deserializer라고 직접 명명할 근거는 없다.
+
+### 30.3 protobuf tag와 C# 메모리 offset은 동일하다고 가정하지 않음
+
+실제 0x14 response Chapter snapshot은 field 1=20000100, field 3=12, field 4=3, field 9={1,15}, field10={1,15}, field11=1이다.
+
+요청의 boxIndex=5에 대해 UI 검사 mask는 1 << 5 = 0x20이다.
+
+따라서 response field 4=3을 ProtoChapter.BoxStatus라고 단순 대응시키는 것은 현재 증거와 맞지 않는다.
+
+즉 protobuf field #4와 C# memory field +0x1C를 동일시하지 않는다.
+
+### 30.4 0x14 response 이후 갱신 시점
+
+현재 순서는 283 C→S opcode 0x14, 285 S→C opcode 0x14 + Chapter snapshot, 287 C→S, 289 S→C, 294 C→S, 296 S→C이다.
+
+285에 Chapter snapshot이 존재하는 것은 확정이나 BoxStatus가 어느 response에서 갱신되어 IsBoxReceived 결과가 바뀌는지는 미확정이다. frame 296은 유효 protobuf 복호화 재검증 대상이다.
+
+### 30.5 MergeSectionSnapShot 방향 재확인
+
+`DataCenter.ProccessRequestRes @ 016e203c` → `DataCenter.MergeSectionSnapShot @ 016e5908` 연결은 확인되지만, 현재 Listing 검색 결과만으로 MergeSectionSnapShot이 ProtoChapter +0x1C를 쓰는 직접 증거는 없다.
+
+### 30.6 다음 분석 목표
+
+1. `ProccessRequestRes @ 016e203c` / `MergeSectionSnapShot @ 016e5908` 실제 Listing 확보
+2. 해당 함수 및 helper에서 `str w?,[x?,#0x1c]` 확인
+3. 같은 함수에서 +0x10/+0x14/+0x18/+0x1C가 같은 객체에 함께 접근되는지 확인
+
+네 offset이 한 함수에서 같은 객체에 연속적으로 접근되면 ProtoChapter merge 경로일 가능성이 크게 올라간다.
+
+### 30.7 현재 결론
+
+ProtoChapter +0x1C = BoxStatus: 확정
+0x14 request chapterId/boxIndex: 확정
+0x14 response Chapter snapshot: 확정
+boxIndex 5 → UI mask 0x20: 확정
+protobuf field 4 = BoxStatus: 미확정
+0x14 response → +0x1C write: 미확정
+MergeSectionSnapShot → BoxStatus: 미확정
+285에서 즉시 상태 갱신: 미확정
+
+이번 단계에서는 잘못된 field 4 = BoxStatus 단순 매핑을 제거하고, protobuf tag → deserializer/merge → ProtoChapter memory offset의 3단계 연결을 직접 증명하는 방향으로 추적을 고정한다.
