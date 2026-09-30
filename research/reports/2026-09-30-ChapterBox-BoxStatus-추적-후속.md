@@ -188,3 +188,75 @@ MergeSections / MergeSectionSnapShot / ProccessRequestRes
 - setter 직접 호출자: 미확인
 - `opcode 0x14 → BoxStatus`: 아직 미확정
 - 다음 핵심 목표: **4개 필드 offset을 함께 쓰는 상위 merge/deserialize 함수 확보**
+
+
+## 20. Merge 계열 재추적 결과
+
+이번에는 후보 함수 자체의 의미를 좁혔다.
+
+### 20.1 MergeSectionSnapShot은 Section 상태 병합 쪽으로 확인
+
+기존 Assembly 분석 기록에서 `MergeSectionSnapShot @ 016e5908`는 `Dictionary<int,int>`를 순회하고 기존 dictionary와 비교한 뒤 변경된 값을 `set_Item`으로 갱신한다.
+
+또한 현재 기록된 응답 경로는:
+
+```text
+opcode 0x13
+ → response
+ → ProccessRequestRes
+ → MergeSectionSnapShot
+ → Section field
+```
+
+형태다.
+
+따라서 이 함수는 **Chapter BoxStatus 갱신 후보라기보다 Section snapshot 병합 함수**로 보는 것이 더 타당해졌다.
+
+### 20.2 MergeSections도 Section dictionary 처리
+
+`MergeSections @ 016e55dc` 역시 Section dictionary를 처리하며, 기존 분석에는 특정 Status 조건에서 dictionary `set_Item`을 수행하는 구조가 기록되어 있다.
+
+따라서 현재까지는:
+
+```text
+MergeSectionSnapShot → Section snapshot
+MergeSections        → Section collection
+```
+
+으로 역할이 좁혀진다.
+
+둘 모두에서 `ProtoChapter +0x1C` 직접 write는 확인되지 않았다.
+
+### 20.3 ProccessRequestRes의 역할
+
+`ProccessRequestRes @ 016e203c`는 여러 상태 처리 함수의 호출자로 확인되지만 독립 Listing 본문이 없다.
+
+따라서 현재 증거로는:
+
+```text
+ProccessRequestRes
+ ├─ Section 관련 처리
+ ├─ Item/Equip/Weapon 관련 처리
+ ├─ UserInfo 관련 처리
+ └─ 기타 상태 처리
+```
+
+정도로만 확정할 수 있다.
+
+### 20.4 중요한 방향 전환
+
+Chapter BoxStatus를 찾기 위해 `MergeSections / MergeSectionSnapShot`를 계속 파는 것보다,
+
+**Chapter 객체 자체가 DataCenter 내부에서 어디에 저장되고 어떤 함수가 갱신하는지 찾는 것**이 다음 핵심이다.
+
+다음 검색 대상:
+
+1. `Dictionary<int, ProtoChapter>` 또는 `Dictionary<int, object>` 형태의 Chapter 저장소
+2. `ProtoChapter`를 반환/검색하는 DataCenter 함수
+3. Chapter Id를 key로 사용하는 함수
+4. `GetChapterBoxReward(0x14)`와 같은 opcode 주변의 상태 객체 처리
+5. 실제 PCAP에서 `0x14` response payload 변화와 BoxStatus bit 변화를 대조
+
+현재 결론은 그대로다.
+
+**`0x14 → BoxStatus`는 아직 미확정이며, Section merge 계열은 Chapter BoxStatus의 직접 갱신점이 아닌 것으로 범위를 좁혔다.**
