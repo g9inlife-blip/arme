@@ -2063,3 +2063,133 @@ chapterId + boxIndex request         확정
 현재 가장 가치 있는 추가 자료는 `016e203c / 016e55dc / 016e5908`의 **Ghidra 원본 함수 Listing**이다.
 
 다음 단계는 이 세 함수의 원본 Listing이 추가되면 `OpInfo.Chapters → ProtoChapter`의 실제 대입 instruction부터 확인한다.
+
+
+## 38. 2026-09-30 — MergeSections / Section snapshot 분리 및 Chapter 경로 재집중
+
+### 38.1 기존 Assembly 기록 재검증
+
+기존 분석 기록에 `DataCenter$$MergeSections @ 016e55dc`의 실제 Assembly가 이미 확보되어 있다.
+
+핵심은:
+
+```text
+OpInfo.Sections (+0xC8)
+        ↓
+MergeSections @ 016e55dc
+        ↓
+incoming Dictionary<int,object>
+        ↓
+ProtoSection 계열 객체의 +0x14(Status)
+        ├─ Status == 1 → 기존 Section dictionary Remove
+        └─ Status != 1 → Section dictionary set_Item
+        ↓
+Section 객체 +0x78
+        ↓
+DataManager BaseData / DataCenter +0xE0 collection
+```
+
+따라서 `MergeSections`는 **ProtoChapter의 BoxStatus(+0x1C)를 갱신하는 직접 후보가 아니다.**
+
+### 38.2 Section snapshot(+0x90)도 BoxStatus와 분리
+
+`DataCenter$$MergeSectionSnapShot @ 016e5908`에 대해서는 기존 Assembly 분석에서:
+
+```text
+DataCenter +0x90
+    = Dictionary<int,int>
+    key   = SectionID
+    value = Section 상태값
+```
+
+으로 확인되어 있다.
+
+`DataCenter$$IsSectionClear @ 016e7948`에서 동일 dictionary를 조회하고 `value == 1`이면 Clear로 판정한다.
+
+따라서:
+
+```text
+DataCenter +0x90
+    ≠ ProtoChapter +0x1C
+```
+
+이다.
+
+즉 `MergeSectionSnapShot`을 따라가서 BoxStatus를 찾는 경로는 우선순위를 낮춘다.
+
+### 38.3 현재 Chapter BoxStatus의 실제 미확정 지점
+
+현재 직접 확정된 것은:
+
+```text
+ProtoChapter
+ +0x10 = Id
+ +0x14 = Status
+ +0x18 = Progress
+ +0x1C = BoxStatus
+
+OpInfo
+ +0xC0 = Chapters
+ +0xC8 = Sections
+
+0x14 GetChapterBoxReward
+ +0x30 = chapterId
+ +0x34 = boxIndex
+
+boxIndex 5
+ → UI mask 1 << 5
+ → 0x20
+```
+
+이다.
+
+반면 아직 직접 확인되지 않은 것은:
+
+```text
+OpInfo.Chapters(+0xC0)
+        ↓
+Chapter collection merge
+        ↓
+ProtoChapter 객체
+        ↓
++0x1C BoxStatus write
+```
+
+이다.
+
+### 38.4 중요한 분석 방향 변경
+
+`MergeSections`/`MergeSectionSnapShot`을 Chapter merge로 계속 확장하지 않고, 다음 검색 기준을 사용한다.
+
+1. `OpInfo +0xC0`를 읽는 함수
+2. 해당 결과를 `Dictionary<int,object>`/`List<object>` 형태로 순회하는 함수
+3. 객체에서 `+0x10` Id를 읽어 기존 Chapter를 찾는 코드
+4. 같은 함수에서 `+0x14`, `+0x18`, `+0x1C` 중 2개 이상을 함께 접근하는 코드
+5. 최종적으로 `str ..., [x?,#0x1C]`가 발생하는 함수
+
+특히 `set_BoxStatus @ 015acf8c`의 Calls IN이 비어 있으므로, **protobuf/merge 과정에서 backing field를 직접 쓰는 경우**를 우선 탐색한다.
+
+### 38.5 현재 결론
+
+이번 단계에서 새로운 BoxStatus write 자체가 확정된 것은 아니다.
+
+다만 다음 두 경로를 명확히 분리했다.
+
+```text
+[Section 상태]
+OpInfo.Sections(+0xC8)
+    → MergeSections
+    → ProtoSection / Section state
+
+[Section snapshot 상태]
+DataCenter(+0x90)
+    → MergeSectionSnapShot
+    → SectionID → Clear/상태값
+
+[Chapter Box 상태]
+OpInfo.Chapters(+0xC0)
+    → 아직 merge 함수 미확정
+    → ProtoChapter(+0x1C)
+```
+
+따라서 다음 작업의 직접 목표는 **`OpInfo.Chapters(+0xC0)` 소비 지점을 찾아 ProtoChapter population을 확인하는 것**으로 유지한다.
