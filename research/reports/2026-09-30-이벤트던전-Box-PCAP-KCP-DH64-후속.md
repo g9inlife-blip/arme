@@ -433,3 +433,35 @@ Wireshark JSON
 구간을 분리하고, **0x14 request/response가 실제 존재하는지**부터 확정한다.
 
 현재는 hook을 추가하지 않는다. PCAP에서 KCP key와 복호화 경로가 이미 확보됐기 때문이다.
+
+
+## 13. 후속 분석기 보강 — 2026-09-30
+
+현재 GitHub 환경에서는 통합 PCAP JSON의 전체 packet bytes가 대용량 제한으로 직접 반환되지 않아, 복호화 결과를 서버에서 재계산하는 단계는 아직 수행할 수 없다.
+
+대신 `research/PCAP/analyze_kcp_json.py`를 보강했다.
+
+변경점:
+- 64-bit KCP 28-byte header 유지
+- `sn` 연속성 검사 추가
+- `frg=0` 기준 message 경계 처리 개선
+- AES-128-CBC/PKCS7 복호화 유지
+- 복호화 plaintext를 message별 `.bin`으로 저장
+- protobuf length-delimited field를 중첩 구조까지 재귀 분석
+- gzip 내부 protobuf도 재귀 분석
+- `messages.json`에 전체 구조 저장
+
+따라서 로컬에서 동일 JSON을 실행하면 다음 단계인 **frame 430 response의 nested field → ProtoChapter 후보 → BoxStatus field**를 직접 추적할 수 있다.
+
+현재 확정값은 그대로 유지한다:
+
+``
+frame 428  C→S  opcode 0x14  chapterId=20,000,100  boxIndex=5
+frame 430  S→C  opcode 0x14  plaintext=329 bytes
+ProtoChapter +0x1C = BoxStatus
+IsBoxReceived(mask) = (BoxStatus & mask) != 0
+```
+
+frame 430의 특정 nested message를 ProtoChapter라고 확정하거나, 0x14 response가 BoxStatus를 갱신한다고 확정하는 것은 아직 보류한다.
+
+다음 실제 분석 입력은 생성되는 `messages.json` 또는 message별 plaintext이며, 이 자료가 확보되면 0x14 response의 Chapter/BoxStatus 대응을 바로 대조한다.
