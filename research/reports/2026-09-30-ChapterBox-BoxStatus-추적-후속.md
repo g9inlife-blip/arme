@@ -1871,3 +1871,126 @@ Chapter 4-field population 함수         미확인
 ```
 
 다음은 `FUN_016/FUN_017`에서 DataCenter 인접 함수와 Dictionary 처리 함수를 좁히고, 동시에 `ProtoChapter`와 같은 함수에서 `+0x10/+0x14/+0x18/+0x1C`를 연속 접근하는 패턴을 우선 탐색한다.
+
+
+## 36. 2026-09-30 — 실제 ProtoBuf.Deserialize → ProccessRequestRes 연결 확정
+
+### 36.1 네트워크 수신부에서 실제 protobuf deserialize 위치 확인
+
+Git Listing의 `TCPTube$$TryRead @ 015b6d54`와 `KCPTube$$TryRead @ 015b08bc`에서 공통으로:
+
+```text
+DecryptUnSafe @ 015b0d28
+        ↓
+DecompressUnSafe @ 015b1204
+        ↓
+ProtoBuf.Serializer$$Deserialize<object> @ 017cec0c
+        ↓
+output reference에 객체 저장
+```
+
+가 직접 확인된다.
+
+TCPTube의 실제 호출:
+
+```text
+015b7094  ldr x1,[x19]
+015b7098  mov x0,x21
+015b709c  bl  0x017cec0c
+015b70a0  mov x1,x0
+015b70a4  str x0,[x20]
+```
+
+KCPTube도 동일하게 `015b0c10 → 017cec0c → 015b0c1c str x0,[x20]` 구조다.
+
+즉 이전의 단순 추정이 아니라 **암호 해제 후 protobuf 객체가 실제로 생성되어 output reference로 전달되는 지점**이 확보됐다.
+
+### 36.2 Deserialize 결과가 NetworkCenter로 들어가는 경로
+
+`NetworkCenter$$TryHandleResponse @ 015b41e0`에서는 queue에서 해당 response object를 꺼낸 뒤:
+
+```text
+015b4430  mov x2,xzr
+015b4434  bl  0x016e203c
+```
+
+로 `DataCenter$$ProccessRequestRes @ 016e203c`를 호출한다.
+
+기존 분석에서 이 함수의 `x1` 객체 offset이 `Alioth.S1.Common.OpInfo` getter들과 일치하는 것도 확인되어 있다.
+
+따라서 현재 네트워크 경로는 다음처럼 직접 연결된다.
+
+```text
+KCP/TCP 수신
+   ↓
+DecryptUnSafe
+   ↓
+DecompressUnSafe
+   ↓
+ProtoBuf.Serializer.Deserialize<object> @ 017cec0c
+   ↓
+response object
+   ↓
+NetworkCenter.TryHandleResponse @ 015b41e0
+   ↓
+DataCenter.ProccessRequestRes @ 016e203c
+   ↓
+OpInfo 계열 상태 접근
+```
+
+### 36.3 중요한 새 추적점 — Deserialize의 Type 인자
+
+`Deserialize<object>`는 이름상 generic object API지만 실제 Listing에서는 호출 직전에 `x1`에 별도 참조를 넣는다.
+
+현재 코드:
+
+```text
+015b7074  ldr x8,[x21]
+015b7078  adrp x19,0x3367000
+015b707c  mov x0,x21
+...
+015b7090  blr x9
+015b7094  ldr x1,[x19]
+015b7098  mov x0,x21
+015b709c  bl 0x017cec0c
+```
+
+따라서 다음 정적 목표는 `0x3367000 + 0xd90` 전역 참조가 가리키는 **실제 deserialize Type 정보**를 식별하는 것이다.
+
+이 값을 확보하면:
+
+```text
+Deserialize Type
+      ↓
+실제 protobuf root 타입
+      ↓
+OpInfo.Chapters
+      ↓
+ProtoChapter
+```
+
+를 직접 연결할 수 있다.
+
+### 36.4 현재 핵심 결론
+
+이전에는:
+
+```text
+암호해제 → protobuf → OpInfo
+```
+
+가 간접 추론이었다면, 현재는:
+
+```text
+Decrypt/Decompress
+ → ProtoBuf.Serializer.Deserialize<object>
+ → response object
+ → NetworkCenter.TryHandleResponse
+ → DataCenter.ProccessRequestRes
+```
+
+가 Ghidra Listing으로 직접 연결됐다.
+
+남은 병목은 **Deserialize가 생성한 root object의 실제 Type/Chapter collection population 방식**이다.
+
+다음 단계는 `0x3367000+0xd90` Type 참조와 `Protobuf.Serializer.Deserialize` 내부/주변 helper를 추적한다.
