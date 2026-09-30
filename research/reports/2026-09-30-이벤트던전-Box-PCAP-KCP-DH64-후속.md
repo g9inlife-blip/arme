@@ -404,3 +404,32 @@ PCAP
 ```
 
 까지 연결되었다.
+
+
+## 9. 통합 PCAP 후속 분석기 추가
+
+대용량 Git JSON은 GitHub API가 본문 반환을 제한하여 서버 측에서 전체 packet bytes를 재추출할 수 없는 상태다. 이를 우회하기 위해 `research/PCAP/analyze_kcp_json.py`를 추가했다.
+
+분석기는 이번 게임의 **64-bit KCP 28-byte header**를 사용하고, 확보된 KCP session key `44f5f445808615fe1b2e224c5e05e718`로 다음을 자동 처리한다.
+
+```text
+Wireshark JSON
+ → KCP 28-byte parse
+ → frg/sn 재조립
+ → flag + IV16 + AES-128-CBC
+ → PKCS7 제거
+ → gzip 해제
+ → protobuf top-level field 출력
+```
+
+따라서 통합 PCAP을 로컬에서 한 번 실행하면 로그인부터 강화까지 모든 KCP application message의 packet 번호/방향/복호화 결과를 한 번에 얻을 수 있다.
+
+다음 분석에서는 결과의 `field=2` opcode를 기준으로:
+
+```text
+출석 / 퀘스트 / 우편 / 토벌 / 던전 / Box / 제작 / 강화
+```
+
+구간을 분리하고, **0x14 request/response가 실제 존재하는지**부터 확정한다.
+
+현재는 hook을 추가하지 않는다. PCAP에서 KCP key와 복호화 경로가 이미 확보됐기 때문이다.
