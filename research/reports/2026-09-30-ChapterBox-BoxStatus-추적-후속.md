@@ -566,3 +566,151 @@ ProtoChapter
 - `0x14 → BoxStatus`: **아직 미확정**
 
 다음 작업은 `KCPTube.Handshake2 → Key` 생성값을 runtime/코드에서 확보하여 이 두 메시지를 실제 복호화하는 것이다.
+
+
+## 25. 2026-09-30 KCP 실제 복호화 결과에 따른 경로 정정
+
+이번 단계에서 `research/PCAP/챕터선택_전투승리보상까지.json`의 KCP session key를 실제 복구하고 frame 159 / 162+163을 복호화했다.
+
+### 25.1 session key 실제 확보
+
+KCP client public:
+
+```text
+0x3B235655562743FA
+0xD4BED6816A9F1C5C
+```
+
+server public:
+
+```text
+0x7637ACF954E564B3
+0xDD73013D938774B9
+```
+
+DH modulus:
+
+```text
+p = 0xFFFFFFFFFFFFFFC5
+  = 2^64 - 59
+```
+
+discrete log으로 복구한 client private:
+
+```text
+private1 = 0x12499F5C0DDB1AF5
+private2 = 0x6D0F828A5EA102C2
+```
+
+shared secret:
+
+```text
+secret1 = 0xEB751E69D959ADC0
+secret2 = 0xAD53F6266C3490EA
+```
+
+실제 Key:
+
+```text
+c0ad59d9691e75ebea90346c26f653ad
+```
+
+### 25.2 frame 159 실제 plaintext
+
+frame 159는:
+
+```text
+flag = 0x80
+OpCode = 0x17
+```
+
+으로 복호화된다.
+
+따라서 기존에 frame 159를 `GetChapterBoxReward` 요청으로 연결한 것은 잘못된 연결이다.
+
+### 25.3 frame 162+163 실제 plaintext
+
+두 KCP fragment를 재조립하면:
+
+```text
+flag = 0xC4
+IV = f0862cf0271983b553998be415226aee
+ciphertext = 1808 bytes
+```
+
+복호화 결과는 gzip stream이며 gzip 해제 후 5749-byte protobuf-like data가 나온다.
+
+Top-level:
+
+```text
+field 1 = SerialNumber
+field 2 = OpCode 0x17
+```
+
+즉:
+
+```text
+159 request
+   ↓
+OpCode 0x17
+
+162+163 response
+   ↓
+OpCode 0x17
+```
+
+이다.
+
+### 25.4 현재 가설 변경
+
+기존:
+
+```text
+159
+ ↓
+162+163
+ ↓
+0x14
+ ↓
+BoxStatus
+```
+
+는 폐기한다.
+
+현재:
+
+```text
+159
+ ↓
+0x17 request
+ ↓
+162+163
+ ↓
+0x17 response
+ ↓
+[Chapter state 포함 여부 별도 확인]
+```
+
+으로 수정한다.
+
+### 25.5 0x14 Box reward는 별도 capture 필요
+
+정적 분석상:
+
+```text
+GetChapterBoxReward @ 00ddeea8
+opcode = 0x14
+payload = u32 x2
+```
+
+이므로 실제 BoxStatus 변경을 확정하려면 **box를 실제로 클릭하여 보상을 수령하는 별도 PCAP**에서 `0x14` request/response를 확보해야 한다.
+
+현재 PCAP에는 직접 복호화 가능한 application message 중 `0x14`가 확인되지 않았다.
+
+따라서 현재 결론:
+
+- ProtoChapter +0x1C = BoxStatus: 확정
+- BoxStatus bitmask 읽기: 확정
+- GetChapterBoxReward opcode 0x14: 정적 분석상 확정
+- 159 → 162+163 = 0x14: **반증**
+- 0x14 response → BoxStatus: 미확정
