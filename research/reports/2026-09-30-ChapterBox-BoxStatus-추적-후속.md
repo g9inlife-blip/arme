@@ -2759,3 +2759,19 @@ BattleMapMono$$InitChapters @ 00e4e080 및 BattleMapMono$$LayChapterItem @ 00e4f
 ### 43.6 다음 우선순위
 
 정적 검색은 동일 패턴 반복을 중단하고 runtime의 ProtoChapter$$set_BoxStatus @ 015acf8c / get_BoxStatus @ 015acf84 호출 및 object/value 관찰을 우선한다. setter가 호출되지 않으면 backing field 직접 write 가능성을 확인한다. 정적 측면에서는 protobuf metadata의 ProtoChapter Type 결정 지점, Deserialize<object> @ 017cec0c 이후 concrete type helper, OpInfo.Chapters(+0xC0)를 직접 참조하는 unnamed helper를 추적한다.
+
+
+## 44. 2026-10-01 — protobuf metadata helper 재검증
+
+### 44.1 Deserialize 경계
+`TCPTube$$TryRead` 및 `KCPTube$$TryRead`에서 공통으로 `ProtoBuf.Serializer$$Deserialize<object> @ 017cec0c`를 호출한다. 현재 Listing에서 이 호출 이후 concrete `ProtoChapter`를 결정하는 직접 호출은 확인되지 않았다.
+
+### 44.2 MetaType helper 판별
+`ProtoBuf.Meta.MetaType$$GetFieldBoolean @ 021fdf7c`가 `FUN_021fe00c @ 021fe00c`로 이어진다. 해당 helper는 `+0x40`의 값을 비교한 뒤 `FUN_00b07998` 결과의 byte를 기록하는 짧은 타입/메타 비교 계열 helper이며, 현재 증거만으로 ProtoChapter field mapping/deserializer write helper라고 볼 근거가 없다.
+
+따라서 기존의 MetaType 계열이 존재한다는 사실과 ProtoChapter를 실제로 채운다는 주장은 분리한다.
+
+### 44.3 현재 가장 유효한 추적점
+정적 Listing만으로는 `Deserialize<object> → ProtoChapter`의 구체적 mapping을 아직 연결하지 못했다. 다음은 `ProccessRequestRes @ 016e203c`에서 `OpInfo.Chapters +0xC0`를 사용하는 unnamed helper 및 Chapter collection 객체의 실제 생성/대입을 찾는 방향이 우선이다.
+
+BoxStatus 의미는 이미 PCAP 1→5→7과 `IsBoxReceived`의 bitmask 로직으로 확정되어 있으므로, 이후 분석 목표는 의미 재확인이 아니라 실제 메모리 write 경로 확보다.
