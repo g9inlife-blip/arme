@@ -1368,3 +1368,92 @@ request boxIndex == UI index         미확정
 4. `MergeSectionSnapShot` 외 Chapter merge 후보 확인
 5. raw Listing 전체에서 `set_BoxStatus @ 015acf8c` callsite 주소 검색
 6. Box 요청 전 Chapter snapshot 확보
+
+## 31. 2026-09-30 ClickGetReward / Box index 직접 Listing 재검증
+
+### 31.1 ClickGetReward의 두 번째 인자는 변환 없이 UIData.data
+
+`ChapBoxMono$$ClickGetReward @ 00e5705c` 실제 CH.txt Listing에서 `BaseMono.GetUIData → UIData.get_data` 후 boxed int를 `ldr w19,[x0]`로 꺼내고, `BaseData.get_id` 결과와 함께 `GetChapterBoxReward @ 00ddeea8`로 전달한다.
+
+즉:
+
+```text
+UIData.data → boxed int 해제 → w19
+Chapter(+0xd0).BaseData.id → chapterId
+GetChapterBoxReward(chapterId, w19)
+```
+
+**boxIndex에 +1/-1 등의 별도 변환이 없다.**
+
+### 31.2 Box UI index와 IsBoxReceived mask도 같은 index
+
+`ChapBoxMono$$LayBoxItem @ 00e55c80`에서:
+
+```text
+00e55ebc  ldr w23,[x0]       ; UIData.data
+00e56024  ldr x0,[x19,#0xd8] ; Chapter runtime object
+00e56044  mov w8,#0x1
+00e56048  lsl w1,w8,w23
+00e56050  bl  0x015acfe8     ; ProtoChapter.IsBoxReceived
+```
+
+따라서 동일한 `UIData.data = i`가:
+
+```text
+수령 검사 → mask = 1 << i
+클릭 요청 → boxIndex = i
+```
+
+양쪽에 그대로 사용된다.
+
+실제 다른 계정 PCAP의 `boxIndex=5`는 정적 코드 기준 검사 mask `0x20`이 확정된다.
+
+### 31.3 Chapter reward pair에 대한 추가 증거
+
+`LayBoxItem`의 `List<KeyValuePair<int,int>>.get_Item @ 01ba5934` 반환값은 64비트 packed 값으로 취급된다.
+
+```text
+00e55ee4  mov x21,x0
+00e55f24  lsr x1,x21,#0x20
+00e55f2c  bl  0x01736d60   ; Ali.GetExcelData<object>
+```
+
+즉 pair의 **상위 32비트가 Excel data 조회 ID로 직접 사용**된다.
+
+동일한 `get_Item`/`lsr #0x20` 패턴이 `RewardPanelMono$$ShowItem @ 0100e49c`에서도 확인된다. 따라서 Chapter reward pair는 최소한:
+
+```text
+high 32 = Excel Item ID 계열
+low  32 = 수량/조건값 계열
+```
+
+로 좁혀진다. 다만 `SplitToInt32Dict @ 00df3f10` 본문을 직접 확보하기 전까지 threshold/rewardId의 key/value 방향은 최종 확정하지 않는다.
+
+### 31.4 BoxStatus 해석 정리
+
+현재 다음 3개는 모두 직접 확정된다.
+
+```text
+① request boxIndex = UIData.data
+② IsBoxReceived mask = 1 << UIData.data
+③ ProtoChapter +0x1C = BoxStatus
+```
+
+따라서 `boxIndex=5`의 최종 BoxStatus를 확인하려면 반드시 `0x20` bit를 확인해야 한다.
+
+현재 0x14 response snapshot의 nested field4 값 `1` 또는 `3`은 `0x20`과 일치하지 않는다. 따라서 아직:
+
+- response snapshot이 최종 수령 후 상태가 아닐 가능성
+- field4가 BoxStatus가 아닐 가능성
+- 후속 response에서 상태가 갱신될 가능성
+
+을 모두 유지한다.
+
+**현재 `protobuf field4 = BoxStatus`는 확정하지 않는다.**
+
+### 31.5 다음 작업
+
+1. 다른 계정 PCAP에서 0x14 이후 `Chapter 20000100` snapshot 검색
+2. 후속 response의 Chapter 상태값 변화 확인
+3. 다른 boxIndex의 0x14 요청이 있으면 `1 << index`와 response 상태 비교
+4. 이후 `DataCenter.ProccessRequestRes @ 016e203c` Chapter merge 경로 재추적
