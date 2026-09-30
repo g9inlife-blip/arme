@@ -166,3 +166,75 @@ frame 428
 → BoxStatus 후보/매핑 field=4
 → 값=1
 ```
+
+
+## 8. 2026-09-30 chapterId=20000100 상태 변화 추적
+
+### 8.1 이전 동일 Chapter 응답
+통합 PCAP에서 동일 `chapterId=20000100`은 먼저 frame 340/341의 0x13 요청과 frame 343/346의 0x13 응답에 등장한다. frame 343/346에는 `field 6 = 20000100` 및 `field 44` 계열 데이터가 있지만, frame 430에서 확인된 `field 43` Chapter snapshot은 확인되지 않는다.
+
+### 8.2 Box 요청 직전/직후
+```text
+frame 428 C→S
+  opcode = 0x14
+  chapterId = 20000100
+  boxIndex = 5
+
+frame 430 S→C
+  opcode = 0x14
+  chapterId = 20000100
+  field 43 = Chapter snapshot
+```
+
+frame 430:
+```text
+field 1 = 20000100
+field 3 = 6
+field 4 = 1
+field 9 = {1,15}
+field10 = {1,15}
+field11 = 1
+```
+
+따라서 0x14 요청 직후 Chapter state가 response에 포함되는 것은 확인된다.
+
+### 8.3 BoxStatus 0→1 변화는 미증명
+현재 PCAP에는 0x14 요청 직전의 동일 Chapter snapshot이 없으므로 `이전 BoxStatus=0 → boxIndex 5 수령 → 이후 BoxStatus=1`의 시간적 변화는 직접 증명되지 않는다.
+
+정적 분석에서 확정된 것은:
+```text
+IsBoxReceived(mask) = (BoxStatus & mask) != 0
+```
+뿐이다. 따라서 boxIndex 5의 실제 mask가 1인지도 아직 확정하지 않는다.
+
+### 8.4 현재 가장 강한 연결
+```text
+0x14 request
+ ├─ chapterId = 20000100
+ └─ boxIndex  = 5
+        ↓
+0x14 response
+ └─ Chapter snapshot
+     ├─ Id = 20000100
+     ├─ Progress = 6
+     └─ field 4 = 1  ← BoxStatus 후보
+```
+
+Ghidra의 `ProtoChapter +0x10=Id`, `+0x14=Status`, `+0x18=Progress`, `+0x1C=BoxStatus`와 대응한다. 다만 protobuf serializer/deserializer에서 field 번호를 직접 확인하기 전까지 field 4의 최종 매핑과 bit 의미는 보수적으로 유지한다.
+
+### 8.5 다음 추적
+1. 다른 PCAP에서 `chapterId=20000100` Chapter snapshot 검색
+2. Box 수령 전/후 field 4 비교
+3. `IsBoxReceived(mask)` 호출부에서 실제 mask 확보
+4. ProtoChapter serializer/deserializer에서 field 번호 직접 확인
+
+현재 결론:
+```text
+chapterId=20000100 동일성       확정
+0x14 request ↔ chapterId       확정
+0x14 response ↔ Chapter state 확정
+ProtoChapter +0x1C=BoxStatus   확정
+BoxStatus bitmask              확정
+BoxStatus 0→1 변화             미확정
+boxIndex 5 ↔ mask 1            미확정
+```
