@@ -179,3 +179,65 @@ frame 94 = opcode 0x14 response 후보
 - frame 92/94의 0x14 여부: 미확정
 - BoxStatus response 갱신: 미확정
 - 현재 병목: **이번 이벤트 세션의 KCP DH handshake packet 확보**
+
+
+## 8. 2026-09-30 추가 — KCP 키 입력 경로 재확인
+
+기존 저장소의 별도 PCAP 분석 결과에서 KCP handshake는 다음 구조로 확인되어 있다.
+
+```
+8 bytes zero
+8 bytes KCP public #1
+8 bytes KCP public #2
+param4
+```
+
+이번 이벤트 PCAP의 TCP handshake 뒤 344-byte Base64 → 256-byte 데이터는 현재 의미가 확정되지 않았으므로 KCP public으로 취급하지 않는다.
+
+현재 병목은:
+
+```
+TCP DH public
+   ↓
+TCP session key
+   ↓
+KCP decrypt 실패
+
+KCP 별도 DH public
+   ↓
+KCP session key
+   ↓
+frame 92/94 decrypt
+```
+
+이다.
+
+따라서 다음 캡처에서는 **UDP 8000 최초 packet부터** 확보해야 한다.
+
+```
+KCP 연결 시작
+ → Handshake1
+ → Handshake2
+ → Box 선택/오픈/획득
+```
+
+확보 후 바로:
+
+```
+KCP public
+ → private residue
+ → session key
+ → frame 92/94 decrypt
+ → opcode 0x14 확인
+ → Chapters
+ → ProtoChapter.BoxStatus
+```
+
+로 이어간다.
+
+현재 결론:
+- frame 92 = 0x14: 후보
+- frame 94 = 0x14 response: 후보
+- BoxStatus 변경: 미확정
+- TCP DH key 재사용: 반증
+- 다음 핵심 입력: **KCP handshake packet**
