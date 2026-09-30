@@ -319,3 +319,91 @@ field 4 = 1
 2. frame 430 nested field 3/4의 실제 의미 확정
 3. frame 428의 boxIndex가 UI index와 동일한지 `GetChapterBoxReward @ 00ddeea8` 호출 인자까지 재검증
 4. `DataCenter.ProccessRequestRes @ 016e203c`의 0x14 응답 merge 경로 확보
+
+## 10. 다른 계정 PCAP 교차 기준 추가
+
+사용자가 추가한 다른 계정 PCAP:
+```
+research/PCAP/로그인부터던전2회이후box오픈_이후장비착용.json
+blob SHA = faeb47f64d76158c731c36abb741773e376e46a2
+```
+
+Git에서 실제 파일 존재를 확인했다. 파일은 대용량이라 일반 `fetch_file` 내용 반환은 비어 있지만 blob 직접 조회로 **306 packet**을 확인했다.
+
+### 10.1 KCP 세션 구조
+
+Game Server KCP:
+```
+client 51943 ↔ server 8000
+KCP data packet = 76개
+conv = 0xc6... 계열
+```
+
+초기 DH/KCP handshake:
+```
+frame 143 C→S
+  8-byte zero prefix
+  client public #1 = a60ff368acdf81d8 (LE)
+  client public #2 = eec24eecff6ac73b (LE)
+  이후 handshake parameter
+
+frame 147 S→C
+  8-byte zero prefix
+  marker = 01
+  offset 17 public #1 = cb43ff46bca8d1d4 (LE)
+  offset 25 public #2 = a859cef72e5fcca8 (LE)
+```
+
+여기서 server response의 marker 직후 첫 8바이트는 DH peer public으로 사용되지 않는다. Ghidra `KCPTube.Handshake2 @ 015b1f68`가 실제로:
+```
+BitConverter.ToUInt64(buffer, 0x11)
+BitConverter.ToUInt64(buffer, 0x19)
+```
+를 수행하므로 실제 peer public은 **offset 17/25**이다.
+
+### 10.2 새 계정 DH 계산
+
+동일한 `p=2^64-59`, `g=5`를 적용하면 client private residue는:
+```
+private #1 = 0x1021bdff42518bc9
+private #2 = 0x1711d8ad4dc70e26
+```
+
+server peer public에 대한 shared secret 후보:
+```
+secret #1 = 0x6cdbdcad6a7846d7
+secret #2 = 0xcf8fdf34709590da
+candidate KCP key = d746786aaddcdb6cda90957034df8fcf
+```
+
+이 값은 정적 코드의 Handshake2 흐름과 계산상 일치하지만, **현재 PCAP application ciphertext에 대한 실제 복호화 성공은 아직 확인하지 않았다.** 따라서 이 단계에서는 candidate key로만 기록한다.
+
+### 10.3 다른 계정 PCAP의 분석 가치
+
+파일명 기준으로 이 PCAP은:
+```
+로그인 → 던전 2회 → Box 오픈 → 이후 장비 착용
+```
+순서가 포함된 별도 계정 캡처다.
+
+따라서 계정별 chapter/아이템 값 자체를 동일하다고 보면 안 되지만, 다음 프로토콜 상관관계 검증에는 유용하다.
+
+1. Box 오픈 직전/직후의 `0x14` request/response 위치
+2. Box 오픈 뒤 장비 관련 request/response opcode
+3. Box 수령 후 Chapter snapshot의 상태 필드 변화
+4. 기존 계정의 `boxIndex=5` 사례와 다른 Box index의 mask 비교
+
+### 10.4 현재 상태
+
+```
+ProtoChapter +0x1C = BoxStatus       확정
+IsBoxReceived(mask)                 확정
+mask = 1 << boxIndex                확정
+기존 boxIndex=5 → mask=0x20         확정
+frame430 field4=1 = BoxStatus       보류
+다른 계정 PCAP 존재                 확정
+다른 계정 KCP candidate key         계산 완료
+다른 계정 KCP plaintext             미확인
+```
+
+다음은 새 PCAP의 KCP 복호화 성공 여부를 먼저 해결한 뒤, Box 오픈 전후의 동일 Chapter snapshot을 비교하는 것으로 진행한다.
