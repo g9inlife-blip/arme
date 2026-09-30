@@ -1,6 +1,6 @@
 # Heroes Offline Research
 
-이 저장소는 `com.thumbage.heroes.google` Unity/IL2CPP 게임의 **오프라인 전환 역분석 작업용 경량 연구 저장소**다.
+이 저장소는 `com.Alioth.JusticeSchool.cn` Unity/IL2CPP 게임의 **오프라인 전환 역분석 작업용 경량 연구 저장소**다.
 
 ## 역할 분담
 - **GPT**: 분석 방향 결정, 가설 수립, 증거 해석, 다음 조사 TASK 정의.
