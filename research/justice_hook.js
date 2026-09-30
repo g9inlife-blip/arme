@@ -967,6 +967,7 @@ async function main() {
         if (bsSet) {
             Interceptor.attach(bsSet.fnPtr, {
                 onEnter(args) {
+                    this.obj = args[0];
                     try {
                         const oldValue = args[0].add(0x1c).readU32();
                         console.log('[BOXSTATUS_SET] obj=' + args[0] +
@@ -978,7 +979,7 @@ async function main() {
                 },
                 onLeave(retval) {
                     try {
-                        const obj = this.context ? this.context.x0 : null;
+                        const obj = this.obj;
                         if (obj && !obj.isNull()) {
                             console.log('[BOXSTATUS_SET_END] obj=' + obj +
                                 ' new+0x1c=' + obj.add(0x1c).readU32());
