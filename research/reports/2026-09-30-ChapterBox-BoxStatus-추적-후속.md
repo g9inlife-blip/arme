@@ -1994,3 +1994,58 @@ Decrypt/Decompress
 남은 병목은 **Deserialize가 생성한 root object의 실제 Type/Chapter collection population 방식**이다.
 
 다음 단계는 `0x3367000+0xd90` Type 참조와 `Protobuf.Serializer.Deserialize` 내부/주변 helper를 추적한다.
+
+
+## 37. 2026-09-30 — Deserialize 인자 재검증 및 OpInfo root object 확정
+
+### 37.1 0x3367000+0xD90에 대한 기존 가설 수정
+
+TCPTube/KCPTube의 공통 코드에서 `0x3367000+0xD90 → x1 → ProtoBuf.Serializer.Deserialize<object> @ 017cec0c`가 확인되지만, 이 전역 참조를 Chapter Type 또는 ProtoChapter Type이라고 직접 단정할 근거는 없다.
+
+송신부 `ProtoBuf.Serializer.Serialize<object> @ 017cfc64`에서는 다른 static reference가 사용된다. 따라서 `0x3367000+0xD90`은 현재 `Deserialize` 호출에 사용되는 generic/metadata 관련 static reference 후보로만 기록한다.
+
+### 37.2 실제 response root object는 OpInfo로 연결
+
+`TCPTube.TryRead/KCPTube.TryRead`의 Deserialize 결과는 output reference에 저장된다. 이후 `NetworkCenter.TryHandleResponse @ 015b41e0`에서 같은 response object가 `Request.SetResponse(response)`와 `DataCenter.ProccessRequestRes(response)`에 연속 전달된다.
+
+기존 분석에서 `ProccessRequestRes @ 016e203c`의 x1 객체 offset이 `OpInfo` getter offset과 일치하므로 response root는 OpInfo 계열 객체로 보는 것이 확정 수준이다.
+
+### 37.3 핵심 구조
+
+```text
+ProtoBuf Deserialize
+        ↓
+OpInfo
+ ├─ +0x14 opcode
+ ├─ +0x30 payload #1
+ ├─ +0x34 payload #2
+ ├─ +0xC0 Chapters
+ └─ +0xC8 Sections
+        ↓
+DataCenter.ProccessRequestRes
+```
+
+따라서 현재 병목은 protobuf root Type 자체가 아니라 `ProccessRequestRes` 내부에서 `OpInfo.Chapters/Sections`를 어떤 response field와 merge하는지 확인하는 것이다.
+
+### 37.4 BoxStatus 추적 우선순위 변경
+
+1. `ProccessRequestRes @ 016e203c`의 Chapter/Section 관련 호출 관계
+2. `MergeSectionSnapShot @ 016e5908` 입력 객체의 field access
+3. `MergeSections @ 016e55dc`의 Chapters/Sections 접근
+4. `ProtoChapter +0x10/+0x14/+0x18/+0x1C` 연속 field population 패턴
+5. 직접적인 `+0x1C BoxStatus` write
+
+`set_BoxStatus @ 015acf8c` 직접 caller가 없으므로 protobuf merge가 backing field를 직접 쓰는 가설은 유지한다.
+
+### 37.5 현재 상태
+
+```text
+Deserialize → response object       확정
+response object → OpInfo 계열       확정
+OpInfo +0xC0 = Chapters              확정
+ProtoChapter +0x1C = BoxStatus       확정
+0x14 = ChapterBoxReward request      확정
+chapterId + boxIndex request         확정
+0x3367000+0xD90 = Chapter Type       미확정
+0x14 response → BoxStatus 변경       미확정
+```
