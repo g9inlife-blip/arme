@@ -885,3 +885,68 @@ DH64::KeyPair
 - plaintext opcode: **미확정**
 - BoxStatus 갱신: **미확정**
 - 다음 병목: **이번 세션 DH64 private/session key 재현**
+
+
+## 27. 2026-09-30 후속 추적 — IsBoxReceived 호출부 및 추가 계정 PCAP 확인
+
+### 27.1 IsBoxReceived 호출부 3곳 확정
+
+`ProtoChapter$$IsBoxReceived @ 015acfe8`의 Calls IN Listing에서 다음 3개 호출부가 확인된다.
+
+```text
+ChapBoxMono$$LayBoxItem              @ 00e55c80
+BattleMapMono$$LayChapterItem        @ 00e4f918
+BattleSectionMono$$SetStageBoxAndBar @ 00e53380
+        ↓
+ProtoChapter.IsBoxReceived @ 015acfe8
+```
+
+따라서 Box 수령 상태는 Box 전용 UI뿐 아니라 Chapter Map과 Section Stage Box에서도 동일한 `ProtoChapter.BoxStatus` bitmask를 사용한다.
+
+### 27.2 실제 mask 값은 아직 미확인
+
+현재 GitHub Listing 검색에서는 위 3개 함수의 실제 본문 파일 경로가 검색 인덱스에 바로 노출되지 않아 `BL 015acfe8` 직전의 `w1` 설정값을 확보하지 못했다.
+
+```text
+ProtoChapter +0x1C = BoxStatus       확정
+IsBoxReceived(mask) = (BoxStatus & mask)!=0 확정
+boxIndex → mask 대응               미확정
+```
+
+특히 `boxIndex 5 → mask 1`은 아직 단정하지 않는다.
+
+### 27.3 다른 계정 PCAP 추가 확인
+
+사용자가 지정한:
+
+`research/PCAP/로그인부터던전2회이후box오픈_이후장비착용.json`
+
+파일명을 GitHub 검색으로 확인했으나 현재 connector 검색 인덱스에서는 정확한 파일명이 반환되지 않았다.
+
+따라서 파일이 Git에 없다고 단정하지 않고, 현재 연결된 GitHub 검색 결과에서는 직접 읽지 못한 상태로 기록한다.
+
+이 PCAP은 제목상 `던전 2회 → Box 오픈 → 보상 획득 → 장비 착용` 순서가 포함되어 있어 BoxStatus 전후 비교에 매우 유용한 후보이다.
+
+### 27.4 다음 추적 순서
+
+1. 해당 다른 계정 PCAP의 Git 존재/검색 가능 여부 재확인
+2. 확보되면 KCP session key 복구 후 Box 전후 response 복호화
+3. 동일 Chapter snapshot 전후 비교
+4. `field 43` Chapter snapshot의 `field 4` 전후 비교
+5. Ghidra에서 `00e55c80 / 00e4f918 / 00e53380`의 `IsBoxReceived` 호출 직전 `w1` 상수 확보
+6. ProtoChapter serializer/deserializer에서 BoxStatus protobuf field 번호 직접 확정
+
+### 27.5 현재 누적 결론
+
+```text
+ProtoChapter +0x1C = BoxStatus                  확정
+IsBoxReceived = (BoxStatus & mask) != 0         확정
+IsBoxReceived 호출부 3곳                         확정
+GetChapterBoxReward = opcode 0x14               확정
+0x14 request/response = 이벤트 Box PCAP 후보     유력
+0x14 response가 BoxStatus를 갱신                 미확정
+boxIndex → mask 값                               미확정
+다른 계정 PCAP 직접 비교                         아직 파일 미검색
+```
+
+다음 세션은 다른 계정 PCAP의 Git 존재/복호화 → BoxStatus 전후 비교부터 재개한다.
