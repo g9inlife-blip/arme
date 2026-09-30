@@ -2713,3 +2713,49 @@ DataCenter.ProccessRequestRes @ 016e203c
 다음 우선순위는 generic FUN_022 검색 확대보다 `016e203c / 016e55dc / 016e5908` 주변 unnamed helper와 runtime `ProtoChapter$$set_BoxStatus @ 015acf8c` 관찰이다. runtime hook으로 setter 호출 여부 또는 backing-field 직접 write 여부를 판별할 수 있다.
 
 현재 상태: ProtoChapter +0x1C=BoxStatus **확정** / 신규 3개 PCAP f4 bitmask **확정** / f7=0-based **확정** / Deserialize→ProccessRequestRes **확정** / OpInfo +0xC0=Chapters **확정** / ProccessRequestRes→Chapters **미확정** / 0x14 response→+0x1C **미확정**.
+
+## 43. 2026-10-01 — FUN_* / +0x1C 역추적 재검증 및 최신 PCAP 결과 반영
+
+### 43.1 Ghidra unnamed 함수 검색 재검증
+
+FUN_016.txt를 직접 확인하여 016e... 영역의 unnamed 함수를 재검토했다.
+
+확인된 FUN_016e0008 @ 016e0008은 DataManager.TryGetAll, Dictionary<int,object>, WeaponInfo, HeroInfo, ProtoFashion 등을 처리하는 Excel/DataManager 초기화 계열 함수다. 따라서 016e0008은 Chapter/BoxStatus merge 함수가 아니다.
+
+FUN_013.txt의 0131200c @ 0131200c에서는 동일 객체에 +0x10/+0x14/+0x18/+0x1C를 연속 기록하는 실제 예가 발견됐다. 그러나 객체 생성자가 ProtoHeroSnapshot이므로 ProtoChapter와 무관하다. 따라서 단순히 네 offset이 함께 등장하는 것만으로 Chapter merge를 판별할 수 없다는 점을 확인했다.
+
+### 43.2 ProtoChapter setter 직접 caller 검색 결과
+
+015acf8c 검색 결과는 ProtoChapter$$set_BoxStatus 자신의 Listing과 기존 보고서만 반환한다. set_Id / set_Status / set_Progress / set_BoxStatus 모두 현재 Git export에서는 직접 Calls IN이 잡히지 않는다.
+
+따라서 현재 정적 자료만으로 serializer가 setter를 호출하는 경로는 확보되지 않았다.
+
+### 43.3 InitChapters / LayChapterItem Listing 한계 재확인
+
+BattleMapMono$$InitChapters @ 00e4e080 및 BattleMapMono$$LayChapterItem @ 00e4f918는 여러 함수의 Calls IN에서 반복 확인된다. ProtoChapter$$IsBoxReceived @ 015acfe8의 Calls IN에도 ChapBoxMono$$LayBoxItem, BattleMapMono$$LayChapterItem, BattleSectionMono$$SetStageBoxAndBar가 확인된다.
+
+따라서 Chapter Box UI 소비 경로는 확정적이지만, 두 BattleMap 함수 자체의 독립 Assembly Listing은 현재 Git export에서 확보되지 않는다.
+
+### 43.4 최신 3개 PCAP 실험 결과와 정적 분석 교차검증
+
+새 세션 모두 chapterId=20000000이며 다음 상태가 확인됐다.
+
+| 실험 | 0x14 f7 | response f4 |
+|---|---:|---:|
+| 1번째 Box 오픈 | 0(기본값 생략) | 1 |
+| 3번째 Box 오픈 | 2 | 5 |
+| 2번째 Box 오픈 | 1 | 7 |
+
+상태 변화는 1번 오픈 → 001b=1, 1+3번 오픈 → 101b=5, 1+2+3번 오픈 → 111b=7이다.
+
+따라서 f4는 누적 개수가 아니라 BoxStatus bitmask이며 boxIndex 0→0x01, 1→0x02, 2→0x04가 실제 패킷 변화로 검증된다. 이는 IsBoxReceived의 BoxStatus & mask 및 mask=1<<boxIndex와 일치한다.
+
+### 43.5 현재 핵심 결론
+
+확정: ProtoChapter +0x1C=BoxStatus, IsBoxReceived=(BoxStatus & mask)!=0, mask=1<<boxIndex, 0x14 f7=0-based boxIndex, 0x14 response f4=BoxStatus bitmask, 실제 상태 변화 1→5→7.
+
+미확정: 0x14 response object에서 ProtoChapter +0x1C로 이어지는 정확한 write 지점, protobuf field/tag→backing field 매핑, ProccessRequestRes→OpInfo.Chapters(+0xC0) 직접 연결, Chapter population을 담당하는 concrete serializer/merge helper.
+
+### 43.6 다음 우선순위
+
+정적 검색은 동일 패턴 반복을 중단하고 runtime의 ProtoChapter$$set_BoxStatus @ 015acf8c / get_BoxStatus @ 015acf84 호출 및 object/value 관찰을 우선한다. setter가 호출되지 않으면 backing field 직접 write 가능성을 확인한다. 정적 측면에서는 protobuf metadata의 ProtoChapter Type 결정 지점, Deserialize<object> @ 017cec0c 이후 concrete type helper, OpInfo.Chapters(+0xC0)를 직접 참조하는 unnamed helper를 추적한다.
