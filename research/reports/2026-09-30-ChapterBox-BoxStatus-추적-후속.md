@@ -1298,3 +1298,73 @@ serializer Listing 직접 확인                현재 Git 자료에 없음
 ```
 
 **다음 실질 목표는 285 → 289 → 296의 Chapter snapshot을 비교하거나, 그 값을 생성하는 merge 함수에서 +0x1C write를 직접 잡는 것이다.**
+## 30. 2026-09-30 0x14 응답 Chapter snapshot 교차 비교
+
+### 30.1 다른 계정 frame 285
+
+실제 복호화된 frame 285의 field 43:
+
+```
+field 43
+ ├─ field 1 = 20000100
+ └─ field 2 = Chapter
+     ├─ field 1 = 20000100
+     ├─ field 3 = 12
+     ├─ field 4 = 3
+     ├─ field 9 = {1,15}
+     ├─ field10 = {1,15}
+     └─ field11 = 1
+```
+
+### 30.2 기존 통합 PCAP frame 430
+
+기존 계정 frame 430의 동일 구조:
+
+```
+field 43
+ ├─ field 1 = 20000100
+ └─ field 2 = Chapter
+     ├─ field 1 = 20000100
+     ├─ field 3 = 6
+     ├─ field 4 = 1
+     ├─ field 9 = {1,15}
+     ├─ field10 = {1,15}
+     └─ field11 = 1
+```
+
+두 계정에서 동일 chapterId에 대해 `account A: field3=6, field4=1`, `account B: field3=12, field4=3`가 관찰된다.
+
+### 30.3 핵심 관찰
+
+두 PCAP 모두 0x14 request는 `chapterId=20000100`, `boxIndex=5`이다. 그런데 response Chapter의 field4는 각각 1과 3이다.
+
+따라서 현재 데이터만으로 `field4 == BoxStatus`와 `boxIndex 5 == bit 5`를 동시에 만족하는 수령 완료 변화는 관찰되지 않는다.
+
+가능성은 분리한다:
+
+1. field4가 BoxStatus가 아니다.
+2. 0x14 response의 Chapter snapshot이 요청 처리 후 최종 BoxStatus가 아니라 기존/부분 snapshot이다.
+3. request boxIndex와 UI index가 동일하지 않다.
+
+단, UI의 `IsBoxReceived` 호출부에서는 실제 mask가 `1 << w23`임이 확인되었으므로 UI index와 request boxIndex의 동일성은 별도 검증이 필요하다.
+
+### 30.4 현재 결론 수정
+
+```
+ProtoChapter +0x1C = BoxStatus       확정
+protobuf Chapter field3 = Progress   유력
+protobuf Chapter field4 = 상태값     확정
+protobuf Chapter field4 = BoxStatus  유력하지만 미확정
+boxIndex → UI mask = 1 << index     정적 코드 확정
+request boxIndex == UI index         미확정
+0x14 response가 최종 BoxStatus 반환  미확정
+```
+
+### 30.5 다음 작업
+
+1. `GetChapterBoxReward @ 00ddeea8`에서 request 두 번째 값의 원천 추적
+2. `UIData.data` index와 request `+0x34` 관계 확인
+3. `DataCenter.ProccessRequestRes @ 016e203c`의 Chapter 관련 merge 분기 추적
+4. `MergeSectionSnapShot` 외 Chapter merge 후보 확인
+5. raw Listing 전체에서 `set_BoxStatus @ 015acf8c` callsite 주소 검색
+6. Box 요청 전 Chapter snapshot 확보
