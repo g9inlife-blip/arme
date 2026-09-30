@@ -19,7 +19,7 @@ except ImportError:
 KEY = bytes.fromhex("44f5f445808615fe1b2e224c5e05e718")
 KCP_HDR = 28
 KCP_CMD = 0x51
-ENC_FLAGS = {0x80, 0xC0, 0xC4}
+ENC_FLAGS = {0x80, 0x84, 0xC0, 0xC4}
 
 
 def hx(s):
@@ -42,7 +42,6 @@ def varint(data, off):
 
 
 def protobuf_tree(data, depth=0, max_depth=6):
-    """Best-effort protobuf tree; nested length-delimited fields are parsed recursively."""
     out = []
     off = 0
     while off < len(data):
@@ -243,8 +242,6 @@ def main():
                 continue
 
             contiguous = s["sn"] == last_sn + 1
-            # A fragmented message starts with frg>0 and terminates at frg=0.
-            # Never merge a new message merely because the previous packet had frg!=0.
             if not contiguous or (cur[-1]["frg"] == 0):
                 flush()
                 cur = [s]
