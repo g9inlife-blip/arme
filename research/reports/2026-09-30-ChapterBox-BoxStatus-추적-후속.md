@@ -2260,3 +2260,84 @@ ProtoChapter 객체
 ```
 
 이 마지막 대입 지점을 직접 확보하는 것이 다음 목표다.
+## 40. 2026-09-30 — DataCenter Merge 함수 Listing 부재 재확인 및 추적 기준 보강
+
+### 40.1 Git Listing 검색 결과
+
+현재 Git의 함수별 Listing/검색 인덱스에서 다음 함수의 실제 본문 Listing은 확보되지 않았다.
+
+- DataCenter.ProccessRequestRes @ 016e203c
+- DataCenter.MergeSections @ 016e55dc
+- DataCenter.MergeSectionSnapShot @ 016e5908
+
+검색 결과는 이 함수들을 Calls IN으로 참조하는 다른 Listing 또는 보고서만 반환한다.
+
+따라서 현재 단계에서 이 함수 내부가 ProtoChapter +0x1C를 직접 쓰거나, Chapters를 순회한다고 단정하지 않는다.
+
+### 40.2 새로 확인한 직접 단서
+
+`Ali.get_dataManager @ 00e0277c`의 Calls IN에 다음이 함께 존재한다.
+
+```text
+DataCenter.ProccessRequestRes @ 016e203c
+DataCenter.MergeSectionSnapShot @ 016e5908
+DataCenter.MergeItem @ 016e4700
+DataCenter.MergeEquip @ 016e4348
+DataCenter.MergeWeapon @ 016e5be4
+DataCenter.UpdateHeroInfo @ 016e4ba4
+```
+
+이는 이 함수들이 동일한 DataManager singleton 접근 계층과 연결됨을 보여주지만, 서로 직접 호출한다는 의미는 아니다.
+
+### 40.3 ProccessRequestRes의 상태 객체 접근 범위
+
+Git의 `US.txt` Calls IN 검색에서 `DataCenter.ProccessRequestRes @ 016e203c`가 `UserInfo` getter 계열에도 호출자로 기록되어 있음이 확인된다.
+
+예:
+
+```text
+UserInfo.get_Level @ 00dd1ba0
+UserInfo.get_Exp   @ 00dd1ca4
+```
+
+즉 `ProccessRequestRes`는 Request 완료 통지만 하는 함수가 아니라, 여러 typed game-state 객체의 값을 참조하는 상태 처리 함수라는 기존 판단을 보강한다.
+
+단, 이것만으로 Chapter response가 해당 getter를 통해 갱신된다고 해석하지 않는다.
+
+### 40.4 Chapter 추적 기준 강화
+
+현재 가장 식별력이 높은 기준은 단일 `+0x1C` 검색이 아니다.
+
+우선순위를 다음처럼 유지한다.
+
+```text
+ProtoChapter
+ +0x10 Id
+ +0x14 Status
+ +0x18 Progress
+ +0x1C BoxStatus
+```
+
+위 네 필드가 동일 함수에서 함께 접근되는 경우를 Chapter population 후보로 우선한다.
+
+그 다음:
+
+```text
+Chapters collection
+ → Chapter Id 검색
+ → ProtoChapter object
+ → +0x10/+0x14/+0x18/+0x1C
+```
+
+순서를 확인한다.
+
+### 40.5 현재 정적 분석 한계와 다음 단계
+
+현재 Git export에 `016e203c/016e55dc/016e5908` 본문이 없으므로, 더 이상 동일 검색을 반복하지 않는다.
+
+다음 우선순위는:
+
+1. 해당 주소의 Ghidra 원본 Listing이 Git에 추가되는지 확인
+2. `FUN_*` 그룹에서 해당 주소 주변 unnamed helper가 새로 추가되는지 확인
+3. runtime에서 `ProtoChapter.get_BoxStatus @ 015acf84`를 기준으로 Chapter 객체 주소와 BoxStatus 값을 관찰
+4. boxIndex 5 오픈 전후 값 변화가 확인되면 `0x00 → 0x20` 가설을 실제 값으로 검증
