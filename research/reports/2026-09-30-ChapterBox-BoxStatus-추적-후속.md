@@ -1546,3 +1546,107 @@ boxIndex  = 5
 따라서 현재 증거로는 **protobuf field4를 BoxStatus라고 매핑하면 모순**이다.
 
 현재 가장 중요한 다음 작업은 `DataCenter.ProccessRequestRes @ 016e203c`에서 `OpInfo.Chapters`가 실제 `ProtoChapter` 객체로 병합되는 지점을 찾고, `set_BoxStatus @ 015acf8c`에 도달하는 값을 확인하는 것이다.
+
+
+## 33. 2026-09-30 후속 정리 — BoxStatus 직접 write 경로 재검색
+
+### 33.1 현재 정적 증거 재확정
+
+이번 단계에서 Git의 관련 Listing을 다시 검색했다.
+
+```
+ProtoChapter$$get_BoxStatus @ 015acf84
+    ldr w0,[x0,#0x1c]
+
+ProtoChapter$$set_BoxStatus @ 015acf8c
+    str w1,[x0,#0x1c]
+
+ProtoChapter$$IsBoxReceived @ 015acfe8
+    ldr w8,[x0,#0x1c]
+    tst w8,w1
+```
+
+따라서 `ProtoChapter +0x1C = BoxStatus`와 bitmask 검사 구조는 변함없이 확정이다.
+
+### 33.2 setter 호출 추적 결과
+
+`set_BoxStatus @ 015acf8c`의 Calls IN은 현재 Git Listing에서 비어 있다.
+
+또한 다음 3개 setter도 직접 caller가 확보되지 않았다.
+
+```
+set_Id       +0x10
+set_Status   +0x14
+set_Progress +0x18
+set_BoxStatus +0x1C
+```
+
+따라서 setter callsite를 계속 찾는 것보다, Chapter 객체를 채우는 상위 merge/deserialize 경로를 찾는 방식으로 전환한다.
+
+### 33.3 Section merge 계열은 우선순위 하향
+
+현재까지 확인된:
+
+```
+MergeSections        @ 016e55dc
+MergeSectionSnapShot @ 016e5908
+```
+
+은 Section collection/snapshot 처리 성격이 강하다.
+
+현재 자료에서는 두 함수가 `ProtoChapter +0x1C`를 직접 쓰는 증거가 없다.
+
+따라서 Chapter BoxStatus 추적의 1차 후보에서 우선순위를 낮춘다.
+
+### 33.4 새로 확정된 중요한 연결
+
+Box 요청 쪽은 이미 완전히 연결되어 있다.
+
+```
+ChapBoxMono.ClickGetReward @ 00e5705c
+        ↓
+UIData.data
+        ↓
+GetChapterBoxReward @ 00ddeea8
+        ↓
+opcode 0x14
+        ↓
+chapterId + boxIndex
+```
+
+실제 PCAP에서도:
+
+```
+chapterId = 20000100
+boxIndex  = 5
+```
+
+가 확인되었고, response frame 285에는 같은 Chapter ID의 snapshot이 포함된다.
+
+따라서 현재 남은 핵심은 request 생성이 아니라 **response Chapter snapshot → ProtoChapter 객체 반영**이다.
+
+### 33.5 다음 단계 — Chapter 저장소/생성 경로 집중
+
+다음 검색은 함수명 추정이 아니라 다음 순서로 진행한다.
+
+1. `OpInfo.Chapters (+0xC0)`의 실제 사용처 재검색
+2. `ProtoChapter` 객체를 생성/반환/검색하는 DataCenter 함수 탐색
+3. Chapter ID를 key로 하는 Dictionary/cache 탐색
+4. `+0x10/+0x14/+0x18/+0x1C`가 한 함수에서 함께 접근되는 Listing 탐색
+5. `ProccessRequestRes @ 016e203c`와 위 함수의 연결 확인
+6. PCAP의 0x14 후속 response에서 동일 Chapter snapshot이 다시 나타나는지 비교
+
+### 33.6 현재 상태
+
+```
+ProtoChapter +0x1C = BoxStatus          확정
+IsBoxReceived mask 구조                확정
+UIData.data → request boxIndex         확정
+boxIndex 5 → 검사 mask 0x20            확정
+0x14 request chapterId/boxIndex         확정
+0x14 response Chapter snapshot         확정
+protobuf field4 = BoxStatus             미확정
+response → ProtoChapter +0x1C write     미확정
+```
+
+이번 단계에서는 새로운 BoxStatus write 지점을 확보하지 못했다. 다음은 **OpInfo.Chapters 사용처와 Chapter 객체 저장/병합 경로**를 직접 좁힌다.
