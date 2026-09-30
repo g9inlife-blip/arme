@@ -9,7 +9,7 @@
 `ProtoChapter$$set_BoxStatus @ 015acf8c`:
 
 ```text
-015acf8c  str w1,[x0, #0x1c]
+015acf8c  str w1,[x0,#0x1c]
 015acf90  ret
 ```
 
@@ -130,3 +130,61 @@ ProtoChapter.BoxStatus +0x1C
 6. 마지막으로 opcode `0x14` response와 BoxStatus bit 변경을 PCAP/runtime에서 검증
 
 현재는 `0x14 → BoxStatus`를 아직 미확정으로 유지한다.
+
+## 19. ProtoChapter 생성자/Setter 역추적 결과
+
+이번 단계에서 실제 Listing을 다시 확인했다.
+
+### 19.1 생성자는 상태 필드를 초기화하지 않음
+
+`ProtoChapter$$.ctor @ 015acff8`:
+
+```text
+015acff8  mov x1,xzr
+015acffc  b 0x02194104
+```
+
+즉 현재 확보된 생성자 Listing에는 `Id/Status/Progress/BoxStatus`에 대한 명시적 초기화가 없다. 단순히 `System.Object$$.ctor`로 전달된다.
+
+### 19.2 4개 setter 모두 단순 field write
+
+확인된 offset:
+
+```text
+set_Id         @ 015acf5c → [x0,#0x10]
+set_Status     @ 015acf6c → [x0,#0x14]
+set_Progress   @ 015acf7c → [x0,#0x18]
+set_BoxStatus  @ 015acf8c → [x0,#0x1c]
+```
+
+특히 `set_BoxStatus`의 Calls IN은 비어 있으며, 다른 3개 setter 역시 현재 저장된 Function Listing에서 Calls IN이 확인되지 않는다.
+
+### 19.3 중요한 결과
+
+따라서 **setter 호출 체인을 따라가는 방식은 현재 Listing 데이터에서는 막혀 있다.**
+
+현재 가장 유효한 다음 방향은:
+
+```text
+ProtoChapter setter 호출 추적
+        X  (Calls IN 미확보)
+        
+        ↓ 전환
+        
+ProtoChapter 객체를 생성/채우는 상위 함수
+        ↓
+field offset +0x10/+0x14/+0x18/+0x1c
+        ↓
+MergeSections / MergeSectionSnapShot / ProccessRequestRes
+```
+
+즉 다음 단계에서는 함수명보다 **`[x?,#0x10]`, `[x?,#0x14]`, `[x?,#0x18]`, `[x?,#0x1c]`가 함께 등장하는 Listing**을 찾는 것이 우선이다.
+
+### 19.4 현재 결론
+
+- `ProtoChapter +0x1C = BoxStatus`: 확정
+- `BoxStatus & mask` 방식: 확정
+- 생성자에서 BoxStatus 초기화: 현재 Listing상 확인되지 않음
+- setter 직접 호출자: 미확인
+- `opcode 0x14 → BoxStatus`: 아직 미확정
+- 다음 핵심 목표: **4개 필드 offset을 함께 쓰는 상위 merge/deserialize 함수 확보**
