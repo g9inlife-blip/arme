@@ -234,3 +234,173 @@ GetChapterBoxReward
 - 따라서 **hook 없이 PCAP 분석 계속 가능**
 - 다음 핵심: **전체 행동구간 opcode/protobuf 매핑 및 Box의 0x14/BoxStatus 확인**
 
+
+
+## 9. 신규 통합 PCAP — 실제 0x14 확보
+
+신규 통합 PCAP에서 KCP key를 복구한 뒤 전체 UDP application request를 복호화했다.
+
+### 0x14 request
+
+**frame 428 / client → server**
+
+복호화 plaintext:
+
+```
+08 e2 de df c0 09
+10 14
+22 0b
+  08 cc a2 c2 e9 e4 be cf 3f
+  10 05
+30 e4 da c4 09
+```
+
+protobuf 기준:
+- field #2 = `0x14`
+- field #4 nested의 field #2 = `5`
+- field #6 = `0x01312D64` = `20,000,100`
+
+따라서 정적 분석에서 확인했던:
+
+```
+GetChapterBoxReward
+→ opcode 0x14
+→ chapterId + boxIndex
+```
+
+와 실제 PCAP request가 일치한다.
+
+특히 `0x01312D64`는 이번 이벤트 Chapter 식별값으로 볼 수 있는 강한 후보이며, boxIndex는 `5`로 직접 확인된다.
+
+### 0x14 response
+
+**frame 430 / server → client**
+
+- flag = `0x84`
+- application length = 353
+- Rijndael/AES-128-CBC/PKCS7 복호화 성공
+- plaintext length = 329 bytes
+- field #2 = `0x14`
+
+응답 시작:
+
+```
+08 e2 de df c0 09
+10 14
+22 0b
+  08 c0 ca ab a6 eb bc cf 3f
+  10 05
+30 e4 da c4 09
+...
+```
+
+즉:
+
+```
+frame 428 : request opcode 0x14
+frame 430 : response opcode 0x14
+```
+
+가 **실제 데이터로 확정**되었다.
+
+## 10. BoxStatus 현재 확인 수준
+
+0x14 response 내부에는 다음과 같은 repeated nested data가 존재한다.
+
+- field #21 repeated entries 다수
+- field #38 repeated entries
+- field #43 entry
+- field #46 repeated entries
+- field #49 entry
+
+현재 response에서 Chapter 관련 후보 데이터가 존재하는 것은 확인되지만, 특정 nested entry를 `ProtoChapter`라고 단정할 단계는 아니다.
+
+정적 구조는 여전히:
+
+```
+ProtoChapter
++0x10 Id
++0x14 Status
++0x18 Progress
++0x1C BoxStatus
+```
+
+이고:
+
+```
+IsBoxReceived(mask)
+= (BoxStatus & mask) != 0
+```
+
+가 확정되어 있다.
+
+따라서 현재 가장 중요한 미확정은:
+
+```
+0x14 response
+ ↓
+어느 nested message가 ProtoChapter인가?
+ ↓
+그 message의 BoxStatus field는 무엇인가?
+```
+
+이다.
+
+## 11. 통합 PCAP request opcode 흐름 1차 결과
+
+client request를 시간순으로 복호화한 결과:
+
+| Frame | Opcode |
+|---:|---:|
+| 189 | 0x02 |
+| 207 | 0x39 |
+| 211 | 0x06 |
+| 233 | 0x5D |
+| 238 | 0x30 |
+| 251 | 0x2D |
+| 289 | 0x2E |
+| 295 | 0x2E |
+| 307 | 0x7C |
+| 316 | 0x30 |
+| 336 | 0x13 |
+| 340 | 0x13 |
+| 368 | 0x16 |
+| 390 | 0x17 |
+| 413 | 0x4E |
+| **428** | **0x14** |
+| 432 | 0x4E |
+| 436 | 0x30 |
+| 442 | 0x28 |
+| 448 | 0x15 |
+| 460 | 0x4E |
+| 464 | 0x0A |
+| 468 | 0x0A |
+| 472 | 0x4E |
+| 476 | 0x13 |
+
+이 흐름으로 인해 기존의 별도 Box PCAP에서 추측했던 0x14 후보가 아니라, **이번 통합 PCAP에서는 0x14가 실제 Box 보상 요청임을 직접 확정**할 수 있다.
+
+## 12. 다음 작업
+
+다음은 DH/hook이 아니다.
+
+1. frame 430의 329-byte plaintext를 protobuf tree로 정확히 분해
+2. `ProtoChapter`의 Id/Status/Progress/BoxStatus와 대응되는 nested field 탐색
+3. 동일 PCAP에서 **0x14 이전/이후 상태 snapshot** 비교
+4. BoxStatus bit 변화가 실제로 존재하는지 확인
+5. 이후 opcode 0x15/0x4E/0x30 등을 사용자 행동과 매핑
+
+현재 핵심 성과:
+
+```
+PCAP
+→ KCP DH
+→ session key
+→ decrypt
+→ 0x14 request
+→ 0x14 response
+→ chapterId = 20,000,100
+→ boxIndex = 5
+```
+
+까지 연결되었다.
