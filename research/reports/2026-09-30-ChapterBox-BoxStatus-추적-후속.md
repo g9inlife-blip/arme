@@ -1790,3 +1790,84 @@ ProtoChapter 객체 생성/검색
 ```
 
 이다. 다음 단계는 **Chapter protobuf deserialize/merge 함수 식별**이다.
+
+
+## 35. 2026-09-30 — OpInfo.Chapters / BoxStatus 직접 write 재검색
+
+### 35.1 OpInfo.Chapters 메모리 위치 재확정
+
+`OpInfo$$get_Chapters @ 015aadec`:
+
+```text
+015aadec  ldr x0,[x0,#0xc0]
+015aadf0  ret
+```
+
+`OpInfo$$set_Chapters @ 015aadf4`:
+
+```text
+015aadf4  str x1,[x0,#0xc0]!
+015aadf8  b 0x00b07850
+```
+
+따라서 `OpInfo +0xC0 = Chapters`는 재확정된다.
+
+### 35.2 BoxStatus setter 직접 callsite 재검색
+
+Git 전체 검색에서 `015acf8c`는 setter 자체 Listing과 보고서만 검색되며, 별도 함수의 `bl 0x015acf8c` callsite는 확인되지 않았다.
+
+따라서 현재 Listing 구조에서는:
+
+```text
+set_BoxStatus @ 015acf8c
+    ↓ 직접 caller 미확인
+상위 deserialize / merge / field population
+```
+
+으로 보는 것이 타당하다.
+
+### 35.3 +0x1C 단독 검색의 한계 확인
+
+`str ..., [x?,#0x1c]` 검색 결과에는 여러 unrelated 타입의 필드도 다수 섞인다. 따라서 단순 offset 검색만으로 ProtoChapter write를 특정할 수 없다.
+
+반대로 `ProtoChapter`의 네 필드는:
+
+```text
++0x10 Id
++0x14 Status
++0x18 Progress
++0x1C BoxStatus
+```
+
+로 연속 배치되어 있으므로, 네 offset이 같은 함수에서 함께 접근되는지 확인하는 방식이 더 강한 식별 기준이다.
+
+### 35.4 Section StarStatus 비교도 직접 caller 미확보
+
+`ProtoSection$$set_StarStatus @ 015ad948` 역시 단순 field write이고, 현재 검색 인덱스에서 직접 caller가 확인되지 않았다.
+
+따라서 StarStatus setter 호출 구조도 Chapter와 유사하게 serializer/field population 경로일 가능성을 검토한다.
+
+### 35.5 PCAP 입력 파일 상태
+
+Git에는 다음 다른 계정 PCAP JSON이 존재하며 blob SHA도 확인된다.
+
+```text
+research/PCAP/로그인부터던전2회이후box오픈_이후장비착용.json
+SHA faeb47f64d76158c731c36abb741773e376e46a2
+```
+
+다만 현재 GitHub connector에서는 대용량 JSON의 본문이 빈 결과로 반환되어, 이번 단계에서는 packet byte를 다시 직접 분석하지 못했다.
+
+### 35.6 현재 단계 결론
+
+```text
+OpInfo +0xC0 = Chapters                 확정
+ProtoChapter +0x1C = BoxStatus          확정
+boxIndex 5 → UI mask 0x20              확정
+set_BoxStatus 직접 caller               미확인
++0x1C 단독 검색                         식별력 부족
+Chapter 4-field population 함수         미확인
+0x14 response → BoxStatus write         미확정
+```
+
+다음은 `FUN_016/FUN_017`에서 DataCenter 인접 함수와 Dictionary 처리 함수를 좁히고, 동시에 `ProtoChapter`와 같은 함수에서 `+0x10/+0x14/+0x18/+0x1C`를 연속 접근하는 패턴을 우선 탐색한다.
