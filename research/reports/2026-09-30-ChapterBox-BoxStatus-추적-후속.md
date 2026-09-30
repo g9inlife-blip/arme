@@ -414,3 +414,155 @@ frame 162 + 163
 - 0x14 → BoxStatus: 미확정
 
 다음은 159 → 162/163 구간의 실제 application message 복원과 `OpInfo.Chapters` 대조를 우선한다.
+
+
+## 24. 2026-09-30 KCP 64-bit Header 및 암호화 메시지 경계 확정
+
+PCAP JSON과 Ghidra의 `Alioth.S1.Core.KCP$$EncodeSegment @ 015b8774`를 교차 확인한 결과, 이번 PCAP의 KCP header 구조를 직접 확정했다.
+
+### 24.1 게임 KCP Segment 구조
+
+`EncodeSegment`가 다음 순서로 기록한다.
+
+```text
++0x00  uint64  Segment.Conv
++0x08  uint8   Cmd
++0x09  uint8   Frg
++0x0A  uint16  Wnd
++0x0C  uint32  Ts
++0x10  uint32  Sn
++0x14  uint32  Una
++0x18  uint32  Len
++0x1C  data
+```
+
+즉 이 게임의 KCP segment header는 **28 bytes**이며, 일반적인 32-bit conv가 아니라 64-bit conv를 사용한다.
+
+실제 PCAP frame 162:
+
+```text
+conv = 1eee45d6fd69e607
+cmd  = 0x51
+frg  = 1
+wnd  = 0x0020
+sn   = 0x11
+una  = 0x06
+len  = 0x55c = 1372
+```
+
+frame 163:
+
+```text
+conv = 1eee45d6fd69e607
+cmd  = 0x51
+frg  = 0
+wnd  = 0x0020
+sn   = 0x12
+una  = 0x06
+len  = 0x1c5 = 453
+```
+
+따라서 두 packet은 같은 conv에서 `frg 1 → 0`, `sn 0x11 → 0x12`로 이어지는 하나의 KCP message로 확정할 수 있다.
+
+### 24.2 실제 application message 재조립
+
+```text
+frame 162 data = 1372 bytes
+frame 163 data =  453 bytes
+------------------------
+총              1825 bytes
+```
+
+재조립 후 첫 부분은:
+
+```text
+80
+5710e3494fa79b32be5d738c23d85593
+...
+```
+
+Ghidra에서 확인한 `KCPTube.TryRead → DecryptUnSafe` 경로와 대조하면 application message는 다음 구조로 해석된다.
+
+```text
+[0x80 flags]
+[16-byte IV]
+[ciphertext]
+```
+
+이번 162+163 응답의 경우:
+
+```text
+flags      = 0x80
+IV         = c4f0862cf0271983b553998be415226a
+ciphertext = 1808 bytes
+```
+
+`1808 % 16 == 0`이므로 AES/Rijndael block ciphertext 경계도 정확히 맞는다.
+
+### 24.3 요청 frame 159도 동일 구조
+
+frame 159는 KCP data 81 bytes이며:
+
+```text
+flags      = 0x80
+IV         = 5710e3494fa79b32be5d738c23d85593
+ciphertext = 64 bytes
+```
+
+즉 전투 직전/직후의 요청도 동일한 암호화 application framing을 사용한다.
+
+### 24.4 중요한 변경점
+
+이제 단순히 `162/163이 큰 응답이다` 수준이 아니라:
+
+```text
+frame 159
+  KCP reassembly
+  ↓
+  0x80 + IV16 + ciphertext64
+
+frame 162 + 163
+  KCP reassembly
+  ↓
+  0x80 + IV16 + ciphertext1808
+```
+
+까지 확정했다.
+
+따라서 다음 단계는 KCP 분석이 아니라 **session Key 확보 → 159 request / 162+163 response 복호화**다.
+
+### 24.5 Chapter/BoxStatus 추적 목표
+
+복호화가 성공하면 다음 순서로 바로 확인한다.
+
+```text
+plaintext
+ ↓
+OperationCode
+ ↓
+OpInfo / response object
+ ↓
+Chapters (+0xC0)
+ ↓
+ProtoChapter
+ ├─ Id       +0x10
+ ├─ Status   +0x14
+ ├─ Progress +0x18
+ └─ BoxStatus+0x1C
+```
+
+특히 162+163의 1808-byte 응답에서 `ProtoChapter.BoxStatus`가 포함되는지 직접 확인한다.
+
+### 24.6 현재 결론
+
+- 64-bit KCP conv: **확정**
+- KCP header 28 bytes: **확정**
+- frame 162+163 단일 fragmented message: **확정**
+- 응답 flags `0x80`: **확정**
+- IV 16 bytes: **확정**
+- ciphertext 1808 bytes: **확정**
+- 16-byte block alignment: **확정**
+- plaintext opcode `0x13/0x14`: **아직 미확인**
+- `0x14 → BoxStatus`: **아직 미확정**
+
+다음 작업은 `KCPTube.Handshake2 → Key` 생성값을 runtime/코드에서 확보하여 이 두 메시지를 실제 복호화하는 것이다.
