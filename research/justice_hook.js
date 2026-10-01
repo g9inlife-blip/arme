@@ -1235,6 +1235,11 @@ function inspectChaptersDictionary(dictPtr) {
                         try {
                             const user = response.add(0x88).readPointer();
                             console.log('[BOOT_STATE] User@+0x88=' + (user.isNull() ? 'null' : describeObjectPtr(user)));
+                            if (!user.isNull()) {
+                                try { console.log('[BOOT_USER] Id=' + user.add(0x10).readU64() +
+                                    ' Level=' + user.add(0x1c).readU32() +
+                                    ' Exp=' + user.add(0x20).readU32()); } catch (e) {}
+                            }
                         } catch (e) {}
                         try {
                             const items = response.add(0x98).readPointer();
