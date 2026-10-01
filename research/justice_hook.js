@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.19
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.20
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -40,6 +40,33 @@ const CLASS_NAME = 'ProtocolGame_HttpRequest';
 const LIB_NAME = 'libil2cpp.so';
 
 // ---------- helpers ----------
+
+// Log reduction: suppress unchanged state and aggregate high-frequency callbacks.
+const _logStateCache = Object.create(null);
+const _logRateState = Object.create(null);
+
+function logOnChange(key, value, message) {
+    const normalized = String(value);
+    if (_logStateCache[key] === normalized) return false;
+    _logStateCache[key] = normalized;
+    console.log(message);
+    return true;
+}
+
+function logThrottled(key, intervalMs, message) {
+    const now = Date.now();
+    let state = _logRateState[key];
+    if (!state) state = _logRateState[key] = { last: 0, suppressed: 0 };
+    if (now - state.last >= intervalMs) {
+        const suffix = state.suppressed ? ' (+' + state.suppressed + ' repeats suppressed)' : '';
+        console.log(message + suffix);
+        state.last = now;
+        state.suppressed = 0;
+    } else {
+        state.suppressed++;
+    }
+}
+
 
 function readIl2cppString(ptr) {
     if (ptr.isNull()) return '(null)';
@@ -1197,7 +1224,9 @@ function inspectChaptersDictionary(dictPtr) {
                         this.t0 = Date.now();
                         this.transport = spec[0].split('.').pop();
                         this.method = spec[1];
-                        console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' enter this=' + describeObjectPtr(args[0]));
+                        const transportLine = '[TRANSPORT] ' + this.transport + '.' + this.method + ' enter this=' + describeObjectPtr(args[0]);
+                        if (this.transport === 'KCPTube' && this.method === 'Send') console.log(transportLine);
+                        else logThrottled('transport-enter:' + this.transport + ':' + this.method, 2000, transportLine);
                         if (this.transport === 'KCPTube' && this.method === 'Send') {
                             this.kcpRequest = args[1];
                             this.kcpRequestInfo = describeKcpSendRequest(args[1]);
@@ -1211,7 +1240,9 @@ function inspectChaptersDictionary(dictPtr) {
                         try {
                             let rv = '?';
                             if (retval && typeof retval.toInt32 === 'function') rv = retval.toInt32();
-                            console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' leave ret=' + rv + ' ' + (Date.now() - this.t0) + 'ms');
+                            const transportLine = '[TRANSPORT] ' + this.transport + '.' + this.method + ' leave ret=' + rv + ' ' + (Date.now() - this.t0) + 'ms';
+                            if (this.transport === 'KCPTube' && this.method === 'Send') console.log(transportLine);
+                            else logThrottled('transport-leave:' + this.transport + ':' + this.method, 2000, transportLine);
                             if (this.transport === 'KCPTube' && this.method === 'Send' && rv === 1) {
                                 console.log('[KCP_SEND_ACCEPTED] ' + (this.kcpRequestInfo || 'request=unknown'));
                             }
@@ -1236,10 +1267,10 @@ function inspectChaptersDictionary(dictPtr) {
             Interceptor.attach(m.fnPtr, {
                 onEnter(args) {
                     this.t = Date.now();
-                    console.log('[NET_RESP] TryHandleResponse enter this=' + describeObjectPtr(args[0]));
+                    logThrottled('net-resp-try-enter', 1500, '[NET_RESP] TryHandleResponse enter this=' + describeObjectPtr(args[0]));
                 },
                 onLeave(retval) {
-                    console.log('[NET_RESP] TryHandleResponse leave ' + (Date.now() - this.t) + 'ms');
+                    logThrottled('net-resp-try-leave', 1500, '[NET_RESP] TryHandleResponse leave ' + (Date.now() - this.t) + 'ms');
                 }
             });
             // TryHandleResponse static branch: +0x238 loads sp+0x44,
@@ -1276,7 +1307,7 @@ function inspectChaptersDictionary(dictPtr) {
             Interceptor.attach(m.fnPtr, {
                 onEnter(args) {
                     const response = args[1];
-                    console.log('[NET_RESP] ProccessRequestRes enter' +
+                    logThrottled('net-resp-process-enter', 1000, '[NET_RESP] ProccessRequestRes enter' +
                         ' this=' + describeObjectPtr(args[0]) +
                         ' response=' + describeObjectPtr(response) +
                         ' arg2=' + (args[2] || ptr(0)));
@@ -1288,7 +1319,7 @@ function inspectChaptersDictionary(dictPtr) {
                     } catch (e) { console.log('[CHAPTERS_RAW] read failed: ' + e.message); }
                 },
                 onLeave(retval) {
-                    console.log('[NET_RESP] ProccessRequestRes leave');
+                    logThrottled('net-resp-process-leave', 1000, '[NET_RESP] ProccessRequestRes leave');
                 }
             });
             hookCount++;
@@ -1373,7 +1404,7 @@ function inspectChaptersDictionary(dictPtr) {
                     onLeave(retval) {
                         try {
                             const v = typeof retval === 'number' ? retval : retval.toInt32();
-                            console.log('[MAIN_CURRENCY] ' + spec[0] + '=' + v + ' UserInfo=' + this.obj);
+                            logOnChange('main-currency:' + spec[0] + ':' + this.obj, v, '[MAIN_CURRENCY] ' + spec[0] + '=' + v + ' UserInfo=' + this.obj);
                         } catch (e) {}
                     }
                 });
@@ -1461,7 +1492,8 @@ function inspectChaptersDictionary(dictPtr) {
                                 ' arg1=' + describeWarehouseArg(args[1]) +
                                 ' arg2=' + describeWarehouseArg(args[2]));
                         } else {
-                            console.log('[WAREHOUSE] ' + methodName + ' enter this=' + describeObjectPtr(args[0]));
+                            logThrottled('warehouse-enter:' + methodName + ':' + args[0], 1500,
+                                '[WAREHOUSE] ' + methodName + ' enter this=' + describeObjectPtr(args[0]));
                             if (methodName === 'InitData' || methodName === 'ShowGoods' || methodName === 'RefreshScroll') {
                                 console.log('[WAREHOUSE_STATE] ' + methodName + ' ' + describeWarehousePanel(args[0]));
                             }
@@ -1472,7 +1504,8 @@ function inspectChaptersDictionary(dictPtr) {
                             if (methodName === 'InitData' || methodName === 'RefreshWareHouse' || methodName === 'ShowGoods') {
                                 console.log('[WAREHOUSE_STATE] ' + methodName + ' leave ' + describeWarehousePanel(this.panel));
                             }
-                            console.log('[WAREHOUSE] ' + methodName + ' leave ' + (Date.now() - this.t0) + 'ms');
+                            logThrottled('warehouse-leave:' + methodName + ':' + this.panel, 1500,
+                                '[WAREHOUSE] ' + methodName + ' leave ' + (Date.now() - this.t0) + 'ms');
                         } catch (e) {}
                     }
                 });
@@ -1491,11 +1524,12 @@ function inspectChaptersDictionary(dictPtr) {
             Interceptor.attach(m.fnPtr, {
                 onEnter(args) {
                     this.t0 = Date.now();
-                    console.log('[ITEM_MERGE] enter this=' + describeObjectPtr(args[0]) +
+                    logThrottled('item-merge-enter:' + args[0], 1500,
+                        '[ITEM_MERGE] enter this=' + describeObjectPtr(args[0]) +
                         ' incoming=' + describeWarehouseCollection(args[1]));
                 },
                 onLeave(retval) {
-                    console.log('[ITEM_MERGE] leave ' + (Date.now() - this.t0) + 'ms');
+                    logThrottled('item-merge-leave', 1500, '[ITEM_MERGE] leave ' + (Date.now() - this.t0) + 'ms');
                 }
             });
             hookCount++;
@@ -1518,7 +1552,7 @@ function inspectChaptersDictionary(dictPtr) {
                     try {
                         const v = retval.toInt32();
                         const raw = this.obj.add(0x1c).readU32();
-                        console.log('[BOXSTATUS_GET] obj=' + this.obj + ' ret=' + v + ' raw+0x1c=' + raw);
+                        logOnChange('boxstatus-get:' + this.obj, v + ':' + raw, '[BOXSTATUS_GET] obj=' + this.obj + ' ret=' + v + ' raw+0x1c=' + raw);
                     } catch (e) { console.log('[BOXSTATUS_GET] read failed: ' + e.message); }
                 }
             });
@@ -1555,8 +1589,9 @@ function inspectChaptersDictionary(dictPtr) {
                 onEnter(args) { this.obj = args[0]; },
                 onLeave(retval) {
                     try {
-                        console.log('[CHAPTERS_GET] OpInfo=' + this.obj + ' ret=' +
-                            (retval.isNull() ? 'null' : describeObjectPtr(retval)));
+                        const chaptersRet = retval.isNull() ? 'null' : describeObjectPtr(retval);
+                        logOnChange('chapters-get:' + this.obj, chaptersRet,
+                            '[CHAPTERS_GET] OpInfo=' + this.obj + ' ret=' + chaptersRet);
                         if (!retval.isNull()) {
                             try {
                                 const klass = api.object_get_class(retval);
