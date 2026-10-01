@@ -1039,6 +1039,10 @@ async function main() {
                         ' this=' + describeObjectPtr(args[0]) +
                         ' response=' + describeObjectPtr(response) +
                         ' arg2=' + (args[2] || ptr(0)));
+                    try {
+                        const raw = response.add(0xc0).readPointer();
+                        console.log('[CHAPTERS_RAW] response=' + response + ' +0xc0=' + (raw.isNull() ? 'null' : describeObjectPtr(raw)));
+                    } catch (e) { console.log('[CHAPTERS_RAW] read failed: ' + e.message); }
                 },
                 onLeave(retval) {
                     console.log('[NET_RESP] ProccessRequestRes leave');
