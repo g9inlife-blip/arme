@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.18
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.19
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -1381,6 +1381,129 @@ function inspectChaptersDictionary(dictPtr) {
             }
         }
     } catch (e) { console.log('[!] Main currency getter hook failed: ' + e.message); }
+
+    // v4.19: trace the warehouse's cached-list binding path.
+    // Only log object classes, known collection counts, and ProtoItem's documented scalar fields.
+    function describeWarehouseCollection(obj) {
+        try {
+            if (!obj || obj.isNull()) return 'null';
+            const klass = api.object_get_class(obj);
+            if (klass.isNull()) return 'klass=null@' + obj;
+            const name = api.class_get_name(klass).readCString();
+            if (name.indexOf('Dictionary') >= 0) {
+                let count = '?';
+                try { count = String(obj.add(0x20).readS32()); } catch (e) {}
+                return name + '@' + obj + ' count=' + count;
+            }
+            if (name.indexOf('List') >= 0) {
+                let count = '?';
+                try { count = String(obj.add(0x18).readS32()); } catch (e) {}
+                return name + '@' + obj + ' count=' + count;
+            }
+            return name + '@' + obj;
+        } catch (e) {
+            return 'collection-inspect-failed@' + obj;
+        }
+    }
+    function describeWarehousePanel(panel) {
+        try {
+            if (!panel || panel.isNull()) return 'panel=null';
+            let mode = '?';
+            try { mode = String(panel.add(0xd4).readS32()); } catch (e) {}
+            const fields = [0xd8, 0xe0, 0xe8, 0xf0, 0xf8];
+            const names = ['list_d8', 'list_e0', 'list_e8', 'list_f0', 'selected_f8'];
+            const parts = ['mode=' + mode];
+            for (let i = 0; i < fields.length; i++) {
+                try {
+                    const p = panel.add(fields[i]).readPointer();
+                    parts.push(names[i] + '=' + describeWarehouseCollection(p));
+                } catch (e) { parts.push(names[i] + '=<read-failed>'); }
+            }
+            return parts.join(' ');
+        } catch (e) {
+            return 'panel-state-failed:' + e.message;
+        }
+    }
+    function describeWarehouseArg(obj) {
+        try {
+            if (!obj || obj.isNull()) return 'null';
+            const klass = api.object_get_class(obj);
+            if (klass.isNull()) return 'klass=null@' + obj;
+            const name = api.class_get_name(klass).readCString();
+            let out = name + '@' + obj;
+            if (name === 'ProtoItem') {
+                try { out += ' Id=' + obj.add(0x10).readS32(); } catch (e) {}
+                try { out += ' Status=' + obj.add(0x14).readS32(); } catch (e) {}
+                try { out += ' Count=' + obj.add(0x18).readS32(); } catch (e) {}
+            }
+            return out;
+        } catch (e) {
+            return 'arg-inspect-failed@' + obj;
+        }
+    }
+    try {
+        const warehouseSpecs = [
+            'DemandOpen', 'RefreshWareHouse', 'InitData',
+            'ShowGoods', 'RefreshScroll', 'SetGoodsItemByInfo',
+            'RefreshEquipItem'
+        ];
+        for (const methodName of warehouseSpecs) {
+            const ms = findMethodsAnywhereByName('WareHousePanelMono', methodName);
+            for (const m of ms) {
+                console.log('[+] Hooking WAREHOUSE ' + methodName + '(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+                Interceptor.attach(m.fnPtr, {
+                    onEnter(args) {
+                        this.t0 = Date.now();
+                        this.methodName = methodName;
+                        this.panel = args[0];
+                        if (methodName === 'SetGoodsItemByInfo') {
+                            console.log('[WAREHOUSE_ITEM] enter panel=' + describeObjectPtr(args[0]) +
+                                ' arg1=' + describeWarehouseArg(args[1]) +
+                                ' arg2=' + describeWarehouseArg(args[2]));
+                        } else {
+                            console.log('[WAREHOUSE] ' + methodName + ' enter this=' + describeObjectPtr(args[0]));
+                            if (methodName === 'InitData' || methodName === 'ShowGoods' || methodName === 'RefreshScroll') {
+                                console.log('[WAREHOUSE_STATE] ' + methodName + ' ' + describeWarehousePanel(args[0]));
+                            }
+                        }
+                    },
+                    onLeave(retval) {
+                        try {
+                            if (methodName === 'InitData' || methodName === 'RefreshWareHouse' || methodName === 'ShowGoods') {
+                                console.log('[WAREHOUSE_STATE] ' + methodName + ' leave ' + describeWarehousePanel(this.panel));
+                            }
+                            console.log('[WAREHOUSE] ' + methodName + ' leave ' + (Date.now() - this.t0) + 'ms');
+                        } catch (e) {}
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch (e) {
+        console.log('[!] Warehouse hook setup failed: ' + e.message);
+    }
+
+    // MergeItem receives Bootstrap/OpInfo item dictionaries and updates DataCenter's cache.
+    try {
+        const mergeMethods = findMethodsAnywhereByName('DataCenter', 'MergeItem');
+        for (const m of mergeMethods) {
+            console.log('[+] Hooking DataCenter.MergeItem(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    this.t0 = Date.now();
+                    console.log('[ITEM_MERGE] enter this=' + describeObjectPtr(args[0]) +
+                        ' incoming=' + describeWarehouseCollection(args[1]));
+                },
+                onLeave(retval) {
+                    console.log('[ITEM_MERGE] leave ' + (Date.now() - this.t0) + 'ms');
+                }
+            });
+            hookCount++;
+        }
+        if (!mergeMethods.length) console.log('[!] DataCenter.MergeItem not found');
+    } catch (e) {
+        console.log('[!] DataCenter.MergeItem hook failed: ' + e.message);
+    }
 
     // v4.8: ProtoChapter BoxStatus runtime observation.
     // The setter itself is only a 2-instruction backing-field write, so this
