@@ -1,7 +1,7 @@
 /**
  * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.8
  *
- * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
+ * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
  * NO frida-il2cpp-bridge, NO frida-compile needed.
  * Resolves IL2CPP exports by parsing /proc/self/maps + ELF directly,
@@ -433,6 +433,54 @@ function findMethodAnywhere(className, methodName, paramCount) {
     return ptr(0);
 }
 
+
+function findMethodsAnywhereByName(className, methodName) {
+    const out = [];
+    const domain = api.domain_get();
+    const countPtr = Memory.alloc(Process.pointerSize);
+    const assemblies = api.domain_get_assemblies(domain, countPtr);
+    const count = countPtr.readU32();
+    const dot = className.lastIndexOf('.');
+    const namespaceName = dot >= 0 ? className.substring(0, dot) : '';
+    const shortClassName = dot >= 0 ? className.substring(dot + 1) : className;
+    const nsPtr = Memory.allocUtf8String(namespaceName);
+    const classPtr = Memory.allocUtf8String(shortClassName);
+    for (let i = 0; i < count; i++) {
+        try {
+            const asm = assemblies.add(i * Process.pointerSize).readPointer();
+            const img = api.assembly_get_image(asm);
+            const klass = api.class_from_name(img, nsPtr, classPtr);
+            if (klass.isNull()) continue;
+            const iter = Memory.alloc(Process.pointerSize);
+            iter.writePointer(ptr(0));
+            while (true) {
+                const method = api.class_get_methods(klass, iter);
+                if (method.isNull()) break;
+                if (api.method_get_name(method).readCString() !== methodName) continue;
+                const typeNames = [];
+                const pc = api.method_get_param_count(method);
+                for (let pi = 0; pi < pc; pi++) {
+                    try { typeNames.push(api.type_get_name(api.method_get_param(method, pi)).readCString()); }
+                    catch (e) { typeNames.push('?'); }
+                }
+                out.push({ method, fnPtr: method.readPointer(), typeNames, paramCount: pc });
+            }
+            if (out.length) return out;
+        } catch (e) {}
+    }
+    return out;
+}
+function describeObjectPtr(obj) {
+    try {
+        if (!obj || obj.isNull()) return 'null';
+        const klass = api.object_get_class(obj);
+        if (klass.isNull()) return 'klass=null';
+        return api.class_get_name(klass).readCString() + '@' + obj;
+    } catch (e) {
+        return 'describe-failed@' + obj;
+    }
+}
+
 function findMethodAnywhereTyped(className, methodName, paramCount, preferredSecondType) {
     const domain = api.domain_get();
     const countPtr = Memory.alloc(Process.pointerSize);
@@ -564,7 +612,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.6 starting...');
+    console.log('[*] justice_hook v4.9 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -936,6 +984,53 @@ async function main() {
         }
     } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
 
+    // v4.9: network response processing observation.
+    // TryHandleResponse owns the queued response object locally; its invocation
+    // proves the response-processing path is active. ProccessRequestRes receives
+    // the response object as arg[1] (confirmed by static Listing @ 015b41e0).
+    try {
+        const thrs = findMethodsAnywhereByName('Alioth.S1.Net.NetworkCenter', 'TryHandleResponse');
+        for (const m of thrs) {
+            console.log('[+] Hooking NetworkCenter.TryHandleResponse(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    this.t = Date.now();
+                    console.log('[NET_RESP] TryHandleResponse enter this=' + describeObjectPtr(args[0]));
+                },
+                onLeave(retval) {
+                    console.log('[NET_RESP] TryHandleResponse leave ' + (Date.now() - this.t) + 'ms');
+                }
+            });
+            hookCount++;
+        }
+        if (!thrs.length) console.log('[!] NetworkCenter.TryHandleResponse not found');
+    } catch (e) {
+        console.log('[!] TryHandleResponse hook failed: ' + e.message);
+    }
+
+    try {
+        const prs = findMethodsAnywhereByName('DataCenter', 'ProccessRequestRes');
+        for (const m of prs) {
+            console.log('[+] Hooking DataCenter.ProccessRequestRes(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    const response = args[1];
+                    console.log('[NET_RESP] ProccessRequestRes enter' +
+                        ' this=' + describeObjectPtr(args[0]) +
+                        ' response=' + describeObjectPtr(response) +
+                        ' arg2=' + (args[2] || ptr(0)));
+                },
+                onLeave(retval) {
+                    console.log('[NET_RESP] ProccessRequestRes leave');
+                }
+            });
+            hookCount++;
+        }
+        if (!prs.length) console.log('[!] DataCenter.ProccessRequestRes not found');
+    } catch (e) {
+        console.log('[!] ProccessRequestRes hook failed: ' + e.message);
+    }
+
     // v4.8: ProtoChapter BoxStatus runtime observation.
     // The setter itself is only a 2-instruction backing-field write, so this
     // hook is a control observation point, not proof that protobuf-net calls it.
@@ -944,57 +1039,39 @@ async function main() {
         const bsSet = findMethodAnywhereExact('Alioth.S1.Common.ProtoChapter', 'set_BoxStatus', ['System.Int32']);
         if (bsGet) {
             Interceptor.attach(bsGet.fnPtr, {
-                onEnter(args) {
-                    this.obj = args[0];
-                },
+                onEnter(args) { this.obj = args[0]; },
                 onLeave(retval) {
                     try {
                         const v = retval.toInt32();
                         const raw = this.obj.add(0x1c).readU32();
-                        console.log('[BOXSTATUS_GET] obj=' + this.obj +
-                            ' ret=' + v + ' raw+0x1c=' + raw);
-                    } catch (e) {
-                        console.log('[BOXSTATUS_GET] read failed: ' + e.message);
-                    }
+                        console.log('[BOXSTATUS_GET] obj=' + this.obj + ' ret=' + v + ' raw+0x1c=' + raw);
+                    } catch (e) { console.log('[BOXSTATUS_GET] read failed: ' + e.message); }
                 }
             });
             hookCount++;
             console.log('[+] Hooking ProtoChapter.get_BoxStatus @ ' + bsGet.fnPtr);
-        } else {
-            console.log('[!] ProtoChapter.get_BoxStatus not found');
-        }
-
+        } else console.log('[!] ProtoChapter.get_BoxStatus not found');
         if (bsSet) {
             Interceptor.attach(bsSet.fnPtr, {
                 onEnter(args) {
                     this.obj = args[0];
                     try {
-                        const oldValue = args[0].add(0x1c).readU32();
-                        console.log('[BOXSTATUS_SET] obj=' + args[0] +
-                            ' arg=' + args[1].toInt32() +
-                            ' old+0x1c=' + oldValue);
-                    } catch (e) {
-                        console.log('[BOXSTATUS_SET] read failed: ' + e.message);
-                    }
+                        console.log('[BOXSTATUS_SET] obj=' + args[0] + ' arg=' + args[1].toInt32() +
+                            ' old+0x1c=' + args[0].add(0x1c).readU32());
+                    } catch (e) { console.log('[BOXSTATUS_SET] read failed: ' + e.message); }
                 },
                 onLeave(retval) {
                     try {
                         const obj = this.obj;
-                        if (obj && !obj.isNull()) {
-                            console.log('[BOXSTATUS_SET_END] obj=' + obj +
-                                ' new+0x1c=' + obj.add(0x1c).readU32());
-                        }
+                        if (obj && !obj.isNull())
+                            console.log('[BOXSTATUS_SET_END] obj=' + obj + ' new+0x1c=' + obj.add(0x1c).readU32());
                     } catch (e) {}
                 }
             });
             hookCount++;
             console.log('[+] Hooking ProtoChapter.set_BoxStatus @ ' + bsSet.fnPtr);
-        } else {
-            console.log('[!] ProtoChapter.set_BoxStatus not found');
-        }
-    } catch (e) {
-        console.log('[!] ProtoChapter BoxStatus hook failed: ' + e.message);
-    }
+        } else console.log('[!] ProtoChapter.set_BoxStatus not found');
+    } catch (e) { console.log('[!] ProtoChapter BoxStatus hook failed: ' + e.message); }
 
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
