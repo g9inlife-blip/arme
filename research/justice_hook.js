@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.8
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.11
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -1107,6 +1107,18 @@ async function main() {
                     try {
                         console.log('[CHAPTERS_GET] OpInfo=' + this.obj + ' ret=' +
                             (retval.isNull() ? 'null' : describeObjectPtr(retval)));
+                        if (!retval.isNull()) {
+                            try {
+                                const klass = api.object_get_class(retval);
+                                const kname = api.class_get_name(klass).readCString();
+                                console.log('[CHAPTERS_DICT] type=' + kname + ' ptr=' + retval);
+                                const countField = api.class_get_field_from_name(klass, Memory.allocUtf8String('_count'));
+                                if (!countField.isNull()) {
+                                    const off = api.field_get_offset(countField);
+                                    console.log('[CHAPTERS_DICT] _count@+0x' + off.toString(16) + '=' + retval.add(off).readU32());
+                                }
+                            } catch (e) { console.log('[CHAPTERS_DICT] inspect failed: ' + e.message); }
+                        }
                     } catch (e) { console.log('[CHAPTERS_GET] read failed: ' + e.message); }
                 }
             });
