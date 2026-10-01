@@ -3535,3 +3535,69 @@ Dictionary raw entry layout은 아직 추정하지 않는다.
 그 후 concrete Dictionary의 `_entries` field와 Entry generic layout을 runtime metadata로 확인하고 `key → ProtoChapter* → +0x10 ChapterId → +0x1C BoxStatus`를 연결한다.
 
 최종 목표는 `ChapterId=20000000`에 해당하는 ProtoChapter 객체 주소와 BoxStatus 값을 직접 확인하는 것이다.
+## 55. 2026-10-01 — v4.12 response field inspection으로 OpInfo.Chapters 실체 재확정
+
+### 55.1 runtime 결과
+
+`ProccessRequestRes`에서 전달되는 객체가 실제 `OpInfo`임을 다시 확인했다.
+
+첫 번째 response:
+
+    response=OpInfo@0x75d332f5c0
+    [RESP_CLASS] class=OpInfo
+
+field metadata:
+
+    <Chapters>k__BackingField @+0xc0
+    type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoChapter>
+
+실제 메모리에서도:
+
+    [CHAPTERS_RAW] response=0x75d332f5c0 +0xc0=Dictionary`2@0x75d33336c0
+
+가 확인됐다.
+
+따라서 기존의 `OpInfo +0xC0 = Chapters`는 단순 offset 추정이 아니라 runtime class metadata + 실제 객체 타입 + 실제 객체 주소까지 확인됐다.
+
+### 55.2 두 번째 response와의 차이
+
+다음 `OpInfo` 객체에서는:
+
+    response=OpInfo@0x75d332fcf0
+    [CHAPTERS_RAW] response=0x75d332fcf0 +0xc0=null
+
+이었다.
+
+즉 모든 OpInfo response가 Chapters Dictionary를 포함하는 것은 아니다. response 종류에 따라 해당 field가 null일 수 있다는 것으로 해석한다.
+
+### 55.3 중요한 정정
+
+이전 `[CHAPTERS_GET] ret=null` 때문에 `OpInfo.Chapters` field mapping 자체를 의심할 필요가 없어졌다.
+
+현재 첫 번째 객체에서 `response +0xc0 -> Dictionary`가 직접 확인됐으므로 field 위치는 확정한다. getter 호출 시점과 ProccessRequestRes 처리 시점은 별도 인스턴스/상태일 수 있으므로 getter null은 field mapping 반증으로 사용하지 않는다.
+
+### 55.4 다음 추적 목표
+
+이제 response class 탐색은 종료하고 Dictionary 내부로 들어간다.
+
+    ProccessRequestRes
+      -> OpInfo @ response
+      -> +0xc0 Dictionary<int, ProtoChapter>
+      -> _entries
+      -> key:int / value:ProtoChapter*
+      -> ProtoChapter +0x10 ChapterId
+      -> ProtoChapter +0x1c BoxStatus
+
+다음 hook에서는 Dictionary의 실제 `_entries` field와 Entry 객체/배열을 IL2CPP field metadata로 먼저 확인한 뒤 key/value를 읽는다.
+
+특히 `key == 20000000`, `ProtoChapter +0x10 == 20000000`, `ProtoChapter +0x1c == BoxStatus` 연결을 확인한다.
+
+### 55.5 현재 상태
+
+    ProccessRequestRes arg[1] = OpInfo              runtime 확정
+    OpInfo +0xc0 = Dictionary<int, ProtoChapter>    runtime 확정
+    Chapters concrete object                         runtime 확정
+    Dictionary key/value -> ProtoChapter            정적 확정 + runtime 객체 확인
+    ChapterId=20000000 실제 연결                    미확정
+    ProtoChapter +0x1c = BoxStatus                   확정
+    실제 BoxStatus write 지점                       미확정
