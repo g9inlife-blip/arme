@@ -1226,15 +1226,15 @@ function inspectChaptersDictionary(dictPtr) {
                         let opcode = '<read-failed>';
                         let returnCode = '<read-failed>';
                         try { opcode = String(response.add(0x14).readU16()); } catch (e) {}
-                        try { returnCode = String(response.add(0x10).readS32()); } catch (e) {}
+                        try { returnCode = String(response.add(0x18).readS32()); } catch (e) {}
                         console.log('[BOOT_RESP] seq=' + responseSeq +
                             ' response=' + response +
                             ' class=' + describeObjectPtr(response) +
                             ' OpCode=' + opcode +
                             ' ReturnCode=' + returnCode);
                         try {
-                            const user = response.add(0xb8).readPointer();
-                            console.log('[BOOT_STATE] User@+0xb8=' + (user.isNull() ? 'null' : describeObjectPtr(user)));
+                            const user = response.add(0x88).readPointer();
+                            console.log('[BOOT_STATE] User@+0x88=' + (user.isNull() ? 'null' : describeObjectPtr(user)));
                         } catch (e) {}
                         try {
                             const items = response.add(0x98).readPointer();
