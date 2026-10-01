@@ -3631,3 +3631,157 @@ Git:
 - commit: `3f4b76ae9383e939a052eb1053cc8b14e0f86bf7`
 
 다음 실행에서 특히 `key=20000000` 및 `ChapterId=20000000` entry의 `BoxStatus`를 확인한다.
+
+
+## 57. 분석 순서 재정렬 — Chapter Box보다 Main Bootstrap을 먼저 추적
+
+현재 Chapter/BoxStatus 추적 결과는 유효하지만, **기능 분석의 순서로는 후반부부터 들어간 상태**라는 점을 확인했다.
+
+### 57.1 왜 순서를 바꿔야 하는가
+
+실제 게임 진입 순서는 대략:
+
+```text
+앱 시작
+ ↓
+업데이트/버전 확인
+ ↓
+로그인
+ ↓
+로그인 성공
+ ↓
+초기/Bootstrap 요청
+ ↓
+계정/플레이어 상태
+ ↓
+재화/캐릭터/인벤토리 등
+ ↓
+Main 화면
+ ↓
+Chapter/Dungeon
+ ↓
+Battle
+ ↓
+Reward
+ ↓
+Chapter Box
+```
+
+현재 우리가 깊게 추적한:
+
+```text
+Chapter
+ ↓
+ProtoChapter
+ ↓
+BoxStatus
+ ↓
+Box Reward
+```
+
+는 이 흐름의 **뒤쪽 상태**다.
+
+따라서 Local/Offline bootstrap을 목표로 한다면 먼저 Main 진입에 필요한 서버 상태를 확정해야 한다.
+
+### 57.2 Git 문서와 현재 Listing에서 확인되는 초기 진입 후보
+
+기존 `TASK-003`은 이미 조사 목표를:
+
+```text
+Login
+ → Response
+ → Data Parse/Deserialize
+ → User/Player Data
+ → Manager/Singleton
+ → Main Menu
+```
+
+로 정의하고 있다.
+
+또한 현재 Listing에서:
+
+```text
+ProtocolGame_HttpRequest.V3_POST_AllInOne @ 00ddc5d0
+        ↓
+LoginGateMono.OnGet_AllinOne @ 00f92068
+        ↓
+Response_Allin1.GetByJson @ 00dde4d4
+        ↓
+JsonUtility.FromJson
+```
+
+연결이 확인된다.
+
+따라서 **AllInOne/로그인 직후 초기 데이터 흐름을 먼저 확정하는 작업이 필요하다.**
+
+### 57.3 앞으로의 분석 순서
+
+이제 순서를 다음처럼 변경한다.
+
+```text
+[1] Login
+    ↓
+[2] Login/AllInOne Response
+    ↓
+[3] 초기 Response 객체/Deserialize
+    ↓
+[4] DataCenter / User / Player / Character / Currency
+    ↓
+[5] Main 화면에서 실제 읽는 상태
+    ↓
+[6] Main bootstrap의 추가 Request/Response
+    ↓
+[7] Chapter/Dungeon 진입
+    ↓
+[8] Battle Result
+    ↓
+[9] Chapter Box / BoxStatus
+```
+
+Chapter/BoxStatus에서 이미 확보한 결과는 버리지 않고 **후속 기능의 상태 모델**로 유지한다.
+
+### 57.4 다음 실제 추적 대상
+
+우선 다음을 정적으로/런타임으로 연결한다.
+
+1. `V3_POST_AllInOne @ 00ddc5d0`
+2. `LoginGateMono.OnGet_AllinOne @ 00f92068`
+3. `Response_Allin1.GetByJson @ 00dde4d4`
+4. AllInOne response에서 생성되는 실제 데이터 객체
+5. 해당 데이터가 저장되는 DataCenter/Manager/Singleton
+6. Main UI가 읽는 Player/Currency/Character/Inventory 필드
+7. Main 진입 직전 추가 network request
+
+그 다음에 Chapter 경로로 내려간다.
+
+### 57.5 현재 Chapter 분석의 위치
+
+Chapter/BoxStatus 분석은 현재 다음 수준까지 확보되어 있으므로 **중단이 아니라 후순위 보류**한다.
+
+```text
+Dictionary<int, ProtoChapter>
+ key=20000000
+        ↓
+ProtoChapter
+ +0x10 ChapterId = 20000000
+ +0x1C BoxStatus = 7
+        ↓
+3개 Box 수령 상태
+```
+
+사용자 실제 상태와도:
+
+```text
+1챕터: 3개 오픈 → 0b111 = 7
+2챕터: 1개 오픈 → 0b001 = 1
+```
+
+로 일치한다.
+
+### 57.6 결론
+
+**기능 분석 순서는 Main Bootstrap → 상태 저장 → Main UI → Chapter/Dungeon → Reward 순서가 맞다.**
+
+현재까지의 Chapter/BoxStatus 추적은 기술적으로 유효하지만 전체 Protocol Contract를 만드는 관점에서는 후반부 기능을 먼저 깊게 판 것이다.
+
+따라서 다음 작업부터는 **로그인 직후 → AllInOne/Bootstrap → 캐릭터/재화/인벤토리 → Main 화면**을 먼저 확정하고, 그 이후 Chapter/BoxStatus로 다시 내려간다.
