@@ -1001,6 +1001,26 @@ async function main() {
                     console.log('[NET_RESP] TryHandleResponse leave ' + (Date.now() - this.t) + 'ms');
                 }
             });
+            // TryHandleResponse static branch: +0x238 loads sp+0x44,
+            // and status >= 5 skips DataCenter.ProccessRequestRes.
+            try {
+                const statusPc = m.fnPtr.add(0x238);
+                Interceptor.attach(statusPc, {
+                    onEnter() {
+                        try {
+                            const status = this.context.sp.add(0x44).readU8();
+                            console.log('[NET_RESP_STATUS] status=' + status +
+                                ' route=' + (status < 5 ? 'ProccessRequestRes' : 'skip'));
+                        } catch (e) {
+                            console.log('[NET_RESP_STATUS] read failed: ' + e.message);
+                        }
+                    }
+                });
+                console.log('[+] Hooking TryHandleResponse status branch @ ' + statusPc);
+                hookCount++;
+            } catch (e) {
+                console.log('[!] TryHandleResponse status hook failed: ' + e.message);
+            }
             hookCount++;
         }
         if (!thrs.length) console.log('[!] NetworkCenter.TryHandleResponse not found');
