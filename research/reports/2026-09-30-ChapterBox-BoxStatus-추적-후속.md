@@ -3298,3 +3298,72 @@ Git:
 - commit 260af582284d0a253487ec4d4816ebf9eb6f7036
 
 다음 실행에서는 BoxStatus 실험을 바로 재현할 필요 없이 일반 로그인/인게임 응답만으로도 [CHAPTERS_RAW]가 나오는지 먼저 확인한다.
+
+
+## 52. 2026-10-01 — OpInfo.Chapters Dictionary 내부 추적 단계 진입
+
+### 52.1 현재 확인된 runtime 연결
+
+기존 v4.10 실행 결과로 다음까지 확인됐다.
+
+```
+TryHandleResponse
+  ↓ status=4
+ProccessRequestRes
+  ↓ arg[1]
+OpInfo
+  ↓ +0xC0
+Chapters collection @ 0x7351b05840
+```
+
+따라서 이제 응답 객체와 Chapters collection 사이의 경계는 runtime에서 확인됐다.
+
+### 52.2 이번 단계의 핵심
+
+Chapters가 실제 Dictionary 객체라면 내부에서 다음을 확인해야 한다.
+
+```
+Dictionary
+ ├─ key
+ └─ value
+      ↓
+   ProtoChapter
+      ├─ +0x10 ChapterId
+      └─ +0x1C BoxStatus
+```
+
+특히 key 또는 ProtoChapter의 ChapterId가 `20000000`인지 확인한다.
+
+### 52.3 주의점
+
+Dictionary 내부 레이아웃을 추정해서 바로 결론 내리지 않는다.
+
+IL2CPP generic Dictionary의 실제 런타임 layout과 현재 Unity/IL2CPP 버전을 먼저 확인하고, 잘못된 offset으로 메모리를 읽어 crash/오판하는 것을 피한다.
+
+따라서 다음 runtime hook의 목적은:
+
+1. +0xC0 객체의 concrete type 확인
+2. Dictionary 여부 확인
+3. count/entries 확인
+4. entry의 key/value 확인
+5. value가 ProtoChapter인지 확인
+6. `ChapterId=20000000`, `BoxStatus` 연결
+
+순서다.
+
+### 52.4 현재 상태
+
+```
+ProccessRequestRes → OpInfo                 runtime 확정
+OpInfo +0xC0 → Chapters collection          runtime 확정
+Chapters concrete type                      다음 확인
+Dictionary key/value → ProtoChapter         미확정
+ChapterId 20000000 → ProtoChapter            미확정
+ProtoChapter +0x1C → BoxStatus               확정
+```
+
+### 52.5 다음 작업
+
+`get_Chapters`의 기존 hook을 중복 설치하지 않고, 해당 return 객체를 대상으로 concrete type/Dictionary 구조를 관찰한다.
+
+Dictionary가 확인되면 key/value를 출력하고, value 객체에 대해 기존 `ProtoChapter +0x10/+0x1C` 관찰을 연결한다.
