@@ -3275,3 +3275,26 @@ ProtoChapter +0x1C 실제 write 지점          미확정
 3. collection 내부 ProtoChapter 객체 식별
 4. 각 ProtoChapter `+0x1C` 값과 PCAP의 1/5/7 상태 비교
 5. 가능하면 Box 1→3→2 실험 중 동일 Chapter 객체의 주소와 BoxStatus 변화를 연결
+
+
+## 51. 2026-10-01 — OpInfo.Chapters runtime 직접 관찰 hook 추가
+
+정적 Listing에서는 get_Chapters의 Calls IN이 없어 호출 경로를 확보하지 못했다.
+
+따라서 research/justice_hook.js v4.10에 다음 관찰점을 추가했다.
+
+1. DataCenter.ProccessRequestRes 진입 시 response +0xC0 직접 읽기
+2. OpInfo.get_Chapters() runtime hook
+
+출력 형식:
+
+    [CHAPTERS_RAW] OpInfo=... +0xc0=...
+    [CHAPTERS_GET] OpInfo=... ret=...
+
+목적은 먼저 +0xC0의 실제 concrete 객체 타입을 확인하는 것이다. 이후 해당 객체가 어떤 collection인지 판별하고, 내부의 ProtoChapter 객체를 추적한다.
+
+Git:
+- research/justice_hook.js v4.10
+- commit 260af582284d0a253487ec4d4816ebf9eb6f7036
+
+다음 실행에서는 BoxStatus 실험을 바로 재현할 필요 없이 일반 로그인/인게임 응답만으로도 [CHAPTERS_RAW]가 나오는지 먼저 확인한다.
