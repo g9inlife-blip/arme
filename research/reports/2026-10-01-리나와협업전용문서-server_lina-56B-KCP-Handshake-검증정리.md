@@ -197,3 +197,149 @@ Handshake2
 - `arme`: Ghidra/PCAP/기존 연구 결과 참고 대상
 - 본 문서: 두 저장소의 분석 결과를 연결하는 **리나와협업전용문서**
 - `arme`의 기존 분석문서는 변경하지 않는다.
+
+
+## 8. 2026-10-01 추가 정적분석 — 56B 응답 가설 정정
+
+### 핵심 확정
+
+`KCPTube$$Poll @ 015b0094`의 흐름을 확인한 결과:
+
+```
+Socket.Receive
+   ↓
+수신 데이터 길이/상태 판정
+   ↓
+Handshake2 @ 015b1f68
+```
+
+으로 들어간다.
+
+그리고 `Handshake2 @ 015b1f68` 내부에는:
+
+```
+packet + 0x11 → UInt64 → peer public #1
+packet + 0x19 → UInt64 → peer public #2
+
+private #1 @ this+0x58
+private #2 @ this+0x60
+
+Secret #1
+Secret #2
+
+→ Key 16 bytes
+→ KCP 생성
+→ set_kcp
+→ KCP NoDelay
+→ WndSize
+→ set_State(3)
+```
+
+순서가 확인된다.
+
+중요하게도 **Handshake2 내부에는 `KCPTube.Output` 또는 `Socket.Send` 호출이 없다.**
+
+따라서 현재 `server_lina/app/kcp/server.py`의:
+
+```python
+# Handshake2 응답 (56B, 에코)
+resp = bytearray(56)
+...
+conn.send(bytes(resp))
+```
+
+은 현재까지 확인된 클라이언트 코드 흐름과 직접 충돌한다.
+
+### 9. 현재 56B 문제의 방향 전환
+
+기존에는:
+
+> 56B를 받은 서버가 올바른 56B 응답을 만들어야 한다.
+
+고 가정했지만, 현재 Ghidra 정적분석 결과는:
+
+> **56B는 서버가 응답해야 할 packet이 아니라 클라이언트가 서버로 보내는 Handshake2 입력일 가능성이 매우 높다.**
+
+즉 실제 흐름은 다음에 가깝다.
+
+```
+Client
+  │
+  │ Handshake1
+  ▼
+Server
+  │
+  │ Handshake1 response
+  ▼
+Client
+  │
+  │ Handshake2 (56B)
+  ▼
+Server
+  │
+  ├─ +0x11 public #1
+  ├─ +0x19 public #2
+  ├─ DH Secret #1
+  ├─ DH Secret #2
+  ├─ 16B Key 생성
+  ├─ KCP 생성
+  └─ State = 3
+       ↓
+    이후 KCP 통신
+```
+
+### 10. server_lina에 대한 직접적인 영향
+
+현재 구현의 Handshake2 처리:
+
+```56B 수신
+→ public #1만 DH
+→ 56B 에코 응답
+→ 이후 recv 대기
+```
+
+은 다음 두 가지가 동시에 잘못될 가능성이 있다.
+
+1. public #2를 DH 계산에 사용하지 않음
+2. 존재하지 않는 56B 서버 응답을 전송함
+
+따라서 **56B 응답 형식을 계속 추측해서 수정하는 작업은 일단 중단하는 것이 맞다.**
+
+### 11. 다음 구현 검증 대상
+
+이제 확인해야 할 것은 56B response가 아니라 **Handshake1 server response**다.
+
+우선 다음을 정확히 비교한다.
+
+- 원본 PCAP의 Client Handshake1
+- 원본 PCAP의 Server Handshake1 response
+- `KCPTube.Handshake1 @ 015aff18`에서 생성하는 byte 배열
+- `KCPTube.Output @ 015b21c4`가 실제 Socket.Send하는 길이
+- 그 결과 Client가 보내는 56B Handshake2
+- Server가 56B를 받은 뒤 보내야 하는 것이 실제로 없는지
+
+특히 `Handshake1`은 `DH64.KeyPair`를 두 번 호출하고, 두 public 값을 packet에 넣는 구조가 확인된다.
+
+### 12. 현재 결론
+
+**56B 서버 응답 문제라는 기존 가설은 폐기하고, 56B는 Handshake2 client→server 입력으로 취급한다.**
+
+현재 server_lina의 가장 먼저 수정/검증할 대상은:
+
+```
+Handshake1 response
+      ↓
+Client Handshake2 56B
+      ↓
+Server DH64 #1/#2
+      ↓
+16B session Key
+      ↓
+KCP State 3
+      ↓
+첫 KCP packet
+```
+
+이다.
+
+단, 실제 server_lina 코드는 아직 수정하지 않는다. 다음 단계에서 PCAP의 Handshake1 response와 Ghidra의 `Handshake1/Output`을 1:1 비교하여 정확한 서버 응답을 확정한다.
