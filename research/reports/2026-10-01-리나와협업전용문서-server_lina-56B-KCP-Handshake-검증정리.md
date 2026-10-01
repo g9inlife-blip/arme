@@ -343,3 +343,51 @@ KCP State 3
 이다.
 
 단, 실제 server_lina 코드는 아직 수정하지 않는다. 다음 단계에서 PCAP의 Handshake1 response와 Ghidra의 `Handshake1/Output`을 1:1 비교하여 정확한 서버 응답을 확정한다.
+
+
+## 13. Handshake1 응답까지 대조한 결과
+
+PCAP 기준 37B 서버 응답은 다음 구조로 정리되어 있다.
+
+| Offset | Size | 의미 |
+|---|---:|---|
+| 0x00 | 8 | zero |
+| 0x08 | 4 | length = 0x19 |
+| 0x0C | 1 | marker = 0x01 |
+| 0x0D | 8 | TCPConvID |
+| 0x15 | 8 | Server DH public #1 |
+| 0x1D | 8 | Server DH public #2 |
+
+server_lina의 Handshake1 응답은 이 구조를 상당 부분 따르지만, +0x15에는 현재 생성한 public #1을 넣고 +0x1D에는 PCAP 고정값 f946af9e83fde980을 넣는다.
+
+즉 **Server public #2가 현재 연결의 DH key pair에서 생성된 값인지 보장되지 않는다.**
+
+Ghidra의 KCPTube.Handshake1은 DH64.KeyPair를 두 번 호출하여 private #1/#2와 public #1/#2를 생성한다. 따라서 서버 구현도 고정 PCAP 값을 사용하는 대신 동일 연결에서 생성한 public #1/#2를 37B 응답에 대응시켜야 한다.
+
+## 14. 현재 서버 구현과 Ghidra 흐름
+
+현재 server_lina:
+
+Handshake1 → public #1 실제 생성 + public #2 PCAP 고정값
+
+Handshake2 56B → client public #1만 사용 → 56B 응답 에코
+
+Ghidra 기준:
+
+Handshake1 → DH pair #1/#2 생성 → server public #1/#2 전송
+
+Handshake2 56B → client public #1 @ +0x11 / client public #2 @ +0x19 → Secret #1/#2 → 16B Key → KCP 생성 → State=3
+
+따라서 현재 가장 우선적으로 확인할 것은 56B 응답 생성 코드가 아니라 Handshake1의 두 번째 public과 Handshake2의 두 번째 DH 계산이다.
+
+## 15. 구현 변경은 아직 하지 않음
+
+다음 실제 테스트는 한 번에 하나씩 검증한다.
+
+1. Handshake1의 +0x1D를 현재 생성 public #2로 교체
+2. Handshake2에서 +0x19를 두 번째 DH 입력으로 사용
+3. 56B 서버 응답 전송 제거
+4. 생성된 16B Key 확인
+5. State=3 이후 첫 KCP packet 수신 여부 확인
+
+이 작업은 server_lina에서만 수행하며, 이 협업 문서 외의 arme 기존 분석문서는 수정하지 않는다.
