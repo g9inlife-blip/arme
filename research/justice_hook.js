@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.13
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.16
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -1137,6 +1137,45 @@ function inspectChaptersDictionary(dictPtr) {
         console.log('[CHAPTERS_ENUM_ERR] ' + e.message);
     }
 }
+
+// v4.16: identify the actual transport used by post-login/in-game responses.
+    // Observation only: no packet contents or authentication material are printed.
+    try {
+        const transportSpecs = [
+            ['Alioth.S1.Net.TCPTube', 'TryRead'],
+            ['Alioth.S1.Net.TCPTube', 'TryOutput'],
+            ['Alioth.S1.Net.TCPTube', 'Update'],
+            ['Alioth.S1.Net.KCPTube', 'TryRead'],
+            ['Alioth.S1.Net.KCPTube', 'TryOutput'],
+            ['Alioth.S1.Net.KCPTube', 'Update'],
+            ['Alioth.S1.Net.KCPTube', 'Send'],
+            ['Alioth.S1.Net.KCPTube', 'Receive']
+        ];
+        for (const spec of transportSpecs) {
+            const ms = findMethodsAnywhereByName(spec[0], spec[1]);
+            for (const m of ms) {
+                console.log('[+] Hooking TRANSPORT ' + spec[0] + '.' + spec[1] + '(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+                Interceptor.attach(m.fnPtr, {
+                    onEnter(args) {
+                        this.t0 = Date.now();
+                        this.transport = spec[0].split('.').pop();
+                        this.method = spec[1];
+                        console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' enter this=' + describeObjectPtr(args[0]));
+                    },
+                    onLeave(retval) {
+                        try {
+                            let rv = '?';
+                            if (retval && typeof retval.toInt32 === 'function') rv = retval.toInt32();
+                            console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' leave ret=' + rv + ' ' + (Date.now() - this.t0) + 'ms');
+                        } catch (e) {}
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch (e) {
+        console.log('[!] Transport hook setup failed: ' + e.message);
+    }
 
 // v4.9: network response processing observation.
     // TryHandleResponse owns the queued response object locally; its invocation
