@@ -3031,3 +3031,81 @@ setter 호출 여부 확인
 
 따라서 다음 실행에서는 Box 1/3/2 순서의 기존 실험과 동일한 상태 변화를 재현하면 가장 유용하다.
 
+
+
+## 48. 2026-10-01 — runtime response-path 관찰 hook 추가
+
+### 48.1 목적
+
+기존 ProtoChapter.get_BoxStatus/set_BoxStatus hook에서 실제 호출이 관찰되지 않았고, 로그인 이후 일반 게임 활동에서 HTTP 관련 로그도 제한적으로 발생했다. 따라서 BoxStatus 자체를 계속 추적하기 전에 **응답 처리 경로가 실제 런타임에서 실행되는지** 확인하도록 justice_hook.js에 다음 두 관찰점을 추가했다.
+
+NetworkCenter.TryHandleResponse
+DataCenter.ProccessRequestRes
+
+### 48.2 정적 근거
+
+NetworkCenter$$TryHandleResponse @ 015b41e0 Listing에서:
+
+015b442c  ldr x1,[sp,#0x48]
+015b4430  mov x2,xzr
+015b4434  bl  0x016e203c
+
+가 확인된다. 즉 TryHandleResponse 내부의 response object가 DataCenter.ProccessRequestRes의 arg[1]로 전달된다.
+
+따라서 runtime에서는:
+
+TryHandleResponse 호출
+        ↓
+ProccessRequestRes 호출
+        ↓
+arg[1] = 실제 response object
+
+를 직접 관찰한다.
+
+### 48.3 justice_hook v4.9 변경
+
+research/justice_hook.js에 추가:
+
+- NetworkCenter.TryHandleResponse 이름 기반 runtime hook
+- DataCenter.ProccessRequestRes 이름 기반 runtime hook
+- method overload의 실제 parameter type 출력
+- TryHandleResponse의 this 객체 주소/타입 출력
+- ProccessRequestRes의 this, arg[1] response, arg[2] 관찰
+- 기존 ProtoChapter BoxStatus getter/setter hook 유지
+- 시작 버전을 v4.9로 갱신
+
+ProccessRequestRes는 static Listing에서 x1이 response/OpInfo 계열 입력으로 사용되는 것이 확인되어 arg[1]을 핵심 관찰 대상으로 삼는다.
+
+### 48.4 다음 런타임 판별 기준
+
+A. TryHandleResponse가 발생하지 않음
+→ 현재 runtime hook 대상/네트워크 경로가 실제 게임 요청 경로와 다름
+
+B. TryHandleResponse 발생 + ProccessRequestRes 발생
+→ 응답 처리 경로는 실제 실행됨
+→ arg[1] concrete type/주소를 다음 추적 기준으로 사용
+
+C. ProccessRequestRes 발생 + BOXSTATUS_GET 발생
+→ Chapter UI/상태 소비 시점과 response 처리 시점을 주소 기준으로 비교
+
+D. ProccessRequestRes 발생 + BOXSTATUS_GET 없음
+→ 해당 응답이 Chapter BoxStatus를 직접 소비하지 않거나, 다른 helper에서 객체가 채워지는 경로를 우선 추적
+
+E. set_BoxStatus 없음
+→ setter 호출 방식이 아니라 direct backing-field write 가능성을 유지
+
+이번 단계의 hook 추가 자체는 **BoxStatus write 경로를 확정하지 않는다.** 목적은 먼저 Deserialize → TryHandleResponse → ProccessRequestRes 런타임 경계를 실제 실행으로 확인하는 것이다.
+
+### 48.5 Git
+
+- research/justice_hook.js v4.9
+- commit: ba2c0515e27c7d942915dca5ad01a36dfa7210b3
+
+현재 상태:
+
+ProtoChapter +0x1C = BoxStatus             확정
+0x14 response f4 = BoxStatus bitmask       확정
+Deserialize → TryHandleResponse            정적 확정
+TryHandleResponse → ProccessRequestRes     정적 확정
+두 함수 실제 runtime 실행 여부            미확인
+0x14 response → ProtoChapter +0x1C write   미확정
