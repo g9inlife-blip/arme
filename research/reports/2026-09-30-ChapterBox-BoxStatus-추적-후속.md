@@ -3173,3 +3173,105 @@ TryHandleResponse → ProccessRequestRes 조건   정적 확인
 ProccessRequestRes runtime 실행               아직 미확인
 status별 실제 routing                         다음 실행에서 확인
 ```
+
+
+## 50. 2026-10-01 — status=4 및 ProccessRequestRes runtime 경로 확정
+
+### 50.1 runtime 확인
+
+실제 Frida 실행에서 다음 순서가 반복 관찰됐다.
+
+```text
+[NET_RESP] TryHandleResponse enter
+[NET_RESP_STATUS] status=4 route=ProccessRequestRes
+[NET_RESP] ProccessRequestRes enter
+  this=DataCenter@...
+  response=OpInfo@...
+  arg2=0x0
+[NET_RESP] ProccessRequestRes leave
+[NET_RESP] TryHandleResponse leave
+```
+
+따라서 이전의 미확정 상태였던:
+
+```text
+TryHandleResponse
+  └─ status < 5
+       └─ ProccessRequestRes
+            └─ arg[1] = OpInfo
+```
+
+가 runtime에서 직접 확인됐다.
+
+특히 `status=4`이고 `response=OpInfo@`로 확인되므로, 현재 실행의 일반 데이터 응답은 실제 `DataCenter.ProccessRequestRes(OpInfo)` 경로로 들어간다.
+
+### 50.2 여러 OpInfo 객체 확인
+
+동일 실행에서 다음과 같이 서로 다른 response 객체가 반복 생성/전달됐다.
+
+```text
+OpInfo@0x75d43ae5c0
+OpInfo@0x75dd6c8730
+OpInfo@0x75d3d67b80
+```
+
+따라서 특정 단일 OpInfo 인스턴스가 계속 재사용되는 것으로 단정하지 않고, 각 응답별 OpInfo 객체가 생성/전달되는 것으로 취급한다.
+
+### 50.3 BoxStatus 추적의 다음 단계
+
+현재까지:
+
+```text
+network response
+ → TryHandleResponse
+ → status=4
+ → ProccessRequestRes(OpInfo)
+ → OpInfo +0xC0 = Chapters
+ → ProtoChapter +0x1C = BoxStatus
+```
+
+앞의 세 단계는 runtime까지 확인됐다.
+
+남은 핵심은:
+
+```text
+ProccessRequestRes의 response=OpInfo
+        ↓
+OpInfo.Chapters(+0xC0)
+        ↓
+ProtoChapter 객체
+        ↓
+ProtoChapter +0x1C
+```
+
+연결이다.
+
+다음 runtime hook에서는 `ProccessRequestRes` 진입 시 `response=OpInfo`의 `+0xC0` 값을 읽고, collection 객체가 존재하는지 먼저 확인한다. 이후 collection 내부의 ProtoChapter 객체와 `+0x1C` 값을 관찰한다.
+
+### 50.4 HTTP 로그 해석
+
+동일 실행에서 AssetBundle 다운로드의 `HTTP_SEND` 로그가 있었으나 method/body가 비어 있었다.
+
+이는 현재 BoxStatus 추적과 직접 관계가 없으며, 기존 HTTP_SEND 상태 추출의 한계로 취급한다. 네트워크 응답 처리 경로는 이번 runtime 결과로 별도로 확정됐으므로 HTTP_SEND 로그를 다음 단계의 핵심 증거로 사용하지 않는다.
+
+### 50.5 현재 상태
+
+```text
+ProtoChapter +0x1C = BoxStatus             확정
+0x14 response f4 = BoxStatus bitmask       확정
+Deserialize → TryHandleResponse            정적 확정
+TryHandleResponse → ProccessRequestRes     정적 + runtime 확정
+status=4 → ProccessRequestRes              runtime 확정
+ProccessRequestRes arg[1] = OpInfo         runtime 확정
+OpInfo +0xC0 = Chapters                    확정
+OpInfo.Chapters → ProtoChapter              미확정
+ProtoChapter +0x1C 실제 write 지점          미확정
+```
+
+### 50.6 다음 작업
+
+1. ProccessRequestRes runtime에서 `response +0xC0` 관찰
+2. Chapters collection의 실제 타입/주소 확인
+3. collection 내부 ProtoChapter 객체 식별
+4. 각 ProtoChapter `+0x1C` 값과 PCAP의 1/5/7 상태 비교
+5. 가능하면 Box 1→3→2 실험 중 동일 Chapter 객체의 주소와 BoxStatus 변화를 연결
