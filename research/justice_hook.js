@@ -1215,6 +1215,7 @@ function inspectChaptersDictionary(dictPtr) {
     // OpInfo layout: +0x14=OpCode. Dump response sequence and key state pointers
     // at ProccessRequestRes entry so the first post-login response can be identified.
     let responseSeq = 0;
+    let bootstrapDumped = false;
     try {
         const prs = findMethodsAnywhereByName('DataCenter', 'ProccessRequestRes');
         for (const m of prs) {
