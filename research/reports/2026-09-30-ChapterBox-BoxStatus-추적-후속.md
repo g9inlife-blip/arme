@@ -3455,3 +3455,83 @@ ProtoChapter +0x1C = BoxStatus      확정
 InitChapters 본문                   Git export 미확보
 LayChapterItem 본문                 Git export 미확보
 ```
+
+## 54. 2026-10-01 — InitChapters/LayChapterItem 본문 확보 및 Chapters Dictionary 경로 확정
+
+사용자가 제공한 Ghidra Listing으로 기존에 미확보였던 두 함수 본문을 직접 확인했다.
+
+### 54.1 BattleMapMono::InitChapters
+
+`BattleMapMono$$InitChapters @ 00e4e080`에서 다음이 확인된다.
+
+```
+DataCenter.Instance
+  +0x48
+    ↓
+Dictionary<int, ProtoChapter>
+```
+
+실제 Listing에서 `Dictionary<int, ProtoChapter>.GetEnumerator()`, `ContainsKey()`, `DataCenter.Instance`, `DataCenter +0x48`가 함께 사용된다.
+
+또한 `DataCache.LastChapter`를 key로 사용하여 `Dictionary<int, ProtoChapter>.ContainsKey()`를 수행한다.
+
+### 54.2 BattleMapMono::LayChapterItem
+
+`BattleMapMono$$LayChapterItem @ 00e4f918`에서는 ChapterData의 ID를 key로 하여 동일 Dictionary에서 `ProtoChapter`를 가져오는 경로가 직접 확인된다.
+
+```
+ChapterData
+  ↓ BaseData.get_id()
+  ↓
+DataCenter.Instance + 0x48
+  ↓ Dictionary<int, ProtoChapter>.get_Item(id)
+  ↓ ProtoChapter
+```
+
+그리고 가져온 ProtoChapter에 대해 `ProtoChapter$$IsBoxReceived(lVar6, 1 << uVar14)`를 호출한다.
+
+동일 객체에서 `*(int *)(lVar6 + 0x18)`도 직접 읽으므로 ProtoChapter의 +0x18 필드가 Chapter UI의 보상 조건 계산에 사용되는 것도 확인된다.
+
+### 54.3 현재 객체 관계
+
+```
+DataCenter
+ └─ +0x48
+     Dictionary<int, ProtoChapter>
+       ├─ key   = ChapterData ID
+       └─ value = ProtoChapter
+                    ├─ +0x10 ChapterId
+                    ├─ +0x18 Chapter 관련 상태값
+                    └─ +0x1C BoxStatus
+```
+
+따라서 기존에 미확정이었던 `Chapters concrete type`과 `Dictionary key/value → ProtoChapter`가 정적으로 확정됐다.
+
+`ChapterId=20000000`은 아직 실제 runtime key/value에서 확인하지 않았다.
+
+### 54.4 justice_hook.js 현재 버전
+
+Git 현재 기준 `research/justice_hook.js`는 v4.11로 갱신했다.
+
+기존 `OpInfo.get_Chapters` hook을 중복 설치하지 않고 반환 객체에 concrete class name, 객체 주소, `_count` field offset/value를 출력하도록 확장했다.
+
+출력:
+
+```
+[CHAPTERS_GET] ...
+[CHAPTERS_DICT] type=...
+[CHAPTERS_DICT] _count@+0x...=...
+```
+
+Git commit:
+`f651b75e392e8b2740c3f2a5fee70969dd40d397`
+
+### 54.5 다음 런타임 작업
+
+Dictionary raw entry layout은 아직 추정하지 않는다.
+
+다음 실행에서 먼저 `[CHAPTERS_DICT] type=Dictionary...`와 `_count`를 확인한다.
+
+그 후 concrete Dictionary의 `_entries` field와 Entry generic layout을 runtime metadata로 확인하고 `key → ProtoChapter* → +0x10 ChapterId → +0x1C BoxStatus`를 연결한다.
+
+최종 목표는 `ChapterId=20000000`에 해당하는 ProtoChapter 객체 주소와 BoxStatus 값을 직접 확인하는 것이다.
