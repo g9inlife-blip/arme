@@ -612,7 +612,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.9 starting...');
+    console.log('[*] justice_hook v4.10 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -1092,6 +1092,24 @@ async function main() {
             console.log('[+] Hooking ProtoChapter.set_BoxStatus @ ' + bsSet.fnPtr);
         } else console.log('[!] ProtoChapter.set_BoxStatus not found');
     } catch (e) { console.log('[!] ProtoChapter BoxStatus hook failed: ' + e.message); }
+
+    // v4.10: observe OpInfo.Chapters directly through the accessor.
+    try {
+        const chGet = findMethodAnywhereExact('Alioth.S1.Common.OpInfo', 'get_Chapters', []);
+        if (chGet) {
+            Interceptor.attach(chGet.fnPtr, {
+                onEnter(args) { this.obj = args[0]; },
+                onLeave(retval) {
+                    try {
+                        console.log('[CHAPTERS_GET] OpInfo=' + this.obj + ' ret=' +
+                            (retval.isNull() ? 'null' : describeObjectPtr(retval)));
+                    } catch (e) { console.log('[CHAPTERS_GET] read failed: ' + e.message); }
+                }
+            });
+            hookCount++;
+            console.log('[+] Hooking OpInfo.get_Chapters @ ' + chGet.fnPtr);
+        } else console.log('[!] OpInfo.get_Chapters not found');
+    } catch (e) { console.log('[!] OpInfo.Chapters hook failed: ' + e.message); }
 
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
