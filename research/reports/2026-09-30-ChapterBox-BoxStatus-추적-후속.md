@@ -3109,3 +3109,67 @@ Deserialize → TryHandleResponse            정적 확정
 TryHandleResponse → ProccessRequestRes     정적 확정
 두 함수 실제 runtime 실행 여부            미확인
 0x14 response → ProtoChapter +0x1C write   미확정
+
+
+## 49. 2026-10-01 — v4.9 runtime 결과 및 status 분기 확인
+
+### 49.1 runtime 결과
+
+실제 실행에서 다음이 확인됐다.
+
+- `NetworkCenter.TryHandleResponse @ 0x7499eb91e0` hook 정상 설치
+- `DataCenter.ProccessRequestRes @ 0x7499fe703c` hook 정상 설치
+- 로그인 이후 `TryHandleResponse`가 반복 호출됨
+- 그러나 같은 실행에서 `ProccessRequestRes` hook은 호출되지 않음
+
+따라서 **응답 처리 루프 자체는 실제 실행 중**이라는 것은 확정됐지만, 모든 응답이 `ProccessRequestRes`로 전달되는 것은 아니다.
+
+### 49.2 정적 분기 원인 확인
+
+`TryHandleResponse @ 015b41e0`에서:
+
+```text
+015b4410  ldr x8,[sp, #0x48]
+015b4414  cbz x8,0x015b42e4
+015b4418  ldrb w20,[sp, #0x44]
+015b441c  cmp w20,#0x5
+015b4420  b.cs 0x015b44ec
+015b442c  ldr x1,[sp, #0x48]
+015b4430  mov x2,xzr
+015b4434  bl 0x016e203c
+```
+
+즉:
+
+```text
+status = sp+0x44
+status >= 5  → ProccessRequestRes 호출 안 함
+status < 5   → ProccessRequestRes 호출
+```
+
+현재 로그만으로는 반복된 `TryHandleResponse`가 어느 status인지 확인할 수 없으므로, 다음 v4.9 후속 수정에서 분기 지점(+0x238)의 `sp+0x44`를 직접 관찰하도록 했다.
+
+### 49.3 다음 실행에서 확인할 것
+
+```text
+[NET_RESP_STATUS] status=0~4
+    → ProccessRequestRes 경로여야 함
+
+[NET_RESP_STATUS] status=5 이상
+    → ProccessRequestRes가 호출되지 않는 것이 정상
+```
+
+특히 로그인/인게임 요청에서 `status < 5`가 실제 발생하는지 확인한다. 발생한다면 그 시점의 `ProccessRequestRes` 호출과 response object 타입을 연결한다.
+
+### 49.4 Git
+
+- 후속 hook commit: `6653112c26dc5d783c71830c8631c975adc8d132`
+
+현재 단계 결론:
+
+```text
+TryHandleResponse runtime 실행                 확인
+TryHandleResponse → ProccessRequestRes 조건   정적 확인
+ProccessRequestRes runtime 실행               아직 미확인
+status별 실제 routing                         다음 실행에서 확인
+```
