@@ -1252,12 +1252,12 @@ function inspectChaptersDictionary(dictPtr) {
                         try {
                             const chapters = response.add(0xc0).readPointer();
                             console.log('[BOOT_STATE] Chapters@+0xc0=' + (chapters.isNull() ? 'null' : describeObjectPtr(chapters)));
-                        } catc
+                        } catch (e) {}
                         if(responseSeq===1 && opcode==='2' && !bootstrapDumped){
                             bootstrapDumped=true;
                             try { dumpBootstrapDict(items,'Items'); } catch(e) {}
                             try { dumpBootstrapDict(chapters,'Chapters'); } catch(e) {}
-                        }h (e) {}
+                        }
                     } catch (e) {
                         console.log('[BOOT_RESP] read failed: ' + e.message);
                     }
