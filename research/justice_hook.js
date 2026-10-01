@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.12
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.13
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -1056,6 +1056,88 @@ function inspectResponseObject(response) {
     }
 }
 
+
+// v4.13: inspect Chapters Dictionary<int, ProtoChapter> entries.
+// Entry layout is validated against runtime Dictionary metadata before reading.
+// IL2CPP Dictionary Entry<int,T>: hashCode(4), next(4), key(4), padding(4), value(8).
+function inspectChaptersDictionary(dictPtr) {
+    try {
+        if (!dictPtr || dictPtr.isNull()) {
+            console.log('[CHAPTERS_ENUM] dict=null');
+            return;
+        }
+        const dklass = api.object_get_class(dictPtr);
+        const dname = api.class_get_name(dklass).readCString();
+        console.log('[CHAPTERS_ENUM] type=' + dname + ' ptr=' + dictPtr);
+
+        const countField = api.class_get_field_from_name(dklass, Memory.allocUtf8String('_count'));
+        const entriesField = api.class_get_field_from_name(dklass, Memory.allocUtf8String('_entries'));
+        if (countField.isNull() || entriesField.isNull()) {
+            console.log('[CHAPTERS_ENUM] missing _count/_entries');
+            return;
+        }
+
+        const countOff = api.field_get_offset(countField);
+        const entriesOff = api.field_get_offset(entriesField);
+        const count = dictPtr.add(countOff).readS32();
+        const entries = dictPtr.add(entriesOff).readPointer();
+
+        console.log('[CHAPTERS_ENUM] _count@+0x' + countOff.toString(16) + '=' + count +
+            ' _entries@+0x' + entriesOff.toString(16) + '=' + entries);
+
+        if (entries.isNull() || count <= 0 || count > 100000) {
+            console.log('[CHAPTERS_ENUM] no usable entries');
+            return;
+        }
+
+        const len = entries.add(24).readU32();
+        console.log('[CHAPTERS_ENUM] entries.length=' + len);
+
+        // Entry<int, ProtoChapter> is 24 bytes on this 64-bit IL2CPP build.
+        const ENTRY_SIZE = 24;
+        const DATA_START = 32;
+        const limit = Math.min(len, 5000);
+        let found = 0;
+
+        for (let i = 0; i < limit; i++) {
+            try {
+                const e = entries.add(DATA_START + i * ENTRY_SIZE);
+                const hash = e.readS32();
+                if (hash < 0) continue;
+
+                const key = e.add(8).readS32();
+                const value = e.add(16).readPointer();
+                if (value.isNull()) continue;
+
+                let cls = '<unknown>';
+                try {
+                    const k = api.object_get_class(value);
+                    if (!k.isNull()) cls = api.class_get_name(k).readCString();
+                } catch (e) {}
+
+                if (key === 20000000 || cls === 'ProtoChapter') {
+                    let chapterId = '<read-failed>';
+                    let boxStatus = '<read-failed>';
+                    try { chapterId = String(value.add(0x10).readS32()); } catch (e) {}
+                    try { boxStatus = String(value.add(0x1c).readS32()); } catch (e) {}
+                    console.log('[CHAPTER_ENTRY] idx=' + i +
+                        ' key=' + key +
+                        ' hash=' + hash +
+                        ' value=' + value +
+                        ' class=' + cls +
+                        ' ChapterId=' + chapterId +
+                        ' BoxStatus=' + boxStatus);
+                    found++;
+                }
+            } catch (e) {}
+        }
+
+        console.log('[CHAPTERS_ENUM_END] scanned=' + limit + ' matches=' + found);
+    } catch (e) {
+        console.log('[CHAPTERS_ENUM_ERR] ' + e.message);
+    }
+}
+
 // v4.9: network response processing observation.
     // TryHandleResponse owns the queued response object locally; its invocation
     // proves the response-processing path is active. ProccessRequestRes receives
@@ -1115,6 +1197,7 @@ function inspectResponseObject(response) {
                     try {
                         const raw = response.add(0xc0).readPointer();
                         console.log('[CHAPTERS_RAW] response=' + response + ' +0xc0=' + (raw.isNull() ? 'null' : describeObjectPtr(raw)));
+                        if (!raw.isNull()) inspectChaptersDictionary(raw);
                     } catch (e) { console.log('[CHAPTERS_RAW] read failed: ' + e.message); }
                 },
                 onLeave(retval) {
