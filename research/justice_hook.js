@@ -1211,7 +1211,7 @@ function inspectChaptersDictionary(dictPtr) {
         console.log('[!] ProccessRequestRes hook failed: ' + e.message);
     }
 
-    // v4.14: login->main bootstrap response correlation.
+    // v4.15: inspect only the first Login(OpCode=2) bootstrap dictionaries.\n    let bootstrapDumped = false;\n    function dumpBootstrapDict(dictPtr, tag) {\n        try {\n            if (!dictPtr || dictPtr.isNull()) { console.log('[BOOT_DICT] '+tag+'=null'); return; }\n            const klass=api.object_get_class(dictPtr);\n            const name=api.class_get_name(klass).readCString();\n            const cf=api.class_get_field_from_name(klass,Memory.allocUtf8String('_count'));\n            const ef=api.class_get_field_from_name(klass,Memory.allocUtf8String('_entries'));\n            if(cf.isNull()||ef.isNull()){console.log('[BOOT_DICT] '+tag+' type='+name+' fields=missing');return;}\n            const countOff=api.field_get_offset(cf), entriesOff=api.field_get_offset(ef);\n            const count=dictPtr.add(countOff).readS32(), entries=dictPtr.add(entriesOff).readPointer();\n            console.log('[BOOT_DICT] '+tag+' type='+name+' count='+count);\n            if(entries.isNull()||count<=0||count>100000)return;\n            const len=entries.add(24).readU32(), limit=Math.min(len,100);\n            for(let i=0;i<limit;i++){try{const e=entries.add(32+i*24),hash=e.readS32();if(hash<0)continue;const key=e.add(8).readS32(),value=e.add(16).readPointer();if(value.isNull())continue;let cls='<unknown>';try{const k=api.object_get_class(value);if(!k.isNull())cls=api.class_get_name(k).readCString();}catch(x){}\n                if(tag==='Chapters' && cls==='ProtoChapter'){let id='?',st='?',pr='?',box='?';try{id=String(value.add(0x10).readS32());}catch(x){}try{st=String(value.add(0x14).readS32());}catch(x){}try{pr=String(value.add(0x18).readS32());}catch(x){}try{box=String(value.add(0x1c).readS32());}catch(x){}console.log('[BOOT_CHAPTER] key='+key+' Id='+id+' Status='+st+' Progress='+pr+' BoxStatus='+box+' ptr='+value);}\n                else if(tag==='Items'){console.log('[BOOT_ITEM] key='+key+' class='+cls+' ptr='+value);}\n            }catch(x){}}\n            console.log('[BOOT_DICT_END] '+tag+' scanned='+limit);\n        }catch(e){console.log('[BOOT_DICT_ERR] '+tag+' '+e.message);}\n    }\n\n    // v4.14: login->main bootstrap response correlation.
     // OpInfo layout: +0x14=OpCode. Dump response sequence and key state pointers
     // at ProccessRequestRes entry so the first post-login response can be identified.
     let responseSeq = 0;
@@ -1252,7 +1252,12 @@ function inspectChaptersDictionary(dictPtr) {
                         try {
                             const chapters = response.add(0xc0).readPointer();
                             console.log('[BOOT_STATE] Chapters@+0xc0=' + (chapters.isNull() ? 'null' : describeObjectPtr(chapters)));
-                        } catch (e) {}
+                        } catc
+                        if(responseSeq===1 && opcode==='2' && !bootstrapDumped){
+                            bootstrapDumped=true;
+                            try { dumpBootstrapDict(items,'Items'); } catch(e) {}
+                            try { dumpBootstrapDict(chapters,'Chapters'); } catch(e) {}
+                        }h (e) {}
                     } catch (e) {
                         console.log('[BOOT_RESP] read failed: ' + e.message);
                     }
