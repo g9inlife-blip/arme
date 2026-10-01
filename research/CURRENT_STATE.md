@@ -296,3 +296,25 @@ Local Server 방식으로 진행했을 때 특정 기능이 오히려 복잡해�
    - 여러 API에서 반복 호출되는 Currency/Inventory/Progress 갱신 함수 식별 → Local Server Transaction 모델의 기준으로 사용
 
 우선순위는 **Bootstrap → 공통 State Mutation → Reward/Event → Gacha/Shop** 순으로 잡는다.
+
+
+## 15. 2026-10-01 Bootstrap / Warehouse 연결 업데이트
+
+### Bootstrap runtime 확정
+- KCP Send request: SerialNumber=66149422, OpCode=2, ReturnCode=0, ret=1
+- KCP TryRead response: SerialNumber=66149422, OpCode=2, ReturnCode=0, ret=1
+- 같은 SerialNumber/OpCode로 송신과 응답이 일치한다.
+- Bootstrap OpInfo에 User/Items/Heros/Weapons/Equiments/Chapters 등 초기 상태가 포함된다.
+- Chapters Dictionary 61개가 runtime에서 확인됐다.
+
+### Warehouse 정적 경로
+- WareHousePanelMono.DemandOpen은 화면 진입/인자 파싱 함수이며 네트워크 request 호출이 확인되지 않았다.
+- RefreshWareHouse → InitData → Show → ShowGoods 경로다.
+- DataCenter.ProccessRequestRes → DataCenter.MergeItem이 Bootstrap Items를 DataCenter +0x78 category cache에 병합한다.
+- WareHousePanelMono.InitData가 DataCenter cache를 필터/정렬해 List를 만든다.
+- ShowGoods가 해당 List를 LoopScrollRect에 바인딩한다.
+
+따라서 현재 조사 우선순위는 새 창고 API를 추측하는 것이 아니라 v4.19 runtime에서 MergeItem 입력 수와 Warehouse List count/객체 타입을 대조하는 것이다.
+
+보고서: research/reports/1001-2026-10-01-메인화면-응답-Chapter-런타임추적-후속.md
+Hook: research/justice_hook.js v4.19
