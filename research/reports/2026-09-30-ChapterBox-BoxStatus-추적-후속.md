@@ -3785,3 +3785,91 @@ ProtoChapter
 현재까지의 Chapter/BoxStatus 추적은 기술적으로 유효하지만 전체 Protocol Contract를 만드는 관점에서는 후반부 기능을 먼저 깊게 판 것이다.
 
 따라서 다음 작업부터는 **로그인 직후 → AllInOne/Bootstrap → 캐릭터/재화/인벤토리 → Main 화면**을 먼저 확정하고, 그 이후 Chapter/BoxStatus로 다시 내려간다.
+
+
+## 58. 로그인 후 메인화면 재화 추적 전환 — 2026-10-01
+
+### 58.1 핵심 정정
+
+초기 가설인 **UserInfo 필드에 Coins가 직접 저장된다**는 흐름은 현재 Listing으로 확정할 수 없다.
+
+UserInfo$$get_Coins @ 00dd2d8c는 내부 필드를 직접 읽지 않고 DataCenter$$GetXCount @ 016defb0를 호출한다.
+
+UserInfo$$get_Coins
+  ↓
+DataCenter Singleton
+  ↓
+DataCenter$$GetXCount
+  ↓
+itemId = 0x029020C1
+
+동일 구조로:
+
+Energy   = itemId 0x029020C3
+Crystals = itemId 0x029020C2
+
+따라서 로그인 직후 메인화면에 표시되는 재화는 **UserInfo 객체의 단순 Coins 필드가 아니라 DataCenter의 아이템/재화 상태에서 조회되는 값**으로 보는 것이 현재 증거에 맞다.
+
+### 58.2 Main UI의 직접 경로
+
+UserInfoPanelMono$$ShowCoin @ 00f7e524의 Calls IN:
+
+- UserInfoPanelMono$$RefreshTopInfos @ 00f7f914
+- UserInfoPanelMono$$PreloadAssetComplete @ 00f7e4b0
+
+ShowCoin 내부에서도 DataCenter$$GetXCount @ 016defb0를 직접 호출한다.
+
+즉 메인 상단 재화 표시의 핵심 경로는:
+
+로그인/초기 응답
+    ↓
+DataCenter state 갱신
+    ↓
+UserInfoPanelMono.RefreshTopInfos
+    ↓
+UserInfoPanelMono.ShowCoin
+    ↓
+DataCenter.GetXCount
+    ↓
+재화 수량
+    ↓
+UI Text
+
+### 58.3 MergeVaryData의 역할 분리
+
+UserInfo$$MergeVaryData @ 00dd3030는 DataCenter$$ProccessRequestRes @ 016e203c에서 호출된다.
+
+Listing상 MergeVaryData는 다음 UserInfo 값들을 variation dictionary에서 병합한다.
+
+- StigmataTimes
+- MetaphysicsTimes
+- Exp
+- Level
+- FCTimes
+- SignInDays
+- SignInRewardDay
+- StepId
+- ExamTimes
+- EquipMax
+- ChargeTotalPerMonth
+- Age
+- ChatChannel
+
+현재 Listing에는 Coins/Crystals/Energy를 직접 병합하는 코드가 없다.
+
+따라서 **UserInfo.MergeVaryData = 재화 저장소 자체**로 연결하면 안 되며, 재화는 별도의 DataCenter item-state 경로를 우선 추적한다.
+
+### 58.4 다음 추적 대상
+
+1. DataCenter$$GetXCount @ 016defb0의 실제 저장 collection별 의미 확정
+2. 로그인 직후 DataCenter$$ProccessRequestRes에서 재화/item response가 어느 Merge 함수로 들어가는지 확인
+3. UserInfoPanelMono$$RefreshTopInfos → ShowCoin 런타임 호출 확인
+4. GetXCount(itemId=0x029020C1) 런타임 값과 메인 화면 표시값 대조
+5. Coins가 갱신되는 초기 response의 OpCode/response class 확정
+6. 이후 동일 경로로 Crystals/Energy/Fragment를 확장
+
+### 58.5 결론
+
+현재 가장 중요한 기준점은 **UserInfo.Coins가 아니라 DataCenter.GetXCount + 재화 itemId**다.
+
+로그인 후 메인화면에서 보이는 재화부터 분석한다는 작업 방향은 유지하되, 다음 단계는 UserInfo가 아니라 **DataCenter의 재화/item state 생성·병합 지점**으로 이동한다.
