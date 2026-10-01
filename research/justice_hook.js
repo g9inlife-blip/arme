@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.17
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.18
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -484,7 +484,7 @@ function describeObjectPtr(obj) {
     }
 }
 
-// v4.17: inspect only the request object's class and opcode-like field.
+// v4.18: add OpInfo.SerialNumber and mark only Send ret=1 as accepted.\n// v4.17: inspect only the request object's class and opcode-like field.
 // Never dump arbitrary request fields, serialized buffers, tokens, or payload bytes.
 function describeKcpSendRequest(obj) {
     try {
@@ -494,6 +494,7 @@ function describeKcpSendRequest(obj) {
         const className = api.class_get_name(klass).readCString();
         let out = 'request=' + className + '@' + obj;
         if (className === 'OpInfo') {
+            try { out += ' SerialNumber=' + obj.add(0x10).readU32(); } catch (e) {}
             try { out += ' OpCode=' + obj.add(0x14).readS32(); } catch (e) {}
             try { out += ' ReturnCode=' + obj.add(0x18).readS32(); } catch (e) {}
             return out;
@@ -1198,8 +1199,10 @@ function inspectChaptersDictionary(dictPtr) {
                         this.method = spec[1];
                         console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' enter this=' + describeObjectPtr(args[0]));
                         if (this.transport === 'KCPTube' && this.method === 'Send') {
+                            this.kcpRequest = args[1];
+                            this.kcpRequestInfo = describeKcpSendRequest(args[1]);
                             console.log('[KCP_SEND_ARGS] signature=(' + m.typeNames.join(', ') + ')' +
-                                ' arg1=' + describeKcpSendRequest(args[1]) +
+                                ' arg1=' + this.kcpRequestInfo +
                                 ' arg2=' + describeObjectPtr(args[2]) +
                                 ' arg3=' + describeObjectPtr(args[3]));
                         }
@@ -1209,6 +1212,9 @@ function inspectChaptersDictionary(dictPtr) {
                             let rv = '?';
                             if (retval && typeof retval.toInt32 === 'function') rv = retval.toInt32();
                             console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' leave ret=' + rv + ' ' + (Date.now() - this.t0) + 'ms');
+                            if (this.transport === 'KCPTube' && this.method === 'Send' && rv === 1) {
+                                console.log('[KCP_SEND_ACCEPTED] ' + (this.kcpRequestInfo || 'request=unknown'));
+                            }
                         } catch (e) {}
                     }
                 });
