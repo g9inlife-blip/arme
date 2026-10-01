@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.11
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.12
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -242,6 +242,9 @@ function initApi() {
         method_get_return_type: new NativeFunction(exp('il2cpp_method_get_return_type'), 'pointer', ['pointer']),
         type_get_name: new NativeFunction(exp('il2cpp_type_get_name'), 'pointer', ['pointer']),
         class_get_field_from_name: new NativeFunction(exp('il2cpp_class_get_field_from_name'), 'pointer', ['pointer', 'pointer']),
+        class_get_fields: new NativeFunction(exp('il2cpp_class_get_fields'), 'pointer', ['pointer', 'pointer']),
+        field_get_name: new NativeFunction(exp('il2cpp_field_get_name'), 'pointer', ['pointer']),
+        field_get_type: new NativeFunction(exp('il2cpp_field_get_type'), 'pointer', ['pointer']),
         field_get_offset: new NativeFunction(exp('il2cpp_field_get_offset'), 'uint32', ['pointer']),
         object_get_class: new NativeFunction(exp('il2cpp_object_get_class'), 'pointer', ['pointer']),
         class_get_name: new NativeFunction(exp('il2cpp_class_get_name'), 'pointer', ['pointer']),
@@ -984,7 +987,76 @@ async function main() {
         }
     } catch (e) { console.log(`[!] ToBase64String hook failed: ${e.message}`); }
 
-    // v4.9: network response processing observation.
+    
+// v4.12: runtime response object inspection.
+// Uses the same IL2CPP resolver/API as the main hook; no separate ELF parser.
+// Dumps the concrete response class and its instance fields once per class.
+const inspectedResponseClasses = new Set();
+
+function safeReadResponseField(obj, off, typeName) {
+    try {
+        const p = obj.add(off);
+        if (typeName.indexOf('System.Int32') >= 0) return String(p.readS32());
+        if (typeName.indexOf('System.UInt32') >= 0) return String(p.readU32());
+        if (typeName.indexOf('System.Int64') >= 0) return String(p.readS64());
+        if (typeName.indexOf('System.UInt64') >= 0) return String(p.readU64());
+        if (typeName.indexOf('System.Boolean') >= 0) return String(p.readU8() !== 0);
+        if (typeName === 'System.Single') return String(p.readFloat());
+        if (typeName === 'System.Double') return String(p.readDouble());
+        const q = p.readPointer();
+        if (q.isNull()) return 'null';
+        return q.toString();
+    } catch (e) {
+        return '<read-failed>';
+    }
+}
+
+function inspectResponseObject(response) {
+    try {
+        if (!response || response.isNull()) {
+            console.log('[RESP_CLASS] response=null');
+            return;
+        }
+        const klass = api.object_get_class(response);
+        if (klass.isNull()) {
+            console.log('[RESP_CLASS] obj=' + response + ' class=<null>');
+            return;
+        }
+        const className = api.class_get_name(klass).readCString();
+        console.log('[RESP_CLASS] obj=' + response + ' class=' + className);
+
+        // Avoid dumping the same class on every response.
+        if (inspectedResponseClasses.has(className)) return;
+        inspectedResponseClasses.add(className);
+
+        const iter = Memory.alloc(Process.pointerSize);
+        iter.writePointer(ptr(0));
+        let count = 0;
+        while (count < 200) {
+            const field = api.class_get_fields(klass, iter);
+            if (field.isNull()) break;
+            const name = api.field_get_name(field).readCString();
+            const off = api.field_get_offset(field);
+            let typeName = '?';
+            try {
+                typeName = api.type_get_name(api.field_get_type(field)).readCString();
+            } catch (e) {}
+            // Skip static/special fields; report plausible instance fields.
+            if (name && off < 0x1000) {
+                console.log('[RESP_FIELD] ' + name +
+                    ' @+0x' + off.toString(16) +
+                    ' type=' + typeName +
+                    ' value=' + safeReadResponseField(response, off, typeName));
+            }
+            count++;
+        }
+        console.log('[RESP_FIELD_END] class=' + className + ' count=' + count);
+    } catch (e) {
+        console.log('[RESP_INSPECT_ERR] ' + e.message);
+    }
+}
+
+// v4.9: network response processing observation.
     // TryHandleResponse owns the queued response object locally; its invocation
     // proves the response-processing path is active. ProccessRequestRes receives
     // the response object as arg[1] (confirmed by static Listing @ 015b41e0).
@@ -1039,6 +1111,7 @@ async function main() {
                         ' this=' + describeObjectPtr(args[0]) +
                         ' response=' + describeObjectPtr(response) +
                         ' arg2=' + (args[2] || ptr(0)));
+                    inspectResponseObject(response);
                     try {
                         const raw = response.add(0xc0).readPointer();
                         console.log('[CHAPTERS_RAW] response=' + response + ' +0xc0=' + (raw.isNull() ? 'null' : describeObjectPtr(raw)));
