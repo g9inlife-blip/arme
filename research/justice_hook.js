@@ -1211,6 +1211,79 @@ function inspectChaptersDictionary(dictPtr) {
         console.log('[!] ProccessRequestRes hook failed: ' + e.message);
     }
 
+    // v4.14: login->main bootstrap response correlation.
+    // OpInfo layout: +0x14=OpCode. Dump response sequence and key state pointers
+    // at ProccessRequestRes entry so the first post-login response can be identified.
+    let responseSeq = 0;
+    try {
+        const prs = findMethodsAnywhereByName('DataCenter', 'ProccessRequestRes');
+        for (const m of prs) {
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    try {
+                        const response = args[1];
+                        responseSeq++;
+                        let opcode = '<read-failed>';
+                        let returnCode = '<read-failed>';
+                        try { opcode = String(response.add(0x14).readU16()); } catch (e) {}
+                        try { returnCode = String(response.add(0x10).readS32()); } catch (e) {}
+                        console.log('[BOOT_RESP] seq=' + responseSeq +
+                            ' response=' + response +
+                            ' class=' + describeObjectPtr(response) +
+                            ' OpCode=' + opcode +
+                            ' ReturnCode=' + returnCode);
+                        try {
+                            const user = response.add(0xb8).readPointer();
+                            console.log('[BOOT_STATE] User@+0xb8=' + (user.isNull() ? 'null' : describeObjectPtr(user)));
+                        } catch (e) {}
+                        try {
+                            const items = response.add(0x98).readPointer();
+                            console.log('[BOOT_STATE] Items@+0x98=' + (items.isNull() ? 'null' : describeObjectPtr(items)));
+                        } catch (e) {}
+                        try {
+                            const heros = response.add(0x90).readPointer();
+                            console.log('[BOOT_STATE] Heros@+0x90=' + (heros.isNull() ? 'null' : describeObjectPtr(heros)));
+                        } catch (e) {}
+                        try {
+                            const chapters = response.add(0xc0).readPointer();
+                            console.log('[BOOT_STATE] Chapters@+0xc0=' + (chapters.isNull() ? 'null' : describeObjectPtr(chapters)));
+                        } catch (e) {}
+                    } catch (e) {
+                        console.log('[BOOT_RESP] read failed: ' + e.message);
+                    }
+                }
+            });
+            hookCount++;
+        }
+    } catch (e) { console.log('[!] Bootstrap response hook failed: ' + e.message); }
+
+    // UserInfo getters are useful after DataCenter state merge to capture the
+    // actual main-screen values without exposing authentication tokens.
+    try {
+        const getterSpecs = [
+            ['Coins', []],
+            ['Energy', []],
+            ['Exp', []],
+            ['Level', []]
+        ];
+        for (const spec of getterSpecs) {
+            const ms = findMethodsAnywhereByName('UserInfo', 'get_' + spec[0]);
+            for (const m of ms) {
+                console.log('[+] Hooking UserInfo.get_' + spec[0] + ' @ ' + m.fnPtr);
+                Interceptor.attach(m.fnPtr, {
+                    onEnter(args) { this.obj = args[0]; },
+                    onLeave(retval) {
+                        try {
+                            const v = typeof retval === 'number' ? retval : retval.toInt32();
+                            console.log('[MAIN_CURRENCY] ' + spec[0] + '=' + v + ' UserInfo=' + this.obj);
+                        } catch (e) {}
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch (e) { console.log('[!] Main currency getter hook failed: ' + e.message); }
+
     // v4.8: ProtoChapter BoxStatus runtime observation.
     // The setter itself is only a 2-instruction backing-field write, so this
     // hook is a control observation point, not proof that protobuf-net calls it.
