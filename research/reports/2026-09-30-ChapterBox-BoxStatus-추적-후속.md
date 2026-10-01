@@ -3873,3 +3873,54 @@ Listing상 MergeVaryData는 다음 UserInfo 값들을 variation dictionary에서
 현재 가장 중요한 기준점은 **UserInfo.Coins가 아니라 DataCenter.GetXCount + 재화 itemId**다.
 
 로그인 후 메인화면에서 보이는 재화부터 분석한다는 작업 방향은 유지하되, 다음 단계는 UserInfo가 아니라 **DataCenter의 재화/item state 생성·병합 지점**으로 이동한다.
+
+## 59. DataCenter 재화 저장소 추적 — 2026-10-01
+
+### 59.1 핵심 확정
+
+`DataCenter$$.ctor @ 016e96c4`에서 `DataCenter +0x78`은 `Dictionary<Int32Enum, object>`로 생성된다.
+
+`DataCenter$$MergeItem @ 016e4700`가 `ProccessRequestRes`에서 직접 호출된다.
+
+`MergeItem`은 `this + 0x78`을 대상으로 `Dictionary<Int32Enum, object>`를 조회/생성하고, 그 내부 객체를 다시 `Dictionary<int, object>` 형태로 사용한다.
+
+따라서 구조는 다음과 같이 좁혀진다.
+
+DataCenter
+  +0x78
+    ↓
+Dictionary<ItemType(enum), Dictionary<int, ItemInfo>>
+    ↓
+itemId
+    ↓
+ItemInfo
+
+### 59.2 GetXCount와 연결
+
+`UserInfo$$get_Coins @ 00dd2d8c`는 `DataCenter$$GetXCount`를 호출하며 itemId `0x029020C1`을 전달한다.
+
+`DataCenter$$GetXCount @ 016defb0`은 `this + 0x78`의 Dictionary를 조회하고 내부 `Dictionary<int, object>`에서 itemId를 검색한다.
+
+따라서 Coins의 실제 저장 위치는 현재 증거상 `DataCenter +0x78 → ItemType → Dictionary<int, ItemInfo> → key 0x029020C1`이다.
+
+### 59.3 로그인 초기 응답과의 연결
+
+`DataCenter$$ProccessRequestRes @ 016e203c`의 Calls OUT에 `MergeItem`, `MergeEquip`, `MergeWeapon`, `MergeSections`, `MergeSectionSnapShot`, `UserInfo$$MergeVaryData`가 동시에 존재한다.
+
+응답이 `ProccessRequestRes`에 들어오면 데이터 종류에 따라 Item/Equip/Weapon/Section/UserInfo 상태가 각각 병합되는 구조다.
+
+재화는 `UserInfo.MergeVaryData`가 아니라 `MergeItem`이 직접적인 저장 갱신 후보로 확정된다.
+
+### 59.4 다음 런타임 확인점
+
+로그인부터 메인 진입까지만 수행하고 다음 순서를 기록한다.
+
+ProccessRequestRes → MergeItem → DataCenter +0x78 → ItemType → Dictionary<int, ItemInfo> → 0x029020C1 → GetXCount → ShowCoin
+
+`MergeItem`의 입력 dictionary에서 실제 `itemId=0x029020C1`가 들어오는 순간을 잡으면 로그인 응답의 실제 재화 데이터 위치와 response class/opcode까지 연결할 수 있다.
+
+### 59.5 현재 결론
+
+이번 단계에서는 `UserInfo.Coins`보다 `MergeItem`의 입력 dictionary와 `DataCenter +0x78`의 ItemType별 dictionary를 추적하는 것이 핵심이다.
+
+`MergeItem → +0x78 → itemId 0x029020C1 → GetXCount → ShowCoin`이 현재 정적 분석의 가장 직접적인 재화 경로다.
