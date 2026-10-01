@@ -3367,3 +3367,91 @@ ProtoChapter +0x1C → BoxStatus               확정
 `get_Chapters`의 기존 hook을 중복 설치하지 않고, 해당 return 객체를 대상으로 concrete type/Dictionary 구조를 관찰한다.
 
 Dictionary가 확인되면 key/value를 출력하고, value 객체에 대해 기존 `ProtoChapter +0x10/+0x1C` 관찰을 연결한다.
+
+
+## 53. 2026-10-01 — Chapters 정적 Listing 재검색 결과
+
+### 53.1 UI 함수 본문 확보 여부
+
+Git의 `research/Ghidra_Listing_txt`를 함수명/주소 기준으로 재검색했다.
+
+```
+BattleMapMono$$InitChapters  @ 00e4e080
+BattleMapMono$$LayChapterItem @ 00e4f918
+```
+
+현재 Git export에서는 두 함수의 독립 Listing 파일/본문을 직접 확보하지 못했다. `UI.txt`와 다른 함수의 Calls IN에서는 해당 주소가 반복 참조되지만, 본문 자체는 검색 결과에 노출되지 않는다.
+
+따라서 이 두 함수 주변 `FUN_00E*`를 현재 Git 텍스트만으로 추정하여 연결하지 않는다.
+
+### 53.2 현재 확인된 Chapter 소비 관계
+
+`ProtoChapter$$IsBoxReceived @ 015acfe8`의 Calls IN:
+
+```
+ChapBoxMono$$LayBoxItem
+BattleMapMono$$LayChapterItem
+BattleSectionMono$$SetStageBoxAndBar
+```
+
+즉 `IsBoxReceived`는 Chapter UI 소비 지점이라는 기존 결론을 유지한다.
+
+### 53.3 get_Chapters 직접 caller
+
+현재 Git 검색에서도:
+
+```
+OpInfo$$get_Chapters @ 015aadec
+```
+
+의 concrete Calls IN은 확보되지 않았다.
+
+따라서 `BattleMapMono$$InitChapters`가 내부적으로 get_Chapters를 호출한다고 현재 단계에서 단정하지 않는다.
+
+### 53.4 다음 추적 방향 변경
+
+정적 UI 본문 확보가 막힌 상태이므로, 현재 가장 정보량이 큰 것은 runtime이다.
+
+우선:
+
+```
+ProccessRequestRes
+  ↓
+response +0xC0
+  ↓
+concrete type
+  ↓
+Dictionary 여부
+  ↓
+entry key/value
+  ↓
+ProtoChapter 주소
+  ↓
++0x10 ChapterId
+  ↓
++0x1C BoxStatus
+```
+
+를 확인한다.
+
+특히 기존 실행에서 확인된:
+
+```
+OpInfo +0xC0 = 0x7351b05840
+```
+
+를 다시 확보하고, 이 주소의 concrete type을 먼저 확인한다.
+
+Dictionary가 맞는 경우에만 내부 entry layout을 적용한다.
+
+### 53.5 현재 상태
+
+```
+OpInfo +0xC0 = Chapters             runtime 확인
+Chapters concrete type              미확정
+Dictionary key/value                미확정
+ChapterId=20000000 연결             미확정
+ProtoChapter +0x1C = BoxStatus      확정
+InitChapters 본문                   Git export 미확보
+LayChapterItem 본문                 Git export 미확보
+```
