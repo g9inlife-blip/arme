@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.16
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.17
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -481,6 +481,42 @@ function describeObjectPtr(obj) {
         return api.class_get_name(klass).readCString() + '@' + obj;
     } catch (e) {
         return 'describe-failed@' + obj;
+    }
+}
+
+// v4.17: inspect only the request object's class and opcode-like field.
+// Never dump arbitrary request fields, serialized buffers, tokens, or payload bytes.
+function describeKcpSendRequest(obj) {
+    try {
+        if (!obj || obj.isNull()) return 'request=null';
+        const klass = api.object_get_class(obj);
+        if (klass.isNull()) return 'request=klass-null@' + obj;
+        const className = api.class_get_name(klass).readCString();
+        let out = 'request=' + className + '@' + obj;
+        if (className === 'OpInfo') {
+            try { out += ' OpCode=' + obj.add(0x14).readS32(); } catch (e) {}
+            try { out += ' ReturnCode=' + obj.add(0x18).readS32(); } catch (e) {}
+            return out;
+        }
+        const iter = Memory.alloc(Process.pointerSize);
+        iter.writePointer(ptr(0));
+        let scanned = 0;
+        while (scanned++ < 128) {
+            const field = api.class_get_fields(klass, iter);
+            if (field.isNull()) break;
+            const name = api.field_get_name(field).readCString();
+            if (!/opcode|operationcode/i.test(name)) continue;
+            const offset = api.field_get_offset(field);
+            let typeName = '?';
+            try { typeName = api.type_get_name(api.field_get_type(field)).readCString(); } catch (e) {}
+            out += ' ' + name + '@+' + offset.toString(16) + ':' + typeName;
+            if (/Int32|OperationCode|Enum/i.test(typeName)) {
+                try { out += '=' + obj.add(offset).readS32(); } catch (e) {}
+            }
+        }
+        return out;
+    } catch (e) {
+        return 'request-inspect-failed:' + e.message;
     }
 }
 
@@ -1138,7 +1174,7 @@ function inspectChaptersDictionary(dictPtr) {
     }
 }
 
-// v4.16: identify the actual transport used by post-login/in-game responses.
+// v4.17: identify KCPTube.Send request class and opcode without dumping payloads.\n// v4.16: identify the actual transport used by post-login/in-game responses.
     // Observation only: no packet contents or authentication material are printed.
     try {
         const transportSpecs = [
@@ -1161,6 +1197,12 @@ function inspectChaptersDictionary(dictPtr) {
                         this.transport = spec[0].split('.').pop();
                         this.method = spec[1];
                         console.log('[TRANSPORT] ' + this.transport + '.' + this.method + ' enter this=' + describeObjectPtr(args[0]));
+                        if (this.transport === 'KCPTube' && this.method === 'Send') {
+                            console.log('[KCP_SEND_ARGS] signature=(' + m.typeNames.join(', ') + ')' +
+                                ' arg1=' + describeKcpSendRequest(args[1]) +
+                                ' arg2=' + describeObjectPtr(args[2]) +
+                                ' arg3=' + describeObjectPtr(args[3]));
+                        }
                     },
                     onLeave(retval) {
                         try {
