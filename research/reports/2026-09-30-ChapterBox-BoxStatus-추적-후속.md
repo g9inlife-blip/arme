@@ -3601,3 +3601,33 @@ field metadata:
     ChapterId=20000000 실제 연결                    미확정
     ProtoChapter +0x1c = BoxStatus                   확정
     실제 BoxStatus write 지점                       미확정
+
+## 56. 2026-10-01 — Chapters Dictionary entry runtime 추적 hook 추가
+
+v4.13에서 `OpInfo +0xc0`의 실제 `Dictionary<int, ProtoChapter>`를 대상으로 `_count`, `_entries`를 IL2CPP field metadata로 조회하고 entry를 순회하도록 확장했다.
+
+runtime 목표:
+
+    Dictionary<int, ProtoChapter>
+      -> _entries
+      -> key
+      -> ProtoChapter*
+      -> ProtoChapter +0x10 ChapterId
+      -> ProtoChapter +0x1c BoxStatus
+
+현재 hook은 `key == 20000000` 또는 실제 value class가 `ProtoChapter`인 entry만 출력하도록 제한했다.
+
+출력 형식:
+
+    [CHAPTERS_ENUM] type=... ptr=...
+    [CHAPTERS_ENUM] _count@...=... _entries@...=...
+    [CHAPTERS_ENUM] entries.length=...
+    [CHAPTER_ENTRY] idx=... key=... value=... ChapterId=... BoxStatus=...
+
+Dictionary Entry는 현재 64-bit IL2CPP의 Entry<int, ProtoChapter> 구조를 기준으로 hashCode(4) / next(4) / key(4) / padding(4) / value(8)로 읽는다. 실제 runtime에서 ProtoChapter class와 ChapterId를 함께 검증하므로 잘못된 layout이면 즉시 구분할 수 있다.
+
+Git:
+- `research/justice_hook.js` v4.13
+- commit: `3f4b76ae9383e939a052eb1053cc8b14e0f86bf7`
+
+다음 실행에서 특히 `key=20000000` 및 `ChapterId=20000000` entry의 `BoxStatus`를 확인한다.
