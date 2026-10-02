@@ -793,3 +793,30 @@ OpenBox 경로는 type 8 보유/표시 및 응답의 구체 item ID 연출을 �
 1. `ProtoUser`의 생성/역직렬화 경로에서 field 번호와 객체 멤버 offset의 대응을 찾는다. 우선 generated parser/serializer 및 setter 참조를 조사한다.
 2. 음수 key의 소비처는 `-29/-28/-27/-23/-22/-20/-33/-36` 각각에 대해 Ghidra 상수 참조와 Dictionary 접근 호출자를 좁혀 추적한다.
 3. type 8 CODE는 XLua getter가 노출된 사실까지만 확인됐다. Lua lookup 구현이 확보되기 전에는 코드 의미를 부여하지 않는다.
+
+
+### 2026-10-02 후속 실측 — ProtoUser 실제 protobuf nested field
+
+PCAP 변환 JSON의 packet group `192~201`에서 OpInfo field 35를 다시 분리했다. field 35는 wire type 2, offset 2520, length 33이며 nested protobuf field 9개가 확인된다.
+
+| protobuf tag | wire | 관측값 |
+|---:|---:|---|
+| 1 | 0 | 871047 |
+| 3 | 0 | 4 |
+| 4 | 0 | 250 |
+| 7 | 0 | 18100000 |
+| 14 | 2 | `g9in2` |
+| 20 | 0 | 3 |
+| 21 | 0 | 3 |
+| 22 | 0 | 10 |
+| 24 | 0 | 1 |
+
+이 캡처에서는 tag 1/3/4의 값이 각각 Id/Level/Exp의 자료형·값 패턴과 일치하고, tag 14는 문자열로서 Name 후보에 해당한다. 다만 현재 Listing에서 확인한 ProtoUser getter의 객체 offset(+0x10/+0x1C/+0x20/+0x2C/+0x30)은 메모리 배치이지 protobuf tag 선언이 아니다. 따라서 tag 1=Id, 3=Level, 4=Exp, 14=Name은 강한 실측 후보로 기록하되, generated parser 또는 setter 호출에서 최종 대조 전까지 확정 매핑으로 승격하지 않는다. tag 7 및 20/21/22/24는 속성명을 아직 연결하지 않는다.
+
+중요: 이 캡처의 ProtoUser 값은 이전 Frida 로그의 계정(871053, Level 53, Exp 1100)과 다른 사용자/시점의 값(871047, Level 4, Exp 250)이다. 값 자체를 동일 세션 데이터처럼 합치지 않는다.
+
+### 다음 단계 — ProtoUser 필드명 확정
+
+1. `ProtoUser.set_*` 전체 Listing에서 필드별 객체 offset을 수집한다.
+2. protobuf parser가 nested tag 7/14/20/21/22/24를 처리할 때 호출하는 setter 또는 backing-field offset을 찾는다.
+3. 확인된 매핑만 UserInfo 속성 및 Main UI 소비처 표에 반영한다.
