@@ -1092,3 +1092,60 @@ Git 기본 branch에서 위 6개 property 이름과 XLua wrapper symbol을 검�
 research/Ghidra_Listing_txt/LU.txt에는 LuaCallCs.Start @ 0105d2b4가 XLua.LuaEnv.DoString @ 010eecf8을 호출하고 LuaCallCs.Update가 LuaEnv.Tick을 호출하는 정적 근거가 있다. 즉 Lua 실행 환경은 확인되지만, 현재 Git에 올라온 Listing만으로는 실행되는 Lua 본문에서 6개 속성을 어디서 읽는지 복원할 수 없다.
 
 **검증 결론:** 현재 정적 증거만으로는 6개 property의 Lua 측 실사용처를 확정할 수 없다. 다음 단계는 실제 실행 시 XLua property getter wrapper 진입을 추적하거나, LuaEnv에 전달되는 DoString 입력/로드된 스크립트 자산을 확보하는 것이다. 코드 검색 결과만으로 “Lua에서 사용하지 않는다”고 결론 내리지 않는다.
+
+## 2026-10-02 추가 검증 — ChatChannel 실제 UI 소비 경로 확인
+
+### 1. DataCenter.ChatChannel 소비처 확정
+
+Git Listing `research/Ghidra_Listing_txt/DA.txt`의 `DataCenter.get_ChatChannel @ 016ddfbc` Calls IN에서 다음 세 호출자를 확인했다.
+- `LiaotianPanelMono.Start @ 00f869d0`
+- `LiaotianPanelMono.OnClickGenggaiOK @ 00f877b0`
+- `LiaotianPanelMono.ChangeChatChannleBack @ 00f86728`
+
+`research/Ghidra_Listing_txt/LI.txt`의 함수 본문으로 재검증한 결과:
+- `Start`: 00f87140에서 `DataCenter.get_ChatChannel`을 호출하고 반환값을 로컬 변수로 저장한 뒤 `Ali.Word` 및 `SetTextExt` UI 표시 경로에 전달한다. 채팅 화면 초기화 시 현재 채널 표시를 구성하는 경로다.
+- `ChangeChatChannleBack`: 00f868b0에서 getter를 호출하고, 반환값을 채널 관련 UI 텍스트/표시 데이터 구성에 사용한다.
+- `OnClickGenggaiOK`: 입력 문자열을 Int32.TryParse한 값과 getter 반환값을 비교한다. 같으면 채널 변경 창을 닫고, 다르면 `ProtocolGame_SendRequest.ChangeChatChannle @ 00de3480`를 호출한다.
+
+따라서 `DataCenter.ChatChannel`은 단순 XLua 노출이 아니라 **채팅 UI 초기 표시, 채널 변경 비교, 변경 요청 제어에 실제 사용되는 native 상태**로 판정한다.
+
+### 2. 수신/저장/소비 흐름
+
+기존 Listing과 이번 UI 호출자 분석을 합치면 다음 경로가 성립한다.
+
+```text
+OpInfo field 21 DictI32 key -34
+  → DataCenter.ProccessRequestRes @ 016e203c
+  → Dictionary ContainsKey(-34) / get_Item(-34)
+  → DataCenter.set_ChatChannel @ 016de024
+  → DataCenter.ChatChannel (+0xD0)
+       ├─ LiaotianPanelMono.Start
+       │    └─ 현재 채널 UI 표시
+       ├─ LiaotianPanelMono.ChangeChatChannleBack
+       │    └─ 채널 변경 후 UI 표시 갱신
+       └─ LiaotianPanelMono.OnClickGenggaiOK
+            ├─ 입력 채널과 현재 채널 비교
+            └─ 다르면 ProtocolGame_SendRequest.ChangeChatChannle
+```
+
+이는 응답값의 수신부터 상태 저장, UI 소비, 후속 Request까지 연결된 정적 증거다. 다만 `ChangeChatChannle` 요청 이후 서버 응답이 어떤 OpInfo/field를 갱신하는지, 변경 성공/실패 시점에 DataCenter 값이 언제 갱신되는지는 별도 Request/Response 추적이 필요하다.
+
+### 3. UserInfo.ChatChannel과 분리 판정 유지
+
+`UserInfo.get_ChatChannel @ 00dd2be0`의 Calls IN은 `UserInfo.MergeVaryData` fallback과 XLua getter wrapper뿐이다. 반면 `DataCenter.get_ChatChannel`은 위 3개 채팅 UI 메서드에서 직접 호출된다.
+
+두 객체의 저장 위치도 다르다.
+- UserInfo.ChatChannel: +0x68, key -34 병합 fallback/저장 경로
+- DataCenter.ChatChannel: +0xD0, ProccessRequestRes 응답 반영 및 채팅 UI 소비 경로
+
+현재까지 UserInfo.ChatChannel을 읽는 별도 native UI/business consumer는 확인하지 못했다. 그러므로 실제 채팅 화면이 참조하는 값은 **DataCenter.ChatChannel**로 구분한다. UserInfo 쪽 값이 중복 보관인지, 다른 Lua/기능용인지, 동기화되는지는 미확정이다.
+
+### 4. 검증 상태 갱신
+
+| 대상 | 기존 판정 | 이번 검증 후 |
+|---|---|---|
+| DataCenter.ChatChannel | 응답 반영만 확인 | 채팅 UI 표시/변경 비교/후속 Request 소비 확인 |
+| UserInfo.ChatChannel | MergeVaryData + XLua 노출 | 동일, native business consumer 미확인 |
+| DictI32 key -34 | 두 객체에 반영 | 객체별 수신/소비 경로 분리 확인 |
+
+다음 추적은 `ProtocolGame_SendRequest.ChangeChatChannle @ 00de3480`의 Request 객체/OpCode와 응답 처리, 이후 `DataCenter.ProccessRequestRes`에서 key -34가 다시 설정되는지 확인하는 것이다.
