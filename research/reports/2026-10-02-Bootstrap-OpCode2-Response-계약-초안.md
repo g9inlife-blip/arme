@@ -1912,3 +1912,101 @@ Git commit: `7e7a52435507cbe14d132617af3a915df5b872ac`
 ```
 
 이 로그를 통해 Home 최초 표시에서 호출되는 함수만 먼저 확정하고, 이어서 해당 함수들이 참조하는 DataCenter getter/Excel config를 매핑한다. Main 첫 화면 데이터 계약이 끝나기 전에는 Dungeon/Battle 분석으로 범위를 확장하지 않는다.
+
+
+## 26. 2026-10-02 v4.25 최신 단독 로그 분석 — Main 소비 확인
+
+대상 로그:
+`research/reports/Log/frida_log_static_신규로갱신되므로기존데이터없이최종본만.txt`
+
+이 파일은 사용자가 새로 갱신한 단독 실행 로그로 분석했다. 이전 로그와 합산하지 않았다.
+
+### 26.1 Bootstrap OpCode=2 응답 확인
+
+이번 로그의 첫 번째 응답:
+- SerialNumber: `141689908`
+- OpCode: `0x2`
+- ReturnCode: `0`
+- User: Id=871053, Level=53, Exp=1100
+- Items Dictionary: 98개
+- Chapters Dictionary: 61개
+- Heros Dictionary: 참조 존재, `HeroInfo.InitHero` 10회 관측
+
+요청은 `KCPTube.Send`에서 같은 SerialNumber/OpCode로 확인됐고, Send ret=1 및 `KCP_SEND_ACCEPTED`가 기록됐다. 응답은 `NetworkCenter.TryHandleResponse → DataCenter.ProccessRequestRes`로 처리됐다.
+
+뒤에 나온 두 번째 응답은 SerialNumber=141689908의 Bootstrap 응답과 다른 객체이며, 로그상 OpCode=0이고 User/Items/Heros/Chapters가 null이다. Bootstrap 본 응답과 혼합하지 않는다.
+
+### 26.2 Main 화면 진입과 직접 소비처
+
+다음 Main 함수 진입이 실제 로그에 남았다.
+
+| Hook | 관측 | 의미 |
+|---|---|---|
+| `HomePanelMono.Start` | 호출됨 | Home 초기화 진입 |
+| `RefreshUIBanner` | 호출됨 | 배너 초기화 |
+| `RefreshWareHouse_Supply` | 호출됨 | 보급/창고 배지 갱신 |
+| `RefreshPoint_TaoFA` | 호출됨 | 토벌 배지 갱신 |
+| `UIRefreshCamp` | 호출됨 | 캠프 관련 UI 갱신 |
+| `RefreshWorldCup` | 이번 로그 호출 없음 | 이 실행에서는 확인 안 됨 |
+| `UserInfoPanelMono.Start` | 이번 로그 호출 없음 | 프로필 패널 초기화는 미관측 |
+
+주의: Hook 진입은 해당 함수가 실행됐다는 증거다. 그 함수가 읽은 모든 내부 필드/목록을 확인했다는 뜻은 아니다.
+
+### 26.3 실제 재화/프로필 상태
+
+이번 실행에서 다음 값이 확인됐다.
+
+| 항목 | 결과 |
+|---|---:|
+| UserInfo.Level | 53 |
+| UserInfo.Exp | 1100 |
+| Energy (43000003) | 134 |
+| Coins (43000001) | 306095 |
+| Crystals (43000002) | 2700 |
+
+세 재화 ID의 BaseData는 모두 found=true이며 runtime type 값은 `0x22`였다. 세 항목 모두 `GetXCount(mode=0)` 반환값이 확인됐다.
+
+이 값들은 해당 실행 시점의 UI/클라이언트 상태 관측값이다. Energy의 서버 권한/소모 경로를 추가로 분석하는 근거로 사용하지 않는다.
+
+### 26.4 Bootstrap State 소비 연결의 현재 판정
+
+| Bootstrap 필드 | 응답/병합 | Main 소비 증거 | 판정 |
+|---|---|---|---|
+| User | 응답 non-null, UserInfo 생성 | Level/Exp getter 관측, Home 프로필 panel hook은 미관측 | 부분 확인 |
+| Items | 98개, MergeItem | Currency GetXCount 및 기존 Warehouse runtime 연결 | 확인 |
+| Heros | 응답 non-null, InitHero 10회 | Home Start 전후 Hero getter 호출 다수 | 부분 확인 |
+| Weapons | 응답 non-null, Merge 경로 기존 확인 | Home Hero의 WeaponInfo getter 관측 | 부분 확인 |
+| Equiments | 응답 non-null, Merge 경로 기존 확인 | Home EquipMax getter의 정적 소비만 확인 | 부분 확인 |
+| Chapters | 61개, ProtoChapter/BoxStatus 열거 | Chapter UI 정적 연결 확인 | 데이터/정적 소비 확인 |
+| Sections | 응답 non-null, MergeSections | Ready/Section UI 정적 소비 확인 | 데이터/정적 소비 확인 |
+| Teams | 응답 non-null | Main 첫 화면 runtime 소비 미확인 | 미확정 |
+| Fashions | 응답 non-null | HeroInfo FashionId getter 관측 | 부분 확인 |
+| Quests | 응답 non-null | Home 토벌/임무 배지 소비 정적 경로 | 부분 확인 |
+| Charges | 응답 non-null | Main 첫 화면 runtime 소비 미확인 | 미확정 |
+| Activities | 응답 non-null | Banner 초기화 runtime 진입, 개별 항목 소비 미관측 | 부분 확인 |
+| DictI32 | 응답 참조 존재 | UserInfo 성장/설정 merge 경로 기존 확인 | 부분 확인 |
+| 기타 null/빈 컬렉션 | 필드 타입 및 값 출력 | Main에서 필요 여부 미확정 | 축소 테스트 필요 |
+
+### 26.5 v4.25 로그에서 드러난 한계
+
+1. 던전 입장 Hook은 설치됐지만 `[DUNGEON_*]` 로그는 하나도 발생하지 않았다. 이번 실행에서 실제 던전 버튼을 누르지 않은 것으로 취급하며, Main 분석에는 사용하지 않는다.
+2. `HomePanelMono.Start`와 일부 Refresh 함수는 관측됐지만, 각 함수가 접근한 DataCenter getter를 전부 기록하지는 않았다.
+3. `UserInfoPanelMono.Start/ShowCoin`는 이번 로그에서 호출되지 않았다. 상단 재화 getter 결과는 다른 UI 접근 시점에서 관측됐을 수 있으므로, ShowCoin의 8개 설정 ID가 모두 실제 화면에 표시됐다고 단정하지 않는다.
+4. Bootstrap 이후 OpCode=0 응답 객체가 별도로 관측됐다. 별도 응답의 요청 SerialNumber/호출 원인은 아직 연결되지 않았다.
+5. AssetBundle HTTP 요청은 게임 상태 OpInfo 요청과 분리한다.
+
+### 26.6 다음 단계 — Main 첫 화면 계약을 마무리
+
+전투 분석은 제외한다. 다음은 Main UI 데이터 소비처에 집중한다.
+
+1. v4.26에서는 `UserInfoPanelMono.Start`, `ShowCoin`, `ShowHeadPanel` 및 Home 초기화 함수에서 읽는 getter를 좁혀 기록한다.
+2. `HomePanelMono.Start` → 배너/캠프/토벌/보급/월드컵/임무/메일 Refresh별로 정적 Calls OUT과 DataCenter getter를 연결한다.
+3. `DataCenter.get_*`, `UserInfo.get_*` 호출은 반환값 전체 dump 대신 getter 이름/호출 횟수/간단한 숫자 값만 기록한다.
+4. Bootstrap 필드마다 Main 첫 화면 필수 / Main 진입 후 lazy-load / 메뉴 진입 시 필요 / 정적 Master Data·Asset으로 최종 분류한다.
+5. 필수 필드가 확정되기 전까지 Response 필드 축소는 하지 않는다.
+
+### 26.7 로그 보안 주의
+
+로그에 로그인 요청의 사용자명/비밀번호 형태의 입력값과 인증 Token이 포함된 HTTP body가 기록돼 있다. 이 보고서에는 해당 값을 복사하지 않는다. Git 저장소 접근 권한을 제한하고, 가능하면 해당 인증정보를 폐기/재발급한 뒤 로그 파일에서는 민감값을 마스킹한다. 이후 Hook에서는 인증 요청 body 및 계정/Token 관련 문자열을 출력하지 않도록 한다.
+
+**결론:** Bootstrap OpCode=2의 응답/병합은 이번 실행에서도 정상 확인됐다. Main 화면의 일부 UI 진입과 재화/Hero 데이터 사용도 확인됐지만, 프로필 상단/배너/배지의 전체 소비 목록과 각 Bootstrap 필드의 필수성은 아직 미완료다. 현재 우선순위는 v4.26 Main 전용 getter 관찰이다.
