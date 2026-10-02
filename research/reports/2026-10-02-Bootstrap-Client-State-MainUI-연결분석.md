@@ -537,3 +537,94 @@ ItemRecord(type=8)
 ```
 
 따라서 Main supply count는 서로 다른 개봉/구성 정의를 가진 type 1/8/9 항목을 하나의 보유 목록으로 집계한다. type 8의 참조 대상이 확인되기 전까지 이를 Itempackage 또는 Itembox로 통일해서 처리하면 안 된다.
+
+
+## 15. UserInfo 생성·초기화와 프로필 UI 진입 경로 (2026-10-03)
+
+기준 Listing: `research/Ghidra_Listing_txt/US.txt`
+
+### 15.1 UserInfo.ctor의 실제 동작
+
+`UserInfo::.ctor @ 00dd2f44` 본문에서 확인한 순서:
+
+1. Object 기본 생성자를 호출한다.
+2. `UserInfo.get_PropertyInfoCache`로 복사 메타데이터를 얻는다.
+3. `DataTool.CopyTo<object,object> @ 01771ddc`에 입력 객체와 새 UserInfo 객체를 전달한다.
+4. 이후 UserInfo class static-fields의 `+0x170` delegate를 검사한다.
+5. delegate가 non-null이면 `XLua.DelegateBridge.__Gen_Delegate_Imp14`로 위임하고, null이면 기본 return한다.
+
+따라서 앞서 확인한 `OpInfo.User(+0x88) → UserInfo.ctor → DataCenter(+0x28)`에서 ctor는 ProtoUser 입력의 속성을 PropertyInfo 기반 복사 함수로 UserInfo에 옮기는 역할을 한다. 다만 CopyTo 내부의 실제 property별 복사 목록과 protobuf tag 번호는 이 ctor Listing만으로 확인되지 않는다.
+
+**중요:** UserInfo ctor에도 별도 static delegate 경로가 있다. 이 경로를 Request의 +0x80/+0x88 또는 NetworkCenter의 delegate와 같은 것으로 취급하지 않는다. 런타임에서 +0x170의 null 여부 및 위임 실행 여부는 아직 미확정이다.
+
+### 15.2 DictI32 vary data 적용 규칙 재확인
+
+`UserInfo.MergeVaryData @ 00dd3030`은 field 21의 Dictionary<int,int>를 받아 key별로 기존 값을 유지하거나 새 값으로 덮어쓴다.
+
+- key가 존재하면 Dictionary의 값을 읽는다.
+- key가 없으면 대응 UserInfo getter로 기존 값을 읽는다.
+- 그 값을 대응 setter에 전달한다.
+
+확인된 key/property 대응은 10절 표와 같다. 이 구조에서 field 21은 UserInfo 전체를 대체하는 객체가 아니라 일부 속성을 선택적으로 갱신하는 patch다. 실제 운영 PCAP에서는 MergeVaryData 대상 13개 중 -18/-30/-31/-32/-34만 확인됐고, -11 Exp 및 -12 Level은 존재하지 않았다.
+
+따라서 해당 캡처에서 Level/Exp는 field 21로 갱신되지 않는다. 두 값의 입력은 field 35 User의 ProtoUser→UserInfo 복사 경로 또는 그 외 초기화 경로에서 확인해야 하며, ProtoUser tag mapping은 아직 미확정이다.
+
+### 15.3 UserInfoPanelMono.Start의 화면 초기화
+
+`UserInfoPanelMono.Start @ 00f7e92c`의 Calls OUT 및 Listing에서 확인:
+
+- 초기에 UserInfoPanelMono class static-fields `+0x40` delegate를 검사한다. non-null이면 DelegateBridge Imp11로 위임하고 기본 Start 경로를 건너뛴다.
+- 기본 경로에서는 `Ali.OnProccessRequestFinish` delegate를 생성하고 `BaseMono.RegisterDataProccessCallBack`에 전달한다. 이 호출의 인자는 `7`이다.
+- 별도 NotifyDelegate를 생성해 `BaseMono.AddNotifyListener`에 등록한다. 해당 호출 인자는 `0x31`이다.
+- 이후 HeadData 조회 및 프로필 이미지 설정, UserInfo getter를 이용한 화면 텍스트/경험치 표시 초기화가 이어진다.
+- 직접 호출되는 getter와 UI node:
+  - `UserInfo.get_Id` → `lbl_userId`
+  - `UserInfo.get_Name` → `lbl_nickName`
+  - `UserInfo.get_Level` → `lbl_lv`
+  - `UserInfo.get_Exp` → `lbl_userexpshow` 및 경험치 bar 계산
+  - `DataCenter.get_HeadData` → 프로필 이미지
+  - `ShowHeadPanel` → 머리 장식 목록
+
+이 화면의 Start는 단순 표시 함수가 아니라 DataProcess callback 및 Notify listener도 등록한다. 다만 callback 7과 notify 0x31의 업무 의미 및 실제 호출 시점은 해당 dispatch 경로를 추가 확인해야 한다.
+
+### 15.4 재화 UI와 프로필 기본 정보의 분리
+
+`UserInfoPanelMono.RefreshTopInfos @ 00f7f914`는 class static-fields `+0x50` delegate가 non-null이면 위임하고, 기본 경로에서는 `ShowCoin @ 00f7e524`를 호출한다.
+
+`ShowCoin`은 설정된 CoinGrid 항목을 순회하며 각 ID에 대해:
+- `DataCenter.GetXCount(itemId)`로 수량 조회
+- `Ali.GetBaseData(itemId)`로 표시용 BaseData 조회
+- icon/name/count를 CoinGrid child node에 설정
+
+따라서 프로필 화면의 Id/Name/Level/Exp 표시와 재화 표시의 데이터 원천은 분리된다.
+
+```text
+OpInfo.User(+0x88)
+  → UserInfo.ctor
+  → PropertyInfo 기반 DataTool.CopyTo
+  → DataCenter.UserInfo(+0x28)
+  → UserInfoPanelMono.Start
+  → Id / Name / Level / Exp 표시
+
+OpInfo.Items(+0x98)
+  → DataCenter.MergeItem
+  → GetXCount(itemId)
+  → UserInfoPanelMono.ShowCoin
+  → CoinGrid 수량 표시
+```
+
+### 15.5 현재 판정 및 미확정
+
+- **STATIC 확정:** UserInfo.ctor는 PropertyInfoCache + DataTool.CopyTo 경로로 입력 객체의 속성을 복사한다.
+- **STATIC 확정:** UserInfoPanelMono.Start는 Id/Name/Level/Exp를 UI node에 연결하고 callback/notify 등록을 수행한다.
+- **STATIC 확정:** RefreshTopInfos → ShowCoin → GetXCount로 재화 수량을 표시한다.
+- **미확정:** DataTool.CopyTo 내부에서 ProtoUser의 어떤 property가 어떤 UserInfo property로 복사되는지, 그리고 protobuf tag 번호가 무엇인지.
+- **미확정:** UserInfo ctor static delegate(+0x170), UserInfoPanelMono Start(+0x40), RefreshTopInfos(+0x50)의 런타임 활성 여부.
+- **미확정:** UserInfoPanelMono.Start가 메인 진입 직후 자동 호출되는지, 사용자가 프로필 패널을 열 때 호출되는지. 현재 Listing은 Start 내부 동작만 증명한다.
+
+### 15.6 다음 분석
+
+1. `DataTool.CopyTo @ 01771ddc`의 실제 property enumeration/copy 조건을 확인해 ProtoUser→UserInfo 필드 매핑을 좁힌다.
+2. ProtoUser property getter와 serialized tag metadata를 대조해 Id/Name/Level/Exp/HeadIcon의 wire tag를 확인한다.
+3. `UserInfoPanelMono.Start`가 등록한 callback 7 및 notify 0x31의 dispatch consumer를 추적한다.
+4. 이후 HeroInfo.InitHero의 ProtoHero 입력과 DataManager key 관계로 진행한다.
