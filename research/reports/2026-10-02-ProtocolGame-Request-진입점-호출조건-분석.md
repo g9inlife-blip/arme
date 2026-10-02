@@ -651,6 +651,7 @@ Listing: `MailMono.RegisterCallBack @ 00f99e2c` (`MA.txt`)
 - 별도로 `BaseMono.RegisterHttpRequestCallBack` 및 `Ali.OnHttpRequestFinish::.ctor`도 호출한다. 우편 화면의 게임 프로토콜 응답과 HTTP 응답 callback 등록은 구분해야 한다.
 - 우편 UI의 직접 Request caller는 `MailMono.ClickGetMail / ClickAllMail → MailGetReward @ 00de01c4`로 확인돼 있다.
 - 따라서 `0x2E`는 MailGetReward 응답 callback key와 대응하는 유력 후보로 분류한다.
+- 동일 클래스의 `MailMono.GetRewardBack @ 00f9cb40`는 `Ali.ShowReward`, `InitMailData`, `RefreshMailBtn`을 호출하는 응답 후처리 후보 함수다. `0x2E` 등록 delegate의 실제 method pointer와 이 함수 주소를 직접 대조하지는 못했으므로 handler 연결은 강한 후보로 남긴다.
 - `0x68`은 우편 화면의 별도 응답 key다. Request inventory에 `GetMailOlds @ 00de2ae4`가 있으나, callback delegate target을 직접 대조하기 전에는 이 함수와의 매핑을 확정하지 않는다.
 
 ### 13.3 퀘스트 보상 callback key
@@ -662,6 +663,7 @@ Listing: `TaskNewPanelMono.Start @ 00f7a170` (`TA.txt`)
 - `Ali.OnProccessRequestFinish::.ctor`로 delegate 생성
 - `BaseMono.RegisterDataProccessCallBack(0x30, delegate)` 호출
 - 같은 TaskNewPanelMono의 `OnClickRecive @ 00f7d768`는 `QuestGetReward @ 00ddfc10`를 직접 호출한다.
+- 같은 클래스의 `NetGetQuestReward @ 00f7d01c`는 `Ali.ShowReward`, `RefreshData`, `RefreshUI`, 완료 팁 갱신을 수행하는 응답 후처리 후보 함수다.
 
 #### TrainingCampPanelMono
 
@@ -670,6 +672,7 @@ Listing: `TrainingCampPanelMono.RegisterCallBack @ 0103bbfc` (`TR.txt`)
 - `Ali.OnProccessRequestFinish::.ctor`로 delegate 생성
 - `BaseMono.RegisterDataProccessCallBack(0x30, delegate)` 호출
 - 같은 화면의 `OnClickReceive @ 0103d508`는 조건 검사 후 `QuestGetReward @ 00ddfc10`를 직접 호출한다.
+- 같은 클래스의 `QuestGetRewardBack @ 0103bd3c`는 `Ali.ShowReward`와 `RefreshUI`를 호출한다. 메서드 이름, 동일 화면의 0x30 등록, 보상 Request 직접 caller가 함께 존재하므로 QuestGetReward 응답 handler 후보로 강하게 연결된다.
 
 #### TaoFaPanelMono
 
@@ -677,6 +680,7 @@ Listing: `TaoFaPanelMono.RegisterCallBack @ 01035d28` (`TA.txt`)
 
 - 응답 key `0x7D`, `0x7C`, `0x30`에 대해 각각 callback 등록
 - 같은 화면의 `OnClickRecive @ 01039ef8`는 `QuestGetReward @ 00ddfc10`를 직접 호출한다.
+- 같은 클래스의 `NetGetQuestReward @ 01038118`는 `Ali.ShowReward`, `RefreshTask`, `RefreshItemShow`, `RefreshMainData` 등을 수행하는 응답 후처리 후보 함수다.
 
 #### Opcode 판정 수준
 
@@ -692,7 +696,7 @@ Listing: `ShopNewPanelMono.Awake @ 010285d4` (`SH.txt`)
 - 같은 화면의 구매 확인 함수 `ShopConfirmTipsMono.OnClickOK @ 0102408c`는 `Shopping @ 00de1e80`을 직접 호출한다.
 - 기존 2026-09-29 Request 분석에서 Shopping의 Opcode는 `0x34`, payload는 u32 3개(`OpInfo +0x30/+0x34/+0x38`)로 확인돼 있다.
 - 따라서 ShopNewPanelMono의 `0x34` callback 등록은 Shopping 응답 경로와 일치한다.
-- `ShopNewPanelMono.OnShoppingCallback @ 0102ac50`는 보상 표시와 상품/충전 UI 갱신을 수행하지만 Calls IN이 비어 있다. 이번 단계에서 0x34 등록 delegate의 실제 target이 이 함수라는 직접 연결은 확인하지 못했으므로, 함수 역할상 후보로만 둔다.
+- `ShopNewPanelMono.OnShoppingCallback @ 0102ac50`는 `Ali.ShowReward`, `RefreshUI_Item`, `RefreshUI_Recharge`를 수행하는 구매 응답 후처리 후보 함수다. 동일 화면이 0x34 callback을 등록하고 Shopping Request가 0x34인 점과 기능 흐름이 맞지만, delegate의 실제 method pointer를 직접 확인하지 못했으므로 target 연결은 강한 후보로만 둔다.
 - `0x5C`는 별도 상점 화면 응답 key이며, 현재는 특정 Request 함수에 매핑하지 않는다.
 
 ### 13.5 현재까지의 Opcode / payload 판정표
@@ -737,3 +741,21 @@ DataCenter.RequestCallback
   - TrainingCamp: UserInfo Dictionary의 key를 조건 충족 시 Request 인자로 전달
 - 위 인자가 OpInfo의 어느 슬롯에 저장되는지는 Request 본문 없이는 단정하지 않는다.
 - 다음은 Request 본문을 복구할 수 있는 별도 Ghidra export 또는 런타임 hook 로그를 확보하는 일이다. 그 전까지는 opcode callback key를 통한 후보와 payload caller 인자까지만 서버 계약 초안에 반영한다.
+
+
+### 13.8 응답 후처리 함수 후보 추가 확인
+
+응답 key 등록부와 동일 화면 클래스의 보상/갱신 메서드를 대조했다.
+
+| 응답 key 후보 | 화면/클래스 | 후처리 메서드 | 근거 |
+|---:|---|---|---|
+| 0x2E | MailMono | `GetRewardBack @ 00f9cb40` | ShowReward + InitMailData + RefreshMailBtn |
+| 0x30 | TrainingCampPanelMono | `QuestGetRewardBack @ 0103bd3c` | ShowReward + RefreshUI |
+| 0x30 | TaskNewPanelMono | `NetGetQuestReward @ 00f7d01c` | ShowReward + RefreshData + RefreshUI + 완료 팁 |
+| 0x30 | TaoFaPanelMono | `NetGetQuestReward @ 01038118` | ShowReward + RefreshTask + RefreshItemShow + RefreshMainData |
+| 0x34 | ShopNewPanelMono | `OnShoppingCallback @ 0102ac50` | ShowReward + RefreshUI_Item + RefreshUI_Recharge |
+
+- 이 함수들은 각 화면의 callback 등록 key와 직접 Request caller의 기능이 일치하는 응답 후처리 후보들이다.
+- Ghidra Calls IN은 delegate 기반 호출을 누락할 수 있으므로 Calls IN이 비어 있다는 사실만으로 callback이 아니라고 판단하지 않는다.
+- 반대로 callback key와 같은 클래스에 있다는 사실만으로 delegate target이 확정되는 것도 아니다. 정확한 delegate method pointer가 복원되기 전까지는 "후처리 후보"로 기록한다.
+- 특히 TrainingCampPanelMono의 `QuestGetRewardBack`은 함수명과 보상 표시/화면 갱신 동작이 0x30 등록 및 QuestGetReward 호출과 일관된다.
