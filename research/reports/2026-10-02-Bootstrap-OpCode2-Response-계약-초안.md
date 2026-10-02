@@ -2211,3 +2211,49 @@ field 56의 value 내부 field 번호는 위 ProtoActivity 구성과 맞는다. 
 특히 field 3(Data)는 모든 2,462개 entry에 존재한다. field 4~7도 모든 entry에 존재하지만 단순 varint가 아닌 nested length-delimited 구조다. 따라서 local serializer는 이 네 필드를 scalar timestamp로 임의 변환하지 말고, 실제 nested wire 구조를 보존해야 한다.
 
 이제 field56은 단순히 '반복 Activities 목록'이 아니라 **ProtoActivity의 13개 property tag와 각 wire type/cardinality가 확인된 응답 구조**로 취급한다.
+
+
+
+## 12. 2026-10-03 DataCenter 병합 순서 정적 확인
+
+기준 Listing: `research/Ghidra_Listing_txt/DA.txt`
+
+### 12.1 User / Hero
+
+- `OpInfo +0x88 User`는 `ProccessRequestRes @ 016e203c`에서 non-null 검사 후 `UserInfo::.ctor @ 00dd2f44`에 전달되고, 결과가 DataCenter `+0x28`에 저장된다.
+- `OpInfo +0x90 Heros`는 `UpdateHeroInfo @ 016e4ba4`에서 Dictionary로 순회된다. 각 Hero 항목은 DataManager 조회와 `HeroInfo.InitHero @ 016e5fd4`로 이어진다.
+- `UpdateHeroInfo`는 response 전체를 받으며 +0x90뿐 아니라 +0xA0 Weapons, +0xA8 Equiments, +0xE0 Fashions도 읽어 보조 상태를 갱신한다.
+
+### 12.2 직접 Merge 호출 순서
+
+| 순서 | Response field | Client 처리 | DataCenter/cache |
+|---:|---|---|---|
+| 1 | Weapons +0xA0 | MergeWeapon @ 016e414c | +0x40 |
+| 2 | Equiments +0xA8 | MergeEquip @ 016e4348 | +0x38 |
+| 3 | Items +0x98 | MergeItem @ 016e4700 | Item/category |
+| 4 | response 전체 | UpdateHeroInfo @ 016e4ba4 | User/Hero 및 보조 상태 |
+| 5 | Chapters +0xC0 | Merge<int,object> | +0x48 |
+| 6 | Sections +0xC8 | MergeSections @ 016e55dc | +0x50 |
+| 7 | Teams +0xD0 | Merge<int,object> | +0x58 |
+| 8 | Quests +0xE8 | Merge<int,object> | +0x80 |
+| 9 | Mails +0xB0 | Merge<long,object> | +0x88 |
+| 10 | Shops +0xF0 | Merge<int,object> | +0x68 |
+| 11 | Charges +0xF8 | Merge<int,object> | +0x70 |
+
+추가로 +0x130 → DataCenter +0x100, +0x80 → +0x108은 non-null일 때 직접 저장한다. +0x100 및 +0x148은 조건부 long-key merge 경로이며 +0x138은 AIStrategy 설정 경로다.
+
+### 12.3 계약 해석 주의
+
+- 위 순서는 함수 본문에서 확인한 실행 순서이며, 모든 OpCode에서 모든 필드가 필수라는 뜻은 아니다.
+- User는 별도 UserInfo 객체 생성, Heros는 HeroInfo 초기화 루프라는 차이가 있다.
+- Weapons/Equiments는 전용 Merge와 UpdateHeroInfo 내부 보조 처리가 함께 존재한다.
+- Fashions는 UpdateHeroInfo에서 읽히지만 독립 cache 및 Main UI 필수 여부는 미확정이다.
+- 따라서 Full Bootstrap envelope를 유지하고 runtime에서 필드별 소비 여부를 검증한다.
+
+### 12.4 다음 확인
+
+1. Bootstrap OpCode=2 한 건에서 각 Merge 함수가 실제 호출되는지 Frida로 대조.
+2. UserInfo → HomePanel 재화/레벨 표시 소비처 연결.
+3. HeroInfo.InitHero의 ProtoHero → DataManager key 관계 확인.
+4. MergeEquip/MergeWeapon의 key 및 삭제/갱신 규칙 확인.
+5. Main 진입 시 Chapters/Sections/Teams/Quests/Shops/Charges 소비 여부 구분.
