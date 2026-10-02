@@ -922,3 +922,24 @@ PCAP 원본 hex의 varint를 BigInt로 재해석한 field 21의 양수 key 263�
 - Sysconf system: PCAP에서 94800035=1, 94800016=1, 94800067=1, 94800069=-1, 94800071=-1이 확인되어 SysconfRecord의 system map과 5개 exact match. Sysconf 원본의 94800025는 이번 PCAP에 없고, 대신 94800066이 나타났으나 현재 원본에서 exact 정의를 찾지 못했다.
 
 따라서 field 21은 단순 Item ID/count 전용 map으로 볼 수 없다. 실제로 MissionRecord ID, Guide group, Sysconf system flag, 음수 special key가 함께 들어 있는 heterogeneous DictI32 상태 map이다. 서버 handoff의 'Items' 분류는 wire entry 모양만으로 붙인 상위 추정으로 보고, 클라이언트 OpInfo +0x70 DictI32 및 원본 Record ID join 결과를 우선한다. 다만 각 양수 key를 실제 UI 상태로 소비하는 런타임 경로는 별도 확인한다.
+
+
+### 2026-10-02 후속 실측 — OpInfo field 35 내부 ProtoUser wire 태그
+
+Git의 PCAP 변환 데이터 `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.json`에서 packet 192~201에 해당하는 메시지를 확인했다. 65개 메시지 중 OpInfo field 35 내부 메시지는 1건이며, nested protobuf 필드는 총 9개다.
+
+| nested protobuf tag | wire type | 관측값 |
+|---:|---:|---|
+| 1 | varint(0) | 871047 |
+| 3 | varint(0) | 4 |
+| 4 | varint(0) | 250 |
+| 7 | varint(0) | 18100000 |
+| 14 | length-delimited(2) | `g9in2` |
+| 20 | varint(0) | 3 |
+| 21 | varint(0) | 3 |
+| 22 | varint(0) | 10 |
+| 24 | varint(0) | 1 |
+
+현재 확보한 ProtoUser getter의 native 객체 offset은 Id=+0x10, Level=+0x1C, Exp=+0x20, HeadIcon=+0x2C, Name=+0x30이다. 위 PCAP에서는 실제 protobuf wire tag를 확인했지만, 이 값만으로 getter 속성과 tag를 일대일 대응시키지는 않는다. 특히 이번 메시지의 값(871047, 4, 250, 18100000, g9in2)은 이전 런타임 로그(Id=871053, Level=53, Exp=1100)와 다른 관측값이므로 동일 계정/동일 상태로 간주하지 않는다.
+
+현재 PCAP 변환 파일에서 field 35가 존재하는 메시지는 1건뿐이다. 따라서 ProtoUser의 wire tag 존재 여부는 확인했으나, 필드 의미 매핑은 다른 응답/런타임 setter·parser 추적을 추가로 확보해야 한다.
