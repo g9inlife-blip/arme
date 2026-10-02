@@ -739,8 +739,8 @@ DataCenter.RequestCallback
   - Mail 전체: Mail 관련 전역 객체 참조를 첫 인자로 전달
   - Quest/Task/TaoFa: UIData payload 객체의 첫 32-bit 값을 Request 인자로 전달
   - TrainingCamp: UserInfo Dictionary의 key를 조건 충족 시 Request 인자로 전달
-- 위 인자가 OpInfo의 어느 슬롯에 저장되는지는 Request 본문 없이는 단정하지 않는다.
-- 다음은 Request 본문을 복구할 수 있는 별도 Ghidra export 또는 런타임 hook 로그를 확보하는 일이다. 그 전까지는 opcode callback key를 통한 후보와 payload caller 인자까지만 서버 계약 초안에 반영한다.
+- Request 본문에서 저장 슬롯은 13.9에 따라 확인됐다. Mail 인자의 내부 의미는 객체 구조를 추가 확인해야 한다.
+- 후속 작업은 각 caller가 전달하는 인자의 의미를 복구하고, 응답 callback delegate의 실제 target pointer를 연결하는 것이다.
 
 
 ### 13.8 응답 후처리 함수 후보 추가 확인
