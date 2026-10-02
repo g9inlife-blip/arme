@@ -748,3 +748,48 @@ OpenBox 경로는 type 8 보유/표시 및 응답의 구체 item ID 연출을 �
 1. 런타임에서 `ItemData.get_itemPackageId` 반환 객체와 Lua property getter 호출 stack을 기록하고 CODE 문자열을 소비하는 호출자를 찾는다.
 2. `Dictionary<int,int>.ContainsKey/get_Item`에서 key -22/-20/-33 및 -23 Notify 분기의 호출 stack을 수집한다.
 3. 양수 key 263개는 Main UI getter의 실제 key 목록과 교차할 때만 의미를 부여한다. 숫자 ID 패턴만으로 명칭을 추정하지 않는다.
+
+
+## 2026-10-02 후속 실측 — PCAP protobuf 원문 재확인
+
+대상: `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.json`의 Git blob을 기준으로 확인. `packets` 배열에 192가 포함된 메시지 레코드 1건을 추출했다.
+
+### OpInfo field 21 (DictI32)
+
+- field 21의 map entry 276건을 확인했다.
+- key는 protobuf varint를 signed int32로 해석했다. 이때 10바이트 음수 varint를 JavaScript Number로 먼저 변환하면 정밀도가 깨지므로, 원본 `prefix_hex` 바이트에서 BigInt로 직접 디코딩했다.
+- 해당 캡처에서 관측된 음수 key와 값:
+  - `-29=79`, `-28=94`, `-27=1`
+  - `-23=0`, `-22=0`, `-20=0`
+  - `-18=15`
+  - `-33=0`, `-34=1`, `-36=3`
+  - `-30=0`, `-31=0`, `-32=27`
+- 따라서 기존에 정리한 13개 음수 key 목록과 일치한다. 이번에는 그중 미확인 소비처 후보인 `-29/-28/-27/-23/-22/-20/-33/-36`의 실제 캡처 값도 확보했다.
+- 값의 의미는 별도 소비 코드 연결 전까지 추정하지 않는다. 특히 `-27=1`은 앞서 확인한 HomePanel 메일 배지의 DataCenter 캐시 key `-27`과 숫자만 같으며, 이 PCAP DictI32가 해당 UI 캐시로 직접 연결된다는 증거는 아직 없다.
+
+### OpInfo field 35 (ProtoUser 후보 payload)
+
+같은 메시지의 field 35 length-delimited payload는 33바이트이며, 내부 protobuf 필드는 다음과 같이 파싱된다.
+
+| wire field | wire type | 관측값 |
+|---|---:|---|
+| 1 | varint | 871047 |
+| 3 | varint | 4 |
+| 4 | varint | 250 |
+| 7 | varint | 18100000 |
+| 14 | length-delimited | `g9in2` |
+| 20 | varint | 3 |
+| 21 | varint | 3 |
+| 22 | varint | 10 |
+| 24 | varint | 1 |
+
+- field 35가 ProtoUser payload라는 기존 OpInfo 구조와 부합하는 중첩 protobuf 구조를 확인했다.
+- field 1의 871047 및 field 14의 문자열 `g9in2`는 이 캡처에서 확인된 원시 필드값이다.
+- 현재 확인한 Ghidra의 ProtoUser getter 객체 오프셋(+0x10, +0x1C, +0x20, +0x2C, +0x30)은 protobuf wire field 번호가 아니다. 따라서 field 1=Id, field 14=Name 같은 매핑은 parser/serializer 또는 런타임 대조 전까지 확정하지 않는다.
+- 이 샘플에서 field 2(Level 후보), field 5(Exp 후보), field 11(HeadIcon 후보)는 나타나지 않았다. ProtoUser의 실제 필드 번호 전체를 확정할 자료는 아직 부족하다.
+
+### 다음 작업 — 한 단계씩
+
+1. `ProtoUser`의 생성/역직렬화 경로에서 field 번호와 객체 멤버 offset의 대응을 찾는다. 우선 generated parser/serializer 및 setter 참조를 조사한다.
+2. 음수 key의 소비처는 `-29/-28/-27/-23/-22/-20/-33/-36` 각각에 대해 Ghidra 상수 참조와 Dictionary 접근 호출자를 좁혀 추적한다.
+3. type 8 CODE는 XLua getter가 노출된 사실까지만 확인됐다. Lua lookup 구현이 확보되기 전에는 코드 의미를 부여하지 않는다.
