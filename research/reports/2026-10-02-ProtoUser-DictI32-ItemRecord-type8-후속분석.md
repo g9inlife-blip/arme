@@ -99,7 +99,7 @@ Git 원본:
 - `m_itemPackageId`는 CODE*VALUE 형식
 - `m_nameId` / `m_describeId`는 개별 레코드마다 별도 존재
 
-ID의 `hiddenValue - 444444`를 적용한 논리 ID 범위는 42710176~43034455다. 예를 들어 첫 표본은 논리 ID 43478898, m_nameId 143100014, m_itemPackageId `200*5`다. 이 ID 복원은 기존 ItemRecord의 43000001 ↔ hiddenValue 43444445 대조와 동일한 offset을 사용한다.
+ObscuredInt ID는 `hiddenValue XOR currentCryptoKey`로 복원한다. 119개 type 8의 논리 ID 범위는 **43100014~43300003**이다. 첫 표본은 hiddenValue 43478898 XOR 444444 = 논리 ID 43100014이며, m_nameId 143100014, m_itemPackageId `200*5`다. 기존 ItemRecord 43000001 ↔ hiddenValue 43444445 대조와 동일한 XOR 규칙이다.
 
 ### CODE 분포
 73개 CODE는 다음 그룹으로 나타난다.
@@ -113,18 +113,18 @@ ID의 `hiddenValue - 444444`를 적용한 논리 ID 범위는 42710176~43034455�
 - 420~425
 
 대표 예:
-| Item ID | m_nameId | icon | m_itemPackageId |
-|---:|---:|---|---|
-| 43478898 | 143100014 | item_43100014 | 200*5 |
-| 43475796 | 143101000 | item_43101000 | 1*1 |
-| 43475902 | 143101090 | item_43101090 | 10*5 |
-| 43476072 | 143101300 | item_43101300 | 300*1 |
-| 43154620 | 143300000 | item_43300000 | 100*2 |
+| Logical Item ID | hiddenValue | m_nameId | icon | m_itemPackageId |
+|---:|---:|---:|---|---|
+| 43100014 | 43478898 | 143100014 | item_43100014 | 200*5 |
+| 43101000 | 43475796 | 143101000 | item_43101000 | 1*1 |
+| 43101090 | 43475902 | 143101090 | item_43101090 | 10*5 |
+| 43101300 | 43476072 | 143101300 | item_43101300 | 300*1 |
+| 43300000 | 43154620 | 143300000 | item_43300000 | 100*2 |
 
 ### 참조 namespace 검증
 원본 `ItempackageRecord.json` (2,028개) 및 `ItemboxRecord.json` (3,242개)를 blob으로 읽어 대조했다.
-- ItempackageRecord 논리 ID 범위: 44120132~45135819
-- ItemboxRecord 논리 ID 범위: 43153904~44109971
+- ItempackageRecord 논리 ID 범위(XOR 복원): 45000000~45513357
+- ItemboxRecord 논리 ID 범위(XOR 복원): 44000000~44300199
 - type 8의 `m_itemPackageId` CODE 값은 1~425 범위의 작은 숫자이며, 두 테이블의 논리 Record ID와 일치하지 않는다.
 
 따라서 현재 근거로는 type 8의 `m_itemPackageId` CODE를 ItempackageRecord ID 또는 ItemboxRecord ID로 직접 취급할 수 없다. **별도의 소형 코드 namespace / lookup 단계가 존재할 가능성**까지가 현재 결론이며, namespace 명칭과 실제 해석 테이블은 미확정이다.
@@ -232,4 +232,12 @@ Ghidra `research/Ghidra_Listing_txt/IT.txt`에서:
 1. 같은 PCAP 계정/동일 응답에서 ProtoUser Id/Level/Exp/HeadIcon/Name getter를 runtime dump해 tag 3/4 후보 확정.
 2. XLua Lua property read hook으로 type 8 CODE lookup의 실제 호출과 대상 collection 확인.
 3. 미분류 음수 key 8종은 field 21 소비 함수에서 직접 연결되는 근거가 나올 때까지 의미 부여 보류.
+
+
+
+## 2026-10-02 정정 — ObscuredInt ID 복원 규칙
+
+기존 type 8 분석 문단에서 `hiddenValue - 444444`를 사용한 것은 계산 규칙 오류다. 이 저장소의 ObscuredInt `m_id`는 `hiddenValue XOR currentCryptoKey`로 복원한다. 따라서 type 8의 논리 ID는 42710176~43034455가 아니라 **43100014~43300003**이며, 예시 raw hiddenValue 43478898은 논리 ID 43100014다.
+
+같은 규칙을 ItempackageRecord/ItemboxRecord에 적용하면 각각 45000000~45513357, 44000000~44300199다. type 8 `m_itemPackageId` CODE(1~425)는 여전히 이 Record ID 범위와 일치하지 않는다.
 
