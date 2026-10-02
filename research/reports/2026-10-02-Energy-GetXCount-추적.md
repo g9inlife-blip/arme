@@ -124,3 +124,92 @@ Hero / Weapon / Equipment
 2. `GetXCount`의 type별 collection mapping을 표로 완성
 3. `HomePanelMono.Start` body를 함수명/주소 기준으로 직접 확보
 4. Main에서 실제 표시되는 Coins/Crystals/Energy를 동일 방식으로 묶어 Bootstrap fixture 설계
+
+## 6. 2026-10-02 재화 ID 원본 Record 대조 및 GetXCount 분기
+
+### 6.1 UserInfo 재화 키 전체 확인
+
+Git Listing의 getter 본문에서 3개 ID를 직접 확인했다.
+
+| 재화 getter | 함수 RVA | GetXCount itemId | 10진수 ID |
+|---|---:|---:|---:|
+| Coins | `00dd2d8c` | `0x029020C1` | `43000001` |
+| Crystals | `00dd2e34` | `0x029020C2` | `43000002` |
+| Energy | `00dd2ce4` | `0x029020C3` | `43000003` |
+
+세 getter 모두 DataCenter Singleton을 통해 `GetXCount(itemId, 0, 0)`를 호출한다. Coins도 UserInfo 직접 필드가 아니다.
+
+### 6.2 원본 Unity 데이터 대조
+
+Git의 `참고용-unity-behavior-data/데이터_분석/output/data_catalog/09_record_samples.json`에서 다음을 확인했다.
+
+- 43000001 / 43000002 / 43000003 모두 `ItemRecord.json`의 Record
+- 각각 `m_icon=item_43000001/2/3`
+- `baseDataType=0`
+- `item_tables.md`에도 세 ID가 Item Record 목록에 존재
+- SysconfRecord의 개인 정보 재화 표시 설정(`个人信息货币显示`) 목록에도 세 ID가 포함
+
+단, 이 샘플의 `baseDataType=0`을 Ghidra의 `BaseData +0x24`에서 읽는 `BaseData.type` enum과 동일하다고 단정하지 않는다. 현재 둘의 직접 매핑은 미확정이다.
+
+### 6.3 GetXCount type별 경로 — Assembly 분기값
+
+`GetXCount @ 016defb0`는 `DataManager.TryGetBaseData(itemId)` 후 `[BaseData +0x24]`를 비교한다.
+
+| BaseData.type | DataCenter 저장소 | 조회 방식 | 반환 계산 |
+|---:|---:|---|---|
+| `0x22` | `+0x78` | ItemType enum key `0` → 내부 Dictionary에서 itemId | 값 객체 `+0x18` |
+| `0x41` | `+0x78` | ItemType enum key `1` → 내부 Dictionary.TryGetValue(itemId) | 값 객체 `+0x18`; mode bit에 따라 추가 Stigmata 처리 |
+| `0x1F` | `+0x78` | ItemType enum key `2` → 내부 Dictionary에서 itemId | 값 객체 `+0x18` |
+| `0x19` | `+0x60` | itemId ContainsKey | 보유 여부 0/1 |
+| `0x04` | `+0x30` | itemId ContainsKey | 보유 여부 0/1 |
+| `0x2E` | `+0x40` | itemId → WeaponInfo | IsLocked의 반전값 |
+| `0x2B` | `+0x38` | EquipInfo 값 열거 후 EquipmentId 비교 | 일치 개수 |
+| `0x43` | `+0x80` | enum key `1` → itemId | 값 객체 `+0x1C != 0` |
+
+위 표의 enum key와 offset은 Assembly의 실제 Dictionary 호출 인자 및 receiver offset을 기준으로 기록했다. 미분석 type은 별도 일반 fallback으로 들어가며, 현재는 로그 출력 외에 의미를 확정하지 않는다.
+
+### 6.4 MergeItem이 GetXCount와 같은 분류를 수행
+
+`DataCenter.MergeItem @ 016e4700`에서도 각 입력 item에 대해 BaseData를 조회하고 `[BaseData +0x24]`를 검사한다.
+
+- type `0x1F` → ItemType enum key `2`
+- type `0x22` → ItemType enum key `0`
+- type `0x41` → ItemType enum key `1`
+
+해당 enum별 내부 Dictionary를 생성/갱신하고 itemId를 key로 Item 객체를 저장한다.
+
+따라서 재화 수량 경로는 다음으로 정리된다.
+
+```text
+OpInfo +0x98 Items
+  → DataCenter.MergeItem
+  → BaseData.type 분류
+  → DataCenter +0x78[ItemType]
+  → Dictionary<itemId, ItemInfo>
+  → GetXCount(itemId)
+  → UserInfo.get_Coins / get_Crystals / get_Energy
+  → Main UI
+```
+
+### 6.5 현재 확정 / 미확정
+
+**확정**
+- Coins/Crystals/Energy ID = 43000001/2/3
+- 세 값 모두 ItemRecord에 존재
+- 세 getter가 모두 GetXCount를 호출
+- MergeItem과 GetXCount가 동일한 BaseData.type 분기 체계를 사용
+- type 0x22/0x41/0x1F의 ItemType enum key가 각각 0/1/2
+
+**미확정**
+- 43000001/2/3 각각의 실제 `BaseData +0x24` runtime type 값
+- 세 재화가 동일 ItemType bucket인지 여부
+- 실기기 MergeItem 입력에서 세 ID의 Count 및 bucket key
+- Main 초기화 시점에 실제 표시되는 재화 UI 호출 순서
+
+### 6.6 다음 단계
+
+1. `BaseData.get_type @ 00df34dc` 및 BaseData 초기화/생성 경로를 확인해 Record의 `baseDataType`과 runtime type을 연결
+2. runtime hook에서 MergeItem 입력의 43000001/2/3별 BaseData.type, ItemType enum key, Count 출력
+3. HomePanel Start Listing 확보 여부와 별개로 `UserInfoPanelMono.RefreshTopInfos → ShowCoin`을 통해 Main 재화 UI의 직접 소비 순서 확인
+4. 실제 관측 결과를 Bootstrap fixture의 Items 데이터에 반영
+
