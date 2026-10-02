@@ -318,3 +318,74 @@ Local Server 방식으로 진행했을 때 특정 기능이 오히려 복잡해�
 
 보고서: research/reports/1001-2026-10-01-메인화면-응답-Chapter-런타임추적-후속.md
 Hook: research/justice_hook.js v4.19
+
+## 16. 분석 범위 재정리 — 2026-10-02
+
+### 최종 목적
+
+프로젝트의 목적은 게임 내부 로직 전체를 복원하는 것이 아니라 **원본 클라이언트와 호환되는 Local Private Server를 구축하는 것**이다.
+
+따라서 이후 분석의 중심은 게임 내부 데이터 구조 자체가 아니라 다음 네트워크 계약이다.
+
+```text
+Client Action
+  ↓
+Request 생성
+  ↓
+Serialize / Encrypt
+  ↓
+Network Send
+  ↓
+Local Server
+  ↓
+Request Decode / Command 처리
+  ↓
+필요한 State 반영
+  ↓
+Response 생성 / Serialize / Encrypt
+  ↓
+Client Receive / Deserialize
+  ↓
+Client Handler / 화면 반영
+```
+
+### 분석 우선순위
+
+1. 로그인/인증 및 세션 수립
+2. KCP 연결·핸드셰이크·암복호화·압축·직렬화
+3. Request/Response의 Opcode, 필드, 순서, 성공/실패 처리
+4. 메인 화면 진입에 필요한 Bootstrap Response
+5. Response가 실제로 변경하는 Player State와 저장 경계
+6. 주요 기능의 Request/Response 계약 및 최소 서버 처리
+7. 로컬 서버와 원본 클라이언트의 통합 검증
+
+### 아이템 및 코드 사전의 역할
+
+아이템 ID, 캐릭터 ID, 재화 코드와 표시 이름은 네트워크 데이터의 의미를 파악하기 위한 보조 사전으로만 관리한다.
+
+- 코드가 어떤 아이템인지 설명하는 것은 유효한 분석 보조 정보다.
+- 이름/설명 문자열의 전체 namespace나 내부 Record 연결을 완성하는 것은 목표가 아니다.
+- 개별 아이템의 내부 속성·분류·성장 로직은 Request/Response 구현에 필요한 경우에만 확인한다.
+- 이미 의미가 확인된 코드는 payload 해석에 활용하고, 필요 이상으로 동일 구조를 확장 조사하지 않는다.
+
+### 게임 로직 조사 제한
+
+게임의 보상 계산, 확률, 성장식, UI 내부 컬렉션 등은 기본 조사 범위에서 제외한다. 다만 서버가 해당 결과를 생성하거나 권한 상태를 변경해야 한다는 네트워크 증거가 있으면, 클라이언트 호환에 필요한 최소 규칙만 확인하고 구현한다.
+
+Client가 이미 수행하는 처리는 가능한 한 재사용한다. Local Server는 서버 응답과 지속 상태 관리에 필요한 부분을 우선 구현한다.
+
+### 조사 종료 기준
+
+각 기능은 다음을 알면 우선 네트워크 분석을 종료하고 서버 구현/검증 단계로 이동한다.
+
+- Request의 발생 조건과 실제 payload
+- Response의 opcode와 실제 payload 구조
+- Client가 필수로 요구하는 필드 및 처리 순서
+- 화면 반영 또는 Player State 변경 결과
+- Local Server에서 재현해야 할 최소 동작
+
+추가적인 내부 구조 분석은 로컬 서버 테스트에서 막히는 구체적인 문제가 생겼을 때만 재개한다.
+
+### 현재 작업 방침
+
+현재 진행 중인 KCP/Bootstrap 추적을 이어가되, 아이템 코드 의미 확인은 참고 수준으로 유지한다. 다음 핵심 산출물은 메뉴별 게임 로직 설명서가 아니라 **Opcode별 Request/Response 계약 및 Local Server 구현 명세**로 한다.
