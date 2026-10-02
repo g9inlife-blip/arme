@@ -566,25 +566,25 @@ x1 = [x28]이고 x28 = OpInfo +0x70이므로 MergeVaryData의 두 번째 인자�
 
 ### 15.2 MergeVaryData가 실제로 처리하는 key
 
-UserInfo$$MergeVaryData @ 00dd3030 내부에서 다음 key를 검사하고, 없으면 기존 getter 값을 유지하고 있으면 setter로 반영한다.
+UserInfo$$MergeVaryData @ 00dd3030 내부의 ARM64 immediate를 signed 32-bit로 해석하면 다음 13개 key를 검사한다. 예를 들어 `mov w1,#0xfffffff7`는 -0x9가 아니라 **-9**다. 이전 표의 -247~-222 표기는 32-bit 부호 변환을 잘못 적용한 계산 오류이므로 폐기한다.
 
 | Key | UserInfo 상태 | 처리 |
 |---:|---|---|
-| -0xF7 (-247) | StigmataTimes | get → set |
-| -0xF6 (-246) | MetaphysicsTimes | get → set |
-| -0xF5 (-245) | Exp | get → set |
-| -0xF4 (-244) | Level | get → set |
-| -0xF1 (-241) | FCTimes | get → set |
-| -0xF3 (-243) | SignInDays | get → set |
-| -0xF2 (-242) | SignInRewardDay | get → set |
-| -0xF0 (-240) | StepId | get → set |
-| -0xEE (-238) | ExamTimes | get → set |
-| -0xE2 (-226) | EquipMax | get → set |
-| -0xE1 (-225) | ChargeTotalPerMonth | get → set |
-| -0xE0 (-224) | Age | get → set |
-| -0xDE (-222) | ChatChannel | get → set |
+| -9 | StigmataTimes | get → set |
+| -10 | MetaphysicsTimes | get → set |
+| -11 | Exp | get → set |
+| -12 | Level | get → set |
+| -15 | FCTimes | get → set |
+| -13 | SignInDays | get → set |
+| -14 | SignInRewardDay | get → set |
+| -16 | StepId | get → set |
+| -18 | ExamTimes | get → set |
+| -30 | EquipMax | get → set |
+| -31 | ChargeTotalPerMonth | get → set |
+| -32 | Age | get → set |
+| -34 | ChatChannel | get → set |
 
-처음 -0xF8 (-248)도 별도 분기로 StigmataTimes 조회/처리를 시작하는 구조가 확인된다. 이 부분은 후속 Assembly 구간까지 추가 대조한다.
+이 함수 첫 분기의 key는 `0xfffffff7 = -9`이며 -248(-0xF8)가 아니다. 별도 -248 key 처리는 Listing에서 확인되지 않았다.
 
 ### 15.3 Main UI 연결도 확인
 
