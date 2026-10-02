@@ -118,3 +118,96 @@ ProtocolGame_SendRequest.CreateBattle
 - 실제 소모/입장 가능 여부는 서버 권한 처리로 분리한다.
 - 정적 Listing, runtime hook, PCAP 관측 결과를 서로 구분해 기록한다.
 - 서버 요청/응답 계약이 확정되면 내부 UI 구현의 세부 추적을 종료한다.
+
+
+## 6. PCAP 변환 데이터에서 CreateBattle 요청/응답 연결
+
+대상 파일:
+- `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.txt`
+- 상위 캡처: `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화.json`
+
+### 6.1 실제 C→S 요청 — packet 368
+
+변환된 KCP 메시지에서 다음 요청을 찾았다.
+
+| 항목 | 값 |
+|---|---|
+| Packet | 368 |
+| 방향 | Client → Server |
+| Flags | 128 |
+| decrypt | ok |
+| SerialNumber | 2551705438 |
+| Opcode | 22 (0x16) |
+| OpInfo field 6 | 20000100 |
+| OpInfo field 7 | 21000060 |
+
+요청 protobuf 핵심:
+
+```
+field 1 = 2551705438   // SerialNumber
+field 2 = 22           // Opcode 0x16
+field 6 = 20000100
+field 7 = 21000060
+```
+
+이는 Ghidra에서 확인한 CreateBattle의 opcode 0x16 및 두 개의 u32 payload(+0x30/+0x34)와 일치한다.
+
+### 6.2 실제 S→C 응답 — packet 370
+
+바로 이어지는 packet 370에서:
+
+| 항목 | 값 |
+|---|---|
+| Packet | 370 |
+| 방향 | Server → Client |
+| Flags | 132 |
+| decrypt | ok |
+| SerialNumber | 2551705438 |
+| Opcode | 22 (0x16) |
+| field 6 | 20000100 |
+| field 7 | 21000060 |
+
+요청과 응답의 SerialNumber 및 Opcode가 동일하고 두 payload 값도 echo되어 있다.
+
+따라서 이 캡처에서 **CreateBattle(0x16) 요청 → 동일 SerialNumber의 서버 응답**이 실제 KCP 메시지로 확인됐다.
+
+응답에는 추가 field 21 데이터가 포함되어 있다. 현재 이 값들의 의미는 확정하지 않으며, Client의 `NetworkCenter.TryHandleResponse` / `DataCenter.ProccessRequestRes` 처리와 대조할 대상이다.
+
+### 6.3 후속 opcode 0x17은 별도 요청으로 분리
+
+packet 390에서 Client → Server opcode 23 (0x17) 요청이 관측된다.
+
+- SerialNumber: 2551705439
+- nested field 30 포함
+- field 30 내부에 숫자 값 및 nested field 3/4/5가 존재
+
+이는 CreateBattle 요청/응답과 별도의 후속 요청이다. 전투 결과/전투 보고 계열일 가능성은 있으나, 함수 Listing과 호출 시점을 대조하기 전에는 의미를 확정하지 않는다.
+
+### 6.4 중요한 결론
+
+현재 확보한 증거 사슬:
+
+```
+ReadyMono.RefreshBtnState
+  → 클라이언트 버튼/비용 사전 조건
+ReadyMono.ClickEnterBattle
+  → Section/Chapter/날짜 조건 검사
+  → 실제 Request 직접 호출은 미확인
+ProtocolGame_SendRequest.CreateBattle
+  → Opcode 0x16, u32 2개
+PCAP packet 368
+  → 0x16, Serial=2551705438
+  → field6=20000100, field7=21000060
+PCAP packet 370
+  → 0x16, 동일 Serial 및 두 값
+```
+
+즉 서버 요청/응답은 실캡처로 연결됐지만, Ready 클릭 콜백과 CreateBattle 함수 사이의 정적 호출 연결은 아직 남아 있다.
+
+## 7. 다음 작업
+
+1. `20000100`과 `21000060`을 기존 Chapter/Section Record 및 런타임 객체 ID와 대조해 두 인자의 의미를 확정한다.
+2. `ReadyMono.ClickEnterBattle`에서 실제 delegate/callback으로 넘어가는 지점을 추적한다.
+3. `GoToBattleMono`의 CreateBattle 관련 callback에서 `ProtocolGame_SendRequest.CreateBattle` 호출을 연결한다.
+4. packet 370의 field 21 응답 데이터를 Client response handler가 어떻게 처리하는지 확인한다.
+5. opcode 0x17 / packet 390은 별도 전투 후속 요청으로 분리해 함수 매핑을 진행한다.
