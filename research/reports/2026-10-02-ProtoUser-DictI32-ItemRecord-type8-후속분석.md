@@ -292,3 +292,53 @@ field 35의 nested protobuf는 다음과 같이 실제 tag를 제공한다.
 - 기존 보고서의 `hiddenValue - 444444` ID 복원식은 잘못된 것으로 정정했다. ObscuredInt는 `hiddenValue XOR currentCryptoKey` 방식이다. type 8의 logical ID 범위는 43100014~43300003이며 CODE 값 1~425는 ItempackageRecord/ItemboxRecord ID와 일치하지 않는다.
 - 이번 PCAP field 35에서 ProtoUser의 기본 5개 wire tag를 확정했으나, 모든 ProtoUser 필드/태그의 전체 스키마를 확정한 것은 아니다.
 - 다음은 Lua/XLua에서 ItemData.itemPackageId property를 읽는 실제 함수와 CODE lookup collection을 연결하고, DictI32 미분류 8개 key의 직접 소비처를 찾는 것이다.
+
+
+## 2026-10-02 PCAP wire 실측 추가
+
+### OpInfo field 35 — ProtoUser tag
+
+Git의 PCAP JSON 변환 원본에서 패킷 192~201 묶음(서버 → 클라이언트, 13,313 bytes)을 다시 파싱했다. 최상위 protobuf field 35의 nested field는 아래와 같다.
+
+| tag | wire | 관측값 | 연결 |
+|---:|---:|---|---|
+| 1 | varint | 871047 | ProtoUser.Id |
+| 3 | varint | 4 | ProtoUser.Level |
+| 4 | varint | 250 | ProtoUser.Exp |
+| 7 | varint | 18100000 | ProtoUser.HeadIcon |
+| 14 | length-delimited | `6739696e32` → `g9in2` | ProtoUser.Name |
+| 20 | varint | 3 | 미확정 |
+| 21 | varint | 3 | 미확정 |
+| 22 | varint | 10 | 미확정 |
+| 24 | varint | 1 | 미확정 |
+
+이로써 기본 속성 5개의 protobuf wire tag는 **Id=1, Level=3, Exp=4, HeadIcon=7, Name=14**로 확정한다. Ghidra getter에서 확인한 객체 내부 offset(+0x10/+0x1C/+0x20/+0x2C/+0x30)은 wire tag와 별개다. field 35의 나머지 tag 20/21/22/24는 의미를 추정하지 않는다.
+
+### OpInfo field 21 — 동일 캡처의 음수 key
+
+field 21 entry 중 signed int32 음수 key 13개를 varint 원시 바이트에서 부호 복원했다.
+
+| key | value |
+|---:|---:|
+| -29 | 16 |
+| -28 | 16 |
+| -27 | 16 |
+| -23 | 0 |
+| -22 | 0 |
+| -20 | 0 |
+| -18 | 16 |
+| -33 | 0 |
+| -34 | 16 |
+| -36 | 16 |
+| -30 | 0 |
+| -31 | 0 |
+| -32 | 16 |
+
+이는 해당 PCAP 응답 한 건의 관측값이다. 다른 시점의 캡처와 값이 다를 수 있고, 16을 곧바로 UI 카운트로 해석하지 않는다. UserInfo.MergeVaryData에서 소비되는 -18/-30/-31/-32/-34 외의 8개(-29/-28/-27/-23/-22/-20/-33/-36)는 아직 직접 소비처가 확인되지 않았다. HomePanelMono의 -27 mail badge는 별도 DataCenter 캐시 Dictionary(+0xC0) 조회이므로 field 21과 동일한 저장소라고 단정하지 않는다.
+
+### 현재 미해결 경계
+
+- ProtoUser 기본 5개 속성의 wire tag 확정 완료. 추가 tag 4개는 이름 미확정.
+- DictI32 미분류 음수 key 8개는 실제 수신 값 확인 완료, 소비 함수 미확정.
+- ItemRecord type 8의 73 CODE가 XLua/Lua에서 어느 테이블을 조회하는지는 아직 확인 전. ItemData.get_itemPackageId(+0x90)와 XLua ItemDataWrap 노출까지가 정적 근거의 끝이다.
+- ItemRecord/ItempackageRecord/ItemboxRecord의 ObscuredInt 논리 ID는 hiddenValue에서 상수 차감이 아니라 XOR crypto key 복원이다. type 8 logical ID는 43100014~43300003이며, CODE 1~425와 Record ID를 동일시하지 않는다.
