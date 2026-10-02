@@ -575,8 +575,10 @@ Listing: `research/Ghidra_Listing_txt/AL/015b461c_Alioth.S1.Net.Request__SetResp
 
 - `Request.SetResponse(request, OpInfo)`는 Request의 `Res`에 응답 OpInfo를 설정한다.
 - 이어서 현재 시간을 얻어 `FinishAt`을 설정한다.
-- 그 다음 TryHandleResponse가 Request 내부 callback delegate를 호출한다.
-- 현재 TryHandleResponse의 Calls OUT에는 `CSBehaviour.Response`라는 직접 함수 호출이 표시되지 않는다. 등록 callback의 실제 target이 CSBehaviour.Response인지 여부는 delegate 등록 지점을 확인하기 전까지 확정하지 않는다.
+- `Request.SetResponse` 자체는 Res와 FinishAt을 설정한다.
+- 그 다음 `NetworkCenter.TryHandleResponse`는 NetworkCenter 인스턴스의 `+0x38`에 보관된 delegate 구조체를 통해 간접 callback을 호출한다. Listing상 이 필드는 TryHandleResponse의 `x19`(NetworkCenter) 기준으로 읽힌다.
+- 따라서 이를 "Request 객체 내부 callback"이라고 부르면 안 된다.
+- 이 delegate의 실제 target이 `DataCenter.RequestCallback`인지, 다른 중계 함수인지 직접 delegate 생성/대입 지점을 추가 확인해야 한다. 현재 `DataCenter.RequestCallback`은 응답 Request의 IsClientProccessed 설정 및 `Ali.DataProccessCallBack` 호출을 수행하는 별도 확인된 dispatcher다.
 
 ### 12.4 DataCenter.ProccessRequestRes의 역할
 
@@ -616,3 +618,122 @@ Listing: `DataCenter.RegisterDataProccessCallBack @ 016e68b0`
 ```
 
 이 순서는 기존 9.2 절의 응답 흐름을 대체한다. 특히 DataCenter 병합이 Request별 callback보다 먼저 실행된다는 점을 서버 구현 순서에 반영한다.
+
+
+## 13. 2026-10-02 Opcode별 응답 callback 등록부 추적
+
+이번 단계에서는 Request 본문(PR Listing)이 비어 있는 상태에서, UI가 등록하는 응답 callback의 opcode key를 추적했다. 이는 응답 dispatch key를 확인하는 근거이며, Request 함수 내부의 `OpInfo +0x14` 대입 명령을 직접 확인한 것과는 증거 수준을 구분한다.
+
+### 13.1 공통 callback registry
+
+#### BaseMono → Ali.RegisterDataProccessCallBack
+
+- 화면별 `BaseMono.RegisterDataProccessCallBack @ 00e1a5c0` 호출은 `Ali.RegisterDataProccessCallBack @ 00e03ac8`로 연결된다.
+- `Ali.RegisterDataProccessCallBack`은 두 번째 인자 `w1`을 `Int16Enum` key로 사용해 `Dictionary<Int16Enum, object>`에 `NetEvent` 객체를 등록한다.
+- 이미 key가 존재하면 해당 항목을 가져와 callback을 추가하는 분기가 있다. 새 key면 `NetEvent::.ctor`를 만든 뒤 dictionary에 넣는다.
+- 따라서 UI 함수의 `RegisterDataProccessCallBack(code, delegate)`에서 code는 응답 이벤트를 찾는 opcode key로 기능한다.
+
+#### 응답 처리 dispatcher
+
+- `DataCenter.RequestCallback @ 016e1f44`는 Request의 `IsClientProccessed`를 true로 설정한 뒤 `Ali.DataProccessCallBack`을 호출한다.
+- `Ali.DataProccessCallBack @ 00e03dd4`는 Request의 `Res`를 얻고, 응답 OpInfo의 `+0x14`에서 opcode를 읽는 경로를 가진다.
+- 이 opcode로 `Ali.RegisterDataProccessCallBack`이 구성한 Dictionary를 조회하고, 해당 `NetEvent.callBack`을 호출한다.
+- 일부 opcode는 `GUIScreenManager.RequsetBack` 분기로도 처리된다.
+- 이 구조는 UI callback이 Request 함수마다 개별 등록되는 방식만 있는 것이 아니라, **응답 OpCode를 key로 한 공용 callback registry**를 사용한다는 근거다.
+
+### 13.2 우편 callback key
+
+Listing: `MailMono.RegisterCallBack @ 00f99e2c` (`MA.txt`)
+
+- `Ali.OnProccessRequestFinish::.ctor`로 delegate를 만든 뒤 `BaseMono.RegisterDataProccessCallBack`을 호출한다.
+- 첫 번째 등록 key: `0x2E`
+- 두 번째 등록 key: `0x68`
+- 별도로 `BaseMono.RegisterHttpRequestCallBack` 및 `Ali.OnHttpRequestFinish::.ctor`도 호출한다. 우편 화면의 게임 프로토콜 응답과 HTTP 응답 callback 등록은 구분해야 한다.
+- 우편 UI의 직접 Request caller는 `MailMono.ClickGetMail / ClickAllMail → MailGetReward @ 00de01c4`로 확인돼 있다.
+- 따라서 `0x2E`는 MailGetReward 응답 callback key와 대응하는 유력 후보로 분류한다.
+- `0x68`은 우편 화면의 별도 응답 key다. Request inventory에 `GetMailOlds @ 00de2ae4`가 있으나, callback delegate target을 직접 대조하기 전에는 이 함수와의 매핑을 확정하지 않는다.
+
+### 13.3 퀘스트 보상 callback key
+
+#### TaskNewPanelMono
+
+Listing: `TaskNewPanelMono.Start @ 00f7a170` (`TA.txt`)
+
+- `Ali.OnProccessRequestFinish::.ctor`로 delegate 생성
+- `BaseMono.RegisterDataProccessCallBack(0x30, delegate)` 호출
+- 같은 TaskNewPanelMono의 `OnClickRecive @ 00f7d768`는 `QuestGetReward @ 00ddfc10`를 직접 호출한다.
+
+#### TrainingCampPanelMono
+
+Listing: `TrainingCampPanelMono.RegisterCallBack @ 0103bbfc` (`TR.txt`)
+
+- `Ali.OnProccessRequestFinish::.ctor`로 delegate 생성
+- `BaseMono.RegisterDataProccessCallBack(0x30, delegate)` 호출
+- 같은 화면의 `OnClickReceive @ 0103d508`는 조건 검사 후 `QuestGetReward @ 00ddfc10`를 직접 호출한다.
+
+#### TaoFaPanelMono
+
+Listing: `TaoFaPanelMono.RegisterCallBack @ 01035d28` (`TA.txt`)
+
+- 응답 key `0x7D`, `0x7C`, `0x30`에 대해 각각 callback 등록
+- 같은 화면의 `OnClickRecive @ 01039ef8`는 `QuestGetReward @ 00ddfc10`를 직접 호출한다.
+
+#### Opcode 판정 수준
+
+- 세 화면이 공통으로 등록하는 key `0x30`과 각 화면의 QuestGetReward 직접 호출 관계를 함께 보면, QuestGetReward의 응답 opcode는 `0x30`일 가능성이 높다.
+- 다만 callback target의 함수 포인터를 Request 응답과 직접 결합하거나 Request 본문의 `OpInfo +0x14` 대입을 확인하지 못했으므로 현재는 **유력 후보**로 기록한다.
+
+### 13.4 상점 구매 callback key
+
+Listing: `ShopNewPanelMono.Awake @ 010285d4` (`SH.txt`)
+
+- `BaseMono.RegisterDataProccessCallBack(0x34, delegate)`
+- `BaseMono.RegisterDataProccessCallBack(0x5C, delegate)`
+- 같은 화면의 구매 확인 함수 `ShopConfirmTipsMono.OnClickOK @ 0102408c`는 `Shopping @ 00de1e80`을 직접 호출한다.
+- 기존 2026-09-29 Request 분석에서 Shopping의 Opcode는 `0x34`, payload는 u32 3개(`OpInfo +0x30/+0x34/+0x38`)로 확인돼 있다.
+- 따라서 ShopNewPanelMono의 `0x34` callback 등록은 Shopping 응답 경로와 일치한다.
+- `ShopNewPanelMono.OnShoppingCallback @ 0102ac50`는 보상 표시와 상품/충전 UI 갱신을 수행하지만 Calls IN이 비어 있다. 이번 단계에서 0x34 등록 delegate의 실제 target이 이 함수라는 직접 연결은 확인하지 못했으므로, 함수 역할상 후보로만 둔다.
+- `0x5C`는 별도 상점 화면 응답 key이며, 현재는 특정 Request 함수에 매핑하지 않는다.
+
+### 13.5 현재까지의 Opcode / payload 판정표
+
+| Request | 직접 UI caller | 응답 callback key | Request payload |
+|---|---|---:|---|
+| MailGetReward | MailMono.ClickGetMail / ClickAllMail | 0x2E 유력 후보 | caller 인자는 확인, OpInfo offset 미확정 |
+| QuestGetReward | TrainingCamp / TaskNew / TaoFa 보상 클릭 | 0x30 유력 후보 | caller 인자는 확인, OpInfo offset 미확정 |
+| Shopping | ShopConfirmTipsMono.OnClickOK | 0x34 확인(기존 Request Listing 근거) | u32 3개: +0x30/+0x34/+0x38 |
+| GetMails | 화면 로더 자동 요청 | 별도 화면/공용 callback 경로 추가 확인 필요 | 무인자 요청으로 기존 분류, 본문 재검증은 보류 |
+| GetShops | 화면 로더 자동 요청 | 0x34/0x5C와 별개인지 확인 필요 | 무인자 요청으로 기존 분류, 본문 재검증은 보류 |
+
+### 13.6 Request callback과 UI opcode callback은 구분
+
+현재 확인된 레이어:
+
+```text
+NetworkCenter.TryHandleResponse
+  → Request.SetResponse(Res, FinishAt 설정)
+  → NetworkCenter 인스턴스 +0x38 delegate 간접 호출
+      [delegate target은 아직 미확정]
+
+별도 확인된 DataCenter 응답 dispatch:
+DataCenter.RequestCallback
+  → Request.IsClientProccessed = true
+  → Ali.DataProccessCallBack
+  → response OpInfo +0x14 opcode 읽기
+  → opcode key로 NetEvent Dictionary 조회
+  → 등록된 UI callback 실행
+```
+
+두 경로의 연결 delegate target은 아직 확정하지 않는다. NetworkCenter의 `+0x38` delegate 생성/대입 지점을 추가 확인해야 한다.
+
+### 13.7 Request payload 미확정 사유와 다음 단계
+
+- `research/Ghidra_Listing_txt/PR.txt`는 현재 Git에서 0 byte다.
+- Request 함수 본문 Listing이 없어 `MailGetReward`와 `QuestGetReward`의 opcode 대입 및 인자 저장 offset을 직접 확인하지 못했다.
+- UI caller에서 얻는 값은 다음과 같다.
+  - Mail 단건: UIData 내부 객체의 `+0x10` 32-bit 값을 Request 인자로 전달
+  - Mail 전체: Mail 관련 전역 객체 참조를 첫 인자로 전달
+  - Quest/Task/TaoFa: UIData payload 객체의 첫 32-bit 값을 Request 인자로 전달
+  - TrainingCamp: UserInfo Dictionary의 key를 조건 충족 시 Request 인자로 전달
+- 위 인자가 OpInfo의 어느 슬롯에 저장되는지는 Request 본문 없이는 단정하지 않는다.
+- 다음은 Request 본문을 복구할 수 있는 별도 Ghidra export 또는 런타임 hook 로그를 확보하는 일이다. 그 전까지는 opcode callback key를 통한 후보와 payload caller 인자까지만 서버 계약 초안에 반영한다.
