@@ -1618,6 +1618,69 @@ function inspectChaptersDictionary(dictPtr) {
         console.log('[!] Warehouse hook setup failed: ' + e.message);
     }
 
+    // v4.23: trace the three Main currencies through BaseData.type and GetXCount.
+    // Only the known currency IDs are logged; no arbitrary inventory contents are dumped.
+    const MAIN_CURRENCY_IDS = {
+        43000001: 'Coins',
+        43000002: 'Crystals',
+        43000003: 'Energy'
+    };
+    try {
+        const baseMethods = findMethodsAnywhereByName('DataManager', 'TryGetBaseData');
+        for (const m of baseMethods) {
+            if (m.paramCount < 2 || m.typeNames[0] !== 'System.Int32') continue;
+            console.log('[+] Hooking DataManager.TryGetBaseData(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    this.itemId = args[1].toInt32();
+                    this.track = Object.prototype.hasOwnProperty.call(MAIN_CURRENCY_IDS, this.itemId);
+                    this.outPtr = args[2];
+                },
+                onLeave(retval) {
+                    if (!this.track) return;
+                    try {
+                        let base = ptr(0);
+                        if (this.outPtr && !this.outPtr.isNull()) base = this.outPtr.readPointer();
+                        let type = 'unavailable';
+                        if (!base.isNull()) type = '0x' + base.add(0x24).readU32().toString(16);
+                        console.log('[CURRENCY_BASEDATA] ' + MAIN_CURRENCY_IDS[this.itemId] +
+                            ' id=' + this.itemId + ' found=' + (retval.toInt32() !== 0) +
+                            ' BaseData=' + (base.isNull() ? 'null' : base) + ' type=' + type);
+                    } catch (e) {
+                        console.log('[CURRENCY_BASEDATA] id=' + this.itemId + ' inspect failed: ' + e.message);
+                    }
+                }
+            });
+            hookCount++;
+        }
+        if (!baseMethods.length) console.log('[!] DataManager.TryGetBaseData not found');
+    } catch (e) { console.log('[!] Currency BaseData hook failed: ' + e.message); }
+
+    try {
+        const countMethods = findMethodsAnywhereByName('DataCenter', 'GetXCount');
+        for (const m of countMethods) {
+            if (m.paramCount < 2 || m.typeNames[0] !== 'System.Int32') continue;
+            console.log('[+] Hooking DataCenter.GetXCount(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    this.itemId = args[1].toInt32();
+                    this.track = Object.prototype.hasOwnProperty.call(MAIN_CURRENCY_IDS, this.itemId);
+                    this.mode = args[2] ? args[2].toInt32() : 0;
+                },
+                onLeave(retval) {
+                    if (!this.track) return;
+                    try {
+                        logOnChange('currency-count:' + this.itemId, retval.toInt32(),
+                            '[CURRENCY_COUNT] ' + MAIN_CURRENCY_IDS[this.itemId] +
+                            ' id=' + this.itemId + ' mode=' + this.mode + ' count=' + retval.toInt32());
+                    } catch (e) {}
+                }
+            });
+            hookCount++;
+        }
+        if (!countMethods.length) console.log('[!] DataCenter.GetXCount not found');
+    } catch (e) { console.log('[!] Currency GetXCount hook failed: ' + e.message); }
+
     // MergeItem receives Bootstrap/OpInfo item dictionaries and updates DataCenter's cache.
     try {
         const mergeMethods = findMethodsAnywhereByName('DataCenter', 'MergeItem');
@@ -1714,7 +1777,7 @@ function inspectChaptersDictionary(dictPtr) {
         } else console.log('[!] OpInfo.get_Chapters not found');
     } catch (e) { console.log('[!] OpInfo.Chapters hook failed: ' + e.message); }
 
-    console.log('[*] justice_hook v4.21');
+    console.log('[*] justice_hook v4.23');
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
     console.log('[*] Look for [TOKEN_SAVE], [TOKEN_GET], [TOKEN_COMPARE], [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
