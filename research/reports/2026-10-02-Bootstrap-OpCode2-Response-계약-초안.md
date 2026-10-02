@@ -765,3 +765,63 @@ HeroInfo state
 2. 실제 runtime에서 +0x70 DictI32 key/value 확보
 3. HeroInfo.InitHero @ 016e5fd4에서 ProtoHero → HeroInfo field 매핑 확인
 4. 이후 HomePanelMain이 실제로 읽는 UserInfo/HeroInfo 필드만 계약에 우선 반영
+
+
+## 17. 2026-10-02 HeroInfo.InitHero 호출 인자 및 후속 처리
+
+현재 Git Listing에서 InitHero 자체의 별도 함수 블록은 분리되어 있지 않아, 호출부를 기준으로 확정 가능한 범위만 기록한다.
+
+### 17.1 InitHero 호출 인자
+
+FUN_00e5c00c에서 Dictionary 값을 꺼낸 뒤 다음 호출이 확인된다.
+
+```text
+00e5bda0  mov x20,x0              ; Dictionary<int,object>.get_Item 결과
+...
+00e5bdd0  bl 0x00e0277c          ; DataManager 획득
+00e5bddf  ...
+00e5bdf0  bl 0x0177142c          ; DataManager.TryGet<object>
+...
+00e5be18  mov x19,x0
+00e5be1c  bl 0x016e0400          ; HeroInfo$$.ctor
+00e5be20  mov x0,x19
+00e5be24  mov x1,x20
+00e5be28  mov x2,xzr
+00e5be2c  bl 0x016e5fd4          ; HeroInfo$$InitHero
+```
+
+호출 규약상 x0=생성된 HeroInfo, x1=x20(앞에서 Dictionary에서 얻은 원본 객체), x2=null이다. 원본을 ProtoHero 계열로 추정할 수 있지만 현재 Listing만으로 타입명을 직접 확정하지 않고 원본 Hero 데이터 객체로 기록한다.
+
+### 17.2 InitHero 이후 Hero 상태 가공
+
+같은 처리 흐름에서 다음이 연속으로 존재한다.
+
+```text
+HeroInfo$$InitHero @ 016e5fd4
+        ↓
+HeroInfo$$FinalUpgradeHero @ 016e07d4
+        ↓
+HeroInfo$$UpdateAIStrategy @ 016f0b28
+```
+
+또 다른 흐름에서는 WeaponInfo$$.ctor, WeaponInfo$$Refresh, WeaponInfo$$get_Id가 함께 사용된다.
+
+따라서 Bootstrap Hero 데이터는 단순 dictionary 보관이 아니라 원본 Hero 데이터 → HeroInfo 생성 → InitHero → FinalUpgradeHero → UpdateAIStrategy 후처리 흐름으로 기록한다.
+
+### 17.3 현재 확정 / 미확정
+
+확정:
+- OpInfo +0x90 Heros → DataCenter.UpdateHeroInfo
+- UpdateHeroInfo → HeroInfo.InitHero
+- InitHero 호출 시 x0=HeroInfo, x2=null
+- InitHero 후 FinalUpgradeHero, UpdateAIStrategy 처리 존재
+- Hero 흐름에 WeaponInfo 생성/갱신 경로 존재
+
+미확정:
+- InitHero 내부의 ProtoHero 각 필드 → HeroInfo 필드 정확한 offset
+- HeroInfo의 Level/Star/State/Fashion 직접 매핑
+- Bootstrap에서 실제 Main 화면에 필요한 Hero 필드 최소 집합
+
+### 17.4 다음 작업
+
+다음은 HeroInfo getter/setter와 WeaponInfo 소비처를 기준으로 실제 Main/Hero UI가 읽는 Hero 필드를 역추적한다. InitHero 내부가 Git Listing에 직접 존재하지 않는 경우 runtime hook으로 InitHero 인자를 잡아 실제 객체 타입/필드 접근을 보완한다.
