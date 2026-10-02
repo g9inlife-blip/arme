@@ -1031,3 +1031,64 @@ field 21 미분류 key의 32-bit 상수 표현을 Ghidra Listing 전체에서 �
 - `-23/-28/-29/-33/-36`의 동일 immediate 검색에서는 현재 Ghidra Listing 검색 결과가 확인되지 않았다.
 
 **판정:** 숫자 상수 일치만으로 DictI32 소비처를 연결하면 안 된다. Dictionary ContainsKey/get_Item 호출과 실제 Dictionary 인자 흐름이 함께 확인되어야 한다. 미분류 8개 key는 모두 의미 미확정 상태를 유지한다.
+
+## 2026-10-02 검증 추가 — UserInfo XLua 경계와 동명 상태 분리
+
+### 1. Getter Calls IN 재검증
+
+research/Ghidra_Listing_txt/US.txt의 실제 getter Listing을 다시 대조했다.
+
+| UserInfo getter | MergeVaryData 호출 | XLua getter wrapper | 그 외 native 소비자 |
+|---|---|---|---|
+| StigmataTimes | 있음 | 있음 | 미확인 |
+| MetaphysicsTimes | 있음 | 있음 | 미확인 |
+| FCTimes | 있음 | 있음 | 미확인 |
+| StepId | 있음 | 있음 | 미확인 |
+| ExamTimes | 있음 | 있음 | 미확인 |
+| ChatChannel | 있음 | 있음 | 미확인 |
+
+중요한 정정:
+- MergeVaryData는 해당 key가 Dictionary에 없을 때 기존 UserInfo getter를 호출해 fallback 값을 얻고, 이어 setter를 호출한다.
+- 따라서 위 getter의 MergeVaryData Calls IN은 Lua/게임 기능이 값을 읽는 소비 증거가 아니라 병합 시 기존값 보존을 위한 내부 fallback 호출이다.
+- XLua wrapper Calls IN은 Lua에서 읽을 수 있도록 노출된 사실만 증명한다. 실제 Lua script가 해당 property를 읽는지는 증명하지 않는다.
+- 기존의 “XLua 노출만 확인” 분류는 “native business consumer 미확인, MergeVaryData fallback 및 XLua wrapper 호출 확인”으로 더 정확히 표현한다.
+
+### 2. ChatChannel은 서로 다른 두 상태가 존재
+
+UserInfo.MergeVaryData @ 00dd3030는 key -34 (0xffffffde)를 조회하고 UserInfo.get_ChatChannel @ 00dd2be0 fallback 후 UserInfo.set_ChatChannel @ 00dd2c58를 호출한다. UserInfo 내부 저장 offset은 +0x68이다.
+
+한편 DataCenter.ProccessRequestRes @ 016e203c에도 같은 key -34 조회 후 DataCenter.set_ChatChannel @ 016de024를 호출하는 별도 경로가 있다. DataCenter 내부 저장 offset은 +0xD0이다.
+
+따라서 ChatChannel은 이름만 같다고 단일 상태로 합치면 안 된다.
+
+```text
+OpInfo DictI32 field 21
+  ├─ UserInfo.MergeVaryData
+  │    └─ UserInfo.ChatChannel (+0x68)
+  └─ DataCenter.ProccessRequestRes 별도 key 처리
+       └─ DataCenter.ChatChannel (+0xD0)
+```
+
+두 값의 목적/UI 소비처가 같은지, 서로 동기화되는지는 아직 미확정이다. 동일 Dictionary를 두 경로에서 읽는다는 정황은 있지만, 두 상태의 기능적 동등성은 runtime 대조 전까지 확정하지 않는다.
+
+### 3. ExamTimes 동명 속성 분리
+
+UserInfo.ExamTimes는 field 21 key -18에 의해 UserInfo.MergeVaryData에서 갱신된다. 해당 getter의 native Calls IN은 MergeVaryData fallback과 XLua wrapper뿐이다.
+
+별도로 ProtoRank.get_ExamTimes @ 015ad6bc가 존재하며, Ali.SaveExamReq @ 00e043b0는 Request.get_Res에서 얻은 객체의 +0x108을 읽고 그 안의 +0x40 값을 DataCache.set_m_examTimes에 전달한다. 이 경로는 Exam 요청 응답의 ProtoRank 값이다.
+
+```text
+field 21 key -18 → UserInfo.ExamTimes (+0x54)
+Exam request response → ProtoRank.ExamTimes (+0x40)
+                  → DataCache.m_examTimes
+```
+
+따라서 Ali.SaveExamReq는 UserInfo key -18의 직접 소비처로 집계하지 않는다. 서로 다른 객체/offset/갱신 경로다.
+
+### 4. Lua source 존재 여부와 검증 한계
+
+Git 기본 branch에서 위 6개 property 이름과 XLua wrapper symbol을 검색했다. 확인된 결과는 Ghidra Listing 및 분석 보고서이며, 실제 .lua source 파일이나 property read call site는 검색 결과에서 찾지 못했다.
+
+research/Ghidra_Listing_txt/LU.txt에는 LuaCallCs.Start @ 0105d2b4가 XLua.LuaEnv.DoString @ 010eecf8을 호출하고 LuaCallCs.Update가 LuaEnv.Tick을 호출하는 정적 근거가 있다. 즉 Lua 실행 환경은 확인되지만, 현재 Git에 올라온 Listing만으로는 실행되는 Lua 본문에서 6개 속성을 어디서 읽는지 복원할 수 없다.
+
+**검증 결론:** 현재 정적 증거만으로는 6개 property의 Lua 측 실사용처를 확정할 수 없다. 다음 단계는 실제 실행 시 XLua property getter wrapper 진입을 추적하거나, LuaEnv에 전달되는 DoString 입력/로드된 스크립트 자산을 확보하는 것이다. 코드 검색 결과만으로 “Lua에서 사용하지 않는다”고 결론 내리지 않는다.
