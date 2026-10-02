@@ -290,3 +290,57 @@ CreateBattle(
 게임이 IL2CPP 로딩을 마친 뒤 기존 방식으로 `research/justice_hook.js`를 attach하고, 실제로 던전 입장 버튼을 한 번 눌러 로그를 수집한다. 로그에는 계정 Token/device 식별값이 포함되지 않도록 기존 민감정보 마스킹 원칙을 유지한다.
 
 현재 스크립트는 관찰 전용이며 게임 메모리나 서버 데이터를 변경하지 않는다.
+
+
+## 10. Runtime 결과 — v4.24 (2026-10-02)
+
+로그 원본:
+`research/reports/Log/frida_log_static_신규로갱신되므로기존데이터없이최종본만.txt`
+
+### 10.1 Hook 설치 확인
+- `ProtocolGame_SendRequest.CreateBattle(System.Int32, System.Int32)` 설치 확인
+- `GoToBattleMono.CreateBattleBack(Alioth.S1.Net.Request)` 설치 확인
+- Ready 상태/클릭 hook도 실제 호출 로그가 발생했다.
+
+### 10.2 실제 클릭부터 서버 응답까지
+
+| 순서 | 로그 | 관측 |
+|---|---|---|
+| 1 | `DUNGEON_READY_STATE` | Ready 화면 버튼 상태 갱신 |
+| 2 | `DUNGEON_READY_CLICK` | 입장 버튼 클릭 함수 진입 |
+| 3 | `DUNGEON_CREATE_BATTLE` | arg0=`20000000`, arg1=`21000010` |
+| 4 | `KCP_SEND_ACCEPTED` | Serial=`139954761`, OpCode=`22` (0x16), ret=1 |
+| 5 | `NET_RESP_STATUS` | status=4, `ProccessRequestRes` 경로 |
+| 6 | `BOOT_RESP` | OpCode=22, ReturnCode=0 |
+| 7 | `DUNGEON_READY_STATE` | 응답 처리 후 Ready 상태 재갱신 |
+| 8 | `DUNGEON_GOTO_BATTLE` | `GoToBattleMono.CreateBattleBack` 진입 |
+
+이번 실행에서 클릭부터 서버 응답 처리 및 `CreateBattleBack` 진입까지 한 번의 흐름으로 관측했다.
+
+### 10.3 요청 인자 비교
+이번 runtime 값:
+- arg0 = `20000000`
+- arg1 = `21000010`
+
+이전 PCAP 값:
+- arg0 = `20000100`
+- arg1 = `21000060`
+
+값이 다른 것은 서로 다른 Chapter/Mission을 선택한 실행으로 해석할 수 있다. 이번 두 ID의 Record 종류/참조 관계는 다음 정적 데이터 대조에서 확인한다. 이전 PCAP의 ID 의미를 이번 runtime 값에 그대로 대입하지 않는다.
+
+### 10.4 응답 해석 범위
+- KCP Send 반환값 1: 클라이언트 전송 계층에서 요청이 수락된 것으로 관측.
+- `NET_RESP_STATUS status=4`: 기존 hook의 분기 기준상 `ProccessRequestRes` 실행 경로.
+- `BOOT_RESP OpCode=22 ReturnCode=0`: 응답 OpInfo의 ReturnCode가 0.
+- `CreateBattleBack` 진입: 서버 응답 처리 뒤 후속 callback이 호출된 사실을 확인.
+
+단, ReturnCode=0만으로 실제 전투 씬 로딩 완료까지 확정하지 않는다. 이번 로그에는 씬 전환 완료를 직접 확인하는 hook은 없다.
+
+## 11. 남은 확인 사항
+
+1. 이번 실행의 `20000000 / 21000010`을 ChapterRecord/MissionRecord 원본과 대조한다.
+2. `CreateBattleBack(Alioth.S1.Net.Request)` 인자로 전달된 Request의 상태/응답 필드를 안전하게 읽어 성공·실패 분기를 확인한다.
+3. `CreateBattleBack` 이후 실제 전투 씬 로딩/진입 완료 지점을 찾는다.
+4. 서버 거절 케이스가 가능하면 별도 캡처하여 ReturnCode 및 실패 UI 경로를 비교한다.
+
+Energy 회복 경로는 추가 추적하지 않는다.
