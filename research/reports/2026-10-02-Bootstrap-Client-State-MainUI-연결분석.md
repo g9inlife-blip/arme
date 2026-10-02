@@ -783,3 +783,39 @@ Heros Dictionary key == ProtoHero.Id == HeroInfo.Id
 3. `DataManager.TryGet<object>`의 generic type handle(`x3))이 이 호출에서 어떤 class를 가리키는지 확인.
 4. 이 결과를 기존 `HashSet<int> → DataCenter +0x30 / OpInfo +0x90 → HeroInfo.InitHero` 경로와 대조.
 
+
+
+### 18.2 FUN_00e5c00c의 x20 타입/호출 관계 추가 추적
+
+추가 Listing 확인 결과:
+
+- `FUN_00e640d8 @ 00e640d8`는 `FUN_00e5c00c`로 단순 branch하는 wrapper이며, 현재 Calls IN은 `FUN_00e5c00c`로 역표기되는 동일 구간만 확인된다.
+- `FUN_00e5c00c`의 핵심 구간에서:
+  - `00e5bd7c~00e5bd9c`: 동일 Dictionary(`x22`)에 대해 key `w19`로 `ContainsKey` 후 `get_Item`.
+  - `00e5bda0`: 두 번째 `get_Item` 결과를 `x20`에 보관.
+  - `00e5bde0`: `[x20,#0x10]`을 정수 key로 읽음.
+  - `00e5bdf0`: `DataManager.TryGet<object>` 호출.
+  - 성공 후 반환 object를 `HeroInfo::.ctor`에 전달하고, 원래 `x20`을 `HeroInfo.InitHero`의 두 번째 객체 인자로 전달.
+- 따라서 이 구간의 `x20`은 **Dictionary<int,object>.get_Item 결과 객체**라는 것은 정적 분석으로 확정된다.
+- 그러나 해당 Dictionary의 구체적인 소유 필드와 value class, 그리고 value `+0x10`의 의미는 현재 Listing만으로 확정되지 않는다.
+- `DataManager.TryGet<object>`의 세 번째 인자(`x3))는 전역에서 읽은 generic/type 관련 핸들이며, 이 호출만으로 실제 타입명을 확정하지 않는다.
+
+### 18.3 중요한 분리
+
+`FUN_00e5c00c`는 `HeroInfo.InitHero`를 호출하지만, 이 호출 하나만으로 `DataManager.TryGet<object>`가 Hero Prototype/ActorData 조회라고 확정할 수 없다.
+
+현재 STATIC 확정은 다음까지다.
+
+```text
+Dictionary<int, object>
+   ↓ get_Item(key)
+x20
+   ↓ [x20 + 0x10]
+int key
+   ↓ DataManager.TryGet<object>
+out object
+   ↓ HeroInfo::.ctor
+   ↓ HeroInfo.InitHero(x20)
+```
+
+다음은 **Dictionary의 생성/대입 지점과 value class를 역추적**하는 것이 우선이다. 이를 확인하면 `+0x10`이 Hero ID인지, 다른 식별자인지 판별할 수 있다.
