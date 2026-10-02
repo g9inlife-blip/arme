@@ -813,3 +813,55 @@ DataCenter.RequestCallback
 - `MailGetReward @ 00de01c4`는 그 첫 인자를 `str x19,[x0,#0x28]!`로 OpInfo `+0x28`에 그대로 저장한다.
 
 **정정:** 단건 우편의 `UIData.data +0x10` 값은 Listing상 `ldr x0`로 읽는 포인터 크기 값이다. 이전의 “32-bit 값” 표기는 잘못됐으므로 폐기한다. 현재 근거로는 Mail 객체 참조로 판단하지만, 참조 대상의 구체 클래스명과 내부 ID 필드는 별도 확인이 필요하다.
+
+
+### 13.12 OnProccessRequestFinish delegate wrapper 구조 확인 (2026-10-03)
+
+대상 Listing:
+- `Ali.OnProccessRequestFinish::.ctor @ 00e110fc`
+- `Ali.OnProccessRequestFinish::Invoke @ 00e111e0`
+- 등록부: `MailMono.RegisterCallBack @ 00f99e2c`, `TaskNewPanelMono.Start @ 00f7a170`, `TrainingCampPanelMono.RegisterCallBack @ 0103bbfc`, `TaoFaPanelMono.RegisterCallBack @ 01035d28`, `ShopNewPanelMono.Awake @ 010285d4`.
+
+#### 공통 delegate wrapper
+
+`OnProccessRequestFinish::.ctor`는 호출 인자를 다음처럼 보관한다.
+- 생성자 x1: callback target 객체 → wrapper `+0x20`
+- 생성자 x2: callback method metadata/pointer → wrapper `+0x28`
+- `+0x18`: Invoke에서 사용할 실제 호출 thunk 주소
+- `+0x40`: 호출 target 객체 참조
+
+`OnProccessRequestFinish::Invoke` Listing:
+- `ldr x8,[x0,#0x40]`: target 객체 로드
+- `ldr x3,[x0,#0x18]`: 호출 thunk 로드
+- `ldr x2,[x0,#0x28]`: 등록된 method metadata/pointer 로드
+- `mov x0,x8`; `br x3`: target 및 method 정보를 사용해 간접 호출
+
+즉, 각 UI 클래스의 등록 callback은 일반 함수 주소를 직접 Dictionary에 넣는 구조가 아니라, target 객체와 method metadata를 감싼 `OnProccessRequestFinish` wrapper를 생성해 등록하는 형태다.
+
+#### 화면별 등록 key 확인
+
+| 화면 | 등록 key | 생성 wrapper target | method metadata |
+|---|---:|---|---|
+| MailMono | 0x2E, 0x68 | MailMono 인스턴스 | 정적 메타데이터 슬롯에서 로드 |
+| TaskNewPanelMono | 0x30 | TaskNewPanelMono 인스턴스 | 정적 메타데이터 슬롯에서 로드 |
+| TrainingCampPanelMono | 0x30 | TrainingCampPanelMono 인스턴스 | 정적 메타데이터 슬롯에서 로드 |
+| TaoFaPanelMono | 0x7D, 0x7C, 0x30 | TaoFaPanelMono 인스턴스 | 각 등록마다 별도 정적 메타데이터 슬롯 |
+| ShopNewPanelMono | 0x34, 0x5C | ShopNewPanelMono 인스턴스 | 각 등록마다 별도 정적 메타데이터 슬롯 |
+
+각 등록부에서 `OnProccessRequestFinish::.ctor`에 화면 인스턴스(x1)와 정적 데이터 슬롯에서 읽은 method metadata(x2)를 전달하는 것은 직접 확인했다. 그러나 현재 Listing에는 해당 정적 슬롯의 최종 값이 함수 주소/메서드명으로 해석되어 있지 않으므로, 아래 함수들과 wrapper를 직접 연결하는 것은 아직 불가능하다.
+- `MailMono.GetRewardBack @ 00f9cb40`
+- `TrainingCampPanelMono.QuestGetRewardBack @ 0103bd3c`
+- `TaskNewPanelMono.NetGetQuestReward @ 00f7d01c`
+- `TaoFaPanelMono.NetGetQuestReward @ 01038118`
+- `ShopNewPanelMono.OnShoppingCallback @ 0102ac50`
+
+따라서 이 함수들은 등록 key와 기능이 일치하는 **응답 후처리 후보**로 유지한다. 이번 단계에서 wrapper의 동적 호출 구조는 확인했지만, 실제 method pointer가 위 후보 중 하나라는 점까지 확정한 것은 아니다.
+
+#### NetworkCenter +0x38과의 관계
+
+- `NetworkCenter::.ctor @ 015b2f70`은 `Action<Int32Enum, ByteEnum, object>` delegate를 생성해 인스턴스 `+0x38`에 저장한다.
+- `TryHandleResponse @ 015b41e0`는 응답 Request 처리 완료 후 이 delegate를 간접 호출한다. 인자는 `w1=2`, `w2=response 상태 byte`, `x3=Request 객체`.
+- 이 delegate는 `OnProccessRequestFinish`와 별도 타입/호출 규약이다. 현재 근거로는 UI opcode callback wrapper와 동일한 delegate라고 볼 수 없다.
+- `DataCenter.RequestCallback @ 016e1f44` → `Ali.DataProccessCallBack @ 00e03dd4` 경로는 별도 opcode 기반 UI callback dispatcher로 유지한다. NetworkCenter `+0x38`에서 이 dispatcher로 이어지는 직접 연결은 아직 확인되지 않았다.
+
+**이번 단계 결론:** callback wrapper의 target/method metadata 저장 방식과 화면별 opcode 등록은 확인했다. 실제 target method 주소를 확정하려면 정적 메타데이터 슬롯이 가리키는 IL2CPP MethodInfo/함수 포인터를 해석할 수 있는 메타데이터 또는 런타임 delegate dump가 추가로 필요하다.
