@@ -959,3 +959,40 @@ DataCenter.RequestCallback(request)
 - Request hook의 런타임 설정 여부를 확인하기 전까지, `DataCenter.RequestCallback`이 어느 지점에서 호출되는지는 미확정으로 유지한다.
 
 **다음 조사 지점:** static callback slot `+0x80/+0x88`의 선언/대입 위치와 XLua delegate 등록 경로를 추적해 Request lifecycle hook의 실제 target을 식별한다.
+
+
+### 13.15 Opcode callback registry 교차검증 (2026-10-03)
+
+#### 화면별 등록 key 직접 확인
+
+각 화면 Listing에서 `Ali.OnProccessRequestFinish::.ctor @ 00e110fc`로 delegate wrapper를 생성한 다음 `BaseMono.RegisterDataProccessCallBack @ 00e1a5c0`에 opcode key와 delegate를 전달한다.
+
+| 화면 | 등록 key | 근거 주소 |
+|---|---:|---|
+| MailMono | `0x2E`, `0x68` | `00f99f7c–00f99fd4` |
+| TaskNewPanelMono | `0x30` | `00f7a238–00f7a24c` |
+| TrainingCampPanelMono | `0x30` | `0103bc84–0103bc98` |
+| TaoFaPanelMono | `0x7D`, `0x7C`, `0x30` | `01035ea8–01035f34` |
+| ShopNewPanelMono | `0x34`, `0x5C` | `010286d8–01028730` |
+
+Request Listing의 직접 opcode 대입(`MailGetReward=0x2E`, `QuestGetReward=0x30`, `Shopping=0x34`)과 화면 등록 key가 일치한다. 다만 delegate constructor의 method metadata는 각 정적 슬롯에서 읽으므로 key 일치만으로 실제 handler 함수 포인터까지 확정하지 않는다.
+
+#### Quest 보상 요청 caller 보강
+
+PR Listing의 `QuestGetReward @ 00ddfc10` Calls IN에는 아래 네 직접 caller가 있다.
+- `TaskNewPanelMono.OnClickRecive @ 00f7d768`
+- `TrainingCampPanelMono.OnClickReceive @ 0103d508`
+- `TaoFaPanelMono.OnClickRecive @ 01039ef8`
+- `ActiveShowPanelMono.OnClickRecive @ 010206f4`
+
+기존 세 화면 외에 ActiveShowPanel도 QuestGetReward를 호출한다. 해당 화면의 callback key 및 응답 후처리 연결은 별도 확인 대상으로 둔다.
+
+#### DataCenter → UI registry dispatch
+
+- `DataCenter.RequestCallback @ 016e1f44`는 Request의 `IsClientProccessed`를 true로 설정한 다음 `Ali.DataProccessCallBack @ 00e03dd4`를 호출한다.
+- `Ali.DataProccessCallBack`은 `Request.get_Res()`로 응답 OpInfo를 얻고 ReturnCode(`+0x18`) 및 OpCode(`+0x14`)를 검사한다.
+- 일반 callback 경로는 응답 opcode를 key로 Dictionary `ContainsKey → get_Item`을 수행한 뒤 `NetEvent.callBack`을 실행한다. 일부 opcode는 `GUIScreenManager.RequsetBack` 등 별도 분기를 탄다.
+
+**미확정:** `DataCenter.RequestCallback`의 Calls IN에는 정적 Listing상 직접 호출자가 없다. `NetworkCenter.TryHandleResponse`에서도 이 메서드로 직접 이어지는 호출은 확인되지 않았다. 따라서 NetworkCenter `+0x38 Action`, Request.SetResponse의 XLua hook(`+0x88`), DataCenter.RequestCallback을 하나의 callback으로 합쳐 설명하지 않는다. 런타임 연결은 hook slot 대입 또는 delegate MethodInfo 복원이 필요하다.
+
+**판정:** 화면별 opcode 등록 key와 Request opcode 대응을 직접 재확인했고 QuestGetReward의 ActiveShowPanel caller를 추가했다. Dictionary 기반 UI dispatch는 확인했으나, dispatch를 시작시키는 Request lifecycle 연결은 미확정이다.
