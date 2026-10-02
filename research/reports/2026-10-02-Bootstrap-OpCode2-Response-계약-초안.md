@@ -641,3 +641,127 @@ UserInfoPanelMono / Main UI 소비
 2. ProtoUser → UpdateHeroInfo @ 016e4ba4 직접 field access 확인
 3. HomePanelMono.Start에서 UserInfo/Charge/FCTimes 등 추가 소비처 확인
 4. 실제 Bootstrap Response를 기준으로 Local Server DictI32 계약 작성
+
+
+## 16. 2026-10-02 User / Heros 분리 경로 확정
+
+### 16.1 +0x88 User는 UpdateHeroInfo가 아니라 UserInfo.ctor로 처리
+
+ProccessRequestRes @ 016e203c의 실제 Listing에서 다음이 확인됐다.
+
+```text
+016e2580  ldr x21,[x26,#0x88]
+016e2584  cbz x21,...
+016e259c  mov x1,x21
+016e25a0  mov x2,xzr
+016e25a4  mov x22,x0
+016e25a8  bl 0x00dd2f44
+016e25ac  mov x0,x20
+016e25b0  str x22,[x0,#0x28]!
+```
+
+여기서:
+
+```text
+OpInfo +0x88 User (ProtoUser)
+  ↓
+UserInfo$$.ctor @ 00dd2f44
+  ↓
+DataCenter +0x28
+```
+
+즉 User는 UpdateHeroInfo 경로가 아니라 ProccessRequestRes에서 직접 UserInfo 객체로 생성되어 DataCenter `+0x28`에 저장된다.
+
+### 16.2 +0x70 DictI32는 같은 UserInfo 상태를 보정
+
+앞서 확인한:
+
+```text
+OpInfo +0x70 DictI32
+  ↓
+UserInfo$$MergeVaryData @ 00dd3030
+```
+
+와 합치면 실제 구조는:
+
+```text
+OpInfo +0x88 User
+  → UserInfo.ctor
+  → DataCenter +0x28
+
+OpInfo +0x70 DictI32
+  → UserInfo.MergeVaryData
+  → 기존 UserInfo 값 갱신
+```
+
+즉 `ProtoUser` 기본 정보와 `DictI32 vary data`가 **같은 UserInfo 객체를 서로 다른 단계에서 구성**한다.
+
+### 16.3 +0x90 Heros는 UpdateHeroInfo에서 별도 처리
+
+UpdateHeroInfo @ 016e4ba4에서는:
+
+```text
+016e5170  ldr x0,[x27,#0x90]
+...
+016e5198  ldr x0,[sp,#0x48]
+016e519c  cbz x0,...
+016e51a0  ldr x1,[sp,#0x40]
+016e51a4  bl 0x016e5fd4
+```
+
+가 확인된다.
+
+Calls OUT에도:
+
+```text
+HeroInfo$$InitHero @ 016e5fd4
+HeroInfo$$FinalUpgradeHero @ 016e07d4
+```
+
+가 존재한다.
+
+따라서:
+
+```text
+OpInfo +0x90 Heros
+  ↓
+DataCenter.UpdateHeroInfo
+  ↓
+Dictionary<int, ProtoHero> 순회
+  ↓
+HeroInfo$$InitHero
+  ↓
+HeroInfo state
+```
+
+로 User와 완전히 분리된 경로임이 정적 분석으로 확인됐다.
+
+### 16.4 Bootstrap User/Hero 계약 현재 확정
+
+```text
+             Bootstrap OpInfo
+                    │
+          ┌─────────┴─────────┐
+          │                   │
+     +0x88 User          +0x90 Heros
+          │                   │
+   UserInfo$$.ctor       UpdateHeroInfo
+          │                   │
+   DataCenter +0x28      HeroInfo$$InitHero
+          │                   │
+   +0x70 DictI32          HeroInfo state
+          │
+   MergeVaryData
+          │
+   Level / Exp / EquipMax /
+   FCTimes / SignIn / ...
+```
+
+이제 `User/Heros → UpdateHeroInfo`라는 이전의 묶음 표현은 폐기하고, 두 경로를 별도로 기록한다.
+
+### 16.5 다음 추적
+
+1. UserInfo.ctor @ 00dd2f44에서 ProtoUser field → UserInfo field 매핑 확인
+2. 실제 runtime에서 +0x70 DictI32 key/value 확보
+3. HeroInfo.InitHero @ 016e5fd4에서 ProtoHero → HeroInfo field 매핑 확인
+4. 이후 HomePanelMain이 실제로 읽는 UserInfo/HeroInfo 필드만 계약에 우선 반영
