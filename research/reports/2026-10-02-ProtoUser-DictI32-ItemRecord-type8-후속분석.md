@@ -846,3 +846,16 @@ ProtoUser setter Listing을 개별 확인해 getter offset을 교차 검증했�
 | Belt | +0x58 |
 
 이 결과로 ProtoUser의 실제 속성/메모리 배치는 구체화됐다. 다만 protobuf nested payload에서 관측한 tag 7, 20, 21, 22, 24를 위 속성 중 어느 것에 대응시키는지는 아직 증명되지 않았다. 객체 offset 순서와 protobuf tag 번호를 같은 것으로 간주하지 않는다.
+
+
+## 2026-10-02 후속 실측 — ProtoUser setter 및 PCAP 표본 범위
+
+- Ghidra 개별 Listing에서 ProtoUser setter를 확인했다.
+  - `ProtoUser.set_Id @ 015adb14`: `str x1,[x0,#0x10]`
+  - `ProtoUser.set_Level @ 015adb34`: `str w1,[x0,#0x1c]`
+  - `ProtoUser.set_Exp @ 015adb44`: `str w1,[x0,#0x20]`
+  - `ProtoUser.set_Name @ 015adb84`: `str x1,[x0,#0x30]!` 후 문자열 write barrier 호출
+  - `ProtoUser.ctor @ 015adc0c`는 기본 Object 생성자 호출만 확인된다.
+- 따라서 앞서 정리한 +0x10/+0x1C/+0x20/+0x30은 getter뿐 아니라 setter에서도 교차 확인된다. 하지만 setter에는 protobuf wire field 번호가 나타나지 않는다.
+- 동일 PCAP JSON 전체 65개 메시지 레코드를 확인한 결과, field 35 중첩 payload는 1건뿐이다. 따라서 현재 캡처만으로는 field 번호와 Id/Level/Exp/Name을 값 대조하는 다중 표본 분석이 불가능하다.
+- 현재 field35 payload에서 확인되는 건 field1=871047, field14=`g9in2` 등 wire 원시값뿐이다. field1=Id 또는 field14=Name이라는 가설은 유력 후보로만 두고 확정하지 않는다.
