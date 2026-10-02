@@ -443,3 +443,68 @@ Bootstrap field 38 Items
 1. Field 21의 다른 음수 key가 DataCenter의 어느 cache에 복사되고 어떤 Main UI에서 소비되는지 계속 연결한다.
 2. `isBoxItem`이 참조하는 BaseData/Excel 조건과 BoxSupplyList grouping 기준을 확인한다.
 3. Task/TaoFa/Camp 각각이 참조하는 Excel task ID 집합을 분리해 Quests cache의 필요한 상태와 대조한다.
+
+## 14. Warehouse Supply의 ItemRecord / ItemboxRecord 구분
+
+Unity 관련 기준 문서(`참고용-unity-behavior-data/데이터_파일_역할_및_계층.md`, `게임_보상_업적_출석_이벤트_가챠_구조_분석.md`)를 먼저 확인한 뒤, data_catalog의 구조 요약/Record sample과 원본 `MonoBehaviour/ItemRecord.json`, `ItemboxRecord.json`을 대조했다.
+
+### 14.1 isBoxItem의 실제 필터 조건
+
+`AliothExtensions.isBoxItem @ 00e166ac`는 `BaseData.get_type` 값을 확인한다.
+- type 8 → true
+- type 1 → true
+- type 9 → true
+- 그 외 → false
+
+따라서 `DataCenter.RefreshBoxList`는 이름이 Box인 Record를 직접 찾는 게 아니라, **Item BaseData의 type이 1/8/9인 인벤토리 항목**을 box item으로 분류한다.
+
+### 14.2 원본 ItemRecord type 분포
+
+`MonoBehaviour/ItemRecord.json`에서 확인한 952개 레코드의 m_type 분포:
+
+| m_type | 레코드 수 | isBoxItem 결과 |
+|---:|---:|---|
+| 0 | 26 | 제외 |
+| 1 | 27 | 포함 |
+| 2 | 87 | 제외 |
+| 4 | 4 | 제외 |
+| 6 | 4 | 제외 |
+| 7 | 1 | 제외 |
+| 8 | 119 | 포함 |
+| 9 | 174 | 포함 |
+| 10 | 505 | 제외 |
+| 11 | 1 | 제외 |
+| 12 | 4 | 제외 |
+
+즉 현재 원본 데이터 기준 box item 후보는 **type 1/8/9, 총 320개**다. 이는 코드 필터와 실제 ItemRecord 분포를 대조한 결과이며, 각 type의 게임 내 표시 명칭은 별도 Word/실행 코드 확인 전까지 붙이지 않는다.
+
+### 14.3 ItemboxRecord의 역할은 별도
+
+`MonoBehaviour/ItemboxRecord.json`은 3,242개이며, 이 테이블의 m_type은 전부 0이다. 대신 `m_itemId`에 `ID*수량|ID*수량` 형식으로 실제 구성품을 저장한다.
+
+예시 구조: `43000001*5000|43200003*2|40000100*1`
+
+따라서 데이터 계층은 다음과 같이 구분된다.
+
+```text
+ItemRecord
+  └─ m_type 1 / 8 / 9
+       └─ 클라이언트 isBoxItem 필터 통과
+            └─ Inventory box supply list
+
+ItemboxRecord
+  └─ m_itemId (ID*수량 목록)
+       └─ 박스/패키지에 실제 포함된 구성품 정의
+```
+
+**중요:** Main의 `lbl_wareHouseBoxNum`은 ItemboxRecord의 정의 개수(3,242)를 표시하는 것이 아니다. 런타임 Items cache에서 `isBoxItem`을 통과한 항목들을 `RefreshBoxList`가 목록화하고, `get_BoxSupplyTotalCount`가 각 보유 수량을 합산한 결과다.
+
+### 14.4 연결 판정
+
+- **STATIC:** `isBoxItem`은 BaseData.type 1/8/9만 통과.
+- **DATA:** ItemRecord 952개 중 해당 type은 320개.
+- **DATA:** ItemboxRecord 3,242개는 m_itemId로 구성품 ID/수량을 정의하고, m_type은 전부 0.
+- **STATIC:** Main Warehouse Supply 숫자는 Item cache → RefreshBoxList → BoxSupplyList → 수량 합계 경로.
+- **미확정:** type 1/8/9 각각의 한국어 분류명 및 `DataTool.ToListByGroup` 내부 group key의 표시 의미.
+
+다음은 type 1/8/9 항목의 실제 ID와 ItemboxRecord/ItempackageRecord 참조 관계를 연결하고, Main 화면에 표시되는 수량이 어떤 항목을 합산하는지 세부적으로 좁힌다.
