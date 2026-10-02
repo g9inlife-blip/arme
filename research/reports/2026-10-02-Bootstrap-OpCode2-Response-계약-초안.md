@@ -180,18 +180,18 @@ OpInfo +0xC0
 현재 단계에서는 **Full Bootstrap Response → 실제 Client 진입 검증 → 필요 시 최소화** 순서를 적용한다.
 
 
-## 9. 2026-10-02 Ghidra Listing 재확인 — ProccessRequestRes 본문 부재
+## 9. 2026-10-02 Ghidra Listing 재확인 — ProccessRequestRes 본문 확보
 
 Git의 `research/Ghidra_Listing_txt`를 함수명 기준으로 재검색했다.
 
 ### 확인
-- `DataCenter.ProccessRequestRes @ 016e203c` 자체 Listing 본문은 현재 저장소에 별도 파일로 존재하지 않는다.
-- 따라서 현재 단계에서 `ProccessRequestRes` 내부의 정확한 field 처리 순서를 Assembly로 확정할 수 없다.
-- 대신 Calls IN/기존 분석으로 다음 merge 함수 주소는 확인된다.
+- `DataCenter.ProccessRequestRes @ 016e203c` 본문은 `research/Ghidra_Listing_txt/DA.txt`의 `### FILE: 016e203c_DataCenter__ProccessRequestRes.txt` 블록에서 확보되어 있다.
+- 따라서 Response field → merge 함수의 직접 처리 순서를 Assembly로 확인할 수 있다.
+- 별도 개별 함수 파일 부재 여부와 관계없이 DA.txt 원본 Listing을 기준으로 판단한다.
 
 | 대상 | RVA | 현재 근거 |
 |---|---:|---|
-| ProccessRequestRes | 016e203c | response 진입점, 본문 미확보 |
+| ProccessRequestRes | 016e203c | DA.txt 본문 확보, response 진입점 |
 | MergeEquip | 016e4348 | Bootstrap Equiments 관련 후보 |
 | MergeItem | 016e4700 | Items → DataCenter category cache 확정 |
 | UpdateHeroInfo | 016e4ba4 | Hero/User 상태 갱신 후보 |
@@ -210,7 +210,7 @@ OpInfo.Items
 
 위 Items 경로는 정적+runtime으로 확정했다.
 
-반면 아래는 **응답 field → merge 함수의 직접 호출 순서까지는 미확정**이다.
+반면 아래 중 UpdateHeroInfo의 내부 User/Heros 분리 방식은 아직 미확정이다.
 ```
 User       → ?
 Heros      → UpdateHeroInfo ?
@@ -454,3 +454,83 @@ Equiments  → Home/Warehouse [static 소비자 존재]
 ```
 
 다음은 `Weapons (+0x40)`와 `UpdateHeroInfo(User/Heros)`를 먼저 추적하고, 이후 Shop/Charge/Quest/Mail을 확인한다.
+
+## 14. 2026-10-02 Weapons 소비처 추적 결과
+
+### 14.1 Bootstrap → Weapon cache
+
+DA.txt의 `ProccessRequestRes @ 016e203c`에서:
+
+```text
+OpInfo +0xA0 Weapons
+  → MergeWeapon @ 016e414c
+  → DataCenter cache +0x40
+```
+
+가 직접 확인된다.
+
+`016e414c`는 `ProccessRequestRes`가 직접 호출하는 상위 병합 함수이며, 내부 개별 Weapon 처리 함수 `MergeWeapon @ 016e5be4`와 구분한다.
+
+### 14.2 실제 UI 소비처
+
+정적 Listing 검색에서 다음 Weapon 소비 경로가 확인됐다.
+
+- `WeaponPanelMono$$Init @ 00f58380`
+- `WeaponPanelMono$$RefreshWeaponInfoBoard @ 00f59c90`
+- `HeroPartEquipMono$$RefreshWeapon @ 00f4214c`
+- `HeroInfo$$get_Weapon @ 016ee62c`
+- `HeroInfo$$get_WeaponInfomation @ 016ef3b0`
+- `DataCenter$$WeaponSkillLevel @ 016e7d2c`
+
+특히 `HomePanelMono$$Start @ 00f67adc`와 Weapon 관련 UI 함수들이 동일 UI/초기화 Listing 계층에서 확인되며, `WeaponPanelMono`는 실제 무기 표시/갱신 소비자다.
+
+다만 현재 확보된 검색 결과만으로 `WeaponPanelMono`가 `DataCenter +0x40`을 직접 읽는 Assembly까지는 확인하지 못했다. 따라서 다음 수준으로 구분한다.
+
+| 경로 | 상태 |
+|---|---|
+| OpInfo +0xA0 → MergeWeapon @ 016e414c | 확정 |
+| MergeWeapon → DataCenter +0x40 | 확정 |
+| WeaponPanelMono / HeroPartEquipMono / HeroInfo 계열이 Weapon 상태 소비 | 확정 |
+| Weapon UI → DataCenter +0x40 직접 1:1 연결 | 추가 검증 필요 |
+
+### 14.3 UpdateHeroInfo 추적 결과
+
+`UpdateHeroInfo @ 016e4ba4`는 `ProccessRequestRes`에서 response 전체 객체를 전달받는 것이 Assembly로 확인된다.
+
+현재 검색에서:
+- `HeroInfo$$get_Weapon` / `get_WeaponInfomation`은 HeroInfo 객체의 무기 상태 소비를 보여준다.
+- 그러나 `UpdateHeroInfo` 내부에서 `OpInfo +0x88 User`와 `+0x90 Heros`를 각각 어떤 offset으로 분리 저장하는지 직접 보여주는 개별 Listing은 아직 확보하지 못했다.
+
+따라서 현재 계약에서는:
+
+```text
+OpInfo +0x88 User
+OpInfo +0x90 Heros
+        ↓
+UpdateHeroInfo(response 전체)
+        ↓
+Hero/User state
+```
+
+까지만 확정하고 내부 분리 offset은 미확정으로 유지한다.
+
+### 14.4 다음 추적
+
+다음은 `UpdateHeroInfo` 내부를 직접 좁히기보다 실제 소비처 기준으로:
+
+1. `HeroInfo$$get_WeaponInfomation` 호출자
+2. `HeroInfo$$get_Weapon` 호출자
+3. `HomePanelMono$$Start`에서 Hero/User 관련 getter
+4. Runtime Bootstrap에서 `UpdateHeroInfo` 직후 실제 UI 변화
+
+순으로 확인한다.
+
+현재 Local Server 계약 우선순위는:
+
+```text
+Items       → runtime 확정
+Chapters    → static UI 연결 확정
+Equiments   → Home/Warehouse 소비자 확인
+Weapons     → Weapon/Hero UI 소비자 확인
+User/Heros  → UpdateHeroInfo 내부 분리 추적 중
+```
