@@ -708,3 +708,53 @@ Heros Dictionary key == ProtoHero.Id == HeroInfo.Id
 - **미확정:** ProtoHero 내부 field의 protobuf wire tag 전체 매핑.
 
 다음은 UpdateHeroInfo의 Dictionary enumerator에서 key와 value를 동시에 출력하도록 hook을 보강하고, DataManager.TryGet 호출 인자 및 반환 class를 기록해 key 관계를 확정한다. 이후 HeroInfo.Prototype/ActorData와 HeroInfo.Id의 역할을 분리한다.
+
+
+## 17. UpdateHeroInfo의 Hero Dictionary key 및 DataManager 조회 위치 (2026-10-03)
+
+기준 Listing: `research/Ghidra_Listing_txt/DA.txt`
+
+### 17.1 Heros key의 정적 조회 경로
+
+`DataCenter.UpdateHeroInfo @ 016e4ba4`의 Hero 처리 구간(`016e5120~016e51a4`)을 확인했다.
+
+1. `OpInfo.Heros(+0x90)`에 대해 Dictionary enumerator를 생성한다.
+2. Enumerator의 현재 항목에서 정수 key를 읽어 `w22`에 보관한다(`016e514c`).
+3. 같은 key(`w22`)로 DataCenter 인스턴스 `+0x30` Dictionary에 `TryGetValue`를 호출한다(`016e5164`, 결과 위치 `sp+0x48`).
+4. 다시 같은 key(`w22`)로 `OpInfo.Heros(+0x90)`에 `TryGetValue`를 호출한다(`016e5190`, 결과 위치 `sp+0x40`).
+5. 두 조회가 성공하면 기존 객체와 응답 객체를 각각 인자로 `HeroInfo.InitHero @ 016e5fd4`에 전달한다(`016e5198~016e51a4`).
+
+따라서 **기존 DataCenter +0x30 Dictionary와 응답 OpInfo.Heros는 동일한 정수 key로 대응 항목을 찾는다**는 점이 정적으로 확인된다. 이는 두 Dictionary 사이의 key 계약을 보여준다.
+
+다만 현재 확보한 runtime log에는 Enumerator의 key와 ProtoHero.Id를 같은 행에서 출력한 자료가 없다. 따라서 `Dictionary key == ProtoHero.Id`는 아직 런타임 확정으로 올리지 않는다. 앞서 관측한 `ProtoHero.Id == HeroInfo.Id` 사례와 결합해도 Dictionary key의 실제 값이 로그로 확인된 것은 아니다.
+
+### 17.2 DataManager.TryGet 호출 위치 재분류
+
+같은 `UpdateHeroInfo`의 Calls OUT에는 `DataManager.TryGet<object> @ 0177142c`가 나타난다. Listing에서 실제 호출은 `016e4f1c`, `016e4fe4`에 있다.
+
+- 첫 호출은 `OpInfo +0xE0` Dictionary를 순회하는 루프 안에 있다.
+- 두 번째 호출은 `OpInfo +0xA0` Dictionary를 순회하는 루프 안에 있다.
+- 각 호출 직전 Enumerator에서 읽은 정수 key(`w22`)가 TryGet의 key 인자로 전달된다.
+- 반환된 out object의 서로 다른 필드(+0x74 또는 +0x7C)를 읽어 HashSet에 추가한다.
+
+중요하게도 이 두 TryGet 호출은 **Hero 본체인 OpInfo +0x90 순회 구간(+0x5120 이후)이 아니라, 앞서 실행되는 +0xE0/+0xA0 보조 Dictionary 처리 구간**에 위치한다. 따라서 Calls OUT 목록만 보고 DataManager.TryGet이 HeroInfo.Prototype(ActorData)을 찾는 함수라고 해석하면 안 된다.
+
+`DataManager.TryGet<object>` 본문(`0177142c`)은 DataCache에서 key를 조회하고, generic type과 반환 객체의 runtime type을 비교하는 경로를 포함한다. 그러나 현재 호출부 Listing만으로 generic type 인자 및 out object의 실제 class를 확정할 수 없다.
+
+### 17.3 현재 판정
+
+- **STATIC 확정:** OpInfo.Heros enumerator에서 추출한 하나의 key를 DataCenter +0x30 및 OpInfo +0x90 양쪽 Dictionary 조회에 재사용한다.
+- **STATIC 확정:** 두 조회가 성공하면 기존 객체와 응답 ProtoHero를 `HeroInfo.InitHero`에 전달한다.
+- **STATIC 확정:** UpdateHeroInfo의 DataManager.TryGet 두 호출은 OpInfo +0xE0/+0xA0 보조 Dictionary 루프에 속하며, Hero +0x90 순회 구간과 구분된다.
+- **미확정:** 해당 Hero Dictionary key와 ProtoHero.Id의 수치 동일성.
+- **미확정:** DataManager.TryGet 두 호출의 generic type 및 반환 객체 실제 class.
+- **미확정:** HeroInfo.Prototype(ActorData)을 설정하는 정확한 lookup 경로.
+
+### 17.4 다음 계측 항목
+
+1. `DataCenter.UpdateHeroInfo` 진입 시 OpInfo +0x90 Dictionary의 key/value를 함께 출력한다.
+2. 각 value의 ProtoHero.Id를 함께 출력해 `key == ProtoHero.Id`를 직접 비교한다.
+3. `DataManager.TryGet<object> @ 0177142c`는 호출 인자(key, generic type handle), bool 반환, out object class를 기록하되 +0xE0/+0xA0 호출을 구분한다.
+4. 별도로 `HeroInfo.InitHero` 전후의 Prototype 참조와 ActorData.Id(또는 해당 식별 getter)를 기록해 Prototype 설정 경로를 찾는다.
+
+현재 hook에는 `HeroInfo.InitHero`와 `DataManager.TryGetBaseData`는 있으나, 위의 `DataCenter.UpdateHeroInfo` Dictionary pair 및 generic `DataManager.TryGet<object>` 인자/반환을 직접 기록하는 계측은 확인되지 않았다.
