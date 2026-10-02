@@ -180,3 +180,65 @@ Main 진입 성공은 전체 UI 데이터가 모두 완전히 연결됐다는 �
 - 운영 데이터의 인증/세션/기기 식별값은 재현용 문서에 복사하지 않는다.
 - 각 연결은 CONFIRMED / STATIC / RUNTIME / CANDIDATE로 구분하고, 추정 매핑을 확정처럼 쓰지 않는다.
 - Main 화면 진입이 성공한 현재는 KCP/암복호화 재분석을 반복하지 않는다. 클라이언트에서 막히는 구체적 기능이 생길 때만 해당 경계를 다시 조사한다.
+
+## 10. Field 21 DictI32 → UserInfo 속성 매핑 확정
+
+`UserInfo$$MergeVaryData @ 00dd3030`의 Ghidra Listing(`research/Ghidra_Listing_txt/US.txt`)을 다시 확인했다.
+
+이 함수는 전달된 Dictionary<int,int>에서 정수 key를 `ContainsKey → get_Item`으로 조회하고, 값이 없으면 기존 UserInfo getter 값을 유지한 뒤 대응 setter를 호출한다. 따라서 field 21은 단순 보조 데이터가 아니라 UserInfo의 일부 런타임 속성을 갱신하는 key-value patch다.
+
+| DictI32 key | UserInfo property | Getter fallback | Setter |
+|---:|---|---|---|
+| -9 | StigmataTimes | get_StigmataTimes | set_StigmataTimes |
+| -10 | MetaphysicsTimes | get_MetaphysicsTimes | set_MetaphysicsTimes |
+| -11 | Exp | get_Exp | set_Exp |
+| -12 | Level | get_Level | set_Level |
+| -15 | FCTimes | get_FCTimes | set_FCTimes |
+| -13 | SignInDays | get_SignInDays | set_SignInDays |
+| -14 | SignInRewardDay | get_SignInRewardDay | set_SignInRewardDay |
+| -16 | StepId | get_StepId | set_StepId |
+| -18 | ExamTimes | get_ExamTimes | set_ExamTimes |
+| -30 | EquipMax | get_EquipMax | set_EquipMax |
+| -31 | ChargeTotalPerMonth | get_ChargeTotalPerMonth | set_ChargeTotalPerMonth |
+| -32 | Age | get_Age | set_Age |
+| -34 | ChatChannel | get_ChatChannel | set_ChatChannel |
+
+### 10.1 Main/Profile 표시와 연결
+
+`UserInfoPanelMono.Start @ 00f7e92c`의 Calls OUT 및 Listing에서 다음 직접 소비를 확인했다.
+
+- `UserInfo.get_Id` → `lbl_userId`
+- `UserInfo.get_Name` → `lbl_nickName`
+- `UserInfo.get_Level` → `lbl_lv`
+- `UserInfo.get_Exp` → `lbl_userexpshow`, 경험치 bar 계산
+- `DataCenter.get_HeadData` → 프로필 이미지
+- `ShowHeadPanel` → 프로필 머리 장식 목록 구성
+
+따라서 프로필의 Level/Exp는 field 35 User 객체만으로 설명할 수 없고, field 21의 key -12/-11 값이 UserInfo에 적용되는 경로까지 연결해야 한다.
+
+### 10.2 재화 상단 표시 경로
+
+`UserInfoPanelMono.RefreshTopInfos @ 00f7f914`는 `ShowCoin @ 00f7e524`를 호출한다.
+
+`ShowCoin`은 설정된 재화 ID 목록을 순회하면서 각 항목에 대해:
+- `DataCenter.GetXCount(itemId)`로 현재 수량 조회
+- `Ali.GetBaseData(itemId)`로 이름/아이콘 기준 데이터 조회
+- `BaseData.get_icon`, `get_NameByQualityWord`로 표시 요소 구성
+- CoinGrid에 아이콘/이름/수량 반영
+
+즉 재화 UI는 field 21의 숫자를 직접 표시하는 구조가 아니라, field 38 Items가 MergeItem으로 반영된 뒤 GetXCount를 통해 조회하는 별도 경로다. 앞서 Gold 변경 성공은 이 경로의 실제 표시값이 바뀐 runtime 검증으로 볼 수 있다.
+
+### 10.3 분석 판정과 남은 검증
+
+- **STATIC 확정:** field 21 → DictI32 → MergeVaryData → 위 UserInfo property setter.
+- **STATIC 확정:** UserInfoPanelMono.Start의 Id/Name/Level/Exp UI 연결.
+- **STATIC 확정:** RefreshTopInfos → ShowCoin → GetXCount 재화 UI 연결.
+- **미확정:** 운영 payload에서 위 key 각각의 실제 값 및 생략 여부. 현재 확인한 Listing은 key 처리 규칙을 증명하지만, payload별 값의 의미/표시 결과까지 모두 증명하지는 않는다.
+- **미확정:** UserInfoPanelMono.Start/RefreshTopInfos가 메인화면 첫 진입 시 자동 호출되는지 여부. 함수 구현의 소비 관계와 실제 실행 시점은 구분한다.
+
+### 10.4 다음 클라이언트 분석
+
+1. 실제 Bootstrap field 21의 key 분포를 추출해 위 13개 key의 존재/생략/값을 대조한다.
+2. HomePanelMono.Start의 직접 Calls OUT 중 EquipMax 계열과 Hero getter를 분리해 실제 Main 초기화 의존성을 확정한다.
+3. ProtoActivity field 56 → ToDictonary → RefreshUIBanner 경로에서 어떤 Activity property를 배너 표시가 읽는지 후속 추적한다.
+4. 각 UI 소비처를 Main 최초 표시 / 프로필 패널 열기 / 별도 메뉴 진입으로 분류한다.
