@@ -424,8 +424,8 @@ IT.txt에서 ItemData.get_itemPackageId @ 00df09a8은 객체 +0x90 참조를 반
 
 DataCenter.ProccessRequestRes @ 016e203c 함수 본문에서 음수 key 상수 분기를 전수 확인했다. 명시적 key 상수는 -11, -12, -23, -27, -28, -29, -34, -36이다. 이 중 -11/-12는 UserInfo.MergeVaryData의 Exp/Level key와 겹치며, response 처리 중 추가 알림/level-up 상태 처리도 수행한다. -22/-20/-33은 이 함수 안에서 별도 상수 분기로 나타나지 않는다.
 
-- -11: Ali.Notify 이벤트 호출 분기 존재. 이벤트 이름/의미는 추가 확인 필요.
-- -12: DataCache.levelisup 상태를 1로 설정하는 경로 확인. 실제 Level 상승 UI 소비처는 아직 직접 연결 전.
+- -11: UserInfo.get_Exp를 읽어 DataCache.m_lastUserExp에 저장한 뒤 UserInfo.MergeVaryData로 이어진다.
+- -12: DataCache.levelisup를 1로 설정하는 경로 확인. 실제 Level 상승 UI 소비처는 아직 직접 연결 전.
 - -23: key 존재 시 Ali.Notify 호출. 알림 이벤트 이름/의미 미확정.
 - -27: DataCenter +0xC0 dictionary에 key/value 복사.
 - -28: EnergyNextTime 계산/설정.
@@ -868,7 +868,7 @@ ProtoUser setter Listing을 개별 확인해 getter offset을 교차 검증했�
 추가로 분기 본문을 확인한 내용:
 
 - **-11**: key 존재 시 UserInfo.get_Exp를 읽어 DataCache.set_m_lastUserExp에 저장한 뒤 UserInfo.MergeVaryData를 실행한다.
-- **-12**: key 존재 시 DataCache.set_functionSwitcher(1)을 호출한다. 이후 UserInfo.Level 값에 따라 UI/기능 분기가 이어진다. 해당 key의 정수 value 자체를 읽는 코드는 이 분기 초입에서 확인되지 않아 존재 여부 기반 trigger로 기록한다.
+- **-12**: key 존재 시 DataCache.set_levelisup(1)을 호출한다. 이후 UserInfo.Level 값에 따라 UI/기능 분기가 이어진다. 해당 key의 정수 value 자체를 읽는 코드는 이 분기 초입에서 확인되지 않아 존재 여부 기반 trigger로 기록한다.
 - **-23**: key 존재 검사를 통과하면 후속 알림 처리 분기로 이어진다. 현재 Listing Calls OUT에 Ali.Notify가 존재하나, 호출 인자와 이벤트 이름의 정확한 대응은 추가 추적 대상이다.
 - **-27**: key/value를 DataCenter 객체 +0xC0의 Dictionary에 기록하는 분기다. HomePanel mail badge 소비와 연결된다.
 - **-28**: key value를 초 단위로 DateTime.AddSeconds 처리한 뒤 DataCenter.set_EnergyNextTime에 전달한다.
