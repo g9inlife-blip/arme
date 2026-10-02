@@ -1187,3 +1187,57 @@ HomePanelMono.Start
 5. 그 결과로 Bootstrap 필수/선택 필드 최종 분리
 
 현재까지는 EquipMax를 **Main 필수 후보 → 저장 offset까지 확정** 상태로 승격한다.
+
+
+## 23. 2026-10-02 UserInfo Main 소비값 저장 위치 추가 확정
+
+### 23.1 UserInfo 직접 저장 필드
+
+Git Listing 기준 getter의 실제 fallback 저장 offset:
+
+| 값 | getter | 저장 위치 | Main 관련 |
+|---|---|---:|---|
+| Id | `00dd1884` | `UserInfo +0x10` | UserInfoPanel |
+| Name | `00dd1988` | `UserInfo +0x18` | UserInfoPanel |
+| Level | `00dd1ba0` | `UserInfo +0x28` | Main/UI 다수 |
+| Exp | `00dd1ca4` | `UserInfo +0x2C` | UserInfoPanel |
+| EquipMax | `00dd27d0` | `UserInfo +0x58` | HomePanel |
+| Energy | `00dd2ce4` | 직접 필드가 아니라 `DataCenter.GetXCount` 경로 | Main/전투 UI |
+
+Id/Name/Level/Exp/EquipMax는 모두 getter의 직접 fallback에서 저장 offset을 확인했다.
+
+### 23.2 Energy는 별도 취급
+
+`UserInfo.get_Energy @ 00dd2ce4`는 단순 `UserInfo + offset` 반환이 아니다.
+
+현재 확인된 경로:
+
+```text
+UserInfo.get_Energy
+  → DataCenter.GetXCount
+  → key = 0x29020c3 (0x20c3 + 0x290 << 16)
+```
+
+따라서 Local Server Bootstrap에서 Energy를 `UserInfo` 고정 필드로 넣는 것으로 모델링하지 않는다.
+
+### 23.3 Main Bootstrap 최소 데이터 후보 갱신
+
+현재 직접적인 Main/UI 소비 근거가 확보된 User 영역:
+
+```text
+User
+ ├─ Id       (+0x10)
+ ├─ Name     (+0x18)
+ ├─ Level    (+0x28)
+ ├─ Exp      (+0x2C)
+ └─ EquipMax (+0x58)
+
+Energy
+ └─ DataCenter.GetXCount(0x029020C3) 계열
+```
+
+### 23.4 다음 추적
+
+다음은 `DataCenter.GetXCount(0x029020C3)`의 실제 데이터 저장/병합 경로를 추적한다.
+
+동시에 `HomePanelMono.Start @ 00f67adc`의 직접 getter 호출 목록을 확정해, 위 User 값 중 실제 Bootstrap 직후 필요한 값과 단순 다른 화면 소비값을 분리한다.
