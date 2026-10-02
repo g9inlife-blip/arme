@@ -867,3 +867,38 @@ WeaponInfo
 현재는 다음 단계로 넘어가기 전에 `FUN_00e5c00c`의 함수 시작부/누락 Listing 또는 해당 stack slot을 설정하는 상위 호출부를 확보해야 한다.
 
 **판정:** x20의 실제 class는 아직 미확정. `x20+0x10` 역시 아직 Hero ID라고 확정하지 않는다.
+
+
+### 18.6 GoToBattleMono.SetEnemyHero @ 00e5baf8 재확인 (2026-10-03)
+
+Git 검색에서 `GoToBattleMono$$SetEnemyHero @ 00e5baf8`의 현재 확인 위치는 `FUN_00e5c2a0`의 **Calls IN** 항목이다.
+
+해당 블록:
+
+``
+Function: FUN_00e5c2a0 @ 00e5c2a0
+--- Calls IN ---
+  <- GoToBattleMono$$SetEnemyHero @ 00e5baf8
+  <- FUN_00e5c00c @ 00e5c00c
+--- Listing ---
+00e5c2a0  ldp x29,x30,[sp, #0xc0]
+00e5c2a4  ldp x20,x19,[sp, #0xb0]
+00e5c2a8  ldp x22,x21,[sp, #0xa0]
+00e5c2ac  ldp x24,x23,[sp, #0x90]
+00e5c2b0  ldp x26,x25,[sp, #0x80]
+00e5c2b4  ldp x28,x27,[sp, #0x70]
+00e5c2b8  add sp,sp,#0xd0
+00e5c2bc  ret
+```
+
+이 Listing은 일반적인 독립 helper 본문이 아니라 **호출자의 stack frame을 복구하고 return하는 epilogue 형태**다. 따라서 현재 자료만으로 `FUN_00e5c2a0`을 실제 Hero 처리 로직으로 해석하면 안 된다. `GoToBattleMono.SetEnemyHero @ 00e5baf8`가 이 공통 epilogue/chunk와 연결된 것은 확인되지만, `00e5baf8`에서 시작하는 실제 함수 본문은 현재 Git 검색 결과에서 직접 확보되지 않았다.
+
+또한 `00e5c00c` 역시 같은 `00e5c2a0`을 Calls IN으로 가지므로, Ghidra의 함수/chunk 경계 표기와 실제 실행 흐름을 구분해야 한다.
+
+**판정:**
+- STATIC 확정: `SetEnemyHero @ 00e5baf8 → FUN_00e5c2a0` 관계가 Calls IN으로 기록됨.
+- STATIC 확정: `FUN_00e5c2a0` Listing 자체는 stack restore + ret 형태.
+- 미확정: `00e5baf8` 실제 본문에서 `FUN_00e5c00c`를 어떤 인자로 호출하는지.
+- 미확정: `SetEnemyHero`의 실제 source 객체/Request.Res field.
+
+다음은 `GO.txt`의 실제 Listing 원본을 확보하거나, Ghidra export 단계에서 `00e5baf8` 함수 본문을 재생성해 **SetEnemyHero → x20 source Dictionary → HeroInfo.InitHero** 연결을 직접 확인하는 것이다.
