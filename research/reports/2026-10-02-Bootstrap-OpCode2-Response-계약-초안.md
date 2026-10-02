@@ -1809,3 +1809,106 @@ Hero 10회는 `InitHero` 호출 관측 횟수이며, 원본 Heros Dictionary 전
 5. Main 화면 첫 진입에 실제 필요한 값과 메뉴를 열 때만 필요한 값을 구분한다.
 
 완료 기준은 **Main 첫 화면을 Local Server Bootstrap 응답만으로 표시하는 데 필요한 모든 데이터의 타입/저장 위치/소비처가 연결되는 것**이다.
+
+
+## 25. Main UI 소비처를 기준으로 한 추가 정적 분석
+
+이번 단계는 던전/전투 함수가 아니라 Home/Main 화면의 소비처로 범위를 되돌렸다.
+
+### 25.1 UserInfoPanel 상단 영역
+
+`UserInfoPanelMono.Start @ 00f7e92c`의 Calls OUT 및 Listing에서 확인:
+- `UserInfo.get_Id`
+- `UserInfo.get_Name`
+- `UserInfo.get_Level`
+- `UserInfo.get_Exp`
+- `DataCenter.get_HeadData`
+- `BaseMono.GetLvExpdata`
+- `UserInfoPanelMono.ShowHeadPanel`
+- 이름/ID/레벨/EXP UI 노드 접근
+
+따라서 프로필 상단은 UserInfo의 식별/성장 필드와 HeadData를 함께 사용한다.
+
+### 25.2 UserInfoPanel 재화 표시
+
+`UserInfoPanelMono.ShowCoin @ 00f7e524`:
+- `DataCenter.GetXCount`
+- `Ali.GetBaseData`
+- `Ali.GetExcelData<object>`
+- `BaseData.get_icon`
+- `BaseData.get_NameByQualityWord`
+- `CoinitemNode.lbl_item_count`
+- `CoinitemNode.spr_item_icon`
+- `CoinitemNode.lbl_item_name`
+
+재화 UI는 고정된 UserInfo 필드만 표시하는 방식이 아니라 Excel/config에서 목록을 얻고, 각 ID를 `GetXCount`로 조회해 수량·아이콘·이름을 표시하는 구조다. 따라서 재화 종류 목록(config)과 각 재화 보유량(State)을 분리해서 Bootstrap/정적 데이터 계약에 반영해야 한다.
+
+### 25.3 HomePanel 시작 함수의 기존 근거
+
+기존 Listing에서 `HomePanelMono.Start @ 00f67adc`는 다음을 호출하는 것으로 확인됐다.
+- `DataCenter.get_CurrentEquipMax`
+- `DataCenter.get_NextEquipMax`
+- `DataCenter.get_EquipMax`
+- `Ali.get_dataCache`
+- `Ali.GetExcelDic<object>`
+
+또한 HomePanel의 별도 Refresh 함수:
+- `RefreshUIBanner @ 00f6ca94`
+- `RefreshWareHouse_Supply @ 00f6a2ec`
+- `RefreshPoint_TaoFA @ 00f69924`
+- `RefreshWorldCup @ 00f6c094`
+- `UIRefreshCamp @ 00f6ac08`
+
+이 함수들은 Home 화면의 별도 표시/배너/공급/포인트/월드컵/캠프 갱신 지점으로 추적 대상으로 등록한다. 각 함수 내부의 구체적인 Response 필드 사용은 아직 모두 연결되지 않았다.
+
+### 25.4 현재 메인화면 데이터 매핑 상태
+
+| UI 영역 | 데이터/유형 | Bootstrap 또는 정적 경로 | 판정 |
+|---|---|---|---|
+| 프로필 이름/ID/레벨/EXP | UserInfo scalar | OpInfo.User → UpdateHeroInfo/UserInfo | 정적 소비 확인, runtime 일부 |
+| 상단 재화 | config ID 목록 + GetXCount 수량 + BaseData icon/name | Items → MergeItem/cache + Excel/BaseData | 구조 확인, 목록 config runtime 추가 |
+| 에너지 표시 | item ID 43000003 count | Items → MergeItem → GetXCount | runtime 확인, 서버 권한 |
+| 창고 보유 아이템 | Dictionary<int,ProtoItem> | Items → MergeItem → category cache | runtime+static 확인 |
+| Hero 대표 정보 | Dictionary<int,ProtoHero> → HeroInfo | Heros → UpdateHeroInfo | runtime InitHero 확인 |
+| Chapter 진행 | Dictionary<int,ProtoChapter> | Chapters → cache +0x48 | runtime count + static UI 연결 |
+| Equipment 확장 수치 | EquipMax 계열 getter | Equiments/cache 및 UserInfo 관련 상태 | Home Start 참조 확인, 정확한 원천 field 추가 확인 |
+| 무기/장비 표시 | ProtoWeapon / ProtoEquipment | Weapons/Equiments → Merge | 메뉴 UI 소비 확인, Home 첫 화면 사용은 추가 확인 |
+| 배너/토벌/월드컵/캠프 | config + 각 feature state | Home Refresh 함수들 | 함수 진입/필드 매핑 미확정 |
+| Quest/Shop/Charge/Activity/Mail | 각 Proto Dictionary | OpInfo 각 field → DataCenter cache | Response/merge 확인, Home 첫 화면 사용 미확정 |
+
+### 25.5 v4.25 runtime hook
+
+`research/justice_hook.js` v4.25에 Main UI 함수 진입 hook을 추가했다.
+- HomePanelMono.Start
+- HomePanelMono.RefreshUIBanner
+- HomePanelMono.RefreshWareHouse_Supply
+- HomePanelMono.RefreshPoint_TaoFA
+- HomePanelMono.RefreshWorldCup
+- HomePanelMono.UIRefreshCamp
+- UserInfoPanelMono.Start
+- UserInfoPanelMono.RefreshTopInfos
+- UserInfoPanelMono.ShowCoin
+
+던전/전투 hook은 새 Main UI 작업 범위에서 제외했다. 기존 KCP Send/Response 관찰 hook은 유지한다.
+
+Git commit: `7e7a52435507cbe14d132617af3a915df5b872ac`
+
+### 25.6 현재 판단 및 다음 단계
+
+**메인화면 데이터가 모두 끝난 상태는 아니다.** Bootstrap envelope와 핵심 State의 타입/merge는 상당 부분 확인했지만, Home 첫 화면에서 실제 읽는 데이터와 별도 기능 화면에서만 필요한 데이터를 아직 완전히 구분하지 못했다.
+
+다음 실행은 v4.25로 로그인 후 메인화면에 머문 상태에서 로그를 수집한다. 메뉴를 열거나 던전으로 이동하지 않는다. 아래 로그를 확인한다.
+
+```
+[MAIN_HOME_START]
+[MAIN_HOME_BANNER]
+[MAIN_HOME_WAREHOUSE_SUPPLY]
+[MAIN_HOME_TAOFA]
+[MAIN_HOME_WORLDCUP]
+[MAIN_HOME_CAMP]
+[MAIN_USERINFO_START]
+[MAIN_USERINFO_REFRESH]
+[MAIN_USERINFO_SHOWCOIN]
+```
+
+이 로그를 통해 Home 최초 표시에서 호출되는 함수만 먼저 확정하고, 이어서 해당 함수들이 참조하는 DataCenter getter/Excel config를 매핑한다. Main 첫 화면 데이터 계약이 끝나기 전에는 Dungeon/Battle 분석으로 범위를 확장하지 않는다.
