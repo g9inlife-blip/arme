@@ -1,0 +1,639 @@
+[*] justice_hook v4.10 starting...
+[Remote::Gadget ]-> [*] libil2cpp.so base @ 0x749b827000 (/data/app/~~acGHcXDuzoy-4IQ0vBH08A==/com.Alioth.JusticeSchool.cn-PwJah3_uT1udhfBv7HS3Yw==/lib/arm64/libil2cpp.so)
+[*] IL2CPP domain ready.
+[*] Waiting for Assembly-CSharp (enter the game world on the phone)...
+[*] Assembly-CSharp found (52 assemblies loaded).
+[*] Installing hooks...
+
+[+] Found UnityEngine.Networking.UnityWebRequest.get_url() -> System.String @ 0x749ddfd1e8
+[+] Found UnityEngine.Networking.UnityWebRequest.get_uploadHandler() -> UnityEngine.Networking.UploadHandler @ 0x749ddfcb78
+[*] UnityWebRequest accessors ready.
+[+] Found UnityEngine.Networking.UnityWebRequest..ctor(System.String, System.String) -> System.Void @ 0x749ddfc538
+[+] Found UnityEngine.Networking.UnityWebRequest.SetRequestHeader(System.String, System.String) -> System.Void @ 0x749ddfd788
+[+] Found UnityEngine.Networking.UploadHandlerRaw..ctor(System.Byte[]) -> System.Void @ 0x749ddfe0fc
+[+] Found UnityEngine.Networking.UnityWebRequest.set_uploadHandler(UnityEngine.Networking.UploadHandler) -> System.Void @ 0x749ddfc8f4
+[+] Found UnityEngine.Networking.UnityWebRequest.set_method(System.String) -> System.Void @ 0x749ddfc5b4
+[HTTPREQUEST] AliothEngine.Net.HttpRequest methods:
+  get_isError() -> System.Boolean @ 0x749cdbad48
+  get_PingTime() -> System.Single @ 0x749cdbadc0
+  set_PingTime(System.Single) -> System.Void @ 0x749cdbadc8
+  RequestCoroutine() -> System.Collections.IEnumerator @ 0x749cdbadd0
+  CheckTimeout() -> System.Collections.IEnumerator @ 0x749cdbae6c
+  get_IsDone() -> System.Boolean @ 0x749cdbaf08
+  set_Headers(System.Collections.Generic.Dictionary<System.String,System.String>) -> System.Void @ 0x749cdbaf10
+  get_Headers() -> System.Collections.Generic.Dictionary<System.String,System.String> @ 0x749cdbaf18
+  set_Timeout(System.Single) -> System.Void @ 0x749cdbaf20
+  get_Timeout() -> System.Single @ 0x749cdbaf28
+  set_OnDone(AliothEngine.Net.HttpRequest.FinishedDelegate) -> System.Void @ 0x749cdbaf30
+  set_OnFail(AliothEngine.Net.HttpRequest.FinishedDelegate) -> System.Void @ 0x749cdbaf38
+  set_OnDisposed(AliothEngine.Net.HttpRequest.FinishedDelegate) -> System.Void @ 0x749cdbaf40
+  .ctor(UnityEngine.MonoBehaviour, System.String) -> System.Void @ 0x749cdbaf48
+  .ctor(UnityEngine.MonoBehaviour, System.String, System.String) -> System.Void @ 0x749cdbb078
+  .ctor(UnityEngine.MonoBehaviour, System.String, System.Single) -> System.Void @ 0x749cdbb1bc
+  .ctor(UnityEngine.MonoBehaviour, System.String, System.Collections.Generic.Dictionary<System.String,System.String>) -> System.Void @ 0x749cdbb2f4
+  AddHeader(System.String, System.String) -> System.Void @ 0x749cdbb704
+  AddData(System.String, System.String) -> System.Void @ 0x749cdbb76c
+  AddRangeData(System.Collections.Generic.Dictionary<System.String,System.String>) -> System.Void @ 0x749cdbb788
+  AddBinaryData(System.String, System.Byte[]) -> System.Void @ 0x749cdbb8f0
+  AddBinaryData(System.String, System.Byte[], System.String) -> System.Void @ 0x749cdbb90c
+  AddBinaryData(System.String, System.Byte[], System.String, System.String) -> System.Void @ 0x749cdbb928
+  Request() -> System.Void @ 0x749cdbb944
+  Dispose() -> System.Void @ 0x749cdbb96c
+  CheckConnection(System.String, System.Action<System.Boolean>) -> System.Collections.IEnumerator @ 0x749cdbb99c
+  CreateURL(System.Collections.Generic.List<System.String>, System.String, System.Collections.Generic.Dictionary<System.String,System.String>) -> System.String @ 0x749cdbba54
+  ResetCache(System.String) -> System.String @ 0x749cdbbd60
+[+] Found UnityEngine.Networking.UnityWebRequest.SendWebRequest() -> UnityEngine.Networking.UnityWebRequestAsyncOperation @ 0x749ddfcc58
+[?] ProtocolGame_HttpRequest.V4_POST_Login overload: (System.String, System.String, System.String) @ 0x749c4fcb48
+[+] Found ProtocolGame_HttpRequest.V4_POST_Login(System.String, System.String, System.String) -> AliothEngine.Net.HttpRequest @ 0x749c4fcb48
+[?] ProtocolGame_HttpRequest.Sign overload: (System.String, System.Collections.Generic.Dictionary<System.String,System.String>) @ 0x749c5005c0
+[+] Found ProtocolGame_HttpRequest.Sign(System.String, System.Collections.Generic.Dictionary<System.String,System.String>) -> System.Void @ 0x749c5005c0 (first match)
+[*] Sign return type: System.Void
+[?] ProtocolGame_HttpRequest.GetDefaultParams overload: () @ 0x749c502f58
+[+] Found ProtocolGame_HttpRequest.GetDefaultParams() -> System.Collections.Generic.Dictionary<System.String,System.String> @ 0x749c502f58
+[?] ProtocolGame_HttpRequest.V3_POST_AllInOne overload: (System.String) @ 0x749c5035d0
+[+] Found ProtocolGame_HttpRequest.V3_POST_AllInOne(System.String) -> AliothEngine.Net.HttpRequest @ 0x749c5035d0
+[?] LoginManager.SaveLoginToken overload: (System.String, System.String, System.Int32, System.Boolean, SDKLoginType) -> System.Void @ 0x749c4fd4a0
+[+] Hooking LoginManager.SaveLoginToken(System.String, System.String, System.Int32, System.Boolean, SDKLoginType) @ 0x749c4fd4a0
+[+] Found ProtocolGame_HttpRequest.get_Token() -> System.String @ 0x749c500534
+[+] Hooking ProtocolGame_HttpRequest.get_Token() @ 0x749c500534
+[?] System.String.Join overload: (System.String, System.String[]) -> System.String @ 0x749d706b84
+[+] Hooking System.String.Join(System.String, System.String[]) @ 0x749d706b84
+[?] AliothEngine.Encrypt.MD5HashString overload: (System.String) -> System.String @ 0x749cdb066c
+[+] Hooking AliothEngine.Encrypt.MD5HashString(System.String) @ 0x749cdb066c
+[+] Hooking System.Convert.ToBase64String @ 0x749d80af88
+[+] Hooking TRANSPORT Alioth.S1.Net.TCPTube.TryRead(System.IO.MemoryStream, System.IO.MemoryStream, Alioth.S1.Common.Commands&, Alioth.S1.Common.OpInfo&) @ 0x749ccddd54
+[+] Hooking TRANSPORT Alioth.S1.Net.TCPTube.TryOutput() @ 0x749ccde1b0
+[+] Hooking TRANSPORT Alioth.S1.Net.TCPTube.Update() @ 0x749ccdd4a4
+[+] Hooking TRANSPORT Alioth.S1.Net.KCPTube.TryRead(System.IO.MemoryStream, System.IO.MemoryStream, Alioth.S1.Common.Commands&, Alioth.S1.Common.OpInfo&) @ 0x749ccd78bc
+[+] Hooking TRANSPORT Alioth.S1.Net.KCPTube.TryOutput() @ 0x749ccd85c4
+[+] Hooking TRANSPORT Alioth.S1.Net.KCPTube.Update() @ 0x749ccd6650
+[+] Hooking TRANSPORT Alioth.S1.Net.KCPTube.Send(System.Byte[], System.Int32, System.Int32) @ 0x749ccd5b18
+[+] Hooking TRANSPORT Alioth.S1.Net.KCPTube.Send(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) @ 0x749ccd5ddc
+[+] Hooking NetworkCenter.TryHandleResponse() @ 0x749ccdb1e0
+[+] Hooking TryHandleResponse status branch @ 0x749ccdb418
+[+] Hooking DataCenter.ProccessRequestRes(Alioth.S1.Common.OpInfo) @ 0x749ce0903c
+[+] Hooking UserInfo.get_Coins @ 0x749c4f9d8c
+[+] Hooking UserInfo.get_Energy @ 0x749c4f9ce4
+[+] Hooking UserInfo.get_Exp @ 0x749c4f8ca4
+[+] Hooking UserInfo.get_Level @ 0x749c4f8ba0
+[+] Hooking WAREHOUSE DemandOpen(System.String) @ 0x749c775508
+[+] Hooking WAREHOUSE RefreshWareHouse(System.Object[]) @ 0x749c7731f8
+[+] Hooking WAREHOUSE InitData() @ 0x749c771ce0
+[+] Hooking WAREHOUSE ShowGoods() @ 0x749c7746e8
+[+] Hooking WAREHOUSE RefreshScroll() @ 0x749c774990
+[+] Hooking WAREHOUSE SetGoodsItemByInfo(UnityEngine.GameObject, System.Object) @ 0x749c774d38
+[+] Hooking WAREHOUSE RefreshEquipItem(System.Object[]) @ 0x749c7755a0
+[+] Hooking DataCenter.MergeItem(System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoItem>) @ 0x749ce0b700
+[+] Found Alioth.S1.Common.ProtoChapter.get_BoxStatus() -> Alioth.S1.Common.BoxState @ 0x749ccd3f84
+[+] Hooking ProtoChapter.get_BoxStatus @ 0x749ccd3f84
+[!] ProtoChapter.set_BoxStatus not found
+[+] Found Alioth.S1.Common.OpInfo.get_Chapters() -> System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoChapter> @ 0x749ccd1dec
+[+] Hooking OpInfo.get_Chapters @ 0x749ccd1dec
+[*] justice_hook v4.21
+
+[*] 41 hooks installed.
+[*] Trigger login, then make a real game API request after login.
+[*] Look for [TOKEN_SAVE], [TOKEN_GET], [TOKEN_COMPARE], [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.
+
+
+========== V3_POST_AllInOne called ==========
+  app_key: official
+
+---------- GetDefaultParams called ----------
+[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> <TOKEN_REDACTED> [(null)]
+  [return] {"n":"639265382313420640","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official"}
+----------------------------------
+
+
+---------- Sign called ----------
+  content: 90f04cb7a1fa5c2f58ca19cde2a2b128
+  dict: {"n":"639265382313420640","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official"}
+
+[JOIN_DATA] String.Join called inside Sign
+  separator: "."
+  count: 6
+  value[0]: "cbcfdf10d56e57a89f7cb19a491d139e"
+  value[1]: "official"
+  value[2]: "639265382313420640"
+  value[3]: "7"
+  value[4]: "3.1.0"
+  value[5]: "90f04cb7a1fa5c2f58ca19cde2a2b128"
+  joined_preview: "cbcfdf10d56e57a89f7cb19a491d139e.official.639265382313420640.7.3.1.0.90f04cb7a1fa5c2f58ca19cde2a2b128"
+  joined_actual: "cbcfdf10d56e57a89f7cb19a491d139e.official.639265382313420640.7.3.1.0.90f04cb7a1fa5c2f58ca19cde2a2b128"
+  [JOIN_DATA END]
+[MD5_DATA] input: "cbcfdf10d56e57a89f7cb19a491d139e.official.639265382313420640.7.3.1.0.90f04cb7a1fa5c2f58ca19cde2a2b128"
+[MD5_DATA] output: "ae6d0ca92f997280ebbd6bdac2f83702"
+  => SIGN OUTPUT: void (dict modified in-place?)
+  => dict after: {"n":"639265382313420640","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","sign":"ae6d0ca92f997280ebbd6bdac2f83702"}
+  (2ms)
+----------------------------------
+
+[SIGN_DATA] input_content="90f04cb7a1fa5c2f58ca19cde2a2b128" input_dict={"n":"639265382313420640","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official"} dict_after={"n":"639265382313420640","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","sign":"ae6d0ca92f997280ebbd6bdac2f83702"}
+============================================
+
+
+========== V4_POST_Login called ==========
+  app_key: witchwind3
+  content: witchwind3
+  apiName:
+  [HTTP_TRACE] login request trace window opened (10s)
+
+---------- GetDefaultParams called ----------
+[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> <TOKEN_REDACTED> [len=344,fnv1a32=6e1b2445]
+[TOKEN_GET] ProtocolGame_HttpRequest.get_Token -> <TOKEN_REDACTED> [len=344,fnv1a32=6e1b2445]
+  [return] {"n":"639265382316439510","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","t":"tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA=="}
+----------------------------------
+
+
+---------- Sign called ----------
+  content: 90f04cb7a1fa5c2f58ca19cde2a2b128
+  dict: {"n":"639265382316439510","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","t":"tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==","u":"witchwind3","p":"witchwind3","method":"","platform":"google","p2":"logout"}
+
+[JOIN_DATA] String.Join called inside Sign
+  separator: "."
+  count: 12
+  value[0]: "cbcfdf10d56e57a89f7cb19a491d139e"
+  value[1]: "official"
+  value[2]: ""
+  value[3]: "639265382316439510"
+  value[4]: "witchwind3"
+  value[5]: "logout"
+  value[6]: "google"
+  value[7]: "7"
+  value[8]: "tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA=="
+  value[9]: "witchwind3"
+  value[10]: "3.1.0"
+  value[11]: "90f04cb7a1fa5c2f58ca19cde2a2b128"
+  joined_preview: "cbcfdf10d56e57a89f7cb19a491d139e.official..639265382316439510.witchwind3.logout.google.7.tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==.witchwind3.3.1.0.90f04cb7a1fa5c2f58ca19cde2a2b128"
+  joined_actual: "cbcfdf10d56e57a89f7cb19a491d139e.official..639265382316439510.witchwind3.logout.google.7.tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==.witchwind3.3.1.0.90f04cb7a1fa5c2f58ca19cde2a2b128"
+  [JOIN_DATA END]
+[MD5_DATA] input: "cbcfdf10d56e57a89f7cb19a491d139e.official..639265382316439510.witchwind3.logout.google.7.tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==.witchwind3.3.1.0.90f04cb7a1fa5c2f58ca19cde2a2b128"
+[MD5_DATA] output: "7d77f9a16a01aae92722f1a12c51838e"
+  => SIGN OUTPUT: void (dict modified in-place?)
+  => dict after: {"n":"639265382316439510","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","t":"tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==","u":"witchwind3","p":"witchwind3","method":"","platform":"google","p2":"logout","sign":"7d77f9a16a01aae92722f1a12c51838e"}
+  (0ms)
+----------------------------------
+
+[SIGN_DATA] input_content="90f04cb7a1fa5c2f58ca19cde2a2b128" input_dict={"n":"639265382316439510","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","t":"tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==","u":"witchwind3","p":"witchwind3","method":"","platform":"google","p2":"logout"} dict_after={"n":"639265382316439510","d":"cbcfdf10d56e57a89f7cb19a491d139e","r":"7","v":"3.1.0","m":"official","t":"tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T+vY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G+UwJZ//RPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97+cJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas/3qLNWJXEeAFJhfwTmegEly/wem/M13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl+++vo6PljA==","u":"witchwind3","p":"witchwind3","method":"","platform":"google","p2":"logout","sign":"7d77f9a16a01aae92722f1a12c51838e"}
+
+[HTTP_CREATE] UnityWebRequest #1
+  url: "https://ac.aliother.com/v5/account/login?255170"
+  method: "POST"
+  request_ptr: 0x75d5d2c500
+[HTTP_METHOD_SET] #1 method="POST"
+
+[HTTP_UPLOAD] UploadHandlerRaw(byte[])
+  body_len: 549
+  body_utf8: "n=639265382316439510&d=cbcfdf10d56e57a89f7cb19a491d139e&r=7&v=3.1.0&m=official&t=tqA2oQrN5PvhuMdr8x57hTx0UJtq4QLnliHb0oFR3T%2bvY5ZGxG8pGYimCunFyxy6cK0xSowPTZm0lGpONS4G%2bUwJZ%2f%2fRPNqHv31vYbNgK1pxHzfzUVLAqtXnazVmA97%2bcJWsA6vpnRStAbGMBJXrxyWQftazFHovoNpQYvUHidhYYPvSyFd77IQE1Ep2hS5guKr6AA2ZTheaxwjbnAdaeUABReas%2f3qLNWJXEeAFJhfwTmegEly%2fwem%2fM13L3fwCNVNZ9VOSpQKeX6za0vnM2U3b4XfwHNj25v5yu39FRjskMzVqwhNAD9SPAZ7UeFe3UBaFzBehWHLl%2b%2b%2bvo6PljA%3d%3d&u=witchwind3&p=witchwind3&method=&platform=google&p2=logout&sign=7d77f9a16a01aae92722f1a12c51838e"
+  body_hex: 6e3d36333932363533383233313634333935313026643d636263666466313064353665353761383966376362313961343931643133396526723d3726763d332e312e30266d3d6f6666696369616c26743d747141326f51724e35507668754d64723878353768547830554a747134514c6e6c694862306f465233542532627659355a47784738704759696d43756e4679787936634b3078536f7750545a6d306c47704f4e53344725326255774a5a25326625326652504e71487633317659624e674b317078487a667a55564c417174586e617a566d413937253262634a5773413676706e5253744162474d424a5872787957516674617a46486f766f4e705159765548696468595950765379466437374951453145703268533567754b72364141325a5468656178776a626e416461655541425265617325326633714c4e574a58456541464a686677546d6567456c7925326677656d2532664d31334c336677434e564e5a39564f5370514b6558367a6130766e4d3255336234586677484e6a323576357975333946526a736b4d7a567177684e4144395350415a375565466533554261467a42656857484c6c253262253262253262766f36506c6a4125336425336426753d776974636877696e643326703d776974636877696e6433266d6574686f643d26706c6174666f726d3d676f6f676c652670323d6c6f676f7574267369676e3d3764373766396131366130316161653932373232663161313263353138333865
+  upload_handler: 0x741126de10
+[HTTP_UPLOAD END]
+
+[HTTP_UPLOAD_SET] #1 uploadHandler=0x75d5d5d450
+[HTTP_HEADER] #1 Content-Type: application/x-www-form-urlencoded
+[HTTP_HEADER] #1 Cache-Control: no-cache
+[HTTP_HEADER] #1 Pragma: no-cache
+
+[HTTP_SEND] UnityWebRequest #1
+  url: "https://ac.aliother.com/v5/account/login?255170"
+  method: ""
+  headers: [{"name":"Content-Type","value":"application/x-www-form-urlencoded"},{"name":"Cache-Control","value":"no-cache"},{"name":"Pragma","value":"no-cache"}]
+  body: <none>
+  request_ptr: 0x75d5d2c500
+[HTTP_SEND END]
+
+  [return after 5ms]
+========================================
+
+\n[TOKEN_SAVE] LoginManager.SaveLoginToken
+  arg[0] System.String: "861203"
+  arg[1] System.String: <TOKEN_REDACTED> [len=344,fnv1a32=44ef8c18]
+  arg[2] System.Int32: "0"
+  arg[3] System.Boolean: "false"
+  arg[4] SDKLoginType: "0x0"
+  [TOKEN_SAVE END]
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0
+[TRANSPORT] KCPTube.Update leave ret=-715188688 1ms
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0
+[TRANSPORT] TCPTube.Update leave ret=-705274280 1ms
+[TRANSPORT] KCPTube.Send enter this=KCPTube@0x75d55f15a0
+[KCP_SEND_ARGS] signature=(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) arg1=request=OpInfo@0x75d5d6ee60 SerialNumber=128631814 OpCode=2 ReturnCode=0 arg2=MemoryStream@0x75d5d5b2a0 arg3=MemoryStream@0x75d5d5b300
+[TRANSPORT] KCPTube.Send leave ret=0 0ms
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms
+[NET_RESP] TryHandleResponse leave 0ms
+[TRANSPORT] KCPTube.Send enter this=KCPTube@0x75d55f15a0
+[KCP_SEND_ARGS] signature=(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) arg1=request=OpInfo@0x75d5d6ee60 SerialNumber=128631814 OpCode=2 ReturnCode=0 arg2=MemoryStream@0x75d5d5b2a0 arg3=MemoryStream@0x75d5d5b300
+[TRANSPORT] KCPTube.Send leave ret=0 0ms
+[TRANSPORT] KCPTube.Send enter this=KCPTube@0x75d55f15a0
+[KCP_SEND_ARGS] signature=(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) arg1=request=OpInfo@0x75d5d6ee60 SerialNumber=128631814 OpCode=2 ReturnCode=0 arg2=MemoryStream@0x75d5d5b2a0 arg3=MemoryStream@0x75d5d5b300
+[TRANSPORT] KCPTube.Send leave ret=0 0ms
+[TRANSPORT] KCPTube.Send enter this=KCPTube@0x75d55f15a0
+[KCP_SEND_ARGS] signature=(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) arg1=request=OpInfo@0x75d5d6ee60 SerialNumber=128631814 OpCode=2 ReturnCode=0 arg2=MemoryStream@0x75d5d5b2a0 arg3=MemoryStream@0x75d5d5b300
+[TRANSPORT] KCPTube.Send leave ret=0 1ms
+[TRANSPORT] KCPTube.Send enter this=KCPTube@0x75d55f15a0
+[KCP_SEND_ARGS] signature=(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) arg1=request=OpInfo@0x75d5d6ee60 SerialNumber=128631814 OpCode=2 ReturnCode=0 arg2=MemoryStream@0x75d5d5b2a0 arg3=MemoryStream@0x75d5d5b300
+[CHAPTERS_GET] OpInfo=0x75d5d6ee60 ret=null
+[TRANSPORT] KCPTube.Send leave ret=1 44ms
+[KCP_SEND_ACCEPTED] request=OpInfo@0x75d5d6ee60 SerialNumber=128631814 OpCode=2 ReturnCode=0
+[TRANSPORT] TCPTube.TryOutput enter this=TCPTube@0x75d5f65dc0
+[TRANSPORT] TCPTube.TryOutput leave ret=0 0ms
+[TRANSPORT] KCPTube.TryOutput enter this=KCPTube@0x75d55f15a0
+[TRANSPORT] KCPTube.TryOutput leave ret=-1 0ms
+[CHAPTERS_GET] OpInfo=0x75d5d6e5c0 ret=null
+[NET_RESP_STATUS] status=4 route=ProccessRequestRes
+[NET_RESP] ProccessRequestRes enter this=DataCenter@0x75a74e37e0 response=OpInfo@0x75d5d6e5c0 arg2=0x0
+[RESP_CLASS] obj=0x75d5d6e5c0 class=OpInfo
+[RESP_FIELD] <SerialNumber>k__BackingField @+0x10 type=System.UInt32 value=128631814
+[RESP_FIELD] <OpCode>k__BackingField @+0x14 type=Alioth.S1.Common.OperationCode value=0x2
+[RESP_FIELD] <ReturnCode>k__BackingField @+0x18 type=System.Int32 value=0
+[RESP_FIELD] <Time>k__BackingField @+0x20 type=System.DateTime value=0x8df20720cb045b0
+[RESP_FIELD] <S_0>k__BackingField @+0x28 type=System.String value=0x75cffed500
+[RESP_FIELD] <Int32_0>k__BackingField @+0x30 type=System.Int32 value=0
+[RESP_FIELD] <Int32_1>k__BackingField @+0x34 type=System.Int32 value=0
+[RESP_FIELD] <Int32_2>k__BackingField @+0x38 type=System.Int32 value=0
+[RESP_FIELD] <Int32_3>k__BackingField @+0x3c type=System.Int32 value=0
+[RESP_FIELD] <Int32_4>k__BackingField @+0x40 type=System.Int32 value=0
+[RESP_FIELD] <Int64_0>k__BackingField @+0x48 type=System.Int64 value=0
+[RESP_FIELD] <S_1>k__BackingField @+0x50 type=System.String value=0x75d0008ea0
+[RESP_FIELD] <S_2>k__BackingField @+0x58 type=System.String value=0x75d0008e40
+[RESP_FIELD] <S_3>k__BackingField @+0x60 type=System.String value=0x75d5dfa060
+[RESP_FIELD] <S_4>k__BackingField @+0x68 type=System.String value=0x75cff4e480
+[RESP_FIELD] <DictI32>k__BackingField @+0x70 type=System.Collections.Generic.Dictionary<System.Int32,System.Int32> value=-707294304
+[RESP_FIELD] <BattleReslut>k__BackingField @+0x78 type=Alioth.S1.Common.ProtoBattleResult value=null
+[RESP_FIELD] <FC>k__BackingField @+0x80 type=Alioth.S1.Common.ProtoFC value=null
+[RESP_FIELD] <User>k__BackingField @+0x88 type=Alioth.S1.Common.ProtoUser value=0x75d5dfbaf0
+[RESP_FIELD] <Heros>k__BackingField @+0x90 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoHero> value=-707294496
+[RESP_FIELD] <Items>k__BackingField @+0x98 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoItem> value=-707294688
+[RESP_FIELD] <Weapons>k__BackingField @+0xa0 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoWeapon> value=-707294880
+[RESP_FIELD] <Equiments>k__BackingField @+0xa8 type=System.Collections.Generic.Dictionary<System.String,Alioth.S1.Common.ProtoEquipment> value=0x75d5d788a0
+[RESP_FIELD] <Mails>k__BackingField @+0xb0 type=System.Collections.Generic.Dictionary<System.String,Alioth.S1.Common.ProtoMail> value=null
+[RESP_FIELD] <Olds>k__BackingField @+0xb8 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoMailOld> value=0
+[RESP_FIELD] <Chapters>k__BackingField @+0xc0 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoChapter> value=-707295264
+[RESP_FIELD] <Sections>k__BackingField @+0xc8 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoSection> value=-707295456
+[RESP_FIELD] <Teams>k__BackingField @+0xd0 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoTeam> value=-707295648
+[RESP_FIELD] <ViewItems>k__BackingField @+0xd8 type=System.Collections.Generic.List<Alioth.S1.Common.ProtoViewItem> value=null
+[RESP_FIELD] <Fashions>k__BackingField @+0xe0 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoFashion> value=-707295840
+[RESP_FIELD] <Quests>k__BackingField @+0xe8 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoQuest> value=-707296032
+[RESP_FIELD] <Shops>k__BackingField @+0xf0 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoShop> value=0
+[RESP_FIELD] <Charges>k__BackingField @+0xf8 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoCharge> value=-707296224
+[RESP_FIELD] <Friends>k__BackingField @+0x100 type=System.Collections.Generic.Dictionary<System.Int64,Alioth.S1.Common.ProtoFriend> value=0
+[RESP_FIELD] <Exam>k__BackingField @+0x108 type=Alioth.S1.Common.ProtoRank value=null
+[RESP_FIELD] <Rival>k__BackingField @+0x110 type=Alioth.S1.Common.ProtoRival value=null
+[RESP_FIELD] <Ranks>k__BackingField @+0x118 type=System.Collections.Generic.Dictionary<System.Int64,Alioth.S1.Common.ProtoRank> value=0
+[RESP_FIELD] <Activities>k__BackingField @+0x120 type=System.Collections.Generic.Dictionary<System.Int32,Alioth.S1.Common.ProtoActivity> value=-707296416
+[RESP_FIELD] <Msgs>k__BackingField @+0x128 type=System.Collections.Generic.List<Alioth.S1.Common.ProtoMsg> value=null
+[RESP_FIELD] <ExploreFloor>k__BackingField @+0x130 type=Alioth.S1.Common.ProtoExploreFloor value=null
+[RESP_FIELD] <AIStrategy>k__BackingField @+0x138 type=System.Collections.Generic.Dictionary<System.Int32,System.Collections.Generic.Dictionary<System.Int32,System.Int32>> value=-707296992
+[RESP_FIELD] <BattleReport>k__BackingField @+0x140 type=Alioth.S1.Common.PlayerBattleReport value=null
+[RESP_FIELD] <ShieldFriends>k__BackingField @+0x148 type=System.Collections.Generic.Dictionary<System.Int64,Alioth.S1.Common.ProtoFriend> value=0
+[RESP_FIELD] <SupportHero>k__BackingField @+0x150 type=System.Collections.Generic.Dictionary<System.Int32,System.Int32> value=0
+[RESP_FIELD] <SupportHeroRank>k__BackingField @+0x158 type=System.Collections.Generic.Dictionary<System.Int64,Alioth.S1.Common.ProtoSupportRank> value=0
+[RESP_FIELD_END] class=OpInfo count=45
+[CHAPTERS_RAW] response=0x75d5d6e5c0 +0xc0=Dictionary`2@0x75d5d787e0
+[CHAPTERS_ENUM] type=Dictionary`2 ptr=0x75d5d787e0
+[CHAPTERS_ENUM] _count@+0x20=61 _entries@+0x18=0x75d0133000
+[CHAPTERS_ENUM] entries.length=89
+[CHAPTER_ENTRY] idx=0 key=20300000 hash=20300000 value=0x75d0109e10 class=ProtoChapter ChapterId=20300000 BoxStatus=3
+[CHAPTER_ENTRY] idx=1 key=20301000 hash=20301000 value=0x75d0109c30 class=ProtoChapter ChapterId=20301000 BoxStatus=3
+[CHAPTER_ENTRY] idx=2 key=20505000 hash=20505000 value=0x75d0109be0 class=ProtoChapter ChapterId=20505000 BoxStatus=3
+[CHAPTER_ENTRY] idx=3 key=20506000 hash=20506000 value=0x75d0109b90 class=ProtoChapter ChapterId=20506000 BoxStatus=1
+[CHAPTER_ENTRY] idx=4 key=20507000 hash=20507000 value=0x75d0109b40 class=ProtoChapter ChapterId=20507000 BoxStatus=1
+[CHAPTER_ENTRY] idx=5 key=20705000 hash=20705000 value=0x75d0109af0 class=ProtoChapter ChapterId=20705000 BoxStatus=0
+[CHAPTER_ENTRY] idx=6 key=20706000 hash=20706000 value=0x75d0109aa0 class=ProtoChapter ChapterId=20706000 BoxStatus=0
+[CHAPTER_ENTRY] idx=7 key=20704000 hash=20704000 value=0x75d0109a50 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=8 key=20201000 hash=20201000 value=0x75d01099b0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=9 key=20502000 hash=20502000 value=0x75d0109960 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=10 key=20503000 hash=20503000 value=0x75d0109910 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=11 key=20504000 hash=20504000 value=0x75d01098c0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=12 key=20508000 hash=20508000 value=0x75d0109870 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=13 key=20700000 hash=20700000 value=0x75d0109820 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=14 key=20701000 hash=20701000 value=0x75d01097d0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=15 key=20702000 hash=20702000 value=0x75d0109780 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=16 key=20703000 hash=20703000 value=0x75d0109730 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=17 key=20510000 hash=20510000 value=0x75d01096e0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=18 key=20700100 hash=20700100 value=0x75d0109690 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=19 key=20700200 hash=20700200 value=0x75d0109640 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=20 key=20700300 hash=20700300 value=0x75d01095f0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=21 key=20700400 hash=20700400 value=0x75d01095a0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=22 key=20707000 hash=20707000 value=0x75d0109550 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=23 key=20708000 hash=20708000 value=0x75d0109500 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=24 key=20709000 hash=20709000 value=0x75d01094b0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=25 key=20709100 hash=20709100 value=0x75d0109460 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=26 key=20704100 hash=20704100 value=0x75d0109410 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=27 key=20702100 hash=20702100 value=0x75d01093c0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=28 key=20702200 hash=20702200 value=0x75d0109370 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=29 key=20702300 hash=20702300 value=0x75d0109320 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=30 key=20702400 hash=20702400 value=0x75d01092d0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=31 key=20709200 hash=20709200 value=0x75d0109280 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=32 key=20709300 hash=20709300 value=0x75d0109230 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=33 key=20709400 hash=20709400 value=0x75d01091e0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=34 key=20709500 hash=20709500 value=0x75d0109190 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=35 key=20702500 hash=20702500 value=0x75d0109140 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=36 key=20709800 hash=20709800 value=0x75d01090f0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=37 key=20709900 hash=20709900 value=0x75d01090a0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=38 key=20710000 hash=20710000 value=0x75d0109050 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=39 key=20710100 hash=20710100 value=0x75d0109000 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=40 key=20710200 hash=20710200 value=0x75d0134fa0 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=41 key=20710300 hash=20710300 value=0x75d0134f50 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=42 key=20710400 hash=20710400 value=0x75d0134f00 class=ProtoChapter ChapterId=0 BoxStatus=0
+[CHAPTER_ENTRY] idx=43 key=20000000 hash=20000000 value=0x75d0134eb0 class=ProtoChapter ChapterId=20000000 BoxStatus=7
+[CHAPTER_ENTRY] idx=44 key=20000100 hash=20000100 value=0x75d0134e10 class=ProtoChapter ChapterId=20000100 BoxStatus=7
+[CHAPTER_ENTRY] idx=45 key=20001000 hash=20001000 value=0x75d0134dc0 class=ProtoChapter ChapterId=20001000 BoxStatus=7
+[CHAPTER_ENTRY] idx=46 key=20002000 hash=20002000 value=0x75d0134d70 class=ProtoChapter ChapterId=20002000 BoxStatus=7
+[CHAPTER_ENTRY] idx=47 key=20003000 hash=20003000 value=0x75d0134d20 class=ProtoChapter ChapterId=20003000 BoxStatus=7
+[CHAPTER_ENTRY] idx=48 key=20004000 hash=20004000 value=0x75d0134cd0 class=ProtoChapter ChapterId=20004000 BoxStatus=3
+[CHAPTER_ENTRY] idx=49 key=20005000 hash=20005000 value=0x75d0134c80 class=ProtoChapter ChapterId=20005000 BoxStatus=1
+[CHAPTER_ENTRY] idx=50 key=20006000 hash=20006000 value=0x75d0134c30 class=ProtoChapter ChapterId=20006000 BoxStatus=1
+[CHAPTER_ENTRY] idx=51 key=20007000 hash=20007000 value=0x75d0134be0 class=ProtoChapter ChapterId=20007000 BoxStatus=0
+[CHAPTER_ENTRY] idx=52 key=20008000 hash=20008000 value=0x75d0134b90 class=ProtoChapter ChapterId=20008000 BoxStatus=0
+[CHAPTER_ENTRY] idx=53 key=20009000 hash=20009000 value=0x75d0134b40 class=ProtoChapter ChapterId=20009000 BoxStatus=0
+[CHAPTER_ENTRY] idx=54 key=20011000 hash=20011000 value=0x75d0134af0 class=ProtoChapter ChapterId=20011000 BoxStatus=0
+[CHAPTER_ENTRY] idx=55 key=20012000 hash=20012000 value=0x75d0134aa0 class=ProtoChapter ChapterId=20012000 BoxStatus=0
+[CHAPTER_ENTRY] idx=56 key=20010000 hash=20010000 value=0x75d0134a50 class=ProtoChapter ChapterId=20010000 BoxStatus=0
+[CHAPTER_ENTRY] idx=57 key=20010100 hash=20010100 value=0x75d0134a00 class=ProtoChapter ChapterId=20010100 BoxStatus=0
+[CHAPTER_ENTRY] idx=58 key=20010200 hash=20010200 value=0x75d01349b0 class=ProtoChapter ChapterId=20010200 BoxStatus=0
+[CHAPTER_ENTRY] idx=59 key=20010300 hash=20010300 value=0x75d0134960 class=ProtoChapter ChapterId=20010300 BoxStatus=0
+[CHAPTER_ENTRY] idx=60 key=20010400 hash=20010400 value=0x75d0134910 class=ProtoChapter ChapterId=20010400 BoxStatus=0
+[CHAPTERS_ENUM_END] scanned=89 matches=61
+[BOOT_RESP] seq=1 response=0x75d5d6e5c0 class=OpInfo@0x75d5d6e5c0 OpCode=2 ReturnCode=0
+[BOOT_STATE] User@+0x88=ProtoUser@0x75d5dfbaf0
+[BOOT_USER] Id=871053 Level=53 Exp=1100
+[BOOT_STATE] Items@+0x98=Dictionary`2@0x75d5d78a20
+[BOOT_STATE] Heros@+0x90=Dictionary`2@0x75d5d78ae0
+[BOOT_STATE] Chapters@+0xc0=Dictionary`2@0x75d5d787e0
+[ITEM_MERGE] enter this=DataCenter@0x75a74e37e0 incoming=Dictionary`2@0x75d5d78a20 count=98
+[ITEM_MERGE] leave 0ms
+[MAIN_CURRENCY] Exp=1100 UserInfo=0x75d006b680
+[MAIN_CURRENCY] Level=53 UserInfo=0x75d006b680
+[NET_RESP] ProccessRequestRes leave
+[NET_RESP_STATUS] status=4 route=ProccessRequestRes
+[RESP_CLASS] obj=0x75d5d6ecf0 class=OpInfo
+[CHAPTERS_RAW] response=0x75d5d6ecf0 +0xc0=null
+[BOOT_RESP] seq=2 response=0x75d5d6ecf0 class=OpInfo@0x75d5d6ecf0 OpCode=0 ReturnCode=0
+[BOOT_STATE] User@+0x88=null
+[BOOT_STATE] Items@+0x98=null
+[BOOT_STATE] Heros@+0x90=null
+[BOOT_STATE] Chapters@+0xc0=null
+
+[HTTP_SEND] UnityWebRequest
+  url: "https://oss01.aliother.com/v310/202608022111/AssetBundles/Android/activityicon_001__cn.assetbundle"
+  method: ""
+  body: <none>
+  request_ptr: 0x75d582c3c0
+[HTTP_SEND END]
+
+
+[HTTP_SEND] UnityWebRequest
+  url: "https://oss01.aliother.com/v310/202608022111/AssetBundles/Android/yingyuanuiatlas.assetbundle"
+  method: ""
+  body: <none>
+  request_ptr: 0x75d05b0eb0
+[HTTP_SEND END]
+
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+43 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+43 repeats suppressed)
+
+[HTTP_SEND] UnityWebRequest
+  url: "https://oss01.aliother.com/v310/202608022111/AssetBundles/Android/ui_eff_mainsence.assetbundle"
+  method: ""
+  body: <none>
+  request_ptr: 0x75d8387f00
+[HTTP_SEND END]
+
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+56 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-113 0ms (+56 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+56 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+56 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+56 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms (+56 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+54 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+54 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+42 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+42 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+58 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-108 1ms (+58 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+58 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+58 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 1ms (+44 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-104 1ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+59 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 1ms (+44 repeats suppressed)
+[WAREHOUSE] InitData enter this=WareHousePanelMono@0x7495d8cea0
+[WAREHOUSE_STATE] InitData mode=0 list_d8=null list_e0=null list_e8=null list_f0=null selected_f8=null
+[WAREHOUSE_STATE] InitData leave mode=0 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=null
+[WAREHOUSE] InitData leave 3ms
+[WAREHOUSE] ShowGoods enter this=WareHousePanelMono@0x7495d8cea0
+[WAREHOUSE_STATE] ShowGoods mode=1 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=null
+[WAREHOUSE] RefreshEquipItem enter this=WareHousePanelMono@0x7495d8cea0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118480 arg2=ProtoItem@0x75d00d45d0 Id=43101301 Status=0 Count=1
+[WAREHOUSE] SetGoodsItemByInfo leave 3ms
+[WAREHOUSE] RefreshEquipItem leave 3ms
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118ec0 arg2=ProtoItem@0x75d00d4600 Id=43101010 Status=0 Count=5
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0111900 arg2=ProtoItem@0x75d00d4630 Id=43101000 Status=0 Count=9
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d01071c0 arg2=ProtoItem@0x75d00d4660 Id=43100013 Status=0 Count=1
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0107ae0 arg2=ProtoItem@0x75d00d44e0 Id=43200102 Status=0 Count=3
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fc540 arg2=ProtoItem@0x75d00d4510 Id=43200003 Status=0 Count=27
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fcea0 arg2=ProtoItem@0x75d00d46c0 Id=43001000 Status=0 Count=28
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00f3700 arg2=ProtoItem@0x75d00d4540 Id=43200002 Status=0 Count=22
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef060 arg2=ProtoItem@0x75d00d4690 Id=43100002 Status=0 Count=5
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef8e0 arg2=ProtoItem@0x75d00d4570 Id=43200001 Status=0 Count=30
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00e6320 arg2=ProtoItem@0x75d00d45a0 Id=43200000 Status=0 Count=80
+[WAREHOUSE_STATE] ShowGoods leave mode=1 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=List`1@0x75d05c61e0 count=11
+[WAREHOUSE] ShowGoods leave 32ms
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-82 0ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 1ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+59 repeats suppressed)
+[WAREHOUSE] RefreshScroll enter this=WareHousePanelMono@0x7495d8cea0
+[WAREHOUSE_STATE] RefreshScroll mode=4 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=List`1@0x75d05c61e0 count=11
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118480 arg2=EquipInfo@0x75d5b85270
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118ec0 arg2=EquipInfo@0x75d05f3dd0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0111900 arg2=EquipInfo@0x75d5b854e0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d01071c0 arg2=EquipInfo@0x75d05e8b60
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0107ae0 arg2=EquipInfo@0x75d05f3000
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fc540 arg2=EquipInfo@0x75d05f39c0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fcea0 arg2=EquipInfo@0x75d05f3750
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00f3700 arg2=EquipInfo@0x75d05e8340
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef060 arg2=EquipInfo@0x75d05f30d0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef8e0 arg2=EquipInfo@0x75d05f3a90
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00e6320 arg2=EquipInfo@0x75d05e8a90
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00e6aa0 arg2=EquipInfo@0x75d05e8410
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00d3220 arg2=EquipInfo@0x75d06059c0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00d3c80 arg2=EquipInfo@0x75d05e8c30
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00c96a0 arg2=EquipInfo@0x75d05f3410
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00b45a0 arg2=EquipInfo@0x75d05f3820
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00b4d20 arg2=EquipInfo@0x75d05f3b60
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00a89a0 arg2=EquipInfo@0x75d05f3d00
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00763e0 arg2=EquipInfo@0x75d5b85000
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0076b60 arg2=EquipInfo@0x75d5b85680
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05fe320 arg2=EquipInfo@0x75d5b85750
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05feaa0 arg2=EquipInfo@0x75d5b85340
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05df220 arg2=EquipInfo@0x75d05f38f0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05df9a0 arg2=EquipInfo@0x75d05e81a0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05d71a0 arg2=EquipInfo@0x75d0605a90
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05d7920 arg2=EquipInfo@0x75d0605d00
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05b40a0 arg2=EquipInfo@0x75d05fc410
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05b4a40 arg2=EquipInfo@0x75d05e8dd0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d5350420 arg2=EquipInfo@0x75d05e8d00
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d5336040 arg2=EquipInfo@0x75d05e89c0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d5336860 arg2=EquipInfo@0x75d05fcc30
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d521d420 arg2=EquipInfo@0x75d05fcb60
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d52051a0 arg2=EquipInfo@0x75d05fc9c0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d52045a0 arg2=EquipInfo@0x75d05fc8f0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d5204da0 arg2=EquipInfo@0x75d06058f0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d51f9560 arg2=EquipInfo@0x75d0605b60
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d51f9d20 arg2=EquipInfo@0x75d05e85b0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d51c74e0 arg2=EquipInfo@0x75d5b855b0
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d51c7c60 arg2=EquipInfo@0x75d05e8270
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d57fa3e0 arg2=EquipInfo@0x75d05f35b0
+[WAREHOUSE] RefreshScroll leave 33ms
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 1ms (+44 repeats suppressed)
+[WAREHOUSE] ShowGoods enter this=WareHousePanelMono@0x7495d8cea0
+[WAREHOUSE_STATE] ShowGoods mode=3 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=List`1@0x75d05c61e0 count=11
+[WAREHOUSE] RefreshEquipItem enter this=WareHousePanelMono@0x7495d8cea0 (+50 repeats suppressed)
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118480 arg2=ProtoItem@0x75d00e48d0 Id=52000008 Status=0 Count=1
+[WAREHOUSE] SetGoodsItemByInfo leave 0ms (+50 repeats suppressed)
+[WAREHOUSE] RefreshEquipItem leave 0ms (+50 repeats suppressed)
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118ec0 arg2=ProtoItem@0x75d00e4900 Id=52000007 Status=0 Count=1
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0111900 arg2=ProtoItem@0x75d00e4930 Id=52000004 Status=0 Count=2
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d01071c0 arg2=ProtoItem@0x75d00e4960 Id=52000003 Status=0 Count=4
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0107ae0 arg2=ProtoItem@0x75d00e4990 Id=52000002 Status=0 Count=4
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fc540 arg2=ProtoItem@0x75d00e4840 Id=52000201 Status=0 Count=1
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fcea0 arg2=ProtoItem@0x75d00e4870 Id=52000101 Status=0 Count=1
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00f3700 arg2=ProtoItem@0x75d00e49c0 Id=52000001 Status=0 Count=4
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef060 arg2=ProtoItem@0x75d00e48a0 Id=52000100 Status=0 Count=1
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef8e0 arg2=ProtoItem@0x75d00e49f0 Id=52000000 Status=0 Count=2
+[WAREHOUSE_STATE] ShowGoods leave mode=3 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=List`1@0x75d05c6210 count=10
+[WAREHOUSE] ShowGoods leave 24ms
+[WAREHOUSE_STATE] ShowGoods mode=2 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=List`1@0x75d05c6210 count=10
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118480 arg2=ProtoItem@0x75d00d4120 Id=43220102 Status=0 Count=169
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0118ec0 arg2=ProtoItem@0x75d00d4390 Id=43210200 Status=0 Count=97
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0111900 arg2=ProtoItem@0x75d00d4360 Id=43210203 Status=0 Count=66
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d01071c0 arg2=ProtoItem@0x75d00d4330 Id=43210206 Status=0 Count=71
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0107ae0 arg2=ProtoItem@0x75d00d42d0 Id=43220001 Status=0 Count=9
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fc540 arg2=ProtoItem@0x75d00d4270 Id=43220003 Status=0 Count=20
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00fcea0 arg2=ProtoItem@0x75d00d4210 Id=43220005 Status=0 Count=10
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00f3700 arg2=ProtoItem@0x75d00d41b0 Id=43220007 Status=0 Count=11
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef060 arg2=ProtoItem@0x75d00d4150 Id=43220009 Status=0 Count=9
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00ef8e0 arg2=ProtoItem@0x75d00d40c0 Id=43220104 Status=0 Count=9
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00e6320 arg2=ProtoItem@0x75d00d4090 Id=43230000 Status=0 Count=1664
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00e6aa0 arg2=ProtoItem@0x75d00d4420 Id=43210100 Status=0 Count=123
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00d3220 arg2=ProtoItem@0x75d00d43f0 Id=43210102 Status=0 Count=119
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00d3c80 arg2=ProtoItem@0x75d00d43c0 Id=43210104 Status=0 Count=100
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00c96a0 arg2=ProtoItem@0x75d00d4300 Id=43220000 Status=0 Count=26
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00b45a0 arg2=ProtoItem@0x75d00d42a0 Id=43220002 Status=0 Count=37
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00b4d20 arg2=ProtoItem@0x75d00d4240 Id=43220004 Status=0 Count=46
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00a89a0 arg2=ProtoItem@0x75d00d41e0 Id=43220006 Status=0 Count=5
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d00763e0 arg2=ProtoItem@0x75d00d4180 Id=43220008 Status=0 Count=2
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d0076b60 arg2=ProtoItem@0x75d00d40f0 Id=43220103 Status=0 Count=101
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05fe320 arg2=ProtoItem@0x75d00d44b0 Id=43210000 Status=0 Count=128
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05feaa0 arg2=ProtoItem@0x75d00d4480 Id=43210001 Status=0 Count=101
+[WAREHOUSE_ITEM] enter panel=WareHousePanelMono@0x7495d8cea0 arg1=GameObject@0x75d05df220 arg2=ProtoItem@0x75d00d4450 Id=43210002 Status=0 Count=31
+[WAREHOUSE_STATE] ShowGoods leave mode=2 list_d8=List`1@0x75d05c6240 count=76 list_e0=List`1@0x75d05c6210 count=10 list_e8=List`1@0x75d05c6180 count=23 list_f0=List`1@0x75d05c61e0 count=11 selected_f8=List`1@0x75d05c6180 count=23
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+58 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-69 0ms (+58 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 1ms (+58 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+58 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+60 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-57 0ms (+60 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+60 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+60 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+60 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 1ms (+60 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+60 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+60 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 1ms (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
+[TRANSPORT] KCPTube.Send enter this=KCPTube@0x75d55f15a0
+[KCP_SEND_ARGS] signature=(Alioth.S1.Common.OpInfo, System.IO.MemoryStream, System.IO.MemoryStream) arg1=request=OpInfo@0x7373131cf0 SerialNumber=128631815 OpCode=19 ReturnCode=0 arg2=MemoryStream@0x75d5d5b2a0 arg3=MemoryStream@0x75d5d5b300
+[CHAPTERS_GET] OpInfo=0x7373131cf0 ret=null
+[TRANSPORT] KCPTube.Send leave ret=1 1ms
+[KCP_SEND_ACCEPTED] request=OpInfo@0x7373131cf0 SerialNumber=128631815 OpCode=19 ReturnCode=0
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-54 0ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 1ms (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryOutput enter this=KCPTube@0x75d55f15a0 (+20 repeats suppressed)
+[TRANSPORT] KCPTube.TryOutput leave ret=-1 0ms (+20 repeats suppressed)
+[NET_RESP_STATUS] status=4 route=ProccessRequestRes
+[NET_RESP] ProccessRequestRes enter this=DataCenter@0x75a74e37e0 response=OpInfo@0x7373131b80 arg2=0x0 (+1 repeats suppressed)
+[RESP_CLASS] obj=0x7373131b80 class=OpInfo
+[CHAPTERS_RAW] response=0x7373131b80 +0xc0=null
+[BOOT_RESP] seq=3 response=0x7373131b80 class=OpInfo@0x7373131b80 OpCode=19 ReturnCode=0
+[BOOT_STATE] User@+0x88=null
+[BOOT_STATE] Items@+0x98=null
+[BOOT_STATE] Heros@+0x90=null
+[BOOT_STATE] Chapters@+0xc0=null
+[ITEM_MERGE] enter this=DataCenter@0x75a74e37e0 incoming=null (+1 repeats suppressed)
+[ITEM_MERGE] leave 0ms (+1 repeats suppressed)
+[NET_RESP] ProccessRequestRes leave (+1 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=-24 0ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 1ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[MAIN_CURRENCY] Energy=134 UserInfo=0x75d006b680
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+42 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 1ms (+42 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+58 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=0 0ms (+58 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 1ms (+58 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+58 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+58 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+58 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
+[TRANSPORT] KCPTube.Update enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.Update leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.Update leave ret=0 0ms (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead enter this=KCPTube@0x75d55f15a0 (+59 repeats suppressed)
+[TRANSPORT] KCPTube.TryRead leave ret=0 1ms (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead enter this=TCPTube@0x75d5f65dc0 (+59 repeats suppressed)
+[TRANSPORT] TCPTube.TryRead leave ret=0 0ms (+59 repeats suppressed)
+[NET_RESP] TryHandleResponse enter this=NetworkCenter@0x75d5d59ee0 (+44 repeats suppressed)
+[NET_RESP] TryHandleResponse leave 0ms (+44 repeats suppressed)
