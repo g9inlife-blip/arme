@@ -382,15 +382,14 @@ Tube 수신
 
 각 분기는 hash 비교만 하는 것이 아니라 `System.String.op_Equality`를 추가로 거친다. 따라서 화면 assetName의 문자열 literal 복원 전에는 화면 이름을 확정하지 않는다.
 
-### 10.2 별도 화면/기능 caller 확인
+### 10.2 개별 기능 caller 추적 상태
 
-| Request | 확인된 caller | 분류 |
-|---|---|---|
-| GetActivities | HomePanelMono.Start | Main 진입 시 Activity 만료 상태일 때 갱신 |
-| CreateBattle | HeroBreakMono.HeroBreakBack 및 기존 던전 경로 추적 | 전투/화면 callback 경로 후보. 실제 일반 던전 진입 caller는 별도 추적 중 |
-| MailGetReward | XLua/기능 호출 참조 및 메일 기능 흐름 | 사용자 보상 수령 액션 후보; 직접 caller 체인은 추가 확인 |
-| GetSections | XLua wrapper 및 여러 기능 함수에서 참조 | 스테이지/Section 조회; 직접 호출 조건은 추가 분류 |
-| Shopping | XLua wrapper 및 BattleValueTools.Add 참조 | 구매 동작 후보; 실제 상점 UI caller는 추가 확인 |
+현재 이 단계에서 개별 caller와 요청 함수의 직접 연결을 확정한 항목은 `HomePanelMono.Start → GetActivities`다. 다른 Request 함수에 대해서는 다음 구분을 유지한다.
+
+- `GUIScreenLoaderS1.IsSendRequest`가 호출하는 7개는 화면 자동 요청으로 확인.
+- `CSBehaviour.RequestOp` Calls IN은 Request 함수들이 전송 경계에 도달하는 사실을 보여주지만, 각 Request 함수의 상위 UI caller를 알려주지는 않는다.
+- `OpInfo::.ctor` 또는 `SingletonBehaviour.get_Instance`의 Calls IN에 특정 Request 함수가 보인다는 사실만으로, 그 함수의 UI caller가 동일 Request를 호출한다고 연결해서는 안 된다.
+- 개별 UI caller는 해당 UI 함수의 Listing에서 Request 함수 주소로 직접 연결되는 호출 또는 delegate 체인을 확인한 뒤 확정한다.
 
 ### 10.3 호출자 분류의 진행 상태
 
