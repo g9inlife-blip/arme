@@ -1795,7 +1795,6 @@ function inspectChaptersDictionary(dictPtr) {
         const specs = [
             ['ReadyMono', 'RefreshBtnState', 'DUNGEON_READY_STATE'],
             ['ReadyMono', 'ClickEnterBattle', 'DUNGEON_READY_CLICK'],
-            ['ProtocolGame_SendRequest', 'CreateBattle', 'DUNGEON_CREATE_BATTLE_METHOD'],
             ['GoToBattleMono', 'CreateBattleBack', 'DUNGEON_GOTO_BATTLE'],
             ['GoToBattleMono', 'SetEnemyHero', 'DUNGEON_SET_ENEMY_HERO']
         ];
