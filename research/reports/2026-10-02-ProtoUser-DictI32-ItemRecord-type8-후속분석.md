@@ -692,3 +692,59 @@ ProtoUser tag와 native 속성의 후보 대응:
 - `-27`은 HomePanel 메일 뱃지에서 동일한 숫자 key가 보이지만, 해당 함수가 읽는 대상은 DataCenter cache +0xC0 Dictionary다. OpInfo field21의 map 객체와 동일하다는 증거가 없으므로 연결하지 않는다.
 - `-29,-28,-23,-22,-20,-33,-36`은 이번 응답의 실제 값만 확인했다. 정적 Listing에서 직접 소비하는 메서드가 아직 특정되지 않아 의미를 부여하지 않는다.
 - 다음 단계는 field21을 역직렬화한 직후 실제 Dictionary 객체와 DataCenter cache +0xC0 객체의 주소를 Frida에서 비교하고, 미확정 key에 대한 `ContainsKey/get_Item` 호출 스택을 수집하는 것이다. 이는 서버 응답 생성이 아니라 클라이언트 수신/저장/소비 경로 검증이다.
+
+
+## 2026-10-02 후속 작업 — 소비처/XLua 경계 재확인
+
+### ProtoUser wire tag 확정
+
+PCAP JSON packet group 192~201의 OpInfo 최상위 field 35(length 33)를 재확인했다. nested field와 Ghidra ProtoUser getter를 대조한 기본 속성 매핑은 다음과 같다.
+
+| wire tag | 속성 | PCAP 값 |
+|---:|---|---:|
+| 1 | Id | 871047 |
+| 3 | Level | 4 |
+| 4 | Exp | 250 |
+| 7 | HeadIcon | 18100000 |
+| 14 | Name | `g9in2` |
+
+tag 20/21/22/24는 값 3/3/10/1이 관측되지만 아직 속성 미확정이다. getter에서 확인한 객체 offset(+0x10/+0x1C/+0x20/+0x2C/+0x30)은 wire tag가 아니다. 현재 근거 수준에서 기본 5개 tag는 확정하고 나머지는 보류한다.
+
+### DictI32 field 21 — ProccessRequestRes 분기 대조
+
+DA.txt의 `DataCenter.ProccessRequestRes @ 016e203c` 본문을 다시 읽어 signed key 상수와 실제 동작을 대조했다.
+
+| key | 분기/동작 | 현재 의미 |
+|---:|---|---|
+| -29 | `GamePlayerInfomation.set_CheckAssetsRandomInt_New` | random asset seed/state |
+| -28 | `DateTime.AddSeconds` → `DataCenter.set_EnergyNextTime` | 에너지 회복 시각 |
+| -27 | DataCenter cache Dictionary(+0xC0)에 key/value 저장 → HomePanel mail badge | 메일 unread count |
+| -23 | key 존재 검사 후 `Ali.Notify` | 이벤트 이름/의미 미확정 |
+| -22 | 이 함수에서 전용 key 비교/소비 분기 미발견 | 다른 경로 소비 여부 미확정 |
+| -20 | 이 함수에서 전용 key 비교/소비 분기 미발견 | 다른 경로 소비 여부 미확정 |
+| -18 | `UserInfo.MergeVaryData`에서 ExamTimes | 시험 횟수 |
+| -34 | `DataCenter.set_ChatChannel` | 채팅 채널 |
+| -36 | `DataCenter.set_SupportCVTimes` | Support CV 횟수 |
+| -30/-31/-32 | `UserInfo.MergeVaryData`에서 EquipMax/ChargeTotalPerMonth/Age | UserInfo 속성 |
+
+주의: -22/-20/-33은 이 함수의 해당 구간에서 전용 key 분기가 보이지 않는다는 뜻이다. 프로젝트 전체에서 읽히지 않는다는 결론은 아니다. -33도 마찬가지로 이 함수의 전용 분기는 찾지 못했다. -23은 Notify 호출 자체는 확인됐으나 Notify 인자에 대응하는 이벤트 명칭을 아직 풀지 못했다.
+
+이번 packet group 192~201에서 field 21은 276개 map entry이며, 양수 key 263개와 음수 key 13개다. 음수 key 값은 -29=79, -28=94, -27=1, -23=0, -22=0, -20=0, -18=15, -33=0, -34=1, -36=3, -30=0, -31=0, -32=27이다. 생략된 map value는 protobuf 기본값 0으로 처리했다. 이는 이 캡처의 값이며 고정 상수가 아니다.
+
+### ItemDataWrap / type 8 CODE lookup 경계
+
+Git Listing 검색을 재수행했다.
+
+- `ItemData.get_itemPackageId @ 00df09a8`: `ldr x0,[x0,#0x90]` 후 반환. 즉 ItemData 객체의 +0x90 참조를 제공한다.
+- `ItemData.ctor @ 00df09c8`의 Calls IN에는 `XLua.CSObjectWrap.ItemDataWrap.__CreateInstance @ 012cedf8`가 있다.
+- `ItempackageData.ctor @ 00df09d4`도 `ItempackageDataWrap.__CreateInstance @ 012d05dc`에서 생성된다.
+- IT.txt에는 ItemDataWrap의 생성자 참조만 있고 wrapper getter 본문은 없다. XL/CS/XU/WR listing 및 Git 코드 검색에서도 `_g_get_itemPackageId` 구현은 확인되지 않았다.
+- 따라서 ItemData의 C# getter 존재 및 XLua 타입 노출은 확인됐지만, Lua에서 이 속성을 실제 읽는 스크립트와 type 8의 CODE 1~425를 해석하는 lookup collection은 아직 연결되지 않았다.
+
+OpenBox 경로는 type 8 보유/표시 및 응답의 구체 item ID 연출을 설명하지만, CODE*VALUE를 구성품 ID로 해석하는 resolver는 포함하지 않는다는 기존 판정을 유지한다.
+
+### 다음 실행 작업
+
+1. 런타임에서 `ItemData.get_itemPackageId` 반환 객체와 Lua property getter 호출 stack을 기록하고 CODE 문자열을 소비하는 호출자를 찾는다.
+2. `Dictionary<int,int>.ContainsKey/get_Item`에서 key -22/-20/-33 및 -23 Notify 분기의 호출 stack을 수집한다.
+3. 양수 key 263개는 Main UI getter의 실제 key 목록과 교차할 때만 의미를 부여한다. 숫자 ID 패턴만으로 명칭을 추정하지 않는다.
