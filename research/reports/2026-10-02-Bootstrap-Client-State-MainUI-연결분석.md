@@ -819,3 +819,32 @@ out object
 ```
 
 다음은 **Dictionary의 생성/대입 지점과 value class를 역추적**하는 것이 우선이다. 이를 확인하면 `+0x10`이 Hero ID인지, 다른 식별자인지 판별할 수 있다.
+
+
+### 18.4 Dictionary 역추적 정정 및 WeaponInfo Dictionary 확인 (2026-10-03)
+
+추가로 `FUN_00e5c00c`의 후반부를 확인한 결과, 이전 섹션에서 `Dictionary<int,object>`의 생성/대입을 곧바로 **x20 source Dictionary**로 연결하면 안 된다.
+
+확인된 별도 Dictionary 경로:
+
+- `00e5c00c → Dictionary<int,object>::.ctor @ 0192d268`
+- 이후 반복 처리에서 `WeaponInfo::.ctor @ 00dd3e64`
+- `WeaponInfo::get_Id @ 00dd3738`
+- `00e5c110 → Dictionary<int,object>::set_Item @ 0192dba8`
+- 이때 `set_Item`의 value는 `x24 = WeaponInfo`이고 key는 `WeaponInfo.get_Id()` 결과다.
+
+즉 이 구간은 다음 구조로 확정된다.
+
+```text
+WeaponInfo
+  ├─ get_Id() → Dictionary<int,object> key
+  └─ WeaponInfo object → Dictionary value
+```
+
+따라서 이 `set_Item`은 앞서 분석한 `x20 = Dictionary<int,object>.get_Item 결과`의 source Dictionary라고 볼 근거가 없다.
+
+또한 `00e5bd3c~00e5bdf0`에서 x20은 별도의 `Dictionary<int,object>.get_Item` 결과이고, 그 객체의 `+0x10`을 TryGet key로 사용한다.
+
+**현재 판정:** source Dictionary와 WeaponInfo Dictionary는 분리해서 추적해야 한다.
+
+다음 단계는 `00e5bd5c`에서 사용되는 `[x29,#0x38]`의 생성/대입 지점을 역추적하여 x20의 실제 value class를 찾는 것이다.
