@@ -365,3 +365,81 @@ field 21 DictI32
 - **미확정:** 각 시간 객체의 내부 field 1/2가 seconds/nanos 등 어떤 단위 표현인지.
 
 다음은 field 56 Data key를 Activity Excel config와 연결하고, Banner에서 key별 조건을 읽는 지점을 확인한다. 이후 Quest/Mail/Supply/Camp의 Main 배지 소비 경로를 별도 표로 정리한다.
+
+## 13. Main 배지: Quest / Mail / Supply / Camp 데이터 연결
+
+`HomePanelMono.Start`에서 호출되는 배지 갱신 함수와 DataCenter의 실제 cache 참조를 대조했다.
+
+### 13.1 Task / TaoFa / Camp — Quests cache
+
+```text
+Bootstrap field 51 Quests
+  → OpInfo +0xE8
+  → DataCenter.Merge<int, ProtoQuest>
+  → DataCenter Quests cache +0x80
+  → DataCenter.CheckTaskState / CheckTaskStateByID
+  → Main Task / TaoFa / Camp point
+```
+
+근거:
+- `DataCenter.ProccessRequestRes @ 016e203c`에서 OpInfo `+0xE8`을 DataCenter `+0x80`에 generic Merge한다.
+- `DataCenter.CheckTaskState @ 016e75cc`는 `this +0x80` Dictionary에서 Excel task record의 ID로 ProtoQuest를 조회하고, ProtoQuest `+0x1C` 상태를 비교한다.
+- `DataCenter.QuestHaveFinished @ 016e7a28`는 Excel task 목록을 순회해 `CheckTaskState`를 호출한다.
+- `HomePanelMono.RefreshPoint_Task @ 00f6a1dc`는 `QuestHaveFinished` 결과로 Task 배지를 갱신한다.
+- `HomePanelMono.UIRefreshCamp @ 00f6ac08` 및 `RefreshPoint_TaoFa @ 00f69924`는 `CheckTaskStateByID`를 호출한다.
+
+따라서 Quests는 별도 Quest 화면에서만 쓰이는 데이터가 아니라 Main의 Task/TaoFa/Camp 상태 점검에도 연결된다. 단, 세 배지의 task ID 목록은 Excel 설정에서 결정되므로 Quest dictionary만으로 배지 결과를 설명할 수는 없다.
+
+### 13.2 Mail — DictI32 key -27
+
+```text
+Bootstrap field 21 DictI32
+  → OpInfo +0x70
+  → ProccessRequestRes에서 key -27 복사
+  → DataCenter Dictionary<int,int> +0xC0
+  → HomePanelMono.RefreshPoint_Mail
+  → point_mail / lbl_mailNum
+```
+
+운영 PCAP field 21에는 key `-27 = 1`이 실제로 존재한다. `ProccessRequestRes`는 OpInfo DictI32(+0x70)에서 key -27을 조회해 DataCenter `+0xC0` dictionary에 같은 key/value를 반영한다.
+
+`HomePanelMono.RefreshPoint_Mail @ 00f69fd0`는 DataCenter `+0xC0`에서 key -27을 조회한다. 값이 0보다 크면 `point_mail`을 활성화하고, 메일 버튼이 활성 상태일 때 `lbl_mailNum`에 해당 수량을 표시한다.
+
+즉 Mail 배지는 Bootstrap의 Mails collection(+0xB0 / cache +0x88)과 별개로, **DictI32 key -27의 unread count**를 읽는 구조다. 실제 PCAP에서 Mails collection이 직렬화되지 않은 점과 모순되지 않는다.
+
+### 13.3 Warehouse Supply — Items에서 Box 목록 계산
+
+```text
+Bootstrap field 38 Items
+  → DataCenter.MergeItem
+  → item category cache +0x78
+  → DataCenter.RefreshBoxList
+  → isBoxItem 필터 + 그룹 정렬
+  → DataCenter BoxSupplyList(+0xE8)
+  → get_BoxSupplyTotalCount
+  → HomePanelMono.RefreshWareHouse_Supply
+```
+
+`DataCenter.RefreshBoxList @ 016e6c64`는 DataCenter Items cache(+0x78)를 입력으로 사용하고 `AliothExtensions.isBoxItem` predicate로 box item을 필터링한 뒤 `DataTool.ToListByGroup` / 정렬 결과를 BoxSupplyList(+0xE8)에 저장한다. `get_BoxSupplyTotalCount @ 016e6b58`는 이 목록 각 항목의 수량(+0x18)을 합산한다.
+
+`HomePanelMono.RefreshWareHouse_Supply @ 00f6a2ec`는 `get_BoxSupplyTotalCount` 결과를 `lbl_wareHouseBoxNum`에 표시하고 `point_wareHouse` 상태를 갱신한다.
+
+따라서 Main 창고 보급 배지는 field 38 Items가 실제 소비되는 또 하나의 직접 경로다. Chapter BoxStatus와는 별도인 **인벤토리 내 box item 보유 수량**이다.
+
+### 13.4 Main 배지 데이터 계약 요약
+
+| Main UI | Bootstrap 원천 | Client cache / 처리 | 표시 결과 |
+|---|---|---|---|
+| Activity banner | field 56 Activities | Activity cache → ProtoActivity.ToDictonary | banner / 시간 / activity point |
+| Task point | field 51 Quests | cache +0x80 → QuestHaveFinished / CheckTaskState | point_task |
+| TaoFa / Camp point | field 51 Quests + Excel task config | CheckTaskStateByID | point_TaoFa / point_camp |
+| Mail point/count | field 21 DictI32 key -27 | cache +0xC0 Dictionary<int,int> | point_mail / lbl_mailNum |
+| Warehouse supply | field 38 Items | cache +0x78 → RefreshBoxList → BoxSupplyList | lbl_wareHouseBoxNum / point_wareHouse |
+
+이 표는 Main 초기화에서 확인된 연결만 정리한 것이다. 별도 응답으로 갱신되는 값이나 사용자가 메뉴를 열었을 때만 필요한 데이터는 계속 분리해서 기록한다.
+
+### 13.5 다음 확인
+
+1. Field 21의 다른 음수 key가 DataCenter의 어느 cache에 복사되고 어떤 Main UI에서 소비되는지 계속 연결한다.
+2. `isBoxItem`이 참조하는 BaseData/Excel 조건과 BoxSupplyList grouping 기준을 확인한다.
+3. Task/TaoFa/Camp 각각이 참조하는 Excel task ID 집합을 분리해 Quests cache의 필요한 상태와 대조한다.
