@@ -268,3 +268,137 @@ Shopping @ 00de1e80
 - 위 목록은 Request 함수 후보 inventory이며, 기능명 기준의 임시 분류만 가능하다.
 - Chat 관련 `ChangeChatChannle`, `SendWorldChat`는 현재 Local Server 조사 우선순위에서 제외한다.
 - 다음 단계에서 각 함수의 Calls IN을 따라 실제 진입 화면/버튼/콜백/XLua 경로를 분류한다.
+
+
+## 9. OpInfo 구조 재확인 — 요청 번호와 데이터 봉투
+
+사용자 질문에 대한 구조적 답변을 위해 Listing getter와 NetworkCenter 송신부를 대조했다.
+
+### 9.1 OpInfo는 단순 Opcode가 아니라 공통 메시지 객체
+
+확인된 getter의 실제 메모리 offset:
+
+| 속성 | offset | 역할에 대한 현재 해석 |
+|---|---:|---|
+| SerialNumber | +0x10 | 요청/응답 상관관계 식별값 |
+| OpCode | +0x14 | 작업 종류 식별자 |
+| ReturnCode | +0x18 | 처리 결과 코드 |
+| Time | +0x20 | 시간/요청 시각 관련 필드 |
+| S_0 | +0x28 | 문자열 슬롯 |
+| Int32_0 | +0x30 | 정수 인자 슬롯 |
+| Int32_1 | +0x34 | 정수 인자 슬롯 |
+| Int32_2 | +0x38 | 정수 인자 슬롯 |
+| Int32_3 | +0x3C | 정수 인자 슬롯 |
+| Int32_4 | +0x40 | 정수 인자 슬롯 |
+| Int64_0 | +0x48 | 64-bit 정수 슬롯 |
+| DictI32 | +0x70 | int→int Dictionary |
+| User | +0x88 | UserInfo 데이터 |
+| Items | +0x98 | Item 데이터 |
+| Activities | +0x120 | Activity 데이터 |
+| BattleReport | +0x140 | 전투 보고 데이터 |
+
+근거 Listing:
+- `015aac5c OpInfo.get_SerialNumber`: `ldr w0,[x0,#0x10]`
+- `015aac6c OpInfo.get_OpCode`: `ldrh w0,[x0,#0x14]`
+- `015aac7c OpInfo.get_ReturnCode`: getter 주소/offset 목록에서 확인 필요
+- `015aad4c OpInfo.get_DictI32`: `ldr x0,[x0,#0x70]`
+- `015aad7c OpInfo.get_User`: `ldr x0,[x0,#0x88]`
+- `015aad9c OpInfo.get_Items`: `ldr x0,[x0,#0x98]`
+- `015aaecc OpInfo.get_Activities`: `ldr x0,[x0,#0x120]`
+- `015aaf2c OpInfo.get_BattleReport`: `ldr x0,[x0,#0x140]`
+
+※ 정수/문자열 슬롯의 이름은 IL2CPP에 남아있는 일반화된 속성명이다. 모든 API가 모든 슬롯을 사용하는 것은 아니다. 실제 의미는 개별 Request 함수의 assignment와 응답 소비처로 결정한다.
+
+### 9.2 요청/응답이 같은 OpInfo 형식을 재사용
+
+기존 Listing에서 확인한 연결:
+
+```text
+Client Request:
+ProtocolGame_SendRequest.<API>
+  → OpInfo 생성 및 필드 설정
+  → CSBehaviour.RequestOp(OpInfo)
+  → NetworkCenter.Send(OpInfo)
+  → Request.Req = OpInfo
+  → Tube 송신
+
+Server Response:
+Tube 수신
+  → Request.SetResponse(OpInfo)
+  → CSBehaviour.Response(Commands, OpInfo)
+  → 등록 callback
+  → DataCenter.ProccessRequestRes(OpInfo)
+```
+
+따라서 OpInfo는 요청에만 쓰이는 단순 인자 묶음이 아니다. 요청과 응답 양쪽에서 쓰이는 공통 프로토콜 메시지/데이터 봉투에 가깝다. 응답에서는 ReturnCode와 User, Items, Activities, DictI32 등 결과 데이터 필드가 채워질 수 있다.
+
+### 9.3 SerialNumber와 OpCode의 역할 구분
+
+- OpCode: 어떤 명령/기능인지 식별한다.
+- SerialNumber: 여러 요청이 오가는 상황에서 특정 응답을 원래 요청과 연결하기 위한 값이다.
+- ReturnCode: 처리 결과 상태를 전달하는 필드다.
+- 나머지 슬롯/객체 필드: 해당 명령의 입력 인자 또는 응답 데이터다.
+
+기존 PCAP에서 CreateBattle 요청과 응답이 동일 SerialNumber 및 Opcode로 짝지어졌던 관측과 일치한다.
+
+### 9.4 NetworkCenter.Send의 중복 Opcode 처리
+
+`NetworkCenter.Send @ 015b3764` Listing에서:
+- 대기 Queue의 Request들을 순회
+- 각 Request의 OpInfo를 가져와 +0x14 Opcode 비교
+- 동일 Opcode가 발견되면 해당 Request 객체의 virtual method를 호출하는 별도 분기로 진입
+- 동일 Opcode가 없으면 SerialNumber counter를 증가시키고 새 OpInfo +0x10에 값을 기록
+- Request::.ctor(OpInfo)를 생성한 뒤 Queue에 Enqueue
+
+따라서 NetworkCenter는 요청을 무조건 Queue에 추가하지 않는다. 동일 Opcode가 이미 대기 중일 때의 중복 처리 분기가 있다. 다만 해당 virtual method의 의미(기존 요청 교체/콜백 병합/무시 등)는 아직 함수 포인터 대상을 확인하지 않았으므로 확정하지 않는다.
+
+### 9.5 질문에 대한 결론
+
+사용자 설명 중 “규격화된 정보를 번호로 매핑해 전달한다”는 부분은 맞는 방향이다. 다만 구조를 정확히 표현하면:
+
+- 클라이언트가 Opcode로 요청 종류를 선택한다.
+- OpInfo 객체에 SerialNumber, Opcode, 필요한 인자 슬롯을 채운다.
+- 서버는 Opcode에 대응하는 요청 규격으로 나머지 payload를 해석한다.
+- 서버 응답도 SerialNumber/Opcode 및 결과 필드를 갖춘 OpInfo 구조로 반환된다.
+- 클라이언트는 응답의 Opcode와 SerialNumber를 기준으로 대기 중인 Request를 찾아 callback 및 DataCenter 처리로 넘긴다.
+
+즉 **Opcode는 API 라우팅 번호, OpInfo는 공통 메시지 봉투, 각 슬롯은 API별 payload/result**로 이해하는 것이 가장 정확하다. 다만 실제 wire format의 field number와 byte encoding은 protobuf/Commands 계층에서 별도로 확정해야 한다.
+
+## 10. 요청 caller 분류 — 1차 확인
+
+### 10.1 화면 로딩 자동 요청으로 확인된 항목
+
+`GUIScreenLoaderS1.IsSendRequest @ 01693710`의 Calls OUT와 Listing 분기에서 다음 7개가 확인된다.
+
+| Request | Opcode | 진입 조건/경로 |
+|---|---:|---|
+| GetActivities | 0x06 | 특정 assetName 분기에서 자동 요청 |
+| GetMails | 0x2D | 특정 assetName 분기에서 자동 요청 |
+| GetShops | 0x33 | 특정 assetName 분기에서 자동 요청 |
+| ExploreFloorGet | 0x5E | 특정 assetName 분기에서 자동 요청 |
+| SpaceBaseGet | 0x69 | 특정 assetName 분기에서 자동 요청 |
+| GetBattleReport | 0x7F | 특정 assetName 분기에서 자동 요청 |
+| GetExam | 0x45 | 특정 assetName 분기에서 자동 요청; queryRankID 또는 UserInfo.Id 인자 |
+
+각 분기는 hash 비교만 하는 것이 아니라 `System.String.op_Equality`를 추가로 거친다. 따라서 화면 assetName의 문자열 literal 복원 전에는 화면 이름을 확정하지 않는다.
+
+### 10.2 별도 화면/기능 caller 확인
+
+| Request | 확인된 caller | 분류 |
+|---|---|---|
+| GetActivities | HomePanelMono.Start | Main 진입 시 Activity 만료 상태일 때 갱신 |
+| CreateBattle | HeroBreakMono.HeroBreakBack 및 기존 던전 경로 추적 | 전투/화면 callback 경로 후보. 실제 일반 던전 진입 caller는 별도 추적 중 |
+| MailGetReward | XLua/기능 호출 참조 및 메일 기능 흐름 | 사용자 보상 수령 액션 후보; 직접 caller 체인은 추가 확인 |
+| GetSections | XLua wrapper 및 여러 기능 함수에서 참조 | 스테이지/Section 조회; 직접 호출 조건은 추가 분류 |
+| Shopping | XLua wrapper 및 BattleValueTools.Add 참조 | 구매 동작 후보; 실제 상점 UI caller는 추가 확인 |
+
+### 10.3 호출자 분류의 진행 상태
+
+- OpInfo 생성자 Calls IN에서 Request 함수 98개를 확인했다.
+- CSBehaviour.RequestOp Calls IN에서도 해당 Request 함수들이 직접 진입하는 구조를 재확인했다.
+- 이 중 7개는 IsSendRequest 화면 자동 요청 분기에서 정적 확인했다.
+- GetActivities는 Main 상태 만료에 따른 직접 호출도 확인했다.
+- 나머지 Request는 기능명만 보고 사용자 액션이라고 확정하지 않는다. 각각의 Calls IN 및 callback/delegate 체인을 따라가야 한다.
+- XLua wrapper는 Lua에 노출된 증거이지 실제 Lua script에서 호출된 증거는 아니다.
+
+다음 단계는 우편/상점/던전/재화·아이템/퀘스트 등 Local Server 범위에서 중요한 API를 먼저 골라 실제 caller와 payload 인자를 연결하는 것이다.
