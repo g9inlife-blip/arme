@@ -438,3 +438,54 @@ DataCenter.ProccessRequestRes @ 016e203c 함수 본문에서 음수 key 상수 �
 ## 2026-10-02 ItemRecord type 8의 box 분류 연결
 
 Bootstrap Main UI 분석 보고서 14.1절의 AliothExtensions.isBoxItem @ 00e166ac Listing에서 BaseData.type이 8, 1, 9일 때 true를 반환한다. 따라서 ItemRecord type 8은 클라이언트의 box item 분류에 포함된다. 다만 이는 UI/인벤토리 분류 판정이며, m_itemPackageId의 CODE*VALUE가 어느 보상 테이블을 조회하는지까지 입증하지 않는다. CODE lookup은 별도 미확정으로 유지한다.
+
+
+## 2026-10-02 PCAP 실측 — OpCode 2 응답의 field 21 / field 35
+
+원본 Git PCAP JSON `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.json`의 blob을 직접 파싱했다. packet 묶음 192~201, 서버 `182.92.62.79` → 클라이언트 `10.215.173.1`, 13,313 bytes 응답에서 protobuf 최상위 field 21 반복 엔트리 276개와 field 35 중첩 메시지 1개를 확인했다.
+
+### field 21 — DictI32 음수 key 실측
+
+field 21의 각 map 엔트리는 중첩 field 1=key, field 2=value 구조다. 음수 key는 int64 varint의 2의 보수 값을 signed 64-bit로 해석했다. 이 응답에서 확인된 음수 key는 정확히 13개이며, 기존 `UserInfo.MergeVaryData` 분석 대상과 일치한다.
+
+| key | PCAP value | 기존 클라이언트 소비처 |
+|---:|---:|---|
+| -9 | 79 | StigmataTimes |
+| -10 | 1 | MetaphysicsTimes |
+| -11 | 94 | Exp |
+| -12 | 없음 | Level |
+| -13 | 없음 | SignInDays |
+| -14 | 없음 | SignInRewardDay |
+| -15 | 15 | FCTimes |
+| -16 | 없음 | StepId |
+| -18 | 1 | ExamTimes |
+| -30 | 없음 | EquipMax |
+| -31 | 없음 | ChargeTotalPerMonth |
+| -32 | 27 | Age |
+| -34 | 3 | ChatChannel |
+
+주의: 위 값은 해당 응답에서 field 2가 실제 포함된 경우만 기록했다. field 2가 생략된 엔트리는 0으로 단정하지 않고 '없음'으로 표기했다. -27/-28/-29/-36 등 다른 보고서에서 확인한 캐시/response 분기는 이 PCAP 응답의 field 21 음수 key 목록에는 나타나지 않는다. 따라서 동일 숫자 key가 서로 다른 DataCenter dictionary 경로에서 사용되는 점을 계속 구분한다.
+
+### field 35 — ProtoUser 중첩 메시지 실측
+
+동일 응답의 최상위 field 35는 wire type 2, offset 2520, length 33인 중첩 메시지다. 내부 protobuf 필드와 값은 다음과 같다.
+
+| ProtoUser wire field | wire type | 실측값 | 현재 해석 |
+|---:|---:|---|---|
+| 1 | 0 | 871047 | Id로 대응 |
+| 3 | 0 | 4 | Level 후보 |
+| 4 | 0 | 250 | Exp 후보 |
+| 7 | 0 | 18100000 | HeadIcon 후보 |
+| 14 | 2 | `g9in2` | Name 후보 |
+| 20 | 0 | 3 | 미매핑 |
+| 21 | 0 | 3 | 미매핑 |
+| 22 | 0 | 10 | 미매핑 |
+| 24 | 0 | 1 | 미매핑 |
+
+이 결과로 field 35가 실제 ProtoUser 중첩 payload라는 점과 nested wire field 번호를 확보했다. 다만 3/4/7/14의 속성 대응은 현재 Getter의 객체 offset 및 값 형태와 교차한 후보이며, 생성 protobuf parser/serializer 또는 필드 setter에서 최종 확인해야 한다. 특히 객체 offset(+0x10 등)을 wire tag로 오인하지 않는다.
+
+### 다음 추적 순서
+
+- ProtoUser의 wire field 3/4/7/14 및 20/21/22/24를 Ghidra Listing의 생성 parser/setter 또는 XLua 메타데이터와 대조한다.
+- field 21의 276개 전체 엔트리에서 양수 key의 의미를 추측하지 않고, Main UI 소비 함수의 Dictionary 조회 key와 대조한다.
+- ItemRecord type 8의 73개 CODE는 아직 lookup 구현을 찾지 못했으므로 box 분류(type 8)와 보상 테이블 조회 의미를 분리해 유지한다.
