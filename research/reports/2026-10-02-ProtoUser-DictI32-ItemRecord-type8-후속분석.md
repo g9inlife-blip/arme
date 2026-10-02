@@ -888,3 +888,10 @@ Ghidra Listing 전체 Git 검색에서 signed key의 32-bit 상수 표기를 교
 - -33 (0xffffffdf): 현재 Listing 검색 결과 없음.
 
 따라서 현재까지 -22/-20/-33을 field 21 DictI32 key로 직접 읽는 클라이언트 함수는 발견하지 못했다. 숫자 상수만 일치하는 Brotli 내부 코드를 소비처로 잘못 연결하지 않는다. 다음 확인은 런타임에서 해당 key의 Dictionary ContainsKey/get_Item 호출 stack을 수집하는 것이다.
+
+
+### ProtoUser wire tag 7 교차 검증 — HeadiconRecord
+
+PCAP field 35 내부 tag 7의 값 18100000은 Git 원본 HeadiconRecord.json의 실제 레코드 ID와 일치한다. 해당 레코드는 m_id.hiddenValue=18016060, currentCryptoKey=444444이며 XOR 복원값은 18100000이고, m_icon은 headIcon_18100000이다. ProtoUser.set_HeadIcon은 객체 +0x2C에 저장한다.
+
+따라서 tag 7 → ProtoUser.HeadIcon은 단순 값 형태 추정이 아니라 원본 HeadiconRecord ID 및 setter와 교차 확인된 매핑으로 확정한다. tag 3/4는 Level/Exp 후보로 유지하며, tag 20/21/22/24는 미매핑이다.
