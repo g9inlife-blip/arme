@@ -398,3 +398,23 @@ OpInfo field 21 DictI32
 IT.txt에서 ItemData.get_itemPackageId @ 00df09a8은 객체 +0x90 참조를 반환하며, ItemData.ctor @ 00df09c8의 Calls IN에 XLua.CSObjectWrap.ItemDataWrap.__CreateInstance @ 012cedf8가 나타난다. ItempackageData.get_itemWeight @ 00df09cc는 +0x78 참조를 반환하고, 생성자는 ItempackageDataWrap.__CreateInstance @ 012d05dc에서 참조된다. 현재 Listing에서는 _g_get_itemPackageId wrapper getter 본문과 두 getter의 직접 Calls IN이 확인되지 않는다. type 8 CODE lookup collection은 미확정으로 유지한다.
 
 다음 추적 대상은 미분류 key의 실제 Dictionary 소비처와 ItemDataWrap의 Lua property access이다.
+
+
+## 2026-10-02 DataCenter.ProccessRequestRes의 미분류 음수 key 소비 경로 추가 확인
+
+기준 Listing: research/Ghidra_Listing_txt/DA.txt, DataCenter.ProccessRequestRes @ 016e203c. OpInfo의 DictI32는 x26+0x70에서 순회되며, key별 분기에서 다음 소비가 확인된다.
+
+| DictI32 key | 클라이언트 소비 | 근거 |
+|---:|---|---|
+| -27 | DataCenter Dictionary<int,int> +0xC0에 같은 key/value 저장 → HomePanelMono.RefreshPoint_Mail | ProccessRequestRes 016e2ff4~016e3034 + Bootstrap 보고서 13.2절 |
+| -28 | 초 단위 값으로 DateTime.AddSeconds 처리 후 DataCenter.set_EnergyNextTime | 016e30bc~016e30fc |
+| -29 | GamePlayerInfomation.set_CheckAssetsRandomInt_New 호출 | 016e34a8~016e34d0 |
+| -34 | DataCenter.set_ChatChannel 호출 | 016e34dc~016e3508 |
+| -36 | DataCenter.set_SupportCVTimes 호출 | 016e3510~016e3540 |
+| -23 | key 존재 여부 분기 후 Ali.Notify 호출 | 016e2f54~016e2fdc. Notify의 이벤트 이름/의미는 아직 미확정 |
+| -22 | 현재 이 함수의 별도 key 전용 소비 분기 미확인 | 미확정 |
+| -20 | 현재 이 함수의 별도 key 전용 소비 분기 미확인 | 미확정 |
+| -33 | 현재 이 함수의 별도 key 전용 소비 분기 미확인 | 미확정 |
+
+정정: 기존 미분류 key 7개(-29/-28/-23/-22/-20/-33/-36) 중 -29/-28/-36은 이제 소비 경로가 확인됐다. -27/-34도 기존에 확인한 Mail/ChatChannel 소비가 유지된다. 남은 직접 미확정은 -22/-20/-33과 -23의 Notify 이벤트 의미다. PCAP 값만으로 의미를 부여하지 않고 Listing의 실제 분기를 근거로 기록한다.
+
