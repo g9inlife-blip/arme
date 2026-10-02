@@ -213,3 +213,34 @@ OpInfo +0x98 Items
 3. HomePanel Start Listing 확보 여부와 별개로 `UserInfoPanelMono.RefreshTopInfos → ShowCoin`을 통해 Main 재화 UI의 직접 소비 순서 확인
 4. 실제 관측 결과를 Bootstrap fixture의 Items 데이터에 반영
 
+
+
+## 7. v4.23 runtime 계측 추가
+
+정적 분석만으로는 43000001/2/3 각각의 실제 BaseData.type과 bucket을 분리할 수 없어 `research/justice_hook.js`에 필터링 계측을 추가했다.
+
+새 로그:
+
+- `[CURRENCY_BASEDATA]`: 세 재화 ID에 한해 TryGetBaseData 결과, BaseData 주소, `BaseData +0x24` type 출력
+- `[CURRENCY_COUNT]`: 세 재화 ID에 한해 GetXCount의 mode와 반환 수량 출력
+
+대상 ID 외의 BaseData/GetXCount는 출력하지 않으며, 전체 Item dictionary나 인증/네트워크 payload를 덤프하지 않는다.
+
+스크립트:
+- `research/justice_hook.js` v4.23
+- commit: `b22b5e994d13f5bcbb8ca1dc707c98f4ae4169da`
+
+### 다음 실행
+
+로그인 후 Main 화면까지 진입하고 재화 표시가 갱신되도록 둔다. 아래 로그를 확보한다.
+
+```text
+[CURRENCY_BASEDATA] Coins ...
+[CURRENCY_BASEDATA] Crystals ...
+[CURRENCY_BASEDATA] Energy ...
+[CURRENCY_COUNT] Coins ...
+[CURRENCY_COUNT] Crystals ...
+[CURRENCY_COUNT] Energy ...
+```
+
+이 결과로 Record의 `baseDataType`과 runtime `BaseData.type`을 혼동하지 않고, 세 재화의 실제 ItemType bucket과 Count를 확정한다.
