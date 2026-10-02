@@ -369,3 +369,32 @@ OpInfo field 21 DictI32
 - ItemRecord type 8의 119개 m_itemPackageId는 현재 Itembox/Itempackage ID 집합과 불일치하며, `1*1`, `200*5` 같은 소형 CODE*VALUE 체계다.
 
 따라서 type 8의 CODE 1~425를 type 1/9와 같은 패키지/박스 ID로 해석하면 안 된다. ItemData.get_itemPackageId(+0x90)와 ItemDataWrap 노출 경계는 확인했지만, wrapper의 해당 property getter 및 Lua에서 CODE를 조회하는 collection은 아직 listing에서 찾지 못했다. 현재는 **별도 소형 코드 lookup 단계**로만 기록한다.
+
+
+## 2026-10-02 PCAP 재검증 정정
+
+원본 messages.json blob 5a9f8f12466c2a14fb3769b376f96b6eebc8dfc4의 packet group 192~201에서 OpInfo field 21 map entry를 다시 파싱했다. 음수 signed int32 key는 원시 varint에서 복원했고, field 2(value)가 생략된 map entry는 protobuf 기본값 0으로 처리했다.
+
+| key | value |
+|---:|---:|
+| -29 | 79 |
+| -28 | 94 |
+| -27 | 1 |
+| -23 | 0 |
+| -22 | 0 |
+| -20 | 0 |
+| -18 | 15 |
+| -33 | 0 |
+| -34 | 1 |
+| -36 | 3 |
+| -30 | 0 |
+| -31 | 0 |
+| -32 | 27 |
+
+이 표는 이번 PCAP group에 대한 직접 재파싱 결과로, 같은 캡처의 이전 표에 기재된 값(예: -29/-28/-27=16)을 대체한다. -27은 Bootstrap 보고서에서 Mail unread count까지 연결되어 있다. -29/-28/-23/-22/-20/-33/-36은 직접 소비처가 아직 확인되지 않았다.
+
+## 2026-10-02 ItemData XLua 경계 재확인
+
+IT.txt에서 ItemData.get_itemPackageId @ 00df09a8은 객체 +0x90 참조를 반환하며, ItemData.ctor @ 00df09c8의 Calls IN에 XLua.CSObjectWrap.ItemDataWrap.__CreateInstance @ 012cedf8가 나타난다. ItempackageData.get_itemWeight @ 00df09cc는 +0x78 참조를 반환하고, 생성자는 ItempackageDataWrap.__CreateInstance @ 012d05dc에서 참조된다. 현재 Listing에서는 _g_get_itemPackageId wrapper getter 본문과 두 getter의 직접 Calls IN이 확인되지 않는다. type 8 CODE lookup collection은 미확정으로 유지한다.
+
+다음 추적 대상은 미분류 key의 실제 Dictionary 소비처와 ItemDataWrap의 Lua property access이다.
