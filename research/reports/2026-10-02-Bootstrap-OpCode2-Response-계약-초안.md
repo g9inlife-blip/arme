@@ -1262,3 +1262,74 @@ Git의 `09_record_samples.json`에서 세 ID 모두 `ItemRecord.json` Record이�
 단, Record sample의 `baseDataType=0`과 runtime `BaseData.type`의 직접 매핑, 그리고 각 재화 ID의 실제 bucket은 아직 runtime에서 확인하지 않았다. 이 둘을 동일하다고 추정하지 않는다.
 
 따라서 Main Bootstrap fixture에서는 세 재화를 `UserInfo` 내부 숫자 필드로 별도 구성하지 않고, `OpInfo.Items → MergeItem → ItemType bucket → GetXCount` 경로로 구성한다. 실제 Bucket/Count는 다음 runtime 로그로 확정한다.
+
+
+## 21. 2026-10-02 최신 단일 Frida 로그 반영 및 Main 범위 재정렬
+
+입력 로그:
+`research/reports/Log/frida_log_static_신규로갱신되므로기존데이터없이최종본만.txt`
+사용자가 기존 로그를 누적하지 않고 이번 실행 최종본만 저장한 파일이다. 이 파일을 기준으로 분석하며 과거 로그를 섞지 않는다.
+
+### 21.1 Bootstrap OpCode 2 runtime 확인
+
+이번 로그의 최초 Bootstrap 응답:
+
+- `OpCode=2`, `ReturnCode=0`
+- `User@+0x88 = ProtoUser`
+  - Id = 871053
+  - Level = 53
+  - Exp = 1100
+- `Items@+0x98 = Dictionary`, count = 98
+- `Heros@+0x90 = Dictionary` non-null
+- `Chapters@+0xC0 = Dictionary`, count = 61
+- Items → MergeItem 진입 및 정상 종료 확인
+- HeroInfo.InitHero가 여러 ProtoHero 원본에 대해 실행됨
+
+이후 발생한 OpCode 19 및 OpCode 22 응답은 User/Items/Heros/Chapters가 null이다. 따라서 이 응답들을 Bootstrap 전체 데이터로 취급하지 않는다.
+
+### 21.2 Main 표시값 runtime 확인
+
+- UserInfo Level = 53
+- UserInfo Exp = 1100
+- Currency:
+  - Energy = 134
+  - Coins = 306095
+  - Crystals = 2700
+- Currency BaseData 3종 모두 발견, runtime type = 0x22
+- HeroInfo getter runtime 호출 확인:
+  - Level, Star, State, FashionId
+  - WeaponInfomation
+- HeroInfo.InitHero의 source class = ProtoHero 확인
+
+주의: 이 로그는 해당 getter가 호출된 사실을 확인하지만, 모든 Main 위젯의 데이터 의존성을 완성한 것은 아니다. 특히 HeroInfo getter가 다수 Hero 객체에 대해 호출된 결과이므로 개별 Hero와 화면의 대표 Hero 선택 관계는 별도 확인이 필요하다.
+
+### 21.3 Main 데이터 계약 완료도 — 미완료
+
+| 데이터 영역 | 현재 상태 | 남은 확인 |
+|---|---|---|
+| User 기본정보 | Bootstrap runtime 확인 | Main에서 실제 표시되는 필드 전체 |
+| User vary data (+0x70) | MergeVaryData 정적 경로 확인 | 이번 Bootstrap의 실제 key/value와 소비 UI |
+| Items | count 98, MergeItem runtime 확인 | Main 상단/배너/각 위젯에서 참조하는 항목 |
+| Coins/Crystals/Energy | 실제 값과 GetXCount 경로 확인 | 표시 외 별도 Main 소비처가 있는지 |
+| Heros | Dictionary 및 InitHero runtime 확인 | Main 대표 Hero 선택 및 필요한 필드 최소 집합 |
+| Weapons | MergeWeapon 및 Weapon UI 소비처 정적 확인 | Main 진입 필수 여부/실제 데이터 참조 |
+| Equiments | MergeEquip 및 Home/Warehouse 소비처 정적 확인 | Main 진입 필수 여부/필요 레코드 범위 |
+| Chapters | count 61 및 Chapter UI 정적 연결 | Main 첫 화면에서 실제 필요한 subset |
+| Sections | MergeSections 및 IsSectionClear 연결 확인 | Main 초기 로딩에서 필요한지 |
+| Teams | 병합 경로 정적 확인 | Main 표시/초기화 소비 여부 |
+| Quests | 병합 경로 정적 확인 | Main 배지/알림/퀘스트 UI 소비 여부 |
+| Shops/Charges | 병합 경로 정적 확인 | Main 상점/충전 UI 소비 여부 |
+| Mails/Friends/Activities/기타 | 일부 필드 병합 구조 확인 | Main 진입 필수 여부와 UI 소비 여부 |
+
+### 21.4 작업 범위 재설정
+
+전투 씬 내부 동작, 로컬 전투 계산/전투 데이터는 현재 Main Bootstrap 목표 범위에서 제외한다. 던전 입장 OpCode 0x16은 서버 요청/응답이 존재한다는 사실만 참고 기록으로 유지하고, 전투 씬 후속 분석은 진행하지 않는다.
+
+이후 우선순위:
+1. Main 화면 최초 표시 시점의 UI 컴포넌트별 DataCenter/UserInfo/HeroInfo getter 사용 목록 작성
+2. Main 상단 재화/프로필/대표 Hero/배너/메뉴 배지의 실제 소비 필드 확정
+3. 각 필드가 Bootstrap OpCode 2에 포함되는지 확인
+4. Bootstrap에 없는 데이터가 별도 OpCode 요청으로 채워지는지 확인
+5. Local Server가 Main 첫 화면을 표시하는 데 필요한 최소 응답 계약과, 메뉴 진입 시 추가로 필요한 응답 계약을 분리
+
+완료 기준은 모든 서버 데이터 필드를 복원하는 것이 아니라, Main 첫 화면이 정상 표시되는 데 필요한 데이터와 타입/구조/초기화 순서를 식별하는 것이다.
