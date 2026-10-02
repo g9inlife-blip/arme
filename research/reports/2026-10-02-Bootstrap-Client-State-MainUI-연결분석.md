@@ -508,3 +508,32 @@ ItemboxRecord
 - **미확정:** type 1/8/9 각각의 한국어 분류명 및 `DataTool.ToListByGroup` 내부 group key의 표시 의미.
 
 다음은 type 1/8/9 항목의 실제 ID와 ItemboxRecord/ItempackageRecord 참조 관계를 연결하고, Main 화면에 표시되는 수량이 어떤 항목을 합산하는지 세부적으로 좁힌다.
+
+### 14.5 type별 실제 참조 Record 교차 확인
+
+원본 ItemRecord의 m_id는 currentCryptoKey와 hiddenValue를 대조해 실제 ID로 복원한 뒤, ItemboxRecord/ItempackageRecord의 실제 ID 집합과 교차했다.
+
+| ItemRecord m_type | 개수 | m_itemPackageId 참조 결과 |
+|---:|---:|---|
+| 1 | 27 | 27개 전부 ItempackageRecord ID(451xxxxx)와 일치 |
+| 8 | 119 | 119개 전부 현재 Itembox/Itempackage ID 집합과 불일치. `1*1`, `200*5` 등 별도 ID 체계로 남김 |
+| 9 | 174 | 174개 전부 ItemboxRecord ID(443xxxxx)와 일치 |
+
+이 결과로 box item 세부 경로를 나눌 수 있다.
+
+```text
+ItemRecord(type=1)
+  → m_itemPackageId
+  → ItempackageRecord
+
+ItemRecord(type=9)
+  → m_itemPackageId
+  → ItemboxRecord
+
+ItemRecord(type=8)
+  → m_itemPackageId (소형 ID*수량 목록)
+  → 현재 Itembox/Itempackage와는 불일치
+  → 별도 ID namespace 확인 필요
+```
+
+따라서 Main supply count는 서로 다른 개봉/구성 정의를 가진 type 1/8/9 항목을 하나의 보유 목록으로 집계한다. type 8의 참조 대상이 확인되기 전까지 이를 Itempackage 또는 Itembox로 통일해서 처리하면 안 된다.
