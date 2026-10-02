@@ -628,3 +628,83 @@ OpInfo.Items(+0x98)
 2. ProtoUser property getter와 serialized tag metadata를 대조해 Id/Name/Level/Exp/HeadIcon의 wire tag를 확인한다.
 3. `UserInfoPanelMono.Start`가 등록한 callback 7 및 notify 0x31의 dispatch consumer를 추적한다.
 4. 이후 HeroInfo.InitHero의 ProtoHero 입력과 DataManager key 관계로 진행한다.
+
+
+## 16. ProtoHero → HeroInfo.InitHero 런타임 대조 (2026-10-03)
+
+### 16.1 기준 자료
+
+- Static Listing: `research/Ghidra_Listing_txt/DA.txt`의 `DataCenter.UpdateHeroInfo @ 016e4ba4` 호출 경로
+- ProtoHero getter: `research/Ghidra_Listing_txt/AL/015ad30c_Alioth.S1.Common.ProtoHero__get_Id.txt`
+- Runtime: `research/reports/Log/frida_log_static_신규로갱신되므로기존데이터없이최종본만.txt`
+- Hook 정의: `research/justice_hook.js`의 `HeroInfo.InitHero` source/result field dump
+
+### 16.2 호출 구조
+
+기존 정적 분석과 런타임 hook을 합치면 다음 경로가 확인된다.
+
+```text
+OpInfo.Heros (+0x90)
+  → Dictionary<int, ProtoHero> 순회
+  → HeroInfo 인스턴스 생성/선택
+  → HeroInfo.InitHero(this, ProtoHero, ...)
+  → HeroInfo 상태 초기화
+```
+
+Runtime hook은 실제로 `HeroInfo.InitHero`에 진입했고 첫 번째 인자가 HeroInfo(this), 두 번째 인자가 ProtoHero(source)임을 출력했다. 즉 메서드 인자 배치는 로그에서 직접 확인됐다.
+
+### 16.3 ProtoHero 입력과 HeroInfo 결과의 일치
+
+동일 실행의 runtime dump에서 다음 대응을 확인했다.
+
+| ProtoHero.Id | ProtoHero Level | ProtoHero Exp | ProtoHero Star | ProtoHero Weapon | HeroInfo 결과 |
+|---:|---:|---:|---:|---:|---|
+| 10000000 | 50 | 845 | 3 | 40000004 | Id=10000000, Level=50, Exp=845, Star=3, Weapon=40000004 |
+| 10000001 | 40 | 475 | 2 | 40000101 | Id=10000001, Level=40, Exp=475, Star=2, Weapon=40000101 |
+| 10000002 | 40 | 0 | 2 | 40000201 | Id=10000002, Level=40, Exp=0, Star=2, Weapon=40000201 |
+
+추가로 FashionId도 입력과 결과에서 동일한 값으로 관측됐다. 첫 번째 항목은 ProtoHero.FashionId=49000000이며 HeroInfo.FashionId=49000000이다.
+
+ProtoHero 객체 필드 offset은 runtime dump 기준 Id +0x10, Status +0x14, Level +0x18, Exp +0x1C, Star +0x20, Weapon +0x24, Armor +0x28, Belt +0x30, Emblem +0x38, Talent +0x40, Suit +0x44, FashionId +0x48, Strategy +0x4C, Hole1~6StigmataId +0x50~+0x64다. 이는 managed object field offset이며 protobuf wire tag가 아니다.
+
+HeroInfo 결과 객체에서는 Id +0x18, Level +0x1C, Exp +0x20, Star +0x24, Weapon +0x2C, Armor +0x30, Belt +0x38, Emblem +0x40, FashionId +0x48 등이 관측됐다. ProtoHero와 HeroInfo의 객체 offset은 다르므로 단순 memcpy나 동일 offset 복사로 설명하면 안 된다.
+
+### 16.4 InitHero 이후 생성/보강되는 상태
+
+Runtime 결과에서 입력 ProtoHero에 없거나 직접 대응하지 않는 HeroInfo 상태도 확인된다.
+
+- Prototype: ActorData 참조가 생성/설정됨
+- State: HeroState 객체 참조
+- StigmataInfo: 별도 객체 참조
+- WeaponInfomation: WeaponInfo 객체 참조
+- Suits: List<int> 참조
+- dic_property: PROPERTY → ObscuredFloat Dictionary
+- noInit, LastExp, LastLevel 등 초기화 보조 필드
+
+따라서 InitHero는 단순 ProtoHero 복사가 아니라 원본 필드를 HeroInfo에 반영하면서 정적 ActorData/무기/성흔/속성 관련 상태를 구성하는 초기화 단계로 볼 수 있다. 각 보조 객체의 구체적인 생성·lookup 함수는 별도 추적 대상이다.
+
+### 16.5 DataManager key 판정
+
+현재 정적 경로에서는 UpdateHeroInfo가 Hero dictionary를 순회하고 DataManager 조회를 수행한 뒤 HeroInfo.InitHero를 호출하는 사실이 확인되어 있다. Runtime에서는 ProtoHero.Id와 결과 HeroInfo.Id가 동일한 여러 샘플이 확인됐다.
+
+다만 이번 로그에는 **원본 Dictionary의 key와 ProtoHero.Id를 같은 행에 출력한 기록이 없다.** 따라서 다음 관계는 아직 완전 확정하지 않는다.
+
+```text
+Heros Dictionary key == ProtoHero.Id == HeroInfo.Id
+```
+
+현재 확정 범위는 `ProtoHero.Id == HeroInfo.Id`이며, Dictionary key가 같은 값인지는 UpdateHeroInfo loop에서 key/value pair를 함께 출력하거나 Dictionary 조회 인자를 계측해 확인해야 한다.
+
+또한 DataManager 조회 대상이 HeroInfo 자체인지, HeroInfo.Prototype에 대응하는 ActorData인지, 별도의 BaseData인지 호출부 인자/반환값을 추가 대조해야 한다.
+
+### 16.6 판정 및 다음 추적
+
+- **RUNTIME 확정:** InitHero의 this=HeroInfo, source=ProtoHero.
+- **RUNTIME 확정:** 관측된 3개 이상 Hero에서 Id/Level/Exp/Star/Weapon이 ProtoHero 입력과 HeroInfo 결과에 동일하게 반영됨.
+- **RUNTIME 확정:** FashionId도 입력/결과 일치 사례 확인.
+- **STATIC+RUNTIME:** HeroInfo 초기화 과정에서 Prototype(ActorData), State, StigmataInfo, WeaponInfomation 등 추가 상태가 설정됨.
+- **미확정:** Heros Dictionary key와 ProtoHero.Id의 동일성.
+- **미확정:** UpdateHeroInfo 내부 DataManager.TryGet의 정확한 key 및 반환 객체 종류.
+- **미확정:** ProtoHero 내부 field의 protobuf wire tag 전체 매핑.
+
+다음은 UpdateHeroInfo의 Dictionary enumerator에서 key와 value를 동시에 출력하도록 hook을 보강하고, DataManager.TryGet 호출 인자 및 반환 class를 기록해 key 관계를 확정한다. 이후 HeroInfo.Prototype/ActorData와 HeroInfo.Id의 역할을 분리한다.
