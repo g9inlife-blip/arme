@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.21
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.22
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -679,7 +679,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.10 starting...');
+    console.log('[*] justice_hook v4.22 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -1412,6 +1412,108 @@ function inspectChaptersDictionary(dictPtr) {
             }
         }
     } catch (e) { console.log('[!] Main currency getter hook failed: ' + e.message); }
+
+    // v4.22: HeroInfo.InitHero + getter correlation for Bootstrap Hero fields.
+    // Goal: correlate the source Hero object passed to InitHero with the
+    // HeroInfo values actually consumed by Hero/Main UI.
+    function describeManagedFields(obj, tag, maxFields) {
+        try {
+            if (!obj || obj.isNull()) { console.log('[HERO_FIELDS] ' + tag + '=null'); return; }
+            const klass = api.object_get_class(obj);
+            if (klass.isNull()) return;
+            const className = api.class_get_name(klass).readCString();
+            const iter = Memory.alloc(Process.pointerSize); iter.writePointer(ptr(0));
+            let n = 0;
+            console.log('[HERO_FIELDS] ' + tag + ' class=' + className + ' ptr=' + obj);
+            while (n < (maxFields || 80)) {
+                const f = api.class_get_fields(klass, iter);
+                if (f.isNull()) break;
+                let name='?', off='?', type='?';
+                try { name=api.field_get_name(f).readCString(); } catch(e) {}
+                try { off='0x'+api.field_get_offset(f).toString(16); } catch(e) {}
+                try { type=api.type_get_name(api.field_get_type(f)).readCString(); } catch(e) {}
+                let val='';
+                try {
+                    const fo=api.field_get_offset(f);
+                    if (type.indexOf('System.Int32')>=0) val=' value='+obj.add(fo).readS32();
+                    else if (type.indexOf('System.UInt32')>=0) val=' value='+obj.add(fo).readU32();
+                    else if (type.indexOf('System.Int64')>=0) val=' value='+obj.add(fo).readS64();
+                    else if (type.indexOf('System.UInt64')>=0) val=' value='+obj.add(fo).readU64();
+                    else if (type.indexOf('System.Boolean')>=0) val=' value='+(obj.add(fo).readU8()!==0);
+                    else if (type.indexOf('System.Single')>=0) val=' value='+obj.add(fo).readFloat();
+                    else if (type.indexOf('System.Double')>=0) val=' value='+obj.add(fo).readDouble();
+                    else if (type.indexOf('System.String')>=0) { const p=obj.add(fo).readPointer(); val=' value='+readIl2cppString(p); }
+                    else if (type.indexOf('System.')<0) { const p=obj.add(fo).readPointer(); val=' ref='+(p.isNull()?'null':describeObjectPtr(p)); }
+                } catch(e) {}
+                console.log('  ' + name + ' @' + off + ' type=' + type + val);
+                n++;
+            }
+        } catch(e) { console.log('[HERO_FIELDS_ERR] '+tag+' '+e.message); }
+    }
+    try {
+        const init = findMethodAnywhereExact('HeroInfo', 'InitHero', ['System.Object','System.Object']);
+        if (init) {
+            console.log('[+] Hooking HeroInfo.InitHero @ ' + init.fnPtr);
+            Interceptor.attach(init.fnPtr, {
+                onEnter(args) {
+                    this.heroInfo=args[0]; this.source=args[1];
+                    console.log('[HERO_INIT] this=' + describeObjectPtr(args[0]) +
+                        ' source=' + describeObjectPtr(args[1]) +
+                        ' arg2=' + describeObjectPtr(args[2]));
+                    try { describeManagedFields(args[1], 'InitHero.source', 60); } catch(e) {}
+                },
+                onLeave(retval) {
+                    try { describeManagedFields(this.heroInfo, 'InitHero.result', 80); } catch(e) {}
+                }
+            });
+            hookCount++;
+        } else {
+            // Fallback: resolve by name/parameter count if generated type names differ.
+            const ms=findMethodsAnywhereByName('HeroInfo','InitHero');
+            for(const m of ms) {
+                console.log('[+] Hooking HeroInfo.InitHero(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+                Interceptor.attach(m.fnPtr, {
+                    onEnter(args) {
+                        this.heroInfo=args[0]; this.source=args[1];
+                        console.log('[HERO_INIT] this=' + describeObjectPtr(args[0]) +
+                            ' source=' + describeObjectPtr(args[1]) +
+                            ' arg2=' + describeObjectPtr(args[2]));
+                        try { describeManagedFields(args[1], 'InitHero.source', 60); } catch(e) {}
+                    },
+                    onLeave(retval) {
+                        try { describeManagedFields(this.heroInfo, 'InitHero.result', 80); } catch(e) {}
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch(e) { console.log('[!] HeroInfo.InitHero hook failed: '+e.message); }
+
+    try {
+        const heroGetterSpecs=['Level','Star','State','FashionId','Weapon','WeaponInfomation'];
+        for(const name of heroGetterSpecs) {
+            const ms=findMethodsAnywhereByName('HeroInfo','get_'+name);
+            for(const m of ms) {
+                console.log('[+] Hooking HeroInfo.get_'+name+' @ '+m.fnPtr);
+                Interceptor.attach(m.fnPtr,{
+                    onEnter(args){this.obj=args[0];},
+                    onLeave(retval){
+                        try {
+                            let out='';
+                            if (name==='Weapon' || name==='WeaponInfomation') {
+                                out=describeRetval(retval);
+                            } else {
+                                out=String(retval.toInt32());
+                            }
+                            logOnChange('hero-get:'+name+':'+this.obj,out,
+                                '[HERO_GET] '+name+'='+out+' HeroInfo='+this.obj);
+                        } catch(e) {}
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch(e) { console.log('[!] HeroInfo getter hook failed: '+e.message); }
 
     // v4.20: trace the warehouse's cached-list binding path.
     // Only log object classes, known collection counts, and ProtoItem's documented scalar fields.
