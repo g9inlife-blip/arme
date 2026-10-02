@@ -76,3 +76,102 @@ UserInfo 기본 속성과 DictI32 vary 값은 같은 UserInfo 객체에 서로 �
 - 동일한 숫자 key라도 서로 다른 Dictionary/cache이면 별도 경로로 취급
 - Record의 필드명만으로 참조 의미를 확정하지 않고 실제 ID join 및 호출/소비 증거를 요구
 - 서버 데이터 생성/수정은 분석 범위에서 제외
+
+
+## 2026-10-02 후속 실측 — ItemRecord type 8 원본 전체 대조
+
+### 원본 범위
+Git 원본:
+`참고용-unity-behavior-data/MonoBehaviour/ItemRecord.json`
+- blob SHA: `497667d9c1b130bc9aaa09a3522fb38e633dab49`
+- ItemTable: 952개
+- `m_type == 8`: **119개**
+- `m_itemPackageId` 빈 값: 0개
+- 고유 `m_itemPackageId` 문자열: 96종
+- 분해된 고유 CODE: 73종
+
+### type 8 레코드 구조
+모든 119개 레코드에서 확인:
+- `m_location = 0`
+- `m_max = 9999`
+- `m_parameter = 0`
+- `m_jump = 0`
+- `m_itemPackageId`는 CODE*VALUE 형식
+- `m_nameId` / `m_describeId`는 개별 레코드마다 별도 존재
+
+ID의 `hiddenValue - 444444`를 적용한 논리 ID 범위는 42710176~43034455다. 예를 들어 첫 표본은 논리 ID 43478898, m_nameId 143100014, m_itemPackageId `200*5`다. 이 ID 복원은 기존 ItemRecord의 43000001 ↔ hiddenValue 43444445 대조와 동일한 offset을 사용한다.
+
+### CODE 분포
+73개 CODE는 다음 그룹으로 나타난다.
+- 1~30 일부: 1, 2, 10~27, 30
+- 100, 200, 201
+- 300~305
+- 310~315
+- 320~338
+- 400~405
+- 410~415
+- 420~425
+
+대표 예:
+| Item ID | m_nameId | icon | m_itemPackageId |
+|---:|---:|---|---|
+| 43478898 | 143100014 | item_43100014 | 200*5 |
+| 43475796 | 143101000 | item_43101000 | 1*1 |
+| 43475902 | 143101090 | item_43101090 | 10*5 |
+| 43476072 | 143101300 | item_43101300 | 300*1 |
+| 43154620 | 143300000 | item_43300000 | 100*2 |
+
+### 참조 namespace 검증
+원본 `ItempackageRecord.json` (2,028개) 및 `ItemboxRecord.json` (3,242개)를 blob으로 읽어 대조했다.
+- ItempackageRecord 논리 ID 범위: 44120132~45135819
+- ItemboxRecord 논리 ID 범위: 43153904~44109971
+- type 8의 `m_itemPackageId` CODE 값은 1~425 범위의 작은 숫자이며, 두 테이블의 논리 Record ID와 일치하지 않는다.
+
+따라서 현재 근거로는 type 8의 `m_itemPackageId` CODE를 ItempackageRecord ID 또는 ItemboxRecord ID로 직접 취급할 수 없다. **별도의 소형 코드 namespace / lookup 단계가 존재할 가능성**까지가 현재 결론이며, namespace 명칭과 실제 해석 테이블은 미확정이다.
+
+### Ghidra 측 연결
+`research/Ghidra_Listing_txt/IT.txt`:
+- `ItemData.get_itemPackageId @ 00df09a8`: `ldr x0,[x0,#0x90]` — ItemData 객체의 +0x90 참조 반환
+- `ItempackageData.get_itemWeight @ 00df09cc`: `ldr x0,[x0,#0x78]` — ItempackageData 객체의 +0x78 참조 반환
+
+현재 Listing의 해당 getter Calls IN은 비어 있어, 이 두 getter만으로 ItemRecord type 8의 CODE 해석 경로를 확정할 수 없다. Lua/XLua 또는 다른 동적 호출 계층까지 확인해야 한다.
+
+## 2026-10-02 후속 실측 — ProtoUser / DictI32 재확인
+
+### ProtoUser
+`ProtoUser` getter Listing에서 확인된 메모리 offset:
+- Id +0x10
+- Level +0x1C
+- Exp +0x20
+- HeadIcon +0x2C
+- Name +0x30
+
+이는 C# 객체 속성 위치다. OpInfo의 field 35가 User(ProtoUser)라는 상위 메시지 field 번호는 확인됐지만, ProtoUser 내부 Id/Level/Exp/HeadIcon/Name의 protobuf wire tag는 여전히 미확정이다. getter/ctor Listing에는 generated protobuf parser나 tag metadata가 나타나지 않는다. 따라서 offset을 wire tag로 바꾸어 기록하지 않는다.
+
+### DictI32
+`UserInfo.MergeVaryData @ 00dd3030` Listing을 재확인했다. 함수는 입력 Dictionary에 key가 존재하면 해당 값을 읽고, 없으면 현재 UserInfo getter 값을 유지하는 방식으로 각 setter를 호출한다.
+
+실제 Listing의 key 상수:
+- -9 → StigmataTimes
+- -10 → MetaphysicsTimes
+- -11 → Exp
+- -12 → Level
+- -15 → FCTimes
+- -13 → SignInDays
+- -14 → SignInRewardDay
+- -16 → StepId
+- -18 → ExamTimes
+- -30 → EquipMax
+- -31 → ChargeTotalPerMonth
+- -32 → Age
+- -34 → ChatChannel
+
+따라서 기존 요약의 key 처리 목록 중 -17 등은 포함하지 않으며, 위 13개가 Listing에서 확인된 실제 처리 key다.
+
+field 21 DictI32에서 발견된 미분류 key -29, -28, -27, -23, -22, -20, -33, -36은 MergeVaryData의 분기에서 읽히지 않는다. Mail badge의 -27은 기존 확인처럼 HomePanel의 별도 DataCenter cache +0xC0 문맥에 존재하므로, field 21의 -27과 합치지 않는다.
+
+## 다음 추적 우선순위 업데이트
+1. ItemRecord type 8의 소형 CODE(1~425)가 사용되는 Lua/XLua 호출처와 실제 lookup 테이블 찾기.
+2. ItemData.get_itemPackageId 및 ItempackageData.get_itemWeight의 호출 경로를 XLua wrapper/스크립트에서 역추적.
+3. ProtoUser 내부 protobuf wire tag는 serializer/parser 구현 또는 실제 nested User payload byte offset과 대조해 확인. 객체 offset으로 추정하지 않음.
+4. DictI32 미분류 key 8종은 Main UI getter/consumer에서 직접 조회되는지 계속 추적하되, Mail cache의 -27과 별개로 유지.
