@@ -297,7 +297,6 @@ Local Server 방식으로 진행했을 때 특정 기능이 오히려 복잡해�
 
 우선순위는 **Bootstrap → 공통 State Mutation → Reward/Event → Gacha/Shop** 순으로 잡는다.
 
-
 ## 15. 2026-10-01 Bootstrap / Warehouse 연결 업데이트
 
 ### Bootstrap runtime 확정
@@ -389,3 +388,21 @@ Client가 이미 수행하는 처리는 가능한 한 재사용한다. Local Ser
 ### 현재 작업 방침
 
 현재 진행 중인 KCP/Bootstrap 추적을 이어가되, 아이템 코드 의미 확인은 참고 수준으로 유지한다. 다음 핵심 산출물은 메뉴별 게임 로직 설명서가 아니라 **Opcode별 Request/Response 계약 및 Local Server 구현 명세**로 한다.
+
+## 17. 2026-10-02 Bootstrap 전체 응답 우선 전략
+
+최신 runtime에서 Bootstrap OpCode=2는 User/Items뿐 아니라 Hero/Weapon/Equipment/Chapter/Section/Team/Fashion/Quest/Shop/Charge/Activity 등 다수의 상태 묶음을 한 번에 전달한다.
+
+따라서 현재 단계에서는 임의로 최소 필드를 추측해 구현하지 않고, **관측된 전체 Response envelope를 먼저 Local Server 계약으로 재현**한다.
+
+이후 실제 Client 연결이 성공하면 필드를 제거하는 축소 테스트로 절대 최소 계약을 확인한다.
+
+새 계약 문서:
+- `research/reports/2026-10-02-Bootstrap-OpCode2-Response-계약-초안.md`
+
+다음 작업:
+1. `DataCenter.ProccessRequestRes`의 field 처리 순서 확인
+2. Merge 대상별 Client State cache 확인
+3. Full Bootstrap Response 구조 확정
+4. Local Server serializer/response 구조 설계
+5. 실제 Client 연결 검증
