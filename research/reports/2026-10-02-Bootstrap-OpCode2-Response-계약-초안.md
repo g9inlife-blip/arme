@@ -929,3 +929,40 @@ OpInfo +0x90 Heros
 형태로 유지한다.
 
 다음은 `HeroInfo.InitHero` 호출 직후 runtime에서 getter 값을 잡아 실제 Bootstrap Hero 필드와 대응시키고, 그 결과를 Local Server 계약에 반영한다.
+
+
+## 19. 2026-10-02 Runtime Hero 필드 대응 추적 준비
+
+`justice_hook.js v4.22`에 다음 runtime 관찰점을 추가했다.
+
+HeroInfo.InitHero
+  ├─ source 객체 class/field/offset/type
+  └─ InitHero 후 HeroInfo field/offset/type
+
+HeroInfo getter
+  ├─ Level
+  ├─ Star
+  ├─ State
+  ├─ FashionId
+  ├─ Weapon
+  └─ WeaponInfomation
+
+목적은 정적 Listing에서 확인한:
+
+OpInfo +0x90 Heros
+ → UpdateHeroInfo
+ → HeroInfo.InitHero
+ → HeroInfo state
+ → Hero/HeroEquip/Ready UI
+
+를 실제 runtime 객체 값으로 대조하는 것이다.
+
+현재는 실제 기기 실행 로그가 아직 없으므로 ProtoHero 원본 field와 HeroInfo field의 1:1 대응은 미확정으로 유지한다.
+
+다음 실행에서 [HERO_INIT] 및 [HERO_GET] 로그를 확보하면:
+1. Bootstrap의 실제 Hero 객체 class 확인
+2. source field offset/type 확인
+3. InitHero 결과 HeroInfo field 확인
+4. Level/Star/State/FashionId/Weapon 값을 대응
+5. Local Server Bootstrap Hero 계약에 필요한 실제 field만 확정
+한다.
