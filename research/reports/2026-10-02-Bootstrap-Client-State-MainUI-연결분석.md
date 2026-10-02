@@ -758,3 +758,28 @@ Heros Dictionary key == ProtoHero.Id == HeroInfo.Id
 4. 별도로 `HeroInfo.InitHero` 전후의 Prototype 참조와 ActorData.Id(또는 해당 식별 getter)를 기록해 Prototype 설정 경로를 찾는다.
 
 현재 hook에는 `HeroInfo.InitHero`와 `DataManager.TryGetBaseData`는 있으나, 위의 `DataCenter.UpdateHeroInfo` Dictionary pair 및 generic `DataManager.TryGet<object>` 인자/반환을 직접 기록하는 계측은 확인되지 않았다.
+
+
+### 18. HeroInfo 생성부의 DataManager.TryGet key 확인 (2026-10-03)
+
+`research/Ghidra_Listing_txt/FUN_00E.txt`의 `FUN_00e5c00c @ 00e5c00c`를 추가 확인했다.
+
+- `00e5bd54`에서 `w19`를 읽고, `00e5bde0`에서 다시 `x20+0x10` 값을 `w1`에 넣는다.
+- `00e5bdf0 → DataManager.TryGet<object> @ 0177142c` 호출.
+- 반환된 out object는 `sp+0x68`에 저장된다.
+- 성공 후 해당 object를 `HeroInfo::.ctor @ 016e0400`에 전달하고,
+- 이어서 `HeroInfo.InitHero @ 016e5fd4`가 호출된다.
+
+따라서 이 별도 HeroInfo 생성 경로에서는 **DataManager.TryGet의 key가 앞선 객체의 +0x10 정수값에서 직접 만들어진다**는 것은 STATIC 확정이다.
+
+또한 같은 함수의 이후 경로에서 Dictionary enumerator의 현재 key를 `DataManager.TryGet<object>`에 전달하는 별도 구간도 존재한다. 따라서 `0177142c`는 특정 Hero 전용 조회 함수가 아니라 여러 데이터 타입 조회에 공통 사용되는 generic cache 조회 함수로 보는 것이 타당하다.
+
+현재 단계에서 `+0x10 = Id`라고 이름을 붙이는 것은 아직 금지한다. 해당 객체의 class/field 의미가 직접 확인될 때까지 **raw offset +0x10**으로 기록한다.
+
+### 18.1 다음 확인 대상
+
+1. `FUN_00e5c00c`의 호출 관계에서 `x20`의 실제 타입 확인.
+2. 해당 타입의 `+0x10` field/getter와 ProtoHero.Id의 관계 확인.
+3. `DataManager.TryGet<object>`의 generic type handle(`x3))이 이 호출에서 어떤 class를 가리키는지 확인.
+4. 이 결과를 기존 `HashSet<int> → DataCenter +0x30 / OpInfo +0x90 → HeroInfo.InitHero` 경로와 대조.
+
