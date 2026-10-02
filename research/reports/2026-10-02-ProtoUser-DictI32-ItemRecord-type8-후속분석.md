@@ -342,3 +342,30 @@ field 21 entry 중 signed int32 음수 key 13개를 varint 원시 바이트에�
 - DictI32 미분류 음수 key 8개는 실제 수신 값 확인 완료, 소비 함수 미확정.
 - ItemRecord type 8의 73 CODE가 XLua/Lua에서 어느 테이블을 조회하는지는 아직 확인 전. ItemData.get_itemPackageId(+0x90)와 XLua ItemDataWrap 노출까지가 정적 근거의 끝이다.
 - ItemRecord/ItempackageRecord/ItemboxRecord의 ObscuredInt 논리 ID는 hiddenValue에서 상수 차감이 아니라 XOR crypto key 복원이다. type 8 logical ID는 43100014~43300003이며, CODE 1~425와 Record ID를 동일시하지 않는다.
+
+
+## 2026-10-02 정정 — Mail key -27의 Bootstrap → Main 소비 경로
+
+기존 후속분석의 "HomePanelMono -27은 OpInfo field 21과 다른 cache 경로이며 동일 source라고 단정할 수 없다"는 문장은 이후 확인된 Bootstrap 보고서의 DataCenter merge 경로를 반영하지 못한 설명이다. 다음과 같이 정정한다.
+
+```text
+OpInfo field 21 DictI32
+  → DataCenter.ProccessRequestRes @ 016e203c
+  → DataCenter cache Dictionary<int,int> (+0xC0)
+  → HomePanelMono.RefreshPoint_Mail @ 00f69fd0
+  → point_mail / lbl_mailNum
+```
+
+기준 자료 `research/reports/2026-10-02-Bootstrap-Client-State-MainUI-연결분석.md`의 13.2절은 ProccessRequestRes가 OpInfo DictI32(+0x70)에서 -27을 읽어 DataCenter +0xC0 Dictionary에 반영하고, HomePanelMono가 같은 cache key를 읽는다고 정리한다. 따라서 **field 21의 -27은 Mail unread count로 Main UI까지 연결된 key**로 취급한다. PCAP별 값은 달라질 수 있으며, 이번 192~201 캡처의 value 16은 그 시점의 관측값이다.
+
+이전 설명에서 "별도 cache라 동일 source로 단정 불가"라고 쓴 부분은 폐기한다. 다만 -29/-28/-23/-22/-20/-33/-36의 소비처는 여전히 미확정이다.
+
+## 2026-10-02 type 8 참조체계 재확인 — 다른 type과 혼동 금지
+
+`2026-10-02-Bootstrap-Client-State-MainUI-연결분석.md` 14.5절과 대조했다.
+
+- ItemRecord type 1의 m_itemPackageId는 ItempackageRecord ID(451xxxxx)로 연결된다.
+- ItemRecord type 9의 m_itemPackageId는 ItemboxRecord ID(443xxxxx)로 연결된다.
+- ItemRecord type 8의 119개 m_itemPackageId는 현재 Itembox/Itempackage ID 집합과 불일치하며, `1*1`, `200*5` 같은 소형 CODE*VALUE 체계다.
+
+따라서 type 8의 CODE 1~425를 type 1/9와 같은 패키지/박스 ID로 해석하면 안 된다. ItemData.get_itemPackageId(+0x90)와 ItemDataWrap 노출 경계는 확인했지만, wrapper의 해당 property getter 및 Lua에서 CODE를 조회하는 collection은 아직 listing에서 찾지 못했다. 현재는 **별도 소형 코드 lookup 단계**로만 기록한다.
