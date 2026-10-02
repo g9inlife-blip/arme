@@ -1183,3 +1183,74 @@ DataCenter.RequestCallback(request)
 4. 응답 OpCode에 맞는 화면 callback이 실행되어야 한다.
 
 다음 분석은 callback 등록 주체를 더 추측하지 않고, 실제 구현에 직접 필요한 **응답 OpInfo 필드별 DataCenter 병합 순서와 Bootstrap OpCode=2의 필수 필드**를 추적한다. UI dispatch 연결은 위 완료 이벤트의 런타임 target이 확인될 때만 추가 확정한다.
+
+
+
+### 13.19 Bootstrap 응답 필드 → DataCenter 상태 병합 순서 (2026-10-03)
+
+기준 Listing: `research/Ghidra_Listing_txt/DA.txt`
+
+#### 1) ProccessRequestRes의 직접 병합 순서
+
+`DataCenter.ProccessRequestRes @ 016e203c`의 `0x016e29dc~0x016e2aec` 구간에서 response 필드를 읽어 아래 순서로 호출한다.
+
+| 순서 | OpInfo offset | 필드(기존 OpInfo 구조 기준) | 처리 | DataCenter 상태 |
+|---:|---:|---|---|---|
+| 1 | +0xA0 | Weapons | MergeWeapon @ 016e414c | +0x40 |
+| 2 | +0xA8 | Equiments | MergeEquip @ 016e4348 | +0x38 |
+| 3 | +0x98 | Items | MergeItem @ 016e4700 | Item/category cache |
+| 4 | 전체 response | User/Heros 및 보조 상태 | UpdateHeroInfo @ 016e4ba4 | 복수 상태 |
+| 5 | +0xC0 | Chapters | Merge<int,object> @ 017704a0 | +0x48 |
+| 6 | +0xC8 | Sections | MergeSections @ 016e55dc | +0x50 |
+| 7 | +0xD0 | Teams | Merge<int,object> @ 017704a0 | +0x58 |
+| 8 | +0xE8 | Quests | Merge<int,object> @ 017704a0 | +0x80 |
+| 9 | +0xB0 | Mails | Merge<long,object> @ 01770ce4 | +0x88 |
+| 10 | +0xF0 | Shops | Merge<int,object> @ 017704a0 | +0x68 |
+| 11 | +0xF8 | Charges | Merge<int,object> @ 017704a0 | +0x70 |
+| 12 | +0x130 | 별도 상태 필드 | non-null일 때 직접 저장 | +0x100 |
+| 13 | +0x80 | 별도 상태 필드 | non-null일 때 직접 저장 | +0x108 |
+| 14 | +0x100 | 조건부 별도 merge | OpCode 0x3C/0x41 제외 시 Merge<long,object> | +0x98 |
+| 15 | +0x148 | 별도 long-key 데이터 | Merge<long,object> | +0xA0 |
+| 16 | +0x138 | AIStrategy 관련 | non-null일 때 set_AIStrategy | 관련 상태 |
+
+중요: 위 표는 Listing에서 확인한 처리 호출 순서다. 모든 필드가 모든 OpCode에서 필수라는 의미는 아니며, 각 merge 함수 내부의 null/empty 처리 및 업무별 조건을 구분해야 한다.
+
+#### 2) User 필드 처리
+
+`ProccessRequestRes`의 `0x016e2580` 부근에서 response `+0x88`을 읽는다.
+
+- null이면 UserInfo 생성/갱신 경로를 건너뛴다.
+- non-null이면 `UserInfo::.ctor @ 00dd2f44`를 호출한다.
+- 생성한 객체를 DataCenter 인스턴스 `+0x28`에 저장한다.
+
+따라서 `OpInfo.User (+0x88) → UserInfo → DataCenter +0x28`은 정적 Listing으로 직접 확인된다.
+
+#### 3) Hero 및 보조 정보 처리
+
+`UpdateHeroInfo @ 016e4ba4`는 response 전체를 인자로 받는다. 본문에서 확인한 response 필드 접근은:
+
+- `+0x90`: Hero dictionary를 순회하고, DataManager 조회 후 `HeroInfo.InitHero @ 016e5fd4`를 호출한다. 추가로 Hero state 및 ConfirmCallHero 관련 처리가 이어진다.
+- `+0xA0`: Weapon dictionary를 순회하며 관련 ID 집합/상태를 갱신한다.
+- `+0xA8`: Equipment dictionary를 순회하며 관련 ID 집합/상태를 갱신한다.
+- `+0xE0`: Fashion dictionary를 순회해 관련 ID 상태를 갱신한다.
+
+따라서 UpdateHeroInfo는 단순히 User/Heros 두 필드만 처리하는 함수가 아니다. User(+0x88)는 ProccessRequestRes 앞부분에서 UserInfo로 별도 저장되고, UpdateHeroInfo는 Hero(+0x90)와 Weapon/Equipment/Fashion 보조 상태를 함께 처리한다.
+
+#### 4) Local Server 구현에 반영할 점
+
+- Bootstrap 응답은 기존 관측 envelope를 유지한다.
+- User(+0x88)는 UserInfo 생성의 직접 입력이므로 실제 관측 객체 구조를 보존한다.
+- Heros(+0x90)는 HeroInfo 초기화 루프에 들어가므로 빈 객체/누락을 임의로 동일 취급하지 않는다.
+- Weapons(+0xA0), Equiments(+0xA8)는 전용 merge와 UpdateHeroInfo의 보조 처리가 중복 수행된다. 단일 처리로 합치지 않는다.
+- Fashions(+0xE0)는 UpdateHeroInfo 내부에서 별도로 읽힌다. 별도 cache offset 및 화면 필수 여부는 아직 확정하지 않는다.
+- 나머지 필드도 실제 OpCode별 조건을 확인하기 전까지 임의 제거하지 않는다.
+
+#### 5) 미확정 및 다음 단계
+
+- Bootstrap OpCode=2에서 위 각 필드가 전부 실제로 소비되는지 runtime hook으로 대조.
+- UserInfo 필드별 초기화 결과와 HomePanel 재화/레벨 표시 소비처 연결.
+- HeroInfo.InitHero 입력 ProtoHero와 최종 HeroInfo/DataManager key의 대응 확인.
+- MergeEquip/MergeWeapon 내부의 삭제/갱신/생성 규칙 및 key 의미 확인.
+- Chapters/Sections/Teams/Quests/Shops/Charges의 실제 cache 소비처 중 Main 진입 필수 여부 추가 검증.
+
+이번 단계는 서버 응답 envelope의 필드-상태 변환 규칙을 정리한 정적 분석이며, 최소 응답 계약을 확정한 것은 아니다.
