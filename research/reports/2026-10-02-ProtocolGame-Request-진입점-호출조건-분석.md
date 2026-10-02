@@ -907,3 +907,55 @@ Listing: `NetworkCenter.TryHandleResponse @ 015b41e0`
 - 따라서 NetworkCenter `+0x38` Action과 화면별 `OnProccessRequestFinish` wrapper는 서로 다른 callback 계층이다. UI 후처리 target을 확정하려면 각 등록부가 읽는 static metadata slot의 실제 MethodInfo를 복원해야 한다.
 
 **이번 단계 판정:** NetworkCenter `+0x38` delegate의 생성/저장/호출 시그니처는 확인했다. 클래스 내 no-op 람다 후보도 찾았으나 method metadata slot과의 직접 대조는 미완료다. UI opcode callback wrapper의 실제 target method 역시 미확정으로 유지한다.
+
+
+### 13.14 Request 생성/응답 설정 시 별도 XLua hook 확인 (2026-10-03)
+
+대상 Listing:
+- `Request::.ctor @ 015b3c1c`
+- `Request.SetResponse @ 015b461c`
+- 두 함수 모두 `AL.txt`에서 확인.
+
+#### Request 생성 hook
+
+`Request::.ctor`는 OpInfo를 받아 ID(`OpInfo +0x10`)와 Req를 설정한 뒤, 별도 static/singleton 경로에서 `+0x80` callback slot을 읽는다.
+
+- callback slot이 null이면 생성자 기본 경로로 종료한다.
+- null이 아니면 `XLua.DelegateBridge.__Gen_Delegate_Imp14`로 tail-call하며 인자로 Request 객체와 원본 OpInfo를 전달한다.
+- 따라서 런타임에서 hook이 설정된 경우 Request 생성 후처리는 XLua delegate에 위임될 수 있다.
+
+#### 응답 설정 hook
+
+`Request.SetResponse`도 유사한 구조다.
+
+- 별도 static/singleton 경로에서 `+0x88` callback slot을 확인한다.
+- null이 아니면 `XLua.DelegateBridge.__Gen_Delegate_Imp14`로 Request 객체와 응답 OpInfo를 전달하고 tail-call한다.
+- null인 경우에만 기본 경로에서 `Request.set_Res(response)`와 `Request.set_FinishAt(DateTime.Now)`를 수행한다.
+
+**주의:** 두 callback slot이 속한 singleton의 구체 타입 및 런타임 등록 주체는 아직 식별하지 못했다. 따라서 이 hook을 `DataCenter.RequestCallback` 또는 NetworkCenter `+0x38` delegate와 동일시하지 않는다. 다만 Request 생성/응답 설정 단계에 별도의 XLua 확장 지점이 존재한다는 점은 확인됐다.
+
+#### 응답 처리 흐름에 대한 영향
+
+현재 정적 근거로는 아래 계층을 분리해야 한다.
+
+```text
+NetworkCenter.TryHandleResponse
+  ├─ DataCenter.ProccessRequestRes(response)
+  │    └─ 공통 데이터 병합 / Notify 등
+  ├─ SerialNumber 대조 후 Queue.Dequeue
+  ├─ Request.SetResponse(response)
+  │    ├─ hook 설정 시 XLua delegate에 위임
+  │    └─ hook 미설정 시 Res / FinishAt 기본 저장
+  └─ NetworkCenter +0x38 Action<Int32Enum, ByteEnum, object>
+       └─ 응답 완료 이벤트 호출
+
+DataCenter.RequestCallback(request)
+  └─ Request.IsClientProccessed = true
+  └─ Ali.DataProccessCallBack(request.Res의 opcode 기준 UI callback dispatch)
+```
+
+- `DataCenter.ProccessRequestRes`의 Calls OUT에는 `Ali.DataProccessCallBack` 또는 `DataCenter.RequestCallback` 호출이 없다. 확인된 주 기능은 응답 데이터의 공통 병합/갱신이다.
+- 따라서 `ProccessRequestRes`가 곧바로 화면별 opcode callback을 실행한다고 쓰면 안 된다.
+- Request hook의 런타임 설정 여부를 확인하기 전까지, `DataCenter.RequestCallback`이 어느 지점에서 호출되는지는 미확정으로 유지한다.
+
+**다음 조사 지점:** static callback slot `+0x80/+0x88`의 선언/대입 위치와 XLua delegate 등록 경로를 추적해 Request lifecycle hook의 실제 target을 식별한다.
