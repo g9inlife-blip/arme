@@ -1048,3 +1048,62 @@ PR Listing의 `QuestGetReward @ 00ddfc10` Calls IN에는 아래 네 직접 calle
 2. `Request::.ctor`와 `Request.SetResponse`에 해당하는 delegate 생성/대입 코드가 Listing에 존재하는지 확인한다.
 3. 등록 코드가 없으면 LuaEnv 초기화 및 Hotfix 패치/등록 함수의 runtime hook 후보를 좁힌다.
 4. runtime에서 +0x80/+0x88의 null 여부와 delegate target을 확인해 실제 실행 경로를 확정한다.
+
+
+
+### 13.17 Request callback 등록 경로 추가 추적 (2026-10-03)
+
+이번 단계에서는 Request lifecycle hook의 호출 조건과 일반 XLua wrapper 경로를 대조했다.
+
+#### 1) 생성 hook의 실제 실행 위치
+
+`Request::.ctor @ 015b3c1c`:
+- OpInfo가 null이 아니면 `set_ID(OpInfo +0x10)`, `set_Req(OpInfo)`를 먼저 수행한다.
+- 이후 Request static-fields `+0x80`을 읽는다.
+- slot이 non-null이면 `DelegateBridge.__Gen_Delegate_Imp14(Request, OpInfo)`로 tail-call하고 생성자 기본 return 경로로 돌아오지 않는다.
+- OpInfo가 null인 경우에도 동일 slot을 확인하며, 이때 두 번째 인자는 null이다.
+
+즉, hook은 Request 필드가 기본 초기화된 다음 실행되는 후처리라기보다, 생성자의 남은 기본 경로를 대체/위임할 수 있는 확장 지점이다. 날짜 필드(CreateAt/FinishAt)의 기본 설정은 hook이 없을 때만 수행되는 흐름으로 해석해야 한다.
+
+#### 2) 응답 hook의 실제 실행 위치
+
+`Request.SetResponse @ 015b461c`:
+- Request static-fields `+0x88`을 먼저 검사한다.
+- non-null이면 `DelegateBridge.__Gen_Delegate_Imp14(Request, responseOpInfo)`로 tail-call한다.
+- null일 때만 기본 경로에서 `set_Res(responseOpInfo)`와 `set_FinishAt(DateTime.Now)`를 수행한다.
+
+따라서 +0x88 hook이 활성화된 런타임에서는 기본 Res 저장 및 FinishAt 갱신이 생략될 수 있다. hook 내부에서 이를 직접 처리하는지 확인해야 한다.
+
+#### 3) 일반 XLua C# wrapper와의 구분
+
+Listing에서 확인되는 일반 wrapper 진입은 다음과 같다.
+- `XLua.CSObjectWrap.AliothS1NetRequestWrap.__CreateInstance @ 011716a0` → Request::.ctor
+- `AliothS1NetRequestWrap._m_SetResponse @ 0117193c` → Request.SetResponse
+
+이 wrapper는 Lua에서 Request 인스턴스를 생성하거나 SetResponse를 호출하는 진입점이다. 그러나 현재 확인한 wrapper의 Calls IN 관계만으로는 Request static-fields `+0x80/+0x88`에 delegate를 대입하는 등록 코드가 드러나지 않는다.
+
+또한 `Ali.set_luaenv @ 00dff65c`는 Ali 객체의 LuaEnv 필드(`+0x10`)를 설정하는 별도 XLua 위임 프로퍼티다. Request static-fields의 +0x80/+0x88 등록을 직접 수행한다는 근거는 없다.
+
+#### 4) 등록 주체 판정
+
+현재 저장소의 Listing 검색에서 `XLua.Hotfix`, `HotfixAttribute`, Request 전용 static delegate setter 또는 +0x80/+0x88을 기록하는 명시적 등록 함수는 확인하지 못했다.
+
+따라서 확정 가능한 사실과 미확정 항목을 분리한다.
+
+- 확정: 두 slot은 Request class static-fields의 lifecycle delegate slot이다.
+- 확정: 생성자/SetResponse는 slot이 non-null이면 DelegateBridge Imp14로 실행을 위임한다.
+- 확정: 일반 CSObjectWrap의 생성/메서드 wrapper는 hook 호출 진입점이지, 현재 확인 범위에서 hook 등록 주체는 아니다.
+- 미확정: delegate를 최초 대입하는 코드, Lua 함수명, target object 및 등록 시점.
+- 미확정: 실제 런타임에서 두 slot이 null인지 여부.
+
+#### 5) 다음 단계의 추적 방법
+
+정적 Listing만으로 등록 코드를 더 찾기 어려우므로 다음은 런타임 검증을 우선한다.
+
+1. `Request` class metadata에서 static_fields 포인터를 확인한다.
+2. static_fields `+0x80`, `+0x88` 값을 Lua 초기화 전/후로 각각 읽는다.
+3. non-null이면 delegate object의 target/method 또는 XLua DelegateBridge의 Lua function reference를 확인한다.
+4. 두 slot에 대한 write watchpoint 또는 메모리 write 추적을 걸어 최초 대입 call stack을 수집한다.
+5. 생성/응답 시점에 실제 hook 진입 여부와 Res/FinishAt 기본 저장 여부를 함께 기록한다.
+
+이 단계에서 등록 주체를 임의로 XLua Hotfix 시스템 또는 특정 Lua 파일로 단정하지 않는다.
