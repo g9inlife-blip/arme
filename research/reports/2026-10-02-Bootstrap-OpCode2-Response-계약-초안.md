@@ -2010,3 +2010,206 @@ Git commit: `7e7a52435507cbe14d132617af3a915df5b872ac`
 로그에 로그인 요청의 사용자명/비밀번호 형태의 입력값과 인증 Token이 포함된 HTTP body가 기록돼 있다. 이 보고서에는 해당 값을 복사하지 않는다. Git 저장소 접근 권한을 제한하고, 가능하면 해당 인증정보를 폐기/재발급한 뒤 로그 파일에서는 민감값을 마스킹한다. 이후 Hook에서는 인증 요청 body 및 계정/Token 관련 문자열을 출력하지 않도록 한다.
 
 **결론:** Bootstrap OpCode=2의 응답/병합은 이번 실행에서도 정상 확인됐다. Main 화면의 일부 UI 진입과 재화/Hero 데이터 사용도 확인됐지만, 프로필 상단/배너/배지의 전체 소비 목록과 각 Bootstrap 필드의 필수성은 아직 미완료다. 현재 우선순위는 v4.26 Main 전용 getter 관찰이다.
+
+
+## 17. 2026-10-02 실제 운영 KCP Bootstrap 응답 대조
+
+### 17.1 새 Frida 기준 로그
+
+사용자가 추가한 파일:
+- `research/reports/Log/lina_로컬서버로_로그인부터메인화면까지들어온_frida로그_데이터는운영거데이터복제로사용KCP데이터.txt`
+- Git blob: `ccf0add99b050d9cb9b9184526955b643e74ec42`
+- 981 lines, `justice_hook v4.9`
+
+확인 구간:
+- `TryRead LEAVE ret=1`
+- `BOOT_RESP OpCode=2`
+- `TryHandleResponse LEAVE`
+- 이후 응답 루프가 계속 진행됨
+
+같은 시점의 상태 덤프:
+`User, Heros, Items, Weapons, Equiments, Chapters, Sections, Teams, Fashions, Quests, Charges, Activities` 모두 non-null.
+
+주의: 이 로그는 성공한 Bootstrap 경계와 object null 여부를 증명하지만, field별 원시 bytes나 dictionary count를 출력하지 않는다. 따라서 field wire schema는 PCAP 변환 자료로 보완한다.
+
+### 17.2 정상 PCAP에서 OpCode=2 응답 확보
+
+기존 Git 자료:
+- `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.json`
+- Git blob: `5a9f8f12466c2a14fb3769b376f96b6eebc8dfc4`
+- 변환 텍스트: `messages.txt`, blob `d666303093ba3fd914858f26b4a699ca9344b05a`
+
+패킷 연결:
+- packet 189: C→S, outer field 1=Serial, field 2=2 (OpCode=2 요청)
+- packets 192~201: S→C 응답 fragment
+- AES 복호화 성공, 응답 plaintext 13,290 bytes
+- plaintext가 GZIP이며 해제 후 123,115 bytes
+- GZIP 해제 데이터에서 outer field 1의 Serial과 field 2=2가 요청과 일치
+
+따라서 packets 192~201은 실제 운영 서버의 OpCode=2 응답으로 판단할 수 있다. 기존 messages.txt는 GZIP 해제 후 protobuf tree를 출력하지 않지만, messages.json의 `gzip_protobuf`에는 해제 후 전체 field tree가 저장되어 있다.
+
+### 17.3 실제 OpCode=2 wire field 구조
+
+아래 count는 GZIP 해제된 응답의 최상위 field occurrence 수다. Wire type은 protobuf 표준 값 기준이며 2는 length-delimited다.
+
+| Field | Wire | Count | 구조 대응(현재 판정) |
+|---:|---:|---:|---|
+| 1 | 0 | 1 | SerialNumber |
+| 2 | 0 | 1 | OpCode (=2) |
+| 4 | 2 | 1 | envelope nested |
+| 5, 12~15 | 2 | 각 1 | client/device envelope metadata |
+| 21 | 2 | 276 | DictI32 / UserInfo vary data 후보 |
+| 35 | 2 | 1 | User |
+| 37 | 2 | 4 | Heros |
+| 38 | 2 | 35 | Items |
+| 39 | 2 | 4 | Weapons |
+| 40 | 2 | 13 | Equiments |
+| 43 | 2 | 61 | Chapters |
+| 44 | 2 | 4 | Sections |
+| 45 | 2 | 1 | Teams |
+| 48 | 2 | 4 | ViewItems 후보 |
+| 49 | 2 | 291 | Fashions 후보 |
+| 51 | 2 | 66 | Quests 후보 |
+| 56 | 2 | 2,462 | Activities 후보 |
+
+Field 21 및 37/38/39/40/43/44/48/49/51/56은 같은 field 번호가 여러 번 등장한다. 특히 field 56은 2,462회다. 즉 **반복 tag 자체는 정상 응답에서 실제로 사용되는 구조**이며, 반복된다는 이유만으로 parser 실패 원인으로 볼 수 없다.
+
+각 dictionary/list 항목은 대체로 최상위 field occurrence 하나 안에 `field 1 key + field 2 value` 형태의 length-delimited nested 구조를 가진다. 내부 value schema는 객체마다 다르며, field 번호만 채우고 임의 값/임의 wire type을 넣는 방식으로 대체할 수 없다.
+
+### 17.4 현재까지의 필드 대응 수준
+
+- Field 21 → OpInfo.DictI32 → UserInfo.MergeVaryData 경로와 일치한다.
+- Field 35 → OpInfo.User, Field 37 → Heros, Field 38 → Items, Field 39 → Weapons, Field 40 → Equiments는 nested map/value 형태와 기존 OpInfo getter 목록이 대응한다.
+- Field 43 → Chapters, 44 → Sections, 45 → Teams는 기존 DataCenter merge 경로와 대응한다.
+- Field 48/49/51/56은 ViewItems/Fashions/Quests/Activities 후보로 기록한다. 정확한 field attribute/tag mapping은 해당 Proto 타입의 역직렬화 경로 또는 runtime field dump와 한 번 더 대조한 뒤 확정한다.
+- PCAP 응답에서 보이지 않는 Mails/Olds/Shops/Charges/Friends/Exam/Ranks/Msgs 등은 이 캡처에서 serialized occurrence가 확인되지 않았다. Frida의 non-null 상태 덤프만으로 해당 필드가 wire payload에 실렸다고 간주하지 않는다. 빈 dictionary의 기본 생성 또는 다른 처리 경로일 수 있다.
+
+### 17.5 로컬 서버 실패 실험에 대한 수정된 판단
+
+기존 실험:
+- field 1+2만: ret=1 이후 BOOT_RESP, 후속 크래시
+- 임의 field 3~64 추가: ret=0
+
+정상 응답 대조 결과:
+1. 실제 응답은 field 3~64를 연속으로 채우지 않는다. 확인된 payload tag는 21, 35, 37, 38, 39, 40, 43, 44, 45, 48, 49, 51, 56 등 sparse field 집합이다.
+2. 실제 반복 field는 각자의 nested map/value schema를 가진다. 숫자 field만 존재시키거나 wire type을 맞추지 않는 것으로는 동일 응답이 되지 않는다.
+3. 따라서 기존 field 3~64 일괄 추가 실험의 ret=0은 repeated tag 자체보다는 **정상 스키마와 다른 tag/wire/nested value 구성**으로 설명하는 편이 현재 증거와 더 잘 맞는다. 다만 parser 구현의 unknown-field 처리 규칙은 별도 확인 전까지 단정하지 않는다.
+4. field 1+2의 ret=1 후 크래시는 deserialize 이후 DataCenter merge/UI 초기화에 필요한 상태가 빠진 문제일 가능성이 남는다. 실제 응답 field set을 기준으로 단계별 추가 검증한다.
+
+### 17.6 다음 작업
+
+1. 정상 응답의 field 21 및 35/37/38/39/40/43/44/45/48/49/51/56 각각의 nested schema를 Proto 타입 Listing과 대조한다.
+2. local response generator가 만든 protobuf tree를 같은 형식으로 덤프해 정상 PCAP tree와 field별로 diff한다.
+3. 우선 field 21, 35, 37, 38, 39, 40, 43, 44, 45를 우선 비교하고, 이후 나머지 group을 추가한다.
+4. deserialize 성공과 DataCenter merge 후 Main UI 진입을 별도 단계로 계측한다.
+
+보안/재현 주의:
+- 운영 캡처의 세션/토큰/기기 식별값을 그대로 복제하지 않는다.
+- 테스트 fixture에는 필요한 구조와 비민감한 테스트 값을 사용한다.
+
+
+## 18. Nested value schema와 Main UI 소비처 교차 확인
+
+### 18.1 반복 dictionary entry 내부 구조
+
+정상 응답의 map 계열 field는 대체로 다음 형태다.
+
+```
+OpInfo field N (wire=2, repeated)
+  └─ field 1: key (varint)
+  └─ field 2: value (length-delimited message)
+       └─ ProtoX의 실제 field들
+```
+
+field 21은 예외적으로 map entry 안의 field 2가 scalar varint다. 총 276건이며 field 1 key는 276건, field 2 value는 17건만 명시되어 있다(기본값 0 생략 가능).
+
+### 18.2 실제 nested field signature
+
+| OpInfo 후보 field | Entry 수 | value 내부 field signature |
+|---:|---:|---|
+| 35 User | 1 | 1, 3, 4, 7, 14, 20, 21, 22, 24 |
+| 37 Heros | 4 | 1, 3, 4, 5, 8, 14 |
+| 38 Items | 35 | 1, 3 |
+| 39 Weapons | 4 | 1, 3, 4, 5 |
+| 40 Equiments | 13 | 1(length-delimited), 3(varint) |
+| 43 Chapters | 61 | 1, 2, 3, 4, 9, 10, 11 |
+| 44 Sections | 4 | 1, 4, 5 |
+| 45 Teams | 1 | 1, 3, 4, 5 |
+| 48 ViewItems 후보 | 4 | 1 |
+| 49 Fashions 후보 | 291 | 1, 3, 4 |
+| 51 Quests 후보 | 66 | 1, 2, 5 |
+| 56 Activities | 2,462 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13 |
+
+위 signature는 Ghidra에 있는 Proto 타입의 실제 property 구성을 대조하기 위한 기준이다. 특히 field 56은 ProtoActivity property 구성과 일치한다.
+
+### 18.3 Field 56 = Activities 교차 검증
+
+Ghidra Listing:
+- `ProtoActivity$$get_Id @ 015ac230`
+- `ProtoActivity$$get_Status @ 015ac240`
+- `ProtoActivity$$get_Data @ 015ac2b0`
+- `ProtoActivity$$get_Expire @ 015ac290`
+- `ProtoActivity$$get_OpenTime @ 015ac250`
+- `ProtoActivity$$get_CloseTime @ 015ac260`
+- `ProtoActivity$$get_PreOpenTime @ 015ac270`
+- `ProtoActivity$$get_PreCloseTime @ 015ac280`
+- `ProtoActivity$$get_RechargeID @ 015ac2f0`
+- `ProtoActivity$$get_I320/I321/I322/I640`
+
+field 56의 value 내부 field 번호는 위 ProtoActivity 구성과 맞는다. 실제 payload에서는 field 3~7이 2,462개 entry 모두에 있고, field 9는 554개 entry에 나타난다. 나머지는 일부 entry에서만 나타나는 optional 값이다.
+
+더 중요한 점:
+- `ProtoActivity$$ToDictonary @ 015ac300` Calls IN에 `HomePanelMono$$RefreshUIBanner @ 00f6ca94`가 확인된다.
+- 같은 함수는 `ActiveShowPanelMono$$SignShowType1`, `OnClickSignIn`, `RefreshTipsPoint`에서도 호출된다.
+
+따라서 Bootstrap field 56 Activities는 단순 후속 메뉴 데이터가 아니라 **Home 배너/출석/팁 표시 경로에서 읽히는 Main UI 데이터**다.
+
+### 18.4 local server 구현 우선순위 변경
+
+정상 응답에서 확인된 cardinality와 nested schema를 기준으로 다음 순서로 비교한다.
+
+1. Field 35 User
+2. Field 21 DictI32
+3. Field 37 Heros / 38 Items / 39 Weapons / 40 Equiments
+4. Field 43 Chapters / 44 Sections / 45 Teams
+5. Field 56 Activities — HomePanel banner/sign-in 소비 경로
+6. Field 48/49/51 등 나머지 collection
+
+이제 field 3~64를 일괄 생성하는 방식은 중단한다. 실제 응답에 있는 field 번호만 대상으로 하고, 각 field의 nested value를 해당 Proto 타입 구조에 맞춰 비교한다.
+
+
+## 19. Field 56 Activities 내부 tag → ProtoActivity property 대응
+
+정상 PCAP의 field 56 각 map value를 다시 집계하고 Ghidra `ProtoActivity` getter 목록과 대조했다.
+
+| nested tag | ProtoActivity property | wire | 출현 수 |
+|---:|---|---:|---:|
+| 1 | Id | 0 | 13 |
+| 2 | Status | 0 | 2,449 |
+| 3 | Data | 2 | 2,462 |
+| 4 | Expire | 2 | 2,462 |
+| 5 | OpenTime | 2 | 2,462 |
+| 6 | CloseTime | 2 | 2,462 |
+| 7 | PreOpenTime | 2 | 2,462 |
+| 8 | PreCloseTime | 0 | 1 |
+| 9 | RechargeID | 2 | 554 |
+| 10 | I320 | 0 | 1 |
+| 11 | I321 | 0 | 1 |
+| 12 | I322 | - | 0 |
+| 13 | I640 | 0 | 1 |
+
+이 대응은 다음 Ghidra getter와 일치한다.
+- `ProtoActivity.get_Id @ 015ac230`
+- `get_Status @ 015ac240`
+- `get_Data @ 015ac2b0`
+- `get_Expire @ 015ac290`
+- `get_OpenTime @ 015ac250`
+- `get_CloseTime @ 015ac260`
+- `get_PreOpenTime @ 015ac270`
+- `get_PreCloseTime @ 015ac280`
+- `get_RechargeID @ 015ac2f0`
+- `get_I320/I321/I322/I640 @ 015ac2c0/015ac2d0/015ac2e0/015ac2a0`
+
+특히 field 3(Data)는 모든 2,462개 entry에 존재한다. field 4~7도 모든 entry에 존재하지만 단순 varint가 아닌 nested length-delimited 구조다. 따라서 local serializer는 이 네 필드를 scalar timestamp로 임의 변환하지 말고, 실제 nested wire 구조를 보존해야 한다.
+
+이제 field56은 단순히 '반복 Activities 목록'이 아니라 **ProtoActivity의 13개 property tag와 각 wire type/cardinality가 확인된 응답 구조**로 취급한다.
