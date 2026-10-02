@@ -825,3 +825,107 @@ HeroInfo$$UpdateAIStrategy @ 016f0b28
 ### 17.4 다음 작업
 
 다음은 HeroInfo getter/setter와 WeaponInfo 소비처를 기준으로 실제 Main/Hero UI가 읽는 Hero 필드를 역추적한다. InitHero 내부가 Git Listing에 직접 존재하지 않는 경우 runtime hook으로 InitHero 인자를 잡아 실제 객체 타입/필드 접근을 보완한다.
+
+
+## 18. 2026-10-02 HeroInfo getter → Hero/HeroEquip UI 소비처 추적
+
+### 18.1 Weapon 상태 소비 경로
+
+Git Listing에서 다음 호출 관계를 확인했다.
+
+```text
+HeroInfo$$get_Weapon @ 016ee62c
+  ← ReadyMono$$CheckHeroCurrentBreakType @ 00e62bc4
+  ← ReadyMono$$RefreshMyNameStyle @ 00e615a4
+
+HeroInfo$$get_WeaponInfomation @ 016ef3b0
+  ← AliothExtensions$$Skill @ 00e12978
+  ← HeroPartEquipMono$$RefreshWeapon @ 00f4214c
+  ← ReadyMono / LineUp / Tips / Battle 계열
+```
+
+특히 `HeroPartEquipMono$$RefreshWeapon`은 `AliothExtensions$$Skill`을 통해 WeaponInformation을 사용하므로 Hero 장비 표시/스킬 계산에 직접 연결된다.
+
+따라서:
+
+```text
+OpInfo +0xA0 Weapons
+  → MergeWeapon @ 016e414c
+  → DataCenter Weapon state (+0x40)
+  → HeroInfo / Weapon UI 계열
+       ├─ get_Weapon
+       └─ get_WeaponInfomation
+```
+
+까지 연결된다.
+
+단, `HeroInfo getter → DataCenter +0x40`의 직접 offset 연결은 아직 확정하지 않는다.
+
+### 18.2 HeroInfo Level / Star / State 소비
+
+다음 getter 호출자가 확인됐다.
+
+| HeroInfo getter | 확인된 소비처 | 의미 |
+|---|---|---|
+| get_Level @ 016ea018 | ReadyMono, OrderHeroList 등 | Hero Level |
+| get_Star @ 016dfad4 | ReadyMono 계열 / Hero 정렬 | Hero Star |
+| get_State @ 016df754 | ReadyMono.GetTeamBack 계열 | 팀/영웅 상태 판정 |
+| get_FashionId @ 016ee9d4 | AliothExtensions.GetFashionData | Hero 외형/Fashion 선택 |
+
+`ReadyMono$$RefreshMyNameStyle`에서도 Level과 Star가 사용되며, `ReadyMono$$SetTeamMembers` → `CheckHeroCurrentBreakType` → `HeroInfo.get_Weapon` 경로가 확인된다.
+
+### 18.3 Fashion 경로
+
+`AliothExtensions$$GetFashionData @ 00e12714`는 `HeroInfo.get_FashionId @ 016ee9d4`를 호출한다.
+
+호출자는:
+
+- HomePanelMono.ChangePicture
+- HeroDetailPanelMono.ShowDetail
+- CallPanelMono.ShowActor
+- HeroBreakMono.TransHeroStarUp
+- RoleLvUpPanelMono.Init
+- BattleCenter.CheckRoleSkillRes
+
+등으로 확인된다.
+
+따라서 HeroInfo의 FashionId는 단순 데이터 보관이 아니라 Hero 표시/상세/호출/성장 UI에서 소비된다.
+
+### 18.4 현재 Hero 계약 우선 필드
+
+현재 정적 근거로 Bootstrap Hero 상태와 연결해 우선 추적할 getter는:
+
+```text
+HeroInfo
+ ├─ Level
+ ├─ Star
+ ├─ State
+ ├─ FashionId
+ ├─ Weapon
+ └─ WeaponInfomation
+```
+
+이다.
+
+주의: 위 getter가 `ProtoHero`의 어느 원본 field/offset에서 직접 만들어지는지는 `HeroInfo.InitHero @ 016e5fd4` 본문이 Git Listing에 별도 블록으로 제공되지 않아 아직 미확정이다.
+
+### 18.5 Local Server 계약 반영
+
+현재 Hero 관련 응답은 최소화하지 않고:
+
+```text
+OpInfo +0x90 Heros
+  → UpdateHeroInfo
+  → HeroInfo.InitHero
+  → HeroInfo state
+      ├─ Level
+      ├─ Star
+      ├─ State
+      ├─ FashionId
+      └─ Weapon 관련 상태
+  → Hero/HeroEquip/Ready UI
+```
+
+형태로 유지한다.
+
+다음은 `HeroInfo.InitHero` 호출 직후 runtime에서 getter 값을 잡아 실제 Bootstrap Hero 필드와 대응시키고, 그 결과를 Local Server 계약에 반영한다.
