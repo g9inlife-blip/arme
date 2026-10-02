@@ -241,3 +241,54 @@ Ghidra `research/Ghidra_Listing_txt/IT.txt`에서:
 
 같은 규칙을 ItempackageRecord/ItemboxRecord에 적용하면 각각 45000000~45513357, 44000000~44300199다. type 8 `m_itemPackageId` CODE(1~425)는 여전히 이 Record ID 범위와 일치하지 않는다.
 
+
+
+## 2026-10-02 추가 실측 — PCAP OpCode 2의 ProtoUser wire tag 확정
+
+대상은 Git의 `research/PCAP/로그인_출석_퀘스트_토벌_던전_상자_무기제작_강화_kcp/messages.json` 원본 변환 데이터다. 메시지 레코드의 패킷 묶음 `192~201` (서버 `182.92.62.79 → 10.215.173.1`, 13,313 bytes)에서 최상위 protobuf field 35를 직접 확인했다.
+
+### ProtoUser wire tag ↔ 속성
+
+field 35의 nested protobuf는 다음과 같이 실제 tag를 제공한다.
+
+| Wire tag | wire type | 관측값 | 속성 연결 |
+|---:|---:|---|---|
+| 1 | varint | 871047 | ProtoUser.Id |
+| 3 | varint | 4 | ProtoUser.Level |
+| 4 | varint | 250 | ProtoUser.Exp |
+| 7 | varint | 18100000 | ProtoUser.HeadIcon |
+| 14 | length-delimited | UTF-8 hex `6739696e32` = `g9in2` | ProtoUser.Name |
+| 20 | varint | 3 | 미확정 |
+| 21 | varint | 3 | 미확정 |
+| 22 | varint | 10 | 미확정 |
+| 24 | varint | 1 | 미확정 |
+
+앞서 Listing에서 확인한 ProtoUser 객체 offset(Id +0x10, Level +0x1C, Exp +0x20, HeadIcon +0x2C, Name +0x30)과 runtime getter 의미를 대조해 tag 연결했다. 즉 **객체 필드 offset과 protobuf wire tag는 별개**이며, 이번 PCAP에서는 nested field tag 1/3/4/7/14로 확정된다. 나머지 tag 20/21/22/24는 속성 이름을 붙이지 않고 보류한다.
+
+### 동일 OpInfo field 21 DictI32 음수 key 재확인
+
+같은 메시지의 field 21 반복 entry 중 음수 key는 13개가 관측됐다. signed int32로 복원한 key와 value는 다음과 같다.
+
+| key | value |
+|---:|---:|
+| -29 | 16 |
+| -28 | 16 |
+| -27 | 16 |
+| -23 | 0 |
+| -22 | 0 |
+| -20 | 0 |
+| -18 | 16 |
+| -33 | 0 |
+| -34 | 16 |
+| -36 | 16 |
+| -30 | 0 |
+| -31 | 0 |
+| -32 | 16 |
+
+주의: 이 값들은 해당 PCAP 응답에서 관측한 원시 DictI32 값이다. 이전 세션에서 본 다른 캡처의 값과 달라질 수 있으므로 고정 상수나 UI 표시값으로 해석하지 않는다. 기존 UserInfo.MergeVaryData가 읽는 key 목록과 대조하면 -18, -30, -31, -32, -34는 알려진 속성 소비 경로가 있다. -29, -28, -27, -23, -22, -20, -33, -36은 여전히 소비처 미확정이다. 특히 HomePanelMono의 -27 mail badge 읽기는 DataCenter 캐시 Dictionary(+0xC0) 경로여서, OpInfo field 21의 -27과 동일한 저장소라고 단정할 수 없다.
+
+### 정정/보류 사항
+
+- 기존 보고서의 `hiddenValue - 444444` ID 복원식은 잘못된 것으로 정정했다. ObscuredInt는 `hiddenValue XOR currentCryptoKey` 방식이다. type 8의 logical ID 범위는 43100014~43300003이며 CODE 값 1~425는 ItempackageRecord/ItemboxRecord ID와 일치하지 않는다.
+- 이번 PCAP field 35에서 ProtoUser의 기본 5개 wire tag를 확정했으나, 모든 ProtoUser 필드/태그의 전체 스키마를 확정한 것은 아니다.
+- 다음은 Lua/XLua에서 ItemData.itemPackageId property를 읽는 실제 함수와 CODE lookup collection을 연결하고, DictI32 미분류 8개 key의 직접 소비처를 찾는 것이다.
