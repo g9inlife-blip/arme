@@ -237,3 +237,54 @@ Activities → ?
 4. 실제 Client Main 진입을 기준으로 필수 field를 검증
 
 이 단계에서 **Full Bootstrap → Client 검증 → 필요 시 최소화** 원칙은 유지한다.
+
+
+## 10. DA.txt 확인 결과 — ProccessRequestRes 본문 확보
+
+사용자가 지적한 `DA.txt`의 `### FILE: 016e203c_DataCenter__ProccessRequestRes.txt` 블록이 실제 원본 Listing이다. 이전의 "본문 미확보" 판단은 잘못이었다.
+
+핵심 merge 구간은 `0x016e29dc~0x016e2aec`이다.
+
+```
+response = x26
+DataCenter = x20
+
++0xA0 → 0x016e414c → DataCenter cache +0x40
++0xA8 → 0x016e4348 → MergeEquip       → cache +0x38
++0x98 → 0x016e4700 → MergeItem        → cache/Item
+        ↓
+        0x016e4ba4 → UpdateHeroInfo   (response 전체 x26 전달)
++0xC0 → 0x017704a0 → cache +0x48     (Chapters)
++0xC8 → 0x016e55dc → MergeSections    → cache +0x50
++0xD0 → 0x017704a0 → cache +0x58     (Teams)
++0xE8 → 0x017704a0 → cache +0x80     (Quests)
++0xB0 → 0x01770ce4 → cache +0x88     (Mails)
++0xF0 → 0x017704a0 → cache +0x68     (Shops)
++0xF8 → 0x017704a0 → cache +0x70     (Charges)
+```
+
+또한:
+- `+0x130`은 non-null일 때 DataCenter `+0x100`에 직접 저장
+- `+0x80`은 non-null일 때 DataCenter `+0x108`에 직접 저장
+- response opcode/type(`[x26,#0x14]`)가 `0x3c/0x41`가 아닐 경우 response `+0x100`을 별도 `Merge<long,object>` 계열로 처리
+- response `+0x148`은 DataCenter `+0xA0`의 Merge 대상
+
+### 중요
+
+따라서 Bootstrap Response는 단순히 "필드가 존재하는가"가 아니라 실제로 다음과 같이 **DataCenter 상태를 직접 채우는 구조**임이 정적 분석으로 확정됐다.
+
+```
+OpInfo
+ ├─ +0x98 Items      → MergeItem
+ ├─ +0xA0 Weapons    → Merge<int,object> 계열
+ ├─ +0xA8 Equiments  → MergeEquip
+ ├─ +0xC0 Chapters   → Merge<int,object> 계열
+ ├─ +0xC8 Sections   → MergeSections
+ ├─ +0xD0 Teams      → Merge<int,object> 계열
+ ├─ +0xE8 Quests     → Merge<int,object> 계열
+ ├─ +0xB0 Mails      → Merge<long,object> 계열
+ ├─ +0xF0 Shops      → Merge<int,object> 계열
+ └─ +0xF8 Charges    → Merge<int,object> 계열
+```
+
+이는 사용자가 말한 "메인 화면에서 여러 정보가 한 번에 필요하다"는 가설과도 구조적으로 일치한다. 단, 각 UI가 실제로 어느 시점에 각 cache를 사용하는지는 runtime 검증을 계속한다.
