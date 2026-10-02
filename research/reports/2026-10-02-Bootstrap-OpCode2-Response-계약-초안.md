@@ -966,3 +966,90 @@ OpInfo +0x90 Heros
 4. Level/Star/State/FashionId/Weapon 값을 대응
 5. Local Server Bootstrap Hero 계약에 필요한 실제 field만 확정
 한다.
+
+## 20. 2026-10-02 Runtime Hero 메뉴 / 무기 변경 확인
+
+최신 Git 로그를 다시 확인했다. 이번 실행에서는 실제 Hero 메뉴 진입과 무기 변경/장착 동작을 수행했으며, 현재 로그에서 확인 가능한 범위와 미확정 범위를 분리한다.
+
+### 20.1 ProtoHero 원본 필드가 실제 runtime에서 확인됨
+
+HeroInfo.InitHero(Alioth.S1.Common.ProtoHero) hook이 실제로 동작했고 source 객체가 ProtoHero임이 확인됐다.
+
+대표 객체:
+- ProtoHero @ 0x75d23f50e0
+- Id = 10000003
+- Level = 30
+- Exp = 3570
+- Star = 2
+- Weapon = 40000300
+- Armor = "D"
+- Belt = "B"
+- Emblem = "H"
+- Talent = 0
+- Suit = 0
+- FashionId = 49000300
+- Strategy = 0
+- Stigmata1~6 = 0
+
+따라서 ProtoHero.Weapon은 현재 영웅이 참조하는 무기 ID를 담는 필드로 볼 근거가 충분하다. 다만 40000300이 실제 ProtoWeapon.Id와 1:1로 일치하는지는 아직 별도 대조하지 않는다.
+
+### 20.2 Hero UI에서 확인된 소비 경로
+
+OpInfo +0x90 Heros
+→ DataCenter.UpdateHeroInfo
+→ HeroInfo.InitHero(ProtoHero)
+→ HeroInfo Level / Star / State / FashionId / Weapon / WeaponInfomation
+→ Hero / HeroEquip / Ready / Weapon UI
+
+runtime에서 HeroInfo.get_Weapon, get_WeaponInfomation, get_Level, get_Star 호출이 실제 발생한 것도 확인됐다.
+
+### 20.3 무기 변경 동작과 네트워크 요청의 구분
+
+이번 로그에는 Hero/Weapon UI 접근과 KCP 요청이 함께 존재한다. 그러나 현재 최종 로그만으로는 무기 변경 동작 직후의 특정 KCP 요청을 무기 장착 요청이라고 1:1 확정할 수 없다.
+
+확인된 KCP 요청 예:
+- OpCode=19
+- OpCode=22
+
+두 응답은 현재 로그에서 User/Items/Heros/Chapters가 null인 응답으로 확인되며, Hero 무기 장착 계약으로 확정하지 않는다.
+
+현재 결론:
+- Hero 메뉴 진입: 확인
+- ProtoHero → HeroInfo runtime 변환: 확인
+- Weapon 필드의 장착 ID 후보: 확인
+- Weapon UI getter 소비: 확인
+- 무기 변경에 사용된 정확한 Request OpCode/요청 payload: 미확정
+- 변경 후 ProtoHero.Weapon 값이 실제로 변경됐는지: 현재 로그만으로는 미확정
+
+### 20.4 정적 분석에서 확인된 무기 관련 UI/요청 진입점
+
+- HeroPartEquipMono.ClickEquip @ 00f4513c
+- HeroPartEquipMono.RefreshWeapon @ 00f4214c
+- WeaponPanelMono.DemandByID @ 00f5d484
+- WeaponPanelMono.Init @ 00f58380
+- WeaponPanelMono.RefreshWeaponInfoBoard @ 00f59c90
+- HeroInfo.set_WeaponInfomation @ 016e0750
+
+특히 HeroPartEquipMono.ClickEquip은 실제 장착 동작을 좁혀갈 수 있는 유력한 UI 진입점이므로, 이후 필요할 때 이 함수에서 NetworkCenter/KCPTube 호출까지 역추적한다.
+
+### 20.5 현재 분석 범위 판단
+
+지금은 ProtoHero 내부를 더 깊게 파지 않는다.
+
+현재 Local Server 목표에서는:
+Bootstrap 전체 응답
+→ Main 진입
+→ Hero/Weapon UI가 기존 상태를 정상 소비
+
+를 먼저 검증한다.
+
+따라서 ProtoHero의 Level/Weapon/Fashion/Stigmata 등의 상세 필드 구조는 확인된 데이터 모델로 기록만 유지하고, 실제 서버 계약에 필요한 경우에만 다시 상세 추적한다.
+
+### 20.6 다음 작업
+
+1. Main 화면에서 실제로 읽는 User/Charge/Chapter/Weapon/Equipment 소비처를 계속 확인
+2. Local Server Bootstrap Full Response 계약을 구현 가능한 형태로 정리
+3. KCP Response serializer/OpInfo 생성 구조로 연결
+4. Hero 무기 장착 요청은 필요 시 HeroPartEquipMono.ClickEquip부터 별도 추적
+
+현재 원칙은 Hero 내부 상세 분석보다 Bootstrap → Main 정상 진입 검증을 우선한다.
