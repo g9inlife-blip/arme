@@ -564,3 +564,42 @@ WareHousePanelMono.OnClickOpenBox
 ```
 
 미확정: OpenBox 화면 내부에서 type 8의 `m_itemPackageId` CODE*VALUE를 실제 구성품/보상으로 변환하는 resolver. 다음은 `OpenBoxMono.RefreshUI @ 00e9b8dc`와 그 하위 Lua delegate 및 ItemDataWrap property 접근을 추적한다.
+
+
+## 2026-10-02 OpenBox UI 소비 경로 추가 추적
+
+기준: `research/Ghidra_Listing_txt/OP.txt` (Git blob SHA `b759fbf4bf1c43a02fde5e47cbd74c940fb0cb7d`).
+
+### 보유 상자 목록 → UI
+
+- `OpenBoxMono.RefreshUI @ 00e9b8dc`에서 `DataCenter.RefreshBoxList @ 016e6c64` 호출 후 `ConfigBoxWidget @ 00e9ba1c`, `ConfigCurrentBoxWiget @ 00e9be08` 호출.
+- `ConfigBoxWidget`은 OpenBoxMono의 목록(+0xD0)을 순회하고, 각 항목의 +0x10 값을 item ID로 사용해 `Ali.GetExcelData<ItemData>` 조회.
+- 조회한 ItemData의 표시 데이터(아이콘/텍스트)를 UI node에 연결하고 클릭 이벤트를 구성한다.
+- 이는 type 8이 Items cache → BoxSupplyList에 들어온 뒤, 상자 ID 기반으로 ItemData를 조회해 선택 UI를 만드는 경로다. 여기서 `m_itemPackageId`를 직접 읽거나 CODE를 해석하는 동작은 확인되지 않았다.
+
+### 개봉 요청 응답 → 결과 연출
+
+- `OpenBoxMono.OnOpenBox @ 00e9c81c`는 요청의 `Res`를 확인하고, `Res +0xD8` 목록이 비어 있지 않으면 OpenBoxShowPanel 화면을 연다.
+- `OpenBoxShowPanelMono.DemandOpen @ 00e9cdbc`는 같은 응답 `Res +0xD8` 목록을 패널 `+0xD0`에 보관한다. 각 결과 항목의 `+0x10` 값을 item ID로 `Ali.GetBaseData`에 전달하고 star 값을 확인해 결과 연출 상태(+0xE8)를 갱신한다.
+- `NormalShowEff @ 00e9e5f4` / `WeaponShowEff @ 00e9e540`는 결과 목록의 현재 index 항목에서 `+0x10` item ID를 읽어 각각 `ItemShowNormalMono.SetItem` / `ItemShowWeaponMono.SetItem`으로 전달한다.
+- `ShowFinish @ 00e9e6a8`는 최종적으로 `Ali.ShowReward`에 응답 결과 목록(`+0xD0`)을 전달한다.
+
+### 이번 단계 판정
+
+```
+보유 type 8 item
+  → DataCenter.RefreshBoxList / BoxSupplyList
+  → OpenBoxMono.ConfigBoxWidget
+  → ItemData 조회 및 상자 선택 UI
+
+OpenBox 요청
+  → Request.Res (+0xD8 result list)
+  → OpenBoxShowPanelMono.DemandOpen
+  → 각 result entry +0x10 = concrete item ID
+  → NormalShowEff / WeaponShowEff
+  → Ali.ShowReward
+```
+
+이 UI/연출 경로에서는 `m_itemPackageId`의 CODE*VALUE를 클라이언트가 직접 구성품 ID로 변환하는 동작이 확인되지 않았다. 오히려 개봉 응답 목록에 이미 구체적인 보상 item ID가 들어와 UI가 이를 조회/표시하는 흐름이다. 따라서 type 8 CODE의 해석은 이 화면 경로가 아니라 ItemData의 다른 사용처 또는 요청/서버 응답 생성 전 단계에 남아 있다. 서버 구현은 분석 범위에서 제외한다.
+
+다음 추적은 `ItemData.get_itemPackageId @ 00df09a8`의 실제 동적 호출처와 XLua property getter 노출 여부다. OpenBox의 보유/개봉 UI는 CODE resolver의 직접 근거로 사용하지 않는다.
