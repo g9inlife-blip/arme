@@ -211,3 +211,48 @@ PCAP packet 370
 3. `GoToBattleMono`의 CreateBattle 관련 callback에서 `ProtocolGame_SendRequest.CreateBattle` 호출을 연결한다.
 4. packet 370의 field 21 응답 데이터를 Client response handler가 어떻게 처리하는지 확인한다.
 5. opcode 0x17 / packet 390은 별도 전투 후속 요청으로 분리해 함수 매핑을 진행한다.
+
+
+## 8. Chapter/Mission ID 대조 — Unity 원본 데이터
+
+Unity 관련 판단은 먼저 다음 Git 문서를 읽고 원본 JSON을 확인했다.
+- `참고용-unity-behavior-data/데이터_파일_역할_및_계층.md`
+- `참고용-unity-behavior-data/데이터_분석/README.md`
+- `참고용-unity-behavior-data/데이터_분석/output/analyze_game_systems/07_system_candidates.md`
+
+문서의 계층 정의는 `Chapter → Tollgate`이며, 각 Record의 실제 ID 참조를 기준으로 해석해야 한다.
+
+### 8.1 첫 번째 CreateBattle 인자
+- PCAP 값: `20000100`
+- 원본: `MonoBehaviour/ChapterRecord.json`
+- `ChapterTable`에 ID `20000100`이 존재한다.
+- 따라서 첫 번째 인자는 ChapterRecord ID와 일치한다.
+
+### 8.2 두 번째 CreateBattle 인자
+- PCAP 값: `21000060`
+- data_catalog `09_record_samples.json`에서 `record_id=21000060`의 `source_file=MissionRecord.json`, `source_path=$.MissionTable[6]`로 확인된다.
+- 따라서 두 번째 인자는 MissionRecord ID와 일치한다.
+- 아직 이 MissionRecord가 런타임의 어떤 Section/Tollgate/전투 맵에 연결되는지 전체 참조는 미확정이다.
+
+### 8.3 앞선 GetSections 요청과 응답
+동일 KCP 캡처에서 CreateBattle보다 앞서 다음 요청/응답이 확인된다.
+
+| Packet | 방향 | Opcode | SerialNumber | payload/결과 |
+|---|---|---:|---:|---|
+| 336 | C→S | 0x13 | 2551705436 | field 6 = 20000000 |
+| 338 | S→C | 0x13 | 2551705436 | field 44 항목 ID: 21000010, 21000020, 21000040 |
+| 340 | C→S | 0x13 | 2551705437 | field 6 = 20000100 |
+| 343/346 | S→C | 0x13 | 2551705437 | field 44 항목 ID: 21000050 |
+| 368 | C→S | 0x16 | 2551705438 | field 6 = 20000100, field 7 = 21000060 |
+| 370 | S→C | 0x16 | 2551705438 | 동일 ID echo |
+
+따라서 현재 가장 유력한 Request Contract는:
+
+```
+CreateBattle(
+    chapterId = 20000100,   // ChapterRecord
+    missionId = 21000060    // MissionRecord
+)
+```
+
+두 인자의 Record 종류는 데이터 카탈로그로 확인됐지만, 메서드 인자명 자체와 내부 호출부의 값 전달은 다음 정적 추적으로 최종 확인한다.
