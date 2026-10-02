@@ -448,23 +448,23 @@ Bootstrap Main UI 분석 보고서 14.1절의 AliothExtensions.isBoxItem @ 00e16
 
 field 21의 각 map 엔트리는 중첩 field 1=key, field 2=value 구조다. 음수 key는 int64 varint의 2의 보수 값을 signed 64-bit로 해석했다. 이 응답에서 확인된 음수 key는 정확히 13개이며, 기존 `UserInfo.MergeVaryData` 분석 대상과 일치한다.
 
-| key | PCAP value | 기존 클라이언트 소비처 |
+| key | PCAP value | 기존 클라이언트 소비처/해석 |
 |---:|---:|---|
-| -9 | 79 | StigmataTimes |
-| -10 | 1 | MetaphysicsTimes |
-| -11 | 94 | Exp |
-| -12 | 없음 | Level |
-| -13 | 없음 | SignInDays |
-| -14 | 없음 | SignInRewardDay |
-| -15 | 15 | FCTimes |
-| -16 | 없음 | StepId |
-| -18 | 1 | ExamTimes |
+| -29 | 79 | CheckAssetsRandomInt_New 설정 경로 |
+| -28 | 94 | EnergyNextTime 계산/설정 경로 |
+| -27 | 1 | DataCenter +0xC0 캐시 dictionary 복사 (메일 badge 소비처 확인됨) |
+| -23 | 없음 | Ali.Notify 분기, 이벤트 의미 미확정 |
+| -22 | 없음 | 직접 소비처 미확정 |
+| -20 | 없음 | 직접 소비처 미확정 |
+| -18 | 15 | ExamTimes |
+| -33 | 없음 | 직접 소비처 미확정 |
+| -34 | 1 | ChatChannel |
+| -36 | 3 | SupportCVTimes |
 | -30 | 없음 | EquipMax |
 | -31 | 없음 | ChargeTotalPerMonth |
 | -32 | 27 | Age |
-| -34 | 3 | ChatChannel |
 
-주의: 위 값은 해당 응답에서 field 2가 실제 포함된 경우만 기록했다. field 2가 생략된 엔트리는 0으로 단정하지 않고 '없음'으로 표기했다. -27/-28/-29/-36 등 다른 보고서에서 확인한 캐시/response 분기는 이 PCAP 응답의 field 21 음수 key 목록에는 나타나지 않는다. 따라서 동일 숫자 key가 서로 다른 DataCenter dictionary 경로에서 사용되는 점을 계속 구분한다.
+정정: 이 특정 OpCode 2 응답에서 확인된 음수 key 13개는 위 표의 -29/-28/-27/-23/-22/-20/-18/-33/-34/-36/-30/-31/-32다. `UserInfo.MergeVaryData`가 소비하는 -9/-10/-11/-12/-13/-14/-15/-16 key 목록과는 다르다. field 21이라는 동일 최상위 번호만으로 서로 다른 Dictionary 인스턴스/응답 구간을 하나로 합치지 않는다. field 2가 생략된 엔트리는 0으로 단정하지 않고 '없음'으로 표기했다.
 
 ### field 35 — ProtoUser 중첩 메시지 실측
 
