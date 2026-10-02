@@ -820,3 +820,29 @@ PCAP 변환 JSON의 packet group `192~201`에서 OpInfo field 35를 다시 분�
 1. `ProtoUser.set_*` 전체 Listing에서 필드별 객체 offset을 수집한다.
 2. protobuf parser가 nested tag 7/14/20/21/22/24를 처리할 때 호출하는 setter 또는 backing-field offset을 찾는다.
 3. 확인된 매핑만 UserInfo 속성 및 Main UI 소비처 표에 반영한다.
+
+
+### 2026-10-02 후속 실측 — ProtoUser backing field 전체 offset
+
+ProtoUser setter Listing을 개별 확인해 getter offset을 교차 검증했다. setter는 아래 offset에 직접 저장한다.
+
+| ProtoUser 속성 | 객체 offset |
+|---|---:|
+| Id | +0x10 |
+| Status | +0x18 |
+| Level | +0x1C |
+| Exp | +0x20 |
+| VIPLevel | +0x24 |
+| VIPExp | +0x28 |
+| HeadIcon | +0x2C |
+| Name | +0x30 |
+| SId | +0x38 |
+| StigmataTimes | +0x40 |
+| MetaphysicsTimes | +0x44 |
+| SignInDays | +0x48 |
+| SignInRewardDay | +0x4C |
+| FCTimes | +0x50 |
+| StepId | +0x54 |
+| Belt | +0x58 |
+
+이 결과로 ProtoUser의 실제 속성/메모리 배치는 구체화됐다. 다만 protobuf nested payload에서 관측한 tag 7, 20, 21, 22, 24를 위 속성 중 어느 것에 대응시키는지는 아직 증명되지 않았다. 객체 offset 순서와 protobuf tag 번호를 같은 것으로 간주하지 않는다.
