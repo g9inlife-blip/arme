@@ -1019,3 +1019,15 @@ MergeVaryData의 13개 key 중 최소 7개 property는 native 호출자 수준�
 1. XLua script/실행 hook에서 StigmataTimes, MetaphysicsTimes, FCTimes, StepId, ExamTimes, ChatChannel property read를 검색한다.
 2. field 21 미분류 8개 key는 해당 key를 직접 받는 Dictionary 소비 함수가 확인될 때까지 의미를 붙이지 않는다.
 3. ProtoUser type 8 CODE lookup 추적은 별도 트랙으로 유지한다.
+
+
+## 2026-10-02 추가 검색 — 미분류 DictI32 key 상수의 오탐 제거
+
+field 21 미분류 key의 32-bit 상수 표현을 Ghidra Listing 전체에서 검색했다.
+
+- `-20 (0xffffffec)`, `-22 (0xffffffea)`, `-27 (0xffffffe5)` 검색 결과는 `research/Ghidra_Listing_txt/BR.txt`의 `BrotliDecoderDecompressStream @ 00a941b4` 내부에서 발견됐다.
+- 해당 함수는 Brotli 압축 해제 상태 머신이며 Calls IN도 `BrotliDecoderDecompressStream @ 008d4280`로 확인된다.
+- 따라서 이 상수들은 OpInfo.DictI32 key 소비와 무관한 Brotli 내부 상태/에러 코드 문맥의 오탐이다.
+- `-23/-28/-29/-33/-36`의 동일 immediate 검색에서는 현재 Ghidra Listing 검색 결과가 확인되지 않았다.
+
+**판정:** 숫자 상수 일치만으로 DictI32 소비처를 연결하면 안 된다. Dictionary ContainsKey/get_Item 호출과 실제 Dictionary 인자 흐름이 함께 확인되어야 한다. 미분류 8개 key는 모두 의미 미확정 상태를 유지한다.
