@@ -661,3 +661,34 @@ tag 1의 871047은 User 식별자 형태이며 tag 14의 문자열은 Name 속�
 1. ProtoUser의 생성/역직렬화 parser에서 tag 3/4/7/20/21/22/24가 쓰는 setter 확인.
 2. DictI32의 미확정 key -29/-28/-27/-23/-22/-20/-33/-36 소비처를 UI 및 XLua 경로에서 역추적. 특히 HomePanel의 -27은 객체 출처를 분리 검증.
 3. ItemData.get_itemPackageId(+0x90)의 XLua wrapper 및 동적 호출처 검색은 별도 유지. 이번 PCAP은 ItemRecord type 8 CODE resolver를 직접 입증하지 않는다.
+
+
+### 2026-10-02 교차 문서 대조 — Bootstrap field 21 / ProtoUser 속성 후보
+
+서버 작업 진행 문서 `research/reports/서버쪽작업진행상황/2026-10-02-Bootstrap-실측-protobuf-구조_lina.md` 및 `2026-10-02-개발-핸드오프_lina.md`와 PCAP 원본을 대조했다.
+
+- 서버측 문서에서는 최상위 field 21을 Items(276개)로 분류하고, field 35를 User, field 43을 Chapters(61개)로 분류한다.
+- 이번 PCAP 원본의 field 21에는 실제로 양수 ID key 263개와 음수 key 13개가 함께 들어 있다. 따라서 field 21을 "아이템 수량 전용"으로만 해석하면 안 된다. 양수 key는 아이템 ID/count map 패턴이며, 음수 key는 클라이언트 `UserInfo.MergeVaryData`가 읽는 상태값 계열이 섞인 형태다.
+- 원본 JSON 변환 과정에서 64-bit unsigned varint가 JavaScript Number 정밀도를 잃을 수 있다. `-29`의 경우 변환 JSON의 숫자값 대신 원본 hex `08e3ffffffffffffffff01104f`를 varint로 복원해 signed int64 -29, value 79로 확인했다. 향후 signed key 분석은 hex를 기준으로 한다.
+
+ProtoUser tag와 native 속성의 후보 대응:
+| protobuf tag | 실측 값 | native 속성 후보 | 판단 |
+|---|---:|---|---|
+| 1 | 871047 | Id | 강한 후보: User ID 값 및 Id getter/setter 존재 |
+| 3 | 4 | Level | 후보: 정수 레벨 형태 |
+| 4 | 250 | Exp | 후보: 정수 경험치 형태 |
+| 7 | 18100000 | HeadIcon | 후보: 숫자형 아이콘 식별자 형태 |
+| 14 | `g9in2` | Name | 강한 후보: 문자열 username |
+| 20 | 3 | 미확정 | 미확정 |
+| 21 | 3 | 미확정 | 미확정 |
+| 22 | 10 | 미확정 | 미확정 |
+| 24 | 1 | 미확정 | 미확정 |
+
+위 표의 tag 3/4/7은 값의 형태와 알려진 ProtoUser 속성 목록에 따른 후보일 뿐, 현재 PCAP만으로 직접 매핑을 확정하지 않았다. 객체 offset은 Id +0x10, Level +0x1C, Exp +0x20, HeadIcon +0x2C, Name +0x30으로 확인되지만 이 offset은 wire tag를 뜻하지 않는다. ProtoUser 생성자는 System.Object 생성자만 호출하며, 별도의 ProtoUser 전용 parser/serializer는 현재 Listing 검색에서 발견하지 못했다. `KCPTube.TryRead`의 `ProtoBuf.Serializer.Deserialize<object>`가 역직렬화 진입점이므로, 실제 tag→setter 대응은 generic protobuf runtime 또는 런타임 setter hook으로 확인해야 한다.
+
+### 소비처 추적 현재 판정
+
+- `-18,-30,-31,-32,-34`는 UserInfo.MergeVaryData에서 직접 속성으로 변환되는 것을 정적으로 확인했고, PCAP 값도 일치한다.
+- `-27`은 HomePanel 메일 뱃지에서 동일한 숫자 key가 보이지만, 해당 함수가 읽는 대상은 DataCenter cache +0xC0 Dictionary다. OpInfo field21의 map 객체와 동일하다는 증거가 없으므로 연결하지 않는다.
+- `-29,-28,-23,-22,-20,-33,-36`은 이번 응답의 실제 값만 확인했다. 정적 Listing에서 직접 소비하는 메서드가 아직 특정되지 않아 의미를 부여하지 않는다.
+- 다음 단계는 field21을 역직렬화한 직후 실제 Dictionary 객체와 DataCenter cache +0xC0 객체의 주소를 Frida에서 비교하고, 미확정 key에 대한 `ContainsKey/get_Item` 호출 스택을 수집하는 것이다. 이는 서버 응답 생성이 아니라 클라이언트 수신/저장/소비 경로 검증이다.
