@@ -80,7 +80,7 @@ Hash만으로 화면 이름을 확정하지 않는다. 현재 Listing에서 Stri
 
 대상:
 - `ProtocolGame_SendRequest.GetActivities @ 00de1f68`
-- Listing: `research/Ghidra_Listing_txt/PR.txt`
+- 호출자 Listing: `research/Ghidra_Listing_txt/AL/01693710_AliothEngine.GUIScreenLoaderS1__IsSendRequest.txt` 및 `HomePanelMono.Start` 근거 문서. 참고: `research/Ghidra_Listing_txt/PR.txt`는 현재 Git에서 0 byte이므로 Request 함수 본문 근거로 사용하지 않는다.
 
 Calls IN:
 - `HomePanelMono.Start @ 00f67adc`
@@ -401,3 +401,123 @@ Tube 수신
 - XLua wrapper는 Lua에 노출된 증거이지 실제 Lua script에서 호출된 증거는 아니다.
 
 다음 단계는 우편/상점/던전/재화·아이템/퀘스트 등 Local Server 범위에서 중요한 API를 먼저 골라 실제 caller와 payload 인자를 연결하는 것이다.
+
+
+## 11. 2026-10-02 UI 직접 호출 경로 2차 확인
+
+이번 단계는 우편/상점/퀘스트 보상 요청을 대상으로, Request 함수의 Calls IN 또는 UI 함수의 Calls OUT에서 **실제 Request 함수 주소를 호출하는 직접 연결**을 확인했다.
+
+### 11.1 우편 목록과 보상
+
+#### GetMails
+
+- Request: `ProtocolGame_SendRequest.GetMails @ 00de0298`
+- 화면 진입: `GUIScreenLoaderS1.IsSendRequest @ 01693710`
+- hash `0xB32DDEAC` 뒤 문자열 비교가 통과하면 `AddCodeParamDic(0x2D,...)` 후 `GetMails()` 호출.
+- 따라서 현재 Listing에서 확인되는 GetMails의 진입 조건은 우편 관련 화면 assetName의 화면 로딩이다.
+- assetName의 실제 문자열은 아직 복원하지 않았으므로 화면 표시명은 확정하지 않는다.
+
+#### MailGetReward
+
+Request: `ProtocolGame_SendRequest.MailGetReward @ 00de01c4`
+
+직접 caller 두 개:
+
+| UI 함수 | RVA | 확인된 호출 동작 |
+|---|---:|---|
+| `MailMono.ClickGetMail` | 00f9c9e0 | `UIData.data`를 가져와 런타임 타입을 확인한 뒤 객체의 `+0x10` 값을 인자로 전달 |
+| `MailMono.ClickAllMail` | 00f9caac | 전역 Mail 관련 객체를 가져와 인자로 전달 |
+
+- `ClickGetMail`은 UIData가 유효하고 기대한 타입일 때만 Request 호출로 이어진다.
+- `ClickAllMail`은 별도 동적 UIData 인자를 읽지 않고 전역 객체 참조를 전달한다.
+- 두 함수 모두 Listing Calls OUT에 `MailGetReward @ 00de01c4`가 직접 표시된다.
+- 현재 확인한 UI Listing만으로 `+0x10` 필드의 정확한 데이터 의미나 전체 수령 요청의 wire payload를 단정하지 않는다.
+
+### 11.2 퀘스트/미션 보상
+
+Request: `ProtocolGame_SendRequest.QuestGetReward @ 00ddfc10`
+
+직접 caller 세 개:
+
+| UI 함수 | RVA | 조건 / 인자 전달 |
+|---|---:|---|
+| `TrainingCampPanelMono.OnClickReceive` | 0103d508 | `UIData.m_int_1`을 key로 사용. UserInfo의 Dictionary에 key가 존재하고 해당 객체 `+0x1C == 1`일 때 key를 Request 인자로 전달 |
+| `TaskNewPanelMono.OnClickRecive` | 00f7d768 | `UIData.data`의 런타임 타입 확인 후 객체 첫 32-bit 값(`ldr w0,[x0]`)을 인자로 전달 |
+| `TaoFaPanelMono.OnClickRecive` | 01039ef8 | `TaskNewPanelMono`와 같은 형태로 UIData 객체 타입을 확인한 뒤 첫 32-bit 값을 인자로 전달 |
+
+- 세 함수 모두 Calls OUT에 QuestGetReward 함수 주소가 직접 연결된다.
+- TrainingCamp 경로는 Dictionary 존재 여부와 상태값 `1`을 확인한 뒤 요청하므로 단순 버튼 클릭만으로 항상 전송되는 구조는 아니다.
+- Task/TaoFa의 첫 32-bit 값이 어떤 도메인 ID인지는 UIData 생성부 및 Request 본문과 추가 대조가 필요하다.
+
+### 11.3 상점 목록과 구매
+
+#### GetShops
+
+- Request: `ProtocolGame_SendRequest.GetShops @ 00de1dc4`
+- 화면 로딩 시 `GUIScreenLoaderS1.IsSendRequest`의 hash `0xA8A5DFAC` 및 문자열 비교가 통과하면 `AddCodeParamDic(0x33,...)` 후 GetShops 호출.
+- 응답 후처리 함수 후보로 `ShopNewPanelMono.OnGetShopBack @ 0102593c`가 확인되며, 이 함수는 `RefreshUI_Item @ 01025b3c`를 호출한다. 이 연결은 목록 응답 후 UI 갱신 경로의 근거이며, 별도 callback 등록 지점은 추가 확인 대상이다.
+
+#### Shopping
+
+Request: `ProtocolGame_SendRequest.Shopping @ 00de1e80`
+
+직접 caller:
+- `ShopConfirmTipsMono.OnClickOK @ 0102408c`
+
+호출 직전 인자 구성:
+- 첫 번째 인자: `ShopConfirmTipsMono.get_m_shopId @ 010235ec` 반환값
+- 두 번째 인자: `ShopConfirmTipsMono.get_m_shopcommodityData @ 0102324c` 반환 객체의 `+0x78` 32-bit 값
+- 세 번째 인자: `ShopConfirmTipsMono.get_m_currentCount @ 01023508` 반환값
+
+최종 호출:
+`Shopping(shopId, commodityData[+0x78], currentCount)`
+
+따라서 구매 요청은 상품을 눌렀을 때 즉시 발생하는 것이 아니라, `ShopNewPanelMono.ClickShopItem @ 01026f40`에서 구매 가능/매진/보유량 등의 조건을 검사하고 확인 UI 경로로 진행한 뒤, `ShopConfirmTipsMono.OnClickOK`에서 확인을 누를 때 직접 발생하는 구조다. 두 번째 인자 `commodityData +0x78`의 필드명/도메인 의미는 데이터 클래스 Listing과 대조 전까지 확정하지 않는다.
+
+### 11.4 Request 본문 Listing의 공백과 opcode 판정 주의
+
+- 현재 Git의 `research/Ghidra_Listing_txt/PR.txt`는 실제로 0 byte다.
+- 따라서 Request 함수 본문에서 Opcode와 OpInfo payload offset을 재검증할 수 없는 상태다.
+- GetMails `0x2D`, GetShops `0x33`, Shopping `0x34` 및 Shopping의 `+0x30/+0x34/+0x38` 계약은 2026-09-29 보고서에 기재된 기존 결과를 참조한다. 이번 단계에서 새로 확인한 직접 근거는 UI caller 및 호출 인자 구성이다.
+- MailGetReward와 QuestGetReward의 Opcode 및 Request payload offset은 아직 확인하지 않았다. 이름이나 caller 인자만으로 추정하지 않는다.
+- PR Listing 재추출 또는 다른 정확한 Listing 산출물이 Git에 등록되면 Request 함수 본문을 다시 검증한다.
+
+### 11.5 현재 확인된 호출 흐름 요약
+
+```text
+우편 목록:
+GUIScreenManager._ShowScreen
+  → GUIScreenLoaderS1.IsSendRequest
+  → GetMails()
+
+우편 보상:
+MailMono.ClickGetMail / ClickAllMail
+  → MailGetReward(...)
+
+상점 목록:
+GUIScreenManager._ShowScreen
+  → GUIScreenLoaderS1.IsSendRequest
+  → GetShops()
+  → ShopNewPanelMono.OnGetShopBack
+  → RefreshUI_Item
+
+상점 구매:
+ShopNewPanelMono.ClickShopItem
+  → 구매 가능 여부 / 매진 등 확인
+  → ShopConfirmTipsMono 확인 화면
+  → ShopConfirmTipsMono.OnClickOK
+  → Shopping(shopId, commodityData[+0x78], currentCount)
+
+퀘스트 보상:
+TrainingCampPanelMono.OnClickReceive
+TaskNewPanelMono.OnClickRecive
+TaoFaPanelMono.OnClickRecive
+  → QuestGetReward(...)
+```
+
+### 11.6 다음 확인 작업
+
+1. `MailGetReward`, `QuestGetReward` Request 본문 Listing 확보 후 Opcode와 payload offset 확인.
+2. `ShopNewPanelMono.OnClickBtn` 및 callback 등록부를 확인해 GetShops / Shopping 응답 handler 연결을 확정.
+3. `MailMono`의 UIData 생성 및 응답 callback 등록부를 추적해 단건/전체 수령 인자 구조를 확정.
+4. 각 API의 `DataCenter.ProccessRequestRes` opcode 분기와 callback 실행 순서를 연결한다.
