@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.20
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.21
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -1413,7 +1413,7 @@ function inspectChaptersDictionary(dictPtr) {
         }
     } catch (e) { console.log('[!] Main currency getter hook failed: ' + e.message); }
 
-    // v4.19: trace the warehouse's cached-list binding path.
+    // v4.20: trace the warehouse's cached-list binding path.
     // Only log object classes, known collection counts, and ProtoItem's documented scalar fields.
     function describeWarehouseCollection(obj) {
         try {
@@ -1612,6 +1612,7 @@ function inspectChaptersDictionary(dictPtr) {
         } else console.log('[!] OpInfo.get_Chapters not found');
     } catch (e) { console.log('[!] OpInfo.Chapters hook failed: ' + e.message); }
 
+    console.log('[*] justice_hook v4.21');
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
     console.log('[*] Look for [TOKEN_SAVE], [TOKEN_GET], [TOKEN_COMPARE], [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
