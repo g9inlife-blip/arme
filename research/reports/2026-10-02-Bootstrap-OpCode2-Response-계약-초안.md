@@ -288,3 +288,46 @@ OpInfo
 ```
 
 이는 사용자가 말한 "메인 화면에서 여러 정보가 한 번에 필요하다"는 가설과도 구조적으로 일치한다. 단, 각 UI가 실제로 어느 시점에 각 cache를 사용하는지는 runtime 검증을 계속한다.
+
+
+## 11. 2026-10-02 ProccessRequestRes 직접 호출 순서 재확인
+
+DA.txt의 실제 Listing과 Calls OUT를 다시 대조했다. 정확히 +0xA0는 DataCenter.MergeWeapon @ 016e414c이다.
+
+| Response offset | 처리 함수 | DataCenter 대상 | 상태 |
+|---|---|---|---|
+| +0xA0 | MergeWeapon @ 016e414c | cache +0x40 | 확정 |
+| +0xA8 | MergeEquip @ 016e4348 | cache +0x38 | 확정 |
+| +0x98 | MergeItem @ 016e4700 | Item cache/category | 확정 |
+| response 전체 | UpdateHeroInfo @ 016e4ba4 | Hero/User 상태 | 확정 |
+| +0xC0 | Merge<int,object> @ 017704a0 | cache +0x48 | 확정 |
+| +0xC8 | MergeSections @ 016e55dc | cache +0x50 | 확정 |
+| +0xD0 | Merge<int,object> @ 017704a0 | cache +0x58 | 확정 |
+| +0xE8 | Merge<int,object> @ 017704a0 | cache +0x80 | 확정 |
+| +0xB0 | Merge<long,object> @ 017708c4 | cache +0x88 | 확정 |
+| +0xF0 | Merge<int,object> @ 017704a0 | cache +0x68 | 확정 |
+| +0xF8 | Merge<int,object> @ 017704a0 | cache +0x70 | 확정 |
+| +0x130 | 직접 DataCenter +0x100 저장 | 별도 상태 | 조건부 |
+| +0x80 | 직접 DataCenter +0x108 저장 | 별도 상태 | 조건부 |
+| +0x138 | 조건부 후속 처리 | set_AIStrategy 관련 | 조건부 |
+| +0x148 | Merge 계열 | DataCenter +0xA0 | 확정 |
+
+### Weapon 구분
+
+OpInfo.Weapons (+0xA0) → MergeWeapon(상위) @ 016e414c → 개별 Weapon 처리 → MergeWeapon(하위) @ 016e5be4 로 구분한다. 두 주소를 동일 함수로 취급하지 않는다.
+
+### ProccessRequestRes의 역할
+
+Calls OUT에 Ali.Notify, Ali.Refresh_SysBtnConfig, DataCenter.set_EnergyNextTime, set_AIStrategy, set_ChatChannel, set_SupportCVTimes, UpdateHeroInfo, MergeItem, MergeEquip, MergeSections, MergeSectionSnapShot, MergeWeapon, Merge<int,object>, Merge<long,object>, Merge<object,object>가 함께 확인된다.
+
+따라서 ProccessRequestRes는 단순 응답 전달이 아니라 Bootstrap response의 여러 state group을 DataCenter에 분배/병합하고 일부 파생 상태 및 Notify/UI 설정까지 갱신하는 중앙 처리 함수로 정적으로 확인된다.
+
+### 다음 추적 목표
+
+1. DataCenter +0x38/+0x40/+0x48/+0x50/+0x58/+0x68/+0x70/+0x80/+0x88/+0xA0의 getter/사용처 검색
+2. 각 cache를 읽는 Main UI 호출자 연결
+3. UpdateHeroInfo가 User/Heros를 어떻게 분리 처리하는지 확인
+4. Merge<int,object> 각각이 Chapters/Teams/Quests/Shops/Charges 중 어느 cache를 받는지 함수 인자와 대조
+5. MergeSectionSnapShot의 입력과 DataCenter +0x90 Section state 연결 확인
+
+이후 Local Server Bootstrap 계약을 response field → merge 함수 → DataCenter property → Main UI 소비처 형태로 확정한다.
