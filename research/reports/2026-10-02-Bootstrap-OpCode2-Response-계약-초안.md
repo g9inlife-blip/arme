@@ -1625,3 +1625,55 @@ Bootstrap OpInfo의 주요 컬렉션은 다음과 같이 분류한다.
 5. 위 항목을 Bootstrap 응답 필수 / 선택 / 별도 요청 / 정적 Master Data·Asset으로 분리해 Local Server 구현 계약에 넘긴다.
 
 전투 씬 내부 및 전투 데이터 분석은 계속 제외한다.
+
+
+## 25. 상단 재화 8개 목록 — Sysconf 원본 확인
+
+앞 절의 ShowCoin Listing을 Unity 원본 데이터와 대조했다. 분석 순서는 프로젝트 지침에 따라 다음 문서를 먼저 확인하고 원본 JSON을 읽었다.
+
+- `참고용-unity-behavior-data/데이터_파일_역할_및_계층.md`
+- `참고용-unity-behavior-data/데이터_분석/README.md`
+- `참고용-unity-behavior-data/MonoBehaviour/SysconfRecord.json`
+
+SysconfRecord에서 `m_desc = 个人信息货币显示`인 Record의 `m_value`는 다음 8개 ID다.
+
+```
+43000001
+43000002
+43000003
+43000004
+43000005
+43230000
+43600000
+43000017
+```
+
+이는 ShowCoin이 Excel 설정에서 문자열을 가져와 `SplitToInt32ListError`로 `List<int>`를 만드는 구조와 일치하는 설정 형태다. 다만 Ghidra의 GetExcelData 상수 `0x05A8AD54`와 이 Sysconf Record의 정확한 key/ID 대응은 아직 직접 확인하지 않았으므로, **목록 값은 원본에서 확인됐지만 호출 상수와 Record의 연결은 미확정**으로 남긴다.
+
+### 상단 재화 UI 데이터 계약
+
+| 순서 | ItemId | 의미 |
+|---:|---:|---|
+| 1 | 43000001 | Coins |
+| 2 | 43000002 | Crystals |
+| 3 | 43000003 | Energy |
+| 4 | 43000004 | 미확정 |
+| 5 | 43000005 | 미확정 |
+| 6 | 43230000 | 미확정 |
+| 7 | 43600000 | 미확정 |
+| 8 | 43000017 | 미확정 |
+
+ShowCoin은 이 목록을 순회해 각 항목에 대해:
+- `GetXCount(itemId)` → 현재 수량
+- `GetBaseData(itemId)` → BaseData
+- `BaseData.icon` → 아이콘
+- `BaseData.NameByQualityWord` → 이름
+
+을 UI에 바인딩한다.
+
+따라서 상단 재화 표시 계약은 **8개의 int ItemId + 각 Item의 int Count + BaseData 이름/아이콘 참조**로 구체화됐다. 4~8번 ID의 의미는 ItemRecord 및 관련 Resources/Item 데이터와 대조하기 전까지 추측하지 않는다.
+
+### 다음 확인
+1. Sysconf Record의 m_id 및 `0x05A8AD54` 연결을 확인한다.
+2. 8개 ID를 ItemRecord/ResourcesRecord와 대조해 UI 표시명·아이콘·종류를 확인한다.
+3. 최신 runtime에서 ShowCoin 실제 반복 횟수와 8개 항목의 표시 여부를 확인한다.
