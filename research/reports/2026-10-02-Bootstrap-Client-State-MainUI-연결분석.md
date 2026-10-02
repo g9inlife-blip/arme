@@ -242,3 +242,49 @@ Main 진입 성공은 전체 UI 데이터가 모두 완전히 연결됐다는 �
 2. HomePanelMono.Start의 직접 Calls OUT 중 EquipMax 계열과 Hero getter를 분리해 실제 Main 초기화 의존성을 확정한다.
 3. ProtoActivity field 56 → ToDictonary → RefreshUIBanner 경로에서 어떤 Activity property를 배너 표시가 읽는지 후속 추적한다.
 4. 각 UI 소비처를 Main 최초 표시 / 프로필 패널 열기 / 별도 메뉴 진입으로 분류한다.
+
+## 11. 운영 PCAP의 Field 21 실제 key 분포 대조
+
+대상은 `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.json`의 packet 192~201 응답 `gzip_protobuf` tree다. 민감한 계정/세션 데이터는 제외하고 field 21의 key/value만 집계했다.
+
+- Field 21 occurrence: **276개**
+- Map entry key: **276개 모두 확인**
+- 음수 key: 13종
+- `UserInfo.MergeVaryData`가 처리하는 key 중 이 캡처에 실제 등장한 항목: -18, -30, -31, -32, -34 (5개)
+- 해당 함수가 처리하지만 이 캡처에 없는 항목: -9, -10, -11, -12, -13, -14, -15, -16 (8개)
+
+| key | MergeVaryData 대상 | 이 PCAP 값 | 해석 |
+|---:|---|---:|---|
+| -18 | ExamTimes | 15 | field 21에서 UserInfo로 반영 |
+| -30 | EquipMax | 0 | field 21에서 UserInfo로 반영 |
+| -31 | ChargeTotalPerMonth | 0 | field 21에서 UserInfo로 반영 |
+| -32 | Age | 27 | field 21에서 UserInfo로 반영 |
+| -34 | ChatChannel | 1 | field 21에서 UserInfo로 반영 |
+
+그 외 음수 key(-29, -28, -27, -23, -22, -20, -33, -36)는 이 `MergeVaryData` 함수의 Listing에서 처리하는 key로 확인되지 않았다. 의미를 임의로 UserInfo property에 연결하지 않고 별도 미분류 key로 둔다. 양수 key는 263개이며, 상당수가 진행/콘텐츠 ID 형태이므로 동일 DictI32를 여러 시스템이 공유하는 구조일 가능성이 있지만, 개별 소비처는 추가 확인이 필요하다.
+
+### 11.1 중요한 수정 사항
+
+이 PCAP에서는 Level(-12)과 Exp(-11) key가 field 21에 없다. `MergeVaryData`는 key가 없으면 기존 UserInfo getter 값을 읽어 setter에 다시 넣는 방식이므로, 이 두 값은 이 응답에서 field 21로 덮어쓰이지 않는다.
+
+따라서 Level/Exp 경로는 다음처럼 구분한다.
+
+```text
+field 35 User (ProtoUser)
+  → UserInfo.ctor
+  → DataTool.CopyTo<ProtoUser, UserInfo>
+  → UserInfo 기본 상태
+
+field 21 DictI32
+  → UserInfo.MergeVaryData
+  → key가 존재하는 일부 속성만 덮어쓰기
+  → key가 없으면 기존 값 유지
+```
+
+`UserInfo.ctor @ 00dd2f44`에서 `DataTool.CopyTo` 호출은 확인했지만, ProtoUser의 protobuf tag와 Level/Exp property를 연결하는 직렬화 tag mapping은 아직 확정하지 않았다. 따라서 이 캡처의 Level/Exp 값은 **field 21에서 오지 않는다**는 점까지만 확정하고, field 35 내부 tag 대응은 별도 분석 대상으로 남긴다.
+
+### 11.2 다음 확인
+
+1. ProtoUser의 serialized tag ↔ Id/Name/Level/Exp/HeadIcon property mapping을 확인한다.
+2. DictI32 양수 key 중 Main UI에서 참조하는 항목을 Ghidra Calls IN 및 getter와 대조한다.
+3. 다른 운영 Frida 로그의 UserInfo 실제 getter 값은 해당 로그의 Bootstrap payload와 같은 실행인 경우에만 직접 대조한다.
