@@ -603,3 +603,16 @@ OpenBox 요청
 이 UI/연출 경로에서는 `m_itemPackageId`의 CODE*VALUE를 클라이언트가 직접 구성품 ID로 변환하는 동작이 확인되지 않았다. 오히려 개봉 응답 목록에 이미 구체적인 보상 item ID가 들어와 UI가 이를 조회/표시하는 흐름이다. 따라서 type 8 CODE의 해석은 이 화면 경로가 아니라 ItemData의 다른 사용처 또는 요청/서버 응답 생성 전 단계에 남아 있다. 서버 구현은 분석 범위에서 제외한다.
 
 다음 추적은 `ItemData.get_itemPackageId @ 00df09a8`의 실제 동적 호출처와 XLua property getter 노출 여부다. OpenBox의 보유/개봉 UI는 CODE resolver의 직접 근거로 사용하지 않는다.
+
+
+### 2026-10-02 OpenBox 처리 상세 — 보유목록과 개봉결과 분리
+
+추가 기준 Listing: `research/Ghidra_Listing_txt/OP.txt`, blob SHA `b759fbf4bf1c43a02fde5e47cbd74c940fb0cb7d`.
+
+- `OpenBoxMono.ConfigBoxWidget @ 00e9ba1c`: BoxSupplyList 기반 상자 보유목록을 표시한다. 목록 항목의 `+0x10`은 보유 상자 Item ID로 사용되며 `Ali.GetExcelData<ItemData>` 조회로 이름/아이콘 UI를 구성한다.
+- `OpenBoxMono.OnOpenBox @ 00e9c81c`: 요청 결과 `Request.Res +0xD8` 목록이 존재하고 1개 이상일 때 OpenBoxShowPanel 화면으로 이동한다.
+- `OpenBoxShowPanelMono.DemandOpen @ 00e9cdbc`: 응답 목록을 패널 `+0xD0`에 저장하고, 각 결과 entry의 `+0x10` ID로 `Ali.GetBaseData`를 조회한다. star 값 등을 검사해 연출 상태를 설정한다.
+- `NormalShowEff @ 00e9e5f4`와 `WeaponShowEff @ 00e9e540`: 같은 결과 목록의 현재 index entry에서 `+0x10` ID를 읽어 각각 ItemShowNormalMono/ItemShowWeaponMono의 SetItem으로 전달한다.
+- `ShowFinish @ 00e9e6a8`: 결과 목록(`+0xD0`)을 `Ali.ShowReward`에 전달한다.
+
+**경로 분리 결론:** 보유 상자 UI는 클라이언트 ItemRecord/ItemData를 통해 상자 아이콘과 목록을 만든다. 반면 개봉 연출은 응답에 포함된 구체적인 보상 item ID 목록을 조회해 보여준다. 확인한 OpenBox 경로 어디에도 `ItemData.get_itemPackageId` 또는 type 8 CODE*VALUE를 직접 읽는 호출은 없다. 따라서 type 8의 소형 CODE lookup은 아직 다른 소비 경로에 남아 있으며, OpenBox 화면만으로 해당 CODE가 어떤 패키지/보상 테이블인지 확정할 수 없다.
