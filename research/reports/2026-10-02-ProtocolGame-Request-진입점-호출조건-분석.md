@@ -789,3 +789,16 @@ DataCenter.RequestCallback
 | Shopping | `0x34` | `+0x30/+0x34/+0x38` | int32 3개 |
 
 위 opcode와 저장 offset은 PR Listing 직접 근거로 확정했다. Mail 객체 참조의 내부 의미 및 응답 delegate target pointer는 후속 분석 대상이다.
+
+
+### 13.10 NetworkCenter +0x38 delegate 생성 및 호출 인자 재검증
+
+대상 Listing: `Alioth.S1.Net.NetworkCenter::.ctor @ 015b2f70`, `NetworkCenter.TryHandleResponse @ 015b41e0` (Git `research/Ghidra_Listing_txt/AL.txt`).
+
+- Constructor Calls OUT에 `System.Action<Int32Enum, ByteEnum, object>::.ctor @ 01911170`가 나타난다.
+- Constructor의 `015b3208–015b3234` 구간에서 Action delegate를 생성하고, `015b3240–015b324c`의 pre-index store로 NetworkCenter 인스턴스 `+0x38`에 delegate 객체를 저장한다.
+- `TryHandleResponse`의 `015b4498–015b44b8` 구간은 NetworkCenter `+0x38` delegate에서 method pointer/target을 읽어 간접 호출한다.
+- 호출 인자는 `w1=2`, `w2=[sp+0x44]`의 byte 값, `x3=x20`의 Request 객체다. 따라서 `+0x38`은 Request 하나만 받는 단순 callback이 아니라 `Action<Int32Enum, ByteEnum, object>` 형태의 3인자 delegate다.
+- 이 시그니처만으로 `DataCenter.RequestCallback(Request)`와 동일한 메서드라고 볼 수 없다. delegate target과 method pointer가 가리키는 실제 메서드 본문을 별도로 추적해야 한다.
+
+**정정:** `NetworkCenter +0x38` delegate와 `DataCenter.RequestCallback` / `Ali.DataProccessCallBack` 사이의 직접 연결은 확인되지 않았다. 현재는 NetworkCenter의 3인자 응답 이벤트 delegate와 opcode 기반 UI callback dispatcher를 별도 레이어로 유지한다.
