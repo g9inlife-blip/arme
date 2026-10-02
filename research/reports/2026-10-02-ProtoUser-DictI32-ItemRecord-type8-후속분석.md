@@ -530,3 +530,37 @@ PCAP field 35의 실제 nested 값/형태를 위 속성과 대조하면 다음 �
 - wire field 14 (length-delimited UTF-8) → Name = `g9in2`
 
 이는 서로 다른 증거 두 가지(실제 nested protobuf payload와 해당 속성 getter의 객체 offset/타입)를 교차한 결과다. 따라서 기본 5개 속성의 wire tag는 위와 같이 확정 기록한다. wire field 20/21/22/24는 현재 ProtoUser 속성명에 연결할 증거가 없어 미매핑으로 둔다. getter의 객체 offset은 wire tag가 아니며, tag 대응은 PCAP nested payload로부터 확인했다.
+
+
+## 2026-10-02 ItemRecord type 8의 Main 창고 UI 소비 경로 확정
+
+기준 Listing: `research/Ghidra_Listing_txt/DA.txt`, `WA.txt`, `AL/00e166ac_AliothExtensions__isBoxItem.txt`.
+
+- `AliothExtensions.isBoxItem @ 00e166ac`는 `BaseData.get_type`이 8, 1, 9인 경우 true.
+- `DataCenter.RefreshBoxList @ 016e6c64`는 DataCenter Items cache(+0x78)를 입력으로 받고, XLua delegate predicate(`DataCenter.<>c.<RefreshBoxList>b__89_0 @ 016ea0d4`)에서 `isBoxItem`을 적용한다.
+- 필터 결과는 `DataTool.ToListByGroup @ 016e6ecc` 및 OrderBy/ToList를 거쳐 DataCenter BoxSupplyList(+0xE8)에 저장된다.
+- `DataCenter.get_BoxSupplyTotalCount @ 016e6b58`는 BoxSupplyList 각 항목의 수량(+0x18)을 합산한다.
+- 호출자는 `HomePanelMono.RefreshWareHouse_Supply @ 00f6a2ec`, `WareHousePanelMono.RefreshPoint_Supply @ 0104d2b8`, `OpenBoxMono.RefreshUI @ 00e9b8dc`다.
+- `WareHousePanelMono.OnClickOpenBox @ 0104cd6c`는 선택 item을 가져와 ItemData를 조회하고 `isBoxItem` 재검사 후 OpenBox 화면을 연다.
+
+따라서 type 8은 단순히 분류 조건에만 들어가는 것이 아니라, 실제 Items cache → BoxSupplyList → Main Warehouse Supply 숫자 및 OpenBox 화면 진입 경로에 포함된다. 단, 이 경로는 type 8의 보유/표시를 설명할 뿐, `m_itemPackageId`의 소형 CODE를 해석하는 보상 데이터 lookup까지 증명하지 않는다.
+
+### 현재 type 8 연결 상태
+
+```text
+Bootstrap field 38 Items
+  → DataCenter Items cache (+0x78)
+  → RefreshBoxList
+  → isBoxItem(type 1 / 8 / 9)
+  → BoxSupplyList (+0xE8)
+  → get_BoxSupplyTotalCount (sum item quantity)
+  → HomePanelMono.RefreshWareHouse_Supply
+  → lbl_wareHouseBoxNum / point_wareHouse
+
+WareHousePanelMono.OnClickOpenBox
+  → selected ItemData
+  → isBoxItem 재검사
+  → OpenBox 화면
+```
+
+미확정: OpenBox 화면 내부에서 type 8의 `m_itemPackageId` CODE*VALUE를 실제 구성품/보상으로 변환하는 resolver. 다음은 `OpenBoxMono.RefreshUI @ 00e9b8dc`와 그 하위 Lua delegate 및 ItemDataWrap property 접근을 추적한다.
