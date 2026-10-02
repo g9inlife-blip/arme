@@ -2106,3 +2106,73 @@ Field 21 및 37/38/39/40/43/44/48/49/51/56은 같은 field 번호가 여러 번 
 보안/재현 주의:
 - 운영 캡처의 세션/토큰/기기 식별값을 그대로 복제하지 않는다.
 - 테스트 fixture에는 필요한 구조와 비민감한 테스트 값을 사용한다.
+
+
+## 18. Nested value schema와 Main UI 소비처 교차 확인
+
+### 18.1 반복 dictionary entry 내부 구조
+
+정상 응답의 map 계열 field는 대체로 다음 형태다.
+
+```
+OpInfo field N (wire=2, repeated)
+  └─ field 1: key (varint)
+  └─ field 2: value (length-delimited message)
+       └─ ProtoX의 실제 field들
+```
+
+field 21은 예외적으로 map entry 안의 field 2가 scalar varint다. 총 276건이며 field 1 key는 276건, field 2 value는 17건만 명시되어 있다(기본값 0 생략 가능).
+
+### 18.2 실제 nested field signature
+
+| OpInfo 후보 field | Entry 수 | value 내부 field signature |
+|---:|---:|---|
+| 35 User | 1 | 1, 3, 4, 7, 14, 20, 21, 22, 24 |
+| 37 Heros | 4 | 1, 3, 4, 5, 8, 14 |
+| 38 Items | 35 | 1, 3 |
+| 39 Weapons | 4 | 1, 3, 4, 5 |
+| 40 Equiments | 13 | 1(length-delimited), 3(varint) |
+| 43 Chapters | 61 | 1, 2, 3, 4, 9, 10, 11 |
+| 44 Sections | 4 | 1, 4, 5 |
+| 45 Teams | 1 | 1, 3, 4, 5 |
+| 48 ViewItems 후보 | 4 | 1 |
+| 49 Fashions 후보 | 291 | 1, 3, 4 |
+| 51 Quests 후보 | 66 | 1, 2, 5 |
+| 56 Activities | 2,462 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13 |
+
+위 signature는 Ghidra에 있는 Proto 타입의 실제 property 구성을 대조하기 위한 기준이다. 특히 field 56은 ProtoActivity property 구성과 일치한다.
+
+### 18.3 Field 56 = Activities 교차 검증
+
+Ghidra Listing:
+- `ProtoActivity$$get_Id @ 015ac230`
+- `ProtoActivity$$get_Status @ 015ac240`
+- `ProtoActivity$$get_Data @ 015ac2b0`
+- `ProtoActivity$$get_Expire @ 015ac290`
+- `ProtoActivity$$get_OpenTime @ 015ac250`
+- `ProtoActivity$$get_CloseTime @ 015ac260`
+- `ProtoActivity$$get_PreOpenTime @ 015ac270`
+- `ProtoActivity$$get_PreCloseTime @ 015ac280`
+- `ProtoActivity$$get_RechargeID @ 015ac2f0`
+- `ProtoActivity$$get_I320/I321/I322/I640`
+
+field 56의 value 내부 field 번호는 위 ProtoActivity 구성과 맞는다. 실제 payload에서는 field 3~7이 2,462개 entry 모두에 있고, field 9는 554개 entry에 나타난다. 나머지는 일부 entry에서만 나타나는 optional 값이다.
+
+더 중요한 점:
+- `ProtoActivity$$ToDictonary @ 015ac300` Calls IN에 `HomePanelMono$$RefreshUIBanner @ 00f6ca94`가 확인된다.
+- 같은 함수는 `ActiveShowPanelMono$$SignShowType1`, `OnClickSignIn`, `RefreshTipsPoint`에서도 호출된다.
+
+따라서 Bootstrap field 56 Activities는 단순 후속 메뉴 데이터가 아니라 **Home 배너/출석/팁 표시 경로에서 읽히는 Main UI 데이터**다.
+
+### 18.4 local server 구현 우선순위 변경
+
+정상 응답에서 확인된 cardinality와 nested schema를 기준으로 다음 순서로 비교한다.
+
+1. Field 35 User
+2. Field 21 DictI32
+3. Field 37 Heros / 38 Items / 39 Weapons / 40 Equiments
+4. Field 43 Chapters / 44 Sections / 45 Teams
+5. Field 56 Activities — HomePanel banner/sign-in 소비 경로
+6. Field 48/49/51 등 나머지 collection
+
+이제 field 3~64를 일괄 생성하는 방식은 중단한다. 실제 응답에 있는 field 번호만 대상으로 하고, 각 field의 nested value를 해당 Proto 타입 구조에 맞춰 비교한다.
