@@ -256,3 +256,37 @@ CreateBattle(
 ```
 
 두 인자의 Record 종류는 데이터 카탈로그로 확인됐지만, 메서드 인자명 자체와 내부 호출부의 값 전달은 다음 정적 추적으로 최종 확인한다.
+
+
+## 9. Runtime 관찰 hook v4.24
+
+`research/justice_hook.js`에 던전 입장 전용 관찰 hook을 추가했다.
+
+- `ReadyMono.RefreshBtnState` → `[DUNGEON_READY_STATE]`
+- `ReadyMono.ClickEnterBattle` → `[DUNGEON_READY_CLICK]`
+- `GoToBattleMono.CreateBattleBack` → `[DUNGEON_GOTO_BATTLE]`
+- `ProtocolGame_SendRequest.CreateBattle(int,int)` → `[DUNGEON_CREATE_BATTLE]`
+
+요청 계층은 기존 hook을 재사용한다.
+- `KCPTube.Send` / `[KCP_SEND_ARGS]`: Request의 SerialNumber와 OpCode
+- `NetworkCenter.TryHandleResponse`
+- `DataCenter.ProccessRequestRes`
+
+### 실행 후 확인할 로그 순서
+
+```
+[DUNGEON_READY_STATE]
+[DUNGEON_READY_CLICK]
+[DUNGEON_GOTO_BATTLE]
+[DUNGEON_CREATE_BATTLE] arg0=20000100 arg1=21000060
+[KCP_SEND_ARGS] ... OpCode=22
+[NET_RESP] ...
+[NET_RESP_STATUS] ...
+```
+
+위 순서는 기대 관찰 지점이며 실제 호출 순서를 미리 단정하지 않는다. 일부 UI 함수가 발견되지 않으면 해당 hook은 경고를 출력하고 나머지 hook 설치는 계속한다.
+
+### 실행 방법
+게임이 IL2CPP 로딩을 마친 뒤 기존 방식으로 `research/justice_hook.js`를 attach하고, 실제로 던전 입장 버튼을 한 번 눌러 로그를 수집한다. 로그에는 계정 Token/device 식별값이 포함되지 않도록 기존 민감정보 마스킹 원칙을 유지한다.
+
+현재 스크립트는 관찰 전용이며 게임 메모리나 서버 데이터를 변경하지 않는다.
