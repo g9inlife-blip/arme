@@ -996,3 +996,55 @@ PR Listing의 `QuestGetReward @ 00ddfc10` Calls IN에는 아래 네 직접 calle
 **미확정:** `DataCenter.RequestCallback`의 Calls IN에는 정적 Listing상 직접 호출자가 없다. `NetworkCenter.TryHandleResponse`에서도 이 메서드로 직접 이어지는 호출은 확인되지 않았다. 따라서 NetworkCenter `+0x38 Action`, Request.SetResponse의 XLua hook(`+0x88`), DataCenter.RequestCallback을 하나의 callback으로 합쳐 설명하지 않는다. 런타임 연결은 hook slot 대입 또는 delegate MethodInfo 복원이 필요하다.
 
 **판정:** 화면별 opcode 등록 key와 Request opcode 대응을 직접 재확인했고 QuestGetReward의 ActiveShowPanel caller를 추가했다. Dictionary 기반 UI dispatch는 확인했으나, dispatch를 시작시키는 Request lifecycle 연결은 미확정이다.
+
+
+
+### 13.16 +0x80/+0x88 callback 보유 주체 재판정 (2026-10-03)
+
+앞선 13.14에서는 두 slot이 속한 singleton의 구체 타입을 미확정으로 기록했다. 이번에는 Request의 다른 프로퍼티 accessor Listing과 동일한 전역 class metadata 참조를 비교했다.
+
+#### 동일 Request class static-fields 영역 확인
+
+다음 함수들은 공통으로 전역 참조 `0x3374000 + 0x470`을 읽고, 그 결과의 `+0xB8`을 static-fields 영역처럼 사용한다.
+
+| Request 함수 | static-fields offset | 동작 |
+|---|---:|---|
+| get_ID | +0x00 | delegate 있으면 XLua 호출, 없으면 Request +0x10 읽기 |
+| set_ID | +0x08 | delegate 있으면 XLua 호출, 없으면 Request +0x10 쓰기 |
+| get_Req | +0x50 | delegate 있으면 XLua 호출, 없으면 Request +0x30 읽기 |
+| set_Req | +0x58 | delegate 있으면 XLua 호출, 없으면 Request +0x30 쓰기 |
+| get_Res | +0x60 | delegate 있으면 XLua 호출, 없으면 Request +0x38 읽기 |
+| set_Res | +0x68 | delegate 있으면 XLua 호출, 없으면 Request +0x38 쓰기 |
+| Request::.ctor | +0x80 | delegate 있으면 생성 hook으로 위임 |
+| Request.SetResponse | +0x88 | delegate 있으면 응답 설정 hook으로 위임 |
+
+근거 Listing:
+- `015b45b4 Request.get_ID`: static-fields `+0x00`, fallback `[Request +0x10]`
+- `015b4ae4 Request.set_ID`: static-fields `+0x08`, fallback `[Request +0x10]`
+- `015b3bb4 Request.get_Req`: static-fields `+0x50`, fallback `[Request +0x30]`
+- `015b4e8c Request.set_Req`: static-fields `+0x58`, fallback `[Request +0x30]`
+- `015b4f10 Request.get_Res`: static-fields `+0x60`, fallback `[Request +0x38]`
+- `015b4f78 Request.set_Res`: static-fields `+0x68`, fallback `[Request +0x38]`
+- `015b3c1c Request::.ctor`: static-fields `+0x80`
+- `015b461c Request.SetResponse`: static-fields `+0x88`
+
+#### 판정 수정
+
+이제 +0x80/+0x88을 별도 singleton의 callback이라고 볼 근거는 없다. 두 slot은 Request의 다른 프로퍼티 XLua delegate slot들과 같은 class metadata/static-fields 참조 경로를 사용한다.
+
+따라서 현 단계의 가장 정확한 설명은 다음과 같다.
+
+- callback 보유 주체: `Alioth.S1.Net.Request` 클래스의 static-fields 영역으로 판정.
+- +0x80: Request 생성 lifecycle hook.
+- +0x88: Request 응답 설정 lifecycle hook.
+- 실제 callback 값은 해당 slot에 delegate가 설정된 경우에만 실행된다.
+- 이 delegate를 등록하는 XLua/Hotfix 초기화 주체 및 Lua측 함수는 아직 미확정이다.
+
+이는 13.14의 “별도 static/singleton 경로”를 더 구체화한 결과이며, NetworkCenter의 `+0x38 Action` 또는 화면별 `OnProccessRequestFinish` 등록 Dictionary와 동일한 callback이라는 뜻은 아니다.
+
+#### 다음 추적
+
+1. Request class static-fields에 delegate를 기록하는 XLua Hotfix/Delegate 등록 경로를 찾는다.
+2. `Request::.ctor`와 `Request.SetResponse`에 해당하는 delegate 생성/대입 코드가 Listing에 존재하는지 확인한다.
+3. 등록 코드가 없으면 LuaEnv 초기화 및 Hotfix 패치/등록 함수의 runtime hook 후보를 좁힌다.
+4. runtime에서 +0x80/+0x88의 null 여부와 delegate target을 확인해 실제 실행 경로를 확정한다.
