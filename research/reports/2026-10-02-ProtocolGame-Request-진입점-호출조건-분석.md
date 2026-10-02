@@ -455,7 +455,7 @@ Request: `ProtocolGame_SendRequest.QuestGetReward @ 00ddfc10`
 
 - Request: `ProtocolGame_SendRequest.GetShops @ 00de1dc4`
 - 화면 로딩 시 `GUIScreenLoaderS1.IsSendRequest`의 hash `0xA8A5DFAC` 및 문자열 비교가 통과하면 `AddCodeParamDic(0x33,...)` 후 GetShops 호출.
-- 응답 후처리 함수 후보로 `ShopNewPanelMono.OnGetShopBack @ 0102593c`가 확인되며, 이 함수는 `RefreshUI_Item @ 01025b3c`를 호출한다. 이 연결은 목록 응답 후 UI 갱신 경로의 근거이며, 별도 callback 등록 지점은 추가 확인 대상이다.
+- `ShopNewPanelMono.OnGetShopBack @ 0102593c`는 `RefreshUI_Item @ 01025b3c`를 호출한다. 다만 Calls IN에 `ShopNewPanelMono.OnClickBtn @ 01029a60`가 확인되므로, 현재는 상점 UI 갱신 루틴으로만 분류한다. GetShops의 네트워크 응답 callback으로 등록되는 지점은 아직 확인되지 않았다.
 
 #### Shopping
 
@@ -521,3 +521,21 @@ TaoFaPanelMono.OnClickRecive
 2. `ShopNewPanelMono.OnClickBtn` 및 callback 등록부를 확인해 GetShops / Shopping 응답 handler 연결을 확정.
 3. `MailMono`의 UIData 생성 및 응답 callback 등록부를 추적해 단건/전체 수령 인자 구조를 확정.
 4. 각 API의 `DataCenter.ProccessRequestRes` opcode 분기와 callback 실행 순서를 연결한다.
+
+
+### 11.7 우편/상점 후속 UI 경로와 통신 계층 구분
+
+#### 우편 보상 후 갱신
+
+- `MailMono.GetRewardBack @ 00f9cb40`는 `Ali.ShowReward`, `MailMono.InitMailData @ 00f9bb14`, `MailMono.RefreshMailBtn @ 00f9c3b8`를 호출한다.
+- `InitMailData`는 메일 목록을 다시 구성하며, Calls OUT에 `ProtocolGame_HttpRequest.POST_GetMailDescAll @ 00dda4c0`가 포함된다.
+- 따라서 우편 화면에는 게임 프로토콜 요청(`GetMails`, `MailGetReward`)과 별도로 메일 설명/본문 데이터를 가져오는 HTTP 요청(`POST_GetMailDescAll`)이 공존한다.
+- 이 HTTP 요청을 게임 서버의 `MailGetReward` 또는 `GetMails`와 같은 Opcode 요청으로 취급하면 안 된다.
+- `GetRewardBack`의 네트워크 callback 등록부는 아직 직접 확인하지 않았으므로, 함수명과 후속 갱신 동작을 근거로 callback 연결을 확정하지 않는다.
+
+#### 상점 UI 갱신
+
+- `ShopNewPanelMono.OnClickBtn @ 01029a60`의 Calls OUT에 `ShopNewPanelMono.OnGetShopBack @ 0102593c`가 직접 포함된다.
+- `OnGetShopBack`은 `RefreshUI_Item @ 01025b3c`를 호출한다.
+- 이 관계는 상점 버튼 처리 중 내부 UI 갱신 경로가 존재한다는 뜻이다. GetShops 응답이 이 함수로 직접 callback된다는 등록 증거는 아직 없으므로, 네트워크 response handler로 분류하지 않는다.
+- `ShopNewPanelMono.OnShoppingCallback @ 0102ac50`는 `Ali.ShowReward`, 상품 UI 갱신 함수를 호출하지만, 이번 단계에서는 Shopping 요청과 해당 callback을 연결하는 delegate 등록 지점을 확인하지 못했다. 별도 추적 대상으로 남긴다.
