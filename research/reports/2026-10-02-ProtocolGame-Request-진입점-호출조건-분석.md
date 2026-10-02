@@ -865,3 +865,45 @@ DataCenter.RequestCallback
 - `DataCenter.RequestCallback @ 016e1f44` → `Ali.DataProccessCallBack @ 00e03dd4` 경로는 별도 opcode 기반 UI callback dispatcher로 유지한다. NetworkCenter `+0x38`에서 이 dispatcher로 이어지는 직접 연결은 아직 확인되지 않았다.
 
 **이번 단계 결론:** callback wrapper의 target/method metadata 저장 방식과 화면별 opcode 등록은 확인했다. 실제 target method 주소를 확정하려면 정적 메타데이터 슬롯이 가리키는 IL2CPP MethodInfo/함수 포인터를 해석할 수 있는 메타데이터 또는 런타임 delegate dump가 추가로 필요하다.
+
+
+### 13.13 NetworkCenter 생성 delegate의 람다 후보 (2026-10-03)
+
+#### 생성자에서 확인한 구성
+
+Listing: `NetworkCenter::.ctor @ 015b2f70`
+
+- `015b3208`: static metadata slot 주소를 구성하고 `ldr x2,[x8]`로 delegate method metadata 인자를 읽는다.
+- `015b3210`: `x1=x24`로 target 객체를 전달한다.
+- `015b321c`: `x2`에 method metadata, `x3=0`을 둔 뒤 `System.Action<Int32Enum, ByteEnum, object>::.ctor @ 01911170` 호출.
+- 생성된 delegate 객체는 `015b3240–015b324c`에서 NetworkCenter 인스턴스 `+0x38`에 저장된다.
+
+#### 클래스의 생성 람다
+
+Listing: `NetworkCenter.<>c$$<.ctor>b__26_0 @ 015b484c`
+
+```asm
+015b484c  ret
+```
+
+- 클래스 내부에서 확인되는 생성 람다 `b__26_0`은 본문이 `ret` 한 줄이다.
+- 생성자 delegate 구성부의 target 객체가 `NetworkCenter.<>c` singleton 경로를 거치는 점과 시그니처/생성 흐름은 이 람다와 부합한다.
+- 다만 `015b3208`에서 읽는 static metadata slot의 런타임 값과 `b__26_0`의 MethodInfo 주소를 직접 대조하지 못했다. 따라서 이 람다가 `+0x38` delegate의 실제 target method라고 확정하지 않는다.
+
+#### 응답 완료 시 호출
+
+Listing: `NetworkCenter.TryHandleResponse @ 015b41e0`
+
+- `015b4498–015b44b8`: NetworkCenter `+0x38` delegate의 method pointer/target을 읽어 간접 호출.
+- 정상 완료 분기의 인자: `w1=2`, `w2=[sp+0x44]`의 응답 상태 byte, `x3=x20`의 Request 객체.
+- 연결 종료/실패 분기는 별도 호출 경로에서 `w1=1`을 전달한다.
+- 이 callback이 빈 람다라면 현재 Listing상 응답 완료 알림 자체는 UI 후처리를 수행하지 않는다. 다만 위 메서드 포인터 대조가 끝나기 전까지는 조건부 해석으로 남긴다.
+
+#### UI callback wrapper와의 구분
+
+- UI 등록부는 `Ali.OnProccessRequestFinish::.ctor @ 00e110fc`를 호출한다.
+- wrapper는 target 객체를 `+0x20`, method metadata/pointer를 `+0x28`에 보관하고, `Invoke @ 00e111e0`에서 `br x3`로 동적 호출한다.
+- 화면별 등록 key는 `Mail 0x2E`, `TaskNew/TrainingCamp/TaoFa 0x30`, `Shop 0x34`로 Request opcode와 대응한다.
+- 따라서 NetworkCenter `+0x38` Action과 화면별 `OnProccessRequestFinish` wrapper는 서로 다른 callback 계층이다. UI 후처리 target을 확정하려면 각 등록부가 읽는 static metadata slot의 실제 MethodInfo를 복원해야 한다.
+
+**이번 단계 판정:** NetworkCenter `+0x38` delegate의 생성/저장/호출 시그니처는 확인했다. 클래스 내 no-op 람다 후보도 찾았으나 method metadata slot과의 직접 대조는 미완료다. UI opcode callback wrapper의 실제 target method 역시 미확정으로 유지한다.
