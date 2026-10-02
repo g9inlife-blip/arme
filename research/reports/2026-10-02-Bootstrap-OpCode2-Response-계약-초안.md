@@ -534,3 +534,110 @@ Equiments   → Home/Warehouse 소비자 확인
 Weapons     → Weapon/Hero UI 소비자 확인
 User/Heros  → UpdateHeroInfo 내부 분리 추적 중
 ```
+
+
+## 15. 2026-10-02 UserInfo$$MergeVaryData 직접 추적
+
+### 15.1 핵심 수정 — +0x70이 MergeVaryData 입력
+
+DataCenter$$ProccessRequestRes @ 016e203c의 실제 Assembly를 재확인했다.
+
+```text
+016e2eb8  mov x28,x26
+016e2ebc  ldr x0,[x28,#0x70]!
+...
+016e2f38  ldr x0,[x20,#0x28]
+016e2f40  ldr x1,[x28]
+016e2f44  mov x2,xzr
+016e2f48  bl 0x00dd3030
+```
+
+따라서 정확한 호출은:
+
+```text
+OpInfo +0x70 DictI32
+  ↓
+UserInfo$$MergeVaryData @ 00dd3030
+```
+
+x1 = [x28]이고 x28 = OpInfo +0x70이므로 MergeVaryData의 두 번째 인자는 Dictionary<int,int> 계열이다.
+
+즉 이전의 `OpInfo +0x88 User → MergeVaryData` 해석은 잘못이며 폐기한다.
+
+### 15.2 MergeVaryData가 실제로 처리하는 key
+
+UserInfo$$MergeVaryData @ 00dd3030 내부에서 다음 key를 검사하고, 없으면 기존 getter 값을 유지하고 있으면 setter로 반영한다.
+
+| Key | UserInfo 상태 | 처리 |
+|---:|---|---|
+| -0xF7 (-247) | StigmataTimes | get → set |
+| -0xF6 (-246) | MetaphysicsTimes | get → set |
+| -0xF5 (-245) | Exp | get → set |
+| -0xF4 (-244) | Level | get → set |
+| -0xF1 (-241) | FCTimes | get → set |
+| -0xF3 (-243) | SignInDays | get → set |
+| -0xF2 (-242) | SignInRewardDay | get → set |
+| -0xF0 (-240) | StepId | get → set |
+| -0xEE (-238) | ExamTimes | get → set |
+| -0xE2 (-226) | EquipMax | get → set |
+| -0xE1 (-225) | ChargeTotalPerMonth | get → set |
+| -0xE0 (-224) | Age | get → set |
+| -0xDE (-222) | ChatChannel | get → set |
+
+처음 -0xF8 (-248)도 별도 분기로 StigmataTimes 조회/처리를 시작하는 구조가 확인된다. 이 부분은 후속 Assembly 구간까지 추가 대조한다.
+
+### 15.3 Main UI 연결도 확인
+
+UserInfoPanelMono$$Start @ 00f7e92c는 직접 다음 UserInfo 값을 읽는다.
+
+```text
+UserInfo$$get_Id
+UserInfo$$get_Name
+UserInfo$$get_Level
+UserInfo$$get_Exp
+```
+
+Level/Exp는 UI 텍스트 및 경험치 바 표시용으로 사용된다.
+
+따라서 Bootstrap의 +0x70 DictI32는 단순 부가 dictionary가 아니라:
+
+```text
+OpInfo +0x70 DictI32
+  ↓
+UserInfo$$MergeVaryData
+  ├─ Level
+  ├─ Exp
+  ├─ FCTimes
+  ├─ SignInDays
+  ├─ SignInRewardDay
+  ├─ StepId
+  ├─ EquipMax
+  ├─ ChargeTotalPerMonth
+  ├─ Age
+  └─ ChatChannel ...
+        ↓
+UserInfo state
+        ↓
+UserInfoPanelMono / Main UI 소비
+```
+
+로 연결된다.
+
+### 15.4 Local Server 계약에 반영할 점
+
++0x70 DictI32를 null/empty로 취급하면 UserInfo의 Level/Exp 등 초기 상태가 유지되지 않을 수 있다.
+
+따라서 현재 Bootstrap 계약에서는:
+
+- +0x70 DictI32의 key/value를 실제 응답 기준으로 수집
+- +0x88 User / +0x90 Heros는 별도 UpdateHeroInfo 경로로 계속 추적
+- UserInfo 값은 ProtoUser 필드와 DictI32 vary data를 섞어서 추정하지 않음
+
+으로 분리한다.
+
+### 15.5 다음 추적
+
+1. +0x70 runtime hook에서 실제 key/value 목록 확보
+2. ProtoUser → UpdateHeroInfo @ 016e4ba4 직접 field access 확인
+3. HomePanelMono.Start에서 UserInfo/Charge/FCTimes 등 추가 소비처 확인
+4. 실제 Bootstrap Response를 기준으로 Local Server DictI32 계약 작성
