@@ -288,3 +288,80 @@ field 21 DictI32
 1. ProtoUser의 serialized tag ↔ Id/Name/Level/Exp/HeadIcon property mapping을 확인한다.
 2. DictI32 양수 key 중 Main UI에서 참조하는 항목을 Ghidra Calls IN 및 getter와 대조한다.
 3. 다른 운영 Frida 로그의 UserInfo 실제 getter 값은 해당 로그의 Bootstrap payload와 같은 실행인 경우에만 직접 대조한다.
+
+## 12. Field 56 Activities → Main 배너 연결
+
+`research/Ghidra_Listing_txt/HO.txt`의 `HomePanelMono.Start @ 00f67adc`와 `HomePanelMono.RefreshUIBanner @ 00f6ca94`, ProtoActivity 개별 Listing을 교차 확인했다.
+
+### 12.1 Bootstrap Activity가 Main 진입 직후 사용되는 조건
+
+`HomePanelMono.Start`는 `DataCenter.IsActivityOver` 결과를 확인한다.
+
+- Activity가 만료되지 않은 경우: `HomePanelMono.Banner @ 00f6ab98` 호출 → `RefreshUIBanner @ 00f6ca94`로 이어지는 경로.
+- Activity가 만료된 경우: `ProtocolGame_SendRequest.GetActivities @ 00de1f68`를 호출해 별도 갱신 요청.
+
+따라서 Bootstrap field 56 Activities는 단순 메뉴 데이터가 아니라, **Main 진입 시 기존 Activity 상태로 배너를 바로 구성할 수 있는 초기 cache 데이터**다. 단, 만료 판정에 따라 후속 GetActivities 요청이 발생할 수 있다.
+
+### 12.2 ProtoActivity 실제 속성 offset
+
+| Field 56 nested tag | ProtoActivity property | 메모리 offset | wire 구조 |
+|---:|---|---:|---|
+| 1 | Id | +0x10 | varint |
+| 2 | Status | +0x14 | varint |
+| 3 | Data | +0x48 | nested map |
+| 4 | Expire | +0x38 | nested time object |
+| 5 | OpenTime | +0x18 | nested time object |
+| 6 | CloseTime | +0x20 | nested time object |
+| 7 | PreOpenTime | +0x28 | nested time object |
+| 8 | PreCloseTime | +0x30 | nested time object |
+| 9 | RechargeID | +0x5C | varint |
+| 10 | I320 | 별도 getter 확인 대상 | varint |
+| 11 | I321 | 별도 getter 확인 대상 | varint |
+| 13 | I640 | 별도 getter 확인 대상 | varint |
+
+근거 getter: `get_Id @ 015ac230`, `get_Status @ 015ac240`, `get_Data @ 015ac2b0`, `get_Expire @ 015ac290`, `get_OpenTime @ 015ac250`, `get_CloseTime @ 015ac260`, `get_PreOpenTime @ 015ac270`, `get_PreCloseTime @ 015ac280`, `get_RechargeID @ 015ac2f0`.
+
+### 12.3 Data nested map 변환
+
+`ProtoActivity.ToDictonary @ 015ac300` Listing은 다음을 확인해 준다.
+
+1. ProtoActivity의 `Data` 객체(+0x48)를 가져온다.
+2. `Dictionary<int, object>` enumerator로 Data 항목을 순회한다.
+3. 각 항목의 key를 유지하고 value 객체의 `+0x14` 정수값을 읽는다.
+4. 이를 `Dictionary<int, int>`에 `set_Item`으로 복사해 반환한다.
+
+운영 PCAP의 field 56에서는 Data(tag 3)가 length-delimited이고, 그 내부는 map entry `field 1 key (varint) + field 2 value (varint)` 구조로 확인됐다. 따라서 wire의 Data는 ProtoActivity 내부의 key-value 설정값이며, 클라이언트는 이를 `Dictionary<int,int>`로 변환해 UI 로직에서 사용한다.
+
+### 12.4 RefreshUIBanner 소비 확인
+
+`HomePanelMono.RefreshUIBanner`의 Calls OUT에 다음이 함께 존재한다.
+- `ProtoActivity.ToDictonary`
+- `DataCenter.IsActivityOver` 관련 cache/상태 접근
+- `Ali.GetExcelDic` 및 `BaseData` ID/icon/describe 조회
+- `HomepanelNode.spr_activityBanner`, `point_activity`, `lbl_activityTime`
+- `DateTime` 차감 및 `TimeSpan` 시간 단위 계산
+- `AutoSnapBanner` 및 배너 목록/토글 구성
+
+이로써 field 56 → ProtoActivity.Data → Dictionary<int,int> 변환 → Excel 설정/시간 상태와 결합 → Main 배너 UI 구성 흐름이 정적 Listing으로 연결된다. Data의 각 key가 어떤 배너 설정 의미인지, 특정 key별 UI 동작은 아직 확정하지 않았다.
+
+### 12.5 Main Start에서 함께 호출되는 별도 기능
+
+`HomePanelMono.Start` Calls OUT 및 Listing에서 다음이 확인된다.
+- `RefreshPoint_TaoFa @ 00f69924`
+- `RefreshPoint_Mail @ 00f69fd0`
+- `RefreshPoint_Task @ 00f6a1dc`
+- `RefreshWareHouse_Supply @ 00f6a2ec`
+- `UIRefreshCamp @ 00f6ac08`
+- 조건부 `GetActivities @ 00de1f68` 또는 `Banner @ 00f6ab98`
+
+따라서 Home Start를 하나의 Bootstrap field에 대응시키면 안 된다. Activity/Quest/Mail/Item/기타 UI cache와 Excel Master Data가 병렬로 결합된다. 특히 Task 배지는 `DataCenter.QuestHaveFinished`를 호출하며, Camp 갱신은 `DataCenter.CheckTaskStateByID`를 호출한다.
+
+### 12.6 현재 판정
+
+- **RUNTIME:** 실제 Main 실행에서 `RefreshUIBanner` 진입 확인(기존 v4.9 Frida 기준 로그).
+- **STATIC:** Home Start의 Activity 만료 분기 → Banner 또는 GetActivities 요청.
+- **STATIC:** Field 56 → ProtoActivity.Data(+0x48) → ToDictonary → Main 배너 구성.
+- **미확정:** Data map 내부 key별 업무 의미와 어떤 배너 항목이 어떤 key를 소비하는지.
+- **미확정:** 각 시간 객체의 내부 field 1/2가 seconds/nanos 등 어떤 단위 표현인지.
+
+다음은 field 56 Data key를 Activity Excel config와 연결하고, Banner에서 key별 조건을 읽는 지점을 확인한다. 이후 Quest/Mail/Supply/Camp의 Main 배지 소비 경로를 별도 표로 정리한다.
