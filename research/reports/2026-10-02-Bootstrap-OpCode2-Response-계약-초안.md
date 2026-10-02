@@ -178,3 +178,62 @@ OpInfo +0xC0
 5. 실제 Client 연결 테스트
 
 현재 단계에서는 **Full Bootstrap Response → 실제 Client 진입 검증 → 필요 시 최소화** 순서를 적용한다.
+
+
+## 9. 2026-10-02 Ghidra Listing 재확인 — ProccessRequestRes 본문 부재
+
+Git의 `research/Ghidra_Listing_txt`를 함수명 기준으로 재검색했다.
+
+### 확인
+- `DataCenter.ProccessRequestRes @ 016e203c` 자체 Listing 본문은 현재 저장소에 별도 파일로 존재하지 않는다.
+- 따라서 현재 단계에서 `ProccessRequestRes` 내부의 정확한 field 처리 순서를 Assembly로 확정할 수 없다.
+- 대신 Calls IN/기존 분석으로 다음 merge 함수 주소는 확인된다.
+
+| 대상 | RVA | 현재 근거 |
+|---|---:|---|
+| ProccessRequestRes | 016e203c | response 진입점, 본문 미확보 |
+| MergeEquip | 016e4348 | Bootstrap Equiments 관련 후보 |
+| MergeItem | 016e4700 | Items → DataCenter category cache 확정 |
+| UpdateHeroInfo | 016e4ba4 | Hero/User 상태 갱신 후보 |
+| MergeSections | 016e55dc | Section 상태 merge 관련 |
+| MergeSectionSnapShot | 016e5908 | Section snapshot merge 관련 |
+| MergeWeapon | 016e5be4 | Weapons 상태 merge 후보 |
+
+### 현재 확정 수준
+```
+OpInfo.Items
+  → ProccessRequestRes
+  → MergeItem
+  → DataCenter +0x78 category cache
+  → Warehouse UI
+```
+
+위 Items 경로는 정적+runtime으로 확정했다.
+
+반면 아래는 **응답 field → merge 함수의 직접 호출 순서까지는 미확정**이다.
+```
+User       → ?
+Heros      → UpdateHeroInfo ?
+Weapons    → MergeWeapon ?
+Equiments  → MergeEquip ?
+Sections   → MergeSections / MergeSectionSnapShot ?
+Chapters   → ?
+Teams      → ?
+Fashions   → ?
+Quests     → ?
+Charges    → ?
+Activities → ?
+```
+
+따라서 Local Server 구현을 지금 시작할 때는 위 필드들을 제거하지 않고 Full Bootstrap envelope로 유지한다.
+
+### 다음 조사 방향 변경
+
+원본 `ProccessRequestRes` 본문을 억지로 추정하지 않는다. 다음 순서로 실제 계약을 좁힌다.
+
+1. 각 merge 함수의 Listing/인자 타입/field access 확보
+2. OpInfo getter(`get_User`, `get_Heros`, `get_Weapons` 등)와 merge 함수의 연결 확인
+3. runtime hook에서 merge 함수 호출 여부를 Bootstrap 한 건으로 대조
+4. 실제 Client Main 진입을 기준으로 필수 field를 검증
+
+이 단계에서 **Full Bootstrap → Client 검증 → 필요 시 최소화** 원칙은 유지한다.
