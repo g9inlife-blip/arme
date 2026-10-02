@@ -331,3 +331,83 @@ Calls OUT에 Ali.Notify, Ali.Refresh_SysBtnConfig, DataCenter.set_EnergyNextTime
 5. MergeSectionSnapShot의 입력과 DataCenter +0x90 Section state 연결 확인
 
 이후 Local Server Bootstrap 계약을 response field → merge 함수 → DataCenter property → Main UI 소비처 형태로 확정한다.
+
+## 12. 2026-10-02 Cache → UI 소비처 재추적
+
+### 12.1 Chapters cache는 +0x48로 연결
+
+기존 Ghidra 기록에서 `DataCenter +0x48`은 다음 구조로 확인된다.
+
+```text
+DataCenter +0x48
+  ↓
+Dictionary<int, ProtoChapter>
+  ↓
+BattleMapMono.LayChapterItem @ 00e4f918
+  ↓
+ProtoChapter
+  ↓
+IsBoxReceived / Chapter UI
+```
+
+따라서 `ProccessRequestRes`의:
+
+```text
+OpInfo +0xC0 Chapters
+  → Merge<int,object> @ 017704a0
+  → DataCenter +0x48
+  → Chapter UI
+```
+
+연결은 현재 정적 분석 기준으로 확정 수준을 높일 수 있다.
+
+### 12.2 Section snapshot은 Chapter와 분리
+
+`DataCenter.MergeSectionSnapShot @ 016e5908`은 `DataCenter +0x90`의 `Dictionary<int,int>` 상태를 갱신하고, 해당 상태는 `IsSectionClear`에서 사용된다.
+
+따라서 현재 모델은:
+
+```text
+OpInfo +0xC8 Sections
+  → MergeSections @ 016e55dc
+  → Section collection cache (+0x50)
+
+별도 Section snapshot
+  → MergeSectionSnapShot @ 016e5908
+  → DataCenter +0x90
+  → IsSectionClear
+```
+
+로 분리한다.
+
+`DataCenter +0x90`을 `ProtoChapter.BoxStatus`로 연결하지 않는다.
+
+### 12.3 현재 cache 의미 확정 수준
+
+| Response | Merge | DataCenter | UI/사용처 | 상태 |
+|---|---|---|---|---|
+| Items +0x98 | MergeItem | +0x78 category cache | WarehousePanelMono | **runtime+static 확정** |
+| Weapons +0xA0 | MergeWeapon @ 016e414c | +0x40 | Weapon 계열 사용처 추가 확인 필요 | static 확정 |
+| Equiments +0xA8 | MergeEquip @ 016e4348 | +0x38 | Equip 계열 사용처 추가 확인 필요 | static 확정 |
+| Chapters +0xC0 | Merge<int,object> | +0x48 | BattleMap/Chapter UI | **static 연결 확정** |
+| Sections +0xC8 | MergeSections | +0x50 | Section UI 추가 확인 필요 | static |
+| Teams +0xD0 | Merge<int,object> | +0x58 | 사용처 추가 확인 필요 | static |
+| Shops +0xF0 | Merge<int,object> | +0x68 | Shop UI 추가 확인 필요 | static |
+| Charges +0xF8 | Merge<int,object> | +0x70 | 재화/Charge UI 추가 확인 필요 | static |
+| Quests +0xE8 | Merge<int,object> | +0x80 | Quest UI 추가 확인 필요 | static |
+| Mails +0xB0 | Merge<long,object> | +0x88 | Mail UI 추가 확인 필요 | static |
+| Section snapshot | MergeSectionSnapShot | +0x90 | IsSectionClear | **static 연결 확정** |
+
+### 12.4 다음 분석은 cache 이름 맞추기보다 Main 소비처 확인
+
+현재 Local Server 목적상 모든 DataCenter property 이름을 복원할 필요는 없다.
+
+다음 우선순위를 적용한다.
+
+1. `+0x48` Chapters → Main/Chapter 진입까지 확인
+2. `+0x40` Weapons / `+0x38` Equiments → 메인 Hero/Equip UI 소비 여부 확인
+3. `+0x68/+0x70/+0x80/+0x88` → Shop/Charge/Quest/Mail의 실제 Main 초기화 여부 확인
+4. `UpdateHeroInfo @ 016e4ba4`에서 User/Heros 분리 처리 확인
+5. 그 결과를 Bootstrap Full Response 계약에 반영
+
+현재까지는 **Items와 Chapters만 실제 UI 효과가 runtime에서 확인됐고**, 나머지는 Response→DataCenter 병합까지가 정적 확정이며 Main 필수 여부는 미확정으로 유지한다.
