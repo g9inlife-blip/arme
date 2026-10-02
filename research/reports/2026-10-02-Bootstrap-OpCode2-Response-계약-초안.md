@@ -1053,3 +1053,75 @@ Bootstrap 전체 응답
 4. Hero 무기 장착 요청은 필요 시 HeroPartEquipMono.ClickEquip부터 별도 추적
 
 현재 원칙은 Hero 내부 상세 분석보다 Bootstrap → Main 정상 진입 검증을 우선한다.
+
+## 21. Main 화면 소비처 1차 정리
+
+Bootstrap 이후 Main에서 실제로 소비되는 데이터 중 우선순위가 높은 경로를 다시 정리했다.
+
+### 21.1 EquipMax 계열
+
+HomePanelMono.Start @ 00f67adc가 다음 DataCenter getter 계열과 연결된다.
+
+- DataCenter.get_CurrentEquipMax @ 016de53c
+- DataCenter.get_NextEquipMax @ 016de648
+- DataCenter.get_EquipMax @ 016de7cc
+
+이 getter들은 ListExtensions.Last를 통해 Home 초기화 계층에서 사용된다.
+
+또한 UserInfo.MergeVaryData @ 00dd3030의 -0xE2 key가 EquipMax로 확인되어 있다.
+
+따라서 EquipMax는:
+OpInfo +0x70 DictI32 → UserInfo.MergeVaryData → EquipMax → Home UI
+라는 연결이 이미 확보된 상태다.
+
+### 21.2 Energy 계열
+
+Bootstrap ProccessRequestRes에는 set_EnergyNextTime @ 016ded44가 직접 존재한다.
+
+정적 Listing에서도 DataCenter.get_EnergyNextTime @ 016decdc가 GUI update 계층에서 사용된다.
+
+runtime에서는 UserInfo.get_Energy가 실제 호출되었고 현재 테스트에서 Energy=134가 관찰됐다.
+
+따라서 Energy는 Bootstrap 직후 Main 상태를 구성하는 실제 소비 데이터로 분류한다.
+
+### 21.3 Home UI의 추가 소비점
+
+다음 Main 소비 함수들이 확인된다.
+
+- HomePanelMono.RefreshUIBanner @ 00f6ca94
+- HomePanelMono.RefreshWareHouse_Supply @ 00f6a2ec
+- HomePanelMono.RefreshPoint_TaoFA @ 00f69924
+- HomePanelMono.RefreshWorldCup @ 00f6c094
+
+현재는 각 함수 내부를 전부 파지 않고, Bootstrap 데이터가 이미 존재하는 상태에서 Main이 어떤 값을 요구하는지 확인하는 용도로만 등록한다.
+
+### 21.4 Main Bootstrap 우선 데이터
+
+현재까지의 증거를 기준으로 Local Server의 최초 구현 검증 대상은 다음으로 좁힌다.
+
+1. UserInfo
+   - Id / Name / Level / Exp
+   - Energy
+   - EquipMax
+2. Hero
+   - Hero dictionary
+   - 최소한 Main/초기 UI가 참조하는 Hero 상태
+3. Item
+   - Bootstrap Items dictionary
+4. Weapon
+   - Bootstrap Weapons dictionary
+   - Hero.Weapon과 연결될 가능성이 있는 데이터
+5. Equipment
+   - Bootstrap Equiments dictionary
+6. Chapter / Section
+   - Main/메뉴 진입에 필요한 최소 collection
+7. Charges / Activities 등
+   - 실제 Main 소비 확인 후 필요 필드만 유지
+
+현재는 Fashions, Quests, Shops, Friends, Ranks 등의 상세 구조를 먼저 구현 대상으로 확장하지 않는다.
+
+### 21.5 현재 단계 결론
+
+Main 정상 진입에 필요한 것은 모든 Proto 구조를 완전히 복원하는 것이 아니라, Bootstrap OpCode=2에서 실제 Main이 읽는 상태를 먼저 재현하는 것이다.
+
+따라서 다음 작업은 DataCenter getter별로 실제 저장 위치와 Main 호출자를 연결하고, 그 결과를 Local Server response contract의 필수/선택 필드로 분리하는 것이다.
