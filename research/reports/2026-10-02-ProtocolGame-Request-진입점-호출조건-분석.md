@@ -300,7 +300,7 @@ Shopping @ 00de1e80
 근거 Listing:
 - `015aac5c OpInfo.get_SerialNumber`: `ldr w0,[x0,#0x10]`
 - `015aac6c OpInfo.get_OpCode`: `ldrh w0,[x0,#0x14]`
-- `015aac7c OpInfo.get_ReturnCode`: getter 주소/offset 목록에서 확인 필요
+- `015aac7c OpInfo.get_ReturnCode`: `ldr w0,[x0,#0x18]`
 - `015aad4c OpInfo.get_DictI32`: `ldr x0,[x0,#0x70]`
 - `015aad7c OpInfo.get_User`: `ldr x0,[x0,#0x88]`
 - `015aad9c OpInfo.get_Items`: `ldr x0,[x0,#0x98]`
@@ -323,11 +323,14 @@ ProtocolGame_SendRequest.<API>
   → Tube 송신
 
 Server Response:
-Tube 수신
-  → Request.SetResponse(OpInfo)
-  → CSBehaviour.Response(Commands, OpInfo)
-  → 등록 callback
-  → DataCenter.ProccessRequestRes(OpInfo)
+Tube 수신 / OpInfo 구성
+  → NetworkCenter.TryHandleResponse
+  → DataCenter.ProccessRequestRes(response OpInfo) [공유 데이터 병합 경로]
+  → Queue.Peek로 대기 Request 확인
+  → Request.ID(+0x10) == response.SerialNumber(+0x10) 비교
+  → 일치 시 Queue.Dequeue
+  → Request.SetResponse(request, response OpInfo)
+  → Request에 등록된 callback delegate
 ```
 
 따라서 OpInfo는 요청에만 쓰이는 단순 인자 묶음이 아니다. 요청과 응답 양쪽에서 쓰이는 공통 프로토콜 메시지/데이터 봉투에 가깝다. 응답에서는 ReturnCode와 User, Items, Activities, DictI32 등 결과 데이터 필드가 채워질 수 있다.
@@ -539,3 +542,77 @@ TaoFaPanelMono.OnClickRecive
 - `OnGetShopBack`은 `RefreshUI_Item @ 01025b3c`를 호출한다.
 - 이 관계는 상점 버튼 처리 중 내부 UI 갱신 경로가 존재한다는 뜻이다. GetShops 응답이 이 함수로 직접 callback된다는 등록 증거는 아직 없으므로, 네트워크 response handler로 분류하지 않는다.
 - `ShopNewPanelMono.OnShoppingCallback @ 0102ac50`는 `Ali.ShowReward`, 상품 UI 갱신 함수를 호출하지만, 이번 단계에서는 Shopping 요청과 해당 callback을 연결하는 delegate 등록 지점을 확인하지 못했다. 별도 추적 대상으로 남긴다.
+
+
+## 12. 2026-10-02 응답 처리 순서 재검증
+
+### 12.1 NetworkCenter.TryHandleResponse의 실제 순서
+
+Listing: `research/Ghidra_Listing_txt/AL/015b41e0_Alioth.S1.Net.NetworkCenter__TryHandleResponse.txt`
+
+Calls OUT 및 본문에서 확인한 순서:
+
+1. Tube 응답 목록을 순회하고 응답 OpInfo를 얻는다.
+2. 유효한 응답 객체가 확보된 경로에서 `DataCenter.ProccessRequestRes(response)`를 호출한다. 이 호출은 응답 Queue의 Request ID 대조보다 앞선다. 해당 분기에는 `w20 < 5` 조건이 있으나, w20의 의미는 아직 확정하지 않는다.
+3. 대기 Request Queue에서 `Peek`로 선두 Request를 확인한다.
+4. 응답 OpInfo의 `+0x10` SerialNumber와 Request의 `get_ID` 값을 비교한다.
+5. 두 값이 일치하면 Queue에서 Request를 `Dequeue`한다.
+6. `Request.SetResponse(request, response OpInfo)`를 호출한다.
+7. Request 객체에 보관된 callback delegate를 호출하고 마지막 활성 시간을 갱신한다.
+
+### 12.2 SerialNumber 비교의 근거
+
+- 응답: `TryHandleResponse`에서 response 객체의 `+0x10` 값을 읽는다.
+- Request: `Request.get_ID @ 015b45b4`는 `ldr w0,[x19,#0x10]`으로 ID를 반환한다.
+- 비교: `TryHandleResponse @ 015b4460-015b4470`에서 두 값을 비교하고 불일치하면 Dequeue/SetResponse로 진행하지 않는다.
+- 일치한 경우에만 Queue.Dequeue 후 `Request.SetResponse @ 015b461c`가 실행된다.
+
+즉 SerialNumber는 응답과 요청을 연결하는 상관관계 값이며, Queue 선두 Request와 일치해야 해당 Request의 완료 callback이 실행된다.
+
+### 12.3 Request.SetResponse의 역할
+
+Listing: `research/Ghidra_Listing_txt/AL/015b461c_Alioth.S1.Net.Request__SetResponse.txt`
+
+- `Request.SetResponse(request, OpInfo)`는 Request의 `Res`에 응답 OpInfo를 설정한다.
+- 이어서 현재 시간을 얻어 `FinishAt`을 설정한다.
+- 그 다음 TryHandleResponse가 Request 내부 callback delegate를 호출한다.
+- 현재 TryHandleResponse의 Calls OUT에는 `CSBehaviour.Response`라는 직접 함수 호출이 표시되지 않는다. 등록 callback의 실제 target이 CSBehaviour.Response인지 여부는 delegate 등록 지점을 확인하기 전까지 확정하지 않는다.
+
+### 12.4 DataCenter.ProccessRequestRes의 역할
+
+Listing: `research/Ghidra_Listing_txt/DA.txt`, `DataCenter.ProccessRequestRes @ 016e203c`
+
+- 첫 번째 인자(OpInfo)를 x26에 보관하고 여러 응답 필드/컬렉션을 처리한다.
+- Calls OUT에 다음 데이터 병합/갱신 함수가 포함된다.
+  - `UserInfo.MergeVaryData`
+  - `DataCenter.MergeItem`
+  - `DataCenter.MergeEquip`
+  - `DataCenter.MergeWeapon`
+  - `DataCenter.MergeSections`
+  - `DataCenter.MergeSectionSnapShot`
+  - `DataCenter.UpdateHeroInfo`
+  - `DataCenter.Merge<int,object>`, `Merge<object,object>`, `Merge<long,object>`
+- 따라서 이 함수는 개별 UI 버튼의 완료 callback이라기보다 응답 OpInfo에 담긴 공통/도메인 데이터를 전역 DataCenter 및 UserInfo 상태에 반영하는 중앙 병합 단계로 분류한다.
+- 응답의 모든 필드가 매번 존재한다고 가정하지 않는다. 실제 함수에는 null/length/타입 조건 분기가 다수 존재한다.
+
+### 12.5 전역 완료 callback 등록 API
+
+Listing: `DataCenter.RegisterDataProccessCallBack @ 016e68b0`
+
+- 이 함수는 `DataCenter.add_OnProccessRequestFinish`를 호출해 전역 완료 이벤트에 delegate를 추가한다.
+- Calls IN에는 XLua wrapper가 표시된다. 현재 정적 Listing만으로 실제 Lua 코드의 등록 시점이나 등록 delegate의 의미는 알 수 없다.
+- 따라서 이 전역 이벤트와 개별 Request 객체의 callback delegate는 별도 개념으로 유지한다. 실제 연결 여부는 후속 추적 대상이다.
+
+### 12.6 서버 구현에 반영할 순서
+
+```text
+응답 수신
+  → OpInfo 복원
+  → DataCenter 공통 데이터 병합
+  → 대기 Request 선두의 ID와 SerialNumber 비교
+  → 일치 시 Dequeue
+  → Request.Res / FinishAt 설정
+  → Request별 callback 실행
+```
+
+이 순서는 기존 9.2 절의 응답 흐름을 대체한다. 특히 DataCenter 병합이 Request별 callback보다 먼저 실행된다는 점을 서버 구현 순서에 반영한다.
