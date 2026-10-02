@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.22
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.24
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -679,7 +679,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.22 starting...');
+    console.log('[*] justice_hook v4.24 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -1777,7 +1777,66 @@ function inspectChaptersDictionary(dictPtr) {
         } else console.log('[!] OpInfo.get_Chapters not found');
     } catch (e) { console.log('[!] OpInfo.Chapters hook failed: ' + e.message); }
 
-    console.log('[*] justice_hook v4.23');
+    // v4.24: dungeon entry path correlation. Log only UI entry points and
+    // CreateBattle's two scalar arguments; KCP_SEND_ARGS already records OpInfo
+    // SerialNumber/OpCode, and the existing response hooks observe the reply.
+    try {
+        const specs = [
+            ['ReadyMono', 'RefreshBtnState', 'DUNGEON_READY_STATE'],
+            ['ReadyMono', 'ClickEnterBattle', 'DUNGEON_READY_CLICK'],
+            ['GoToBattleMono', 'CreateBattleBack', 'DUNGEON_GOTO_BATTLE']
+        ];
+        for (const spec of specs) {
+            const ms = findMethodsAnywhereByName(spec[0], spec[1]);
+            if (!ms.length) {
+                console.log('[!] ' + spec[0] + '.' + spec[1] + ' not found');
+                continue;
+            }
+            for (const m of ms) {
+                console.log('[+] Hooking ' + spec[0] + '.' + spec[1] +
+                    '(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+                Interceptor.attach(m.fnPtr, {
+                    onEnter(args) {
+                        const a1 = m.paramCount > 0 ? String(args[1]) : '-';
+                        const a2 = m.paramCount > 1 ? String(args[2]) : '-';
+                        console.log('[' + spec[2] + '] this=' + args[0] +
+                            ' arg0=' + a1 + ' arg1=' + a2);
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch (e) {
+        console.log('[!] Dungeon UI hook setup failed: ' + e.message);
+    }
+
+    try {
+        const ms = findMethodsAnywhereByName('ProtocolGame_SendRequest', 'CreateBattle');
+        if (!ms.length) console.log('[!] ProtocolGame_SendRequest.CreateBattle not found');
+        for (const m of ms) {
+            console.log('[+] Hooking ProtocolGame_SendRequest.CreateBattle(' +
+                m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+            if (m.paramCount !== 2 ||
+                m.typeNames[0] !== 'System.Int32' ||
+                m.typeNames[1] !== 'System.Int32') {
+                console.log('[!] CreateBattle signature differs; scalar hook skipped');
+                continue;
+            }
+            Interceptor.attach(m.fnPtr, {
+                onEnter(args) {
+                    const chapterArg = args[0].toInt32() >>> 0;
+                    const missionArg = args[1].toInt32() >>> 0;
+                    console.log('[DUNGEON_CREATE_BATTLE] arg0=' + chapterArg +
+                        ' arg1=' + missionArg);
+                }
+            });
+            hookCount++;
+        }
+    } catch (e) {
+        console.log('[!] CreateBattle hook setup failed: ' + e.message);
+    }
+
+    console.log('[*] justice_hook v4.24');
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
     console.log('[*] Look for [TOKEN_SAVE], [TOKEN_GET], [TOKEN_COMPARE], [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
