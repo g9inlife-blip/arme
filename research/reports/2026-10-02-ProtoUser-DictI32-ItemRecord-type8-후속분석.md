@@ -943,3 +943,20 @@ Git의 PCAP 변환 데이터 `research/PCAP/로그인_출석_퀘스트_우편_�
 현재 확보한 ProtoUser getter의 native 객체 offset은 Id=+0x10, Level=+0x1C, Exp=+0x20, HeadIcon=+0x2C, Name=+0x30이다. 위 PCAP에서는 실제 protobuf wire tag를 확인했지만, 이 값만으로 getter 속성과 tag를 일대일 대응시키지는 않는다. 특히 이번 메시지의 값(871047, 4, 250, 18100000, g9in2)은 이전 런타임 로그(Id=871053, Level=53, Exp=1100)와 다른 관측값이므로 동일 계정/동일 상태로 간주하지 않는다.
 
 현재 PCAP 변환 파일에서 field 35가 존재하는 메시지는 1건뿐이다. 따라서 ProtoUser의 wire tag 존재 여부는 확인했으나, 필드 의미 매핑은 다른 응답/런타임 setter·parser 추적을 추가로 확보해야 한다.
+
+
+## 2026-10-02 추가 추적 — type 8 box 분류에서 창고/오픈 화면까지
+
+기준 Listing: `research/Ghidra_Listing_txt/AL/00e166ac_AliothExtensions__isBoxItem.txt`, `DA.txt`, `WA.txt`.
+
+- `AliothExtensions.isBoxItem @ 00e166ac`는 전달된 ItemData의 `BaseData.get_type`을 읽어 type 8이면 true, 아니면 type 1 또는 9인지 검사한다. XLua delegate가 등록된 경우에는 native 분기 대신 delegate 호출로 빠질 수 있다.
+- `DataCenter.RefreshBoxList @ 016e6c64`는 DataCenter Items cache(+0x78)를 가져와 `DataCenter.<>c.<RefreshBoxList>b__89_0 @ 016ea0d4` predicate로 필터링한다. predicate는 ItemData 수량(+0x18)이 1 이상인지 먼저 확인한 뒤 `isBoxItem`을 호출한다.
+- 필터 결과는 `DataTool.ToListByGroup @ 016e6ecc`, OrderBy, ToList를 거쳐 DataCenter BoxSupplyList(+0xE8)에 저장된다.
+- `DataCenter.get_BoxSupplyTotalCount @ 016e6b58`는 BoxSupplyList의 각 ItemData 수량(+0x18)을 합산한다. 호출자는 `HomePanelMono.RefreshWareHouse_Supply @ 00f6a2ec`, `WareHousePanelMono.RefreshPoint_Supply @ 0104d2b8`이며, `OpenBoxMono.RefreshUI @ 00e9b8dc`에서도 RefreshBoxList가 호출된다.
+- `WareHousePanelMono.OnClickOpenBox @ 0104cd6c`는 선택 항목을 얻은 뒤 item ID(+0x10)로 ItemData를 조회하고 `isBoxItem`을 다시 검사한다. true인 경우 선택 항목을 전달하는 Action을 구성해 화면 전환(`GUIScreenManager.ShowScreen @ 0167a614`) 경로로 진행한다.
+
+**해석:** ItemRecord type 8은 `Items cache → BoxSupplyList → Main Warehouse Supply 수량 표시` 및 창고의 오픈 화면 진입 경로에 실제로 포함된다. 따라서 type 8은 클라이언트에서 상자/개봉 가능 항목으로 취급되는 것이 확인된다. 다만 이 경로만으로 `m_itemPackageId`의 `CODE*VALUE`를 해석하는 보상 lookup까지 연결되지는 않는다. OnClickOpenBox Listing에서는 ItemData의 item ID를 통한 ExcelData 조회와 type 검사까지 확인했으며, m_itemPackageId getter 직접 호출은 확인하지 못했다.
+
+## 2026-10-02 ProtoUser wire tag 후속 메모
+
+PCAP packet group 192~201의 OpInfo field 35 내부 메시지는 1건이며 nested tag는 `1, 3, 4, 7, 14, 20, 21, 22, 24`다. 관측값은 tag1=871047, tag3=4, tag4=250, tag7=18100000, tag14=`g9in2`, tag20=3, tag21=3, tag22=10, tag24=1. 현재 값의 형태상 tag1/3/4/7/14가 각각 Id/Level/Exp/HeadIcon/Name 후보와 잘 부합하지만, 이 PCAP만으로 확정하지 않는다. Native getter offset은 별도 객체 레이아웃이며 protobuf tag와 동일한 숫자 체계가 아니다. 현재 변환 데이터에서 field35 메시지가 1건뿐이므로 setter/parser 또는 다른 세션 응답과 대조해야 한다.
