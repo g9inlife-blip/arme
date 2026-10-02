@@ -616,3 +616,48 @@ OpenBox 요청
 - `ShowFinish @ 00e9e6a8`: 결과 목록(`+0xD0`)을 `Ali.ShowReward`에 전달한다.
 
 **경로 분리 결론:** 보유 상자 UI는 클라이언트 ItemRecord/ItemData를 통해 상자 아이콘과 목록을 만든다. 반면 개봉 연출은 응답에 포함된 구체적인 보상 item ID 목록을 조회해 보여준다. 확인한 OpenBox 경로 어디에도 `ItemData.get_itemPackageId` 또는 type 8 CODE*VALUE를 직접 읽는 호출은 없다. 따라서 type 8의 소형 CODE lookup은 아직 다른 소비 경로에 남아 있으며, OpenBox 화면만으로 해당 CODE가 어떤 패키지/보상 테이블인지 확정할 수 없다.
+
+
+### 2026-10-02 PCAP 실측 추가 — OpInfo field 21 / ProtoUser field 35
+
+기준 원본: `research/PCAP/로그인_출석_퀘스트_우편_토벌_던전_상자_무기제작_강화_kcp/messages.json` (blob SHA `5a9f8f12466c2a14fb3769b376f96b6eebc8dfc4`). 이 파일은 65개 레코드이며, 대상 응답은 패킷 192~201 묶음이다. protobuf 트리에서 field 21의 map entry 276개와 field 35의 nested message 1개를 확인했다.
+
+#### field 21 map 실측
+
+- 276개 entry 중 양수 key 263개, 음수 key 13개.
+- 음수 key와 값: `-29=79`, `-27=1`, `-28=94`, `-23=0`, `-22=0`, `-18=15`, `-20=0`, `-33=0`, `-34=1`, `-36=3`, `-30=0`, `-31=0`, `-32=27`.
+- 음수 key는 protobuf int64 varint를 signed 64-bit로 해석해 복원했다. 기존 JSON 변환본의 숫자 필드는 64-bit 정밀도를 잃을 수 있어, 원본 `prefix_hex`의 varint 바이트를 기준으로 판정했다.
+- 양수 key 대부분은 21xxxxxx / 218xxxxx / 948xxxxx / 982xxxxx 계열이다. 따라서 이 field 21은 음수 상태 key뿐 아니라 다수의 양수 ID key도 담는 map 구조다.
+- 앞선 정적 분석에서 확인한 `UserInfo.MergeVaryData` 소비 key 중 이번 응답에 실제로 나타난 것은 `-18,-30,-31,-32,-34`다. 이번 값은 기존 PCAP 기록의 값(ExamTimes 15, EquipMax 0, ChargeTotalPerMonth 0, Age 27, ChatChannel 1)과 일치한다.
+- `-27=1`은 HomePanelMono의 메일 뱃지 소비와 수치상 연결 후보지만, 해당 UI 경로가 읽는 DataCenter 캐시 Dictionary(+0xC0)와 OpInfo field21의 동일 객체 여부는 아직 입증되지 않았다. `-28=94`, `-29=79`, `-36=3`도 소비처 미확정이다.
+
+#### field 35 nested ProtoUser 실측
+
+field 35 payload (offset 2520, length 33):
+`08879535180420fa0138a0ded00872056739696e32a00103a80103b0010ac00101`
+
+nested protobuf tag:
+- tag 1 / wire 0 = 871047
+- tag 3 / wire 0 = 4
+- tag 4 / wire 0 = 250
+- tag 7 / wire 0 = 18100000
+- tag 14 / wire 2 = UTF-8 문자열 `g9in2`
+- tag 20 / wire 0 = 3
+- tag 21 / wire 0 = 3
+- tag 22 / wire 0 = 10
+- tag 24 / wire 0 = 1
+
+ProtoUser native property 접근자는 별도 Listing에서 확인:
+- Id: getter/setter 모두 객체 +0x10
+- Level: +0x1C
+- Exp: +0x20
+- HeadIcon: +0x2C
+- Name: +0x30
+
+tag 1의 871047은 User 식별자 형태이며 tag 14의 문자열은 Name 속성 후보로 볼 수 있다. 다만 tag 3/4/7/20/21/22/24와 Level/Exp/HeadIcon의 대응은 아직 확정하지 않았다. 객체 메모리 offset(+0x1C 등)은 protobuf wire tag가 아니므로 offset 숫자만으로 tag를 매핑하지 않는다. 실제 ProtoUser parser/serializer의 tag 처리 또는 런타임 setter 추적이 다음 확인 대상이다.
+
+#### 다음 추적
+
+1. ProtoUser의 생성/역직렬화 parser에서 tag 3/4/7/20/21/22/24가 쓰는 setter 확인.
+2. DictI32의 미확정 key -29/-28/-27/-23/-22/-20/-33/-36 소비처를 UI 및 XLua 경로에서 역추적. 특히 HomePanel의 -27은 객체 출처를 분리 검증.
+3. ItemData.get_itemPackageId(+0x90)의 XLua wrapper 및 동적 호출처 검색은 별도 유지. 이번 PCAP은 ItemRecord type 8 CODE resolver를 직접 입증하지 않는다.
