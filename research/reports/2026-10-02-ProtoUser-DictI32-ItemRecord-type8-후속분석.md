@@ -903,3 +903,22 @@ PCAP field 35 내부 tag 7의 값 18100000은 Git 원본 HeadiconRecord.json의 
 - **-12 / levelisup**: ProccessRequestRes에서 DataCache.set_levelisup(1)을 호출한다. DataCache.get_levelisup의 Calls IN에는 RepressMono.ClickCloseRepress @ 00e65be0가 확인되며, 이 함수는 flag가 true일 때 GUIScreenManager.ShowScreen을 호출한다. UserLevelUpMono.CloseLevelUp @ 00f1bf98는 같은 flag를 0으로 초기화하고, UserLevelUpMono.ShowUpInfo @ 00f1bdb0는 UserInfo.get_Level을 읽어 new-level 텍스트에 표시한다.
 
 현재 확인 범위에서 -12는 레벨업 표시를 위한 상태 flag로 이어지고, -11은 전투 승리 경험치 연출의 이전 Exp 값으로 소비된다. RepressMono의 ShowScreen 인스턴스가 UserLevelUpMono 화면으로 연결되는 마지막 타입 식별은 추가 확인 대상으로 남긴다.
+
+
+### 2026-10-02 후속 실측 — field 21 양수 key의 Record 교차 대조
+
+PCAP 원본 hex의 varint를 BigInt로 재해석한 field 21의 양수 key 263개를 Git 원본 JSON과 exact ID join했다.
+
+| 분류 | PCAP 양수 key 수 | 교차 근거 |
+|---|---:|---|
+| MissionRecord ID | 247 | MissionRecord.json MissionTable의 XOR 복원 m_id와 exact 일치 |
+| GuidenoviceRecord group | 10 | GuidenoviceRecord.json의 m_group와 exact 일치 |
+| Sysconf system key | 5 | SysconfRecord의 m_key=system / m_value JSON key와 exact 일치 |
+| 미분류 | 1 | 94800066 — 현재 위 세 집합과 불일치 |
+
+세부 확인:
+- MissionRecord: 682개 중 PCAP 양수 key 247개가 exact match. 예: 21000010, 21100000, 21800000. 이 map의 값은 1 또는 field 2 생략(기본값 처리 대상)으로 나타난다. 의미를 진행도/완료 상태로 확정하려면 소비 함수 추적이 더 필요하다.
+- GuidenoviceRecord: 98200100, 98200300, 98200320, 98200400, 98200500, 98200630, 98200910, 98201110, 98201200, 98201300 등 10개 group이 일치한다. 이 엔트리들은 field 2가 생략된 상태다.
+- Sysconf system: PCAP에서 94800035=1, 94800016=1, 94800067=1, 94800069=-1, 94800071=-1이 확인되어 SysconfRecord의 system map과 5개 exact match. Sysconf 원본의 94800025는 이번 PCAP에 없고, 대신 94800066이 나타났으나 현재 원본에서 exact 정의를 찾지 못했다.
+
+따라서 field 21은 단순 Item ID/count 전용 map으로 볼 수 없다. 실제로 MissionRecord ID, Guide group, Sysconf system flag, 음수 special key가 함께 들어 있는 heterogeneous DictI32 상태 map이다. 서버 handoff의 'Items' 분류는 wire entry 모양만으로 붙인 상위 추정으로 보고, 클라이언트 OpInfo +0x70 DictI32 및 원본 Record ID join 결과를 우선한다. 다만 각 양수 key를 실제 UI 상태로 소비하는 런타임 경로는 별도 확인한다.
