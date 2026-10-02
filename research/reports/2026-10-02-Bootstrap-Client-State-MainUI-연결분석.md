@@ -902,3 +902,30 @@ Function: FUN_00e5c2a0 @ 00e5c2a0
 - 미확정: `SetEnemyHero`의 실제 source 객체/Request.Res field.
 
 다음은 `GO.txt`의 실제 Listing 원본을 확보하거나, Ghidra export 단계에서 `00e5baf8` 함수 본문을 재생성해 **SetEnemyHero → x20 source Dictionary → HeroInfo.InitHero** 연결을 직접 확인하는 것이다.
+
+
+## 18.7 GoToBattleMono 전투 진입 Runtime Hook 보강 (2026-10-03)
+
+기준 파일: `research/justice_hook.js` (v4.26)
+
+기존 v4.25의 dungeon hook은 `ReadyMono.ClickEnterBattle`, `GoToBattleMono.CreateBattleBack` 등의 진입만 기록했고, 함수 종료 및 인자 타입별 객체 정보는 충분히 남기지 않았다. 이번 변경은 기존 파일을 보존한 채 버전을 v4.26으로 올리고 다음 Hook을 통합했다.
+
+- `ReadyMono.RefreshBtnState`
+- `ReadyMono.ClickEnterBattle`
+- `ProtocolGame_SendRequest.CreateBattle`
+- `GoToBattleMono.CreateBattleBack`
+- `GoToBattleMono.SetEnemyHero`
+
+각 메서드는 설치 시 실제 parameter type과 return type을 출력한다. 실행 시 `_ENTER`에서 this 객체의 runtime class와 인자별 타입/값을 기록하고, `_LEAVE`에서 반환값 및 실행 시간을 기록한다. 문자열은 IL2CPP string reader, primitive는 값, reference는 객체 class와 주소만 기록하며 임의의 전체 객체/메모리 덤프는 하지 않는다.
+
+### 로그 판독 기준
+
+- `DUNGEON_READY_CLICK_ENTER` 없음: 버튼 클릭 경로에 진입하지 않았거나 해당 메서드 Hook이 설치되지 않은 상태.
+- `DUNGEON_CREATE_BATTLE_ENTER` 없음: 클릭 이후 CreateBattle 송신 함수 진입을 확인하지 못한 상태.
+- `DUNGEON_GOTO_BATTLE_ENTER` 없음: CreateBattle 응답 처리 함수 진입을 확인하지 못한 상태.
+- `DUNGEON_SET_ENEMY_HERO_ENTER` 없음: SetEnemyHero 진입을 확인하지 못한 상태.
+- 각 메서드의 `_ENTER`만 있고 `_LEAVE`가 없으면 예외/비정상 흐름 또는 프로세스 종료 가능성을 별도로 확인한다.
+
+주의: Hook 설치 성공은 실제 호출 증거가 아니다. 또한 GitHub API에서 `research/Ghidra_Listing_txt/GO.txt`가 빈 content로 반환되어 이 API 응답만으로 Listing 파일의 로컬 내용/존재 여부를 단정하지 않는다. `SetEnemyHero @ 00e5baf8` 주소와 함수 본문은 별도 Listing 확인이 필요하며, 이번 Hook은 런타임에서 클래스/메서드 이름으로 탐색한다. 이름 검색 실패 시 로그에 `not found`가 남으므로 실행 결과로 확인한다.
+
+다음 단계: ARM64 실기기에서 기존과 동일한 전투 진입 동작을 한 번 수행하고, `DUNGEON_.*_(ENTER|LEAVE)` 로그를 수집해 클릭 → 요청 → 응답 처리 → Hero 설정 순서를 대조한다.
