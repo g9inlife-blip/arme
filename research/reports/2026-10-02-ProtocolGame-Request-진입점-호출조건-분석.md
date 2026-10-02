@@ -156,3 +156,115 @@ Request 생성:
 - 화면 진입 요청과 사용자의 기능 실행 요청을 구분한다.
 - XLua wrapper Calls IN은 Lua 노출 근거이지, 특정 Lua 스크립트에서 실제 호출했다는 증거는 아니다.
 - 요청 생성 함수의 존재만으로 서버 구현 우선순위를 확정하지 않고, caller 및 사용자 기능 흐름을 확인한다.
+
+
+## 부록 A. OpInfo::.ctor Calls IN에서 확인한 Request 생성 함수 98개
+
+아래는 Listing에 나타난 함수명과 RVA 원문 인벤토리다. 이름만으로 실제 활성 API나 호출 조건을 판정하지 않는다.
+
+```text
+FriendDelete @ 00de0e58
+UnlockFashion @ 00ddf484
+UpgradeWeapon @ 00ddf614
+WeaponLevelUp @ 00de304c
+SpaceBaseGetReward @ 00de1228
+WeaponReset @ 00de27cc
+MailGetReward @ 00de01c4
+GetBattleReport @ 00de1ab8
+Login @ 00dde818
+CreateBatle4Friend @ 00de17bc
+CreateBattle @ 00dded04
+GetSupportHeroRank @ 00de3890
+CreateBattle4SpaceBase @ 00de12e4
+SupportHeroShow @ 00de37d4
+GetShop4Box @ 00de1d08
+SwitchWeapon @ 00ddf058
+BuyCrusadeLevel @ 00de2dec
+GetExamMyGroupRank @ 00de1884
+GetExam @ 00de1638
+EquipUpgrade @ 00ddfe74
+GetActivities @ 00de1f68
+UnlockHero @ 00ddf120
+SpaceBaseGet @ 00de10b0
+EquipSplit @ 00ddfda0
+GetActivitySubReward @ 00de21b4
+GetCrusadeAward @ 00de2eb4
+ExploreFloorSwapLocation @ 00de2634
+GetShops @ 00de1dc4
+SweepBattle @ 00ddede0
+FriendFind @ 00de0b2c
+FriendRecommend @ 00de0f20
+SpaceBaseRefresh @ 00de116c
+Reported @ 00de33b8
+StigmaLoadAndUnload @ 00ddf890
+Logout @ 00de3ac4
+ExploreFloorGet @ 00de227c
+AutoSignIn @ 00de08ec
+FriendReject @ 00de0d90
+SupportHeroByFree @ 00de3548
+LevelUpHero @ 00ddf7a4
+GetChapterBoxReward @ 00ddeea8
+CloseBattle @ 00ddef84
+GetExamTotalRank @ 00de1940
+EquipExpand @ 00de2ba0
+GetSupportUserHeroRank @ 00de3a08
+WearFashion @ 00ddf3bc
+StarUpHero @ 00ddf6dc
+SupportHeroByItem @ 00de3684
+SaveTeam @ 00ddeb40
+Equip @ 00ddf1e8
+UpgradeStigma @ 00ddfb34
+RaiseEquip @ 00de00f0
+GetSections @ 00ddea78
+AgreeCharge @ 00de156c
+DestroyKey @ 00de2d24
+OpenMisBox @ 00de05c4
+GetMailOlds @ 00de2ae4
+GetSupportUserRank @ 00de394c
+StigmataCompound @ 00ddf97c
+GetTotalReward @ 00de09a8
+GetFriends @ 00de0a70
+CreateChargeOrder @ 00de0824
+CreateBatle4Exam @ 00de1700
+FriendAgree @ 00de0cc8
+SignInHolidays @ 00de2024
+ForgeEquip @ 00ddfcd8
+ChangeChatChannle @ 00de3480
+SendWorldChat @ 00de3138
+WeaponForge @ 00ddf54c
+ShopRefresh @ 00de20ec
+GetExamFriendRank @ 00de19fc
+ShieldAdd @ 00de3228
+ExploreFloorReward @ 00de2578
+FriendChallenge @ 00de0fe8
+CodeExchange @ 00de0428
+SetHeadIcon @ 00de04fc
+Ping @ 00dde904
+GetTeam @ 00ddec48
+ChargeEnergy @ 00de06a0
+ExploreFloorRefresh @ 00de2710
+FriendRequest @ 00de0c00
+EquipBatchSplit @ 00ddff48
+StigmataSplit @ 00ddfa58
+ShieldDel @ 00de32f0
+QuestGetReward @ 00ddfc10
+CreateBattle4FC @ 00de143c
+CreateBattle4ExploreFloor @ 00de24bc
+HeroSaveAIStrategy @ 00de2894
+ExploreFloorEnter @ 00de2338
+CostAKey @ 00de2c5c
+GetRecharges @ 00de0768
+GetMails @ 00de0298
+ExploreFloorChoose @ 00de23f4
+SetNickName @ 00de0354
+SaveGuideNovice @ 00de1b74
+ChapterRead @ 00de2a1c
+EquipLockUnlock @ 00de001c
+Shopping @ 00de1e80
+```
+
+### 부록 판정
+
+- 위 목록은 Request 함수 후보 inventory이며, 기능명 기준의 임시 분류만 가능하다.
+- Chat 관련 `ChangeChatChannle`, `SendWorldChat`는 현재 Local Server 조사 우선순위에서 제외한다.
+- 다음 단계에서 각 함수의 Calls IN을 따라 실제 진입 화면/버튼/콜백/XLua 경로를 분류한다.
