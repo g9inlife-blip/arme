@@ -859,3 +859,21 @@ ProtoUser setter Listing을 개별 확인해 getter offset을 교차 검증했�
 - 따라서 앞서 정리한 +0x10/+0x1C/+0x20/+0x30은 getter뿐 아니라 setter에서도 교차 확인된다. 하지만 setter에는 protobuf wire field 번호가 나타나지 않는다.
 - 동일 PCAP JSON 전체 65개 메시지 레코드를 확인한 결과, field 35 중첩 payload는 1건뿐이다. 따라서 현재 캡처만으로는 field 번호와 Id/Level/Exp/Name을 값 대조하는 다중 표본 분석이 불가능하다.
 - 현재 field35 payload에서 확인되는 건 field1=871047, field14=`g9in2` 등 wire 원시값뿐이다. field1=Id 또는 field14=Name이라는 가설은 유력 후보로만 두고 확정하지 않는다.
+
+
+### 2026-10-02 후속 실측 — DictI32 음수 key 실제 분기 상수 재수집
+
+`DataCenter.ProccessRequestRes @ 016e203c`의 전체 Listing에서 `mov w1,#...` 상수를 추출해 signed 32-bit로 변환했다. 이 함수에서 확인된 key 상수는 `-11, -12, -23, -27, -28, -29, -34, -36`이다. 이 함수에서 -22/-20/-33은 직접 key 상수로 사용되지 않는다.
+
+추가로 분기 본문을 확인한 내용:
+
+- **-11**: key 존재 시 UserInfo.get_Exp를 읽어 DataCache.set_m_lastUserExp에 저장한 뒤 UserInfo.MergeVaryData를 실행한다.
+- **-12**: key 존재 시 DataCache.set_functionSwitcher(1)을 호출한다. 이후 UserInfo.Level 값에 따라 UI/기능 분기가 이어진다. 해당 key의 정수 value 자체를 읽는 코드는 이 분기 초입에서 확인되지 않아 존재 여부 기반 trigger로 기록한다.
+- **-23**: key 존재 검사를 통과하면 후속 알림 처리 분기로 이어진다. 현재 Listing Calls OUT에 Ali.Notify가 존재하나, 호출 인자와 이벤트 이름의 정확한 대응은 추가 추적 대상이다.
+- **-27**: key/value를 DataCenter 객체 +0xC0의 Dictionary에 기록하는 분기다. HomePanel mail badge 소비와 연결된다.
+- **-28**: key value를 초 단위로 DateTime.AddSeconds 처리한 뒤 DataCenter.set_EnergyNextTime에 전달한다.
+- **-29**: GamePlayerInfomation.set_CheckAssetsRandomInt_New 분기로 이어진다.
+- **-34**: DataCenter.set_ChatChannel.
+- **-36**: DataCenter.set_SupportCVTimes.
+
+주의: 이 함수에 key 상수로 나타나는지와 프로젝트 전체에서 사용되는지는 별개다. -22/-20/-33은 이 함수에 상수가 없다는 사실만 확인했으며, 전체 미사용으로 결론내리지 않는다.
