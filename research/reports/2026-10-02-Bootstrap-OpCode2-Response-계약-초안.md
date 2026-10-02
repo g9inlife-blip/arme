@@ -1681,9 +1681,7 @@ ShowCoin은 이 목록을 순회해 각 항목에 대해:
 
 ### 25.1 Sysconf Record ID와 호출 key 대조 보류
 
-원본 Sysconf Record의 암호화된 `m_id.hiddenValue=95315272`, `currentCryptoKey=444444`이므로 현재 데이터 형식의 복호화 규칙을 적용한 ID는 `94870828`이다.
-
-반면 `ShowCoin`의 `Ali.GetExcelData<object>` Listing에서 전달되는 key 상수는 `0x05A8AD54 = 94940500`이다.
+원본 Sysconf Record의 `m_id.hiddenValue=95315272`, `currentCryptoKey=444444`를 XOR로 복원하면 **94940500**이다. 이는 `ShowCoin`의 `Ali.GetExcelData<object>` Listing에서 전달되는 key 상수 `0x05A8AD54 = 94940500`과 정확히 일치한다. 따라서 이 Sysconf Record와 호출 key는 ID 기준으로 연결된다.
 
 두 값이 일치하지 않는다. 따라서 앞서 찾은 `个人信息货币显示` Sysconf 항목은 **상단 재화 표시와 값 목록이 일치하는 관련 설정**이지만, 현재 Listing의 GetExcelData가 이 Record를 직접 읽는다고 확정할 수 없다. 다른 Excel lookup 경로 또는 별도 변환이 있는지 추가 확인한다.
 
