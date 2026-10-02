@@ -702,9 +702,9 @@ Listing: `ShopNewPanelMono.Awake @ 010285d4` (`SH.txt`)
 
 | Request | 직접 UI caller | 응답 callback key | Request payload |
 |---|---|---:|---|
-| MailGetReward | MailMono.ClickGetMail / ClickAllMail | 0x2E 유력 후보 | caller 인자는 확인, OpInfo offset 미확정 |
-| QuestGetReward | TrainingCamp / TaskNew / TaoFa 보상 클릭 | 0x30 유력 후보 | caller 인자는 확인, OpInfo offset 미확정 |
-| Shopping | ShopConfirmTipsMono.OnClickOK | 0x34 확인(기존 Request Listing 근거) | u32 3개: +0x30/+0x34/+0x38 |
+| MailGetReward | MailMono.ClickGetMail / ClickAllMail | 0x2E 직접 확인 | 관리 객체 참조: OpInfo +0x28 |
+| QuestGetReward | TrainingCamp / TaskNew / TaoFa 보상 클릭 | 0x30 직접 확인 | int32: OpInfo +0x30 |
+| Shopping | ShopConfirmTipsMono.OnClickOK / BoxShopMonoNew.SendBuyBox | 0x34 직접 확인 | int32 3개: +0x30/+0x34/+0x38 |
 | GetMails | 화면 로더 자동 요청 | 별도 화면/공용 callback 경로 추가 확인 필요 | 무인자 요청으로 기존 분류, 본문 재검증은 보류 |
 | GetShops | 화면 로더 자동 요청 | 0x34/0x5C와 별개인지 확인 필요 | 무인자 요청으로 기존 분류, 본문 재검증은 보류 |
 
@@ -757,3 +757,35 @@ DataCenter.RequestCallback
 - Ghidra Calls IN은 delegate 기반 호출을 누락할 수 있으므로 Calls IN이 비어 있다는 사실만으로 callback이 아니라고 판단하지 않는다.
 - 반대로 callback key와 같은 클래스에 있다는 사실만으로 delegate target이 확정되는 것도 아니다. 정확한 delegate method pointer가 복원되기 전까지는 "후처리 후보"로 기록한다.
 - 특히 TrainingCampPanelMono의 `QuestGetRewardBack`은 함수명과 보상 표시/화면 갱신 동작이 0x30 등록 및 QuestGetReward 호출과 일관된다.
+
+
+### 13.9 PR.txt 본문 재확보 및 Request payload 확정 (2026-10-03)
+
+#### 파일 확인 정정
+- GitHub main의 `research/Ghidra_Listing_txt/PR.txt` 크기: **2,796,159 bytes**. Blob SHA: `67cdea09bf6a252864b6e6a7b7d4eb270167c111`.
+- 일반 fetch는 대용량 본문을 빈 문자열로 반환했으나 Git blob endpoint에서 Listing 원문을 확보했다. 과거의 “PR.txt 0 byte” 기록은 폐기한다.
+
+#### MailGetReward @ 00de01c4
+- `mov x19,x0`로 첫 인자 보존, `OpInfo::.ctor` 호출 후 `str x19,[x0,#0x28]!`로 OpInfo `+0x28`에 저장.
+- `mov w8,#0x2e`와 `sturh w8,[x0,#-0x14]`의 주소 계산 결과 OpInfo `+0x14`에 opcode `0x2E` 저장.
+- 따라서 payload는 32-bit ID가 아니라 첫 번째 관리 객체 참조 1개다. 객체 내부 식별자의 의미는 caller/객체 구조 추가 확인이 필요하다.
+
+#### QuestGetReward @ 00ddfc10
+- `mov w19,w0`로 첫 인자 32-bit 값을 보존.
+- `strh w8,[x20,#0x14]` (w8=`0x30`)으로 opcode `0x30` 저장.
+- `str w19,[x20,#0x30]`으로 int32 payload 1개를 OpInfo `+0x30`에 저장.
+
+#### Shopping @ 00de1e80
+- `mov w21,w0`, `mov w20,w1`, `mov w19,w2`로 인자 3개를 각각 32-bit로 보존.
+- `strh w8,[x22,#0x14]` (w8=`0x34`)으로 opcode `0x34` 저장.
+- `stp w21,w20,[x22,#0x30]` 및 `str w19,[x22,#0x38]`로 int32 3개를 `+0x30/+0x34/+0x38`에 저장.
+- Calls IN에는 `ShopConfirmTipsMono.OnClickOK @ 0102408c` 외에 `BoxShopMonoNew.SendBuyBox @ 00e9a0a0`도 있다.
+
+#### 확정된 Request 계약
+| Request | Opcode | OpInfo payload | 타입/개수 |
+|---|---:|---|---|
+| MailGetReward | `0x2E` | `+0x28` | 관리 객체 참조 1개 |
+| QuestGetReward | `0x30` | `+0x30` | int32 1개 |
+| Shopping | `0x34` | `+0x30/+0x34/+0x38` | int32 3개 |
+
+위 opcode와 저장 offset은 PR Listing 직접 근거로 확정했다. Mail 객체 참조의 내부 의미 및 응답 delegate target pointer는 후속 분석 대상이다.
