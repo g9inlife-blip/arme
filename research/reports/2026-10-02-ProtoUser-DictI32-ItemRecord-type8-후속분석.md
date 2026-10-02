@@ -960,3 +960,62 @@ Git의 PCAP 변환 데이터 `research/PCAP/로그인_출석_퀘스트_우편_�
 ## 2026-10-02 ProtoUser wire tag 후속 메모
 
 PCAP packet group 192~201의 OpInfo field 35 내부 메시지는 1건이며 nested tag는 `1, 3, 4, 7, 14, 20, 21, 22, 24`다. 관측값은 tag1=871047, tag3=4, tag4=250, tag7=18100000, tag14=`g9in2`, tag20=3, tag21=3, tag22=10, tag24=1. 현재 값의 형태상 tag1/3/4/7/14가 각각 Id/Level/Exp/HeadIcon/Name 후보와 잘 부합하지만, 이 PCAP만으로 확정하지 않는다. Native getter offset은 별도 객체 레이아웃이며 protobuf tag와 동일한 숫자 체계가 아니다. 현재 변환 데이터에서 field35 메시지가 1건뿐이므로 setter/parser 또는 다른 세션 응답과 대조해야 한다.
+
+
+## 2026-10-02 추가 추적 — MergeVaryData getter의 실제 native 소비자 감사
+
+### 1. signed 32-bit 정정 재검증
+
+Git의 `research/Ghidra_Listing_txt/US.txt`에서 `UserInfo$$MergeVaryData @ 00dd3030` 원문 Listing을 다시 확인했다.
+
+첫 분기:
+```asm
+00dd30cc  adrp x21,0x3326000
+00dd30d0  mov w1,#0xfffffff7
+00dd30d4  mov x0,x20
+00dd30d8  ldr x2,[x22]
+00dd30dc  ldr x21,[x21, #0x678]
+00dd30e0  bl 0x01924ee8
+```
+
+`w1`은 32-bit 값이므로 `0xfffffff7`의 signed 해석은 `-9`다. 이어지는 Dictionary ContainsKey/get_Item도 동일 key를 사용한다. 따라서 이 분기는 StigmataTimes(-9)이며 -247이 아니다.
+
+현재 Git의 Bootstrap 보고서 15.2절은 이미 이 정정과 13개 key 표를 반영하고 있다. 이번 확인에서 해당 절의 잘못된 -247 표기는 발견되지 않았다. 이후 같은 표기를 다른 문서에서 발견하면 별도 정정한다.
+
+### 2. UserInfo getter Calls IN으로 native 소비처 확인
+
+`US.txt`의 각 getter Listing에서 Calls IN을 확인했다. 아래는 native Listing에 노출된 직접 caller이며, XLua wrapper는 Lua 노출 경로로 별도 표기했다.
+
+| DictI32 key | UserInfo property | native Calls IN에서 확인된 소비자 | 현재 판정 |
+|---:|---|---|---|
+| -9 | StigmataTimes | MergeVaryData 외 native caller 미확인 | XLua 노출 확인, Lua 소비처 미확정 |
+| -10 | MetaphysicsTimes | MergeVaryData 외 native caller 미확인 | XLua 노출 확인, Lua 소비처 미확정 |
+| -11 | Exp | UserInfoPanelMono.Start, MenuPanelMono.UpdateUserLv, BattleEndWinPanelMono.PlayExpUp, DataCenter.ProccessRequestRes | Main/UI 및 전투 결과 소비 확인 |
+| -12 | Level | UserInfoPanelMono.Start, MenuPanelMono.UpdateUserLv, Home/Task/Guide/조건 판정 등 다수 | Main/UI 및 게임 조건 소비 확인 |
+| -15 | FCTimes | MergeVaryData 외 native caller 미확인 | XLua 노출 확인, Lua 소비처 미확정 |
+| -13 | SignInDays | CheckInMono.LayCheckItem, Refresh, CheckTopTotal | 출석 UI 소비 확인 |
+| -14 | SignInRewardDay | CheckInMono.RefreshData callback, CheckTopTotal | 출석 UI 소비 확인 |
+| -16 | StepId | MergeVaryData 외 native caller 미확인 | XLua 노출 확인, Lua 소비처 미확정 |
+| -18 | ExamTimes | MergeVaryData 외 native caller 미확인 | XLua 노출 확인, Lua 소비처 미확정 |
+| -30 | EquipMax | DataCenter.get_EquipMaxHaveNext / get_NextEquipMax / get_EquipMax / get_CurrentEquipMax | 장비 한도 계산 경로 소비 확인 |
+| -31 | ChargeTotalPerMonth | Ali.isMonthShopLimit | 월간 충전 한도 판정 소비 확인 |
+| -32 | Age | Ali.GetRechargeLimit, Ali.ShowCharge | 충전 제한/표시 경로 소비 확인 |
+| -34 | ChatChannel | MergeVaryData 외 native caller 미확인 | XLua 노출 확인, Lua 소비처 미확정 |
+
+### 3. 해석상 주의점
+
+- Calls IN이 XLua wrapper뿐인 getter는 C# native 소비자가 없다는 뜻까지만 확인된다. Lua script에서 읽을 수 없다는 뜻은 아니다.
+- `-9/-10/-15/-16/-18/-34`는 getter와 XLua 노출까지 확인됐으나, 실제 Lua 스크립트 소비처는 현재 Git Listing으로 확인되지 않았다.
+- `Exp/Level`은 Main UI뿐 아니라 전투 종료 후 경험치 처리 및 게임 진행 조건에도 사용된다.
+- `SignInDays/SignInRewardDay`는 CheckInMono 호출자로 출석 화면 경로가 직접 확인된다.
+- `EquipMax/ChargeTotalPerMonth/Age`는 각각 장비 한도와 충전 제한 로직에 소비된다. 이 소비 관계는 해당 UserInfo 값이 DictI32에서 병합된다는 사실과 연결되지만, 실제 값의 갱신 시점/화면 반영은 runtime 대조가 남아 있다.
+
+### 4. 이번 단계 결론
+
+MergeVaryData의 13개 key 중 최소 7개 property는 native 호출자 수준에서 구체적인 기능 소비처가 확인됐다. 나머지 6개는 XLua 노출 경계까지만 확인됐다. 이는 미분류 field 21 key 8종(`-20/-22/-23/-27/-28/-29/-33/-36`)의 의미를 설명하는 근거는 아니므로 두 그룹을 계속 분리한다.
+
+### 5. 다음 추적
+
+1. XLua script/실행 hook에서 StigmataTimes, MetaphysicsTimes, FCTimes, StepId, ExamTimes, ChatChannel property read를 검색한다.
+2. field 21 미분류 8개 key는 해당 key를 직접 받는 Dictionary 소비 함수가 확인될 때까지 의미를 붙이지 않는다.
+3. ProtoUser type 8 CODE lookup 추적은 별도 트랙으로 유지한다.
