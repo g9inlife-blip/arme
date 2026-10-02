@@ -2176,3 +2176,40 @@ field 56의 value 내부 field 번호는 위 ProtoActivity 구성과 맞는다. 
 6. Field 48/49/51 등 나머지 collection
 
 이제 field 3~64를 일괄 생성하는 방식은 중단한다. 실제 응답에 있는 field 번호만 대상으로 하고, 각 field의 nested value를 해당 Proto 타입 구조에 맞춰 비교한다.
+
+
+## 19. Field 56 Activities 내부 tag → ProtoActivity property 대응
+
+정상 PCAP의 field 56 각 map value를 다시 집계하고 Ghidra `ProtoActivity` getter 목록과 대조했다.
+
+| nested tag | ProtoActivity property | wire | 출현 수 |
+|---:|---|---:|---:|
+| 1 | Id | 0 | 13 |
+| 2 | Status | 0 | 2,449 |
+| 3 | Data | 2 | 2,462 |
+| 4 | Expire | 2 | 2,462 |
+| 5 | OpenTime | 2 | 2,462 |
+| 6 | CloseTime | 2 | 2,462 |
+| 7 | PreOpenTime | 2 | 2,462 |
+| 8 | PreCloseTime | 0 | 1 |
+| 9 | RechargeID | 2 | 554 |
+| 10 | I320 | 0 | 1 |
+| 11 | I321 | 0 | 1 |
+| 12 | I322 | - | 0 |
+| 13 | I640 | 0 | 1 |
+
+이 대응은 다음 Ghidra getter와 일치한다.
+- `ProtoActivity.get_Id @ 015ac230`
+- `get_Status @ 015ac240`
+- `get_Data @ 015ac2b0`
+- `get_Expire @ 015ac290`
+- `get_OpenTime @ 015ac250`
+- `get_CloseTime @ 015ac260`
+- `get_PreOpenTime @ 015ac270`
+- `get_PreCloseTime @ 015ac280`
+- `get_RechargeID @ 015ac2f0`
+- `get_I320/I321/I322/I640 @ 015ac2c0/015ac2d0/015ac2e0/015ac2a0`
+
+특히 field 3(Data)는 모든 2,462개 entry에 존재한다. field 4~7도 모든 entry에 존재하지만 단순 varint가 아닌 nested length-delimited 구조다. 따라서 local serializer는 이 네 필드를 scalar timestamp로 임의 변환하지 말고, 실제 nested wire 구조를 보존해야 한다.
+
+이제 field56은 단순히 '반복 Activities 목록'이 아니라 **ProtoActivity의 13개 property tag와 각 wire type/cardinality가 확인된 응답 구조**로 취급한다.
