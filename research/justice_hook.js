@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.25
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login + Battle Path Hook Script v4.26
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -679,7 +679,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.25 starting...');
+    console.log('[*] justice_hook v4.26 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -1777,14 +1777,27 @@ function inspectChaptersDictionary(dictPtr) {
         } else console.log('[!] OpInfo.get_Chapters not found');
     } catch (e) { console.log('[!] OpInfo.Chapters hook failed: ' + e.message); }
 
-    // v4.24: dungeon entry path correlation. Log only UI entry points and
-    // CreateBattle's two scalar arguments; KCP_SEND_ARGS already records OpInfo
-    // SerialNumber/OpCode, and the existing response hooks observe the reply.
+    // v4.26: trace the GoToBattleMono response-to-hero path.
+    // Reference arguments are described by runtime class only; no arbitrary object dump.
     try {
+        function describeBattleArg(arg, typeName) {
+            try {
+                if (typeName === 'System.String') return readIl2cppString(arg);
+                if (typeName === 'System.Boolean') return String(arg.toInt32() !== 0);
+                if (/System\.(SByte|Byte|Int16|UInt16|Int32|UInt32|Int64|UInt64)$/.test(typeName))
+                    return String(arg);
+                if (/System\.(Single|Double)$/.test(typeName)) return String(arg);
+                return describeObjectPtr(arg);
+            } catch (e) {
+                return '<arg read failed: ' + e.message + '>';
+            }
+        }
         const specs = [
             ['ReadyMono', 'RefreshBtnState', 'DUNGEON_READY_STATE'],
             ['ReadyMono', 'ClickEnterBattle', 'DUNGEON_READY_CLICK'],
-            ['GoToBattleMono', 'CreateBattleBack', 'DUNGEON_GOTO_BATTLE']
+            ['ProtocolGame_SendRequest', 'CreateBattle', 'DUNGEON_CREATE_BATTLE_METHOD'],
+            ['GoToBattleMono', 'CreateBattleBack', 'DUNGEON_GOTO_BATTLE'],
+            ['GoToBattleMono', 'SetEnemyHero', 'DUNGEON_SET_ENEMY_HERO']
         ];
         for (const spec of specs) {
             const ms = findMethodsAnywhereByName(spec[0], spec[1]);
@@ -1793,21 +1806,33 @@ function inspectChaptersDictionary(dictPtr) {
                 continue;
             }
             for (const m of ms) {
+                let returnType = '?';
+                try { returnType = api.type_get_name(api.method_get_return_type(m.method)).readCString(); } catch (e) {}
                 console.log('[+] Hooking ' + spec[0] + '.' + spec[1] +
-                    '(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+                    '(' + m.typeNames.join(', ') + ') -> ' + returnType + ' @ ' + m.fnPtr);
                 Interceptor.attach(m.fnPtr, {
                     onEnter(args) {
-                        const a1 = m.paramCount > 0 ? String(args[1]) : '-';
-                        const a2 = m.paramCount > 1 ? String(args[2]) : '-';
-                        console.log('[' + spec[2] + '] this=' + args[0] +
-                            ' arg0=' + a1 + ' arg1=' + a2);
+                        this.battleThis = args[0];
+                        this.battleStartedAt = Date.now();
+                        const values = [];
+                        for (let i = 0; i < m.paramCount; i++) {
+                            values.push('arg' + i + ':' + m.typeNames[i] + '=' +
+                                describeBattleArg(args[i + 1], m.typeNames[i]));
+                        }
+                        console.log('[' + spec[2] + '_ENTER] this=' +
+                            describeObjectPtr(args[0]) + ' ' + values.join(' '));
+                    },
+                    onLeave(retval) {
+                        console.log('[' + spec[2] + '_LEAVE] this=' +
+                            describeObjectPtr(this.battleThis) + ' return=' + retval +
+                            ' elapsedMs=' + (Date.now() - this.battleStartedAt));
                     }
                 });
                 hookCount++;
             }
         }
     } catch (e) {
-        console.log('[!] Dungeon UI hook setup failed: ' + e.message);
+        console.log('[!] Battle path hook setup failed: ' + e.message);
     }
 
     try {
@@ -1836,7 +1861,7 @@ function inspectChaptersDictionary(dictPtr) {
         console.log('[!] CreateBattle hook setup failed: ' + e.message);
     }
 
-    // v4.25: Main/Home UI consumers only. Battle/dungeon hooks are omitted.
+    // v4.26: retain Main/Home UI consumers alongside explicit dungeon-path tracing.
     try {
         const specs = [
             ['HomePanelMono', 'Start', 'MAIN_HOME_START'],
