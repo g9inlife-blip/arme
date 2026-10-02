@@ -895,3 +895,11 @@ Ghidra Listing 전체 Git 검색에서 signed key의 32-bit 상수 표기를 교
 PCAP field 35 내부 tag 7의 값 18100000은 Git 원본 HeadiconRecord.json의 실제 레코드 ID와 일치한다. 해당 레코드는 m_id.hiddenValue=18016060, currentCryptoKey=444444이며 XOR 복원값은 18100000이고, m_icon은 headIcon_18100000이다. ProtoUser.set_HeadIcon은 객체 +0x2C에 저장한다.
 
 따라서 tag 7 → ProtoUser.HeadIcon은 단순 값 형태 추정이 아니라 원본 HeadiconRecord ID 및 setter와 교차 확인된 매핑으로 확정한다. tag 3/4는 Level/Exp 후보로 유지하며, tag 20/21/22/24는 미매핑이다.
+
+
+### 2026-10-02 후속 실측 — -11/-12의 후속 UI 소비처
+
+- **-11 / m_lastUserExp**: DataCenter.ProccessRequestRes에서 UserInfo.get_Exp 값을 DataCache.set_m_lastUserExp에 저장한다. DataCache.get_m_lastUserExp의 Calls IN에는 BattleEndWinPanelMono.<PlayExpUp>d__39.MoveNext @ 00e77cfc가 확인된다. 따라서 이 값은 전투 승리 후 경험치 상승 연출 경로에서 읽힌다.
+- **-12 / levelisup**: ProccessRequestRes에서 DataCache.set_levelisup(1)을 호출한다. DataCache.get_levelisup의 Calls IN에는 RepressMono.ClickCloseRepress @ 00e65be0가 확인되며, 이 함수는 flag가 true일 때 GUIScreenManager.ShowScreen을 호출한다. UserLevelUpMono.CloseLevelUp @ 00f1bf98는 같은 flag를 0으로 초기화하고, UserLevelUpMono.ShowUpInfo @ 00f1bdb0는 UserInfo.get_Level을 읽어 new-level 텍스트에 표시한다.
+
+현재 확인 범위에서 -12는 레벨업 표시를 위한 상태 flag로 이어지고, -11은 전투 승리 경험치 연출의 이전 Exp 값으로 소비된다. RepressMono의 ShowScreen 인스턴스가 UserLevelUpMono 화면으로 연결되는 마지막 타입 식별은 추가 확인 대상으로 남긴다.
