@@ -1677,3 +1677,14 @@ ShowCoin은 이 목록을 순회해 각 항목에 대해:
 1. Sysconf Record의 m_id 및 `0x05A8AD54` 연결을 확인한다.
 2. 8개 ID를 ItemRecord/ResourcesRecord와 대조해 UI 표시명·아이콘·종류를 확인한다.
 3. 최신 runtime에서 ShowCoin 실제 반복 횟수와 8개 항목의 표시 여부를 확인한다.
+
+
+### 25.1 Sysconf Record ID와 호출 key 대조 보류
+
+원본 Sysconf Record의 암호화된 `m_id.hiddenValue=95315272`, `currentCryptoKey=444444`이므로 현재 데이터 형식의 복호화 규칙을 적용한 ID는 `94870828`이다.
+
+반면 `ShowCoin`의 `Ali.GetExcelData<object>` Listing에서 전달되는 key 상수는 `0x05A8AD54 = 94940500`이다.
+
+두 값이 일치하지 않는다. 따라서 앞서 찾은 `个人信息货币显示` Sysconf 항목은 **상단 재화 표시와 값 목록이 일치하는 관련 설정**이지만, 현재 Listing의 GetExcelData가 이 Record를 직접 읽는다고 확정할 수 없다. 다른 Excel lookup 경로 또는 별도 변환이 있는지 추가 확인한다.
+
+ItemRecord 원본에서 ID 43000001/2/3은 확인됐다. 반면 43000004/5, 43230000, 43600000, 43000017은 현재 ItemRecord에서 발견되지 않았다. 이 5개는 ItemRecord에 없다는 사실만 기록하며, 다른 Record/외부 Master Data에서 제공되는지 미확정으로 둔다.
