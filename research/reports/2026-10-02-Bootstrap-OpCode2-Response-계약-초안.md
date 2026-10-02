@@ -411,3 +411,46 @@ OpInfo +0xC8 Sections
 5. 그 결과를 Bootstrap Full Response 계약에 반영
 
 현재까지는 **Items와 Chapters만 실제 UI 효과가 runtime에서 확인됐고**, 나머지는 Response→DataCenter 병합까지가 정적 확정이며 Main 필수 여부는 미확정으로 유지한다.
+## 13. 2026-10-02 Main UI 소비처 추가 확인
+
+### 13.1 Equipment 계열은 Main 진입과 직접 연결된 증거 확보
+
+`HomePanelMono.Start @ 00f67adc`가 `DataCenter.get_EquipMax @ 016de7cc`, `get_NextEquipMax @ 016de648`, `get_CurrentEquipMax @ 016de53c` 계열과 연결된 Listing이 확인된다.
+
+따라서 Bootstrap의 `Equiments (+0xA8) → MergeEquip → DataCenter +0x38` 상태는 단순 후속 메뉴용 데이터로만 볼 수 없다. Main 초기화 경로에서 Equipment 관련 DataCenter 상태가 참조된다.
+
+다만 getter 내부에서 정확히 `+0x38`을 읽는 Assembly는 현재 별도 Listing 검색에서 확보되지 않았으므로, `+0x38` 자체와 각 getter의 1:1 대응은 다음 단계에서 직접 확인한다.
+
+### 13.2 EquipMax는 Warehouse와도 연결
+
+`WareHousePanelMono` 계열에서 `DataCenter.get_EquipMax @ 016de7cc` 호출이 확인된다.
+
+즉 Equipment 상태는:
+
+```text
+Bootstrap Equiments
+  → MergeEquip
+  → DataCenter Equipment state
+  ├─ HomePanelMono.Start
+  └─ WareHousePanelMono 계열
+```
+
+로 소비되는 경로가 존재한다.
+
+### 13.3 DataCenter singleton 접근 계층 확인
+
+`Ali.get_dataManager @ 00e0277c`의 Calls IN에 `ProccessRequestRes`, `UpdateHeroInfo`, `MergeItem`, `MergeEquip`, `MergeWeapon`, `MergeSectionSnapShot`, `ShopNewPanelMono.ConfigShopContents` 등이 함께 존재한다.
+
+이는 이 함수들이 동일 DataCenter singleton을 공유한다는 것을 뒷받침한다. 단, Calls IN 목록만으로 각 함수가 동일 cache offset을 직접 읽는다고 해석하지 않는다.
+
+### 13.4 현재 우선순위 조정
+
+현재까지 Main/UI 소비 근거가 가장 명확한 것은:
+
+```text
+Items      → Warehouse      [runtime + static]
+Chapters   → Chapter UI     [static]
+Equiments  → Home/Warehouse [static 소비자 존재]
+```
+
+다음은 `Weapons (+0x40)`와 `UpdateHeroInfo(User/Heros)`를 먼저 추적하고, 이후 Shop/Charge/Quest/Mail을 확인한다.
