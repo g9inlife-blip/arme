@@ -1241,3 +1241,24 @@ Energy
 다음은 `DataCenter.GetXCount(0x029020C3)`의 실제 데이터 저장/병합 경로를 추적한다.
 
 동시에 `HomePanelMono.Start @ 00f67adc`의 직접 getter 호출 목록을 확정해, 위 User 값 중 실제 Bootstrap 직후 필요한 값과 단순 다른 화면 소비값을 분리한다.
+
+
+## 24. 2026-10-02 Main 재화 3종의 ItemRecord / GetXCount 연결
+
+UserInfo getter Assembly와 Unity ItemRecord 분석을 대조해 Main 재화 ID를 정리했다.
+
+| 재화 | UserInfo getter | GetXCount itemId | 10진수 ItemRecord ID |
+|---|---|---:|---:|
+| Coins | `get_Coins @ 00dd2d8c` | `0x029020C1` | `43000001` |
+| Crystals | `get_Crystals @ 00dd2e34` | `0x029020C2` | `43000002` |
+| Energy | `get_Energy @ 00dd2ce4` | `0x029020C3` | `43000003` |
+
+세 getter 모두 `DataCenter.GetXCount(itemId, 0, 0)`를 호출한다. 따라서 Coins도 UserInfo의 고정 필드가 아니라 Item 상태를 조회하는 값으로 취급한다.
+
+Git의 `09_record_samples.json`에서 세 ID 모두 `ItemRecord.json` Record이며, 아이콘은 각 ID에 대응하는 `item_4300000X`다. SysconfRecord의 개인 정보 재화 표시 설정에도 세 ID가 포함된다.
+
+`DataCenter.MergeItem @ 016e4700`와 `GetXCount @ 016defb0`는 모두 `BaseData +0x24`의 type을 기준으로 ItemType bucket을 선택한다. 현재 Listing에서 확인한 분기는 type `0x1F → bucket 2`, `0x22 → bucket 0`, `0x41 → bucket 1`이다.
+
+단, Record sample의 `baseDataType=0`과 runtime `BaseData.type`의 직접 매핑, 그리고 각 재화 ID의 실제 bucket은 아직 runtime에서 확인하지 않았다. 이 둘을 동일하다고 추정하지 않는다.
+
+따라서 Main Bootstrap fixture에서는 세 재화를 `UserInfo` 내부 숫자 필드로 별도 구성하지 않고, `OpInfo.Items → MergeItem → ItemType bucket → GetXCount` 경로로 구성한다. 실제 Bucket/Count는 다음 runtime 로그로 확정한다.
