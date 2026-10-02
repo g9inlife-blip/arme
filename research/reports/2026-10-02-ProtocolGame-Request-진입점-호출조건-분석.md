@@ -733,7 +733,7 @@ DataCenter.RequestCallback
 
 - PR Listing에서 `MailGetReward`, `QuestGetReward`, `Shopping`의 opcode 및 payload 대입 offset을 확인했다(13.9 참조).
 - UI caller에서 얻는 값은 다음과 같다.
-  - Mail 단건: UIData 내부 객체의 `+0x10` 32-bit 값을 Request 인자로 전달
+  - Mail 단건: `BaseMono.GetUIData` → `UIData.get_data` → data 객체의 `+0x10`에서 포인터 크기 참조를 읽어 Request 인자로 전달
   - Mail 전체: Mail 관련 전역 객체 참조를 첫 인자로 전달
   - Quest/Task/TaoFa: UIData payload 객체의 첫 32-bit 값을 Request 인자로 전달
   - TrainingCamp: UserInfo Dictionary의 key를 조건 충족 시 Request 인자로 전달
@@ -802,3 +802,14 @@ DataCenter.RequestCallback
 - 이 시그니처만으로 `DataCenter.RequestCallback(Request)`와 동일한 메서드라고 볼 수 없다. delegate target과 method pointer가 가리키는 실제 메서드 본문을 별도로 추적해야 한다.
 
 **정정:** `NetworkCenter +0x38` delegate와 `DataCenter.RequestCallback` / `Ali.DataProccessCallBack` 사이의 직접 연결은 확인되지 않았다. 현재는 NetworkCenter의 3인자 응답 이벤트 delegate와 opcode 기반 UI callback dispatcher를 별도 레이어로 유지한다.
+
+
+### 13.11 MailGetReward caller 인자 타입 재확인
+
+대상 Listing: `MailMono.ClickGetMail @ 00f9c9e0`, `MailMono.ClickAllMail @ 00f9caac` (`MA.txt`).
+
+- 단건 수령은 `BaseMono.GetUIData` 호출 후 `UIData.get_data @ 00eace88`를 호출한다. 반환 객체의 `+0x10`에서 `ldr x0`로 64-bit 포인터 크기 값을 읽어 `MailGetReward` 첫 번째 인자로 전달한다.
+- 전체 수령은 전역 정적 참조에서 객체 포인터를 `ldr x0,[x8]`로 읽어 `MailGetReward` 첫 번째 인자로 전달한다.
+- `MailGetReward @ 00de01c4`는 그 첫 인자를 `str x19,[x0,#0x28]!`로 OpInfo `+0x28`에 그대로 저장한다.
+
+**정정:** 단건 우편의 `UIData.data +0x10` 값은 Listing상 `ldr x0`로 읽는 포인터 크기 값이다. 이전의 “32-bit 값” 표기는 잘못됐으므로 폐기한다. 현재 근거로는 Mail 객체 참조로 판단하지만, 참조 대상의 구체 클래스명과 내부 ID 필드는 별도 확인이 필요하다.
