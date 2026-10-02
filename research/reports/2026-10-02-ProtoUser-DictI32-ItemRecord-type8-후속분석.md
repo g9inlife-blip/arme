@@ -418,3 +418,23 @@ IT.txt에서 ItemData.get_itemPackageId @ 00df09a8은 객체 +0x90 참조를 반
 
 정정: 기존 미분류 key 7개(-29/-28/-23/-22/-20/-33/-36) 중 -29/-28/-36은 이제 소비 경로가 확인됐다. -27/-34도 기존에 확인한 Mail/ChatChannel 소비가 유지된다. 남은 직접 미확정은 -22/-20/-33과 -23의 Notify 이벤트 의미다. PCAP 값만으로 의미를 부여하지 않고 Listing의 실제 분기를 근거로 기록한다.
 
+
+
+## 2026-10-02 ProccessRequestRes의 음수 상수 분기 전체 대조
+
+DataCenter.ProccessRequestRes @ 016e203c 함수 본문에서 음수 key 상수 분기를 전수 확인했다. 명시적 key 상수는 -11, -12, -23, -27, -28, -29, -34, -36이다. 이 중 -11/-12는 UserInfo.MergeVaryData의 Exp/Level key와 겹치며, response 처리 중 추가 알림/level-up 상태 처리도 수행한다. -22/-20/-33은 이 함수 안에서 별도 상수 분기로 나타나지 않는다.
+
+- -11: Ali.Notify 이벤트 호출 분기 존재. 이벤트 이름/의미는 추가 확인 필요.
+- -12: DataCache.levelisup 상태를 1로 설정하는 경로 확인. 실제 Level 상승 UI 소비처는 아직 직접 연결 전.
+- -23: key 존재 시 Ali.Notify 호출. 알림 이벤트 이름/의미 미확정.
+- -27: DataCenter +0xC0 dictionary에 key/value 복사.
+- -28: EnergyNextTime 계산/설정.
+- -29: GamePlayerInfomation.CheckAssetsRandomInt_New 설정.
+- -34: DataCenter.ChatChannel 설정.
+- -36: DataCenter.SupportCVTimes 설정.
+
+이 함수 본문에서 -22/-20/-33의 전용 분기가 없다는 사실은 확인했지만, 다른 함수 또는 Lua 측에서 소비하지 않는다는 뜻은 아니다.
+
+## 2026-10-02 ItemRecord type 8의 box 분류 연결
+
+Bootstrap Main UI 분석 보고서 14.1절의 AliothExtensions.isBoxItem @ 00e166ac Listing에서 BaseData.type이 8, 1, 9일 때 true를 반환한다. 따라서 ItemRecord type 8은 클라이언트의 box item 분류에 포함된다. 다만 이는 UI/인벤토리 분류 판정이며, m_itemPackageId의 CODE*VALUE가 어느 보상 테이블을 조회하는지까지 입증하지 않는다. CODE lookup은 별도 미확정으로 유지한다.
