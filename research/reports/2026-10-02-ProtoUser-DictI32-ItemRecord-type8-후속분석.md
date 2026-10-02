@@ -877,3 +877,14 @@ ProtoUser setter Listing을 개별 확인해 getter offset을 교차 검증했�
 - **-36**: DataCenter.set_SupportCVTimes.
 
 주의: 이 함수에 key 상수로 나타나는지와 프로젝트 전체에서 사용되는지는 별개다. -22/-20/-33은 이 함수에 상수가 없다는 사실만 확인했으며, 전체 미사용으로 결론내리지 않는다.
+
+
+### 2026-10-02 후속 실측 — 미분류 DictI32 key 정적 상수 검색
+
+Ghidra Listing 전체 Git 검색에서 signed key의 32-bit 상수 표기를 교차 검색했다.
+
+- -22 (0xffffffea): 검색 결과는 BrotliDecoderDecompressStream 내부 상태/오류 처리 상수뿐이다. Dictionary key 인자나 DataCenter 접근이 없어 DictI32 소비 근거가 아니다.
+- -20 (0xffffffec): 동일하게 Brotli decoder의 반환/상태 경로에서만 확인되며 DictI32 소비 근거가 아니다.
+- -33 (0xffffffdf): 현재 Listing 검색 결과 없음.
+
+따라서 현재까지 -22/-20/-33을 field 21 DictI32 key로 직접 읽는 클라이언트 함수는 발견하지 못했다. 숫자 상수만 일치하는 Brotli 내부 코드를 소비처로 잘못 연결하지 않는다. 다음 확인은 런타임에서 해당 key의 Dictionary ContainsKey/get_Item 호출 stack을 수집하는 것이다.
