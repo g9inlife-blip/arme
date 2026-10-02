@@ -1125,3 +1125,65 @@ runtime에서는 UserInfo.get_Energy가 실제 호출되었고 현재 테스트�
 Main 정상 진입에 필요한 것은 모든 Proto 구조를 완전히 복원하는 것이 아니라, Bootstrap OpCode=2에서 실제 Main이 읽는 상태를 먼저 재현하는 것이다.
 
 따라서 다음 작업은 DataCenter getter별로 실제 저장 위치와 Main 호출자를 연결하고, 그 결과를 Local Server response contract의 필수/선택 필드로 분리하는 것이다.
+
+
+## 22. 2026-10-02 Main 소비 경로 후속 확인 — EquipMax 저장 위치 확정
+
+### 22.1 UserInfo.EquipMax 실제 저장 offset 확인
+
+Git Listing의 `UserInfo$$get_EquipMax @ 00dd27d0` 본문에서:
+
+```text
+00dd2838  ldr w0,[x19, #0x58]
+00dd2844  ret
+```
+
+가 확인된다.
+
+따라서:
+
+```text
+UserInfo + 0x58 = EquipMax
+```
+
+로 확정한다.
+
+또한 `UserInfo$$set_EquipMax @ 00dd2848`가 존재하고 `UserInfo$$MergeVaryData @ 00dd3030`에서 호출되므로:
+
+```text
+OpInfo +0x70 DictI32
+  → UserInfo.MergeVaryData
+  → UserInfo +0x58 EquipMax
+  → DataCenter.get_EquipMax 계열
+  → HomePanelMono.Start
+```
+
+의 저장/소비 연결이 확보됐다.
+
+### 22.2 Main Bootstrap 계약에서 EquipMax 위치
+
+현재는 ProtoUser 내부 offset을 억지로 추정하지 않는다.
+
+Local Server가 재현해야 하는 의미 단위는:
+
+```text
+DictI32 key -0xE2
+    ↓
+UserInfo.EquipMax
+    ↓
+HomePanelMono.Start
+```
+
+이며 runtime에서 실제 값까지 확보하면 response fixture에 반영한다.
+
+### 22.3 다음 추적 대상
+
+다음은 동일한 방식으로 Main 소비값을 하나씩 확정한다.
+
+1. `UserInfo.Id / Name / Level / Exp` 실제 저장 offset
+2. `UserInfo.Energy` 저장/갱신 경로
+3. `DataCenter.get_EquipMax / get_CurrentEquipMax / get_NextEquipMax`의 반환원 연결
+4. HomePanelMono.Start가 EquipMax 외에 직접 읽는 DataCenter/UserInfo getter
+5. 그 결과로 Bootstrap 필수/선택 필드 최종 분리
+
+현재까지는 EquipMax를 **Main 필수 후보 → 저장 offset까지 확정** 상태로 승격한다.
