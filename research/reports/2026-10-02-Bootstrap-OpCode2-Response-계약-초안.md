@@ -1426,3 +1426,74 @@ Login 완료
 - 필수/선택/화면 진입 후 lazy-load 항목 분리
 
 이 기준을 충족하기 전까지 Main Bootstrap 데이터 분석을 완료 처리하지 않는다.
+
+
+## 23. 2026-10-02 Main 상단 프로필 / 재화 UI 소비 정적 확인
+
+대상 Listing: `research/Ghidra_Listing_txt/US.txt`
+
+### 23.1 UserInfoPanelMono.Start @ 00f7e92c
+
+Main 상단 프로필 패널 초기화 경로에서 다음 UserInfo getter 호출이 확인된다.
+
+| Getter | 데이터 | UI 소비 |
+|---|---|---|
+| `UserInfo.get_Id @ 00dd1884` | 사용자 ID | `lbl_userId` |
+| `UserInfo.get_Name @ 00dd1988` | 닉네임 | `lbl_nickName` |
+| `UserInfo.get_Level @ 00dd1ba0` | 플레이어 레벨 | `lbl_lv`, 레벨 표시 |
+| `UserInfo.get_Exp @ 00dd1ca4` | 플레이어 경험치 | `lbl_userexpshow`, `spr_expbar.fillAmount` |
+| `DataCenter.get_HeadData @ 016e80a4` | 프로필 머리/초상 데이터 | `ShowHeadPanel` 경로 |
+
+추가로 레벨별 경험치 테이블을 위한 `BaseMono.GetLvExpdata` 호출이 존재한다. 따라서 EXP 숫자만이 아니라 현재 Level에 대응하는 필요 EXP/진행률 계산이 UI 표시 계약에 포함된다. 테이블 값은 정적 Master Data이며 플레이어 상태와 분리한다.
+
+### 23.2 UserInfoPanelMono.RefreshTopInfos @ 00f7f914
+
+- Calls OUT: `UserInfoPanelMono.ShowCoin @ 00f7e524`
+- 상단 재화 표시를 별도 ShowCoin 경로에 위임한다.
+
+### 23.3 UserInfoPanelMono.ShowCoin @ 00f7e524
+
+Calls OUT에서 확인:
+- `DataCenter.GetXCount @ 016defb0`
+- `Ali.GetBaseData @ 00e035d4`
+- `BaseData.get_icon @ 00df3224`
+- `BaseData.get_NameByQualityWord @ 00df35ac`
+- `CoinitemNode.get_lbl_item_count`
+- `CoinitemNode.get_spr_item_icon`
+- `CoinitemNode.get_lbl_item_name`
+- `Ali.GetExcelData<object> @ 01736d60`
+- `BaseData.SplitToInt32ListError @ 00df4238`
+
+따라서 상단 재화 UI는 단순 숫자 3개 고정 출력이 아니라, UI에 구성된 재화 ID 목록을 순회하면서 다음을 조합하는 구조다.
+
+```
+재화 ID 목록
+ → GetXCount(itemId)
+ → GetBaseData(itemId)
+ → Count / Icon / Name
+ → CoinitemNode UI
+```
+
+현재 runtime에서 Coins/Crystals/Energy 3종은 확인됐지만, ShowCoin이 사용하는 전체 ID 목록과 각 항목의 표시 여부는 아직 추출하지 않았다. 상단 재화 contract의 완성 조건은 이 ID 목록과 UI 순서를 확인하는 것이다.
+
+### 23.4 이번 정적 확인으로 확정된 Main 프로필 데이터 최소 집합
+
+- User.Id
+- User.Name
+- User.Level
+- User.Exp
+- HeadData
+- Level별 필요 EXP 테이블 참조
+- 상단 재화 목록의 ItemId
+- 각 ItemId에 대한 GetXCount 결과
+- 각 ItemId의 BaseData 이름/아이콘 참조
+
+단, HeadData가 Bootstrap User field 중 어느 필드에서 만들어지는지, 상단 재화 목록이 어떤 설정/테이블에서 만들어지는지, 이 패널의 모든 필드가 첫 Main 화면 진입 때 반드시 필요한지는 아직 별도 확인한다.
+
+### 23.5 다음 Main 추적 우선순위
+
+1. `ShowCoin`의 재화 ID 목록 생성부와 순회 항목을 확인해 Main 상단 재화 목록 전체를 확정한다.
+2. `HomePanelMono.Start` 및 `RefreshUIBanner`의 실제 getter/Record 참조를 정리한다.
+3. Main 첫 화면에 노출되는 배너/메뉴/알림 배지의 getter와 Quest/Activity/Shop/Charge 데이터 연결을 확인한다.
+4. 대표 Hero 표시 경로가 별도 Home 소비처인지 확인하고, 모든 Hero의 전체 속성이 아닌 화면 표시 필드만 계약에 반영한다.
+5. 각 데이터 항목을 `Bootstrap 필수`, `Main 화면 선택`, `메뉴 진입 시 추가 요청`, `정적 Master Data/Asset`로 분류한다.
