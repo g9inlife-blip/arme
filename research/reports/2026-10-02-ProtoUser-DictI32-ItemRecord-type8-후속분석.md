@@ -489,3 +489,44 @@ field 21의 각 map 엔트리는 중첩 field 1=key, field 2=value 구조다. �
 - ProtoUser의 wire field 3/4/7/14 및 20/21/22/24를 Ghidra Listing의 생성 parser/setter 또는 XLua 메타데이터와 대조한다.
 - field 21의 276개 전체 엔트리에서 양수 key의 의미를 추측하지 않고, Main UI 소비 함수의 Dictionary 조회 key와 대조한다.
 - ItemRecord type 8의 73개 CODE는 아직 lookup 구현을 찾지 못했으므로 box 분류(type 8)와 보상 테이블 조회 의미를 분리해 유지한다.
+
+
+## 2026-10-02 PCAP field 21/35 재파싱 정정 (이전 표 오류 수정)
+
+앞 절의 field 21 음수 key 표는 protobuf map 중첩 엔트리의 key/value를 잘못 읽어 잘못 기재했다. 아래 표로 대체한다. 원본 blob `5a9f8f12466c2a14fb3769b376f96b6eebc8dfc4`를 hex varint 단위로 재파싱했으며, 이 응답의 field 21 map 엔트리는 276개다.
+
+| 음수 key | field 2 값 | 소비 경로(별도 Listing 근거) |
+|---:|---:|---|
+| -29 | 79 | GamePlayerInfomation.CheckAssetsRandomInt_New |
+| -28 | 94 | DataCenter.EnergyNextTime |
+| -27 | 1 | DataCenter +0xC0 dictionary (HomePanel mail badge) |
+| -23 | field 2 생략 | key 존재 여부로 Ali.Notify 분기 |
+| -22 | field 2 생략 | 전용 소비 분기 미확인 |
+| -20 | field 2 생략 | 전용 소비 분기 미확인 |
+| -18 | 15 | UserInfo.ExamTimes |
+| -33 | field 2 생략 | 전용 소비 분기 미확인 |
+| -34 | 1 | DataCenter.ChatChannel |
+| -36 | 3 | DataCenter.SupportCVTimes |
+| -30 | field 2 생략 | UserInfo.EquipMax |
+| -31 | field 2 생략 | UserInfo.ChargeTotalPerMonth |
+| -32 | 27 | UserInfo.Age |
+
+field 2가 생략된 것은 wire상 값이 없다는 뜻이다. protobuf map의 기본값 처리 여부는 디코더/런타임 경로를 확인하기 전까지 별도 의미를 부여하지 않는다. 이전 절의 -9/-10/-11/-12/-13/-14/-15/-16 값 표기는 이 packet 192~201 응답의 field 21 목록이 아니므로 이 PCAP 결과 표에서 제거한다. 기존 다른 캡처의 관측값과 혼합하지 않는다.
+
+### ProtoUser wire tag 교차 확인
+
+Ghidra Listing getter의 객체 offset:
+- `ProtoUser.get_Id @ 015adb0c` → +0x10
+- `get_Level @ 015adb2c` → +0x1C
+- `get_Exp @ 015adb3c` → +0x20
+- `get_HeadIcon @ 015adb6c` → +0x2C
+- `get_Name @ 015adb7c` → +0x30
+
+PCAP field 35의 실제 nested 값/형태를 위 속성과 대조하면 다음 대응이 성립한다.
+- wire field 1 → Id = 871047
+- wire field 3 → Level = 4
+- wire field 4 → Exp = 250
+- wire field 7 → HeadIcon = 18100000
+- wire field 14 (length-delimited UTF-8) → Name = `g9in2`
+
+이는 서로 다른 증거 두 가지(실제 nested protobuf payload와 해당 속성 getter의 객체 offset/타입)를 교차한 결과다. 따라서 기본 5개 속성의 wire tag는 위와 같이 확정 기록한다. wire field 20/21/22/24는 현재 ProtoUser 속성명에 연결할 증거가 없어 미매핑으로 둔다. getter의 객체 offset은 wire tag가 아니며, tag 대응은 PCAP nested payload로부터 확인했다.
