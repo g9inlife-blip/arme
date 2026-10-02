@@ -1107,3 +1107,79 @@ Listing에서 확인되는 일반 wrapper 진입은 다음과 같다.
 5. 생성/응답 시점에 실제 hook 진입 여부와 Res/FinishAt 기본 저장 여부를 함께 기록한다.
 
 이 단계에서 등록 주체를 임의로 XLua Hotfix 시스템 또는 특정 Lua 파일로 단정하지 않는다.
+
+
+
+### 13.18 Response 처리 후 완료 이벤트 연결 추적 (2026-10-03)
+
+이번 단계에서는 callback 등록 주체를 더 파지 않고, 실제 응답이 Request 완료 이벤트까지 도달하는 정적 순서를 확인했다.
+
+#### 1) NetworkCenter.TryHandleResponse의 실제 순서
+
+Listing: `015b41e0_Alioth.S1.Net.NetworkCenter__TryHandleResponse.txt`
+
+정상 처리 경로의 핵심 순서는 다음과 같다.
+
+```text
+NetworkCenter.TryHandleResponse(response)
+  → DataCenter.ProccessRequestRes(response)
+  → pending Request Queue.Peek()
+  → Request.get_ID()
+  → Request.ID와 response.SerialNumber(+0x10) 비교
+  → 일치하면 Queue.Dequeue()
+  → Request.SetResponse(request, response)
+  → NetworkCenter instance +0x38 Action 호출(해당 delegate가 non-null인 경우)
+```
+
+- `DataCenter.ProccessRequestRes`는 대기 Request의 SerialNumber 매칭보다 먼저 호출된다.
+- SerialNumber가 일치한 경우에만 해당 Request를 Queue에서 제거하고 `SetResponse`를 호출한다.
+- `SetResponse` 호출 뒤 NetworkCenter 인스턴스의 `+0x38` delegate를 검사하고, non-null이면 간접 호출한다.
+- 이 `+0x38`은 NetworkCenter 인스턴스 필드다. Request static-fields의 `+0x80/+0x88`, DataCenter의 opcode callback Dictionary와 동일한 slot으로 취급하지 않는다.
+- 함수 진입 초기에 별도로 NetworkCenter class static-fields `+0x80` delegate를 검사하는 경로도 존재한다. 이 delegate가 non-null이면 DelegateBridge Imp11로 위임하고 정상 기본 처리 경로를 건너뛴다. 이 역시 Request의 +0x80과는 보유 클래스가 다르다.
+
+#### 2) CSBehaviour 완료 이벤트 등록 경로
+
+Listing: `016dd854_CSBehaviour__RegisterRequestCallBack.txt`, `CS.txt`
+
+- `CSBehaviour.RegisterRequestCallBack(callback)`는 CSBehaviour singleton을 얻은 뒤 `CSBehaviour.add_OnRequestFinish(callback)`를 호출한다.
+- `add_OnRequestFinish`는 CSBehaviour 인스턴스의 `+0x38` 이벤트 delegate에 전달된 callback을 Combine하는 구조다.
+- `DataCenter.OnEnable @ 016e8a7c`가 `CSBehaviour.RegisterRequestCallBack`의 Calls IN에 나타난다.
+- 반대로 `DataCenter.OnDisable @ 016e8b30`은 `CSBehaviour.UnRegisterRequestCallBack`의 Calls IN에 나타난다.
+
+따라서 DataCenter가 활성화/비활성화될 때 CSBehaviour의 Request 완료 이벤트를 등록/해제하는 생명주기 구조는 확인된다. 다만 현재 확보한 OnEnable Listing 본문에서 전달 callback의 생성/대상 method를 직접 읽지 못했으므로, 이것이 정확히 `DataCenter.RequestCallback`이라고 단정하지 않는다.
+
+#### 3) UI dispatch와의 현재 연결 상태
+
+이미 확인된 별도 경로:
+
+```text
+DataCenter.RequestCallback(request)
+  → Request.IsClientProccessed = true
+  → Ali.DataProccessCallBack(request)
+  → Request.Res의 OpCode(+0x14) 확인
+  → Ali의 opcode callback Dictionary 조회
+  → NetEvent.callBack / 특수 화면 분기
+```
+
+이번 단계에서 확정된 것은:
+- NetworkCenter는 응답 데이터 병합 후 SerialNumber로 원래 Request를 찾는다.
+- 일치한 Request에 SetResponse를 실행한다.
+- SetResponse 직후 NetworkCenter의 +0x38 완료 Action 호출 지점이 있다.
+- CSBehaviour에는 OnRequestFinish 이벤트와 등록/해제 API가 있고 DataCenter의 OnEnable/OnDisable이 이를 사용한다.
+
+아직 미확정:
+- NetworkCenter +0x38 Action의 실제 delegate target/method.
+- CSBehaviour.OnRequestFinish와 NetworkCenter +0x38 Action의 런타임 연결 방식.
+- DataCenter.OnEnable이 RegisterRequestCallBack에 전달하는 정확한 delegate method가 RequestCallback인지 여부.
+- Request.SetResponse의 XLua hook(+0x88)이 실제 런타임에서 활성화되어 있는지 여부.
+
+#### 4) Local Server 관점의 의미 및 다음 단계
+
+서버 응답 계약을 검증할 때 단순히 응답 OpInfo를 Deserialize하는 것으로 끝나지 않는다. 최소한 다음 순서를 만족해야 한다.
+
+1. 응답의 SerialNumber가 pending Request와 일치해야 한다.
+2. Client가 응답을 공통 State에 병합한다.
+3. 원래 Request의 Res가 설정되고 완료 이벤트가 실행된다.
+4. 응답 OpCode에 맞는 화면 callback이 실행되어야 한다.
+
+다음 분석은 callback 등록 주체를 더 추측하지 않고, 실제 구현에 직접 필요한 **응답 OpInfo 필드별 DataCenter 병합 순서와 Bootstrap OpCode=2의 필수 필드**를 추적한다. UI dispatch 연결은 위 완료 이벤트의 런타임 target이 확인될 때만 추가 확정한다.
