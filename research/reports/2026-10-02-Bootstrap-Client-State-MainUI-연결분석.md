@@ -848,3 +848,22 @@ WeaponInfo
 **현재 판정:** source Dictionary와 WeaponInfo Dictionary는 분리해서 추적해야 한다.
 
 다음 단계는 `00e5bd5c`에서 사용되는 `[x29,#0x38]`의 생성/대입 지점을 역추적하여 x20의 실제 value class를 찾는 것이다.
+
+
+### 18.5 [x29+0x38] source 역추적 결과 (2026-10-03)
+
+`FUN_00e5c00c`의 현재 확보 Listing에서 `[x29,#0x38]`은 루프 진입 전 이미 준비된 local/stack slot이며, 반복문에서 다음 용도로 사용된다.
+
+- `00e5bd5c`: `[x29,#0x38]`을 Dictionary 객체로 로드
+- `00e5bd6c`: `Dictionary<int,object>::ContainsKey`
+- `00e5bd84`: `Dictionary<int,object>::get_Item`
+- `00e5bda0`: get_Item 결과를 `x20`에 보관
+- `00e5bde0`: `[x20,#0x10]`을 TryGet key로 사용
+
+따라서 `[x29,#0x38]`이 **실제 source Dictionary라는 것은 확정**되지만, 현재 저장소의 해당 함수 Listing 범위에는 이 stack slot에 Dictionary를 대입하는 명령이 포함되어 있지 않다.
+
+반대로 후반부의 `Dictionary<int,object>::.ctor @ 0192d268`와 `set_Item @ 0192dba8`은 WeaponInfo Dictionary 생성/채움 경로이므로 source Dictionary와 분리된다.
+
+현재는 다음 단계로 넘어가기 전에 `FUN_00e5c00c`의 함수 시작부/누락 Listing 또는 해당 stack slot을 설정하는 상위 호출부를 확보해야 한다.
+
+**판정:** x20의 실제 class는 아직 미확정. `x20+0x10` 역시 아직 Hero ID라고 확정하지 않는다.
