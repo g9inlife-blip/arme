@@ -1,5 +1,5 @@
 /**
- * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.24
+ * JusticeSchool (com.Alioth.JusticeSchool.cn) - Login Hook Script v4.25
  *
  * v4.9: NetworkCenter/DataCenter response-path observation added.\n * v4.8: ProtoChapter BoxStatus runtime read/write observation added.\n * v4.7: UploadHandlerRaw / UnityWebRequest setter / HttpRequest body 생성 경로 추적 + token 저장/재사용 fingerprint 비교
  *
@@ -679,7 +679,7 @@ function waitForAssembly() {
 // ---------- hooks ----------
 
 async function main() {
-    console.log('[*] justice_hook v4.24 starting...');
+    console.log('[*] justice_hook v4.25 starting...');
     await waitForIl2cpp();
     console.log('[*] IL2CPP domain ready.');
     await waitForAssembly();
@@ -1836,7 +1836,42 @@ function inspectChaptersDictionary(dictPtr) {
         console.log('[!] CreateBattle hook setup failed: ' + e.message);
     }
 
-    console.log('[*] justice_hook v4.24');
+    // v4.25: Main/Home UI consumers only. Battle/dungeon hooks are omitted.
+    try {
+        const specs = [
+            ['HomePanelMono', 'Start', 'MAIN_HOME_START'],
+            ['HomePanelMono', 'RefreshUIBanner', 'MAIN_HOME_BANNER'],
+            ['HomePanelMono', 'RefreshWareHouse_Supply', 'MAIN_HOME_WAREHOUSE_SUPPLY'],
+            ['HomePanelMono', 'RefreshPoint_TaoFA', 'MAIN_HOME_TAOFA'],
+            ['HomePanelMono', 'RefreshWorldCup', 'MAIN_HOME_WORLDCUP'],
+            ['HomePanelMono', 'UIRefreshCamp', 'MAIN_HOME_CAMP'],
+            ['UserInfoPanelMono', 'Start', 'MAIN_USERINFO_START'],
+            ['UserInfoPanelMono', 'RefreshTopInfos', 'MAIN_USERINFO_REFRESH'],
+            ['UserInfoPanelMono', 'ShowCoin', 'MAIN_USERINFO_SHOWCOIN']
+        ];
+        for (const spec of specs) {
+            const ms = findMethodsAnywhereByName(spec[0], spec[1]);
+            if (!ms.length) {
+                console.log('[!] ' + spec[0] + '.' + spec[1] + ' not found');
+                continue;
+            }
+            for (const m of ms) {
+                console.log('[+] Hooking ' + spec[0] + '.' + spec[1] +
+                    '(' + m.typeNames.join(', ') + ') @ ' + m.fnPtr);
+                Interceptor.attach(m.fnPtr, {
+                    onEnter(args) {
+                        console.log('[' + spec[2] + '] this=' + args[0] +
+                            ' argc=' + m.paramCount);
+                    }
+                });
+                hookCount++;
+            }
+        }
+    } catch (e) {
+        console.log('[!] Main UI hook setup failed: ' + e.message);
+    }
+
+    console.log('[*] justice_hook v4.25');
     console.log(`\n[*] ${hookCount} hooks installed.`);
     console.log('[*] Trigger login, then make a real game API request after login.');
     console.log('[*] Look for [TOKEN_SAVE], [TOKEN_GET], [TOKEN_COMPARE], [SIGN_DATA], [JOIN_DATA], [MD5_DATA], [B64], [HTTP_CREATE], [HTTP_HEADER], and [HTTP_SEND] lines.\n');
