@@ -80,7 +80,7 @@ Hash만으로 화면 이름을 확정하지 않는다. 현재 Listing에서 Stri
 
 대상:
 - `ProtocolGame_SendRequest.GetActivities @ 00de1f68`
-- 호출자 Listing: `research/Ghidra_Listing_txt/AL/01693710_AliothEngine.GUIScreenLoaderS1__IsSendRequest.txt` 및 `HomePanelMono.Start` 근거 문서. 참고: `research/Ghidra_Listing_txt/PR.txt`는 현재 Git에서 0 byte이므로 Request 함수 본문 근거로 사용하지 않는다.
+- 호출자 Listing: `research/Ghidra_Listing_txt/AL/01693710_AliothEngine.GUIScreenLoaderS1__IsSendRequest.txt` 및 `HomePanelMono.Start` 근거 문서. 참고: `research/Ghidra_Listing_txt/PR.txt`는 Git main 기준 2,796,159 bytes이며 Request 함수 본문은 13.9에서 직접 분석했다.
 
 Calls IN:
 - `HomePanelMono.Start @ 00f67adc`
@@ -479,8 +479,7 @@ Request: `ProtocolGame_SendRequest.Shopping @ 00de1e80`
 
 ### 11.4 Request 본문 Listing의 공백과 opcode 판정 주의
 
-- 현재 Git의 `research/Ghidra_Listing_txt/PR.txt`는 실제로 0 byte다.
-- 따라서 Request 함수 본문에서 Opcode와 OpInfo payload offset을 재검증할 수 없는 상태다.
+- Git main의 `research/Ghidra_Listing_txt/PR.txt`는 2,796,159 bytes이며, Git blob endpoint에서 본문을 확보해 Request 함수 Listing을 직접 확인했다.
 - GetMails `0x2D`, GetShops `0x33`, Shopping `0x34` 및 Shopping의 `+0x30/+0x34/+0x38` 계약은 2026-09-29 보고서에 기재된 기존 결과를 참조한다. 이번 단계에서 새로 확인한 직접 근거는 UI caller 및 호출 인자 구성이다.
 - MailGetReward와 QuestGetReward의 Opcode 및 Request payload offset은 아직 확인하지 않았다. 이름이나 caller 인자만으로 추정하지 않는다.
 - PR Listing 재추출 또는 다른 정확한 Listing 산출물이 Git에 등록되면 Request 함수 본문을 다시 검증한다.
@@ -732,8 +731,7 @@ DataCenter.RequestCallback
 
 ### 13.7 Request payload 미확정 사유와 다음 단계
 
-- `research/Ghidra_Listing_txt/PR.txt`는 현재 Git에서 0 byte다.
-- Request 함수 본문 Listing이 없어 `MailGetReward`와 `QuestGetReward`의 opcode 대입 및 인자 저장 offset을 직접 확인하지 못했다.
+- PR Listing에서 `MailGetReward`, `QuestGetReward`, `Shopping`의 opcode 및 payload 대입 offset을 확인했다(13.9 참조).
 - UI caller에서 얻는 값은 다음과 같다.
   - Mail 단건: UIData 내부 객체의 `+0x10` 32-bit 값을 Request 인자로 전달
   - Mail 전체: Mail 관련 전역 객체 참조를 첫 인자로 전달
