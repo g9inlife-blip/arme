@@ -1333,3 +1333,96 @@ Git의 `09_record_samples.json`에서 세 ID 모두 `ItemRecord.json` Record이�
 5. Local Server가 Main 첫 화면을 표시하는 데 필요한 최소 응답 계약과, 메뉴 진입 시 추가로 필요한 응답 계약을 분리
 
 완료 기준은 모든 서버 데이터 필드를 복원하는 것이 아니라, Main 첫 화면이 정상 표시되는 데 필요한 데이터와 타입/구조/초기화 순서를 식별하는 것이다.
+
+
+## 22. 2026-10-02 v4.24 최종 단일 로그 재검토 — Main 데이터 조사로 복귀
+
+사용자가 새로 등록한 `research/reports/Log/frida_log_static_신규로갱신되므로기존데이터없이최종본만.txt`를 처음부터 다시 확인했다. 이전 로그를 누적해 해석하지 않는다.
+
+### 22.1 이번 실행의 Bootstrap 실측
+
+- Frida script: v4.24, 54 hooks installed
+- Bootstrap Request: OpCode 2, SerialNumber 139954759
+- Request가 KCPTube.Send에서 ret=1로 수락됨
+- Response: 같은 SerialNumber 139954759, OpCode 2, ReturnCode 0
+- OpInfo response envelope에서 45개 필드의 이름/타입/offset이 기록됨
+- 주요 non-null 데이터:
+  - DictI32 (+0x70)
+  - User (+0x88)
+  - Heros (+0x90)
+  - Items (+0x98)
+  - Weapons (+0xA0)
+  - Equiments (+0xA8)
+  - Chapters (+0xC0)
+  - Sections (+0xC8)
+  - Teams (+0xD0)
+  - Fashions (+0xE0)
+  - Quests (+0xE8)
+  - Charges (+0xF8)
+  - Activities (+0x120)
+  - AIStrategy (+0x138)
+- Mails, ViewItems, Exam, Rival, Msgs, BattleReport 등은 이번 응답에서 null 또는 비어 있는 값으로 관측됐다. null이 영구적으로 불필요하다는 뜻은 아니다.
+
+### 22.2 이번 실행에서 확인된 Main 표시 관련 데이터
+
+- User: Id=871053, Level=53, Exp=1100
+- Items Dictionary count=98, MergeItem 실행 확인
+- Chapters Dictionary count=61
+- HeroInfo.InitHero가 ProtoHero 원본을 받아 여러 HeroInfo를 초기화
+- HeroInfo getter runtime 호출: Level, Star, State, FashionId, WeaponInfomation
+- Currency runtime 값: Energy=134, Coins=306095, Crystals=2700
+- 세 재화의 BaseData.type은 모두 0x22
+
+이것은 Bootstrap 데이터가 실제 Client 상태로 병합된 사실과 일부 getter 사용을 증명한다. 다만 모든 Main UI 위젯이 요구하는 필드 전체를 열거한 것은 아니다.
+
+### 22.3 던전 진입 로그는 Main 범위에서 제외
+
+같은 실행에서:
+- ReadyMono.ClickEnterBattle 진입
+- CreateBattle(20000000, 21000010)
+- KCP OpCode=22 송신 수락
+- 응답 OpCode=22, ReturnCode=0
+- GoToBattleMono.CreateBattleBack 진입
+
+여기까지는 입장 Request/Response 경계 확인에 해당한다. 전투 씬 내부 동작과 전투 데이터는 사용자의 범위 결정에 따라 추가 분석하지 않는다. 기존 Dungeon 보고서는 요청/응답 참고 기록으로 유지한다.
+
+### 22.4 Main 데이터 완료도 재판정
+
+**아직 완료되지 않았다.** 현재까지 완성된 것은 Bootstrap의 공통 Response envelope와 주요 데이터의 병합 경로이며, Main 첫 화면의 모든 소비 필드/데이터 유형/초기화 순서는 미완료다.
+
+| 영역 | 현재 증거 | 완료 여부 |
+|---|---|---|
+| OpInfo envelope | 45 fields의 이름/타입/offset 실측 | 구조 확인 |
+| User 기본 프로필 | Id/Level/Exp runtime | 일부 확인 |
+| 재화 | Coins/Crystals/Energy 값 및 Item 경로 | 핵심 3종 확인 |
+| 대표 Hero | ProtoHero → HeroInfo 및 일부 getter | 선택 기준/대표 Hero 연결 미완료 |
+| 무기/장비 | Bootstrap merge 및 별도 UI 소비 정적 경로 | Main 필수 데이터 범위 미완료 |
+| Chapter/Section | 61 Chapters runtime, Sections dictionary 존재 | 첫 화면 노출 subset 및 표시 의존성 미완료 |
+| 배너/이벤트 | HomePanel 소비 함수 진입점 일부 확인 | 필요한 데이터와 배지/노출 조건 미완료 |
+| 메뉴 배지/알림 | Quest/Activity 등의 응답 필드 존재 | 실제 UI 소비와 필수성 미완료 |
+| Teams/Quests/Shops/Charges/Fashions/Activities | 응답 타입 및 merge 경로 | Main 소비 필드/필수성 미완료 |
+| AssetBundle | Main UI 리소스 URL 일부 관측 | 화면 표시용 리소스 의존성 목록 미완료 |
+
+### 22.5 분석 범위 고정
+
+다음부터는 전투 진입을 따라가지 않는다. 목표를 다음과 같이 고정한다.
+
+```
+Login 완료
+ → Bootstrap OpCode 2
+ → DataCenter/UserInfo/HeroInfo 상태 생성
+ → Main 최초 화면(HomePanel + 상단 UserInfo)
+ → 화면별 getter/데이터 소비
+ → 배너/메뉴 배지/표시 조건
+ → Main 첫 화면 최소 Bootstrap contract
+```
+
+조사 종료 기준:
+- 첫 화면에서 실제 표시되는 컴포넌트 목록
+- 각 컴포넌트가 읽는 getter/property
+- getter가 읽는 저장 객체 및 필드/자료형
+- Bootstrap OpInfo field와 DataCenter merge/cache 경로
+- Bootstrap에 포함되지 않으면 추가 Request가 필요한지
+- 필수/선택/화면 진입 후 lazy-load 항목 분리
+
+이 기준을 충족하기 전까지 Main Bootstrap 데이터 분석을 완료 처리하지 않는다.
